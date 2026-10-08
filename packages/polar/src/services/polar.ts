@@ -69,9 +69,8 @@ export const BenefitGrantsListRequestOrganizationId =
   S.Unknown as any as S.Schema<BenefitGrantsListRequestOrganizationId>;
 
 export type BenefitGrantsListRequestCustomerIdCase1List = Array<string>;
-export const BenefitGrantsListRequestCustomerIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BenefitGrantsListRequestCustomerIdCase1List>;
+export const BenefitGrantsListRequestCustomerIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<BenefitGrantsListRequestCustomerIdCase1List>;
 
 /** Filter by customer ID. */
 export type BenefitGrantsListRequestCustomerId =
@@ -81,9 +80,8 @@ export const BenefitGrantsListRequestCustomerId =
   S.Unknown as any as S.Schema<BenefitGrantsListRequestCustomerId>;
 
 export type BenefitGrantsListRequestExternalCustomerIdCase1List = Array<string>;
-export const BenefitGrantsListRequestExternalCustomerIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BenefitGrantsListRequestExternalCustomerIdCase1List>;
+export const BenefitGrantsListRequestExternalCustomerIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<BenefitGrantsListRequestExternalCustomerIdCase1List>;
 
 /** Filter by customer external ID. */
 export type BenefitGrantsListRequestExternalCustomerId =
@@ -490,9 +488,8 @@ export const CustomerIndividual = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomerIndividual" }) as any as S.Schema<CustomerIndividual>;
 
 export type CustomerTeamTaxIdList = Array<unknown>;
-export const CustomerTeamTaxIdList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CustomerTeamTaxIdList>;
+export const CustomerTeamTaxIdList =
+  CustomerIndividualTaxIdList as any as S.Schema<CustomerTeamTaxIdList>;
 
 /** A team customer in an organization. */
 export interface CustomerTeam {
@@ -783,9 +780,8 @@ export const BenefitDownloadablesPropertiesArchivedMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BenefitDownloadablesPropertiesArchivedMap>;
 
 export type BenefitDownloadablesPropertiesFilesList = Array<string>;
-export const BenefitDownloadablesPropertiesFilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BenefitDownloadablesPropertiesFilesList>;
+export const BenefitDownloadablesPropertiesFilesList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<BenefitDownloadablesPropertiesFilesList>;
 
 export interface BenefitDownloadablesProperties {
   archived: BenefitDownloadablesPropertiesArchivedMap;
@@ -1034,9 +1030,8 @@ export const BenefitFeatureFlag = /*@__PURE__*/ S.suspend(() =>
 
 /** Slack user IDs from the merchant workspace to invite to every channel created for this benefit. */
 export type BenefitSlackSharedChannelPropertiesTeamInviteesList = Array<string>;
-export const BenefitSlackSharedChannelPropertiesTeamInviteesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BenefitSlackSharedChannelPropertiesTeamInviteesList>;
+export const BenefitSlackSharedChannelPropertiesTeamInviteesList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<BenefitSlackSharedChannelPropertiesTeamInviteesList>;
 
 export interface BenefitSlackSharedChannelProperties {
   /** Polar Slack integration linked to this benefit. */
@@ -1165,9 +1160,8 @@ export const BenefitGrantGitHubRepositoryProperties = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<BenefitGrantGitHubRepositoryProperties>;
 
 export type BenefitGrantDownloadablesPropertiesFilesList = Array<string>;
-export const BenefitGrantDownloadablesPropertiesFilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BenefitGrantDownloadablesPropertiesFilesList>;
+export const BenefitGrantDownloadablesPropertiesFilesList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<BenefitGrantDownloadablesPropertiesFilesList>;
 
 export interface BenefitGrantDownloadablesProperties {
   files?: BenefitGrantDownloadablesPropertiesFilesList;
@@ -1477,15 +1471,12 @@ export const BenefitDownloadablesCreateMetadataMap = /*@__PURE__*/ S.Record(
 export type BenefitDownloadablesCreatePropertiesArchivedMap = {
   [key: string]: boolean | undefined;
 };
-export const BenefitDownloadablesCreatePropertiesArchivedMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Boolean,
-) as any as S.Schema<BenefitDownloadablesCreatePropertiesArchivedMap>;
+export const BenefitDownloadablesCreatePropertiesArchivedMap =
+  BenefitDownloadablesPropertiesArchivedMap as any as S.Schema<BenefitDownloadablesCreatePropertiesArchivedMap>;
 
 export type BenefitDownloadablesCreatePropertiesFilesList = Array<string>;
-export const BenefitDownloadablesCreatePropertiesFilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BenefitDownloadablesCreatePropertiesFilesList>;
+export const BenefitDownloadablesCreatePropertiesFilesList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<BenefitDownloadablesCreatePropertiesFilesList>;
 
 export interface BenefitDownloadablesCreateProperties {
   archived?: BenefitDownloadablesCreatePropertiesArchivedMap;
@@ -1673,9 +1664,8 @@ export const BenefitSlackSharedChannelCreateMetadataMap = /*@__PURE__*/ S.Record
 ) as any as S.Schema<BenefitSlackSharedChannelCreateMetadataMap>;
 
 export type BenefitSlackSharedChannelCreatePropertiesTeamInviteesList = Array<string>;
-export const BenefitSlackSharedChannelCreatePropertiesTeamInviteesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BenefitSlackSharedChannelCreatePropertiesTeamInviteesList>;
+export const BenefitSlackSharedChannelCreatePropertiesTeamInviteesList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<BenefitSlackSharedChannelCreatePropertiesTeamInviteesList>;
 
 export interface BenefitSlackSharedChannelCreateProperties {
   /** Polar Slack integration to use for this benefit. */
@@ -1686,18 +1676,8 @@ export interface BenefitSlackSharedChannelCreateProperties {
   archive_on_revoke?: boolean;
   team_invitees?: BenefitSlackSharedChannelCreatePropertiesTeamInviteesList;
 }
-export const BenefitSlackSharedChannelCreateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    slack_integration_id: S.String,
-    channel_name_template: S.String,
-    private: S.optional(S.Boolean),
-    welcome_message: S.optional(S.NullOr(S.String)),
-    archive_on_revoke: S.optional(S.Boolean),
-    team_invitees: S.optional(BenefitSlackSharedChannelCreatePropertiesTeamInviteesList),
-  }),
-).annotate({
-  identifier: "BenefitSlackSharedChannelCreateProperties",
-}) as any as S.Schema<BenefitSlackSharedChannelCreateProperties>;
+export const BenefitSlackSharedChannelCreateProperties =
+  BenefitSlackSharedChannelProperties as any as S.Schema<BenefitSlackSharedChannelCreateProperties>;
 
 export interface BenefitSlackSharedChannelCreate {
   /** Key-value object allowing you to store additional information. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
@@ -1854,14 +1834,11 @@ export const BenefitsGetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BenefitsGetRequest" }) as any as S.Schema<BenefitsGetRequest>;
 
 export type BenefitsGetResponse = Benefit;
-export const BenefitsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  Benefit.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "BenefitsGetResponse" }) as any as S.Schema<BenefitsGetResponse>;
+export const BenefitsGetResponse = BenefitsCreateResponse as any as S.Schema<BenefitsGetResponse>;
 
 export type BenefitsGrantsRequestCustomerIdCase1List = Array<string>;
-export const BenefitsGrantsRequestCustomerIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BenefitsGrantsRequestCustomerIdCase1List>;
+export const BenefitsGrantsRequestCustomerIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<BenefitsGrantsRequestCustomerIdCase1List>;
 
 /** Filter by customer. */
 export type BenefitsGrantsRequestCustomerId = string | BenefitsGrantsRequestCustomerIdCase1List;
@@ -1869,9 +1846,8 @@ export const BenefitsGrantsRequestCustomerId =
   S.Unknown as any as S.Schema<BenefitsGrantsRequestCustomerId>;
 
 export type BenefitsGrantsRequestMemberIdCase1List = Array<string>;
-export const BenefitsGrantsRequestMemberIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BenefitsGrantsRequestMemberIdCase1List>;
+export const BenefitsGrantsRequestMemberIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<BenefitsGrantsRequestMemberIdCase1List>;
 
 /** Filter by member. */
 export type BenefitsGrantsRequestMemberId = string | BenefitsGrantsRequestMemberIdCase1List;
@@ -1903,9 +1879,8 @@ export const BenefitsGrantsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BenefitsGrantsRequest" }) as any as S.Schema<BenefitsGrantsRequest>;
 
 export type BenefitsListRequestOrganizationIdCase1List = Array<string>;
-export const BenefitsListRequestOrganizationIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BenefitsListRequestOrganizationIdCase1List>;
+export const BenefitsListRequestOrganizationIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<BenefitsListRequestOrganizationIdCase1List>;
 
 /** Filter by organization ID. */
 export type BenefitsListRequestOrganizationId = string | BenefitsListRequestOrganizationIdCase1List;
@@ -1933,18 +1908,16 @@ export type BenefitsListRequestType = BenefitType | BenefitsListRequestTypeCase1
 export const BenefitsListRequestType = S.Unknown as any as S.Schema<BenefitsListRequestType>;
 
 export type BenefitsListRequestIdCase1List = Array<string>;
-export const BenefitsListRequestIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BenefitsListRequestIdCase1List>;
+export const BenefitsListRequestIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<BenefitsListRequestIdCase1List>;
 
 /** Filter by benefit IDs. */
 export type BenefitsListRequestId = string | BenefitsListRequestIdCase1List;
 export const BenefitsListRequestId = S.Unknown as any as S.Schema<BenefitsListRequestId>;
 
 export type BenefitsListRequestExcludeIdCase1List = Array<string>;
-export const BenefitsListRequestExcludeIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BenefitsListRequestExcludeIdCase1List>;
+export const BenefitsListRequestExcludeIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<BenefitsListRequestExcludeIdCase1List>;
 
 /** Exclude benefits with these IDs. */
 export type BenefitsListRequestExcludeId = string | BenefitsListRequestExcludeIdCase1List;
@@ -1968,9 +1941,8 @@ export const BenefitsListRequestSortingList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BenefitsListRequestSortingList>;
 
 export type MetadataQueryValueCase3List = Array<string>;
-export const MetadataQueryValueCase3List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetadataQueryValueCase3List>;
+export const MetadataQueryValueCase3List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<MetadataQueryValueCase3List>;
 
 export type MetadataQueryValueCase4List = Array<number>;
 export const MetadataQueryValueCase4List = /*@__PURE__*/ S.Array(
@@ -2328,9 +2300,8 @@ export const BenefitsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BenefitsUpdateRequest" }) as any as S.Schema<BenefitsUpdateRequest>;
 
 export type BenefitsUpdateResponse = Benefit;
-export const BenefitsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  Benefit.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "BenefitsUpdateResponse" }) as any as S.Schema<BenefitsUpdateResponse>;
+export const BenefitsUpdateResponse =
+  BenefitsCreateResponse as any as S.Schema<BenefitsUpdateResponse>;
 
 export type CheckoutLinkCreateProductPriceMetadataValue = string | number | number | boolean;
 export const CheckoutLinkCreateProductPriceMetadataValue =
@@ -2472,9 +2443,8 @@ export const CheckoutLinkCreateProductsMetadataMap = /*@__PURE__*/ S.Record(
 
 /** List of products that will be available to select at checkout. */
 export type CheckoutLinkCreateProductsProductsList = Array<string>;
-export const CheckoutLinkCreateProductsProductsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CheckoutLinkCreateProductsProductsList>;
+export const CheckoutLinkCreateProductsProductsList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<CheckoutLinkCreateProductsProductsList>;
 
 /** Schema to create a new checkout link. */
 export interface CheckoutLinkCreateProducts {
@@ -3319,10 +3289,8 @@ export const DiscountFixedOnceForeverDurationBase = /*@__PURE__*/ S.suspend(() =
 
 /** Map of currency to fixed amount to discount from the total. */
 export type DiscountFixedRepeatDurationBaseAmountsMap = { [key: string]: number | undefined };
-export const DiscountFixedRepeatDurationBaseAmountsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<DiscountFixedRepeatDurationBaseAmountsMap>;
+export const DiscountFixedRepeatDurationBaseAmountsMap =
+  DiscountFixedOnceForeverDurationBaseAmountsMap as any as S.Schema<DiscountFixedRepeatDurationBaseAmountsMap>;
 
 export interface DiscountFixedRepeatDurationBase {
   duration: DiscountDuration;
@@ -3569,9 +3537,8 @@ export const CheckoutLinksDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckoutLinksDeleteRequest>;
 
 export interface CheckoutLinksDeleteResponse {}
-export const CheckoutLinksDeleteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CheckoutLinksDeleteResponse",
-}) as any as S.Schema<CheckoutLinksDeleteResponse>;
+export const CheckoutLinksDeleteResponse =
+  BenefitsDeleteResponse as any as S.Schema<CheckoutLinksDeleteResponse>;
 
 export interface CheckoutLinksGetRequest {
   /** The checkout link ID. */
@@ -3584,9 +3551,8 @@ export const CheckoutLinksGetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CheckoutLinksGetRequest" }) as any as S.Schema<CheckoutLinksGetRequest>;
 
 export type CheckoutLinksListRequestOrganizationIdCase1List = Array<string>;
-export const CheckoutLinksListRequestOrganizationIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CheckoutLinksListRequestOrganizationIdCase1List>;
+export const CheckoutLinksListRequestOrganizationIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<CheckoutLinksListRequestOrganizationIdCase1List>;
 
 /** Filter by organization ID. */
 export type CheckoutLinksListRequestOrganizationId =
@@ -3596,9 +3562,8 @@ export const CheckoutLinksListRequestOrganizationId =
   S.Unknown as any as S.Schema<CheckoutLinksListRequestOrganizationId>;
 
 export type CheckoutLinksListRequestProductIdCase1List = Array<string>;
-export const CheckoutLinksListRequestProductIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CheckoutLinksListRequestProductIdCase1List>;
+export const CheckoutLinksListRequestProductIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<CheckoutLinksListRequestProductIdCase1List>;
 
 /** Filter by product ID. */
 export type CheckoutLinksListRequestProductId = string | CheckoutLinksListRequestProductIdCase1List;
@@ -3673,9 +3638,8 @@ export const CheckoutLinksUpdateRequestMetadataMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CheckoutLinksUpdateRequestMetadataMap>;
 
 export type CheckoutLinksUpdateRequestProductsList = Array<string>;
-export const CheckoutLinksUpdateRequestProductsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CheckoutLinksUpdateRequestProductsList>;
+export const CheckoutLinksUpdateRequestProductsList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<CheckoutLinksUpdateRequestProductsList>;
 
 export interface CheckoutLinksUpdateRequest {
   /** The checkout link ID. */
@@ -4160,9 +4124,8 @@ export const PresentmentCurrency = S.String;
 
 /** List of product IDs available to select at that checkout. The first one will be selected by default. */
 export type CheckoutsCreateRequestProductsList = Array<string>;
-export const CheckoutsCreateRequestProductsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CheckoutsCreateRequestProductsList>;
+export const CheckoutsCreateRequestProductsList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<CheckoutsCreateRequestProductsList>;
 
 /** Schema to create a fixed price. */
 export interface ProductPriceFixedCreate {
@@ -4265,18 +4228,14 @@ export const ProductPriceSeatBasedCreate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductPriceSeatBasedCreate>;
 
 export type ProductPriceUnitBasedCreateUnitLabelValueMap = { [key: string]: string | undefined };
-export const ProductPriceUnitBasedCreateUnitLabelValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProductPriceUnitBasedCreateUnitLabelValueMap>;
+export const ProductPriceUnitBasedCreateUnitLabelValueMap =
+  ProductPriceUnitBasedUnitLabelValueMap as any as S.Schema<ProductPriceUnitBasedCreateUnitLabelValueMap>;
 
 export type ProductPriceUnitBasedCreateUnitLabelMap = {
   [key: string]: ProductPriceUnitBasedCreateUnitLabelValueMap | undefined;
 };
-export const ProductPriceUnitBasedCreateUnitLabelMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProductPriceUnitBasedCreateUnitLabelValueMap,
-) as any as S.Schema<ProductPriceUnitBasedCreateUnitLabelMap>;
+export const ProductPriceUnitBasedCreateUnitLabelMap =
+  ProductPriceUnitBasedUnitLabelMap as any as S.Schema<ProductPriceUnitBasedCreateUnitLabelMap>;
 
 /** Schema to create a unit-based price: the buyer picks a quantity of units, pays for it up-front. On subscriptions, quantity changes are prorated. */
 export interface ProductPriceUnitBasedCreate {
@@ -4505,10 +4464,8 @@ export type TaxBehavior = "inclusive" | "exclusive";
 export const TaxBehavior = S.String;
 
 export type CheckoutPaymentProcessorMetadataMap = { [key: string]: string | undefined };
-export const CheckoutPaymentProcessorMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CheckoutPaymentProcessorMetadataMap>;
+export const CheckoutPaymentProcessorMetadataMap =
+  ProductPriceUnitBasedUnitLabelValueMap as any as S.Schema<CheckoutPaymentProcessorMetadataMap>;
 
 export type BillingAddressFieldMode = "required" | "optional" | "disabled";
 export const BillingAddressFieldMode = S.String;
@@ -4545,15 +4502,13 @@ export const CheckoutProductPricesList = /*@__PURE__*/ S.Array(
 
 /** List of benefits granted by the product. */
 export type CheckoutProductBenefitsList = Array<BenefitPublic>;
-export const CheckoutProductBenefitsList = /*@__PURE__*/ S.Array(
-  BenefitPublic,
-) as any as S.Schema<CheckoutProductBenefitsList>;
+export const CheckoutProductBenefitsList =
+  CheckoutLinkProductBenefitsList as any as S.Schema<CheckoutProductBenefitsList>;
 
 /** List of medias associated to the product. */
 export type CheckoutProductMediasList = Array<ProductMediaFileRead>;
-export const CheckoutProductMediasList = /*@__PURE__*/ S.Array(
-  ProductMediaFileRead,
-) as any as S.Schema<CheckoutProductMediasList>;
+export const CheckoutProductMediasList =
+  CheckoutLinkProductMediasList as any as S.Schema<CheckoutProductMediasList>;
 
 /** Product data for a checkout session. */
 export interface CheckoutProduct {
@@ -4645,10 +4600,8 @@ export const CheckoutPricesMap = /*@__PURE__*/ S.Record(
 export type CheckoutDiscountFixedOnceForeverDurationAmountsMap = {
   [key: string]: number | undefined;
 };
-export const CheckoutDiscountFixedOnceForeverDurationAmountsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<CheckoutDiscountFixedOnceForeverDurationAmountsMap>;
+export const CheckoutDiscountFixedOnceForeverDurationAmountsMap =
+  DiscountFixedOnceForeverDurationBaseAmountsMap as any as S.Schema<CheckoutDiscountFixedOnceForeverDurationAmountsMap>;
 
 /** Schema for a fixed amount discount that is applied once or forever. */
 export interface CheckoutDiscountFixedOnceForeverDuration {
@@ -4680,10 +4633,8 @@ export const CheckoutDiscountFixedOnceForeverDuration = /*@__PURE__*/ S.suspend(
 
 /** Map of currency to fixed amount to discount from the total. */
 export type CheckoutDiscountFixedRepeatDurationAmountsMap = { [key: string]: number | undefined };
-export const CheckoutDiscountFixedRepeatDurationAmountsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<CheckoutDiscountFixedRepeatDurationAmountsMap>;
+export const CheckoutDiscountFixedRepeatDurationAmountsMap =
+  DiscountFixedOnceForeverDurationBaseAmountsMap as any as S.Schema<CheckoutDiscountFixedRepeatDurationAmountsMap>;
 
 /** Schema for a fixed amount discount that is applied on every invoice for a certain number of months. */
 export interface CheckoutDiscountFixedRepeatDuration {
@@ -5238,9 +5189,8 @@ export const CheckoutsGetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CheckoutsGetRequest" }) as any as S.Schema<CheckoutsGetRequest>;
 
 export type CheckoutsListRequestOrganizationIdCase1List = Array<string>;
-export const CheckoutsListRequestOrganizationIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CheckoutsListRequestOrganizationIdCase1List>;
+export const CheckoutsListRequestOrganizationIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<CheckoutsListRequestOrganizationIdCase1List>;
 
 /** Filter by organization ID. */
 export type CheckoutsListRequestOrganizationId =
@@ -5250,9 +5200,8 @@ export const CheckoutsListRequestOrganizationId =
   S.Unknown as any as S.Schema<CheckoutsListRequestOrganizationId>;
 
 export type CheckoutsListRequestProductIdCase1List = Array<string>;
-export const CheckoutsListRequestProductIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CheckoutsListRequestProductIdCase1List>;
+export const CheckoutsListRequestProductIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<CheckoutsListRequestProductIdCase1List>;
 
 /** Filter by product ID. */
 export type CheckoutsListRequestProductId = string | CheckoutsListRequestProductIdCase1List;
@@ -5260,9 +5209,8 @@ export const CheckoutsListRequestProductId =
   S.Unknown as any as S.Schema<CheckoutsListRequestProductId>;
 
 export type CheckoutsListRequestCustomerIdCase1List = Array<string>;
-export const CheckoutsListRequestCustomerIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CheckoutsListRequestCustomerIdCase1List>;
+export const CheckoutsListRequestCustomerIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<CheckoutsListRequestCustomerIdCase1List>;
 
 /** Filter by customer ID. */
 export type CheckoutsListRequestCustomerId = string | CheckoutsListRequestCustomerIdCase1List;
@@ -5270,9 +5218,8 @@ export const CheckoutsListRequestCustomerId =
   S.Unknown as any as S.Schema<CheckoutsListRequestCustomerId>;
 
 export type CheckoutsListRequestExternalCustomerIdCase1List = Array<string>;
-export const CheckoutsListRequestExternalCustomerIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CheckoutsListRequestExternalCustomerIdCase1List>;
+export const CheckoutsListRequestExternalCustomerIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<CheckoutsListRequestExternalCustomerIdCase1List>;
 
 /** Filter by customer external ID. */
 export type CheckoutsListRequestExternalCustomerId =
@@ -5594,16 +5541,13 @@ export const CheckoutPublicConfirmedCustomFieldDataMap = /*@__PURE__*/ S.Record(
 export type CheckoutPublicConfirmedPaymentProcessorMetadataMap = {
   [key: string]: string | undefined;
 };
-export const CheckoutPublicConfirmedPaymentProcessorMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CheckoutPublicConfirmedPaymentProcessorMetadataMap>;
+export const CheckoutPublicConfirmedPaymentProcessorMetadataMap =
+  ProductPriceUnitBasedUnitLabelValueMap as any as S.Schema<CheckoutPublicConfirmedPaymentProcessorMetadataMap>;
 
 /** List of products available to select. */
 export type CheckoutPublicConfirmedProductsList = Array<CheckoutProduct>;
-export const CheckoutPublicConfirmedProductsList = /*@__PURE__*/ S.Array(
-  CheckoutProduct,
-) as any as S.Schema<CheckoutPublicConfirmedProductsList>;
+export const CheckoutPublicConfirmedProductsList =
+  CheckoutProductsList as any as S.Schema<CheckoutPublicConfirmedProductsList>;
 
 export type CheckoutPublicConfirmedProductPrice = LegacyRecurringProductPrice | ProductPrice;
 export const CheckoutPublicConfirmedProductPrice =
@@ -5670,9 +5614,8 @@ export const CheckoutOrganization = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CheckoutOrganization" }) as any as S.Schema<CheckoutOrganization>;
 
 export type CheckoutPublicConfirmedAttachedCustomFieldsList = Array<AttachedCustomField>;
-export const CheckoutPublicConfirmedAttachedCustomFieldsList = /*@__PURE__*/ S.Array(
-  AttachedCustomField,
-) as any as S.Schema<CheckoutPublicConfirmedAttachedCustomFieldsList>;
+export const CheckoutPublicConfirmedAttachedCustomFieldsList =
+  CheckoutAttachedCustomFieldsList as any as S.Schema<CheckoutPublicConfirmedAttachedCustomFieldsList>;
 
 /** Checkout session data retrieved using the client secret after confirmation. It contains a customer session token to retrieve order information right after the checkout. */
 export interface CheckoutPublicConfirmed {
@@ -6020,9 +5963,8 @@ export const CustomerMeter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomerMeter" }) as any as S.Schema<CustomerMeter>;
 
 export type CustomerMetersListRequestOrganizationIdCase1List = Array<string>;
-export const CustomerMetersListRequestOrganizationIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomerMetersListRequestOrganizationIdCase1List>;
+export const CustomerMetersListRequestOrganizationIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<CustomerMetersListRequestOrganizationIdCase1List>;
 
 /** Filter by organization ID. */
 export type CustomerMetersListRequestOrganizationId =
@@ -6032,9 +5974,8 @@ export const CustomerMetersListRequestOrganizationId =
   S.Unknown as any as S.Schema<CustomerMetersListRequestOrganizationId>;
 
 export type CustomerMetersListRequestCustomerIdCase1List = Array<string>;
-export const CustomerMetersListRequestCustomerIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomerMetersListRequestCustomerIdCase1List>;
+export const CustomerMetersListRequestCustomerIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<CustomerMetersListRequestCustomerIdCase1List>;
 
 /** Filter by customer ID. */
 export type CustomerMetersListRequestCustomerId =
@@ -6044,9 +5985,8 @@ export const CustomerMetersListRequestCustomerId =
   S.Unknown as any as S.Schema<CustomerMetersListRequestCustomerId>;
 
 export type CustomerMetersListRequestExternalCustomerIdCase1List = Array<string>;
-export const CustomerMetersListRequestExternalCustomerIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomerMetersListRequestExternalCustomerIdCase1List>;
+export const CustomerMetersListRequestExternalCustomerIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<CustomerMetersListRequestExternalCustomerIdCase1List>;
 
 /** Filter by external customer ID. */
 export type CustomerMetersListRequestExternalCustomerId =
@@ -6056,9 +5996,8 @@ export const CustomerMetersListRequestExternalCustomerId =
   S.Unknown as any as S.Schema<CustomerMetersListRequestExternalCustomerId>;
 
 export type CustomerMetersListRequestMeterIdCase1List = Array<string>;
-export const CustomerMetersListRequestMeterIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomerMetersListRequestMeterIdCase1List>;
+export const CustomerMetersListRequestMeterIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<CustomerMetersListRequestMeterIdCase1List>;
 
 /** Filter by meter ID. */
 export type CustomerMetersListRequestMeterId = string | CustomerMetersListRequestMeterIdCase1List;
@@ -6152,9 +6091,8 @@ export const CustomerPortalBenefitGrantsGetRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CustomerPortalBenefitGrantsGetRequest>;
 
 export type CustomerPortalCustomerTaxIdList = Array<unknown>;
-export const CustomerPortalCustomerTaxIdList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CustomerPortalCustomerTaxIdList>;
+export const CustomerPortalCustomerTaxIdList =
+  CustomerIndividualTaxIdList as any as S.Schema<CustomerPortalCustomerTaxIdList>;
 
 export interface CustomerPortalOAuthAccount {
   account_id: string;
@@ -6219,10 +6157,8 @@ export const CustomerPortalCustomer = /*@__PURE__*/ S.suspend(() =>
 export type CustomerBenefitGrantMemberOauthAccountsMap = {
   [key: string]: CustomerPortalOAuthAccount | undefined;
 };
-export const CustomerBenefitGrantMemberOauthAccountsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CustomerPortalOAuthAccount,
-) as any as S.Schema<CustomerBenefitGrantMemberOauthAccountsMap>;
+export const CustomerBenefitGrantMemberOauthAccountsMap =
+  CustomerPortalCustomerOauthAccountsMap as any as S.Schema<CustomerBenefitGrantMemberOauthAccountsMap>;
 
 export interface CustomerBenefitGrantMember {
   /** The ID of the object. */
@@ -6439,9 +6375,8 @@ export const CustomerBenefitGrantGitHubRepository = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CustomerBenefitGrantGitHubRepository>;
 
 export type BenefitDownloadablesSubscriberPropertiesActiveFilesList = Array<string>;
-export const BenefitDownloadablesSubscriberPropertiesActiveFilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BenefitDownloadablesSubscriberPropertiesActiveFilesList>;
+export const BenefitDownloadablesSubscriberPropertiesActiveFilesList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<BenefitDownloadablesSubscriberPropertiesActiveFilesList>;
 
 export interface BenefitDownloadablesSubscriberProperties {
   active_files: BenefitDownloadablesSubscriberPropertiesActiveFilesList;
@@ -6961,9 +6896,8 @@ export const CustomerPortalBenefitGrantsGetResponse = /*@__PURE__*/ S.suspend(()
 export type CustomerPortalBenefitGrantsListRequestTypeCase1List = Array<
   BenefitType | (string & {})
 >;
-export const CustomerPortalBenefitGrantsListRequestTypeCase1List = /*@__PURE__*/ S.Array(
-  BenefitType,
-) as any as S.Schema<CustomerPortalBenefitGrantsListRequestTypeCase1List>;
+export const CustomerPortalBenefitGrantsListRequestTypeCase1List =
+  BenefitsListRequestTypeCase1List as any as S.Schema<CustomerPortalBenefitGrantsListRequestTypeCase1List>;
 
 /** Filter by benefit type. */
 export type CustomerPortalBenefitGrantsListRequestType =
@@ -6973,9 +6907,8 @@ export const CustomerPortalBenefitGrantsListRequestType =
   S.Unknown as any as S.Schema<CustomerPortalBenefitGrantsListRequestType>;
 
 export type CustomerPortalBenefitGrantsListRequestBenefitIdCase1List = Array<string>;
-export const CustomerPortalBenefitGrantsListRequestBenefitIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomerPortalBenefitGrantsListRequestBenefitIdCase1List>;
+export const CustomerPortalBenefitGrantsListRequestBenefitIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<CustomerPortalBenefitGrantsListRequestBenefitIdCase1List>;
 
 /** Filter by benefit ID. */
 export type CustomerPortalBenefitGrantsListRequestBenefitId =
@@ -6985,9 +6918,8 @@ export const CustomerPortalBenefitGrantsListRequestBenefitId =
   S.Unknown as any as S.Schema<CustomerPortalBenefitGrantsListRequestBenefitId>;
 
 export type CustomerPortalBenefitGrantsListRequestCheckoutIdCase1List = Array<string>;
-export const CustomerPortalBenefitGrantsListRequestCheckoutIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomerPortalBenefitGrantsListRequestCheckoutIdCase1List>;
+export const CustomerPortalBenefitGrantsListRequestCheckoutIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<CustomerPortalBenefitGrantsListRequestCheckoutIdCase1List>;
 
 /** Filter by checkout ID. */
 export type CustomerPortalBenefitGrantsListRequestCheckoutId =
@@ -6997,9 +6929,8 @@ export const CustomerPortalBenefitGrantsListRequestCheckoutId =
   S.Unknown as any as S.Schema<CustomerPortalBenefitGrantsListRequestCheckoutId>;
 
 export type CustomerPortalBenefitGrantsListRequestOrderIdCase1List = Array<string>;
-export const CustomerPortalBenefitGrantsListRequestOrderIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomerPortalBenefitGrantsListRequestOrderIdCase1List>;
+export const CustomerPortalBenefitGrantsListRequestOrderIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<CustomerPortalBenefitGrantsListRequestOrderIdCase1List>;
 
 /** Filter by order ID. */
 export type CustomerPortalBenefitGrantsListRequestOrderId =
@@ -7009,9 +6940,8 @@ export const CustomerPortalBenefitGrantsListRequestOrderId =
   S.Unknown as any as S.Schema<CustomerPortalBenefitGrantsListRequestOrderId>;
 
 export type CustomerPortalBenefitGrantsListRequestSubscriptionIdCase1List = Array<string>;
-export const CustomerPortalBenefitGrantsListRequestSubscriptionIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomerPortalBenefitGrantsListRequestSubscriptionIdCase1List>;
+export const CustomerPortalBenefitGrantsListRequestSubscriptionIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<CustomerPortalBenefitGrantsListRequestSubscriptionIdCase1List>;
 
 /** Filter by subscription ID. */
 export type CustomerPortalBenefitGrantsListRequestSubscriptionId =
@@ -7021,9 +6951,8 @@ export const CustomerPortalBenefitGrantsListRequestSubscriptionId =
   S.Unknown as any as S.Schema<CustomerPortalBenefitGrantsListRequestSubscriptionId>;
 
 export type CustomerPortalBenefitGrantsListRequestMemberIdCase1List = Array<string>;
-export const CustomerPortalBenefitGrantsListRequestMemberIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomerPortalBenefitGrantsListRequestMemberIdCase1List>;
+export const CustomerPortalBenefitGrantsListRequestMemberIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<CustomerPortalBenefitGrantsListRequestMemberIdCase1List>;
 
 /** Filter by member ID. */
 export type CustomerPortalBenefitGrantsListRequestMemberId =
@@ -7214,11 +7143,8 @@ export const CustomerPortalBenefitGrantsUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CustomerPortalBenefitGrantsUpdateRequest>;
 
 export type CustomerPortalBenefitGrantsUpdateResponse = CustomerBenefitGrant;
-export const CustomerPortalBenefitGrantsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  CustomerBenefitGrant.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CustomerPortalBenefitGrantsUpdateResponse",
-}) as any as S.Schema<CustomerPortalBenefitGrantsUpdateResponse>;
+export const CustomerPortalBenefitGrantsUpdateResponse =
+  CustomerPortalBenefitGrantsGetResponse as any as S.Schema<CustomerPortalBenefitGrantsUpdateResponse>;
 
 export interface CustomerPortalCustomerMetersGetRequest {
   /** The customer meter ID. */
@@ -7287,9 +7213,8 @@ export const CustomerCustomerMeter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomerCustomerMeter" }) as any as S.Schema<CustomerCustomerMeter>;
 
 export type CustomerPortalCustomerMetersListRequestMeterIdCase1List = Array<string>;
-export const CustomerPortalCustomerMetersListRequestMeterIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomerPortalCustomerMetersListRequestMeterIdCase1List>;
+export const CustomerPortalCustomerMetersListRequestMeterIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<CustomerPortalCustomerMetersListRequestMeterIdCase1List>;
 
 /** Filter by meter ID. */
 export type CustomerPortalCustomerMetersListRequestMeterId =
@@ -7546,11 +7471,8 @@ export const CustomerPortalCustomersConfirmPaymentMethodRequest = /*@__PURE__*/ 
 
 export type CustomerPortalCustomersConfirmPaymentMethodResponse =
   CustomerPaymentMethodCreateResponse;
-export const CustomerPortalCustomersConfirmPaymentMethodResponse = /*@__PURE__*/ S.suspend(() =>
-  CustomerPaymentMethodCreateResponse.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CustomerPortalCustomersConfirmPaymentMethodResponse",
-}) as any as S.Schema<CustomerPortalCustomersConfirmPaymentMethodResponse>;
+export const CustomerPortalCustomersConfirmPaymentMethodResponse =
+  CustomerPortalCustomersAddPaymentMethodResponse as any as S.Schema<CustomerPortalCustomersConfirmPaymentMethodResponse>;
 
 export interface CustomerPortalCustomersDeletePaymentMethodRequest {
   id: string;
@@ -7692,9 +7614,8 @@ export const CustomerPortalCustomersUpdateRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CustomerPortalCustomersUpdateRequest>;
 
 export type CustomerPortalDownloadablesListRequestBenefitIdCase1List = Array<string>;
-export const CustomerPortalDownloadablesListRequestBenefitIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomerPortalDownloadablesListRequestBenefitIdCase1List>;
+export const CustomerPortalDownloadablesListRequestBenefitIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<CustomerPortalDownloadablesListRequestBenefitIdCase1List>;
 
 /** Filter by benefit ID. */
 export type CustomerPortalDownloadablesListRequestBenefitId =
@@ -7722,10 +7643,8 @@ export const CustomerPortalDownloadablesListRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CustomerPortalDownloadablesListRequest>;
 
 export type S3DownloadURLHeadersMap = { [key: string]: string | undefined };
-export const S3DownloadURLHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<S3DownloadURLHeadersMap>;
+export const S3DownloadURLHeadersMap =
+  ProductPriceUnitBasedUnitLabelValueMap as any as S.Schema<S3DownloadURLHeadersMap>;
 
 export interface S3DownloadURL {
   url: string;
@@ -7882,9 +7801,8 @@ export const LicenseKeyActivationCreatedMetaMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<LicenseKeyActivationCreatedMetaMap>;
 
 export type LicenseKeyCustomerTaxIdList = Array<unknown>;
-export const LicenseKeyCustomerTaxIdList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<LicenseKeyCustomerTaxIdList>;
+export const LicenseKeyCustomerTaxIdList =
+  CustomerIndividualTaxIdList as any as S.Schema<LicenseKeyCustomerTaxIdList>;
 
 export interface LicenseKeyCustomer {
   /** The ID of the customer. */
@@ -8117,11 +8035,8 @@ export const CustomerPortalLicenseKeysDeactivateRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CustomerPortalLicenseKeysDeactivateRequest>;
 
 export interface CustomerPortalLicenseKeysDeactivateResponse {}
-export const CustomerPortalLicenseKeysDeactivateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CustomerPortalLicenseKeysDeactivateResponse",
-}) as any as S.Schema<CustomerPortalLicenseKeysDeactivateResponse>;
+export const CustomerPortalLicenseKeysDeactivateResponse =
+  CustomerPortalCustomersDeletePaymentMethodResponse as any as S.Schema<CustomerPortalLicenseKeysDeactivateResponse>;
 
 export interface CustomerPortalLicenseKeysGetRequest {
   id: string;
@@ -8569,11 +8484,8 @@ export const CustomerPortalMembersRemoveMemberRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CustomerPortalMembersRemoveMemberRequest>;
 
 export interface CustomerPortalMembersRemoveMemberResponse {}
-export const CustomerPortalMembersRemoveMemberResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CustomerPortalMembersRemoveMemberResponse",
-}) as any as S.Schema<CustomerPortalMembersRemoveMemberResponse>;
+export const CustomerPortalMembersRemoveMemberResponse =
+  CustomerPortalCustomersDeletePaymentMethodResponse as any as S.Schema<CustomerPortalMembersRemoveMemberResponse>;
 
 export interface CustomerPortalMembersUpdateMemberRequest {
   id: string;
@@ -8605,11 +8517,8 @@ export const CustomerPortalOrdersGenerateInvoiceRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CustomerPortalOrdersGenerateInvoiceRequest>;
 
 export interface CustomerPortalOrdersGenerateInvoiceResponse {}
-export const CustomerPortalOrdersGenerateInvoiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CustomerPortalOrdersGenerateInvoiceResponse",
-}) as any as S.Schema<CustomerPortalOrdersGenerateInvoiceResponse>;
+export const CustomerPortalOrdersGenerateInvoiceResponse =
+  CustomerPortalCustomersDeletePaymentMethodResponse as any as S.Schema<CustomerPortalOrdersGenerateInvoiceResponse>;
 
 export interface CustomerPortalOrdersGetRequest {
   /** The order ID. */
@@ -8643,15 +8552,13 @@ export const CustomerOrderProductPricesList = /*@__PURE__*/ S.Array(
 
 /** List of benefits granted by the product. */
 export type CustomerOrderProductBenefitsList = Array<BenefitPublic>;
-export const CustomerOrderProductBenefitsList = /*@__PURE__*/ S.Array(
-  BenefitPublic,
-) as any as S.Schema<CustomerOrderProductBenefitsList>;
+export const CustomerOrderProductBenefitsList =
+  CheckoutLinkProductBenefitsList as any as S.Schema<CustomerOrderProductBenefitsList>;
 
 /** List of medias associated to the product. */
 export type CustomerOrderProductMediasList = Array<ProductMediaFileRead>;
-export const CustomerOrderProductMediasList = /*@__PURE__*/ S.Array(
-  ProductMediaFileRead,
-) as any as S.Schema<CustomerOrderProductMediasList>;
+export const CustomerOrderProductMediasList =
+  CheckoutLinkProductMediasList as any as S.Schema<CustomerOrderProductMediasList>;
 
 export interface CustomerPortalUsageSettings {
   show: boolean;
@@ -9132,9 +9039,8 @@ export const CustomerOrderInvoice = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomerOrderInvoice" }) as any as S.Schema<CustomerOrderInvoice>;
 
 export type CustomerPortalOrdersListRequestProductIdCase1List = Array<string>;
-export const CustomerPortalOrdersListRequestProductIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomerPortalOrdersListRequestProductIdCase1List>;
+export const CustomerPortalOrdersListRequestProductIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<CustomerPortalOrdersListRequestProductIdCase1List>;
 
 /** Filter by product ID. */
 export type CustomerPortalOrdersListRequestProductId =
@@ -9161,9 +9067,8 @@ export const CustomerPortalOrdersListRequestProductBillingType =
   S.Unknown as any as S.Schema<CustomerPortalOrdersListRequestProductBillingType>;
 
 export type CustomerPortalOrdersListRequestSubscriptionIdCase1List = Array<string>;
-export const CustomerPortalOrdersListRequestSubscriptionIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomerPortalOrdersListRequestSubscriptionIdCase1List>;
+export const CustomerPortalOrdersListRequestSubscriptionIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<CustomerPortalOrdersListRequestSubscriptionIdCase1List>;
 
 /** Filter by subscription ID. */
 export type CustomerPortalOrdersListRequestSubscriptionId =
@@ -9259,11 +9164,7 @@ export interface CustomerOrderReceipt {
   /** The URL to the receipt PDF. */
   url: string;
 }
-export const CustomerOrderReceipt = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-  }),
-).annotate({ identifier: "CustomerOrderReceipt" }) as any as S.Schema<CustomerOrderReceipt>;
+export const CustomerOrderReceipt = CustomerOrderInvoice as any as S.Schema<CustomerOrderReceipt>;
 
 export interface CustomerPortalOrdersUpdateRequest {
   /** The order ID. */
@@ -9306,15 +9207,13 @@ export const CustomerProductPricesList = /*@__PURE__*/ S.Array(
 
 /** List of benefits granted by the product. */
 export type CustomerProductBenefitsList = Array<BenefitPublic>;
-export const CustomerProductBenefitsList = /*@__PURE__*/ S.Array(
-  BenefitPublic,
-) as any as S.Schema<CustomerProductBenefitsList>;
+export const CustomerProductBenefitsList =
+  CheckoutLinkProductBenefitsList as any as S.Schema<CustomerProductBenefitsList>;
 
 /** The medias associated to the product. */
 export type CustomerProductMediasList = Array<ProductMediaFileRead>;
-export const CustomerProductMediasList = /*@__PURE__*/ S.Array(
-  ProductMediaFileRead,
-) as any as S.Schema<CustomerProductMediasList>;
+export const CustomerProductMediasList =
+  CheckoutLinkProductMediasList as any as S.Schema<CustomerProductMediasList>;
 
 /** Schema of a product for customer portal. */
 export interface CustomerProduct {
@@ -9446,10 +9345,8 @@ export type SeatStatus = "pending" | "claimed" | "revoked";
 export const SeatStatus = S.String;
 
 export type CustomerSeatSeatMetadataMap = { [key: string]: unknown | undefined };
-export const CustomerSeatSeatMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CustomerSeatSeatMetadataMap>;
+export const CustomerSeatSeatMetadataMap =
+  CustomerPortalSeatsAssignSeatRequestMetadataMap as any as S.Schema<CustomerSeatSeatMetadataMap>;
 
 export interface CustomerSeat {
   /** Creation timestamp of the object. */
@@ -9530,15 +9427,13 @@ export const CustomerSubscriptionProductPricesList = /*@__PURE__*/ S.Array(
 
 /** List of benefits granted by the product. */
 export type CustomerSubscriptionProductBenefitsList = Array<BenefitPublic>;
-export const CustomerSubscriptionProductBenefitsList = /*@__PURE__*/ S.Array(
-  BenefitPublic,
-) as any as S.Schema<CustomerSubscriptionProductBenefitsList>;
+export const CustomerSubscriptionProductBenefitsList =
+  CheckoutLinkProductBenefitsList as any as S.Schema<CustomerSubscriptionProductBenefitsList>;
 
 /** List of medias associated to the product. */
 export type CustomerSubscriptionProductMediasList = Array<ProductMediaFileRead>;
-export const CustomerSubscriptionProductMediasList = /*@__PURE__*/ S.Array(
-  ProductMediaFileRead,
-) as any as S.Schema<CustomerSubscriptionProductMediasList>;
+export const CustomerSubscriptionProductMediasList =
+  CheckoutLinkProductMediasList as any as S.Schema<CustomerSubscriptionProductMediasList>;
 
 export interface CustomerSubscriptionProduct {
   /** The ID of the object. */
@@ -9897,9 +9792,8 @@ export const CustomerPortalSubscriptionsGetRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CustomerPortalSubscriptionsGetRequest>;
 
 export type CustomerPortalSubscriptionsListRequestProductIdCase1List = Array<string>;
-export const CustomerPortalSubscriptionsListRequestProductIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomerPortalSubscriptionsListRequestProductIdCase1List>;
+export const CustomerPortalSubscriptionsListRequestProductIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<CustomerPortalSubscriptionsListRequestProductIdCase1List>;
 
 /** Filter by product ID. */
 export type CustomerPortalSubscriptionsListRequestProductId =
@@ -10293,9 +10187,8 @@ export const CustomersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomersDeleteRequest" }) as any as S.Schema<CustomersDeleteRequest>;
 
 export interface CustomersDeleteResponse {}
-export const CustomersDeleteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CustomersDeleteResponse",
-}) as any as S.Schema<CustomersDeleteResponse>;
+export const CustomersDeleteResponse =
+  BenefitsDeleteResponse as any as S.Schema<CustomersDeleteResponse>;
 
 export interface CustomersDeleteExternalRequest {
   /** The customer external ID. */
@@ -10318,10 +10211,8 @@ export const CustomersDeleteExternalResponse = /*@__PURE__*/ S.suspend(() => S.S
 ) as any as S.Schema<CustomersDeleteExternalResponse>;
 
 export type CustomerSeatsAssignSeatRequestMetadataMap = { [key: string]: unknown | undefined };
-export const CustomerSeatsAssignSeatRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CustomerSeatsAssignSeatRequestMetadataMap>;
+export const CustomerSeatsAssignSeatRequestMetadataMap =
+  CustomerPortalSeatsAssignSeatRequestMetadataMap as any as S.Schema<CustomerSeatsAssignSeatRequestMetadataMap>;
 
 export interface CustomerSeatsAssignSeatRequest {
   /** Subscription ID. Required if neither order_id nor checkout_id is provided. */
@@ -10513,9 +10404,8 @@ export const CustomerSession = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomerSession" }) as any as S.Schema<CustomerSession>;
 
 export type CustomersExportRequestOrganizationIdCase1List = Array<string>;
-export const CustomersExportRequestOrganizationIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomersExportRequestOrganizationIdCase1List>;
+export const CustomersExportRequestOrganizationIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<CustomersExportRequestOrganizationIdCase1List>;
 
 /** Filter by organization ID. */
 export type CustomersExportRequestOrganizationId =
@@ -10535,9 +10425,8 @@ export const CustomersExportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomersExportRequest" }) as any as S.Schema<CustomersExportRequest>;
 
 export interface CustomersExportResponse {}
-export const CustomersExportResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CustomersExportResponse",
-}) as any as S.Schema<CustomersExportResponse>;
+export const CustomersExportResponse =
+  BenefitsDeleteResponse as any as S.Schema<CustomersExportResponse>;
 
 export interface CustomersGetRequest {
   /** The customer ID. */
@@ -10550,9 +10439,8 @@ export const CustomersGetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomersGetRequest" }) as any as S.Schema<CustomersGetRequest>;
 
 export type CustomersGetResponse = Customer;
-export const CustomersGetResponse = /*@__PURE__*/ S.suspend(() =>
-  Customer.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "CustomersGetResponse" }) as any as S.Schema<CustomersGetResponse>;
+export const CustomersGetResponse =
+  CustomersCreateResponse as any as S.Schema<CustomersGetResponse>;
 
 export interface CustomersGetExternalRequest {
   /** The customer external ID. */
@@ -10584,9 +10472,8 @@ export const CustomersGetStateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomersGetStateRequest" }) as any as S.Schema<CustomersGetStateRequest>;
 
 export type CustomerStateIndividualTaxIdList = Array<unknown>;
-export const CustomerStateIndividualTaxIdList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CustomerStateIndividualTaxIdList>;
+export const CustomerStateIndividualTaxIdList =
+  CustomerIndividualTaxIdList as any as S.Schema<CustomerStateIndividualTaxIdList>;
 
 export type CustomerStateSubscriptionCustomFieldDataValue = string | number | boolean;
 export const CustomerStateSubscriptionCustomFieldDataValue =
@@ -10872,27 +10759,23 @@ export const CustomerStateIndividual = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomerStateIndividual" }) as any as S.Schema<CustomerStateIndividual>;
 
 export type CustomerStateTeamTaxIdList = Array<unknown>;
-export const CustomerStateTeamTaxIdList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CustomerStateTeamTaxIdList>;
+export const CustomerStateTeamTaxIdList =
+  CustomerIndividualTaxIdList as any as S.Schema<CustomerStateTeamTaxIdList>;
 
 /** The customer's active subscriptions. */
 export type CustomerStateTeamActiveSubscriptionsList = Array<CustomerStateSubscription>;
-export const CustomerStateTeamActiveSubscriptionsList = /*@__PURE__*/ S.Array(
-  CustomerStateSubscription,
-) as any as S.Schema<CustomerStateTeamActiveSubscriptionsList>;
+export const CustomerStateTeamActiveSubscriptionsList =
+  CustomerStateIndividualActiveSubscriptionsList as any as S.Schema<CustomerStateTeamActiveSubscriptionsList>;
 
 /** The customer's active benefit grants. */
 export type CustomerStateTeamGrantedBenefitsList = Array<CustomerStateBenefitGrant>;
-export const CustomerStateTeamGrantedBenefitsList = /*@__PURE__*/ S.Array(
-  CustomerStateBenefitGrant,
-) as any as S.Schema<CustomerStateTeamGrantedBenefitsList>;
+export const CustomerStateTeamGrantedBenefitsList =
+  CustomerStateIndividualGrantedBenefitsList as any as S.Schema<CustomerStateTeamGrantedBenefitsList>;
 
 /** The customer's active meters. */
 export type CustomerStateTeamActiveMetersList = Array<CustomerStateMeter>;
-export const CustomerStateTeamActiveMetersList = /*@__PURE__*/ S.Array(
-  CustomerStateMeter,
-) as any as S.Schema<CustomerStateTeamActiveMetersList>;
+export const CustomerStateTeamActiveMetersList =
+  CustomerStateIndividualActiveMetersList as any as S.Schema<CustomerStateTeamActiveMetersList>;
 
 /** A team customer along with additional state information: * Active subscriptions * Granted benefits * Active meters */
 export interface CustomerStateTeam {
@@ -10983,16 +10866,12 @@ export const CustomersGetStateExternalRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomersGetStateExternalRequest>;
 
 export type CustomersGetStateExternalResponse = CustomerState;
-export const CustomersGetStateExternalResponse = /*@__PURE__*/ S.suspend(() =>
-  CustomerState.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CustomersGetStateExternalResponse",
-}) as any as S.Schema<CustomersGetStateExternalResponse>;
+export const CustomersGetStateExternalResponse =
+  CustomersGetStateResponse as any as S.Schema<CustomersGetStateExternalResponse>;
 
 export type CustomersListRequestOrganizationIdCase1List = Array<string>;
-export const CustomersListRequestOrganizationIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomersListRequestOrganizationIdCase1List>;
+export const CustomersListRequestOrganizationIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<CustomersListRequestOrganizationIdCase1List>;
 
 /** Filter by organization ID. */
 export type CustomersListRequestOrganizationId =
@@ -11281,9 +11160,8 @@ export const CustomersMembersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomersMembersDeleteRequest>;
 
 export interface CustomersMembersDeleteResponse {}
-export const CustomersMembersDeleteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CustomersMembersDeleteResponse",
-}) as any as S.Schema<CustomersMembersDeleteResponse>;
+export const CustomersMembersDeleteResponse =
+  BenefitsDeleteResponse as any as S.Schema<CustomersMembersDeleteResponse>;
 
 export interface CustomersMembersDeleteExternalRequest {
   /** The customer external ID. */
@@ -11307,11 +11185,8 @@ export const CustomersMembersDeleteExternalRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CustomersMembersDeleteExternalRequest>;
 
 export interface CustomersMembersDeleteExternalResponse {}
-export const CustomersMembersDeleteExternalResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CustomersMembersDeleteExternalResponse",
-}) as any as S.Schema<CustomersMembersDeleteExternalResponse>;
+export const CustomersMembersDeleteExternalResponse =
+  CustomerPortalCustomersDeletePaymentMethodResponse as any as S.Schema<CustomersMembersDeleteExternalResponse>;
 
 export interface CustomersMembersGetRequest {
   /** The customer ID. */
@@ -11399,9 +11274,8 @@ export const ListResourceMember = /*@__PURE__*/ S.suspend(() =>
 export type CustomersMembersListExternalRequestSortingList = Array<
   MemberSortProperty | (string & {})
 >;
-export const CustomersMembersListExternalRequestSortingList = /*@__PURE__*/ S.Array(
-  MemberSortProperty,
-) as any as S.Schema<CustomersMembersListExternalRequestSortingList>;
+export const CustomersMembersListExternalRequestSortingList =
+  CustomersMembersListRequestSortingList as any as S.Schema<CustomersMembersListExternalRequestSortingList>;
 
 export interface CustomersMembersListExternalRequest {
   /** The customer external ID. */
@@ -11522,9 +11396,8 @@ export const CustomersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomersUpdateRequest" }) as any as S.Schema<CustomersUpdateRequest>;
 
 export type CustomersUpdateResponse = Customer;
-export const CustomersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  Customer.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "CustomersUpdateResponse" }) as any as S.Schema<CustomersUpdateResponse>;
+export const CustomersUpdateResponse =
+  CustomersCreateResponse as any as S.Schema<CustomersUpdateResponse>;
 
 export type CustomersUpdateExternalRequestMetadataValue = string | number | number | boolean;
 export const CustomersUpdateExternalRequestMetadataValue =
@@ -11566,11 +11439,8 @@ export const CustomersUpdateExternalRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomersUpdateExternalRequest>;
 
 export type CustomersUpdateExternalResponse = Customer;
-export const CustomersUpdateExternalResponse = /*@__PURE__*/ S.suspend(() =>
-  Customer.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CustomersUpdateExternalResponse",
-}) as any as S.Schema<CustomersUpdateExternalResponse>;
+export const CustomersUpdateExternalResponse =
+  CustomersGetExternalResponse as any as S.Schema<CustomersUpdateExternalResponse>;
 
 export type CustomFieldCreateTextMetadataValue = string | number | number | boolean;
 export const CustomFieldCreateTextMetadataValue =
@@ -11798,9 +11668,8 @@ export const CustomFieldsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomFieldsDeleteRequest>;
 
 export interface CustomFieldsDeleteResponse {}
-export const CustomFieldsDeleteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CustomFieldsDeleteResponse",
-}) as any as S.Schema<CustomFieldsDeleteResponse>;
+export const CustomFieldsDeleteResponse =
+  BenefitsDeleteResponse as any as S.Schema<CustomFieldsDeleteResponse>;
 
 export interface CustomFieldsGetRequest {
   /** The custom field ID. */
@@ -11818,9 +11687,8 @@ export const CustomFieldsGetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomFieldsGetResponse" }) as any as S.Schema<CustomFieldsGetResponse>;
 
 export type CustomFieldsListRequestOrganizationIdCase1List = Array<string>;
-export const CustomFieldsListRequestOrganizationIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomFieldsListRequestOrganizationIdCase1List>;
+export const CustomFieldsListRequestOrganizationIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<CustomFieldsListRequestOrganizationIdCase1List>;
 
 /** Filter by organization ID. */
 export type CustomFieldsListRequestOrganizationId =
@@ -12084,11 +11952,8 @@ export const CustomFieldsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomFieldsUpdateRequest>;
 
 export type CustomFieldsUpdateResponse = CustomField;
-export const CustomFieldsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  CustomField.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CustomFieldsUpdateResponse",
-}) as any as S.Schema<CustomFieldsUpdateResponse>;
+export const CustomFieldsUpdateResponse =
+  CustomFieldsCreateResponse as any as S.Schema<CustomFieldsUpdateResponse>;
 
 export type DiscountFixedCreateMetadataValue = string | number | number | boolean;
 export const DiscountFixedCreateMetadataValue =
@@ -12105,16 +11970,13 @@ export const DiscountFixedCreateMetadataMap = /*@__PURE__*/ S.Record(
 
 /** List of product IDs the discount can be applied to. */
 export type DiscountFixedCreateProductsList = Array<string>;
-export const DiscountFixedCreateProductsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DiscountFixedCreateProductsList>;
+export const DiscountFixedCreateProductsList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<DiscountFixedCreateProductsList>;
 
 /** Map of currency to fixed amount to discount from the total. This allows specifying different discount amounts for different currencies. */
 export type DiscountFixedCreateAmountsMap = { [key: string]: number | undefined };
-export const DiscountFixedCreateAmountsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<DiscountFixedCreateAmountsMap>;
+export const DiscountFixedCreateAmountsMap =
+  DiscountFixedOnceForeverDurationBaseAmountsMap as any as S.Schema<DiscountFixedCreateAmountsMap>;
 
 /** Schema to create a fixed amount discount. */
 export interface DiscountFixedCreate {
@@ -12179,9 +12041,8 @@ export const DiscountPercentageCreateMetadataMap = /*@__PURE__*/ S.Record(
 
 /** List of product IDs the discount can be applied to. */
 export type DiscountPercentageCreateProductsList = Array<string>;
-export const DiscountPercentageCreateProductsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DiscountPercentageCreateProductsList>;
+export const DiscountPercentageCreateProductsList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<DiscountPercentageCreateProductsList>;
 
 /** Schema to create a percentage discount. */
 export interface DiscountPercentageCreate {
@@ -12242,10 +12103,8 @@ export const DiscountsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Map of currency to fixed amount to discount from the total. */
 export type DiscountFixedOnceForeverDurationAmountsMap = { [key: string]: number | undefined };
-export const DiscountFixedOnceForeverDurationAmountsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<DiscountFixedOnceForeverDurationAmountsMap>;
+export const DiscountFixedOnceForeverDurationAmountsMap =
+  DiscountFixedOnceForeverDurationBaseAmountsMap as any as S.Schema<DiscountFixedOnceForeverDurationAmountsMap>;
 
 /** A product that a discount can be applied to. */
 export interface DiscountProduct {
@@ -12367,15 +12226,12 @@ export const DiscountFixedOnceForeverDuration = /*@__PURE__*/ S.suspend(() =>
 
 /** Map of currency to fixed amount to discount from the total. */
 export type DiscountFixedRepeatDurationAmountsMap = { [key: string]: number | undefined };
-export const DiscountFixedRepeatDurationAmountsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<DiscountFixedRepeatDurationAmountsMap>;
+export const DiscountFixedRepeatDurationAmountsMap =
+  DiscountFixedOnceForeverDurationBaseAmountsMap as any as S.Schema<DiscountFixedRepeatDurationAmountsMap>;
 
 export type DiscountFixedRepeatDurationProductsList = Array<DiscountProduct>;
-export const DiscountFixedRepeatDurationProductsList = /*@__PURE__*/ S.Array(
-  DiscountProduct,
-) as any as S.Schema<DiscountFixedRepeatDurationProductsList>;
+export const DiscountFixedRepeatDurationProductsList =
+  DiscountFixedOnceForeverDurationProductsList as any as S.Schema<DiscountFixedRepeatDurationProductsList>;
 
 /** Schema for a fixed amount discount that is applied on every invoice for a certain number of months. */
 export interface DiscountFixedRepeatDuration {
@@ -12438,9 +12294,8 @@ export const DiscountFixedRepeatDuration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiscountFixedRepeatDuration>;
 
 export type DiscountPercentageOnceForeverDurationProductsList = Array<DiscountProduct>;
-export const DiscountPercentageOnceForeverDurationProductsList = /*@__PURE__*/ S.Array(
-  DiscountProduct,
-) as any as S.Schema<DiscountPercentageOnceForeverDurationProductsList>;
+export const DiscountPercentageOnceForeverDurationProductsList =
+  DiscountFixedOnceForeverDurationProductsList as any as S.Schema<DiscountPercentageOnceForeverDurationProductsList>;
 
 /** Schema for a percentage discount that is applied once or forever. */
 export interface DiscountPercentageOnceForeverDuration {
@@ -12497,9 +12352,8 @@ export const DiscountPercentageOnceForeverDuration = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DiscountPercentageOnceForeverDuration>;
 
 export type DiscountPercentageRepeatDurationProductsList = Array<DiscountProduct>;
-export const DiscountPercentageRepeatDurationProductsList = /*@__PURE__*/ S.Array(
-  DiscountProduct,
-) as any as S.Schema<DiscountPercentageRepeatDurationProductsList>;
+export const DiscountPercentageRepeatDurationProductsList =
+  DiscountFixedOnceForeverDurationProductsList as any as S.Schema<DiscountPercentageRepeatDurationProductsList>;
 
 /** Schema for a percentage discount that is applied on every invoice for a certain number of months. */
 export interface DiscountPercentageRepeatDuration {
@@ -12580,9 +12434,8 @@ export const DiscountsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DiscountsDeleteRequest" }) as any as S.Schema<DiscountsDeleteRequest>;
 
 export interface DiscountsDeleteResponse {}
-export const DiscountsDeleteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DiscountsDeleteResponse",
-}) as any as S.Schema<DiscountsDeleteResponse>;
+export const DiscountsDeleteResponse =
+  BenefitsDeleteResponse as any as S.Schema<DiscountsDeleteResponse>;
 
 export interface DiscountsGetRequest {
   /** The discount ID. */
@@ -12595,14 +12448,12 @@ export const DiscountsGetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DiscountsGetRequest" }) as any as S.Schema<DiscountsGetRequest>;
 
 export type DiscountsGetResponse = Discount;
-export const DiscountsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  Discount.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "DiscountsGetResponse" }) as any as S.Schema<DiscountsGetResponse>;
+export const DiscountsGetResponse =
+  DiscountsCreateResponse as any as S.Schema<DiscountsGetResponse>;
 
 export type DiscountsListRequestOrganizationIdCase1List = Array<string>;
-export const DiscountsListRequestOrganizationIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DiscountsListRequestOrganizationIdCase1List>;
+export const DiscountsListRequestOrganizationIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<DiscountsListRequestOrganizationIdCase1List>;
 
 /** Filter by organization ID. */
 export type DiscountsListRequestOrganizationId =
@@ -12682,16 +12533,13 @@ export const DiscountsUpdateRequestMetadataMap = /*@__PURE__*/ S.Record(
 
 /** Map of currency to fixed amount to discount from the total. This allows specifying different discount amounts for different currencies. */
 export type DiscountsUpdateRequestAmountsMap = { [key: string]: number | undefined };
-export const DiscountsUpdateRequestAmountsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<DiscountsUpdateRequestAmountsMap>;
+export const DiscountsUpdateRequestAmountsMap =
+  DiscountFixedOnceForeverDurationBaseAmountsMap as any as S.Schema<DiscountsUpdateRequestAmountsMap>;
 
 /** List of product IDs the discount can be applied to. */
 export type DiscountsUpdateRequestProductsList = Array<string>;
-export const DiscountsUpdateRequestProductsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DiscountsUpdateRequestProductsList>;
+export const DiscountsUpdateRequestProductsList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<DiscountsUpdateRequestProductsList>;
 
 export interface DiscountsUpdateRequest {
   /** The discount ID. */
@@ -12740,9 +12588,8 @@ export const DiscountsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DiscountsUpdateRequest" }) as any as S.Schema<DiscountsUpdateRequest>;
 
 export type DiscountsUpdateResponse = Discount;
-export const DiscountsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  Discount.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "DiscountsUpdateResponse" }) as any as S.Schema<DiscountsUpdateResponse>;
+export const DiscountsUpdateResponse =
+  DiscountsCreateResponse as any as S.Schema<DiscountsUpdateResponse>;
 
 export interface DisputesAcceptRequest {
   /** The dispute ID. */
@@ -12764,9 +12611,8 @@ export type DisputeStatus =
 export const DisputeStatus = S.String;
 
 export type DisputeCustomerTaxIdList = Array<unknown>;
-export const DisputeCustomerTaxIdList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<DisputeCustomerTaxIdList>;
+export const DisputeCustomerTaxIdList =
+  CustomerIndividualTaxIdList as any as S.Schema<DisputeCustomerTaxIdList>;
 
 export interface DisputeCustomer {
   /** The ID of the customer. */
@@ -12801,28 +12647,7 @@ export interface DisputeCustomer {
   first_user_event_at: string | null;
   avatar_url: string | null;
 }
-export const DisputeCustomer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    created_at: S.String,
-    modified_at: S.NullOr(S.String),
-    metadata: MetadataOutputType,
-    external_id: S.optional(S.NullOr(S.String)),
-    email: S.optional(S.NullOr(S.String)),
-    email_verified: S.Boolean,
-    type: CustomerType,
-    name: S.NullOr(S.String),
-    billing_name: S.NullOr(S.String),
-    billing_address: S.NullOr(Address),
-    tax_id: S.NullOr(DisputeCustomerTaxIdList),
-    locale: S.optional(S.NullOr(S.String)),
-    organization_id: S.String,
-    default_payment_method_id: S.optional(S.NullOr(S.String)),
-    deleted_at: S.NullOr(S.String),
-    first_user_event_at: S.NullOr(S.String),
-    avatar_url: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "DisputeCustomer" }) as any as S.Schema<DisputeCustomer>;
+export const DisputeCustomer = LicenseKeyCustomer as any as S.Schema<DisputeCustomer>;
 
 /** Schema representing a dispute. A dispute is a challenge raised by a customer or their bank regarding a payment. */
 export interface Dispute {
@@ -12891,9 +12716,8 @@ export const DisputesGetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DisputesGetRequest" }) as any as S.Schema<DisputesGetRequest>;
 
 export type DisputesListRequestOrganizationIdCase1List = Array<string>;
-export const DisputesListRequestOrganizationIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DisputesListRequestOrganizationIdCase1List>;
+export const DisputesListRequestOrganizationIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<DisputesListRequestOrganizationIdCase1List>;
 
 /** Filter by organization ID. */
 export type DisputesListRequestOrganizationId = string | DisputesListRequestOrganizationIdCase1List;
@@ -12901,9 +12725,8 @@ export const DisputesListRequestOrganizationId =
   S.Unknown as any as S.Schema<DisputesListRequestOrganizationId>;
 
 export type DisputesListRequestOrderIdCase1List = Array<string>;
-export const DisputesListRequestOrderIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DisputesListRequestOrderIdCase1List>;
+export const DisputesListRequestOrderIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<DisputesListRequestOrderIdCase1List>;
 
 /** Filter by order ID. */
 export type DisputesListRequestOrderId = string | DisputesListRequestOrderIdCase1List;
@@ -15201,9 +15024,8 @@ export const EventsIngestResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventsIngestResponse" }) as any as S.Schema<EventsIngestResponse>;
 
 export type EventsListRequestOrganizationIdCase1List = Array<string>;
-export const EventsListRequestOrganizationIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EventsListRequestOrganizationIdCase1List>;
+export const EventsListRequestOrganizationIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<EventsListRequestOrganizationIdCase1List>;
 
 /** Filter by organization ID. */
 export type EventsListRequestOrganizationId = string | EventsListRequestOrganizationIdCase1List;
@@ -15211,9 +15033,8 @@ export const EventsListRequestOrganizationId =
   S.Unknown as any as S.Schema<EventsListRequestOrganizationId>;
 
 export type EventsListRequestCustomerIdCase1List = Array<string>;
-export const EventsListRequestCustomerIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EventsListRequestCustomerIdCase1List>;
+export const EventsListRequestCustomerIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<EventsListRequestCustomerIdCase1List>;
 
 /** Filter by customer ID. */
 export type EventsListRequestCustomerId = string | EventsListRequestCustomerIdCase1List;
@@ -15221,9 +15042,8 @@ export const EventsListRequestCustomerId =
   S.Unknown as any as S.Schema<EventsListRequestCustomerId>;
 
 export type EventsListRequestExternalCustomerIdCase1List = Array<string>;
-export const EventsListRequestExternalCustomerIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EventsListRequestExternalCustomerIdCase1List>;
+export const EventsListRequestExternalCustomerIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<EventsListRequestExternalCustomerIdCase1List>;
 
 /** Filter by external customer ID. */
 export type EventsListRequestExternalCustomerId =
@@ -15233,9 +15053,8 @@ export const EventsListRequestExternalCustomerId =
   S.Unknown as any as S.Schema<EventsListRequestExternalCustomerId>;
 
 export type EventsListRequestNameCase1List = Array<string>;
-export const EventsListRequestNameCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EventsListRequestNameCase1List>;
+export const EventsListRequestNameCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<EventsListRequestNameCase1List>;
 
 /** Filter by event name. */
 export type EventsListRequestName = string | EventsListRequestNameCase1List;
@@ -15333,9 +15152,8 @@ export const ListResourceEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResourceEvent" }) as any as S.Schema<ListResourceEvent>;
 
 export type ListResourceWithCursorPaginationEventItemsList = Array<Event>;
-export const ListResourceWithCursorPaginationEventItemsList = /*@__PURE__*/ S.Array(
-  Event,
-) as any as S.Schema<ListResourceWithCursorPaginationEventItemsList>;
+export const ListResourceWithCursorPaginationEventItemsList =
+  ListResourceEventItemsList as any as S.Schema<ListResourceWithCursorPaginationEventItemsList>;
 
 export interface CursorPagination {
   has_next_page: boolean;
@@ -15368,9 +15186,8 @@ export const EventsListResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventsListResponse" }) as any as S.Schema<EventsListResponse>;
 
 export type EventsListNamesRequestOrganizationIdCase1List = Array<string>;
-export const EventsListNamesRequestOrganizationIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EventsListNamesRequestOrganizationIdCase1List>;
+export const EventsListNamesRequestOrganizationIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<EventsListNamesRequestOrganizationIdCase1List>;
 
 /** Filter by organization ID. */
 export type EventsListNamesRequestOrganizationId =
@@ -15380,9 +15197,8 @@ export const EventsListNamesRequestOrganizationId =
   S.Unknown as any as S.Schema<EventsListNamesRequestOrganizationId>;
 
 export type EventsListNamesRequestCustomerIdCase1List = Array<string>;
-export const EventsListNamesRequestCustomerIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EventsListNamesRequestCustomerIdCase1List>;
+export const EventsListNamesRequestCustomerIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<EventsListNamesRequestCustomerIdCase1List>;
 
 /** Filter by customer ID. */
 export type EventsListNamesRequestCustomerId = string | EventsListNamesRequestCustomerIdCase1List;
@@ -15390,9 +15206,8 @@ export const EventsListNamesRequestCustomerId =
   S.Unknown as any as S.Schema<EventsListNamesRequestCustomerId>;
 
 export type EventsListNamesRequestExternalCustomerIdCase1List = Array<string>;
-export const EventsListNamesRequestExternalCustomerIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EventsListNamesRequestExternalCustomerIdCase1List>;
+export const EventsListNamesRequestExternalCustomerIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<EventsListNamesRequestExternalCustomerIdCase1List>;
 
 /** Filter by external customer ID. */
 export type EventsListNamesRequestExternalCustomerId =
@@ -15402,9 +15217,8 @@ export const EventsListNamesRequestExternalCustomerId =
   S.Unknown as any as S.Schema<EventsListNamesRequestExternalCustomerId>;
 
 export type EventsListNamesRequestSourceCase1List = Array<EventSource | (string & {})>;
-export const EventsListNamesRequestSourceCase1List = /*@__PURE__*/ S.Array(
-  EventSource,
-) as any as S.Schema<EventsListNamesRequestSourceCase1List>;
+export const EventsListNamesRequestSourceCase1List =
+  EventsListRequestSourceCase1List as any as S.Schema<EventsListNamesRequestSourceCase1List>;
 
 /** Filter by event source. */
 export type EventsListNamesRequestSource = EventSource | EventsListNamesRequestSourceCase1List;
@@ -15500,9 +15314,8 @@ export const ListResourceEventName = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResourceEventName" }) as any as S.Schema<ListResourceEventName>;
 
 export type EventTypesListRequestOrganizationIdCase1List = Array<string>;
-export const EventTypesListRequestOrganizationIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EventTypesListRequestOrganizationIdCase1List>;
+export const EventTypesListRequestOrganizationIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<EventTypesListRequestOrganizationIdCase1List>;
 
 /** Filter by organization ID. */
 export type EventTypesListRequestOrganizationId =
@@ -15512,9 +15325,8 @@ export const EventTypesListRequestOrganizationId =
   S.Unknown as any as S.Schema<EventTypesListRequestOrganizationId>;
 
 export type EventTypesListRequestCustomerIdCase1List = Array<string>;
-export const EventTypesListRequestCustomerIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EventTypesListRequestCustomerIdCase1List>;
+export const EventTypesListRequestCustomerIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<EventTypesListRequestCustomerIdCase1List>;
 
 /** Filter by customer ID. */
 export type EventTypesListRequestCustomerId = string | EventTypesListRequestCustomerIdCase1List;
@@ -15522,9 +15334,8 @@ export const EventTypesListRequestCustomerId =
   S.Unknown as any as S.Schema<EventTypesListRequestCustomerId>;
 
 export type EventTypesListRequestExternalCustomerIdCase1List = Array<string>;
-export const EventTypesListRequestExternalCustomerIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EventTypesListRequestExternalCustomerIdCase1List>;
+export const EventTypesListRequestExternalCustomerIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<EventTypesListRequestExternalCustomerIdCase1List>;
 
 /** Filter by external customer ID. */
 export type EventTypesListRequestExternalCustomerId =
@@ -15756,18 +15567,8 @@ export interface ProductMediaFileCreate {
   service: string;
   version?: string | null;
 }
-export const ProductMediaFileCreate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization_id: S.optional(S.NullOr(S.String)),
-    name: S.String,
-    mime_type: S.String,
-    size: S.Number,
-    checksum_sha256_base64: S.optional(S.NullOr(S.String)),
-    upload: S3FileCreateMultipart,
-    service: S.String,
-    version: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "ProductMediaFileCreate" }) as any as S.Schema<ProductMediaFileCreate>;
+export const ProductMediaFileCreate =
+  DownloadableFileCreate as any as S.Schema<ProductMediaFileCreate>;
 
 /** Schema to create a file to be used as an organization avatar. */
 export interface OrganizationAvatarFileCreate {
@@ -15810,20 +15611,8 @@ export interface SupportCaseAttachmentFileCreate {
   service: string;
   version?: string | null;
 }
-export const SupportCaseAttachmentFileCreate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization_id: S.optional(S.NullOr(S.String)),
-    name: S.String,
-    mime_type: S.String,
-    size: S.Number,
-    checksum_sha256_base64: S.optional(S.NullOr(S.String)),
-    upload: S3FileCreateMultipart,
-    service: S.String,
-    version: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "SupportCaseAttachmentFileCreate",
-}) as any as S.Schema<SupportCaseAttachmentFileCreate>;
+export const SupportCaseAttachmentFileCreate =
+  OrganizationAvatarFileCreate as any as S.Schema<SupportCaseAttachmentFileCreate>;
 
 export type FileCreate =
   | DownloadableFileCreate
@@ -15842,10 +15631,8 @@ export const FilesCreateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FilesCreateRequest" }) as any as S.Schema<FilesCreateRequest>;
 
 export type S3FileUploadPartHeadersMap = { [key: string]: string | undefined };
-export const S3FileUploadPartHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<S3FileUploadPartHeadersMap>;
+export const S3FileUploadPartHeadersMap =
+  ProductPriceUnitBasedUnitLabelValueMap as any as S.Schema<S3FileUploadPartHeadersMap>;
 
 export interface S3FileUploadPart {
   number: number;
@@ -15936,14 +15723,11 @@ export const FilesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FilesDeleteRequest" }) as any as S.Schema<FilesDeleteRequest>;
 
 export interface FilesDeleteResponse {}
-export const FilesDeleteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "FilesDeleteResponse",
-}) as any as S.Schema<FilesDeleteResponse>;
+export const FilesDeleteResponse = BenefitsDeleteResponse as any as S.Schema<FilesDeleteResponse>;
 
 export type FilesListRequestOrganizationIdCase1List = Array<string>;
-export const FilesListRequestOrganizationIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FilesListRequestOrganizationIdCase1List>;
+export const FilesListRequestOrganizationIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<FilesListRequestOrganizationIdCase1List>;
 
 /** Filter by organization ID. */
 export type FilesListRequestOrganizationId = string | FilesListRequestOrganizationIdCase1List;
@@ -15951,9 +15735,8 @@ export const FilesListRequestOrganizationId =
   S.Unknown as any as S.Schema<FilesListRequestOrganizationId>;
 
 export type FilesListRequestIdsCase1List = Array<string>;
-export const FilesListRequestIdsCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FilesListRequestIdsCase1List>;
+export const FilesListRequestIdsCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<FilesListRequestIdsCase1List>;
 
 /** Filter by file ID. */
 export type FilesListRequestIds = string | FilesListRequestIdsCase1List;
@@ -16145,9 +15928,7 @@ export const FilesUploadedRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FilesUploadedRequest" }) as any as S.Schema<FilesUploadedRequest>;
 
 export type FilesUploadedResponse = FileRead;
-export const FilesUploadedResponse = /*@__PURE__*/ S.suspend(() =>
-  FileRead.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "FilesUploadedResponse" }) as any as S.Schema<FilesUploadedResponse>;
+export const FilesUploadedResponse = FilesUpdateResponse as any as S.Schema<FilesUploadedResponse>;
 
 export interface GetCheckoutsClientRequest {
   /** The checkout session client secret. */
@@ -16175,16 +15956,13 @@ export const CheckoutPublicCustomFieldDataMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CheckoutPublicCustomFieldDataMap>;
 
 export type CheckoutPublicPaymentProcessorMetadataMap = { [key: string]: string | undefined };
-export const CheckoutPublicPaymentProcessorMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CheckoutPublicPaymentProcessorMetadataMap>;
+export const CheckoutPublicPaymentProcessorMetadataMap =
+  ProductPriceUnitBasedUnitLabelValueMap as any as S.Schema<CheckoutPublicPaymentProcessorMetadataMap>;
 
 /** List of products available to select. */
 export type CheckoutPublicProductsList = Array<CheckoutProduct>;
-export const CheckoutPublicProductsList = /*@__PURE__*/ S.Array(
-  CheckoutProduct,
-) as any as S.Schema<CheckoutPublicProductsList>;
+export const CheckoutPublicProductsList =
+  CheckoutProductsList as any as S.Schema<CheckoutPublicProductsList>;
 
 export type CheckoutPublicProductPrice = LegacyRecurringProductPrice | ProductPrice;
 export const CheckoutPublicProductPrice = S.Unknown as any as S.Schema<CheckoutPublicProductPrice>;
@@ -16213,9 +15991,8 @@ export type CheckoutPublicDiscount =
 export const CheckoutPublicDiscount = S.Unknown as any as S.Schema<CheckoutPublicDiscount>;
 
 export type CheckoutPublicAttachedCustomFieldsList = Array<AttachedCustomField>;
-export const CheckoutPublicAttachedCustomFieldsList = /*@__PURE__*/ S.Array(
-  AttachedCustomField,
-) as any as S.Schema<CheckoutPublicAttachedCustomFieldsList>;
+export const CheckoutPublicAttachedCustomFieldsList =
+  CheckoutAttachedCustomFieldsList as any as S.Schema<CheckoutPublicAttachedCustomFieldsList>;
 
 /** Checkout session data retrieved using the client secret. */
 export interface CheckoutPublic {
@@ -16455,9 +16232,8 @@ export const LicenseKeysDeactivateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LicenseKeysDeactivateRequest>;
 
 export interface LicenseKeysDeactivateResponse {}
-export const LicenseKeysDeactivateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "LicenseKeysDeactivateResponse",
-}) as any as S.Schema<LicenseKeysDeactivateResponse>;
+export const LicenseKeysDeactivateResponse =
+  BenefitsDeleteResponse as any as S.Schema<LicenseKeysDeactivateResponse>;
 
 export interface LicenseKeysGetRequest {
   id: string;
@@ -16517,9 +16293,8 @@ export const LicenseKeyActivationRead = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LicenseKeyActivationRead" }) as any as S.Schema<LicenseKeyActivationRead>;
 
 export type LicenseKeysListRequestOrganizationIdCase1List = Array<string>;
-export const LicenseKeysListRequestOrganizationIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LicenseKeysListRequestOrganizationIdCase1List>;
+export const LicenseKeysListRequestOrganizationIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<LicenseKeysListRequestOrganizationIdCase1List>;
 
 /** Filter by organization ID. */
 export type LicenseKeysListRequestOrganizationId =
@@ -16529,9 +16304,8 @@ export const LicenseKeysListRequestOrganizationId =
   S.Unknown as any as S.Schema<LicenseKeysListRequestOrganizationId>;
 
 export type LicenseKeysListRequestBenefitIdCase1List = Array<string>;
-export const LicenseKeysListRequestBenefitIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LicenseKeysListRequestBenefitIdCase1List>;
+export const LicenseKeysListRequestBenefitIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<LicenseKeysListRequestBenefitIdCase1List>;
 
 /** Filter by benefit ID. */
 export type LicenseKeysListRequestBenefitId = string | LicenseKeysListRequestBenefitIdCase1List;
@@ -16698,9 +16472,8 @@ export const MetersGetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetersGetRequest" }) as any as S.Schema<MetersGetRequest>;
 
 export type MetersListRequestOrganizationIdCase1List = Array<string>;
-export const MetersListRequestOrganizationIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetersListRequestOrganizationIdCase1List>;
+export const MetersListRequestOrganizationIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<MetersListRequestOrganizationIdCase1List>;
 
 /** Filter by organization ID. */
 export type MetersListRequestOrganizationId = string | MetersListRequestOrganizationIdCase1List;
@@ -17365,9 +17138,8 @@ export type MetersQuantitiesRequestTimezone =
 export const MetersQuantitiesRequestTimezone = S.String;
 
 export type MetersQuantitiesRequestCustomerIdCase1List = Array<string>;
-export const MetersQuantitiesRequestCustomerIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetersQuantitiesRequestCustomerIdCase1List>;
+export const MetersQuantitiesRequestCustomerIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<MetersQuantitiesRequestCustomerIdCase1List>;
 
 /** Filter by customer ID. */
 export type MetersQuantitiesRequestCustomerId = string | MetersQuantitiesRequestCustomerIdCase1List;
@@ -17375,9 +17147,8 @@ export const MetersQuantitiesRequestCustomerId =
   S.Unknown as any as S.Schema<MetersQuantitiesRequestCustomerId>;
 
 export type MetersQuantitiesRequestExternalCustomerIdCase1List = Array<string>;
-export const MetersQuantitiesRequestExternalCustomerIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetersQuantitiesRequestExternalCustomerIdCase1List>;
+export const MetersQuantitiesRequestExternalCustomerIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<MetersQuantitiesRequestExternalCustomerIdCase1List>;
 
 /** Filter by external customer ID. */
 export type MetersQuantitiesRequestExternalCustomerId =
@@ -17509,9 +17280,8 @@ export const MetersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of metric slugs to display in this dashboard. */
 export type MetricsCreateDashboardRequestMetricsList = Array<string>;
-export const MetricsCreateDashboardRequestMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricsCreateDashboardRequestMetricsList>;
+export const MetricsCreateDashboardRequestMetricsList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<MetricsCreateDashboardRequestMetricsList>;
 
 export interface MetricsCreateDashboardRequest {
   /** Display name for the dashboard. */
@@ -17533,9 +17303,8 @@ export const MetricsCreateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of metric slugs displayed in this dashboard. */
 export type MetricDashboardSchemaMetricsList = Array<string>;
-export const MetricDashboardSchemaMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricDashboardSchemaMetricsList>;
+export const MetricDashboardSchemaMetricsList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<MetricDashboardSchemaMetricsList>;
 
 /** A user-defined metrics dashboard. */
 export interface MetricDashboardSchema {
@@ -17576,9 +17345,8 @@ export const MetricsDeleteDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricsDeleteDashboardRequest>;
 
 export interface MetricsDeleteDashboardResponse {}
-export const MetricsDeleteDashboardResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "MetricsDeleteDashboardResponse",
-}) as any as S.Schema<MetricsDeleteDashboardResponse>;
+export const MetricsDeleteDashboardResponse =
+  BenefitsDeleteResponse as any as S.Schema<MetricsDeleteDashboardResponse>;
 
 /** Timezone to use for the timestamps. Default is UTC. */
 export type MetricsExportRequestTimezone =
@@ -18183,9 +17951,8 @@ export type MetricsExportRequestTimezone =
 export const MetricsExportRequestTimezone = S.String;
 
 export type MetricsExportRequestOrganizationIdCase1List = Array<string>;
-export const MetricsExportRequestOrganizationIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricsExportRequestOrganizationIdCase1List>;
+export const MetricsExportRequestOrganizationIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<MetricsExportRequestOrganizationIdCase1List>;
 
 /** Filter by organization ID. */
 export type MetricsExportRequestOrganizationId =
@@ -18195,9 +17962,8 @@ export const MetricsExportRequestOrganizationId =
   S.Unknown as any as S.Schema<MetricsExportRequestOrganizationId>;
 
 export type MetricsExportRequestProductIdCase1List = Array<string>;
-export const MetricsExportRequestProductIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricsExportRequestProductIdCase1List>;
+export const MetricsExportRequestProductIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<MetricsExportRequestProductIdCase1List>;
 
 /** Filter by product ID. */
 export type MetricsExportRequestProductId = string | MetricsExportRequestProductIdCase1List;
@@ -18205,9 +17971,8 @@ export const MetricsExportRequestProductId =
   S.Unknown as any as S.Schema<MetricsExportRequestProductId>;
 
 export type MetricsExportRequestBillingTypeCase1List = Array<ProductBillingType | (string & {})>;
-export const MetricsExportRequestBillingTypeCase1List = /*@__PURE__*/ S.Array(
-  ProductBillingType,
-) as any as S.Schema<MetricsExportRequestBillingTypeCase1List>;
+export const MetricsExportRequestBillingTypeCase1List =
+  CustomerPortalOrdersListRequestProductBillingTypeCase1List as any as S.Schema<MetricsExportRequestBillingTypeCase1List>;
 
 /** Filter by billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases. */
 export type MetricsExportRequestBillingType =
@@ -18217,9 +17982,8 @@ export const MetricsExportRequestBillingType =
   S.Unknown as any as S.Schema<MetricsExportRequestBillingType>;
 
 export type MetricsExportRequestCustomerIdCase1List = Array<string>;
-export const MetricsExportRequestCustomerIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricsExportRequestCustomerIdCase1List>;
+export const MetricsExportRequestCustomerIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<MetricsExportRequestCustomerIdCase1List>;
 
 /** Filter by customer ID. */
 export type MetricsExportRequestCustomerId = string | MetricsExportRequestCustomerIdCase1List;
@@ -18227,9 +17991,8 @@ export const MetricsExportRequestCustomerId =
   S.Unknown as any as S.Schema<MetricsExportRequestCustomerId>;
 
 export type MetricsExportRequestMetricsList = Array<string>;
-export const MetricsExportRequestMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricsExportRequestMetricsList>;
+export const MetricsExportRequestMetricsList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<MetricsExportRequestMetricsList>;
 
 export interface MetricsExportRequest {
   /** Start date. */
@@ -18266,9 +18029,8 @@ export const MetricsExportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricsExportRequest" }) as any as S.Schema<MetricsExportRequest>;
 
 export interface MetricsExportResponse {}
-export const MetricsExportResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "MetricsExportResponse",
-}) as any as S.Schema<MetricsExportResponse>;
+export const MetricsExportResponse =
+  BenefitsDeleteResponse as any as S.Schema<MetricsExportResponse>;
 
 /** Timezone to use for the timestamps. Default is UTC. */
 export type MetricsGetRequestTimezone =
@@ -18873,9 +18635,8 @@ export type MetricsGetRequestTimezone =
 export const MetricsGetRequestTimezone = S.String;
 
 export type MetricsGetRequestOrganizationIdCase1List = Array<string>;
-export const MetricsGetRequestOrganizationIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricsGetRequestOrganizationIdCase1List>;
+export const MetricsGetRequestOrganizationIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<MetricsGetRequestOrganizationIdCase1List>;
 
 /** Filter by organization ID. */
 export type MetricsGetRequestOrganizationId = string | MetricsGetRequestOrganizationIdCase1List;
@@ -18883,18 +18644,16 @@ export const MetricsGetRequestOrganizationId =
   S.Unknown as any as S.Schema<MetricsGetRequestOrganizationId>;
 
 export type MetricsGetRequestProductIdCase1List = Array<string>;
-export const MetricsGetRequestProductIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricsGetRequestProductIdCase1List>;
+export const MetricsGetRequestProductIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<MetricsGetRequestProductIdCase1List>;
 
 /** Filter by product ID. */
 export type MetricsGetRequestProductId = string | MetricsGetRequestProductIdCase1List;
 export const MetricsGetRequestProductId = S.Unknown as any as S.Schema<MetricsGetRequestProductId>;
 
 export type MetricsGetRequestBillingTypeCase1List = Array<ProductBillingType | (string & {})>;
-export const MetricsGetRequestBillingTypeCase1List = /*@__PURE__*/ S.Array(
-  ProductBillingType,
-) as any as S.Schema<MetricsGetRequestBillingTypeCase1List>;
+export const MetricsGetRequestBillingTypeCase1List =
+  CustomerPortalOrdersListRequestProductBillingTypeCase1List as any as S.Schema<MetricsGetRequestBillingTypeCase1List>;
 
 /** Filter by billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases. */
 export type MetricsGetRequestBillingType =
@@ -18904,9 +18663,8 @@ export const MetricsGetRequestBillingType =
   S.Unknown as any as S.Schema<MetricsGetRequestBillingType>;
 
 export type MetricsGetRequestCustomerIdCase1List = Array<string>;
-export const MetricsGetRequestCustomerIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricsGetRequestCustomerIdCase1List>;
+export const MetricsGetRequestCustomerIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<MetricsGetRequestCustomerIdCase1List>;
 
 /** Filter by customer ID. */
 export type MetricsGetRequestCustomerId = string | MetricsGetRequestCustomerIdCase1List;
@@ -18914,9 +18672,8 @@ export const MetricsGetRequestCustomerId =
   S.Unknown as any as S.Schema<MetricsGetRequestCustomerId>;
 
 export type MetricsGetRequestMetricsList = Array<string>;
-export const MetricsGetRequestMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricsGetRequestMetricsList>;
+export const MetricsGetRequestMetricsList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<MetricsGetRequestMetricsList>;
 
 export interface MetricsGetRequest {
   /** Start date. */
@@ -19872,9 +19629,8 @@ export const MetricsLimits = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricsLimits" }) as any as S.Schema<MetricsLimits>;
 
 export type MetricsListDashboardsRequestOrganizationIdCase1List = Array<string>;
-export const MetricsListDashboardsRequestOrganizationIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricsListDashboardsRequestOrganizationIdCase1List>;
+export const MetricsListDashboardsRequestOrganizationIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<MetricsListDashboardsRequestOrganizationIdCase1List>;
 
 /** Filter by organization ID. */
 export type MetricsListDashboardsRequestOrganizationId =
@@ -19908,9 +19664,8 @@ export const MetricsListDashboardsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricsListDashboardsResponse>;
 
 export type MetricsUpdateDashboardRequestMetricsList = Array<string>;
-export const MetricsUpdateDashboardRequestMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricsUpdateDashboardRequestMetricsList>;
+export const MetricsUpdateDashboardRequestMetricsList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<MetricsUpdateDashboardRequestMetricsList>;
 
 export interface MetricsUpdateDashboardRequest {
   /** The metric dashboard ID. */
@@ -20065,10 +19820,8 @@ export const AuthorizeResponseUserOrganizationsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AuthorizeResponseUserOrganizationsList>;
 
 export type AuthorizeResponseUserScopeDisplayNamesMap = { [key: string]: string | undefined };
-export const AuthorizeResponseUserScopeDisplayNamesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AuthorizeResponseUserScopeDisplayNamesMap>;
+export const AuthorizeResponseUserScopeDisplayNamesMap =
+  ProductPriceUnitBasedUnitLabelValueMap as any as S.Schema<AuthorizeResponseUserScopeDisplayNamesMap>;
 
 export interface AuthorizeResponseUser {
   client: OAuth2ClientPublic;
@@ -20092,22 +19845,18 @@ export const AuthorizeResponseUser = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuthorizeResponseUser" }) as any as S.Schema<AuthorizeResponseUser>;
 
 export type AuthorizeResponseOrganizationScopesList = Array<Scope>;
-export const AuthorizeResponseOrganizationScopesList = /*@__PURE__*/ S.Array(
-  Scope,
-) as any as S.Schema<AuthorizeResponseOrganizationScopesList>;
+export const AuthorizeResponseOrganizationScopesList =
+  AuthorizeResponseUserScopesList as any as S.Schema<AuthorizeResponseOrganizationScopesList>;
 
 export type AuthorizeResponseOrganizationOrganizationsList = Array<AuthorizeOrganization>;
-export const AuthorizeResponseOrganizationOrganizationsList = /*@__PURE__*/ S.Array(
-  AuthorizeOrganization,
-) as any as S.Schema<AuthorizeResponseOrganizationOrganizationsList>;
+export const AuthorizeResponseOrganizationOrganizationsList =
+  AuthorizeResponseUserOrganizationsList as any as S.Schema<AuthorizeResponseOrganizationOrganizationsList>;
 
 export type AuthorizeResponseOrganizationScopeDisplayNamesMap = {
   [key: string]: string | undefined;
 };
-export const AuthorizeResponseOrganizationScopeDisplayNamesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AuthorizeResponseOrganizationScopeDisplayNamesMap>;
+export const AuthorizeResponseOrganizationScopeDisplayNamesMap =
+  ProductPriceUnitBasedUnitLabelValueMap as any as S.Schema<AuthorizeResponseOrganizationScopeDisplayNamesMap>;
 
 export interface AuthorizeResponseOrganization {
   client: OAuth2ClientPublic;
@@ -20142,9 +19891,8 @@ export const Oauth2AuthorizeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Oauth2AuthorizeResponse" }) as any as S.Schema<Oauth2AuthorizeResponse>;
 
 export type Oauth2ClientsOauth2CreateClientRequestRedirectUrisList = Array<string>;
-export const Oauth2ClientsOauth2CreateClientRequestRedirectUrisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<Oauth2ClientsOauth2CreateClientRequestRedirectUrisList>;
+export const Oauth2ClientsOauth2CreateClientRequestRedirectUrisList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<Oauth2ClientsOauth2CreateClientRequestRedirectUrisList>;
 
 export type Oauth2ClientsOauth2CreateClientRequestTokenEndpointAuthMethod =
   | "client_secret_basic"
@@ -20165,9 +19913,8 @@ export const Oauth2ClientsOauth2CreateClientRequestGrantTypesList = /*@__PURE__*
 ) as any as S.Schema<Oauth2ClientsOauth2CreateClientRequestGrantTypesList>;
 
 export type Oauth2ClientsOauth2CreateClientRequestResponseTypesList = Array<string>;
-export const Oauth2ClientsOauth2CreateClientRequestResponseTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<Oauth2ClientsOauth2CreateClientRequestResponseTypesList>;
+export const Oauth2ClientsOauth2CreateClientRequestResponseTypesList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<Oauth2ClientsOauth2CreateClientRequestResponseTypesList>;
 
 export type SubType = "user" | "organization";
 export const SubType = S.String;
@@ -20226,11 +19973,8 @@ export const Oauth2ClientsOauth2DeleteClientRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<Oauth2ClientsOauth2DeleteClientRequest>;
 
 export interface Oauth2ClientsOauth2DeleteClientResponse {}
-export const Oauth2ClientsOauth2DeleteClientResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "Oauth2ClientsOauth2DeleteClientResponse",
-}) as any as S.Schema<Oauth2ClientsOauth2DeleteClientResponse>;
+export const Oauth2ClientsOauth2DeleteClientResponse =
+  CustomerPortalCustomersDeletePaymentMethodResponse as any as S.Schema<Oauth2ClientsOauth2DeleteClientResponse>;
 
 export interface Oauth2ClientsOauth2GetClientRequest {
   client_id: string;
@@ -20244,16 +19988,12 @@ export const Oauth2ClientsOauth2GetClientRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Oauth2ClientsOauth2GetClientRequest>;
 
 export type Oauth2ClientsOauth2GetClientResponse = unknown;
-export const Oauth2ClientsOauth2GetClientResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "Oauth2ClientsOauth2GetClientResponse",
-}) as any as S.Schema<Oauth2ClientsOauth2GetClientResponse>;
+export const Oauth2ClientsOauth2GetClientResponse =
+  Oauth2ClientsOauth2CreateClientResponse as any as S.Schema<Oauth2ClientsOauth2GetClientResponse>;
 
 export type Oauth2ClientsOauth2UpdateClientRequestRedirectUrisList = Array<string>;
-export const Oauth2ClientsOauth2UpdateClientRequestRedirectUrisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<Oauth2ClientsOauth2UpdateClientRequestRedirectUrisList>;
+export const Oauth2ClientsOauth2UpdateClientRequestRedirectUrisList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<Oauth2ClientsOauth2UpdateClientRequestRedirectUrisList>;
 
 export type Oauth2ClientsOauth2UpdateClientRequestTokenEndpointAuthMethod =
   | "client_secret_basic"
@@ -20274,9 +20014,8 @@ export const Oauth2ClientsOauth2UpdateClientRequestGrantTypesList = /*@__PURE__*
 ) as any as S.Schema<Oauth2ClientsOauth2UpdateClientRequestGrantTypesList>;
 
 export type Oauth2ClientsOauth2UpdateClientRequestResponseTypesList = Array<string>;
-export const Oauth2ClientsOauth2UpdateClientRequestResponseTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<Oauth2ClientsOauth2UpdateClientRequestResponseTypesList>;
+export const Oauth2ClientsOauth2UpdateClientRequestResponseTypesList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<Oauth2ClientsOauth2UpdateClientRequestResponseTypesList>;
 
 export interface Oauth2ClientsOauth2UpdateClientRequest {
   client_id: string;
@@ -20316,11 +20055,8 @@ export const Oauth2ClientsOauth2UpdateClientRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<Oauth2ClientsOauth2UpdateClientRequest>;
 
 export type Oauth2ClientsOauth2UpdateClientResponse = unknown;
-export const Oauth2ClientsOauth2UpdateClientResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "Oauth2ClientsOauth2UpdateClientResponse",
-}) as any as S.Schema<Oauth2ClientsOauth2UpdateClientResponse>;
+export const Oauth2ClientsOauth2UpdateClientResponse =
+  Oauth2ClientsOauth2CreateClientResponse as any as S.Schema<Oauth2ClientsOauth2UpdateClientResponse>;
 
 export type Oauth2IntrospectTokenRequestTokenTypeHint = "access_token" | "refresh_token";
 export const Oauth2IntrospectTokenRequestTokenTypeHint = S.String;
@@ -20346,9 +20082,8 @@ export type IntrospectTokenResponseTokenType = "access_token" | "refresh_token";
 export const IntrospectTokenResponseTokenType = S.String;
 
 export type IntrospectTokenResponseOrganizationsList = Array<string>;
-export const IntrospectTokenResponseOrganizationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IntrospectTokenResponseOrganizationsList>;
+export const IntrospectTokenResponseOrganizationsList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<IntrospectTokenResponseOrganizationsList>;
 
 export interface IntrospectTokenResponse {
   active: boolean;
@@ -20493,11 +20228,8 @@ export const Oauth2RevokeTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Oauth2RevokeTokenRequest" }) as any as S.Schema<Oauth2RevokeTokenRequest>;
 
 export type Oauth2RevokeTokenResponse = unknown;
-export const Oauth2RevokeTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "Oauth2RevokeTokenResponse",
-}) as any as S.Schema<Oauth2RevokeTokenResponse>;
+export const Oauth2RevokeTokenResponse =
+  Oauth2ClientsOauth2CreateClientResponse as any as S.Schema<Oauth2RevokeTokenResponse>;
 
 export interface Oauth2UserinfoRequest {}
 export const Oauth2UserinfoRequest = /*@__PURE__*/ S.suspend(() =>
@@ -20611,9 +20343,8 @@ export const OrderCustomFieldDataMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<OrderCustomFieldDataMap>;
 
 export type OrderCustomerTaxIdList = Array<unknown>;
-export const OrderCustomerTaxIdList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<OrderCustomerTaxIdList>;
+export const OrderCustomerTaxIdList =
+  CustomerIndividualTaxIdList as any as S.Schema<OrderCustomerTaxIdList>;
 
 export interface OrderCustomer {
   /** The ID of the customer. */
@@ -20648,28 +20379,7 @@ export interface OrderCustomer {
   first_user_event_at: string | null;
   avatar_url: string | null;
 }
-export const OrderCustomer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    created_at: S.String,
-    modified_at: S.NullOr(S.String),
-    metadata: MetadataOutputType,
-    external_id: S.optional(S.NullOr(S.String)),
-    email: S.optional(S.NullOr(S.String)),
-    email_verified: S.Boolean,
-    type: CustomerType,
-    name: S.NullOr(S.String),
-    billing_name: S.NullOr(S.String),
-    billing_address: S.NullOr(Address),
-    tax_id: S.NullOr(OrderCustomerTaxIdList),
-    locale: S.optional(S.NullOr(S.String)),
-    organization_id: S.String,
-    default_payment_method_id: S.optional(S.NullOr(S.String)),
-    deleted_at: S.NullOr(S.String),
-    first_user_event_at: S.NullOr(S.String),
-    avatar_url: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "OrderCustomer" }) as any as S.Schema<OrderCustomer>;
+export const OrderCustomer = LicenseKeyCustomer as any as S.Schema<OrderCustomer>;
 
 export type OrderProduct = DiscountProduct;
 export const OrderProduct = DiscountProduct;
@@ -20782,9 +20492,7 @@ export const OrderSubscription = /*@__PURE__*/ S.suspend(() =>
 
 /** Line items composing the order. */
 export type OrderItemsList = Array<OrderItemSchema>;
-export const OrderItemsList = /*@__PURE__*/ S.Array(
-  OrderItemSchema,
-) as any as S.Schema<OrderItemsList>;
+export const OrderItemsList = CustomerOrderItemsList as any as S.Schema<OrderItemsList>;
 
 export interface Order {
   /** The ID of the object. */
@@ -20903,9 +20611,8 @@ export const Order = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Order" }) as any as S.Schema<Order>;
 
 export type OrdersExportRequestOrganizationIdCase1List = Array<string>;
-export const OrdersExportRequestOrganizationIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrdersExportRequestOrganizationIdCase1List>;
+export const OrdersExportRequestOrganizationIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<OrdersExportRequestOrganizationIdCase1List>;
 
 /** Filter by organization ID. */
 export type OrdersExportRequestOrganizationId = string | OrdersExportRequestOrganizationIdCase1List;
@@ -20913,9 +20620,8 @@ export const OrdersExportRequestOrganizationId =
   S.Unknown as any as S.Schema<OrdersExportRequestOrganizationId>;
 
 export type OrdersExportRequestProductIdCase1List = Array<string>;
-export const OrdersExportRequestProductIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrdersExportRequestProductIdCase1List>;
+export const OrdersExportRequestProductIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<OrdersExportRequestProductIdCase1List>;
 
 /** Filter by product ID. */
 export type OrdersExportRequestProductId = string | OrdersExportRequestProductIdCase1List;
@@ -20988,9 +20694,7 @@ export const OrdersExportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrdersExportRequest" }) as any as S.Schema<OrdersExportRequest>;
 
 export interface OrdersExportResponse {}
-export const OrdersExportResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "OrdersExportResponse",
-}) as any as S.Schema<OrdersExportResponse>;
+export const OrdersExportResponse = BenefitsDeleteResponse as any as S.Schema<OrdersExportResponse>;
 
 export interface OrdersFinalizeRequest {
   /** The order ID. */
@@ -21018,9 +20722,8 @@ export const OrdersGenerateInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrdersGenerateInvoiceRequest>;
 
 export interface OrdersGenerateInvoiceResponse {}
-export const OrdersGenerateInvoiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "OrdersGenerateInvoiceResponse",
-}) as any as S.Schema<OrdersGenerateInvoiceResponse>;
+export const OrdersGenerateInvoiceResponse =
+  BenefitsDeleteResponse as any as S.Schema<OrdersGenerateInvoiceResponse>;
 
 export interface OrdersGetRequest {
   /** The order ID. */
@@ -21047,16 +20750,11 @@ export interface OrderInvoice {
   /** The URL to the invoice. */
   url: string;
 }
-export const OrderInvoice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-  }),
-).annotate({ identifier: "OrderInvoice" }) as any as S.Schema<OrderInvoice>;
+export const OrderInvoice = CustomerOrderInvoice as any as S.Schema<OrderInvoice>;
 
 export type OrdersListRequestOrganizationIdCase1List = Array<string>;
-export const OrdersListRequestOrganizationIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrdersListRequestOrganizationIdCase1List>;
+export const OrdersListRequestOrganizationIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<OrdersListRequestOrganizationIdCase1List>;
 
 /** Filter by organization ID. */
 export type OrdersListRequestOrganizationId = string | OrdersListRequestOrganizationIdCase1List;
@@ -21064,9 +20762,8 @@ export const OrdersListRequestOrganizationId =
   S.Unknown as any as S.Schema<OrdersListRequestOrganizationId>;
 
 export type OrdersListRequestProductIdCase1List = Array<string>;
-export const OrdersListRequestProductIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrdersListRequestProductIdCase1List>;
+export const OrdersListRequestProductIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<OrdersListRequestProductIdCase1List>;
 
 /** Filter by product ID. */
 export type OrdersListRequestProductId = string | OrdersListRequestProductIdCase1List;
@@ -21075,9 +20772,8 @@ export const OrdersListRequestProductId = S.Unknown as any as S.Schema<OrdersLis
 export type OrdersListRequestProductBillingTypeCase1List = Array<
   ProductBillingType | (string & {})
 >;
-export const OrdersListRequestProductBillingTypeCase1List = /*@__PURE__*/ S.Array(
-  ProductBillingType,
-) as any as S.Schema<OrdersListRequestProductBillingTypeCase1List>;
+export const OrdersListRequestProductBillingTypeCase1List =
+  CustomerPortalOrdersListRequestProductBillingTypeCase1List as any as S.Schema<OrdersListRequestProductBillingTypeCase1List>;
 
 /** Filter by product billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases. */
 export type OrdersListRequestProductBillingType =
@@ -21087,9 +20783,8 @@ export const OrdersListRequestProductBillingType =
   S.Unknown as any as S.Schema<OrdersListRequestProductBillingType>;
 
 export type OrdersListRequestDiscountIdCase1List = Array<string>;
-export const OrdersListRequestDiscountIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrdersListRequestDiscountIdCase1List>;
+export const OrdersListRequestDiscountIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<OrdersListRequestDiscountIdCase1List>;
 
 /** Filter by discount ID. */
 export type OrdersListRequestDiscountId = string | OrdersListRequestDiscountIdCase1List;
@@ -21097,9 +20792,8 @@ export const OrdersListRequestDiscountId =
   S.Unknown as any as S.Schema<OrdersListRequestDiscountId>;
 
 export type OrdersListRequestCustomerIdCase1List = Array<string>;
-export const OrdersListRequestCustomerIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrdersListRequestCustomerIdCase1List>;
+export const OrdersListRequestCustomerIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<OrdersListRequestCustomerIdCase1List>;
 
 /** Filter by customer ID. */
 export type OrdersListRequestCustomerId = string | OrdersListRequestCustomerIdCase1List;
@@ -21107,9 +20801,8 @@ export const OrdersListRequestCustomerId =
   S.Unknown as any as S.Schema<OrdersListRequestCustomerId>;
 
 export type OrdersListRequestExternalCustomerIdCase1List = Array<string>;
-export const OrdersListRequestExternalCustomerIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrdersListRequestExternalCustomerIdCase1List>;
+export const OrdersListRequestExternalCustomerIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<OrdersListRequestExternalCustomerIdCase1List>;
 
 /** Filter by customer external ID. */
 export type OrdersListRequestExternalCustomerId =
@@ -21119,9 +20812,8 @@ export const OrdersListRequestExternalCustomerId =
   S.Unknown as any as S.Schema<OrdersListRequestExternalCustomerId>;
 
 export type OrdersListRequestCheckoutIdCase1List = Array<string>;
-export const OrdersListRequestCheckoutIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrdersListRequestCheckoutIdCase1List>;
+export const OrdersListRequestCheckoutIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<OrdersListRequestCheckoutIdCase1List>;
 
 /** Filter by checkout ID. */
 export type OrdersListRequestCheckoutId = string | OrdersListRequestCheckoutIdCase1List;
@@ -21129,9 +20821,8 @@ export const OrdersListRequestCheckoutId =
   S.Unknown as any as S.Schema<OrdersListRequestCheckoutId>;
 
 export type OrdersListRequestSubscriptionIdCase1List = Array<string>;
-export const OrdersListRequestSubscriptionIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrdersListRequestSubscriptionIdCase1List>;
+export const OrdersListRequestSubscriptionIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<OrdersListRequestSubscriptionIdCase1List>;
 
 /** Filter by subscription ID. */
 export type OrdersListRequestSubscriptionId = string | OrdersListRequestSubscriptionIdCase1List;
@@ -21139,9 +20830,8 @@ export const OrdersListRequestSubscriptionId =
   S.Unknown as any as S.Schema<OrdersListRequestSubscriptionId>;
 
 export type OrdersListRequestStatusCase1List = Array<OrderStatus | (string & {})>;
-export const OrdersListRequestStatusCase1List = /*@__PURE__*/ S.Array(
-  OrderStatus,
-) as any as S.Schema<OrdersListRequestStatusCase1List>;
+export const OrdersListRequestStatusCase1List =
+  OrdersExportRequestStatusCase1List as any as S.Schema<OrdersListRequestStatusCase1List>;
 
 /** Filter by order status. */
 export type OrdersListRequestStatus = OrderStatus | OrdersListRequestStatusCase1List;
@@ -21256,11 +20946,7 @@ export interface OrderReceipt {
   /** The URL to the receipt PDF. */
   url: string;
 }
-export const OrderReceipt = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-  }),
-).annotate({ identifier: "OrderReceipt" }) as any as S.Schema<OrderReceipt>;
+export const OrderReceipt = CustomerOrderInvoice as any as S.Schema<OrderReceipt>;
 
 export interface OrdersUpdateRequest {
   /** The order ID. */
@@ -21341,21 +21027,18 @@ export const OrganizationsCreateRequestSocialsList = /*@__PURE__*/ S.Array(
 
 /** Categories of products being sold. */
 export type OrganizationDetailsSellingCategoriesList = Array<string>;
-export const OrganizationDetailsSellingCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrganizationDetailsSellingCategoriesList>;
+export const OrganizationDetailsSellingCategoriesList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<OrganizationDetailsSellingCategoriesList>;
 
 /** Pricing models used by the organization. */
 export type OrganizationDetailsPricingModelsList = Array<string>;
-export const OrganizationDetailsPricingModelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrganizationDetailsPricingModelsList>;
+export const OrganizationDetailsPricingModelsList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<OrganizationDetailsPricingModelsList>;
 
 /** Main customer acquisition channels. */
 export type OrganizationDetailsCustomerAcquisitionList = Array<string>;
-export const OrganizationDetailsCustomerAcquisitionList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrganizationDetailsCustomerAcquisitionList>;
+export const OrganizationDetailsCustomerAcquisitionList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<OrganizationDetailsCustomerAcquisitionList>;
 
 export type OrganizationDetailsSwitchingFrom =
   | "paddle"
@@ -21650,9 +21333,8 @@ export type OrganizationsCreateRequestCountry =
 export const OrganizationsCreateRequestCountry = S.String;
 
 export type OrganizationFeatureSettingsUpdateOverviewMetricsList = Array<string>;
-export const OrganizationFeatureSettingsUpdateOverviewMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrganizationFeatureSettingsUpdateOverviewMetricsList>;
+export const OrganizationFeatureSettingsUpdateOverviewMetricsList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<OrganizationFeatureSettingsUpdateOverviewMetricsList>;
 
 /** Feature settings that organizations can update themselves. Other feature settings are managed by Polar staff: they're ignored if provided and keep their current value. */
 export interface OrganizationFeatureSettingsUpdate {
@@ -21783,9 +21465,8 @@ export const OrganizationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Links to social profiles. */
 export type OrganizationSocialsList = Array<OrganizationSocialLink>;
-export const OrganizationSocialsList = /*@__PURE__*/ S.Array(
-  OrganizationSocialLink,
-) as any as S.Schema<OrganizationSocialsList>;
+export const OrganizationSocialsList =
+  OrganizationsCreateRequestSocialsList as any as S.Schema<OrganizationSocialsList>;
 
 export type OrganizationStatus =
   | "created"
@@ -21799,9 +21480,8 @@ export type OrganizationStatus =
 export const OrganizationStatus = S.String;
 
 export type OrganizationFeatureSettingsOverviewMetricsList = Array<string>;
-export const OrganizationFeatureSettingsOverviewMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrganizationFeatureSettingsOverviewMetricsList>;
+export const OrganizationFeatureSettingsOverviewMetricsList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<OrganizationFeatureSettingsOverviewMetricsList>;
 
 export interface OrganizationFeatureSettings {
   /** If this organization has issue funding enabled */
@@ -21874,9 +21554,8 @@ export const OrganizationDisputeSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Hosts allowed to embed this organization's checkout. An entry is a host and an optional port, without a scheme: HTTPS is always allowed, and HTTP too for local hosts -- `localhost`, any `.localhost` or `.local` name, and loopback or private addresses. `*.example.com` matches any subdomain, but not `example.com` itself. An app origin such as `chrome-extension://abcdef` carries its scheme, having no host to match on. */
 export type OrganizationEmbedHostsList = Array<string>;
-export const OrganizationEmbedHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrganizationEmbedHostsList>;
+export const OrganizationEmbedHostsList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<OrganizationEmbedHostsList>;
 
 export type OrganizationCountry =
   | "AD"
@@ -22306,9 +21985,8 @@ export const ListResourceOrganization = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResourceOrganization" }) as any as S.Schema<ListResourceOrganization>;
 
 export type OrganizationsUpdateRequestSocialsList = Array<OrganizationSocialLink>;
-export const OrganizationsUpdateRequestSocialsList = /*@__PURE__*/ S.Array(
-  OrganizationSocialLink,
-) as any as S.Schema<OrganizationsUpdateRequestSocialsList>;
+export const OrganizationsUpdateRequestSocialsList =
+  OrganizationsCreateRequestSocialsList as any as S.Schema<OrganizationsUpdateRequestSocialsList>;
 
 export type OrganizationsUpdateRequestCountry =
   | "AD"
@@ -22571,9 +22249,8 @@ export const OrganizationDisputeSettingsUpdate = /*@__PURE__*/ S.suspend(() =>
 
 /** Hosts allowed to embed this organization's checkout. An entry is a host and an optional port, without a scheme: HTTPS is always allowed, and HTTP too for local hosts -- `localhost`, any `.localhost` or `.local` name, and loopback or private addresses. `*.example.com` matches any subdomain, but not `example.com` itself. An app origin such as `chrome-extension://abcdef` carries its scheme, having no host to match on. */
 export type OrganizationsUpdateRequestEmbedHostsList = Array<string>;
-export const OrganizationsUpdateRequestEmbedHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrganizationsUpdateRequestEmbedHostsList>;
+export const OrganizationsUpdateRequestEmbedHostsList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<OrganizationsUpdateRequestEmbedHostsList>;
 
 export interface OrganizationsUpdateRequest {
   id: string;
@@ -22650,10 +22327,8 @@ export const PaymentTrigger = S.String;
 
 /** Additional metadata from the payment processor for internal use. */
 export type CardPaymentProcessorMetadataMap = { [key: string]: unknown | undefined };
-export const CardPaymentProcessorMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CardPaymentProcessorMetadataMap>;
+export const CardPaymentProcessorMetadataMap =
+  CustomerPortalSeatsAssignSeatRequestMetadataMap as any as S.Schema<CardPaymentProcessorMetadataMap>;
 
 /** Additional metadata for a card payment method. */
 export interface CardPaymentMetadata {
@@ -22727,10 +22402,8 @@ export const CardPayment = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional metadata from the payment processor for internal use. */
 export type KrCardPaymentProcessorMetadataMap = { [key: string]: unknown | undefined };
-export const KrCardPaymentProcessorMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<KrCardPaymentProcessorMetadataMap>;
+export const KrCardPaymentProcessorMetadataMap =
+  CustomerPortalSeatsAssignSeatRequestMetadataMap as any as S.Schema<KrCardPaymentProcessorMetadataMap>;
 
 /** Additional metadata for a South Korean card payment method. */
 export interface KrCardPaymentMetadata {
@@ -22804,10 +22477,8 @@ export const KrCardPayment = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional metadata from the payment processor for internal use. */
 export type GenericPaymentProcessorMetadataMap = { [key: string]: unknown | undefined };
-export const GenericPaymentProcessorMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GenericPaymentProcessorMetadataMap>;
+export const GenericPaymentProcessorMetadataMap =
+  CustomerPortalSeatsAssignSeatRequestMetadataMap as any as S.Schema<GenericPaymentProcessorMetadataMap>;
 
 /** Schema of a payment with a generic payment method. */
 export interface GenericPayment {
@@ -22871,9 +22542,8 @@ export const PaymentsGetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PaymentsGetResponse" }) as any as S.Schema<PaymentsGetResponse>;
 
 export type PaymentsListRequestOrganizationIdCase1List = Array<string>;
-export const PaymentsListRequestOrganizationIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaymentsListRequestOrganizationIdCase1List>;
+export const PaymentsListRequestOrganizationIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<PaymentsListRequestOrganizationIdCase1List>;
 
 /** Filter by organization ID. */
 export type PaymentsListRequestOrganizationId = string | PaymentsListRequestOrganizationIdCase1List;
@@ -22881,9 +22551,8 @@ export const PaymentsListRequestOrganizationId =
   S.Unknown as any as S.Schema<PaymentsListRequestOrganizationId>;
 
 export type PaymentsListRequestCheckoutIdCase1List = Array<string>;
-export const PaymentsListRequestCheckoutIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaymentsListRequestCheckoutIdCase1List>;
+export const PaymentsListRequestCheckoutIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<PaymentsListRequestCheckoutIdCase1List>;
 
 /** Filter by checkout ID. */
 export type PaymentsListRequestCheckoutId = string | PaymentsListRequestCheckoutIdCase1List;
@@ -22891,18 +22560,16 @@ export const PaymentsListRequestCheckoutId =
   S.Unknown as any as S.Schema<PaymentsListRequestCheckoutId>;
 
 export type PaymentsListRequestOrderIdCase1List = Array<string>;
-export const PaymentsListRequestOrderIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaymentsListRequestOrderIdCase1List>;
+export const PaymentsListRequestOrderIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<PaymentsListRequestOrderIdCase1List>;
 
 /** Filter by order ID. */
 export type PaymentsListRequestOrderId = string | PaymentsListRequestOrderIdCase1List;
 export const PaymentsListRequestOrderId = S.Unknown as any as S.Schema<PaymentsListRequestOrderId>;
 
 export type PaymentsListRequestCustomerIdCase1List = Array<string>;
-export const PaymentsListRequestCustomerIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaymentsListRequestCustomerIdCase1List>;
+export const PaymentsListRequestCustomerIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<PaymentsListRequestCustomerIdCase1List>;
 
 /** Filter by customer ID. */
 export type PaymentsListRequestCustomerId = string | PaymentsListRequestCustomerIdCase1List;
@@ -22919,18 +22586,16 @@ export type PaymentsListRequestStatus = PaymentStatus | PaymentsListRequestStatu
 export const PaymentsListRequestStatus = S.Unknown as any as S.Schema<PaymentsListRequestStatus>;
 
 export type PaymentsListRequestMethodCase1List = Array<string>;
-export const PaymentsListRequestMethodCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaymentsListRequestMethodCase1List>;
+export const PaymentsListRequestMethodCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<PaymentsListRequestMethodCase1List>;
 
 /** Filter by payment method. */
 export type PaymentsListRequestMethod = string | PaymentsListRequestMethodCase1List;
 export const PaymentsListRequestMethod = S.Unknown as any as S.Schema<PaymentsListRequestMethod>;
 
 export type PaymentsListRequestCustomerEmailCase1List = Array<string>;
-export const PaymentsListRequestCustomerEmailCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaymentsListRequestCustomerEmailCase1List>;
+export const PaymentsListRequestCustomerEmailCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<PaymentsListRequestCustomerEmailCase1List>;
 
 /** Filter by customer email. */
 export type PaymentsListRequestCustomerEmail = string | PaymentsListRequestCustomerEmailCase1List;
@@ -23036,9 +22701,8 @@ export const ProductCreateRecurringPricesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ProductCreateRecurringPricesList>;
 
 export type ProductCreateRecurringMediasList = Array<string>;
-export const ProductCreateRecurringMediasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductCreateRecurringMediasList>;
+export const ProductCreateRecurringMediasList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<ProductCreateRecurringMediasList>;
 
 /** Schema to attach a custom field to a resource. */
 export interface AttachedCustomFieldCreate {
@@ -23141,15 +22805,13 @@ export const ProductCreateOneTimePricesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ProductCreateOneTimePricesList>;
 
 export type ProductCreateOneTimeMediasList = Array<string>;
-export const ProductCreateOneTimeMediasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductCreateOneTimeMediasList>;
+export const ProductCreateOneTimeMediasList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<ProductCreateOneTimeMediasList>;
 
 /** List of custom fields to attach. */
 export type ProductCreateOneTimeAttachedCustomFieldsList = Array<AttachedCustomFieldCreate>;
-export const ProductCreateOneTimeAttachedCustomFieldsList = /*@__PURE__*/ S.Array(
-  AttachedCustomFieldCreate,
-) as any as S.Schema<ProductCreateOneTimeAttachedCustomFieldsList>;
+export const ProductCreateOneTimeAttachedCustomFieldsList =
+  ProductCreateRecurringAttachedCustomFieldsList as any as S.Schema<ProductCreateOneTimeAttachedCustomFieldsList>;
 
 export interface ProductCreateOneTime {
   /** Key-value object allowing you to store additional information. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
@@ -23211,21 +22873,18 @@ export const ProductPricesList = /*@__PURE__*/ S.Array(
 
 /** List of benefits granted by the product. */
 export type ProductBenefitsList = Array<Benefit>;
-export const ProductBenefitsList = /*@__PURE__*/ S.Array(
-  Benefit,
-) as any as S.Schema<ProductBenefitsList>;
+export const ProductBenefitsList =
+  ListResourceBenefitItemsList as any as S.Schema<ProductBenefitsList>;
 
 /** List of medias associated to the product. */
 export type ProductMediasList = Array<ProductMediaFileRead>;
-export const ProductMediasList = /*@__PURE__*/ S.Array(
-  ProductMediaFileRead,
-) as any as S.Schema<ProductMediasList>;
+export const ProductMediasList =
+  CheckoutLinkProductMediasList as any as S.Schema<ProductMediasList>;
 
 /** List of custom fields attached to the product. */
 export type ProductAttachedCustomFieldsList = Array<AttachedCustomField>;
-export const ProductAttachedCustomFieldsList = /*@__PURE__*/ S.Array(
-  AttachedCustomField,
-) as any as S.Schema<ProductAttachedCustomFieldsList>;
+export const ProductAttachedCustomFieldsList =
+  CheckoutAttachedCustomFieldsList as any as S.Schema<ProductAttachedCustomFieldsList>;
 
 /** A product. */
 export interface Product {
@@ -23307,9 +22966,8 @@ export const ProductsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProductsDeleteRequest" }) as any as S.Schema<ProductsDeleteRequest>;
 
 export interface ProductsDeleteResponse {}
-export const ProductsDeleteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ProductsDeleteResponse",
-}) as any as S.Schema<ProductsDeleteResponse>;
+export const ProductsDeleteResponse =
+  BenefitsDeleteResponse as any as S.Schema<ProductsDeleteResponse>;
 
 export interface ProductsGetRequest {
   id: string;
@@ -23321,18 +22979,16 @@ export const ProductsGetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProductsGetRequest" }) as any as S.Schema<ProductsGetRequest>;
 
 export type ProductsListRequestIdCase1List = Array<string>;
-export const ProductsListRequestIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductsListRequestIdCase1List>;
+export const ProductsListRequestIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<ProductsListRequestIdCase1List>;
 
 /** Filter by product ID. */
 export type ProductsListRequestId = string | ProductsListRequestIdCase1List;
 export const ProductsListRequestId = S.Unknown as any as S.Schema<ProductsListRequestId>;
 
 export type ProductsListRequestOrganizationIdCase1List = Array<string>;
-export const ProductsListRequestOrganizationIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductsListRequestOrganizationIdCase1List>;
+export const ProductsListRequestOrganizationIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<ProductsListRequestOrganizationIdCase1List>;
 
 /** Filter by organization ID. */
 export type ProductsListRequestOrganizationId = string | ProductsListRequestOrganizationIdCase1List;
@@ -23340,9 +22996,8 @@ export const ProductsListRequestOrganizationId =
   S.Unknown as any as S.Schema<ProductsListRequestOrganizationId>;
 
 export type ProductsListRequestBenefitIdCase1List = Array<string>;
-export const ProductsListRequestBenefitIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductsListRequestBenefitIdCase1List>;
+export const ProductsListRequestBenefitIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<ProductsListRequestBenefitIdCase1List>;
 
 /** Filter products granting specific benefit. */
 export type ProductsListRequestBenefitId = string | ProductsListRequestBenefitIdCase1List;
@@ -23471,15 +23126,13 @@ export const ProductsUpdateRequestPricesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ProductsUpdateRequestPricesList>;
 
 export type ProductsUpdateRequestMediasList = Array<string>;
-export const ProductsUpdateRequestMediasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductsUpdateRequestMediasList>;
+export const ProductsUpdateRequestMediasList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<ProductsUpdateRequestMediasList>;
 
 /** List of custom fields to attach. */
 export type ProductsUpdateRequestAttachedCustomFieldsList = Array<AttachedCustomFieldCreate>;
-export const ProductsUpdateRequestAttachedCustomFieldsList = /*@__PURE__*/ S.Array(
-  AttachedCustomFieldCreate,
-) as any as S.Schema<ProductsUpdateRequestAttachedCustomFieldsList>;
+export const ProductsUpdateRequestAttachedCustomFieldsList =
+  ProductCreateRecurringAttachedCustomFieldsList as any as S.Schema<ProductsUpdateRequestAttachedCustomFieldsList>;
 
 export interface ProductsUpdateRequest {
   id: string;
@@ -23526,9 +23179,8 @@ export const ProductsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of benefit IDs. Each one must be on the same organization as the product. */
 export type ProductsUpdateBenefitsRequestBenefitsList = Array<string>;
-export const ProductsUpdateBenefitsRequestBenefitsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductsUpdateBenefitsRequestBenefitsList>;
+export const ProductsUpdateBenefitsRequestBenefitsList =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<ProductsUpdateBenefitsRequestBenefitsList>;
 
 export interface ProductsUpdateBenefitsRequest {
   id: string;
@@ -23695,18 +23347,16 @@ export const Refund = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Refund" }) as any as S.Schema<Refund>;
 
 export type RefundsListRequestIdCase1List = Array<string>;
-export const RefundsListRequestIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RefundsListRequestIdCase1List>;
+export const RefundsListRequestIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<RefundsListRequestIdCase1List>;
 
 /** Filter by refund ID. */
 export type RefundsListRequestId = string | RefundsListRequestIdCase1List;
 export const RefundsListRequestId = S.Unknown as any as S.Schema<RefundsListRequestId>;
 
 export type RefundsListRequestOrganizationIdCase1List = Array<string>;
-export const RefundsListRequestOrganizationIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RefundsListRequestOrganizationIdCase1List>;
+export const RefundsListRequestOrganizationIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<RefundsListRequestOrganizationIdCase1List>;
 
 /** Filter by organization ID. */
 export type RefundsListRequestOrganizationId = string | RefundsListRequestOrganizationIdCase1List;
@@ -23714,18 +23364,16 @@ export const RefundsListRequestOrganizationId =
   S.Unknown as any as S.Schema<RefundsListRequestOrganizationId>;
 
 export type RefundsListRequestOrderIdCase1List = Array<string>;
-export const RefundsListRequestOrderIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RefundsListRequestOrderIdCase1List>;
+export const RefundsListRequestOrderIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<RefundsListRequestOrderIdCase1List>;
 
 /** Filter by order ID. */
 export type RefundsListRequestOrderId = string | RefundsListRequestOrderIdCase1List;
 export const RefundsListRequestOrderId = S.Unknown as any as S.Schema<RefundsListRequestOrderId>;
 
 export type RefundsListRequestSubscriptionIdCase1List = Array<string>;
-export const RefundsListRequestSubscriptionIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RefundsListRequestSubscriptionIdCase1List>;
+export const RefundsListRequestSubscriptionIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<RefundsListRequestSubscriptionIdCase1List>;
 
 /** Filter by subscription ID. */
 export type RefundsListRequestSubscriptionId = string | RefundsListRequestSubscriptionIdCase1List;
@@ -23733,9 +23381,8 @@ export const RefundsListRequestSubscriptionId =
   S.Unknown as any as S.Schema<RefundsListRequestSubscriptionId>;
 
 export type RefundsListRequestCustomerIdCase1List = Array<string>;
-export const RefundsListRequestCustomerIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RefundsListRequestCustomerIdCase1List>;
+export const RefundsListRequestCustomerIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<RefundsListRequestCustomerIdCase1List>;
 
 /** Filter by customer ID. */
 export type RefundsListRequestCustomerId = string | RefundsListRequestCustomerIdCase1List;
@@ -23743,9 +23390,8 @@ export const RefundsListRequestCustomerId =
   S.Unknown as any as S.Schema<RefundsListRequestCustomerId>;
 
 export type RefundsListRequestExternalCustomerIdCase1List = Array<string>;
-export const RefundsListRequestExternalCustomerIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RefundsListRequestExternalCustomerIdCase1List>;
+export const RefundsListRequestExternalCustomerIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<RefundsListRequestExternalCustomerIdCase1List>;
 
 /** Filter by customer external ID. */
 export type RefundsListRequestExternalCustomerId =
@@ -23958,9 +23604,8 @@ export const SubscriptionCustomFieldDataMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SubscriptionCustomFieldDataMap>;
 
 export type SubscriptionCustomerTaxIdList = Array<unknown>;
-export const SubscriptionCustomerTaxIdList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<SubscriptionCustomerTaxIdList>;
+export const SubscriptionCustomerTaxIdList =
+  CustomerIndividualTaxIdList as any as S.Schema<SubscriptionCustomerTaxIdList>;
 
 export interface SubscriptionCustomer {
   /** The ID of the customer. */
@@ -23995,28 +23640,7 @@ export interface SubscriptionCustomer {
   first_user_event_at: string | null;
   avatar_url: string | null;
 }
-export const SubscriptionCustomer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    created_at: S.String,
-    modified_at: S.NullOr(S.String),
-    metadata: MetadataOutputType,
-    external_id: S.optional(S.NullOr(S.String)),
-    email: S.optional(S.NullOr(S.String)),
-    email_verified: S.Boolean,
-    type: CustomerType,
-    name: S.NullOr(S.String),
-    billing_name: S.NullOr(S.String),
-    billing_address: S.NullOr(Address),
-    tax_id: S.NullOr(SubscriptionCustomerTaxIdList),
-    locale: S.optional(S.NullOr(S.String)),
-    organization_id: S.String,
-    default_payment_method_id: S.optional(S.NullOr(S.String)),
-    deleted_at: S.NullOr(S.String),
-    first_user_event_at: S.NullOr(S.String),
-    avatar_url: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "SubscriptionCustomer" }) as any as S.Schema<SubscriptionCustomer>;
+export const SubscriptionCustomer = LicenseKeyCustomer as any as S.Schema<SubscriptionCustomer>;
 
 export type SubscriptionDiscount =
   | DiscountFixedOnceForeverDurationBase
@@ -24190,9 +23814,8 @@ export const Subscription = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Subscription" }) as any as S.Schema<Subscription>;
 
 export type SubscriptionsExportRequestOrganizationIdCase1List = Array<string>;
-export const SubscriptionsExportRequestOrganizationIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscriptionsExportRequestOrganizationIdCase1List>;
+export const SubscriptionsExportRequestOrganizationIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<SubscriptionsExportRequestOrganizationIdCase1List>;
 
 /** Filter by organization ID. */
 export type SubscriptionsExportRequestOrganizationId =
@@ -24202,9 +23825,8 @@ export const SubscriptionsExportRequestOrganizationId =
   S.Unknown as any as S.Schema<SubscriptionsExportRequestOrganizationId>;
 
 export type SubscriptionsExportRequestProductIdCase1List = Array<string>;
-export const SubscriptionsExportRequestProductIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscriptionsExportRequestProductIdCase1List>;
+export const SubscriptionsExportRequestProductIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<SubscriptionsExportRequestProductIdCase1List>;
 
 /** Filter by product ID. */
 export type SubscriptionsExportRequestProductId =
@@ -24298,9 +23920,8 @@ export const SubscriptionsExportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriptionsExportRequest>;
 
 export interface SubscriptionsExportResponse {}
-export const SubscriptionsExportResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SubscriptionsExportResponse",
-}) as any as S.Schema<SubscriptionsExportResponse>;
+export const SubscriptionsExportResponse =
+  BenefitsDeleteResponse as any as S.Schema<SubscriptionsExportResponse>;
 
 export interface SubscriptionsGetRequest {
   /** The subscription ID. */
@@ -24313,9 +23934,8 @@ export const SubscriptionsGetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubscriptionsGetRequest" }) as any as S.Schema<SubscriptionsGetRequest>;
 
 export type SubscriptionsListRequestOrganizationIdCase1List = Array<string>;
-export const SubscriptionsListRequestOrganizationIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscriptionsListRequestOrganizationIdCase1List>;
+export const SubscriptionsListRequestOrganizationIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<SubscriptionsListRequestOrganizationIdCase1List>;
 
 /** Filter by organization ID. */
 export type SubscriptionsListRequestOrganizationId =
@@ -24325,9 +23945,8 @@ export const SubscriptionsListRequestOrganizationId =
   S.Unknown as any as S.Schema<SubscriptionsListRequestOrganizationId>;
 
 export type SubscriptionsListRequestProductIdCase1List = Array<string>;
-export const SubscriptionsListRequestProductIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscriptionsListRequestProductIdCase1List>;
+export const SubscriptionsListRequestProductIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<SubscriptionsListRequestProductIdCase1List>;
 
 /** Filter by product ID. */
 export type SubscriptionsListRequestProductId = string | SubscriptionsListRequestProductIdCase1List;
@@ -24335,9 +23954,8 @@ export const SubscriptionsListRequestProductId =
   S.Unknown as any as S.Schema<SubscriptionsListRequestProductId>;
 
 export type SubscriptionsListRequestCustomerIdCase1List = Array<string>;
-export const SubscriptionsListRequestCustomerIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscriptionsListRequestCustomerIdCase1List>;
+export const SubscriptionsListRequestCustomerIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<SubscriptionsListRequestCustomerIdCase1List>;
 
 /** Filter by customer ID. */
 export type SubscriptionsListRequestCustomerId =
@@ -24347,9 +23965,8 @@ export const SubscriptionsListRequestCustomerId =
   S.Unknown as any as S.Schema<SubscriptionsListRequestCustomerId>;
 
 export type SubscriptionsListRequestExternalCustomerIdCase1List = Array<string>;
-export const SubscriptionsListRequestExternalCustomerIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscriptionsListRequestExternalCustomerIdCase1List>;
+export const SubscriptionsListRequestExternalCustomerIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<SubscriptionsListRequestExternalCustomerIdCase1List>;
 
 /** Filter by customer external ID. */
 export type SubscriptionsListRequestExternalCustomerId =
@@ -24359,9 +23976,8 @@ export const SubscriptionsListRequestExternalCustomerId =
   S.Unknown as any as S.Schema<SubscriptionsListRequestExternalCustomerId>;
 
 export type SubscriptionsListRequestDiscountIdCase1List = Array<string>;
-export const SubscriptionsListRequestDiscountIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscriptionsListRequestDiscountIdCase1List>;
+export const SubscriptionsListRequestDiscountIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<SubscriptionsListRequestDiscountIdCase1List>;
 
 /** Filter by discount ID. */
 export type SubscriptionsListRequestDiscountId =
@@ -24371,9 +23987,8 @@ export const SubscriptionsListRequestDiscountId =
   S.Unknown as any as S.Schema<SubscriptionsListRequestDiscountId>;
 
 export type SubscriptionsListRequestStatusCase1List = Array<SubscriptionStatus | (string & {})>;
-export const SubscriptionsListRequestStatusCase1List = /*@__PURE__*/ S.Array(
-  SubscriptionStatus,
-) as any as S.Schema<SubscriptionsListRequestStatusCase1List>;
+export const SubscriptionsListRequestStatusCase1List =
+  SubscriptionsExportRequestStatusCase1List as any as S.Schema<SubscriptionsListRequestStatusCase1List>;
 
 /** Filter by subscription status. */
 export type SubscriptionsListRequestStatus =
@@ -24750,11 +24365,8 @@ export const UpdateCustomerPortalCustomersCheckEmailRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<UpdateCustomerPortalCustomersCheckEmailRequest>;
 
 export interface UpdateCustomerPortalCustomersCheckEmailResponse {}
-export const UpdateCustomerPortalCustomersCheckEmailResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateCustomerPortalCustomersCheckEmailResponse",
-}) as any as S.Schema<UpdateCustomerPortalCustomersCheckEmailResponse>;
+export const UpdateCustomerPortalCustomersCheckEmailResponse =
+  CustomerPortalCustomersDeletePaymentMethodResponse as any as S.Schema<UpdateCustomerPortalCustomersCheckEmailResponse>;
 
 export interface UpdateCustomerPortalCustomersRequestEmailRequest {
   email: string;
@@ -24774,11 +24386,8 @@ export const UpdateCustomerPortalCustomersRequestEmailRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<UpdateCustomerPortalCustomersRequestEmailRequest>;
 
 export interface UpdateCustomerPortalCustomersRequestEmailResponse {}
-export const UpdateCustomerPortalCustomersRequestEmailResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateCustomerPortalCustomersRequestEmailResponse",
-}) as any as S.Schema<UpdateCustomerPortalCustomersRequestEmailResponse>;
+export const UpdateCustomerPortalCustomersRequestEmailResponse =
+  CustomerPortalCustomersDeletePaymentMethodResponse as any as S.Schema<UpdateCustomerPortalCustomersRequestEmailResponse>;
 
 export interface UpdateCustomerPortalCustomersVerifyEmailRequest {
   token: string;
@@ -24897,9 +24506,8 @@ export const WebhooksCreateWebhookEndpointRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The events that will trigger the webhook. */
 export type WebhookEndpointEventsList = Array<WebhookEventType>;
-export const WebhookEndpointEventsList = /*@__PURE__*/ S.Array(
-  WebhookEventType,
-) as any as S.Schema<WebhookEndpointEventsList>;
+export const WebhookEndpointEventsList =
+  WebhooksCreateWebhookEndpointRequestEventsList as any as S.Schema<WebhookEndpointEventsList>;
 
 /** A webhook endpoint. */
 export interface WebhookEndpoint {
@@ -24958,11 +24566,8 @@ export const WebhooksDeleteWebhookEndpointRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<WebhooksDeleteWebhookEndpointRequest>;
 
 export interface WebhooksDeleteWebhookEndpointResponse {}
-export const WebhooksDeleteWebhookEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "WebhooksDeleteWebhookEndpointResponse",
-}) as any as S.Schema<WebhooksDeleteWebhookEndpointResponse>;
+export const WebhooksDeleteWebhookEndpointResponse =
+  CustomerPortalCustomersDeletePaymentMethodResponse as any as S.Schema<WebhooksDeleteWebhookEndpointResponse>;
 
 export interface WebhooksGetWebhookEndpointRequest {
   /** The webhook endpoint ID. */
@@ -24977,9 +24582,8 @@ export const WebhooksGetWebhookEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebhooksGetWebhookEndpointRequest>;
 
 export type WebhooksListWebhookDeliveriesRequestEndpointIdCase1List = Array<string>;
-export const WebhooksListWebhookDeliveriesRequestEndpointIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WebhooksListWebhookDeliveriesRequestEndpointIdCase1List>;
+export const WebhooksListWebhookDeliveriesRequestEndpointIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<WebhooksListWebhookDeliveriesRequestEndpointIdCase1List>;
 
 /** Filter by webhook endpoint ID. */
 export type WebhooksListWebhookDeliveriesRequestEndpointId =
@@ -24994,9 +24598,8 @@ export const WebhooksListWebhookDeliveriesRequestHttpCodeClass = S.String;
 export type WebhooksListWebhookDeliveriesRequestEventTypeCase1List = Array<
   WebhookEventType | (string & {})
 >;
-export const WebhooksListWebhookDeliveriesRequestEventTypeCase1List = /*@__PURE__*/ S.Array(
-  WebhookEventType,
-) as any as S.Schema<WebhooksListWebhookDeliveriesRequestEventTypeCase1List>;
+export const WebhooksListWebhookDeliveriesRequestEventTypeCase1List =
+  WebhooksCreateWebhookEndpointRequestEventsList as any as S.Schema<WebhooksListWebhookDeliveriesRequestEventTypeCase1List>;
 
 /** Filter by webhook event type. */
 export type WebhooksListWebhookDeliveriesRequestEventType =
@@ -25127,9 +24730,8 @@ export const ListResourceWebhookDelivery = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResourceWebhookDelivery>;
 
 export type WebhooksListWebhookEndpointsRequestOrganizationIdCase1List = Array<string>;
-export const WebhooksListWebhookEndpointsRequestOrganizationIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WebhooksListWebhookEndpointsRequestOrganizationIdCase1List>;
+export const WebhooksListWebhookEndpointsRequestOrganizationIdCase1List =
+  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<WebhooksListWebhookEndpointsRequestOrganizationIdCase1List>;
 
 /** Filter by organization ID. */
 export type WebhooksListWebhookEndpointsRequestOrganizationId =
@@ -25187,11 +24789,8 @@ export const WebhooksRedeliverWebhookEventRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<WebhooksRedeliverWebhookEventRequest>;
 
 export interface WebhooksRedeliverWebhookEventResponse {}
-export const WebhooksRedeliverWebhookEventResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "WebhooksRedeliverWebhookEventResponse",
-}) as any as S.Schema<WebhooksRedeliverWebhookEventResponse>;
+export const WebhooksRedeliverWebhookEventResponse =
+  CustomerPortalCustomersDeletePaymentMethodResponse as any as S.Schema<WebhooksRedeliverWebhookEventResponse>;
 
 export interface WebhooksResetWebhookEndpointSecretRequest {
   /** The webhook endpoint ID. */
@@ -25212,9 +24811,8 @@ export const WebhooksUpdateWebhookEndpointRequestApiVersion = S.String;
 export type WebhooksUpdateWebhookEndpointRequestEventsList = Array<
   WebhookEventType | (string & {})
 >;
-export const WebhooksUpdateWebhookEndpointRequestEventsList = /*@__PURE__*/ S.Array(
-  WebhookEventType,
-) as any as S.Schema<WebhooksUpdateWebhookEndpointRequestEventsList>;
+export const WebhooksUpdateWebhookEndpointRequestEventsList =
+  WebhooksCreateWebhookEndpointRequestEventsList as any as S.Schema<WebhooksUpdateWebhookEndpointRequestEventsList>;
 
 export interface WebhooksUpdateWebhookEndpointRequest {
   /** The webhook endpoint ID. */

@@ -174,11 +174,8 @@ export const CreateOrUpdateRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateOrUpdateRepoSecretRequest>;
 
 export type CreateOrUpdateRepoSecretResponse = unknown;
-export const CreateOrUpdateRepoSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CreateOrUpdateRepoSecretResponse",
-}) as any as S.Schema<CreateOrUpdateRepoSecretResponse>;
+export const CreateOrUpdateRepoSecretResponse =
+  CreateOrUpdateOrgSecretResponse as any as S.Schema<CreateOrUpdateRepoSecretResponse>;
 
 export interface DeleteOrgSecretRequest {
   /** The organization name. The name is not case sensitive. */
@@ -223,9 +220,8 @@ export const DeleteRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRepoSecretRequest" }) as any as S.Schema<DeleteRepoSecretRequest>;
 
 export interface DeleteRepoSecretResponse {}
-export const DeleteRepoSecretResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRepoSecretResponse",
-}) as any as S.Schema<DeleteRepoSecretResponse>;
+export const DeleteRepoSecretResponse =
+  DeleteOrgSecretResponse as any as S.Schema<DeleteRepoSecretResponse>;
 
 export interface GetAlertRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -388,12 +384,7 @@ export interface CvssSeveritiesCvssV4 {
   /** The CVSS 4 score. */
   score: number | null;
 }
-export const CvssSeveritiesCvssV4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vector_string: S.NullOr(S.String),
-    score: S.NullOr(S.Number),
-  }),
-).annotate({ identifier: "CvssSeveritiesCvssV4" }) as any as S.Schema<CvssSeveritiesCvssV4>;
+export const CvssSeveritiesCvssV4 = CvssSeveritiesCvssV3 as any as S.Schema<CvssSeveritiesCvssV4>;
 
 export interface CvssSeverities {
   cvss_v3?: CvssSeveritiesCvssV3 | null;
@@ -960,9 +951,8 @@ export const DependabotAlertWithRepositoryDismissedReason = S.String;
 
 /** The users assigned to this alert. */
 export type DependabotAlertWithRepositoryAssigneesList = Array<NullableSimpleUser>;
-export const DependabotAlertWithRepositoryAssigneesList = /*@__PURE__*/ S.Array(
-  NullableSimpleUser,
-) as any as S.Schema<DependabotAlertWithRepositoryAssigneesList>;
+export const DependabotAlertWithRepositoryAssigneesList =
+  DependabotAlertAssigneesList as any as S.Schema<DependabotAlertWithRepositoryAssigneesList>;
 
 /** A GitHub repository. */
 export interface SimpleRepository {
@@ -1259,9 +1249,8 @@ export const ListAlertsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAlertsForOrgRequest" }) as any as S.Schema<ListAlertsForOrgRequest>;
 
 export type ListAlertsForOrgResponseBodyList = Array<DependabotAlertWithRepository>;
-export const ListAlertsForOrgResponseBodyList = /*@__PURE__*/ S.Array(
-  DependabotAlertWithRepository,
-) as any as S.Schema<ListAlertsForOrgResponseBodyList>;
+export const ListAlertsForOrgResponseBodyList =
+  ListAlertsForEnterpriseResponseBodyList as any as S.Schema<ListAlertsForOrgResponseBodyList>;
 
 export type ListAlertsForOrgResponse = ListAlertsForOrgResponseBodyList;
 export const ListAlertsForOrgResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1980,11 +1969,8 @@ export const RemoveSelectedRepoFromOrgSecretRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<RemoveSelectedRepoFromOrgSecretRequest>;
 
 export interface RemoveSelectedRepoFromOrgSecretResponse {}
-export const RemoveSelectedRepoFromOrgSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveSelectedRepoFromOrgSecretResponse",
-}) as any as S.Schema<RemoveSelectedRepoFromOrgSecretResponse>;
+export const RemoveSelectedRepoFromOrgSecretResponse =
+  AddSelectedRepoToOrgSecretResponse as any as S.Schema<RemoveSelectedRepoFromOrgSecretResponse>;
 
 export interface RepositoryAccessForEnterpriseRequest {
   /** The slug version of the enterprise name. */
@@ -2085,11 +2071,8 @@ export const SetRepositoryAccessDefaultLevelRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<SetRepositoryAccessDefaultLevelRequest>;
 
 export interface SetRepositoryAccessDefaultLevelResponse {}
-export const SetRepositoryAccessDefaultLevelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SetRepositoryAccessDefaultLevelResponse",
-}) as any as S.Schema<SetRepositoryAccessDefaultLevelResponse>;
+export const SetRepositoryAccessDefaultLevelResponse =
+  AddSelectedRepoToOrgSecretResponse as any as S.Schema<SetRepositoryAccessDefaultLevelResponse>;
 
 /** The default repository access level for Dependabot updates. */
 export type SetRepositoryAccessDefaultLevelForEnterpriseRequestDefaultLevel = "public" | "internal";
@@ -2117,11 +2100,8 @@ export const SetRepositoryAccessDefaultLevelForEnterpriseRequest = /*@__PURE__*/
 }) as any as S.Schema<SetRepositoryAccessDefaultLevelForEnterpriseRequest>;
 
 export interface SetRepositoryAccessDefaultLevelForEnterpriseResponse {}
-export const SetRepositoryAccessDefaultLevelForEnterpriseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SetRepositoryAccessDefaultLevelForEnterpriseResponse",
-}) as any as S.Schema<SetRepositoryAccessDefaultLevelForEnterpriseResponse>;
+export const SetRepositoryAccessDefaultLevelForEnterpriseResponse =
+  AddSelectedRepoToOrgSecretResponse as any as S.Schema<SetRepositoryAccessDefaultLevelForEnterpriseResponse>;
 
 /** An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret) endpoints. */
 export type SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList = Array<number>;
@@ -2154,11 +2134,8 @@ export const SetSelectedReposForOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetSelectedReposForOrgSecretRequest>;
 
 export interface SetSelectedReposForOrgSecretResponse {}
-export const SetSelectedReposForOrgSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SetSelectedReposForOrgSecretResponse",
-}) as any as S.Schema<SetSelectedReposForOrgSecretResponse>;
+export const SetSelectedReposForOrgSecretResponse =
+  AddSelectedRepoToOrgSecretResponse as any as S.Schema<SetSelectedReposForOrgSecretResponse>;
 
 /** The state of the Dependabot alert. A `dismissed_reason` must be provided when setting the state to `dismissed`. */
 export type UpdateAlertRequestState = "dismissed" | "open";
@@ -2175,9 +2152,8 @@ export const UpdateAlertRequestDismissedReason = S.String;
 
 /** Usernames to assign to this Dependabot Alert. Pass one or more user logins to _replace_ the set of assignees on this alert. Send an empty array (`[]`) to clear all assignees from the alert. To assign an AI agent, include the bot login (for example, `copilot-swe-agent[bot]`). */
 export type UpdateAlertRequestAssigneesList = Array<string>;
-export const UpdateAlertRequestAssigneesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAlertRequestAssigneesList>;
+export const UpdateAlertRequestAssigneesList =
+  MinimalRepositoryTopicsList as any as S.Schema<UpdateAlertRequestAssigneesList>;
 
 /** Parameters for AI agent assignment. Only used when an agent bot login is included in `assignees`. Ignored when no agent is being assigned. */
 export interface UpdateAlertRequestAgentAssignment {
@@ -2245,9 +2221,7 @@ export const UpdateRepositoryAccessForEnterpriseRequestRepositoryIdsToAddList =
 /** List of repository IDs to remove. */
 export type UpdateRepositoryAccessForEnterpriseRequestRepositoryIdsToRemoveList = Array<number>;
 export const UpdateRepositoryAccessForEnterpriseRequestRepositoryIdsToRemoveList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<UpdateRepositoryAccessForEnterpriseRequestRepositoryIdsToRemoveList>;
+  UpdateRepositoryAccessForEnterpriseRequestRepositoryIdsToAddList as any as S.Schema<UpdateRepositoryAccessForEnterpriseRequestRepositoryIdsToRemoveList>;
 
 export interface UpdateRepositoryAccessForEnterpriseRequest {
   /** The slug version of the enterprise name. */
@@ -2278,23 +2252,18 @@ export const UpdateRepositoryAccessForEnterpriseRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<UpdateRepositoryAccessForEnterpriseRequest>;
 
 export interface UpdateRepositoryAccessForEnterpriseResponse {}
-export const UpdateRepositoryAccessForEnterpriseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateRepositoryAccessForEnterpriseResponse",
-}) as any as S.Schema<UpdateRepositoryAccessForEnterpriseResponse>;
+export const UpdateRepositoryAccessForEnterpriseResponse =
+  AddSelectedRepoToOrgSecretResponse as any as S.Schema<UpdateRepositoryAccessForEnterpriseResponse>;
 
 /** List of repository IDs to add. */
 export type UpdateRepositoryAccessForOrgRequestRepositoryIdsToAddList = Array<number>;
-export const UpdateRepositoryAccessForOrgRequestRepositoryIdsToAddList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateRepositoryAccessForOrgRequestRepositoryIdsToAddList>;
+export const UpdateRepositoryAccessForOrgRequestRepositoryIdsToAddList =
+  SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList as any as S.Schema<UpdateRepositoryAccessForOrgRequestRepositoryIdsToAddList>;
 
 /** List of repository IDs to remove. */
 export type UpdateRepositoryAccessForOrgRequestRepositoryIdsToRemoveList = Array<number>;
-export const UpdateRepositoryAccessForOrgRequestRepositoryIdsToRemoveList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateRepositoryAccessForOrgRequestRepositoryIdsToRemoveList>;
+export const UpdateRepositoryAccessForOrgRequestRepositoryIdsToRemoveList =
+  SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList as any as S.Schema<UpdateRepositoryAccessForOrgRequestRepositoryIdsToRemoveList>;
 
 export interface UpdateRepositoryAccessForOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -2317,11 +2286,8 @@ export const UpdateRepositoryAccessForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRepositoryAccessForOrgRequest>;
 
 export interface UpdateRepositoryAccessForOrgResponse {}
-export const UpdateRepositoryAccessForOrgResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateRepositoryAccessForOrgResponse",
-}) as any as S.Schema<UpdateRepositoryAccessForOrgResponse>;
+export const UpdateRepositoryAccessForOrgResponse =
+  AddSelectedRepoToOrgSecretResponse as any as S.Schema<UpdateRepositoryAccessForOrgResponse>;
 
 export type AddSelectedRepoToOrgSecretError = Conflict | GithubOpError;
 /** Add selected repository to an organization secret Adds a repository to an organization secret when the `visibility` for repository access is set to `selected`. The visibility is set when you [Create or update an organization secret](https://docs.github.com/rest/dependabot/secrets#create-or-update-an-organization-secret). OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. */

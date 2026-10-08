@@ -88,9 +88,8 @@ export const RulesBulkCreateRequestDeleteRulesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RulesBulkCreateRequestDeleteRulesList>;
 
 export type RulesBulkCreateRequestRulesItemPathsList = Array<string>;
-export const RulesBulkCreateRequestRulesItemPathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesBulkCreateRequestRulesItemPathsList>;
+export const RulesBulkCreateRequestRulesItemPathsList =
+  RulesBulkCreateRequestDeleteRulesList as any as S.Schema<RulesBulkCreateRequestRulesItemPathsList>;
 
 export interface RulesBulkCreateRequestRulesItem {
   /** The Web Analytics rule identifier. */
@@ -145,9 +144,8 @@ export const BulkCreateRulesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BulkCreateRulesRequest" }) as any as S.Schema<BulkCreateRulesRequest>;
 
 export type RulesBulkCreateResponseRulesItemPathsList = Array<string>;
-export const RulesBulkCreateResponseRulesItemPathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesBulkCreateResponseRulesItemPathsList>;
+export const RulesBulkCreateResponseRulesItemPathsList =
+  RulesBulkCreateRequestDeleteRulesList as any as S.Schema<RulesBulkCreateResponseRulesItemPathsList>;
 
 export interface RulesBulkCreateResponseRulesItem {
   /** The Web Analytics rule identifier. */
@@ -216,9 +214,8 @@ export const BulkCreateRulesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BulkCreateRulesResponse" }) as any as S.Schema<BulkCreateRulesResponse>;
 
 export type RulesCreateRequestPathsList = Array<string>;
-export const RulesCreateRequestPathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesCreateRequestPathsList>;
+export const RulesCreateRequestPathsList =
+  RulesBulkCreateRequestDeleteRulesList as any as S.Schema<RulesCreateRequestPathsList>;
 
 export interface CreateRuleRequest {
   /** Identifier. */
@@ -248,9 +245,8 @@ export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateRuleRequest" }) as any as S.Schema<CreateRuleRequest>;
 
 export type RulesCreateResponsePathsList = Array<string>;
-export const RulesCreateResponsePathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesCreateResponsePathsList>;
+export const RulesCreateResponsePathsList =
+  RulesBulkCreateRequestDeleteRulesList as any as S.Schema<RulesCreateResponsePathsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateRuleResponse {
@@ -301,9 +297,8 @@ export const CreateSiteInfoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateSiteInfoRequest" }) as any as S.Schema<CreateSiteInfoRequest>;
 
 export type SiteInfoCreateResponseRulesItemPathsList = Array<string>;
-export const SiteInfoCreateResponseRulesItemPathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SiteInfoCreateResponseRulesItemPathsList>;
+export const SiteInfoCreateResponseRulesItemPathsList =
+  RulesBulkCreateRequestDeleteRulesList as any as S.Schema<SiteInfoCreateResponseRulesItemPathsList>;
 
 export interface SiteInfoCreateResponseRulesItem {
   /** The Web Analytics rule identifier. */
@@ -319,24 +314,12 @@ export interface SiteInfoCreateResponseRulesItem {
   paths?: SiteInfoCreateResponseRulesItemPathsList | null;
   priority?: number | null;
 }
-export const SiteInfoCreateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    created: S.optional(S.NullOr(S.String)),
-    host: S.optional(S.NullOr(S.String)),
-    inclusive: S.optional(S.NullOr(S.Boolean)),
-    isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
-    paths: S.optional(S.NullOr(SiteInfoCreateResponseRulesItemPathsList)),
-    priority: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "SiteInfoCreateResponseRulesItem",
-}) as any as S.Schema<SiteInfoCreateResponseRulesItem>;
+export const SiteInfoCreateResponseRulesItem =
+  RulesBulkCreateResponseRulesItem as any as S.Schema<SiteInfoCreateResponseRulesItem>;
 
 export type SiteInfoCreateResponseRulesList = Array<SiteInfoCreateResponseRulesItem>;
-export const SiteInfoCreateResponseRulesList = /*@__PURE__*/ S.Array(
-  SiteInfoCreateResponseRulesItem,
-) as any as S.Schema<SiteInfoCreateResponseRulesList>;
+export const SiteInfoCreateResponseRulesList =
+  RulesBulkCreateResponseRulesList as any as S.Schema<SiteInfoCreateResponseRulesList>;
 
 export type SiteInfoCreateResponseRuleset = RulesBulkCreateResponseRuleset;
 export const SiteInfoCreateResponseRuleset = RulesBulkCreateResponseRuleset;
@@ -456,9 +439,8 @@ export const GetSiteInfoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSiteInfoRequest" }) as any as S.Schema<GetSiteInfoRequest>;
 
 export type SiteInfoGetResponseRulesItemPathsList = Array<string>;
-export const SiteInfoGetResponseRulesItemPathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SiteInfoGetResponseRulesItemPathsList>;
+export const SiteInfoGetResponseRulesItemPathsList =
+  RulesBulkCreateRequestDeleteRulesList as any as S.Schema<SiteInfoGetResponseRulesItemPathsList>;
 
 export interface SiteInfoGetResponseRulesItem {
   /** The Web Analytics rule identifier. */
@@ -474,24 +456,12 @@ export interface SiteInfoGetResponseRulesItem {
   paths?: SiteInfoGetResponseRulesItemPathsList | null;
   priority?: number | null;
 }
-export const SiteInfoGetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    created: S.optional(S.NullOr(S.String)),
-    host: S.optional(S.NullOr(S.String)),
-    inclusive: S.optional(S.NullOr(S.Boolean)),
-    isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
-    paths: S.optional(S.NullOr(SiteInfoGetResponseRulesItemPathsList)),
-    priority: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "SiteInfoGetResponseRulesItem",
-}) as any as S.Schema<SiteInfoGetResponseRulesItem>;
+export const SiteInfoGetResponseRulesItem =
+  RulesBulkCreateResponseRulesItem as any as S.Schema<SiteInfoGetResponseRulesItem>;
 
 export type SiteInfoGetResponseRulesList = Array<SiteInfoGetResponseRulesItem>;
-export const SiteInfoGetResponseRulesList = /*@__PURE__*/ S.Array(
-  SiteInfoGetResponseRulesItem,
-) as any as S.Schema<SiteInfoGetResponseRulesList>;
+export const SiteInfoGetResponseRulesList =
+  RulesBulkCreateResponseRulesList as any as S.Schema<SiteInfoGetResponseRulesList>;
 
 export type SiteInfoGetResponseRuleset = RulesBulkCreateResponseRuleset;
 export const SiteInfoGetResponseRuleset = RulesBulkCreateResponseRuleset;
@@ -513,18 +483,7 @@ export interface GetSiteInfoResponse {
   /** The hostname the site measures (gray-clouded sites). */
   host?: string | null;
 }
-export const GetSiteInfoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoInstall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_install"))),
-    created: S.optional(S.NullOr(S.String)),
-    rules: S.optional(S.NullOr(SiteInfoGetResponseRulesList)),
-    ruleset: S.optional(S.NullOr(RulesBulkCreateResponseRuleset)),
-    siteTag: S.optional(S.NullOr(S.String).pipe(T.Body("site_tag"))),
-    siteToken: S.optional(S.NullOr(S.String).pipe(T.Body("site_token"))),
-    snippet: S.optional(S.NullOr(S.String)),
-    host: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetSiteInfoResponse" }) as any as S.Schema<GetSiteInfoResponse>;
+export const GetSiteInfoResponse = CreateSiteInfoResponse as any as S.Schema<GetSiteInfoResponse>;
 
 export interface ListRulesRequest {
   /** Identifier. */
@@ -544,9 +503,8 @@ export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRulesRequest" }) as any as S.Schema<ListRulesRequest>;
 
 export type RulesListResponseRulesItemPathsList = Array<string>;
-export const RulesListResponseRulesItemPathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesListResponseRulesItemPathsList>;
+export const RulesListResponseRulesItemPathsList =
+  RulesBulkCreateRequestDeleteRulesList as any as S.Schema<RulesListResponseRulesItemPathsList>;
 
 export interface RulesListResponseRulesItem {
   /** The Web Analytics rule identifier. */
@@ -562,24 +520,12 @@ export interface RulesListResponseRulesItem {
   paths?: RulesListResponseRulesItemPathsList | null;
   priority?: number | null;
 }
-export const RulesListResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    created: S.optional(S.NullOr(S.String)),
-    host: S.optional(S.NullOr(S.String)),
-    inclusive: S.optional(S.NullOr(S.Boolean)),
-    isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
-    paths: S.optional(S.NullOr(RulesListResponseRulesItemPathsList)),
-    priority: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "RulesListResponseRulesItem",
-}) as any as S.Schema<RulesListResponseRulesItem>;
+export const RulesListResponseRulesItem =
+  RulesBulkCreateResponseRulesItem as any as S.Schema<RulesListResponseRulesItem>;
 
 export type RulesListResponseRulesList = Array<RulesListResponseRulesItem>;
-export const RulesListResponseRulesList = /*@__PURE__*/ S.Array(
-  RulesListResponseRulesItem,
-) as any as S.Schema<RulesListResponseRulesList>;
+export const RulesListResponseRulesList =
+  RulesBulkCreateResponseRulesList as any as S.Schema<RulesListResponseRulesList>;
 
 export type RulesListResponseRuleset = RulesBulkCreateResponseRuleset;
 export const RulesListResponseRuleset = RulesBulkCreateResponseRuleset;
@@ -590,12 +536,7 @@ export interface ListRulesResponse {
   rules?: RulesListResponseRulesList | null;
   ruleset?: RulesBulkCreateResponseRuleset | null;
 }
-export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rules: S.optional(S.NullOr(RulesListResponseRulesList)),
-    ruleset: S.optional(S.NullOr(RulesBulkCreateResponseRuleset)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "ListRulesResponse" }) as any as S.Schema<ListRulesResponse>;
+export const ListRulesResponse = BulkCreateRulesResponse as any as S.Schema<ListRulesResponse>;
 
 export type SiteInfoListRequestOrderBy = "host" | "created";
 export const SiteInfoListRequestOrderBy = S.String;
@@ -622,9 +563,8 @@ export const ListSiteInfosRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSiteInfosRequest" }) as any as S.Schema<ListSiteInfosRequest>;
 
 export type SiteInfoListResultItemRulesItemPathsList = Array<string>;
-export const SiteInfoListResultItemRulesItemPathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SiteInfoListResultItemRulesItemPathsList>;
+export const SiteInfoListResultItemRulesItemPathsList =
+  RulesBulkCreateRequestDeleteRulesList as any as S.Schema<SiteInfoListResultItemRulesItemPathsList>;
 
 export interface SiteInfoListResultItemRulesItem {
   /** The Web Analytics rule identifier. */
@@ -640,24 +580,12 @@ export interface SiteInfoListResultItemRulesItem {
   paths?: SiteInfoListResultItemRulesItemPathsList | null;
   priority?: number | null;
 }
-export const SiteInfoListResultItemRulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    created: S.optional(S.NullOr(S.String)),
-    host: S.optional(S.NullOr(S.String)),
-    inclusive: S.optional(S.NullOr(S.Boolean)),
-    isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
-    paths: S.optional(S.NullOr(SiteInfoListResultItemRulesItemPathsList)),
-    priority: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "SiteInfoListResultItemRulesItem",
-}) as any as S.Schema<SiteInfoListResultItemRulesItem>;
+export const SiteInfoListResultItemRulesItem =
+  RulesBulkCreateResponseRulesItem as any as S.Schema<SiteInfoListResultItemRulesItem>;
 
 export type SiteInfoListResultItemRulesList = Array<SiteInfoListResultItemRulesItem>;
-export const SiteInfoListResultItemRulesList = /*@__PURE__*/ S.Array(
-  SiteInfoListResultItemRulesItem,
-) as any as S.Schema<SiteInfoListResultItemRulesList>;
+export const SiteInfoListResultItemRulesList =
+  RulesBulkCreateResponseRulesList as any as S.Schema<SiteInfoListResultItemRulesList>;
 
 export type SiteInfoListResultItemRuleset = RulesBulkCreateResponseRuleset;
 export const SiteInfoListResultItemRuleset = RulesBulkCreateResponseRuleset;
@@ -710,9 +638,8 @@ export const ListSiteInfosResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSiteInfosResponse" }) as any as S.Schema<ListSiteInfosResponse>;
 
 export type RulesUpdateRequestPathsList = Array<string>;
-export const RulesUpdateRequestPathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesUpdateRequestPathsList>;
+export const RulesUpdateRequestPathsList =
+  RulesBulkCreateRequestDeleteRulesList as any as S.Schema<RulesUpdateRequestPathsList>;
 
 export interface UpdateRuleRequest {
   /** Identifier. */
@@ -749,9 +676,8 @@ export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateRuleRequest" }) as any as S.Schema<UpdateRuleRequest>;
 
 export type RulesUpdateResponsePathsList = Array<string>;
-export const RulesUpdateResponsePathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesUpdateResponsePathsList>;
+export const RulesUpdateResponsePathsList =
+  RulesBulkCreateRequestDeleteRulesList as any as S.Schema<RulesUpdateResponsePathsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateRuleResponse {
@@ -768,17 +694,7 @@ export interface UpdateRuleResponse {
   paths?: RulesUpdateResponsePathsList | null;
   priority?: number | null;
 }
-export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    created: S.optional(S.NullOr(S.String)),
-    host: S.optional(S.NullOr(S.String)),
-    inclusive: S.optional(S.NullOr(S.Boolean)),
-    isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
-    paths: S.optional(S.NullOr(RulesUpdateResponsePathsList)),
-    priority: S.optional(S.NullOr(S.Number)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UpdateRuleResponse" }) as any as S.Schema<UpdateRuleResponse>;
+export const UpdateRuleResponse = CreateRuleResponse as any as S.Schema<UpdateRuleResponse>;
 
 export interface UpdateSiteInfoRequest {
   /** Identifier. */
@@ -813,9 +729,8 @@ export const UpdateSiteInfoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateSiteInfoRequest" }) as any as S.Schema<UpdateSiteInfoRequest>;
 
 export type SiteInfoUpdateResponseRulesItemPathsList = Array<string>;
-export const SiteInfoUpdateResponseRulesItemPathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SiteInfoUpdateResponseRulesItemPathsList>;
+export const SiteInfoUpdateResponseRulesItemPathsList =
+  RulesBulkCreateRequestDeleteRulesList as any as S.Schema<SiteInfoUpdateResponseRulesItemPathsList>;
 
 export interface SiteInfoUpdateResponseRulesItem {
   /** The Web Analytics rule identifier. */
@@ -831,24 +746,12 @@ export interface SiteInfoUpdateResponseRulesItem {
   paths?: SiteInfoUpdateResponseRulesItemPathsList | null;
   priority?: number | null;
 }
-export const SiteInfoUpdateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    created: S.optional(S.NullOr(S.String)),
-    host: S.optional(S.NullOr(S.String)),
-    inclusive: S.optional(S.NullOr(S.Boolean)),
-    isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
-    paths: S.optional(S.NullOr(SiteInfoUpdateResponseRulesItemPathsList)),
-    priority: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "SiteInfoUpdateResponseRulesItem",
-}) as any as S.Schema<SiteInfoUpdateResponseRulesItem>;
+export const SiteInfoUpdateResponseRulesItem =
+  RulesBulkCreateResponseRulesItem as any as S.Schema<SiteInfoUpdateResponseRulesItem>;
 
 export type SiteInfoUpdateResponseRulesList = Array<SiteInfoUpdateResponseRulesItem>;
-export const SiteInfoUpdateResponseRulesList = /*@__PURE__*/ S.Array(
-  SiteInfoUpdateResponseRulesItem,
-) as any as S.Schema<SiteInfoUpdateResponseRulesList>;
+export const SiteInfoUpdateResponseRulesList =
+  RulesBulkCreateResponseRulesList as any as S.Schema<SiteInfoUpdateResponseRulesList>;
 
 export type SiteInfoUpdateResponseRuleset = RulesBulkCreateResponseRuleset;
 export const SiteInfoUpdateResponseRuleset = RulesBulkCreateResponseRuleset;
@@ -870,18 +773,8 @@ export interface UpdateSiteInfoResponse {
   /** The hostname the site measures (gray-clouded sites). */
   host?: string | null;
 }
-export const UpdateSiteInfoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoInstall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_install"))),
-    created: S.optional(S.NullOr(S.String)),
-    rules: S.optional(S.NullOr(SiteInfoUpdateResponseRulesList)),
-    ruleset: S.optional(S.NullOr(RulesBulkCreateResponseRuleset)),
-    siteTag: S.optional(S.NullOr(S.String).pipe(T.Body("site_tag"))),
-    siteToken: S.optional(S.NullOr(S.String).pipe(T.Body("site_token"))),
-    snippet: S.optional(S.NullOr(S.String)),
-    host: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UpdateSiteInfoResponse" }) as any as S.Schema<UpdateSiteInfoResponse>;
+export const UpdateSiteInfoResponse =
+  CreateSiteInfoResponse as any as S.Schema<UpdateSiteInfoResponse>;
 
 export type BulkCreateRulesError = CloudflareOpError;
 /** Modifies one or more rules in a Web Analytics ruleset with a single request. */

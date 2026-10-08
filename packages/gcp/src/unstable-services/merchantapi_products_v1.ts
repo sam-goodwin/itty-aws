@@ -326,12 +326,7 @@ export interface ShippingDimension {
   /** The unit of value. */
   unit?: string;
 }
-export const ShippingDimension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.Number),
-    unit: S.optional(S.String),
-  }),
-).annotate({ identifier: "ShippingDimension" }) as any as S.Schema<ShippingDimension>;
+export const ShippingDimension = ShippingWeight as any as S.Schema<ShippingDimension>;
 
 /** The price represented as a number and currency. */
 export interface Price {
@@ -1038,12 +1033,7 @@ export interface ProductDimension {
   /** Required. The dimension value represented as a number. The value can have a maximum precision of four decimal places. */
   value?: number;
 }
-export const ProductDimension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unit: S.optional(S.String),
-    value: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ProductDimension" }) as any as S.Schema<ProductDimension>;
+export const ProductDimension = UnitPricingMeasure as any as S.Schema<ProductDimension>;
 
 export type ProductAttributesPauseEnum = "PAUSE_UNSPECIFIED" | "ADS" | "ALL";
 export const ProductAttributesPauseEnum = S.String;
@@ -1076,12 +1066,7 @@ export interface ProductWeight {
   /** Required. The weight unit. Acceptable values are: * "`g`" * "`kg`" * "`oz`" * "`lb`" */
   unit?: string;
 }
-export const ProductWeight = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.Number),
-    unit: S.optional(S.String),
-  }),
-).annotate({ identifier: "ProductWeight" }) as any as S.Schema<ProductWeight>;
+export const ProductWeight = ShippingWeight as any as S.Schema<ProductWeight>;
 
 export type ProductAttributesAvailabilityEnum =
   | "AVAILABILITY_UNSPECIFIED"

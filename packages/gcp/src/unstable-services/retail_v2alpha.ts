@@ -1805,7 +1805,7 @@ export const GoogleCloudRetailV2alphaPromotionList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GoogleCloudRetailV2alphaPromotionList>;
 
 export type IntegerList = Array<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+export const IntegerList = DoubleList as any as S.Schema<IntegerList>;
 
 /** The rating of a Product. */
 export interface GoogleCloudRetailV2alphaRating {
@@ -2977,14 +2977,8 @@ export interface GoogleCloudRetailV2alphaExportProductsRequest {
   /** Deprecated: This field is deprecated. Any filter provided will be ignored. */
   filter?: string;
 }
-export const GoogleCloudRetailV2alphaExportProductsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    outputConfig: S.optional(GoogleCloudRetailV2alphaOutputConfig),
-    filter: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2alphaExportProductsRequest",
-}) as any as S.Schema<GoogleCloudRetailV2alphaExportProductsRequest>;
+export const GoogleCloudRetailV2alphaExportProductsRequest =
+  GoogleCloudRetailV2alphaExportAnalyticsMetricsRequest as any as S.Schema<GoogleCloudRetailV2alphaExportProductsRequest>;
 
 export interface ExportProjectsLocationsCatalogsBranchesProductsRequest {
   /** Required. Resource name of a Branch, and `default_branch` for branch_id component is supported. For example `projects/1234/locations/global/catalogs/default_catalog/branches/default_branch` */
@@ -4597,13 +4591,7 @@ export interface GoogleCloudRetailV2alphaListGenerativeQuestionConfigsResponse {
   generativeQuestionConfigs?: GoogleCloudRetailV2alphaGenerativeQuestionConfigList;
 }
 export const GoogleCloudRetailV2alphaListGenerativeQuestionConfigsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      generativeQuestionConfigs: S.optional(GoogleCloudRetailV2alphaGenerativeQuestionConfigList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2alphaListGenerativeQuestionConfigsResponse",
-  }) as any as S.Schema<GoogleCloudRetailV2alphaListGenerativeQuestionConfigsResponse>;
+  GoogleCloudRetailV2alphaBatchUpdateGenerativeQuestionConfigsResponse as any as S.Schema<GoogleCloudRetailV2alphaListGenerativeQuestionConfigsResponse>;
 
 export interface ListProjectsLocationsCatalogsMerchantCenterAccountLinksRequest {
   /** Required. The parent Catalog of the resource. It must match this format: `projects/{PROJECT_NUMBER}/locations/global/catalogs/{CATALOG_ID}` */
@@ -5138,14 +5126,8 @@ export interface GoogleCloudRetailV2alphaPurgeUserEventsRequest {
   /** Required. The filter string to specify the events to be deleted with a length limit of 5,000 characters. Empty string filter is not allowed. The eligible fields for filtering are: * `eventType`: Double quoted UserEvent.event_type string. * `eventTime`: in ISO 8601 "zulu" format. * `visitorId`: Double quoted string. Specifying this will delete all events associated with a visitor. * `userId`: Double quoted string. Specifying this will delete all events associated with a user. Examples: * Deleting all events in a time range: `eventTime > "2012-04-23T18:25:43.511Z" eventTime < "2012-04-23T18:30:43.511Z"` * Deleting specific eventType in time range: `eventTime > "2012-04-23T18:25:43.511Z" eventType = "detail-page-view"` * Deleting all events for a specific visitor: `visitorId = "visitor1024"` The filtering fields are assumed to have an implicit AND. */
   filter?: string;
 }
-export const GoogleCloudRetailV2alphaPurgeUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    force: S.optional(S.Boolean),
-    filter: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2alphaPurgeUserEventsRequest",
-}) as any as S.Schema<GoogleCloudRetailV2alphaPurgeUserEventsRequest>;
+export const GoogleCloudRetailV2alphaPurgeUserEventsRequest =
+  GoogleCloudRetailV2alphaPurgeProductsRequest as any as S.Schema<GoogleCloudRetailV2alphaPurgeUserEventsRequest>;
 
 export interface PurgeProjectsLocationsCatalogsUserEventsRequest {
   /** Required. The resource name of the catalog under which the events are created. The format is `projects/${projectId}/locations/global/catalogs/${catalogId}` */
@@ -5252,13 +5234,8 @@ export interface GoogleCloudRetailV2alphaRemoveControlRequest {
   /** Required. The id of the control to apply. Assumed to be in the same catalog as the serving config. */
   controlId?: string;
 }
-export const GoogleCloudRetailV2alphaRemoveControlRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    controlId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2alphaRemoveControlRequest",
-}) as any as S.Schema<GoogleCloudRetailV2alphaRemoveControlRequest>;
+export const GoogleCloudRetailV2alphaRemoveControlRequest =
+  GoogleCloudRetailV2alphaAddControlRequest as any as S.Schema<GoogleCloudRetailV2alphaRemoveControlRequest>;
 
 export interface RemoveControlProjectsLocationsCatalogsServingConfigsRequest {
   /** Required. The source ServingConfig resource name . Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}` */
@@ -5924,9 +5901,7 @@ export const GoogleCloudRetailV2alphaSearchResponseConversationalSearchResultSug
 export type GoogleCloudRetailV2alphaSearchResponseConversationalSearchResultSuggestedAnswerList =
   Array<GoogleCloudRetailV2alphaConversationalSearchResponseFollowupQuestionSuggestedAnswer>;
 export const GoogleCloudRetailV2alphaSearchResponseConversationalSearchResultSuggestedAnswerList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2alphaConversationalSearchResponseFollowupQuestionSuggestedAnswer,
-  ) as any as S.Schema<GoogleCloudRetailV2alphaSearchResponseConversationalSearchResultSuggestedAnswerList>;
+  GoogleCloudRetailV2alphaConversationalSearchResponseFollowupQuestionSuggestedAnswerList as any as S.Schema<GoogleCloudRetailV2alphaSearchResponseConversationalSearchResultSuggestedAnswerList>;
 
 /** Additional filter that client side need to apply. */
 export type GoogleCloudRetailV2alphaSearchResponseConversationalSearchResultAdditionalFilter =
@@ -5937,9 +5912,7 @@ export const GoogleCloudRetailV2alphaSearchResponseConversationalSearchResultAdd
 export type GoogleCloudRetailV2alphaSearchResponseConversationalSearchResultAdditionalFilterList =
   Array<GoogleCloudRetailV2alphaConversationalSearchResponseFollowupQuestionSuggestedAnswer>;
 export const GoogleCloudRetailV2alphaSearchResponseConversationalSearchResultAdditionalFilterList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2alphaConversationalSearchResponseFollowupQuestionSuggestedAnswer,
-  ) as any as S.Schema<GoogleCloudRetailV2alphaSearchResponseConversationalSearchResultAdditionalFilterList>;
+  GoogleCloudRetailV2alphaConversationalSearchResponseFollowupQuestionSuggestedAnswerList as any as S.Schema<GoogleCloudRetailV2alphaSearchResponseConversationalSearchResultAdditionalFilterList>;
 
 /** This field specifies all related information that is needed on client side for UI rendering of conversational retail search. */
 export interface GoogleCloudRetailV2alphaSearchResponseConversationalSearchResult {

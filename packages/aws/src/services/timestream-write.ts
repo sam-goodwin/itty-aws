@@ -565,9 +565,7 @@ export const DeleteTableRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteTableRequest" }) as any as S.Schema<DeleteTableRequest>;
 export interface DeleteTableResponse {}
-export const DeleteTableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTableResponse",
-}) as any as S.Schema<DeleteTableResponse>;
+export const DeleteTableResponse = DeleteDatabaseResponse as any as S.Schema<DeleteTableResponse>;
 export interface DescribeBatchLoadTaskRequest {
   TaskId: string;
 }
@@ -657,9 +655,8 @@ export const DescribeDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeDatabaseResponse {
   Database?: Database;
 }
-export const DescribeDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Database: S.optional(Database) }),
-).annotate({ identifier: "DescribeDatabaseResponse" }) as any as S.Schema<DescribeDatabaseResponse>;
+export const DescribeDatabaseResponse =
+  CreateDatabaseResponse as any as S.Schema<DescribeDatabaseResponse>;
 export interface DescribeEndpointsRequest {}
 export const DescribeEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -693,9 +690,7 @@ export const DescribeTableRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeTableResponse {
   Table?: Table;
 }
-export const DescribeTableResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Table: S.optional(Table) }),
-).annotate({ identifier: "DescribeTableResponse" }) as any as S.Schema<DescribeTableResponse>;
+export const DescribeTableResponse = CreateTableResponse as any as S.Schema<DescribeTableResponse>;
 export type PageLimit = number;
 export interface ListBatchLoadTasksRequest {
   NextToken?: string;
@@ -812,9 +807,8 @@ export const ResumeBatchLoadTaskRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResumeBatchLoadTaskRequest",
 }) as any as S.Schema<ResumeBatchLoadTaskRequest>;
 export interface ResumeBatchLoadTaskResponse {}
-export const ResumeBatchLoadTaskResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResumeBatchLoadTaskResponse",
-}) as any as S.Schema<ResumeBatchLoadTaskResponse>;
+export const ResumeBatchLoadTaskResponse =
+  DeleteDatabaseResponse as any as S.Schema<ResumeBatchLoadTaskResponse>;
 export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Tag[];
@@ -825,9 +819,7 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteDatabaseResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
 export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
@@ -840,9 +832,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteDatabaseResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDatabaseRequest {
   DatabaseName: string;
   KmsKeyId: string;
@@ -855,9 +846,8 @@ export const UpdateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDatabaseResponse {
   Database?: Database;
 }
-export const UpdateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Database: S.optional(Database) }),
-).annotate({ identifier: "UpdateDatabaseResponse" }) as any as S.Schema<UpdateDatabaseResponse>;
+export const UpdateDatabaseResponse =
+  CreateDatabaseResponse as any as S.Schema<UpdateDatabaseResponse>;
 export interface UpdateTableRequest {
   DatabaseName: string;
   TableName: string;
@@ -877,9 +867,7 @@ export const UpdateTableRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateTableResponse {
   Table?: Table;
 }
-export const UpdateTableResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Table: S.optional(Table) }),
-).annotate({ identifier: "UpdateTableResponse" }) as any as S.Schema<UpdateTableResponse>;
+export const UpdateTableResponse = CreateTableResponse as any as S.Schema<UpdateTableResponse>;
 export type SchemaValue = string;
 export type DimensionValueType = "VARCHAR" | (string & {});
 export const DimensionValueType = S.String;

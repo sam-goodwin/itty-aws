@@ -170,11 +170,8 @@ export interface RemoveReactionResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const RemoveReactionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "RemoveReactionResponse" }) as any as S.Schema<RemoveReactionResponse>;
+export const RemoveReactionResponse =
+  AddReactionResponse as any as S.Schema<RemoveReactionResponse>;
 
 export type AddReactionError = SlackOpError;
 /** Adds a reaction to an item. Required scopes -- bot: `reactions:write`; user: `reactions:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `already_reacted` -- The specified item already has the user/reaction combination. - `bad_timestamp` -- Value passed for `timestamp` was invalid. - `channel_not_found` -- Value passed for `channel` is invalid. - `external_channel_migrating` -- The channel is in the process of being migrated. - `invalid_name` -- Value passed for `name` was invalid. - `is_archived` -- Channel specified has been archived. - `message_not_found` -- Message specified by `channel` and `timestamp` does not exist. - `no_item_specified` -- combination of `channel` and `timestamp` was not specified. - `not_reactable` -- Whatever you passed in, like a `file` or `file_comment`, can't be reacted to anymore. Your app can react to messages though. - `thread_locked` -- Reactions are disabled as the specified message is part of a locked thread. - `too_many_emoji` -- The limit for distinct reactions (i.e emoji) on the item has been reached. - `too_many_reactions` -- The limit for reactions a person may add to the item has been reached. - `no_access` -- User does not have access to react to this canvas. See https://docs.slack.dev/reference/methods/reactions.add */

@@ -196,9 +196,8 @@ export const AddResourcesToEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddResourcesToEnvironmentRequest>;
 
 export type EnvironmentDatabasesIdsList = Array<string>;
-export const EnvironmentDatabasesIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnvironmentDatabasesIdsList>;
+export const EnvironmentDatabasesIdsList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<EnvironmentDatabasesIdsList>;
 
 export interface CidrBlockAndDescription {
   cidrBlock: string;
@@ -218,19 +217,16 @@ export const EnvironmentIpAllowListList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<EnvironmentIpAllowListList>;
 
 export type EnvironmentRedisIdsList = Array<string>;
-export const EnvironmentRedisIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnvironmentRedisIdsList>;
+export const EnvironmentRedisIdsList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<EnvironmentRedisIdsList>;
 
 export type EnvironmentServiceIdsList = Array<string>;
-export const EnvironmentServiceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnvironmentServiceIdsList>;
+export const EnvironmentServiceIdsList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<EnvironmentServiceIdsList>;
 
 export type EnvironmentEnvGroupIdsList = Array<string>;
-export const EnvironmentEnvGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnvironmentEnvGroupIdsList>;
+export const EnvironmentEnvGroupIdsList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<EnvironmentEnvGroupIdsList>;
 
 /** Indicates whether an environment is `unprotected` or `protected`. Only admin users can perform destructive actions in `protected` environments. */
 export type ProtectedStatus = "unprotected" | "protected";
@@ -539,19 +535,16 @@ export const CancelTaskRunRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CancelTaskRunRequest" }) as any as S.Schema<CancelTaskRunRequest>;
 
 export interface CancelTaskRunResponse {}
-export const CancelTaskRunResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CancelTaskRunResponse",
-}) as any as S.Schema<CancelTaskRunResponse>;
+export const CancelTaskRunResponse =
+  CancelCronJobRunResponse as any as S.Schema<CancelTaskRunResponse>;
 
 export type BuildFilterPathsList2 = Array<string>;
-export const BuildFilterPathsList2 = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BuildFilterPathsList2>;
+export const BuildFilterPathsList2 =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<BuildFilterPathsList2>;
 
 export type BuildFilterIgnoredPathsList2 = Array<string>;
-export const BuildFilterIgnoredPathsList2 = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BuildFilterIgnoredPathsList2>;
+export const BuildFilterIgnoredPathsList2 =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<BuildFilterIgnoredPathsList2>;
 
 /** Glob patterns matched against files changed by a commit. When set, a commit only triggers a build when at least one changed file matches `paths` and none match `ignoredPaths`. Useful for monorepos where a single repo backs many services. */
 export interface BuildFilter2 {
@@ -632,9 +625,8 @@ export const CreateBuildSourceRequestImage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateBuildSourceRequestImage>;
 
 export type CreateBuildSourceRequestServiceIdsList = Array<string>;
-export const CreateBuildSourceRequestServiceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateBuildSourceRequestServiceIdsList>;
+export const CreateBuildSourceRequestServiceIdsList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<CreateBuildSourceRequestServiceIdsList>;
 
 export interface SchemaItemCase0 {
   key: string;
@@ -669,12 +661,7 @@ export interface Items {
   name: string;
   content: string;
 }
-export const Items = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    content: S.String,
-  }),
-).annotate({ identifier: "Items" }) as any as S.Schema<Items>;
+export const Items = SecretFile as any as S.Schema<Items>;
 
 /** Secret files for the build source's build. Only valid for `git` sources. */
 export type CreateBuildSourceRequestSecretFilesList = Array<Items>;
@@ -684,9 +671,8 @@ export const CreateBuildSourceRequestSecretFilesList = /*@__PURE__*/ S.Array(
 
 /** IDs of env groups to link to the build source. Only valid for `git` sources; env groups must belong to the same workspace and must not be scoped to an environment. */
 export type CreateBuildSourceRequestEnvGroupIdsList = Array<string>;
-export const CreateBuildSourceRequestEnvGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateBuildSourceRequestEnvGroupIdsList>;
+export const CreateBuildSourceRequestEnvGroupIdsList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<CreateBuildSourceRequestEnvGroupIdsList>;
 
 export interface CreateBuildSourceRequest {
   ownerId: string;
@@ -879,9 +865,8 @@ export const Region = S.String;
 
 /** Environments to scope the dedicated IP set to. If omitted or empty, it applies to all services in the workspace within its region. */
 export type CreateDedicatedIpRequestEnvironmentIdsList = Array<string>;
-export const CreateDedicatedIpRequestEnvironmentIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDedicatedIpRequestEnvironmentIdsList>;
+export const CreateDedicatedIpRequestEnvironmentIdsList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<CreateDedicatedIpRequestEnvironmentIdsList>;
 
 export interface CreateDedicatedIpRequest {
   /** Name for the dedicated IP set. */
@@ -906,15 +891,13 @@ export const CreateDedicatedIpRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Environments this dedicated IP set applies to. If empty, it applies to all services in the workspace within its region. */
 export type DedicatedIPEnvironmentIdsList = Array<string>;
-export const DedicatedIPEnvironmentIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DedicatedIPEnvironmentIdsList>;
+export const DedicatedIPEnvironmentIdsList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<DedicatedIPEnvironmentIdsList>;
 
 /** The IPv4 addresses assigned to this dedicated IP set. */
 export type DedicatedIPIpsList = Array<string>;
-export const DedicatedIPIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DedicatedIPIpsList>;
+export const DedicatedIPIpsList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<DedicatedIPIpsList>;
 
 /** Current status of a dedicated IP set. */
 export type DedicatedIPStatus =
@@ -996,14 +979,12 @@ export const CreateDeployRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDeployRequest" }) as any as S.Schema<CreateDeployRequest>;
 
 export type CreateEnvGroupRequestSecretFilesList = Array<Items>;
-export const CreateEnvGroupRequestSecretFilesList = /*@__PURE__*/ S.Array(
-  Items,
-) as any as S.Schema<CreateEnvGroupRequestSecretFilesList>;
+export const CreateEnvGroupRequestSecretFilesList =
+  CreateBuildSourceRequestSecretFilesList as any as S.Schema<CreateEnvGroupRequestSecretFilesList>;
 
 export type CreateEnvGroupRequestServiceIdsList = Array<string>;
-export const CreateEnvGroupRequestServiceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateEnvGroupRequestServiceIdsList>;
+export const CreateEnvGroupRequestServiceIdsList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<CreateEnvGroupRequestServiceIdsList>;
 
 export interface CreateEnvGroupRequest {
   name: string;
@@ -1050,12 +1031,7 @@ export interface EnvVar {
   key: string;
   value: string;
 }
-export const EnvVar = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    value: S.String,
-  }),
-).annotate({ identifier: "EnvVar" }) as any as S.Schema<EnvVar>;
+export const EnvVar = SchemaItemCase0 as any as S.Schema<EnvVar>;
 
 export type CreateEnvGroupResponseEnvVarsList = Array<EnvVar>;
 export const CreateEnvGroupResponseEnvVarsList = /*@__PURE__*/ S.Array(
@@ -1063,9 +1039,8 @@ export const CreateEnvGroupResponseEnvVarsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreateEnvGroupResponseEnvVarsList>;
 
 export type CreateEnvGroupResponseSecretFilesList = Array<SecretFile>;
-export const CreateEnvGroupResponseSecretFilesList = /*@__PURE__*/ S.Array(
-  SecretFile,
-) as any as S.Schema<CreateEnvGroupResponseSecretFilesList>;
+export const CreateEnvGroupResponseSecretFilesList =
+  CreateBuildSourceRequestSecretFilesList as any as S.Schema<CreateEnvGroupResponseSecretFilesList>;
 
 export interface CreateEnvGroupResponse {
   id: string;
@@ -1094,9 +1069,8 @@ export const CreateEnvGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateEnvGroupResponse" }) as any as S.Schema<CreateEnvGroupResponse>;
 
 export type CreateEnvironmentRequestIpAllowListList = Array<CidrBlockAndDescription>;
-export const CreateEnvironmentRequestIpAllowListList = /*@__PURE__*/ S.Array(
-  CidrBlockAndDescription,
-) as any as S.Schema<CreateEnvironmentRequestIpAllowListList>;
+export const CreateEnvironmentRequestIpAllowListList =
+  EnvironmentIpAllowListList as any as S.Schema<CreateEnvironmentRequestIpAllowListList>;
 
 export interface CreateEnvironmentRequest {
   name: string;
@@ -1147,9 +1121,8 @@ export type PersistenceMode = "journal_snapshot" | "snapshot" | "off";
 export const PersistenceMode = S.String;
 
 export type CreateKeyValueRequestIpAllowListList = Array<CidrBlockAndDescription>;
-export const CreateKeyValueRequestIpAllowListList = /*@__PURE__*/ S.Array(
-  CidrBlockAndDescription,
-) as any as S.Schema<CreateKeyValueRequestIpAllowListList>;
+export const CreateKeyValueRequestIpAllowListList =
+  EnvironmentIpAllowListList as any as S.Schema<CreateKeyValueRequestIpAllowListList>;
 
 export interface CreateKeyValueRequest {
   /** The name of the Key Value instance */
@@ -1191,9 +1164,8 @@ export type DatabaseStatus =
 export const DatabaseStatus = S.String;
 
 export type OwnerIpAllowListList = Array<CidrBlockAndDescription>;
-export const OwnerIpAllowListList = /*@__PURE__*/ S.Array(
-  CidrBlockAndDescription,
-) as any as S.Schema<OwnerIpAllowListList>;
+export const OwnerIpAllowListList =
+  EnvironmentIpAllowListList as any as S.Schema<OwnerIpAllowListList>;
 
 export type OwnerType = "user" | "team";
 export const OwnerType = S.String;
@@ -1232,9 +1204,8 @@ export const KeyValueOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** The IP allow list for the Key Value instance */
 export type KeyValueDetailIpAllowListList = Array<CidrBlockAndDescription>;
-export const KeyValueDetailIpAllowListList = /*@__PURE__*/ S.Array(
-  CidrBlockAndDescription,
-) as any as S.Schema<KeyValueDetailIpAllowListList>;
+export const KeyValueDetailIpAllowListList =
+  EnvironmentIpAllowListList as any as S.Schema<KeyValueDetailIpAllowListList>;
 
 export type Items4 =
   | "scheduled"
@@ -1359,9 +1330,8 @@ export type CreatePostgresRequestPlan =
 export const CreatePostgresRequestPlan = S.String;
 
 export type CreatePostgresRequestIpAllowListList = Array<CidrBlockAndDescription>;
-export const CreatePostgresRequestIpAllowListList = /*@__PURE__*/ S.Array(
-  CidrBlockAndDescription,
-) as any as S.Schema<CreatePostgresRequestIpAllowListList>;
+export const CreatePostgresRequestIpAllowListList =
+  EnvironmentIpAllowListList as any as S.Schema<CreatePostgresRequestIpAllowListList>;
 
 export interface ReadReplicaInput {
   /** The display name of the replica instance. */
@@ -1428,9 +1398,8 @@ export const CreatePostgresRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreatePostgresRequest" }) as any as S.Schema<CreatePostgresRequest>;
 
 export type PostgresDetailIpAllowListList = Array<CidrBlockAndDescription>;
-export const PostgresDetailIpAllowListList = /*@__PURE__*/ S.Array(
-  CidrBlockAndDescription,
-) as any as S.Schema<PostgresDetailIpAllowListList>;
+export const PostgresDetailIpAllowListList =
+  EnvironmentIpAllowListList as any as S.Schema<PostgresDetailIpAllowListList>;
 
 export type Plan2 =
   | "free"
@@ -1595,9 +1564,8 @@ export const CreatePostgresExportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePostgresExportRequest>;
 
 export interface CreatePostgresExportResponse {}
-export const CreatePostgresExportResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreatePostgresExportResponse",
-}) as any as S.Schema<CreatePostgresExportResponse>;
+export const CreatePostgresExportResponse =
+  CancelCronJobRunResponse as any as S.Schema<CreatePostgresExportResponse>;
 
 export interface CreatePostgresUserRequest {
   postgresId: string;
@@ -1614,14 +1582,12 @@ export const CreatePostgresUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePostgresUserRequest>;
 
 export interface CreatePostgresUserResponse {}
-export const CreatePostgresUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreatePostgresUserResponse",
-}) as any as S.Schema<CreatePostgresUserResponse>;
+export const CreatePostgresUserResponse =
+  CancelCronJobRunResponse as any as S.Schema<CreatePostgresUserResponse>;
 
 export type ProjectPOSTEnvironmentInputIpAllowListList = Array<CidrBlockAndDescription>;
-export const ProjectPOSTEnvironmentInputIpAllowListList = /*@__PURE__*/ S.Array(
-  CidrBlockAndDescription,
-) as any as S.Schema<ProjectPOSTEnvironmentInputIpAllowListList>;
+export const ProjectPOSTEnvironmentInputIpAllowListList =
+  EnvironmentIpAllowListList as any as S.Schema<ProjectPOSTEnvironmentInputIpAllowListList>;
 
 export interface ProjectPOSTEnvironmentInput {
   name: string;
@@ -1664,9 +1630,8 @@ export const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The environments associated with the project */
 export type ProjectEnvironmentIdsList = Array<string>;
-export const ProjectEnvironmentIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectEnvironmentIdsList>;
+export const ProjectEnvironmentIdsList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ProjectEnvironmentIdsList>;
 
 /** A project is a collection of environments */
 export interface Project {
@@ -1773,30 +1738,22 @@ export const Image = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
 
 export type BuildFilterPathsList = Array<string>;
-export const BuildFilterPathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BuildFilterPathsList>;
+export const BuildFilterPathsList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<BuildFilterPathsList>;
 
 export type BuildFilterIgnoredPathsList = Array<string>;
-export const BuildFilterIgnoredPathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BuildFilterIgnoredPathsList>;
+export const BuildFilterIgnoredPathsList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<BuildFilterIgnoredPathsList>;
 
 export interface BuildFilter {
   paths: BuildFilterPathsList;
   ignoredPaths: BuildFilterIgnoredPathsList;
 }
-export const BuildFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paths: BuildFilterPathsList,
-    ignoredPaths: BuildFilterIgnoredPathsList,
-  }),
-).annotate({ identifier: "BuildFilter" }) as any as S.Schema<BuildFilter>;
+export const BuildFilter = BuildFilter2 as any as S.Schema<BuildFilter>;
 
 export type CreateServiceRequestSecretFilesList = Array<Items>;
-export const CreateServiceRequestSecretFilesList = /*@__PURE__*/ S.Array(
-  Items,
-) as any as S.Schema<CreateServiceRequestSecretFilesList>;
+export const CreateServiceRequestSecretFilesList =
+  CreateBuildSourceRequestSecretFilesList as any as S.Schema<CreateServiceRequestSecretFilesList>;
 
 export interface HeaderInput {
   /** The request path to add the header to. Wildcards will cause headers to be applied to all matching paths. */
@@ -1863,9 +1820,8 @@ export type RenderSubdomainPolicy = "enabled" | "disabled";
 export const RenderSubdomainPolicy = S.String;
 
 export type StaticSiteDetailsPOSTIpAllowListList = Array<CidrBlockAndDescription>;
-export const StaticSiteDetailsPOSTIpAllowListList = /*@__PURE__*/ S.Array(
-  CidrBlockAndDescription,
-) as any as S.Schema<StaticSiteDetailsPOSTIpAllowListList>;
+export const StaticSiteDetailsPOSTIpAllowListList =
+  EnvironmentIpAllowListList as any as S.Schema<StaticSiteDetailsPOSTIpAllowListList>;
 
 export interface StaticSiteDetailsPOST {
   buildCommand?: string;
@@ -2000,9 +1956,8 @@ export type Plan =
 export const Plan = S.String;
 
 export type WebServiceDetailsPOSTIpAllowListList = Array<CidrBlockAndDescription>;
-export const WebServiceDetailsPOSTIpAllowListList = /*@__PURE__*/ S.Array(
-  CidrBlockAndDescription,
-) as any as S.Schema<WebServiceDetailsPOSTIpAllowListList>;
+export const WebServiceDetailsPOSTIpAllowListList =
+  EnvironmentIpAllowListList as any as S.Schema<WebServiceDetailsPOSTIpAllowListList>;
 
 export interface WebServiceDetailsPOST {
   /** The ID of the Build Source to build and deploy from. Provides all source and build configuration: omit `repo`, `branch`, `image`, `buildFilter`, `runtime`, and build-related `envSpecificDetails` fields when set. */
@@ -2231,14 +2186,12 @@ export type ServiceSuspended = "suspended" | "not_suspended";
 export const ServiceSuspended = S.String;
 
 export type ServiceSuspendersList = Array<SuspenderType>;
-export const ServiceSuspendersList = /*@__PURE__*/ S.Array(
-  SuspenderType,
-) as any as S.Schema<ServiceSuspendersList>;
+export const ServiceSuspendersList =
+  PostgresDetailSuspendersList as any as S.Schema<ServiceSuspendersList>;
 
 export type StaticSiteDetailsIpAllowListList = Array<CidrBlockAndDescription>;
-export const StaticSiteDetailsIpAllowListList = /*@__PURE__*/ S.Array(
-  CidrBlockAndDescription,
-) as any as S.Schema<StaticSiteDetailsIpAllowListList>;
+export const StaticSiteDetailsIpAllowListList =
+  EnvironmentIpAllowListList as any as S.Schema<StaticSiteDetailsIpAllowListList>;
 
 export type Resource = CreateBuildSourceResponseServiceLinksItem;
 export const Resource = CreateBuildSourceResponseServiceLinksItem;
@@ -2299,9 +2252,8 @@ export const WebServiceDetailsDisk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WebServiceDetailsDisk" }) as any as S.Schema<WebServiceDetailsDisk>;
 
 export type WebServiceDetailsIpAllowListList = Array<CidrBlockAndDescription>;
-export const WebServiceDetailsIpAllowListList = /*@__PURE__*/ S.Array(
-  CidrBlockAndDescription,
-) as any as S.Schema<WebServiceDetailsIpAllowListList>;
+export const WebServiceDetailsIpAllowListList =
+  EnvironmentIpAllowListList as any as S.Schema<WebServiceDetailsIpAllowListList>;
 
 export type ServerPortProtocol = "TCP" | "UDP";
 export const ServerPortProtocol = S.String;
@@ -2376,9 +2328,8 @@ export type Disk = WebServiceDetailsDisk;
 export const Disk = WebServiceDetailsDisk;
 
 export type PrivateServiceDetailsOpenPortsList = Array<ServerPort>;
-export const PrivateServiceDetailsOpenPortsList = /*@__PURE__*/ S.Array(
-  ServerPort,
-) as any as S.Schema<PrivateServiceDetailsOpenPortsList>;
+export const PrivateServiceDetailsOpenPortsList =
+  WebServiceDetailsOpenPortsList as any as S.Schema<PrivateServiceDetailsOpenPortsList>;
 
 export interface PrivateServiceDetails {
   autoscaling?: Schema5;
@@ -2906,9 +2857,8 @@ export const CreateWorkflowVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateWorkflowVersionRequest>;
 
 export interface CreateWorkflowVersionResponse {}
-export const CreateWorkflowVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateWorkflowVersionResponse",
-}) as any as S.Schema<CreateWorkflowVersionResponse>;
+export const CreateWorkflowVersionResponse =
+  CancelCronJobRunResponse as any as S.Schema<CreateWorkflowVersionResponse>;
 
 export interface DeleteAutoscalingConfigRequest {
   /** The ID of the service */
@@ -2937,9 +2887,8 @@ export const DeleteBuildSourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBuildSourceRequest" }) as any as S.Schema<DeleteBuildSourceRequest>;
 
 export interface DeleteBuildSourceResponse {}
-export const DeleteBuildSourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBuildSourceResponse",
-}) as any as S.Schema<DeleteBuildSourceResponse>;
+export const DeleteBuildSourceResponse =
+  CancelCronJobRunResponse as any as S.Schema<DeleteBuildSourceResponse>;
 
 export interface DeleteBuildSourceEnvVarRequest {
   buildSourceId: string;
@@ -2962,9 +2911,8 @@ export const DeleteBuildSourceEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBuildSourceEnvVarRequest>;
 
 export interface DeleteBuildSourceEnvVarResponse {}
-export const DeleteBuildSourceEnvVarResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteBuildSourceEnvVarResponse" },
-) as any as S.Schema<DeleteBuildSourceEnvVarResponse>;
+export const DeleteBuildSourceEnvVarResponse =
+  DeleteAutoscalingConfigResponse as any as S.Schema<DeleteBuildSourceEnvVarResponse>;
 
 export interface DeleteBuildSourceSecretFileRequest {
   buildSourceId: string;
@@ -3015,9 +2963,8 @@ export const DeleteCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCustomDomainRequest>;
 
 export interface DeleteCustomDomainResponse {}
-export const DeleteCustomDomainResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCustomDomainResponse",
-}) as any as S.Schema<DeleteCustomDomainResponse>;
+export const DeleteCustomDomainResponse =
+  CancelCronJobRunResponse as any as S.Schema<DeleteCustomDomainResponse>;
 
 export interface DeleteDedicatedIpRequest {
   /** The ID of the dedicated IP set */
@@ -3030,9 +2977,8 @@ export const DeleteDedicatedIpRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDedicatedIpRequest" }) as any as S.Schema<DeleteDedicatedIpRequest>;
 
 export interface DeleteDedicatedIpResponse {}
-export const DeleteDedicatedIpResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDedicatedIpResponse",
-}) as any as S.Schema<DeleteDedicatedIpResponse>;
+export const DeleteDedicatedIpResponse =
+  CancelCronJobRunResponse as any as S.Schema<DeleteDedicatedIpResponse>;
 
 export interface DeleteDiskRequest {
   /** The ID of the disk */
@@ -3045,9 +2991,7 @@ export const DeleteDiskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDiskRequest" }) as any as S.Schema<DeleteDiskRequest>;
 
 export interface DeleteDiskResponse {}
-export const DeleteDiskResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDiskResponse",
-}) as any as S.Schema<DeleteDiskResponse>;
+export const DeleteDiskResponse = CancelCronJobRunResponse as any as S.Schema<DeleteDiskResponse>;
 
 export interface DeleteEnvGroupRequest {
   envGroupId: string;
@@ -3059,9 +3003,8 @@ export const DeleteEnvGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEnvGroupRequest" }) as any as S.Schema<DeleteEnvGroupRequest>;
 
 export interface DeleteEnvGroupResponse {}
-export const DeleteEnvGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEnvGroupResponse",
-}) as any as S.Schema<DeleteEnvGroupResponse>;
+export const DeleteEnvGroupResponse =
+  CancelCronJobRunResponse as any as S.Schema<DeleteEnvGroupResponse>;
 
 export interface DeleteEnvGroupEnvVarRequest {
   envGroupId: string;
@@ -3080,9 +3023,8 @@ export const DeleteEnvGroupEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEnvGroupEnvVarRequest>;
 
 export interface DeleteEnvGroupEnvVarResponse {}
-export const DeleteEnvGroupEnvVarResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEnvGroupEnvVarResponse",
-}) as any as S.Schema<DeleteEnvGroupEnvVarResponse>;
+export const DeleteEnvGroupEnvVarResponse =
+  CancelCronJobRunResponse as any as S.Schema<DeleteEnvGroupEnvVarResponse>;
 
 export interface DeleteEnvGroupSecretFileRequest {
   /** Filter for resources that belong to an environment group */
@@ -3106,11 +3048,8 @@ export const DeleteEnvGroupSecretFileRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEnvGroupSecretFileRequest>;
 
 export interface DeleteEnvGroupSecretFileResponse {}
-export const DeleteEnvGroupSecretFileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteEnvGroupSecretFileResponse",
-}) as any as S.Schema<DeleteEnvGroupSecretFileResponse>;
+export const DeleteEnvGroupSecretFileResponse =
+  DeleteBuildSourceSecretFileResponse as any as S.Schema<DeleteEnvGroupSecretFileResponse>;
 
 export interface DeleteEnvironmentRequest {
   environmentId: string;
@@ -3122,9 +3061,8 @@ export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEnvironmentRequest" }) as any as S.Schema<DeleteEnvironmentRequest>;
 
 export interface DeleteEnvironmentResponse {}
-export const DeleteEnvironmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEnvironmentResponse",
-}) as any as S.Schema<DeleteEnvironmentResponse>;
+export const DeleteEnvironmentResponse =
+  CancelCronJobRunResponse as any as S.Schema<DeleteEnvironmentResponse>;
 
 export interface DeleteEnvVarRequest {
   /** The ID of the service */
@@ -3142,9 +3080,8 @@ export const DeleteEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEnvVarRequest" }) as any as S.Schema<DeleteEnvVarRequest>;
 
 export interface DeleteEnvVarResponse {}
-export const DeleteEnvVarResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEnvVarResponse",
-}) as any as S.Schema<DeleteEnvVarResponse>;
+export const DeleteEnvVarResponse =
+  CancelCronJobRunResponse as any as S.Schema<DeleteEnvVarResponse>;
 
 export interface DeleteHeaderRequest {
   /** The ID of the service */
@@ -3160,9 +3097,8 @@ export const DeleteHeaderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteHeaderRequest" }) as any as S.Schema<DeleteHeaderRequest>;
 
 export interface DeleteHeaderResponse {}
-export const DeleteHeaderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteHeaderResponse",
-}) as any as S.Schema<DeleteHeaderResponse>;
+export const DeleteHeaderResponse =
+  CancelCronJobRunResponse as any as S.Schema<DeleteHeaderResponse>;
 
 export interface DeleteKeyValueRequest {
   redisId: string;
@@ -3174,9 +3110,8 @@ export const DeleteKeyValueRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteKeyValueRequest" }) as any as S.Schema<DeleteKeyValueRequest>;
 
 export interface DeleteKeyValueResponse {}
-export const DeleteKeyValueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteKeyValueResponse",
-}) as any as S.Schema<DeleteKeyValueResponse>;
+export const DeleteKeyValueResponse =
+  CancelCronJobRunResponse as any as S.Schema<DeleteKeyValueResponse>;
 
 export interface DeleteOwnerLogStreamRequest {
   /** The ID of the workspace to delete the log stream for */
@@ -3191,9 +3126,8 @@ export const DeleteOwnerLogStreamRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOwnerLogStreamRequest>;
 
 export interface DeleteOwnerLogStreamResponse {}
-export const DeleteOwnerLogStreamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOwnerLogStreamResponse",
-}) as any as S.Schema<DeleteOwnerLogStreamResponse>;
+export const DeleteOwnerLogStreamResponse =
+  CancelCronJobRunResponse as any as S.Schema<DeleteOwnerLogStreamResponse>;
 
 export interface DeleteOwnerMetricsStreamRequest {
   /** The ID of the workspace to return metrics stream information for */
@@ -3208,11 +3142,8 @@ export const DeleteOwnerMetricsStreamRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOwnerMetricsStreamRequest>;
 
 export interface DeleteOwnerMetricsStreamResponse {}
-export const DeleteOwnerMetricsStreamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOwnerMetricsStreamResponse",
-}) as any as S.Schema<DeleteOwnerMetricsStreamResponse>;
+export const DeleteOwnerMetricsStreamResponse =
+  DeleteBuildSourceSecretFileResponse as any as S.Schema<DeleteOwnerMetricsStreamResponse>;
 
 export interface DeletePostgresRequest {
   postgresId: string;
@@ -3224,9 +3155,8 @@ export const DeletePostgresRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePostgresRequest" }) as any as S.Schema<DeletePostgresRequest>;
 
 export interface DeletePostgresResponse {}
-export const DeletePostgresResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePostgresResponse",
-}) as any as S.Schema<DeletePostgresResponse>;
+export const DeletePostgresResponse =
+  CancelCronJobRunResponse as any as S.Schema<DeletePostgresResponse>;
 
 export interface DeletePostgresUserRequest {
   postgresId: string;
@@ -3244,9 +3174,8 @@ export const DeletePostgresUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePostgresUserRequest>;
 
 export interface DeletePostgresUserResponse {}
-export const DeletePostgresUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePostgresUserResponse",
-}) as any as S.Schema<DeletePostgresUserResponse>;
+export const DeletePostgresUserResponse =
+  CancelCronJobRunResponse as any as S.Schema<DeletePostgresUserResponse>;
 
 export interface DeleteProjectRequest {
   projectId: string;
@@ -3258,9 +3187,8 @@ export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteProjectRequest" }) as any as S.Schema<DeleteProjectRequest>;
 
 export interface DeleteProjectResponse {}
-export const DeleteProjectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProjectResponse",
-}) as any as S.Schema<DeleteProjectResponse>;
+export const DeleteProjectResponse =
+  CancelCronJobRunResponse as any as S.Schema<DeleteProjectResponse>;
 
 export interface DeleteRegistryCredentialRequest {
   /** The ID of the registry credential */
@@ -3277,11 +3205,8 @@ export const DeleteRegistryCredentialRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRegistryCredentialRequest>;
 
 export interface DeleteRegistryCredentialResponse {}
-export const DeleteRegistryCredentialResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteRegistryCredentialResponse",
-}) as any as S.Schema<DeleteRegistryCredentialResponse>;
+export const DeleteRegistryCredentialResponse =
+  DeleteBuildSourceSecretFileResponse as any as S.Schema<DeleteRegistryCredentialResponse>;
 
 export interface DeleteResourceLogStreamRequest {
   /** The ID of the resource (server, cron job, postgres, or redis) whose log streams should be returned */
@@ -3296,9 +3221,8 @@ export const DeleteResourceLogStreamRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteResourceLogStreamRequest>;
 
 export interface DeleteResourceLogStreamResponse {}
-export const DeleteResourceLogStreamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteResourceLogStreamResponse" },
-) as any as S.Schema<DeleteResourceLogStreamResponse>;
+export const DeleteResourceLogStreamResponse =
+  DeleteAutoscalingConfigResponse as any as S.Schema<DeleteResourceLogStreamResponse>;
 
 export interface DeleteRouteRequest {
   /** The ID of the service */
@@ -3314,9 +3238,7 @@ export const DeleteRouteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRouteRequest" }) as any as S.Schema<DeleteRouteRequest>;
 
 export interface DeleteRouteResponse {}
-export const DeleteRouteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRouteResponse",
-}) as any as S.Schema<DeleteRouteResponse>;
+export const DeleteRouteResponse = CancelCronJobRunResponse as any as S.Schema<DeleteRouteResponse>;
 
 export interface DeleteSecretFileRequest {
   /** The ID of the service */
@@ -3334,9 +3256,8 @@ export const DeleteSecretFileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSecretFileRequest" }) as any as S.Schema<DeleteSecretFileRequest>;
 
 export interface DeleteSecretFileResponse {}
-export const DeleteSecretFileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSecretFileResponse",
-}) as any as S.Schema<DeleteSecretFileResponse>;
+export const DeleteSecretFileResponse =
+  CancelCronJobRunResponse as any as S.Schema<DeleteSecretFileResponse>;
 
 export interface DeleteServiceRequest {
   /** The ID of the service */
@@ -3349,9 +3270,8 @@ export const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteServiceRequest" }) as any as S.Schema<DeleteServiceRequest>;
 
 export interface DeleteServiceResponse {}
-export const DeleteServiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteServiceResponse",
-}) as any as S.Schema<DeleteServiceResponse>;
+export const DeleteServiceResponse =
+  CancelCronJobRunResponse as any as S.Schema<DeleteServiceResponse>;
 
 export interface DeleteWebhookRequest {
   /** Unique identifier for the webhook */
@@ -3364,9 +3284,8 @@ export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWebhookRequest" }) as any as S.Schema<DeleteWebhookRequest>;
 
 export interface DeleteWebhookResponse {}
-export const DeleteWebhookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWebhookResponse",
-}) as any as S.Schema<DeleteWebhookResponse>;
+export const DeleteWebhookResponse =
+  CancelCronJobRunResponse as any as S.Schema<DeleteWebhookResponse>;
 
 export interface DeleteWorkflowRequest {
   /** The ID of the workflow */
@@ -3379,9 +3298,8 @@ export const DeleteWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWorkflowRequest" }) as any as S.Schema<DeleteWorkflowRequest>;
 
 export interface DeleteWorkflowResponse {}
-export const DeleteWorkflowResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkflowResponse",
-}) as any as S.Schema<DeleteWorkflowResponse>;
+export const DeleteWorkflowResponse =
+  CancelCronJobRunResponse as any as S.Schema<DeleteWorkflowResponse>;
 
 export interface DeployRollbackRequest {
   /** The ID of the service */
@@ -3409,9 +3327,8 @@ export const DisconnectBlueprintRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisconnectBlueprintRequest>;
 
 export interface DisconnectBlueprintResponse {}
-export const DisconnectBlueprintResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisconnectBlueprintResponse",
-}) as any as S.Schema<DisconnectBlueprintResponse>;
+export const DisconnectBlueprintResponse =
+  CancelCronJobRunResponse as any as S.Schema<DisconnectBlueprintResponse>;
 
 export interface FailoverPostgresRequest {
   postgresId: string;
@@ -3423,9 +3340,8 @@ export const FailoverPostgresRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FailoverPostgresRequest" }) as any as S.Schema<FailoverPostgresRequest>;
 
 export interface FailoverPostgresResponse {}
-export const FailoverPostgresResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "FailoverPostgresResponse",
-}) as any as S.Schema<FailoverPostgresResponse>;
+export const FailoverPostgresResponse =
+  CancelCronJobRunResponse as any as S.Schema<FailoverPostgresResponse>;
 
 export interface GetActiveConnectionsRequest {
   /** Epoch/Unix timestamp of start of time range to return. Defaults to `now() - 1 hour`. */
@@ -3548,9 +3464,8 @@ export const GetBandwidthResponseBodyItemLabelsItem =
 /** List of labels describing the time series */
 export type GetBandwidthResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetBandwidthResponseBodyItemLabelsList = /*@__PURE__*/ S.Array(
-  GetActiveConnectionsResponseBodyItemLabelsItem,
-) as any as S.Schema<GetBandwidthResponseBodyItemLabelsList>;
+export const GetBandwidthResponseBodyItemLabelsList =
+  GetActiveConnectionsResponseBodyItemLabelsList as any as S.Schema<GetBandwidthResponseBodyItemLabelsList>;
 
 /** A time series datapoint value */
 export type GetBandwidthResponseBodyItemValuesItem = GetActiveConnectionsResponseBodyItemValuesItem;
@@ -3560,9 +3475,8 @@ export const GetBandwidthResponseBodyItemValuesItem =
 /** The values of the time series */
 export type GetBandwidthResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetBandwidthResponseBodyItemValuesList = /*@__PURE__*/ S.Array(
-  GetActiveConnectionsResponseBodyItemValuesItem,
-) as any as S.Schema<GetBandwidthResponseBodyItemValuesList>;
+export const GetBandwidthResponseBodyItemValuesList =
+  GetActiveConnectionsResponseBodyItemValuesList as any as S.Schema<GetBandwidthResponseBodyItemValuesList>;
 
 /** A time series data point */
 export interface GetBandwidthResponseBodyItem {
@@ -3572,21 +3486,13 @@ export interface GetBandwidthResponseBodyItem {
   values: GetBandwidthResponseBodyItemValuesList;
   unit: string;
 }
-export const GetBandwidthResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: GetBandwidthResponseBodyItemLabelsList,
-    values: GetBandwidthResponseBodyItemValuesList,
-    unit: S.String,
-  }),
-).annotate({
-  identifier: "GetBandwidthResponseBodyItem",
-}) as any as S.Schema<GetBandwidthResponseBodyItem>;
+export const GetBandwidthResponseBodyItem =
+  GetActiveConnectionsResponseBodyItem as any as S.Schema<GetBandwidthResponseBodyItem>;
 
 /** A collection of time series */
 export type GetBandwidthResponseBodyList = Array<GetBandwidthResponseBodyItem>;
-export const GetBandwidthResponseBodyList = /*@__PURE__*/ S.Array(
-  GetBandwidthResponseBodyItem,
-) as any as S.Schema<GetBandwidthResponseBodyList>;
+export const GetBandwidthResponseBodyList =
+  GetActiveConnectionsResponseBodyList as any as S.Schema<GetBandwidthResponseBodyList>;
 
 export type GetBandwidthResponse = GetBandwidthResponseBodyList;
 export const GetBandwidthResponse = /*@__PURE__*/ S.suspend(() =>
@@ -3773,9 +3679,8 @@ export const SchemaServiceLinksItem = CreateBuildSourceResponseServiceLinksItem;
 
 /** Services currently linked to this build source. */
 export type SchemaServiceLinksList = Array<CreateBuildSourceResponseServiceLinksItem>;
-export const SchemaServiceLinksList = /*@__PURE__*/ S.Array(
-  CreateBuildSourceResponseServiceLinksItem,
-) as any as S.Schema<SchemaServiceLinksList>;
+export const SchemaServiceLinksList =
+  CreateBuildSourceResponseServiceLinksList as any as S.Schema<SchemaServiceLinksList>;
 
 export interface Schema12 {
   id: string;
@@ -3885,9 +3790,8 @@ export const GetCpuResponseBodyItemLabelsItem = GetActiveConnectionsResponseBody
 /** List of labels describing the time series */
 export type GetCpuResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetCpuResponseBodyItemLabelsList = /*@__PURE__*/ S.Array(
-  GetActiveConnectionsResponseBodyItemLabelsItem,
-) as any as S.Schema<GetCpuResponseBodyItemLabelsList>;
+export const GetCpuResponseBodyItemLabelsList =
+  GetActiveConnectionsResponseBodyItemLabelsList as any as S.Schema<GetCpuResponseBodyItemLabelsList>;
 
 /** A time series datapoint value */
 export type GetCpuResponseBodyItemValuesItem = GetActiveConnectionsResponseBodyItemValuesItem;
@@ -3896,9 +3800,8 @@ export const GetCpuResponseBodyItemValuesItem = GetActiveConnectionsResponseBody
 /** The values of the time series */
 export type GetCpuResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetCpuResponseBodyItemValuesList = /*@__PURE__*/ S.Array(
-  GetActiveConnectionsResponseBodyItemValuesItem,
-) as any as S.Schema<GetCpuResponseBodyItemValuesList>;
+export const GetCpuResponseBodyItemValuesList =
+  GetActiveConnectionsResponseBodyItemValuesList as any as S.Schema<GetCpuResponseBodyItemValuesList>;
 
 /** A time series data point */
 export interface GetCpuResponseBodyItem {
@@ -3959,9 +3862,8 @@ export const GetCpuLimitResponseBodyItemLabelsItem = GetActiveConnectionsRespons
 /** List of labels describing the time series */
 export type GetCpuLimitResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetCpuLimitResponseBodyItemLabelsList = /*@__PURE__*/ S.Array(
-  GetActiveConnectionsResponseBodyItemLabelsItem,
-) as any as S.Schema<GetCpuLimitResponseBodyItemLabelsList>;
+export const GetCpuLimitResponseBodyItemLabelsList =
+  GetActiveConnectionsResponseBodyItemLabelsList as any as S.Schema<GetCpuLimitResponseBodyItemLabelsList>;
 
 /** A time series datapoint value */
 export type GetCpuLimitResponseBodyItemValuesItem = GetActiveConnectionsResponseBodyItemValuesItem;
@@ -3970,9 +3872,8 @@ export const GetCpuLimitResponseBodyItemValuesItem = GetActiveConnectionsRespons
 /** The values of the time series */
 export type GetCpuLimitResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetCpuLimitResponseBodyItemValuesList = /*@__PURE__*/ S.Array(
-  GetActiveConnectionsResponseBodyItemValuesItem,
-) as any as S.Schema<GetCpuLimitResponseBodyItemValuesList>;
+export const GetCpuLimitResponseBodyItemValuesList =
+  GetActiveConnectionsResponseBodyItemValuesList as any as S.Schema<GetCpuLimitResponseBodyItemValuesList>;
 
 /** A time series data point */
 export interface GetCpuLimitResponseBodyItem {
@@ -3982,26 +3883,16 @@ export interface GetCpuLimitResponseBodyItem {
   values: GetCpuLimitResponseBodyItemValuesList;
   unit: string;
 }
-export const GetCpuLimitResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: GetCpuLimitResponseBodyItemLabelsList,
-    values: GetCpuLimitResponseBodyItemValuesList,
-    unit: S.String,
-  }),
-).annotate({
-  identifier: "GetCpuLimitResponseBodyItem",
-}) as any as S.Schema<GetCpuLimitResponseBodyItem>;
+export const GetCpuLimitResponseBodyItem =
+  GetActiveConnectionsResponseBodyItem as any as S.Schema<GetCpuLimitResponseBodyItem>;
 
 /** A collection of time series */
 export type GetCpuLimitResponseBodyList = Array<GetCpuLimitResponseBodyItem>;
-export const GetCpuLimitResponseBodyList = /*@__PURE__*/ S.Array(
-  GetCpuLimitResponseBodyItem,
-) as any as S.Schema<GetCpuLimitResponseBodyList>;
+export const GetCpuLimitResponseBodyList =
+  GetActiveConnectionsResponseBodyList as any as S.Schema<GetCpuLimitResponseBodyList>;
 
 export type GetCpuLimitResponse = GetCpuLimitResponseBodyList;
-export const GetCpuLimitResponse = /*@__PURE__*/ S.suspend(() =>
-  GetCpuLimitResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetCpuLimitResponse" }) as any as S.Schema<GetCpuLimitResponse>;
+export const GetCpuLimitResponse = GetBandwidthResponse as any as S.Schema<GetCpuLimitResponse>;
 
 export interface GetCpuTargetRequest {
   /** Epoch/Unix timestamp of start of time range to return. Defaults to `now() - 1 hour`. */
@@ -4036,9 +3927,8 @@ export const GetCpuTargetResponseBodyItemLabelsItem =
 /** List of labels describing the time series */
 export type GetCpuTargetResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetCpuTargetResponseBodyItemLabelsList = /*@__PURE__*/ S.Array(
-  GetActiveConnectionsResponseBodyItemLabelsItem,
-) as any as S.Schema<GetCpuTargetResponseBodyItemLabelsList>;
+export const GetCpuTargetResponseBodyItemLabelsList =
+  GetActiveConnectionsResponseBodyItemLabelsList as any as S.Schema<GetCpuTargetResponseBodyItemLabelsList>;
 
 /** A time series datapoint value */
 export type GetCpuTargetResponseBodyItemValuesItem = GetActiveConnectionsResponseBodyItemValuesItem;
@@ -4048,9 +3938,8 @@ export const GetCpuTargetResponseBodyItemValuesItem =
 /** The values of the time series */
 export type GetCpuTargetResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetCpuTargetResponseBodyItemValuesList = /*@__PURE__*/ S.Array(
-  GetActiveConnectionsResponseBodyItemValuesItem,
-) as any as S.Schema<GetCpuTargetResponseBodyItemValuesList>;
+export const GetCpuTargetResponseBodyItemValuesList =
+  GetActiveConnectionsResponseBodyItemValuesList as any as S.Schema<GetCpuTargetResponseBodyItemValuesList>;
 
 /** A time series data point */
 export interface GetCpuTargetResponseBodyItem {
@@ -4060,26 +3949,16 @@ export interface GetCpuTargetResponseBodyItem {
   values: GetCpuTargetResponseBodyItemValuesList;
   unit: string;
 }
-export const GetCpuTargetResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: GetCpuTargetResponseBodyItemLabelsList,
-    values: GetCpuTargetResponseBodyItemValuesList,
-    unit: S.String,
-  }),
-).annotate({
-  identifier: "GetCpuTargetResponseBodyItem",
-}) as any as S.Schema<GetCpuTargetResponseBodyItem>;
+export const GetCpuTargetResponseBodyItem =
+  GetActiveConnectionsResponseBodyItem as any as S.Schema<GetCpuTargetResponseBodyItem>;
 
 /** A collection of time series */
 export type GetCpuTargetResponseBodyList = Array<GetCpuTargetResponseBodyItem>;
-export const GetCpuTargetResponseBodyList = /*@__PURE__*/ S.Array(
-  GetCpuTargetResponseBodyItem,
-) as any as S.Schema<GetCpuTargetResponseBodyList>;
+export const GetCpuTargetResponseBodyList =
+  GetActiveConnectionsResponseBodyList as any as S.Schema<GetCpuTargetResponseBodyList>;
 
 export type GetCpuTargetResponse = GetCpuTargetResponseBodyList;
-export const GetCpuTargetResponse = /*@__PURE__*/ S.suspend(() =>
-  GetCpuTargetResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetCpuTargetResponse" }) as any as S.Schema<GetCpuTargetResponse>;
+export const GetCpuTargetResponse = GetBandwidthResponse as any as S.Schema<GetCpuTargetResponse>;
 
 export interface GetCustomDomainRequest {
   /** The ID of the service */
@@ -4142,17 +4021,7 @@ export interface Schema2 {
   createdAt: string;
   updatedAt: string;
 }
-export const Schema2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    sizeGB: S.Number,
-    mountPath: S.String,
-    serviceId: S.optional(S.String),
-    createdAt: S.String,
-    updatedAt: S.String,
-  }),
-).annotate({ identifier: "Schema2" }) as any as S.Schema<Schema2>;
+export const Schema2 = AddDiskResponse as any as S.Schema<Schema2>;
 
 export interface GetDiskCapacityRequest {
   /** Epoch/Unix timestamp of start of time range to return. Defaults to `now() - 1 hour`. */
@@ -4185,9 +4054,8 @@ export const GetDiskCapacityResponseBodyItemLabelsItem =
 /** List of labels describing the time series */
 export type GetDiskCapacityResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetDiskCapacityResponseBodyItemLabelsList = /*@__PURE__*/ S.Array(
-  GetActiveConnectionsResponseBodyItemLabelsItem,
-) as any as S.Schema<GetDiskCapacityResponseBodyItemLabelsList>;
+export const GetDiskCapacityResponseBodyItemLabelsList =
+  GetActiveConnectionsResponseBodyItemLabelsList as any as S.Schema<GetDiskCapacityResponseBodyItemLabelsList>;
 
 /** A time series datapoint value */
 export type GetDiskCapacityResponseBodyItemValuesItem =
@@ -4198,9 +4066,8 @@ export const GetDiskCapacityResponseBodyItemValuesItem =
 /** The values of the time series */
 export type GetDiskCapacityResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetDiskCapacityResponseBodyItemValuesList = /*@__PURE__*/ S.Array(
-  GetActiveConnectionsResponseBodyItemValuesItem,
-) as any as S.Schema<GetDiskCapacityResponseBodyItemValuesList>;
+export const GetDiskCapacityResponseBodyItemValuesList =
+  GetActiveConnectionsResponseBodyItemValuesList as any as S.Schema<GetDiskCapacityResponseBodyItemValuesList>;
 
 /** A time series data point */
 export interface GetDiskCapacityResponseBodyItem {
@@ -4210,26 +4077,17 @@ export interface GetDiskCapacityResponseBodyItem {
   values: GetDiskCapacityResponseBodyItemValuesList;
   unit: string;
 }
-export const GetDiskCapacityResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: GetDiskCapacityResponseBodyItemLabelsList,
-    values: GetDiskCapacityResponseBodyItemValuesList,
-    unit: S.String,
-  }),
-).annotate({
-  identifier: "GetDiskCapacityResponseBodyItem",
-}) as any as S.Schema<GetDiskCapacityResponseBodyItem>;
+export const GetDiskCapacityResponseBodyItem =
+  GetActiveConnectionsResponseBodyItem as any as S.Schema<GetDiskCapacityResponseBodyItem>;
 
 /** A collection of time series */
 export type GetDiskCapacityResponseBodyList = Array<GetDiskCapacityResponseBodyItem>;
-export const GetDiskCapacityResponseBodyList = /*@__PURE__*/ S.Array(
-  GetDiskCapacityResponseBodyItem,
-) as any as S.Schema<GetDiskCapacityResponseBodyList>;
+export const GetDiskCapacityResponseBodyList =
+  GetActiveConnectionsResponseBodyList as any as S.Schema<GetDiskCapacityResponseBodyList>;
 
 export type GetDiskCapacityResponse = GetDiskCapacityResponseBodyList;
-export const GetDiskCapacityResponse = /*@__PURE__*/ S.suspend(() =>
-  GetDiskCapacityResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetDiskCapacityResponse" }) as any as S.Schema<GetDiskCapacityResponse>;
+export const GetDiskCapacityResponse =
+  GetBandwidthResponse as any as S.Schema<GetDiskCapacityResponse>;
 
 export interface GetDiskUsageRequest {
   /** Epoch/Unix timestamp of start of time range to return. Defaults to `now() - 1 hour`. */
@@ -4261,9 +4119,8 @@ export const GetDiskUsageResponseBodyItemLabelsItem =
 /** List of labels describing the time series */
 export type GetDiskUsageResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetDiskUsageResponseBodyItemLabelsList = /*@__PURE__*/ S.Array(
-  GetActiveConnectionsResponseBodyItemLabelsItem,
-) as any as S.Schema<GetDiskUsageResponseBodyItemLabelsList>;
+export const GetDiskUsageResponseBodyItemLabelsList =
+  GetActiveConnectionsResponseBodyItemLabelsList as any as S.Schema<GetDiskUsageResponseBodyItemLabelsList>;
 
 /** A time series datapoint value */
 export type GetDiskUsageResponseBodyItemValuesItem = GetActiveConnectionsResponseBodyItemValuesItem;
@@ -4273,9 +4130,8 @@ export const GetDiskUsageResponseBodyItemValuesItem =
 /** The values of the time series */
 export type GetDiskUsageResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetDiskUsageResponseBodyItemValuesList = /*@__PURE__*/ S.Array(
-  GetActiveConnectionsResponseBodyItemValuesItem,
-) as any as S.Schema<GetDiskUsageResponseBodyItemValuesList>;
+export const GetDiskUsageResponseBodyItemValuesList =
+  GetActiveConnectionsResponseBodyItemValuesList as any as S.Schema<GetDiskUsageResponseBodyItemValuesList>;
 
 /** A time series data point */
 export interface GetDiskUsageResponseBodyItem {
@@ -4285,26 +4141,16 @@ export interface GetDiskUsageResponseBodyItem {
   values: GetDiskUsageResponseBodyItemValuesList;
   unit: string;
 }
-export const GetDiskUsageResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: GetDiskUsageResponseBodyItemLabelsList,
-    values: GetDiskUsageResponseBodyItemValuesList,
-    unit: S.String,
-  }),
-).annotate({
-  identifier: "GetDiskUsageResponseBodyItem",
-}) as any as S.Schema<GetDiskUsageResponseBodyItem>;
+export const GetDiskUsageResponseBodyItem =
+  GetActiveConnectionsResponseBodyItem as any as S.Schema<GetDiskUsageResponseBodyItem>;
 
 /** A collection of time series */
 export type GetDiskUsageResponseBodyList = Array<GetDiskUsageResponseBodyItem>;
-export const GetDiskUsageResponseBodyList = /*@__PURE__*/ S.Array(
-  GetDiskUsageResponseBodyItem,
-) as any as S.Schema<GetDiskUsageResponseBodyList>;
+export const GetDiskUsageResponseBodyList =
+  GetActiveConnectionsResponseBodyList as any as S.Schema<GetDiskUsageResponseBodyList>;
 
 export type GetDiskUsageResponse = GetDiskUsageResponseBodyList;
-export const GetDiskUsageResponse = /*@__PURE__*/ S.suspend(() =>
-  GetDiskUsageResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetDiskUsageResponse" }) as any as S.Schema<GetDiskUsageResponse>;
+export const GetDiskUsageResponse = GetBandwidthResponse as any as S.Schema<GetDiskUsageResponse>;
 
 export interface GetEnvGroupRequest {
   /** Filter for resources that belong to an environment group */
@@ -4318,19 +4164,16 @@ export const GetEnvGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of serviceIds linked to the envGroup */
 export type GetEnvGroupResponseServiceLinksList = Array<EnvGroupLink>;
-export const GetEnvGroupResponseServiceLinksList = /*@__PURE__*/ S.Array(
-  EnvGroupLink,
-) as any as S.Schema<GetEnvGroupResponseServiceLinksList>;
+export const GetEnvGroupResponseServiceLinksList =
+  CreateEnvGroupResponseServiceLinksList as any as S.Schema<GetEnvGroupResponseServiceLinksList>;
 
 export type GetEnvGroupResponseEnvVarsList = Array<EnvVar>;
-export const GetEnvGroupResponseEnvVarsList = /*@__PURE__*/ S.Array(
-  EnvVar,
-) as any as S.Schema<GetEnvGroupResponseEnvVarsList>;
+export const GetEnvGroupResponseEnvVarsList =
+  CreateEnvGroupResponseEnvVarsList as any as S.Schema<GetEnvGroupResponseEnvVarsList>;
 
 export type GetEnvGroupResponseSecretFilesList = Array<SecretFile>;
-export const GetEnvGroupResponseSecretFilesList = /*@__PURE__*/ S.Array(
-  SecretFile,
-) as any as S.Schema<GetEnvGroupResponseSecretFilesList>;
+export const GetEnvGroupResponseSecretFilesList =
+  CreateBuildSourceRequestSecretFilesList as any as S.Schema<GetEnvGroupResponseSecretFilesList>;
 
 export interface GetEnvGroupResponse {
   id: string;
@@ -4344,19 +4187,7 @@ export interface GetEnvGroupResponse {
   envVars: GetEnvGroupResponseEnvVarsList;
   secretFiles: GetEnvGroupResponseSecretFilesList;
 }
-export const GetEnvGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    ownerId: S.String,
-    createdAt: S.String,
-    updatedAt: S.String,
-    serviceLinks: GetEnvGroupResponseServiceLinksList,
-    environmentId: S.optional(S.String),
-    envVars: GetEnvGroupResponseEnvVarsList,
-    secretFiles: GetEnvGroupResponseSecretFilesList,
-  }),
-).annotate({ identifier: "GetEnvGroupResponse" }) as any as S.Schema<GetEnvGroupResponse>;
+export const GetEnvGroupResponse = CreateEnvGroupResponse as any as S.Schema<GetEnvGroupResponse>;
 
 export interface GetEnvGroupEnvVarRequest {
   /** Filter for resources that belong to an environment group */
@@ -4471,16 +4302,12 @@ export const GetEnvVarsForServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEnvVarsForServiceRequest>;
 
 export type GetEnvVarsForServiceResponseBodyList = Array<EnvVarWithCursor>;
-export const GetEnvVarsForServiceResponseBodyList = /*@__PURE__*/ S.Array(
-  EnvVarWithCursor,
-) as any as S.Schema<GetEnvVarsForServiceResponseBodyList>;
+export const GetEnvVarsForServiceResponseBodyList =
+  GetEnvVarsForBuildSourceResponseBodyList as any as S.Schema<GetEnvVarsForServiceResponseBodyList>;
 
 export type GetEnvVarsForServiceResponse = GetEnvVarsForServiceResponseBodyList;
-export const GetEnvVarsForServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  GetEnvVarsForServiceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetEnvVarsForServiceResponse",
-}) as any as S.Schema<GetEnvVarsForServiceResponse>;
+export const GetEnvVarsForServiceResponse =
+  GetEnvVarsForBuildSourceResponse as any as S.Schema<GetEnvVarsForServiceResponse>;
 
 export interface GetEventRequest {
   /** The ID of the event */
@@ -5504,9 +5331,8 @@ export const GetHttpLatencyResponseBodyItemLabelsItem =
 /** List of labels describing the time series */
 export type GetHttpLatencyResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetHttpLatencyResponseBodyItemLabelsList = /*@__PURE__*/ S.Array(
-  GetActiveConnectionsResponseBodyItemLabelsItem,
-) as any as S.Schema<GetHttpLatencyResponseBodyItemLabelsList>;
+export const GetHttpLatencyResponseBodyItemLabelsList =
+  GetActiveConnectionsResponseBodyItemLabelsList as any as S.Schema<GetHttpLatencyResponseBodyItemLabelsList>;
 
 /** A time series datapoint value */
 export type GetHttpLatencyResponseBodyItemValuesItem =
@@ -5517,9 +5343,8 @@ export const GetHttpLatencyResponseBodyItemValuesItem =
 /** The values of the time series */
 export type GetHttpLatencyResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetHttpLatencyResponseBodyItemValuesList = /*@__PURE__*/ S.Array(
-  GetActiveConnectionsResponseBodyItemValuesItem,
-) as any as S.Schema<GetHttpLatencyResponseBodyItemValuesList>;
+export const GetHttpLatencyResponseBodyItemValuesList =
+  GetActiveConnectionsResponseBodyItemValuesList as any as S.Schema<GetHttpLatencyResponseBodyItemValuesList>;
 
 /** A time series data point */
 export interface GetHttpLatencyResponseBodyItem {
@@ -5529,26 +5354,17 @@ export interface GetHttpLatencyResponseBodyItem {
   values: GetHttpLatencyResponseBodyItemValuesList;
   unit: string;
 }
-export const GetHttpLatencyResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: GetHttpLatencyResponseBodyItemLabelsList,
-    values: GetHttpLatencyResponseBodyItemValuesList,
-    unit: S.String,
-  }),
-).annotate({
-  identifier: "GetHttpLatencyResponseBodyItem",
-}) as any as S.Schema<GetHttpLatencyResponseBodyItem>;
+export const GetHttpLatencyResponseBodyItem =
+  GetActiveConnectionsResponseBodyItem as any as S.Schema<GetHttpLatencyResponseBodyItem>;
 
 /** A collection of time series */
 export type GetHttpLatencyResponseBodyList = Array<GetHttpLatencyResponseBodyItem>;
-export const GetHttpLatencyResponseBodyList = /*@__PURE__*/ S.Array(
-  GetHttpLatencyResponseBodyItem,
-) as any as S.Schema<GetHttpLatencyResponseBodyList>;
+export const GetHttpLatencyResponseBodyList =
+  GetActiveConnectionsResponseBodyList as any as S.Schema<GetHttpLatencyResponseBodyList>;
 
 export type GetHttpLatencyResponse = GetHttpLatencyResponseBodyList;
-export const GetHttpLatencyResponse = /*@__PURE__*/ S.suspend(() =>
-  GetHttpLatencyResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetHttpLatencyResponse" }) as any as S.Schema<GetHttpLatencyResponse>;
+export const GetHttpLatencyResponse =
+  GetBandwidthResponse as any as S.Schema<GetHttpLatencyResponse>;
 
 export type GetHttpRequestsRequestAggregateBy = "statusCode" | "host";
 export const GetHttpRequestsRequestAggregateBy = S.String;
@@ -5593,9 +5409,8 @@ export const GetHttpRequestsResponseBodyItemLabelsItem =
 /** List of labels describing the time series */
 export type GetHttpRequestsResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetHttpRequestsResponseBodyItemLabelsList = /*@__PURE__*/ S.Array(
-  GetActiveConnectionsResponseBodyItemLabelsItem,
-) as any as S.Schema<GetHttpRequestsResponseBodyItemLabelsList>;
+export const GetHttpRequestsResponseBodyItemLabelsList =
+  GetActiveConnectionsResponseBodyItemLabelsList as any as S.Schema<GetHttpRequestsResponseBodyItemLabelsList>;
 
 /** A time series datapoint value */
 export type GetHttpRequestsResponseBodyItemValuesItem =
@@ -5606,9 +5421,8 @@ export const GetHttpRequestsResponseBodyItemValuesItem =
 /** The values of the time series */
 export type GetHttpRequestsResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetHttpRequestsResponseBodyItemValuesList = /*@__PURE__*/ S.Array(
-  GetActiveConnectionsResponseBodyItemValuesItem,
-) as any as S.Schema<GetHttpRequestsResponseBodyItemValuesList>;
+export const GetHttpRequestsResponseBodyItemValuesList =
+  GetActiveConnectionsResponseBodyItemValuesList as any as S.Schema<GetHttpRequestsResponseBodyItemValuesList>;
 
 /** A time series data point */
 export interface GetHttpRequestsResponseBodyItem {
@@ -5618,26 +5432,17 @@ export interface GetHttpRequestsResponseBodyItem {
   values: GetHttpRequestsResponseBodyItemValuesList;
   unit: string;
 }
-export const GetHttpRequestsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: GetHttpRequestsResponseBodyItemLabelsList,
-    values: GetHttpRequestsResponseBodyItemValuesList,
-    unit: S.String,
-  }),
-).annotate({
-  identifier: "GetHttpRequestsResponseBodyItem",
-}) as any as S.Schema<GetHttpRequestsResponseBodyItem>;
+export const GetHttpRequestsResponseBodyItem =
+  GetActiveConnectionsResponseBodyItem as any as S.Schema<GetHttpRequestsResponseBodyItem>;
 
 /** A collection of time series */
 export type GetHttpRequestsResponseBodyList = Array<GetHttpRequestsResponseBodyItem>;
-export const GetHttpRequestsResponseBodyList = /*@__PURE__*/ S.Array(
-  GetHttpRequestsResponseBodyItem,
-) as any as S.Schema<GetHttpRequestsResponseBodyList>;
+export const GetHttpRequestsResponseBodyList =
+  GetActiveConnectionsResponseBodyList as any as S.Schema<GetHttpRequestsResponseBodyList>;
 
 export type GetHttpRequestsResponse = GetHttpRequestsResponseBodyList;
-export const GetHttpRequestsResponse = /*@__PURE__*/ S.suspend(() =>
-  GetHttpRequestsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetHttpRequestsResponse" }) as any as S.Schema<GetHttpRequestsResponse>;
+export const GetHttpRequestsResponse =
+  GetBandwidthResponse as any as S.Schema<GetHttpRequestsResponse>;
 
 export interface GetInstanceCountRequest {
   /** Epoch/Unix timestamp of start of time range to return. Defaults to `now() - 1 hour`. */
@@ -5670,9 +5475,8 @@ export const GetInstanceCountResponseBodyItemLabelsItem =
 /** List of labels describing the time series */
 export type GetInstanceCountResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetInstanceCountResponseBodyItemLabelsList = /*@__PURE__*/ S.Array(
-  GetActiveConnectionsResponseBodyItemLabelsItem,
-) as any as S.Schema<GetInstanceCountResponseBodyItemLabelsList>;
+export const GetInstanceCountResponseBodyItemLabelsList =
+  GetActiveConnectionsResponseBodyItemLabelsList as any as S.Schema<GetInstanceCountResponseBodyItemLabelsList>;
 
 /** A time series datapoint value */
 export type GetInstanceCountResponseBodyItemValuesItem =
@@ -5683,9 +5487,8 @@ export const GetInstanceCountResponseBodyItemValuesItem =
 /** The values of the time series */
 export type GetInstanceCountResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetInstanceCountResponseBodyItemValuesList = /*@__PURE__*/ S.Array(
-  GetActiveConnectionsResponseBodyItemValuesItem,
-) as any as S.Schema<GetInstanceCountResponseBodyItemValuesList>;
+export const GetInstanceCountResponseBodyItemValuesList =
+  GetActiveConnectionsResponseBodyItemValuesList as any as S.Schema<GetInstanceCountResponseBodyItemValuesList>;
 
 /** A time series data point */
 export interface GetInstanceCountResponseBodyItem {
@@ -5695,26 +5498,17 @@ export interface GetInstanceCountResponseBodyItem {
   values: GetInstanceCountResponseBodyItemValuesList;
   unit: string;
 }
-export const GetInstanceCountResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: GetInstanceCountResponseBodyItemLabelsList,
-    values: GetInstanceCountResponseBodyItemValuesList,
-    unit: S.String,
-  }),
-).annotate({
-  identifier: "GetInstanceCountResponseBodyItem",
-}) as any as S.Schema<GetInstanceCountResponseBodyItem>;
+export const GetInstanceCountResponseBodyItem =
+  GetActiveConnectionsResponseBodyItem as any as S.Schema<GetInstanceCountResponseBodyItem>;
 
 /** A collection of time series */
 export type GetInstanceCountResponseBodyList = Array<GetInstanceCountResponseBodyItem>;
-export const GetInstanceCountResponseBodyList = /*@__PURE__*/ S.Array(
-  GetInstanceCountResponseBodyItem,
-) as any as S.Schema<GetInstanceCountResponseBodyList>;
+export const GetInstanceCountResponseBodyList =
+  GetActiveConnectionsResponseBodyList as any as S.Schema<GetInstanceCountResponseBodyList>;
 
 export type GetInstanceCountResponse = GetInstanceCountResponseBodyList;
-export const GetInstanceCountResponse = /*@__PURE__*/ S.suspend(() =>
-  GetInstanceCountResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetInstanceCountResponse" }) as any as S.Schema<GetInstanceCountResponse>;
+export const GetInstanceCountResponse =
+  GetBandwidthResponse as any as S.Schema<GetInstanceCountResponse>;
 
 export interface GetJobRequest {
   /** The ID of the service */
@@ -5827,9 +5621,8 @@ export const GetMemoryResponseBodyItemLabelsItem = GetActiveConnectionsResponseB
 /** List of labels describing the time series */
 export type GetMemoryResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetMemoryResponseBodyItemLabelsList = /*@__PURE__*/ S.Array(
-  GetActiveConnectionsResponseBodyItemLabelsItem,
-) as any as S.Schema<GetMemoryResponseBodyItemLabelsList>;
+export const GetMemoryResponseBodyItemLabelsList =
+  GetActiveConnectionsResponseBodyItemLabelsList as any as S.Schema<GetMemoryResponseBodyItemLabelsList>;
 
 /** A time series datapoint value */
 export type GetMemoryResponseBodyItemValuesItem = GetActiveConnectionsResponseBodyItemValuesItem;
@@ -5838,9 +5631,8 @@ export const GetMemoryResponseBodyItemValuesItem = GetActiveConnectionsResponseB
 /** The values of the time series */
 export type GetMemoryResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetMemoryResponseBodyItemValuesList = /*@__PURE__*/ S.Array(
-  GetActiveConnectionsResponseBodyItemValuesItem,
-) as any as S.Schema<GetMemoryResponseBodyItemValuesList>;
+export const GetMemoryResponseBodyItemValuesList =
+  GetActiveConnectionsResponseBodyItemValuesList as any as S.Schema<GetMemoryResponseBodyItemValuesList>;
 
 /** A time series data point */
 export interface GetMemoryResponseBodyItem {
@@ -5850,26 +5642,16 @@ export interface GetMemoryResponseBodyItem {
   values: GetMemoryResponseBodyItemValuesList;
   unit: string;
 }
-export const GetMemoryResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: GetMemoryResponseBodyItemLabelsList,
-    values: GetMemoryResponseBodyItemValuesList,
-    unit: S.String,
-  }),
-).annotate({
-  identifier: "GetMemoryResponseBodyItem",
-}) as any as S.Schema<GetMemoryResponseBodyItem>;
+export const GetMemoryResponseBodyItem =
+  GetActiveConnectionsResponseBodyItem as any as S.Schema<GetMemoryResponseBodyItem>;
 
 /** A collection of time series */
 export type GetMemoryResponseBodyList = Array<GetMemoryResponseBodyItem>;
-export const GetMemoryResponseBodyList = /*@__PURE__*/ S.Array(
-  GetMemoryResponseBodyItem,
-) as any as S.Schema<GetMemoryResponseBodyList>;
+export const GetMemoryResponseBodyList =
+  GetActiveConnectionsResponseBodyList as any as S.Schema<GetMemoryResponseBodyList>;
 
 export type GetMemoryResponse = GetMemoryResponseBodyList;
-export const GetMemoryResponse = /*@__PURE__*/ S.suspend(() =>
-  GetMemoryResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetMemoryResponse" }) as any as S.Schema<GetMemoryResponse>;
+export const GetMemoryResponse = GetBandwidthResponse as any as S.Schema<GetMemoryResponse>;
 
 export interface GetMemoryLimitRequest {
   /** Epoch/Unix timestamp of start of time range to return. Defaults to `now() - 1 hour`. */
@@ -5905,9 +5687,8 @@ export const GetMemoryLimitResponseBodyItemLabelsItem =
 /** List of labels describing the time series */
 export type GetMemoryLimitResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetMemoryLimitResponseBodyItemLabelsList = /*@__PURE__*/ S.Array(
-  GetActiveConnectionsResponseBodyItemLabelsItem,
-) as any as S.Schema<GetMemoryLimitResponseBodyItemLabelsList>;
+export const GetMemoryLimitResponseBodyItemLabelsList =
+  GetActiveConnectionsResponseBodyItemLabelsList as any as S.Schema<GetMemoryLimitResponseBodyItemLabelsList>;
 
 /** A time series datapoint value */
 export type GetMemoryLimitResponseBodyItemValuesItem =
@@ -5918,9 +5699,8 @@ export const GetMemoryLimitResponseBodyItemValuesItem =
 /** The values of the time series */
 export type GetMemoryLimitResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetMemoryLimitResponseBodyItemValuesList = /*@__PURE__*/ S.Array(
-  GetActiveConnectionsResponseBodyItemValuesItem,
-) as any as S.Schema<GetMemoryLimitResponseBodyItemValuesList>;
+export const GetMemoryLimitResponseBodyItemValuesList =
+  GetActiveConnectionsResponseBodyItemValuesList as any as S.Schema<GetMemoryLimitResponseBodyItemValuesList>;
 
 /** A time series data point */
 export interface GetMemoryLimitResponseBodyItem {
@@ -5930,26 +5710,17 @@ export interface GetMemoryLimitResponseBodyItem {
   values: GetMemoryLimitResponseBodyItemValuesList;
   unit: string;
 }
-export const GetMemoryLimitResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: GetMemoryLimitResponseBodyItemLabelsList,
-    values: GetMemoryLimitResponseBodyItemValuesList,
-    unit: S.String,
-  }),
-).annotate({
-  identifier: "GetMemoryLimitResponseBodyItem",
-}) as any as S.Schema<GetMemoryLimitResponseBodyItem>;
+export const GetMemoryLimitResponseBodyItem =
+  GetActiveConnectionsResponseBodyItem as any as S.Schema<GetMemoryLimitResponseBodyItem>;
 
 /** A collection of time series */
 export type GetMemoryLimitResponseBodyList = Array<GetMemoryLimitResponseBodyItem>;
-export const GetMemoryLimitResponseBodyList = /*@__PURE__*/ S.Array(
-  GetMemoryLimitResponseBodyItem,
-) as any as S.Schema<GetMemoryLimitResponseBodyList>;
+export const GetMemoryLimitResponseBodyList =
+  GetActiveConnectionsResponseBodyList as any as S.Schema<GetMemoryLimitResponseBodyList>;
 
 export type GetMemoryLimitResponse = GetMemoryLimitResponseBodyList;
-export const GetMemoryLimitResponse = /*@__PURE__*/ S.suspend(() =>
-  GetMemoryLimitResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetMemoryLimitResponse" }) as any as S.Schema<GetMemoryLimitResponse>;
+export const GetMemoryLimitResponse =
+  GetBandwidthResponse as any as S.Schema<GetMemoryLimitResponse>;
 
 export interface GetMemoryTargetRequest {
   /** Epoch/Unix timestamp of start of time range to return. Defaults to `now() - 1 hour`. */
@@ -5985,9 +5756,8 @@ export const GetMemoryTargetResponseBodyItemLabelsItem =
 /** List of labels describing the time series */
 export type GetMemoryTargetResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetMemoryTargetResponseBodyItemLabelsList = /*@__PURE__*/ S.Array(
-  GetActiveConnectionsResponseBodyItemLabelsItem,
-) as any as S.Schema<GetMemoryTargetResponseBodyItemLabelsList>;
+export const GetMemoryTargetResponseBodyItemLabelsList =
+  GetActiveConnectionsResponseBodyItemLabelsList as any as S.Schema<GetMemoryTargetResponseBodyItemLabelsList>;
 
 /** A time series datapoint value */
 export type GetMemoryTargetResponseBodyItemValuesItem =
@@ -5998,9 +5768,8 @@ export const GetMemoryTargetResponseBodyItemValuesItem =
 /** The values of the time series */
 export type GetMemoryTargetResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetMemoryTargetResponseBodyItemValuesList = /*@__PURE__*/ S.Array(
-  GetActiveConnectionsResponseBodyItemValuesItem,
-) as any as S.Schema<GetMemoryTargetResponseBodyItemValuesList>;
+export const GetMemoryTargetResponseBodyItemValuesList =
+  GetActiveConnectionsResponseBodyItemValuesList as any as S.Schema<GetMemoryTargetResponseBodyItemValuesList>;
 
 /** A time series data point */
 export interface GetMemoryTargetResponseBodyItem {
@@ -6010,26 +5779,17 @@ export interface GetMemoryTargetResponseBodyItem {
   values: GetMemoryTargetResponseBodyItemValuesList;
   unit: string;
 }
-export const GetMemoryTargetResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: GetMemoryTargetResponseBodyItemLabelsList,
-    values: GetMemoryTargetResponseBodyItemValuesList,
-    unit: S.String,
-  }),
-).annotate({
-  identifier: "GetMemoryTargetResponseBodyItem",
-}) as any as S.Schema<GetMemoryTargetResponseBodyItem>;
+export const GetMemoryTargetResponseBodyItem =
+  GetActiveConnectionsResponseBodyItem as any as S.Schema<GetMemoryTargetResponseBodyItem>;
 
 /** A collection of time series */
 export type GetMemoryTargetResponseBodyList = Array<GetMemoryTargetResponseBodyItem>;
-export const GetMemoryTargetResponseBodyList = /*@__PURE__*/ S.Array(
-  GetMemoryTargetResponseBodyItem,
-) as any as S.Schema<GetMemoryTargetResponseBodyList>;
+export const GetMemoryTargetResponseBodyList =
+  GetActiveConnectionsResponseBodyList as any as S.Schema<GetMemoryTargetResponseBodyList>;
 
 export type GetMemoryTargetResponse = GetMemoryTargetResponseBodyList;
-export const GetMemoryTargetResponse = /*@__PURE__*/ S.suspend(() =>
-  GetMemoryTargetResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetMemoryTargetResponse" }) as any as S.Schema<GetMemoryTargetResponse>;
+export const GetMemoryTargetResponse =
+  GetBandwidthResponse as any as S.Schema<GetMemoryTargetResponse>;
 
 export interface GetOwnerRequest {
   /** The ID of the user or team */
@@ -6315,9 +6075,8 @@ export const GetReplicationLagResponseBodyItemLabelsItem =
 /** List of labels describing the time series */
 export type GetReplicationLagResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetReplicationLagResponseBodyItemLabelsList = /*@__PURE__*/ S.Array(
-  GetActiveConnectionsResponseBodyItemLabelsItem,
-) as any as S.Schema<GetReplicationLagResponseBodyItemLabelsList>;
+export const GetReplicationLagResponseBodyItemLabelsList =
+  GetActiveConnectionsResponseBodyItemLabelsList as any as S.Schema<GetReplicationLagResponseBodyItemLabelsList>;
 
 /** A time series datapoint value */
 export type GetReplicationLagResponseBodyItemValuesItem =
@@ -6328,9 +6087,8 @@ export const GetReplicationLagResponseBodyItemValuesItem =
 /** The values of the time series */
 export type GetReplicationLagResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetReplicationLagResponseBodyItemValuesList = /*@__PURE__*/ S.Array(
-  GetActiveConnectionsResponseBodyItemValuesItem,
-) as any as S.Schema<GetReplicationLagResponseBodyItemValuesList>;
+export const GetReplicationLagResponseBodyItemValuesList =
+  GetActiveConnectionsResponseBodyItemValuesList as any as S.Schema<GetReplicationLagResponseBodyItemValuesList>;
 
 /** A time series data point */
 export interface GetReplicationLagResponseBodyItem {
@@ -6340,28 +6098,17 @@ export interface GetReplicationLagResponseBodyItem {
   values: GetReplicationLagResponseBodyItemValuesList;
   unit: string;
 }
-export const GetReplicationLagResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: GetReplicationLagResponseBodyItemLabelsList,
-    values: GetReplicationLagResponseBodyItemValuesList,
-    unit: S.String,
-  }),
-).annotate({
-  identifier: "GetReplicationLagResponseBodyItem",
-}) as any as S.Schema<GetReplicationLagResponseBodyItem>;
+export const GetReplicationLagResponseBodyItem =
+  GetActiveConnectionsResponseBodyItem as any as S.Schema<GetReplicationLagResponseBodyItem>;
 
 /** A collection of time series */
 export type GetReplicationLagResponseBodyList = Array<GetReplicationLagResponseBodyItem>;
-export const GetReplicationLagResponseBodyList = /*@__PURE__*/ S.Array(
-  GetReplicationLagResponseBodyItem,
-) as any as S.Schema<GetReplicationLagResponseBodyList>;
+export const GetReplicationLagResponseBodyList =
+  GetActiveConnectionsResponseBodyList as any as S.Schema<GetReplicationLagResponseBodyList>;
 
 export type GetReplicationLagResponse = GetReplicationLagResponseBodyList;
-export const GetReplicationLagResponse = /*@__PURE__*/ S.suspend(() =>
-  GetReplicationLagResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetReplicationLagResponse",
-}) as any as S.Schema<GetReplicationLagResponse>;
+export const GetReplicationLagResponse =
+  GetActiveConnectionsResponse as any as S.Schema<GetReplicationLagResponse>;
 
 export interface GetResourceLogStreamRequest {
   /** The ID of the resource (server, cron job, postgres, or redis) to return log stream override information for */
@@ -6478,9 +6225,8 @@ export const OutboundIpsType = S.String;
 
 /** The IP addresses the resource's outbound traffic originates from. */
 export type OutboundIpsIpsList = Array<string>;
-export const OutboundIpsIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OutboundIpsIpsList>;
+export const OutboundIpsIpsList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<OutboundIpsIpsList>;
 
 export interface OutboundIps {
   /** `dedicated` if a dedicated IP set applies to the resource, `shared` if its traffic originates from the shared Render IPs for its region. */
@@ -6546,9 +6292,8 @@ export type GetTaskRunResponseStatus =
 export const GetTaskRunResponseStatus = S.String;
 
 export type GetTaskRunResponseResultsList = Array<unknown>;
-export const GetTaskRunResponseResultsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetTaskRunResponseResultsList>;
+export const GetTaskRunResponseResultsList =
+  CreateTaskRequestInputCase0List as any as S.Schema<GetTaskRunResponseResultsList>;
 
 /** Positional arguments passed to the task function */
 export type InputCase0List = Array<unknown>;
@@ -6556,17 +6301,14 @@ export const InputCase0List = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schem
 
 /** Named parameters passed to the task function as keyword arguments */
 export type InputCase1Map = { [key: string]: unknown | undefined };
-export const InputCase1Map = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<InputCase1Map>;
+export const InputCase1Map = CreateTaskRequestInputCase1Map as any as S.Schema<InputCase1Map>;
 
 /** Input data for a task. Can be either an array (for positional arguments) or an object (for named parameters). */
 export type Input = InputCase0List | InputCase1Map;
 export const Input = S.Unknown as any as S.Schema<Input>;
 
 export type Results = Array<unknown>;
-export const Results = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<Results>;
+export const Results = InputCase0List as any as S.Schema<Results>;
 
 export interface GetTaskRunResponseAttemptsItem {
   /** The ID of the task run this attempt belongs to. */
@@ -6678,9 +6420,8 @@ export const GetTaskRunsCompletedResponseBodyItemLabelsItem =
 /** List of labels describing the time series */
 export type GetTaskRunsCompletedResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetTaskRunsCompletedResponseBodyItemLabelsList = /*@__PURE__*/ S.Array(
-  GetActiveConnectionsResponseBodyItemLabelsItem,
-) as any as S.Schema<GetTaskRunsCompletedResponseBodyItemLabelsList>;
+export const GetTaskRunsCompletedResponseBodyItemLabelsList =
+  GetActiveConnectionsResponseBodyItemLabelsList as any as S.Schema<GetTaskRunsCompletedResponseBodyItemLabelsList>;
 
 /** A time series datapoint value */
 export type GetTaskRunsCompletedResponseBodyItemValuesItem =
@@ -6691,9 +6432,8 @@ export const GetTaskRunsCompletedResponseBodyItemValuesItem =
 /** The values of the time series */
 export type GetTaskRunsCompletedResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetTaskRunsCompletedResponseBodyItemValuesList = /*@__PURE__*/ S.Array(
-  GetActiveConnectionsResponseBodyItemValuesItem,
-) as any as S.Schema<GetTaskRunsCompletedResponseBodyItemValuesList>;
+export const GetTaskRunsCompletedResponseBodyItemValuesList =
+  GetActiveConnectionsResponseBodyItemValuesList as any as S.Schema<GetTaskRunsCompletedResponseBodyItemValuesList>;
 
 /** A time series data point */
 export interface GetTaskRunsCompletedResponseBodyItem {
@@ -6703,28 +6443,17 @@ export interface GetTaskRunsCompletedResponseBodyItem {
   values: GetTaskRunsCompletedResponseBodyItemValuesList;
   unit: string;
 }
-export const GetTaskRunsCompletedResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: GetTaskRunsCompletedResponseBodyItemLabelsList,
-    values: GetTaskRunsCompletedResponseBodyItemValuesList,
-    unit: S.String,
-  }),
-).annotate({
-  identifier: "GetTaskRunsCompletedResponseBodyItem",
-}) as any as S.Schema<GetTaskRunsCompletedResponseBodyItem>;
+export const GetTaskRunsCompletedResponseBodyItem =
+  GetActiveConnectionsResponseBodyItem as any as S.Schema<GetTaskRunsCompletedResponseBodyItem>;
 
 /** A collection of time series */
 export type GetTaskRunsCompletedResponseBodyList = Array<GetTaskRunsCompletedResponseBodyItem>;
-export const GetTaskRunsCompletedResponseBodyList = /*@__PURE__*/ S.Array(
-  GetTaskRunsCompletedResponseBodyItem,
-) as any as S.Schema<GetTaskRunsCompletedResponseBodyList>;
+export const GetTaskRunsCompletedResponseBodyList =
+  GetActiveConnectionsResponseBodyList as any as S.Schema<GetTaskRunsCompletedResponseBodyList>;
 
 export type GetTaskRunsCompletedResponse = GetTaskRunsCompletedResponseBodyList;
-export const GetTaskRunsCompletedResponse = /*@__PURE__*/ S.suspend(() =>
-  GetTaskRunsCompletedResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetTaskRunsCompletedResponse",
-}) as any as S.Schema<GetTaskRunsCompletedResponse>;
+export const GetTaskRunsCompletedResponse =
+  GetActiveConnectionsResponse as any as S.Schema<GetTaskRunsCompletedResponse>;
 
 export interface GetTaskRunsQueuedRequest {
   /** Epoch/Unix timestamp of start of time range to return. Defaults to `now() - 1 hour`. */
@@ -6754,9 +6483,8 @@ export const GetTaskRunsQueuedResponseBodyItemLabelsItem =
 /** List of labels describing the time series */
 export type GetTaskRunsQueuedResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetTaskRunsQueuedResponseBodyItemLabelsList = /*@__PURE__*/ S.Array(
-  GetActiveConnectionsResponseBodyItemLabelsItem,
-) as any as S.Schema<GetTaskRunsQueuedResponseBodyItemLabelsList>;
+export const GetTaskRunsQueuedResponseBodyItemLabelsList =
+  GetActiveConnectionsResponseBodyItemLabelsList as any as S.Schema<GetTaskRunsQueuedResponseBodyItemLabelsList>;
 
 /** A time series datapoint value */
 export type GetTaskRunsQueuedResponseBodyItemValuesItem =
@@ -6767,9 +6495,8 @@ export const GetTaskRunsQueuedResponseBodyItemValuesItem =
 /** The values of the time series */
 export type GetTaskRunsQueuedResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetTaskRunsQueuedResponseBodyItemValuesList = /*@__PURE__*/ S.Array(
-  GetActiveConnectionsResponseBodyItemValuesItem,
-) as any as S.Schema<GetTaskRunsQueuedResponseBodyItemValuesList>;
+export const GetTaskRunsQueuedResponseBodyItemValuesList =
+  GetActiveConnectionsResponseBodyItemValuesList as any as S.Schema<GetTaskRunsQueuedResponseBodyItemValuesList>;
 
 /** A time series data point */
 export interface GetTaskRunsQueuedResponseBodyItem {
@@ -6779,28 +6506,17 @@ export interface GetTaskRunsQueuedResponseBodyItem {
   values: GetTaskRunsQueuedResponseBodyItemValuesList;
   unit: string;
 }
-export const GetTaskRunsQueuedResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: GetTaskRunsQueuedResponseBodyItemLabelsList,
-    values: GetTaskRunsQueuedResponseBodyItemValuesList,
-    unit: S.String,
-  }),
-).annotate({
-  identifier: "GetTaskRunsQueuedResponseBodyItem",
-}) as any as S.Schema<GetTaskRunsQueuedResponseBodyItem>;
+export const GetTaskRunsQueuedResponseBodyItem =
+  GetActiveConnectionsResponseBodyItem as any as S.Schema<GetTaskRunsQueuedResponseBodyItem>;
 
 /** A collection of time series */
 export type GetTaskRunsQueuedResponseBodyList = Array<GetTaskRunsQueuedResponseBodyItem>;
-export const GetTaskRunsQueuedResponseBodyList = /*@__PURE__*/ S.Array(
-  GetTaskRunsQueuedResponseBodyItem,
-) as any as S.Schema<GetTaskRunsQueuedResponseBodyList>;
+export const GetTaskRunsQueuedResponseBodyList =
+  GetActiveConnectionsResponseBodyList as any as S.Schema<GetTaskRunsQueuedResponseBodyList>;
 
 export type GetTaskRunsQueuedResponse = GetTaskRunsQueuedResponseBodyList;
-export const GetTaskRunsQueuedResponse = /*@__PURE__*/ S.suspend(() =>
-  GetTaskRunsQueuedResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetTaskRunsQueuedResponse",
-}) as any as S.Schema<GetTaskRunsQueuedResponse>;
+export const GetTaskRunsQueuedResponse =
+  GetActiveConnectionsResponse as any as S.Schema<GetTaskRunsQueuedResponse>;
 
 export interface GetUserRequest {}
 export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
@@ -6839,16 +6555,7 @@ export interface Schema14 {
   enabled: boolean;
   eventFilter: EventFilter;
 }
-export const Schema14 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    url: S.String,
-    name: S.String,
-    secret: S.String.pipe(T.SensitiveValue({})),
-    enabled: S.Boolean,
-    eventFilter: EventFilter,
-  }),
-).annotate({ identifier: "Schema14" }) as any as S.Schema<Schema14>;
+export const Schema14 = CreateWebhookResponse as any as S.Schema<Schema14>;
 
 export interface GetWorkflowRequest {
   /** The ID of the workflow */
@@ -6874,21 +6581,7 @@ export interface Schema15 {
   slug?: string;
   autoDeployTrigger?: AutoDeployTrigger2;
 }
-export const Schema15 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    ownerId: S.String,
-    createdAt: S.String,
-    updatedAt: S.String,
-    buildConfig: BuildConfig,
-    runCommand: S.String,
-    region: Region2,
-    environmentId: S.optional(S.String),
-    slug: S.optional(S.String),
-    autoDeployTrigger: S.optional(AutoDeployTrigger2),
-  }),
-).annotate({ identifier: "Schema15" }) as any as S.Schema<Schema15>;
+export const Schema15 = CreateWorkflowResponse as any as S.Schema<Schema15>;
 
 export interface GetWorkflowVersionRequest {
   /** The ID of the workflow version */
@@ -6952,19 +6645,16 @@ export const LinkEnvGroupToBuildSourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of serviceIds linked to the envGroup */
 export type LinkEnvGroupToBuildSourceResponseServiceLinksList = Array<EnvGroupLink>;
-export const LinkEnvGroupToBuildSourceResponseServiceLinksList = /*@__PURE__*/ S.Array(
-  EnvGroupLink,
-) as any as S.Schema<LinkEnvGroupToBuildSourceResponseServiceLinksList>;
+export const LinkEnvGroupToBuildSourceResponseServiceLinksList =
+  CreateEnvGroupResponseServiceLinksList as any as S.Schema<LinkEnvGroupToBuildSourceResponseServiceLinksList>;
 
 export type LinkEnvGroupToBuildSourceResponseEnvVarsList = Array<EnvVar>;
-export const LinkEnvGroupToBuildSourceResponseEnvVarsList = /*@__PURE__*/ S.Array(
-  EnvVar,
-) as any as S.Schema<LinkEnvGroupToBuildSourceResponseEnvVarsList>;
+export const LinkEnvGroupToBuildSourceResponseEnvVarsList =
+  CreateEnvGroupResponseEnvVarsList as any as S.Schema<LinkEnvGroupToBuildSourceResponseEnvVarsList>;
 
 export type LinkEnvGroupToBuildSourceResponseSecretFilesList = Array<SecretFile>;
-export const LinkEnvGroupToBuildSourceResponseSecretFilesList = /*@__PURE__*/ S.Array(
-  SecretFile,
-) as any as S.Schema<LinkEnvGroupToBuildSourceResponseSecretFilesList>;
+export const LinkEnvGroupToBuildSourceResponseSecretFilesList =
+  CreateBuildSourceRequestSecretFilesList as any as S.Schema<LinkEnvGroupToBuildSourceResponseSecretFilesList>;
 
 export interface LinkEnvGroupToBuildSourceResponse {
   id: string;
@@ -7013,19 +6703,16 @@ export const LinkServiceToEnvGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of serviceIds linked to the envGroup */
 export type LinkServiceToEnvGroupResponseServiceLinksList = Array<EnvGroupLink>;
-export const LinkServiceToEnvGroupResponseServiceLinksList = /*@__PURE__*/ S.Array(
-  EnvGroupLink,
-) as any as S.Schema<LinkServiceToEnvGroupResponseServiceLinksList>;
+export const LinkServiceToEnvGroupResponseServiceLinksList =
+  CreateEnvGroupResponseServiceLinksList as any as S.Schema<LinkServiceToEnvGroupResponseServiceLinksList>;
 
 export type LinkServiceToEnvGroupResponseEnvVarsList = Array<EnvVar>;
-export const LinkServiceToEnvGroupResponseEnvVarsList = /*@__PURE__*/ S.Array(
-  EnvVar,
-) as any as S.Schema<LinkServiceToEnvGroupResponseEnvVarsList>;
+export const LinkServiceToEnvGroupResponseEnvVarsList =
+  CreateEnvGroupResponseEnvVarsList as any as S.Schema<LinkServiceToEnvGroupResponseEnvVarsList>;
 
 export type LinkServiceToEnvGroupResponseSecretFilesList = Array<SecretFile>;
-export const LinkServiceToEnvGroupResponseSecretFilesList = /*@__PURE__*/ S.Array(
-  SecretFile,
-) as any as S.Schema<LinkServiceToEnvGroupResponseSecretFilesList>;
+export const LinkServiceToEnvGroupResponseSecretFilesList =
+  CreateBuildSourceRequestSecretFilesList as any as S.Schema<LinkServiceToEnvGroupResponseSecretFilesList>;
 
 export interface LinkServiceToEnvGroupResponse {
   id: string;
@@ -7039,21 +6726,8 @@ export interface LinkServiceToEnvGroupResponse {
   envVars: LinkServiceToEnvGroupResponseEnvVarsList;
   secretFiles: LinkServiceToEnvGroupResponseSecretFilesList;
 }
-export const LinkServiceToEnvGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    ownerId: S.String,
-    createdAt: S.String,
-    updatedAt: S.String,
-    serviceLinks: LinkServiceToEnvGroupResponseServiceLinksList,
-    environmentId: S.optional(S.String),
-    envVars: LinkServiceToEnvGroupResponseEnvVarsList,
-    secretFiles: LinkServiceToEnvGroupResponseSecretFilesList,
-  }),
-).annotate({
-  identifier: "LinkServiceToEnvGroupResponse",
-}) as any as S.Schema<LinkServiceToEnvGroupResponse>;
+export const LinkServiceToEnvGroupResponse =
+  LinkEnvGroupToBuildSourceResponse as any as S.Schema<LinkServiceToEnvGroupResponse>;
 
 export interface ListApplicationFilterValuesRequest {
   /** Epoch/Unix timestamp of start of time range to return. Defaults to `now() - 1 hour`. */
@@ -7083,9 +6757,8 @@ export type ListApplicationFilterValuesResponseBodyItemFilter = "instance";
 export const ListApplicationFilterValuesResponseBodyItemFilter = S.String;
 
 export type ListApplicationFilterValuesResponseBodyItemValuesList = Array<string>;
-export const ListApplicationFilterValuesResponseBodyItemValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListApplicationFilterValuesResponseBodyItemValuesList>;
+export const ListApplicationFilterValuesResponseBodyItemValuesList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListApplicationFilterValuesResponseBodyItemValuesList>;
 
 export interface ListApplicationFilterValuesResponseBodyItem {
   filter?: ListApplicationFilterValuesResponseBodyItemFilter;
@@ -7115,9 +6788,8 @@ export const ListApplicationFilterValuesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListApplicationFilterValuesResponse>;
 
 export type ListBlueprintsRequestOwnerIdList = Array<string>;
-export const ListBlueprintsRequestOwnerIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListBlueprintsRequestOwnerIdList>;
+export const ListBlueprintsRequestOwnerIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListBlueprintsRequestOwnerIdList>;
 
 export interface ListBlueprintsRequest {
   /** The ID of the workspaces to return resources for */
@@ -7361,14 +7033,12 @@ export const ListBuildsInBuildSourceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBuildsInBuildSourceResponse>;
 
 export type ListBuildSourcesRequestNameList = Array<string>;
-export const ListBuildSourcesRequestNameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListBuildSourcesRequestNameList>;
+export const ListBuildSourcesRequestNameList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListBuildSourcesRequestNameList>;
 
 export type ListBuildSourcesRequestOwnerIdList = Array<string>;
-export const ListBuildSourcesRequestOwnerIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListBuildSourcesRequestOwnerIdList>;
+export const ListBuildSourcesRequestOwnerIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListBuildSourcesRequestOwnerIdList>;
 
 export interface ListBuildSourcesRequest {
   /** Filter by name */
@@ -7430,9 +7100,8 @@ export const ListBuildSourcesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListBuildSourcesResponse" }) as any as S.Schema<ListBuildSourcesResponse>;
 
 export type ListCustomDomainsRequestNameList = Array<string>;
-export const ListCustomDomainsRequestNameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCustomDomainsRequestNameList>;
+export const ListCustomDomainsRequestNameList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListCustomDomainsRequestNameList>;
 
 export type ListCustomDomainsRequestDomainType = "apex" | "subdomain";
 export const ListCustomDomainsRequestDomainType = S.String;
@@ -7579,24 +7248,20 @@ export const ListDeploysResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDeploysResponse" }) as any as S.Schema<ListDeploysResponse>;
 
 export type ListDisksRequestOwnerIdList = Array<string>;
-export const ListDisksRequestOwnerIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDisksRequestOwnerIdList>;
+export const ListDisksRequestOwnerIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListDisksRequestOwnerIdList>;
 
 export type ListDisksRequestDiskIdList = Array<string>;
-export const ListDisksRequestDiskIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDisksRequestDiskIdList>;
+export const ListDisksRequestDiskIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListDisksRequestDiskIdList>;
 
 export type ListDisksRequestNameList = Array<string>;
-export const ListDisksRequestNameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDisksRequestNameList>;
+export const ListDisksRequestNameList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListDisksRequestNameList>;
 
 export type ListDisksRequestServiceIdList = Array<string>;
-export const ListDisksRequestServiceIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDisksRequestServiceIdList>;
+export const ListDisksRequestServiceIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListDisksRequestServiceIdList>;
 
 export interface ListDisksRequest {
   /** The ID of the workspaces to return resources for */
@@ -7657,19 +7322,16 @@ export const ListDisksResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDisksResponse" }) as any as S.Schema<ListDisksResponse>;
 
 export type ListEnvGroupsRequestNameList = Array<string>;
-export const ListEnvGroupsRequestNameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListEnvGroupsRequestNameList>;
+export const ListEnvGroupsRequestNameList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListEnvGroupsRequestNameList>;
 
 export type ListEnvGroupsRequestOwnerIdList = Array<string>;
-export const ListEnvGroupsRequestOwnerIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListEnvGroupsRequestOwnerIdList>;
+export const ListEnvGroupsRequestOwnerIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListEnvGroupsRequestOwnerIdList>;
 
 export type ListEnvGroupsRequestEnvironmentIdList = Array<string>;
-export const ListEnvGroupsRequestEnvironmentIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListEnvGroupsRequestEnvironmentIdList>;
+export const ListEnvGroupsRequestEnvironmentIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListEnvGroupsRequestEnvironmentIdList>;
 
 export interface ListEnvGroupsRequest {
   /** Filter by name */
@@ -7707,9 +7369,8 @@ export const ListEnvGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of serviceIds linked to the envGroup */
 export type EnvGroupMetaServiceLinksList = Array<EnvGroupLink>;
-export const EnvGroupMetaServiceLinksList = /*@__PURE__*/ S.Array(
-  EnvGroupLink,
-) as any as S.Schema<EnvGroupMetaServiceLinksList>;
+export const EnvGroupMetaServiceLinksList =
+  CreateEnvGroupResponseServiceLinksList as any as S.Schema<EnvGroupMetaServiceLinksList>;
 
 export interface EnvGroupMeta {
   id: string;
@@ -7744,24 +7405,20 @@ export const ListEnvGroupsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListEnvGroupsResponse" }) as any as S.Schema<ListEnvGroupsResponse>;
 
 export type ListEnvironmentsRequestNameList = Array<string>;
-export const ListEnvironmentsRequestNameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListEnvironmentsRequestNameList>;
+export const ListEnvironmentsRequestNameList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListEnvironmentsRequestNameList>;
 
 export type ListEnvironmentsRequestProjectIdList = Array<string>;
-export const ListEnvironmentsRequestProjectIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListEnvironmentsRequestProjectIdList>;
+export const ListEnvironmentsRequestProjectIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListEnvironmentsRequestProjectIdList>;
 
 export type ListEnvironmentsRequestOwnerIdList = Array<string>;
-export const ListEnvironmentsRequestOwnerIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListEnvironmentsRequestOwnerIdList>;
+export const ListEnvironmentsRequestOwnerIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListEnvironmentsRequestOwnerIdList>;
 
 export type ListEnvironmentsRequestEnvironmentIdList = Array<string>;
-export const ListEnvironmentsRequestEnvironmentIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListEnvironmentsRequestEnvironmentIdList>;
+export const ListEnvironmentsRequestEnvironmentIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListEnvironmentsRequestEnvironmentIdList>;
 
 export interface ListEnvironmentsRequest {
   /** Filter by name */
@@ -8201,19 +7858,16 @@ export const ListEventsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListEventsResponse" }) as any as S.Schema<ListEventsResponse>;
 
 export type ListHeadersRequestPathList = Array<string>;
-export const ListHeadersRequestPathList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListHeadersRequestPathList>;
+export const ListHeadersRequestPathList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListHeadersRequestPathList>;
 
 export type ListHeadersRequestNameList = Array<string>;
-export const ListHeadersRequestNameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListHeadersRequestNameList>;
+export const ListHeadersRequestNameList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListHeadersRequestNameList>;
 
 export type ListHeadersRequestValueList = Array<string>;
-export const ListHeadersRequestValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListHeadersRequestValueList>;
+export const ListHeadersRequestValueList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListHeadersRequestValueList>;
 
 export interface ListHeadersRequest {
   /** The ID of the service */
@@ -8295,9 +7949,8 @@ export type ListHttpFilterValuesResponseBodyItemFilter = "host" | "statusCode";
 export const ListHttpFilterValuesResponseBodyItemFilter = S.String;
 
 export type ListHttpFilterValuesResponseBodyItemValuesList = Array<string>;
-export const ListHttpFilterValuesResponseBodyItemValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListHttpFilterValuesResponseBodyItemValuesList>;
+export const ListHttpFilterValuesResponseBodyItemValuesList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListHttpFilterValuesResponseBodyItemValuesList>;
 
 export interface ListHttpFilterValuesResponseBodyItem {
   filter?: ListHttpFilterValuesResponseBodyItemFilter;
@@ -8423,9 +8076,8 @@ export const ListJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListJobResponse" }) as any as S.Schema<ListJobResponse>;
 
 export type ListKeyValueRequestNameList = Array<string>;
-export const ListKeyValueRequestNameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListKeyValueRequestNameList>;
+export const ListKeyValueRequestNameList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListKeyValueRequestNameList>;
 
 export type ListKeyValueRequestRegionList = Array<Region | (string & {})>;
 export const ListKeyValueRequestRegionList = /*@__PURE__*/ S.Array(
@@ -8433,14 +8085,12 @@ export const ListKeyValueRequestRegionList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListKeyValueRequestRegionList>;
 
 export type ListKeyValueRequestOwnerIdList = Array<string>;
-export const ListKeyValueRequestOwnerIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListKeyValueRequestOwnerIdList>;
+export const ListKeyValueRequestOwnerIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListKeyValueRequestOwnerIdList>;
 
 export type ListKeyValueRequestEnvironmentIdList = Array<string>;
-export const ListKeyValueRequestEnvironmentIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListKeyValueRequestEnvironmentIdList>;
+export const ListKeyValueRequestEnvironmentIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListKeyValueRequestEnvironmentIdList>;
 
 export interface ListKeyValueRequest {
   /** Filter by name */
@@ -8481,9 +8131,8 @@ export const ListKeyValueRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The IP allow list for the Key Value instance */
 export type KeyValueIpAllowListList = Array<CidrBlockAndDescription>;
-export const KeyValueIpAllowListList = /*@__PURE__*/ S.Array(
-  CidrBlockAndDescription,
-) as any as S.Schema<KeyValueIpAllowListList>;
+export const KeyValueIpAllowListList =
+  EnvironmentIpAllowListList as any as S.Schema<KeyValueIpAllowListList>;
 
 /** A Key Value instance */
 export interface KeyValue {
@@ -8552,64 +8201,52 @@ export type ListLogsRequestDirection = "forward" | "backward";
 export const ListLogsRequestDirection = S.String;
 
 export type ListLogsRequestResourceList = Array<string>;
-export const ListLogsRequestResourceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLogsRequestResourceList>;
+export const ListLogsRequestResourceList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsRequestResourceList>;
 
 export type ListLogsRequestInstanceList = Array<string>;
-export const ListLogsRequestInstanceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLogsRequestInstanceList>;
+export const ListLogsRequestInstanceList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsRequestInstanceList>;
 
 export type ListLogsRequestHostList = Array<string>;
-export const ListLogsRequestHostList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLogsRequestHostList>;
+export const ListLogsRequestHostList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsRequestHostList>;
 
 export type ListLogsRequestStatusCodeList = Array<string>;
-export const ListLogsRequestStatusCodeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLogsRequestStatusCodeList>;
+export const ListLogsRequestStatusCodeList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsRequestStatusCodeList>;
 
 export type ListLogsRequestMethodList = Array<string>;
-export const ListLogsRequestMethodList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLogsRequestMethodList>;
+export const ListLogsRequestMethodList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsRequestMethodList>;
 
 export type ListLogsRequestTaskList = Array<string>;
-export const ListLogsRequestTaskList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLogsRequestTaskList>;
+export const ListLogsRequestTaskList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsRequestTaskList>;
 
 export type ListLogsRequestTaskRunList = Array<string>;
-export const ListLogsRequestTaskRunList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLogsRequestTaskRunList>;
+export const ListLogsRequestTaskRunList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsRequestTaskRunList>;
 
 export type ListLogsRequestSandboxList = Array<string>;
-export const ListLogsRequestSandboxList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLogsRequestSandboxList>;
+export const ListLogsRequestSandboxList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsRequestSandboxList>;
 
 export type ListLogsRequestLevelList = Array<string>;
-export const ListLogsRequestLevelList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLogsRequestLevelList>;
+export const ListLogsRequestLevelList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsRequestLevelList>;
 
 export type ListLogsRequestTypeList = Array<string>;
-export const ListLogsRequestTypeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLogsRequestTypeList>;
+export const ListLogsRequestTypeList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsRequestTypeList>;
 
 export type ListLogsRequestTextList = Array<string>;
-export const ListLogsRequestTextList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLogsRequestTextList>;
+export const ListLogsRequestTextList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsRequestTextList>;
 
 export type ListLogsRequestPathList = Array<string>;
-export const ListLogsRequestPathList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLogsRequestPathList>;
+export const ListLogsRequestPathList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsRequestPathList>;
 
 export interface ListLogsRequest {
   /** The ID of the workspace to return logs for */
@@ -8762,64 +8399,52 @@ export type ListLogsValuesRequestDirection = "forward" | "backward";
 export const ListLogsValuesRequestDirection = S.String;
 
 export type ListLogsValuesRequestResourceList = Array<string>;
-export const ListLogsValuesRequestResourceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLogsValuesRequestResourceList>;
+export const ListLogsValuesRequestResourceList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsValuesRequestResourceList>;
 
 export type ListLogsValuesRequestInstanceList = Array<string>;
-export const ListLogsValuesRequestInstanceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLogsValuesRequestInstanceList>;
+export const ListLogsValuesRequestInstanceList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsValuesRequestInstanceList>;
 
 export type ListLogsValuesRequestHostList = Array<string>;
-export const ListLogsValuesRequestHostList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLogsValuesRequestHostList>;
+export const ListLogsValuesRequestHostList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsValuesRequestHostList>;
 
 export type ListLogsValuesRequestStatusCodeList = Array<string>;
-export const ListLogsValuesRequestStatusCodeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLogsValuesRequestStatusCodeList>;
+export const ListLogsValuesRequestStatusCodeList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsValuesRequestStatusCodeList>;
 
 export type ListLogsValuesRequestMethodList = Array<string>;
-export const ListLogsValuesRequestMethodList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLogsValuesRequestMethodList>;
+export const ListLogsValuesRequestMethodList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsValuesRequestMethodList>;
 
 export type ListLogsValuesRequestTaskList = Array<string>;
-export const ListLogsValuesRequestTaskList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLogsValuesRequestTaskList>;
+export const ListLogsValuesRequestTaskList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsValuesRequestTaskList>;
 
 export type ListLogsValuesRequestTaskRunList = Array<string>;
-export const ListLogsValuesRequestTaskRunList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLogsValuesRequestTaskRunList>;
+export const ListLogsValuesRequestTaskRunList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsValuesRequestTaskRunList>;
 
 export type ListLogsValuesRequestSandboxList = Array<string>;
-export const ListLogsValuesRequestSandboxList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLogsValuesRequestSandboxList>;
+export const ListLogsValuesRequestSandboxList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsValuesRequestSandboxList>;
 
 export type ListLogsValuesRequestLevelList = Array<string>;
-export const ListLogsValuesRequestLevelList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLogsValuesRequestLevelList>;
+export const ListLogsValuesRequestLevelList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsValuesRequestLevelList>;
 
 export type ListLogsValuesRequestTypeList = Array<string>;
-export const ListLogsValuesRequestTypeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLogsValuesRequestTypeList>;
+export const ListLogsValuesRequestTypeList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsValuesRequestTypeList>;
 
 export type ListLogsValuesRequestTextList = Array<string>;
-export const ListLogsValuesRequestTextList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLogsValuesRequestTextList>;
+export const ListLogsValuesRequestTextList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsValuesRequestTextList>;
 
 export type ListLogsValuesRequestPathList = Array<string>;
-export const ListLogsValuesRequestPathList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLogsValuesRequestPathList>;
+export const ListLogsValuesRequestPathList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsValuesRequestPathList>;
 
 export interface ListLogsValuesRequest {
   /** The ID of the workspace to return log label values for */
@@ -8883,9 +8508,8 @@ export const ListLogsValuesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListLogsValuesRequest" }) as any as S.Schema<ListLogsValuesRequest>;
 
 export type ListLogsValuesResponseBodyList = Array<string>;
-export const ListLogsValuesResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLogsValuesResponseBodyList>;
+export const ListLogsValuesResponseBodyList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsValuesResponseBodyList>;
 
 export type ListLogsValuesResponse = ListLogsValuesResponseBodyList;
 export const ListLogsValuesResponse = /*@__PURE__*/ S.suspend(() =>
@@ -8893,14 +8517,12 @@ export const ListLogsValuesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListLogsValuesResponse" }) as any as S.Schema<ListLogsValuesResponse>;
 
 export type ListMaintenanceRequestResourceIdList = Array<string>;
-export const ListMaintenanceRequestResourceIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMaintenanceRequestResourceIdList>;
+export const ListMaintenanceRequestResourceIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListMaintenanceRequestResourceIdList>;
 
 export type ListMaintenanceRequestOwnerIdList = Array<string>;
-export const ListMaintenanceRequestOwnerIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMaintenanceRequestOwnerIdList>;
+export const ListMaintenanceRequestOwnerIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListMaintenanceRequestOwnerIdList>;
 
 export type ListMaintenanceRequestStateItem =
   | "scheduled"
@@ -8941,16 +8563,7 @@ export interface Schema11 {
   state: Items4;
   resourceId: string;
 }
-export const Schema11 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    scheduledAt: S.String,
-    pendingMaintenanceBy: S.optional(S.String),
-    state: Items4,
-    resourceId: S.String,
-  }),
-).annotate({ identifier: "Schema11" }) as any as S.Schema<Schema11>;
+export const Schema11 = GetMaintenanceResponse as any as S.Schema<Schema11>;
 
 export type ListMaintenanceResponseBodyList = Array<Schema11>;
 export const ListMaintenanceResponseBodyList = /*@__PURE__*/ S.Array(
@@ -8963,14 +8576,12 @@ export const ListMaintenanceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMaintenanceResponse" }) as any as S.Schema<ListMaintenanceResponse>;
 
 export type ListNotificationOverridesRequestOwnerIdList = Array<string>;
-export const ListNotificationOverridesRequestOwnerIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListNotificationOverridesRequestOwnerIdList>;
+export const ListNotificationOverridesRequestOwnerIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListNotificationOverridesRequestOwnerIdList>;
 
 export type ListNotificationOverridesRequestServiceIdList = Array<string>;
-export const ListNotificationOverridesRequestServiceIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListNotificationOverridesRequestServiceIdList>;
+export const ListNotificationOverridesRequestServiceIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListNotificationOverridesRequestServiceIdList>;
 
 export interface ListNotificationOverridesRequest {
   /** The ID of the workspaces to return resources for */
@@ -8998,15 +8609,8 @@ export interface NotificationOverrideWithCursorOverride {
   previewNotificationsEnabled: PreviewNotificationsEnabled;
   notificationsToSend: NotificationsToSend2;
 }
-export const NotificationOverrideWithCursorOverride = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceId: S.String,
-    previewNotificationsEnabled: PreviewNotificationsEnabled,
-    notificationsToSend: NotificationsToSend2,
-  }),
-).annotate({
-  identifier: "NotificationOverrideWithCursorOverride",
-}) as any as S.Schema<NotificationOverrideWithCursorOverride>;
+export const NotificationOverrideWithCursorOverride =
+  GetServiceNotificationOverridesResponse as any as S.Schema<NotificationOverrideWithCursorOverride>;
 
 export interface NotificationOverrideWithCursor {
   override: NotificationOverrideWithCursorOverride;
@@ -9256,26 +8860,20 @@ export const ListOwnerAuditLogsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOwnerAuditLogsRequest>;
 
 export type ListOwnerAuditLogsResponseBodyList = Array<AuditLogWithCursor>;
-export const ListOwnerAuditLogsResponseBodyList = /*@__PURE__*/ S.Array(
-  AuditLogWithCursor,
-) as any as S.Schema<ListOwnerAuditLogsResponseBodyList>;
+export const ListOwnerAuditLogsResponseBodyList =
+  ListOrganizationAuditLogsResponseBodyList as any as S.Schema<ListOwnerAuditLogsResponseBodyList>;
 
 export type ListOwnerAuditLogsResponse = ListOwnerAuditLogsResponseBodyList;
-export const ListOwnerAuditLogsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListOwnerAuditLogsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListOwnerAuditLogsResponse",
-}) as any as S.Schema<ListOwnerAuditLogsResponse>;
+export const ListOwnerAuditLogsResponse =
+  ListOrganizationAuditLogsResponse as any as S.Schema<ListOwnerAuditLogsResponse>;
 
 export type ListOwnersRequestNameList = Array<string>;
-export const ListOwnersRequestNameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOwnersRequestNameList>;
+export const ListOwnersRequestNameList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListOwnersRequestNameList>;
 
 export type ListOwnersRequestEmailList = Array<string>;
-export const ListOwnersRequestEmailList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOwnersRequestEmailList>;
+export const ListOwnersRequestEmailList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListOwnersRequestEmailList>;
 
 export interface ListOwnersRequest {
   /** Only return workspaces with one of the provided names. Only exact matches are returned. */
@@ -9352,9 +8950,8 @@ export const ListPathFilterValuesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of suggested paths to filter by */
 export type ListPathFilterValuesResponseBodyList = Array<string>;
-export const ListPathFilterValuesResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListPathFilterValuesResponseBodyList>;
+export const ListPathFilterValuesResponseBodyList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListPathFilterValuesResponseBodyList>;
 
 export type ListPathFilterValuesResponse = ListPathFilterValuesResponseBodyList;
 export const ListPathFilterValuesResponse = /*@__PURE__*/ S.suspend(() =>
@@ -9364,14 +8961,12 @@ export const ListPathFilterValuesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPathFilterValuesResponse>;
 
 export type ListPostgresRequestNameList = Array<string>;
-export const ListPostgresRequestNameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListPostgresRequestNameList>;
+export const ListPostgresRequestNameList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListPostgresRequestNameList>;
 
 export type ListPostgresRequestRegionList = Array<Region | (string & {})>;
-export const ListPostgresRequestRegionList = /*@__PURE__*/ S.Array(
-  Region,
-) as any as S.Schema<ListPostgresRequestRegionList>;
+export const ListPostgresRequestRegionList =
+  ListKeyValueRequestRegionList as any as S.Schema<ListPostgresRequestRegionList>;
 
 export type ListPostgresRequestSuspendedItem = "suspended" | "not_suspended";
 export const ListPostgresRequestSuspendedItem = S.String;
@@ -9384,14 +8979,12 @@ export const ListPostgresRequestSuspendedList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListPostgresRequestSuspendedList>;
 
 export type ListPostgresRequestOwnerIdList = Array<string>;
-export const ListPostgresRequestOwnerIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListPostgresRequestOwnerIdList>;
+export const ListPostgresRequestOwnerIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListPostgresRequestOwnerIdList>;
 
 export type ListPostgresRequestEnvironmentIdList = Array<string>;
-export const ListPostgresRequestEnvironmentIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListPostgresRequestEnvironmentIdList>;
+export const ListPostgresRequestEnvironmentIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListPostgresRequestEnvironmentIdList>;
 
 export interface ListPostgresRequest {
   /** Filter by name */
@@ -9437,17 +9030,15 @@ export const ListPostgresRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPostgresRequest" }) as any as S.Schema<ListPostgresRequest>;
 
 export type PostgresIpAllowListList = Array<CidrBlockAndDescription>;
-export const PostgresIpAllowListList = /*@__PURE__*/ S.Array(
-  CidrBlockAndDescription,
-) as any as S.Schema<PostgresIpAllowListList>;
+export const PostgresIpAllowListList =
+  EnvironmentIpAllowListList as any as S.Schema<PostgresIpAllowListList>;
 
 export type PostgresSuspended = "suspended" | "not_suspended";
 export const PostgresSuspended = S.String;
 
 export type PostgresSuspendersList = Array<SuspenderType>;
-export const PostgresSuspendersList = /*@__PURE__*/ S.Array(
-  SuspenderType,
-) as any as S.Schema<PostgresSuspendersList>;
+export const PostgresSuspendersList =
+  PostgresDetailSuspendersList as any as S.Schema<PostgresSuspendersList>;
 
 export interface Postgres {
   id: string;
@@ -9839,14 +9430,12 @@ export const ListPostgresUsersResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPostgresUsersResponse>;
 
 export type ListProjectsRequestNameList = Array<string>;
-export const ListProjectsRequestNameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListProjectsRequestNameList>;
+export const ListProjectsRequestNameList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListProjectsRequestNameList>;
 
 export type ListProjectsRequestOwnerIdList = Array<string>;
-export const ListProjectsRequestOwnerIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListProjectsRequestOwnerIdList>;
+export const ListProjectsRequestOwnerIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListProjectsRequestOwnerIdList>;
 
 export interface ListProjectsRequest {
   /** Filter by name */
@@ -9901,14 +9490,12 @@ export const ListProjectsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProjectsResponse" }) as any as S.Schema<ListProjectsResponse>;
 
 export type ListRegistryCredentialsRequestNameList = Array<string>;
-export const ListRegistryCredentialsRequestNameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListRegistryCredentialsRequestNameList>;
+export const ListRegistryCredentialsRequestNameList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListRegistryCredentialsRequestNameList>;
 
 export type ListRegistryCredentialsRequestUsernameList = Array<string>;
-export const ListRegistryCredentialsRequestUsernameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListRegistryCredentialsRequestUsernameList>;
+export const ListRegistryCredentialsRequestUsernameList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListRegistryCredentialsRequestUsernameList>;
 
 export type ListRegistryCredentialsRequestTypeList = Array<
   RegistryCredentialRegistry | (string & {})
@@ -9918,9 +9505,8 @@ export const ListRegistryCredentialsRequestTypeList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListRegistryCredentialsRequestTypeList>;
 
 export type ListRegistryCredentialsRequestOwnerIdList = Array<string>;
-export const ListRegistryCredentialsRequestOwnerIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListRegistryCredentialsRequestOwnerIdList>;
+export const ListRegistryCredentialsRequestOwnerIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListRegistryCredentialsRequestOwnerIdList>;
 
 export interface ListRegistryCredentialsRequest {
   /** Filter for the name of a credential */
@@ -9974,19 +9560,16 @@ export const ListRegistryCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRegistryCredentialsResponse>;
 
 export type ListResourceLogStreamsRequestOwnerIdList = Array<string>;
-export const ListResourceLogStreamsRequestOwnerIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResourceLogStreamsRequestOwnerIdList>;
+export const ListResourceLogStreamsRequestOwnerIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListResourceLogStreamsRequestOwnerIdList>;
 
 export type ListResourceLogStreamsRequestLogStreamIdList = Array<string>;
-export const ListResourceLogStreamsRequestLogStreamIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResourceLogStreamsRequestLogStreamIdList>;
+export const ListResourceLogStreamsRequestLogStreamIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListResourceLogStreamsRequestLogStreamIdList>;
 
 export type ListResourceLogStreamsRequestResourceIdList = Array<string>;
-export const ListResourceLogStreamsRequestResourceIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResourceLogStreamsRequestResourceIdList>;
+export const ListResourceLogStreamsRequestResourceIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListResourceLogStreamsRequestResourceIdList>;
 
 /** Whether to send logs or drop them. */
 export type ListResourceLogStreamsRequestSettingItem = "send" | "drop";
@@ -10063,14 +9646,12 @@ export const ListRoutesRequestTypeList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListRoutesRequestTypeList>;
 
 export type ListRoutesRequestSourceList = Array<string>;
-export const ListRoutesRequestSourceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListRoutesRequestSourceList>;
+export const ListRoutesRequestSourceList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListRoutesRequestSourceList>;
 
 export type ListRoutesRequestDestinationList = Array<string>;
-export const ListRoutesRequestDestinationList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListRoutesRequestDestinationList>;
+export const ListRoutesRequestDestinationList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListRoutesRequestDestinationList>;
 
 export interface ListRoutesRequest {
   /** The ID of the service */
@@ -10177,21 +9758,16 @@ export const ListSecretFilesForServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSecretFilesForServiceRequest>;
 
 export type ListSecretFilesForServiceResponseBodyList = Array<SecretFileWithCursor>;
-export const ListSecretFilesForServiceResponseBodyList = /*@__PURE__*/ S.Array(
-  SecretFileWithCursor,
-) as any as S.Schema<ListSecretFilesForServiceResponseBodyList>;
+export const ListSecretFilesForServiceResponseBodyList =
+  ListSecretFilesForBuildSourceResponseBodyList as any as S.Schema<ListSecretFilesForServiceResponseBodyList>;
 
 export type ListSecretFilesForServiceResponse = ListSecretFilesForServiceResponseBodyList;
-export const ListSecretFilesForServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  ListSecretFilesForServiceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListSecretFilesForServiceResponse",
-}) as any as S.Schema<ListSecretFilesForServiceResponse>;
+export const ListSecretFilesForServiceResponse =
+  ListSecretFilesForBuildSourceResponse as any as S.Schema<ListSecretFilesForServiceResponse>;
 
 export type ListServicesRequestNameList = Array<string>;
-export const ListServicesRequestNameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListServicesRequestNameList>;
+export const ListServicesRequestNameList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListServicesRequestNameList>;
 
 export type ListServicesRequestTypeList = Array<ServiceType | (string & {})>;
 export const ListServicesRequestTypeList = /*@__PURE__*/ S.Array(
@@ -10199,9 +9775,8 @@ export const ListServicesRequestTypeList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListServicesRequestTypeList>;
 
 export type ListServicesRequestEnvironmentIdList = Array<string>;
-export const ListServicesRequestEnvironmentIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListServicesRequestEnvironmentIdList>;
+export const ListServicesRequestEnvironmentIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListServicesRequestEnvironmentIdList>;
 
 export type ListServicesRequestEnvList = Array<ServiceRuntime | (string & {})>;
 export const ListServicesRequestEnvList = /*@__PURE__*/ S.Array(
@@ -10209,9 +9784,8 @@ export const ListServicesRequestEnvList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListServicesRequestEnvList>;
 
 export type ListServicesRequestRegionList = Array<Region | (string & {})>;
-export const ListServicesRequestRegionList = /*@__PURE__*/ S.Array(
-  Region,
-) as any as S.Schema<ListServicesRequestRegionList>;
+export const ListServicesRequestRegionList =
+  ListKeyValueRequestRegionList as any as S.Schema<ListServicesRequestRegionList>;
 
 export type ListServicesRequestSuspendedItem = "suspended" | "not_suspended";
 export const ListServicesRequestSuspendedItem = S.String;
@@ -10224,9 +9798,8 @@ export const ListServicesRequestSuspendedList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListServicesRequestSuspendedList>;
 
 export type ListServicesRequestOwnerIdList = Array<string>;
-export const ListServicesRequestOwnerIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListServicesRequestOwnerIdList>;
+export const ListServicesRequestOwnerIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListServicesRequestOwnerIdList>;
 
 export interface ListServicesRequest {
   /** Filter by name */
@@ -10330,29 +9903,24 @@ export const ListSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSnapshotsResponse" }) as any as S.Schema<ListSnapshotsResponse>;
 
 export type ListTaskRunsRequestTaskSlugList = Array<string>;
-export const ListTaskRunsRequestTaskSlugList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListTaskRunsRequestTaskSlugList>;
+export const ListTaskRunsRequestTaskSlugList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListTaskRunsRequestTaskSlugList>;
 
 export type ListTaskRunsRequestRootTaskRunIdList = Array<string>;
-export const ListTaskRunsRequestRootTaskRunIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListTaskRunsRequestRootTaskRunIdList>;
+export const ListTaskRunsRequestRootTaskRunIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListTaskRunsRequestRootTaskRunIdList>;
 
 export type ListTaskRunsRequestOwnerIdList = Array<string>;
-export const ListTaskRunsRequestOwnerIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListTaskRunsRequestOwnerIdList>;
+export const ListTaskRunsRequestOwnerIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListTaskRunsRequestOwnerIdList>;
 
 export type ListTaskRunsRequestWorkflowVersionIdList = Array<string>;
-export const ListTaskRunsRequestWorkflowVersionIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListTaskRunsRequestWorkflowVersionIdList>;
+export const ListTaskRunsRequestWorkflowVersionIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListTaskRunsRequestWorkflowVersionIdList>;
 
 export type ListTaskRunsRequestWorkflowIdList = Array<string>;
-export const ListTaskRunsRequestWorkflowIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListTaskRunsRequestWorkflowIdList>;
+export const ListTaskRunsRequestWorkflowIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListTaskRunsRequestWorkflowIdList>;
 
 export interface ListTaskRunsRequest {
   /** The position in the result list to start from when fetching paginated results. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
@@ -10386,9 +9954,8 @@ export type SchemaAttemptsItem = CreateTaskResponseAttemptsItem;
 export const SchemaAttemptsItem = CreateTaskResponseAttemptsItem;
 
 export type SchemaAttemptsList = Array<CreateTaskResponseAttemptsItem>;
-export const SchemaAttemptsList = /*@__PURE__*/ S.Array(
-  CreateTaskResponseAttemptsItem,
-) as any as S.Schema<SchemaAttemptsList>;
+export const SchemaAttemptsList =
+  CreateTaskResponseAttemptsList as any as S.Schema<SchemaAttemptsList>;
 
 export interface Schema18 {
   id: string;
@@ -10403,20 +9970,7 @@ export interface Schema18 {
   retries: number;
   attempts: SchemaAttemptsList;
 }
-export const Schema18 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    taskId: S.String,
-    status: Status2,
-    startedAt: S.optional(S.String),
-    completedAt: S.optional(S.String),
-    parentTaskRunId: S.String,
-    parentTaskAttempt: S.optional(S.Number),
-    rootTaskRunId: S.String,
-    retries: S.Number,
-    attempts: SchemaAttemptsList,
-  }),
-).annotate({ identifier: "Schema18" }) as any as S.Schema<Schema18>;
+export const Schema18 = CreateTaskResponse as any as S.Schema<Schema18>;
 
 export interface TaskRunWithCursor {
   taskRun: Schema18;
@@ -10440,24 +9994,20 @@ export const ListTaskRunsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTaskRunsResponse" }) as any as S.Schema<ListTaskRunsResponse>;
 
 export type ListTasksRequestOwnerIdList = Array<string>;
-export const ListTasksRequestOwnerIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListTasksRequestOwnerIdList>;
+export const ListTasksRequestOwnerIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListTasksRequestOwnerIdList>;
 
 export type ListTasksRequestTaskSlugList = Array<string>;
-export const ListTasksRequestTaskSlugList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListTasksRequestTaskSlugList>;
+export const ListTasksRequestTaskSlugList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListTasksRequestTaskSlugList>;
 
 export type ListTasksRequestWorkflowVersionIdList = Array<string>;
-export const ListTasksRequestWorkflowVersionIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListTasksRequestWorkflowVersionIdList>;
+export const ListTasksRequestWorkflowVersionIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListTasksRequestWorkflowVersionIdList>;
 
 export type ListTasksRequestWorkflowIdList = Array<string>;
-export const ListTasksRequestWorkflowIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListTasksRequestWorkflowIdList>;
+export const ListTasksRequestWorkflowIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListTasksRequestWorkflowIdList>;
 
 export interface ListTasksRequest {
   /** The ID of the workspaces to return resources for */
@@ -10491,15 +10041,7 @@ export interface Schema17 {
   workflowId?: string;
   workflowVersionId?: string;
 }
-export const Schema17 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    createdAt: S.String,
-    workflowId: S.optional(S.String),
-    workflowVersionId: S.optional(S.String),
-  }),
-).annotate({ identifier: "Schema17" }) as any as S.Schema<Schema17>;
+export const Schema17 = GetTaskResponse as any as S.Schema<Schema17>;
 
 export interface TaskWithCursor {
   task: Schema17;
@@ -10594,9 +10136,8 @@ export const ListWebhookEventsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWebhookEventsResponse>;
 
 export type ListWebhooksRequestOwnerIdList = Array<string>;
-export const ListWebhooksRequestOwnerIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListWebhooksRequestOwnerIdList>;
+export const ListWebhooksRequestOwnerIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListWebhooksRequestOwnerIdList>;
 
 export interface ListWebhooksRequest {
   /** The position in the result list to start from when fetching paginated results. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
@@ -10636,24 +10177,20 @@ export const ListWebhooksResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListWebhooksResponse" }) as any as S.Schema<ListWebhooksResponse>;
 
 export type ListWorkflowsRequestNameList = Array<string>;
-export const ListWorkflowsRequestNameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListWorkflowsRequestNameList>;
+export const ListWorkflowsRequestNameList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListWorkflowsRequestNameList>;
 
 export type ListWorkflowsRequestOwnerIdList = Array<string>;
-export const ListWorkflowsRequestOwnerIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListWorkflowsRequestOwnerIdList>;
+export const ListWorkflowsRequestOwnerIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListWorkflowsRequestOwnerIdList>;
 
 export type ListWorkflowsRequestWorkflowIDList = Array<string>;
-export const ListWorkflowsRequestWorkflowIDList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListWorkflowsRequestWorkflowIDList>;
+export const ListWorkflowsRequestWorkflowIDList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListWorkflowsRequestWorkflowIDList>;
 
 export type ListWorkflowsRequestEnvironmentIdList = Array<string>;
-export const ListWorkflowsRequestEnvironmentIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListWorkflowsRequestEnvironmentIdList>;
+export const ListWorkflowsRequestEnvironmentIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListWorkflowsRequestEnvironmentIdList>;
 
 export interface ListWorkflowsRequest {
   /** Filter by name */
@@ -10702,19 +10239,16 @@ export const ListWorkflowsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListWorkflowsResponse" }) as any as S.Schema<ListWorkflowsResponse>;
 
 export type ListWorkflowVersionsRequestOwnerIdList = Array<string>;
-export const ListWorkflowVersionsRequestOwnerIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListWorkflowVersionsRequestOwnerIdList>;
+export const ListWorkflowVersionsRequestOwnerIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListWorkflowVersionsRequestOwnerIdList>;
 
 export type ListWorkflowVersionsRequestWorkflowIDList = Array<string>;
-export const ListWorkflowVersionsRequestWorkflowIDList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListWorkflowVersionsRequestWorkflowIDList>;
+export const ListWorkflowVersionsRequestWorkflowIDList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListWorkflowVersionsRequestWorkflowIDList>;
 
 export type ListWorkflowVersionsRequestWorkflowVersionIdList = Array<string>;
-export const ListWorkflowVersionsRequestWorkflowVersionIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListWorkflowVersionsRequestWorkflowVersionIdList>;
+export const ListWorkflowVersionsRequestWorkflowVersionIdList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListWorkflowVersionsRequestWorkflowVersionIdList>;
 
 export interface ListWorkflowVersionsRequest {
   /** The ID of the workspaces to return resources for */
@@ -10930,18 +10464,7 @@ export interface PostJobResponse {
   startedAt?: string;
   finishedAt?: string;
 }
-export const PostJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    serviceId: S.String,
-    startCommand: S.String,
-    planId: S.String,
-    status: S.optional(Items2),
-    createdAt: S.String,
-    startedAt: S.optional(S.String),
-    finishedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "PostJobResponse" }) as any as S.Schema<PostJobResponse>;
+export const PostJobResponse = Schema7 as any as S.Schema<PostJobResponse>;
 
 export interface PreviewServiceRequest {
   /** The ID of the service */
@@ -10972,9 +10495,7 @@ export const PurgeCacheRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PurgeCacheRequest" }) as any as S.Schema<PurgeCacheRequest>;
 
 export interface PurgeCacheResponse {}
-export const PurgeCacheResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PurgeCacheResponse",
-}) as any as S.Schema<PurgeCacheResponse>;
+export const PurgeCacheResponse = CancelCronJobRunResponse as any as S.Schema<PurgeCacheResponse>;
 
 export interface RoutePut {
   type: RouteType | (string & {});
@@ -11065,14 +10586,12 @@ export const RefreshCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RefreshCustomDomainRequest>;
 
 export interface RefreshCustomDomainResponse {}
-export const RefreshCustomDomainResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RefreshCustomDomainResponse",
-}) as any as S.Schema<RefreshCustomDomainResponse>;
+export const RefreshCustomDomainResponse =
+  CancelCronJobRunResponse as any as S.Schema<RefreshCustomDomainResponse>;
 
 export type RemoveResourcesFromEnvironmentRequestResourceIdsList = Array<string>;
-export const RemoveResourcesFromEnvironmentRequestResourceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveResourcesFromEnvironmentRequestResourceIdsList>;
+export const RemoveResourcesFromEnvironmentRequestResourceIdsList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<RemoveResourcesFromEnvironmentRequestResourceIdsList>;
 
 export interface RemoveResourcesFromEnvironmentRequest {
   environmentId: string;
@@ -11088,11 +10607,8 @@ export const RemoveResourcesFromEnvironmentRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<RemoveResourcesFromEnvironmentRequest>;
 
 export interface RemoveResourcesFromEnvironmentResponse {}
-export const RemoveResourcesFromEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveResourcesFromEnvironmentResponse",
-}) as any as S.Schema<RemoveResourcesFromEnvironmentResponse>;
+export const RemoveResourcesFromEnvironmentResponse =
+  DeleteBuildSourceSecretFileResponse as any as S.Schema<RemoveResourcesFromEnvironmentResponse>;
 
 export interface RemoveWorkspaceMemberRequest {
   /** The ID of the workspace to return resources for */
@@ -11110,9 +10626,8 @@ export const RemoveWorkspaceMemberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveWorkspaceMemberRequest>;
 
 export interface RemoveWorkspaceMemberResponse {}
-export const RemoveWorkspaceMemberResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RemoveWorkspaceMemberResponse",
-}) as any as S.Schema<RemoveWorkspaceMemberResponse>;
+export const RemoveWorkspaceMemberResponse =
+  CancelCronJobRunResponse as any as S.Schema<RemoveWorkspaceMemberResponse>;
 
 export interface RestartPostgresRequest {
   postgresId: string;
@@ -11124,9 +10639,8 @@ export const RestartPostgresRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestartPostgresRequest" }) as any as S.Schema<RestartPostgresRequest>;
 
 export interface RestartPostgresResponse {}
-export const RestartPostgresResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RestartPostgresResponse",
-}) as any as S.Schema<RestartPostgresResponse>;
+export const RestartPostgresResponse =
+  CancelCronJobRunResponse as any as S.Schema<RestartPostgresResponse>;
 
 export interface RestartServiceRequest {
   /** The ID of the service */
@@ -11139,9 +10653,8 @@ export const RestartServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestartServiceRequest" }) as any as S.Schema<RestartServiceRequest>;
 
 export interface RestartServiceResponse {}
-export const RestartServiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RestartServiceResponse",
-}) as any as S.Schema<RestartServiceResponse>;
+export const RestartServiceResponse =
+  CancelCronJobRunResponse as any as S.Schema<RestartServiceResponse>;
 
 export interface RestoreSnapshotRequest {
   /** The ID of the disk */
@@ -11167,9 +10680,8 @@ export const ResumeKeyValueRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResumeKeyValueRequest" }) as any as S.Schema<ResumeKeyValueRequest>;
 
 export interface ResumeKeyValueResponse {}
-export const ResumeKeyValueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResumeKeyValueResponse",
-}) as any as S.Schema<ResumeKeyValueResponse>;
+export const ResumeKeyValueResponse =
+  CancelCronJobRunResponse as any as S.Schema<ResumeKeyValueResponse>;
 
 export interface ResumePostgresRequest {
   postgresId: string;
@@ -11181,9 +10693,8 @@ export const ResumePostgresRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResumePostgresRequest" }) as any as S.Schema<ResumePostgresRequest>;
 
 export interface ResumePostgresResponse {}
-export const ResumePostgresResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResumePostgresResponse",
-}) as any as S.Schema<ResumePostgresResponse>;
+export const ResumePostgresResponse =
+  CancelCronJobRunResponse as any as S.Schema<ResumePostgresResponse>;
 
 export interface ResumeServiceRequest {
   /** The ID of the service */
@@ -11196,9 +10707,8 @@ export const ResumeServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResumeServiceRequest" }) as any as S.Schema<ResumeServiceRequest>;
 
 export interface ResumeServiceResponse {}
-export const ResumeServiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResumeServiceResponse",
-}) as any as S.Schema<ResumeServiceResponse>;
+export const ResumeServiceResponse =
+  CancelCronJobRunResponse as any as S.Schema<ResumeServiceResponse>;
 
 export interface RunCronJobRequest {
   /** The ID of the cron job */
@@ -11249,14 +10759,12 @@ export const ScaleServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScaleServiceRequest" }) as any as S.Schema<ScaleServiceRequest>;
 
 export interface ScaleServiceResponse {}
-export const ScaleServiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ScaleServiceResponse",
-}) as any as S.Schema<ScaleServiceResponse>;
+export const ScaleServiceResponse =
+  CancelCronJobRunResponse as any as S.Schema<ScaleServiceResponse>;
 
 export type StreamTaskRunsEventsRequestTaskRunIdsList = Array<string>;
-export const StreamTaskRunsEventsRequestTaskRunIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StreamTaskRunsEventsRequestTaskRunIdsList>;
+export const StreamTaskRunsEventsRequestTaskRunIdsList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<StreamTaskRunsEventsRequestTaskRunIdsList>;
 
 export interface StreamTaskRunsEventsRequest {
   /** Filter to a subset of task run IDs. */
@@ -11271,72 +10779,59 @@ export const StreamTaskRunsEventsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StreamTaskRunsEventsRequest>;
 
 export interface StreamTaskRunsEventsResponse {}
-export const StreamTaskRunsEventsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StreamTaskRunsEventsResponse",
-}) as any as S.Schema<StreamTaskRunsEventsResponse>;
+export const StreamTaskRunsEventsResponse =
+  CancelCronJobRunResponse as any as S.Schema<StreamTaskRunsEventsResponse>;
 
 export type SubscribeLogsRequestDirection = "forward" | "backward";
 export const SubscribeLogsRequestDirection = S.String;
 
 export type SubscribeLogsRequestResourceList = Array<string>;
-export const SubscribeLogsRequestResourceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscribeLogsRequestResourceList>;
+export const SubscribeLogsRequestResourceList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<SubscribeLogsRequestResourceList>;
 
 export type SubscribeLogsRequestInstanceList = Array<string>;
-export const SubscribeLogsRequestInstanceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscribeLogsRequestInstanceList>;
+export const SubscribeLogsRequestInstanceList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<SubscribeLogsRequestInstanceList>;
 
 export type SubscribeLogsRequestHostList = Array<string>;
-export const SubscribeLogsRequestHostList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscribeLogsRequestHostList>;
+export const SubscribeLogsRequestHostList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<SubscribeLogsRequestHostList>;
 
 export type SubscribeLogsRequestStatusCodeList = Array<string>;
-export const SubscribeLogsRequestStatusCodeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscribeLogsRequestStatusCodeList>;
+export const SubscribeLogsRequestStatusCodeList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<SubscribeLogsRequestStatusCodeList>;
 
 export type SubscribeLogsRequestMethodList = Array<string>;
-export const SubscribeLogsRequestMethodList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscribeLogsRequestMethodList>;
+export const SubscribeLogsRequestMethodList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<SubscribeLogsRequestMethodList>;
 
 export type SubscribeLogsRequestTaskList = Array<string>;
-export const SubscribeLogsRequestTaskList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscribeLogsRequestTaskList>;
+export const SubscribeLogsRequestTaskList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<SubscribeLogsRequestTaskList>;
 
 export type SubscribeLogsRequestTaskRunList = Array<string>;
-export const SubscribeLogsRequestTaskRunList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscribeLogsRequestTaskRunList>;
+export const SubscribeLogsRequestTaskRunList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<SubscribeLogsRequestTaskRunList>;
 
 export type SubscribeLogsRequestSandboxList = Array<string>;
-export const SubscribeLogsRequestSandboxList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscribeLogsRequestSandboxList>;
+export const SubscribeLogsRequestSandboxList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<SubscribeLogsRequestSandboxList>;
 
 export type SubscribeLogsRequestLevelList = Array<string>;
-export const SubscribeLogsRequestLevelList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscribeLogsRequestLevelList>;
+export const SubscribeLogsRequestLevelList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<SubscribeLogsRequestLevelList>;
 
 export type SubscribeLogsRequestTypeList = Array<string>;
-export const SubscribeLogsRequestTypeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscribeLogsRequestTypeList>;
+export const SubscribeLogsRequestTypeList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<SubscribeLogsRequestTypeList>;
 
 export type SubscribeLogsRequestTextList = Array<string>;
-export const SubscribeLogsRequestTextList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscribeLogsRequestTextList>;
+export const SubscribeLogsRequestTextList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<SubscribeLogsRequestTextList>;
 
 export type SubscribeLogsRequestPathList = Array<string>;
-export const SubscribeLogsRequestPathList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscribeLogsRequestPathList>;
+export const SubscribeLogsRequestPathList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<SubscribeLogsRequestPathList>;
 
 export interface SubscribeLogsRequest {
   /** The ID of the workspace to return logs for */
@@ -11397,9 +10892,8 @@ export const SubscribeLogsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubscribeLogsRequest" }) as any as S.Schema<SubscribeLogsRequest>;
 
 export interface SubscribeLogsResponse {}
-export const SubscribeLogsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SubscribeLogsResponse",
-}) as any as S.Schema<SubscribeLogsResponse>;
+export const SubscribeLogsResponse =
+  CancelCronJobRunResponse as any as S.Schema<SubscribeLogsResponse>;
 
 export interface SuspendKeyValueRequest {
   redisId: string;
@@ -11411,9 +10905,8 @@ export const SuspendKeyValueRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SuspendKeyValueRequest" }) as any as S.Schema<SuspendKeyValueRequest>;
 
 export interface SuspendKeyValueResponse {}
-export const SuspendKeyValueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SuspendKeyValueResponse",
-}) as any as S.Schema<SuspendKeyValueResponse>;
+export const SuspendKeyValueResponse =
+  CancelCronJobRunResponse as any as S.Schema<SuspendKeyValueResponse>;
 
 export interface SuspendPostgresRequest {
   postgresId: string;
@@ -11425,9 +10918,8 @@ export const SuspendPostgresRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SuspendPostgresRequest" }) as any as S.Schema<SuspendPostgresRequest>;
 
 export interface SuspendPostgresResponse {}
-export const SuspendPostgresResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SuspendPostgresResponse",
-}) as any as S.Schema<SuspendPostgresResponse>;
+export const SuspendPostgresResponse =
+  CancelCronJobRunResponse as any as S.Schema<SuspendPostgresResponse>;
 
 export interface SuspendServiceRequest {
   /** The ID of the service */
@@ -11440,9 +10932,8 @@ export const SuspendServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SuspendServiceRequest" }) as any as S.Schema<SuspendServiceRequest>;
 
 export interface SuspendServiceResponse {}
-export const SuspendServiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SuspendServiceResponse",
-}) as any as S.Schema<SuspendServiceResponse>;
+export const SuspendServiceResponse =
+  CancelCronJobRunResponse as any as S.Schema<SuspendServiceResponse>;
 
 export interface TriggerBuildSourceBuildRequest {
   buildSourceId: string;
@@ -11539,9 +11030,8 @@ export const TriggerMaintenanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TriggerMaintenanceRequest>;
 
 export interface TriggerMaintenanceResponse {}
-export const TriggerMaintenanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TriggerMaintenanceResponse",
-}) as any as S.Schema<TriggerMaintenanceResponse>;
+export const TriggerMaintenanceResponse =
+  CancelCronJobRunResponse as any as S.Schema<TriggerMaintenanceResponse>;
 
 export interface UnlinkEnvGroupFromBuildSourceRequest {
   buildSourceId: string;
@@ -11564,11 +11054,8 @@ export const UnlinkEnvGroupFromBuildSourceRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<UnlinkEnvGroupFromBuildSourceRequest>;
 
 export interface UnlinkEnvGroupFromBuildSourceResponse {}
-export const UnlinkEnvGroupFromBuildSourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UnlinkEnvGroupFromBuildSourceResponse",
-}) as any as S.Schema<UnlinkEnvGroupFromBuildSourceResponse>;
+export const UnlinkEnvGroupFromBuildSourceResponse =
+  DeleteBuildSourceSecretFileResponse as any as S.Schema<UnlinkEnvGroupFromBuildSourceResponse>;
 
 export interface UnlinkServiceFromEnvGroupRequest {
   envGroupId: string;
@@ -11586,11 +11073,8 @@ export const UnlinkServiceFromEnvGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnlinkServiceFromEnvGroupRequest>;
 
 export interface UnlinkServiceFromEnvGroupResponse {}
-export const UnlinkServiceFromEnvGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UnlinkServiceFromEnvGroupResponse",
-}) as any as S.Schema<UnlinkServiceFromEnvGroupResponse>;
+export const UnlinkServiceFromEnvGroupResponse =
+  DeleteBuildSourceSecretFileResponse as any as S.Schema<UnlinkServiceFromEnvGroupResponse>;
 
 export interface UpdateBlueprintRequest {
   /** The ID of the Blueprint */
@@ -11634,14 +11118,12 @@ export const UpdateBlueprintResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateBlueprintResponse" }) as any as S.Schema<UpdateBlueprintResponse>;
 
 export type UpdateBuildSourceRequestGitBuildFilterPathsList = Array<string>;
-export const UpdateBuildSourceRequestGitBuildFilterPathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateBuildSourceRequestGitBuildFilterPathsList>;
+export const UpdateBuildSourceRequestGitBuildFilterPathsList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<UpdateBuildSourceRequestGitBuildFilterPathsList>;
 
 export type UpdateBuildSourceRequestGitBuildFilterIgnoredPathsList = Array<string>;
-export const UpdateBuildSourceRequestGitBuildFilterIgnoredPathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateBuildSourceRequestGitBuildFilterIgnoredPathsList>;
+export const UpdateBuildSourceRequestGitBuildFilterIgnoredPathsList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<UpdateBuildSourceRequestGitBuildFilterIgnoredPathsList>;
 
 /** Glob patterns matched against files changed by a commit. When set, a commit only triggers a build when at least one changed file matches `paths` and none match `ignoredPaths`. Useful for monorepos where a single repo backs many services. */
 export interface UpdateBuildSourceRequestGitBuildFilter {
@@ -11785,9 +11267,8 @@ export const UpdateBuildSourceEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateBuildSourceEnvVarRequest>;
 
 export type UpdateDedicatedIpRequestEnvironmentIdsList = Array<string>;
-export const UpdateDedicatedIpRequestEnvironmentIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDedicatedIpRequestEnvironmentIdsList>;
+export const UpdateDedicatedIpRequestEnvironmentIdsList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<UpdateDedicatedIpRequestEnvironmentIdsList>;
 
 export interface UpdateDedicatedIpRequest {
   /** The ID of the dedicated IP set */
@@ -11834,19 +11315,16 @@ export const UpdateEnvGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of serviceIds linked to the envGroup */
 export type UpdateEnvGroupResponseServiceLinksList = Array<EnvGroupLink>;
-export const UpdateEnvGroupResponseServiceLinksList = /*@__PURE__*/ S.Array(
-  EnvGroupLink,
-) as any as S.Schema<UpdateEnvGroupResponseServiceLinksList>;
+export const UpdateEnvGroupResponseServiceLinksList =
+  CreateEnvGroupResponseServiceLinksList as any as S.Schema<UpdateEnvGroupResponseServiceLinksList>;
 
 export type UpdateEnvGroupResponseEnvVarsList = Array<EnvVar>;
-export const UpdateEnvGroupResponseEnvVarsList = /*@__PURE__*/ S.Array(
-  EnvVar,
-) as any as S.Schema<UpdateEnvGroupResponseEnvVarsList>;
+export const UpdateEnvGroupResponseEnvVarsList =
+  CreateEnvGroupResponseEnvVarsList as any as S.Schema<UpdateEnvGroupResponseEnvVarsList>;
 
 export type UpdateEnvGroupResponseSecretFilesList = Array<SecretFile>;
-export const UpdateEnvGroupResponseSecretFilesList = /*@__PURE__*/ S.Array(
-  SecretFile,
-) as any as S.Schema<UpdateEnvGroupResponseSecretFilesList>;
+export const UpdateEnvGroupResponseSecretFilesList =
+  CreateBuildSourceRequestSecretFilesList as any as S.Schema<UpdateEnvGroupResponseSecretFilesList>;
 
 export interface UpdateEnvGroupResponse {
   id: string;
@@ -11860,19 +11338,8 @@ export interface UpdateEnvGroupResponse {
   envVars: UpdateEnvGroupResponseEnvVarsList;
   secretFiles: UpdateEnvGroupResponseSecretFilesList;
 }
-export const UpdateEnvGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    ownerId: S.String,
-    createdAt: S.String,
-    updatedAt: S.String,
-    serviceLinks: UpdateEnvGroupResponseServiceLinksList,
-    environmentId: S.optional(S.String),
-    envVars: UpdateEnvGroupResponseEnvVarsList,
-    secretFiles: UpdateEnvGroupResponseSecretFilesList,
-  }),
-).annotate({ identifier: "UpdateEnvGroupResponse" }) as any as S.Schema<UpdateEnvGroupResponse>;
+export const UpdateEnvGroupResponse =
+  CreateEnvGroupResponse as any as S.Schema<UpdateEnvGroupResponse>;
 
 export interface UpdateEnvGroupEnvVarRequest {
   /** Filter for resources that belong to an environment group */
@@ -11895,19 +11362,16 @@ export const UpdateEnvGroupEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of serviceIds linked to the envGroup */
 export type UpdateEnvGroupEnvVarResponseServiceLinksList = Array<EnvGroupLink>;
-export const UpdateEnvGroupEnvVarResponseServiceLinksList = /*@__PURE__*/ S.Array(
-  EnvGroupLink,
-) as any as S.Schema<UpdateEnvGroupEnvVarResponseServiceLinksList>;
+export const UpdateEnvGroupEnvVarResponseServiceLinksList =
+  CreateEnvGroupResponseServiceLinksList as any as S.Schema<UpdateEnvGroupEnvVarResponseServiceLinksList>;
 
 export type UpdateEnvGroupEnvVarResponseEnvVarsList = Array<EnvVar>;
-export const UpdateEnvGroupEnvVarResponseEnvVarsList = /*@__PURE__*/ S.Array(
-  EnvVar,
-) as any as S.Schema<UpdateEnvGroupEnvVarResponseEnvVarsList>;
+export const UpdateEnvGroupEnvVarResponseEnvVarsList =
+  CreateEnvGroupResponseEnvVarsList as any as S.Schema<UpdateEnvGroupEnvVarResponseEnvVarsList>;
 
 export type UpdateEnvGroupEnvVarResponseSecretFilesList = Array<SecretFile>;
-export const UpdateEnvGroupEnvVarResponseSecretFilesList = /*@__PURE__*/ S.Array(
-  SecretFile,
-) as any as S.Schema<UpdateEnvGroupEnvVarResponseSecretFilesList>;
+export const UpdateEnvGroupEnvVarResponseSecretFilesList =
+  CreateBuildSourceRequestSecretFilesList as any as S.Schema<UpdateEnvGroupEnvVarResponseSecretFilesList>;
 
 export interface UpdateEnvGroupEnvVarResponse {
   id: string;
@@ -11921,21 +11385,8 @@ export interface UpdateEnvGroupEnvVarResponse {
   envVars: UpdateEnvGroupEnvVarResponseEnvVarsList;
   secretFiles: UpdateEnvGroupEnvVarResponseSecretFilesList;
 }
-export const UpdateEnvGroupEnvVarResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    ownerId: S.String,
-    createdAt: S.String,
-    updatedAt: S.String,
-    serviceLinks: UpdateEnvGroupEnvVarResponseServiceLinksList,
-    environmentId: S.optional(S.String),
-    envVars: UpdateEnvGroupEnvVarResponseEnvVarsList,
-    secretFiles: UpdateEnvGroupEnvVarResponseSecretFilesList,
-  }),
-).annotate({
-  identifier: "UpdateEnvGroupEnvVarResponse",
-}) as any as S.Schema<UpdateEnvGroupEnvVarResponse>;
+export const UpdateEnvGroupEnvVarResponse =
+  LinkEnvGroupToBuildSourceResponse as any as S.Schema<UpdateEnvGroupEnvVarResponse>;
 
 export interface UpdateEnvGroupSecretFileRequest {
   envGroupId: string;
@@ -11956,19 +11407,16 @@ export const UpdateEnvGroupSecretFileRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of serviceIds linked to the envGroup */
 export type UpdateEnvGroupSecretFileResponseServiceLinksList = Array<EnvGroupLink>;
-export const UpdateEnvGroupSecretFileResponseServiceLinksList = /*@__PURE__*/ S.Array(
-  EnvGroupLink,
-) as any as S.Schema<UpdateEnvGroupSecretFileResponseServiceLinksList>;
+export const UpdateEnvGroupSecretFileResponseServiceLinksList =
+  CreateEnvGroupResponseServiceLinksList as any as S.Schema<UpdateEnvGroupSecretFileResponseServiceLinksList>;
 
 export type UpdateEnvGroupSecretFileResponseEnvVarsList = Array<EnvVar>;
-export const UpdateEnvGroupSecretFileResponseEnvVarsList = /*@__PURE__*/ S.Array(
-  EnvVar,
-) as any as S.Schema<UpdateEnvGroupSecretFileResponseEnvVarsList>;
+export const UpdateEnvGroupSecretFileResponseEnvVarsList =
+  CreateEnvGroupResponseEnvVarsList as any as S.Schema<UpdateEnvGroupSecretFileResponseEnvVarsList>;
 
 export type UpdateEnvGroupSecretFileResponseSecretFilesList = Array<SecretFile>;
-export const UpdateEnvGroupSecretFileResponseSecretFilesList = /*@__PURE__*/ S.Array(
-  SecretFile,
-) as any as S.Schema<UpdateEnvGroupSecretFileResponseSecretFilesList>;
+export const UpdateEnvGroupSecretFileResponseSecretFilesList =
+  CreateBuildSourceRequestSecretFilesList as any as S.Schema<UpdateEnvGroupSecretFileResponseSecretFilesList>;
 
 export interface UpdateEnvGroupSecretFileResponse {
   id: string;
@@ -11982,26 +11430,12 @@ export interface UpdateEnvGroupSecretFileResponse {
   envVars: UpdateEnvGroupSecretFileResponseEnvVarsList;
   secretFiles: UpdateEnvGroupSecretFileResponseSecretFilesList;
 }
-export const UpdateEnvGroupSecretFileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    ownerId: S.String,
-    createdAt: S.String,
-    updatedAt: S.String,
-    serviceLinks: UpdateEnvGroupSecretFileResponseServiceLinksList,
-    environmentId: S.optional(S.String),
-    envVars: UpdateEnvGroupSecretFileResponseEnvVarsList,
-    secretFiles: UpdateEnvGroupSecretFileResponseSecretFilesList,
-  }),
-).annotate({
-  identifier: "UpdateEnvGroupSecretFileResponse",
-}) as any as S.Schema<UpdateEnvGroupSecretFileResponse>;
+export const UpdateEnvGroupSecretFileResponse =
+  LinkEnvGroupToBuildSourceResponse as any as S.Schema<UpdateEnvGroupSecretFileResponse>;
 
 export type UpdateEnvironmentRequestIpAllowListList = Array<CidrBlockAndDescription>;
-export const UpdateEnvironmentRequestIpAllowListList = /*@__PURE__*/ S.Array(
-  CidrBlockAndDescription,
-) as any as S.Schema<UpdateEnvironmentRequestIpAllowListList>;
+export const UpdateEnvironmentRequestIpAllowListList =
+  EnvironmentIpAllowListList as any as S.Schema<UpdateEnvironmentRequestIpAllowListList>;
 
 export interface UpdateEnvironmentRequest {
   environmentId: string;
@@ -12049,16 +11483,12 @@ export const UpdateEnvVarsForBuildSourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateEnvVarsForBuildSourceRequest>;
 
 export type UpdateEnvVarsForBuildSourceResponseBodyList = Array<EnvVarWithCursor>;
-export const UpdateEnvVarsForBuildSourceResponseBodyList = /*@__PURE__*/ S.Array(
-  EnvVarWithCursor,
-) as any as S.Schema<UpdateEnvVarsForBuildSourceResponseBodyList>;
+export const UpdateEnvVarsForBuildSourceResponseBodyList =
+  GetEnvVarsForBuildSourceResponseBodyList as any as S.Schema<UpdateEnvVarsForBuildSourceResponseBodyList>;
 
 export type UpdateEnvVarsForBuildSourceResponse = UpdateEnvVarsForBuildSourceResponseBodyList;
-export const UpdateEnvVarsForBuildSourceResponse = /*@__PURE__*/ S.suspend(() =>
-  UpdateEnvVarsForBuildSourceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UpdateEnvVarsForBuildSourceResponse",
-}) as any as S.Schema<UpdateEnvVarsForBuildSourceResponse>;
+export const UpdateEnvVarsForBuildSourceResponse =
+  GetEnvVarsForBuildSourceResponse as any as S.Schema<UpdateEnvVarsForBuildSourceResponse>;
 
 export type UpdateEnvVarsForServiceRequestBodyItemCase0 = SchemaItemCase0;
 export const UpdateEnvVarsForServiceRequestBodyItemCase0 = SchemaItemCase0;
@@ -12090,21 +11520,16 @@ export const UpdateEnvVarsForServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateEnvVarsForServiceRequest>;
 
 export type UpdateEnvVarsForServiceResponseBodyList = Array<EnvVarWithCursor>;
-export const UpdateEnvVarsForServiceResponseBodyList = /*@__PURE__*/ S.Array(
-  EnvVarWithCursor,
-) as any as S.Schema<UpdateEnvVarsForServiceResponseBodyList>;
+export const UpdateEnvVarsForServiceResponseBodyList =
+  GetEnvVarsForBuildSourceResponseBodyList as any as S.Schema<UpdateEnvVarsForServiceResponseBodyList>;
 
 export type UpdateEnvVarsForServiceResponse = UpdateEnvVarsForServiceResponseBodyList;
-export const UpdateEnvVarsForServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  UpdateEnvVarsForServiceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UpdateEnvVarsForServiceResponse",
-}) as any as S.Schema<UpdateEnvVarsForServiceResponse>;
+export const UpdateEnvVarsForServiceResponse =
+  GetEnvVarsForBuildSourceResponse as any as S.Schema<UpdateEnvVarsForServiceResponse>;
 
 export type UpdateHeadersRequestBodyList = Array<HeaderInput>;
-export const UpdateHeadersRequestBodyList = /*@__PURE__*/ S.Array(
-  HeaderInput,
-) as any as S.Schema<UpdateHeadersRequestBodyList>;
+export const UpdateHeadersRequestBodyList =
+  StaticSiteDetailsPOSTHeadersList as any as S.Schema<UpdateHeadersRequestBodyList>;
 
 export interface UpdateHeadersRequest {
   /** The ID of the service */
@@ -12129,9 +11554,8 @@ export const UpdateHeadersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateHeadersResponse" }) as any as S.Schema<UpdateHeadersResponse>;
 
 export type UpdateKeyValueRequestIpAllowListList = Array<CidrBlockAndDescription>;
-export const UpdateKeyValueRequestIpAllowListList = /*@__PURE__*/ S.Array(
-  CidrBlockAndDescription,
-) as any as S.Schema<UpdateKeyValueRequestIpAllowListList>;
+export const UpdateKeyValueRequestIpAllowListList =
+  EnvironmentIpAllowListList as any as S.Schema<UpdateKeyValueRequestIpAllowListList>;
 
 export interface UpdateKeyValueRequest {
   redisId: string;
@@ -12166,9 +11590,8 @@ export const UpdateMaintenanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateMaintenanceRequest" }) as any as S.Schema<UpdateMaintenanceRequest>;
 
 export interface UpdateMaintenanceResponse {}
-export const UpdateMaintenanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateMaintenanceResponse",
-}) as any as S.Schema<UpdateMaintenanceResponse>;
+export const UpdateMaintenanceResponse =
+  CancelCronJobRunResponse as any as S.Schema<UpdateMaintenanceResponse>;
 
 /** Whether to send logs or drop them. */
 export type UpdateOwnerLogStreamRequestPreview = "send" | "drop";
@@ -12202,20 +11625,12 @@ export interface UpdateOwnerLogStreamResponse {
   endpoint?: string;
   preview?: Preview;
 }
-export const UpdateOwnerLogStreamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ownerId: S.optional(S.String),
-    endpoint: S.optional(S.String),
-    preview: S.optional(Preview),
-  }),
-).annotate({
-  identifier: "UpdateOwnerLogStreamResponse",
-}) as any as S.Schema<UpdateOwnerLogStreamResponse>;
+export const UpdateOwnerLogStreamResponse =
+  GetOwnerLogStreamResponse as any as S.Schema<UpdateOwnerLogStreamResponse>;
 
 export type UpdatePostgresRequestIpAllowListList = Array<CidrBlockAndDescription>;
-export const UpdatePostgresRequestIpAllowListList = /*@__PURE__*/ S.Array(
-  CidrBlockAndDescription,
-) as any as S.Schema<UpdatePostgresRequestIpAllowListList>;
+export const UpdatePostgresRequestIpAllowListList =
+  EnvironmentIpAllowListList as any as S.Schema<UpdatePostgresRequestIpAllowListList>;
 
 export interface UpdatePostgresRequest {
   postgresId: string;
@@ -12308,20 +11723,12 @@ export interface UpdateResourceLogStreamResponse {
   endpoint?: string;
   setting?: Items3;
 }
-export const UpdateResourceLogStreamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceId: S.optional(S.String),
-    endpoint: S.optional(S.String),
-    setting: S.optional(Items3),
-  }),
-).annotate({
-  identifier: "UpdateResourceLogStreamResponse",
-}) as any as S.Schema<UpdateResourceLogStreamResponse>;
+export const UpdateResourceLogStreamResponse =
+  GetResourceLogStreamResponse as any as S.Schema<UpdateResourceLogStreamResponse>;
 
 export type UpdateSecretFilesForBuildSourceRequestBodyList = Array<Items>;
-export const UpdateSecretFilesForBuildSourceRequestBodyList = /*@__PURE__*/ S.Array(
-  Items,
-) as any as S.Schema<UpdateSecretFilesForBuildSourceRequestBodyList>;
+export const UpdateSecretFilesForBuildSourceRequestBodyList =
+  CreateBuildSourceRequestSecretFilesList as any as S.Schema<UpdateSecretFilesForBuildSourceRequestBodyList>;
 
 export interface UpdateSecretFilesForBuildSourceRequest {
   buildSourceId: string;
@@ -12337,25 +11744,20 @@ export const UpdateSecretFilesForBuildSourceRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<UpdateSecretFilesForBuildSourceRequest>;
 
 export type UpdateSecretFilesForBuildSourceResponseBodyList = Array<SecretFileWithCursor>;
-export const UpdateSecretFilesForBuildSourceResponseBodyList = /*@__PURE__*/ S.Array(
-  SecretFileWithCursor,
-) as any as S.Schema<UpdateSecretFilesForBuildSourceResponseBodyList>;
+export const UpdateSecretFilesForBuildSourceResponseBodyList =
+  ListSecretFilesForBuildSourceResponseBodyList as any as S.Schema<UpdateSecretFilesForBuildSourceResponseBodyList>;
 
 export type UpdateSecretFilesForBuildSourceResponse =
   UpdateSecretFilesForBuildSourceResponseBodyList;
-export const UpdateSecretFilesForBuildSourceResponse = /*@__PURE__*/ S.suspend(() =>
-  UpdateSecretFilesForBuildSourceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UpdateSecretFilesForBuildSourceResponse",
-}) as any as S.Schema<UpdateSecretFilesForBuildSourceResponse>;
+export const UpdateSecretFilesForBuildSourceResponse =
+  ListSecretFilesForBuildSourceResponse as any as S.Schema<UpdateSecretFilesForBuildSourceResponse>;
 
 export type UpdateSecretFilesForServiceRequestBodyItem = Items;
 export const UpdateSecretFilesForServiceRequestBodyItem = Items;
 
 export type UpdateSecretFilesForServiceRequestBodyList = Array<Items>;
-export const UpdateSecretFilesForServiceRequestBodyList = /*@__PURE__*/ S.Array(
-  Items,
-) as any as S.Schema<UpdateSecretFilesForServiceRequestBodyList>;
+export const UpdateSecretFilesForServiceRequestBodyList =
+  CreateBuildSourceRequestSecretFilesList as any as S.Schema<UpdateSecretFilesForServiceRequestBodyList>;
 
 export interface UpdateSecretFilesForServiceRequest {
   /** The ID of the service */
@@ -12372,21 +11774,16 @@ export const UpdateSecretFilesForServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateSecretFilesForServiceRequest>;
 
 export type UpdateSecretFilesForServiceResponseBodyList = Array<SecretFileWithCursor>;
-export const UpdateSecretFilesForServiceResponseBodyList = /*@__PURE__*/ S.Array(
-  SecretFileWithCursor,
-) as any as S.Schema<UpdateSecretFilesForServiceResponseBodyList>;
+export const UpdateSecretFilesForServiceResponseBodyList =
+  ListSecretFilesForBuildSourceResponseBodyList as any as S.Schema<UpdateSecretFilesForServiceResponseBodyList>;
 
 export type UpdateSecretFilesForServiceResponse = UpdateSecretFilesForServiceResponseBodyList;
-export const UpdateSecretFilesForServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  UpdateSecretFilesForServiceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UpdateSecretFilesForServiceResponse",
-}) as any as S.Schema<UpdateSecretFilesForServiceResponse>;
+export const UpdateSecretFilesForServiceResponse =
+  ListSecretFilesForBuildSourceResponse as any as S.Schema<UpdateSecretFilesForServiceResponse>;
 
 export type StaticSiteDetailsPATCHIpAllowListList = Array<CidrBlockAndDescription>;
-export const StaticSiteDetailsPATCHIpAllowListList = /*@__PURE__*/ S.Array(
-  CidrBlockAndDescription,
-) as any as S.Schema<StaticSiteDetailsPATCHIpAllowListList>;
+export const StaticSiteDetailsPATCHIpAllowListList =
+  EnvironmentIpAllowListList as any as S.Schema<StaticSiteDetailsPATCHIpAllowListList>;
 
 export interface StaticSiteDetailsPATCH {
   buildCommand?: string;
@@ -12414,14 +11811,7 @@ export interface DockerDetailsPATCH {
   /** Optional reference to the registry credential for this build. Omit the field to leave the stored credential unchanged; send an empty string to clear it. */
   registryCredentialId?: string;
 }
-export const DockerDetailsPATCH = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dockerCommand: S.optional(S.String),
-    dockerContext: S.optional(S.String),
-    dockerfilePath: S.optional(S.String),
-    registryCredentialId: S.optional(S.String),
-  }),
-).annotate({ identifier: "DockerDetailsPATCH" }) as any as S.Schema<DockerDetailsPATCH>;
+export const DockerDetailsPATCH = DockerDetailsPOST as any as S.Schema<DockerDetailsPATCH>;
 
 export interface NativeEnvironmentDetailsPATCH {
   buildCommand?: string;
@@ -12440,9 +11830,8 @@ export type EnvSpecificDetailsPATCH = DockerDetailsPATCH | NativeEnvironmentDeta
 export const EnvSpecificDetailsPATCH = S.Unknown as any as S.Schema<EnvSpecificDetailsPATCH>;
 
 export type WebServiceDetailsPATCHIpAllowListList = Array<CidrBlockAndDescription>;
-export const WebServiceDetailsPATCHIpAllowListList = /*@__PURE__*/ S.Array(
-  CidrBlockAndDescription,
-) as any as S.Schema<WebServiceDetailsPATCHIpAllowListList>;
+export const WebServiceDetailsPATCHIpAllowListList =
+  EnvironmentIpAllowListList as any as S.Schema<WebServiceDetailsPATCHIpAllowListList>;
 
 export interface WebServiceDetailsPATCH {
   envSpecificDetails?: EnvSpecificDetailsPATCH;
@@ -12737,33 +12126,28 @@ export const ValidateBlueprintResponseErrorsList = /*@__PURE__*/ S.Array(
 
 /** The names of services that would be created as part of the Blueprint. */
 export type ValidateBlueprintResponsePlanServicesList = Array<string>;
-export const ValidateBlueprintResponsePlanServicesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ValidateBlueprintResponsePlanServicesList>;
+export const ValidateBlueprintResponsePlanServicesList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ValidateBlueprintResponsePlanServicesList>;
 
 /** The names of Render Postgres databases that would be created as part of the Blueprint. */
 export type ValidateBlueprintResponsePlanDatabasesList = Array<string>;
-export const ValidateBlueprintResponsePlanDatabasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ValidateBlueprintResponsePlanDatabasesList>;
+export const ValidateBlueprintResponsePlanDatabasesList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ValidateBlueprintResponsePlanDatabasesList>;
 
 /** The names of Render Key Value instances that would be created as part of the Blueprint. */
 export type ValidateBlueprintResponsePlanKeyValueList = Array<string>;
-export const ValidateBlueprintResponsePlanKeyValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ValidateBlueprintResponsePlanKeyValueList>;
+export const ValidateBlueprintResponsePlanKeyValueList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ValidateBlueprintResponsePlanKeyValueList>;
 
 /** The names of environment groups that would be created as part of the Blueprint. */
 export type ValidateBlueprintResponsePlanEnvGroupsList = Array<string>;
-export const ValidateBlueprintResponsePlanEnvGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ValidateBlueprintResponsePlanEnvGroupsList>;
+export const ValidateBlueprintResponsePlanEnvGroupsList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ValidateBlueprintResponsePlanEnvGroupsList>;
 
 /** The names of workflows that would be created as part of the Blueprint. */
 export type ValidateBlueprintResponsePlanWorkflowsList = Array<string>;
-export const ValidateBlueprintResponsePlanWorkflowsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ValidateBlueprintResponsePlanWorkflowsList>;
+export const ValidateBlueprintResponsePlanWorkflowsList =
+  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ValidateBlueprintResponsePlanWorkflowsList>;
 
 /** A summary of the resources that would be created as part of the Blueprint. Only present if `valid` is `true`. */
 export interface ValidateBlueprintResponsePlan {

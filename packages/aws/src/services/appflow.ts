@@ -208,39 +208,24 @@ export const DatadogConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
 export interface DynatraceConnectorProfileProperties {
   instanceUrl: string;
 }
-export const DynatraceConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ instanceUrl: S.String }),
-).annotate({
-  identifier: "DynatraceConnectorProfileProperties",
-}) as any as S.Schema<DynatraceConnectorProfileProperties>;
+export const DynatraceConnectorProfileProperties =
+  DatadogConnectorProfileProperties as any as S.Schema<DynatraceConnectorProfileProperties>;
 export interface GoogleAnalyticsConnectorProfileProperties {}
-export const GoogleAnalyticsConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleAnalyticsConnectorProfileProperties",
-}) as any as S.Schema<GoogleAnalyticsConnectorProfileProperties>;
+export const GoogleAnalyticsConnectorProfileProperties =
+  AmplitudeConnectorProfileProperties as any as S.Schema<GoogleAnalyticsConnectorProfileProperties>;
 export interface HoneycodeConnectorProfileProperties {}
-export const HoneycodeConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "HoneycodeConnectorProfileProperties",
-}) as any as S.Schema<HoneycodeConnectorProfileProperties>;
+export const HoneycodeConnectorProfileProperties =
+  AmplitudeConnectorProfileProperties as any as S.Schema<HoneycodeConnectorProfileProperties>;
 export interface InforNexusConnectorProfileProperties {
   instanceUrl: string;
 }
-export const InforNexusConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ instanceUrl: S.String }),
-).annotate({
-  identifier: "InforNexusConnectorProfileProperties",
-}) as any as S.Schema<InforNexusConnectorProfileProperties>;
+export const InforNexusConnectorProfileProperties =
+  DatadogConnectorProfileProperties as any as S.Schema<InforNexusConnectorProfileProperties>;
 export interface MarketoConnectorProfileProperties {
   instanceUrl: string;
 }
-export const MarketoConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ instanceUrl: S.String }),
-).annotate({
-  identifier: "MarketoConnectorProfileProperties",
-}) as any as S.Schema<MarketoConnectorProfileProperties>;
+export const MarketoConnectorProfileProperties =
+  DatadogConnectorProfileProperties as any as S.Schema<MarketoConnectorProfileProperties>;
 export type DatabaseUrl = string;
 export type BucketName = string;
 export type BucketPrefix = string;
@@ -292,25 +277,16 @@ export const SalesforceConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =
 export interface ServiceNowConnectorProfileProperties {
   instanceUrl: string;
 }
-export const ServiceNowConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ instanceUrl: S.String }),
-).annotate({
-  identifier: "ServiceNowConnectorProfileProperties",
-}) as any as S.Schema<ServiceNowConnectorProfileProperties>;
+export const ServiceNowConnectorProfileProperties =
+  DatadogConnectorProfileProperties as any as S.Schema<ServiceNowConnectorProfileProperties>;
 export interface SingularConnectorProfileProperties {}
-export const SingularConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SingularConnectorProfileProperties",
-}) as any as S.Schema<SingularConnectorProfileProperties>;
+export const SingularConnectorProfileProperties =
+  AmplitudeConnectorProfileProperties as any as S.Schema<SingularConnectorProfileProperties>;
 export interface SlackConnectorProfileProperties {
   instanceUrl: string;
 }
-export const SlackConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ instanceUrl: S.String }),
-).annotate({
-  identifier: "SlackConnectorProfileProperties",
-}) as any as S.Schema<SlackConnectorProfileProperties>;
+export const SlackConnectorProfileProperties =
+  DatadogConnectorProfileProperties as any as S.Schema<SlackConnectorProfileProperties>;
 export type Warehouse = string;
 export type Stage = string;
 export type PrivateLinkServiceName = string;
@@ -339,27 +315,18 @@ export const SnowflakeConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "SnowflakeConnectorProfileProperties",
 }) as any as S.Schema<SnowflakeConnectorProfileProperties>;
 export interface TrendmicroConnectorProfileProperties {}
-export const TrendmicroConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TrendmicroConnectorProfileProperties",
-}) as any as S.Schema<TrendmicroConnectorProfileProperties>;
+export const TrendmicroConnectorProfileProperties =
+  AmplitudeConnectorProfileProperties as any as S.Schema<TrendmicroConnectorProfileProperties>;
 export interface VeevaConnectorProfileProperties {
   instanceUrl: string;
 }
-export const VeevaConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ instanceUrl: S.String }),
-).annotate({
-  identifier: "VeevaConnectorProfileProperties",
-}) as any as S.Schema<VeevaConnectorProfileProperties>;
+export const VeevaConnectorProfileProperties =
+  DatadogConnectorProfileProperties as any as S.Schema<VeevaConnectorProfileProperties>;
 export interface ZendeskConnectorProfileProperties {
   instanceUrl: string;
 }
-export const ZendeskConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ instanceUrl: S.String }),
-).annotate({
-  identifier: "ZendeskConnectorProfileProperties",
-}) as any as S.Schema<ZendeskConnectorProfileProperties>;
+export const ZendeskConnectorProfileProperties =
+  DatadogConnectorProfileProperties as any as S.Schema<ZendeskConnectorProfileProperties>;
 export type ApplicationHostUrl = string;
 export type ApplicationServicePath = string;
 export type PortNumber = number;
@@ -369,7 +336,7 @@ export type TokenUrl = string;
 export type AuthCodeUrl = string;
 export type OAuthScope = string;
 export type OAuthScopeList = string[];
-export const OAuthScopeList = /*@__PURE__*/ S.Array(S.String);
+export const OAuthScopeList = ExecutionIds as any as S.Schema<OAuthScopeList>;
 export interface OAuthProperties {
   tokenUrl: string;
   authCodeUrl: string;
@@ -419,10 +386,8 @@ export const OAuth2GrantType = S.String;
 export type CustomPropertyKey = string;
 export type CustomPropertyValue = string;
 export type TokenUrlCustomProperties = { [key: string]: string | undefined };
-export const TokenUrlCustomProperties = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const TokenUrlCustomProperties =
+  ProfilePropertiesMap as any as S.Schema<TokenUrlCustomProperties>;
 export interface OAuth2Properties {
   tokenUrl: string;
   oAuth2GrantType: OAuth2GrantType;
@@ -700,16 +665,8 @@ export interface SlackConnectorProfileCredentials {
   accessToken?: string | redacted.Redacted<string>;
   oAuthRequest?: ConnectorOAuthRequest;
 }
-export const SlackConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.String,
-    clientSecret: SensitiveString,
-    accessToken: S.optional(SensitiveString),
-    oAuthRequest: S.optional(ConnectorOAuthRequest),
-  }),
-).annotate({
-  identifier: "SlackConnectorProfileCredentials",
-}) as any as S.Schema<SlackConnectorProfileCredentials>;
+export const SlackConnectorProfileCredentials =
+  MarketoConnectorProfileCredentials as any as S.Schema<SlackConnectorProfileCredentials>;
 export type PrivateKey = string | redacted.Redacted<string>;
 export interface SnowflakeConnectorProfileCredentials {
   username: string;
@@ -749,16 +706,8 @@ export interface ZendeskConnectorProfileCredentials {
   accessToken?: string | redacted.Redacted<string>;
   oAuthRequest?: ConnectorOAuthRequest;
 }
-export const ZendeskConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.String,
-    clientSecret: SensitiveString,
-    accessToken: S.optional(SensitiveString),
-    oAuthRequest: S.optional(ConnectorOAuthRequest),
-  }),
-).annotate({
-  identifier: "ZendeskConnectorProfileCredentials",
-}) as any as S.Schema<ZendeskConnectorProfileCredentials>;
+export const ZendeskConnectorProfileCredentials =
+  MarketoConnectorProfileCredentials as any as S.Schema<ZendeskConnectorProfileCredentials>;
 export interface BasicAuthCredentials {
   username: string;
   password: string | redacted.Redacted<string>;
@@ -1016,33 +965,23 @@ export const DatadogSourceProperties = /*@__PURE__*/ S.suspend(() =>
 export interface DynatraceSourceProperties {
   object: string;
 }
-export const DynatraceSourceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ object: S.String }),
-).annotate({
-  identifier: "DynatraceSourceProperties",
-}) as any as S.Schema<DynatraceSourceProperties>;
+export const DynatraceSourceProperties =
+  AmplitudeSourceProperties as any as S.Schema<DynatraceSourceProperties>;
 export interface GoogleAnalyticsSourceProperties {
   object: string;
 }
-export const GoogleAnalyticsSourceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ object: S.String }),
-).annotate({
-  identifier: "GoogleAnalyticsSourceProperties",
-}) as any as S.Schema<GoogleAnalyticsSourceProperties>;
+export const GoogleAnalyticsSourceProperties =
+  AmplitudeSourceProperties as any as S.Schema<GoogleAnalyticsSourceProperties>;
 export interface InforNexusSourceProperties {
   object: string;
 }
-export const InforNexusSourceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ object: S.String }),
-).annotate({
-  identifier: "InforNexusSourceProperties",
-}) as any as S.Schema<InforNexusSourceProperties>;
+export const InforNexusSourceProperties =
+  AmplitudeSourceProperties as any as S.Schema<InforNexusSourceProperties>;
 export interface MarketoSourceProperties {
   object: string;
 }
-export const MarketoSourceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ object: S.String }),
-).annotate({ identifier: "MarketoSourceProperties" }) as any as S.Schema<MarketoSourceProperties>;
+export const MarketoSourceProperties =
+  DatadogSourceProperties as any as S.Schema<MarketoSourceProperties>;
 export type S3InputFileType = "CSV" | "JSON" | (string & {});
 export const S3InputFileType = S.String;
 
@@ -1086,31 +1025,23 @@ export const SalesforceSourceProperties = /*@__PURE__*/ S.suspend(() =>
 export interface ServiceNowSourceProperties {
   object: string;
 }
-export const ServiceNowSourceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ object: S.String }),
-).annotate({
-  identifier: "ServiceNowSourceProperties",
-}) as any as S.Schema<ServiceNowSourceProperties>;
+export const ServiceNowSourceProperties =
+  AmplitudeSourceProperties as any as S.Schema<ServiceNowSourceProperties>;
 export interface SingularSourceProperties {
   object: string;
 }
-export const SingularSourceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ object: S.String }),
-).annotate({ identifier: "SingularSourceProperties" }) as any as S.Schema<SingularSourceProperties>;
+export const SingularSourceProperties =
+  DatadogSourceProperties as any as S.Schema<SingularSourceProperties>;
 export interface SlackSourceProperties {
   object: string;
 }
-export const SlackSourceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ object: S.String }),
-).annotate({ identifier: "SlackSourceProperties" }) as any as S.Schema<SlackSourceProperties>;
+export const SlackSourceProperties =
+  DatadogSourceProperties as any as S.Schema<SlackSourceProperties>;
 export interface TrendmicroSourceProperties {
   object: string;
 }
-export const TrendmicroSourceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ object: S.String }),
-).annotate({
-  identifier: "TrendmicroSourceProperties",
-}) as any as S.Schema<TrendmicroSourceProperties>;
+export const TrendmicroSourceProperties =
+  AmplitudeSourceProperties as any as S.Schema<TrendmicroSourceProperties>;
 export type DocumentType = string;
 export interface VeevaSourceProperties {
   object: string;
@@ -1131,9 +1062,8 @@ export const VeevaSourceProperties = /*@__PURE__*/ S.suspend(() =>
 export interface ZendeskSourceProperties {
   object: string;
 }
-export const ZendeskSourceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ object: S.String }),
-).annotate({ identifier: "ZendeskSourceProperties" }) as any as S.Schema<ZendeskSourceProperties>;
+export const ZendeskSourceProperties =
+  DatadogSourceProperties as any as S.Schema<ZendeskSourceProperties>;
 export type SAPODataMaxParallelism = number;
 export interface SAPODataParallelismConfig {
   maxParallelism: number;
@@ -1164,10 +1094,7 @@ export const SAPODataSourceProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SAPODataSourceProperties" }) as any as S.Schema<SAPODataSourceProperties>;
 export type EntityName = string;
 export type CustomProperties = { [key: string]: string | undefined };
-export const CustomProperties = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const CustomProperties = ProfilePropertiesMap as any as S.Schema<CustomProperties>;
 export type DataTransferApiTypeName = string;
 export type DataTransferApiType = "SYNC" | "ASYNC" | "AUTOMATIC" | (string & {});
 export const DataTransferApiType = S.String;
@@ -1196,9 +1123,8 @@ export const CustomConnectorSourceProperties = /*@__PURE__*/ S.suspend(() =>
 export interface PardotSourceProperties {
   object: string;
 }
-export const PardotSourceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ object: S.String }),
-).annotate({ identifier: "PardotSourceProperties" }) as any as S.Schema<PardotSourceProperties>;
+export const PardotSourceProperties =
+  DatadogSourceProperties as any as S.Schema<PardotSourceProperties>;
 export interface SourceConnectorProperties {
   Amplitude?: AmplitudeSourceProperties;
   Datadog?: DatadogSourceProperties;
@@ -1357,7 +1283,7 @@ export const S3DestinationProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "S3DestinationProperties" }) as any as S.Schema<S3DestinationProperties>;
 export type Name = string;
 export type IdFieldNameList = string[];
-export const IdFieldNameList = /*@__PURE__*/ S.Array(S.String);
+export const IdFieldNameList = ExecutionIds as any as S.Schema<IdFieldNameList>;
 export type WriteOperationType = "INSERT" | "UPSERT" | "UPDATE" | "DELETE" | (string & {});
 export const WriteOperationType = S.String;
 
@@ -1385,16 +1311,8 @@ export interface SnowflakeDestinationProperties {
   bucketPrefix?: string;
   errorHandlingConfig?: ErrorHandlingConfig;
 }
-export const SnowflakeDestinationProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.String,
-    intermediateBucketName: S.String,
-    bucketPrefix: S.optional(S.String),
-    errorHandlingConfig: S.optional(ErrorHandlingConfig),
-  }),
-).annotate({
-  identifier: "SnowflakeDestinationProperties",
-}) as any as S.Schema<SnowflakeDestinationProperties>;
+export const SnowflakeDestinationProperties =
+  RedshiftDestinationProperties as any as S.Schema<SnowflakeDestinationProperties>;
 export interface EventBridgeDestinationProperties {
   object: string;
   errorHandlingConfig?: ErrorHandlingConfig;
@@ -1405,11 +1323,8 @@ export const EventBridgeDestinationProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventBridgeDestinationProperties",
 }) as any as S.Schema<EventBridgeDestinationProperties>;
 export interface LookoutMetricsDestinationProperties {}
-export const LookoutMetricsDestinationProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "LookoutMetricsDestinationProperties",
-}) as any as S.Schema<LookoutMetricsDestinationProperties>;
+export const LookoutMetricsDestinationProperties =
+  AmplitudeConnectorProfileProperties as any as S.Schema<LookoutMetricsDestinationProperties>;
 export type UpsolverBucketName = string;
 export interface UpsolverS3OutputFormatConfig {
   fileType?: FileType;
@@ -1443,11 +1358,8 @@ export interface HoneycodeDestinationProperties {
   object: string;
   errorHandlingConfig?: ErrorHandlingConfig;
 }
-export const HoneycodeDestinationProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ object: S.String, errorHandlingConfig: S.optional(ErrorHandlingConfig) }),
-).annotate({
-  identifier: "HoneycodeDestinationProperties",
-}) as any as S.Schema<HoneycodeDestinationProperties>;
+export const HoneycodeDestinationProperties =
+  EventBridgeDestinationProperties as any as S.Schema<HoneycodeDestinationProperties>;
 export type DomainName = string;
 export type ObjectTypeName = string;
 export interface CustomerProfilesDestinationProperties {
@@ -1479,11 +1391,8 @@ export interface MarketoDestinationProperties {
   object: string;
   errorHandlingConfig?: ErrorHandlingConfig;
 }
-export const MarketoDestinationProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ object: S.String, errorHandlingConfig: S.optional(ErrorHandlingConfig) }),
-).annotate({
-  identifier: "MarketoDestinationProperties",
-}) as any as S.Schema<MarketoDestinationProperties>;
+export const MarketoDestinationProperties =
+  EventBridgeDestinationProperties as any as S.Schema<MarketoDestinationProperties>;
 export interface CustomConnectorDestinationProperties {
   entityName: string;
   errorHandlingConfig?: ErrorHandlingConfig;
@@ -1580,7 +1489,7 @@ export const DestinationFlowConfig = /*@__PURE__*/ S.suspend(() =>
 export type DestinationFlowConfigList = DestinationFlowConfig[];
 export const DestinationFlowConfigList = /*@__PURE__*/ S.Array(DestinationFlowConfig);
 export type SourceFields = string[];
-export const SourceFields = /*@__PURE__*/ S.Array(S.String);
+export const SourceFields = ExecutionIds as any as S.Schema<SourceFields>;
 export type AmplitudeConnectorOperator = "BETWEEN" | (string & {});
 export const AmplitudeConnectorOperator = S.String;
 
@@ -2105,9 +2014,8 @@ export const DeleteFlowRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteFlowRequest" }) as any as S.Schema<DeleteFlowRequest>;
 export interface DeleteFlowResponse {}
-export const DeleteFlowResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFlowResponse",
-}) as any as S.Schema<DeleteFlowResponse>;
+export const DeleteFlowResponse =
+  DeleteConnectorProfileResponse as any as S.Schema<DeleteFlowResponse>;
 export interface DescribeConnectorRequest {
   connectorType: ConnectorType;
   connectorLabel?: string;
@@ -2134,17 +2042,13 @@ export const SchedulingFrequencyTypeList = /*@__PURE__*/ S.Array(ScheduleFrequen
 export type TriggerTypeList = TriggerType[];
 export const TriggerTypeList = /*@__PURE__*/ S.Array(TriggerType);
 export interface AmplitudeMetadata {}
-export const AmplitudeMetadata = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AmplitudeMetadata",
-}) as any as S.Schema<AmplitudeMetadata>;
+export const AmplitudeMetadata =
+  DeleteConnectorProfileResponse as any as S.Schema<AmplitudeMetadata>;
 export interface DatadogMetadata {}
-export const DatadogMetadata = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DatadogMetadata",
-}) as any as S.Schema<DatadogMetadata>;
+export const DatadogMetadata = DeleteConnectorProfileResponse as any as S.Schema<DatadogMetadata>;
 export interface DynatraceMetadata {}
-export const DynatraceMetadata = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DynatraceMetadata",
-}) as any as S.Schema<DynatraceMetadata>;
+export const DynatraceMetadata =
+  DeleteConnectorProfileResponse as any as S.Schema<DynatraceMetadata>;
 export interface GoogleAnalyticsMetadata {
   oAuthScopes?: string[];
 }
@@ -2152,21 +2056,14 @@ export const GoogleAnalyticsMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ oAuthScopes: S.optional(OAuthScopeList) }),
 ).annotate({ identifier: "GoogleAnalyticsMetadata" }) as any as S.Schema<GoogleAnalyticsMetadata>;
 export interface InforNexusMetadata {}
-export const InforNexusMetadata = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "InforNexusMetadata",
-}) as any as S.Schema<InforNexusMetadata>;
+export const InforNexusMetadata =
+  DeleteConnectorProfileResponse as any as S.Schema<InforNexusMetadata>;
 export interface MarketoMetadata {}
-export const MarketoMetadata = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "MarketoMetadata",
-}) as any as S.Schema<MarketoMetadata>;
+export const MarketoMetadata = DeleteConnectorProfileResponse as any as S.Schema<MarketoMetadata>;
 export interface RedshiftMetadata {}
-export const RedshiftMetadata = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RedshiftMetadata",
-}) as any as S.Schema<RedshiftMetadata>;
+export const RedshiftMetadata = DeleteConnectorProfileResponse as any as S.Schema<RedshiftMetadata>;
 export interface S3Metadata {}
-export const S3Metadata = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "S3Metadata",
-}) as any as S.Schema<S3Metadata>;
+export const S3Metadata = DeleteConnectorProfileResponse as any as S.Schema<S3Metadata>;
 export type SalesforceDataTransferApiList = SalesforceDataTransferApi[];
 export const SalesforceDataTransferApiList = /*@__PURE__*/ S.Array(SalesforceDataTransferApi);
 export type OAuth2GrantTypeSupportedList = OAuth2GrantType[];
@@ -2184,21 +2081,16 @@ export const SalesforceMetadata = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SalesforceMetadata" }) as any as S.Schema<SalesforceMetadata>;
 export interface ServiceNowMetadata {}
-export const ServiceNowMetadata = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ServiceNowMetadata",
-}) as any as S.Schema<ServiceNowMetadata>;
+export const ServiceNowMetadata =
+  DeleteConnectorProfileResponse as any as S.Schema<ServiceNowMetadata>;
 export interface SingularMetadata {}
-export const SingularMetadata = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SingularMetadata",
-}) as any as S.Schema<SingularMetadata>;
+export const SingularMetadata = DeleteConnectorProfileResponse as any as S.Schema<SingularMetadata>;
 export interface SlackMetadata {
   oAuthScopes?: string[];
 }
-export const SlackMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ oAuthScopes: S.optional(OAuthScopeList) }),
-).annotate({ identifier: "SlackMetadata" }) as any as S.Schema<SlackMetadata>;
+export const SlackMetadata = GoogleAnalyticsMetadata as any as S.Schema<SlackMetadata>;
 export type RegionList = string[];
-export const RegionList = /*@__PURE__*/ S.Array(S.String);
+export const RegionList = ExecutionIds as any as S.Schema<RegionList>;
 export interface SnowflakeMetadata {
   supportedRegions?: string[];
 }
@@ -2206,45 +2098,30 @@ export const SnowflakeMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ supportedRegions: S.optional(RegionList) }),
 ).annotate({ identifier: "SnowflakeMetadata" }) as any as S.Schema<SnowflakeMetadata>;
 export interface TrendmicroMetadata {}
-export const TrendmicroMetadata = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TrendmicroMetadata",
-}) as any as S.Schema<TrendmicroMetadata>;
+export const TrendmicroMetadata =
+  DeleteConnectorProfileResponse as any as S.Schema<TrendmicroMetadata>;
 export interface VeevaMetadata {}
-export const VeevaMetadata = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "VeevaMetadata",
-}) as any as S.Schema<VeevaMetadata>;
+export const VeevaMetadata = DeleteConnectorProfileResponse as any as S.Schema<VeevaMetadata>;
 export interface ZendeskMetadata {
   oAuthScopes?: string[];
 }
-export const ZendeskMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ oAuthScopes: S.optional(OAuthScopeList) }),
-).annotate({ identifier: "ZendeskMetadata" }) as any as S.Schema<ZendeskMetadata>;
+export const ZendeskMetadata = GoogleAnalyticsMetadata as any as S.Schema<ZendeskMetadata>;
 export interface EventBridgeMetadata {}
-export const EventBridgeMetadata = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "EventBridgeMetadata",
-}) as any as S.Schema<EventBridgeMetadata>;
+export const EventBridgeMetadata =
+  DeleteConnectorProfileResponse as any as S.Schema<EventBridgeMetadata>;
 export interface UpsolverMetadata {}
-export const UpsolverMetadata = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpsolverMetadata",
-}) as any as S.Schema<UpsolverMetadata>;
+export const UpsolverMetadata = DeleteConnectorProfileResponse as any as S.Schema<UpsolverMetadata>;
 export interface CustomerProfilesMetadata {}
-export const CustomerProfilesMetadata = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CustomerProfilesMetadata",
-}) as any as S.Schema<CustomerProfilesMetadata>;
+export const CustomerProfilesMetadata =
+  DeleteConnectorProfileResponse as any as S.Schema<CustomerProfilesMetadata>;
 export interface HoneycodeMetadata {
   oAuthScopes?: string[];
 }
-export const HoneycodeMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ oAuthScopes: S.optional(OAuthScopeList) }),
-).annotate({ identifier: "HoneycodeMetadata" }) as any as S.Schema<HoneycodeMetadata>;
+export const HoneycodeMetadata = GoogleAnalyticsMetadata as any as S.Schema<HoneycodeMetadata>;
 export interface SAPODataMetadata {}
-export const SAPODataMetadata = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SAPODataMetadata",
-}) as any as S.Schema<SAPODataMetadata>;
+export const SAPODataMetadata = DeleteConnectorProfileResponse as any as S.Schema<SAPODataMetadata>;
 export interface PardotMetadata {}
-export const PardotMetadata = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PardotMetadata",
-}) as any as S.Schema<PardotMetadata>;
+export const PardotMetadata = DeleteConnectorProfileResponse as any as S.Schema<PardotMetadata>;
 export interface ConnectorMetadata {
   Amplitude?: AmplitudeMetadata;
   Datadog?: DatadogMetadata;
@@ -2302,16 +2179,17 @@ export type ConnectorVersion = string;
 export type ARN = string;
 export type ConnectorMode = string;
 export type ConnectorModeList = string[];
-export const ConnectorModeList = /*@__PURE__*/ S.Array(S.String);
+export const ConnectorModeList = ExecutionIds as any as S.Schema<ConnectorModeList>;
 export type TokenUrlList = string[];
-export const TokenUrlList = /*@__PURE__*/ S.Array(S.String);
+export const TokenUrlList = ExecutionIds as any as S.Schema<TokenUrlList>;
 export type AuthCodeUrlList = string[];
-export const AuthCodeUrlList = /*@__PURE__*/ S.Array(S.String);
+export const AuthCodeUrlList = ExecutionIds as any as S.Schema<AuthCodeUrlList>;
 export type Label = string;
 export type Description = string;
 export type ConnectorSuppliedValue = string;
 export type ConnectorSuppliedValueList = string[];
-export const ConnectorSuppliedValueList = /*@__PURE__*/ S.Array(S.String);
+export const ConnectorSuppliedValueList =
+  ExecutionIds as any as S.Schema<ConnectorSuppliedValueList>;
 export type OAuth2CustomPropType = "TOKEN_URL" | "AUTH_URL" | (string & {});
 export const OAuth2CustomPropType = S.String;
 
@@ -2406,7 +2284,8 @@ export const AuthenticationConfig = /*@__PURE__*/ S.suspend(() =>
 export type ConnectorRuntimeSettingDataType = string;
 export type ConnectorRuntimeSettingScope = string;
 export type ConnectorSuppliedValueOptionList = string[];
-export const ConnectorSuppliedValueOptionList = /*@__PURE__*/ S.Array(S.String);
+export const ConnectorSuppliedValueOptionList =
+  ExecutionIds as any as S.Schema<ConnectorSuppliedValueOptionList>;
 export interface ConnectorRuntimeSetting {
   key?: string;
   dataType?: string;
@@ -2431,7 +2310,7 @@ export type ConnectorRuntimeSettingList = ConnectorRuntimeSetting[];
 export const ConnectorRuntimeSettingList = /*@__PURE__*/ S.Array(ConnectorRuntimeSetting);
 export type SupportedApiVersion = string;
 export type SupportedApiVersionList = string[];
-export const SupportedApiVersionList = /*@__PURE__*/ S.Array(S.String);
+export const SupportedApiVersionList = ExecutionIds as any as S.Schema<SupportedApiVersionList>;
 export type Operators =
   | "PROJECTION"
   | "LESS_THAN"
@@ -2590,7 +2469,7 @@ export type FilterOperatorList = Operator[];
 export const FilterOperatorList = /*@__PURE__*/ S.Array(Operator);
 export type Value = string;
 export type SupportedValueList = string[];
-export const SupportedValueList = /*@__PURE__*/ S.Array(S.String);
+export const SupportedValueList = ExecutionIds as any as S.Schema<SupportedValueList>;
 export interface Range {
   maximum?: number;
   minimum?: number;
@@ -2697,7 +2576,7 @@ export const DescribeConnectorEntityResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeConnectorEntityResponse",
 }) as any as S.Schema<DescribeConnectorEntityResponse>;
 export type ConnectorProfileNameList = string[];
-export const ConnectorProfileNameList = /*@__PURE__*/ S.Array(S.String);
+export const ConnectorProfileNameList = ExecutionIds as any as S.Schema<ConnectorProfileNameList>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface DescribeConnectorProfilesRequest {
@@ -3254,11 +3133,8 @@ export const ResetConnectorMetadataCacheRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResetConnectorMetadataCacheRequest",
 }) as any as S.Schema<ResetConnectorMetadataCacheRequest>;
 export interface ResetConnectorMetadataCacheResponse {}
-export const ResetConnectorMetadataCacheResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResetConnectorMetadataCacheResponse",
-}) as any as S.Schema<ResetConnectorMetadataCacheResponse>;
+export const ResetConnectorMetadataCacheResponse =
+  AmplitudeConnectorProfileProperties as any as S.Schema<ResetConnectorMetadataCacheResponse>;
 export interface StartFlowRequest {
   flowName: string;
   clientToken?: string;
@@ -3293,9 +3169,7 @@ export interface StopFlowResponse {
   flowArn?: string;
   flowStatus?: FlowStatus;
 }
-export const StopFlowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ flowArn: S.optional(S.String), flowStatus: S.optional(FlowStatus) }),
-).annotate({ identifier: "StopFlowResponse" }) as any as S.Schema<StopFlowResponse>;
+export const StopFlowResponse = CreateFlowResponse as any as S.Schema<StopFlowResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
@@ -3306,9 +3180,8 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteConnectorProfileResponse as any as S.Schema<TagResourceResponse>;
 export interface UnregisterConnectorRequest {
   connectorLabel: string;
   forceDelete?: boolean;
@@ -3321,11 +3194,10 @@ export const UnregisterConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UnregisterConnectorRequest",
 }) as any as S.Schema<UnregisterConnectorRequest>;
 export interface UnregisterConnectorResponse {}
-export const UnregisterConnectorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UnregisterConnectorResponse",
-}) as any as S.Schema<UnregisterConnectorResponse>;
+export const UnregisterConnectorResponse =
+  DeleteConnectorProfileResponse as any as S.Schema<UnregisterConnectorResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = ExecutionIds as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -3339,9 +3211,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteConnectorProfileResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateConnectorProfileRequest {
   connectorProfileName: string;
   connectionMode: ConnectionMode;
@@ -3370,11 +3241,8 @@ export const UpdateConnectorProfileRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateConnectorProfileResponse {
   connectorProfileArn?: string;
 }
-export const UpdateConnectorProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ connectorProfileArn: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateConnectorProfileResponse",
-}) as any as S.Schema<UpdateConnectorProfileResponse>;
+export const UpdateConnectorProfileResponse =
+  CreateConnectorProfileResponse as any as S.Schema<UpdateConnectorProfileResponse>;
 export interface UpdateConnectorRegistrationRequest {
   connectorLabel: string;
   description?: string;
@@ -3403,11 +3271,8 @@ export const UpdateConnectorRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateConnectorRegistrationResponse {
   connectorArn?: string;
 }
-export const UpdateConnectorRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ connectorArn: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateConnectorRegistrationResponse",
-}) as any as S.Schema<UpdateConnectorRegistrationResponse>;
+export const UpdateConnectorRegistrationResponse =
+  RegisterConnectorResponse as any as S.Schema<UpdateConnectorRegistrationResponse>;
 export interface UpdateFlowRequest {
   flowName: string;
   description?: string;

@@ -244,9 +244,8 @@ export const AddRouteResponseRouteRouteDestination =
   S.Unknown as any as S.Schema<AddRouteResponseRouteRouteDestination>;
 
 export type AddRouteResponseRouteRouteEnvList = Array<string>;
-export const AddRouteResponseRouteRouteEnvList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddRouteResponseRouteRouteEnvList>;
+export const AddRouteResponseRouteRouteEnvList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<AddRouteResponseRouteRouteEnvList>;
 
 export type AddRouteResponseRouteRouteHasItemCase0Type = "host";
 export const AddRouteResponseRouteRouteHasItemCase0Type = S.String;
@@ -256,14 +255,12 @@ export const AddRouteResponseRouteRouteHasItemCase0ValueCase1Eq =
   S.Unknown as any as S.Schema<AddRouteResponseRouteRouteHasItemCase0ValueCase1Eq>;
 
 export type AddRouteResponseRouteRouteHasItemCase0ValueCase1IncList = Array<string>;
-export const AddRouteResponseRouteRouteHasItemCase0ValueCase1IncList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddRouteResponseRouteRouteHasItemCase0ValueCase1IncList>;
+export const AddRouteResponseRouteRouteHasItemCase0ValueCase1IncList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<AddRouteResponseRouteRouteHasItemCase0ValueCase1IncList>;
 
 export type AddRouteResponseRouteRouteHasItemCase0ValueCase1NincList = Array<string>;
-export const AddRouteResponseRouteRouteHasItemCase0ValueCase1NincList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddRouteResponseRouteRouteHasItemCase0ValueCase1NincList>;
+export const AddRouteResponseRouteRouteHasItemCase0ValueCase1NincList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<AddRouteResponseRouteRouteHasItemCase0ValueCase1NincList>;
 
 export interface AddRouteResponseRouteRouteHasItemCase0ValueCase1 {
   eq?: AddRouteResponseRouteRouteHasItemCase0ValueCase1Eq;
@@ -323,14 +320,12 @@ export const AddRouteResponseRouteRouteHasItemCase1ValueCase1Eq =
   S.Unknown as any as S.Schema<AddRouteResponseRouteRouteHasItemCase1ValueCase1Eq>;
 
 export type AddRouteResponseRouteRouteHasItemCase1ValueCase1IncList = Array<string>;
-export const AddRouteResponseRouteRouteHasItemCase1ValueCase1IncList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddRouteResponseRouteRouteHasItemCase1ValueCase1IncList>;
+export const AddRouteResponseRouteRouteHasItemCase1ValueCase1IncList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<AddRouteResponseRouteRouteHasItemCase1ValueCase1IncList>;
 
 export type AddRouteResponseRouteRouteHasItemCase1ValueCase1NincList = Array<string>;
-export const AddRouteResponseRouteRouteHasItemCase1ValueCase1NincList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddRouteResponseRouteRouteHasItemCase1ValueCase1NincList>;
+export const AddRouteResponseRouteRouteHasItemCase1ValueCase1NincList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<AddRouteResponseRouteRouteHasItemCase1ValueCase1NincList>;
 
 export interface AddRouteResponseRouteRouteHasItemCase1ValueCase1 {
   eq?: AddRouteResponseRouteRouteHasItemCase1ValueCase1Eq;
@@ -402,10 +397,8 @@ export const AddRouteResponseRouteRouteHeadersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AddRouteResponseRouteRouteHeadersMap>;
 
 export type AddRouteResponseRouteRouteLocaleRedirectMap = { [key: string]: string | undefined };
-export const AddRouteResponseRouteRouteLocaleRedirectMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AddRouteResponseRouteRouteLocaleRedirectMap>;
+export const AddRouteResponseRouteRouteLocaleRedirectMap =
+  AddRouteResponseRouteRouteHeadersMap as any as S.Schema<AddRouteResponseRouteRouteLocaleRedirectMap>;
 
 export interface AddRouteResponseRouteRouteLocale {
   cookie?: string;
@@ -421,15 +414,13 @@ export const AddRouteResponseRouteRouteLocale = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddRouteResponseRouteRouteLocale>;
 
 export type AddRouteResponseRouteRouteMethodsList = Array<string>;
-export const AddRouteResponseRouteRouteMethodsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddRouteResponseRouteRouteMethodsList>;
+export const AddRouteResponseRouteRouteMethodsList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<AddRouteResponseRouteRouteMethodsList>;
 
 /** The original middleware matchers. */
 export type AddRouteResponseRouteRouteMiddlewareRawSrcList = Array<string>;
-export const AddRouteResponseRouteRouteMiddlewareRawSrcList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddRouteResponseRouteRouteMiddlewareRawSrcList>;
+export const AddRouteResponseRouteRouteMiddlewareRawSrcList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<AddRouteResponseRouteRouteMiddlewareRawSrcList>;
 
 export type AddRouteResponseRouteRouteMissingItemCase0Type = "host";
 export const AddRouteResponseRouteRouteMissingItemCase0Type = S.String;
@@ -439,14 +430,12 @@ export const AddRouteResponseRouteRouteMissingItemCase0ValueCase1Eq =
   S.Unknown as any as S.Schema<AddRouteResponseRouteRouteMissingItemCase0ValueCase1Eq>;
 
 export type AddRouteResponseRouteRouteMissingItemCase0ValueCase1IncList = Array<string>;
-export const AddRouteResponseRouteRouteMissingItemCase0ValueCase1IncList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddRouteResponseRouteRouteMissingItemCase0ValueCase1IncList>;
+export const AddRouteResponseRouteRouteMissingItemCase0ValueCase1IncList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<AddRouteResponseRouteRouteMissingItemCase0ValueCase1IncList>;
 
 export type AddRouteResponseRouteRouteMissingItemCase0ValueCase1NincList = Array<string>;
-export const AddRouteResponseRouteRouteMissingItemCase0ValueCase1NincList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddRouteResponseRouteRouteMissingItemCase0ValueCase1NincList>;
+export const AddRouteResponseRouteRouteMissingItemCase0ValueCase1NincList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<AddRouteResponseRouteRouteMissingItemCase0ValueCase1NincList>;
 
 export interface AddRouteResponseRouteRouteMissingItemCase0ValueCase1 {
   eq?: AddRouteResponseRouteRouteMissingItemCase0ValueCase1Eq;
@@ -506,14 +495,12 @@ export const AddRouteResponseRouteRouteMissingItemCase1ValueCase1Eq =
   S.Unknown as any as S.Schema<AddRouteResponseRouteRouteMissingItemCase1ValueCase1Eq>;
 
 export type AddRouteResponseRouteRouteMissingItemCase1ValueCase1IncList = Array<string>;
-export const AddRouteResponseRouteRouteMissingItemCase1ValueCase1IncList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddRouteResponseRouteRouteMissingItemCase1ValueCase1IncList>;
+export const AddRouteResponseRouteRouteMissingItemCase1ValueCase1IncList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<AddRouteResponseRouteRouteMissingItemCase1ValueCase1IncList>;
 
 export type AddRouteResponseRouteRouteMissingItemCase1ValueCase1NincList = Array<string>;
-export const AddRouteResponseRouteRouteMissingItemCase1ValueCase1NincList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddRouteResponseRouteRouteMissingItemCase1ValueCase1NincList>;
+export const AddRouteResponseRouteRouteMissingItemCase1ValueCase1NincList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<AddRouteResponseRouteRouteMissingItemCase1ValueCase1NincList>;
 
 export interface AddRouteResponseRouteRouteMissingItemCase1ValueCase1 {
   eq?: AddRouteResponseRouteRouteMissingItemCase1ValueCase1Eq;
@@ -593,9 +580,8 @@ export const AddRouteResponseRouteRouteMitigate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddRouteResponseRouteRouteMitigate>;
 
 export type AddRouteResponseRouteRouteTransformsItemCase0ArgsCase1List = Array<string>;
-export const AddRouteResponseRouteRouteTransformsItemCase0ArgsCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddRouteResponseRouteRouteTransformsItemCase0ArgsCase1List>;
+export const AddRouteResponseRouteRouteTransformsItemCase0ArgsCase1List =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<AddRouteResponseRouteRouteTransformsItemCase0ArgsCase1List>;
 
 export type AddRouteResponseRouteRouteTransformsItemCase0Args =
   | string
@@ -604,9 +590,8 @@ export const AddRouteResponseRouteRouteTransformsItemCase0Args =
   S.Unknown as any as S.Schema<AddRouteResponseRouteRouteTransformsItemCase0Args>;
 
 export type AddRouteResponseRouteRouteTransformsItemCase0EnvList = Array<string>;
-export const AddRouteResponseRouteRouteTransformsItemCase0EnvList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddRouteResponseRouteRouteTransformsItemCase0EnvList>;
+export const AddRouteResponseRouteRouteTransformsItemCase0EnvList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<AddRouteResponseRouteRouteTransformsItemCase0EnvList>;
 
 export type AddRouteResponseRouteRouteTransformsItemCase0Op = "append" | "delete" | "set";
 export const AddRouteResponseRouteRouteTransformsItemCase0Op = S.String;
@@ -623,9 +608,7 @@ export const AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList 
 
 export type AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1NincList = Array<string>;
 export const AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1NincList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1NincList>;
 
 export interface AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1 {
   eq?: AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1Eq;
@@ -700,9 +683,8 @@ export const AddRouteResponseRouteRouteTransformsItemCase0 = /*@__PURE__*/ S.sus
 }) as any as S.Schema<AddRouteResponseRouteRouteTransformsItemCase0>;
 
 export type AddRouteResponseRouteRouteTransformsItemCase1EnvList = Array<string>;
-export const AddRouteResponseRouteRouteTransformsItemCase1EnvList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddRouteResponseRouteRouteTransformsItemCase1EnvList>;
+export const AddRouteResponseRouteRouteTransformsItemCase1EnvList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<AddRouteResponseRouteRouteTransformsItemCase1EnvList>;
 
 export type AddRouteResponseRouteRouteTransformsItemCase1Op = "set";
 export const AddRouteResponseRouteRouteTransformsItemCase1Op = S.String;
@@ -888,9 +870,8 @@ export const AddRouteResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The IDs of the routes to delete */
 export type DeleteRoutesRequestRouteIdsList = Array<string>;
-export const DeleteRoutesRequestRouteIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteRoutesRequestRouteIdsList>;
+export const DeleteRoutesRequestRouteIdsList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<DeleteRoutesRequestRouteIdsList>;
 
 export interface DeleteRoutesRequest {
   projectId: string;
@@ -986,9 +967,8 @@ export type EditRouteRequestRouteRouteTransformsItemOp = "append" | "set" | "del
 export const EditRouteRequestRouteRouteTransformsItemOp = S.String;
 
 export type EditRouteRequestRouteRouteTransformsItemEnvList = Array<string>;
-export const EditRouteRequestRouteRouteTransformsItemEnvList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRouteRequestRouteRouteTransformsItemEnvList>;
+export const EditRouteRequestRouteRouteTransformsItemEnvList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<EditRouteRequestRouteRouteTransformsItemEnvList>;
 
 export interface EditRouteRequestRouteRouteTransformsItem {
   type?: EditRouteRequestRouteRouteTransformsItemType | (string & {});
@@ -1112,9 +1092,8 @@ export const EditRouteResponseRouteRouteDestination =
   S.Unknown as any as S.Schema<EditRouteResponseRouteRouteDestination>;
 
 export type EditRouteResponseRouteRouteEnvList = Array<string>;
-export const EditRouteResponseRouteRouteEnvList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRouteResponseRouteRouteEnvList>;
+export const EditRouteResponseRouteRouteEnvList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<EditRouteResponseRouteRouteEnvList>;
 
 export type EditRouteResponseRouteRouteHasItemCase0Type = "host";
 export const EditRouteResponseRouteRouteHasItemCase0Type = S.String;
@@ -1124,14 +1103,12 @@ export const EditRouteResponseRouteRouteHasItemCase0ValueCase1Eq =
   S.Unknown as any as S.Schema<EditRouteResponseRouteRouteHasItemCase0ValueCase1Eq>;
 
 export type EditRouteResponseRouteRouteHasItemCase0ValueCase1IncList = Array<string>;
-export const EditRouteResponseRouteRouteHasItemCase0ValueCase1IncList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRouteResponseRouteRouteHasItemCase0ValueCase1IncList>;
+export const EditRouteResponseRouteRouteHasItemCase0ValueCase1IncList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<EditRouteResponseRouteRouteHasItemCase0ValueCase1IncList>;
 
 export type EditRouteResponseRouteRouteHasItemCase0ValueCase1NincList = Array<string>;
-export const EditRouteResponseRouteRouteHasItemCase0ValueCase1NincList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRouteResponseRouteRouteHasItemCase0ValueCase1NincList>;
+export const EditRouteResponseRouteRouteHasItemCase0ValueCase1NincList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<EditRouteResponseRouteRouteHasItemCase0ValueCase1NincList>;
 
 export interface EditRouteResponseRouteRouteHasItemCase0ValueCase1 {
   eq?: EditRouteResponseRouteRouteHasItemCase0ValueCase1Eq;
@@ -1191,14 +1168,12 @@ export const EditRouteResponseRouteRouteHasItemCase1ValueCase1Eq =
   S.Unknown as any as S.Schema<EditRouteResponseRouteRouteHasItemCase1ValueCase1Eq>;
 
 export type EditRouteResponseRouteRouteHasItemCase1ValueCase1IncList = Array<string>;
-export const EditRouteResponseRouteRouteHasItemCase1ValueCase1IncList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRouteResponseRouteRouteHasItemCase1ValueCase1IncList>;
+export const EditRouteResponseRouteRouteHasItemCase1ValueCase1IncList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<EditRouteResponseRouteRouteHasItemCase1ValueCase1IncList>;
 
 export type EditRouteResponseRouteRouteHasItemCase1ValueCase1NincList = Array<string>;
-export const EditRouteResponseRouteRouteHasItemCase1ValueCase1NincList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRouteResponseRouteRouteHasItemCase1ValueCase1NincList>;
+export const EditRouteResponseRouteRouteHasItemCase1ValueCase1NincList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<EditRouteResponseRouteRouteHasItemCase1ValueCase1NincList>;
 
 export interface EditRouteResponseRouteRouteHasItemCase1ValueCase1 {
   eq?: EditRouteResponseRouteRouteHasItemCase1ValueCase1Eq;
@@ -1264,40 +1239,28 @@ export const EditRouteResponseRouteRouteHasList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<EditRouteResponseRouteRouteHasList>;
 
 export type EditRouteResponseRouteRouteHeadersMap = { [key: string]: string | undefined };
-export const EditRouteResponseRouteRouteHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EditRouteResponseRouteRouteHeadersMap>;
+export const EditRouteResponseRouteRouteHeadersMap =
+  AddRouteResponseRouteRouteHeadersMap as any as S.Schema<EditRouteResponseRouteRouteHeadersMap>;
 
 export type EditRouteResponseRouteRouteLocaleRedirectMap = { [key: string]: string | undefined };
-export const EditRouteResponseRouteRouteLocaleRedirectMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EditRouteResponseRouteRouteLocaleRedirectMap>;
+export const EditRouteResponseRouteRouteLocaleRedirectMap =
+  AddRouteResponseRouteRouteHeadersMap as any as S.Schema<EditRouteResponseRouteRouteLocaleRedirectMap>;
 
 export interface EditRouteResponseRouteRouteLocale {
   cookie?: string;
   redirect?: EditRouteResponseRouteRouteLocaleRedirectMap;
 }
-export const EditRouteResponseRouteRouteLocale = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cookie: S.optional(S.String),
-    redirect: S.optional(EditRouteResponseRouteRouteLocaleRedirectMap),
-  }),
-).annotate({
-  identifier: "EditRouteResponseRouteRouteLocale",
-}) as any as S.Schema<EditRouteResponseRouteRouteLocale>;
+export const EditRouteResponseRouteRouteLocale =
+  AddRouteResponseRouteRouteLocale as any as S.Schema<EditRouteResponseRouteRouteLocale>;
 
 export type EditRouteResponseRouteRouteMethodsList = Array<string>;
-export const EditRouteResponseRouteRouteMethodsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRouteResponseRouteRouteMethodsList>;
+export const EditRouteResponseRouteRouteMethodsList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<EditRouteResponseRouteRouteMethodsList>;
 
 /** The original middleware matchers. */
 export type EditRouteResponseRouteRouteMiddlewareRawSrcList = Array<string>;
-export const EditRouteResponseRouteRouteMiddlewareRawSrcList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRouteResponseRouteRouteMiddlewareRawSrcList>;
+export const EditRouteResponseRouteRouteMiddlewareRawSrcList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<EditRouteResponseRouteRouteMiddlewareRawSrcList>;
 
 export type EditRouteResponseRouteRouteMissingItemCase0Type = "host";
 export const EditRouteResponseRouteRouteMissingItemCase0Type = S.String;
@@ -1307,14 +1270,12 @@ export const EditRouteResponseRouteRouteMissingItemCase0ValueCase1Eq =
   S.Unknown as any as S.Schema<EditRouteResponseRouteRouteMissingItemCase0ValueCase1Eq>;
 
 export type EditRouteResponseRouteRouteMissingItemCase0ValueCase1IncList = Array<string>;
-export const EditRouteResponseRouteRouteMissingItemCase0ValueCase1IncList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRouteResponseRouteRouteMissingItemCase0ValueCase1IncList>;
+export const EditRouteResponseRouteRouteMissingItemCase0ValueCase1IncList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<EditRouteResponseRouteRouteMissingItemCase0ValueCase1IncList>;
 
 export type EditRouteResponseRouteRouteMissingItemCase0ValueCase1NincList = Array<string>;
-export const EditRouteResponseRouteRouteMissingItemCase0ValueCase1NincList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRouteResponseRouteRouteMissingItemCase0ValueCase1NincList>;
+export const EditRouteResponseRouteRouteMissingItemCase0ValueCase1NincList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<EditRouteResponseRouteRouteMissingItemCase0ValueCase1NincList>;
 
 export interface EditRouteResponseRouteRouteMissingItemCase0ValueCase1 {
   eq?: EditRouteResponseRouteRouteMissingItemCase0ValueCase1Eq;
@@ -1374,14 +1335,12 @@ export const EditRouteResponseRouteRouteMissingItemCase1ValueCase1Eq =
   S.Unknown as any as S.Schema<EditRouteResponseRouteRouteMissingItemCase1ValueCase1Eq>;
 
 export type EditRouteResponseRouteRouteMissingItemCase1ValueCase1IncList = Array<string>;
-export const EditRouteResponseRouteRouteMissingItemCase1ValueCase1IncList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRouteResponseRouteRouteMissingItemCase1ValueCase1IncList>;
+export const EditRouteResponseRouteRouteMissingItemCase1ValueCase1IncList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<EditRouteResponseRouteRouteMissingItemCase1ValueCase1IncList>;
 
 export type EditRouteResponseRouteRouteMissingItemCase1ValueCase1NincList = Array<string>;
-export const EditRouteResponseRouteRouteMissingItemCase1ValueCase1NincList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRouteResponseRouteRouteMissingItemCase1ValueCase1NincList>;
+export const EditRouteResponseRouteRouteMissingItemCase1ValueCase1NincList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<EditRouteResponseRouteRouteMissingItemCase1ValueCase1NincList>;
 
 export interface EditRouteResponseRouteRouteMissingItemCase1ValueCase1 {
   eq?: EditRouteResponseRouteRouteMissingItemCase1ValueCase1Eq;
@@ -1461,9 +1420,8 @@ export const EditRouteResponseRouteRouteMitigate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EditRouteResponseRouteRouteMitigate>;
 
 export type EditRouteResponseRouteRouteTransformsItemCase0ArgsCase1List = Array<string>;
-export const EditRouteResponseRouteRouteTransformsItemCase0ArgsCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRouteResponseRouteRouteTransformsItemCase0ArgsCase1List>;
+export const EditRouteResponseRouteRouteTransformsItemCase0ArgsCase1List =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<EditRouteResponseRouteRouteTransformsItemCase0ArgsCase1List>;
 
 export type EditRouteResponseRouteRouteTransformsItemCase0Args =
   | string
@@ -1472,9 +1430,8 @@ export const EditRouteResponseRouteRouteTransformsItemCase0Args =
   S.Unknown as any as S.Schema<EditRouteResponseRouteRouteTransformsItemCase0Args>;
 
 export type EditRouteResponseRouteRouteTransformsItemCase0EnvList = Array<string>;
-export const EditRouteResponseRouteRouteTransformsItemCase0EnvList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRouteResponseRouteRouteTransformsItemCase0EnvList>;
+export const EditRouteResponseRouteRouteTransformsItemCase0EnvList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<EditRouteResponseRouteRouteTransformsItemCase0EnvList>;
 
 export type EditRouteResponseRouteRouteTransformsItemCase0Op = "append" | "delete" | "set";
 export const EditRouteResponseRouteRouteTransformsItemCase0Op = S.String;
@@ -1485,15 +1442,11 @@ export const EditRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1Eq =
 
 export type EditRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList = Array<string>;
 export const EditRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EditRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<EditRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList>;
 
 export type EditRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1NincList = Array<string>;
 export const EditRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EditRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1NincList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<EditRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1NincList>;
 
 export interface EditRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1 {
   eq?: EditRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1Eq;
@@ -1568,9 +1521,8 @@ export const EditRouteResponseRouteRouteTransformsItemCase0 = /*@__PURE__*/ S.su
 }) as any as S.Schema<EditRouteResponseRouteRouteTransformsItemCase0>;
 
 export type EditRouteResponseRouteRouteTransformsItemCase1EnvList = Array<string>;
-export const EditRouteResponseRouteRouteTransformsItemCase1EnvList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRouteResponseRouteRouteTransformsItemCase1EnvList>;
+export const EditRouteResponseRouteRouteTransformsItemCase1EnvList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<EditRouteResponseRouteRouteTransformsItemCase1EnvList>;
 
 export type EditRouteResponseRouteRouteTransformsItemCase1Op = "set";
 export const EditRouteResponseRouteRouteTransformsItemCase1Op = S.String;
@@ -2047,9 +1999,8 @@ export const GetRoutesResponseBodyCase1RoutesItemRouteDestination =
   S.Unknown as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteDestination>;
 
 export type GetRoutesResponseBodyCase1RoutesItemRouteEnvList = Array<string>;
-export const GetRoutesResponseBodyCase1RoutesItemRouteEnvList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteEnvList>;
+export const GetRoutesResponseBodyCase1RoutesItemRouteEnvList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteEnvList>;
 
 export type GetRoutesResponseBodyCase1RoutesItemRouteHasItemCase0Type = "host";
 export const GetRoutesResponseBodyCase1RoutesItemRouteHasItemCase0Type = S.String;
@@ -2060,15 +2011,11 @@ export const GetRoutesResponseBodyCase1RoutesItemRouteHasItemCase0ValueCase1Eq =
 
 export type GetRoutesResponseBodyCase1RoutesItemRouteHasItemCase0ValueCase1IncList = Array<string>;
 export const GetRoutesResponseBodyCase1RoutesItemRouteHasItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteHasItemCase0ValueCase1IncList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteHasItemCase0ValueCase1IncList>;
 
 export type GetRoutesResponseBodyCase1RoutesItemRouteHasItemCase0ValueCase1NincList = Array<string>;
 export const GetRoutesResponseBodyCase1RoutesItemRouteHasItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteHasItemCase0ValueCase1NincList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteHasItemCase0ValueCase1NincList>;
 
 export interface GetRoutesResponseBodyCase1RoutesItemRouteHasItemCase0ValueCase1 {
   eq?: GetRoutesResponseBodyCase1RoutesItemRouteHasItemCase0ValueCase1Eq;
@@ -2133,15 +2080,11 @@ export const GetRoutesResponseBodyCase1RoutesItemRouteHasItemCase1ValueCase1Eq =
 
 export type GetRoutesResponseBodyCase1RoutesItemRouteHasItemCase1ValueCase1IncList = Array<string>;
 export const GetRoutesResponseBodyCase1RoutesItemRouteHasItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteHasItemCase1ValueCase1IncList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteHasItemCase1ValueCase1IncList>;
 
 export type GetRoutesResponseBodyCase1RoutesItemRouteHasItemCase1ValueCase1NincList = Array<string>;
 export const GetRoutesResponseBodyCase1RoutesItemRouteHasItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteHasItemCase1ValueCase1NincList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteHasItemCase1ValueCase1NincList>;
 
 export interface GetRoutesResponseBodyCase1RoutesItemRouteHasItemCase1ValueCase1 {
   eq?: GetRoutesResponseBodyCase1RoutesItemRouteHasItemCase1ValueCase1Eq;
@@ -2211,42 +2154,30 @@ export const GetRoutesResponseBodyCase1RoutesItemRouteHasList = /*@__PURE__*/ S.
 export type GetRoutesResponseBodyCase1RoutesItemRouteHeadersMap = {
   [key: string]: string | undefined;
 };
-export const GetRoutesResponseBodyCase1RoutesItemRouteHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteHeadersMap>;
+export const GetRoutesResponseBodyCase1RoutesItemRouteHeadersMap =
+  AddRouteResponseRouteRouteHeadersMap as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteHeadersMap>;
 
 export type GetRoutesResponseBodyCase1RoutesItemRouteLocaleRedirectMap = {
   [key: string]: string | undefined;
 };
-export const GetRoutesResponseBodyCase1RoutesItemRouteLocaleRedirectMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteLocaleRedirectMap>;
+export const GetRoutesResponseBodyCase1RoutesItemRouteLocaleRedirectMap =
+  AddRouteResponseRouteRouteHeadersMap as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteLocaleRedirectMap>;
 
 export interface GetRoutesResponseBodyCase1RoutesItemRouteLocale {
   cookie?: string;
   redirect?: GetRoutesResponseBodyCase1RoutesItemRouteLocaleRedirectMap;
 }
-export const GetRoutesResponseBodyCase1RoutesItemRouteLocale = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cookie: S.optional(S.String),
-    redirect: S.optional(GetRoutesResponseBodyCase1RoutesItemRouteLocaleRedirectMap),
-  }),
-).annotate({
-  identifier: "GetRoutesResponseBodyCase1RoutesItemRouteLocale",
-}) as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteLocale>;
+export const GetRoutesResponseBodyCase1RoutesItemRouteLocale =
+  AddRouteResponseRouteRouteLocale as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteLocale>;
 
 export type GetRoutesResponseBodyCase1RoutesItemRouteMethodsList = Array<string>;
-export const GetRoutesResponseBodyCase1RoutesItemRouteMethodsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteMethodsList>;
+export const GetRoutesResponseBodyCase1RoutesItemRouteMethodsList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteMethodsList>;
 
 /** The original middleware matchers. */
 export type GetRoutesResponseBodyCase1RoutesItemRouteMiddlewareRawSrcList = Array<string>;
-export const GetRoutesResponseBodyCase1RoutesItemRouteMiddlewareRawSrcList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteMiddlewareRawSrcList>;
+export const GetRoutesResponseBodyCase1RoutesItemRouteMiddlewareRawSrcList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteMiddlewareRawSrcList>;
 
 export type GetRoutesResponseBodyCase1RoutesItemRouteMissingItemCase0Type = "host";
 export const GetRoutesResponseBodyCase1RoutesItemRouteMissingItemCase0Type = S.String;
@@ -2258,16 +2189,12 @@ export const GetRoutesResponseBodyCase1RoutesItemRouteMissingItemCase0ValueCase1
 export type GetRoutesResponseBodyCase1RoutesItemRouteMissingItemCase0ValueCase1IncList =
   Array<string>;
 export const GetRoutesResponseBodyCase1RoutesItemRouteMissingItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteMissingItemCase0ValueCase1IncList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteMissingItemCase0ValueCase1IncList>;
 
 export type GetRoutesResponseBodyCase1RoutesItemRouteMissingItemCase0ValueCase1NincList =
   Array<string>;
 export const GetRoutesResponseBodyCase1RoutesItemRouteMissingItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteMissingItemCase0ValueCase1NincList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteMissingItemCase0ValueCase1NincList>;
 
 export interface GetRoutesResponseBodyCase1RoutesItemRouteMissingItemCase0ValueCase1 {
   eq?: GetRoutesResponseBodyCase1RoutesItemRouteMissingItemCase0ValueCase1Eq;
@@ -2334,16 +2261,12 @@ export const GetRoutesResponseBodyCase1RoutesItemRouteMissingItemCase1ValueCase1
 export type GetRoutesResponseBodyCase1RoutesItemRouteMissingItemCase1ValueCase1IncList =
   Array<string>;
 export const GetRoutesResponseBodyCase1RoutesItemRouteMissingItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteMissingItemCase1ValueCase1IncList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteMissingItemCase1ValueCase1IncList>;
 
 export type GetRoutesResponseBodyCase1RoutesItemRouteMissingItemCase1ValueCase1NincList =
   Array<string>;
 export const GetRoutesResponseBodyCase1RoutesItemRouteMissingItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteMissingItemCase1ValueCase1NincList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteMissingItemCase1ValueCase1NincList>;
 
 export interface GetRoutesResponseBodyCase1RoutesItemRouteMissingItemCase1ValueCase1 {
   eq?: GetRoutesResponseBodyCase1RoutesItemRouteMissingItemCase1ValueCase1Eq;
@@ -2428,9 +2351,7 @@ export const GetRoutesResponseBodyCase1RoutesItemRouteMitigate = /*@__PURE__*/ S
 export type GetRoutesResponseBodyCase1RoutesItemRouteTransformsItemCase0ArgsCase1List =
   Array<string>;
 export const GetRoutesResponseBodyCase1RoutesItemRouteTransformsItemCase0ArgsCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteTransformsItemCase0ArgsCase1List>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteTransformsItemCase0ArgsCase1List>;
 
 export type GetRoutesResponseBodyCase1RoutesItemRouteTransformsItemCase0Args =
   | string
@@ -2440,9 +2361,7 @@ export const GetRoutesResponseBodyCase1RoutesItemRouteTransformsItemCase0Args =
 
 export type GetRoutesResponseBodyCase1RoutesItemRouteTransformsItemCase0EnvList = Array<string>;
 export const GetRoutesResponseBodyCase1RoutesItemRouteTransformsItemCase0EnvList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteTransformsItemCase0EnvList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteTransformsItemCase0EnvList>;
 
 export type GetRoutesResponseBodyCase1RoutesItemRouteTransformsItemCase0Op =
   | "append"
@@ -2459,16 +2378,12 @@ export const GetRoutesResponseBodyCase1RoutesItemRouteTransformsItemCase0TargetK
 export type GetRoutesResponseBodyCase1RoutesItemRouteTransformsItemCase0TargetKeyCase1IncList =
   Array<string>;
 export const GetRoutesResponseBodyCase1RoutesItemRouteTransformsItemCase0TargetKeyCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteTransformsItemCase0TargetKeyCase1IncList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteTransformsItemCase0TargetKeyCase1IncList>;
 
 export type GetRoutesResponseBodyCase1RoutesItemRouteTransformsItemCase0TargetKeyCase1NincList =
   Array<string>;
 export const GetRoutesResponseBodyCase1RoutesItemRouteTransformsItemCase0TargetKeyCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteTransformsItemCase0TargetKeyCase1NincList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteTransformsItemCase0TargetKeyCase1NincList>;
 
 export interface GetRoutesResponseBodyCase1RoutesItemRouteTransformsItemCase0TargetKeyCase1 {
   eq?: GetRoutesResponseBodyCase1RoutesItemRouteTransformsItemCase0TargetKeyCase1Eq;
@@ -2550,9 +2465,7 @@ export const GetRoutesResponseBodyCase1RoutesItemRouteTransformsItemCase0 = /*@_
 
 export type GetRoutesResponseBodyCase1RoutesItemRouteTransformsItemCase1EnvList = Array<string>;
 export const GetRoutesResponseBodyCase1RoutesItemRouteTransformsItemCase1EnvList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteTransformsItemCase1EnvList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteTransformsItemCase1EnvList>;
 
 export type GetRoutesResponseBodyCase1RoutesItemRouteTransformsItemCase1Op = "set";
 export const GetRoutesResponseBodyCase1RoutesItemRouteTransformsItemCase1Op = S.String;
@@ -2756,9 +2669,8 @@ export const GetRoutesResponseBodyCase2RoutesItemRouteDestination =
   S.Unknown as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteDestination>;
 
 export type GetRoutesResponseBodyCase2RoutesItemRouteEnvList = Array<string>;
-export const GetRoutesResponseBodyCase2RoutesItemRouteEnvList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteEnvList>;
+export const GetRoutesResponseBodyCase2RoutesItemRouteEnvList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteEnvList>;
 
 export type GetRoutesResponseBodyCase2RoutesItemRouteHasItemCase0Type = "host";
 export const GetRoutesResponseBodyCase2RoutesItemRouteHasItemCase0Type = S.String;
@@ -2769,15 +2681,11 @@ export const GetRoutesResponseBodyCase2RoutesItemRouteHasItemCase0ValueCase1Eq =
 
 export type GetRoutesResponseBodyCase2RoutesItemRouteHasItemCase0ValueCase1IncList = Array<string>;
 export const GetRoutesResponseBodyCase2RoutesItemRouteHasItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteHasItemCase0ValueCase1IncList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteHasItemCase0ValueCase1IncList>;
 
 export type GetRoutesResponseBodyCase2RoutesItemRouteHasItemCase0ValueCase1NincList = Array<string>;
 export const GetRoutesResponseBodyCase2RoutesItemRouteHasItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteHasItemCase0ValueCase1NincList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteHasItemCase0ValueCase1NincList>;
 
 export interface GetRoutesResponseBodyCase2RoutesItemRouteHasItemCase0ValueCase1 {
   eq?: GetRoutesResponseBodyCase2RoutesItemRouteHasItemCase0ValueCase1Eq;
@@ -2842,15 +2750,11 @@ export const GetRoutesResponseBodyCase2RoutesItemRouteHasItemCase1ValueCase1Eq =
 
 export type GetRoutesResponseBodyCase2RoutesItemRouteHasItemCase1ValueCase1IncList = Array<string>;
 export const GetRoutesResponseBodyCase2RoutesItemRouteHasItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteHasItemCase1ValueCase1IncList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteHasItemCase1ValueCase1IncList>;
 
 export type GetRoutesResponseBodyCase2RoutesItemRouteHasItemCase1ValueCase1NincList = Array<string>;
 export const GetRoutesResponseBodyCase2RoutesItemRouteHasItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteHasItemCase1ValueCase1NincList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteHasItemCase1ValueCase1NincList>;
 
 export interface GetRoutesResponseBodyCase2RoutesItemRouteHasItemCase1ValueCase1 {
   eq?: GetRoutesResponseBodyCase2RoutesItemRouteHasItemCase1ValueCase1Eq;
@@ -2920,42 +2824,30 @@ export const GetRoutesResponseBodyCase2RoutesItemRouteHasList = /*@__PURE__*/ S.
 export type GetRoutesResponseBodyCase2RoutesItemRouteHeadersMap = {
   [key: string]: string | undefined;
 };
-export const GetRoutesResponseBodyCase2RoutesItemRouteHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteHeadersMap>;
+export const GetRoutesResponseBodyCase2RoutesItemRouteHeadersMap =
+  AddRouteResponseRouteRouteHeadersMap as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteHeadersMap>;
 
 export type GetRoutesResponseBodyCase2RoutesItemRouteLocaleRedirectMap = {
   [key: string]: string | undefined;
 };
-export const GetRoutesResponseBodyCase2RoutesItemRouteLocaleRedirectMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteLocaleRedirectMap>;
+export const GetRoutesResponseBodyCase2RoutesItemRouteLocaleRedirectMap =
+  AddRouteResponseRouteRouteHeadersMap as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteLocaleRedirectMap>;
 
 export interface GetRoutesResponseBodyCase2RoutesItemRouteLocale {
   cookie?: string;
   redirect?: GetRoutesResponseBodyCase2RoutesItemRouteLocaleRedirectMap;
 }
-export const GetRoutesResponseBodyCase2RoutesItemRouteLocale = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cookie: S.optional(S.String),
-    redirect: S.optional(GetRoutesResponseBodyCase2RoutesItemRouteLocaleRedirectMap),
-  }),
-).annotate({
-  identifier: "GetRoutesResponseBodyCase2RoutesItemRouteLocale",
-}) as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteLocale>;
+export const GetRoutesResponseBodyCase2RoutesItemRouteLocale =
+  AddRouteResponseRouteRouteLocale as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteLocale>;
 
 export type GetRoutesResponseBodyCase2RoutesItemRouteMethodsList = Array<string>;
-export const GetRoutesResponseBodyCase2RoutesItemRouteMethodsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteMethodsList>;
+export const GetRoutesResponseBodyCase2RoutesItemRouteMethodsList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteMethodsList>;
 
 /** The original middleware matchers. */
 export type GetRoutesResponseBodyCase2RoutesItemRouteMiddlewareRawSrcList = Array<string>;
-export const GetRoutesResponseBodyCase2RoutesItemRouteMiddlewareRawSrcList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteMiddlewareRawSrcList>;
+export const GetRoutesResponseBodyCase2RoutesItemRouteMiddlewareRawSrcList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteMiddlewareRawSrcList>;
 
 export type GetRoutesResponseBodyCase2RoutesItemRouteMissingItemCase0Type = "host";
 export const GetRoutesResponseBodyCase2RoutesItemRouteMissingItemCase0Type = S.String;
@@ -2967,16 +2859,12 @@ export const GetRoutesResponseBodyCase2RoutesItemRouteMissingItemCase0ValueCase1
 export type GetRoutesResponseBodyCase2RoutesItemRouteMissingItemCase0ValueCase1IncList =
   Array<string>;
 export const GetRoutesResponseBodyCase2RoutesItemRouteMissingItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteMissingItemCase0ValueCase1IncList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteMissingItemCase0ValueCase1IncList>;
 
 export type GetRoutesResponseBodyCase2RoutesItemRouteMissingItemCase0ValueCase1NincList =
   Array<string>;
 export const GetRoutesResponseBodyCase2RoutesItemRouteMissingItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteMissingItemCase0ValueCase1NincList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteMissingItemCase0ValueCase1NincList>;
 
 export interface GetRoutesResponseBodyCase2RoutesItemRouteMissingItemCase0ValueCase1 {
   eq?: GetRoutesResponseBodyCase2RoutesItemRouteMissingItemCase0ValueCase1Eq;
@@ -3043,16 +2931,12 @@ export const GetRoutesResponseBodyCase2RoutesItemRouteMissingItemCase1ValueCase1
 export type GetRoutesResponseBodyCase2RoutesItemRouteMissingItemCase1ValueCase1IncList =
   Array<string>;
 export const GetRoutesResponseBodyCase2RoutesItemRouteMissingItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteMissingItemCase1ValueCase1IncList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteMissingItemCase1ValueCase1IncList>;
 
 export type GetRoutesResponseBodyCase2RoutesItemRouteMissingItemCase1ValueCase1NincList =
   Array<string>;
 export const GetRoutesResponseBodyCase2RoutesItemRouteMissingItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteMissingItemCase1ValueCase1NincList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteMissingItemCase1ValueCase1NincList>;
 
 export interface GetRoutesResponseBodyCase2RoutesItemRouteMissingItemCase1ValueCase1 {
   eq?: GetRoutesResponseBodyCase2RoutesItemRouteMissingItemCase1ValueCase1Eq;
@@ -3137,9 +3021,7 @@ export const GetRoutesResponseBodyCase2RoutesItemRouteMitigate = /*@__PURE__*/ S
 export type GetRoutesResponseBodyCase2RoutesItemRouteTransformsItemCase0ArgsCase1List =
   Array<string>;
 export const GetRoutesResponseBodyCase2RoutesItemRouteTransformsItemCase0ArgsCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteTransformsItemCase0ArgsCase1List>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteTransformsItemCase0ArgsCase1List>;
 
 export type GetRoutesResponseBodyCase2RoutesItemRouteTransformsItemCase0Args =
   | string
@@ -3149,9 +3031,7 @@ export const GetRoutesResponseBodyCase2RoutesItemRouteTransformsItemCase0Args =
 
 export type GetRoutesResponseBodyCase2RoutesItemRouteTransformsItemCase0EnvList = Array<string>;
 export const GetRoutesResponseBodyCase2RoutesItemRouteTransformsItemCase0EnvList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteTransformsItemCase0EnvList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteTransformsItemCase0EnvList>;
 
 export type GetRoutesResponseBodyCase2RoutesItemRouteTransformsItemCase0Op =
   | "append"
@@ -3168,16 +3048,12 @@ export const GetRoutesResponseBodyCase2RoutesItemRouteTransformsItemCase0TargetK
 export type GetRoutesResponseBodyCase2RoutesItemRouteTransformsItemCase0TargetKeyCase1IncList =
   Array<string>;
 export const GetRoutesResponseBodyCase2RoutesItemRouteTransformsItemCase0TargetKeyCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteTransformsItemCase0TargetKeyCase1IncList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteTransformsItemCase0TargetKeyCase1IncList>;
 
 export type GetRoutesResponseBodyCase2RoutesItemRouteTransformsItemCase0TargetKeyCase1NincList =
   Array<string>;
 export const GetRoutesResponseBodyCase2RoutesItemRouteTransformsItemCase0TargetKeyCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteTransformsItemCase0TargetKeyCase1NincList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteTransformsItemCase0TargetKeyCase1NincList>;
 
 export interface GetRoutesResponseBodyCase2RoutesItemRouteTransformsItemCase0TargetKeyCase1 {
   eq?: GetRoutesResponseBodyCase2RoutesItemRouteTransformsItemCase0TargetKeyCase1Eq;
@@ -3259,9 +3135,7 @@ export const GetRoutesResponseBodyCase2RoutesItemRouteTransformsItemCase0 = /*@_
 
 export type GetRoutesResponseBodyCase2RoutesItemRouteTransformsItemCase1EnvList = Array<string>;
 export const GetRoutesResponseBodyCase2RoutesItemRouteTransformsItemCase1EnvList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteTransformsItemCase1EnvList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteTransformsItemCase1EnvList>;
 
 export type GetRoutesResponseBodyCase2RoutesItemRouteTransformsItemCase1Op = "set";
 export const GetRoutesResponseBodyCase2RoutesItemRouteTransformsItemCase1Op = S.String;
@@ -3476,9 +3350,8 @@ export const GetRoutesResponseBodyCase3RoutesItemRouteDestination =
   S.Unknown as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteDestination>;
 
 export type GetRoutesResponseBodyCase3RoutesItemRouteEnvList = Array<string>;
-export const GetRoutesResponseBodyCase3RoutesItemRouteEnvList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteEnvList>;
+export const GetRoutesResponseBodyCase3RoutesItemRouteEnvList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteEnvList>;
 
 export type GetRoutesResponseBodyCase3RoutesItemRouteHasItemCase0Type = "host";
 export const GetRoutesResponseBodyCase3RoutesItemRouteHasItemCase0Type = S.String;
@@ -3489,15 +3362,11 @@ export const GetRoutesResponseBodyCase3RoutesItemRouteHasItemCase0ValueCase1Eq =
 
 export type GetRoutesResponseBodyCase3RoutesItemRouteHasItemCase0ValueCase1IncList = Array<string>;
 export const GetRoutesResponseBodyCase3RoutesItemRouteHasItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteHasItemCase0ValueCase1IncList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteHasItemCase0ValueCase1IncList>;
 
 export type GetRoutesResponseBodyCase3RoutesItemRouteHasItemCase0ValueCase1NincList = Array<string>;
 export const GetRoutesResponseBodyCase3RoutesItemRouteHasItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteHasItemCase0ValueCase1NincList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteHasItemCase0ValueCase1NincList>;
 
 export interface GetRoutesResponseBodyCase3RoutesItemRouteHasItemCase0ValueCase1 {
   eq?: GetRoutesResponseBodyCase3RoutesItemRouteHasItemCase0ValueCase1Eq;
@@ -3562,15 +3431,11 @@ export const GetRoutesResponseBodyCase3RoutesItemRouteHasItemCase1ValueCase1Eq =
 
 export type GetRoutesResponseBodyCase3RoutesItemRouteHasItemCase1ValueCase1IncList = Array<string>;
 export const GetRoutesResponseBodyCase3RoutesItemRouteHasItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteHasItemCase1ValueCase1IncList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteHasItemCase1ValueCase1IncList>;
 
 export type GetRoutesResponseBodyCase3RoutesItemRouteHasItemCase1ValueCase1NincList = Array<string>;
 export const GetRoutesResponseBodyCase3RoutesItemRouteHasItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteHasItemCase1ValueCase1NincList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteHasItemCase1ValueCase1NincList>;
 
 export interface GetRoutesResponseBodyCase3RoutesItemRouteHasItemCase1ValueCase1 {
   eq?: GetRoutesResponseBodyCase3RoutesItemRouteHasItemCase1ValueCase1Eq;
@@ -3640,42 +3505,30 @@ export const GetRoutesResponseBodyCase3RoutesItemRouteHasList = /*@__PURE__*/ S.
 export type GetRoutesResponseBodyCase3RoutesItemRouteHeadersMap = {
   [key: string]: string | undefined;
 };
-export const GetRoutesResponseBodyCase3RoutesItemRouteHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteHeadersMap>;
+export const GetRoutesResponseBodyCase3RoutesItemRouteHeadersMap =
+  AddRouteResponseRouteRouteHeadersMap as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteHeadersMap>;
 
 export type GetRoutesResponseBodyCase3RoutesItemRouteLocaleRedirectMap = {
   [key: string]: string | undefined;
 };
-export const GetRoutesResponseBodyCase3RoutesItemRouteLocaleRedirectMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteLocaleRedirectMap>;
+export const GetRoutesResponseBodyCase3RoutesItemRouteLocaleRedirectMap =
+  AddRouteResponseRouteRouteHeadersMap as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteLocaleRedirectMap>;
 
 export interface GetRoutesResponseBodyCase3RoutesItemRouteLocale {
   cookie?: string;
   redirect?: GetRoutesResponseBodyCase3RoutesItemRouteLocaleRedirectMap;
 }
-export const GetRoutesResponseBodyCase3RoutesItemRouteLocale = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cookie: S.optional(S.String),
-    redirect: S.optional(GetRoutesResponseBodyCase3RoutesItemRouteLocaleRedirectMap),
-  }),
-).annotate({
-  identifier: "GetRoutesResponseBodyCase3RoutesItemRouteLocale",
-}) as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteLocale>;
+export const GetRoutesResponseBodyCase3RoutesItemRouteLocale =
+  AddRouteResponseRouteRouteLocale as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteLocale>;
 
 export type GetRoutesResponseBodyCase3RoutesItemRouteMethodsList = Array<string>;
-export const GetRoutesResponseBodyCase3RoutesItemRouteMethodsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteMethodsList>;
+export const GetRoutesResponseBodyCase3RoutesItemRouteMethodsList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteMethodsList>;
 
 /** The original middleware matchers. */
 export type GetRoutesResponseBodyCase3RoutesItemRouteMiddlewareRawSrcList = Array<string>;
-export const GetRoutesResponseBodyCase3RoutesItemRouteMiddlewareRawSrcList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteMiddlewareRawSrcList>;
+export const GetRoutesResponseBodyCase3RoutesItemRouteMiddlewareRawSrcList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteMiddlewareRawSrcList>;
 
 export type GetRoutesResponseBodyCase3RoutesItemRouteMissingItemCase0Type = "host";
 export const GetRoutesResponseBodyCase3RoutesItemRouteMissingItemCase0Type = S.String;
@@ -3687,16 +3540,12 @@ export const GetRoutesResponseBodyCase3RoutesItemRouteMissingItemCase0ValueCase1
 export type GetRoutesResponseBodyCase3RoutesItemRouteMissingItemCase0ValueCase1IncList =
   Array<string>;
 export const GetRoutesResponseBodyCase3RoutesItemRouteMissingItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteMissingItemCase0ValueCase1IncList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteMissingItemCase0ValueCase1IncList>;
 
 export type GetRoutesResponseBodyCase3RoutesItemRouteMissingItemCase0ValueCase1NincList =
   Array<string>;
 export const GetRoutesResponseBodyCase3RoutesItemRouteMissingItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteMissingItemCase0ValueCase1NincList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteMissingItemCase0ValueCase1NincList>;
 
 export interface GetRoutesResponseBodyCase3RoutesItemRouteMissingItemCase0ValueCase1 {
   eq?: GetRoutesResponseBodyCase3RoutesItemRouteMissingItemCase0ValueCase1Eq;
@@ -3763,16 +3612,12 @@ export const GetRoutesResponseBodyCase3RoutesItemRouteMissingItemCase1ValueCase1
 export type GetRoutesResponseBodyCase3RoutesItemRouteMissingItemCase1ValueCase1IncList =
   Array<string>;
 export const GetRoutesResponseBodyCase3RoutesItemRouteMissingItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteMissingItemCase1ValueCase1IncList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteMissingItemCase1ValueCase1IncList>;
 
 export type GetRoutesResponseBodyCase3RoutesItemRouteMissingItemCase1ValueCase1NincList =
   Array<string>;
 export const GetRoutesResponseBodyCase3RoutesItemRouteMissingItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteMissingItemCase1ValueCase1NincList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteMissingItemCase1ValueCase1NincList>;
 
 export interface GetRoutesResponseBodyCase3RoutesItemRouteMissingItemCase1ValueCase1 {
   eq?: GetRoutesResponseBodyCase3RoutesItemRouteMissingItemCase1ValueCase1Eq;
@@ -3857,9 +3702,7 @@ export const GetRoutesResponseBodyCase3RoutesItemRouteMitigate = /*@__PURE__*/ S
 export type GetRoutesResponseBodyCase3RoutesItemRouteTransformsItemCase0ArgsCase1List =
   Array<string>;
 export const GetRoutesResponseBodyCase3RoutesItemRouteTransformsItemCase0ArgsCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteTransformsItemCase0ArgsCase1List>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteTransformsItemCase0ArgsCase1List>;
 
 export type GetRoutesResponseBodyCase3RoutesItemRouteTransformsItemCase0Args =
   | string
@@ -3869,9 +3712,7 @@ export const GetRoutesResponseBodyCase3RoutesItemRouteTransformsItemCase0Args =
 
 export type GetRoutesResponseBodyCase3RoutesItemRouteTransformsItemCase0EnvList = Array<string>;
 export const GetRoutesResponseBodyCase3RoutesItemRouteTransformsItemCase0EnvList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteTransformsItemCase0EnvList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteTransformsItemCase0EnvList>;
 
 export type GetRoutesResponseBodyCase3RoutesItemRouteTransformsItemCase0Op =
   | "append"
@@ -3888,16 +3729,12 @@ export const GetRoutesResponseBodyCase3RoutesItemRouteTransformsItemCase0TargetK
 export type GetRoutesResponseBodyCase3RoutesItemRouteTransformsItemCase0TargetKeyCase1IncList =
   Array<string>;
 export const GetRoutesResponseBodyCase3RoutesItemRouteTransformsItemCase0TargetKeyCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteTransformsItemCase0TargetKeyCase1IncList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteTransformsItemCase0TargetKeyCase1IncList>;
 
 export type GetRoutesResponseBodyCase3RoutesItemRouteTransformsItemCase0TargetKeyCase1NincList =
   Array<string>;
 export const GetRoutesResponseBodyCase3RoutesItemRouteTransformsItemCase0TargetKeyCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteTransformsItemCase0TargetKeyCase1NincList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteTransformsItemCase0TargetKeyCase1NincList>;
 
 export interface GetRoutesResponseBodyCase3RoutesItemRouteTransformsItemCase0TargetKeyCase1 {
   eq?: GetRoutesResponseBodyCase3RoutesItemRouteTransformsItemCase0TargetKeyCase1Eq;
@@ -3979,9 +3816,7 @@ export const GetRoutesResponseBodyCase3RoutesItemRouteTransformsItemCase0 = /*@_
 
 export type GetRoutesResponseBodyCase3RoutesItemRouteTransformsItemCase1EnvList = Array<string>;
 export const GetRoutesResponseBodyCase3RoutesItemRouteTransformsItemCase1EnvList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteTransformsItemCase1EnvList>;
+  AddRouteResponseRouteRouteTransformsItemCase0TargetKeyCase1IncList as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteTransformsItemCase1EnvList>;
 
 export type GetRoutesResponseBodyCase3RoutesItemRouteTransformsItemCase1Op = "set";
 export const GetRoutesResponseBodyCase3RoutesItemRouteTransformsItemCase1Op = S.String;
@@ -4263,9 +4098,8 @@ export type StageRoutesRequestRoutesItemRouteTransformsItemOp = "append" | "set"
 export const StageRoutesRequestRoutesItemRouteTransformsItemOp = S.String;
 
 export type StageRoutesRequestRoutesItemRouteTransformsItemEnvList = Array<string>;
-export const StageRoutesRequestRoutesItemRouteTransformsItemEnvList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StageRoutesRequestRoutesItemRouteTransformsItemEnvList>;
+export const StageRoutesRequestRoutesItemRouteTransformsItemEnvList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<StageRoutesRequestRoutesItemRouteTransformsItemEnvList>;
 
 export interface StageRoutesRequestRoutesItemRouteTransformsItem {
   type?: StageRoutesRequestRoutesItemRouteTransformsItemType | (string & {});

@@ -138,9 +138,8 @@ export const AppsCreateRequestEdgeIps = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type AppsCreateRequestOriginDirectList = Array<string>;
-export const AppsCreateRequestOriginDirectList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsCreateRequestOriginDirectList>;
+export const AppsCreateRequestOriginDirectList =
+  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsCreateRequestOriginDirectList>;
 
 export type AppsCreateRequestOriginDnsType = "" | "A" | "AAAA" | "SRV";
 export const AppsCreateRequestOriginDnsType = S.String;
@@ -277,9 +276,8 @@ export const AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamic = /*@__PURE__
 }) as any as S.Schema<AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamic>;
 
 export type AppsCreateResultSpectrumConfigAppConfigEdgeIpsStaticIpsList = Array<string>;
-export const AppsCreateResultSpectrumConfigAppConfigEdgeIpsStaticIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsCreateResultSpectrumConfigAppConfigEdgeIpsStaticIpsList>;
+export const AppsCreateResultSpectrumConfigAppConfigEdgeIpsStaticIpsList =
+  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsCreateResultSpectrumConfigAppConfigEdgeIpsStaticIpsList>;
 
 export type AppsCreateResultSpectrumConfigAppConfigEdgeIpsStaticType = "static";
 export const AppsCreateResultSpectrumConfigAppConfigEdgeIpsStaticType = S.String;
@@ -313,9 +311,8 @@ export const AppsCreateResultSpectrumConfigAppConfigEdgeIps = /*@__PURE__*/ S.Un
 );
 
 export type AppsCreateResultSpectrumConfigAppConfigOriginDirectList = Array<string>;
-export const AppsCreateResultSpectrumConfigAppConfigOriginDirectList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsCreateResultSpectrumConfigAppConfigOriginDirectList>;
+export const AppsCreateResultSpectrumConfigAppConfigOriginDirectList =
+  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsCreateResultSpectrumConfigAppConfigOriginDirectList>;
 
 export type AppsCreateResultSpectrumConfigAppConfigOriginDnsType = "" | "A" | "AAAA" | "SRV";
 export const AppsCreateResultSpectrumConfigAppConfigOriginDnsType = S.String;
@@ -437,9 +434,8 @@ export const AppsCreateResultSpectrumConfigPaygoAppConfigDns = /*@__PURE__*/ S.s
 }) as any as S.Schema<AppsCreateResultSpectrumConfigPaygoAppConfigDns>;
 
 export type AppsCreateResultSpectrumConfigPaygoAppConfigOriginDirectList = Array<string>;
-export const AppsCreateResultSpectrumConfigPaygoAppConfigOriginDirectList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsCreateResultSpectrumConfigPaygoAppConfigOriginDirectList>;
+export const AppsCreateResultSpectrumConfigPaygoAppConfigOriginDirectList =
+  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsCreateResultSpectrumConfigPaygoAppConfigOriginDirectList>;
 
 export interface AppsCreateResultSpectrumConfigPaygoAppConfig {
   /** App identifier. */
@@ -608,9 +604,8 @@ export type AnalyticsEventsBytimesGetRequestTimeDelta =
 export const AnalyticsEventsBytimesGetRequestTimeDelta = S.String;
 
 export type AnalyticsEventsBytimesGetRequestDimensionsList = Array<string>;
-export const AnalyticsEventsBytimesGetRequestDimensionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsEventsBytimesGetRequestDimensionsList>;
+export const AnalyticsEventsBytimesGetRequestDimensionsList =
+  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AnalyticsEventsBytimesGetRequestDimensionsList>;
 
 export type AnalyticsEventsBytimesGetRequestMetrics =
   | "count"
@@ -630,9 +625,8 @@ export const AnalyticsEventsBytimesGetRequestMetricsList = /*@__PURE__*/ S.Array
 ) as any as S.Schema<AnalyticsEventsBytimesGetRequestMetricsList>;
 
 export type AnalyticsEventsBytimesGetRequestSortList = Array<string>;
-export const AnalyticsEventsBytimesGetRequestSortList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsEventsBytimesGetRequestSortList>;
+export const AnalyticsEventsBytimesGetRequestSortList =
+  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AnalyticsEventsBytimesGetRequestSortList>;
 
 export interface GetAnalyticEventBytimeRequest {
   /** Identifier. */
@@ -676,9 +670,8 @@ export const GetAnalyticEventBytimeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAnalyticEventBytimeRequest>;
 
 export type AnalyticsEventsBytimesGetResponseDataItemDimensionsList = Array<string>;
-export const AnalyticsEventsBytimesGetResponseDataItemDimensionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsEventsBytimesGetResponseDataItemDimensionsList>;
+export const AnalyticsEventsBytimesGetResponseDataItemDimensionsList =
+  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AnalyticsEventsBytimesGetResponseDataItemDimensionsList>;
 
 export type AnalyticsEventsBytimesGetResponseDataItemMetricsCase0List = Array<number>;
 export const AnalyticsEventsBytimesGetResponseDataItemMetricsCase0List = /*@__PURE__*/ S.Array(
@@ -686,9 +679,8 @@ export const AnalyticsEventsBytimesGetResponseDataItemMetricsCase0List = /*@__PU
 ) as any as S.Schema<AnalyticsEventsBytimesGetResponseDataItemMetricsCase0List>;
 
 export type AnalyticsEventsBytimesGetResponseDataItemMetricsCase1ItemList = Array<number>;
-export const AnalyticsEventsBytimesGetResponseDataItemMetricsCase1ItemList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<AnalyticsEventsBytimesGetResponseDataItemMetricsCase1ItemList>;
+export const AnalyticsEventsBytimesGetResponseDataItemMetricsCase1ItemList =
+  AnalyticsEventsBytimesGetResponseDataItemMetricsCase0List as any as S.Schema<AnalyticsEventsBytimesGetResponseDataItemMetricsCase1ItemList>;
 
 export type AnalyticsEventsBytimesGetResponseDataItemMetricsCase1List =
   Array<AnalyticsEventsBytimesGetResponseDataItemMetricsCase1ItemList>;
@@ -729,10 +721,8 @@ export const AnalyticsEventsBytimesGetResponseMaxMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AnalyticsEventsBytimesGetResponseMaxMap>;
 
 export type AnalyticsEventsBytimesGetResponseMinMap = { [key: string]: number | undefined };
-export const AnalyticsEventsBytimesGetResponseMinMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<AnalyticsEventsBytimesGetResponseMinMap>;
+export const AnalyticsEventsBytimesGetResponseMinMap =
+  AnalyticsEventsBytimesGetResponseMaxMap as any as S.Schema<AnalyticsEventsBytimesGetResponseMinMap>;
 
 export type AnalyticsEventsBytimesGetResponseQueryDimensionsItem =
   | "event"
@@ -764,9 +754,8 @@ export const AnalyticsEventsBytimesGetResponseQueryMetricsList = /*@__PURE__*/ S
 ) as any as S.Schema<AnalyticsEventsBytimesGetResponseQueryMetricsList>;
 
 export type AnalyticsEventsBytimesGetResponseQuerySortList = Array<string>;
-export const AnalyticsEventsBytimesGetResponseQuerySortList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsEventsBytimesGetResponseQuerySortList>;
+export const AnalyticsEventsBytimesGetResponseQuerySortList =
+  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AnalyticsEventsBytimesGetResponseQuerySortList>;
 
 export interface AnalyticsEventsBytimesGetResponseQuery {
   /** Can be used to break down the data by given attributes. Options are: */
@@ -799,15 +788,12 @@ export const AnalyticsEventsBytimesGetResponseQuery = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<AnalyticsEventsBytimesGetResponseQuery>;
 
 export type AnalyticsEventsBytimesGetResponseTotalsMap = { [key: string]: number | undefined };
-export const AnalyticsEventsBytimesGetResponseTotalsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<AnalyticsEventsBytimesGetResponseTotalsMap>;
+export const AnalyticsEventsBytimesGetResponseTotalsMap =
+  AnalyticsEventsBytimesGetResponseMaxMap as any as S.Schema<AnalyticsEventsBytimesGetResponseTotalsMap>;
 
 export type AnalyticsEventsBytimesGetResponseTimeIntervalsItemList = Array<string>;
-export const AnalyticsEventsBytimesGetResponseTimeIntervalsItemList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsEventsBytimesGetResponseTimeIntervalsItemList>;
+export const AnalyticsEventsBytimesGetResponseTimeIntervalsItemList =
+  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AnalyticsEventsBytimesGetResponseTimeIntervalsItemList>;
 
 export type AnalyticsEventsBytimesGetResponseTimeIntervalsList =
   Array<AnalyticsEventsBytimesGetResponseTimeIntervalsItemList>;
@@ -851,9 +837,8 @@ export const GetAnalyticEventBytimeResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAnalyticEventBytimeResponse>;
 
 export type AnalyticsEventsSummariesGetRequestDimensionsList = Array<string>;
-export const AnalyticsEventsSummariesGetRequestDimensionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsEventsSummariesGetRequestDimensionsList>;
+export const AnalyticsEventsSummariesGetRequestDimensionsList =
+  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AnalyticsEventsSummariesGetRequestDimensionsList>;
 
 export type AnalyticsEventsSummariesGetRequestMetrics =
   | "count"
@@ -873,9 +858,8 @@ export const AnalyticsEventsSummariesGetRequestMetricsList = /*@__PURE__*/ S.Arr
 ) as any as S.Schema<AnalyticsEventsSummariesGetRequestMetricsList>;
 
 export type AnalyticsEventsSummariesGetRequestSortList = Array<string>;
-export const AnalyticsEventsSummariesGetRequestSortList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsEventsSummariesGetRequestSortList>;
+export const AnalyticsEventsSummariesGetRequestSortList =
+  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AnalyticsEventsSummariesGetRequestSortList>;
 
 export interface GetAnalyticEventSummaryRequest {
   /** Identifier. */
@@ -916,14 +900,12 @@ export const GetAnalyticEventSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAnalyticEventSummaryRequest>;
 
 export type AnalyticsEventsSummariesGetResponseDataItemDimensionsList = Array<string>;
-export const AnalyticsEventsSummariesGetResponseDataItemDimensionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsEventsSummariesGetResponseDataItemDimensionsList>;
+export const AnalyticsEventsSummariesGetResponseDataItemDimensionsList =
+  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AnalyticsEventsSummariesGetResponseDataItemDimensionsList>;
 
 export type AnalyticsEventsSummariesGetResponseDataItemMetricsCase0List = Array<number>;
-export const AnalyticsEventsSummariesGetResponseDataItemMetricsCase0List = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<AnalyticsEventsSummariesGetResponseDataItemMetricsCase0List>;
+export const AnalyticsEventsSummariesGetResponseDataItemMetricsCase0List =
+  AnalyticsEventsBytimesGetResponseDataItemMetricsCase0List as any as S.Schema<AnalyticsEventsSummariesGetResponseDataItemMetricsCase0List>;
 
 export type AnalyticsEventsSummariesGetResponseDataItemMetricsCase1ItemList = Array<number>;
 export const AnalyticsEventsSummariesGetResponseDataItemMetricsCase1ItemList =
@@ -964,16 +946,12 @@ export const AnalyticsEventsSummariesGetResponseDataList = /*@__PURE__*/ S.Array
 ) as any as S.Schema<AnalyticsEventsSummariesGetResponseDataList>;
 
 export type AnalyticsEventsSummariesGetResponseMaxMap = { [key: string]: number | undefined };
-export const AnalyticsEventsSummariesGetResponseMaxMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<AnalyticsEventsSummariesGetResponseMaxMap>;
+export const AnalyticsEventsSummariesGetResponseMaxMap =
+  AnalyticsEventsBytimesGetResponseMaxMap as any as S.Schema<AnalyticsEventsSummariesGetResponseMaxMap>;
 
 export type AnalyticsEventsSummariesGetResponseMinMap = { [key: string]: number | undefined };
-export const AnalyticsEventsSummariesGetResponseMinMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<AnalyticsEventsSummariesGetResponseMinMap>;
+export const AnalyticsEventsSummariesGetResponseMinMap =
+  AnalyticsEventsBytimesGetResponseMaxMap as any as S.Schema<AnalyticsEventsSummariesGetResponseMinMap>;
 
 export type AnalyticsEventsSummariesGetResponseQueryDimensionsItem =
   | "event"
@@ -1005,9 +983,8 @@ export const AnalyticsEventsSummariesGetResponseQueryMetricsList = /*@__PURE__*/
 ) as any as S.Schema<AnalyticsEventsSummariesGetResponseQueryMetricsList>;
 
 export type AnalyticsEventsSummariesGetResponseQuerySortList = Array<string>;
-export const AnalyticsEventsSummariesGetResponseQuerySortList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsEventsSummariesGetResponseQuerySortList>;
+export const AnalyticsEventsSummariesGetResponseQuerySortList =
+  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AnalyticsEventsSummariesGetResponseQuerySortList>;
 
 export interface AnalyticsEventsSummariesGetResponseQuery {
   /** Can be used to break down the data by given attributes. Options are: */
@@ -1040,21 +1017,17 @@ export const AnalyticsEventsSummariesGetResponseQuery = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AnalyticsEventsSummariesGetResponseQuery>;
 
 export type AnalyticsEventsSummariesGetResponseTotalsMap = { [key: string]: number | undefined };
-export const AnalyticsEventsSummariesGetResponseTotalsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<AnalyticsEventsSummariesGetResponseTotalsMap>;
+export const AnalyticsEventsSummariesGetResponseTotalsMap =
+  AnalyticsEventsBytimesGetResponseMaxMap as any as S.Schema<AnalyticsEventsSummariesGetResponseTotalsMap>;
 
 export type AnalyticsEventsSummariesGetResponseTimeIntervalsItemList = Array<string>;
-export const AnalyticsEventsSummariesGetResponseTimeIntervalsItemList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsEventsSummariesGetResponseTimeIntervalsItemList>;
+export const AnalyticsEventsSummariesGetResponseTimeIntervalsItemList =
+  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AnalyticsEventsSummariesGetResponseTimeIntervalsItemList>;
 
 export type AnalyticsEventsSummariesGetResponseTimeIntervalsList =
   Array<AnalyticsEventsSummariesGetResponseTimeIntervalsItemList>;
-export const AnalyticsEventsSummariesGetResponseTimeIntervalsList = /*@__PURE__*/ S.Array(
-  AnalyticsEventsSummariesGetResponseTimeIntervalsItemList,
-) as any as S.Schema<AnalyticsEventsSummariesGetResponseTimeIntervalsList>;
+export const AnalyticsEventsSummariesGetResponseTimeIntervalsList =
+  AnalyticsEventsBytimesGetResponseTimeIntervalsList as any as S.Schema<AnalyticsEventsSummariesGetResponseTimeIntervalsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetAnalyticEventSummaryResponse {
@@ -1158,9 +1131,8 @@ export const AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamic = /*@__PURE__*/ 
 }) as any as S.Schema<AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamic>;
 
 export type AppsGetResultSpectrumConfigAppConfigEdgeIpsStaticIpsList = Array<string>;
-export const AppsGetResultSpectrumConfigAppConfigEdgeIpsStaticIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsGetResultSpectrumConfigAppConfigEdgeIpsStaticIpsList>;
+export const AppsGetResultSpectrumConfigAppConfigEdgeIpsStaticIpsList =
+  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsGetResultSpectrumConfigAppConfigEdgeIpsStaticIpsList>;
 
 export type AppsGetResultSpectrumConfigAppConfigEdgeIpsStaticType = "static";
 export const AppsGetResultSpectrumConfigAppConfigEdgeIpsStaticType = S.String;
@@ -1194,9 +1166,8 @@ export const AppsGetResultSpectrumConfigAppConfigEdgeIps = /*@__PURE__*/ S.Unkno
 );
 
 export type AppsGetResultSpectrumConfigAppConfigOriginDirectList = Array<string>;
-export const AppsGetResultSpectrumConfigAppConfigOriginDirectList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsGetResultSpectrumConfigAppConfigOriginDirectList>;
+export const AppsGetResultSpectrumConfigAppConfigOriginDirectList =
+  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsGetResultSpectrumConfigAppConfigOriginDirectList>;
 
 export type AppsGetResultSpectrumConfigAppConfigOriginDnsType = "" | "A" | "AAAA" | "SRV";
 export const AppsGetResultSpectrumConfigAppConfigOriginDnsType = S.String;
@@ -1316,9 +1287,8 @@ export const AppsGetResultSpectrumConfigPaygoAppConfigDns = /*@__PURE__*/ S.susp
 }) as any as S.Schema<AppsGetResultSpectrumConfigPaygoAppConfigDns>;
 
 export type AppsGetResultSpectrumConfigPaygoAppConfigOriginDirectList = Array<string>;
-export const AppsGetResultSpectrumConfigPaygoAppConfigOriginDirectList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsGetResultSpectrumConfigPaygoAppConfigOriginDirectList>;
+export const AppsGetResultSpectrumConfigPaygoAppConfigOriginDirectList =
+  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsGetResultSpectrumConfigPaygoAppConfigOriginDirectList>;
 
 export interface AppsGetResultSpectrumConfigPaygoAppConfig {
   /** App identifier. */
@@ -1456,9 +1426,8 @@ export const AppsListResultCase0ItemEdgeIpsDynamic = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<AppsListResultCase0ItemEdgeIpsDynamic>;
 
 export type AppsListResultCase0ItemEdgeIpsStaticIpsList = Array<string>;
-export const AppsListResultCase0ItemEdgeIpsStaticIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsListResultCase0ItemEdgeIpsStaticIpsList>;
+export const AppsListResultCase0ItemEdgeIpsStaticIpsList =
+  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsListResultCase0ItemEdgeIpsStaticIpsList>;
 
 export type AppsListResultCase0ItemEdgeIpsStaticType = "static";
 export const AppsListResultCase0ItemEdgeIpsStaticType = S.String;
@@ -1492,9 +1461,8 @@ export const AppsListResultCase0ItemEdgeIps = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type AppsListResultCase0ItemOriginDirectList = Array<string>;
-export const AppsListResultCase0ItemOriginDirectList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsListResultCase0ItemOriginDirectList>;
+export const AppsListResultCase0ItemOriginDirectList =
+  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsListResultCase0ItemOriginDirectList>;
 
 export type AppsListResultCase0ItemOriginDnsType = "" | "A" | "AAAA" | "SRV";
 export const AppsListResultCase0ItemOriginDnsType = S.String;
@@ -1611,9 +1579,8 @@ export const AppsListResultCase1ItemDns = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppsListResultCase1ItemDns>;
 
 export type AppsListResultCase1ItemOriginDirectList = Array<string>;
-export const AppsListResultCase1ItemOriginDirectList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsListResultCase1ItemOriginDirectList>;
+export const AppsListResultCase1ItemOriginDirectList =
+  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsListResultCase1ItemOriginDirectList>;
 
 export interface AppsListResultCase1Item {
   /** App identifier. */
@@ -1676,9 +1643,8 @@ export const ListProtocolsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProtocolsRequest" }) as any as S.Schema<ListProtocolsRequest>;
 
 export type ListProtocolsResultItemPortsList = Array<number>;
-export const ListProtocolsResultItemPortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListProtocolsResultItemPortsList>;
+export const ListProtocolsResultItemPortsList =
+  AnalyticsEventsBytimesGetResponseDataItemMetricsCase0List as any as S.Schema<ListProtocolsResultItemPortsList>;
 
 export interface ListProtocolsResultItem {
   /** The full name of the application protocol. */
@@ -1750,9 +1716,8 @@ export const AppsUpdateRequestEdgeIpsDynamic = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppsUpdateRequestEdgeIpsDynamic>;
 
 export type AppsUpdateRequestEdgeIpsStaticIpsList = Array<string>;
-export const AppsUpdateRequestEdgeIpsStaticIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsUpdateRequestEdgeIpsStaticIpsList>;
+export const AppsUpdateRequestEdgeIpsStaticIpsList =
+  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsUpdateRequestEdgeIpsStaticIpsList>;
 
 export type AppsUpdateRequestEdgeIpsStaticType = "static";
 export const AppsUpdateRequestEdgeIpsStaticType = S.String;
@@ -1786,9 +1751,8 @@ export const AppsUpdateRequestEdgeIps = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type AppsUpdateRequestOriginDirectList = Array<string>;
-export const AppsUpdateRequestOriginDirectList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsUpdateRequestOriginDirectList>;
+export const AppsUpdateRequestOriginDirectList =
+  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsUpdateRequestOriginDirectList>;
 
 export type AppsUpdateRequestOriginDnsType = "" | "A" | "AAAA" | "SRV";
 export const AppsUpdateRequestOriginDnsType = S.String;
@@ -1928,9 +1892,8 @@ export const AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamic = /*@__PURE__
 }) as any as S.Schema<AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamic>;
 
 export type AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStaticIpsList = Array<string>;
-export const AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStaticIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStaticIpsList>;
+export const AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStaticIpsList =
+  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStaticIpsList>;
 
 export type AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStaticType = "static";
 export const AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStaticType = S.String;
@@ -1964,9 +1927,8 @@ export const AppsUpdateResultSpectrumConfigAppConfigEdgeIps = /*@__PURE__*/ S.Un
 );
 
 export type AppsUpdateResultSpectrumConfigAppConfigOriginDirectList = Array<string>;
-export const AppsUpdateResultSpectrumConfigAppConfigOriginDirectList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsUpdateResultSpectrumConfigAppConfigOriginDirectList>;
+export const AppsUpdateResultSpectrumConfigAppConfigOriginDirectList =
+  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsUpdateResultSpectrumConfigAppConfigOriginDirectList>;
 
 export type AppsUpdateResultSpectrumConfigAppConfigOriginDnsType = "" | "A" | "AAAA" | "SRV";
 export const AppsUpdateResultSpectrumConfigAppConfigOriginDnsType = S.String;
@@ -2088,9 +2050,8 @@ export const AppsUpdateResultSpectrumConfigPaygoAppConfigDns = /*@__PURE__*/ S.s
 }) as any as S.Schema<AppsUpdateResultSpectrumConfigPaygoAppConfigDns>;
 
 export type AppsUpdateResultSpectrumConfigPaygoAppConfigOriginDirectList = Array<string>;
-export const AppsUpdateResultSpectrumConfigPaygoAppConfigOriginDirectList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsUpdateResultSpectrumConfigPaygoAppConfigOriginDirectList>;
+export const AppsUpdateResultSpectrumConfigPaygoAppConfigOriginDirectList =
+  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsUpdateResultSpectrumConfigPaygoAppConfigOriginDirectList>;
 
 export interface AppsUpdateResultSpectrumConfigPaygoAppConfig {
   /** App identifier. */

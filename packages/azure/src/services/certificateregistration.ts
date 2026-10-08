@@ -170,19 +170,15 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 export type AppServiceCertificateOrdersCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const AppServiceCertificateOrdersCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AppServiceCertificateOrdersCreateOrUpdateResponseTagsMap>;
+export const AppServiceCertificateOrdersCreateOrUpdateResponseTagsMap =
+  AppServiceCertificateOrdersCreateOrUpdateRequestTagsMap as any as S.Schema<AppServiceCertificateOrdersCreateOrUpdateResponseTagsMap>;
 
 /** State of the Key Vault secret. */
 export type AppServiceCertificateOrderPropertiesCertificatesMap = {
   [key: string]: AppServiceCertificate | undefined;
 };
-export const AppServiceCertificateOrderPropertiesCertificatesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  AppServiceCertificate,
-) as any as S.Schema<AppServiceCertificateOrderPropertiesCertificatesMap>;
+export const AppServiceCertificateOrderPropertiesCertificatesMap =
+  AppServiceCertificateOrderPropertiesInputCertificatesMap as any as S.Schema<AppServiceCertificateOrderPropertiesCertificatesMap>;
 
 /** Status of certificate order. */
 export type ProvisioningState = "Succeeded" | "Failed" | "Canceled" | "InProgress" | "Deleting";
@@ -427,10 +423,7 @@ export type AppServiceCertificateOrdersCreateOrUpdateCertificateResponseTagsMap 
   [key: string]: string | undefined;
 };
 export const AppServiceCertificateOrdersCreateOrUpdateCertificateResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<AppServiceCertificateOrdersCreateOrUpdateCertificateResponseTagsMap>;
+  AppServiceCertificateOrdersCreateOrUpdateCertificateRequestTagsMap as any as S.Schema<AppServiceCertificateOrdersCreateOrUpdateCertificateResponseTagsMap>;
 
 export interface AppServiceCertificateOrdersCreateOrUpdateCertificateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -552,11 +545,8 @@ export const DeleteAppServiceCertificateOrderRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteAppServiceCertificateOrderRequest>;
 
 export interface DeleteAppServiceCertificateOrderResponse {}
-export const DeleteAppServiceCertificateOrderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAppServiceCertificateOrderResponse",
-}) as any as S.Schema<DeleteAppServiceCertificateOrderResponse>;
+export const DeleteAppServiceCertificateOrderResponse =
+  AppServiceCertificateOrdersReissueResponse as any as S.Schema<DeleteAppServiceCertificateOrderResponse>;
 
 export interface DeleteAppServiceCertificateOrderCertificateRequest {
   /** The ID of the target subscription. */
@@ -587,11 +577,8 @@ export const DeleteAppServiceCertificateOrderCertificateRequest = /*@__PURE__*/ 
 }) as any as S.Schema<DeleteAppServiceCertificateOrderCertificateRequest>;
 
 export interface DeleteAppServiceCertificateOrderCertificateResponse {}
-export const DeleteAppServiceCertificateOrderCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAppServiceCertificateOrderCertificateResponse",
-}) as any as S.Schema<DeleteAppServiceCertificateOrderCertificateResponse>;
+export const DeleteAppServiceCertificateOrderCertificateResponse =
+  AppServiceCertificateOrdersReissueResponse as any as S.Schema<DeleteAppServiceCertificateOrderCertificateResponse>;
 
 export interface GetAppServiceCertificateOrderRequest {
   /** The ID of the target subscription. */
@@ -620,10 +607,8 @@ export const GetAppServiceCertificateOrderRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type GetAppServiceCertificateOrderResponseTagsMap = { [key: string]: string | undefined };
-export const GetAppServiceCertificateOrderResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAppServiceCertificateOrderResponseTagsMap>;
+export const GetAppServiceCertificateOrderResponseTagsMap =
+  AppServiceCertificateOrdersCreateOrUpdateRequestTagsMap as any as S.Schema<GetAppServiceCertificateOrderResponseTagsMap>;
 
 export interface GetAppServiceCertificateOrderResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -643,20 +628,8 @@ export interface GetAppServiceCertificateOrderResponse {
   /** Kind of resource */
   kind?: string;
 }
-export const GetAppServiceCertificateOrderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetAppServiceCertificateOrderResponseTagsMap),
-    location: S.String,
-    properties: S.optional(AppServiceCertificateOrderProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetAppServiceCertificateOrderResponse",
-}) as any as S.Schema<GetAppServiceCertificateOrderResponse>;
+export const GetAppServiceCertificateOrderResponse =
+  AppServiceCertificateOrdersCreateOrUpdateResponse as any as S.Schema<GetAppServiceCertificateOrderResponse>;
 
 export interface GetAppServiceCertificateOrderCertificateRequest {
   /** The ID of the target subscription. */
@@ -690,10 +663,8 @@ export const GetAppServiceCertificateOrderCertificateRequest = /*@__PURE__*/ S.s
 export type GetAppServiceCertificateOrderCertificateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetAppServiceCertificateOrderCertificateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAppServiceCertificateOrderCertificateResponseTagsMap>;
+export const GetAppServiceCertificateOrderCertificateResponseTagsMap =
+  AppServiceCertificateOrdersCreateOrUpdateRequestTagsMap as any as S.Schema<GetAppServiceCertificateOrderCertificateResponseTagsMap>;
 
 export interface GetAppServiceCertificateOrderCertificateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1025,9 +996,8 @@ export const DataTableResponseObjectColumnsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DataTableResponseObjectColumnsList>;
 
 export type DataTableResponseObjectRowsItemList = Array<string>;
-export const DataTableResponseObjectRowsItemList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataTableResponseObjectRowsItemList>;
+export const DataTableResponseObjectRowsItemList =
+  DetectorInfoAnalysisTypeList as any as S.Schema<DataTableResponseObjectRowsItemList>;
 
 /** Raw row values */
 export type DataTableResponseObjectRowsList = Array<DataTableResponseObjectRowsItemList>;
@@ -1138,10 +1108,8 @@ export const Status = /*@__PURE__*/ S.suspend(() =>
 
 /** Any object */
 export type KeyValuePairStringObjectValueMap = { [key: string]: string | undefined };
-export const KeyValuePairStringObjectValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<KeyValuePairStringObjectValueMap>;
+export const KeyValuePairStringObjectValueMap =
+  AppServiceCertificateOrdersCreateOrUpdateRequestTagsMap as any as S.Schema<KeyValuePairStringObjectValueMap>;
 
 export interface KeyValuePairStringObject {
   key?: string;
@@ -1182,9 +1150,8 @@ export const DetectorResponsePropertiesDataProvidersMetadataList = /*@__PURE__*/
 
 /** Links attribute of sample utterance. */
 export type SampleUtteranceLinksList = Array<string>;
-export const SampleUtteranceLinksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SampleUtteranceLinksList>;
+export const SampleUtteranceLinksList =
+  DetectorInfoAnalysisTypeList as any as S.Schema<SampleUtteranceLinksList>;
 
 /** Sample utterance. */
 export interface SampleUtterance {
@@ -1314,10 +1281,8 @@ export const ListAppServiceCertificateOrderByResourceGroupRequest = /*@__PURE__*
 
 /** Resource tags. */
 export type AppServiceCertificateOrderTagsMap = { [key: string]: string | undefined };
-export const AppServiceCertificateOrderTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AppServiceCertificateOrderTagsMap>;
+export const AppServiceCertificateOrderTagsMap =
+  AppServiceCertificateOrdersCreateOrUpdateRequestTagsMap as any as S.Schema<AppServiceCertificateOrderTagsMap>;
 
 /** SSL certificate purchase order. */
 export interface AppServiceCertificateOrder {
@@ -1338,20 +1303,8 @@ export interface AppServiceCertificateOrder {
   /** Kind of resource */
   kind?: string;
 }
-export const AppServiceCertificateOrder = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(AppServiceCertificateOrderTagsMap),
-    location: S.String,
-    properties: S.optional(AppServiceCertificateOrderProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AppServiceCertificateOrder",
-}) as any as S.Schema<AppServiceCertificateOrder>;
+export const AppServiceCertificateOrder =
+  AppServiceCertificateOrdersCreateOrUpdateResponse as any as S.Schema<AppServiceCertificateOrder>;
 
 /** Collection of resources. */
 export type AppServiceCertificateOrderCollectionValueList = Array<AppServiceCertificateOrder>;
@@ -1402,10 +1355,8 @@ export const ListAppServiceCertificateOrderCertificatesRequest = /*@__PURE__*/ S
 
 /** Resource tags. */
 export type AppServiceCertificateResourceTagsMap = { [key: string]: string | undefined };
-export const AppServiceCertificateResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AppServiceCertificateResourceTagsMap>;
+export const AppServiceCertificateResourceTagsMap =
+  AppServiceCertificateOrdersCreateOrUpdateRequestTagsMap as any as S.Schema<AppServiceCertificateResourceTagsMap>;
 
 /** Key Vault container ARM resource for a certificate that is purchased through Azure. */
 export interface AppServiceCertificateResource {
@@ -1426,20 +1377,8 @@ export interface AppServiceCertificateResource {
   /** Kind of resource */
   kind?: string;
 }
-export const AppServiceCertificateResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(AppServiceCertificateResourceTagsMap),
-    location: S.String,
-    properties: S.optional(AppServiceCertificate),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AppServiceCertificateResource",
-}) as any as S.Schema<AppServiceCertificateResource>;
+export const AppServiceCertificateResource =
+  GetAppServiceCertificateOrderCertificateResponse as any as S.Schema<AppServiceCertificateResource>;
 
 /** The AppServiceCertificateResource items on this page */
 export type AppServiceCertificateCollectionValueList = Array<AppServiceCertificateResource>;
@@ -1625,14 +1564,12 @@ export const MetricSpecificationAvailabilitiesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<MetricSpecificationAvailabilitiesList>;
 
 export type MetricSpecificationSupportedTimeGrainTypesList = Array<string>;
-export const MetricSpecificationSupportedTimeGrainTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricSpecificationSupportedTimeGrainTypesList>;
+export const MetricSpecificationSupportedTimeGrainTypesList =
+  DetectorInfoAnalysisTypeList as any as S.Schema<MetricSpecificationSupportedTimeGrainTypesList>;
 
 export type MetricSpecificationSupportedAggregationTypesList = Array<string>;
-export const MetricSpecificationSupportedAggregationTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricSpecificationSupportedAggregationTypesList>;
+export const MetricSpecificationSupportedAggregationTypesList =
+  DetectorInfoAnalysisTypeList as any as S.Schema<MetricSpecificationSupportedAggregationTypesList>;
 
 /** Definition of a single resource metric. */
 export interface MetricSpecification {
@@ -1818,11 +1755,8 @@ export const RenewAppServiceCertificateOrderRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<RenewAppServiceCertificateOrderRequest>;
 
 export interface RenewAppServiceCertificateOrderResponse {}
-export const RenewAppServiceCertificateOrderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RenewAppServiceCertificateOrderResponse",
-}) as any as S.Schema<RenewAppServiceCertificateOrderResponse>;
+export const RenewAppServiceCertificateOrderResponse =
+  AppServiceCertificateOrdersReissueResponse as any as S.Schema<RenewAppServiceCertificateOrderResponse>;
 
 export interface ResendAppServiceCertificateOrderEmailRequest {
   /** The ID of the target subscription. */
@@ -1850,11 +1784,8 @@ export const ResendAppServiceCertificateOrderEmailRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ResendAppServiceCertificateOrderEmailRequest>;
 
 export interface ResendAppServiceCertificateOrderEmailResponse {}
-export const ResendAppServiceCertificateOrderEmailResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResendAppServiceCertificateOrderEmailResponse",
-}) as any as S.Schema<ResendAppServiceCertificateOrderEmailResponse>;
+export const ResendAppServiceCertificateOrderEmailResponse =
+  AppServiceCertificateOrdersReissueResponse as any as S.Schema<ResendAppServiceCertificateOrderEmailResponse>;
 
 export interface ResendAppServiceCertificateOrderRequestEmailsRequest {
   /** The ID of the target subscription. */
@@ -1885,11 +1816,8 @@ export const ResendAppServiceCertificateOrderRequestEmailsRequest = /*@__PURE__*
 }) as any as S.Schema<ResendAppServiceCertificateOrderRequestEmailsRequest>;
 
 export interface ResendAppServiceCertificateOrderRequestEmailsResponse {}
-export const ResendAppServiceCertificateOrderRequestEmailsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResendAppServiceCertificateOrderRequestEmailsResponse",
-}) as any as S.Schema<ResendAppServiceCertificateOrderRequestEmailsResponse>;
+export const ResendAppServiceCertificateOrderRequestEmailsResponse =
+  AppServiceCertificateOrdersReissueResponse as any as S.Schema<ResendAppServiceCertificateOrderRequestEmailsResponse>;
 
 /** State of the Key Vault secret. */
 export type AppServiceCertificateOrderPatchResourcePropertiesInputCertificatesMap = {
@@ -1965,10 +1893,8 @@ export const UpdateAppServiceCertificateOrderRequest = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type UpdateAppServiceCertificateOrderResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAppServiceCertificateOrderResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAppServiceCertificateOrderResponseTagsMap>;
+export const UpdateAppServiceCertificateOrderResponseTagsMap =
+  AppServiceCertificateOrdersCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAppServiceCertificateOrderResponseTagsMap>;
 
 export interface UpdateAppServiceCertificateOrderResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1988,20 +1914,8 @@ export interface UpdateAppServiceCertificateOrderResponse {
   /** Kind of resource */
   kind?: string;
 }
-export const UpdateAppServiceCertificateOrderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateAppServiceCertificateOrderResponseTagsMap),
-    location: S.String,
-    properties: S.optional(AppServiceCertificateOrderProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateAppServiceCertificateOrderResponse",
-}) as any as S.Schema<UpdateAppServiceCertificateOrderResponse>;
+export const UpdateAppServiceCertificateOrderResponse =
+  AppServiceCertificateOrdersCreateOrUpdateResponse as any as S.Schema<UpdateAppServiceCertificateOrderResponse>;
 
 export interface UpdateAppServiceCertificateOrderCertificateRequest {
   /** The ID of the target subscription. */
@@ -2041,10 +1955,8 @@ export const UpdateAppServiceCertificateOrderCertificateRequest = /*@__PURE__*/ 
 export type UpdateAppServiceCertificateOrderCertificateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const UpdateAppServiceCertificateOrderCertificateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAppServiceCertificateOrderCertificateResponseTagsMap>;
+export const UpdateAppServiceCertificateOrderCertificateResponseTagsMap =
+  AppServiceCertificateOrdersCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAppServiceCertificateOrderCertificateResponseTagsMap>;
 
 export interface UpdateAppServiceCertificateOrderCertificateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2064,30 +1976,15 @@ export interface UpdateAppServiceCertificateOrderCertificateResponse {
   /** Kind of resource */
   kind?: string;
 }
-export const UpdateAppServiceCertificateOrderCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateAppServiceCertificateOrderCertificateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(AppServiceCertificate),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateAppServiceCertificateOrderCertificateResponse",
-}) as any as S.Schema<UpdateAppServiceCertificateOrderCertificateResponse>;
+export const UpdateAppServiceCertificateOrderCertificateResponse =
+  GetAppServiceCertificateOrderCertificateResponse as any as S.Schema<UpdateAppServiceCertificateOrderCertificateResponse>;
 
 /** Resource tags. */
 export type ValidateAppServiceCertificateOrderPurchaseInformationRequestTagsMap = {
   [key: string]: string | undefined;
 };
 export const ValidateAppServiceCertificateOrderPurchaseInformationRequestTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ValidateAppServiceCertificateOrderPurchaseInformationRequestTagsMap>;
+  AppServiceCertificateOrdersCreateOrUpdateCertificateRequestTagsMap as any as S.Schema<ValidateAppServiceCertificateOrderPurchaseInformationRequestTagsMap>;
 
 export interface ValidateAppServiceCertificateOrderPurchaseInformationRequest {
   /** The ID of the target subscription. */
@@ -2153,11 +2050,8 @@ export const VerifyAppServiceCertificateOrderDomainOwnershipRequest = /*@__PURE_
 }) as any as S.Schema<VerifyAppServiceCertificateOrderDomainOwnershipRequest>;
 
 export interface VerifyAppServiceCertificateOrderDomainOwnershipResponse {}
-export const VerifyAppServiceCertificateOrderDomainOwnershipResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "VerifyAppServiceCertificateOrderDomainOwnershipResponse",
-}) as any as S.Schema<VerifyAppServiceCertificateOrderDomainOwnershipResponse>;
+export const VerifyAppServiceCertificateOrderDomainOwnershipResponse =
+  AppServiceCertificateOrdersReissueResponse as any as S.Schema<VerifyAppServiceCertificateOrderDomainOwnershipResponse>;
 
 export type AppServiceCertificateOrdersCreateOrUpdateError = AzureOpError;
 /** Create or update a certificate purchase order. Description for Create or update a certificate purchase order. */

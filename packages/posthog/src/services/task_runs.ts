@@ -251,10 +251,8 @@ export const TaskRunDetailDTOTaskTagsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<TaskRunDetailDTOTaskTagsList>;
 
 export type TaskRunDetailDTOStateMap = { [key: string]: unknown | undefined };
-export const TaskRunDetailDTOStateMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TaskRunDetailDTOStateMap>;
+export const TaskRunDetailDTOStateMap =
+  TaskRunDetailDTOOutputMap as any as S.Schema<TaskRunDetailDTOStateMap>;
 
 /** * `user` - user * `repo` - repo * `marketplace` - marketplace * `codex` - codex */
 export type SkillSourceEnum = "user" | "repo" | "marketplace" | "codex";
@@ -314,9 +312,8 @@ export const ObjectKindEnum = S.String;
 
 /** Completed assistant message identifiers that referenced the object. */
 export type TaskRunPostHogReferenceMetadataSourceMessageIdsList = Array<string>;
-export const TaskRunPostHogReferenceMetadataSourceMessageIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TaskRunPostHogReferenceMetadataSourceMessageIdsList>;
+export const TaskRunPostHogReferenceMetadataSourceMessageIdsList =
+  TaskRunDetailDTOTaskTagsList as any as S.Schema<TaskRunPostHogReferenceMetadataSourceMessageIdsList>;
 
 export interface TaskRunPostHogReferenceMetadata {
   /** Reference metadata type. posthog_object identifies a live PostHog object. * `posthog_object` - posthog_object */
@@ -500,15 +497,13 @@ export const TaskAnalysisBlockerKindEnum = S.String;
 
 /** Command heads run in the activity, in order, adjacent duplicates removed. */
 export type CreateTasksRunsAnalysisActivityRequestCommandsList = Array<string>;
-export const CreateTasksRunsAnalysisActivityRequestCommandsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateTasksRunsAnalysisActivityRequestCommandsList>;
+export const CreateTasksRunsAnalysisActivityRequestCommandsList =
+  TaskRunDetailDTOTaskTagsList as any as S.Schema<CreateTasksRunsAnalysisActivityRequestCommandsList>;
 
 /** Skills, AGENTS.md files, templates, and wiki pages the agent read in the activity. */
 export type CreateTasksRunsAnalysisActivityRequestGuidanceReadList = Array<string>;
-export const CreateTasksRunsAnalysisActivityRequestGuidanceReadList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateTasksRunsAnalysisActivityRequestGuidanceReadList>;
+export const CreateTasksRunsAnalysisActivityRequestGuidanceReadList =
+  TaskRunDetailDTOTaskTagsList as any as S.Schema<CreateTasksRunsAnalysisActivityRequestGuidanceReadList>;
 
 export interface CreateTasksRunsAnalysisActivityRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -625,10 +620,8 @@ export const TaskRunAnalyzeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskRunAnalyzeResponse" }) as any as S.Schema<TaskRunAnalyzeResponse>;
 
 export type CreateTasksRunsAppendLogRequestEntriesItemMap = { [key: string]: unknown | undefined };
-export const CreateTasksRunsAppendLogRequestEntriesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateTasksRunsAppendLogRequestEntriesItemMap>;
+export const CreateTasksRunsAppendLogRequestEntriesItemMap =
+  TaskRunDetailDTOOutputMap as any as S.Schema<CreateTasksRunsAppendLogRequestEntriesItemMap>;
 
 /** Array of log entry dictionaries to append */
 export type CreateTasksRunsAppendLogRequestEntriesList =
@@ -739,9 +732,8 @@ export const CreateTasksRunsArtifactRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Updated list of artifacts on the run */
 export type TaskRunArtifactsUploadResponseArtifactsList = Array<TaskRunArtifactResponse>;
-export const TaskRunArtifactsUploadResponseArtifactsList = /*@__PURE__*/ S.Array(
-  TaskRunArtifactResponse,
-) as any as S.Schema<TaskRunArtifactsUploadResponseArtifactsList>;
+export const TaskRunArtifactsUploadResponseArtifactsList =
+  TaskRunDetailDTOArtifactsList as any as S.Schema<TaskRunArtifactsUploadResponseArtifactsList>;
 
 export interface TaskRunArtifactsUploadResponse {
   /** Updated list of artifacts on the run */
@@ -757,9 +749,8 @@ export const TaskRunArtifactsUploadResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Manifest ids of the artifacts to update. Pass every version of a file together so the whole file is dismissed rather than a single upload of it. */
 export type CreateTasksRunsArtifactsDismissRequestArtifactIdsList = Array<string>;
-export const CreateTasksRunsArtifactsDismissRequestArtifactIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateTasksRunsArtifactsDismissRequestArtifactIdsList>;
+export const CreateTasksRunsArtifactsDismissRequestArtifactIdsList =
+  TaskRunDetailDTOTaskTagsList as any as S.Schema<CreateTasksRunsArtifactsDismissRequestArtifactIdsList>;
 
 export interface CreateTasksRunsArtifactsDismissRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -791,9 +782,8 @@ export const CreateTasksRunsArtifactsDismissRequest = /*@__PURE__*/ S.suspend(()
 
 /** Updated list of artifacts on the run */
 export type TaskRunArtifactsDismissResponseArtifactsList = Array<TaskRunArtifactResponse>;
-export const TaskRunArtifactsDismissResponseArtifactsList = /*@__PURE__*/ S.Array(
-  TaskRunArtifactResponse,
-) as any as S.Schema<TaskRunArtifactsDismissResponseArtifactsList>;
+export const TaskRunArtifactsDismissResponseArtifactsList =
+  TaskRunDetailDTOArtifactsList as any as S.Schema<TaskRunArtifactsDismissResponseArtifactsList>;
 
 export interface TaskRunArtifactsDismissResponse {
   /** Updated list of artifacts on the run */
@@ -899,21 +889,15 @@ export const CreateTasksRunsArtifactsReferenceRequest = /*@__PURE__*/ S.suspend(
 
 /** Updated list of artifacts on the run. */
 export type TaskRunPostHogReferencesResponseArtifactsList = Array<TaskRunArtifactResponse>;
-export const TaskRunPostHogReferencesResponseArtifactsList = /*@__PURE__*/ S.Array(
-  TaskRunArtifactResponse,
-) as any as S.Schema<TaskRunPostHogReferencesResponseArtifactsList>;
+export const TaskRunPostHogReferencesResponseArtifactsList =
+  TaskRunDetailDTOArtifactsList as any as S.Schema<TaskRunPostHogReferencesResponseArtifactsList>;
 
 export interface TaskRunPostHogReferencesResponse {
   /** Updated list of artifacts on the run. */
   artifacts: TaskRunPostHogReferencesResponseArtifactsList;
 }
-export const TaskRunPostHogReferencesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    artifacts: TaskRunPostHogReferencesResponseArtifactsList,
-  }),
-).annotate({
-  identifier: "TaskRunPostHogReferencesResponse",
-}) as any as S.Schema<TaskRunPostHogReferencesResponse>;
+export const TaskRunPostHogReferencesResponse =
+  TaskRunArtifactsDismissResponse as any as S.Schema<TaskRunPostHogReferencesResponse>;
 
 export interface CreateTasksRunsClearConversationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -958,10 +942,8 @@ export const TaskRunCommandRequestMethodEnum = S.String;
 
 /** Parameters for the command */
 export type CreateTasksRunsCommandRequestParamsMap = { [key: string]: unknown | undefined };
-export const CreateTasksRunsCommandRequestParamsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateTasksRunsCommandRequestParamsMap>;
+export const CreateTasksRunsCommandRequestParamsMap =
+  TaskRunDetailDTOOutputMap as any as S.Schema<CreateTasksRunsCommandRequestParamsMap>;
 
 export interface CreateTasksRunsCommandRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -996,10 +978,8 @@ export const CreateTasksRunsCommandRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** JSON-RPC error details, including failures returned with HTTP 200 */
 export type TaskRunCommandResponseErrorMap = { [key: string]: unknown | undefined };
-export const TaskRunCommandResponseErrorMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TaskRunCommandResponseErrorMap>;
+export const TaskRunCommandResponseErrorMap =
+  TaskRunDetailDTOOutputMap as any as S.Schema<TaskRunCommandResponseErrorMap>;
 
 /** Response from the agent server command endpoint. */
 export interface TaskRunCommandResponse {
@@ -1023,9 +1003,8 @@ export const TaskRunCommandResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Manifest ids of artifacts on the SENDING run to share (max 10). Each is copied into the target run's own artifact storage; the receiver gets an immutable snapshot. */
 export type CreateTasksRunsPeersMessageRequestArtifactIdsList = Array<string>;
-export const CreateTasksRunsPeersMessageRequestArtifactIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateTasksRunsPeersMessageRequestArtifactIdsList>;
+export const CreateTasksRunsPeersMessageRequestArtifactIdsList =
+  TaskRunDetailDTOTaskTagsList as any as S.Schema<CreateTasksRunsPeersMessageRequestArtifactIdsList>;
 
 export interface CreateTasksRunsPeersMessageRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1081,9 +1060,8 @@ export const TaskRunPeerMessageResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered assistant text blocks. When present, the last non-empty entry is posted instead of text. */
 export type CreateTasksRunsRelayMessageRequestTextPartsList = Array<string>;
-export const CreateTasksRunsRelayMessageRequestTextPartsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateTasksRunsRelayMessageRequestTextPartsList>;
+export const CreateTasksRunsRelayMessageRequestTextPartsList =
+  TaskRunDetailDTOTaskTagsList as any as S.Schema<CreateTasksRunsRelayMessageRequestTextPartsList>;
 
 export interface CreateTasksRunsRelayMessageRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1393,9 +1371,8 @@ export const GetTasksRunsPreviewRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTasksRunsPreviewRequest>;
 
 export interface GetTasksRunsPreviewResponse {}
-export const GetTasksRunsPreviewResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTasksRunsPreviewResponse",
-}) as any as S.Schema<GetTasksRunsPreviewResponse>;
+export const GetTasksRunsPreviewResponse =
+  GetTasksRunsLogResponse as any as S.Schema<GetTasksRunsPreviewResponse>;
 
 export interface GetTasksRunsSessionLogRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1435,9 +1412,8 @@ export const GetTasksRunsSessionLogRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTasksRunsSessionLogRequest>;
 
 export interface GetTasksRunsSessionLogResponse {}
-export const GetTasksRunsSessionLogResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTasksRunsSessionLogResponse",
-}) as any as S.Schema<GetTasksRunsSessionLogResponse>;
+export const GetTasksRunsSessionLogResponse =
+  GetTasksRunsLogResponse as any as S.Schema<GetTasksRunsSessionLogResponse>;
 
 export interface GetTasksRunsStreamRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1465,9 +1441,8 @@ export const GetTasksRunsStreamRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTasksRunsStreamRequest>;
 
 export interface GetTasksRunsStreamResponse {}
-export const GetTasksRunsStreamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTasksRunsStreamResponse",
-}) as any as S.Schema<GetTasksRunsStreamResponse>;
+export const GetTasksRunsStreamResponse =
+  GetTasksRunsLogResponse as any as S.Schema<GetTasksRunsStreamResponse>;
 
 export interface GetTasksRunsStreamTokenRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1646,11 +1621,8 @@ export const TasksRunsArtifactsDownloadRetrieveRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<TasksRunsArtifactsDownloadRetrieveRequest>;
 
 export interface TasksRunsArtifactsDownloadRetrieveResponse {}
-export const TasksRunsArtifactsDownloadRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TasksRunsArtifactsDownloadRetrieveResponse",
-}) as any as S.Schema<TasksRunsArtifactsDownloadRetrieveResponse>;
+export const TasksRunsArtifactsDownloadRetrieveResponse =
+  TasksRunsArtifactsDownloadCreateResponse as any as S.Schema<TasksRunsArtifactsDownloadRetrieveResponse>;
 
 export interface TaskRunArtifactFinalizeUpload {
   /** Stable identifier returned by the prepare upload endpoint */
@@ -1716,21 +1688,15 @@ export const TasksRunsArtifactsFinalizeUploadCreateRequest = /*@__PURE__*/ S.sus
 
 /** Updated list of artifacts on the run */
 export type TaskRunArtifactsFinalizeUploadResponseArtifactsList = Array<TaskRunArtifactResponse>;
-export const TaskRunArtifactsFinalizeUploadResponseArtifactsList = /*@__PURE__*/ S.Array(
-  TaskRunArtifactResponse,
-) as any as S.Schema<TaskRunArtifactsFinalizeUploadResponseArtifactsList>;
+export const TaskRunArtifactsFinalizeUploadResponseArtifactsList =
+  TaskRunDetailDTOArtifactsList as any as S.Schema<TaskRunArtifactsFinalizeUploadResponseArtifactsList>;
 
 export interface TaskRunArtifactsFinalizeUploadResponse {
   /** Updated list of artifacts on the run */
   artifacts?: TaskRunArtifactsFinalizeUploadResponseArtifactsList;
 }
-export const TaskRunArtifactsFinalizeUploadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    artifacts: S.optional(TaskRunArtifactsFinalizeUploadResponseArtifactsList),
-  }),
-).annotate({
-  identifier: "TaskRunArtifactsFinalizeUploadResponse",
-}) as any as S.Schema<TaskRunArtifactsFinalizeUploadResponse>;
+export const TaskRunArtifactsFinalizeUploadResponse =
+  TaskRunArtifactsUploadResponse as any as S.Schema<TaskRunArtifactsFinalizeUploadResponse>;
 
 export interface TaskRunArtifactPrepareUpload {
   /** File name to associate with the artifact */
@@ -1921,9 +1887,8 @@ export const TasksRunsResumeInCloudCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Identifiers for run artifacts that should be attached to the next user message delivered to the sandbox. */
 export type TasksRunsStartCreateRequestPendingUserArtifactIdsList = Array<string>;
-export const TasksRunsStartCreateRequestPendingUserArtifactIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TasksRunsStartCreateRequestPendingUserArtifactIdsList>;
+export const TasksRunsStartCreateRequestPendingUserArtifactIdsList =
+  TaskRunDetailDTOTaskTagsList as any as S.Schema<TasksRunsStartCreateRequestPendingUserArtifactIdsList>;
 
 export interface TasksRunsStartCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1958,21 +1923,16 @@ export type TaskRuntimeEnum = "acp" | "pi";
 export const TaskRuntimeEnum = S.String;
 
 export type TaskDetailDTORepositoriesList = Array<string>;
-export const TaskDetailDTORepositoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TaskDetailDTORepositoriesList>;
+export const TaskDetailDTORepositoriesList =
+  TaskRunDetailDTOTaskTagsList as any as S.Schema<TaskDetailDTORepositoriesList>;
 
 export type TaskDetailDTOJsonSchemaMap = { [key: string]: unknown | undefined };
-export const TaskDetailDTOJsonSchemaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TaskDetailDTOJsonSchemaMap>;
+export const TaskDetailDTOJsonSchemaMap =
+  TaskRunDetailDTOOutputMap as any as S.Schema<TaskDetailDTOJsonSchemaMap>;
 
 export type TaskUserBasicInfoHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const TaskUserBasicInfoHedgehogConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TaskUserBasicInfoHedgehogConfigMap>;
+export const TaskUserBasicInfoHedgehogConfigMap =
+  TaskRunDetailDTOOutputMap as any as S.Schema<TaskUserBasicInfoHedgehogConfigMap>;
 
 /** Response shape for a task creator, mirroring core ``UserBasicSerializer`` output. */
 export interface TaskUserBasicInfo {
@@ -2093,23 +2053,18 @@ export const RunStatusEnum = S.String;
 
 /** State of the run */
 export type UpdateTasksRunsPartialRequestStateMap = { [key: string]: unknown | undefined };
-export const UpdateTasksRunsPartialRequestStateMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateTasksRunsPartialRequestStateMap>;
+export const UpdateTasksRunsPartialRequestStateMap =
+  TaskRunDetailDTOOutputMap as any as S.Schema<UpdateTasksRunsPartialRequestStateMap>;
 
 /** State keys to remove atomically before applying any state updates. */
 export type UpdateTasksRunsPartialRequestStateRemoveKeysList = Array<string>;
-export const UpdateTasksRunsPartialRequestStateRemoveKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateTasksRunsPartialRequestStateRemoveKeysList>;
+export const UpdateTasksRunsPartialRequestStateRemoveKeysList =
+  TaskRunDetailDTOTaskTagsList as any as S.Schema<UpdateTasksRunsPartialRequestStateRemoveKeysList>;
 
 /** State keys whose value to append to the list stored at that key, atomically under the row lock. Use instead of sending the whole list back through `state`, which loses concurrent appends to a read-modify-write race. */
 export type UpdateTasksRunsPartialRequestStateAppendMap = { [key: string]: unknown | undefined };
-export const UpdateTasksRunsPartialRequestStateAppendMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateTasksRunsPartialRequestStateAppendMap>;
+export const UpdateTasksRunsPartialRequestStateAppendMap =
+  TaskRunDetailDTOOutputMap as any as S.Schema<UpdateTasksRunsPartialRequestStateAppendMap>;
 
 export interface UpdateTasksRunsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2184,9 +2139,8 @@ export const UpdateTasksRunsSetOutputPartialRequest = /*@__PURE__*/ S.suspend(()
 
 /** Complete set of slug tags that replaces the prior tags. The agent chooses the tags. Omit the field to keep the current tags. Send an empty list to remove them. */
 export type UpdateTasksRunsSetSummaryPartialRequestTagsList = Array<string>;
-export const UpdateTasksRunsSetSummaryPartialRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateTasksRunsSetSummaryPartialRequestTagsList>;
+export const UpdateTasksRunsSetSummaryPartialRequestTagsList =
+  TaskRunDetailDTOTaskTagsList as any as S.Schema<UpdateTasksRunsSetSummaryPartialRequestTagsList>;
 
 export interface UpdateTasksRunsSetSummaryPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

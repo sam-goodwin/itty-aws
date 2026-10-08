@@ -451,7 +451,8 @@ export const DataCollectionDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataCollectionDetails" }) as any as S.Schema<DataCollectionDetails>;
 export type Condition = string;
 export type AssessmentTargetValues = string[];
-export const AssessmentTargetValues = /*@__PURE__*/ S.Array(S.String);
+export const AssessmentTargetValues =
+  AssociatedServerIDs as any as S.Schema<AssessmentTargetValues>;
 export interface AssessmentTarget {
   condition: string;
   name: string;
@@ -583,7 +584,8 @@ export const PrioritizeBusinessGoals = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PrioritizeBusinessGoals" }) as any as S.Schema<PrioritizeBusinessGoals>;
 export type AwsManagedTargetDestination = string;
 export type AwsManagedTargetDestinations = string[];
-export const AwsManagedTargetDestinations = /*@__PURE__*/ S.Array(S.String);
+export const AwsManagedTargetDestinations =
+  AssociatedServerIDs as any as S.Schema<AwsManagedTargetDestinations>;
 export interface AwsManagedResources {
   targetDestination: string[];
 }
@@ -592,22 +594,21 @@ export const AwsManagedResources = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AwsManagedResources" }) as any as S.Schema<AwsManagedResources>;
 export type SelfManageTargetDestination = string;
 export type SelfManageTargetDestinations = string[];
-export const SelfManageTargetDestinations = /*@__PURE__*/ S.Array(S.String);
+export const SelfManageTargetDestinations =
+  AssociatedServerIDs as any as S.Schema<SelfManageTargetDestinations>;
 export interface SelfManageResources {
   targetDestination: string[];
 }
-export const SelfManageResources = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ targetDestination: SelfManageTargetDestinations }),
-).annotate({ identifier: "SelfManageResources" }) as any as S.Schema<SelfManageResources>;
+export const SelfManageResources = AwsManagedResources as any as S.Schema<SelfManageResources>;
 export type NoPreferenceTargetDestination = string;
 export type NoPreferenceTargetDestinations = string[];
-export const NoPreferenceTargetDestinations = /*@__PURE__*/ S.Array(S.String);
+export const NoPreferenceTargetDestinations =
+  AssociatedServerIDs as any as S.Schema<NoPreferenceTargetDestinations>;
 export interface NoManagementPreference {
   targetDestination: string[];
 }
-export const NoManagementPreference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ targetDestination: NoPreferenceTargetDestinations }),
-).annotate({ identifier: "NoManagementPreference" }) as any as S.Schema<NoManagementPreference>;
+export const NoManagementPreference =
+  AwsManagedResources as any as S.Schema<NoManagementPreference>;
 export type ManagementPreference =
   | { awsManagedResources: AwsManagedResources; selfManageResources?: never; noPreference?: never }
   | { awsManagedResources?: never; selfManageResources: SelfManageResources; noPreference?: never }
@@ -630,7 +631,8 @@ export const ApplicationPreferences = /*@__PURE__*/ S.suspend(() =>
 export type DatabaseManagementPreference = string;
 export type HeterogeneousTargetDatabaseEngine = string;
 export type HeterogeneousTargetDatabaseEngines = string[];
-export const HeterogeneousTargetDatabaseEngines = /*@__PURE__*/ S.Array(S.String);
+export const HeterogeneousTargetDatabaseEngines =
+  AssociatedServerIDs as any as S.Schema<HeterogeneousTargetDatabaseEngines>;
 export interface Heterogeneous {
   targetDatabaseEngine: string[];
 }
@@ -639,7 +641,8 @@ export const Heterogeneous = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Heterogeneous" }) as any as S.Schema<Heterogeneous>;
 export type HomogeneousTargetDatabaseEngine = string;
 export type HomogeneousTargetDatabaseEngines = string[];
-export const HomogeneousTargetDatabaseEngines = /*@__PURE__*/ S.Array(S.String);
+export const HomogeneousTargetDatabaseEngines =
+  AssociatedServerIDs as any as S.Schema<HomogeneousTargetDatabaseEngines>;
 export interface Homogeneous {
   targetDatabaseEngine?: string[];
 }
@@ -648,7 +651,7 @@ export const Homogeneous = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Homogeneous" }) as any as S.Schema<Homogeneous>;
 export type TargetDatabaseEngine = string;
 export type TargetDatabaseEngines = string[];
-export const TargetDatabaseEngines = /*@__PURE__*/ S.Array(S.String);
+export const TargetDatabaseEngines = AssociatedServerIDs as any as S.Schema<TargetDatabaseEngines>;
 export interface NoDatabaseMigrationPreference {
   targetDatabaseEngine: string[];
 }
@@ -812,7 +815,7 @@ export type RecommendationReportStatus = string;
 export type RecommendationReportStatusMessage = string;
 export type RecommendationReportTimeStamp = Date;
 export type S3Keys = string[];
-export const S3Keys = /*@__PURE__*/ S.Array(S.String);
+export const S3Keys = AssociatedServerIDs as any as S.Schema<S3Keys>;
 export interface RecommendationReportDetails {
   status?: string;
   statusMessage?: string;
@@ -1254,23 +1257,8 @@ export interface ImportFileTaskInformation {
   numberOfRecordsFailed?: number;
   importName?: string;
 }
-export const ImportFileTaskInformation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    status: S.optional(S.String),
-    startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    inputS3Bucket: S.optional(S.String),
-    inputS3Key: S.optional(S.String),
-    statusReportS3Bucket: S.optional(S.String),
-    statusReportS3Key: S.optional(S.String),
-    completionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    numberOfRecordsSuccess: S.optional(S.Number),
-    numberOfRecordsFailed: S.optional(S.Number),
-    importName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ImportFileTaskInformation",
-}) as any as S.Schema<ImportFileTaskInformation>;
+export const ImportFileTaskInformation =
+  GetImportFileTaskResponse as any as S.Schema<ImportFileTaskInformation>;
 export type ListImportFileTaskInformation = ImportFileTaskInformation[];
 export const ListImportFileTaskInformation = /*@__PURE__*/ S.Array(ImportFileTaskInformation);
 export interface ListImportFileTaskResponse {
@@ -1391,11 +1379,8 @@ export const StartImportFileTaskRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartImportFileTaskResponse {
   id?: string;
 }
-export const StartImportFileTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.optional(S.String) }),
-).annotate({
-  identifier: "StartImportFileTaskResponse",
-}) as any as S.Schema<StartImportFileTaskResponse>;
+export const StartImportFileTaskResponse =
+  GetLatestAssessmentIdResponse as any as S.Schema<StartImportFileTaskResponse>;
 export type OutputFormat = string;
 export interface StartRecommendationReportGenerationRequest {
   outputFormat?: string;
@@ -1418,11 +1403,8 @@ export const StartRecommendationReportGenerationRequest = /*@__PURE__*/ S.suspen
 export interface StartRecommendationReportGenerationResponse {
   id?: string;
 }
-export const StartRecommendationReportGenerationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.optional(S.String) }),
-).annotate({
-  identifier: "StartRecommendationReportGenerationResponse",
-}) as any as S.Schema<StartRecommendationReportGenerationResponse>;
+export const StartRecommendationReportGenerationResponse =
+  GetLatestAssessmentIdResponse as any as S.Schema<StartRecommendationReportGenerationResponse>;
 export interface StopAssessmentRequest {
   assessmentId: string;
 }
@@ -1519,9 +1501,8 @@ export const UpdateServerConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateServerConfigRequest",
 }) as any as S.Schema<UpdateServerConfigRequest>;
 export interface UpdateServerConfigResponse {}
-export const UpdateServerConfigResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateServerConfigResponse",
-}) as any as S.Schema<UpdateServerConfigResponse>;
+export const UpdateServerConfigResponse =
+  StopAssessmentResponse as any as S.Schema<UpdateServerConfigResponse>;
 export type ErrorMessage = string;
 export type GetApplicationComponentDetailsError =
   | InternalServerException

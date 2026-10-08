@@ -660,14 +660,8 @@ export interface GoogleCloudRecommenderV1beta1RecommenderGenerationConfig {
   /** Parameters for this RecommenderGenerationConfig. These configs can be used by or are applied to all subtypes. */
   params?: DocumentMap;
 }
-export const GoogleCloudRecommenderV1beta1RecommenderGenerationConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      params: S.optional(DocumentMap),
-    }),
-).annotate({
-  identifier: "GoogleCloudRecommenderV1beta1RecommenderGenerationConfig",
-}) as any as S.Schema<GoogleCloudRecommenderV1beta1RecommenderGenerationConfig>;
+export const GoogleCloudRecommenderV1beta1RecommenderGenerationConfig =
+  GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig as any as S.Schema<GoogleCloudRecommenderV1beta1RecommenderGenerationConfig>;
 
 /** Configuration for a Recommender. */
 export interface GoogleCloudRecommenderV1beta1RecommenderConfig {
@@ -1389,19 +1383,13 @@ export interface GoogleCloudRecommenderV1beta1RecommenderType {
   /** The recommender's name in format RecommenderTypes/{recommender_type} eg: recommenderTypes/google.iam.policy.Recommender */
   name?: string;
 }
-export const GoogleCloudRecommenderV1beta1RecommenderType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudRecommenderV1beta1RecommenderType",
-}) as any as S.Schema<GoogleCloudRecommenderV1beta1RecommenderType>;
+export const GoogleCloudRecommenderV1beta1RecommenderType =
+  GoogleCloudRecommenderV1beta1InsightType as any as S.Schema<GoogleCloudRecommenderV1beta1RecommenderType>;
 
 export type GoogleCloudRecommenderV1beta1RecommenderTypeList =
   Array<GoogleCloudRecommenderV1beta1RecommenderType>;
-export const GoogleCloudRecommenderV1beta1RecommenderTypeList = /*@__PURE__*/ S.Array(
-  GoogleCloudRecommenderV1beta1RecommenderType,
-) as any as S.Schema<GoogleCloudRecommenderV1beta1RecommenderTypeList>;
+export const GoogleCloudRecommenderV1beta1RecommenderTypeList =
+  GoogleCloudRecommenderV1beta1InsightTypeList as any as S.Schema<GoogleCloudRecommenderV1beta1RecommenderTypeList>;
 
 /** Response for the `ListRecommender` method. Next ID: 3 */
 export interface GoogleCloudRecommenderV1beta1ListRecommendersResponse {

@@ -104,15 +104,7 @@ export interface PutConfigResponse {
   /** Set up the associated Google Tag on the zone automatically when enabled. */
   setUpTag?: boolean | null;
 }
-export const PutConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    endpoint: S.String,
-    hideOriginalIp: S.Boolean,
-    measurementId: S.String,
-    setUpTag: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({ identifier: "PutConfigResponse" }) as any as S.Schema<PutConfigResponse>;
+export const PutConfigResponse = GetConfigResponse as any as S.Schema<PutConfigResponse>;
 
 export type GetConfigError = Forbidden | CloudflareOpError;
 /** Gets the Google Tag Gateway configuration for a zone. */

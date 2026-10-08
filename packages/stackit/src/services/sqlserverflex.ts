@@ -244,9 +244,8 @@ export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateUserRequest" }) as any as S.Schema<CreateUserRequest>;
 
 export type CreateUserResponseRolesList = Array<string>;
-export const CreateUserResponseRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateUserResponseRolesList>;
+export const CreateUserResponseRolesList =
+  CreateUserRequestRolesList as any as S.Schema<CreateUserResponseRolesList>;
 
 export interface CreateUserResponse {
   default_database: string;
@@ -334,9 +333,8 @@ export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteInstanceRequest" }) as any as S.Schema<DeleteInstanceRequest>;
 
 export interface DeleteInstanceResponse {}
-export const DeleteInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteInstanceResponse",
-}) as any as S.Schema<DeleteInstanceResponse>;
+export const DeleteInstanceResponse =
+  DeleteDatabaseResponse as any as S.Schema<DeleteInstanceResponse>;
 
 export type DeleteUserRequestRegion = "eu01";
 export const DeleteUserRequestRegion = S.String;
@@ -368,9 +366,7 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUserRequest" }) as any as S.Schema<DeleteUserRequest>;
 
 export interface DeleteUserResponse {}
-export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserResponse",
-}) as any as S.Schema<DeleteUserResponse>;
+export const DeleteUserResponse = DeleteDatabaseResponse as any as S.Schema<DeleteUserResponse>;
 
 export type GetBackupRequestRegion = "eu01";
 export const GetBackupRequestRegion = S.String;
@@ -597,9 +593,8 @@ export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of user roles. */
 export type GetUserResponseRolesList = Array<string>;
-export const GetUserResponseRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetUserResponseRolesList>;
+export const GetUserResponseRolesList =
+  CreateUserRequestRolesList as any as S.Schema<GetUserResponseRolesList>;
 
 export interface GetUserResponse {
   default_database: string;
@@ -681,16 +676,7 @@ export interface ListBackup {
   size: number;
   type: string;
 }
-export const ListBackup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    completionTime: S.String,
-    id: S.Number,
-    name: S.String,
-    retainedUntil: S.String,
-    size: S.Number,
-    type: S.String,
-  }),
-).annotate({ identifier: "ListBackup" }) as any as S.Schema<ListBackup>;
+export const ListBackup = GetBackupResponse as any as S.Schema<ListBackup>;
 
 /** List of the backups beloning to that database */
 export type ListBackupsResponseBackupsList = Array<ListBackup>;
@@ -1228,9 +1214,8 @@ export const ListRolesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of roles available for an instance. */
 export type ListRolesResponseRolesList = Array<string>;
-export const ListRolesResponseRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListRolesResponseRolesList>;
+export const ListRolesResponseRolesList =
+  CreateUserRequestRolesList as any as S.Schema<ListRolesResponseRolesList>;
 
 export interface ListRolesResponse {
   /** List of roles available for an instance. */
@@ -1498,9 +1483,8 @@ export const PartialUpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PartialUpdateInstanceRequest>;
 
 export interface PartialUpdateInstanceResponse {}
-export const PartialUpdateInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PartialUpdateInstanceResponse",
-}) as any as S.Schema<PartialUpdateInstanceResponse>;
+export const PartialUpdateInstanceResponse =
+  DeleteDatabaseResponse as any as S.Schema<PartialUpdateInstanceResponse>;
 
 export type ResetUserRequestRegion = "eu01";
 export const ResetUserRequestRegion = S.String;
@@ -1694,9 +1678,8 @@ export const TriggerBackupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TriggerBackupRequest" }) as any as S.Schema<TriggerBackupRequest>;
 
 export interface TriggerBackupResponse {}
-export const TriggerBackupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TriggerBackupResponse",
-}) as any as S.Schema<TriggerBackupResponse>;
+export const TriggerBackupResponse =
+  DeleteDatabaseResponse as any as S.Schema<TriggerBackupResponse>;
 
 export type TriggerRestoreRequestRegion = "eu01";
 export const TriggerRestoreRequestRegion = S.String;
@@ -1732,9 +1715,8 @@ export const TriggerRestoreRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TriggerRestoreRequest" }) as any as S.Schema<TriggerRestoreRequest>;
 
 export interface TriggerRestoreResponse {}
-export const TriggerRestoreResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TriggerRestoreResponse",
-}) as any as S.Schema<TriggerRestoreResponse>;
+export const TriggerRestoreResponse =
+  DeleteDatabaseResponse as any as S.Schema<TriggerRestoreResponse>;
 
 export type UpdateInstanceRequestRegion = "eu01";
 export const UpdateInstanceRequestRegion = S.String;
@@ -1792,9 +1774,8 @@ export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateInstanceRequest" }) as any as S.Schema<UpdateInstanceRequest>;
 
 export interface UpdateInstanceResponse {}
-export const UpdateInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateInstanceResponse",
-}) as any as S.Schema<UpdateInstanceResponse>;
+export const UpdateInstanceResponse =
+  DeleteDatabaseResponse as any as S.Schema<UpdateInstanceResponse>;
 
 export type UpdateInstanceProtectionRequestRegion = "eu01";
 export const UpdateInstanceProtectionRequestRegion = S.String;

@@ -84,9 +84,8 @@ export const CreateBountySubmissionRequestDeliverableType = S.String;
 
 /** Links to the posted work, up to 10. Combinable with `file_ids` and `caption`. */
 export type CreateBountySubmissionRequestDeliverableUrlsList = Array<string>;
-export const CreateBountySubmissionRequestDeliverableUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateBountySubmissionRequestDeliverableUrlsList>;
+export const CreateBountySubmissionRequestDeliverableUrlsList =
+  CreateBountySubmissionRequestDeliverableFileIdsList as any as S.Schema<CreateBountySubmissionRequestDeliverableUrlsList>;
 
 /** The submitted work. Combine `urls`, `file_ids`, and `caption` freely; at least one link or file is required. */
 export interface CreateBountySubmissionRequestDeliverable {
@@ -228,9 +227,8 @@ export type BountySubmissionDeliverableType = "content_url" | "media" | "data_ca
 export const BountySubmissionDeliverableType = S.String;
 
 export type BountySubmissionDeliverableUrlsList = Array<string>;
-export const BountySubmissionDeliverableUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BountySubmissionDeliverableUrlsList>;
+export const BountySubmissionDeliverableUrlsList =
+  CreateBountySubmissionRequestDeliverableFileIdsList as any as S.Schema<BountySubmissionDeliverableUrlsList>;
 
 /** Broad kind of file. */
 export type BountySubmissionFileAttachmentType = "image" | "video" | "audio" | "other";
@@ -523,15 +521,13 @@ export const ListBountySubmissionsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** IDs of uploaded files attached as work, up to 10, each prefixed `file_`. Combinable with `urls` and `caption`. */
 export type SubmitBountySubmissionRequestDeliverableFileIdsList = Array<string>;
-export const SubmitBountySubmissionRequestDeliverableFileIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubmitBountySubmissionRequestDeliverableFileIdsList>;
+export const SubmitBountySubmissionRequestDeliverableFileIdsList =
+  CreateBountySubmissionRequestDeliverableFileIdsList as any as S.Schema<SubmitBountySubmissionRequestDeliverableFileIdsList>;
 
 /** Links to the posted work, up to 10. Combinable with `file_ids` and `caption`. */
 export type SubmitBountySubmissionRequestDeliverableUrlsList = Array<string>;
-export const SubmitBountySubmissionRequestDeliverableUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubmitBountySubmissionRequestDeliverableUrlsList>;
+export const SubmitBountySubmissionRequestDeliverableUrlsList =
+  CreateBountySubmissionRequestDeliverableFileIdsList as any as S.Schema<SubmitBountySubmissionRequestDeliverableUrlsList>;
 
 /** Work to attach to the submission. Combine `urls`, `file_ids`, and `caption` freely; all are optional. */
 export interface SubmitBountySubmissionRequestDeliverable {

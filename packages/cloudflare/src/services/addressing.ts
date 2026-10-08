@@ -880,11 +880,8 @@ export const DeleteAddressMapIpRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAddressMapIpRequest>;
 
 export interface DeleteAddressMapIpResponse {}
-export const DeleteAddressMapIpResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteAddressMapIpResponse",
-}) as any as S.Schema<DeleteAddressMapIpResponse>;
+export const DeleteAddressMapIpResponse =
+  DeleteAddressMapAccountResponse as any as S.Schema<DeleteAddressMapIpResponse>;
 
 export interface DeleteAddressMapZoneRequest {
   /** Identifier of a Cloudflare account. */
@@ -913,11 +910,8 @@ export const DeleteAddressMapZoneRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAddressMapZoneRequest>;
 
 export interface DeleteAddressMapZoneResponse {}
-export const DeleteAddressMapZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteAddressMapZoneResponse",
-}) as any as S.Schema<DeleteAddressMapZoneResponse>;
+export const DeleteAddressMapZoneResponse =
+  DeleteAddressMapAccountResponse as any as S.Schema<DeleteAddressMapZoneResponse>;
 
 export interface DeletePrefixRequest {
   /** Identifier of a Cloudflare account. */
@@ -941,9 +935,8 @@ export const DeletePrefixRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePrefixRequest" }) as any as S.Schema<DeletePrefixRequest>;
 
 export interface DeletePrefixResponse {}
-export const DeletePrefixResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeletePrefixResponse" }) as any as S.Schema<DeletePrefixResponse>;
+export const DeletePrefixResponse =
+  DeleteAddressMapResponse as any as S.Schema<DeletePrefixResponse>;
 
 export interface DeletePrefixDelegationRequest {
   /** Identifier of a Cloudflare account. */
@@ -1011,11 +1004,8 @@ export const DeletePrefixesBgpPrefixRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePrefixesBgpPrefixRequest>;
 
 export interface DeletePrefixesBgpPrefixResponse {}
-export const DeletePrefixesBgpPrefixResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeletePrefixesBgpPrefixResponse",
-}) as any as S.Schema<DeletePrefixesBgpPrefixResponse>;
+export const DeletePrefixesBgpPrefixResponse =
+  DeleteAddressMapAccountResponse as any as S.Schema<DeletePrefixesBgpPrefixResponse>;
 
 export interface DeletePrefixServiceBindingRequest {
   /** Identifier of a Cloudflare account. */
@@ -1044,11 +1034,8 @@ export const DeletePrefixServiceBindingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePrefixServiceBindingRequest>;
 
 export interface DeletePrefixServiceBindingResponse {}
-export const DeletePrefixServiceBindingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeletePrefixServiceBindingResponse",
-}) as any as S.Schema<DeletePrefixServiceBindingResponse>;
+export const DeletePrefixServiceBindingResponse =
+  DeleteAddressMapAccountResponse as any as S.Schema<DeletePrefixServiceBindingResponse>;
 
 export interface DeleteRegionalHostnameRequest {
   /** Identifier. */
@@ -1074,11 +1061,8 @@ export const DeleteRegionalHostnameRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRegionalHostnameRequest>;
 
 export interface DeleteRegionalHostnameResponse {}
-export const DeleteRegionalHostnameResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteRegionalHostnameResponse",
-}) as any as S.Schema<DeleteRegionalHostnameResponse>;
+export const DeleteRegionalHostnameResponse =
+  DeleteAddressMapAccountResponse as any as S.Schema<DeleteRegionalHostnameResponse>;
 
 export interface GetAddressMapRequest {
   /** Identifier of a Cloudflare account. */
@@ -1105,9 +1089,8 @@ export type AddressMapsGetResponseIps = AddressMapsCreateResponseIps;
 export const AddressMapsGetResponseIps = AddressMapsCreateResponseIps;
 
 export type AddressMapsGetResponseIpsList = Array<AddressMapsCreateResponseIps>;
-export const AddressMapsGetResponseIpsList = /*@__PURE__*/ S.Array(
-  AddressMapsCreateResponseIps,
-) as any as S.Schema<AddressMapsGetResponseIpsList>;
+export const AddressMapsGetResponseIpsList =
+  AddressMapsCreateResponseIpsList as any as S.Schema<AddressMapsGetResponseIpsList>;
 
 export type AddressMapsGetResponseMembershipsItemKind = "zone" | "account";
 export const AddressMapsGetResponseMembershipsItemKind = S.String;
@@ -1195,9 +1178,8 @@ export const GetLoaDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetLoaDocumentRequest" }) as any as S.Schema<GetLoaDocumentRequest>;
 
 export interface GetLoaDocumentResponse {}
-export const GetLoaDocumentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetLoaDocumentResponse" }) as any as S.Schema<GetLoaDocumentResponse>;
+export const GetLoaDocumentResponse =
+  DeleteAddressMapResponse as any as S.Schema<GetLoaDocumentResponse>;
 
 export interface GetPrefixRequest {
   /** Identifier of a Cloudflare account. */
@@ -1257,32 +1239,7 @@ export interface GetPrefixResponse {
   /** State of one kind of validation for an IP prefix. */
   rpkiValidationState?: string | null;
 }
-export const GetPrefixResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    accountId: S.optional(S.NullOr(S.String).pipe(T.Body("account_id"))),
-    advertised: S.optional(S.NullOr(S.Boolean)),
-    advertisedModifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("advertised_modified_at"))),
-    approved: S.optional(S.NullOr(S.String)),
-    asn: S.optional(S.NullOr(S.Number)),
-    cidr: S.optional(S.NullOr(S.String)),
-    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    delegateLoaCreation: S.optional(S.NullOr(S.Boolean).pipe(T.Body("delegate_loa_creation"))),
-    description: S.optional(S.NullOr(S.String)),
-    irrValidationState: S.optional(S.NullOr(S.String).pipe(T.Body("irr_validation_state"))),
-    loaDocumentId: S.optional(S.NullOr(S.String).pipe(T.Body("loa_document_id"))),
-    modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
-    onDemandEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("on_demand_enabled"))),
-    onDemandLocked: S.optional(S.NullOr(S.Boolean).pipe(T.Body("on_demand_locked"))),
-    ownershipValidationState: S.optional(
-      S.NullOr(S.String).pipe(T.Body("ownership_validation_state")),
-    ),
-    ownershipValidationToken: S.optional(
-      S.NullOr(S.String).pipe(T.Body("ownership_validation_token")),
-    ),
-    rpkiValidationState: S.optional(S.NullOr(S.String).pipe(T.Body("rpki_validation_state"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetPrefixResponse" }) as any as S.Schema<GetPrefixResponse>;
+export const GetPrefixResponse = CreatePrefixResponse as any as S.Schema<GetPrefixResponse>;
 
 export interface GetPrefixAdvertisementStatusRequest {
   /** Identifier of a Cloudflare account. */
@@ -1374,25 +1331,8 @@ export interface GetPrefixBgpPrefixResponse {
   modifiedAt?: string | null;
   onDemand?: PrefixesBgpPrefixesCreateResponseOnDemand | null;
 }
-export const GetPrefixBgpPrefixResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    asn: S.optional(S.NullOr(S.Number)),
-    asnPrependCount: S.optional(S.NullOr(S.Number).pipe(T.Body("asn_prepend_count"))),
-    autoAdvertiseWithdraw: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_advertise_withdraw"))),
-    bgpSignalOpts: S.optional(
-      S.NullOr(PrefixesBgpPrefixesCreateResponseBgpSignalOpts).pipe(T.Body("bgp_signal_opts")),
-    ),
-    cidr: S.optional(S.NullOr(S.String)),
-    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
-    onDemand: S.optional(
-      S.NullOr(PrefixesBgpPrefixesCreateResponseOnDemand).pipe(T.Body("on_demand")),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetPrefixBgpPrefixResponse",
-}) as any as S.Schema<GetPrefixBgpPrefixResponse>;
+export const GetPrefixBgpPrefixResponse =
+  CreatePrefixBgpPrefixResponse as any as S.Schema<GetPrefixBgpPrefixResponse>;
 
 export interface GetPrefixServiceBindingRequest {
   /** Identifier of a Cloudflare account. */
@@ -1497,16 +1437,8 @@ export interface GetRegionalHostnameResponse {
   /** Configure which routing method to use for the regional hostname */
   routing: string;
 }
-export const GetRegionalHostnameResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdOn: S.String.pipe(T.Body("created_on")),
-    hostname: S.String,
-    regionKey: S.String.pipe(T.Body("region_key")),
-    routing: S.String,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetRegionalHostnameResponse",
-}) as any as S.Schema<GetRegionalHostnameResponse>;
+export const GetRegionalHostnameResponse =
+  CreateRegionalHostnameResponse as any as S.Schema<GetRegionalHostnameResponse>;
 
 export interface ListAddressMapsRequest {
   /** Identifier of a Cloudflare account. */
@@ -2180,32 +2112,7 @@ export interface PatchPrefixResponse {
   /** State of one kind of validation for an IP prefix. */
   rpkiValidationState?: string | null;
 }
-export const PatchPrefixResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    accountId: S.optional(S.NullOr(S.String).pipe(T.Body("account_id"))),
-    advertised: S.optional(S.NullOr(S.Boolean)),
-    advertisedModifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("advertised_modified_at"))),
-    approved: S.optional(S.NullOr(S.String)),
-    asn: S.optional(S.NullOr(S.Number)),
-    cidr: S.optional(S.NullOr(S.String)),
-    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    delegateLoaCreation: S.optional(S.NullOr(S.Boolean).pipe(T.Body("delegate_loa_creation"))),
-    description: S.optional(S.NullOr(S.String)),
-    irrValidationState: S.optional(S.NullOr(S.String).pipe(T.Body("irr_validation_state"))),
-    loaDocumentId: S.optional(S.NullOr(S.String).pipe(T.Body("loa_document_id"))),
-    modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
-    onDemandEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("on_demand_enabled"))),
-    onDemandLocked: S.optional(S.NullOr(S.Boolean).pipe(T.Body("on_demand_locked"))),
-    ownershipValidationState: S.optional(
-      S.NullOr(S.String).pipe(T.Body("ownership_validation_state")),
-    ),
-    ownershipValidationToken: S.optional(
-      S.NullOr(S.String).pipe(T.Body("ownership_validation_token")),
-    ),
-    rpkiValidationState: S.optional(S.NullOr(S.String).pipe(T.Body("rpki_validation_state"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PatchPrefixResponse" }) as any as S.Schema<PatchPrefixResponse>;
+export const PatchPrefixResponse = CreatePrefixResponse as any as S.Schema<PatchPrefixResponse>;
 
 export interface PatchPrefixAdvertisementStatusRequest {
   /** Identifier of a Cloudflare account. */
@@ -2240,14 +2147,8 @@ export interface PatchPrefixAdvertisementStatusResponse {
   /** Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled. */
   advertisedModifiedAt?: string | null;
 }
-export const PatchPrefixAdvertisementStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    advertised: S.optional(S.NullOr(S.Boolean)),
-    advertisedModifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("advertised_modified_at"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PatchPrefixAdvertisementStatusResponse",
-}) as any as S.Schema<PatchPrefixAdvertisementStatusResponse>;
+export const PatchPrefixAdvertisementStatusResponse =
+  GetPrefixAdvertisementStatusResponse as any as S.Schema<PatchPrefixAdvertisementStatusResponse>;
 
 export interface PrefixesBgpPrefixesEditRequestOnDemand {
   advertised?: boolean;
@@ -2319,25 +2220,8 @@ export interface PatchPrefixBgpPrefixResponse {
   modifiedAt?: string | null;
   onDemand?: PrefixesBgpPrefixesCreateResponseOnDemand | null;
 }
-export const PatchPrefixBgpPrefixResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    asn: S.optional(S.NullOr(S.Number)),
-    asnPrependCount: S.optional(S.NullOr(S.Number).pipe(T.Body("asn_prepend_count"))),
-    autoAdvertiseWithdraw: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_advertise_withdraw"))),
-    bgpSignalOpts: S.optional(
-      S.NullOr(PrefixesBgpPrefixesCreateResponseBgpSignalOpts).pipe(T.Body("bgp_signal_opts")),
-    ),
-    cidr: S.optional(S.NullOr(S.String)),
-    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
-    onDemand: S.optional(
-      S.NullOr(PrefixesBgpPrefixesCreateResponseOnDemand).pipe(T.Body("on_demand")),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PatchPrefixBgpPrefixResponse",
-}) as any as S.Schema<PatchPrefixBgpPrefixResponse>;
+export const PatchPrefixBgpPrefixResponse =
+  CreatePrefixBgpPrefixResponse as any as S.Schema<PatchPrefixBgpPrefixResponse>;
 
 export interface PatchRegionalHostnameRequest {
   /** Identifier. */
@@ -2376,16 +2260,8 @@ export interface PatchRegionalHostnameResponse {
   /** Configure which routing method to use for the regional hostname */
   routing: string;
 }
-export const PatchRegionalHostnameResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdOn: S.String.pipe(T.Body("created_on")),
-    hostname: S.String,
-    regionKey: S.String.pipe(T.Body("region_key")),
-    routing: S.String,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PatchRegionalHostnameResponse",
-}) as any as S.Schema<PatchRegionalHostnameResponse>;
+export const PatchRegionalHostnameResponse =
+  CreateRegionalHostnameResponse as any as S.Schema<PatchRegionalHostnameResponse>;
 
 export interface PutAddressMapAccountRequest {
   /** Identifier of a Cloudflare account. */
@@ -2414,11 +2290,8 @@ export const PutAddressMapAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutAddressMapAccountRequest>;
 
 export interface PutAddressMapAccountResponse {}
-export const PutAddressMapAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PutAddressMapAccountResponse",
-}) as any as S.Schema<PutAddressMapAccountResponse>;
+export const PutAddressMapAccountResponse =
+  DeleteAddressMapAccountResponse as any as S.Schema<PutAddressMapAccountResponse>;
 
 export interface PutAddressMapIpRequest {
   /** Identifier of a Cloudflare account. */
@@ -2445,9 +2318,8 @@ export const PutAddressMapIpRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutAddressMapIpRequest" }) as any as S.Schema<PutAddressMapIpRequest>;
 
 export interface PutAddressMapIpResponse {}
-export const PutAddressMapIpResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PutAddressMapIpResponse" }) as any as S.Schema<PutAddressMapIpResponse>;
+export const PutAddressMapIpResponse =
+  DeleteAddressMapResponse as any as S.Schema<PutAddressMapIpResponse>;
 
 export interface PutAddressMapZoneRequest {
   /** Identifier of a Cloudflare account. */
@@ -2474,11 +2346,8 @@ export const PutAddressMapZoneRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutAddressMapZoneRequest" }) as any as S.Schema<PutAddressMapZoneRequest>;
 
 export interface PutAddressMapZoneResponse {}
-export const PutAddressMapZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PutAddressMapZoneResponse",
-}) as any as S.Schema<PutAddressMapZoneResponse>;
+export const PutAddressMapZoneResponse =
+  DeleteAddressMapAccountResponse as any as S.Schema<PutAddressMapZoneResponse>;
 
 export interface ValidatePrefixRequest {
   /** Identifier of a Cloudflare account. */
@@ -2538,32 +2407,8 @@ export interface ValidatePrefixResponse {
   /** State of one kind of validation for an IP prefix. */
   rpkiValidationState?: string | null;
 }
-export const ValidatePrefixResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    accountId: S.optional(S.NullOr(S.String).pipe(T.Body("account_id"))),
-    advertised: S.optional(S.NullOr(S.Boolean)),
-    advertisedModifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("advertised_modified_at"))),
-    approved: S.optional(S.NullOr(S.String)),
-    asn: S.optional(S.NullOr(S.Number)),
-    cidr: S.optional(S.NullOr(S.String)),
-    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    delegateLoaCreation: S.optional(S.NullOr(S.Boolean).pipe(T.Body("delegate_loa_creation"))),
-    description: S.optional(S.NullOr(S.String)),
-    irrValidationState: S.optional(S.NullOr(S.String).pipe(T.Body("irr_validation_state"))),
-    loaDocumentId: S.optional(S.NullOr(S.String).pipe(T.Body("loa_document_id"))),
-    modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
-    onDemandEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("on_demand_enabled"))),
-    onDemandLocked: S.optional(S.NullOr(S.Boolean).pipe(T.Body("on_demand_locked"))),
-    ownershipValidationState: S.optional(
-      S.NullOr(S.String).pipe(T.Body("ownership_validation_state")),
-    ),
-    ownershipValidationToken: S.optional(
-      S.NullOr(S.String).pipe(T.Body("ownership_validation_token")),
-    ),
-    rpkiValidationState: S.optional(S.NullOr(S.String).pipe(T.Body("rpki_validation_state"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "ValidatePrefixResponse" }) as any as S.Schema<ValidatePrefixResponse>;
+export const ValidatePrefixResponse =
+  CreatePrefixResponse as any as S.Schema<ValidatePrefixResponse>;
 
 export type CreateAddressMapError =
   | FeatureNotEnabled

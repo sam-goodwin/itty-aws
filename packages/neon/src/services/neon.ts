@@ -184,11 +184,8 @@ export const AddBranchNeonAuthTrustedDomainRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Codec<AddBranchNeonAuthTrustedDomainRequest>;
 
 export interface AddBranchNeonAuthTrustedDomainResponse {}
-export const AddBranchNeonAuthTrustedDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AddBranchNeonAuthTrustedDomainResponse",
-}) as any as S.Codec<AddBranchNeonAuthTrustedDomainResponse>;
+export const AddBranchNeonAuthTrustedDomainResponse =
+  AcceptProjectTransferRequestResponse as any as S.Schema<AddBranchNeonAuthTrustedDomainResponse>;
 
 /** Deprecated. The roles the JWKS should be mapped to. By default, the JWKS is mapped to the `authenticator`, `authenticated`, and `anonymous` roles. */
 export type AddProjectJWKSRequestRoleNamesList = Array<string>;
@@ -226,9 +223,8 @@ export const AddProjectJWKSRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Database role names that are permitted to authenticate using this JWKS configuration. */
 export type JWKSRoleNamesList = Array<string>;
-export const JWKSRoleNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Codec<JWKSRoleNamesList>;
+export const JWKSRoleNamesList =
+  AddProjectJWKSRequestRoleNamesList as any as S.Schema<JWKSRoleNamesList>;
 
 export interface JWKS {
   /** The JWKS configuration's ID. */
@@ -404,11 +400,8 @@ export const AssignOrganizationVPCEndpointRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Codec<AssignOrganizationVPCEndpointRequest>;
 
 export interface AssignOrganizationVPCEndpointResponse {}
-export const AssignOrganizationVPCEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssignOrganizationVPCEndpointResponse",
-}) as any as S.Codec<AssignOrganizationVPCEndpointResponse>;
+export const AssignOrganizationVPCEndpointResponse =
+  AcceptProjectTransferRequestResponse as any as S.Schema<AssignOrganizationVPCEndpointResponse>;
 
 export interface AssignProjectVPCEndpointRequest {
   /** The Neon project ID */
@@ -435,11 +428,8 @@ export const AssignProjectVPCEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<AssignProjectVPCEndpointRequest>;
 
 export interface AssignProjectVPCEndpointResponse {}
-export const AssignProjectVPCEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssignProjectVPCEndpointResponse",
-}) as any as S.Codec<AssignProjectVPCEndpointResponse>;
+export const AssignProjectVPCEndpointResponse =
+  AcceptProjectTransferRequestResponse as any as S.Schema<AssignProjectVPCEndpointResponse>;
 
 export interface CountProjectBranchesRequest {
   /** The Neon project ID */
@@ -851,9 +841,8 @@ export const ProjectQuota = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of IP addresses that are allowed to connect to the endpoint. */
 export type AllowedIpsIpsList = Array<string>;
-export const AllowedIpsIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Codec<AllowedIpsIpsList>;
+export const AllowedIpsIpsList =
+  AddProjectJWKSRequestRoleNamesList as any as S.Schema<AllowedIpsIpsList>;
 
 /** A list of IP addresses that are allowed to connect to the compute endpoint. If the list is empty or not set, all IP addresses are allowed. If protected_branches_only is true, the list will be applied only to protected branches. */
 export interface AllowedIps {
@@ -897,9 +886,8 @@ export const ProjectAuditLogLevel = S.String;
 
 /** Names of shared preload libraries to enable for the project. */
 export type PreloadLibrariesEnabledLibrariesList = Array<string>;
-export const PreloadLibrariesEnabledLibrariesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Codec<PreloadLibrariesEnabledLibrariesList>;
+export const PreloadLibrariesEnabledLibrariesList =
+  AddProjectJWKSRequestRoleNamesList as any as S.Schema<PreloadLibrariesEnabledLibrariesList>;
 
 /** The shared libraries to preload into the project's compute instances. */
 export interface PreloadLibraries {
@@ -976,17 +964,11 @@ export const CreateProjectRequestProjectBranch = /*@__PURE__*/ S.suspend(() =>
 
 /** A raw representation of Postgres settings */
 export type PgSettingsData = { [key: string]: string | undefined };
-export const PgSettingsData = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Codec<PgSettingsData>;
+export const PgSettingsData = AnnotationValueData as any as S.Schema<PgSettingsData>;
 
 /** Deprecated. A raw representation of PgBouncer settings. Removal scheduled for June 20, 2026. */
 export type PgbouncerSettingsData = { [key: string]: string | undefined };
-export const PgbouncerSettingsData = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Codec<PgbouncerSettingsData>;
+export const PgbouncerSettingsData = AnnotationValueData as any as S.Schema<PgbouncerSettingsData>;
 
 /** A collection of settings for a Neon endpoint */
 export interface DefaultEndpointSettings {
@@ -1323,9 +1305,8 @@ export const CreateProjectResponseDatabasesList = /*@__PURE__*/ S.Array(
 ) as any as S.Codec<CreateProjectResponseDatabasesList>;
 
 export type CreateProjectResponseOperationsList = Array<Operation>;
-export const CreateProjectResponseOperationsList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Codec<CreateProjectResponseOperationsList>;
+export const CreateProjectResponseOperationsList =
+  AddProjectJWKSResponseOperationsList as any as S.Schema<CreateProjectResponseOperationsList>;
 
 /** The resolved user model that contains details of the user/org/integration/api_key used for branch creation. This field is filled only in listing/get/create/get/update/delete methods, if it is empty when calling other handlers, it does not mean that it is empty in the system. */
 export interface BranchCreatedBy {
@@ -1708,32 +1689,27 @@ export const CreateProjectBranchRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Compute endpoints in the project. Each includes `id`, `branch_id`, `host`, and `type`. */
 export type CreateProjectBranchResponseEndpointsList = Array<Endpoint>;
-export const CreateProjectBranchResponseEndpointsList = /*@__PURE__*/ S.Array(
-  Endpoint,
-) as any as S.Codec<CreateProjectBranchResponseEndpointsList>;
+export const CreateProjectBranchResponseEndpointsList =
+  CreateProjectResponseEndpointsList as any as S.Schema<CreateProjectBranchResponseEndpointsList>;
 
 export type CreateProjectBranchResponseOperationsList = Array<Operation>;
-export const CreateProjectBranchResponseOperationsList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Codec<CreateProjectBranchResponseOperationsList>;
+export const CreateProjectBranchResponseOperationsList =
+  AddProjectJWKSResponseOperationsList as any as S.Schema<CreateProjectBranchResponseOperationsList>;
 
 /** Roles belonging to the branch. Each role includes fields such as `branch_id`, `name`, `protected`, `created_at`, and `updated_at`. */
 export type CreateProjectBranchResponseRolesList = Array<Role>;
-export const CreateProjectBranchResponseRolesList = /*@__PURE__*/ S.Array(
-  Role,
-) as any as S.Codec<CreateProjectBranchResponseRolesList>;
+export const CreateProjectBranchResponseRolesList =
+  CreateProjectResponseRolesList as any as S.Schema<CreateProjectBranchResponseRolesList>;
 
 /** Databases on the branch. Each includes `id`, `name`, `owner_name`, and `created_at`. */
 export type CreateProjectBranchResponseDatabasesList = Array<Database>;
-export const CreateProjectBranchResponseDatabasesList = /*@__PURE__*/ S.Array(
-  Database,
-) as any as S.Codec<CreateProjectBranchResponseDatabasesList>;
+export const CreateProjectBranchResponseDatabasesList =
+  CreateProjectResponseDatabasesList as any as S.Schema<CreateProjectBranchResponseDatabasesList>;
 
 /** Connection URIs for the compute endpoint, including credentials. */
 export type CreateProjectBranchResponseConnectionUrisList = Array<ConnectionDetails>;
-export const CreateProjectBranchResponseConnectionUrisList = /*@__PURE__*/ S.Array(
-  ConnectionDetails,
-) as any as S.Codec<CreateProjectBranchResponseConnectionUrisList>;
+export const CreateProjectBranchResponseConnectionUrisList =
+  CreateProjectResponseConnectionUrisList as any as S.Schema<CreateProjectBranchResponseConnectionUrisList>;
 
 export interface CreateProjectBranchResponse {
   /** Branch returned by the request. */
@@ -1763,9 +1739,8 @@ export const CreateProjectBranchResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Compute endpoints to create together with the branch. If omitted, the branch is created without any compute endpoint. Endpoints can be added to the branch separately after creation. */
 export type BranchCreateRequestEndpointsList = Array<BranchCreateRequestEndpointOptions>;
-export const BranchCreateRequestEndpointsList = /*@__PURE__*/ S.Array(
-  BranchCreateRequestEndpointOptions,
-) as any as S.Codec<BranchCreateRequestEndpointsList>;
+export const BranchCreateRequestEndpointsList =
+  CreateProjectBranchRequestEndpointsList as any as S.Schema<BranchCreateRequestEndpointsList>;
 
 /** Optional configuration for the new branch, for example `name`, `parent_id` (fork from a branch), `parent_lsn` or `parent_timestamp` (point-in-time branching), and `protected`. */
 export type BranchCreateRequestBranch = CreateProjectBranchRequestBranch;
@@ -1839,32 +1814,27 @@ export const CreateProjectBranchAnonymizedRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Compute endpoints in the project. Each includes `id`, `branch_id`, `host`, and `type`. */
 export type CreateProjectBranchAnonymizedResponseEndpointsList = Array<Endpoint>;
-export const CreateProjectBranchAnonymizedResponseEndpointsList = /*@__PURE__*/ S.Array(
-  Endpoint,
-) as any as S.Codec<CreateProjectBranchAnonymizedResponseEndpointsList>;
+export const CreateProjectBranchAnonymizedResponseEndpointsList =
+  CreateProjectResponseEndpointsList as any as S.Schema<CreateProjectBranchAnonymizedResponseEndpointsList>;
 
 export type CreateProjectBranchAnonymizedResponseOperationsList = Array<Operation>;
-export const CreateProjectBranchAnonymizedResponseOperationsList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Codec<CreateProjectBranchAnonymizedResponseOperationsList>;
+export const CreateProjectBranchAnonymizedResponseOperationsList =
+  AddProjectJWKSResponseOperationsList as any as S.Schema<CreateProjectBranchAnonymizedResponseOperationsList>;
 
 /** Roles belonging to the branch. Each role includes fields such as `branch_id`, `name`, `protected`, `created_at`, and `updated_at`. */
 export type CreateProjectBranchAnonymizedResponseRolesList = Array<Role>;
-export const CreateProjectBranchAnonymizedResponseRolesList = /*@__PURE__*/ S.Array(
-  Role,
-) as any as S.Codec<CreateProjectBranchAnonymizedResponseRolesList>;
+export const CreateProjectBranchAnonymizedResponseRolesList =
+  CreateProjectResponseRolesList as any as S.Schema<CreateProjectBranchAnonymizedResponseRolesList>;
 
 /** Databases on the branch. Each includes `id`, `name`, `owner_name`, and `created_at`. */
 export type CreateProjectBranchAnonymizedResponseDatabasesList = Array<Database>;
-export const CreateProjectBranchAnonymizedResponseDatabasesList = /*@__PURE__*/ S.Array(
-  Database,
-) as any as S.Codec<CreateProjectBranchAnonymizedResponseDatabasesList>;
+export const CreateProjectBranchAnonymizedResponseDatabasesList =
+  CreateProjectResponseDatabasesList as any as S.Schema<CreateProjectBranchAnonymizedResponseDatabasesList>;
 
 /** Connection URIs for the compute endpoint, including credentials. */
 export type CreateProjectBranchAnonymizedResponseConnectionUrisList = Array<ConnectionDetails>;
-export const CreateProjectBranchAnonymizedResponseConnectionUrisList = /*@__PURE__*/ S.Array(
-  ConnectionDetails,
-) as any as S.Codec<CreateProjectBranchAnonymizedResponseConnectionUrisList>;
+export const CreateProjectBranchAnonymizedResponseConnectionUrisList =
+  CreateProjectResponseConnectionUrisList as any as S.Schema<CreateProjectBranchAnonymizedResponseConnectionUrisList>;
 
 export interface CreateProjectBranchAnonymizedResponse {
   /** Branch returned by the request. */
@@ -1879,18 +1849,8 @@ export interface CreateProjectBranchAnonymizedResponse {
   /** Connection URIs for the compute endpoint, including credentials. */
   connection_uris?: CreateProjectBranchAnonymizedResponseConnectionUrisList;
 }
-export const CreateProjectBranchAnonymizedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branch: Branch,
-    endpoints: CreateProjectBranchAnonymizedResponseEndpointsList,
-    operations: CreateProjectBranchAnonymizedResponseOperationsList,
-    roles: CreateProjectBranchAnonymizedResponseRolesList,
-    databases: CreateProjectBranchAnonymizedResponseDatabasesList,
-    connection_uris: S.optional(CreateProjectBranchAnonymizedResponseConnectionUrisList),
-  }),
-).annotate({
-  identifier: "CreateProjectBranchAnonymizedResponse",
-}) as any as S.Codec<CreateProjectBranchAnonymizedResponse>;
+export const CreateProjectBranchAnonymizedResponse =
+  CreateProjectBranchResponse as any as S.Schema<CreateProjectBranchAnonymizedResponse>;
 
 /** Access level for the bucket. Defaults to `private`. Set to `public_read` to allow anonymous `GetObject`/`HeadObject` on objects in this bucket. */
 export type CreateProjectBranchBucketRequestAccessLevel = "private" | "public_read";
@@ -1957,9 +1917,8 @@ export const CreateProjectBranchDataAPIRequestAuthProvider = S.String;
 
 /** List of schemas to expose via the API. Default: ["public"] */
 export type DataAPISettingsDbSchemasList = Array<string>;
-export const DataAPISettingsDbSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Codec<DataAPISettingsDbSchemasList>;
+export const DataAPISettingsDbSchemasList =
+  AddProjectJWKSRequestRoleNamesList as any as S.Schema<DataAPISettingsDbSchemasList>;
 
 /** Configuration settings for the Neon Data API */
 export interface DataAPISettings {
@@ -2096,9 +2055,8 @@ export const CreateProjectBranchDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<CreateProjectBranchDatabaseRequest>;
 
 export type CreateProjectBranchDatabaseResponseOperationsList = Array<Operation>;
-export const CreateProjectBranchDatabaseResponseOperationsList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Codec<CreateProjectBranchDatabaseResponseOperationsList>;
+export const CreateProjectBranchDatabaseResponseOperationsList =
+  AddProjectJWKSResponseOperationsList as any as S.Schema<CreateProjectBranchDatabaseResponseOperationsList>;
 
 export interface CreateProjectBranchDatabaseResponse {
   /** Database object returned by the operation. */
@@ -2162,9 +2120,8 @@ export const NeonFunctionDeploymentStatus = S.String;
 
 /** The NAMES of the deployment's environment variables, sorted. Values are encrypted at rest and are never returned -- they are write-only. To change a value, deploy the variable with the new value; to remove a variable, deploy it with an empty value. */
 export type NeonFunctionDeploymentEnvironmentList = Array<string>;
-export const NeonFunctionDeploymentEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Codec<NeonFunctionDeploymentEnvironmentList>;
+export const NeonFunctionDeploymentEnvironmentList =
+  AddProjectJWKSRequestRoleNamesList as any as S.Schema<NeonFunctionDeploymentEnvironmentList>;
 
 export interface NeonFunctionDeployment {
   /** The deployment id, which is the platform version number (monotonic per function). */
@@ -2239,9 +2196,8 @@ export const CreateProjectBranchRoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<CreateProjectBranchRoleRequest>;
 
 export type CreateProjectBranchRoleResponseOperationsList = Array<Operation>;
-export const CreateProjectBranchRoleResponseOperationsList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Codec<CreateProjectBranchRoleResponseOperationsList>;
+export const CreateProjectBranchRoleResponseOperationsList =
+  AddProjectJWKSResponseOperationsList as any as S.Schema<CreateProjectBranchRoleResponseOperationsList>;
 
 export interface CreateProjectBranchRoleResponse {
   /** Role details for the requested database role. The `password` field is included in the response when a role is created or its password is reset, and is not returned in subsequent read requests. Store it securely at that time. */
@@ -2377,7 +2333,8 @@ export const CreateProjectBranchTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Trigger type discriminator. */
 export type ScheduleTriggerType = "schedule";
-export const ScheduleTriggerType = /*@__PURE__*/ S.Literals(["schedule"]);
+export const ScheduleTriggerType =
+  ScheduleTriggerCreateRequestType as any as S.Schema<ScheduleTriggerType>;
 /** A branch-effective schedule trigger for a Function. */
 export interface ScheduleTrigger {
   /** Trigger type discriminator. */
@@ -2528,9 +2485,8 @@ export const CreateProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<CreateProjectEndpointRequest>;
 
 export type CreateProjectEndpointResponseOperationsList = Array<Operation>;
-export const CreateProjectEndpointResponseOperationsList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Codec<CreateProjectEndpointResponseOperationsList>;
+export const CreateProjectEndpointResponseOperationsList =
+  AddProjectJWKSResponseOperationsList as any as S.Schema<CreateProjectEndpointResponseOperationsList>;
 
 export interface CreateProjectEndpointResponse {
   /** Compute endpoint created or retrieved, including its current lifecycle state. */
@@ -2651,9 +2607,8 @@ export const Snapshot = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Snapshot" }) as any as S.Codec<Snapshot>;
 
 export type CreateSnapshotResponseOperationsList = Array<Operation>;
-export const CreateSnapshotResponseOperationsList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Codec<CreateSnapshotResponseOperationsList>;
+export const CreateSnapshotResponseOperationsList =
+  AddProjectJWKSResponseOperationsList as any as S.Schema<CreateSnapshotResponseOperationsList>;
 
 export interface CreateSnapshotResponse {
   snapshot: Snapshot;
@@ -2698,11 +2653,8 @@ export const DeleteBranchNeonAuthOauthProviderRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Codec<DeleteBranchNeonAuthOauthProviderRequest>;
 
 export interface DeleteBranchNeonAuthOauthProviderResponse {}
-export const DeleteBranchNeonAuthOauthProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteBranchNeonAuthOauthProviderResponse",
-}) as any as S.Codec<DeleteBranchNeonAuthOauthProviderResponse>;
+export const DeleteBranchNeonAuthOauthProviderResponse =
+  AcceptProjectTransferRequestResponse as any as S.Schema<DeleteBranchNeonAuthOauthProviderResponse>;
 
 export interface NeonAuthDeleteDomainFromRedirectURIWhitelistItem {
   /** URI to remove from the redirect URI whitelist. */
@@ -2750,11 +2702,8 @@ export const DeleteBranchNeonAuthTrustedDomainRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Codec<DeleteBranchNeonAuthTrustedDomainRequest>;
 
 export interface DeleteBranchNeonAuthTrustedDomainResponse {}
-export const DeleteBranchNeonAuthTrustedDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteBranchNeonAuthTrustedDomainResponse",
-}) as any as S.Codec<DeleteBranchNeonAuthTrustedDomainResponse>;
+export const DeleteBranchNeonAuthTrustedDomainResponse =
+  AcceptProjectTransferRequestResponse as any as S.Schema<DeleteBranchNeonAuthTrustedDomainResponse>;
 
 export interface DeleteBranchNeonAuthUserRequest {
   /** The Neon project ID */
@@ -2781,11 +2730,8 @@ export const DeleteBranchNeonAuthUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<DeleteBranchNeonAuthUserRequest>;
 
 export interface DeleteBranchNeonAuthUserResponse {}
-export const DeleteBranchNeonAuthUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteBranchNeonAuthUserResponse",
-}) as any as S.Codec<DeleteBranchNeonAuthUserResponse>;
+export const DeleteBranchNeonAuthUserResponse =
+  AcceptProjectTransferRequestResponse as any as S.Schema<DeleteBranchNeonAuthUserResponse>;
 
 export interface DeleteOrganizationSpendingLimitRequest {
   /** The Neon organization ID */
@@ -2833,11 +2779,8 @@ export const DeleteOrganizationVPCEndpointRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Codec<DeleteOrganizationVPCEndpointRequest>;
 
 export interface DeleteOrganizationVPCEndpointResponse {}
-export const DeleteOrganizationVPCEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationVPCEndpointResponse",
-}) as any as S.Codec<DeleteOrganizationVPCEndpointResponse>;
+export const DeleteOrganizationVPCEndpointResponse =
+  AcceptProjectTransferRequestResponse as any as S.Schema<DeleteOrganizationVPCEndpointResponse>;
 
 export interface DeleteProjectRequest {
   /** The Neon project ID */
@@ -2880,9 +2823,8 @@ export const DeleteProjectBranchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<DeleteProjectBranchRequest>;
 
 export type DeleteProjectBranchResponseOperationsList = Array<Operation>;
-export const DeleteProjectBranchResponseOperationsList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Codec<DeleteProjectBranchResponseOperationsList>;
+export const DeleteProjectBranchResponseOperationsList =
+  AddProjectJWKSResponseOperationsList as any as S.Schema<DeleteProjectBranchResponseOperationsList>;
 
 export interface DeleteProjectBranchResponse {
   /** Branch returned by the request. */
@@ -2923,11 +2865,8 @@ export const DeleteProjectBranchBucketRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<DeleteProjectBranchBucketRequest>;
 
 export interface DeleteProjectBranchBucketResponse {}
-export const DeleteProjectBranchBucketResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteProjectBranchBucketResponse",
-}) as any as S.Codec<DeleteProjectBranchBucketResponse>;
+export const DeleteProjectBranchBucketResponse =
+  AcceptProjectTransferRequestResponse as any as S.Schema<DeleteProjectBranchBucketResponse>;
 
 export interface DeleteProjectBranchBucketObjectRequest {
   /** The Neon project ID */
@@ -2957,11 +2896,8 @@ export const DeleteProjectBranchBucketObjectRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Codec<DeleteProjectBranchBucketObjectRequest>;
 
 export interface DeleteProjectBranchBucketObjectResponse {}
-export const DeleteProjectBranchBucketObjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteProjectBranchBucketObjectResponse",
-}) as any as S.Codec<DeleteProjectBranchBucketObjectResponse>;
+export const DeleteProjectBranchBucketObjectResponse =
+  AcceptProjectTransferRequestResponse as any as S.Schema<DeleteProjectBranchBucketObjectResponse>;
 
 export interface DeleteProjectBranchBucketObjectsByPrefixRequest {
   /** The Neon project ID */
@@ -3027,11 +2963,8 @@ export const DeleteProjectBranchCustomDomainRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Codec<DeleteProjectBranchCustomDomainRequest>;
 
 export interface DeleteProjectBranchCustomDomainResponse {}
-export const DeleteProjectBranchCustomDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteProjectBranchCustomDomainResponse",
-}) as any as S.Codec<DeleteProjectBranchCustomDomainResponse>;
+export const DeleteProjectBranchCustomDomainResponse =
+  AcceptProjectTransferRequestResponse as any as S.Schema<DeleteProjectBranchCustomDomainResponse>;
 
 export interface DeleteProjectBranchDataAPIRequest {
   /** The Neon project ID */
@@ -3058,11 +2991,8 @@ export const DeleteProjectBranchDataAPIRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<DeleteProjectBranchDataAPIRequest>;
 
 export type DeleteProjectBranchDataAPIResponse = unknown;
-export const DeleteProjectBranchDataAPIResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteProjectBranchDataAPIResponse",
-}) as any as S.Codec<DeleteProjectBranchDataAPIResponse>;
+export const DeleteProjectBranchDataAPIResponse =
+  DeleteOrganizationSpendingLimitResponse as any as S.Schema<DeleteProjectBranchDataAPIResponse>;
 
 export interface DeleteProjectBranchDatabaseRequest {
   /** The Neon project ID */
@@ -3089,23 +3019,16 @@ export const DeleteProjectBranchDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<DeleteProjectBranchDatabaseRequest>;
 
 export type DeleteProjectBranchDatabaseResponseOperationsList = Array<Operation>;
-export const DeleteProjectBranchDatabaseResponseOperationsList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Codec<DeleteProjectBranchDatabaseResponseOperationsList>;
+export const DeleteProjectBranchDatabaseResponseOperationsList =
+  AddProjectJWKSResponseOperationsList as any as S.Schema<DeleteProjectBranchDatabaseResponseOperationsList>;
 
 export interface DeleteProjectBranchDatabaseResponse {
   /** Database object returned by the operation. */
   database: Database;
   operations: DeleteProjectBranchDatabaseResponseOperationsList;
 }
-export const DeleteProjectBranchDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    database: Database,
-    operations: DeleteProjectBranchDatabaseResponseOperationsList,
-  }),
-).annotate({
-  identifier: "DeleteProjectBranchDatabaseResponse",
-}) as any as S.Codec<DeleteProjectBranchDatabaseResponse>;
+export const DeleteProjectBranchDatabaseResponse =
+  CreateProjectBranchDatabaseResponse as any as S.Schema<DeleteProjectBranchDatabaseResponse>;
 
 export interface DeleteProjectBranchFunctionRequest {
   /** The Neon project ID */
@@ -3132,11 +3055,8 @@ export const DeleteProjectBranchFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<DeleteProjectBranchFunctionRequest>;
 
 export interface DeleteProjectBranchFunctionResponse {}
-export const DeleteProjectBranchFunctionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteProjectBranchFunctionResponse",
-}) as any as S.Codec<DeleteProjectBranchFunctionResponse>;
+export const DeleteProjectBranchFunctionResponse =
+  AcceptProjectTransferRequestResponse as any as S.Schema<DeleteProjectBranchFunctionResponse>;
 
 export interface DeleteProjectBranchRoleRequest {
   /** The Neon project ID */
@@ -3163,23 +3083,16 @@ export const DeleteProjectBranchRoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<DeleteProjectBranchRoleRequest>;
 
 export type DeleteProjectBranchRoleResponseOperationsList = Array<Operation>;
-export const DeleteProjectBranchRoleResponseOperationsList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Codec<DeleteProjectBranchRoleResponseOperationsList>;
+export const DeleteProjectBranchRoleResponseOperationsList =
+  AddProjectJWKSResponseOperationsList as any as S.Schema<DeleteProjectBranchRoleResponseOperationsList>;
 
 export interface DeleteProjectBranchRoleResponse {
   /** Role details for the requested database role. The `password` field is included in the response when a role is created or its password is reset, and is not returned in subsequent read requests. Store it securely at that time. */
   role: Role;
   operations: DeleteProjectBranchRoleResponseOperationsList;
 }
-export const DeleteProjectBranchRoleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role: Role,
-    operations: DeleteProjectBranchRoleResponseOperationsList,
-  }),
-).annotate({
-  identifier: "DeleteProjectBranchRoleResponse",
-}) as any as S.Codec<DeleteProjectBranchRoleResponse>;
+export const DeleteProjectBranchRoleResponse =
+  CreateProjectBranchRoleResponse as any as S.Schema<DeleteProjectBranchRoleResponse>;
 
 export interface DeleteProjectBranchTriggerRequest {
   /** The Neon project ID */
@@ -3206,11 +3119,8 @@ export const DeleteProjectBranchTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<DeleteProjectBranchTriggerRequest>;
 
 export interface DeleteProjectBranchTriggerResponse {}
-export const DeleteProjectBranchTriggerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteProjectBranchTriggerResponse",
-}) as any as S.Codec<DeleteProjectBranchTriggerResponse>;
+export const DeleteProjectBranchTriggerResponse =
+  AcceptProjectTransferRequestResponse as any as S.Schema<DeleteProjectBranchTriggerResponse>;
 
 export interface DeleteProjectEndpointRequest {
   /** The Neon project ID */
@@ -3230,23 +3140,16 @@ export const DeleteProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<DeleteProjectEndpointRequest>;
 
 export type DeleteProjectEndpointResponseOperationsList = Array<Operation>;
-export const DeleteProjectEndpointResponseOperationsList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Codec<DeleteProjectEndpointResponseOperationsList>;
+export const DeleteProjectEndpointResponseOperationsList =
+  AddProjectJWKSResponseOperationsList as any as S.Schema<DeleteProjectEndpointResponseOperationsList>;
 
 export interface DeleteProjectEndpointResponse {
   /** Compute endpoint created or retrieved, including its current lifecycle state. */
   endpoint: Endpoint;
   operations: DeleteProjectEndpointResponseOperationsList;
 }
-export const DeleteProjectEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpoint: Endpoint,
-    operations: DeleteProjectEndpointResponseOperationsList,
-  }),
-).annotate({
-  identifier: "DeleteProjectEndpointResponse",
-}) as any as S.Codec<DeleteProjectEndpointResponse>;
+export const DeleteProjectEndpointResponse =
+  CreateProjectEndpointResponse as any as S.Schema<DeleteProjectEndpointResponse>;
 
 export interface DeleteProjectJWKSRequest {
   /** The Neon project ID */
@@ -3283,11 +3186,8 @@ export const DeleteProjectVPCEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<DeleteProjectVPCEndpointRequest>;
 
 export interface DeleteProjectVPCEndpointResponse {}
-export const DeleteProjectVPCEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteProjectVPCEndpointResponse",
-}) as any as S.Codec<DeleteProjectVPCEndpointResponse>;
+export const DeleteProjectVPCEndpointResponse =
+  AcceptProjectTransferRequestResponse as any as S.Schema<DeleteProjectVPCEndpointResponse>;
 
 export interface DeleteSnapshotRequest {
   /** The Neon project ID */
@@ -3332,9 +3232,8 @@ export const DisableNeonAuthRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DisableNeonAuthRequest" }) as any as S.Codec<DisableNeonAuthRequest>;
 
 export interface DisableNeonAuthResponse {}
-export const DisableNeonAuthResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisableNeonAuthResponse",
-}) as any as S.Codec<DisableNeonAuthResponse>;
+export const DisableNeonAuthResponse =
+  DeleteSnapshotResponse as any as S.Schema<DisableNeonAuthResponse>;
 
 export interface FinalizeRestoreBranchRequest {
   /** The Neon project ID */
@@ -3361,9 +3260,8 @@ export const FinalizeRestoreBranchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<FinalizeRestoreBranchRequest>;
 
 export type OperationsResponseOperationsList = Array<Operation>;
-export const OperationsResponseOperationsList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Codec<OperationsResponseOperationsList>;
+export const OperationsResponseOperationsList =
+  AddProjectJWKSResponseOperationsList as any as S.Schema<OperationsResponseOperationsList>;
 
 export interface OperationsResponse {
   operations: OperationsResponseOperationsList;
@@ -3616,22 +3514,19 @@ export const ConnectionURIResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConnectionURIResponse" }) as any as S.Codec<ConnectionURIResponse>;
 
 export type GetConsumptionHistoryPerBranchV2RequestProjectIdsList = Array<string>;
-export const GetConsumptionHistoryPerBranchV2RequestProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Codec<GetConsumptionHistoryPerBranchV2RequestProjectIdsList>;
+export const GetConsumptionHistoryPerBranchV2RequestProjectIdsList =
+  AddProjectJWKSRequestRoleNamesList as any as S.Schema<GetConsumptionHistoryPerBranchV2RequestProjectIdsList>;
 
 export type GetConsumptionHistoryPerBranchV2RequestBranchIdsList = Array<string>;
-export const GetConsumptionHistoryPerBranchV2RequestBranchIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Codec<GetConsumptionHistoryPerBranchV2RequestBranchIdsList>;
+export const GetConsumptionHistoryPerBranchV2RequestBranchIdsList =
+  AddProjectJWKSRequestRoleNamesList as any as S.Schema<GetConsumptionHistoryPerBranchV2RequestBranchIdsList>;
 
 export type ConsumptionHistoryGranularity = "hourly" | "daily" | "monthly";
 export const ConsumptionHistoryGranularity = S.String;
 
 export type ConsumptionHistoryQueryMetrics = Array<string>;
-export const ConsumptionHistoryQueryMetrics = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Codec<ConsumptionHistoryQueryMetrics>;
+export const ConsumptionHistoryQueryMetrics =
+  AddProjectJWKSRequestRoleNamesList as any as S.Schema<ConsumptionHistoryQueryMetrics>;
 
 export interface GetConsumptionHistoryPerBranchV2Request {
   /** Cursor from the previous response (`pagination.cursor`). Pass it to fetch the next page of branches. Pages are ordered by project ID, then branch ID. */
@@ -3793,9 +3688,8 @@ export const GetConsumptionHistoryPerBranchV2Response = /*@__PURE__*/ S.suspend(
 }) as any as S.Codec<GetConsumptionHistoryPerBranchV2Response>;
 
 export type GetConsumptionHistoryPerProjectRequestProjectIdsList = Array<string>;
-export const GetConsumptionHistoryPerProjectRequestProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Codec<GetConsumptionHistoryPerProjectRequestProjectIdsList>;
+export const GetConsumptionHistoryPerProjectRequestProjectIdsList =
+  AddProjectJWKSRequestRoleNamesList as any as S.Schema<GetConsumptionHistoryPerProjectRequestProjectIdsList>;
 
 export interface GetConsumptionHistoryPerProjectRequest {
   /** Specify the cursor value from the previous response to get the next batch of projects. */
@@ -3942,9 +3836,8 @@ export const GetConsumptionHistoryPerProjectResponse = /*@__PURE__*/ S.suspend((
 }) as any as S.Codec<GetConsumptionHistoryPerProjectResponse>;
 
 export type GetConsumptionHistoryPerProjectV2RequestProjectIdsList = Array<string>;
-export const GetConsumptionHistoryPerProjectV2RequestProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Codec<GetConsumptionHistoryPerProjectV2RequestProjectIdsList>;
+export const GetConsumptionHistoryPerProjectV2RequestProjectIdsList =
+  AddProjectJWKSRequestRoleNamesList as any as S.Schema<GetConsumptionHistoryPerProjectV2RequestProjectIdsList>;
 
 export interface GetConsumptionHistoryPerProjectV2Request {
   /** Cursor from the previous response (`pagination.cursor`). Pass it to fetch the next page of projects. Pages are ordered by project creation order (newest first). */
@@ -3981,9 +3874,8 @@ export const GetConsumptionHistoryPerProjectV2Request = /*@__PURE__*/ S.suspend(
 
 /** Consumption periods recorded for this project. */
 export type ConsumptionHistoryPerProjectV2PeriodsList = Array<ConsumptionHistoryPerPeriodV2>;
-export const ConsumptionHistoryPerProjectV2PeriodsList = /*@__PURE__*/ S.Array(
-  ConsumptionHistoryPerPeriodV2,
-) as any as S.Codec<ConsumptionHistoryPerProjectV2PeriodsList>;
+export const ConsumptionHistoryPerProjectV2PeriodsList =
+  ConsumptionHistoryPerBranchV2PeriodsList as any as S.Schema<ConsumptionHistoryPerProjectV2PeriodsList>;
 
 export interface ConsumptionHistoryPerProjectV2 {
   /** The Neon project ID. Returned as `id` from `GET /projects`. */
@@ -4342,9 +4234,8 @@ export const GetMaskingRulesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of masking rules for the branch */
 export type MaskingRulesResponseMaskingRulesList = Array<MaskingRule>;
-export const MaskingRulesResponseMaskingRulesList = /*@__PURE__*/ S.Array(
-  MaskingRule,
-) as any as S.Codec<MaskingRulesResponseMaskingRulesList>;
+export const MaskingRulesResponseMaskingRulesList =
+  CreateProjectBranchAnonymizedRequestMaskingRulesList as any as S.Schema<MaskingRulesResponseMaskingRulesList>;
 
 export interface MaskingRulesResponse {
   /** List of masking rules for the branch */
@@ -4984,9 +4875,8 @@ export const GetOrganizationVPCEndpointDetailsRequest = /*@__PURE__*/ S.suspend(
 
 /** A list of example projects that are restricted to use this VPC endpoint. There are at most 3 projects in the list, even if more projects are restricted. */
 export type VPCEndpointDetailsExampleRestrictedProjectsList = Array<string>;
-export const VPCEndpointDetailsExampleRestrictedProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Codec<VPCEndpointDetailsExampleRestrictedProjectsList>;
+export const VPCEndpointDetailsExampleRestrictedProjectsList =
+  AddProjectJWKSRequestRoleNamesList as any as S.Schema<VPCEndpointDetailsExampleRestrictedProjectsList>;
 
 export interface VPCEndpointDetails {
   /** Cloud provider identifier for the VPC endpoint. */
@@ -5269,9 +5159,8 @@ export const GetProjectBranchDataAPIRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of available database schemas (SubZero only) */
 export type DataAPIReponseAvailableSchemasList = Array<string>;
-export const DataAPIReponseAvailableSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Codec<DataAPIReponseAvailableSchemasList>;
+export const DataAPIReponseAvailableSchemasList =
+  AddProjectJWKSRequestRoleNamesList as any as S.Schema<DataAPIReponseAvailableSchemasList>;
 
 /** Neon Data API response */
 export interface DataAPIReponse {
@@ -5515,9 +5404,8 @@ export const BranchSchemaJSONTablesItemColumnsList = /*@__PURE__*/ S.Array(
 
 /** Column names participating in this constraint */
 export type BranchSchemaJSONTablesItemConstraintsItemColumnsList = Array<string>;
-export const BranchSchemaJSONTablesItemConstraintsItemColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Codec<BranchSchemaJSONTablesItemConstraintsItemColumnsList>;
+export const BranchSchemaJSONTablesItemConstraintsItemColumnsList =
+  AddProjectJWKSRequestRoleNamesList as any as S.Schema<BranchSchemaJSONTablesItemConstraintsItemColumnsList>;
 
 /** Names of the referenced columns */
 export type BranchSchemaJSONTablesItemConstraintsItemReferencedTableColumnsList = Array<string>;
@@ -5990,9 +5878,8 @@ export const ListBranchNeonAuthOauthProvidersRequest = /*@__PURE__*/ S.suspend((
 
 /** OAuth providers configured for Neon Auth on the project. */
 export type ListNeonAuthOauthProvidersResponseProvidersList = Array<NeonAuthOauthProvider>;
-export const ListNeonAuthOauthProvidersResponseProvidersList = /*@__PURE__*/ S.Array(
-  NeonAuthOauthProvider,
-) as any as S.Codec<ListNeonAuthOauthProvidersResponseProvidersList>;
+export const ListNeonAuthOauthProvidersResponseProvidersList =
+  NeonAuthPluginConfigsOauthProvidersList as any as S.Schema<ListNeonAuthOauthProvidersResponseProvidersList>;
 
 export interface ListNeonAuthOauthProvidersResponse {
   /** OAuth providers configured for Neon Auth on the project. */
@@ -6080,9 +5967,8 @@ export const ListCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCredentialsRequest" }) as any as S.Codec<ListCredentialsRequest>;
 
 export type CredentialMetaScopesList = Array<GrantedCredentialScope>;
-export const CredentialMetaScopesList = /*@__PURE__*/ S.Array(
-  GrantedCredentialScope,
-) as any as S.Codec<CredentialMetaScopesList>;
+export const CredentialMetaScopesList =
+  CreateCredentialResponseScopesList as any as S.Schema<CredentialMetaScopesList>;
 
 export interface CredentialMeta {
   /** Opaque credential id (e.g. nak_live_<32hex>). */
@@ -6313,9 +6199,8 @@ export const ListProjectBranchBucketObjectsRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Common prefixes (folder names) collapsed under the requested `delimiter`. Empty when no `delimiter` was supplied. */
 export type BucketObjectsListResponseFoldersList = Array<string>;
-export const BucketObjectsListResponseFoldersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Codec<BucketObjectsListResponseFoldersList>;
+export const BucketObjectsListResponseFoldersList =
+  AddProjectJWKSRequestRoleNamesList as any as S.Schema<BucketObjectsListResponseFoldersList>;
 
 export interface BucketObject {
   /** The full object key. */
@@ -6500,9 +6385,8 @@ export const ListProjectBranchDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Databases on the branch. Each includes `id`, `name`, `owner_name`, and `created_at`. */
 export type DatabasesResponseDatabasesList = Array<Database>;
-export const DatabasesResponseDatabasesList = /*@__PURE__*/ S.Array(
-  Database,
-) as any as S.Codec<DatabasesResponseDatabasesList>;
+export const DatabasesResponseDatabasesList =
+  CreateProjectResponseDatabasesList as any as S.Schema<DatabasesResponseDatabasesList>;
 
 export interface DatabasesResponse {
   /** Databases on the branch. Each includes `id`, `name`, `owner_name`, and `created_at`. */
@@ -6537,9 +6421,8 @@ export const ListProjectBranchEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Compute endpoints in the project. Each includes `id`, `branch_id`, `host`, and `type`. */
 export type EndpointsResponseEndpointsList = Array<Endpoint>;
-export const EndpointsResponseEndpointsList = /*@__PURE__*/ S.Array(
-  Endpoint,
-) as any as S.Codec<EndpointsResponseEndpointsList>;
+export const EndpointsResponseEndpointsList =
+  CreateProjectResponseEndpointsList as any as S.Schema<EndpointsResponseEndpointsList>;
 
 export interface EndpointsResponse {
   /** Compute endpoints in the project. Each includes `id`, `branch_id`, `host`, and `type`. */
@@ -6687,9 +6570,8 @@ export const ListProjectBranchLogFieldsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Log field names observed on this branch, each usable as `field_name` on the log field-values endpoint. Computed per branch rather than fixed by this specification, so clients should not assume a particular set. */
 export type ProjectBranchLogFieldsResponseFieldsList = Array<string>;
-export const ProjectBranchLogFieldsResponseFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Codec<ProjectBranchLogFieldsResponseFieldsList>;
+export const ProjectBranchLogFieldsResponseFieldsList =
+  AddProjectJWKSRequestRoleNamesList as any as S.Schema<ProjectBranchLogFieldsResponseFieldsList>;
 
 export interface ProjectBranchLogFieldsResponse {
   /** Log field names observed on this branch, each usable as `field_name` on the log field-values endpoint. Computed per branch rather than fixed by this specification, so clients should not assume a particular set. */
@@ -6747,9 +6629,8 @@ export const ListProjectBranchLogFieldValuesRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Codec<ListProjectBranchLogFieldValuesRequest>;
 
 export type ProjectBranchLogFieldValuesResponseValuesList = Array<string>;
-export const ProjectBranchLogFieldValuesResponseValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Codec<ProjectBranchLogFieldValuesResponseValuesList>;
+export const ProjectBranchLogFieldValuesResponseValuesList =
+  AddProjectJWKSRequestRoleNamesList as any as S.Schema<ProjectBranchLogFieldValuesResponseValuesList>;
 
 export interface ProjectBranchLogFieldValuesResponse {
   values: ProjectBranchLogFieldValuesResponseValuesList;
@@ -6784,9 +6665,8 @@ export const ListProjectBranchRolesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Roles belonging to the branch. Each role includes fields such as `branch_id`, `name`, `protected`, `created_at`, and `updated_at`. */
 export type RolesResponseRolesList = Array<Role>;
-export const RolesResponseRolesList = /*@__PURE__*/ S.Array(
-  Role,
-) as any as S.Codec<RolesResponseRolesList>;
+export const RolesResponseRolesList =
+  CreateProjectResponseRolesList as any as S.Schema<RolesResponseRolesList>;
 
 export interface RolesResponse {
   /** Roles belonging to the branch. Each role includes fields such as `branch_id`, `name`, `protected`, `created_at`, and `updated_at`. */
@@ -6944,9 +6824,8 @@ export const ListProjectOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<ListProjectOperationsRequest>;
 
 export type ListProjectOperationsResponseOperationsList = Array<Operation>;
-export const ListProjectOperationsResponseOperationsList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Codec<ListProjectOperationsResponseOperationsList>;
+export const ListProjectOperationsResponseOperationsList =
+  AddProjectJWKSResponseOperationsList as any as S.Schema<ListProjectOperationsResponseOperationsList>;
 
 export interface ListProjectOperationsResponse {
   operations: ListProjectOperationsResponseOperationsList;
@@ -7111,9 +6990,8 @@ export const ListProjectsResponseProjectsList = /*@__PURE__*/ S.Array(
 
 /** A list of project IDs indicating which projects are known to exist, but whose details could not be fetched within the requested (or implicit) time limit */
 export type ListProjectsResponseUnavailableProjectIdsList = Array<string>;
-export const ListProjectsResponseUnavailableProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Codec<ListProjectsResponseUnavailableProjectIdsList>;
+export const ListProjectsResponseUnavailableProjectIdsList =
+  AddProjectJWKSRequestRoleNamesList as any as S.Schema<ListProjectsResponseUnavailableProjectIdsList>;
 
 /** Type of application integration */
 export type ApplicationType = "vercel" | "github" | "datadog" | "opentelemetry";
@@ -7134,18 +7012,15 @@ export const ListProjectsResponseApplicationsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Codec<ListProjectsResponseApplicationsMap>;
 
 export type ListProjectsResponseIntegrationsValueList = Array<ApplicationType>;
-export const ListProjectsResponseIntegrationsValueList = /*@__PURE__*/ S.Array(
-  ApplicationType,
-) as any as S.Codec<ListProjectsResponseIntegrationsValueList>;
+export const ListProjectsResponseIntegrationsValueList =
+  ListProjectsResponseApplicationsValueList as any as S.Schema<ListProjectsResponseIntegrationsValueList>;
 
 /** Map of project IDs to their associated integration details. */
 export type ListProjectsResponseIntegrationsMap = {
   [key: string]: ListProjectsResponseIntegrationsValueList | undefined;
 };
-export const ListProjectsResponseIntegrationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ListProjectsResponseIntegrationsValueList,
-) as any as S.Codec<ListProjectsResponseIntegrationsMap>;
+export const ListProjectsResponseIntegrationsMap =
+  ListProjectsResponseApplicationsMap as any as S.Schema<ListProjectsResponseIntegrationsMap>;
 
 export interface ListProjectsResponse {
   /** List of projects accessible to the caller. Projects that exist but could not be retrieved are identified in `unavailable_project_ids`. */
@@ -7203,15 +7078,13 @@ export const ListSharedProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of projects accessible to the caller. Projects that exist but could not be retrieved are identified in `unavailable_project_ids`. */
 export type ListSharedProjectsResponseProjectsList = Array<ProjectListItem>;
-export const ListSharedProjectsResponseProjectsList = /*@__PURE__*/ S.Array(
-  ProjectListItem,
-) as any as S.Codec<ListSharedProjectsResponseProjectsList>;
+export const ListSharedProjectsResponseProjectsList =
+  ListProjectsResponseProjectsList as any as S.Schema<ListSharedProjectsResponseProjectsList>;
 
 /** A list of project IDs indicating which projects are known to exist, but whose details could not be fetched within the requested (or implicit) time limit */
 export type ListSharedProjectsResponseUnavailableProjectIdsList = Array<string>;
-export const ListSharedProjectsResponseUnavailableProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Codec<ListSharedProjectsResponseUnavailableProjectIdsList>;
+export const ListSharedProjectsResponseUnavailableProjectIdsList =
+  AddProjectJWKSRequestRoleNamesList as any as S.Schema<ListSharedProjectsResponseUnavailableProjectIdsList>;
 
 export interface ListSharedProjectsResponse {
   /** List of projects accessible to the caller. Projects that exist but could not be retrieved are identified in `unavailable_project_ids`. */
@@ -7296,10 +7169,8 @@ export const PresignProjectBranchBucketObjectRequest = /*@__PURE__*/ S.suspend((
 
 /** Headers the caller MUST send verbatim on the request (e.g. `Content-Type` when it was signed on an upload). May be empty. */
 export type PresignResponseHeadersMap = { [key: string]: string | undefined };
-export const PresignResponseHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Codec<PresignResponseHeadersMap>;
+export const PresignResponseHeadersMap =
+  AnnotationValueData as any as S.Schema<PresignResponseHeadersMap>;
 
 export interface PresignResponse {
   /** The presigned URL. Transfer the object bytes by issuing `method url` with the returned `headers`. */
@@ -7393,10 +7264,8 @@ export const QueryProjectBranchLogsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Customer-defined OpenTelemetry log and resource attributes. */
 export type ProjectBranchLogRecordAttributesMap = { [key: string]: unknown | undefined };
-export const ProjectBranchLogRecordAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Codec<ProjectBranchLogRecordAttributesMap>;
+export const ProjectBranchLogRecordAttributesMap =
+  AdvisorIssueMetadataMap as any as S.Schema<ProjectBranchLogRecordAttributesMap>;
 
 export interface ProjectBranchLogRecord {
   /** The OpenTelemetry record timestamp in UTC. */
@@ -7471,9 +7340,8 @@ export const RecoverProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Branches in the project. Each includes `id`, `name`, `current_state`, and `created_at`. */
 export type RecoverProjectResponseBranchesList = Array<Branch>;
-export const RecoverProjectResponseBranchesList = /*@__PURE__*/ S.Array(
-  Branch,
-) as any as S.Codec<RecoverProjectResponseBranchesList>;
+export const RecoverProjectResponseBranchesList =
+  ListProjectBranchesResponseBranchesList as any as S.Schema<RecoverProjectResponseBranchesList>;
 
 export interface RecoverProjectResponse {
   /** Full details of the project, including configuration, consumption metrics, and ownership. */
@@ -7536,11 +7404,8 @@ export const RemoveOrganizationMemberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<RemoveOrganizationMemberRequest>;
 
 export type RemoveOrganizationMemberResponse = unknown;
-export const RemoveOrganizationMemberResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RemoveOrganizationMemberResponse",
-}) as any as S.Codec<RemoveOrganizationMemberResponse>;
+export const RemoveOrganizationMemberResponse =
+  DeleteOrganizationSpendingLimitResponse as any as S.Schema<RemoveOrganizationMemberResponse>;
 
 export interface RemoveProjectMemberRoleRequest {
   project_id: string;
@@ -7622,23 +7487,16 @@ export const ResetProjectBranchRolePasswordRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Codec<ResetProjectBranchRolePasswordRequest>;
 
 export type ResetProjectBranchRolePasswordResponseOperationsList = Array<Operation>;
-export const ResetProjectBranchRolePasswordResponseOperationsList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Codec<ResetProjectBranchRolePasswordResponseOperationsList>;
+export const ResetProjectBranchRolePasswordResponseOperationsList =
+  AddProjectJWKSResponseOperationsList as any as S.Schema<ResetProjectBranchRolePasswordResponseOperationsList>;
 
 export interface ResetProjectBranchRolePasswordResponse {
   /** Role details for the requested database role. The `password` field is included in the response when a role is created or its password is reset, and is not returned in subsequent read requests. Store it securely at that time. */
   role: Role;
   operations: ResetProjectBranchRolePasswordResponseOperationsList;
 }
-export const ResetProjectBranchRolePasswordResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role: Role,
-    operations: ResetProjectBranchRolePasswordResponseOperationsList,
-  }),
-).annotate({
-  identifier: "ResetProjectBranchRolePasswordResponse",
-}) as any as S.Codec<ResetProjectBranchRolePasswordResponse>;
+export const ResetProjectBranchRolePasswordResponse =
+  CreateProjectBranchRoleResponse as any as S.Schema<ResetProjectBranchRolePasswordResponse>;
 
 export interface RestartProjectEndpointRequest {
   /** The Neon project ID */
@@ -7662,23 +7520,16 @@ export const RestartProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<RestartProjectEndpointRequest>;
 
 export type RestartProjectEndpointResponseOperationsList = Array<Operation>;
-export const RestartProjectEndpointResponseOperationsList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Codec<RestartProjectEndpointResponseOperationsList>;
+export const RestartProjectEndpointResponseOperationsList =
+  AddProjectJWKSResponseOperationsList as any as S.Schema<RestartProjectEndpointResponseOperationsList>;
 
 export interface RestartProjectEndpointResponse {
   /** Compute endpoint created or retrieved, including its current lifecycle state. */
   endpoint: Endpoint;
   operations: RestartProjectEndpointResponseOperationsList;
 }
-export const RestartProjectEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpoint: Endpoint,
-    operations: RestartProjectEndpointResponseOperationsList,
-  }),
-).annotate({
-  identifier: "RestartProjectEndpointResponse",
-}) as any as S.Codec<RestartProjectEndpointResponse>;
+export const RestartProjectEndpointResponse =
+  CreateProjectEndpointResponse as any as S.Schema<RestartProjectEndpointResponse>;
 
 export interface RestoreProjectBranchRequest {
   /** The Neon project ID */
@@ -7714,23 +7565,16 @@ export const RestoreProjectBranchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<RestoreProjectBranchRequest>;
 
 export type RestoreProjectBranchResponseOperationsList = Array<Operation>;
-export const RestoreProjectBranchResponseOperationsList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Codec<RestoreProjectBranchResponseOperationsList>;
+export const RestoreProjectBranchResponseOperationsList =
+  AddProjectJWKSResponseOperationsList as any as S.Schema<RestoreProjectBranchResponseOperationsList>;
 
 export interface RestoreProjectBranchResponse {
   /** Branch returned by the request. */
   branch: Branch;
   operations: RestoreProjectBranchResponseOperationsList;
 }
-export const RestoreProjectBranchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branch: Branch,
-    operations: RestoreProjectBranchResponseOperationsList,
-  }),
-).annotate({
-  identifier: "RestoreProjectBranchResponse",
-}) as any as S.Codec<RestoreProjectBranchResponse>;
+export const RestoreProjectBranchResponse =
+  DeleteProjectBranchResponse as any as S.Schema<RestoreProjectBranchResponse>;
 
 export interface RestoreSnapshotRequest {
   /** The Neon project ID */
@@ -7762,14 +7606,12 @@ export const RestoreSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Compute endpoints associated with the project. */
 export type RestoreSnapshotResponseEndpointsList = Array<Endpoint>;
-export const RestoreSnapshotResponseEndpointsList = /*@__PURE__*/ S.Array(
-  Endpoint,
-) as any as S.Codec<RestoreSnapshotResponseEndpointsList>;
+export const RestoreSnapshotResponseEndpointsList =
+  CreateProjectResponseEndpointsList as any as S.Schema<RestoreSnapshotResponseEndpointsList>;
 
 export type RestoreSnapshotResponseOperationsList = Array<Operation>;
-export const RestoreSnapshotResponseOperationsList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Codec<RestoreSnapshotResponseOperationsList>;
+export const RestoreSnapshotResponseOperationsList =
+  AddProjectJWKSResponseOperationsList as any as S.Schema<RestoreSnapshotResponseOperationsList>;
 
 export interface RestoreSnapshotResponse {
   /** Branch returned by the request. */
@@ -7891,9 +7733,8 @@ export const RevokeCredentialRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RevokeCredentialRequest" }) as any as S.Codec<RevokeCredentialRequest>;
 
 export interface RevokeCredentialResponse {}
-export const RevokeCredentialResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RevokeCredentialResponse",
-}) as any as S.Codec<RevokeCredentialResponse>;
+export const RevokeCredentialResponse =
+  DeleteSnapshotResponse as any as S.Schema<RevokeCredentialResponse>;
 
 export interface RevokeOrgApiKeyRequest {
   /** The Neon organization ID */
@@ -7983,9 +7824,8 @@ export const RotateCredentialRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RotateCredentialRequest" }) as any as S.Codec<RotateCredentialRequest>;
 
 export type RotateCredentialResponseScopesList = Array<GrantedCredentialScope>;
-export const RotateCredentialResponseScopesList = /*@__PURE__*/ S.Array(
-  GrantedCredentialScope,
-) as any as S.Codec<RotateCredentialResponseScopesList>;
+export const RotateCredentialResponseScopesList =
+  CreateCredentialResponseScopesList as any as S.Schema<RotateCredentialResponseScopesList>;
 
 /** Always `user`: only customer-managed credentials are rotatable through this endpoint. */
 export type RotateCredentialResponsePrincipalType = "user";
@@ -8093,23 +7933,16 @@ export const SetDefaultProjectBranchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<SetDefaultProjectBranchRequest>;
 
 export type SetDefaultProjectBranchResponseOperationsList = Array<Operation>;
-export const SetDefaultProjectBranchResponseOperationsList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Codec<SetDefaultProjectBranchResponseOperationsList>;
+export const SetDefaultProjectBranchResponseOperationsList =
+  AddProjectJWKSResponseOperationsList as any as S.Schema<SetDefaultProjectBranchResponseOperationsList>;
 
 export interface SetDefaultProjectBranchResponse {
   /** Branch returned by the request. */
   branch: Branch;
   operations: SetDefaultProjectBranchResponseOperationsList;
 }
-export const SetDefaultProjectBranchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branch: Branch,
-    operations: SetDefaultProjectBranchResponseOperationsList,
-  }),
-).annotate({
-  identifier: "SetDefaultProjectBranchResponse",
-}) as any as S.Codec<SetDefaultProjectBranchResponse>;
+export const SetDefaultProjectBranchResponse =
+  DeleteProjectBranchResponse as any as S.Schema<SetDefaultProjectBranchResponse>;
 
 export interface SetOrganizationSpendingLimitRequest {
   /** The Neon organization ID */
@@ -8149,9 +7982,8 @@ export const SetProjectMemberRoleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of schedule entries defining the backup frequency. At least one entry is required. */
 export type SetSnapshotScheduleRequestScheduleList = Array<BackupScheduleItem>;
-export const SetSnapshotScheduleRequestScheduleList = /*@__PURE__*/ S.Array(
-  BackupScheduleItem,
-) as any as S.Codec<SetSnapshotScheduleRequestScheduleList>;
+export const SetSnapshotScheduleRequestScheduleList =
+  BackupScheduleScheduleList as any as S.Schema<SetSnapshotScheduleRequestScheduleList>;
 
 export interface SetSnapshotScheduleRequest {
   /** The Neon project ID */
@@ -8178,11 +8010,8 @@ export const SetSnapshotScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<SetSnapshotScheduleRequest>;
 
 export type SetSnapshotScheduleResponse = unknown;
-export const SetSnapshotScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "SetSnapshotScheduleResponse",
-}) as any as S.Codec<SetSnapshotScheduleResponse>;
+export const SetSnapshotScheduleResponse =
+  DeleteOrganizationSpendingLimitResponse as any as S.Schema<SetSnapshotScheduleResponse>;
 
 export interface StartAnonymizationRequest {
   /** The Neon project ID */
@@ -8227,23 +8056,16 @@ export const StartProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<StartProjectEndpointRequest>;
 
 export type StartProjectEndpointResponseOperationsList = Array<Operation>;
-export const StartProjectEndpointResponseOperationsList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Codec<StartProjectEndpointResponseOperationsList>;
+export const StartProjectEndpointResponseOperationsList =
+  AddProjectJWKSResponseOperationsList as any as S.Schema<StartProjectEndpointResponseOperationsList>;
 
 export interface StartProjectEndpointResponse {
   /** Compute endpoint created or retrieved, including its current lifecycle state. */
   endpoint: Endpoint;
   operations: StartProjectEndpointResponseOperationsList;
 }
-export const StartProjectEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpoint: Endpoint,
-    operations: StartProjectEndpointResponseOperationsList,
-  }),
-).annotate({
-  identifier: "StartProjectEndpointResponse",
-}) as any as S.Codec<StartProjectEndpointResponse>;
+export const StartProjectEndpointResponse =
+  CreateProjectEndpointResponse as any as S.Schema<StartProjectEndpointResponse>;
 
 export interface SuspendProjectEndpointRequest {
   /** The Neon project ID */
@@ -8267,23 +8089,16 @@ export const SuspendProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<SuspendProjectEndpointRequest>;
 
 export type SuspendProjectEndpointResponseOperationsList = Array<Operation>;
-export const SuspendProjectEndpointResponseOperationsList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Codec<SuspendProjectEndpointResponseOperationsList>;
+export const SuspendProjectEndpointResponseOperationsList =
+  AddProjectJWKSResponseOperationsList as any as S.Schema<SuspendProjectEndpointResponseOperationsList>;
 
 export interface SuspendProjectEndpointResponse {
   /** Compute endpoint created or retrieved, including its current lifecycle state. */
   endpoint: Endpoint;
   operations: SuspendProjectEndpointResponseOperationsList;
 }
-export const SuspendProjectEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpoint: Endpoint,
-    operations: SuspendProjectEndpointResponseOperationsList,
-  }),
-).annotate({
-  identifier: "SuspendProjectEndpointResponse",
-}) as any as S.Codec<SuspendProjectEndpointResponse>;
+export const SuspendProjectEndpointResponse =
+  CreateProjectEndpointResponse as any as S.Schema<SuspendProjectEndpointResponse>;
 
 export interface TransferNeonAuthProviderProjectRequest {
   /** The Neon project ID. Returned as `id` from `GET /projects`. */
@@ -8313,9 +8128,8 @@ export const NeonAuthTransferAuthProviderProjectResponse = /*@__PURE__*/ S.suspe
 
 /** The list of projects ids to transfer. Maximum of 400 project ids */
 export type TransferProjectsFromOrgToOrgRequestProjectIdsList = Array<string>;
-export const TransferProjectsFromOrgToOrgRequestProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Codec<TransferProjectsFromOrgToOrgRequestProjectIdsList>;
+export const TransferProjectsFromOrgToOrgRequestProjectIdsList =
+  AddProjectJWKSRequestRoleNamesList as any as S.Schema<TransferProjectsFromOrgToOrgRequestProjectIdsList>;
 
 export interface TransferProjectsFromOrgToOrgRequest {
   /** The Neon organization ID (source org, which currently owns the project) */
@@ -8338,11 +8152,8 @@ export const TransferProjectsFromOrgToOrgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<TransferProjectsFromOrgToOrgRequest>;
 
 export type TransferProjectsFromOrgToOrgResponse = unknown;
-export const TransferProjectsFromOrgToOrgResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "TransferProjectsFromOrgToOrgResponse",
-}) as any as S.Codec<TransferProjectsFromOrgToOrgResponse>;
+export const TransferProjectsFromOrgToOrgResponse =
+  DeleteOrganizationSpendingLimitResponse as any as S.Schema<TransferProjectsFromOrgToOrgResponse>;
 
 export type UpdateBranchNeonAuthOauthProviderRequestOauthProviderId =
   | "google"
@@ -8390,9 +8201,8 @@ export const UpdateBranchNeonAuthOauthProviderRequest = /*@__PURE__*/ S.suspend(
 
 /** List of masking rules to apply to the branch. This will replace all existing masking rules for the branch. */
 export type UpdateMaskingRulesRequestMaskingRulesList = Array<MaskingRule>;
-export const UpdateMaskingRulesRequestMaskingRulesList = /*@__PURE__*/ S.Array(
-  MaskingRule,
-) as any as S.Codec<UpdateMaskingRulesRequestMaskingRulesList>;
+export const UpdateMaskingRulesRequestMaskingRulesList =
+  CreateProjectBranchAnonymizedRequestMaskingRulesList as any as S.Schema<UpdateMaskingRulesRequestMaskingRulesList>;
 
 export interface UpdateMaskingRulesRequest {
   /** The Neon project ID */
@@ -8520,7 +8330,8 @@ export const UpdateNeonAuthEmailAndPasswordConfigRequest = /*@__PURE__*/ S.suspe
 
 /** Use a custom SMTP server to send authentication emails. */
 export type StandardEmailServerType = "standard";
-export const StandardEmailServerType = /*@__PURE__*/ S.Literals(["standard"]);
+export const StandardEmailServerType =
+  StandardEmailServerResponseType as any as S.Schema<StandardEmailServerType>;
 export interface StandardEmailServer {
   /** Hostname of the email server. */
   host?: string;
@@ -8582,11 +8393,8 @@ export const UpdateNeonAuthEmailProviderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<UpdateNeonAuthEmailProviderRequest>;
 
 export type UpdateNeonAuthEmailProviderResponse = NeonAuthEmailServerConfigResponse;
-export const UpdateNeonAuthEmailProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  NeonAuthEmailServerConfigResponse.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UpdateNeonAuthEmailProviderResponse",
-}) as any as S.Codec<UpdateNeonAuthEmailProviderResponse>;
+export const UpdateNeonAuthEmailProviderResponse =
+  GetNeonAuthEmailProviderResponse as any as S.Schema<UpdateNeonAuthEmailProviderResponse>;
 
 export interface UpdateNeonAuthMagicLinkPluginRequest {
   /** The Neon project ID */
@@ -8687,9 +8495,8 @@ export const UpdateNeonAuthPhoneNumberPluginRequest = /*@__PURE__*/ S.suspend(()
 
 /** Roles to assign to the user in the Neon Auth (Better Auth) directory. `user` and `admin` are the built-in roles; custom role strings are also supported. */
 export type UpdateNeonAuthUserRoleRequestRolesList = Array<string>;
-export const UpdateNeonAuthUserRoleRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Codec<UpdateNeonAuthUserRoleRequestRolesList>;
+export const UpdateNeonAuthUserRoleRequestRolesList =
+  AddProjectJWKSRequestRoleNamesList as any as S.Schema<UpdateNeonAuthUserRoleRequestRolesList>;
 
 export interface UpdateNeonAuthUserRoleRequest {
   /** The Neon project ID */
@@ -8722,13 +8529,8 @@ export interface UpdateNeonAuthUserRoleResponse {
   /** ID of the updated user */
   id: string;
 }
-export const UpdateNeonAuthUserRoleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "UpdateNeonAuthUserRoleResponse",
-}) as any as S.Codec<UpdateNeonAuthUserRoleResponse>;
+export const UpdateNeonAuthUserRoleResponse =
+  NeonAuthCreateNewUserResponse as any as S.Schema<UpdateNeonAuthUserRoleResponse>;
 
 export type UpdateNeonAuthWebhookConfigRequestEnabledEventsItem =
   | "user.before_create"
@@ -8833,9 +8635,8 @@ export const UpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateProjectRequest" }) as any as S.Codec<UpdateProjectRequest>;
 
 export type UpdateProjectResponseOperationsList = Array<Operation>;
-export const UpdateProjectResponseOperationsList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Codec<UpdateProjectResponseOperationsList>;
+export const UpdateProjectResponseOperationsList =
+  AddProjectJWKSResponseOperationsList as any as S.Schema<UpdateProjectResponseOperationsList>;
 
 export interface UpdateProjectResponse {
   /** Full details of the project, including configuration, consumption metrics, and ownership. */
@@ -8889,23 +8690,16 @@ export const UpdateProjectBranchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<UpdateProjectBranchRequest>;
 
 export type UpdateProjectBranchResponseOperationsList = Array<Operation>;
-export const UpdateProjectBranchResponseOperationsList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Codec<UpdateProjectBranchResponseOperationsList>;
+export const UpdateProjectBranchResponseOperationsList =
+  AddProjectJWKSResponseOperationsList as any as S.Schema<UpdateProjectBranchResponseOperationsList>;
 
 export interface UpdateProjectBranchResponse {
   /** Branch returned by the request. */
   branch: Branch;
   operations: UpdateProjectBranchResponseOperationsList;
 }
-export const UpdateProjectBranchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branch: Branch,
-    operations: UpdateProjectBranchResponseOperationsList,
-  }),
-).annotate({
-  identifier: "UpdateProjectBranchResponse",
-}) as any as S.Codec<UpdateProjectBranchResponse>;
+export const UpdateProjectBranchResponse =
+  DeleteProjectBranchResponse as any as S.Schema<UpdateProjectBranchResponse>;
 
 export interface UpdateProjectBranchDataAPIRequest {
   /** The Neon project ID */
@@ -8935,11 +8729,8 @@ export const UpdateProjectBranchDataAPIRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<UpdateProjectBranchDataAPIRequest>;
 
 export type UpdateProjectBranchDataAPIResponse = unknown;
-export const UpdateProjectBranchDataAPIResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UpdateProjectBranchDataAPIResponse",
-}) as any as S.Codec<UpdateProjectBranchDataAPIResponse>;
+export const UpdateProjectBranchDataAPIResponse =
+  DeleteOrganizationSpendingLimitResponse as any as S.Schema<UpdateProjectBranchDataAPIResponse>;
 
 /** Properties to update on the database. */
 export interface UpdateProjectBranchDatabaseRequestDatabase {
@@ -8985,23 +8776,16 @@ export const UpdateProjectBranchDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<UpdateProjectBranchDatabaseRequest>;
 
 export type UpdateProjectBranchDatabaseResponseOperationsList = Array<Operation>;
-export const UpdateProjectBranchDatabaseResponseOperationsList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Codec<UpdateProjectBranchDatabaseResponseOperationsList>;
+export const UpdateProjectBranchDatabaseResponseOperationsList =
+  AddProjectJWKSResponseOperationsList as any as S.Schema<UpdateProjectBranchDatabaseResponseOperationsList>;
 
 export interface UpdateProjectBranchDatabaseResponse {
   /** Database object returned by the operation. */
   database: Database;
   operations: UpdateProjectBranchDatabaseResponseOperationsList;
 }
-export const UpdateProjectBranchDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    database: Database,
-    operations: UpdateProjectBranchDatabaseResponseOperationsList,
-  }),
-).annotate({
-  identifier: "UpdateProjectBranchDatabaseResponse",
-}) as any as S.Codec<UpdateProjectBranchDatabaseResponse>;
+export const UpdateProjectBranchDatabaseResponse =
+  CreateProjectBranchDatabaseResponse as any as S.Schema<UpdateProjectBranchDatabaseResponse>;
 
 export interface UpdateProjectBranchFunctionRequest {
   /** The Neon project ID */
@@ -9032,7 +8816,8 @@ export const UpdateProjectBranchFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Trigger type discriminator; it does not change the trigger type. */
 export type ScheduleTriggerUpdateRequestType = "schedule";
-export const ScheduleTriggerUpdateRequestType = /*@__PURE__*/ S.Literals(["schedule"]);
+export const ScheduleTriggerUpdateRequestType =
+  ScheduleTriggerCreateRequestType as any as S.Schema<ScheduleTriggerUpdateRequestType>;
 export interface ScheduleTriggerUpdateRequest {
   /** Trigger type discriminator; it does not change the trigger type. */
   type: ScheduleTriggerUpdateRequestType;
@@ -9059,9 +8844,8 @@ export const ScheduleTriggerUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Trigger type discriminator; it does not change the trigger type. */
 export type StorageObjectCreatedTriggerUpdateRequestType = "storage_object_created";
-export const StorageObjectCreatedTriggerUpdateRequestType = /*@__PURE__*/ S.Literals([
-  "storage_object_created",
-]);
+export const StorageObjectCreatedTriggerUpdateRequestType =
+  StorageObjectCreatedTriggerCreateRequestType as any as S.Schema<StorageObjectCreatedTriggerUpdateRequestType>;
 export interface StorageObjectCreatedTriggerUpdateRequest {
   /** Trigger type discriminator; it does not change the trigger type. */
   type: StorageObjectCreatedTriggerUpdateRequestType;
@@ -9183,23 +8967,16 @@ export const UpdateProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<UpdateProjectEndpointRequest>;
 
 export type UpdateProjectEndpointResponseOperationsList = Array<Operation>;
-export const UpdateProjectEndpointResponseOperationsList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Codec<UpdateProjectEndpointResponseOperationsList>;
+export const UpdateProjectEndpointResponseOperationsList =
+  AddProjectJWKSResponseOperationsList as any as S.Schema<UpdateProjectEndpointResponseOperationsList>;
 
 export interface UpdateProjectEndpointResponse {
   /** Compute endpoint created or retrieved, including its current lifecycle state. */
   endpoint: Endpoint;
   operations: UpdateProjectEndpointResponseOperationsList;
 }
-export const UpdateProjectEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpoint: Endpoint,
-    operations: UpdateProjectEndpointResponseOperationsList,
-  }),
-).annotate({
-  identifier: "UpdateProjectEndpointResponse",
-}) as any as S.Codec<UpdateProjectEndpointResponse>;
+export const UpdateProjectEndpointResponse =
+  CreateProjectEndpointResponse as any as S.Schema<UpdateProjectEndpointResponse>;
 
 /** Fields to update on the snapshot. Updatable fields include `name` and `expires_at`. */
 export interface UpdateSnapshotRequestSnapshot {

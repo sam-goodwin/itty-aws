@@ -241,7 +241,8 @@ export const CreateAssessmentTargetResponse = /*@__PURE__*/ S.suspend(() =>
 export type AssessmentTemplateName = string;
 export type AssessmentRunDuration = number;
 export type AssessmentTemplateRulesPackageArnList = string[];
-export const AssessmentTemplateRulesPackageArnList = /*@__PURE__*/ S.Array(S.String);
+export const AssessmentTemplateRulesPackageArnList =
+  AddRemoveAttributesFindingArnList as any as S.Schema<AssessmentTemplateRulesPackageArnList>;
 export interface CreateAssessmentTemplateRequest {
   assessmentTargetArn: string;
   assessmentTemplateName: string;
@@ -293,11 +294,9 @@ export interface ResourceGroupTag {
   key: string;
   value?: string;
 }
-export const ResourceGroupTag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ key: S.String, value: S.optional(S.String) }),
-).annotate({ identifier: "ResourceGroupTag" }) as any as S.Schema<ResourceGroupTag>;
+export const ResourceGroupTag = Attribute as any as S.Schema<ResourceGroupTag>;
 export type ResourceGroupTags = ResourceGroupTag[];
-export const ResourceGroupTags = /*@__PURE__*/ S.Array(ResourceGroupTag);
+export const ResourceGroupTags = UserAttributeList as any as S.Schema<ResourceGroupTags>;
 export interface CreateResourceGroupRequest {
   resourceGroupTags: ResourceGroupTag[];
 }
@@ -341,9 +340,8 @@ export const DeleteAssessmentTargetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAssessmentTargetRequest",
 }) as any as S.Schema<DeleteAssessmentTargetRequest>;
 export interface DeleteAssessmentTargetResponse {}
-export const DeleteAssessmentTargetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAssessmentTargetResponse",
-}) as any as S.Schema<DeleteAssessmentTargetResponse>;
+export const DeleteAssessmentTargetResponse =
+  DeleteAssessmentRunResponse as any as S.Schema<DeleteAssessmentTargetResponse>;
 export interface DeleteAssessmentTemplateRequest {
   assessmentTemplateArn: string;
 }
@@ -361,7 +359,8 @@ export const DeleteAssessmentTemplateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAssessmentTemplateResponse",
 }) as any as S.Schema<DeleteAssessmentTemplateResponse>;
 export type BatchDescribeArnList = string[];
-export const BatchDescribeArnList = /*@__PURE__*/ S.Array(S.String);
+export const BatchDescribeArnList =
+  AddRemoveAttributesFindingArnList as any as S.Schema<BatchDescribeArnList>;
 export interface DescribeAssessmentRunsRequest {
   assessmentRunArns: string[];
 }
@@ -391,7 +390,8 @@ export type AssessmentRunState =
 export const AssessmentRunState = S.String;
 
 export type AssessmentRulesPackageArnList = string[];
-export const AssessmentRulesPackageArnList = /*@__PURE__*/ S.Array(S.String);
+export const AssessmentRulesPackageArnList =
+  AddRemoveAttributesFindingArnList as any as S.Schema<AssessmentRulesPackageArnList>;
 export interface AssessmentRunStateChange {
   stateChangedAt: Date;
   state: AssessmentRunState;
@@ -604,7 +604,8 @@ export const DescribeCrossAccountAccessRoleResponse = /*@__PURE__*/ S.suspend(()
   identifier: "DescribeCrossAccountAccessRoleResponse",
 }) as any as S.Schema<DescribeCrossAccountAccessRoleResponse>;
 export type BatchDescribeExclusionsArnList = string[];
-export const BatchDescribeExclusionsArnList = /*@__PURE__*/ S.Array(S.String);
+export const BatchDescribeExclusionsArnList =
+  AddRemoveAttributesFindingArnList as any as S.Schema<BatchDescribeExclusionsArnList>;
 export type Locale = "EN_US" | (string & {});
 export const Locale = S.String;
 
@@ -634,7 +635,7 @@ export const Scope = /*@__PURE__*/ S.suspend(() =>
 export type ScopeList = Scope[];
 export const ScopeList = /*@__PURE__*/ S.Array(Scope);
 export type AttributeList = Attribute[];
-export const AttributeList = /*@__PURE__*/ S.Array(Attribute);
+export const AttributeList = UserAttributeList as any as S.Schema<AttributeList>;
 export interface Exclusion {
   arn: string;
   title: string;
@@ -701,16 +702,15 @@ export type AmiId = string;
 export type Hostname = string;
 export type Ipv4Address = string;
 export type Ipv4AddressList = string[];
-export const Ipv4AddressList = /*@__PURE__*/ S.Array(S.String);
+export const Ipv4AddressList =
+  AddRemoveAttributesFindingArnList as any as S.Schema<Ipv4AddressList>;
 export interface Tag {
   key: string;
   value?: string;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ key: S.String, value: S.optional(S.String) }),
-).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
+export const Tag = Attribute as any as S.Schema<Tag>;
 export type Tags = Tag[];
-export const Tags = /*@__PURE__*/ S.Array(Tag);
+export const Tags = UserAttributeList as any as S.Schema<Tags>;
 export interface PrivateIp {
   privateDnsName?: string;
   privateIpAddress?: string;
@@ -721,7 +721,7 @@ export const PrivateIp = /*@__PURE__*/ S.suspend(() =>
 export type PrivateIpAddresses = PrivateIp[];
 export const PrivateIpAddresses = /*@__PURE__*/ S.Array(PrivateIp);
 export type Ipv6Addresses = string[];
-export const Ipv6Addresses = /*@__PURE__*/ S.Array(S.String);
+export const Ipv6Addresses = AddRemoveAttributesFindingArnList as any as S.Schema<Ipv6Addresses>;
 export interface SecurityGroup {
   groupName?: string;
   groupId?: string;
@@ -1098,7 +1098,8 @@ export const ListAssessmentRunAgentsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAssessmentRunAgentsResponse",
 }) as any as S.Schema<ListAssessmentRunAgentsResponse>;
 export type ListParentArnList = string[];
-export const ListParentArnList = /*@__PURE__*/ S.Array(S.String);
+export const ListParentArnList =
+  AddRemoveAttributesFindingArnList as any as S.Schema<ListParentArnList>;
 export type NamePattern = string;
 export type AssessmentRunStateList = AssessmentRunState[];
 export const AssessmentRunStateList = /*@__PURE__*/ S.Array(AssessmentRunState);
@@ -1110,7 +1111,8 @@ export const DurationRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ minSeconds: S.optional(S.Number), maxSeconds: S.optional(S.Number) }),
 ).annotate({ identifier: "DurationRange" }) as any as S.Schema<DurationRange>;
 export type FilterRulesPackageArnList = string[];
-export const FilterRulesPackageArnList = /*@__PURE__*/ S.Array(S.String);
+export const FilterRulesPackageArnList =
+  AddRemoveAttributesFindingArnList as any as S.Schema<FilterRulesPackageArnList>;
 export interface TimestampRange {
   beginDate?: Date;
   endDate?: Date;
@@ -1158,7 +1160,8 @@ export const ListAssessmentRunsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAssessmentRunsRequest",
 }) as any as S.Schema<ListAssessmentRunsRequest>;
 export type ListReturnedArnList = string[];
-export const ListReturnedArnList = /*@__PURE__*/ S.Array(S.String);
+export const ListReturnedArnList =
+  AddRemoveAttributesFindingArnList as any as S.Schema<ListReturnedArnList>;
 export interface ListAssessmentRunsResponse {
   assessmentRunArns: string[];
   nextToken?: string;
@@ -1304,12 +1307,13 @@ export const ListExclusionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ exclusionArns: ListReturnedArnList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListExclusionsResponse" }) as any as S.Schema<ListExclusionsResponse>;
 export type AgentIdList = string[];
-export const AgentIdList = /*@__PURE__*/ S.Array(S.String);
+export const AgentIdList = AddRemoveAttributesFindingArnList as any as S.Schema<AgentIdList>;
 export type AutoScalingGroupList = string[];
-export const AutoScalingGroupList = /*@__PURE__*/ S.Array(S.String);
+export const AutoScalingGroupList =
+  AddRemoveAttributesFindingArnList as any as S.Schema<AutoScalingGroupList>;
 export type RuleName = string;
 export type RuleNameList = string[];
-export const RuleNameList = /*@__PURE__*/ S.Array(S.String);
+export const RuleNameList = AddRemoveAttributesFindingArnList as any as S.Schema<RuleNameList>;
 export type SeverityList = Severity[];
 export const SeverityList = /*@__PURE__*/ S.Array(Severity);
 export interface FindingFilter {
@@ -1384,7 +1388,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ S.Array(Tag);
+export const TagList = UserAttributeList as any as S.Schema<TagList>;
 export interface ListTagsForResourceResponse {
   tags: Tag[];
 }
@@ -1451,13 +1455,11 @@ export const RegisterCrossAccountAccessRoleRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "RegisterCrossAccountAccessRoleRequest",
 }) as any as S.Schema<RegisterCrossAccountAccessRoleRequest>;
 export interface RegisterCrossAccountAccessRoleResponse {}
-export const RegisterCrossAccountAccessRoleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RegisterCrossAccountAccessRoleResponse",
-}) as any as S.Schema<RegisterCrossAccountAccessRoleResponse>;
+export const RegisterCrossAccountAccessRoleResponse =
+  DeleteAssessmentTemplateResponse as any as S.Schema<RegisterCrossAccountAccessRoleResponse>;
 export type UserAttributeKeyList = string[];
-export const UserAttributeKeyList = /*@__PURE__*/ S.Array(S.String);
+export const UserAttributeKeyList =
+  AddRemoveAttributesFindingArnList as any as S.Schema<UserAttributeKeyList>;
 export interface RemoveAttributesFromFindingsRequest {
   findingArns: string[];
   attributeKeys: string[];
@@ -1473,11 +1475,8 @@ export const RemoveAttributesFromFindingsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RemoveAttributesFromFindingsResponse {
   failedItems: { [key: string]: FailedItemDetails | undefined };
 }
-export const RemoveAttributesFromFindingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ failedItems: FailedItems }),
-).annotate({
-  identifier: "RemoveAttributesFromFindingsResponse",
-}) as any as S.Schema<RemoveAttributesFromFindingsResponse>;
+export const RemoveAttributesFromFindingsResponse =
+  AddAttributesToFindingsResponse as any as S.Schema<RemoveAttributesFromFindingsResponse>;
 export interface SetTagsForResourceRequest {
   resourceArn: string;
   tags?: Tag[];
@@ -1490,9 +1489,8 @@ export const SetTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SetTagsForResourceRequest",
 }) as any as S.Schema<SetTagsForResourceRequest>;
 export interface SetTagsForResourceResponse {}
-export const SetTagsForResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SetTagsForResourceResponse",
-}) as any as S.Schema<SetTagsForResourceResponse>;
+export const SetTagsForResourceResponse =
+  DeleteAssessmentRunResponse as any as S.Schema<SetTagsForResourceResponse>;
 export interface StartAssessmentRunRequest {
   assessmentTemplateArn: string;
   assessmentRunName?: string;
@@ -1525,9 +1523,8 @@ export const StopAssessmentRunRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopAssessmentRunRequest" }) as any as S.Schema<StopAssessmentRunRequest>;
 export interface StopAssessmentRunResponse {}
-export const StopAssessmentRunResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopAssessmentRunResponse",
-}) as any as S.Schema<StopAssessmentRunResponse>;
+export const StopAssessmentRunResponse =
+  DeleteAssessmentRunResponse as any as S.Schema<StopAssessmentRunResponse>;
 export interface SubscribeToEventRequest {
   resourceArn: string;
   event: InspectorEvent;
@@ -1539,9 +1536,8 @@ export const SubscribeToEventRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "SubscribeToEventRequest" }) as any as S.Schema<SubscribeToEventRequest>;
 export interface SubscribeToEventResponse {}
-export const SubscribeToEventResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SubscribeToEventResponse",
-}) as any as S.Schema<SubscribeToEventResponse>;
+export const SubscribeToEventResponse =
+  DeleteAssessmentRunResponse as any as S.Schema<SubscribeToEventResponse>;
 export interface UnsubscribeFromEventRequest {
   resourceArn: string;
   event: InspectorEvent;
@@ -1555,9 +1551,8 @@ export const UnsubscribeFromEventRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UnsubscribeFromEventRequest",
 }) as any as S.Schema<UnsubscribeFromEventRequest>;
 export interface UnsubscribeFromEventResponse {}
-export const UnsubscribeFromEventResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UnsubscribeFromEventResponse",
-}) as any as S.Schema<UnsubscribeFromEventResponse>;
+export const UnsubscribeFromEventResponse =
+  DeleteAssessmentRunResponse as any as S.Schema<UnsubscribeFromEventResponse>;
 export interface UpdateAssessmentTargetRequest {
   assessmentTargetArn: string;
   assessmentTargetName: string;
@@ -1573,9 +1568,8 @@ export const UpdateAssessmentTargetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateAssessmentTargetRequest",
 }) as any as S.Schema<UpdateAssessmentTargetRequest>;
 export interface UpdateAssessmentTargetResponse {}
-export const UpdateAssessmentTargetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateAssessmentTargetResponse",
-}) as any as S.Schema<UpdateAssessmentTargetResponse>;
+export const UpdateAssessmentTargetResponse =
+  DeleteAssessmentRunResponse as any as S.Schema<UpdateAssessmentTargetResponse>;
 export type ErrorMessage = string;
 export type AccessDeniedErrorCode =
   | "ACCESS_DENIED_TO_ASSESSMENT_TARGET"
@@ -1675,7 +1669,8 @@ export type LimitExceededErrorCode =
 export const LimitExceededErrorCode = S.String;
 
 export type AssessmentRunInProgressArnList = string[];
-export const AssessmentRunInProgressArnList = /*@__PURE__*/ S.Array(S.String);
+export const AssessmentRunInProgressArnList =
+  AddRemoveAttributesFindingArnList as any as S.Schema<AssessmentRunInProgressArnList>;
 export interface AgentAlreadyRunningAssessment {
   agentId: string;
   assessmentRunArn: string;

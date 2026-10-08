@@ -88,9 +88,8 @@ export const AccountDetailTabsConfigOrderedTabIdsList = /*@__PURE__*/ S.Array(
 
 /** Tab identifiers hidden from the tab strip. */
 export type AccountDetailTabsConfigHiddenTabIdsList = Array<string>;
-export const AccountDetailTabsConfigHiddenTabIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccountDetailTabsConfigHiddenTabIdsList>;
+export const AccountDetailTabsConfigHiddenTabIdsList =
+  AccountDetailTabsConfigOrderedTabIdsList as any as S.Schema<AccountDetailTabsConfigHiddenTabIdsList>;
 
 export interface AccountDetailTabsConfig {
   /** Tab identifiers in the user's preferred order. */

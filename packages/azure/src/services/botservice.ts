@@ -37,17 +37,13 @@ export const Kind = S.String;
 
 /** Contains resource all settings defined as key/value pairs. */
 export type BotPropertiesInputAllSettingsMap = { [key: string]: string | undefined };
-export const BotPropertiesInputAllSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BotPropertiesInputAllSettingsMap>;
+export const BotPropertiesInputAllSettingsMap =
+  CreateBotRequestTagsMap as any as S.Schema<BotPropertiesInputAllSettingsMap>;
 
 /** Contains resource parameters defined as key/value pairs. */
 export type BotPropertiesInputParametersMap = { [key: string]: string | undefined };
-export const BotPropertiesInputParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BotPropertiesInputParametersMap>;
+export const BotPropertiesInputParametersMap =
+  CreateBotRequestTagsMap as any as S.Schema<BotPropertiesInputParametersMap>;
 
 /** Microsoft App Type for the bot */
 export type BotPropertiesInputMsaAppType = "UserAssignedMSI" | "SingleTenant" | "MultiTenant";
@@ -195,10 +191,8 @@ export const CreateBotRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains resource tags defined as key/value pairs. */
 export type CreateBotResponseTagsMap = { [key: string]: string | undefined };
-export const CreateBotResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateBotResponseTagsMap>;
+export const CreateBotResponseTagsMap =
+  CreateBotRequestTagsMap as any as S.Schema<CreateBotResponseTagsMap>;
 
 /** Gets the sku tier. This is based on the SKU name. */
 export type SkuTier = "Free" | "Standard";
@@ -220,23 +214,18 @@ export const Sku = /*@__PURE__*/ S.suspend(() =>
 
 /** Entity zones */
 export type CreateBotResponseZonesList = Array<string>;
-export const CreateBotResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateBotResponseZonesList>;
+export const CreateBotResponseZonesList =
+  BotPropertiesInputLuisAppIdsList as any as S.Schema<CreateBotResponseZonesList>;
 
 /** Contains resource all settings defined as key/value pairs. */
 export type BotPropertiesAllSettingsMap = { [key: string]: string | undefined };
-export const BotPropertiesAllSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BotPropertiesAllSettingsMap>;
+export const BotPropertiesAllSettingsMap =
+  CreateBotRequestTagsMap as any as S.Schema<BotPropertiesAllSettingsMap>;
 
 /** Contains resource parameters defined as key/value pairs. */
 export type BotPropertiesParametersMap = { [key: string]: string | undefined };
-export const BotPropertiesParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BotPropertiesParametersMap>;
+export const BotPropertiesParametersMap =
+  CreateBotRequestTagsMap as any as S.Schema<BotPropertiesParametersMap>;
 
 /** Microsoft App Type for the bot */
 export type BotPropertiesMsaAppType = "UserAssignedMSI" | "SingleTenant" | "MultiTenant";
@@ -244,21 +233,18 @@ export const BotPropertiesMsaAppType = S.String;
 
 /** Collection of channels for which the bot is configured */
 export type BotPropertiesConfiguredChannelsList = Array<string>;
-export const BotPropertiesConfiguredChannelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BotPropertiesConfiguredChannelsList>;
+export const BotPropertiesConfiguredChannelsList =
+  BotPropertiesInputLuisAppIdsList as any as S.Schema<BotPropertiesConfiguredChannelsList>;
 
 /** Collection of channels for which the bot is enabled */
 export type BotPropertiesEnabledChannelsList = Array<string>;
-export const BotPropertiesEnabledChannelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BotPropertiesEnabledChannelsList>;
+export const BotPropertiesEnabledChannelsList =
+  BotPropertiesInputLuisAppIdsList as any as S.Schema<BotPropertiesEnabledChannelsList>;
 
 /** Collection of LUIS App Ids */
 export type BotPropertiesLuisAppIdsList = Array<string>;
-export const BotPropertiesLuisAppIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BotPropertiesLuisAppIdsList>;
+export const BotPropertiesLuisAppIdsList =
+  BotPropertiesInputLuisAppIdsList as any as S.Schema<BotPropertiesLuisAppIdsList>;
 
 /** Whether the bot is in an isolated network */
 export type BotPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
@@ -308,9 +294,8 @@ export const PrivateEndpointConnectionProvisioningState = S.String;
 
 /** Group ids */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
-export const PrivateEndpointConnectionPropertiesGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
+export const PrivateEndpointConnectionPropertiesGroupIdsList =
+  BotPropertiesInputLuisAppIdsList as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
 
 /** Properties of the PrivateEndpointConnectProperties. */
 export interface PrivateEndpointConnectionProperties {
@@ -515,10 +500,8 @@ export const CreateBotResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains resource tags defined as key/value pairs. */
 export type CreateBotConnectionRequestTagsMap = { [key: string]: string | undefined };
-export const CreateBotConnectionRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateBotConnectionRequestTagsMap>;
+export const CreateBotConnectionRequestTagsMap =
+  CreateBotRequestTagsMap as any as S.Schema<CreateBotConnectionRequestTagsMap>;
 
 /** Extra Parameter in a Connection Setting Properties to indicate service provider specific properties */
 export interface ConnectionSettingParameter {
@@ -627,22 +610,18 @@ export const CreateBotConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains resource tags defined as key/value pairs. */
 export type CreateBotConnectionResponseTagsMap = { [key: string]: string | undefined };
-export const CreateBotConnectionResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateBotConnectionResponseTagsMap>;
+export const CreateBotConnectionResponseTagsMap =
+  CreateBotRequestTagsMap as any as S.Schema<CreateBotConnectionResponseTagsMap>;
 
 /** Entity zones */
 export type CreateBotConnectionResponseZonesList = Array<string>;
-export const CreateBotConnectionResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateBotConnectionResponseZonesList>;
+export const CreateBotConnectionResponseZonesList =
+  BotPropertiesInputLuisAppIdsList as any as S.Schema<CreateBotConnectionResponseZonesList>;
 
 /** Service Provider Parameters associated with the Connection Setting */
 export type ConnectionSettingPropertiesParametersList = Array<ConnectionSettingParameter>;
-export const ConnectionSettingPropertiesParametersList = /*@__PURE__*/ S.Array(
-  ConnectionSettingParameter,
-) as any as S.Schema<ConnectionSettingPropertiesParametersList>;
+export const ConnectionSettingPropertiesParametersList =
+  ConnectionSettingPropertiesInputParametersList as any as S.Schema<ConnectionSettingPropertiesParametersList>;
 
 /** Properties for a Connection Setting Item */
 export interface ConnectionSettingProperties {
@@ -747,10 +726,8 @@ export const CreateChannelRequestChannelName = S.String;
 
 /** Contains resource tags defined as key/value pairs. */
 export type CreateChannelRequestTagsMap = { [key: string]: string | undefined };
-export const CreateChannelRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateChannelRequestTagsMap>;
+export const CreateChannelRequestTagsMap =
+  CreateBotRequestTagsMap as any as S.Schema<CreateChannelRequestTagsMap>;
 
 /** Channel definition */
 export interface ChannelInput {
@@ -818,16 +795,13 @@ export const CreateChannelRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains resource tags defined as key/value pairs. */
 export type CreateChannelResponseTagsMap = { [key: string]: string | undefined };
-export const CreateChannelResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateChannelResponseTagsMap>;
+export const CreateChannelResponseTagsMap =
+  CreateBotRequestTagsMap as any as S.Schema<CreateChannelResponseTagsMap>;
 
 /** Entity zones */
 export type CreateChannelResponseZonesList = Array<string>;
-export const CreateChannelResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateChannelResponseZonesList>;
+export const CreateChannelResponseZonesList =
+  BotPropertiesInputLuisAppIdsList as any as S.Schema<CreateChannelResponseZonesList>;
 
 /** Channel definition */
 export interface Channel {
@@ -897,9 +871,8 @@ export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).
 
 /** Group ids */
 export type PrivateEndpointConnectionPropertiesInputGroupIdsList = Array<string>;
-export const PrivateEndpointConnectionPropertiesInputGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateEndpointConnectionPropertiesInputGroupIdsList>;
+export const PrivateEndpointConnectionPropertiesInputGroupIdsList =
+  BotPropertiesInputLuisAppIdsList as any as S.Schema<PrivateEndpointConnectionPropertiesInputGroupIdsList>;
 
 /** Properties of the PrivateEndpointConnectProperties. */
 export interface PrivateEndpointConnectionPropertiesInput {
@@ -961,16 +934,8 @@ export interface CreatePrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const CreatePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "CreatePrivateEndpointConnectionResponse",
-}) as any as S.Schema<CreatePrivateEndpointConnectionResponse>;
+export const CreatePrivateEndpointConnectionResponse =
+  BotPropertiesPrivateEndpointConnectionsItem as any as S.Schema<CreatePrivateEndpointConnectionResponse>;
 
 export interface DeleteBotRequest {
   /** Azure Subscription ID. */
@@ -996,9 +961,7 @@ export const DeleteBotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBotRequest" }) as any as S.Schema<DeleteBotRequest>;
 
 export interface DeleteBotResponse {}
-export const DeleteBotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBotResponse",
-}) as any as S.Schema<DeleteBotResponse>;
+export const DeleteBotResponse = PrivateEndpointInput as any as S.Schema<DeleteBotResponse>;
 
 export interface DeleteBotConnectionRequest {
   /** Azure Subscription ID. */
@@ -1029,9 +992,8 @@ export const DeleteBotConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBotConnectionRequest>;
 
 export interface DeleteBotConnectionResponse {}
-export const DeleteBotConnectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBotConnectionResponse",
-}) as any as S.Schema<DeleteBotConnectionResponse>;
+export const DeleteBotConnectionResponse =
+  PrivateEndpointInput as any as S.Schema<DeleteBotConnectionResponse>;
 
 export interface DeleteChannelRequest {
   /** Azure Subscription ID. */
@@ -1060,9 +1022,7 @@ export const DeleteChannelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteChannelRequest" }) as any as S.Schema<DeleteChannelRequest>;
 
 export interface DeleteChannelResponse {}
-export const DeleteChannelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteChannelResponse",
-}) as any as S.Schema<DeleteChannelResponse>;
+export const DeleteChannelResponse = PrivateEndpointInput as any as S.Schema<DeleteChannelResponse>;
 
 export interface DeletePrivateEndpointConnectionRequest {
   /** Azure Subscription ID. */
@@ -1181,16 +1141,13 @@ export const GetBotRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains resource tags defined as key/value pairs. */
 export type GetBotResponseTagsMap = { [key: string]: string | undefined };
-export const GetBotResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBotResponseTagsMap>;
+export const GetBotResponseTagsMap =
+  CreateBotRequestTagsMap as any as S.Schema<GetBotResponseTagsMap>;
 
 /** Entity zones */
 export type GetBotResponseZonesList = Array<string>;
-export const GetBotResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetBotResponseZonesList>;
+export const GetBotResponseZonesList =
+  BotPropertiesInputLuisAppIdsList as any as S.Schema<GetBotResponseZonesList>;
 
 export interface GetBotResponse {
   /** Specifies the resource ID. */
@@ -1214,20 +1171,7 @@ export interface GetBotResponse {
   /** The set of properties specific to bot resource */
   properties?: BotProperties;
 }
-export const GetBotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    location: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(GetBotResponseTagsMap),
-    sku: S.optional(Sku),
-    kind: S.optional(S.NullOr(Kind)),
-    etag: S.optional(S.String),
-    zones: S.optional(GetBotResponseZonesList),
-    properties: S.optional(BotProperties),
-  }),
-).annotate({ identifier: "GetBotResponse" }) as any as S.Schema<GetBotResponse>;
+export const GetBotResponse = CreateBotResponse as any as S.Schema<GetBotResponse>;
 
 export interface GetBotCheckNameAvailabilityRequest {
   /** the name of the bot for which availability needs to be checked. */
@@ -1298,16 +1242,13 @@ export const GetBotConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains resource tags defined as key/value pairs. */
 export type GetBotConnectionResponseTagsMap = { [key: string]: string | undefined };
-export const GetBotConnectionResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBotConnectionResponseTagsMap>;
+export const GetBotConnectionResponseTagsMap =
+  CreateBotRequestTagsMap as any as S.Schema<GetBotConnectionResponseTagsMap>;
 
 /** Entity zones */
 export type GetBotConnectionResponseZonesList = Array<string>;
-export const GetBotConnectionResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetBotConnectionResponseZonesList>;
+export const GetBotConnectionResponseZonesList =
+  BotPropertiesInputLuisAppIdsList as any as S.Schema<GetBotConnectionResponseZonesList>;
 
 export interface GetBotConnectionResponse {
   /** Specifies the resource ID. */
@@ -1374,16 +1315,13 @@ export const GetChannelRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains resource tags defined as key/value pairs. */
 export type GetChannelResponseTagsMap = { [key: string]: string | undefined };
-export const GetChannelResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetChannelResponseTagsMap>;
+export const GetChannelResponseTagsMap =
+  CreateBotRequestTagsMap as any as S.Schema<GetChannelResponseTagsMap>;
 
 /** Entity zones */
 export type GetChannelResponseZonesList = Array<string>;
-export const GetChannelResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetChannelResponseZonesList>;
+export const GetChannelResponseZonesList =
+  BotPropertiesInputLuisAppIdsList as any as S.Schema<GetChannelResponseZonesList>;
 
 export interface GetChannelResponse {
   /** Specifies the resource ID. */
@@ -1407,20 +1345,7 @@ export interface GetChannelResponse {
   /** The set of properties specific to bot channel resource */
   properties?: Channel;
 }
-export const GetChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    location: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(GetChannelResponseTagsMap),
-    sku: S.optional(Sku),
-    kind: S.optional(S.NullOr(Kind)),
-    etag: S.optional(S.String),
-    zones: S.optional(GetChannelResponseZonesList),
-    properties: S.optional(Channel),
-  }),
-).annotate({ identifier: "GetChannelResponse" }) as any as S.Schema<GetChannelResponse>;
+export const GetChannelResponse = CreateChannelResponse as any as S.Schema<GetChannelResponse>;
 
 export interface GetHostSettingsRequest {
   /** Azure Subscription ID. */
@@ -1562,16 +1487,8 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "GetPrivateEndpointConnectionResponse",
-}) as any as S.Schema<GetPrivateEndpointConnectionResponse>;
+export const GetPrivateEndpointConnectionResponse =
+  BotPropertiesPrivateEndpointConnectionsItem as any as S.Schema<GetPrivateEndpointConnectionResponse>;
 
 export interface GetQnAMakerEndpointKeyRequest {
   /** Azure Subscription ID. */
@@ -1735,16 +1652,13 @@ export const ListBotConnectionByBotServiceRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Contains resource tags defined as key/value pairs. */
 export type ConnectionSettingTagsMap = { [key: string]: string | undefined };
-export const ConnectionSettingTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConnectionSettingTagsMap>;
+export const ConnectionSettingTagsMap =
+  CreateBotRequestTagsMap as any as S.Schema<ConnectionSettingTagsMap>;
 
 /** Entity zones */
 export type ConnectionSettingZonesList = Array<string>;
-export const ConnectionSettingZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionSettingZonesList>;
+export const ConnectionSettingZonesList =
+  BotPropertiesInputLuisAppIdsList as any as S.Schema<ConnectionSettingZonesList>;
 
 /** Bot channel resource definition */
 export interface ConnectionSetting {
@@ -1769,20 +1683,7 @@ export interface ConnectionSetting {
   /** The set of properties specific to bot channel resource */
   properties?: ConnectionSettingProperties;
 }
-export const ConnectionSetting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    location: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(ConnectionSettingTagsMap),
-    sku: S.optional(Sku),
-    kind: S.optional(S.NullOr(Kind)),
-    etag: S.optional(S.String),
-    zones: S.optional(ConnectionSettingZonesList),
-    properties: S.optional(ConnectionSettingProperties),
-  }),
-).annotate({ identifier: "ConnectionSetting" }) as any as S.Schema<ConnectionSetting>;
+export const ConnectionSetting = GetBotConnectionResponse as any as S.Schema<ConnectionSetting>;
 
 /** Gets the list of bot service connection settings and their properties. */
 export type ConnectionSettingResponseListValueList = Array<ConnectionSetting>;
@@ -1977,16 +1878,13 @@ export const ListBotConnectionWithSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains resource tags defined as key/value pairs. */
 export type ListBotConnectionWithSecretsResponseTagsMap = { [key: string]: string | undefined };
-export const ListBotConnectionWithSecretsResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListBotConnectionWithSecretsResponseTagsMap>;
+export const ListBotConnectionWithSecretsResponseTagsMap =
+  CreateBotRequestTagsMap as any as S.Schema<ListBotConnectionWithSecretsResponseTagsMap>;
 
 /** Entity zones */
 export type ListBotConnectionWithSecretsResponseZonesList = Array<string>;
-export const ListBotConnectionWithSecretsResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListBotConnectionWithSecretsResponseZonesList>;
+export const ListBotConnectionWithSecretsResponseZonesList =
+  BotPropertiesInputLuisAppIdsList as any as S.Schema<ListBotConnectionWithSecretsResponseZonesList>;
 
 export interface ListBotConnectionWithSecretsResponse {
   /** Specifies the resource ID. */
@@ -2010,22 +1908,8 @@ export interface ListBotConnectionWithSecretsResponse {
   /** The set of properties specific to bot channel resource */
   properties?: ConnectionSettingProperties;
 }
-export const ListBotConnectionWithSecretsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    location: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(ListBotConnectionWithSecretsResponseTagsMap),
-    sku: S.optional(Sku),
-    kind: S.optional(S.NullOr(Kind)),
-    etag: S.optional(S.String),
-    zones: S.optional(ListBotConnectionWithSecretsResponseZonesList),
-    properties: S.optional(ConnectionSettingProperties),
-  }),
-).annotate({
-  identifier: "ListBotConnectionWithSecretsResponse",
-}) as any as S.Schema<ListBotConnectionWithSecretsResponse>;
+export const ListBotConnectionWithSecretsResponse =
+  CreateBotConnectionResponse as any as S.Schema<ListBotConnectionWithSecretsResponse>;
 
 export interface ListBotsRequest {
   /** Azure Subscription ID. */
@@ -2071,16 +1955,12 @@ export const ListChannelByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains resource tags defined as key/value pairs. */
 export type BotChannelTagsMap = { [key: string]: string | undefined };
-export const BotChannelTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BotChannelTagsMap>;
+export const BotChannelTagsMap = CreateBotRequestTagsMap as any as S.Schema<BotChannelTagsMap>;
 
 /** Entity zones */
 export type BotChannelZonesList = Array<string>;
-export const BotChannelZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BotChannelZonesList>;
+export const BotChannelZonesList =
+  BotPropertiesInputLuisAppIdsList as any as S.Schema<BotChannelZonesList>;
 
 /** Bot channel resource definition */
 export interface BotChannel {
@@ -2105,20 +1985,7 @@ export interface BotChannel {
   /** The set of properties specific to bot channel resource */
   properties?: Channel;
 }
-export const BotChannel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    location: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(BotChannelTagsMap),
-    sku: S.optional(Sku),
-    kind: S.optional(S.NullOr(Kind)),
-    etag: S.optional(S.String),
-    zones: S.optional(BotChannelZonesList),
-    properties: S.optional(Channel),
-  }),
-).annotate({ identifier: "BotChannel" }) as any as S.Schema<BotChannel>;
+export const BotChannel = CreateChannelResponse as any as S.Schema<BotChannel>;
 
 /** Gets the list of bot service channel results and their properties. */
 export type ChannelResponseListValueList = Array<BotChannel>;
@@ -2192,22 +2059,18 @@ export const ListChannelWithKeysRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains resource tags defined as key/value pairs. */
 export type ListChannelWithKeysResponseTagsMap = { [key: string]: string | undefined };
-export const ListChannelWithKeysResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListChannelWithKeysResponseTagsMap>;
+export const ListChannelWithKeysResponseTagsMap =
+  CreateBotRequestTagsMap as any as S.Schema<ListChannelWithKeysResponseTagsMap>;
 
 /** Entity zones */
 export type ListChannelWithKeysResponseZonesList = Array<string>;
-export const ListChannelWithKeysResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListChannelWithKeysResponseZonesList>;
+export const ListChannelWithKeysResponseZonesList =
+  BotPropertiesInputLuisAppIdsList as any as S.Schema<ListChannelWithKeysResponseZonesList>;
 
 /** List of Trusted Origin URLs for this site. This field is applicable only if isSecureSiteEnabled is True. */
 export type SiteTrustedOriginsList = Array<string>;
-export const SiteTrustedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SiteTrustedOriginsList>;
+export const SiteTrustedOriginsList =
+  BotPropertiesInputLuisAppIdsList as any as S.Schema<SiteTrustedOriginsList>;
 
 /** A site for the channel */
 export interface Site {
@@ -2478,9 +2341,8 @@ export const PrivateEndpointConnection = BotPropertiesPrivateEndpointConnections
 /** Array of private endpoint connections */
 export type ListPrivateEndpointConnectionsResponseValueList =
   Array<BotPropertiesPrivateEndpointConnectionsItem>;
-export const ListPrivateEndpointConnectionsResponseValueList = /*@__PURE__*/ S.Array(
-  BotPropertiesPrivateEndpointConnectionsItem,
-) as any as S.Schema<ListPrivateEndpointConnectionsResponseValueList>;
+export const ListPrivateEndpointConnectionsResponseValueList =
+  BotPropertiesPrivateEndpointConnectionsList as any as S.Schema<ListPrivateEndpointConnectionsResponseValueList>;
 
 export interface ListPrivateEndpointConnectionsResponse {
   /** Array of private endpoint connections */
@@ -2521,15 +2383,13 @@ export const ListPrivateLinkResourceByBotResourceRequest = /*@__PURE__*/ S.suspe
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+export const PrivateLinkResourcePropertiesRequiredMembersList =
+  BotPropertiesInputLuisAppIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  BotPropertiesInputLuisAppIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
@@ -2631,16 +2491,13 @@ export const RegenerateDirectLineKeysRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains resource tags defined as key/value pairs. */
 export type RegenerateDirectLineKeysResponseTagsMap = { [key: string]: string | undefined };
-export const RegenerateDirectLineKeysResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RegenerateDirectLineKeysResponseTagsMap>;
+export const RegenerateDirectLineKeysResponseTagsMap =
+  CreateBotRequestTagsMap as any as S.Schema<RegenerateDirectLineKeysResponseTagsMap>;
 
 /** Entity zones */
 export type RegenerateDirectLineKeysResponseZonesList = Array<string>;
-export const RegenerateDirectLineKeysResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RegenerateDirectLineKeysResponseZonesList>;
+export const RegenerateDirectLineKeysResponseZonesList =
+  BotPropertiesInputLuisAppIdsList as any as S.Schema<RegenerateDirectLineKeysResponseZonesList>;
 
 export interface RegenerateDirectLineKeysResponse {
   /** Specifies the resource ID. */
@@ -2683,10 +2540,8 @@ export const RegenerateDirectLineKeysResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains resource tags defined as key/value pairs. */
 export type UpdateBotRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateBotRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateBotRequestTagsMap>;
+export const UpdateBotRequestTagsMap =
+  CreateBotRequestTagsMap as any as S.Schema<UpdateBotRequestTagsMap>;
 
 export interface UpdateBotRequest {
   /** Azure Subscription ID. */
@@ -2731,16 +2586,13 @@ export const UpdateBotRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains resource tags defined as key/value pairs. */
 export type UpdateBotResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateBotResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateBotResponseTagsMap>;
+export const UpdateBotResponseTagsMap =
+  CreateBotRequestTagsMap as any as S.Schema<UpdateBotResponseTagsMap>;
 
 /** Entity zones */
 export type UpdateBotResponseZonesList = Array<string>;
-export const UpdateBotResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateBotResponseZonesList>;
+export const UpdateBotResponseZonesList =
+  BotPropertiesInputLuisAppIdsList as any as S.Schema<UpdateBotResponseZonesList>;
 
 export interface UpdateBotResponse {
   /** Specifies the resource ID. */
@@ -2764,27 +2616,12 @@ export interface UpdateBotResponse {
   /** The set of properties specific to bot resource */
   properties?: BotProperties;
 }
-export const UpdateBotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    location: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(UpdateBotResponseTagsMap),
-    sku: S.optional(Sku),
-    kind: S.optional(S.NullOr(Kind)),
-    etag: S.optional(S.String),
-    zones: S.optional(UpdateBotResponseZonesList),
-    properties: S.optional(BotProperties),
-  }),
-).annotate({ identifier: "UpdateBotResponse" }) as any as S.Schema<UpdateBotResponse>;
+export const UpdateBotResponse = CreateBotResponse as any as S.Schema<UpdateBotResponse>;
 
 /** Contains resource tags defined as key/value pairs. */
 export type UpdateBotConnectionRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateBotConnectionRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateBotConnectionRequestTagsMap>;
+export const UpdateBotConnectionRequestTagsMap =
+  CreateBotRequestTagsMap as any as S.Schema<UpdateBotConnectionRequestTagsMap>;
 
 export interface UpdateBotConnectionRequest {
   /** Azure Subscription ID. */
@@ -2834,16 +2671,13 @@ export const UpdateBotConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains resource tags defined as key/value pairs. */
 export type UpdateBotConnectionResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateBotConnectionResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateBotConnectionResponseTagsMap>;
+export const UpdateBotConnectionResponseTagsMap =
+  CreateBotRequestTagsMap as any as S.Schema<UpdateBotConnectionResponseTagsMap>;
 
 /** Entity zones */
 export type UpdateBotConnectionResponseZonesList = Array<string>;
-export const UpdateBotConnectionResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateBotConnectionResponseZonesList>;
+export const UpdateBotConnectionResponseZonesList =
+  BotPropertiesInputLuisAppIdsList as any as S.Schema<UpdateBotConnectionResponseZonesList>;
 
 export interface UpdateBotConnectionResponse {
   /** Specifies the resource ID. */
@@ -2867,22 +2701,8 @@ export interface UpdateBotConnectionResponse {
   /** The set of properties specific to bot channel resource */
   properties?: ConnectionSettingProperties;
 }
-export const UpdateBotConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    location: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(UpdateBotConnectionResponseTagsMap),
-    sku: S.optional(Sku),
-    kind: S.optional(S.NullOr(Kind)),
-    etag: S.optional(S.String),
-    zones: S.optional(UpdateBotConnectionResponseZonesList),
-    properties: S.optional(ConnectionSettingProperties),
-  }),
-).annotate({
-  identifier: "UpdateBotConnectionResponse",
-}) as any as S.Schema<UpdateBotConnectionResponse>;
+export const UpdateBotConnectionResponse =
+  CreateBotConnectionResponse as any as S.Schema<UpdateBotConnectionResponse>;
 
 export type UpdateChannelRequestChannelName =
   | "AlexaChannel"
@@ -2908,10 +2728,8 @@ export const UpdateChannelRequestChannelName = S.String;
 
 /** Contains resource tags defined as key/value pairs. */
 export type UpdateChannelRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateChannelRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateChannelRequestTagsMap>;
+export const UpdateChannelRequestTagsMap =
+  CreateBotRequestTagsMap as any as S.Schema<UpdateChannelRequestTagsMap>;
 
 export interface UpdateChannelRequest {
   /** Azure Subscription ID. */
@@ -2959,16 +2777,13 @@ export const UpdateChannelRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains resource tags defined as key/value pairs. */
 export type UpdateChannelResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateChannelResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateChannelResponseTagsMap>;
+export const UpdateChannelResponseTagsMap =
+  CreateBotRequestTagsMap as any as S.Schema<UpdateChannelResponseTagsMap>;
 
 /** Entity zones */
 export type UpdateChannelResponseZonesList = Array<string>;
-export const UpdateChannelResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateChannelResponseZonesList>;
+export const UpdateChannelResponseZonesList =
+  BotPropertiesInputLuisAppIdsList as any as S.Schema<UpdateChannelResponseZonesList>;
 
 export interface UpdateChannelResponse {
   /** Specifies the resource ID. */
@@ -2992,20 +2807,8 @@ export interface UpdateChannelResponse {
   /** The set of properties specific to bot channel resource */
   properties?: Channel;
 }
-export const UpdateChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    location: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(UpdateChannelResponseTagsMap),
-    sku: S.optional(Sku),
-    kind: S.optional(S.NullOr(Kind)),
-    etag: S.optional(S.String),
-    zones: S.optional(UpdateChannelResponseZonesList),
-    properties: S.optional(Channel),
-  }),
-).annotate({ identifier: "UpdateChannelResponse" }) as any as S.Schema<UpdateChannelResponse>;
+export const UpdateChannelResponse =
+  CreateChannelResponse as any as S.Schema<UpdateChannelResponse>;
 
 export type CreateBotError = AzureOpError;
 /** Creates a Bot Service. Bot Service is a resource group wide resource type. */

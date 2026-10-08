@@ -395,9 +395,8 @@ export const AddFieldForUserRequestBodyCase1DataType = S.String;
 /** The options available for single select fields. At least one option must be provided when creating a single select field. */
 export type AddFieldForUserRequestBodyCase1SingleSelectOptionsList =
   Array<ProjectsV2FieldSingleSelectOption>;
-export const AddFieldForUserRequestBodyCase1SingleSelectOptionsList = /*@__PURE__*/ S.Array(
-  ProjectsV2FieldSingleSelectOption,
-) as any as S.Schema<AddFieldForUserRequestBodyCase1SingleSelectOptionsList>;
+export const AddFieldForUserRequestBodyCase1SingleSelectOptionsList =
+  AddFieldForOrgRequestBodyCase2SingleSelectOptionsList as any as S.Schema<AddFieldForUserRequestBodyCase1SingleSelectOptionsList>;
 
 export interface AddFieldForUserRequestBodyCase1 {
   /** The name of the field. */
@@ -1074,9 +1073,8 @@ export const NullableIntegrationPermissions = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation. */
 export type NullableIntegrationEventsList = Array<string>;
-export const NullableIntegrationEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NullableIntegrationEventsList>;
+export const NullableIntegrationEventsList =
+  RepositoryTopicsList as any as S.Schema<NullableIntegrationEventsList>;
 
 /** GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub. */
 export interface NullableIntegration {
@@ -1454,14 +1452,12 @@ export const PullRequestSimpleLabelsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PullRequestSimpleLabelsList>;
 
 export type PullRequestSimpleAssigneesList = Array<NullableSimpleUser>;
-export const PullRequestSimpleAssigneesList = /*@__PURE__*/ S.Array(
-  NullableSimpleUser,
-) as any as S.Schema<PullRequestSimpleAssigneesList>;
+export const PullRequestSimpleAssigneesList =
+  IssueAssigneesList as any as S.Schema<PullRequestSimpleAssigneesList>;
 
 export type PullRequestSimpleRequestedReviewersList = Array<NullableSimpleUser>;
-export const PullRequestSimpleRequestedReviewersList = /*@__PURE__*/ S.Array(
-  NullableSimpleUser,
-) as any as S.Schema<PullRequestSimpleRequestedReviewersList>;
+export const PullRequestSimpleRequestedReviewersList =
+  IssueAssigneesList as any as S.Schema<PullRequestSimpleRequestedReviewersList>;
 
 export interface TeamPermissions {
   pull: boolean;
@@ -1978,15 +1974,13 @@ export const CreateViewForOrgRequestSortByList = /*@__PURE__*/ S.Array(
 
 /** The field IDs to group items by (horizontal grouping). Supports a single field. The field must support grouping; fields such as `Title`, `Reviewers`, `Linked pull requests`, `Sub-issues progress`, `Tracked by`, and `Tracks` cannot be grouped on. */
 export type CreateViewForOrgRequestGroupByList = Array<number>;
-export const CreateViewForOrgRequestGroupByList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateViewForOrgRequestGroupByList>;
+export const CreateViewForOrgRequestGroupByList =
+  CreateViewForOrgRequestVisibleFieldsList as any as S.Schema<CreateViewForOrgRequestGroupByList>;
 
 /** The field IDs to use as columns in `board` layout (vertical grouping). Supports a single field. The field must support grouping; fields such as `Title`, `Reviewers`, `Linked pull requests`, `Sub-issues progress`, `Tracked by`, and `Tracks` cannot be grouped on. */
 export type CreateViewForOrgRequestVerticalGroupByList = Array<number>;
-export const CreateViewForOrgRequestVerticalGroupByList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateViewForOrgRequestVerticalGroupByList>;
+export const CreateViewForOrgRequestVerticalGroupByList =
+  CreateViewForOrgRequestVisibleFieldsList as any as S.Schema<CreateViewForOrgRequestVerticalGroupByList>;
 
 export interface CreateViewForOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -2030,9 +2024,8 @@ export const ProjectsV2ViewLayout = S.String;
 
 /** The list of field IDs that are visible in the view. */
 export type ProjectsV2ViewVisibleFieldsList = Array<number>;
-export const ProjectsV2ViewVisibleFieldsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ProjectsV2ViewVisibleFieldsList>;
+export const ProjectsV2ViewVisibleFieldsList =
+  CreateViewForOrgRequestVisibleFieldsList as any as S.Schema<ProjectsV2ViewVisibleFieldsList>;
 
 export type ProjectsV2ViewSortByItemItem = number | string;
 export const ProjectsV2ViewSortByItemItem =
@@ -2051,15 +2044,13 @@ export const ProjectsV2ViewSortByList = /*@__PURE__*/ S.Array(
 
 /** The list of field IDs used for horizontal grouping. */
 export type ProjectsV2ViewGroupByList = Array<number>;
-export const ProjectsV2ViewGroupByList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ProjectsV2ViewGroupByList>;
+export const ProjectsV2ViewGroupByList =
+  CreateViewForOrgRequestVisibleFieldsList as any as S.Schema<ProjectsV2ViewGroupByList>;
 
 /** The list of field IDs used for vertical grouping (board layout). */
 export type ProjectsV2ViewVerticalGroupByList = Array<number>;
-export const ProjectsV2ViewVerticalGroupByList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ProjectsV2ViewVerticalGroupByList>;
+export const ProjectsV2ViewVerticalGroupByList =
+  CreateViewForOrgRequestVisibleFieldsList as any as S.Schema<ProjectsV2ViewVerticalGroupByList>;
 
 /** A view inside a projects v2 project */
 export interface ProjectsV2View {
@@ -2119,9 +2110,8 @@ export const CreateViewForUserRequestLayout = S.String;
 
 /** `visible_fields` is not applicable to `roadmap` layout views. For `table` and `board` layouts, this represents the field IDs that should be visible in the view. If not provided, the default visible fields will be used. */
 export type CreateViewForUserRequestVisibleFieldsList = Array<number>;
-export const CreateViewForUserRequestVisibleFieldsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateViewForUserRequestVisibleFieldsList>;
+export const CreateViewForUserRequestVisibleFieldsList =
+  CreateViewForOrgRequestVisibleFieldsList as any as S.Schema<CreateViewForUserRequestVisibleFieldsList>;
 
 export type CreateViewForUserRequestSortByItemItem = number | string;
 export const CreateViewForUserRequestSortByItemItem =
@@ -2140,15 +2130,13 @@ export const CreateViewForUserRequestSortByList = /*@__PURE__*/ S.Array(
 
 /** The field IDs to group items by (horizontal grouping). Supports a single field. The field must support grouping; fields such as `Title`, `Reviewers`, `Linked pull requests`, `Sub-issues progress`, `Tracked by`, and `Tracks` cannot be grouped on. */
 export type CreateViewForUserRequestGroupByList = Array<number>;
-export const CreateViewForUserRequestGroupByList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateViewForUserRequestGroupByList>;
+export const CreateViewForUserRequestGroupByList =
+  CreateViewForOrgRequestVisibleFieldsList as any as S.Schema<CreateViewForUserRequestGroupByList>;
 
 /** The field IDs to use as columns in `board` layout (vertical grouping). Supports a single field. The field must support grouping; fields such as `Title`, `Reviewers`, `Linked pull requests`, `Sub-issues progress`, `Tracked by`, and `Tracks` cannot be grouped on. */
 export type CreateViewForUserRequestVerticalGroupByList = Array<number>;
-export const CreateViewForUserRequestVerticalGroupByList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateViewForUserRequestVerticalGroupByList>;
+export const CreateViewForUserRequestVerticalGroupByList =
+  CreateViewForOrgRequestVisibleFieldsList as any as S.Schema<CreateViewForUserRequestVerticalGroupByList>;
 
 export interface CreateViewForUserRequest {
   /** The unique identifier of the user. */
@@ -2240,9 +2228,8 @@ export const DeleteItemForUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteItemForUserRequest" }) as any as S.Schema<DeleteItemForUserRequest>;
 
 export interface DeleteItemForUserResponse {}
-export const DeleteItemForUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteItemForUserResponse",
-}) as any as S.Schema<DeleteItemForUserResponse>;
+export const DeleteItemForUserResponse =
+  DeleteItemForOrgResponse as any as S.Schema<DeleteItemForUserResponse>;
 
 export interface GetFieldForOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -2424,9 +2411,8 @@ export const GetForUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetForUserRequest" }) as any as S.Schema<GetForUserRequest>;
 
 export type GetOrgItemRequestFieldsCase1List = Array<string>;
-export const GetOrgItemRequestFieldsCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrgItemRequestFieldsCase1List>;
+export const GetOrgItemRequestFieldsCase1List =
+  RepositoryTopicsList as any as S.Schema<GetOrgItemRequestFieldsCase1List>;
 
 export type GetOrgItemRequestFields = string | GetOrgItemRequestFieldsCase1List;
 export const GetOrgItemRequestFields = S.Unknown as any as S.Schema<GetOrgItemRequestFields>;
@@ -2464,10 +2450,8 @@ export const ProjectsV2ItemWithContentContentMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ProjectsV2ItemWithContentContentMap>;
 
 export type ProjectsV2ItemWithContentFieldsItemMap = { [key: string]: unknown | undefined };
-export const ProjectsV2ItemWithContentFieldsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsV2ItemWithContentFieldsItemMap>;
+export const ProjectsV2ItemWithContentFieldsItemMap =
+  ProjectsV2ItemWithContentContentMap as any as S.Schema<ProjectsV2ItemWithContentFieldsItemMap>;
 
 /** The fields and values associated with this item. */
 export type ProjectsV2ItemWithContentFieldsList = Array<ProjectsV2ItemWithContentFieldsItemMap>;
@@ -2517,9 +2501,8 @@ export const ProjectsV2ItemWithContent = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectsV2ItemWithContent>;
 
 export type GetUserItemRequestFieldsCase1List = Array<string>;
-export const GetUserItemRequestFieldsCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetUserItemRequestFieldsCase1List>;
+export const GetUserItemRequestFieldsCase1List =
+  RepositoryTopicsList as any as S.Schema<GetUserItemRequestFieldsCase1List>;
 
 export type GetUserItemRequestFields = string | GetUserItemRequestFieldsCase1List;
 export const GetUserItemRequestFields = S.Unknown as any as S.Schema<GetUserItemRequestFields>;
@@ -2612,9 +2595,8 @@ export const ListFieldsForUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListFieldsForUserRequest" }) as any as S.Schema<ListFieldsForUserRequest>;
 
 export type ListFieldsForUserResponseBodyList = Array<ProjectsV2Field>;
-export const ListFieldsForUserResponseBodyList = /*@__PURE__*/ S.Array(
-  ProjectsV2Field,
-) as any as S.Schema<ListFieldsForUserResponseBodyList>;
+export const ListFieldsForUserResponseBodyList =
+  ListFieldsForOrgResponseBodyList as any as S.Schema<ListFieldsForUserResponseBodyList>;
 
 export type ListFieldsForUserResponse = ListFieldsForUserResponseBodyList;
 export const ListFieldsForUserResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2678,19 +2660,15 @@ export const ListForUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListForUserRequest" }) as any as S.Schema<ListForUserRequest>;
 
 export type ListForUserResponseBodyList = Array<ProjectsV2>;
-export const ListForUserResponseBodyList = /*@__PURE__*/ S.Array(
-  ProjectsV2,
-) as any as S.Schema<ListForUserResponseBodyList>;
+export const ListForUserResponseBodyList =
+  ListForOrgResponseBodyList as any as S.Schema<ListForUserResponseBodyList>;
 
 export type ListForUserResponse = ListForUserResponseBodyList;
-export const ListForUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ListForUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListForUserResponse" }) as any as S.Schema<ListForUserResponse>;
+export const ListForUserResponse = ListForOrgResponse as any as S.Schema<ListForUserResponse>;
 
 export type ListItemsForOrgRequestFieldsCase1List = Array<string>;
-export const ListItemsForOrgRequestFieldsCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListItemsForOrgRequestFieldsCase1List>;
+export const ListItemsForOrgRequestFieldsCase1List =
+  RepositoryTopicsList as any as S.Schema<ListItemsForOrgRequestFieldsCase1List>;
 
 export type ListItemsForOrgRequestFields = string | ListItemsForOrgRequestFieldsCase1List;
 export const ListItemsForOrgRequestFields =
@@ -2737,9 +2715,8 @@ export const ListItemsForOrgResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListItemsForOrgResponse" }) as any as S.Schema<ListItemsForOrgResponse>;
 
 export type ListItemsForUserRequestFieldsCase1List = Array<string>;
-export const ListItemsForUserRequestFieldsCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListItemsForUserRequestFieldsCase1List>;
+export const ListItemsForUserRequestFieldsCase1List =
+  RepositoryTopicsList as any as S.Schema<ListItemsForUserRequestFieldsCase1List>;
 
 export type ListItemsForUserRequestFields = string | ListItemsForUserRequestFieldsCase1List;
 export const ListItemsForUserRequestFields =
@@ -2780,19 +2757,16 @@ export const ListItemsForUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListItemsForUserRequest" }) as any as S.Schema<ListItemsForUserRequest>;
 
 export type ListItemsForUserResponseBodyList = Array<ProjectsV2ItemWithContent>;
-export const ListItemsForUserResponseBodyList = /*@__PURE__*/ S.Array(
-  ProjectsV2ItemWithContent,
-) as any as S.Schema<ListItemsForUserResponseBodyList>;
+export const ListItemsForUserResponseBodyList =
+  ListItemsForOrgResponseBodyList as any as S.Schema<ListItemsForUserResponseBodyList>;
 
 export type ListItemsForUserResponse = ListItemsForUserResponseBodyList;
-export const ListItemsForUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ListItemsForUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListItemsForUserResponse" }) as any as S.Schema<ListItemsForUserResponse>;
+export const ListItemsForUserResponse =
+  ListItemsForOrgResponse as any as S.Schema<ListItemsForUserResponse>;
 
 export type ListViewItemsForOrgRequestFieldsCase1List = Array<string>;
-export const ListViewItemsForOrgRequestFieldsCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListViewItemsForOrgRequestFieldsCase1List>;
+export const ListViewItemsForOrgRequestFieldsCase1List =
+  RepositoryTopicsList as any as S.Schema<ListViewItemsForOrgRequestFieldsCase1List>;
 
 export type ListViewItemsForOrgRequestFields = string | ListViewItemsForOrgRequestFieldsCase1List;
 export const ListViewItemsForOrgRequestFields =
@@ -2835,9 +2809,8 @@ export const ListViewItemsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListViewItemsForOrgRequest>;
 
 export type ListViewItemsForOrgResponseBodyList = Array<ProjectsV2ItemWithContent>;
-export const ListViewItemsForOrgResponseBodyList = /*@__PURE__*/ S.Array(
-  ProjectsV2ItemWithContent,
-) as any as S.Schema<ListViewItemsForOrgResponseBodyList>;
+export const ListViewItemsForOrgResponseBodyList =
+  ListItemsForOrgResponseBodyList as any as S.Schema<ListViewItemsForOrgResponseBodyList>;
 
 export type ListViewItemsForOrgResponse = ListViewItemsForOrgResponseBodyList;
 export const ListViewItemsForOrgResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2847,9 +2820,8 @@ export const ListViewItemsForOrgResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListViewItemsForOrgResponse>;
 
 export type ListViewItemsForUserRequestFieldsCase1List = Array<string>;
-export const ListViewItemsForUserRequestFieldsCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListViewItemsForUserRequestFieldsCase1List>;
+export const ListViewItemsForUserRequestFieldsCase1List =
+  RepositoryTopicsList as any as S.Schema<ListViewItemsForUserRequestFieldsCase1List>;
 
 export type ListViewItemsForUserRequestFields = string | ListViewItemsForUserRequestFieldsCase1List;
 export const ListViewItemsForUserRequestFields =
@@ -2892,16 +2864,12 @@ export const ListViewItemsForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListViewItemsForUserRequest>;
 
 export type ListViewItemsForUserResponseBodyList = Array<ProjectsV2ItemWithContent>;
-export const ListViewItemsForUserResponseBodyList = /*@__PURE__*/ S.Array(
-  ProjectsV2ItemWithContent,
-) as any as S.Schema<ListViewItemsForUserResponseBodyList>;
+export const ListViewItemsForUserResponseBodyList =
+  ListItemsForOrgResponseBodyList as any as S.Schema<ListViewItemsForUserResponseBodyList>;
 
 export type ListViewItemsForUserResponse = ListViewItemsForUserResponseBodyList;
-export const ListViewItemsForUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ListViewItemsForUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListViewItemsForUserResponse",
-}) as any as S.Schema<ListViewItemsForUserResponse>;
+export const ListViewItemsForUserResponse =
+  ListViewItemsForOrgResponse as any as S.Schema<ListViewItemsForUserResponse>;
 
 /** The new value for the field: - For text, number, and date fields, provide the new value directly. - For single select and iteration fields, provide the ID of the option or iteration. - To clear the field, set this to null. */
 export type UpdateItemForOrgRequestFieldsItemValue = string | number;

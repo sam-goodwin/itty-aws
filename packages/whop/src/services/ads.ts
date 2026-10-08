@@ -135,9 +135,8 @@ export const CreateAdRequestHeadlinesItem = CreateAdRequestDescriptionsItem;
 
 /** The headline shown on the ad. Entries without a language are the ad's own copy; add one entry per other language on a Meta ad with `translations`. */
 export type CreateAdRequestHeadlinesList = Array<CreateAdRequestDescriptionsItem>;
-export const CreateAdRequestHeadlinesList = /*@__PURE__*/ S.Array(
-  CreateAdRequestDescriptionsItem,
-) as any as S.Schema<CreateAdRequestHeadlinesList>;
+export const CreateAdRequestHeadlinesList =
+  CreateAdRequestDescriptionsList as any as S.Schema<CreateAdRequestHeadlinesList>;
 
 export type CreateAdRequestLeadFormCompletionButtonType = "website" | "call" | "download";
 export const CreateAdRequestLeadFormCompletionButtonType = S.String;
@@ -398,9 +397,8 @@ export const CreateAdRequestPrimaryTextsItem = CreateAdRequestDescriptionsItem;
 
 /** The primary text shown in the ad body. Entries without a language are the ad's own copy (several make text variations); add one entry per other language on a Meta ad with `translations`. */
 export type CreateAdRequestPrimaryTextsList = Array<CreateAdRequestDescriptionsItem>;
-export const CreateAdRequestPrimaryTextsList = /*@__PURE__*/ S.Array(
-  CreateAdRequestDescriptionsItem,
-) as any as S.Schema<CreateAdRequestPrimaryTextsList>;
+export const CreateAdRequestPrimaryTextsList =
+  CreateAdRequestDescriptionsList as any as S.Schema<CreateAdRequestPrimaryTextsList>;
 
 export interface CreateAdRequestSocialAccountsItem {
   /** Social account ID, prefixed `sacc_`. */
@@ -513,11 +511,7 @@ export interface AdEntityReference {
   /** The referenced entity's id. */
   id: string;
 }
-export const AdEntityReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({ identifier: "AdEntityReference" }) as any as S.Schema<AdEntityReference>;
+export const AdEntityReference = CreateAdRequestMusic as any as S.Schema<AdEntityReference>;
 
 /** The call-to-action button shown on the ad. */
 export type AdCallToAction =
@@ -906,9 +900,7 @@ export type AdPostSource = "facebook" | "instagram";
 export const AdPostSource = S.String;
 
 export type AdPrimaryTextsList = Array<AdText>;
-export const AdPrimaryTextsList = /*@__PURE__*/ S.Array(
-  AdText,
-) as any as S.Schema<AdPrimaryTextsList>;
+export const AdPrimaryTextsList = AdDescriptionsList as any as S.Schema<AdPrimaryTextsList>;
 
 /** The Whop pixel conversion event whose attributed count represents results -- the optimization goal, or the highest-volume attributed event for campaigns that budget per ad group. Null when the goal isn't a Whop-attributed event. */
 export type AdResultEvent =
@@ -934,9 +926,8 @@ export type AdStatus = "active" | "paused" | "in_review" | "rejected";
 export const AdStatus = S.String;
 
 export type AdTranslationsAutomaticLanguagesList = Array<string>;
-export const AdTranslationsAutomaticLanguagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AdTranslationsAutomaticLanguagesList>;
+export const AdTranslationsAutomaticLanguagesList =
+  CreateAdRequestTranslationsAutomaticLanguagesList as any as S.Schema<AdTranslationsAutomaticLanguagesList>;
 
 export interface AdTranslations {
   automatic_languages: AdTranslationsAutomaticLanguagesList;
@@ -1255,14 +1246,12 @@ export const GetAdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAdRequest" }) as any as S.Schema<GetAdRequest>;
 
 export type ListAdsRequestAdCampaignIdsList = Array<string>;
-export const ListAdsRequestAdCampaignIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListAdsRequestAdCampaignIdsList>;
+export const ListAdsRequestAdCampaignIdsList =
+  CreateAdRequestTranslationsAutomaticLanguagesList as any as S.Schema<ListAdsRequestAdCampaignIdsList>;
 
 export type ListAdsRequestAdGroupIdsList = Array<string>;
-export const ListAdsRequestAdGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListAdsRequestAdGroupIdsList>;
+export const ListAdsRequestAdGroupIdsList =
+  CreateAdRequestTranslationsAutomaticLanguagesList as any as S.Schema<ListAdsRequestAdGroupIdsList>;
 
 export type ListAdsRequestStatus = "active" | "paused" | "in_review" | "rejected";
 export const ListAdsRequestStatus = S.String;
@@ -1356,9 +1345,8 @@ export const ListAdsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAdsRequest" }) as any as S.Schema<ListAdsRequest>;
 
 export type ListAdsResponseDataList = Array<Ad>;
-export const ListAdsResponseDataList = /*@__PURE__*/ S.Array(
-  Ad,
-) as any as S.Schema<ListAdsResponseDataList>;
+export const ListAdsResponseDataList =
+  DuplicateAdResponseDataList as any as S.Schema<ListAdsResponseDataList>;
 
 export interface ListAdsResponsePageInfo {
   end_cursor: string | null;
@@ -1476,18 +1464,16 @@ export const UpdateAdRequestDescriptionsItem = CreateAdRequestDescriptionsItem;
 
 /** The description shown on the ad. Entries without a language are the ad's own copy; add one entry per other language on a Meta ad with `translations`. */
 export type UpdateAdRequestDescriptionsList = Array<CreateAdRequestDescriptionsItem>;
-export const UpdateAdRequestDescriptionsList = /*@__PURE__*/ S.Array(
-  CreateAdRequestDescriptionsItem,
-) as any as S.Schema<UpdateAdRequestDescriptionsList>;
+export const UpdateAdRequestDescriptionsList =
+  CreateAdRequestDescriptionsList as any as S.Schema<UpdateAdRequestDescriptionsList>;
 
 export type UpdateAdRequestHeadlinesItem = CreateAdRequestDescriptionsItem;
 export const UpdateAdRequestHeadlinesItem = CreateAdRequestDescriptionsItem;
 
 /** The headline shown on the ad. Entries without a language are the ad's own copy; add one entry per other language on a Meta ad with `translations`. */
 export type UpdateAdRequestHeadlinesList = Array<CreateAdRequestDescriptionsItem>;
-export const UpdateAdRequestHeadlinesList = /*@__PURE__*/ S.Array(
-  CreateAdRequestDescriptionsItem,
-) as any as S.Schema<UpdateAdRequestHeadlinesList>;
+export const UpdateAdRequestHeadlinesList =
+  CreateAdRequestDescriptionsList as any as S.Schema<UpdateAdRequestHeadlinesList>;
 
 export type UpdateAdRequestLeadFormCompletionButtonType = "website" | "call" | "download";
 export const UpdateAdRequestLeadFormCompletionButtonType = S.String;
@@ -1523,9 +1509,8 @@ export const UpdateAdRequestLeadFormDisclaimerCheckboxesItem =
 
 export type UpdateAdRequestLeadFormDisclaimerCheckboxesList =
   Array<CreateAdRequestLeadFormDisclaimerCheckboxesItem>;
-export const UpdateAdRequestLeadFormDisclaimerCheckboxesList = /*@__PURE__*/ S.Array(
-  CreateAdRequestLeadFormDisclaimerCheckboxesItem,
-) as any as S.Schema<UpdateAdRequestLeadFormDisclaimerCheckboxesList>;
+export const UpdateAdRequestLeadFormDisclaimerCheckboxesList =
+  CreateAdRequestLeadFormDisclaimerCheckboxesList as any as S.Schema<UpdateAdRequestLeadFormDisclaimerCheckboxesList>;
 
 /** Optional custom consent disclaimer with checkboxes. */
 export interface UpdateAdRequestLeadFormDisclaimer {
@@ -1533,15 +1518,8 @@ export interface UpdateAdRequestLeadFormDisclaimer {
   checkboxes?: UpdateAdRequestLeadFormDisclaimerCheckboxesList;
   title?: string;
 }
-export const UpdateAdRequestLeadFormDisclaimer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    checkboxes: S.optional(UpdateAdRequestLeadFormDisclaimerCheckboxesList),
-    title: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateAdRequestLeadFormDisclaimer",
-}) as any as S.Schema<UpdateAdRequestLeadFormDisclaimer>;
+export const UpdateAdRequestLeadFormDisclaimer =
+  CreateAdRequestLeadFormDisclaimer as any as S.Schema<UpdateAdRequestLeadFormDisclaimer>;
 
 /** more_volume (default) is quickest to submit; higher_intent adds a confirmation step. */
 export type UpdateAdRequestLeadFormFormType = "more_volume" | "higher_intent";
@@ -1699,24 +1677,21 @@ export const UpdateAdRequestPrimaryTextsItem = CreateAdRequestDescriptionsItem;
 
 /** The primary text shown in the ad body. Entries without a language are the ad's own copy (several make text variations); add one entry per other language on a Meta ad with `translations`. */
 export type UpdateAdRequestPrimaryTextsList = Array<CreateAdRequestDescriptionsItem>;
-export const UpdateAdRequestPrimaryTextsList = /*@__PURE__*/ S.Array(
-  CreateAdRequestDescriptionsItem,
-) as any as S.Schema<UpdateAdRequestPrimaryTextsList>;
+export const UpdateAdRequestPrimaryTextsList =
+  CreateAdRequestDescriptionsList as any as S.Schema<UpdateAdRequestPrimaryTextsList>;
 
 export type UpdateAdRequestSocialAccountsItem = CreateAdRequestSocialAccountsItem;
 export const UpdateAdRequestSocialAccountsItem = CreateAdRequestSocialAccountsItem;
 
 /** The social accounts the ad runs under -- a connected Facebook page and, optionally, an Instagram profile. */
 export type UpdateAdRequestSocialAccountsList = Array<CreateAdRequestSocialAccountsItem>;
-export const UpdateAdRequestSocialAccountsList = /*@__PURE__*/ S.Array(
-  CreateAdRequestSocialAccountsItem,
-) as any as S.Schema<UpdateAdRequestSocialAccountsList>;
+export const UpdateAdRequestSocialAccountsList =
+  CreateAdRequestSocialAccountsList as any as S.Schema<UpdateAdRequestSocialAccountsList>;
 
 /** ISO 639 codes Meta translates the ad's own copy into automatically. English copy translates into `es`, `fr`, `de`, `pt`, `it`, `ar`, `nl`, `ms`, `sv`, `id`, `pl`, `hi`, `da`, `tr`, `fil`, and `ro`; `de`, `ar`, `he`, `es`, `ja`, `no`, `fr`, `nl`, and `sv` copy translate into `en`. */
 export type UpdateAdRequestTranslationsAutomaticLanguagesList = Array<string>;
-export const UpdateAdRequestTranslationsAutomaticLanguagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAdRequestTranslationsAutomaticLanguagesList>;
+export const UpdateAdRequestTranslationsAutomaticLanguagesList =
+  CreateAdRequestTranslationsAutomaticLanguagesList as any as S.Schema<UpdateAdRequestTranslationsAutomaticLanguagesList>;
 
 /** Shows a Meta ad in other languages. Each viewer sees the version for their language; everyone else sees the ad's own copy. Tag every copy and creatives entry with its language: the ad's own with `source_language`, and give every other language a `primary_texts` and `headlines` entry (a `descriptions` entry and a `creatives` entry are optional), or list it in `automatic_languages`. Needs a website destination, one image or video, and exactly one primary text and headline of the ad's own (and at most one description), with no Dynamic Creative or crops. Replaced as a whole when sent, so send `automatic_languages` with `source_language`. null turns translations off and deletes their media. Meta-only. */
 export interface UpdateAdRequestTranslations {
@@ -1725,14 +1700,8 @@ export interface UpdateAdRequestTranslations {
   /** ISO 639 code the ad's own copy is written in, such as `en`. */
   source_language: string;
 }
-export const UpdateAdRequestTranslations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    automatic_languages: S.optional(UpdateAdRequestTranslationsAutomaticLanguagesList),
-    source_language: S.String,
-  }),
-).annotate({
-  identifier: "UpdateAdRequestTranslations",
-}) as any as S.Schema<UpdateAdRequestTranslations>;
+export const UpdateAdRequestTranslations =
+  CreateAdRequestTranslations as any as S.Schema<UpdateAdRequestTranslations>;
 
 export interface UpdateAdRequest {
   /** The ad ID. */

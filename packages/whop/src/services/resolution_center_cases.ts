@@ -312,9 +312,8 @@ export const AppealResolutionCenterCaseRequestAttachmentsItem =
 /** Up to 3 evidence files, by existing file `id` or `direct_upload_id`. */
 export type AppealResolutionCenterCaseRequestAttachmentsList =
   Array<AcceptResolutionCenterCaseRequestAttachmentsItem>;
-export const AppealResolutionCenterCaseRequestAttachmentsList = /*@__PURE__*/ S.Array(
-  AcceptResolutionCenterCaseRequestAttachmentsItem,
-) as any as S.Schema<AppealResolutionCenterCaseRequestAttachmentsList>;
+export const AppealResolutionCenterCaseRequestAttachmentsList =
+  AcceptResolutionCenterCaseRequestAttachmentsList as any as S.Schema<AppealResolutionCenterCaseRequestAttachmentsList>;
 
 export interface AppealResolutionCenterCaseRequest {
   /** The resolution center case ID (`reso_` tag). */
@@ -344,9 +343,8 @@ export const CreateResolutionCenterCaseRequestAttachmentsItem =
 
 export type CreateResolutionCenterCaseRequestAttachmentsList =
   Array<AcceptResolutionCenterCaseRequestAttachmentsItem>;
-export const CreateResolutionCenterCaseRequestAttachmentsList = /*@__PURE__*/ S.Array(
-  AcceptResolutionCenterCaseRequestAttachmentsItem,
-) as any as S.Schema<CreateResolutionCenterCaseRequestAttachmentsList>;
+export const CreateResolutionCenterCaseRequestAttachmentsList =
+  AcceptResolutionCenterCaseRequestAttachmentsList as any as S.Schema<CreateResolutionCenterCaseRequestAttachmentsList>;
 
 /** What went wrong. Uses the same vocabulary as `/disputes`. */
 export type CreateResolutionCenterCaseRequestReason =
@@ -388,9 +386,8 @@ export const DenyResolutionCenterCaseRequestAttachmentsItem =
 /** Up to 3 evidence files, by existing file `id` or `direct_upload_id`. */
 export type DenyResolutionCenterCaseRequestAttachmentsList =
   Array<AcceptResolutionCenterCaseRequestAttachmentsItem>;
-export const DenyResolutionCenterCaseRequestAttachmentsList = /*@__PURE__*/ S.Array(
-  AcceptResolutionCenterCaseRequestAttachmentsItem,
-) as any as S.Schema<DenyResolutionCenterCaseRequestAttachmentsList>;
+export const DenyResolutionCenterCaseRequestAttachmentsList =
+  AcceptResolutionCenterCaseRequestAttachmentsList as any as S.Schema<DenyResolutionCenterCaseRequestAttachmentsList>;
 
 export interface DenyResolutionCenterCaseRequest {
   /** The resolution center case ID (`reso_` tag). */
@@ -857,9 +854,8 @@ export const ReplyToResolutionCenterCaseRequestAttachmentsItem =
 /** Up to 3 evidence files, by existing file `id` or `direct_upload_id`. */
 export type ReplyToResolutionCenterCaseRequestAttachmentsList =
   Array<AcceptResolutionCenterCaseRequestAttachmentsItem>;
-export const ReplyToResolutionCenterCaseRequestAttachmentsList = /*@__PURE__*/ S.Array(
-  AcceptResolutionCenterCaseRequestAttachmentsItem,
-) as any as S.Schema<ReplyToResolutionCenterCaseRequestAttachmentsList>;
+export const ReplyToResolutionCenterCaseRequestAttachmentsList =
+  AcceptResolutionCenterCaseRequestAttachmentsList as any as S.Schema<ReplyToResolutionCenterCaseRequestAttachmentsList>;
 
 export interface ReplyToResolutionCenterCaseRequest {
   /** The resolution center case ID (`reso_` tag). */
@@ -890,9 +886,8 @@ export const RequestResolutionCenterCaseInfoRequestAttachmentsItem =
 /** Up to 3 evidence files, by existing file `id` or `direct_upload_id`. */
 export type RequestResolutionCenterCaseInfoRequestAttachmentsList =
   Array<AcceptResolutionCenterCaseRequestAttachmentsItem>;
-export const RequestResolutionCenterCaseInfoRequestAttachmentsList = /*@__PURE__*/ S.Array(
-  AcceptResolutionCenterCaseRequestAttachmentsItem,
-) as any as S.Schema<RequestResolutionCenterCaseInfoRequestAttachmentsList>;
+export const RequestResolutionCenterCaseInfoRequestAttachmentsList =
+  AcceptResolutionCenterCaseRequestAttachmentsList as any as S.Schema<RequestResolutionCenterCaseInfoRequestAttachmentsList>;
 
 export interface RequestResolutionCenterCaseInfoRequest {
   /** The resolution center case ID (`reso_` tag). */

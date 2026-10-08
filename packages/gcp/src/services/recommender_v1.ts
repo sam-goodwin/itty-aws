@@ -626,13 +626,8 @@ export interface GoogleCloudRecommenderV1RecommenderGenerationConfig {
   /** Parameters for this RecommenderGenerationConfig. These configs can be used by or are applied to all subtypes. */
   params?: DocumentMap;
 }
-export const GoogleCloudRecommenderV1RecommenderGenerationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    params: S.optional(DocumentMap),
-  }),
-).annotate({
-  identifier: "GoogleCloudRecommenderV1RecommenderGenerationConfig",
-}) as any as S.Schema<GoogleCloudRecommenderV1RecommenderGenerationConfig>;
+export const GoogleCloudRecommenderV1RecommenderGenerationConfig =
+  GoogleCloudRecommenderV1InsightTypeGenerationConfig as any as S.Schema<GoogleCloudRecommenderV1RecommenderGenerationConfig>;
 
 /** Configuration for a Recommender. */
 export interface GoogleCloudRecommenderV1RecommenderConfig {

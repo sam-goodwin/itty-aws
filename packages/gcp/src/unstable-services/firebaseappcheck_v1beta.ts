@@ -1452,14 +1452,7 @@ export interface GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeRespo
   ttl?: string;
 }
 export const GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      challenge: S.optional(S.String),
-      ttl: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeResponse",
-  }) as any as S.Schema<GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeResponse>;
+  GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse as any as S.Schema<GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeResponse>;
 
 export interface GetJwksRequest {
   /** Required. The relative resource name to the public JWK set. Must always be exactly the string `jwks`. */

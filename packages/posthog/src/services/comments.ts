@@ -337,9 +337,8 @@ export const GetCommentsCountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCommentsCountRequest" }) as any as S.Schema<GetCommentsCountRequest>;
 
 export interface GetCommentsCountResponse {}
-export const GetCommentsCountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCommentsCountResponse",
-}) as any as S.Schema<GetCommentsCountResponse>;
+export const GetCommentsCountResponse =
+  CommentsDestroyResponse as any as S.Schema<GetCommentsCountResponse>;
 
 export interface GetCommentsThreadRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -357,9 +356,8 @@ export const GetCommentsThreadRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCommentsThreadRequest" }) as any as S.Schema<GetCommentsThreadRequest>;
 
 export interface GetCommentsThreadResponse {}
-export const GetCommentsThreadResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCommentsThreadResponse",
-}) as any as S.Schema<GetCommentsThreadResponse>;
+export const GetCommentsThreadResponse =
+  CommentsDestroyResponse as any as S.Schema<GetCommentsThreadResponse>;
 
 export type ListCommentsRequestCompleted = "any" | "open" | "completed";
 export const ListCommentsRequestCompleted = S.String;
@@ -425,9 +423,8 @@ export const PaginatedCommentListOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedCommentListOutput>;
 
 export type UpdateCommentRequestMentionsList = Array<number>;
-export const UpdateCommentRequestMentionsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateCommentRequestMentionsList>;
+export const UpdateCommentRequestMentionsList =
+  CreateCommentRequestMentionsList as any as S.Schema<UpdateCommentRequestMentionsList>;
 
 export interface UpdateCommentRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -465,9 +462,8 @@ export const UpdateCommentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateCommentRequest" }) as any as S.Schema<UpdateCommentRequest>;
 
 export type UpdateCommentsPartialRequestMentionsList = Array<number>;
-export const UpdateCommentsPartialRequestMentionsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateCommentsPartialRequestMentionsList>;
+export const UpdateCommentsPartialRequestMentionsList =
+  CreateCommentRequestMentionsList as any as S.Schema<UpdateCommentsPartialRequestMentionsList>;
 
 export interface UpdateCommentsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

@@ -128,10 +128,8 @@ export const Data = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels represent user-defined metadata as key-value pairs. Label count should not exceed 64 per Certificate. **Key Formatting Rules:** Length: 1-63 characters. Characters: Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. Keys starting with 'stackit-' are system-reserved; users MUST NOT manage them. **Value Formatting Rules:** Length: 0-63 characters (empty string explicitly allowed). Characters (for non-empty values): Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. */
 export type GetCertificateResponseLabelsMap = { [key: string]: string | undefined };
-export const GetCertificateResponseLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetCertificateResponseLabelsMap>;
+export const GetCertificateResponseLabelsMap =
+  CreateCertificateRequestLabelsMap as any as S.Schema<GetCertificateResponseLabelsMap>;
 
 /** The list of listener names in this Load Balancer, that are using the certificate. */
 export type UsageItemListenerNamesList = Array<string>;

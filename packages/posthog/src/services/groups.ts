@@ -116,10 +116,8 @@ export const GetGroupsFindRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The group's properties. */
 export type FindGroupGroupPropertiesMap = { [key: string]: unknown | undefined };
-export const FindGroupGroupPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FindGroupGroupPropertiesMap>;
+export const FindGroupGroupPropertiesMap =
+  GroupGroupPropertiesMap as any as S.Schema<FindGroupGroupPropertiesMap>;
 
 export interface FindGroup {
   group_type_index: number;
@@ -154,9 +152,8 @@ export const GetGroupsPropertyValueRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetGroupsPropertyValueRequest>;
 
 export interface GetGroupsPropertyValueResponse {}
-export const GetGroupsPropertyValueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetGroupsPropertyValueResponse",
-}) as any as S.Schema<GetGroupsPropertyValueResponse>;
+export const GetGroupsPropertyValueResponse =
+  GetGroupsActivityResponse as any as S.Schema<GetGroupsPropertyValueResponse>;
 
 export interface GroupsDeletePropertyCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -280,16 +277,12 @@ export const ListGroupsRelatedRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The actor's properties. */
 export type SerializedPersonActorPropertiesMap = { [key: string]: unknown | undefined };
-export const SerializedPersonActorPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SerializedPersonActorPropertiesMap>;
+export const SerializedPersonActorPropertiesMap =
+  GroupGroupPropertiesMap as any as S.Schema<SerializedPersonActorPropertiesMap>;
 
 export type SerializedPersonActorMatchedRecordingsItemMap = { [key: string]: unknown | undefined };
-export const SerializedPersonActorMatchedRecordingsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SerializedPersonActorMatchedRecordingsItemMap>;
+export const SerializedPersonActorMatchedRecordingsItemMap =
+  GroupGroupPropertiesMap as any as S.Schema<SerializedPersonActorMatchedRecordingsItemMap>;
 
 /** Recordings that matched the query. Empty unless the endpoint asks for them. */
 export type SerializedPersonActorMatchedRecordingsList =
@@ -346,23 +339,18 @@ export const SerializedPersonActor = /*@__PURE__*/ S.suspend(() =>
 
 /** The actor's properties. */
 export type SerializedGroupActorPropertiesMap = { [key: string]: unknown | undefined };
-export const SerializedGroupActorPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SerializedGroupActorPropertiesMap>;
+export const SerializedGroupActorPropertiesMap =
+  GroupGroupPropertiesMap as any as S.Schema<SerializedGroupActorPropertiesMap>;
 
 export type SerializedGroupActorMatchedRecordingsItemMap = { [key: string]: unknown | undefined };
-export const SerializedGroupActorMatchedRecordingsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SerializedGroupActorMatchedRecordingsItemMap>;
+export const SerializedGroupActorMatchedRecordingsItemMap =
+  GroupGroupPropertiesMap as any as S.Schema<SerializedGroupActorMatchedRecordingsItemMap>;
 
 /** Recordings that matched the query. Empty unless the endpoint asks for them. */
 export type SerializedGroupActorMatchedRecordingsList =
   Array<SerializedGroupActorMatchedRecordingsItemMap>;
-export const SerializedGroupActorMatchedRecordingsList = /*@__PURE__*/ S.Array(
-  SerializedGroupActorMatchedRecordingsItemMap,
-) as any as S.Schema<SerializedGroupActorMatchedRecordingsList>;
+export const SerializedGroupActorMatchedRecordingsList =
+  SerializedPersonActorMatchedRecordingsList as any as S.Schema<SerializedGroupActorMatchedRecordingsList>;
 
 export interface SerializedGroupActor {
   /** The person's UUID, or the group's key. */

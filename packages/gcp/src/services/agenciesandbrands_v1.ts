@@ -845,9 +845,7 @@ export const PatchAgenciesReportsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for a running a report. */
 export interface RunReportRequest {}
-export const RunReportRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RunReportRequest",
-}) as any as S.Schema<RunReportRequest>;
+export const RunReportRequest = Empty as any as S.Schema<RunReportRequest>;
 
 export interface RunAgenciesReportsRequest {
   /** Required. The report to run. Format: `agencies/{account_id}/reports/{report_id}` */

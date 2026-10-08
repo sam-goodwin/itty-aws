@@ -182,11 +182,8 @@ export const RemoveWebhookTokenEnvironmentRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<RemoveWebhookTokenEnvironmentRequest>;
 
 export interface RemoveWebhookTokenEnvironmentResponse {}
-export const RemoveWebhookTokenEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveWebhookTokenEnvironmentResponse",
-}) as any as S.Schema<RemoveWebhookTokenEnvironmentResponse>;
+export const RemoveWebhookTokenEnvironmentResponse =
+  AddWebhookTokenEnvironmentResponse as any as S.Schema<RemoveWebhookTokenEnvironmentResponse>;
 
 export interface UpdateWebhookTokenRequest {
   tokenId?: string;

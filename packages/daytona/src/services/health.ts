@@ -37,18 +37,14 @@ export const HealthControllerCheck200ResponseInfoMap = /*@__PURE__*/ S.Record(
 export type HealthControllerCheck200ResponseErrorMap = {
   [key: string]: HealthControllerCheck200ResponseInfoValue | undefined;
 };
-export const HealthControllerCheck200ResponseErrorMap = /*@__PURE__*/ S.Record(
-  S.String,
-  HealthControllerCheck200ResponseInfoValue,
-) as any as S.Schema<HealthControllerCheck200ResponseErrorMap>;
+export const HealthControllerCheck200ResponseErrorMap =
+  HealthControllerCheck200ResponseInfoMap as any as S.Schema<HealthControllerCheck200ResponseErrorMap>;
 
 export type HealthControllerCheck200ResponseDetailsMap = {
   [key: string]: HealthControllerCheck200ResponseInfoValue | undefined;
 };
-export const HealthControllerCheck200ResponseDetailsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  HealthControllerCheck200ResponseInfoValue,
-) as any as S.Schema<HealthControllerCheck200ResponseDetailsMap>;
+export const HealthControllerCheck200ResponseDetailsMap =
+  HealthControllerCheck200ResponseInfoMap as any as S.Schema<HealthControllerCheck200ResponseDetailsMap>;
 
 export interface HealthControllerCheck200Response {
   status?: string;

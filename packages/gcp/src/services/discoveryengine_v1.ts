@@ -592,22 +592,12 @@ export interface GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchR
   pageIdentifier?: string;
 }
 export const GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContext =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      content: S.optional(S.String),
-      pageIdentifier: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContext",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContext>;
+  GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContext>;
 
 export type GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContextList =
   Array<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContext>;
 export const GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContextList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContext,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContextList>;
+  GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegmentList as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContextList>;
 
 /** Extractive answer. [Guide](https://cloud.google.com/generative-ai-app-builder/docs/snippets#get-answers) */
 export interface GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswer {
@@ -617,22 +607,12 @@ export interface GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchR
   pageIdentifier?: string;
 }
 export const GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswer =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      content: S.optional(S.String),
-      pageIdentifier: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswer",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswer>;
+  GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswer>;
 
 export type GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswerList =
   Array<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswer>;
 export const GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswerList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswer,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswerList>;
+  GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegmentList as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswerList>;
 
 /** Unstructured document information. */
 export interface GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfo {
@@ -4235,7 +4215,7 @@ export const GoogleCloudDiscoveryengineV1SearchResponseSummarySummaryWithMetadat
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponseSummarySummaryWithMetadata>;
 
 export type DoubleList = Array<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
+export const DoubleList = IntegerList as any as S.Schema<DoubleList>;
 
 /** Safety Attribute categories and their associated confidence scores. */
 export interface GoogleCloudDiscoveryengineV1SearchResponseSummarySafetyAttributes {
@@ -15755,13 +15735,7 @@ export interface GoogleCloudDiscoveryengineV1PurgeIdentityMappingsRequestInlineS
   identityMappingEntries?: GoogleCloudDiscoveryengineV1IdentityMappingEntryList;
 }
 export const GoogleCloudDiscoveryengineV1PurgeIdentityMappingsRequestInlineSource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      identityMappingEntries: S.optional(GoogleCloudDiscoveryengineV1IdentityMappingEntryList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1PurgeIdentityMappingsRequestInlineSource",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1PurgeIdentityMappingsRequestInlineSource>;
+  GoogleCloudDiscoveryengineV1ImportIdentityMappingsRequestInlineSource as any as S.Schema<GoogleCloudDiscoveryengineV1PurgeIdentityMappingsRequestInlineSource>;
 
 /** Request message for IdentityMappingStoreService.PurgeIdentityMappings */
 export interface GoogleCloudDiscoveryengineV1PurgeIdentityMappingsRequest {
@@ -15826,13 +15800,8 @@ export interface GoogleCloudDiscoveryengineV1PurgeErrorConfig {
   /** Cloud Storage prefix for purge errors. This must be an empty, existing Cloud Storage directory. Purge errors are written to sharded files in this directory, one per line, as a JSON-encoded `google.rpc.Status` message. */
   gcsPrefix?: string;
 }
-export const GoogleCloudDiscoveryengineV1PurgeErrorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcsPrefix: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudDiscoveryengineV1PurgeErrorConfig",
-}) as any as S.Schema<GoogleCloudDiscoveryengineV1PurgeErrorConfig>;
+export const GoogleCloudDiscoveryengineV1PurgeErrorConfig =
+  GoogleCloudDiscoveryengineV1ImportErrorConfig as any as S.Schema<GoogleCloudDiscoveryengineV1PurgeErrorConfig>;
 
 /** Request message for DocumentService.PurgeDocuments method. */
 export interface GoogleCloudDiscoveryengineV1PurgeDocumentsRequest {
@@ -16409,14 +16378,8 @@ export interface GoogleCloudDiscoveryengineV1RetractLicenseConfigResponse {
   /** The updated LicenseConfig. */
   licenseConfig?: GoogleCloudDiscoveryengineV1LicenseConfig;
 }
-export const GoogleCloudDiscoveryengineV1RetractLicenseConfigResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      licenseConfig: S.optional(GoogleCloudDiscoveryengineV1LicenseConfig),
-    }),
-).annotate({
-  identifier: "GoogleCloudDiscoveryengineV1RetractLicenseConfigResponse",
-}) as any as S.Schema<GoogleCloudDiscoveryengineV1RetractLicenseConfigResponse>;
+export const GoogleCloudDiscoveryengineV1RetractLicenseConfigResponse =
+  GoogleCloudDiscoveryengineV1DistributeLicenseConfigResponse as any as S.Schema<GoogleCloudDiscoveryengineV1RetractLicenseConfigResponse>;
 
 export type GoogleCloudDiscoveryengineV1SearchRequestRelevanceThresholdEnum =
   | "RELEVANCE_THRESHOLD_UNSPECIFIED"
@@ -17123,16 +17086,7 @@ export interface GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryU
   expressions?: GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpressionList;
 }
 export const GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expressions: S.optional(
-        GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpressionList,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression>;
+  GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterAndExpression as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression>;
 
 /** The expression denoting the filter that was extracted from the input query. */
 export interface GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression {

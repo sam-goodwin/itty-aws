@@ -395,14 +395,8 @@ export interface BotInfoResponseOwnerCase1 {
   /** Details about the owner of the bot, when the `type` of the owner is `workspace`. This means the bot is for an internal integration. */
   workspace: boolean;
 }
-export const BotInfoResponseOwnerCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    workspace: S.Boolean,
-  }),
-).annotate({
-  identifier: "BotInfoResponseOwnerCase1",
-}) as any as S.Schema<BotInfoResponseOwnerCase1>;
+export const BotInfoResponseOwnerCase1 =
+  WorkspaceParentForBlockBasedObjectResponse as any as S.Schema<BotInfoResponseOwnerCase1>;
 
 /** Details about the owner of the bot. */
 export type BotInfoResponseOwner = BotInfoResponseOwnerCase0 | BotInfoResponseOwnerCase1;
@@ -679,13 +673,8 @@ export interface RichTextItemResponseTextLink {
   /** The URL of the link. */
   url: string;
 }
-export const RichTextItemResponseTextLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-  }),
-).annotate({
-  identifier: "RichTextItemResponseTextLink",
-}) as any as S.Schema<RichTextItemResponseTextLink>;
+export const RichTextItemResponseTextLink =
+  InternalOrExternalFileWithNameResponseExternal as any as S.Schema<RichTextItemResponseTextLink>;
 
 /** If a rich text object's type value is `text`, then the corresponding text field contains an object including the text content and any inline link. */
 export interface RichTextItemResponseText {
@@ -735,13 +724,8 @@ export interface LinkPreviewMentionResponse {
   /** The URL of the link preview mention. */
   url: string;
 }
-export const LinkPreviewMentionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-  }),
-).annotate({
-  identifier: "LinkPreviewMentionResponse",
-}) as any as S.Schema<LinkPreviewMentionResponse>;
+export const LinkPreviewMentionResponse =
+  InternalOrExternalFileWithNameResponseExternal as any as S.Schema<LinkPreviewMentionResponse>;
 
 export interface RichTextItemResponseMentionCase2 {
   /** Always `link_preview` */
@@ -846,13 +830,8 @@ export interface RichTextItemResponseMentionCase5Database {
   /** The ID of the database in the mention. */
   id: string;
 }
-export const RichTextItemResponseMentionCase5Database = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "RichTextItemResponseMentionCase5Database",
-}) as any as S.Schema<RichTextItemResponseMentionCase5Database>;
+export const RichTextItemResponseMentionCase5Database =
+  RichTextItemResponseMentionCase4Page as any as S.Schema<RichTextItemResponseMentionCase5Database>;
 
 export interface RichTextItemResponseMentionCase5 {
   /** Always `database` */
@@ -1015,9 +994,8 @@ export const PagePropertyValueWithIdResponseTitleList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PagePropertyValueWithIdResponseTitleList>;
 
 export type PagePropertyValueWithIdResponseRichTextList = Array<RichTextItemResponse>;
-export const PagePropertyValueWithIdResponseRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemResponse,
-) as any as S.Schema<PagePropertyValueWithIdResponseRichTextList>;
+export const PagePropertyValueWithIdResponseRichTextList =
+  PagePropertyValueWithIdResponseTitleList as any as S.Schema<PagePropertyValueWithIdResponseRichTextList>;
 
 export interface GroupObjectResponse {
   /** The ID of the group. */
@@ -1048,13 +1026,8 @@ export const PagePropertyValueWithIdResponsePeopleList = /*@__PURE__*/ S.Array(
 export interface RelationItemPropertyValueResponse {
   id: string;
 }
-export const RelationItemPropertyValueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "RelationItemPropertyValueResponse",
-}) as any as S.Schema<RelationItemPropertyValueResponse>;
+export const RelationItemPropertyValueResponse =
+  RichTextItemResponseMentionCase4Page as any as S.Schema<RelationItemPropertyValueResponse>;
 
 export type PagePropertyValueWithIdResponseRelationList = Array<RelationItemPropertyValueResponse>;
 export const PagePropertyValueWithIdResponseRelationList = /*@__PURE__*/ S.Array(
@@ -1121,9 +1094,8 @@ export const SelectSimplePropertyValueResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type MultiSelectSimplePropertyValueResponseMultiSelectList =
   Array<PartialSelectPropertyValueResponse>;
-export const MultiSelectSimplePropertyValueResponseMultiSelectList = /*@__PURE__*/ S.Array(
-  PartialSelectPropertyValueResponse,
-) as any as S.Schema<MultiSelectSimplePropertyValueResponseMultiSelectList>;
+export const MultiSelectSimplePropertyValueResponseMultiSelectList =
+  PagePropertyValueWithIdResponseMultiSelectList as any as S.Schema<MultiSelectSimplePropertyValueResponseMultiSelectList>;
 
 export interface MultiSelectSimplePropertyValueResponse {
   /** Always `multi_select` */
@@ -1200,9 +1172,8 @@ export const CheckboxSimplePropertyValueResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type FilesSimplePropertyValueResponseFilesList =
   Array<InternalOrExternalFileWithNameResponse>;
-export const FilesSimplePropertyValueResponseFilesList = /*@__PURE__*/ S.Array(
-  InternalOrExternalFileWithNameResponse,
-) as any as S.Schema<FilesSimplePropertyValueResponseFilesList>;
+export const FilesSimplePropertyValueResponseFilesList =
+  PagePropertyValueWithIdResponseFilesList as any as S.Schema<FilesSimplePropertyValueResponseFilesList>;
 
 export interface FilesSimplePropertyValueResponse {
   /** Always `files` */
@@ -1368,9 +1339,8 @@ export const SimplePropertyValueResponse =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SimplePropertyValueResponse>;
 
 export type TitleArrayBasedPropertyValueResponseTitleList = Array<RichTextItemResponse>;
-export const TitleArrayBasedPropertyValueResponseTitleList = /*@__PURE__*/ S.Array(
-  RichTextItemResponse,
-) as any as S.Schema<TitleArrayBasedPropertyValueResponseTitleList>;
+export const TitleArrayBasedPropertyValueResponseTitleList =
+  PagePropertyValueWithIdResponseTitleList as any as S.Schema<TitleArrayBasedPropertyValueResponseTitleList>;
 
 export interface TitleArrayBasedPropertyValueResponse {
   /** Always `title` */
@@ -1387,9 +1357,8 @@ export const TitleArrayBasedPropertyValueResponse = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<TitleArrayBasedPropertyValueResponse>;
 
 export type RichTextArrayBasedPropertyValueResponseRichTextList = Array<RichTextItemResponse>;
-export const RichTextArrayBasedPropertyValueResponseRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemResponse,
-) as any as S.Schema<RichTextArrayBasedPropertyValueResponseRichTextList>;
+export const RichTextArrayBasedPropertyValueResponseRichTextList =
+  PagePropertyValueWithIdResponseTitleList as any as S.Schema<RichTextArrayBasedPropertyValueResponseRichTextList>;
 
 export interface RichTextArrayBasedPropertyValueResponse {
   /** Always `rich_text` */
@@ -1433,9 +1402,8 @@ export const PeopleArrayBasedPropertyValueResponse = /*@__PURE__*/ S.suspend(() 
 
 export type RelationArrayBasedPropertyValueResponseRelationList =
   Array<RelationItemPropertyValueResponse>;
-export const RelationArrayBasedPropertyValueResponseRelationList = /*@__PURE__*/ S.Array(
-  RelationItemPropertyValueResponse,
-) as any as S.Schema<RelationArrayBasedPropertyValueResponseRelationList>;
+export const RelationArrayBasedPropertyValueResponseRelationList =
+  PagePropertyValueWithIdResponseRelationList as any as S.Schema<RelationArrayBasedPropertyValueResponseRelationList>;
 
 export interface RelationArrayBasedPropertyValueResponse {
   /** Always `relation` */
@@ -1613,14 +1581,8 @@ export interface CustomEmojiPageIconResponse {
   /** The custom emoji details for the icon. */
   custom_emoji: CustomEmojiResponse;
 }
-export const CustomEmojiPageIconResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    custom_emoji: CustomEmojiResponse,
-  }),
-).annotate({
-  identifier: "CustomEmojiPageIconResponse",
-}) as any as S.Schema<CustomEmojiPageIconResponse>;
+export const CustomEmojiPageIconResponse =
+  RichTextItemResponseMentionCase7 as any as S.Schema<CustomEmojiPageIconResponse>;
 
 /** One of: `gray`, `lightgray`, `brown`, `yellow`, `orange`, `green`, `blue`, `purple`, `pink`, `red` */
 export type NoticonColor =
@@ -1676,12 +1638,7 @@ export interface FilePageCoverResponse {
   /** The file URL for the cover. */
   file: InternalFileResponse;
 }
-export const FilePageCoverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    file: InternalFileResponse,
-  }),
-).annotate({ identifier: "FilePageCoverResponse" }) as any as S.Schema<FilePageCoverResponse>;
+export const FilePageCoverResponse = FilePageIconResponse as any as S.Schema<FilePageCoverResponse>;
 
 /** The external URL for the cover. */
 export type ExternalPageCoverResponseExternal = InternalOrExternalFileWithNameResponseExternal;
@@ -1791,13 +1748,8 @@ export const DatabasePropertyConfigResponseNumber = /*@__PURE__*/ S.suspend(() =
 export interface DatabasePropertyConfigResponseFormula {
   expression: string;
 }
-export const DatabasePropertyConfigResponseFormula = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expression: S.String,
-  }),
-).annotate({
-  identifier: "DatabasePropertyConfigResponseFormula",
-}) as any as S.Schema<DatabasePropertyConfigResponseFormula>;
+export const DatabasePropertyConfigResponseFormula =
+  RichTextItemResponseEquation as any as S.Schema<DatabasePropertyConfigResponseFormula>;
 
 /** One of: `default`, `gray`, `brown`, `orange`, `yellow`, `green`, `blue`, `purple`, `pink`, `red` */
 export type SelectColor =
@@ -1845,20 +1797,14 @@ export const DatabasePropertyConfigResponseSelect = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DatabasePropertyConfigResponseSelect>;
 
 export type DatabasePropertyConfigResponseMultiSelectOptionsList = Array<SelectPropertyResponse>;
-export const DatabasePropertyConfigResponseMultiSelectOptionsList = /*@__PURE__*/ S.Array(
-  SelectPropertyResponse,
-) as any as S.Schema<DatabasePropertyConfigResponseMultiSelectOptionsList>;
+export const DatabasePropertyConfigResponseMultiSelectOptionsList =
+  DatabasePropertyConfigResponseSelectOptionsList as any as S.Schema<DatabasePropertyConfigResponseMultiSelectOptionsList>;
 
 export interface DatabasePropertyConfigResponseMultiSelect {
   options: DatabasePropertyConfigResponseMultiSelectOptionsList;
 }
-export const DatabasePropertyConfigResponseMultiSelect = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    options: DatabasePropertyConfigResponseMultiSelectOptionsList,
-  }),
-).annotate({
-  identifier: "DatabasePropertyConfigResponseMultiSelect",
-}) as any as S.Schema<DatabasePropertyConfigResponseMultiSelect>;
+export const DatabasePropertyConfigResponseMultiSelect =
+  DatabasePropertyConfigResponseSelect as any as S.Schema<DatabasePropertyConfigResponseMultiSelect>;
 
 export interface StatusPropertyResponse {
   /** The ID of the status option. */
@@ -1870,20 +1816,13 @@ export interface StatusPropertyResponse {
   /** The description of the status option. */
   description: string | null;
 }
-export const StatusPropertyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    color: SelectColor,
-    description: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "StatusPropertyResponse" }) as any as S.Schema<StatusPropertyResponse>;
+export const StatusPropertyResponse =
+  SelectPropertyResponse as any as S.Schema<StatusPropertyResponse>;
 
 /** The options for the status property. */
 export type DatabasePropertyConfigResponseStatusOptionsList = Array<StatusPropertyResponse>;
-export const DatabasePropertyConfigResponseStatusOptionsList = /*@__PURE__*/ S.Array(
-  StatusPropertyResponse,
-) as any as S.Schema<DatabasePropertyConfigResponseStatusOptionsList>;
+export const DatabasePropertyConfigResponseStatusOptionsList =
+  DatabasePropertyConfigResponseSelectOptionsList as any as S.Schema<DatabasePropertyConfigResponseStatusOptionsList>;
 
 /** The IDs of the status options in this group. */
 export type DatabasePropertyConfigResponseStatusGroupsItemOptionIdsList = Array<string>;
@@ -2091,15 +2030,13 @@ export const PartialDataSourceObjectResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The title of the data source. */
 export type DataSourceObjectResponseTitleList = Array<RichTextItemResponse>;
-export const DataSourceObjectResponseTitleList = /*@__PURE__*/ S.Array(
-  RichTextItemResponse,
-) as any as S.Schema<DataSourceObjectResponseTitleList>;
+export const DataSourceObjectResponseTitleList =
+  PagePropertyValueWithIdResponseTitleList as any as S.Schema<DataSourceObjectResponseTitleList>;
 
 /** The description of the data source. */
 export type DataSourceObjectResponseDescriptionList = Array<RichTextItemResponse>;
-export const DataSourceObjectResponseDescriptionList = /*@__PURE__*/ S.Array(
-  RichTextItemResponse,
-) as any as S.Schema<DataSourceObjectResponseDescriptionList>;
+export const DataSourceObjectResponseDescriptionList =
+  PagePropertyValueWithIdResponseTitleList as any as S.Schema<DataSourceObjectResponseDescriptionList>;
 
 /** The parent of the data source. This is typically a database (`database_id`), but for externally synced data sources, can be another data source (`data_source_id`). */
 export type ParentOfDataSourceResponse = DatabaseParentResponse | DataSourceParentResponse;
@@ -2131,10 +2068,8 @@ export const DataSourceObjectResponseDatabaseType = S.String;
 export type DataSourceObjectResponsePropertiesMap = {
   [key: string]: DatabasePropertyConfigResponse | undefined;
 };
-export const DataSourceObjectResponsePropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  DatabasePropertyConfigResponse,
-) as any as S.Schema<DataSourceObjectResponsePropertiesMap>;
+export const DataSourceObjectResponsePropertiesMap =
+  PartialDataSourceObjectResponsePropertiesMap as any as S.Schema<DataSourceObjectResponsePropertiesMap>;
 
 export interface DataSourceObjectResponse {
   /** The data source object type name. */

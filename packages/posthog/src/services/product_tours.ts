@@ -136,10 +136,8 @@ export const MinimalFeatureFlag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MinimalFeatureFlag" }) as any as S.Schema<MinimalFeatureFlag>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
+export const UserBasicHedgehogConfigMap =
+  MinimalFeatureFlagFiltersMap as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
@@ -236,10 +234,8 @@ export const GetProductTourRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Return the targeting flag filters, excluding the base exclusion properties. */
 export type ProductTourTargetingFlagFiltersMap = { [key: string]: unknown | undefined };
-export const ProductTourTargetingFlagFiltersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProductTourTargetingFlagFiltersMap>;
+export const ProductTourTargetingFlagFiltersMap =
+  MinimalFeatureFlagFiltersMap as any as S.Schema<ProductTourTargetingFlagFiltersMap>;
 
 export type SearchMatchTypeEnum = "exact" | "similar";
 export const SearchMatchTypeEnum = S.String;
@@ -403,10 +399,8 @@ export const ProductToursDiscardDraftDestroyRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ProductToursDiscardDraftDestroyRequest>;
 
 export type ProductToursGenerateCreateRequestStepsItemMap = { [key: string]: unknown | undefined };
-export const ProductToursGenerateCreateRequestStepsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProductToursGenerateCreateRequestStepsItemMap>;
+export const ProductToursGenerateCreateRequestStepsItemMap =
+  MinimalFeatureFlagFiltersMap as any as S.Schema<ProductToursGenerateCreateRequestStepsItemMap>;
 
 export type ProductToursGenerateCreateRequestStepsList =
   Array<ProductToursGenerateCreateRequestStepsItemMap>;

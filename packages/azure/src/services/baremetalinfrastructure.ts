@@ -126,10 +126,8 @@ export const CreateAzureBareMetalStorageInstanceRequest = /*@__PURE__*/ S.suspen
 export type CreateAzureBareMetalStorageInstanceResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const CreateAzureBareMetalStorageInstanceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateAzureBareMetalStorageInstanceResponseTagsMap>;
+export const CreateAzureBareMetalStorageInstanceResponseTagsMap =
+  CreateAzureBareMetalStorageInstanceRequestTagsMap as any as S.Schema<CreateAzureBareMetalStorageInstanceResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type CreateAzureBareMetalStorageInstanceResponseSystemDataCreatedByType =
@@ -266,10 +264,8 @@ export const GetAzureBareMetalInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAzureBareMetalInstanceResponseTagsMap = { [key: string]: string | undefined };
-export const GetAzureBareMetalInstanceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAzureBareMetalInstanceResponseTagsMap>;
+export const GetAzureBareMetalInstanceResponseTagsMap =
+  CreateAzureBareMetalStorageInstanceRequestTagsMap as any as S.Schema<GetAzureBareMetalInstanceResponseTagsMap>;
 
 /** Name of the hardware type (vendor and/or their product name) */
 export type HardwareProfileHardwareType = "Cisco_UCS" | "HPE";
@@ -586,10 +582,8 @@ export const GetAzureBareMetalStorageInstanceRequest = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type GetAzureBareMetalStorageInstanceResponseTagsMap = { [key: string]: string | undefined };
-export const GetAzureBareMetalStorageInstanceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAzureBareMetalStorageInstanceResponseTagsMap>;
+export const GetAzureBareMetalStorageInstanceResponseTagsMap =
+  CreateAzureBareMetalStorageInstanceRequestTagsMap as any as S.Schema<GetAzureBareMetalStorageInstanceResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type GetAzureBareMetalStorageInstanceResponseSystemDataCreatedByType =
@@ -691,10 +685,8 @@ export const ListAzureBareMetalInstanceByResourceGroupRequest = /*@__PURE__*/ S.
 
 /** Resource tags. */
 export type AzureBareMetalInstanceTagsMap = { [key: string]: string | undefined };
-export const AzureBareMetalInstanceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AzureBareMetalInstanceTagsMap>;
+export const AzureBareMetalInstanceTagsMap =
+  CreateAzureBareMetalStorageInstanceRequestTagsMap as any as S.Schema<AzureBareMetalInstanceTagsMap>;
 
 /** The type of identity that created the resource. */
 export type AzureBareMetalInstanceSystemDataCreatedByType =
@@ -834,10 +826,8 @@ export const ListAzureBareMetalStorageInstanceByResourceGroupRequest = /*@__PURE
 
 /** Resource tags. */
 export type AzureBareMetalStorageInstanceTagsMap = { [key: string]: string | undefined };
-export const AzureBareMetalStorageInstanceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AzureBareMetalStorageInstanceTagsMap>;
+export const AzureBareMetalStorageInstanceTagsMap =
+  CreateAzureBareMetalStorageInstanceRequestTagsMap as any as S.Schema<AzureBareMetalStorageInstanceTagsMap>;
 
 /** The type of identity that created the resource. */
 export type AzureBareMetalStorageInstanceSystemDataCreatedByType =
@@ -1024,10 +1014,8 @@ export const OperationList = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags field of the AzureBareMetal/AzureBareMetaStorage instance. */
 export type UpdateAzureBareMetalInstanceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAzureBareMetalInstanceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAzureBareMetalInstanceRequestTagsMap>;
+export const UpdateAzureBareMetalInstanceRequestTagsMap =
+  CreateAzureBareMetalStorageInstanceRequestTagsMap as any as S.Schema<UpdateAzureBareMetalInstanceRequestTagsMap>;
 
 export interface UpdateAzureBareMetalInstanceRequest {
   /** The ID of the target subscription. */
@@ -1059,10 +1047,8 @@ export const UpdateAzureBareMetalInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAzureBareMetalInstanceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAzureBareMetalInstanceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAzureBareMetalInstanceResponseTagsMap>;
+export const UpdateAzureBareMetalInstanceResponseTagsMap =
+  CreateAzureBareMetalStorageInstanceRequestTagsMap as any as S.Schema<UpdateAzureBareMetalInstanceResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type UpdateAzureBareMetalInstanceResponseSystemDataCreatedByType =
@@ -1144,10 +1130,8 @@ export const UpdateAzureBareMetalInstanceResponse = /*@__PURE__*/ S.suspend(() =
 export type UpdateAzureBareMetalStorageInstanceRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const UpdateAzureBareMetalStorageInstanceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAzureBareMetalStorageInstanceRequestTagsMap>;
+export const UpdateAzureBareMetalStorageInstanceRequestTagsMap =
+  CreateAzureBareMetalStorageInstanceRequestTagsMap as any as S.Schema<UpdateAzureBareMetalStorageInstanceRequestTagsMap>;
 
 export interface UpdateAzureBareMetalStorageInstanceRequest {
   /** The ID of the target subscription. */
@@ -1181,10 +1165,8 @@ export const UpdateAzureBareMetalStorageInstanceRequest = /*@__PURE__*/ S.suspen
 export type UpdateAzureBareMetalStorageInstanceResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const UpdateAzureBareMetalStorageInstanceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAzureBareMetalStorageInstanceResponseTagsMap>;
+export const UpdateAzureBareMetalStorageInstanceResponseTagsMap =
+  CreateAzureBareMetalStorageInstanceRequestTagsMap as any as S.Schema<UpdateAzureBareMetalStorageInstanceResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type UpdateAzureBareMetalStorageInstanceResponseSystemDataCreatedByType =

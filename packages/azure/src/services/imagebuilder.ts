@@ -97,11 +97,8 @@ export const DeleteVirtualMachineImageTemplateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteVirtualMachineImageTemplateRequest>;
 
 export interface DeleteVirtualMachineImageTemplateResponse {}
-export const DeleteVirtualMachineImageTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteVirtualMachineImageTemplateResponse",
-}) as any as S.Schema<DeleteVirtualMachineImageTemplateResponse>;
+export const DeleteVirtualMachineImageTemplateResponse =
+  CancelVirtualMachineImageTemplateResponse as any as S.Schema<DeleteVirtualMachineImageTemplateResponse>;
 
 export interface GetTriggerRequest {
   /** The ID of the target subscription. */
@@ -481,10 +478,8 @@ export const ImageTemplatePropertiesValidate = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags that will be applied to the artifact once it has been created/updated by the distributor. */
 export type ImageTemplateDistributorArtifactTagsMap = { [key: string]: string | undefined };
-export const ImageTemplateDistributorArtifactTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ImageTemplateDistributorArtifactTagsMap>;
+export const ImageTemplateDistributorArtifactTagsMap =
+  GetVirtualMachineImageTemplateResponseTagsMap as any as S.Schema<ImageTemplateDistributorArtifactTagsMap>;
 
 /** Generic distribution object */
 export interface ImageTemplateDistributor {
@@ -715,10 +710,8 @@ export const ImageTemplateAutoRun = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags that will be applied to the resource group and/or resources created by the service. */
 export type ImageTemplatePropertiesManagedResourceTagsMap = { [key: string]: string | undefined };
-export const ImageTemplatePropertiesManagedResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ImageTemplatePropertiesManagedResourceTagsMap>;
+export const ImageTemplatePropertiesManagedResourceTagsMap =
+  GetVirtualMachineImageTemplateResponseTagsMap as any as S.Schema<ImageTemplatePropertiesManagedResourceTagsMap>;
 
 /** Describes the properties of an image template */
 export interface ImageTemplateProperties {
@@ -1032,15 +1025,7 @@ export interface Trigger {
   /** The properties of a trigger */
   properties?: TriggerProperties;
 }
-export const Trigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(TriggerProperties),
-  }),
-).annotate({ identifier: "Trigger" }) as any as S.Schema<Trigger>;
+export const Trigger = GetTriggerResponse as any as S.Schema<Trigger>;
 
 /** The Trigger items on this page */
 export type TriggerCollectionValueList = Array<Trigger>;
@@ -1086,10 +1071,8 @@ export const ListVirtualMachineImageTemplateByResourceGroupRequest = /*@__PURE__
 
 /** Resource tags. */
 export type ImageTemplateTagsMap = { [key: string]: string | undefined };
-export const ImageTemplateTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ImageTemplateTagsMap>;
+export const ImageTemplateTagsMap =
+  GetVirtualMachineImageTemplateResponseTagsMap as any as S.Schema<ImageTemplateTagsMap>;
 
 /** Image template is an ARM resource managed by Microsoft.VirtualMachineImages provider */
 export interface ImageTemplate {
@@ -1256,11 +1239,8 @@ export const RunVirtualMachineImageTemplateRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<RunVirtualMachineImageTemplateRequest>;
 
 export interface RunVirtualMachineImageTemplateResponse {}
-export const RunVirtualMachineImageTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RunVirtualMachineImageTemplateResponse",
-}) as any as S.Schema<RunVirtualMachineImageTemplateResponse>;
+export const RunVirtualMachineImageTemplateResponse =
+  CancelVirtualMachineImageTemplateResponse as any as S.Schema<RunVirtualMachineImageTemplateResponse>;
 
 /** Describes the properties of a trigger */
 export interface TriggerPropertiesInput {
@@ -1330,9 +1310,8 @@ export const TriggersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UserAssignedIdentityInput",
-}) as any as S.Schema<UserAssignedIdentityInput>;
+export const UserAssignedIdentityInput =
+  DeleteTriggerResponse as any as S.Schema<UserAssignedIdentityInput>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type ImageTemplateIdentityInputUserAssignedIdentitiesMap = {
@@ -1361,16 +1340,13 @@ export const ImageTemplateIdentityInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The user-specified tags associated with the image template. */
 export type UpdateVirtualMachineImageTemplateRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateVirtualMachineImageTemplateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateVirtualMachineImageTemplateRequestTagsMap>;
+export const UpdateVirtualMachineImageTemplateRequestTagsMap =
+  GetVirtualMachineImageTemplateResponseTagsMap as any as S.Schema<UpdateVirtualMachineImageTemplateRequestTagsMap>;
 
 /** The distribution targets where the image output needs to go to. */
 export type ImageTemplateUpdateParametersPropertiesDistributeList = Array<ImageTemplateDistributor>;
-export const ImageTemplateUpdateParametersPropertiesDistributeList = /*@__PURE__*/ S.Array(
-  ImageTemplateDistributor,
-) as any as S.Schema<ImageTemplateUpdateParametersPropertiesDistributeList>;
+export const ImageTemplateUpdateParametersPropertiesDistributeList =
+  ImageTemplatePropertiesDistributeList as any as S.Schema<ImageTemplateUpdateParametersPropertiesDistributeList>;
 
 /** Parameters for updating an image template. */
 export interface ImageTemplateUpdateParametersProperties {
@@ -1426,10 +1402,8 @@ export const UpdateVirtualMachineImageTemplateRequest = /*@__PURE__*/ S.suspend(
 export type UpdateVirtualMachineImageTemplateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const UpdateVirtualMachineImageTemplateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateVirtualMachineImageTemplateResponseTagsMap>;
+export const UpdateVirtualMachineImageTemplateResponseTagsMap =
+  GetVirtualMachineImageTemplateResponseTagsMap as any as S.Schema<UpdateVirtualMachineImageTemplateResponseTagsMap>;
 
 export interface UpdateVirtualMachineImageTemplateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1449,56 +1423,37 @@ export interface UpdateVirtualMachineImageTemplateResponse {
   /** The identity of the image template, if configured. */
   identity: ImageTemplateIdentity;
 }
-export const UpdateVirtualMachineImageTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateVirtualMachineImageTemplateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ImageTemplateProperties),
-    identity: ImageTemplateIdentity,
-  }),
-).annotate({
-  identifier: "UpdateVirtualMachineImageTemplateResponse",
-}) as any as S.Schema<UpdateVirtualMachineImageTemplateResponse>;
+export const UpdateVirtualMachineImageTemplateResponse =
+  GetVirtualMachineImageTemplateResponse as any as S.Schema<UpdateVirtualMachineImageTemplateResponse>;
 
 /** Resource tags. */
 export type VirtualMachineImageTemplatesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const VirtualMachineImageTemplatesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VirtualMachineImageTemplatesCreateOrUpdateRequestTagsMap>;
+export const VirtualMachineImageTemplatesCreateOrUpdateRequestTagsMap =
+  GetVirtualMachineImageTemplateResponseTagsMap as any as S.Schema<VirtualMachineImageTemplatesCreateOrUpdateRequestTagsMap>;
 
 /** Specifies the properties used to describe the customization steps of the image, like Image source etc */
 export type ImageTemplatePropertiesInputCustomizeList = Array<ImageTemplateCustomizer>;
-export const ImageTemplatePropertiesInputCustomizeList = /*@__PURE__*/ S.Array(
-  ImageTemplateCustomizer,
-) as any as S.Schema<ImageTemplatePropertiesInputCustomizeList>;
+export const ImageTemplatePropertiesInputCustomizeList =
+  ImageTemplatePropertiesCustomizeList as any as S.Schema<ImageTemplatePropertiesInputCustomizeList>;
 
 /** The distribution targets where the image output needs to go to. */
 export type ImageTemplatePropertiesInputDistributeList = Array<ImageTemplateDistributor>;
-export const ImageTemplatePropertiesInputDistributeList = /*@__PURE__*/ S.Array(
-  ImageTemplateDistributor,
-) as any as S.Schema<ImageTemplatePropertiesInputDistributeList>;
+export const ImageTemplatePropertiesInputDistributeList =
+  ImageTemplatePropertiesDistributeList as any as S.Schema<ImageTemplatePropertiesInputDistributeList>;
 
 /** Optional array of additional data disks to be added to the image. */
 export type ImageTemplatePropertiesInputAdditionalDataDisksList = Array<DataDisk>;
-export const ImageTemplatePropertiesInputAdditionalDataDisksList = /*@__PURE__*/ S.Array(
-  DataDisk,
-) as any as S.Schema<ImageTemplatePropertiesInputAdditionalDataDisksList>;
+export const ImageTemplatePropertiesInputAdditionalDataDisksList =
+  ImageTemplatePropertiesAdditionalDataDisksList as any as S.Schema<ImageTemplatePropertiesInputAdditionalDataDisksList>;
 
 /** Tags that will be applied to the resource group and/or resources created by the service. */
 export type ImageTemplatePropertiesInputManagedResourceTagsMap = {
   [key: string]: string | undefined;
 };
-export const ImageTemplatePropertiesInputManagedResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ImageTemplatePropertiesInputManagedResourceTagsMap>;
+export const ImageTemplatePropertiesInputManagedResourceTagsMap =
+  GetVirtualMachineImageTemplateResponseTagsMap as any as S.Schema<ImageTemplatePropertiesInputManagedResourceTagsMap>;
 
 /** Describes the properties of an image template */
 export interface ImageTemplatePropertiesInput {
@@ -1587,10 +1542,8 @@ export const VirtualMachineImageTemplatesCreateOrUpdateRequest = /*@__PURE__*/ S
 export type VirtualMachineImageTemplatesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const VirtualMachineImageTemplatesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VirtualMachineImageTemplatesCreateOrUpdateResponseTagsMap>;
+export const VirtualMachineImageTemplatesCreateOrUpdateResponseTagsMap =
+  GetVirtualMachineImageTemplateResponseTagsMap as any as S.Schema<VirtualMachineImageTemplatesCreateOrUpdateResponseTagsMap>;
 
 export interface VirtualMachineImageTemplatesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1610,20 +1563,8 @@ export interface VirtualMachineImageTemplatesCreateOrUpdateResponse {
   /** The identity of the image template, if configured. */
   identity: ImageTemplateIdentity;
 }
-export const VirtualMachineImageTemplatesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(VirtualMachineImageTemplatesCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ImageTemplateProperties),
-    identity: ImageTemplateIdentity,
-  }),
-).annotate({
-  identifier: "VirtualMachineImageTemplatesCreateOrUpdateResponse",
-}) as any as S.Schema<VirtualMachineImageTemplatesCreateOrUpdateResponse>;
+export const VirtualMachineImageTemplatesCreateOrUpdateResponse =
+  GetVirtualMachineImageTemplateResponse as any as S.Schema<VirtualMachineImageTemplatesCreateOrUpdateResponse>;
 
 export type CancelVirtualMachineImageTemplateError = AzureOpError;
 /** Cancel the long running image build based on the image template */

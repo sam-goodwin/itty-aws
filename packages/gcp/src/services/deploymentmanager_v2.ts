@@ -1266,9 +1266,8 @@ export type ResourceUpdateWarningsItemDataItem = OperationWarningsItemDataItem;
 export const ResourceUpdateWarningsItemDataItem = OperationWarningsItemDataItem;
 
 export type ResourceUpdateWarningsItemDataItemList = Array<OperationWarningsItemDataItem>;
-export const ResourceUpdateWarningsItemDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<ResourceUpdateWarningsItemDataItemList>;
+export const ResourceUpdateWarningsItemDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<ResourceUpdateWarningsItemDataItemList>;
 
 export type ResourceUpdateWarningsItemCodeEnum =
   | "DEPRECATED_RESOURCE_USED"
@@ -1381,9 +1380,8 @@ export type ResourceWarningsItemDataItem = OperationWarningsItemDataItem;
 export const ResourceWarningsItemDataItem = OperationWarningsItemDataItem;
 
 export type ResourceWarningsItemDataItemList = Array<OperationWarningsItemDataItem>;
-export const ResourceWarningsItemDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<ResourceWarningsItemDataItemList>;
+export const ResourceWarningsItemDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<ResourceWarningsItemDataItemList>;
 
 export type ResourceWarningsItemCodeEnum =
   | "DEPRECATED_RESOURCE_USED"
@@ -1929,11 +1927,8 @@ export interface TestPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({ identifier: "TestPermissionsResponse" }) as any as S.Schema<TestPermissionsResponse>;
+export const TestPermissionsResponse =
+  TestPermissionsRequest as any as S.Schema<TestPermissionsResponse>;
 
 export type UpdateDeploymentsCreatePolicyEnum = "CREATE_OR_ACQUIRE" | "ACQUIRE";
 export const UpdateDeploymentsCreatePolicyEnum = S.String;

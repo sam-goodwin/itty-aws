@@ -421,9 +421,7 @@ export const AttachDiskRequest = /*@__PURE__*/ S.suspend(() =>
 export interface AttachDiskResult {
   operations?: Operation[];
 }
-export const AttachDiskResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "AttachDiskResult" }) as any as S.Schema<AttachDiskResult>;
+export const AttachDiskResult = AllocateStaticIpResult as any as S.Schema<AttachDiskResult>;
 export type ResourceNameList = string[];
 export const ResourceNameList = /*@__PURE__*/ S.Array(S.String);
 export interface AttachInstancesToLoadBalancerRequest {
@@ -473,11 +471,8 @@ export const AttachLoadBalancerTlsCertificateRequest = /*@__PURE__*/ S.suspend((
 export interface AttachLoadBalancerTlsCertificateResult {
   operations?: Operation[];
 }
-export const AttachLoadBalancerTlsCertificateResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({
-  identifier: "AttachLoadBalancerTlsCertificateResult",
-}) as any as S.Schema<AttachLoadBalancerTlsCertificateResult>;
+export const AttachLoadBalancerTlsCertificateResult =
+  AttachInstancesToLoadBalancerResult as any as S.Schema<AttachLoadBalancerTlsCertificateResult>;
 export interface AttachStaticIpRequest {
   staticIpName: string;
   instanceName: string;
@@ -497,15 +492,13 @@ export const AttachStaticIpRequest = /*@__PURE__*/ S.suspend(() =>
 export interface AttachStaticIpResult {
   operations?: Operation[];
 }
-export const AttachStaticIpResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "AttachStaticIpResult" }) as any as S.Schema<AttachStaticIpResult>;
+export const AttachStaticIpResult = AllocateStaticIpResult as any as S.Schema<AttachStaticIpResult>;
 export type Port = number;
 export type NetworkProtocol = "tcp" | "all" | "udp" | "icmp" | "icmpv6" | (string & {});
 export const NetworkProtocol = S.String;
 
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = ResourceNameList as any as S.Schema<StringList>;
 export interface PortInfo {
   fromPort?: number;
   toPort?: number;
@@ -545,11 +538,8 @@ export const CloseInstancePublicPortsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CloseInstancePublicPortsResult {
   operation?: Operation;
 }
-export const CloseInstancePublicPortsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operation: S.optional(Operation) }),
-).annotate({
-  identifier: "CloseInstancePublicPortsResult",
-}) as any as S.Schema<CloseInstancePublicPortsResult>;
+export const CloseInstancePublicPortsResult =
+  AttachCertificateToDistributionResult as any as S.Schema<CloseInstancePublicPortsResult>;
 export interface CopySnapshotRequest {
   sourceSnapshotName?: string;
   sourceResourceName?: string;
@@ -580,9 +570,7 @@ export const CopySnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CopySnapshotResult {
   operations?: Operation[];
 }
-export const CopySnapshotResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "CopySnapshotResult" }) as any as S.Schema<CopySnapshotResult>;
+export const CopySnapshotResult = AllocateStaticIpResult as any as S.Schema<CopySnapshotResult>;
 export type BucketName = string;
 export type TagKey = string;
 export type TagValue = string;
@@ -629,7 +617,7 @@ export const AccessRules = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ getObject: S.optional(AccessType), allowPublicOverrides: S.optional(S.Boolean) }),
 ).annotate({ identifier: "AccessRules" }) as any as S.Schema<AccessRules>;
 export type PartnerIdList = string[];
-export const PartnerIdList = /*@__PURE__*/ S.Array(S.String);
+export const PartnerIdList = ResourceNameList as any as S.Schema<PartnerIdList>;
 export interface ResourceReceivingAccess {
   name?: string;
   resourceType?: string;
@@ -658,13 +646,16 @@ export const BucketAccessLogConfig = /*@__PURE__*/ S.suspend(() =>
 export type BucketCorsRuleId = string;
 export type BucketCorsAllowedMethod = string;
 export type BucketCorsAllowedMethods = string[];
-export const BucketCorsAllowedMethods = /*@__PURE__*/ S.Array(S.String);
+export const BucketCorsAllowedMethods =
+  ResourceNameList as any as S.Schema<BucketCorsAllowedMethods>;
 export type BucketCorsAllowedOrigins = string[];
-export const BucketCorsAllowedOrigins = /*@__PURE__*/ S.Array(S.String);
+export const BucketCorsAllowedOrigins =
+  ResourceNameList as any as S.Schema<BucketCorsAllowedOrigins>;
 export type BucketCorsAllowedHeaders = string[];
-export const BucketCorsAllowedHeaders = /*@__PURE__*/ S.Array(S.String);
+export const BucketCorsAllowedHeaders =
+  ResourceNameList as any as S.Schema<BucketCorsAllowedHeaders>;
 export type BucketCorsExposeHeaders = string[];
-export const BucketCorsExposeHeaders = /*@__PURE__*/ S.Array(S.String);
+export const BucketCorsExposeHeaders = ResourceNameList as any as S.Schema<BucketCorsExposeHeaders>;
 export interface BucketCorsRule {
   id?: string;
   allowedMethods: string[];
@@ -799,7 +790,8 @@ export const CreateBucketAccessKeyResult = /*@__PURE__*/ S.suspend(() =>
 export type CertificateName = string;
 export type DomainName = string;
 export type SubjectAlternativeNameList = string[];
-export const SubjectAlternativeNameList = /*@__PURE__*/ S.Array(S.String);
+export const SubjectAlternativeNameList =
+  ResourceNameList as any as S.Schema<SubjectAlternativeNameList>;
 export interface CreateCertificateRequest {
   certificateName: string;
   domainName: string;
@@ -1017,11 +1009,8 @@ export const CreateCloudFormationStackRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateCloudFormationStackResult {
   operations?: Operation[];
 }
-export const CreateCloudFormationStackResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({
-  identifier: "CreateCloudFormationStackResult",
-}) as any as S.Schema<CreateCloudFormationStackResult>;
+export const CreateCloudFormationStackResult =
+  AttachInstancesToLoadBalancerResult as any as S.Schema<CreateCloudFormationStackResult>;
 export type ContactProtocol = "Email" | "SMS" | (string & {});
 export const ContactProtocol = S.String;
 
@@ -1052,11 +1041,8 @@ export const CreateContactMethodRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateContactMethodResult {
   operations?: Operation[];
 }
-export const CreateContactMethodResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({
-  identifier: "CreateContactMethodResult",
-}) as any as S.Schema<CreateContactMethodResult>;
+export const CreateContactMethodResult =
+  AttachInstancesToLoadBalancerResult as any as S.Schema<CreateContactMethodResult>;
 export type ContainerServiceName = string;
 export type ContainerServicePowerName =
   | "nano"
@@ -1070,7 +1056,8 @@ export const ContainerServicePowerName = S.String;
 
 export type ContainerServiceScale = number;
 export type ContainerServicePublicDomainsList = string[];
-export const ContainerServicePublicDomainsList = /*@__PURE__*/ S.Array(S.String);
+export const ContainerServicePublicDomainsList =
+  ResourceNameList as any as S.Schema<ContainerServicePublicDomainsList>;
 export type ContainerServicePublicDomains = { [key: string]: string[] | undefined };
 export const ContainerServicePublicDomains = /*@__PURE__*/ S.Record(
   S.String,
@@ -1364,11 +1351,8 @@ export const CreateContainerServiceDeploymentRequest = /*@__PURE__*/ S.suspend((
 export interface CreateContainerServiceDeploymentResult {
   containerService?: ContainerService;
 }
-export const CreateContainerServiceDeploymentResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ containerService: S.optional(ContainerService) }),
-).annotate({
-  identifier: "CreateContainerServiceDeploymentResult",
-}) as any as S.Schema<CreateContainerServiceDeploymentResult>;
+export const CreateContainerServiceDeploymentResult =
+  CreateContainerServiceResult as any as S.Schema<CreateContainerServiceDeploymentResult>;
 export interface CreateContainerServiceRegistryLoginRequest {}
 export const CreateContainerServiceRegistryLoginRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -1469,9 +1453,7 @@ export const CreateDiskRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDiskResult {
   operations?: Operation[];
 }
-export const CreateDiskResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "CreateDiskResult" }) as any as S.Schema<CreateDiskResult>;
+export const CreateDiskResult = AllocateStaticIpResult as any as S.Schema<CreateDiskResult>;
 export interface CreateDiskFromSnapshotRequest {
   diskName: string;
   diskSnapshotName?: string;
@@ -1510,11 +1492,8 @@ export const CreateDiskFromSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDiskFromSnapshotResult {
   operations?: Operation[];
 }
-export const CreateDiskFromSnapshotResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({
-  identifier: "CreateDiskFromSnapshotResult",
-}) as any as S.Schema<CreateDiskFromSnapshotResult>;
+export const CreateDiskFromSnapshotResult =
+  AttachInstancesToLoadBalancerResult as any as S.Schema<CreateDiskFromSnapshotResult>;
 export interface CreateDiskSnapshotRequest {
   diskName?: string;
   diskSnapshotName: string;
@@ -1543,9 +1522,8 @@ export const CreateDiskSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDiskSnapshotResult {
   operations?: Operation[];
 }
-export const CreateDiskSnapshotResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "CreateDiskSnapshotResult" }) as any as S.Schema<CreateDiskSnapshotResult>;
+export const CreateDiskSnapshotResult =
+  AllocateStaticIpResult as any as S.Schema<CreateDiskSnapshotResult>;
 export type OriginProtocolPolicyEnum = "http-only" | "https-only" | (string & {});
 export const OriginProtocolPolicyEnum = S.String;
 
@@ -1831,10 +1809,7 @@ export const CreateDomainResult = /*@__PURE__*/ S.suspend(() =>
 export type DomainEntryType = string;
 export type DomainEntryOptionsKeys = string;
 export type DomainEntryOptions = { [key: string]: string | undefined };
-export const DomainEntryOptions = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const DomainEntryOptions = Environment as any as S.Schema<DomainEntryOptions>;
 export interface DomainEntry {
   id?: string;
   name?: string;
@@ -1872,9 +1847,8 @@ export const CreateDomainEntryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDomainEntryResult {
   operation?: Operation;
 }
-export const CreateDomainEntryResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operation: S.optional(Operation) }),
-).annotate({ identifier: "CreateDomainEntryResult" }) as any as S.Schema<CreateDomainEntryResult>;
+export const CreateDomainEntryResult =
+  CreateDomainResult as any as S.Schema<CreateDomainEntryResult>;
 export interface CreateGUISessionAccessDetailsRequest {
   resourceName: string;
 }
@@ -1977,9 +1951,8 @@ export const CreateInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateInstancesResult {
   operations?: Operation[];
 }
-export const CreateInstancesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "CreateInstancesResult" }) as any as S.Schema<CreateInstancesResult>;
+export const CreateInstancesResult =
+  AllocateStaticIpResult as any as S.Schema<CreateInstancesResult>;
 export interface DiskMap {
   originalDiskPath?: string;
   newDiskName?: string;
@@ -2040,11 +2013,8 @@ export const CreateInstancesFromSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateInstancesFromSnapshotResult {
   operations?: Operation[];
 }
-export const CreateInstancesFromSnapshotResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({
-  identifier: "CreateInstancesFromSnapshotResult",
-}) as any as S.Schema<CreateInstancesFromSnapshotResult>;
+export const CreateInstancesFromSnapshotResult =
+  AttachInstancesToLoadBalancerResult as any as S.Schema<CreateInstancesFromSnapshotResult>;
 export interface CreateInstanceSnapshotRequest {
   instanceSnapshotName: string;
   instanceName: string;
@@ -2071,11 +2041,8 @@ export const CreateInstanceSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateInstanceSnapshotResult {
   operations?: Operation[];
 }
-export const CreateInstanceSnapshotResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({
-  identifier: "CreateInstanceSnapshotResult",
-}) as any as S.Schema<CreateInstanceSnapshotResult>;
+export const CreateInstanceSnapshotResult =
+  AttachInstancesToLoadBalancerResult as any as S.Schema<CreateInstanceSnapshotResult>;
 export interface CreateKeyPairRequest {
   keyPairName: string;
   tags?: Tag[];
@@ -2130,7 +2097,7 @@ export const CreateKeyPairResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CreateKeyPairResult" }) as any as S.Schema<CreateKeyPairResult>;
 export type DomainNameList = string[];
-export const DomainNameList = /*@__PURE__*/ S.Array(S.String);
+export const DomainNameList = ResourceNameList as any as S.Schema<DomainNameList>;
 export interface CreateLoadBalancerRequest {
   loadBalancerName: string;
   instancePort: number;
@@ -2169,9 +2136,8 @@ export const CreateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateLoadBalancerResult {
   operations?: Operation[];
 }
-export const CreateLoadBalancerResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "CreateLoadBalancerResult" }) as any as S.Schema<CreateLoadBalancerResult>;
+export const CreateLoadBalancerResult =
+  AllocateStaticIpResult as any as S.Schema<CreateLoadBalancerResult>;
 export interface CreateLoadBalancerTlsCertificateRequest {
   loadBalancerName: string;
   certificateName: string;
@@ -2202,11 +2168,8 @@ export const CreateLoadBalancerTlsCertificateRequest = /*@__PURE__*/ S.suspend((
 export interface CreateLoadBalancerTlsCertificateResult {
   operations?: Operation[];
 }
-export const CreateLoadBalancerTlsCertificateResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({
-  identifier: "CreateLoadBalancerTlsCertificateResult",
-}) as any as S.Schema<CreateLoadBalancerTlsCertificateResult>;
+export const CreateLoadBalancerTlsCertificateResult =
+  AttachInstancesToLoadBalancerResult as any as S.Schema<CreateLoadBalancerTlsCertificateResult>;
 export type SensitiveString = string | redacted.Redacted<string>;
 export interface CreateRelationalDatabaseRequest {
   relationalDatabaseName: string;
@@ -2250,11 +2213,8 @@ export const CreateRelationalDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateRelationalDatabaseResult {
   operations?: Operation[];
 }
-export const CreateRelationalDatabaseResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({
-  identifier: "CreateRelationalDatabaseResult",
-}) as any as S.Schema<CreateRelationalDatabaseResult>;
+export const CreateRelationalDatabaseResult =
+  AttachInstancesToLoadBalancerResult as any as S.Schema<CreateRelationalDatabaseResult>;
 export interface CreateRelationalDatabaseFromSnapshotRequest {
   relationalDatabaseName: string;
   availabilityZone?: string;
@@ -2293,11 +2253,8 @@ export const CreateRelationalDatabaseFromSnapshotRequest = /*@__PURE__*/ S.suspe
 export interface CreateRelationalDatabaseFromSnapshotResult {
   operations?: Operation[];
 }
-export const CreateRelationalDatabaseFromSnapshotResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({
-  identifier: "CreateRelationalDatabaseFromSnapshotResult",
-}) as any as S.Schema<CreateRelationalDatabaseFromSnapshotResult>;
+export const CreateRelationalDatabaseFromSnapshotResult =
+  AttachInstancesToLoadBalancerResult as any as S.Schema<CreateRelationalDatabaseFromSnapshotResult>;
 export interface CreateRelationalDatabaseSnapshotRequest {
   relationalDatabaseName: string;
   relationalDatabaseSnapshotName: string;
@@ -2324,11 +2281,8 @@ export const CreateRelationalDatabaseSnapshotRequest = /*@__PURE__*/ S.suspend((
 export interface CreateRelationalDatabaseSnapshotResult {
   operations?: Operation[];
 }
-export const CreateRelationalDatabaseSnapshotResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({
-  identifier: "CreateRelationalDatabaseSnapshotResult",
-}) as any as S.Schema<CreateRelationalDatabaseSnapshotResult>;
+export const CreateRelationalDatabaseSnapshotResult =
+  AttachInstancesToLoadBalancerResult as any as S.Schema<CreateRelationalDatabaseSnapshotResult>;
 export interface DeleteAlarmRequest {
   alarmName: string;
 }
@@ -2347,9 +2301,7 @@ export const DeleteAlarmRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteAlarmResult {
   operations?: Operation[];
 }
-export const DeleteAlarmResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "DeleteAlarmResult" }) as any as S.Schema<DeleteAlarmResult>;
+export const DeleteAlarmResult = AllocateStaticIpResult as any as S.Schema<DeleteAlarmResult>;
 export type AutoSnapshotDate = string;
 export interface DeleteAutoSnapshotRequest {
   resourceName: string;
@@ -2372,9 +2324,8 @@ export const DeleteAutoSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteAutoSnapshotResult {
   operations?: Operation[];
 }
-export const DeleteAutoSnapshotResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "DeleteAutoSnapshotResult" }) as any as S.Schema<DeleteAutoSnapshotResult>;
+export const DeleteAutoSnapshotResult =
+  AllocateStaticIpResult as any as S.Schema<DeleteAutoSnapshotResult>;
 export interface DeleteBucketRequest {
   bucketName: string;
   forceDelete?: boolean;
@@ -2394,9 +2345,7 @@ export const DeleteBucketRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteBucketResult {
   operations?: Operation[];
 }
-export const DeleteBucketResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "DeleteBucketResult" }) as any as S.Schema<DeleteBucketResult>;
+export const DeleteBucketResult = AllocateStaticIpResult as any as S.Schema<DeleteBucketResult>;
 export interface DeleteBucketAccessKeyRequest {
   bucketName: string;
   accessKeyId: string;
@@ -2418,11 +2367,8 @@ export const DeleteBucketAccessKeyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteBucketAccessKeyResult {
   operations?: Operation[];
 }
-export const DeleteBucketAccessKeyResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({
-  identifier: "DeleteBucketAccessKeyResult",
-}) as any as S.Schema<DeleteBucketAccessKeyResult>;
+export const DeleteBucketAccessKeyResult =
+  AttachInstancesToLoadBalancerResult as any as S.Schema<DeleteBucketAccessKeyResult>;
 export interface DeleteCertificateRequest {
   certificateName: string;
 }
@@ -2441,9 +2387,8 @@ export const DeleteCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteCertificateResult {
   operations?: Operation[];
 }
-export const DeleteCertificateResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "DeleteCertificateResult" }) as any as S.Schema<DeleteCertificateResult>;
+export const DeleteCertificateResult =
+  AllocateStaticIpResult as any as S.Schema<DeleteCertificateResult>;
 export interface DeleteContactMethodRequest {
   protocol: ContactProtocol;
 }
@@ -2464,11 +2409,8 @@ export const DeleteContactMethodRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteContactMethodResult {
   operations?: Operation[];
 }
-export const DeleteContactMethodResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({
-  identifier: "DeleteContactMethodResult",
-}) as any as S.Schema<DeleteContactMethodResult>;
+export const DeleteContactMethodResult =
+  AttachInstancesToLoadBalancerResult as any as S.Schema<DeleteContactMethodResult>;
 export interface DeleteContainerImageRequest {
   serviceName: string;
   image: string;
@@ -2515,9 +2457,8 @@ export const DeleteContainerServiceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteContainerServiceRequest",
 }) as any as S.Schema<DeleteContainerServiceRequest>;
 export interface DeleteContainerServiceResult {}
-export const DeleteContainerServiceResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteContainerServiceResult",
-}) as any as S.Schema<DeleteContainerServiceResult>;
+export const DeleteContainerServiceResult =
+  DeleteContainerImageResult as any as S.Schema<DeleteContainerServiceResult>;
 export interface DeleteDiskRequest {
   diskName: string;
   forceDeleteAddOns?: boolean;
@@ -2537,9 +2478,7 @@ export const DeleteDiskRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDiskResult {
   operations?: Operation[];
 }
-export const DeleteDiskResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "DeleteDiskResult" }) as any as S.Schema<DeleteDiskResult>;
+export const DeleteDiskResult = AllocateStaticIpResult as any as S.Schema<DeleteDiskResult>;
 export interface DeleteDiskSnapshotRequest {
   diskSnapshotName: string;
 }
@@ -2560,9 +2499,8 @@ export const DeleteDiskSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDiskSnapshotResult {
   operations?: Operation[];
 }
-export const DeleteDiskSnapshotResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "DeleteDiskSnapshotResult" }) as any as S.Schema<DeleteDiskSnapshotResult>;
+export const DeleteDiskSnapshotResult =
+  AllocateStaticIpResult as any as S.Schema<DeleteDiskSnapshotResult>;
 export interface DeleteDistributionRequest {
   distributionName?: string;
 }
@@ -2583,9 +2521,8 @@ export const DeleteDistributionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDistributionResult {
   operation?: Operation;
 }
-export const DeleteDistributionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operation: S.optional(Operation) }),
-).annotate({ identifier: "DeleteDistributionResult" }) as any as S.Schema<DeleteDistributionResult>;
+export const DeleteDistributionResult =
+  CreateDomainResult as any as S.Schema<DeleteDistributionResult>;
 export interface DeleteDomainRequest {
   domainName: string;
 }
@@ -2604,9 +2541,7 @@ export const DeleteDomainRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDomainResult {
   operation?: Operation;
 }
-export const DeleteDomainResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operation: S.optional(Operation) }),
-).annotate({ identifier: "DeleteDomainResult" }) as any as S.Schema<DeleteDomainResult>;
+export const DeleteDomainResult = CreateDomainResult as any as S.Schema<DeleteDomainResult>;
 export interface DeleteDomainEntryRequest {
   domainName: string;
   domainEntry: DomainEntry;
@@ -2626,9 +2561,8 @@ export const DeleteDomainEntryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDomainEntryResult {
   operation?: Operation;
 }
-export const DeleteDomainEntryResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operation: S.optional(Operation) }),
-).annotate({ identifier: "DeleteDomainEntryResult" }) as any as S.Schema<DeleteDomainEntryResult>;
+export const DeleteDomainEntryResult =
+  CreateDomainResult as any as S.Schema<DeleteDomainEntryResult>;
 export interface DeleteInstanceRequest {
   instanceName: string;
   forceDeleteAddOns?: boolean;
@@ -2648,9 +2582,7 @@ export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteInstanceResult {
   operations?: Operation[];
 }
-export const DeleteInstanceResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "DeleteInstanceResult" }) as any as S.Schema<DeleteInstanceResult>;
+export const DeleteInstanceResult = AllocateStaticIpResult as any as S.Schema<DeleteInstanceResult>;
 export interface DeleteInstanceSnapshotRequest {
   instanceSnapshotName: string;
 }
@@ -2671,11 +2603,8 @@ export const DeleteInstanceSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteInstanceSnapshotResult {
   operations?: Operation[];
 }
-export const DeleteInstanceSnapshotResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({
-  identifier: "DeleteInstanceSnapshotResult",
-}) as any as S.Schema<DeleteInstanceSnapshotResult>;
+export const DeleteInstanceSnapshotResult =
+  AttachInstancesToLoadBalancerResult as any as S.Schema<DeleteInstanceSnapshotResult>;
 export interface DeleteKeyPairRequest {
   keyPairName: string;
   expectedFingerprint?: string;
@@ -2695,9 +2624,7 @@ export const DeleteKeyPairRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteKeyPairResult {
   operation?: Operation;
 }
-export const DeleteKeyPairResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operation: S.optional(Operation) }),
-).annotate({ identifier: "DeleteKeyPairResult" }) as any as S.Schema<DeleteKeyPairResult>;
+export const DeleteKeyPairResult = CreateDomainResult as any as S.Schema<DeleteKeyPairResult>;
 export interface DeleteKnownHostKeysRequest {
   instanceName: string;
 }
@@ -2718,11 +2645,8 @@ export const DeleteKnownHostKeysRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteKnownHostKeysResult {
   operations?: Operation[];
 }
-export const DeleteKnownHostKeysResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({
-  identifier: "DeleteKnownHostKeysResult",
-}) as any as S.Schema<DeleteKnownHostKeysResult>;
+export const DeleteKnownHostKeysResult =
+  AttachInstancesToLoadBalancerResult as any as S.Schema<DeleteKnownHostKeysResult>;
 export interface DeleteLoadBalancerRequest {
   loadBalancerName: string;
 }
@@ -2743,9 +2667,8 @@ export const DeleteLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteLoadBalancerResult {
   operations?: Operation[];
 }
-export const DeleteLoadBalancerResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "DeleteLoadBalancerResult" }) as any as S.Schema<DeleteLoadBalancerResult>;
+export const DeleteLoadBalancerResult =
+  AllocateStaticIpResult as any as S.Schema<DeleteLoadBalancerResult>;
 export interface DeleteLoadBalancerTlsCertificateRequest {
   loadBalancerName: string;
   certificateName: string;
@@ -2772,11 +2695,8 @@ export const DeleteLoadBalancerTlsCertificateRequest = /*@__PURE__*/ S.suspend((
 export interface DeleteLoadBalancerTlsCertificateResult {
   operations?: Operation[];
 }
-export const DeleteLoadBalancerTlsCertificateResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({
-  identifier: "DeleteLoadBalancerTlsCertificateResult",
-}) as any as S.Schema<DeleteLoadBalancerTlsCertificateResult>;
+export const DeleteLoadBalancerTlsCertificateResult =
+  AttachInstancesToLoadBalancerResult as any as S.Schema<DeleteLoadBalancerTlsCertificateResult>;
 export interface DeleteRelationalDatabaseRequest {
   relationalDatabaseName: string;
   skipFinalSnapshot?: boolean;
@@ -2803,11 +2723,8 @@ export const DeleteRelationalDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteRelationalDatabaseResult {
   operations?: Operation[];
 }
-export const DeleteRelationalDatabaseResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({
-  identifier: "DeleteRelationalDatabaseResult",
-}) as any as S.Schema<DeleteRelationalDatabaseResult>;
+export const DeleteRelationalDatabaseResult =
+  AttachInstancesToLoadBalancerResult as any as S.Schema<DeleteRelationalDatabaseResult>;
 export interface DeleteRelationalDatabaseSnapshotRequest {
   relationalDatabaseSnapshotName: string;
 }
@@ -2828,11 +2745,8 @@ export const DeleteRelationalDatabaseSnapshotRequest = /*@__PURE__*/ S.suspend((
 export interface DeleteRelationalDatabaseSnapshotResult {
   operations?: Operation[];
 }
-export const DeleteRelationalDatabaseSnapshotResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({
-  identifier: "DeleteRelationalDatabaseSnapshotResult",
-}) as any as S.Schema<DeleteRelationalDatabaseSnapshotResult>;
+export const DeleteRelationalDatabaseSnapshotResult =
+  AttachInstancesToLoadBalancerResult as any as S.Schema<DeleteRelationalDatabaseSnapshotResult>;
 export interface DetachCertificateFromDistributionRequest {
   distributionName: string;
 }
@@ -2853,11 +2767,8 @@ export const DetachCertificateFromDistributionRequest = /*@__PURE__*/ S.suspend(
 export interface DetachCertificateFromDistributionResult {
   operation?: Operation;
 }
-export const DetachCertificateFromDistributionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operation: S.optional(Operation) }),
-).annotate({
-  identifier: "DetachCertificateFromDistributionResult",
-}) as any as S.Schema<DetachCertificateFromDistributionResult>;
+export const DetachCertificateFromDistributionResult =
+  AttachCertificateToDistributionResult as any as S.Schema<DetachCertificateFromDistributionResult>;
 export interface DetachDiskRequest {
   diskName: string;
 }
@@ -2876,9 +2787,7 @@ export const DetachDiskRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DetachDiskResult {
   operations?: Operation[];
 }
-export const DetachDiskResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "DetachDiskResult" }) as any as S.Schema<DetachDiskResult>;
+export const DetachDiskResult = AllocateStaticIpResult as any as S.Schema<DetachDiskResult>;
 export interface DetachInstancesFromLoadBalancerRequest {
   loadBalancerName: string;
   instanceNames: string[];
@@ -2900,11 +2809,8 @@ export const DetachInstancesFromLoadBalancerRequest = /*@__PURE__*/ S.suspend(()
 export interface DetachInstancesFromLoadBalancerResult {
   operations?: Operation[];
 }
-export const DetachInstancesFromLoadBalancerResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({
-  identifier: "DetachInstancesFromLoadBalancerResult",
-}) as any as S.Schema<DetachInstancesFromLoadBalancerResult>;
+export const DetachInstancesFromLoadBalancerResult =
+  AttachInstancesToLoadBalancerResult as any as S.Schema<DetachInstancesFromLoadBalancerResult>;
 export interface DetachStaticIpRequest {
   staticIpName: string;
 }
@@ -2923,9 +2829,7 @@ export const DetachStaticIpRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DetachStaticIpResult {
   operations?: Operation[];
 }
-export const DetachStaticIpResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "DetachStaticIpResult" }) as any as S.Schema<DetachStaticIpResult>;
+export const DetachStaticIpResult = AllocateStaticIpResult as any as S.Schema<DetachStaticIpResult>;
 export interface DisableAddOnRequest {
   addOnType: AddOnType;
   resourceName: string;
@@ -2945,9 +2849,7 @@ export const DisableAddOnRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DisableAddOnResult {
   operations?: Operation[];
 }
-export const DisableAddOnResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "DisableAddOnResult" }) as any as S.Schema<DisableAddOnResult>;
+export const DisableAddOnResult = AllocateStaticIpResult as any as S.Schema<DisableAddOnResult>;
 export interface DownloadDefaultKeyPairRequest {}
 export const DownloadDefaultKeyPairRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -2996,9 +2898,7 @@ export const EnableAddOnRequest = /*@__PURE__*/ S.suspend(() =>
 export interface EnableAddOnResult {
   operations?: Operation[];
 }
-export const EnableAddOnResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "EnableAddOnResult" }) as any as S.Schema<EnableAddOnResult>;
+export const EnableAddOnResult = AllocateStaticIpResult as any as S.Schema<EnableAddOnResult>;
 export interface ExportSnapshotRequest {
   sourceSnapshotName: string;
 }
@@ -3017,9 +2917,7 @@ export const ExportSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ExportSnapshotResult {
   operations?: Operation[];
 }
-export const ExportSnapshotResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "ExportSnapshotResult" }) as any as S.Schema<ExportSnapshotResult>;
+export const ExportSnapshotResult = AllocateStaticIpResult as any as S.Schema<ExportSnapshotResult>;
 export interface GetActiveNamesRequest {
   pageToken?: string;
 }
@@ -3812,10 +3710,8 @@ export const GetContainerAPIMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetContainerAPIMetadataRequest",
 }) as any as S.Schema<GetContainerAPIMetadataRequest>;
 export type ContainerServiceMetadataEntry = { [key: string]: string | undefined };
-export const ContainerServiceMetadataEntry = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ContainerServiceMetadataEntry =
+  Environment as any as S.Schema<ContainerServiceMetadataEntry>;
 export type ContainerServiceMetadataEntryList = { [key: string]: string | undefined }[];
 export const ContainerServiceMetadataEntryList = /*@__PURE__*/ S.Array(
   ContainerServiceMetadataEntry,
@@ -4745,7 +4641,7 @@ export const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 export type IpAddress = string;
 export type Ipv6Address = string;
 export type Ipv6AddressList = string[];
-export const Ipv6AddressList = /*@__PURE__*/ S.Array(S.String);
+export const Ipv6AddressList = ResourceNameList as any as S.Schema<Ipv6AddressList>;
 export interface InstanceHardware {
   cpuCount?: number;
   disks?: Disk[];
@@ -5780,9 +5676,7 @@ export const GetOperationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetOperationResult {
   operation?: Operation;
 }
-export const GetOperationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operation: S.optional(Operation) }),
-).annotate({ identifier: "GetOperationResult" }) as any as S.Schema<GetOperationResult>;
+export const GetOperationResult = CreateDomainResult as any as S.Schema<GetOperationResult>;
 export interface GetOperationsRequest {
   pageToken?: string;
 }
@@ -6260,14 +6154,9 @@ export interface LogEvent {
   createdAt?: Date;
   message?: string;
 }
-export const LogEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    message: S.optional(S.String),
-  }),
-).annotate({ identifier: "LogEvent" }) as any as S.Schema<LogEvent>;
+export const LogEvent = ContainerServiceLogEvent as any as S.Schema<LogEvent>;
 export type LogEventList = LogEvent[];
-export const LogEventList = /*@__PURE__*/ S.Array(LogEvent);
+export const LogEventList = ContainerServiceLogEventList as any as S.Schema<LogEventList>;
 export interface GetRelationalDatabaseLogEventsResult {
   resourceLogEvents?: LogEvent[];
   nextBackwardToken?: string;
@@ -6598,7 +6487,7 @@ export const GetSetupHistoryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSetupHistoryRequest" }) as any as S.Schema<GetSetupHistoryRequest>;
 export type SetupDomainName = string;
 export type SetupDomainNameList = string[];
-export const SetupDomainNameList = /*@__PURE__*/ S.Array(S.String);
+export const SetupDomainNameList = ResourceNameList as any as S.Schema<SetupDomainNameList>;
 export type CertificateProvider = "LetsEncrypt" | (string & {});
 export const CertificateProvider = S.String;
 
@@ -6768,9 +6657,7 @@ export const ImportKeyPairRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ImportKeyPairResult {
   operation?: Operation;
 }
-export const ImportKeyPairResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operation: S.optional(Operation) }),
-).annotate({ identifier: "ImportKeyPairResult" }) as any as S.Schema<ImportKeyPairResult>;
+export const ImportKeyPairResult = CreateDomainResult as any as S.Schema<ImportKeyPairResult>;
 export interface IsVpcPeeredRequest {}
 export const IsVpcPeeredRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -6811,11 +6698,8 @@ export const OpenInstancePublicPortsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface OpenInstancePublicPortsResult {
   operation?: Operation;
 }
-export const OpenInstancePublicPortsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operation: S.optional(Operation) }),
-).annotate({
-  identifier: "OpenInstancePublicPortsResult",
-}) as any as S.Schema<OpenInstancePublicPortsResult>;
+export const OpenInstancePublicPortsResult =
+  AttachCertificateToDistributionResult as any as S.Schema<OpenInstancePublicPortsResult>;
 export interface PeerVpcRequest {}
 export const PeerVpcRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -6832,9 +6716,7 @@ export const PeerVpcRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PeerVpcResult {
   operation?: Operation;
 }
-export const PeerVpcResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operation: S.optional(Operation) }),
-).annotate({ identifier: "PeerVpcResult" }) as any as S.Schema<PeerVpcResult>;
+export const PeerVpcResult = CreateDomainResult as any as S.Schema<PeerVpcResult>;
 export interface PutAlarmRequest {
   alarmName: string;
   metricName: MetricName;
@@ -6877,9 +6759,7 @@ export const PutAlarmRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutAlarmResult {
   operations?: Operation[];
 }
-export const PutAlarmResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "PutAlarmResult" }) as any as S.Schema<PutAlarmResult>;
+export const PutAlarmResult = AllocateStaticIpResult as any as S.Schema<PutAlarmResult>;
 export type PortInfoList = PortInfo[];
 export const PortInfoList = /*@__PURE__*/ S.Array(PortInfo);
 export interface PutInstancePublicPortsRequest {
@@ -6903,11 +6783,8 @@ export const PutInstancePublicPortsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutInstancePublicPortsResult {
   operation?: Operation;
 }
-export const PutInstancePublicPortsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operation: S.optional(Operation) }),
-).annotate({
-  identifier: "PutInstancePublicPortsResult",
-}) as any as S.Schema<PutInstancePublicPortsResult>;
+export const PutInstancePublicPortsResult =
+  AttachCertificateToDistributionResult as any as S.Schema<PutInstancePublicPortsResult>;
 export interface RebootInstanceRequest {
   instanceName: string;
 }
@@ -6926,9 +6803,7 @@ export const RebootInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RebootInstanceResult {
   operations?: Operation[];
 }
-export const RebootInstanceResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "RebootInstanceResult" }) as any as S.Schema<RebootInstanceResult>;
+export const RebootInstanceResult = AllocateStaticIpResult as any as S.Schema<RebootInstanceResult>;
 export interface RebootRelationalDatabaseRequest {
   relationalDatabaseName: string;
 }
@@ -6949,11 +6824,8 @@ export const RebootRelationalDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RebootRelationalDatabaseResult {
   operations?: Operation[];
 }
-export const RebootRelationalDatabaseResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({
-  identifier: "RebootRelationalDatabaseResult",
-}) as any as S.Schema<RebootRelationalDatabaseResult>;
+export const RebootRelationalDatabaseResult =
+  AttachInstancesToLoadBalancerResult as any as S.Schema<RebootRelationalDatabaseResult>;
 export type ContainerLabel = string;
 export interface RegisterContainerImageRequest {
   serviceName: string;
@@ -7004,9 +6876,8 @@ export const ReleaseStaticIpRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ReleaseStaticIpResult {
   operations?: Operation[];
 }
-export const ReleaseStaticIpResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "ReleaseStaticIpResult" }) as any as S.Schema<ReleaseStaticIpResult>;
+export const ReleaseStaticIpResult =
+  AllocateStaticIpResult as any as S.Schema<ReleaseStaticIpResult>;
 export interface ResetDistributionCacheRequest {
   distributionName?: string;
 }
@@ -7061,11 +6932,8 @@ export const SendContactMethodVerificationRequest = /*@__PURE__*/ S.suspend(() =
 export interface SendContactMethodVerificationResult {
   operations?: Operation[];
 }
-export const SendContactMethodVerificationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({
-  identifier: "SendContactMethodVerificationResult",
-}) as any as S.Schema<SendContactMethodVerificationResult>;
+export const SendContactMethodVerificationResult =
+  AttachInstancesToLoadBalancerResult as any as S.Schema<SendContactMethodVerificationResult>;
 export interface SetIpAddressTypeRequest {
   resourceType: ResourceType;
   resourceName: string;
@@ -7092,9 +6960,8 @@ export const SetIpAddressTypeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SetIpAddressTypeResult {
   operations?: Operation[];
 }
-export const SetIpAddressTypeResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "SetIpAddressTypeResult" }) as any as S.Schema<SetIpAddressTypeResult>;
+export const SetIpAddressTypeResult =
+  AllocateStaticIpResult as any as S.Schema<SetIpAddressTypeResult>;
 export type ResourceBucketAccess = "allow" | "deny" | (string & {});
 export const ResourceBucketAccess = S.String;
 
@@ -7120,11 +6987,8 @@ export const SetResourceAccessForBucketRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SetResourceAccessForBucketResult {
   operations?: Operation[];
 }
-export const SetResourceAccessForBucketResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({
-  identifier: "SetResourceAccessForBucketResult",
-}) as any as S.Schema<SetResourceAccessForBucketResult>;
+export const SetResourceAccessForBucketResult =
+  AttachInstancesToLoadBalancerResult as any as S.Schema<SetResourceAccessForBucketResult>;
 export type EmailAddress = string | redacted.Redacted<string>;
 export interface SetupInstanceHttpsRequest {
   instanceName: string;
@@ -7154,9 +7018,8 @@ export const SetupInstanceHttpsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SetupInstanceHttpsResult {
   operations?: Operation[];
 }
-export const SetupInstanceHttpsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "SetupInstanceHttpsResult" }) as any as S.Schema<SetupInstanceHttpsResult>;
+export const SetupInstanceHttpsResult =
+  AllocateStaticIpResult as any as S.Schema<SetupInstanceHttpsResult>;
 export interface StartGUISessionRequest {
   resourceName: string;
 }
@@ -7175,9 +7038,8 @@ export const StartGUISessionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartGUISessionResult {
   operations?: Operation[];
 }
-export const StartGUISessionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "StartGUISessionResult" }) as any as S.Schema<StartGUISessionResult>;
+export const StartGUISessionResult =
+  AllocateStaticIpResult as any as S.Schema<StartGUISessionResult>;
 export interface StartInstanceRequest {
   instanceName: string;
 }
@@ -7196,9 +7058,7 @@ export const StartInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartInstanceResult {
   operations?: Operation[];
 }
-export const StartInstanceResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "StartInstanceResult" }) as any as S.Schema<StartInstanceResult>;
+export const StartInstanceResult = AllocateStaticIpResult as any as S.Schema<StartInstanceResult>;
 export interface StartRelationalDatabaseRequest {
   relationalDatabaseName: string;
 }
@@ -7219,11 +7079,8 @@ export const StartRelationalDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartRelationalDatabaseResult {
   operations?: Operation[];
 }
-export const StartRelationalDatabaseResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({
-  identifier: "StartRelationalDatabaseResult",
-}) as any as S.Schema<StartRelationalDatabaseResult>;
+export const StartRelationalDatabaseResult =
+  AttachInstancesToLoadBalancerResult as any as S.Schema<StartRelationalDatabaseResult>;
 export interface StopGUISessionRequest {
   resourceName: string;
 }
@@ -7242,9 +7099,7 @@ export const StopGUISessionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopGUISessionResult {
   operations?: Operation[];
 }
-export const StopGUISessionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "StopGUISessionResult" }) as any as S.Schema<StopGUISessionResult>;
+export const StopGUISessionResult = AllocateStaticIpResult as any as S.Schema<StopGUISessionResult>;
 export interface StopInstanceRequest {
   instanceName: string;
   force?: boolean;
@@ -7264,9 +7119,7 @@ export const StopInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopInstanceResult {
   operations?: Operation[];
 }
-export const StopInstanceResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "StopInstanceResult" }) as any as S.Schema<StopInstanceResult>;
+export const StopInstanceResult = AllocateStaticIpResult as any as S.Schema<StopInstanceResult>;
 export interface StopRelationalDatabaseRequest {
   relationalDatabaseName: string;
   relationalDatabaseSnapshotName?: string;
@@ -7291,11 +7144,8 @@ export const StopRelationalDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopRelationalDatabaseResult {
   operations?: Operation[];
 }
-export const StopRelationalDatabaseResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({
-  identifier: "StopRelationalDatabaseResult",
-}) as any as S.Schema<StopRelationalDatabaseResult>;
+export const StopRelationalDatabaseResult =
+  AttachInstancesToLoadBalancerResult as any as S.Schema<StopRelationalDatabaseResult>;
 export interface TagResourceRequest {
   resourceName: string;
   resourceArn?: string;
@@ -7316,9 +7166,7 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TagResourceResult {
   operations?: Operation[];
 }
-export const TagResourceResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "TagResourceResult" }) as any as S.Schema<TagResourceResult>;
+export const TagResourceResult = AllocateStaticIpResult as any as S.Schema<TagResourceResult>;
 export interface TestAlarmRequest {
   alarmName: string;
   state: AlarmState;
@@ -7341,9 +7189,7 @@ export const TestAlarmRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TestAlarmResult {
   operations?: Operation[];
 }
-export const TestAlarmResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "TestAlarmResult" }) as any as S.Schema<TestAlarmResult>;
+export const TestAlarmResult = AllocateStaticIpResult as any as S.Schema<TestAlarmResult>;
 export interface UnpeerVpcRequest {}
 export const UnpeerVpcRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -7360,11 +7206,9 @@ export const UnpeerVpcRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UnpeerVpcResult {
   operation?: Operation;
 }
-export const UnpeerVpcResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operation: S.optional(Operation) }),
-).annotate({ identifier: "UnpeerVpcResult" }) as any as S.Schema<UnpeerVpcResult>;
+export const UnpeerVpcResult = CreateDomainResult as any as S.Schema<UnpeerVpcResult>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = ResourceNameList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceName: string;
   resourceArn?: string;
@@ -7385,9 +7229,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UntagResourceResult {
   operations?: Operation[];
 }
-export const UntagResourceResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "UntagResourceResult" }) as any as S.Schema<UntagResourceResult>;
+export const UntagResourceResult = AllocateStaticIpResult as any as S.Schema<UntagResourceResult>;
 export interface UpdateBucketRequest {
   bucketName: string;
   accessRules?: AccessRules;
@@ -7419,9 +7261,7 @@ export interface UpdateBucketResult {
   bucket?: Bucket;
   operations?: Operation[];
 }
-export const UpdateBucketResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ bucket: S.optional(Bucket), operations: S.optional(OperationList) }),
-).annotate({ identifier: "UpdateBucketResult" }) as any as S.Schema<UpdateBucketResult>;
+export const UpdateBucketResult = CreateBucketResult as any as S.Schema<UpdateBucketResult>;
 export interface UpdateBucketBundleRequest {
   bucketName: string;
   bundleId: string;
@@ -7443,9 +7283,8 @@ export const UpdateBucketBundleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateBucketBundleResult {
   operations?: Operation[];
 }
-export const UpdateBucketBundleResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "UpdateBucketBundleResult" }) as any as S.Schema<UpdateBucketBundleResult>;
+export const UpdateBucketBundleResult =
+  AllocateStaticIpResult as any as S.Schema<UpdateBucketBundleResult>;
 export interface UpdateContainerServiceRequest {
   serviceName: string;
   power?: ContainerServicePowerName;
@@ -7478,11 +7317,8 @@ export const UpdateContainerServiceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateContainerServiceResult {
   containerService?: ContainerService;
 }
-export const UpdateContainerServiceResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ containerService: S.optional(ContainerService) }),
-).annotate({
-  identifier: "UpdateContainerServiceResult",
-}) as any as S.Schema<UpdateContainerServiceResult>;
+export const UpdateContainerServiceResult =
+  CreateContainerServiceResult as any as S.Schema<UpdateContainerServiceResult>;
 export interface UpdateDistributionRequest {
   distributionName: string;
   origin?: InputOrigin;
@@ -7527,9 +7363,8 @@ export const UpdateDistributionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDistributionResult {
   operation?: Operation;
 }
-export const UpdateDistributionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operation: S.optional(Operation) }),
-).annotate({ identifier: "UpdateDistributionResult" }) as any as S.Schema<UpdateDistributionResult>;
+export const UpdateDistributionResult =
+  CreateDomainResult as any as S.Schema<UpdateDistributionResult>;
 export interface UpdateDistributionBundleRequest {
   distributionName?: string;
   bundleId?: string;
@@ -7551,11 +7386,8 @@ export const UpdateDistributionBundleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDistributionBundleResult {
   operation?: Operation;
 }
-export const UpdateDistributionBundleResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operation: S.optional(Operation) }),
-).annotate({
-  identifier: "UpdateDistributionBundleResult",
-}) as any as S.Schema<UpdateDistributionBundleResult>;
+export const UpdateDistributionBundleResult =
+  AttachCertificateToDistributionResult as any as S.Schema<UpdateDistributionBundleResult>;
 export interface UpdateDomainEntryRequest {
   domainName: string;
   domainEntry: DomainEntry;
@@ -7575,9 +7407,8 @@ export const UpdateDomainEntryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDomainEntryResult {
   operations?: Operation[];
 }
-export const UpdateDomainEntryResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({ identifier: "UpdateDomainEntryResult" }) as any as S.Schema<UpdateDomainEntryResult>;
+export const UpdateDomainEntryResult =
+  AllocateStaticIpResult as any as S.Schema<UpdateDomainEntryResult>;
 export interface UpdateInstanceMetadataOptionsRequest {
   instanceName: string;
   httpTokens?: HttpTokens;
@@ -7608,11 +7439,8 @@ export const UpdateInstanceMetadataOptionsRequest = /*@__PURE__*/ S.suspend(() =
 export interface UpdateInstanceMetadataOptionsResult {
   operation?: Operation;
 }
-export const UpdateInstanceMetadataOptionsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operation: S.optional(Operation) }),
-).annotate({
-  identifier: "UpdateInstanceMetadataOptionsResult",
-}) as any as S.Schema<UpdateInstanceMetadataOptionsResult>;
+export const UpdateInstanceMetadataOptionsResult =
+  AttachCertificateToDistributionResult as any as S.Schema<UpdateInstanceMetadataOptionsResult>;
 export interface UpdateLoadBalancerAttributeRequest {
   loadBalancerName: string;
   attributeName: LoadBalancerAttributeName;
@@ -7639,11 +7467,8 @@ export const UpdateLoadBalancerAttributeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateLoadBalancerAttributeResult {
   operations?: Operation[];
 }
-export const UpdateLoadBalancerAttributeResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({
-  identifier: "UpdateLoadBalancerAttributeResult",
-}) as any as S.Schema<UpdateLoadBalancerAttributeResult>;
+export const UpdateLoadBalancerAttributeResult =
+  AttachInstancesToLoadBalancerResult as any as S.Schema<UpdateLoadBalancerAttributeResult>;
 export interface UpdateRelationalDatabaseRequest {
   relationalDatabaseName: string;
   masterUserPassword?: string | redacted.Redacted<string>;
@@ -7686,11 +7511,8 @@ export const UpdateRelationalDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateRelationalDatabaseResult {
   operations?: Operation[];
 }
-export const UpdateRelationalDatabaseResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({
-  identifier: "UpdateRelationalDatabaseResult",
-}) as any as S.Schema<UpdateRelationalDatabaseResult>;
+export const UpdateRelationalDatabaseResult =
+  AttachInstancesToLoadBalancerResult as any as S.Schema<UpdateRelationalDatabaseResult>;
 export interface UpdateRelationalDatabaseParametersRequest {
   relationalDatabaseName: string;
   parameters: RelationalDatabaseParameter[];
@@ -7712,11 +7534,8 @@ export const UpdateRelationalDatabaseParametersRequest = /*@__PURE__*/ S.suspend
 export interface UpdateRelationalDatabaseParametersResult {
   operations?: Operation[];
 }
-export const UpdateRelationalDatabaseParametersResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operations: S.optional(OperationList) }),
-).annotate({
-  identifier: "UpdateRelationalDatabaseParametersResult",
-}) as any as S.Schema<UpdateRelationalDatabaseParametersResult>;
+export const UpdateRelationalDatabaseParametersResult =
+  AttachInstancesToLoadBalancerResult as any as S.Schema<UpdateRelationalDatabaseParametersResult>;
 export type AllocateStaticIpError =
   | AccessDeniedException
   | AccountSetupInProgressException

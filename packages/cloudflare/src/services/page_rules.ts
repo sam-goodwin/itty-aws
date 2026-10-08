@@ -219,19 +219,15 @@ export const CreateRequestActionsItemCacheKeyFieldsValueCookie = /*@__PURE__*/ S
 
 export type CreateRequestActionsItemCacheKeyFieldsValueHeaderCheckPresenceList = Array<string>;
 export const CreateRequestActionsItemCacheKeyFieldsValueHeaderCheckPresenceList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateRequestActionsItemCacheKeyFieldsValueHeaderCheckPresenceList>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<CreateRequestActionsItemCacheKeyFieldsValueHeaderCheckPresenceList>;
 
 export type CreateRequestActionsItemCacheKeyFieldsValueHeaderExcludeList = Array<string>;
-export const CreateRequestActionsItemCacheKeyFieldsValueHeaderExcludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateRequestActionsItemCacheKeyFieldsValueHeaderExcludeList>;
+export const CreateRequestActionsItemCacheKeyFieldsValueHeaderExcludeList =
+  CreateRequestActionsItemCacheKeyFieldsValueCookieIncludeList as any as S.Schema<CreateRequestActionsItemCacheKeyFieldsValueHeaderExcludeList>;
 
 export type CreateRequestActionsItemCacheKeyFieldsValueHeaderIncludeList = Array<string>;
-export const CreateRequestActionsItemCacheKeyFieldsValueHeaderIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateRequestActionsItemCacheKeyFieldsValueHeaderIncludeList>;
+export const CreateRequestActionsItemCacheKeyFieldsValueHeaderIncludeList =
+  CreateRequestActionsItemCacheKeyFieldsValueCookieIncludeList as any as S.Schema<CreateRequestActionsItemCacheKeyFieldsValueHeaderIncludeList>;
 
 export interface CreateRequestActionsItemCacheKeyFieldsValueHeader {
   /** A list of headers to check for the presence of, without including their actual values. */
@@ -272,9 +268,7 @@ export const CreateRequestActionsItemCacheKeyFieldsValueQueryStringExcludeEnum =
 
 export type CreateRequestActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List = Array<string>;
 export const CreateRequestActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateRequestActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<CreateRequestActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List>;
 
 export type CreateRequestActionsItemCacheKeyFieldsValueQueryStringExclude =
   | CreateRequestActionsItemCacheKeyFieldsValueQueryStringExcludeEnum
@@ -288,9 +282,7 @@ export const CreateRequestActionsItemCacheKeyFieldsValueQueryStringIncludeEnum =
 
 export type CreateRequestActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List = Array<string>;
 export const CreateRequestActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateRequestActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<CreateRequestActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List>;
 
 export type CreateRequestActionsItemCacheKeyFieldsValueQueryStringInclude =
   | CreateRequestActionsItemCacheKeyFieldsValueQueryStringIncludeEnum
@@ -1259,14 +1251,11 @@ export const CreateResponseActionsItemCacheKeyFieldsId = S.String;
 
 export type CreateResponseActionsItemCacheKeyFieldsValueCookieCheckPresenceList = Array<string>;
 export const CreateResponseActionsItemCacheKeyFieldsValueCookieCheckPresenceList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateResponseActionsItemCacheKeyFieldsValueCookieCheckPresenceList>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<CreateResponseActionsItemCacheKeyFieldsValueCookieCheckPresenceList>;
 
 export type CreateResponseActionsItemCacheKeyFieldsValueCookieIncludeList = Array<string>;
-export const CreateResponseActionsItemCacheKeyFieldsValueCookieIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResponseActionsItemCacheKeyFieldsValueCookieIncludeList>;
+export const CreateResponseActionsItemCacheKeyFieldsValueCookieIncludeList =
+  CreateRequestActionsItemCacheKeyFieldsValueCookieIncludeList as any as S.Schema<CreateResponseActionsItemCacheKeyFieldsValueCookieIncludeList>;
 
 export interface CreateResponseActionsItemCacheKeyFieldsValueCookie {
   /** A list of cookies to check for the presence of, without including their actual values. */
@@ -1289,19 +1278,15 @@ export const CreateResponseActionsItemCacheKeyFieldsValueCookie = /*@__PURE__*/ 
 
 export type CreateResponseActionsItemCacheKeyFieldsValueHeaderCheckPresenceList = Array<string>;
 export const CreateResponseActionsItemCacheKeyFieldsValueHeaderCheckPresenceList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateResponseActionsItemCacheKeyFieldsValueHeaderCheckPresenceList>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<CreateResponseActionsItemCacheKeyFieldsValueHeaderCheckPresenceList>;
 
 export type CreateResponseActionsItemCacheKeyFieldsValueHeaderExcludeList = Array<string>;
-export const CreateResponseActionsItemCacheKeyFieldsValueHeaderExcludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResponseActionsItemCacheKeyFieldsValueHeaderExcludeList>;
+export const CreateResponseActionsItemCacheKeyFieldsValueHeaderExcludeList =
+  CreateRequestActionsItemCacheKeyFieldsValueCookieIncludeList as any as S.Schema<CreateResponseActionsItemCacheKeyFieldsValueHeaderExcludeList>;
 
 export type CreateResponseActionsItemCacheKeyFieldsValueHeaderIncludeList = Array<string>;
-export const CreateResponseActionsItemCacheKeyFieldsValueHeaderIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResponseActionsItemCacheKeyFieldsValueHeaderIncludeList>;
+export const CreateResponseActionsItemCacheKeyFieldsValueHeaderIncludeList =
+  CreateRequestActionsItemCacheKeyFieldsValueCookieIncludeList as any as S.Schema<CreateResponseActionsItemCacheKeyFieldsValueHeaderIncludeList>;
 
 export interface CreateResponseActionsItemCacheKeyFieldsValueHeader {
   /** A list of headers to check for the presence of, without including their actual values. */
@@ -1342,9 +1327,7 @@ export const CreateResponseActionsItemCacheKeyFieldsValueQueryStringExcludeEnum 
 
 export type CreateResponseActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List = Array<string>;
 export const CreateResponseActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateResponseActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<CreateResponseActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List>;
 
 export type CreateResponseActionsItemCacheKeyFieldsValueQueryStringExclude =
   | CreateResponseActionsItemCacheKeyFieldsValueQueryStringExcludeEnum
@@ -1357,9 +1340,7 @@ export const CreateResponseActionsItemCacheKeyFieldsValueQueryStringIncludeEnum 
 
 export type CreateResponseActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List = Array<string>;
 export const CreateResponseActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateResponseActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<CreateResponseActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List>;
 
 export type CreateResponseActionsItemCacheKeyFieldsValueQueryStringInclude =
   | CreateResponseActionsItemCacheKeyFieldsValueQueryStringIncludeEnum
@@ -2376,14 +2357,11 @@ export const GetResponseActionsItemCacheKeyFieldsId = S.String;
 
 export type GetResponseActionsItemCacheKeyFieldsValueCookieCheckPresenceList = Array<string>;
 export const GetResponseActionsItemCacheKeyFieldsValueCookieCheckPresenceList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetResponseActionsItemCacheKeyFieldsValueCookieCheckPresenceList>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<GetResponseActionsItemCacheKeyFieldsValueCookieCheckPresenceList>;
 
 export type GetResponseActionsItemCacheKeyFieldsValueCookieIncludeList = Array<string>;
-export const GetResponseActionsItemCacheKeyFieldsValueCookieIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseActionsItemCacheKeyFieldsValueCookieIncludeList>;
+export const GetResponseActionsItemCacheKeyFieldsValueCookieIncludeList =
+  CreateRequestActionsItemCacheKeyFieldsValueCookieIncludeList as any as S.Schema<GetResponseActionsItemCacheKeyFieldsValueCookieIncludeList>;
 
 export interface GetResponseActionsItemCacheKeyFieldsValueCookie {
   /** A list of cookies to check for the presence of, without including their actual values. */
@@ -2391,34 +2369,20 @@ export interface GetResponseActionsItemCacheKeyFieldsValueCookie {
   /** A list of cookies to include. */
   include?: GetResponseActionsItemCacheKeyFieldsValueCookieIncludeList | null;
 }
-export const GetResponseActionsItemCacheKeyFieldsValueCookie = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkPresence: S.optional(
-      S.NullOr(GetResponseActionsItemCacheKeyFieldsValueCookieCheckPresenceList).pipe(
-        T.Body("check_presence"),
-      ),
-    ),
-    include: S.optional(S.NullOr(GetResponseActionsItemCacheKeyFieldsValueCookieIncludeList)),
-  }),
-).annotate({
-  identifier: "GetResponseActionsItemCacheKeyFieldsValueCookie",
-}) as any as S.Schema<GetResponseActionsItemCacheKeyFieldsValueCookie>;
+export const GetResponseActionsItemCacheKeyFieldsValueCookie =
+  CreateResponseActionsItemCacheKeyFieldsValueCookie as any as S.Schema<GetResponseActionsItemCacheKeyFieldsValueCookie>;
 
 export type GetResponseActionsItemCacheKeyFieldsValueHeaderCheckPresenceList = Array<string>;
 export const GetResponseActionsItemCacheKeyFieldsValueHeaderCheckPresenceList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetResponseActionsItemCacheKeyFieldsValueHeaderCheckPresenceList>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<GetResponseActionsItemCacheKeyFieldsValueHeaderCheckPresenceList>;
 
 export type GetResponseActionsItemCacheKeyFieldsValueHeaderExcludeList = Array<string>;
-export const GetResponseActionsItemCacheKeyFieldsValueHeaderExcludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseActionsItemCacheKeyFieldsValueHeaderExcludeList>;
+export const GetResponseActionsItemCacheKeyFieldsValueHeaderExcludeList =
+  CreateRequestActionsItemCacheKeyFieldsValueCookieIncludeList as any as S.Schema<GetResponseActionsItemCacheKeyFieldsValueHeaderExcludeList>;
 
 export type GetResponseActionsItemCacheKeyFieldsValueHeaderIncludeList = Array<string>;
-export const GetResponseActionsItemCacheKeyFieldsValueHeaderIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseActionsItemCacheKeyFieldsValueHeaderIncludeList>;
+export const GetResponseActionsItemCacheKeyFieldsValueHeaderIncludeList =
+  CreateRequestActionsItemCacheKeyFieldsValueCookieIncludeList as any as S.Schema<GetResponseActionsItemCacheKeyFieldsValueHeaderIncludeList>;
 
 export interface GetResponseActionsItemCacheKeyFieldsValueHeader {
   /** A list of headers to check for the presence of, without including their actual values. */
@@ -2428,19 +2392,8 @@ export interface GetResponseActionsItemCacheKeyFieldsValueHeader {
   /** A list of headers to include. */
   include?: GetResponseActionsItemCacheKeyFieldsValueHeaderIncludeList | null;
 }
-export const GetResponseActionsItemCacheKeyFieldsValueHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkPresence: S.optional(
-      S.NullOr(GetResponseActionsItemCacheKeyFieldsValueHeaderCheckPresenceList).pipe(
-        T.Body("check_presence"),
-      ),
-    ),
-    exclude: S.optional(S.NullOr(GetResponseActionsItemCacheKeyFieldsValueHeaderExcludeList)),
-    include: S.optional(S.NullOr(GetResponseActionsItemCacheKeyFieldsValueHeaderIncludeList)),
-  }),
-).annotate({
-  identifier: "GetResponseActionsItemCacheKeyFieldsValueHeader",
-}) as any as S.Schema<GetResponseActionsItemCacheKeyFieldsValueHeader>;
+export const GetResponseActionsItemCacheKeyFieldsValueHeader =
+  CreateResponseActionsItemCacheKeyFieldsValueHeader as any as S.Schema<GetResponseActionsItemCacheKeyFieldsValueHeader>;
 
 export type GetResponseActionsItemCacheKeyFieldsValueHost =
   CreateResponseActionsItemCacheKeyFieldsValueHost;
@@ -2452,9 +2405,7 @@ export const GetResponseActionsItemCacheKeyFieldsValueQueryStringExcludeEnum = S
 
 export type GetResponseActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List = Array<string>;
 export const GetResponseActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetResponseActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<GetResponseActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List>;
 
 export type GetResponseActionsItemCacheKeyFieldsValueQueryStringExclude =
   | GetResponseActionsItemCacheKeyFieldsValueQueryStringExcludeEnum
@@ -2467,9 +2418,7 @@ export const GetResponseActionsItemCacheKeyFieldsValueQueryStringIncludeEnum = S
 
 export type GetResponseActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List = Array<string>;
 export const GetResponseActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetResponseActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<GetResponseActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List>;
 
 export type GetResponseActionsItemCacheKeyFieldsValueQueryStringInclude =
   | GetResponseActionsItemCacheKeyFieldsValueQueryStringIncludeEnum
@@ -3459,14 +3408,11 @@ export const ListResultItemActionsItemCacheKeyFieldsId = S.String;
 
 export type ListResultItemActionsItemCacheKeyFieldsValueCookieCheckPresenceList = Array<string>;
 export const ListResultItemActionsItemCacheKeyFieldsValueCookieCheckPresenceList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListResultItemActionsItemCacheKeyFieldsValueCookieCheckPresenceList>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<ListResultItemActionsItemCacheKeyFieldsValueCookieCheckPresenceList>;
 
 export type ListResultItemActionsItemCacheKeyFieldsValueCookieIncludeList = Array<string>;
-export const ListResultItemActionsItemCacheKeyFieldsValueCookieIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemActionsItemCacheKeyFieldsValueCookieIncludeList>;
+export const ListResultItemActionsItemCacheKeyFieldsValueCookieIncludeList =
+  CreateRequestActionsItemCacheKeyFieldsValueCookieIncludeList as any as S.Schema<ListResultItemActionsItemCacheKeyFieldsValueCookieIncludeList>;
 
 export interface ListResultItemActionsItemCacheKeyFieldsValueCookie {
   /** A list of cookies to check for the presence of, without including their actual values. */
@@ -3474,34 +3420,20 @@ export interface ListResultItemActionsItemCacheKeyFieldsValueCookie {
   /** A list of cookies to include. */
   include?: ListResultItemActionsItemCacheKeyFieldsValueCookieIncludeList | null;
 }
-export const ListResultItemActionsItemCacheKeyFieldsValueCookie = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkPresence: S.optional(
-      S.NullOr(ListResultItemActionsItemCacheKeyFieldsValueCookieCheckPresenceList).pipe(
-        T.Body("check_presence"),
-      ),
-    ),
-    include: S.optional(S.NullOr(ListResultItemActionsItemCacheKeyFieldsValueCookieIncludeList)),
-  }),
-).annotate({
-  identifier: "ListResultItemActionsItemCacheKeyFieldsValueCookie",
-}) as any as S.Schema<ListResultItemActionsItemCacheKeyFieldsValueCookie>;
+export const ListResultItemActionsItemCacheKeyFieldsValueCookie =
+  CreateResponseActionsItemCacheKeyFieldsValueCookie as any as S.Schema<ListResultItemActionsItemCacheKeyFieldsValueCookie>;
 
 export type ListResultItemActionsItemCacheKeyFieldsValueHeaderCheckPresenceList = Array<string>;
 export const ListResultItemActionsItemCacheKeyFieldsValueHeaderCheckPresenceList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListResultItemActionsItemCacheKeyFieldsValueHeaderCheckPresenceList>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<ListResultItemActionsItemCacheKeyFieldsValueHeaderCheckPresenceList>;
 
 export type ListResultItemActionsItemCacheKeyFieldsValueHeaderExcludeList = Array<string>;
-export const ListResultItemActionsItemCacheKeyFieldsValueHeaderExcludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemActionsItemCacheKeyFieldsValueHeaderExcludeList>;
+export const ListResultItemActionsItemCacheKeyFieldsValueHeaderExcludeList =
+  CreateRequestActionsItemCacheKeyFieldsValueCookieIncludeList as any as S.Schema<ListResultItemActionsItemCacheKeyFieldsValueHeaderExcludeList>;
 
 export type ListResultItemActionsItemCacheKeyFieldsValueHeaderIncludeList = Array<string>;
-export const ListResultItemActionsItemCacheKeyFieldsValueHeaderIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemActionsItemCacheKeyFieldsValueHeaderIncludeList>;
+export const ListResultItemActionsItemCacheKeyFieldsValueHeaderIncludeList =
+  CreateRequestActionsItemCacheKeyFieldsValueCookieIncludeList as any as S.Schema<ListResultItemActionsItemCacheKeyFieldsValueHeaderIncludeList>;
 
 export interface ListResultItemActionsItemCacheKeyFieldsValueHeader {
   /** A list of headers to check for the presence of, without including their actual values. */
@@ -3511,19 +3443,8 @@ export interface ListResultItemActionsItemCacheKeyFieldsValueHeader {
   /** A list of headers to include. */
   include?: ListResultItemActionsItemCacheKeyFieldsValueHeaderIncludeList | null;
 }
-export const ListResultItemActionsItemCacheKeyFieldsValueHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkPresence: S.optional(
-      S.NullOr(ListResultItemActionsItemCacheKeyFieldsValueHeaderCheckPresenceList).pipe(
-        T.Body("check_presence"),
-      ),
-    ),
-    exclude: S.optional(S.NullOr(ListResultItemActionsItemCacheKeyFieldsValueHeaderExcludeList)),
-    include: S.optional(S.NullOr(ListResultItemActionsItemCacheKeyFieldsValueHeaderIncludeList)),
-  }),
-).annotate({
-  identifier: "ListResultItemActionsItemCacheKeyFieldsValueHeader",
-}) as any as S.Schema<ListResultItemActionsItemCacheKeyFieldsValueHeader>;
+export const ListResultItemActionsItemCacheKeyFieldsValueHeader =
+  CreateResponseActionsItemCacheKeyFieldsValueHeader as any as S.Schema<ListResultItemActionsItemCacheKeyFieldsValueHeader>;
 
 export type ListResultItemActionsItemCacheKeyFieldsValueHost =
   CreateResponseActionsItemCacheKeyFieldsValueHost;
@@ -3535,9 +3456,7 @@ export const ListResultItemActionsItemCacheKeyFieldsValueQueryStringExcludeEnum 
 
 export type ListResultItemActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List = Array<string>;
 export const ListResultItemActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListResultItemActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<ListResultItemActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List>;
 
 export type ListResultItemActionsItemCacheKeyFieldsValueQueryStringExclude =
   | ListResultItemActionsItemCacheKeyFieldsValueQueryStringExcludeEnum
@@ -3550,9 +3469,7 @@ export const ListResultItemActionsItemCacheKeyFieldsValueQueryStringIncludeEnum 
 
 export type ListResultItemActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List = Array<string>;
 export const ListResultItemActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListResultItemActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<ListResultItemActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List>;
 
 export type ListResultItemActionsItemCacheKeyFieldsValueQueryStringInclude =
   | ListResultItemActionsItemCacheKeyFieldsValueQueryStringIncludeEnum
@@ -4524,14 +4441,11 @@ export const EditRequestActionsItemCacheKeyFieldsId = S.String;
 
 export type EditRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList = Array<string>;
 export const EditRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EditRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<EditRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList>;
 
 export type EditRequestActionsItemCacheKeyFieldsValueCookieIncludeList = Array<string>;
-export const EditRequestActionsItemCacheKeyFieldsValueCookieIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRequestActionsItemCacheKeyFieldsValueCookieIncludeList>;
+export const EditRequestActionsItemCacheKeyFieldsValueCookieIncludeList =
+  CreateRequestActionsItemCacheKeyFieldsValueCookieIncludeList as any as S.Schema<EditRequestActionsItemCacheKeyFieldsValueCookieIncludeList>;
 
 export interface EditRequestActionsItemCacheKeyFieldsValueCookie {
   /** A list of cookies to check for the presence of, without including their actual values. */
@@ -4539,34 +4453,20 @@ export interface EditRequestActionsItemCacheKeyFieldsValueCookie {
   /** A list of cookies to include. */
   include?: EditRequestActionsItemCacheKeyFieldsValueCookieIncludeList;
 }
-export const EditRequestActionsItemCacheKeyFieldsValueCookie = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkPresence: S.optional(
-      EditRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList.pipe(
-        T.Body("check_presence"),
-      ),
-    ),
-    include: S.optional(EditRequestActionsItemCacheKeyFieldsValueCookieIncludeList),
-  }),
-).annotate({
-  identifier: "EditRequestActionsItemCacheKeyFieldsValueCookie",
-}) as any as S.Schema<EditRequestActionsItemCacheKeyFieldsValueCookie>;
+export const EditRequestActionsItemCacheKeyFieldsValueCookie =
+  CreateRequestActionsItemCacheKeyFieldsValueCookie as any as S.Schema<EditRequestActionsItemCacheKeyFieldsValueCookie>;
 
 export type EditRequestActionsItemCacheKeyFieldsValueHeaderCheckPresenceList = Array<string>;
 export const EditRequestActionsItemCacheKeyFieldsValueHeaderCheckPresenceList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EditRequestActionsItemCacheKeyFieldsValueHeaderCheckPresenceList>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<EditRequestActionsItemCacheKeyFieldsValueHeaderCheckPresenceList>;
 
 export type EditRequestActionsItemCacheKeyFieldsValueHeaderExcludeList = Array<string>;
-export const EditRequestActionsItemCacheKeyFieldsValueHeaderExcludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRequestActionsItemCacheKeyFieldsValueHeaderExcludeList>;
+export const EditRequestActionsItemCacheKeyFieldsValueHeaderExcludeList =
+  CreateRequestActionsItemCacheKeyFieldsValueCookieIncludeList as any as S.Schema<EditRequestActionsItemCacheKeyFieldsValueHeaderExcludeList>;
 
 export type EditRequestActionsItemCacheKeyFieldsValueHeaderIncludeList = Array<string>;
-export const EditRequestActionsItemCacheKeyFieldsValueHeaderIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRequestActionsItemCacheKeyFieldsValueHeaderIncludeList>;
+export const EditRequestActionsItemCacheKeyFieldsValueHeaderIncludeList =
+  CreateRequestActionsItemCacheKeyFieldsValueCookieIncludeList as any as S.Schema<EditRequestActionsItemCacheKeyFieldsValueHeaderIncludeList>;
 
 export interface EditRequestActionsItemCacheKeyFieldsValueHeader {
   /** A list of headers to check for the presence of, without including their actual values. */
@@ -4576,19 +4476,8 @@ export interface EditRequestActionsItemCacheKeyFieldsValueHeader {
   /** A list of headers to include. */
   include?: EditRequestActionsItemCacheKeyFieldsValueHeaderIncludeList;
 }
-export const EditRequestActionsItemCacheKeyFieldsValueHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkPresence: S.optional(
-      EditRequestActionsItemCacheKeyFieldsValueHeaderCheckPresenceList.pipe(
-        T.Body("check_presence"),
-      ),
-    ),
-    exclude: S.optional(EditRequestActionsItemCacheKeyFieldsValueHeaderExcludeList),
-    include: S.optional(EditRequestActionsItemCacheKeyFieldsValueHeaderIncludeList),
-  }),
-).annotate({
-  identifier: "EditRequestActionsItemCacheKeyFieldsValueHeader",
-}) as any as S.Schema<EditRequestActionsItemCacheKeyFieldsValueHeader>;
+export const EditRequestActionsItemCacheKeyFieldsValueHeader =
+  CreateRequestActionsItemCacheKeyFieldsValueHeader as any as S.Schema<EditRequestActionsItemCacheKeyFieldsValueHeader>;
 
 export type EditRequestActionsItemCacheKeyFieldsValueHost =
   CreateRequestActionsItemCacheKeyFieldsValueHost;
@@ -4600,9 +4489,7 @@ export const EditRequestActionsItemCacheKeyFieldsValueQueryStringExcludeEnum = S
 
 export type EditRequestActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List = Array<string>;
 export const EditRequestActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EditRequestActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<EditRequestActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List>;
 
 export type EditRequestActionsItemCacheKeyFieldsValueQueryStringExclude =
   | EditRequestActionsItemCacheKeyFieldsValueQueryStringExcludeEnum
@@ -4616,9 +4503,7 @@ export const EditRequestActionsItemCacheKeyFieldsValueQueryStringIncludeEnum = S
 
 export type EditRequestActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List = Array<string>;
 export const EditRequestActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EditRequestActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<EditRequestActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List>;
 
 export type EditRequestActionsItemCacheKeyFieldsValueQueryStringInclude =
   | EditRequestActionsItemCacheKeyFieldsValueQueryStringIncludeEnum
@@ -5572,14 +5457,11 @@ export const EditResponseActionsItemCacheKeyFieldsId = S.String;
 
 export type EditResponseActionsItemCacheKeyFieldsValueCookieCheckPresenceList = Array<string>;
 export const EditResponseActionsItemCacheKeyFieldsValueCookieCheckPresenceList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EditResponseActionsItemCacheKeyFieldsValueCookieCheckPresenceList>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<EditResponseActionsItemCacheKeyFieldsValueCookieCheckPresenceList>;
 
 export type EditResponseActionsItemCacheKeyFieldsValueCookieIncludeList = Array<string>;
-export const EditResponseActionsItemCacheKeyFieldsValueCookieIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseActionsItemCacheKeyFieldsValueCookieIncludeList>;
+export const EditResponseActionsItemCacheKeyFieldsValueCookieIncludeList =
+  CreateRequestActionsItemCacheKeyFieldsValueCookieIncludeList as any as S.Schema<EditResponseActionsItemCacheKeyFieldsValueCookieIncludeList>;
 
 export interface EditResponseActionsItemCacheKeyFieldsValueCookie {
   /** A list of cookies to check for the presence of, without including their actual values. */
@@ -5587,34 +5469,20 @@ export interface EditResponseActionsItemCacheKeyFieldsValueCookie {
   /** A list of cookies to include. */
   include?: EditResponseActionsItemCacheKeyFieldsValueCookieIncludeList | null;
 }
-export const EditResponseActionsItemCacheKeyFieldsValueCookie = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkPresence: S.optional(
-      S.NullOr(EditResponseActionsItemCacheKeyFieldsValueCookieCheckPresenceList).pipe(
-        T.Body("check_presence"),
-      ),
-    ),
-    include: S.optional(S.NullOr(EditResponseActionsItemCacheKeyFieldsValueCookieIncludeList)),
-  }),
-).annotate({
-  identifier: "EditResponseActionsItemCacheKeyFieldsValueCookie",
-}) as any as S.Schema<EditResponseActionsItemCacheKeyFieldsValueCookie>;
+export const EditResponseActionsItemCacheKeyFieldsValueCookie =
+  CreateResponseActionsItemCacheKeyFieldsValueCookie as any as S.Schema<EditResponseActionsItemCacheKeyFieldsValueCookie>;
 
 export type EditResponseActionsItemCacheKeyFieldsValueHeaderCheckPresenceList = Array<string>;
 export const EditResponseActionsItemCacheKeyFieldsValueHeaderCheckPresenceList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EditResponseActionsItemCacheKeyFieldsValueHeaderCheckPresenceList>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<EditResponseActionsItemCacheKeyFieldsValueHeaderCheckPresenceList>;
 
 export type EditResponseActionsItemCacheKeyFieldsValueHeaderExcludeList = Array<string>;
-export const EditResponseActionsItemCacheKeyFieldsValueHeaderExcludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseActionsItemCacheKeyFieldsValueHeaderExcludeList>;
+export const EditResponseActionsItemCacheKeyFieldsValueHeaderExcludeList =
+  CreateRequestActionsItemCacheKeyFieldsValueCookieIncludeList as any as S.Schema<EditResponseActionsItemCacheKeyFieldsValueHeaderExcludeList>;
 
 export type EditResponseActionsItemCacheKeyFieldsValueHeaderIncludeList = Array<string>;
-export const EditResponseActionsItemCacheKeyFieldsValueHeaderIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseActionsItemCacheKeyFieldsValueHeaderIncludeList>;
+export const EditResponseActionsItemCacheKeyFieldsValueHeaderIncludeList =
+  CreateRequestActionsItemCacheKeyFieldsValueCookieIncludeList as any as S.Schema<EditResponseActionsItemCacheKeyFieldsValueHeaderIncludeList>;
 
 export interface EditResponseActionsItemCacheKeyFieldsValueHeader {
   /** A list of headers to check for the presence of, without including their actual values. */
@@ -5624,19 +5492,8 @@ export interface EditResponseActionsItemCacheKeyFieldsValueHeader {
   /** A list of headers to include. */
   include?: EditResponseActionsItemCacheKeyFieldsValueHeaderIncludeList | null;
 }
-export const EditResponseActionsItemCacheKeyFieldsValueHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkPresence: S.optional(
-      S.NullOr(EditResponseActionsItemCacheKeyFieldsValueHeaderCheckPresenceList).pipe(
-        T.Body("check_presence"),
-      ),
-    ),
-    exclude: S.optional(S.NullOr(EditResponseActionsItemCacheKeyFieldsValueHeaderExcludeList)),
-    include: S.optional(S.NullOr(EditResponseActionsItemCacheKeyFieldsValueHeaderIncludeList)),
-  }),
-).annotate({
-  identifier: "EditResponseActionsItemCacheKeyFieldsValueHeader",
-}) as any as S.Schema<EditResponseActionsItemCacheKeyFieldsValueHeader>;
+export const EditResponseActionsItemCacheKeyFieldsValueHeader =
+  CreateResponseActionsItemCacheKeyFieldsValueHeader as any as S.Schema<EditResponseActionsItemCacheKeyFieldsValueHeader>;
 
 export type EditResponseActionsItemCacheKeyFieldsValueHost =
   CreateResponseActionsItemCacheKeyFieldsValueHost;
@@ -5648,9 +5505,7 @@ export const EditResponseActionsItemCacheKeyFieldsValueQueryStringExcludeEnum = 
 
 export type EditResponseActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List = Array<string>;
 export const EditResponseActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EditResponseActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<EditResponseActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List>;
 
 export type EditResponseActionsItemCacheKeyFieldsValueQueryStringExclude =
   | EditResponseActionsItemCacheKeyFieldsValueQueryStringExcludeEnum
@@ -5663,9 +5518,7 @@ export const EditResponseActionsItemCacheKeyFieldsValueQueryStringIncludeEnum = 
 
 export type EditResponseActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List = Array<string>;
 export const EditResponseActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EditResponseActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<EditResponseActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List>;
 
 export type EditResponseActionsItemCacheKeyFieldsValueQueryStringInclude =
   | EditResponseActionsItemCacheKeyFieldsValueQueryStringIncludeEnum
@@ -6624,14 +6477,11 @@ export const UpdateRequestActionsItemCacheKeyFieldsId = S.String;
 
 export type UpdateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList = Array<string>;
 export const UpdateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<UpdateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList>;
 
 export type UpdateRequestActionsItemCacheKeyFieldsValueCookieIncludeList = Array<string>;
-export const UpdateRequestActionsItemCacheKeyFieldsValueCookieIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRequestActionsItemCacheKeyFieldsValueCookieIncludeList>;
+export const UpdateRequestActionsItemCacheKeyFieldsValueCookieIncludeList =
+  CreateRequestActionsItemCacheKeyFieldsValueCookieIncludeList as any as S.Schema<UpdateRequestActionsItemCacheKeyFieldsValueCookieIncludeList>;
 
 export interface UpdateRequestActionsItemCacheKeyFieldsValueCookie {
   /** A list of cookies to check for the presence of, without including their actual values. */
@@ -6639,34 +6489,20 @@ export interface UpdateRequestActionsItemCacheKeyFieldsValueCookie {
   /** A list of cookies to include. */
   include?: UpdateRequestActionsItemCacheKeyFieldsValueCookieIncludeList;
 }
-export const UpdateRequestActionsItemCacheKeyFieldsValueCookie = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkPresence: S.optional(
-      UpdateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList.pipe(
-        T.Body("check_presence"),
-      ),
-    ),
-    include: S.optional(UpdateRequestActionsItemCacheKeyFieldsValueCookieIncludeList),
-  }),
-).annotate({
-  identifier: "UpdateRequestActionsItemCacheKeyFieldsValueCookie",
-}) as any as S.Schema<UpdateRequestActionsItemCacheKeyFieldsValueCookie>;
+export const UpdateRequestActionsItemCacheKeyFieldsValueCookie =
+  CreateRequestActionsItemCacheKeyFieldsValueCookie as any as S.Schema<UpdateRequestActionsItemCacheKeyFieldsValueCookie>;
 
 export type UpdateRequestActionsItemCacheKeyFieldsValueHeaderCheckPresenceList = Array<string>;
 export const UpdateRequestActionsItemCacheKeyFieldsValueHeaderCheckPresenceList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateRequestActionsItemCacheKeyFieldsValueHeaderCheckPresenceList>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<UpdateRequestActionsItemCacheKeyFieldsValueHeaderCheckPresenceList>;
 
 export type UpdateRequestActionsItemCacheKeyFieldsValueHeaderExcludeList = Array<string>;
-export const UpdateRequestActionsItemCacheKeyFieldsValueHeaderExcludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRequestActionsItemCacheKeyFieldsValueHeaderExcludeList>;
+export const UpdateRequestActionsItemCacheKeyFieldsValueHeaderExcludeList =
+  CreateRequestActionsItemCacheKeyFieldsValueCookieIncludeList as any as S.Schema<UpdateRequestActionsItemCacheKeyFieldsValueHeaderExcludeList>;
 
 export type UpdateRequestActionsItemCacheKeyFieldsValueHeaderIncludeList = Array<string>;
-export const UpdateRequestActionsItemCacheKeyFieldsValueHeaderIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRequestActionsItemCacheKeyFieldsValueHeaderIncludeList>;
+export const UpdateRequestActionsItemCacheKeyFieldsValueHeaderIncludeList =
+  CreateRequestActionsItemCacheKeyFieldsValueCookieIncludeList as any as S.Schema<UpdateRequestActionsItemCacheKeyFieldsValueHeaderIncludeList>;
 
 export interface UpdateRequestActionsItemCacheKeyFieldsValueHeader {
   /** A list of headers to check for the presence of, without including their actual values. */
@@ -6676,19 +6512,8 @@ export interface UpdateRequestActionsItemCacheKeyFieldsValueHeader {
   /** A list of headers to include. */
   include?: UpdateRequestActionsItemCacheKeyFieldsValueHeaderIncludeList;
 }
-export const UpdateRequestActionsItemCacheKeyFieldsValueHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkPresence: S.optional(
-      UpdateRequestActionsItemCacheKeyFieldsValueHeaderCheckPresenceList.pipe(
-        T.Body("check_presence"),
-      ),
-    ),
-    exclude: S.optional(UpdateRequestActionsItemCacheKeyFieldsValueHeaderExcludeList),
-    include: S.optional(UpdateRequestActionsItemCacheKeyFieldsValueHeaderIncludeList),
-  }),
-).annotate({
-  identifier: "UpdateRequestActionsItemCacheKeyFieldsValueHeader",
-}) as any as S.Schema<UpdateRequestActionsItemCacheKeyFieldsValueHeader>;
+export const UpdateRequestActionsItemCacheKeyFieldsValueHeader =
+  CreateRequestActionsItemCacheKeyFieldsValueHeader as any as S.Schema<UpdateRequestActionsItemCacheKeyFieldsValueHeader>;
 
 export type UpdateRequestActionsItemCacheKeyFieldsValueHost =
   CreateRequestActionsItemCacheKeyFieldsValueHost;
@@ -6700,9 +6525,7 @@ export const UpdateRequestActionsItemCacheKeyFieldsValueQueryStringExcludeEnum =
 
 export type UpdateRequestActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List = Array<string>;
 export const UpdateRequestActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateRequestActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<UpdateRequestActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List>;
 
 export type UpdateRequestActionsItemCacheKeyFieldsValueQueryStringExclude =
   | UpdateRequestActionsItemCacheKeyFieldsValueQueryStringExcludeEnum
@@ -6716,9 +6539,7 @@ export const UpdateRequestActionsItemCacheKeyFieldsValueQueryStringIncludeEnum =
 
 export type UpdateRequestActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List = Array<string>;
 export const UpdateRequestActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateRequestActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<UpdateRequestActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List>;
 
 export type UpdateRequestActionsItemCacheKeyFieldsValueQueryStringInclude =
   | UpdateRequestActionsItemCacheKeyFieldsValueQueryStringIncludeEnum
@@ -7677,14 +7498,11 @@ export const UpdateResponseActionsItemCacheKeyFieldsId = S.String;
 
 export type UpdateResponseActionsItemCacheKeyFieldsValueCookieCheckPresenceList = Array<string>;
 export const UpdateResponseActionsItemCacheKeyFieldsValueCookieCheckPresenceList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateResponseActionsItemCacheKeyFieldsValueCookieCheckPresenceList>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<UpdateResponseActionsItemCacheKeyFieldsValueCookieCheckPresenceList>;
 
 export type UpdateResponseActionsItemCacheKeyFieldsValueCookieIncludeList = Array<string>;
-export const UpdateResponseActionsItemCacheKeyFieldsValueCookieIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateResponseActionsItemCacheKeyFieldsValueCookieIncludeList>;
+export const UpdateResponseActionsItemCacheKeyFieldsValueCookieIncludeList =
+  CreateRequestActionsItemCacheKeyFieldsValueCookieIncludeList as any as S.Schema<UpdateResponseActionsItemCacheKeyFieldsValueCookieIncludeList>;
 
 export interface UpdateResponseActionsItemCacheKeyFieldsValueCookie {
   /** A list of cookies to check for the presence of, without including their actual values. */
@@ -7692,34 +7510,20 @@ export interface UpdateResponseActionsItemCacheKeyFieldsValueCookie {
   /** A list of cookies to include. */
   include?: UpdateResponseActionsItemCacheKeyFieldsValueCookieIncludeList | null;
 }
-export const UpdateResponseActionsItemCacheKeyFieldsValueCookie = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkPresence: S.optional(
-      S.NullOr(UpdateResponseActionsItemCacheKeyFieldsValueCookieCheckPresenceList).pipe(
-        T.Body("check_presence"),
-      ),
-    ),
-    include: S.optional(S.NullOr(UpdateResponseActionsItemCacheKeyFieldsValueCookieIncludeList)),
-  }),
-).annotate({
-  identifier: "UpdateResponseActionsItemCacheKeyFieldsValueCookie",
-}) as any as S.Schema<UpdateResponseActionsItemCacheKeyFieldsValueCookie>;
+export const UpdateResponseActionsItemCacheKeyFieldsValueCookie =
+  CreateResponseActionsItemCacheKeyFieldsValueCookie as any as S.Schema<UpdateResponseActionsItemCacheKeyFieldsValueCookie>;
 
 export type UpdateResponseActionsItemCacheKeyFieldsValueHeaderCheckPresenceList = Array<string>;
 export const UpdateResponseActionsItemCacheKeyFieldsValueHeaderCheckPresenceList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateResponseActionsItemCacheKeyFieldsValueHeaderCheckPresenceList>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<UpdateResponseActionsItemCacheKeyFieldsValueHeaderCheckPresenceList>;
 
 export type UpdateResponseActionsItemCacheKeyFieldsValueHeaderExcludeList = Array<string>;
-export const UpdateResponseActionsItemCacheKeyFieldsValueHeaderExcludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateResponseActionsItemCacheKeyFieldsValueHeaderExcludeList>;
+export const UpdateResponseActionsItemCacheKeyFieldsValueHeaderExcludeList =
+  CreateRequestActionsItemCacheKeyFieldsValueCookieIncludeList as any as S.Schema<UpdateResponseActionsItemCacheKeyFieldsValueHeaderExcludeList>;
 
 export type UpdateResponseActionsItemCacheKeyFieldsValueHeaderIncludeList = Array<string>;
-export const UpdateResponseActionsItemCacheKeyFieldsValueHeaderIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateResponseActionsItemCacheKeyFieldsValueHeaderIncludeList>;
+export const UpdateResponseActionsItemCacheKeyFieldsValueHeaderIncludeList =
+  CreateRequestActionsItemCacheKeyFieldsValueCookieIncludeList as any as S.Schema<UpdateResponseActionsItemCacheKeyFieldsValueHeaderIncludeList>;
 
 export interface UpdateResponseActionsItemCacheKeyFieldsValueHeader {
   /** A list of headers to check for the presence of, without including their actual values. */
@@ -7729,19 +7533,8 @@ export interface UpdateResponseActionsItemCacheKeyFieldsValueHeader {
   /** A list of headers to include. */
   include?: UpdateResponseActionsItemCacheKeyFieldsValueHeaderIncludeList | null;
 }
-export const UpdateResponseActionsItemCacheKeyFieldsValueHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkPresence: S.optional(
-      S.NullOr(UpdateResponseActionsItemCacheKeyFieldsValueHeaderCheckPresenceList).pipe(
-        T.Body("check_presence"),
-      ),
-    ),
-    exclude: S.optional(S.NullOr(UpdateResponseActionsItemCacheKeyFieldsValueHeaderExcludeList)),
-    include: S.optional(S.NullOr(UpdateResponseActionsItemCacheKeyFieldsValueHeaderIncludeList)),
-  }),
-).annotate({
-  identifier: "UpdateResponseActionsItemCacheKeyFieldsValueHeader",
-}) as any as S.Schema<UpdateResponseActionsItemCacheKeyFieldsValueHeader>;
+export const UpdateResponseActionsItemCacheKeyFieldsValueHeader =
+  CreateResponseActionsItemCacheKeyFieldsValueHeader as any as S.Schema<UpdateResponseActionsItemCacheKeyFieldsValueHeader>;
 
 export type UpdateResponseActionsItemCacheKeyFieldsValueHost =
   CreateResponseActionsItemCacheKeyFieldsValueHost;
@@ -7753,9 +7546,7 @@ export const UpdateResponseActionsItemCacheKeyFieldsValueQueryStringExcludeEnum 
 
 export type UpdateResponseActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List = Array<string>;
 export const UpdateResponseActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateResponseActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<UpdateResponseActionsItemCacheKeyFieldsValueQueryStringExcludeCase1List>;
 
 export type UpdateResponseActionsItemCacheKeyFieldsValueQueryStringExclude =
   | UpdateResponseActionsItemCacheKeyFieldsValueQueryStringExcludeEnum
@@ -7768,9 +7559,7 @@ export const UpdateResponseActionsItemCacheKeyFieldsValueQueryStringIncludeEnum 
 
 export type UpdateResponseActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List = Array<string>;
 export const UpdateResponseActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateResponseActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List>;
+  CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList as any as S.Schema<UpdateResponseActionsItemCacheKeyFieldsValueQueryStringIncludeCase1List>;
 
 export type UpdateResponseActionsItemCacheKeyFieldsValueQueryStringInclude =
   | UpdateResponseActionsItemCacheKeyFieldsValueQueryStringIncludeEnum

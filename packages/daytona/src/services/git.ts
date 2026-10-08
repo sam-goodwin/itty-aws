@@ -52,9 +52,7 @@ export const AddRemoteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddRemoteRequest" }) as any as S.Schema<AddRemoteRequest>;
 
 export interface AddRemoteResponse {}
-export const AddRemoteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AddRemoteResponse",
-}) as any as S.Schema<AddRemoteResponse>;
+export const AddRemoteResponse = AddFilesResponse as any as S.Schema<AddRemoteResponse>;
 
 export interface AuthenticateRequest {
   /** Host defaults to github.com. */
@@ -74,9 +72,7 @@ export const AuthenticateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuthenticateRequest" }) as any as S.Schema<AuthenticateRequest>;
 
 export interface AuthenticateResponse {}
-export const AuthenticateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AuthenticateResponse",
-}) as any as S.Schema<AuthenticateResponse>;
+export const AuthenticateResponse = AddFilesResponse as any as S.Schema<AuthenticateResponse>;
 
 export interface CheckoutBranchRequest {
   branch: string;
@@ -90,9 +86,7 @@ export const CheckoutBranchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CheckoutBranchRequest" }) as any as S.Schema<CheckoutBranchRequest>;
 
 export interface CheckoutBranchResponse {}
-export const CheckoutBranchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CheckoutBranchResponse",
-}) as any as S.Schema<CheckoutBranchResponse>;
+export const CheckoutBranchResponse = AddFilesResponse as any as S.Schema<CheckoutBranchResponse>;
 
 export interface CloneRepositoryRequest {
   branch?: string;
@@ -120,9 +114,7 @@ export const CloneRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CloneRepositoryRequest" }) as any as S.Schema<CloneRepositoryRequest>;
 
 export interface CloneRepositoryResponse {}
-export const CloneRepositoryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CloneRepositoryResponse",
-}) as any as S.Schema<CloneRepositoryResponse>;
+export const CloneRepositoryResponse = AddFilesResponse as any as S.Schema<CloneRepositoryResponse>;
 
 export interface CommitChangesRequest {
   allow_empty?: boolean;
@@ -168,9 +160,7 @@ export const ConfigureUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConfigureUserRequest" }) as any as S.Schema<ConfigureUserRequest>;
 
 export interface ConfigureUserResponse {}
-export const ConfigureUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ConfigureUserResponse",
-}) as any as S.Schema<ConfigureUserResponse>;
+export const ConfigureUserResponse = AddFilesResponse as any as S.Schema<ConfigureUserResponse>;
 
 export interface CreateBranchRequest {
   name: string;
@@ -184,9 +174,7 @@ export const CreateBranchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateBranchRequest" }) as any as S.Schema<CreateBranchRequest>;
 
 export interface CreateBranchResponse {}
-export const CreateBranchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateBranchResponse",
-}) as any as S.Schema<CreateBranchResponse>;
+export const CreateBranchResponse = AddFilesResponse as any as S.Schema<CreateBranchResponse>;
 
 export interface DeleteBranchRequest {
   name: string;
@@ -200,9 +188,7 @@ export const DeleteBranchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBranchRequest" }) as any as S.Schema<DeleteBranchRequest>;
 
 export interface DeleteBranchResponse {}
-export const DeleteBranchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBranchResponse",
-}) as any as S.Schema<DeleteBranchResponse>;
+export const DeleteBranchResponse = AddFilesResponse as any as S.Schema<DeleteBranchResponse>;
 
 export interface GetCommitHistoryRequest {
   /** Repository path */
@@ -347,9 +333,7 @@ export const InitRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InitRepositoryRequest" }) as any as S.Schema<InitRepositoryRequest>;
 
 export interface InitRepositoryResponse {}
-export const InitRepositoryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "InitRepositoryResponse",
-}) as any as S.Schema<InitRepositoryResponse>;
+export const InitRepositoryResponse = AddFilesResponse as any as S.Schema<InitRepositoryResponse>;
 
 export interface ListBranchesRequest {
   /** Repository path */
@@ -362,9 +346,8 @@ export const ListBranchesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListBranchesRequest" }) as any as S.Schema<ListBranchesRequest>;
 
 export type ListBranchResponseBranchesList = Array<string>;
-export const ListBranchResponseBranchesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListBranchResponseBranchesList>;
+export const ListBranchResponseBranchesList =
+  AddFilesRequestFilesList as any as S.Schema<ListBranchResponseBranchesList>;
 
 export interface ListBranchResponse {
   branches: ListBranchResponseBranchesList;
@@ -433,9 +416,7 @@ export const PullChangesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PullChangesRequest" }) as any as S.Schema<PullChangesRequest>;
 
 export interface PullChangesResponse {}
-export const PullChangesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PullChangesResponse",
-}) as any as S.Schema<PullChangesResponse>;
+export const PullChangesResponse = AddFilesResponse as any as S.Schema<PullChangesResponse>;
 
 export interface PushChangesRequest {
   /** Branch to push (defaults to the current branch). */
@@ -460,15 +441,12 @@ export const PushChangesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PushChangesRequest" }) as any as S.Schema<PushChangesRequest>;
 
 export interface PushChangesResponse {}
-export const PushChangesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PushChangesResponse",
-}) as any as S.Schema<PushChangesResponse>;
+export const PushChangesResponse = AddFilesResponse as any as S.Schema<PushChangesResponse>;
 
 /** Files constrains the reset to the given paths. */
 export type ResetChangesRequestFilesList = Array<string>;
-export const ResetChangesRequestFilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResetChangesRequestFilesList>;
+export const ResetChangesRequestFilesList =
+  AddFilesRequestFilesList as any as S.Schema<ResetChangesRequestFilesList>;
 
 export interface ResetChangesRequest {
   /** Files constrains the reset to the given paths. */
@@ -489,14 +467,11 @@ export const ResetChangesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResetChangesRequest" }) as any as S.Schema<ResetChangesRequest>;
 
 export interface ResetChangesResponse {}
-export const ResetChangesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResetChangesResponse",
-}) as any as S.Schema<ResetChangesResponse>;
+export const ResetChangesResponse = AddFilesResponse as any as S.Schema<ResetChangesResponse>;
 
 export type RestoreFilesRequestFilesList = Array<string>;
-export const RestoreFilesRequestFilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RestoreFilesRequestFilesList>;
+export const RestoreFilesRequestFilesList =
+  AddFilesRequestFilesList as any as S.Schema<RestoreFilesRequestFilesList>;
 
 export interface RestoreFilesRequest {
   files: RestoreFilesRequestFilesList;
@@ -519,9 +494,7 @@ export const RestoreFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestoreFilesRequest" }) as any as S.Schema<RestoreFilesRequest>;
 
 export interface RestoreFilesResponse {}
-export const RestoreFilesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RestoreFilesResponse",
-}) as any as S.Schema<RestoreFilesResponse>;
+export const RestoreFilesResponse = AddFilesResponse as any as S.Schema<RestoreFilesResponse>;
 
 export interface SetGitConfigRequest {
   key: string;
@@ -541,9 +514,7 @@ export const SetGitConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SetGitConfigRequest" }) as any as S.Schema<SetGitConfigRequest>;
 
 export interface SetGitConfigResponse {}
-export const SetGitConfigResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SetGitConfigResponse",
-}) as any as S.Schema<SetGitConfigResponse>;
+export const SetGitConfigResponse = AddFilesResponse as any as S.Schema<SetGitConfigResponse>;
 
 export type AddFilesError = DaytonaOpError;
 /** Add files to Git staging Add files to the Git staging area */

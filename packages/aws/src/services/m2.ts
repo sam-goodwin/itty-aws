@@ -443,11 +443,8 @@ export const CreateDataSetImportTaskRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDataSetImportTaskResponse {
   taskId: string;
 }
-export const CreateDataSetImportTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ taskId: S.String }),
-).annotate({
-  identifier: "CreateDataSetImportTaskResponse",
-}) as any as S.Schema<CreateDataSetImportTaskResponse>;
+export const CreateDataSetImportTaskResponse =
+  CreateDataSetExportTaskResponse as any as S.Schema<CreateDataSetImportTaskResponse>;
 export interface CreateDeploymentRequest {
   environmentId: string;
   applicationId: string;
@@ -480,7 +477,7 @@ export const CreateDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
 export type EngineVersion = string;
 export type String50 = string;
 export type String50List = string[];
-export const String50List = /*@__PURE__*/ S.Array(S.String);
+export const String50List = String20List as any as S.Schema<String50List>;
 export interface EfsStorageConfiguration {
   fileSystemId: string;
   mountPoint: string;
@@ -494,11 +491,8 @@ export interface FsxStorageConfiguration {
   fileSystemId: string;
   mountPoint: string;
 }
-export const FsxStorageConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ fileSystemId: S.String, mountPoint: S.String }).pipe(
-    S.encodeKeys({ fileSystemId: "file-system-id", mountPoint: "mount-point" }),
-  ),
-).annotate({ identifier: "FsxStorageConfiguration" }) as any as S.Schema<FsxStorageConfiguration>;
+export const FsxStorageConfiguration =
+  EfsStorageConfiguration as any as S.Schema<FsxStorageConfiguration>;
 export type StorageConfiguration =
   | { efs: EfsStorageConfiguration; fsx?: never }
   | { efs?: never; fsx: FsxStorageConfiguration };
@@ -625,9 +619,8 @@ export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteEnvironmentRequest" }) as any as S.Schema<DeleteEnvironmentRequest>;
 export interface DeleteEnvironmentResponse {}
-export const DeleteEnvironmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEnvironmentResponse",
-}) as any as S.Schema<DeleteEnvironmentResponse>;
+export const DeleteEnvironmentResponse =
+  DeleteApplicationResponse as any as S.Schema<DeleteEnvironmentResponse>;
 export interface GetApplicationRequest {
   applicationId: string;
 }
@@ -681,7 +674,7 @@ export const LogGroupSummary = /*@__PURE__*/ S.suspend(() =>
 export type LogGroupSummaries = LogGroupSummary[];
 export const LogGroupSummaries = /*@__PURE__*/ S.Array(LogGroupSummary);
 export type ArnList = string[];
-export const ArnList = /*@__PURE__*/ S.Array(S.String);
+export const ArnList = String20List as any as S.Schema<ArnList>;
 export type PortList = number[];
 export const PortList = /*@__PURE__*/ S.Array(S.Number);
 export type String100 = string;
@@ -961,9 +954,7 @@ export interface GdgDetailAttributes {
   limit?: number;
   rollDisposition?: string;
 }
-export const GdgDetailAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ limit: S.optional(S.Number), rollDisposition: S.optional(S.String) }),
-).annotate({ identifier: "GdgDetailAttributes" }) as any as S.Schema<GdgDetailAttributes>;
+export const GdgDetailAttributes = GdgAttributes as any as S.Schema<GdgDetailAttributes>;
 export interface PoDetailAttributes {
   format: string;
   encoding: string;
@@ -975,9 +966,7 @@ export interface PsDetailAttributes {
   format: string;
   encoding: string;
 }
-export const PsDetailAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ format: S.String, encoding: S.String }),
-).annotate({ identifier: "PsDetailAttributes" }) as any as S.Schema<PsDetailAttributes>;
+export const PsDetailAttributes = PoDetailAttributes as any as S.Schema<PsDetailAttributes>;
 export type DatasetDetailOrgAttributes =
   | { vsam: VsamDetailAttributes; gdg?: never; po?: never; ps?: never }
   | { vsam?: never; gdg: GdgDetailAttributes; po?: never; ps?: never }
@@ -1099,15 +1088,7 @@ export interface DataSetImportSummary {
   pending: number;
   inProgress: number;
 }
-export const DataSetImportSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    total: S.Number,
-    succeeded: S.Number,
-    failed: S.Number,
-    pending: S.Number,
-    inProgress: S.Number,
-  }),
-).annotate({ identifier: "DataSetImportSummary" }) as any as S.Schema<DataSetImportSummary>;
+export const DataSetImportSummary = DataSetExportSummary as any as S.Schema<DataSetImportSummary>;
 export interface GetDataSetImportTaskResponse {
   taskId: string;
   status: string;
@@ -1261,7 +1242,7 @@ export const GetSignedBluinsightsUrlResponse = /*@__PURE__*/ S.suspend(() =>
 export type NextToken = string;
 export type MaxResults = number;
 export type EntityNameList = string[];
-export const EntityNameList = /*@__PURE__*/ S.Array(S.String);
+export const EntityNameList = String20List as any as S.Schema<EntityNameList>;
 export interface ListApplicationsRequest {
   nextToken?: string;
   maxResults?: number;
@@ -1381,15 +1362,13 @@ export interface FileBatchJobDefinition {
   fileName: string;
   folderPath?: string;
 }
-export const FileBatchJobDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ fileName: S.String, folderPath: S.optional(S.String) }),
-).annotate({ identifier: "FileBatchJobDefinition" }) as any as S.Schema<FileBatchJobDefinition>;
+export const FileBatchJobDefinition =
+  FileBatchJobIdentifier as any as S.Schema<FileBatchJobDefinition>;
 export interface ScriptBatchJobDefinition {
   scriptName: string;
 }
-export const ScriptBatchJobDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ scriptName: S.String }),
-).annotate({ identifier: "ScriptBatchJobDefinition" }) as any as S.Schema<ScriptBatchJobDefinition>;
+export const ScriptBatchJobDefinition =
+  ScriptBatchJobIdentifier as any as S.Schema<ScriptBatchJobDefinition>;
 export type BatchJobDefinition =
   | { fileBatchJobDefinition: FileBatchJobDefinition; scriptBatchJobDefinition?: never }
   | { fileBatchJobDefinition?: never; scriptBatchJobDefinition: ScriptBatchJobDefinition };
@@ -1409,7 +1388,7 @@ export const ListBatchJobDefinitionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBatchJobDefinitionsResponse",
 }) as any as S.Schema<ListBatchJobDefinitionsResponse>;
 export type IdentifierList = string[];
-export const IdentifierList = /*@__PURE__*/ S.Array(S.String);
+export const IdentifierList = String20List as any as S.Schema<IdentifierList>;
 export interface ListBatchJobExecutionsRequest {
   nextToken?: string;
   maxResults?: number;
@@ -1621,16 +1600,10 @@ export interface DataSetImportTask {
   summary: DataSetImportSummary;
   statusReason?: string;
 }
-export const DataSetImportTask = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    taskId: S.String,
-    status: S.String,
-    summary: DataSetImportSummary,
-    statusReason: S.optional(S.String),
-  }),
-).annotate({ identifier: "DataSetImportTask" }) as any as S.Schema<DataSetImportTask>;
+export const DataSetImportTask = DataSetExportTask as any as S.Schema<DataSetImportTask>;
 export type DataSetImportTaskList = DataSetImportTask[];
-export const DataSetImportTaskList = /*@__PURE__*/ S.Array(DataSetImportTask);
+export const DataSetImportTaskList =
+  DataSetExportTaskList as any as S.Schema<DataSetImportTaskList>;
 export interface ListDataSetImportHistoryResponse {
   dataSetImportTasks: DataSetImportTask[];
   nextToken?: string;
@@ -1722,17 +1695,7 @@ export interface DeploymentSummary {
   creationTime: Date;
   statusReason?: string;
 }
-export const DeploymentSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentId: S.String,
-    applicationId: S.String,
-    environmentId: S.String,
-    applicationVersion: S.Number,
-    status: S.String,
-    creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    statusReason: S.optional(S.String),
-  }),
-).annotate({ identifier: "DeploymentSummary" }) as any as S.Schema<DeploymentSummary>;
+export const DeploymentSummary = GetDeploymentResponse as any as S.Schema<DeploymentSummary>;
 export type DeploymentList = DeploymentSummary[];
 export const DeploymentList = /*@__PURE__*/ S.Array(DeploymentSummary);
 export interface ListDeploymentsResponse {
@@ -1855,9 +1818,8 @@ export const StartApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StartApplicationRequest" }) as any as S.Schema<StartApplicationRequest>;
 export interface StartApplicationResponse {}
-export const StartApplicationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartApplicationResponse",
-}) as any as S.Schema<StartApplicationResponse>;
+export const StartApplicationResponse =
+  DeleteApplicationResponse as any as S.Schema<StartApplicationResponse>;
 export type BatchParamKey = string;
 export type BatchParamValue = string;
 export type BatchJobParametersMap = { [key: string]: string | undefined };
@@ -1914,9 +1876,8 @@ export const StopApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopApplicationRequest" }) as any as S.Schema<StopApplicationRequest>;
 export interface StopApplicationResponse {}
-export const StopApplicationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopApplicationResponse",
-}) as any as S.Schema<StopApplicationResponse>;
+export const StopApplicationResponse =
+  DeleteApplicationResponse as any as S.Schema<StopApplicationResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
@@ -1927,11 +1888,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteApplicationResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = String20List as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -1945,9 +1905,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteApplicationResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateApplicationRequest {
   applicationId: string;
   description?: string;
@@ -2011,11 +1970,8 @@ export const UpdateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateEnvironmentResponse {
   environmentId: string;
 }
-export const UpdateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ environmentId: S.String }),
-).annotate({
-  identifier: "UpdateEnvironmentResponse",
-}) as any as S.Schema<UpdateEnvironmentResponse>;
+export const UpdateEnvironmentResponse =
+  CreateEnvironmentResponse as any as S.Schema<UpdateEnvironmentResponse>;
 export type ValidationExceptionReason = string;
 export interface ValidationExceptionField {
   name: string;

@@ -1132,9 +1132,8 @@ export const DeleteChannelPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteChannelPolicyRequest",
 }) as any as S.Schema<DeleteChannelPolicyRequest>;
 export interface DeleteChannelPolicyResponse {}
-export const DeleteChannelPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteChannelPolicyResponse",
-}) as any as S.Schema<DeleteChannelPolicyResponse>;
+export const DeleteChannelPolicyResponse =
+  DeleteChannelResponse as any as S.Schema<DeleteChannelPolicyResponse>;
 export interface DeleteFunctionRequest {
   FunctionId: string;
 }
@@ -1151,9 +1150,8 @@ export const DeleteFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteFunctionRequest" }) as any as S.Schema<DeleteFunctionRequest>;
 export interface DeleteFunctionResponse {}
-export const DeleteFunctionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFunctionResponse",
-}) as any as S.Schema<DeleteFunctionResponse>;
+export const DeleteFunctionResponse =
+  DeleteChannelResponse as any as S.Schema<DeleteFunctionResponse>;
 export interface DeleteLiveSourceRequest {
   LiveSourceName: string;
   SourceLocationName: string;
@@ -1177,9 +1175,8 @@ export const DeleteLiveSourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteLiveSourceRequest" }) as any as S.Schema<DeleteLiveSourceRequest>;
 export interface DeleteLiveSourceResponse {}
-export const DeleteLiveSourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLiveSourceResponse",
-}) as any as S.Schema<DeleteLiveSourceResponse>;
+export const DeleteLiveSourceResponse =
+  DeleteChannelResponse as any as S.Schema<DeleteLiveSourceResponse>;
 export interface DeletePlaybackConfigurationRequest {
   Name: string;
 }
@@ -1225,9 +1222,8 @@ export const DeletePrefetchScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeletePrefetchScheduleRequest",
 }) as any as S.Schema<DeletePrefetchScheduleRequest>;
 export interface DeletePrefetchScheduleResponse {}
-export const DeletePrefetchScheduleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePrefetchScheduleResponse",
-}) as any as S.Schema<DeletePrefetchScheduleResponse>;
+export const DeletePrefetchScheduleResponse =
+  DeleteChannelResponse as any as S.Schema<DeletePrefetchScheduleResponse>;
 export interface DeleteProgramRequest {
   ChannelName: string;
   ProgramName: string;
@@ -1248,9 +1244,8 @@ export const DeleteProgramRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteProgramRequest" }) as any as S.Schema<DeleteProgramRequest>;
 export interface DeleteProgramResponse {}
-export const DeleteProgramResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProgramResponse",
-}) as any as S.Schema<DeleteProgramResponse>;
+export const DeleteProgramResponse =
+  DeleteChannelResponse as any as S.Schema<DeleteProgramResponse>;
 export interface DeleteSourceLocationRequest {
   SourceLocationName: string;
 }
@@ -1269,9 +1264,8 @@ export const DeleteSourceLocationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSourceLocationRequest",
 }) as any as S.Schema<DeleteSourceLocationRequest>;
 export interface DeleteSourceLocationResponse {}
-export const DeleteSourceLocationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSourceLocationResponse",
-}) as any as S.Schema<DeleteSourceLocationResponse>;
+export const DeleteSourceLocationResponse =
+  DeleteChannelResponse as any as S.Schema<DeleteSourceLocationResponse>;
 export interface DeleteVodSourceRequest {
   SourceLocationName: string;
   VodSourceName: string;
@@ -1295,9 +1289,8 @@ export const DeleteVodSourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteVodSourceRequest" }) as any as S.Schema<DeleteVodSourceRequest>;
 export interface DeleteVodSourceResponse {}
-export const DeleteVodSourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVodSourceResponse",
-}) as any as S.Schema<DeleteVodSourceResponse>;
+export const DeleteVodSourceResponse =
+  DeleteChannelResponse as any as S.Schema<DeleteVodSourceResponse>;
 export interface DescribeChannelRequest {
   ChannelName: string;
 }
@@ -1426,23 +1419,8 @@ export interface DescribeProgramResponse {
   AudienceMedia?: AudienceMedia[];
   Tags?: { [key: string]: string | undefined };
 }
-export const DescribeProgramResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AdBreaks: S.optional(__listOfAdBreak),
-    Arn: S.optional(S.String),
-    ChannelName: S.optional(S.String),
-    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LiveSourceName: S.optional(S.String),
-    ProgramName: S.optional(S.String),
-    ScheduledStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    SourceLocationName: S.optional(S.String),
-    VodSourceName: S.optional(S.String),
-    ClipRange: S.optional(ClipRange),
-    DurationMillis: S.optional(S.Number),
-    AudienceMedia: S.optional(__listOfAudienceMedia),
-    Tags: S.optional(__mapOf__string),
-  }).pipe(S.encodeKeys({ Tags: "tags" })),
-).annotate({ identifier: "DescribeProgramResponse" }) as any as S.Schema<DescribeProgramResponse>;
+export const DescribeProgramResponse =
+  CreateProgramResponse as any as S.Schema<DescribeProgramResponse>;
 export interface DescribeSourceLocationRequest {
   SourceLocationName: string;
 }
@@ -1471,21 +1449,8 @@ export interface DescribeSourceLocationResponse {
   SourceLocationName?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const DescribeSourceLocationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AccessConfiguration: S.optional(AccessConfiguration),
-    Arn: S.optional(S.String),
-    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    DefaultSegmentDeliveryConfiguration: S.optional(DefaultSegmentDeliveryConfiguration),
-    HttpConfiguration: S.optional(HttpConfiguration),
-    LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    SegmentDeliveryConfigurations: S.optional(__listOfSegmentDeliveryConfiguration),
-    SourceLocationName: S.optional(S.String),
-    Tags: S.optional(__mapOf__string),
-  }).pipe(S.encodeKeys({ Tags: "tags" })),
-).annotate({
-  identifier: "DescribeSourceLocationResponse",
-}) as any as S.Schema<DescribeSourceLocationResponse>;
+export const DescribeSourceLocationResponse =
+  CreateSourceLocationResponse as any as S.Schema<DescribeSourceLocationResponse>;
 export interface DescribeVodSourceRequest {
   SourceLocationName: string;
   VodSourceName: string;
@@ -1784,17 +1749,8 @@ export interface VastRequestConfiguration {
   Body?: string;
   Headers?: { [key: string]: string | undefined };
 }
-export const VastRequestConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Runtime: RuntimeType,
-    Output: S.optional(__mapOf__string),
-    MethodType: MethodType,
-    RequestTimeoutMilliseconds: S.Number,
-    Url: S.String,
-    Body: S.optional(S.String),
-    Headers: S.optional(__mapOf__string),
-  }),
-).annotate({ identifier: "VastRequestConfiguration" }) as any as S.Schema<VastRequestConfiguration>;
+export const VastRequestConfiguration =
+  HttpRequestConfiguration as any as S.Schema<VastRequestConfiguration>;
 export interface GetFunctionResponse {
   FunctionId: string;
   FunctionType: FunctionType;
@@ -2241,7 +2197,7 @@ export const ListAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "GET", uri: "/alerts" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListAlertsRequest" }) as any as S.Schema<ListAlertsRequest>;
 export type __listOf__string = string[];
-export const __listOf__string = /*@__PURE__*/ S.Array(S.String);
+export const __listOf__string = Audiences as any as S.Schema<__listOf__string>;
 export type AlertCategory = "SCHEDULING_ERROR" | "PLAYBACK_WARNING" | "INFO" | (string & {});
 export const AlertCategory = S.String;
 
@@ -2344,21 +2300,7 @@ export interface Function {
   Tags?: { [key: string]: string | undefined };
   Arn?: string;
 }
-export const Function = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FunctionId: S.String,
-    FunctionType: FunctionType,
-    Description: S.optional(S.String),
-    HttpRequestConfiguration: S.optional(HttpRequestConfiguration),
-    AwsServiceRequestConfiguration: S.optional(AwsServiceRequestConfiguration),
-    CustomOutputConfiguration: S.optional(CustomOutputConfiguration),
-    ConcurrentExecutorConfiguration: S.optional(ConcurrentExecutorConfiguration),
-    SequentialExecutorConfiguration: S.optional(SequentialExecutorConfiguration),
-    VastRequestConfiguration: S.optional(VastRequestConfiguration),
-    Tags: S.optional(__mapOf__string),
-    Arn: S.optional(S.String),
-  }).pipe(S.encodeKeys({ Tags: "tags" })),
-).annotate({ identifier: "Function" }) as any as S.Schema<Function>;
+export const Function = GetFunctionResponse as any as S.Schema<Function>;
 export type __listOfFunctionsResponse = Function[];
 export const __listOfFunctionsResponse = /*@__PURE__*/ S.Array(Function);
 export interface ListFunctionsResponse {
@@ -2707,9 +2649,8 @@ export const PutChannelPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutChannelPolicyRequest" }) as any as S.Schema<PutChannelPolicyRequest>;
 export interface PutChannelPolicyResponse {}
-export const PutChannelPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutChannelPolicyResponse",
-}) as any as S.Schema<PutChannelPolicyResponse>;
+export const PutChannelPolicyResponse =
+  DeleteChannelResponse as any as S.Schema<PutChannelPolicyResponse>;
 export interface PutFunctionRequest {
   FunctionId: string;
   FunctionType: FunctionType;
@@ -2753,28 +2694,12 @@ export interface PutFunctionResponse {
   Tags?: { [key: string]: string | undefined };
   Arn?: string;
 }
-export const PutFunctionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FunctionId: S.String,
-    FunctionType: FunctionType,
-    Description: S.optional(S.String),
-    HttpRequestConfiguration: S.optional(HttpRequestConfiguration),
-    AwsServiceRequestConfiguration: S.optional(AwsServiceRequestConfiguration),
-    CustomOutputConfiguration: S.optional(CustomOutputConfiguration),
-    ConcurrentExecutorConfiguration: S.optional(ConcurrentExecutorConfiguration),
-    SequentialExecutorConfiguration: S.optional(SequentialExecutorConfiguration),
-    VastRequestConfiguration: S.optional(VastRequestConfiguration),
-    Tags: S.optional(__mapOf__string),
-    Arn: S.optional(S.String),
-  }).pipe(S.encodeKeys({ Tags: "tags" })),
-).annotate({ identifier: "PutFunctionResponse" }) as any as S.Schema<PutFunctionResponse>;
+export const PutFunctionResponse = GetFunctionResponse as any as S.Schema<PutFunctionResponse>;
 export type ConfigurationAliasesRequest = {
   [key: string]: { [key: string]: string | undefined } | undefined;
 };
-export const ConfigurationAliasesRequest = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ __mapOf__string.pipe(S.optional),
-);
+export const ConfigurationAliasesRequest =
+  ConfigurationAliasesResponse as any as S.Schema<ConfigurationAliasesRequest>;
 export interface DashConfigurationForPut {
   MpdLocation?: string;
   OriginManifestType?: OriginManifestType;
@@ -2872,41 +2797,8 @@ export interface PutPlaybackConfigurationResponse {
   AdsPersonalizationConcurrency?: AdsPersonalizationConcurrency;
   BeaconingConfiguration?: BeaconingConfiguration;
 }
-export const PutPlaybackConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AdDecisionServerUrl: S.optional(S.String),
-    AvailSuppression: S.optional(AvailSuppression),
-    Bumper: S.optional(Bumper),
-    CdnConfiguration: S.optional(CdnConfiguration),
-    ConfigurationAliases: S.optional(ConfigurationAliasesResponse),
-    DashConfiguration: S.optional(DashConfiguration),
-    HlsConfiguration: S.optional(HlsConfiguration),
-    InsertionMode: S.optional(InsertionMode),
-    LivePreRollConfiguration: S.optional(LivePreRollConfiguration),
-    LogConfiguration: S.optional(LogConfiguration),
-    ManifestProcessingRules: S.optional(ManifestProcessingRules),
-    Name: S.optional(S.String),
-    PersonalizationThresholdSeconds: S.optional(S.Number),
-    PlaybackConfigurationArn: S.optional(S.String),
-    PlaybackEndpointPrefix: S.optional(S.String),
-    DualStackPlaybackEndpointPrefix: S.optional(S.String),
-    SessionInitializationEndpointPrefix: S.optional(S.String),
-    DualStackSessionInitializationEndpointPrefix: S.optional(S.String),
-    SlateAdUrl: S.optional(S.String),
-    Tags: S.optional(__mapOf__string),
-    TranscodeProfileName: S.optional(S.String),
-    VideoContentSourceUrl: S.optional(S.String),
-    AdConditioningConfiguration: S.optional(AdConditioningConfiguration),
-    AdDecisionServerConfiguration: S.optional(AdDecisionServerConfiguration),
-    YieldOptimizationConfiguration: S.optional(YieldOptimizationConfiguration),
-    FunctionMapping: S.optional(FunctionMapping),
-    AdsPersonalizationTimeouts: S.optional(AdsPersonalizationTimeouts),
-    AdsPersonalizationConcurrency: S.optional(AdsPersonalizationConcurrency),
-    BeaconingConfiguration: S.optional(BeaconingConfiguration),
-  }).pipe(S.encodeKeys({ Tags: "tags" })),
-).annotate({
-  identifier: "PutPlaybackConfigurationResponse",
-}) as any as S.Schema<PutPlaybackConfigurationResponse>;
+export const PutPlaybackConfigurationResponse =
+  GetPlaybackConfigurationResponse as any as S.Schema<PutPlaybackConfigurationResponse>;
 export interface StartChannelRequest {
   ChannelName: string;
 }
@@ -2923,9 +2815,7 @@ export const StartChannelRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StartChannelRequest" }) as any as S.Schema<StartChannelRequest>;
 export interface StartChannelResponse {}
-export const StartChannelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartChannelResponse",
-}) as any as S.Schema<StartChannelResponse>;
+export const StartChannelResponse = DeleteChannelResponse as any as S.Schema<StartChannelResponse>;
 export interface StopChannelRequest {
   ChannelName: string;
 }
@@ -2942,9 +2832,7 @@ export const StopChannelRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopChannelRequest" }) as any as S.Schema<StopChannelRequest>;
 export interface StopChannelResponse {}
-export const StopChannelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopChannelResponse",
-}) as any as S.Schema<StopChannelResponse>;
+export const StopChannelResponse = DeleteChannelResponse as any as S.Schema<StopChannelResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
@@ -2957,9 +2845,7 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
     ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteChannelResponse as any as S.Schema<TagResourceResponse>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -2973,9 +2859,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteChannelResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateChannelRequest {
   ChannelName: string;
   FillerSlate?: SlateSource;
@@ -3008,22 +2893,8 @@ export interface UpdateChannelResponse {
   TimeShiftConfiguration?: TimeShiftConfiguration;
   Audiences?: string[];
 }
-export const UpdateChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    ChannelName: S.optional(S.String),
-    ChannelState: S.optional(ChannelState),
-    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    FillerSlate: S.optional(SlateSource),
-    LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Outputs: S.optional(ResponseOutputs),
-    PlaybackMode: S.optional(S.String),
-    Tags: S.optional(__mapOf__string),
-    Tier: S.optional(S.String),
-    TimeShiftConfiguration: S.optional(TimeShiftConfiguration),
-    Audiences: S.optional(Audiences),
-  }).pipe(S.encodeKeys({ Tags: "tags" })),
-).annotate({ identifier: "UpdateChannelResponse" }) as any as S.Schema<UpdateChannelResponse>;
+export const UpdateChannelResponse =
+  CreateChannelResponse as any as S.Schema<UpdateChannelResponse>;
 export interface UpdateLiveSourceRequest {
   HttpPackageConfigurations: HttpPackageConfiguration[];
   LiveSourceName: string;
@@ -3057,17 +2928,8 @@ export interface UpdateLiveSourceResponse {
   SourceLocationName?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const UpdateLiveSourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    HttpPackageConfigurations: S.optional(HttpPackageConfigurations),
-    LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LiveSourceName: S.optional(S.String),
-    SourceLocationName: S.optional(S.String),
-    Tags: S.optional(__mapOf__string),
-  }).pipe(S.encodeKeys({ Tags: "tags" })),
-).annotate({ identifier: "UpdateLiveSourceResponse" }) as any as S.Schema<UpdateLiveSourceResponse>;
+export const UpdateLiveSourceResponse =
+  CreateLiveSourceResponse as any as S.Schema<UpdateLiveSourceResponse>;
 export interface UpdateProgramTransition {
   ScheduledStartTimeMillis?: number;
   DurationMillis?: number;
@@ -3182,21 +3044,8 @@ export interface UpdateSourceLocationResponse {
   SourceLocationName?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const UpdateSourceLocationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AccessConfiguration: S.optional(AccessConfiguration),
-    Arn: S.optional(S.String),
-    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    DefaultSegmentDeliveryConfiguration: S.optional(DefaultSegmentDeliveryConfiguration),
-    HttpConfiguration: S.optional(HttpConfiguration),
-    LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    SegmentDeliveryConfigurations: S.optional(__listOfSegmentDeliveryConfiguration),
-    SourceLocationName: S.optional(S.String),
-    Tags: S.optional(__mapOf__string),
-  }).pipe(S.encodeKeys({ Tags: "tags" })),
-).annotate({
-  identifier: "UpdateSourceLocationResponse",
-}) as any as S.Schema<UpdateSourceLocationResponse>;
+export const UpdateSourceLocationResponse =
+  CreateSourceLocationResponse as any as S.Schema<UpdateSourceLocationResponse>;
 export interface UpdateVodSourceRequest {
   HttpPackageConfigurations: HttpPackageConfiguration[];
   SourceLocationName: string;
@@ -3230,17 +3079,8 @@ export interface UpdateVodSourceResponse {
   Tags?: { [key: string]: string | undefined };
   VodSourceName?: string;
 }
-export const UpdateVodSourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    HttpPackageConfigurations: S.optional(HttpPackageConfigurations),
-    LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    SourceLocationName: S.optional(S.String),
-    Tags: S.optional(__mapOf__string),
-    VodSourceName: S.optional(S.String),
-  }).pipe(S.encodeKeys({ Tags: "tags" })),
-).annotate({ identifier: "UpdateVodSourceResponse" }) as any as S.Schema<UpdateVodSourceResponse>;
+export const UpdateVodSourceResponse =
+  CreateVodSourceResponse as any as S.Schema<UpdateVodSourceResponse>;
 export type ConfigureLogsForChannelError = CommonErrors;
 /**
  * Configures Amazon CloudWatch log settings for a channel.

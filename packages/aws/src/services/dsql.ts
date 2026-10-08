@@ -678,7 +678,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = ClusterArnList as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
@@ -692,9 +692,7 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateClusterInput {
   identifier: string;
   deletionProtectionEnabled?: boolean;
@@ -719,14 +717,7 @@ export interface UpdateClusterOutput {
   status: ClusterStatus;
   creationTime: Date;
 }
-export const UpdateClusterOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identifier: S.String,
-    arn: S.String,
-    status: ClusterStatus,
-    creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "UpdateClusterOutput" }) as any as S.Schema<UpdateClusterOutput>;
+export const UpdateClusterOutput = DeleteClusterOutput as any as S.Schema<UpdateClusterOutput>;
 export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"

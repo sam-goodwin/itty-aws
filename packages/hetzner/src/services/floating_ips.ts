@@ -125,10 +125,8 @@ export const CreateFloatingIpResponseFloatingIpProtection = /*@__PURE__*/ S.susp
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateFloatingIpResponseFloatingIpLabelsMap = { [key: string]: string | undefined };
-export const CreateFloatingIpResponseFloatingIpLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateFloatingIpResponseFloatingIpLabelsMap>;
+export const CreateFloatingIpResponseFloatingIpLabelsMap =
+  CreateFloatingIpRequestLabelsMap as any as S.Schema<CreateFloatingIpResponseFloatingIpLabelsMap>;
 
 export interface CreateFloatingIpResponseFloatingIp {
   /** ID of the [Floating IP](#tag/floating-ips). */
@@ -300,9 +298,8 @@ export const GetFloatingIpResponseFloatingIpDnsPtrItem =
 /** List of reverse DNS entries for the [Floating IP](#tag/floating-ips). */
 export type GetFloatingIpResponseFloatingIpDnsPtrList =
   Array<CreateFloatingIpResponseFloatingIpDnsPtrItem>;
-export const GetFloatingIpResponseFloatingIpDnsPtrList = /*@__PURE__*/ S.Array(
-  CreateFloatingIpResponseFloatingIpDnsPtrItem,
-) as any as S.Schema<GetFloatingIpResponseFloatingIpDnsPtrList>;
+export const GetFloatingIpResponseFloatingIpDnsPtrList =
+  CreateFloatingIpResponseFloatingIpDnsPtrList as any as S.Schema<GetFloatingIpResponseFloatingIpDnsPtrList>;
 
 /** [Location](#tag/locations) the for the [Floating IP](#tag/floating-ips) is located at. Routing is optimized for this [Location](#tag/locations). */
 export type GetFloatingIpResponseFloatingIpHomeLocation =
@@ -318,10 +315,8 @@ export const GetFloatingIpResponseFloatingIpProtection =
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type GetFloatingIpResponseFloatingIpLabelsMap = { [key: string]: string | undefined };
-export const GetFloatingIpResponseFloatingIpLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetFloatingIpResponseFloatingIpLabelsMap>;
+export const GetFloatingIpResponseFloatingIpLabelsMap =
+  CreateFloatingIpRequestLabelsMap as any as S.Schema<GetFloatingIpResponseFloatingIpLabelsMap>;
 
 export interface GetFloatingIpResponseFloatingIp {
   /** ID of the [Floating IP](#tag/floating-ips). */
@@ -425,9 +420,8 @@ export const ListFloatingIpsResponseFloatingIpsItemDnsPtrItem =
 /** List of reverse DNS entries for the [Floating IP](#tag/floating-ips). */
 export type ListFloatingIpsResponseFloatingIpsItemDnsPtrList =
   Array<CreateFloatingIpResponseFloatingIpDnsPtrItem>;
-export const ListFloatingIpsResponseFloatingIpsItemDnsPtrList = /*@__PURE__*/ S.Array(
-  CreateFloatingIpResponseFloatingIpDnsPtrItem,
-) as any as S.Schema<ListFloatingIpsResponseFloatingIpsItemDnsPtrList>;
+export const ListFloatingIpsResponseFloatingIpsItemDnsPtrList =
+  CreateFloatingIpResponseFloatingIpDnsPtrList as any as S.Schema<ListFloatingIpsResponseFloatingIpsItemDnsPtrList>;
 
 /** [Location](#tag/locations) the for the [Floating IP](#tag/floating-ips) is located at. Routing is optimized for this [Location](#tag/locations). */
 export type ListFloatingIpsResponseFloatingIpsItemHomeLocation =
@@ -443,10 +437,8 @@ export const ListFloatingIpsResponseFloatingIpsItemProtection =
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type ListFloatingIpsResponseFloatingIpsItemLabelsMap = { [key: string]: string | undefined };
-export const ListFloatingIpsResponseFloatingIpsItemLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListFloatingIpsResponseFloatingIpsItemLabelsMap>;
+export const ListFloatingIpsResponseFloatingIpsItemLabelsMap =
+  CreateFloatingIpRequestLabelsMap as any as S.Schema<ListFloatingIpsResponseFloatingIpsItemLabelsMap>;
 
 export interface ListFloatingIpsResponseFloatingIpsItem {
   /** ID of the [Floating IP](#tag/floating-ips). */
@@ -551,10 +543,8 @@ export const ListFloatingIpsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
 export type UpdateFloatingIpRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateFloatingIpRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateFloatingIpRequestLabelsMap>;
+export const UpdateFloatingIpRequestLabelsMap =
+  CreateFloatingIpRequestLabelsMap as any as S.Schema<UpdateFloatingIpRequestLabelsMap>;
 
 export interface UpdateFloatingIpRequest {
   /** ID of the Floating IP. */
@@ -587,9 +577,8 @@ export const UpdateFloatingIpResponseFloatingIpDnsPtrItem =
 /** List of reverse DNS entries for the [Floating IP](#tag/floating-ips). */
 export type UpdateFloatingIpResponseFloatingIpDnsPtrList =
   Array<CreateFloatingIpResponseFloatingIpDnsPtrItem>;
-export const UpdateFloatingIpResponseFloatingIpDnsPtrList = /*@__PURE__*/ S.Array(
-  CreateFloatingIpResponseFloatingIpDnsPtrItem,
-) as any as S.Schema<UpdateFloatingIpResponseFloatingIpDnsPtrList>;
+export const UpdateFloatingIpResponseFloatingIpDnsPtrList =
+  CreateFloatingIpResponseFloatingIpDnsPtrList as any as S.Schema<UpdateFloatingIpResponseFloatingIpDnsPtrList>;
 
 /** [Location](#tag/locations) the for the [Floating IP](#tag/floating-ips) is located at. Routing is optimized for this [Location](#tag/locations). */
 export type UpdateFloatingIpResponseFloatingIpHomeLocation =
@@ -605,10 +594,8 @@ export const UpdateFloatingIpResponseFloatingIpProtection =
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type UpdateFloatingIpResponseFloatingIpLabelsMap = { [key: string]: string | undefined };
-export const UpdateFloatingIpResponseFloatingIpLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateFloatingIpResponseFloatingIpLabelsMap>;
+export const UpdateFloatingIpResponseFloatingIpLabelsMap =
+  CreateFloatingIpRequestLabelsMap as any as S.Schema<UpdateFloatingIpResponseFloatingIpLabelsMap>;
 
 export interface UpdateFloatingIpResponseFloatingIp {
   /** ID of the [Floating IP](#tag/floating-ips). */

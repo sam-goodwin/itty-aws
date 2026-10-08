@@ -651,9 +651,8 @@ export const DeleteAppBundleRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteAppBundleRequest" }) as any as S.Schema<DeleteAppBundleRequest>;
 export interface DeleteAppBundleResponse {}
-export const DeleteAppBundleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAppBundleResponse",
-}) as any as S.Schema<DeleteAppBundleResponse>;
+export const DeleteAppBundleResponse =
+  DeleteAppAuthorizationResponse as any as S.Schema<DeleteAppBundleResponse>;
 export interface DeleteIngestionRequest {
   appBundleIdentifier: string;
   ingestionIdentifier: string;
@@ -677,9 +676,8 @@ export const DeleteIngestionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteIngestionRequest" }) as any as S.Schema<DeleteIngestionRequest>;
 export interface DeleteIngestionResponse {}
-export const DeleteIngestionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteIngestionResponse",
-}) as any as S.Schema<DeleteIngestionResponse>;
+export const DeleteIngestionResponse =
+  DeleteAppAuthorizationResponse as any as S.Schema<DeleteIngestionResponse>;
 export interface DeleteIngestionDestinationRequest {
   appBundleIdentifier: string;
   ingestionIdentifier: string;
@@ -739,11 +737,8 @@ export const GetAppAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetAppAuthorizationResponse {
   appAuthorization: AppAuthorization;
 }
-export const GetAppAuthorizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ appAuthorization: AppAuthorization }),
-).annotate({
-  identifier: "GetAppAuthorizationResponse",
-}) as any as S.Schema<GetAppAuthorizationResponse>;
+export const GetAppAuthorizationResponse =
+  CreateAppAuthorizationResponse as any as S.Schema<GetAppAuthorizationResponse>;
 export interface GetAppBundleRequest {
   appBundleIdentifier: string;
 }
@@ -762,9 +757,8 @@ export const GetAppBundleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetAppBundleResponse {
   appBundle: AppBundle;
 }
-export const GetAppBundleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ appBundle: AppBundle }),
-).annotate({ identifier: "GetAppBundleResponse" }) as any as S.Schema<GetAppBundleResponse>;
+export const GetAppBundleResponse =
+  CreateAppBundleResponse as any as S.Schema<GetAppBundleResponse>;
 export interface GetIngestionRequest {
   appBundleIdentifier: string;
   ingestionIdentifier: string;
@@ -790,9 +784,8 @@ export const GetIngestionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetIngestionResponse {
   ingestion: Ingestion;
 }
-export const GetIngestionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ingestion: Ingestion }),
-).annotate({ identifier: "GetIngestionResponse" }) as any as S.Schema<GetIngestionResponse>;
+export const GetIngestionResponse =
+  CreateIngestionResponse as any as S.Schema<GetIngestionResponse>;
 export interface GetIngestionDestinationRequest {
   appBundleIdentifier: string;
   ingestionIdentifier: string;
@@ -822,11 +815,8 @@ export const GetIngestionDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetIngestionDestinationResponse {
   ingestionDestination: IngestionDestination;
 }
-export const GetIngestionDestinationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ingestionDestination: IngestionDestination }),
-).annotate({
-  identifier: "GetIngestionDestinationResponse",
-}) as any as S.Schema<GetIngestionDestinationResponse>;
+export const GetIngestionDestinationResponse =
+  CreateIngestionDestinationResponse as any as S.Schema<GetIngestionDestinationResponse>;
 export type MaxResults = number;
 export interface ListAppAuthorizationsRequest {
   appBundleIdentifier: string;
@@ -1017,9 +1007,8 @@ export const StartIngestionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StartIngestionRequest" }) as any as S.Schema<StartIngestionRequest>;
 export interface StartIngestionResponse {}
-export const StartIngestionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartIngestionResponse",
-}) as any as S.Schema<StartIngestionResponse>;
+export const StartIngestionResponse =
+  DeleteAppAuthorizationResponse as any as S.Schema<StartIngestionResponse>;
 export interface StartUserAccessTasksRequest {
   appBundleIdentifier: string;
   email: string | redacted.Redacted<string>;
@@ -1078,9 +1067,8 @@ export const StopIngestionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopIngestionRequest" }) as any as S.Schema<StopIngestionRequest>;
 export interface StopIngestionResponse {}
-export const StopIngestionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopIngestionResponse",
-}) as any as S.Schema<StopIngestionResponse>;
+export const StopIngestionResponse =
+  DeleteAppAuthorizationResponse as any as S.Schema<StopIngestionResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: Tag[];
@@ -1091,11 +1079,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteAppAuthorizationResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = TaskIdList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -1109,9 +1096,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteAppAuthorizationResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAppAuthorizationRequest {
   appBundleIdentifier: string;
   appAuthorizationIdentifier: string;
@@ -1143,11 +1129,8 @@ export const UpdateAppAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAppAuthorizationResponse {
   appAuthorization: AppAuthorization;
 }
-export const UpdateAppAuthorizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ appAuthorization: AppAuthorization }),
-).annotate({
-  identifier: "UpdateAppAuthorizationResponse",
-}) as any as S.Schema<UpdateAppAuthorizationResponse>;
+export const UpdateAppAuthorizationResponse =
+  CreateAppAuthorizationResponse as any as S.Schema<UpdateAppAuthorizationResponse>;
 export interface UpdateIngestionDestinationRequest {
   appBundleIdentifier: string;
   ingestionIdentifier: string;
@@ -1179,11 +1162,8 @@ export const UpdateIngestionDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateIngestionDestinationResponse {
   ingestionDestination: IngestionDestination;
 }
-export const UpdateIngestionDestinationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ingestionDestination: IngestionDestination }),
-).annotate({
-  identifier: "UpdateIngestionDestinationResponse",
-}) as any as S.Schema<UpdateIngestionDestinationResponse>;
+export const UpdateIngestionDestinationResponse =
+  CreateIngestionDestinationResponse as any as S.Schema<UpdateIngestionDestinationResponse>;
 export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"

@@ -290,9 +290,8 @@ export const StopHumanLoopRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopHumanLoopRequest" }) as any as S.Schema<StopHumanLoopRequest>;
 export interface StopHumanLoopResponse {}
-export const StopHumanLoopResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopHumanLoopResponse",
-}) as any as S.Schema<StopHumanLoopResponse>;
+export const StopHumanLoopResponse =
+  DeleteHumanLoopResponse as any as S.Schema<StopHumanLoopResponse>;
 export type DeleteHumanLoopError =
   | InternalServerException
   | ResourceNotFoundException

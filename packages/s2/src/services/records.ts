@@ -164,9 +164,8 @@ export const ReadRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Series of name-value pairs for this record. */
 export type SequencedRecordHeadersList = Array<Header>;
-export const SequencedRecordHeadersList = /*@__PURE__*/ S.Array(
-  Header,
-) as any as S.Schema<SequencedRecordHeadersList>;
+export const SequencedRecordHeadersList =
+  AppendRecordHeadersList as any as S.Schema<SequencedRecordHeadersList>;
 
 /** Record that is durably sequenced on a stream. */
 export interface SequencedRecord {

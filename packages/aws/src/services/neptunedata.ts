@@ -479,9 +479,8 @@ export const CancelLoaderJobInput = /*@__PURE__*/ S.suspend(() =>
 export interface CancelLoaderJobOutput {
   status?: string;
 }
-export const CancelLoaderJobOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: S.optional(S.String) }),
-).annotate({ identifier: "CancelLoaderJobOutput" }) as any as S.Schema<CancelLoaderJobOutput>;
+export const CancelLoaderJobOutput =
+  CancelGremlinQueryOutput as any as S.Schema<CancelLoaderJobOutput>;
 export interface CancelMLDataProcessingJobInput {
   id: string;
   neptuneIamRoleArn?: string;
@@ -539,11 +538,8 @@ export const CancelMLModelTrainingJobInput = /*@__PURE__*/ S.suspend(() =>
 export interface CancelMLModelTrainingJobOutput {
   status?: string;
 }
-export const CancelMLModelTrainingJobOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: S.optional(S.String) }),
-).annotate({
-  identifier: "CancelMLModelTrainingJobOutput",
-}) as any as S.Schema<CancelMLModelTrainingJobOutput>;
+export const CancelMLModelTrainingJobOutput =
+  CancelMLDataProcessingJobOutput as any as S.Schema<CancelMLModelTrainingJobOutput>;
 export interface CancelMLModelTransformJobInput {
   id: string;
   neptuneIamRoleArn?: string;
@@ -570,11 +566,8 @@ export const CancelMLModelTransformJobInput = /*@__PURE__*/ S.suspend(() =>
 export interface CancelMLModelTransformJobOutput {
   status?: string;
 }
-export const CancelMLModelTransformJobOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: S.optional(S.String) }),
-).annotate({
-  identifier: "CancelMLModelTransformJobOutput",
-}) as any as S.Schema<CancelMLModelTransformJobOutput>;
+export const CancelMLModelTransformJobOutput =
+  CancelMLDataProcessingJobOutput as any as S.Schema<CancelMLModelTransformJobOutput>;
 export interface CancelOpenCypherQueryInput {
   queryId: string;
   silent?: boolean;
@@ -658,9 +651,8 @@ export const DeleteMLEndpointInput = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteMLEndpointOutput {
   status?: string;
 }
-export const DeleteMLEndpointOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: S.optional(S.String) }),
-).annotate({ identifier: "DeleteMLEndpointOutput" }) as any as S.Schema<DeleteMLEndpointOutput>;
+export const DeleteMLEndpointOutput =
+  CancelGremlinQueryOutput as any as S.Schema<DeleteMLEndpointOutput>;
 export interface DeletePropertygraphStatisticsRequest {}
 export const DeletePropertygraphStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -710,15 +702,8 @@ export interface DeleteSparqlStatisticsOutput {
   status?: string;
   payload?: DeleteStatisticsValueMap;
 }
-export const DeleteSparqlStatisticsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    statusCode: S.optional(S.Number).pipe(T.HttpResponseCode()),
-    status: S.optional(S.String),
-    payload: S.optional(DeleteStatisticsValueMap),
-  }),
-).annotate({
-  identifier: "DeleteSparqlStatisticsOutput",
-}) as any as S.Schema<DeleteSparqlStatisticsOutput>;
+export const DeleteSparqlStatisticsOutput =
+  DeletePropertygraphStatisticsOutput as any as S.Schema<DeleteSparqlStatisticsOutput>;
 export type Action = "initiateDatabaseReset" | "performDatabaseReset" | (string & {});
 export const Action = S.String;
 
@@ -793,11 +778,8 @@ export const ExecuteGremlinProfileQueryInput = /*@__PURE__*/ S.suspend(() =>
 export interface ExecuteGremlinProfileQueryOutput {
   output?: T.StreamingOutputBody;
 }
-export const ExecuteGremlinProfileQueryOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ output: S.optional(T.StreamingOutput).pipe(T.HttpPayload()) }),
-).annotate({
-  identifier: "ExecuteGremlinProfileQueryOutput",
-}) as any as S.Schema<ExecuteGremlinProfileQueryOutput>;
+export const ExecuteGremlinProfileQueryOutput =
+  ExecuteGremlinExplainQueryOutput as any as S.Schema<ExecuteGremlinProfileQueryOutput>;
 export interface ExecuteGremlinQueryInput {
   gremlinQuery: string;
   serializer?: string;
@@ -1139,7 +1121,7 @@ export const GetMLModelTransformJobInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetMLModelTransformJobInput",
 }) as any as S.Schema<GetMLModelTransformJobInput>;
 export type Models = MlConfigDefinition[];
-export const Models = /*@__PURE__*/ S.Array(MlConfigDefinition);
+export const Models = MlModels as any as S.Schema<Models>;
 export interface GetMLModelTransformJobOutput {
   status?: string;
   id?: string;
@@ -1180,15 +1162,8 @@ export interface GetOpenCypherQueryStatusOutput {
   queryString?: string;
   queryEvalStats?: QueryEvalStats;
 }
-export const GetOpenCypherQueryStatusOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    queryId: S.optional(S.String),
-    queryString: S.optional(S.String),
-    queryEvalStats: S.optional(QueryEvalStats),
-  }),
-).annotate({
-  identifier: "GetOpenCypherQueryStatusOutput",
-}) as any as S.Schema<GetOpenCypherQueryStatusOutput>;
+export const GetOpenCypherQueryStatusOutput =
+  GetGremlinQueryStatusOutput as any as S.Schema<GetOpenCypherQueryStatusOutput>;
 export interface GetPropertygraphStatisticsRequest {}
 export const GetPropertygraphStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -1351,7 +1326,7 @@ export const GetPropertygraphSummaryInput = /*@__PURE__*/ S.suspend(() =>
 export type NodeLabels = string[];
 export const NodeLabels = /*@__PURE__*/ S.Array(S.String);
 export type EdgeLabels = string[];
-export const EdgeLabels = /*@__PURE__*/ S.Array(S.String);
+export const EdgeLabels = NodeLabels as any as S.Schema<EdgeLabels>;
 export type LongValuedMap = { [key: string]: number | undefined };
 export const LongValuedMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1360,9 +1335,9 @@ export const LongValuedMap = /*@__PURE__*/ S.Record(
 export type LongValuedMapList = { [key: string]: number | undefined }[];
 export const LongValuedMapList = /*@__PURE__*/ S.Array(LongValuedMap);
 export type NodeProperties = string[];
-export const NodeProperties = /*@__PURE__*/ S.Array(S.String);
+export const NodeProperties = NodeLabels as any as S.Schema<NodeProperties>;
 export type OutgoingEdgeLabels = string[];
-export const OutgoingEdgeLabels = /*@__PURE__*/ S.Array(S.String);
+export const OutgoingEdgeLabels = NodeLabels as any as S.Schema<OutgoingEdgeLabels>;
 export interface NodeStructure {
   count?: number;
   nodeProperties?: string[];
@@ -1378,7 +1353,7 @@ export const NodeStructure = /*@__PURE__*/ S.suspend(() =>
 export type NodeStructures = NodeStructure[];
 export const NodeStructures = /*@__PURE__*/ S.Array(NodeStructure);
 export type EdgeProperties = string[];
-export const EdgeProperties = /*@__PURE__*/ S.Array(S.String);
+export const EdgeProperties = NodeLabels as any as S.Schema<EdgeProperties>;
 export interface EdgeStructure {
   count?: number;
   edgeProperties?: string[];
@@ -1459,9 +1434,9 @@ export const GetRDFGraphSummaryInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetRDFGraphSummaryInput" }) as any as S.Schema<GetRDFGraphSummaryInput>;
 export type Classes = string[];
-export const Classes = /*@__PURE__*/ S.Array(S.String);
+export const Classes = NodeLabels as any as S.Schema<Classes>;
 export type Predicates = string[];
-export const Predicates = /*@__PURE__*/ S.Array(S.String);
+export const Predicates = NodeLabels as any as S.Schema<Predicates>;
 export interface SubjectStructure {
   count?: number;
   predicates?: string[];
@@ -1527,11 +1502,8 @@ export interface GetSparqlStatisticsOutput {
   status: string;
   payload: Statistics;
 }
-export const GetSparqlStatisticsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: S.String, payload: Statistics }),
-).annotate({
-  identifier: "GetSparqlStatisticsOutput",
-}) as any as S.Schema<GetSparqlStatisticsOutput>;
+export const GetSparqlStatisticsOutput =
+  GetPropertygraphStatisticsOutput as any as S.Schema<GetSparqlStatisticsOutput>;
 export interface GetSparqlStreamInput {
   limit?: number;
   iteratorType?: IteratorType;
@@ -1633,7 +1605,7 @@ export const ListLoaderJobsInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "GET", uri: "/loader" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListLoaderJobsInput" }) as any as S.Schema<ListLoaderJobsInput>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = NodeLabels as any as S.Schema<StringList>;
 export interface LoaderIdResult {
   loadIds?: string[];
 }
@@ -1700,11 +1672,8 @@ export const ListMLModelTrainingJobsInput = /*@__PURE__*/ S.suspend(() =>
 export interface ListMLModelTrainingJobsOutput {
   ids?: string[];
 }
-export const ListMLModelTrainingJobsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ids: S.optional(StringList) }),
-).annotate({
-  identifier: "ListMLModelTrainingJobsOutput",
-}) as any as S.Schema<ListMLModelTrainingJobsOutput>;
+export const ListMLModelTrainingJobsOutput =
+  ListMLDataProcessingJobsOutput as any as S.Schema<ListMLModelTrainingJobsOutput>;
 export interface ListMLModelTransformJobsInput {
   maxItems?: number;
   neptuneIamRoleArn?: string;
@@ -1722,11 +1691,8 @@ export const ListMLModelTransformJobsInput = /*@__PURE__*/ S.suspend(() =>
 export interface ListMLModelTransformJobsOutput {
   ids?: string[];
 }
-export const ListMLModelTransformJobsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ids: S.optional(StringList) }),
-).annotate({
-  identifier: "ListMLModelTransformJobsOutput",
-}) as any as S.Schema<ListMLModelTransformJobsOutput>;
+export const ListMLModelTransformJobsOutput =
+  ListMLDataProcessingJobsOutput as any as S.Schema<ListMLModelTransformJobsOutput>;
 export interface ListOpenCypherQueriesInput {
   includeWaiting?: boolean;
 }
@@ -1738,7 +1704,7 @@ export const ListOpenCypherQueriesInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOpenCypherQueriesInput",
 }) as any as S.Schema<ListOpenCypherQueriesInput>;
 export type OpenCypherQueries = GremlinQueryStatus[];
-export const OpenCypherQueries = /*@__PURE__*/ S.Array(GremlinQueryStatus);
+export const OpenCypherQueries = GremlinQueries as any as S.Schema<OpenCypherQueries>;
 export interface ListOpenCypherQueriesOutput {
   acceptedQueryCount?: number;
   runningQueryCount?: number;
@@ -1806,11 +1772,8 @@ export interface ManageSparqlStatisticsOutput {
   status: string;
   payload?: RefreshStatisticsIdMap;
 }
-export const ManageSparqlStatisticsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: S.String, payload: S.optional(RefreshStatisticsIdMap) }),
-).annotate({
-  identifier: "ManageSparqlStatisticsOutput",
-}) as any as S.Schema<ManageSparqlStatisticsOutput>;
+export const ManageSparqlStatisticsOutput =
+  ManagePropertygraphStatisticsOutput as any as S.Schema<ManageSparqlStatisticsOutput>;
 export type Format =
   | "csv"
   | "opencypher"
@@ -2027,15 +1990,8 @@ export interface StartMLModelTrainingJobOutput {
   arn?: string;
   creationTimeInMillis?: number;
 }
-export const StartMLModelTrainingJobOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    arn: S.optional(S.String),
-    creationTimeInMillis: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "StartMLModelTrainingJobOutput",
-}) as any as S.Schema<StartMLModelTrainingJobOutput>;
+export const StartMLModelTrainingJobOutput =
+  StartMLDataProcessingJobOutput as any as S.Schema<StartMLModelTrainingJobOutput>;
 export interface CustomModelTransformParameters {
   sourceS3DirectoryPath: string;
   transformEntryPointScript?: string;
@@ -2088,15 +2044,8 @@ export interface StartMLModelTransformJobOutput {
   arn?: string;
   creationTimeInMillis?: number;
 }
-export const StartMLModelTransformJobOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    arn: S.optional(S.String),
-    creationTimeInMillis: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "StartMLModelTransformJobOutput",
-}) as any as S.Schema<StartMLModelTransformJobOutput>;
+export const StartMLModelTransformJobOutput =
+  StartMLDataProcessingJobOutput as any as S.Schema<StartMLModelTransformJobOutput>;
 export type CancelGremlinQueryError =
   | BadRequestException
   | ClientTimeoutException

@@ -256,9 +256,8 @@ export const DeleteScheduledActionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteScheduledActionRequest",
 }) as any as S.Schema<DeleteScheduledActionRequest>;
 export interface DeleteScheduledActionResponse {}
-export const DeleteScheduledActionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteScheduledActionResponse",
-}) as any as S.Schema<DeleteScheduledActionResponse>;
+export const DeleteScheduledActionResponse =
+  DeleteScalingPolicyResponse as any as S.Schema<DeleteScheduledActionResponse>;
 export interface DeregisterScalableTargetRequest {
   ServiceNamespace: ServiceNamespace;
   ResourceId: string;
@@ -697,31 +696,22 @@ export interface PredictiveScalingPredefinedScalingMetricSpecification {
   PredefinedMetricType: string;
   ResourceLabel?: string;
 }
-export const PredictiveScalingPredefinedScalingMetricSpecification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PredefinedMetricType: S.String, ResourceLabel: S.optional(S.String) }),
-).annotate({
-  identifier: "PredictiveScalingPredefinedScalingMetricSpecification",
-}) as any as S.Schema<PredictiveScalingPredefinedScalingMetricSpecification>;
+export const PredictiveScalingPredefinedScalingMetricSpecification =
+  PredictiveScalingPredefinedMetricPairSpecification as any as S.Schema<PredictiveScalingPredefinedScalingMetricSpecification>;
 export interface PredictiveScalingPredefinedLoadMetricSpecification {
   PredefinedMetricType: string;
   ResourceLabel?: string;
 }
-export const PredictiveScalingPredefinedLoadMetricSpecification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PredefinedMetricType: S.String, ResourceLabel: S.optional(S.String) }),
-).annotate({
-  identifier: "PredictiveScalingPredefinedLoadMetricSpecification",
-}) as any as S.Schema<PredictiveScalingPredefinedLoadMetricSpecification>;
+export const PredictiveScalingPredefinedLoadMetricSpecification =
+  PredictiveScalingPredefinedMetricPairSpecification as any as S.Schema<PredictiveScalingPredefinedLoadMetricSpecification>;
 export type PredictiveScalingMetricDimensionName = string;
 export type PredictiveScalingMetricDimensionValue = string;
 export interface PredictiveScalingMetricDimension {
   Name: string;
   Value: string;
 }
-export const PredictiveScalingMetricDimension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, Value: S.String }),
-).annotate({
-  identifier: "PredictiveScalingMetricDimension",
-}) as any as S.Schema<PredictiveScalingMetricDimension>;
+export const PredictiveScalingMetricDimension =
+  TargetTrackingMetricDimension as any as S.Schema<PredictiveScalingMetricDimension>;
 export type PredictiveScalingMetricDimensions = PredictiveScalingMetricDimension[];
 export const PredictiveScalingMetricDimensions = /*@__PURE__*/ S.Array(
   PredictiveScalingMetricDimension,
@@ -1104,9 +1094,8 @@ export const PutScheduledActionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutScheduledActionRequest",
 }) as any as S.Schema<PutScheduledActionRequest>;
 export interface PutScheduledActionResponse {}
-export const PutScheduledActionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutScheduledActionResponse",
-}) as any as S.Schema<PutScheduledActionResponse>;
+export const PutScheduledActionResponse =
+  DeleteScalingPolicyResponse as any as S.Schema<PutScheduledActionResponse>;
 export interface RegisterScalableTargetRequest {
   ServiceNamespace: ServiceNamespace;
   ResourceId: string;
@@ -1149,11 +1138,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteScalingPolicyResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = ResourceIdsMaxLen1600 as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
@@ -1164,9 +1152,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteScalingPolicyResponse as any as S.Schema<UntagResourceResponse>;
 export type ErrorMessage = string;
 export type ExceptionMessage = string;
 export type DeleteScalingPolicyError =

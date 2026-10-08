@@ -59,10 +59,8 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE_
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
+export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
 
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
 export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
@@ -227,33 +225,25 @@ export const IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGrou
 export type IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiVersionsList =
   Array<string>;
 export const IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiVersionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiVersionsList>;
+  IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiVersionsList>;
 
 /** operations is the operations the admission hook cares about - CREATE, UPDATE, DELETE, CONNECT or * for all of those operations and any future admission operations that are added. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsOperationsList =
   Array<string>;
 export const IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsOperationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsOperationsList>;
+  IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsOperationsList>;
 
 /** resourceNames is an optional white list of names that the rule applies to. An empty set means that everything is allowed. */
 export type IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsResourceNamesList =
   Array<string>;
 export const IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsResourceNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsResourceNamesList>;
+  IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsResourceNamesList>;
 
 /** resources is a list of resources this rule applies to. For example: 'pods' means pods. 'pods/log' means the log subresource of pods. '*' means all resources, but not subresources. 'pods/*' means all subresources of pods. '*\/scale' means all scale subresources. '*\/*' means all resources and their subresources. If wildcard is present, the validation rule will ensure resources do not overlap with each other. Depending on the enclosing object, subresources might not be allowed. Required. */
 export type IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsResourcesList =
   Array<string>;
 export const IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsResourcesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsResourcesList>;
+  IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsResourcesList>;
 
 /** NamedRuleWithOperations is a tuple of Operations and Resources with ResourceNames. */
 export interface IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperations {
@@ -305,9 +295,7 @@ export const IoK8sApiAdmissionregistrationV1alpha1MatchResourcesExcludeResourceR
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList = Array<string>;
 export const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList>;
+  IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList>;
 
 /** A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values. */
 export interface IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement {
@@ -340,10 +328,8 @@ export const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList =
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap>;
+export const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap>;
 
 /** A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects. */
 export interface IoK8sApimachineryPkgApisMetaV1LabelSelector {
@@ -365,9 +351,7 @@ export const IoK8sApimachineryPkgApisMetaV1LabelSelector = /*@__PURE__*/ S.suspe
 export type IoK8sApiAdmissionregistrationV1alpha1MatchResourcesResourceRulesList =
   Array<IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperations>;
 export const IoK8sApiAdmissionregistrationV1alpha1MatchResourcesResourceRulesList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperations,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1MatchResourcesResourceRulesList>;
+  IoK8sApiAdmissionregistrationV1alpha1MatchResourcesExcludeResourceRulesList as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1MatchResourcesResourceRulesList>;
 
 /** MatchResources decides whether to run the admission control policy on an object based on whether it meets the match criteria. The exclude rules take precedence over include rules (if a resource matches both, it is excluded) */
 export interface IoK8sApiAdmissionregistrationV1alpha1MatchResources {
@@ -414,13 +398,8 @@ export interface IoK8sApiAdmissionregistrationV1alpha1JSONPatch {
   /** expression will be evaluated by CEL to create a [JSON patch](https://jsonpatch.com/). ref: https://github.com/google/cel-spec expression must return an array of JSONPatch values. For example, this CEL expression returns a JSON patch to conditionally modify a value: [ JSONPatch{op: "test", path: "/spec/example", value: "Red"}, JSONPatch{op: "replace", path: "/spec/example", value: "Green"} ] To define an object for the patch value, use Object types. For example: [ JSONPatch{ op: "add", path: "/spec/selector", value: Object.spec.selector{matchLabels: {"environment": "test"}} } ] To use strings containing '/' and '~' as JSONPatch path keys, use "jsonpatch.escapeKey". For example: [ JSONPatch{ op: "add", path: "/metadata/labels/" + jsonpatch.escapeKey("example.com/environment"), value: "test" }, ] CEL expressions have access to the types needed to create JSON patches and objects: - 'JSONPatch' - CEL type of JSON Patch operations. JSONPatch has the fields 'op', 'from', 'path' and 'value'. See [JSON patch](https://jsonpatch.com/) for more details. The 'value' field may be set to any of: string, integer, array, map or object. If set, the 'path' and 'from' fields must be set to a [JSON pointer](https://datatracker.ietf.org/doc/html/rfc6901/) string, where the 'jsonpatch.escapeKey()' CEL function may be used to escape path keys containing '/' and '~'. - 'Object' - CEL type of the resource object. - 'Object.<fieldName>' - CEL type of object field (such as 'Object.spec') - 'Object.<fieldName1>.<fieldName2>...<fieldNameN>` - CEL type of nested field (such as 'Object.spec.containers') CEL expressions have access to the contents of the API request, organized into CEL variables as well as some other useful variables: - 'object' - The object from the incoming request. The value is null for DELETE requests. - 'oldObject' - The existing object. The value is null for CREATE requests. - 'request' - Attributes of the API request([ref](/pkg/apis/admission/types.go#AdmissionRequest)). - 'params' - Parameter resource referred to by the policy binding being evaluated. Only populated if the policy has a ParamKind. - 'namespaceObject' - The namespace object that the incoming object belongs to. The value is null for cluster-scoped resources. - 'variables' - Map of composited variables, from its name to its lazily evaluated value. For example, a variable named 'foo' can be accessed as 'variables.foo'. - 'authorizer' - A CEL Authorizer. May be used to perform authorization checks for the principal (user or service account) of the request. See https://pkg.go.dev/k8s.io/apiserver/pkg/cel/library#Authz - 'authorizer.requestResource' - A CEL ResourceCheck constructed from the 'authorizer' and configured with the request resource. CEL expressions have access to [Kubernetes CEL function libraries](https://kubernetes.io/docs/reference/using-api/cel/#cel-options-language-features-and-libraries) as well as: - 'jsonpatch.escapeKey' - Performs JSONPatch key escaping. '~' and '/' are escaped as '~0' and `~1' respectively). Only property names of the form `[a-zA-Z_.-/][a-zA-Z0-9_.-/]*` are accessible. Required. */
   expression?: string;
 }
-export const IoK8sApiAdmissionregistrationV1alpha1JSONPatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expression: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IoK8sApiAdmissionregistrationV1alpha1JSONPatch",
-}) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1JSONPatch>;
+export const IoK8sApiAdmissionregistrationV1alpha1JSONPatch =
+  IoK8sApiAdmissionregistrationV1alpha1ApplyConfiguration as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1JSONPatch>;
 
 /** Mutation specifies the CEL expression which is used to apply the Mutation. */
 export interface IoK8sApiAdmissionregistrationV1alpha1Mutation {
@@ -472,22 +451,14 @@ export interface IoK8sApiAdmissionregistrationV1alpha1Variable {
   /** name is the name of the variable. The name must be a valid CEL identifier and unique among all variables. The variable can be accessed in other expressions through `variables` For example, if name is "foo", the variable will be available as `variables.foo` */
   name: string;
 }
-export const IoK8sApiAdmissionregistrationV1alpha1Variable = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expression: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "IoK8sApiAdmissionregistrationV1alpha1Variable",
-}) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1Variable>;
+export const IoK8sApiAdmissionregistrationV1alpha1Variable =
+  IoK8sApiAdmissionregistrationV1alpha1MatchCondition as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1Variable>;
 
 /** variables contain definitions of variables that can be used in composition of other expressions. Each variable is defined as a named CEL expression. The variables defined here will be available under `variables` in other expressions of the policy except matchConditions because matchConditions are evaluated before the rest of the policy. The expression of a variable can refer to other variables defined earlier in the list but not those after. Thus, variables must be sorted by the order of first appearance and acyclic. */
 export type IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecVariablesList =
   Array<IoK8sApiAdmissionregistrationV1alpha1Variable>;
 export const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecVariablesList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiAdmissionregistrationV1alpha1Variable,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecVariablesList>;
+  IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMatchConditionsList as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecVariablesList>;
 
 /** MutatingAdmissionPolicySpec is the specification of the desired behavior of the admission policy. */
 export interface IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpec {
@@ -705,49 +676,37 @@ export const IoK8sApiAdmissionregistrationV1beta1MatchCondition =
 export type IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecMatchConditionsList =
   Array<IoK8sApiAdmissionregistrationV1alpha1MatchCondition>;
 export const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecMatchConditionsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiAdmissionregistrationV1alpha1MatchCondition,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecMatchConditionsList>;
+  IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMatchConditionsList as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecMatchConditionsList>;
 
 /** apiGroups is the API groups the resources belong to. '*' is all groups. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsApiGroupsList =
   Array<string>;
 export const IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsApiGroupsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsApiGroupsList>;
+  IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsApiGroupsList>;
 
 /** apiVersions is the API versions the resources belong to. '*' is all versions. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsApiVersionsList =
   Array<string>;
 export const IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsApiVersionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsApiVersionsList>;
+  IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsApiVersionsList>;
 
 /** operations is the operations the admission hook cares about - CREATE, UPDATE, DELETE, CONNECT or * for all of those operations and any future admission operations that are added. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsOperationsList =
   Array<string>;
 export const IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsOperationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsOperationsList>;
+  IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsOperationsList>;
 
 /** resourceNames is an optional white list of names that the rule applies to. An empty set means that everything is allowed. */
 export type IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsResourceNamesList =
   Array<string>;
 export const IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsResourceNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsResourceNamesList>;
+  IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsResourceNamesList>;
 
 /** resources is a list of resources this rule applies to. For example: 'pods' means pods. 'pods/log' means the log subresource of pods. '*' means all resources, but not subresources. 'pods/*' means all subresources of pods. '*\/scale' means all scale subresources. '*\/*' means all resources and their subresources. If wildcard is present, the validation rule will ensure resources do not overlap with each other. Depending on the enclosing object, subresources might not be allowed. Required. */
 export type IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsResourcesList =
   Array<string>;
 export const IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsResourcesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsResourcesList>;
+  IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsResourcesList>;
 
 /** NamedRuleWithOperations is a tuple of Operations and Resources with ResourceNames. */
 export interface IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperations {
@@ -764,45 +723,20 @@ export interface IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperations {
   /** scope specifies the scope of this rule. Valid values are "Cluster", "Namespaced", and "*" "Cluster" means that only cluster-scoped resources will match this rule. Namespace API objects are cluster-scoped. "Namespaced" means that only namespaced resources will match this rule. "*" means that there are no scope restrictions. Subresources match the scope of their parent resource. Default is "*". */
   scope?: string;
 }
-export const IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperations = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      apiGroups: S.optional(
-        IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsApiGroupsList,
-      ),
-      apiVersions: S.optional(
-        IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsApiVersionsList,
-      ),
-      operations: S.optional(
-        IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsOperationsList,
-      ),
-      resourceNames: S.optional(
-        IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsResourceNamesList,
-      ),
-      resources: S.optional(
-        IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsResourcesList,
-      ),
-      scope: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperations",
-}) as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperations>;
+export const IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperations =
+  IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperations as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperations>;
 
 /** excludeResourceRules describes what operations on what resources/subresources the ValidatingAdmissionPolicy should not care about. The exclude rules take precedence over include rules (if a resource matches both, it is excluded) */
 export type IoK8sApiAdmissionregistrationV1beta1MatchResourcesExcludeResourceRulesList =
   Array<IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperations>;
 export const IoK8sApiAdmissionregistrationV1beta1MatchResourcesExcludeResourceRulesList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperations,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MatchResourcesExcludeResourceRulesList>;
+  IoK8sApiAdmissionregistrationV1alpha1MatchResourcesExcludeResourceRulesList as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MatchResourcesExcludeResourceRulesList>;
 
 /** resourceRules describes what operations on what resources/subresources the ValidatingAdmissionPolicy matches. The policy cares about an operation if it matches _any_ Rule. */
 export type IoK8sApiAdmissionregistrationV1beta1MatchResourcesResourceRulesList =
   Array<IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperations>;
 export const IoK8sApiAdmissionregistrationV1beta1MatchResourcesResourceRulesList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperations,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MatchResourcesResourceRulesList>;
+  IoK8sApiAdmissionregistrationV1alpha1MatchResourcesExcludeResourceRulesList as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MatchResourcesResourceRulesList>;
 
 /** MatchResources decides whether to run the admission control policy on an object based on whether it meets the match criteria. The exclude rules take precedence over include rules (if a resource matches both, it is excluded) */
 export interface IoK8sApiAdmissionregistrationV1beta1MatchResources {
@@ -817,19 +751,8 @@ export interface IoK8sApiAdmissionregistrationV1beta1MatchResources {
   /** resourceRules describes what operations on what resources/subresources the ValidatingAdmissionPolicy matches. The policy cares about an operation if it matches _any_ Rule. */
   resourceRules?: IoK8sApiAdmissionregistrationV1beta1MatchResourcesResourceRulesList;
 }
-export const IoK8sApiAdmissionregistrationV1beta1MatchResources = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    excludeResourceRules: S.optional(
-      IoK8sApiAdmissionregistrationV1beta1MatchResourcesExcludeResourceRulesList,
-    ),
-    matchPolicy: S.optional(S.String),
-    namespaceSelector: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelector),
-    objectSelector: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelector),
-    resourceRules: S.optional(IoK8sApiAdmissionregistrationV1beta1MatchResourcesResourceRulesList),
-  }),
-).annotate({
-  identifier: "IoK8sApiAdmissionregistrationV1beta1MatchResources",
-}) as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MatchResources>;
+export const IoK8sApiAdmissionregistrationV1beta1MatchResources =
+  IoK8sApiAdmissionregistrationV1alpha1MatchResources as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MatchResources>;
 
 /** ApplyConfiguration defines the desired configuration values of an object. */
 export type IoK8sApiAdmissionregistrationV1beta1ApplyConfiguration =
@@ -853,9 +776,7 @@ export const IoK8sApiAdmissionregistrationV1beta1Mutation =
 export type IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecMutationsList =
   Array<IoK8sApiAdmissionregistrationV1alpha1Mutation>;
 export const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecMutationsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiAdmissionregistrationV1alpha1Mutation,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecMutationsList>;
+  IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMutationsList as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecMutationsList>;
 
 /** ParamKind is a tuple of Group Kind and Version. */
 export type IoK8sApiAdmissionregistrationV1beta1ParamKind =
@@ -873,9 +794,7 @@ export const IoK8sApiAdmissionregistrationV1beta1Variable =
 export type IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecVariablesList =
   Array<IoK8sApiAdmissionregistrationV1alpha1Variable>;
 export const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecVariablesList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiAdmissionregistrationV1alpha1Variable,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecVariablesList>;
+  IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMatchConditionsList as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecVariablesList>;
 
 /** MutatingAdmissionPolicySpec is the specification of the desired behavior of the admission policy. */
 export interface IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpec {
@@ -895,25 +814,7 @@ export interface IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpec
   variables?: IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecVariablesList;
 }
 export const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      failurePolicy: S.optional(S.String),
-      matchConditions: S.optional(
-        IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecMatchConditionsList,
-      ),
-      matchConstraints: S.optional(IoK8sApiAdmissionregistrationV1beta1MatchResources),
-      mutations: S.optional(
-        IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecMutationsList,
-      ),
-      paramKind: S.optional(IoK8sApiAdmissionregistrationV1alpha1ParamKind),
-      reinvocationPolicy: S.optional(S.String),
-      variables: S.optional(
-        IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecVariablesList,
-      ),
-    }),
-  ).annotate({
-    identifier: "IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpec",
-  }) as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpec>;
+  IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpec as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpec>;
 
 export interface CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
@@ -966,17 +867,8 @@ export interface IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicy {
   /** spec defines the desired behavior of the MutatingAdmissionPolicy. */
   spec?: IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpec;
 }
-export const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicy = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: S.optional(IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpec),
-    }),
-).annotate({
-  identifier: "IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicy",
-}) as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicy>;
+export const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicy =
+  IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicy as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicy>;
 
 /** ParamRef describes how to locate the params to be used as input to expressions of rules applied by a policy binding. */
 export interface IoK8sApiAdmissionregistrationV1beta1ParamRef {
@@ -1093,44 +985,32 @@ export const IoK8sApiAdmissionregistrationV1MatchCondition =
 export type IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecMatchConditionsList =
   Array<IoK8sApiAdmissionregistrationV1alpha1MatchCondition>;
 export const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecMatchConditionsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiAdmissionregistrationV1alpha1MatchCondition,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecMatchConditionsList>;
+  IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMatchConditionsList as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecMatchConditionsList>;
 
 /** apiGroups is the API groups the resources belong to. '*' is all groups. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsApiGroupsList = Array<string>;
 export const IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsApiGroupsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsApiGroupsList>;
+  IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsApiGroupsList>;
 
 /** apiVersions is the API versions the resources belong to. '*' is all versions. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsApiVersionsList = Array<string>;
 export const IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsApiVersionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsApiVersionsList>;
+  IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsApiVersionsList>;
 
 /** operations is the operations the admission hook cares about - CREATE, UPDATE, DELETE, CONNECT or * for all of those operations and any future admission operations that are added. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsOperationsList = Array<string>;
 export const IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsOperationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsOperationsList>;
+  IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsOperationsList>;
 
 /** resourceNames is an optional white list of names that the rule applies to. An empty set means that everything is allowed. */
 export type IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsResourceNamesList = Array<string>;
 export const IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsResourceNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsResourceNamesList>;
+  IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsResourceNamesList>;
 
 /** resources is a list of resources this rule applies to. For example: 'pods' means pods. 'pods/log' means the log subresource of pods. '*' means all resources, but not subresources. 'pods/*' means all subresources of pods. '*\/scale' means all scale subresources. '*\/*' means all resources and their subresources. If wildcard is present, the validation rule will ensure resources do not overlap with each other. Depending on the enclosing object, subresources might not be allowed. Required. */
 export type IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsResourcesList = Array<string>;
 export const IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsResourcesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsResourcesList>;
+  IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsResourcesList>;
 
 /** NamedRuleWithOperations is a tuple of Operations and Resources with ResourceNames. */
 export interface IoK8sApiAdmissionregistrationV1NamedRuleWithOperations {
@@ -1225,9 +1105,7 @@ export const IoK8sApiAdmissionregistrationV1Mutation =
 export type IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecMutationsList =
   Array<IoK8sApiAdmissionregistrationV1alpha1Mutation>;
 export const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecMutationsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiAdmissionregistrationV1alpha1Mutation,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecMutationsList>;
+  IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMutationsList as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecMutationsList>;
 
 /** ParamKind is a tuple of Group Kind and Version. */
 export type IoK8sApiAdmissionregistrationV1ParamKind =
@@ -1244,9 +1122,7 @@ export const IoK8sApiAdmissionregistrationV1Variable =
 export type IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecVariablesList =
   Array<IoK8sApiAdmissionregistrationV1alpha1Variable>;
 export const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecVariablesList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiAdmissionregistrationV1alpha1Variable,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecVariablesList>;
+  IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMatchConditionsList as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecVariablesList>;
 
 /** MutatingAdmissionPolicySpec defines the desired behavior of the admission policy. */
 export interface IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpec {
@@ -1439,9 +1315,7 @@ export const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBinding =
 export type IoK8sApiAdmissionregistrationV1MutatingWebhookAdmissionReviewVersionsList =
   Array<string>;
 export const IoK8sApiAdmissionregistrationV1MutatingWebhookAdmissionReviewVersionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingWebhookAdmissionReviewVersionsList>;
+  IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingWebhookAdmissionReviewVersionsList>;
 
 /** ServiceReference holds a reference to Service.legacy.k8s.io */
 export interface IoK8sApiAdmissionregistrationV1ServiceReference {
@@ -1488,35 +1362,27 @@ export const IoK8sApiAdmissionregistrationV1WebhookClientConfig = /*@__PURE__*/ 
 export type IoK8sApiAdmissionregistrationV1MutatingWebhookMatchConditionsList =
   Array<IoK8sApiAdmissionregistrationV1alpha1MatchCondition>;
 export const IoK8sApiAdmissionregistrationV1MutatingWebhookMatchConditionsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiAdmissionregistrationV1alpha1MatchCondition,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingWebhookMatchConditionsList>;
+  IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMatchConditionsList as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingWebhookMatchConditionsList>;
 
 /** apiGroups is the API groups the resources belong to. '*' is all groups. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1RuleWithOperationsApiGroupsList = Array<string>;
-export const IoK8sApiAdmissionregistrationV1RuleWithOperationsApiGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiAdmissionregistrationV1RuleWithOperationsApiGroupsList>;
+export const IoK8sApiAdmissionregistrationV1RuleWithOperationsApiGroupsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiAdmissionregistrationV1RuleWithOperationsApiGroupsList>;
 
 /** apiVersions is the API versions the resources belong to. '*' is all versions. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1RuleWithOperationsApiVersionsList = Array<string>;
 export const IoK8sApiAdmissionregistrationV1RuleWithOperationsApiVersionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1RuleWithOperationsApiVersionsList>;
+  IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1RuleWithOperationsApiVersionsList>;
 
 /** operations is the operations the admission hook cares about - CREATE, UPDATE, DELETE, CONNECT or * for all of those operations and any future admission operations that are added. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1RuleWithOperationsOperationsList = Array<string>;
 export const IoK8sApiAdmissionregistrationV1RuleWithOperationsOperationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1RuleWithOperationsOperationsList>;
+  IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1RuleWithOperationsOperationsList>;
 
 /** resources is a list of resources this rule applies to. For example: 'pods' means pods. 'pods/log' means the log subresource of pods. '*' means all resources, but not subresources. 'pods/*' means all subresources of pods. '*\/scale' means all scale subresources. '*\/*' means all resources and their subresources. If wildcard is present, the validation rule will ensure resources do not overlap with each other. Depending on the enclosing object, subresources might not be allowed. Required. */
 export type IoK8sApiAdmissionregistrationV1RuleWithOperationsResourcesList = Array<string>;
-export const IoK8sApiAdmissionregistrationV1RuleWithOperationsResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiAdmissionregistrationV1RuleWithOperationsResourcesList>;
+export const IoK8sApiAdmissionregistrationV1RuleWithOperationsResourcesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiAdmissionregistrationV1RuleWithOperationsResourcesList>;
 
 /** RuleWithOperations is a tuple of Operations and Resources. It is recommended to make sure that all the tuple expansions are valid. */
 export interface IoK8sApiAdmissionregistrationV1RuleWithOperations {
@@ -1651,9 +1517,7 @@ export const CreateAdmissionregistrationV1MutatingWebhookConfigurationRequest =
 export type IoK8sApiAdmissionregistrationV1MutatingWebhookConfigurationWebhooksList =
   Array<IoK8sApiAdmissionregistrationV1MutatingWebhook>;
 export const IoK8sApiAdmissionregistrationV1MutatingWebhookConfigurationWebhooksList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiAdmissionregistrationV1MutatingWebhook,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingWebhookConfigurationWebhooksList>;
+  CreateAdmissionregistrationV1MutatingWebhookConfigurationRequestWebhooksList as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingWebhookConfigurationWebhooksList>;
 
 /** MutatingWebhookConfiguration describes the configuration of and admission webhook that accept or reject and may change the object. */
 export interface IoK8sApiAdmissionregistrationV1MutatingWebhookConfiguration {
@@ -1706,9 +1570,7 @@ export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecAuditAn
 export type IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecMatchConditionsList =
   Array<IoK8sApiAdmissionregistrationV1alpha1MatchCondition>;
 export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecMatchConditionsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiAdmissionregistrationV1alpha1MatchCondition,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecMatchConditionsList>;
+  IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMatchConditionsList as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecMatchConditionsList>;
 
 /** Validation specifies the CEL expression which is used to apply the validation. */
 export interface IoK8sApiAdmissionregistrationV1Validation {
@@ -1744,9 +1606,7 @@ export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecValidat
 export type IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecVariablesList =
   Array<IoK8sApiAdmissionregistrationV1alpha1Variable>;
 export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecVariablesList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiAdmissionregistrationV1alpha1Variable,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecVariablesList>;
+  IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMatchConditionsList as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecVariablesList>;
 
 /** ValidatingAdmissionPolicySpec is the specification of the desired behavior of the AdmissionPolicy. */
 export interface IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpec {
@@ -1958,9 +1818,7 @@ export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicy = /*@__PUR
 export type IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingSpecValidationActionsList =
   Array<string>;
 export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingSpecValidationActionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingSpecValidationActionsList>;
+  IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingSpecValidationActionsList>;
 
 /** ValidatingAdmissionPolicyBindingSpec is the specification of the ValidatingAdmissionPolicyBinding. */
 export interface IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingSpec {
@@ -2053,24 +1911,19 @@ export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
 export type IoK8sApiAdmissionregistrationV1ValidatingWebhookAdmissionReviewVersionsList =
   Array<string>;
 export const IoK8sApiAdmissionregistrationV1ValidatingWebhookAdmissionReviewVersionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingWebhookAdmissionReviewVersionsList>;
+  IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingWebhookAdmissionReviewVersionsList>;
 
 /** matchConditions is a list of conditions that must be met for a request to be sent to this webhook. Match conditions filter requests that have already been matched by the rules, namespaceSelector, and objectSelector. An empty list of matchConditions matches all requests. There are a maximum of 64 match conditions allowed. The exact matching logic is (in order): 1. If ANY matchCondition evaluates to FALSE, the webhook is skipped. 2. If ALL matchConditions evaluate to TRUE, the webhook is called. 3. If any matchCondition evaluates to an error (but none are FALSE): - If failurePolicy=Fail, reject the request - If failurePolicy=Ignore, the error is ignored and the webhook is skipped */
 export type IoK8sApiAdmissionregistrationV1ValidatingWebhookMatchConditionsList =
   Array<IoK8sApiAdmissionregistrationV1alpha1MatchCondition>;
 export const IoK8sApiAdmissionregistrationV1ValidatingWebhookMatchConditionsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiAdmissionregistrationV1alpha1MatchCondition,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingWebhookMatchConditionsList>;
+  IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMatchConditionsList as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingWebhookMatchConditionsList>;
 
 /** rules describes what operations on what resources/subresources the webhook cares about. The webhook cares about an operation if it matches _any_ Rule. However, in order to prevent ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks from putting the cluster in a state which cannot be recovered from without completely disabling the plugin, ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks are never called on admission requests for ValidatingWebhookConfiguration and MutatingWebhookConfiguration objects. */
 export type IoK8sApiAdmissionregistrationV1ValidatingWebhookRulesList =
   Array<IoK8sApiAdmissionregistrationV1RuleWithOperations>;
-export const IoK8sApiAdmissionregistrationV1ValidatingWebhookRulesList = /*@__PURE__*/ S.Array(
-  IoK8sApiAdmissionregistrationV1RuleWithOperations,
-) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingWebhookRulesList>;
+export const IoK8sApiAdmissionregistrationV1ValidatingWebhookRulesList =
+  IoK8sApiAdmissionregistrationV1MutatingWebhookRulesList as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingWebhookRulesList>;
 
 /** ValidatingWebhook describes an admission webhook and the resources and operations it applies to. */
 export interface IoK8sApiAdmissionregistrationV1ValidatingWebhook {
@@ -2172,9 +2025,7 @@ export const CreateAdmissionregistrationV1ValidatingWebhookConfigurationRequest 
 export type IoK8sApiAdmissionregistrationV1ValidatingWebhookConfigurationWebhooksList =
   Array<IoK8sApiAdmissionregistrationV1ValidatingWebhook>;
 export const IoK8sApiAdmissionregistrationV1ValidatingWebhookConfigurationWebhooksList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiAdmissionregistrationV1ValidatingWebhook,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingWebhookConfigurationWebhooksList>;
+  CreateAdmissionregistrationV1ValidatingWebhookConfigurationRequestWebhooksList as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingWebhookConfigurationWebhooksList>;
 
 /** ValidatingWebhookConfiguration describes the configuration of and admission webhook that accept or reject and object without changing it. */
 export interface IoK8sApiAdmissionregistrationV1ValidatingWebhookConfiguration {
@@ -3601,21 +3452,18 @@ export const GetAdmissionregistrationV1alpha1APIResourcesRequest = /*@__PURE__*/
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
 
 /** APIResource specifies the name of a resource and whether it is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResource {
@@ -3926,9 +3774,7 @@ export const ListAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest =
 export type IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyListItemsList =
   Array<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicy>;
 export const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyListItemsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicy,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyListItemsList>;
+  IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyListItemsList as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyListItemsList>;
 
 /** MutatingAdmissionPolicyList is a list of MutatingAdmissionPolicy. */
 export interface IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyList {
@@ -3942,16 +3788,7 @@ export interface IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyList
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
 export const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyList =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      apiVersion: S.optional(S.String),
-      items: IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyListItemsList,
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
-    }),
-  ).annotate({
-    identifier: "IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyList",
-  }) as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyList>;
+  IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyList as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyList>;
 
 export interface ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
@@ -5412,9 +5249,7 @@ export const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest
 export type ReplaceAdmissionregistrationV1MutatingWebhookConfigurationRequestWebhooksList =
   Array<IoK8sApiAdmissionregistrationV1MutatingWebhook>;
 export const ReplaceAdmissionregistrationV1MutatingWebhookConfigurationRequestWebhooksList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiAdmissionregistrationV1MutatingWebhook,
-  ) as any as S.Schema<ReplaceAdmissionregistrationV1MutatingWebhookConfigurationRequestWebhooksList>;
+  CreateAdmissionregistrationV1MutatingWebhookConfigurationRequestWebhooksList as any as S.Schema<ReplaceAdmissionregistrationV1MutatingWebhookConfigurationRequestWebhooksList>;
 
 export interface ReplaceAdmissionregistrationV1MutatingWebhookConfigurationRequest {
   /** name of the MutatingWebhookConfiguration */
@@ -5600,9 +5435,7 @@ export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusReques
 export type ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationRequestWebhooksList =
   Array<IoK8sApiAdmissionregistrationV1ValidatingWebhook>;
 export const ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationRequestWebhooksList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiAdmissionregistrationV1ValidatingWebhook,
-  ) as any as S.Schema<ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationRequestWebhooksList>;
+  CreateAdmissionregistrationV1ValidatingWebhookConfigurationRequestWebhooksList as any as S.Schema<ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationRequestWebhooksList>;
 
 export interface ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationRequest {
   /** name of the ValidatingWebhookConfiguration */

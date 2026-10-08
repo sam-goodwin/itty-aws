@@ -1409,14 +1409,7 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableSelecti
   id?: string;
 }
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableSelectionChoiceRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fieldId: S.optional(S.String),
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableSelectionChoiceRequest",
-  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableSelectionChoiceRequest>;
+  GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteSelectionChoiceRequest as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableSelectionChoiceRequest>;
 
 /** Request to delete the field. */
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteFieldRequest {
@@ -1424,13 +1417,7 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteFieldRe
   id?: string;
 }
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteFieldRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteFieldRequest",
-  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteFieldRequest>;
+  GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableFieldRequest as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteFieldRequest>;
 
 /** Updates basic properties of a label. */
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateLabelPropertiesRequest {
@@ -1932,13 +1919,8 @@ export interface GoogleAppsDriveLabelsV2betaListLimits {
   /** Maximum number of values allowed for the field type. */
   maxEntries?: number;
 }
-export const GoogleAppsDriveLabelsV2betaListLimits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxEntries: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleAppsDriveLabelsV2betaListLimits",
-}) as any as S.Schema<GoogleAppsDriveLabelsV2betaListLimits>;
+export const GoogleAppsDriveLabelsV2betaListLimits =
+  GoogleAppsDriveLabelsV2betaFieldListOptions as any as S.Schema<GoogleAppsDriveLabelsV2betaListLimits>;
 
 /** Limits for Field.Type.USER. */
 export interface GoogleAppsDriveLabelsV2betaUserLimits {
@@ -1960,14 +1942,8 @@ export interface GoogleAppsDriveLabelsV2betaIntegerLimits {
   /** Maximum value for an integer field type. */
   maxValue?: string;
 }
-export const GoogleAppsDriveLabelsV2betaIntegerLimits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minValue: S.optional(S.String),
-    maxValue: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAppsDriveLabelsV2betaIntegerLimits",
-}) as any as S.Schema<GoogleAppsDriveLabelsV2betaIntegerLimits>;
+export const GoogleAppsDriveLabelsV2betaIntegerLimits =
+  GoogleAppsDriveLabelsV2betaFieldIntegerOptions as any as S.Schema<GoogleAppsDriveLabelsV2betaIntegerLimits>;
 
 /** Limits for text field type. */
 export interface GoogleAppsDriveLabelsV2betaTextLimits {
@@ -1976,14 +1952,8 @@ export interface GoogleAppsDriveLabelsV2betaTextLimits {
   /** Maximum length allowed for a text field type. */
   maxLength?: number;
 }
-export const GoogleAppsDriveLabelsV2betaTextLimits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minLength: S.optional(S.Number),
-    maxLength: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleAppsDriveLabelsV2betaTextLimits",
-}) as any as S.Schema<GoogleAppsDriveLabelsV2betaTextLimits>;
+export const GoogleAppsDriveLabelsV2betaTextLimits =
+  GoogleAppsDriveLabelsV2betaFieldTextOptions as any as S.Schema<GoogleAppsDriveLabelsV2betaTextLimits>;
 
 /** Limits for date field type. */
 export interface GoogleAppsDriveLabelsV2betaDateLimits {
@@ -2033,14 +2003,8 @@ export interface GoogleAppsDriveLabelsV2betaLongTextLimits {
   /** Maximum length allowed for a long text field type. */
   maxLength?: number;
 }
-export const GoogleAppsDriveLabelsV2betaLongTextLimits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minLength: S.optional(S.Number),
-    maxLength: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleAppsDriveLabelsV2betaLongTextLimits",
-}) as any as S.Schema<GoogleAppsDriveLabelsV2betaLongTextLimits>;
+export const GoogleAppsDriveLabelsV2betaLongTextLimits =
+  GoogleAppsDriveLabelsV2betaFieldTextOptions as any as S.Schema<GoogleAppsDriveLabelsV2betaLongTextLimits>;
 
 /** Field constants governing the structure of a field; such as, the maximum title length, minimum and maximum field values or length, etc. */
 export interface GoogleAppsDriveLabelsV2betaFieldLimits {

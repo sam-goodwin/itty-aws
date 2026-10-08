@@ -180,9 +180,8 @@ export const LogExplorerDatasetsCreateResponseFieldsItem =
 
 export type LogExplorerDatasetsCreateResponseFieldsList =
   Array<LogExplorerDatasetsCreateRequestFieldsItem>;
-export const LogExplorerDatasetsCreateResponseFieldsList = /*@__PURE__*/ S.Array(
-  LogExplorerDatasetsCreateRequestFieldsItem,
-) as any as S.Schema<LogExplorerDatasetsCreateResponseFieldsList>;
+export const LogExplorerDatasetsCreateResponseFieldsList =
+  LogExplorerDatasetsCreateRequestFieldsList as any as S.Schema<LogExplorerDatasetsCreateResponseFieldsList>;
 
 export type LogExplorerDatasetsCreateResponseObjectType = "account" | "zone";
 export const LogExplorerDatasetsCreateResponseObjectType = S.String;
@@ -306,16 +305,8 @@ export interface GetControlCmbConfigResponse {
   /** Name of the region. */
   regions?: string | null;
 }
-export const GetControlCmbConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowOutOfRegionAccess: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("allow_out_of_region_access")),
-    ),
-    regions: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetControlCmbConfigResponse",
-}) as any as S.Schema<GetControlCmbConfigResponse>;
+export const GetControlCmbConfigResponse =
+  CreateControlCmbConfigResponse as any as S.Schema<GetControlCmbConfigResponse>;
 
 export interface GetControlRetentionRequest {
   /** Identifier. */
@@ -336,13 +327,8 @@ export interface GetControlRetentionResponse {
   /** The log retention flag for Logpull API. */
   flag?: boolean | null;
 }
-export const GetControlRetentionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    flag: S.optional(S.NullOr(S.Boolean)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetControlRetentionResponse",
-}) as any as S.Schema<GetControlRetentionResponse>;
+export const GetControlRetentionResponse =
+  CreateControlRetentionResponse as any as S.Schema<GetControlRetentionResponse>;
 
 export interface GetLogExplorerDatasetForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
@@ -371,9 +357,8 @@ export const LogExplorerDatasetsGetResponseFieldsItem = LogExplorerDatasetsCreat
 
 export type LogExplorerDatasetsGetResponseFieldsList =
   Array<LogExplorerDatasetsCreateRequestFieldsItem>;
-export const LogExplorerDatasetsGetResponseFieldsList = /*@__PURE__*/ S.Array(
-  LogExplorerDatasetsCreateRequestFieldsItem,
-) as any as S.Schema<LogExplorerDatasetsGetResponseFieldsList>;
+export const LogExplorerDatasetsGetResponseFieldsList =
+  LogExplorerDatasetsCreateRequestFieldsList as any as S.Schema<LogExplorerDatasetsGetResponseFieldsList>;
 
 export type LogExplorerDatasetsGetResponseObjectType = "account" | "zone";
 export const LogExplorerDatasetsGetResponseObjectType = S.String;
@@ -508,9 +493,7 @@ export const GetReceivedRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetReceivedResponse {}
-export const GetReceivedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetReceivedResponse" }) as any as S.Schema<GetReceivedResponse>;
+export const GetReceivedResponse = GetRayidResponse as any as S.Schema<GetReceivedResponse>;
 
 export interface GetReceivedFieldRequest {
   /** Identifier. */
@@ -771,9 +754,8 @@ export const LogExplorerDatasetsDeleteResponseFieldsItem =
 
 export type LogExplorerDatasetsDeleteResponseFieldsList =
   Array<LogExplorerDatasetsCreateRequestFieldsItem>;
-export const LogExplorerDatasetsDeleteResponseFieldsList = /*@__PURE__*/ S.Array(
-  LogExplorerDatasetsCreateRequestFieldsItem,
-) as any as S.Schema<LogExplorerDatasetsDeleteResponseFieldsList>;
+export const LogExplorerDatasetsDeleteResponseFieldsList =
+  LogExplorerDatasetsCreateRequestFieldsList as any as S.Schema<LogExplorerDatasetsDeleteResponseFieldsList>;
 
 export type LogExplorerDatasetsDeleteResponseObjectType = "account" | "zone";
 export const LogExplorerDatasetsDeleteResponseObjectType = S.String;
@@ -860,10 +842,8 @@ export const SqlLogExplorerQueryForAccountRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<SqlLogExplorerQueryForAccountRequest>;
 
 export type LogExplorerQuerySqlResultItemMap = { [key: string]: unknown | undefined };
-export const LogExplorerQuerySqlResultItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LogExplorerQuerySqlResultItemMap>;
+export const LogExplorerQuerySqlResultItemMap =
+  LogExplorerDatasetsAvailableListResultItemSchemaPropertiesMap as any as S.Schema<LogExplorerQuerySqlResultItemMap>;
 
 export type LogExplorerQuerySqlResultList = Array<LogExplorerQuerySqlResultItemMap>;
 export const LogExplorerQuerySqlResultList = /*@__PURE__*/ S.Array(
@@ -905,9 +885,8 @@ export const LogExplorerDatasetsUpdateRequestFieldsItem =
 
 export type LogExplorerDatasetsUpdateRequestFieldsList =
   Array<LogExplorerDatasetsCreateRequestFieldsItem>;
-export const LogExplorerDatasetsUpdateRequestFieldsList = /*@__PURE__*/ S.Array(
-  LogExplorerDatasetsCreateRequestFieldsItem,
-) as any as S.Schema<LogExplorerDatasetsUpdateRequestFieldsList>;
+export const LogExplorerDatasetsUpdateRequestFieldsList =
+  LogExplorerDatasetsCreateRequestFieldsList as any as S.Schema<LogExplorerDatasetsUpdateRequestFieldsList>;
 
 export interface UpdateLogExplorerDatasetForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
@@ -953,9 +932,8 @@ export const LogExplorerDatasetsUpdateResponseFieldsItem =
 
 export type LogExplorerDatasetsUpdateResponseFieldsList =
   Array<LogExplorerDatasetsCreateRequestFieldsItem>;
-export const LogExplorerDatasetsUpdateResponseFieldsList = /*@__PURE__*/ S.Array(
-  LogExplorerDatasetsCreateRequestFieldsItem,
-) as any as S.Schema<LogExplorerDatasetsUpdateResponseFieldsList>;
+export const LogExplorerDatasetsUpdateResponseFieldsList =
+  LogExplorerDatasetsCreateRequestFieldsList as any as S.Schema<LogExplorerDatasetsUpdateResponseFieldsList>;
 
 export type LogExplorerDatasetsUpdateResponseObjectType = "account" | "zone";
 export const LogExplorerDatasetsUpdateResponseObjectType = S.String;

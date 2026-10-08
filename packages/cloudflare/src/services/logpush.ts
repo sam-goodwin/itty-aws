@@ -329,9 +329,8 @@ export type JobsCreateResponseKind = "" | "edge";
 export const JobsCreateResponseKind = S.String;
 
 export type JobsCreateResponseOutputOptionsFieldNamesList = Array<string>;
-export const JobsCreateResponseOutputOptionsFieldNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JobsCreateResponseOutputOptionsFieldNamesList>;
+export const JobsCreateResponseOutputOptionsFieldNamesList =
+  JobsCreateRequestOutputOptionsFieldNamesList as any as S.Schema<JobsCreateResponseOutputOptionsFieldNamesList>;
 
 export type JobsCreateResponseOutputOptionsOutputType = "ndjson" | "csv";
 export const JobsCreateResponseOutputOptionsOutputType = S.String;
@@ -1046,9 +1045,8 @@ export type DatasetsJobsGetResultItemKind = "" | "edge";
 export const DatasetsJobsGetResultItemKind = S.String;
 
 export type DatasetsJobsGetResultItemOutputOptionsFieldNamesList = Array<string>;
-export const DatasetsJobsGetResultItemOutputOptionsFieldNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatasetsJobsGetResultItemOutputOptionsFieldNamesList>;
+export const DatasetsJobsGetResultItemOutputOptionsFieldNamesList =
+  JobsCreateRequestOutputOptionsFieldNamesList as any as S.Schema<DatasetsJobsGetResultItemOutputOptionsFieldNamesList>;
 
 export type DatasetsJobsGetResultItemOutputOptionsOutputType = "ndjson" | "csv";
 export const DatasetsJobsGetResultItemOutputOptionsOutputType = S.String;
@@ -1333,9 +1331,8 @@ export type JobsGetResponseKind = "" | "edge";
 export const JobsGetResponseKind = S.String;
 
 export type JobsGetResponseOutputOptionsFieldNamesList = Array<string>;
-export const JobsGetResponseOutputOptionsFieldNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JobsGetResponseOutputOptionsFieldNamesList>;
+export const JobsGetResponseOutputOptionsFieldNamesList =
+  JobsCreateRequestOutputOptionsFieldNamesList as any as S.Schema<JobsGetResponseOutputOptionsFieldNamesList>;
 
 export type JobsGetResponseOutputOptionsOutputType = "ndjson" | "csv";
 export const JobsGetResponseOutputOptionsOutputType = S.String;
@@ -1661,9 +1658,8 @@ export type JobsListResultItemKind = "" | "edge";
 export const JobsListResultItemKind = S.String;
 
 export type JobsListResultItemOutputOptionsFieldNamesList = Array<string>;
-export const JobsListResultItemOutputOptionsFieldNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JobsListResultItemOutputOptionsFieldNamesList>;
+export const JobsListResultItemOutputOptionsFieldNamesList =
+  JobsCreateRequestOutputOptionsFieldNamesList as any as S.Schema<JobsListResultItemOutputOptionsFieldNamesList>;
 
 export type JobsListResultItemOutputOptionsOutputType = "ndjson" | "csv";
 export const JobsListResultItemOutputOptionsOutputType = S.String;
@@ -2042,10 +2038,8 @@ export const PreviewTransformerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PreviewTransformerRequest>;
 
 export type PreviewTransformerResultItemMap = { [key: string]: unknown | undefined };
-export const PreviewTransformerResultItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PreviewTransformerResultItemMap>;
+export const PreviewTransformerResultItemMap =
+  PreviewTransformerRequestInputMap as any as S.Schema<PreviewTransformerResultItemMap>;
 
 export type PreviewTransformerResultList = Array<PreviewTransformerResultItemMap>;
 export const PreviewTransformerResultList = /*@__PURE__*/ S.Array(
@@ -2066,9 +2060,8 @@ export type JobsUpdateRequestKind = "" | "edge";
 export const JobsUpdateRequestKind = S.String;
 
 export type JobsUpdateRequestOutputOptionsFieldNamesList = Array<string>;
-export const JobsUpdateRequestOutputOptionsFieldNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JobsUpdateRequestOutputOptionsFieldNamesList>;
+export const JobsUpdateRequestOutputOptionsFieldNamesList =
+  JobsCreateRequestOutputOptionsFieldNamesList as any as S.Schema<JobsUpdateRequestOutputOptionsFieldNamesList>;
 
 export type JobsUpdateRequestOutputOptionsOutputType = "ndjson" | "csv";
 export const JobsUpdateRequestOutputOptionsOutputType = S.String;
@@ -2236,9 +2229,8 @@ export type JobsUpdateResponseKind = "" | "edge";
 export const JobsUpdateResponseKind = S.String;
 
 export type JobsUpdateResponseOutputOptionsFieldNamesList = Array<string>;
-export const JobsUpdateResponseOutputOptionsFieldNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JobsUpdateResponseOutputOptionsFieldNamesList>;
+export const JobsUpdateResponseOutputOptionsFieldNamesList =
+  JobsCreateRequestOutputOptionsFieldNamesList as any as S.Schema<JobsUpdateResponseOutputOptionsFieldNamesList>;
 
 export type JobsUpdateResponseOutputOptionsOutputType = "ndjson" | "csv";
 export const JobsUpdateResponseOutputOptionsOutputType = S.String;

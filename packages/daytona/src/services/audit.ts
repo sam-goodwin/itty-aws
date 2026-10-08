@@ -148,9 +148,7 @@ export const StringFilterInList = /*@__PURE__*/ S.Array(
 
 /** Match values not present in this list. Accepts comma-separated values or repeated query parameters. Maximum 100 entries. */
 export type StringFilterNotInList = Array<string>;
-export const StringFilterNotInList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringFilterNotInList>;
+export const StringFilterNotInList = StringFilterInList as any as S.Schema<StringFilterNotInList>;
 
 export interface StringFilter {
   /** Match values equal to this value. */

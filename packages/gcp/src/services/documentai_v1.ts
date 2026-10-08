@@ -1233,21 +1233,12 @@ export interface GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFoo
   pageSpan?: GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan;
 }
 export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      text: S.optional(S.String),
-      pageSpan: S.optional(GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter",
-  }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter>;
+  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader as any as S.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter>;
 
 export type GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooterList =
   Array<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter>;
 export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooterList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter,
-  ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooterList>;
+  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeaderList as any as S.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooterList>;
 
 /** Represents a chunk. */
 export interface GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk {
@@ -1576,9 +1567,8 @@ export type GoogleCloudDocumentaiV1Vertex = GoogleCloudDocumentaiV1NormalizedVer
 export const GoogleCloudDocumentaiV1Vertex = GoogleCloudDocumentaiV1NormalizedVertex;
 
 export type GoogleCloudDocumentaiV1VertexList = Array<GoogleCloudDocumentaiV1NormalizedVertex>;
-export const GoogleCloudDocumentaiV1VertexList = /*@__PURE__*/ S.Array(
-  GoogleCloudDocumentaiV1NormalizedVertex,
-) as any as S.Schema<GoogleCloudDocumentaiV1VertexList>;
+export const GoogleCloudDocumentaiV1VertexList =
+  GoogleCloudDocumentaiV1NormalizedVertexList as any as S.Schema<GoogleCloudDocumentaiV1VertexList>;
 
 /** A bounding polygon for the detected image annotation. */
 export interface GoogleCloudDocumentaiV1BoundingPoly {

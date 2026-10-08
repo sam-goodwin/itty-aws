@@ -813,13 +813,8 @@ export interface GoogleCloudDatalabelingV1beta1PdfInstruction {
   /** PDF file for the instruction. Only gcs path is allowed. */
   gcsFileUri?: string;
 }
-export const GoogleCloudDatalabelingV1beta1PdfInstruction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcsFileUri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudDatalabelingV1beta1PdfInstruction",
-}) as any as S.Schema<GoogleCloudDatalabelingV1beta1PdfInstruction>;
+export const GoogleCloudDatalabelingV1beta1PdfInstruction =
+  GoogleCloudDatalabelingV1beta1CsvInstruction as any as S.Schema<GoogleCloudDatalabelingV1beta1PdfInstruction>;
 
 /** Instruction of how to perform the labeling task for human operators. Currently only PDF instruction is supported. */
 export interface GoogleCloudDatalabelingV1beta1Instruction {
@@ -1283,14 +1278,8 @@ export interface GoogleCloudDatalabelingV1beta1SegmentationConfig {
   /** Instruction message showed on labelers UI. */
   instructionMessage?: string;
 }
-export const GoogleCloudDatalabelingV1beta1SegmentationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    annotationSpecSet: S.optional(S.String),
-    instructionMessage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudDatalabelingV1beta1SegmentationConfig",
-}) as any as S.Schema<GoogleCloudDatalabelingV1beta1SegmentationConfig>;
+export const GoogleCloudDatalabelingV1beta1SegmentationConfig =
+  GoogleCloudDatalabelingV1beta1BoundingPolyConfig as any as S.Schema<GoogleCloudDatalabelingV1beta1SegmentationConfig>;
 
 /** Config for video object detection human labeling task. Object detection will be conducted on the images extracted from the video, and those objects will be labeled with bounding boxes. User need to specify the number of images to be extracted per second as the extraction frame rate. */
 export interface GoogleCloudDatalabelingV1beta1ObjectDetectionConfig {
@@ -1732,26 +1721,16 @@ export interface GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly {
   /** The bounding polygon normalized vertices. */
   normalizedVertices?: GoogleCloudDatalabelingV1beta1NormalizedVertexList;
 }
-export const GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    normalizedVertices: S.optional(GoogleCloudDatalabelingV1beta1NormalizedVertexList),
-  }),
-).annotate({
-  identifier: "GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly",
-}) as any as S.Schema<GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly>;
+export const GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly =
+  GoogleCloudDatalabelingV1beta1NormalizedPolyline as any as S.Schema<GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly>;
 
 /** A bounding polygon in the image. */
 export interface GoogleCloudDatalabelingV1beta1BoundingPoly {
   /** The bounding polygon vertices. */
   vertices?: GoogleCloudDatalabelingV1beta1VertexList;
 }
-export const GoogleCloudDatalabelingV1beta1BoundingPoly = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vertices: S.optional(GoogleCloudDatalabelingV1beta1VertexList),
-  }),
-).annotate({
-  identifier: "GoogleCloudDatalabelingV1beta1BoundingPoly",
-}) as any as S.Schema<GoogleCloudDatalabelingV1beta1BoundingPoly>;
+export const GoogleCloudDatalabelingV1beta1BoundingPoly =
+  GoogleCloudDatalabelingV1beta1Polyline as any as S.Schema<GoogleCloudDatalabelingV1beta1BoundingPoly>;
 
 /** Video frame level annotation for object detection and tracking. */
 export interface GoogleCloudDatalabelingV1beta1ObjectTrackingFrame {
@@ -1815,14 +1794,8 @@ export interface GoogleCloudDatalabelingV1beta1TextClassificationAnnotation {
   /** Label of the text. */
   annotationSpec?: GoogleCloudDatalabelingV1beta1AnnotationSpec;
 }
-export const GoogleCloudDatalabelingV1beta1TextClassificationAnnotation = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      annotationSpec: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpec),
-    }),
-).annotate({
-  identifier: "GoogleCloudDatalabelingV1beta1TextClassificationAnnotation",
-}) as any as S.Schema<GoogleCloudDatalabelingV1beta1TextClassificationAnnotation>;
+export const GoogleCloudDatalabelingV1beta1TextClassificationAnnotation =
+  GoogleCloudDatalabelingV1beta1ImageClassificationAnnotation as any as S.Schema<GoogleCloudDatalabelingV1beta1TextClassificationAnnotation>;
 
 /** Image bounding poly annotation. It represents a polygon including bounding box in the image. */
 export interface GoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation {

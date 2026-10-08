@@ -298,10 +298,8 @@ export const ListImagesResponseImagesItemDeprecation = GetImageResponseImageDepr
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type ListImagesResponseImagesItemLabelsMap = { [key: string]: string | undefined };
-export const ListImagesResponseImagesItemLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListImagesResponseImagesItemLabelsMap>;
+export const ListImagesResponseImagesItemLabelsMap =
+  GetImageResponseImageLabelsMap as any as S.Schema<ListImagesResponseImagesItemLabelsMap>;
 
 /** CPU architecture compatible with the Image. */
 export type ListImagesResponseImagesItemArchitecture = "x86" | "arm";
@@ -433,10 +431,8 @@ export const UpdateImageRequestType = S.String;
 
 /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
 export type UpdateImageRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateImageRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateImageRequestLabelsMap>;
+export const UpdateImageRequestLabelsMap =
+  GetImageResponseImageLabelsMap as any as S.Schema<UpdateImageRequestLabelsMap>;
 
 export interface UpdateImageRequest {
   /** ID of the Image. */
@@ -491,10 +487,8 @@ export const UpdateImageResponseImageDeprecation = GetImageResponseImageDeprecat
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type UpdateImageResponseImageLabelsMap = { [key: string]: string | undefined };
-export const UpdateImageResponseImageLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateImageResponseImageLabelsMap>;
+export const UpdateImageResponseImageLabelsMap =
+  GetImageResponseImageLabelsMap as any as S.Schema<UpdateImageResponseImageLabelsMap>;
 
 /** CPU architecture compatible with the Image. */
 export type UpdateImageResponseImageArchitecture = "x86" | "arm";

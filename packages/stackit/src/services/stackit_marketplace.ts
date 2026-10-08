@@ -476,11 +476,8 @@ export const RejectVendorsSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RejectVendorsSubscriptionRequest>;
 
 export interface RejectVendorsSubscriptionResponse {}
-export const RejectVendorsSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RejectVendorsSubscriptionResponse",
-}) as any as S.Schema<RejectVendorsSubscriptionResponse>;
+export const RejectVendorsSubscriptionResponse =
+  CancelConsumersSubscriptionResponse as any as S.Schema<RejectVendorsSubscriptionResponse>;
 
 export interface ResolveCustomerRequest {
   projectId: string;
@@ -522,11 +519,8 @@ export const TerminateConsumersSubscriptionRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<TerminateConsumersSubscriptionRequest>;
 
 export interface TerminateConsumersSubscriptionResponse {}
-export const TerminateConsumersSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TerminateConsumersSubscriptionResponse",
-}) as any as S.Schema<TerminateConsumersSubscriptionResponse>;
+export const TerminateConsumersSubscriptionResponse =
+  CancelConsumersSubscriptionResponse as any as S.Schema<TerminateConsumersSubscriptionResponse>;
 
 export interface VendorsSubscriptionsListByOrganizationRequest {
   organizationId: string;

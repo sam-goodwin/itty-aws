@@ -45,9 +45,7 @@ export const ContainerArgsList = /*@__PURE__*/ S.Array(
 
 /** Container command override. */
 export type ContainerCommandList = Array<string>;
-export const ContainerCommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContainerCommandList>;
+export const ContainerCommandList = ContainerArgsList as any as S.Schema<ContainerCommandList>;
 
 /** EnvVarType identifies the origin of an environment variable. - ENV_FROM_SOURCE_TYPE_UNSPECIFIED: Used as zero value. - ENV_FROM_SOURCE_TYPE_MANUAL: Environment source from a literal value. - ENV_FROM_SOURCE_TYPE_SECRET: Environment source from a secret. */
 export type EnvVarType =
@@ -115,9 +113,7 @@ export const CreateApplicationRequestContainersList = /*@__PURE__*/ S.Array(
 
 /** Allowed destination CIDRs for Ingress traffic. */
 export type NetworkIngressAclList = Array<string>;
-export const NetworkIngressAclList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkIngressAclList>;
+export const NetworkIngressAclList = ContainerArgsList as any as S.Schema<NetworkIngressAclList>;
 
 /** Network configuration for an application. */
 export interface Network {
@@ -402,21 +398,18 @@ export const CreateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Containers to deploy for the application. */
 export type ApplicationContainersList = Array<Container>;
-export const ApplicationContainersList = /*@__PURE__*/ S.Array(
-  Container,
-) as any as S.Schema<ApplicationContainersList>;
+export const ApplicationContainersList =
+  CreateApplicationRequestContainersList as any as S.Schema<ApplicationContainersList>;
 
 /** Image registry configuration for the application. */
 export type ApplicationRegistryList = Array<ApplicationRegistry>;
-export const ApplicationRegistryList = /*@__PURE__*/ S.Array(
-  ApplicationRegistry,
-) as any as S.Schema<ApplicationRegistryList>;
+export const ApplicationRegistryList =
+  CreateApplicationRequestRegistryList as any as S.Schema<ApplicationRegistryList>;
 
 /** Failure reasons collected from workload conditions. */
 export type RuntimeStatusFailureReasonsList = Array<string>;
-export const RuntimeStatusFailureReasonsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RuntimeStatusFailureReasonsList>;
+export const RuntimeStatusFailureReasonsList =
+  ContainerArgsList as any as S.Schema<RuntimeStatusFailureReasonsList>;
 
 /** - INSTANCE_STATUS_PROGRESSING: Instance is being created. - INSTANCE_STATUS_RUNNING: Instance is available and running. - INSTANCE_STATUS_FAILED: Instance is not available and has some error. */
 export type InstanceStatus =
@@ -445,9 +438,7 @@ export const RuntimeStatusInstancesList = /*@__PURE__*/ S.Array(
 
 /** Known URLs for the running application. */
 export type RuntimeStatusUrlsList = Array<string>;
-export const RuntimeStatusUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RuntimeStatusUrlsList>;
+export const RuntimeStatusUrlsList = ContainerArgsList as any as S.Schema<RuntimeStatusUrlsList>;
 
 export interface RuntimeStatus {
   currentStatus?: CurrentStatus;
@@ -474,9 +465,8 @@ export const RuntimeStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Secrets associated with the application. */
 export type ApplicationSecretsList = Array<ApplicationSecret>;
-export const ApplicationSecretsList = /*@__PURE__*/ S.Array(
-  ApplicationSecret,
-) as any as S.Schema<ApplicationSecretsList>;
+export const ApplicationSecretsList =
+  CreateApplicationRequestSecretsList as any as S.Schema<ApplicationSecretsList>;
 
 /** Application describes a deployable multi-container workload instance. */
 export interface Application {
@@ -707,17 +697,12 @@ export interface Log {
   /** Log message. */
   message?: string;
 }
-export const Log = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({ identifier: "Log" }) as any as S.Schema<Log>;
+export const Log = Event as any as S.Schema<Log>;
 
 /** Logs list. */
 export type GetApplicationLogsResponseLogsList = Array<Log>;
-export const GetApplicationLogsResponseLogsList = /*@__PURE__*/ S.Array(
-  Log,
-) as any as S.Schema<GetApplicationLogsResponseLogsList>;
+export const GetApplicationLogsResponseLogsList =
+  GetApplicationEventsResponseEventsList as any as S.Schema<GetApplicationLogsResponseLogsList>;
 
 /** GetApplicationLogsResponse contains an application's logs list. */
 export interface GetApplicationLogsResponse {
@@ -951,21 +936,18 @@ export const ListProjectApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Containers to deploy for the application. */
 export type UpdateApplicationRequestContainersList = Array<Container>;
-export const UpdateApplicationRequestContainersList = /*@__PURE__*/ S.Array(
-  Container,
-) as any as S.Schema<UpdateApplicationRequestContainersList>;
+export const UpdateApplicationRequestContainersList =
+  CreateApplicationRequestContainersList as any as S.Schema<UpdateApplicationRequestContainersList>;
 
 /** Image registry configuration for the application. */
 export type UpdateApplicationRequestRegistryList = Array<ApplicationRegistry>;
-export const UpdateApplicationRequestRegistryList = /*@__PURE__*/ S.Array(
-  ApplicationRegistry,
-) as any as S.Schema<UpdateApplicationRequestRegistryList>;
+export const UpdateApplicationRequestRegistryList =
+  CreateApplicationRequestRegistryList as any as S.Schema<UpdateApplicationRequestRegistryList>;
 
 /** Secrets associated with the application. */
 export type UpdateApplicationRequestSecretsList = Array<ApplicationSecret>;
-export const UpdateApplicationRequestSecretsList = /*@__PURE__*/ S.Array(
-  ApplicationSecret,
-) as any as S.Schema<UpdateApplicationRequestSecretsList>;
+export const UpdateApplicationRequestSecretsList =
+  CreateApplicationRequestSecretsList as any as S.Schema<UpdateApplicationRequestSecretsList>;
 
 export interface UpdateApplicationRequest {
   /** Project to update the application in. */

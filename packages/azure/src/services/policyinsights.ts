@@ -130,9 +130,8 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** The evidence supporting the compliance state set in this attestation. */
 export type AttestationPropertiesEvidenceList = Array<AttestationEvidence>;
-export const AttestationPropertiesEvidenceList = /*@__PURE__*/ S.Array(
-  AttestationEvidence,
-) as any as S.Schema<AttestationPropertiesEvidenceList>;
+export const AttestationPropertiesEvidenceList =
+  AttestationPropertiesInputEvidenceList as any as S.Schema<AttestationPropertiesEvidenceList>;
 
 /** The properties of an attestation resource. */
 export interface AttestationProperties {
@@ -239,17 +238,8 @@ export interface AttestationsCreateOrUpdateAtResourceGroupResponse {
   /** Properties for the attestation. */
   properties: AttestationProperties;
 }
-export const AttestationsCreateOrUpdateAtResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: AttestationProperties,
-  }),
-).annotate({
-  identifier: "AttestationsCreateOrUpdateAtResourceGroupResponse",
-}) as any as S.Schema<AttestationsCreateOrUpdateAtResourceGroupResponse>;
+export const AttestationsCreateOrUpdateAtResourceGroupResponse =
+  AttestationsCreateOrUpdateAtResourceResponse as any as S.Schema<AttestationsCreateOrUpdateAtResourceGroupResponse>;
 
 export interface AttestationsCreateOrUpdateAtSubscriptionRequest {
   /** The ID of the target subscription. */
@@ -288,17 +278,8 @@ export interface AttestationsCreateOrUpdateAtSubscriptionResponse {
   /** Properties for the attestation. */
   properties: AttestationProperties;
 }
-export const AttestationsCreateOrUpdateAtSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: AttestationProperties,
-  }),
-).annotate({
-  identifier: "AttestationsCreateOrUpdateAtSubscriptionResponse",
-}) as any as S.Schema<AttestationsCreateOrUpdateAtSubscriptionResponse>;
+export const AttestationsCreateOrUpdateAtSubscriptionResponse =
+  AttestationsCreateOrUpdateAtResourceResponse as any as S.Schema<AttestationsCreateOrUpdateAtSubscriptionResponse>;
 
 export type CancelRemediationAtManagementGroupRequestManagementGroupsNamespace =
   "Microsoft.Management";
@@ -344,9 +325,8 @@ export const RemediationFiltersLocationsList = /*@__PURE__*/ S.Array(
 
 /** The IDs of the resources that will be remediated. Can specify at most 100 IDs. This filter cannot be used when ReEvaluateCompliance is set to ReEvaluateCompliance, and cannot be empty if provided. */
 export type RemediationFiltersResourceIdsList = Array<string>;
-export const RemediationFiltersResourceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemediationFiltersResourceIdsList>;
+export const RemediationFiltersResourceIdsList =
+  RemediationFiltersLocationsList as any as S.Schema<RemediationFiltersResourceIdsList>;
 
 /** The filters that will be applied to determine which resources to remediate. */
 export interface RemediationFilters {
@@ -499,17 +479,8 @@ export interface CancelRemediationAtResourceResponse {
   /** Properties for the remediation. */
   properties?: RemediationProperties;
 }
-export const CancelRemediationAtResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RemediationProperties),
-  }),
-).annotate({
-  identifier: "CancelRemediationAtResourceResponse",
-}) as any as S.Schema<CancelRemediationAtResourceResponse>;
+export const CancelRemediationAtResourceResponse =
+  CancelRemediationAtManagementGroupResponse as any as S.Schema<CancelRemediationAtResourceResponse>;
 
 export interface CancelRemediationAtResourceGroupRequest {
   /** The ID of the target subscription. */
@@ -548,17 +519,8 @@ export interface CancelRemediationAtResourceGroupResponse {
   /** Properties for the remediation. */
   properties?: RemediationProperties;
 }
-export const CancelRemediationAtResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RemediationProperties),
-  }),
-).annotate({
-  identifier: "CancelRemediationAtResourceGroupResponse",
-}) as any as S.Schema<CancelRemediationAtResourceGroupResponse>;
+export const CancelRemediationAtResourceGroupResponse =
+  CancelRemediationAtManagementGroupResponse as any as S.Schema<CancelRemediationAtResourceGroupResponse>;
 
 export interface CancelRemediationAtSubscriptionRequest {
   /** The ID of the target subscription. */
@@ -594,17 +556,8 @@ export interface CancelRemediationAtSubscriptionResponse {
   /** Properties for the remediation. */
   properties?: RemediationProperties;
 }
-export const CancelRemediationAtSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RemediationProperties),
-  }),
-).annotate({
-  identifier: "CancelRemediationAtSubscriptionResponse",
-}) as any as S.Schema<CancelRemediationAtSubscriptionResponse>;
+export const CancelRemediationAtSubscriptionResponse =
+  CancelRemediationAtManagementGroupResponse as any as S.Schema<CancelRemediationAtSubscriptionResponse>;
 
 export type CheckPolicyRestrictionAtManagementGroupScopeRequestManagementGroupsNamespace =
   "Microsoft.Management";
@@ -632,9 +585,8 @@ export const CheckRestrictionsResourceDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of potential values for the field that should be evaluated against Azure Policy. */
 export type PendingFieldValuesList = Array<string>;
-export const PendingFieldValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PendingFieldValuesList>;
+export const PendingFieldValuesList =
+  RemediationFiltersLocationsList as any as S.Schema<PendingFieldValuesList>;
 
 /** A field that should be evaluated against Azure Policy to determine restrictions. */
 export interface PendingField {
@@ -695,9 +647,8 @@ export const FieldRestrictionResult = S.String;
 
 /** The values that policy either requires or denies for the field. */
 export type FieldRestrictionValuesList = Array<string>;
-export const FieldRestrictionValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FieldRestrictionValuesList>;
+export const FieldRestrictionValuesList =
+  RemediationFiltersLocationsList as any as S.Schema<FieldRestrictionValuesList>;
 
 /** Resource identifiers for a policy. */
 export interface PolicyReference {
@@ -916,9 +867,7 @@ export const CheckRestrictionsResult = /*@__PURE__*/ S.suspend(() =>
 export type CheckPolicyRestrictionAtResourceGroupScopeRequestPendingFieldsList =
   Array<PendingField>;
 export const CheckPolicyRestrictionAtResourceGroupScopeRequestPendingFieldsList =
-  /*@__PURE__*/ S.Array(
-    PendingField,
-  ) as any as S.Schema<CheckPolicyRestrictionAtResourceGroupScopeRequestPendingFieldsList>;
+  CheckPolicyRestrictionAtManagementGroupScopeRequestPendingFieldsList as any as S.Schema<CheckPolicyRestrictionAtResourceGroupScopeRequestPendingFieldsList>;
 
 export interface CheckPolicyRestrictionAtResourceGroupScopeRequest {
   /** The ID of the target subscription. */
@@ -954,9 +903,7 @@ export const CheckPolicyRestrictionAtResourceGroupScopeRequest = /*@__PURE__*/ S
 /** The list of fields and values that should be evaluated for potential restrictions. */
 export type CheckPolicyRestrictionAtSubscriptionScopeRequestPendingFieldsList = Array<PendingField>;
 export const CheckPolicyRestrictionAtSubscriptionScopeRequestPendingFieldsList =
-  /*@__PURE__*/ S.Array(
-    PendingField,
-  ) as any as S.Schema<CheckPolicyRestrictionAtSubscriptionScopeRequestPendingFieldsList>;
+  CheckPolicyRestrictionAtManagementGroupScopeRequestPendingFieldsList as any as S.Schema<CheckPolicyRestrictionAtSubscriptionScopeRequestPendingFieldsList>;
 
 export interface CheckPolicyRestrictionAtSubscriptionScopeRequest {
   /** The ID of the target subscription. */
@@ -1041,11 +988,8 @@ export const DeleteAttestationAtResourceGroupRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteAttestationAtResourceGroupRequest>;
 
 export interface DeleteAttestationAtResourceGroupResponse {}
-export const DeleteAttestationAtResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAttestationAtResourceGroupResponse",
-}) as any as S.Schema<DeleteAttestationAtResourceGroupResponse>;
+export const DeleteAttestationAtResourceGroupResponse =
+  DeleteAttestationAtResourceResponse as any as S.Schema<DeleteAttestationAtResourceGroupResponse>;
 
 export interface DeleteAttestationAtSubscriptionRequest {
   /** The ID of the target subscription. */
@@ -1070,11 +1014,8 @@ export const DeleteAttestationAtSubscriptionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteAttestationAtSubscriptionRequest>;
 
 export interface DeleteAttestationAtSubscriptionResponse {}
-export const DeleteAttestationAtSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAttestationAtSubscriptionResponse",
-}) as any as S.Schema<DeleteAttestationAtSubscriptionResponse>;
+export const DeleteAttestationAtSubscriptionResponse =
+  DeleteAttestationAtResourceResponse as any as S.Schema<DeleteAttestationAtSubscriptionResponse>;
 
 export type DeleteRemediationAtManagementGroupRequestManagementGroupsNamespace =
   "Microsoft.Management";
@@ -1120,17 +1061,8 @@ export interface DeleteRemediationAtManagementGroupResponse {
   /** Properties for the remediation. */
   properties?: RemediationProperties;
 }
-export const DeleteRemediationAtManagementGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RemediationProperties),
-  }),
-).annotate({
-  identifier: "DeleteRemediationAtManagementGroupResponse",
-}) as any as S.Schema<DeleteRemediationAtManagementGroupResponse>;
+export const DeleteRemediationAtManagementGroupResponse =
+  CancelRemediationAtManagementGroupResponse as any as S.Schema<DeleteRemediationAtManagementGroupResponse>;
 
 export interface DeleteRemediationAtResourceRequest {
   /** Resource ID. */
@@ -1166,17 +1098,8 @@ export interface DeleteRemediationAtResourceResponse {
   /** Properties for the remediation. */
   properties?: RemediationProperties;
 }
-export const DeleteRemediationAtResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RemediationProperties),
-  }),
-).annotate({
-  identifier: "DeleteRemediationAtResourceResponse",
-}) as any as S.Schema<DeleteRemediationAtResourceResponse>;
+export const DeleteRemediationAtResourceResponse =
+  CancelRemediationAtManagementGroupResponse as any as S.Schema<DeleteRemediationAtResourceResponse>;
 
 export interface DeleteRemediationAtResourceGroupRequest {
   /** The ID of the target subscription. */
@@ -1215,17 +1138,8 @@ export interface DeleteRemediationAtResourceGroupResponse {
   /** Properties for the remediation. */
   properties?: RemediationProperties;
 }
-export const DeleteRemediationAtResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RemediationProperties),
-  }),
-).annotate({
-  identifier: "DeleteRemediationAtResourceGroupResponse",
-}) as any as S.Schema<DeleteRemediationAtResourceGroupResponse>;
+export const DeleteRemediationAtResourceGroupResponse =
+  CancelRemediationAtManagementGroupResponse as any as S.Schema<DeleteRemediationAtResourceGroupResponse>;
 
 export interface DeleteRemediationAtSubscriptionRequest {
   /** The ID of the target subscription. */
@@ -1261,17 +1175,8 @@ export interface DeleteRemediationAtSubscriptionResponse {
   /** Properties for the remediation. */
   properties?: RemediationProperties;
 }
-export const DeleteRemediationAtSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RemediationProperties),
-  }),
-).annotate({
-  identifier: "DeleteRemediationAtSubscriptionResponse",
-}) as any as S.Schema<DeleteRemediationAtSubscriptionResponse>;
+export const DeleteRemediationAtSubscriptionResponse =
+  CancelRemediationAtManagementGroupResponse as any as S.Schema<DeleteRemediationAtSubscriptionResponse>;
 
 export interface GetAttestationAtResourceRequest {
   /** Resource ID. */
@@ -1307,17 +1212,8 @@ export interface GetAttestationAtResourceResponse {
   /** Properties for the attestation. */
   properties: AttestationProperties;
 }
-export const GetAttestationAtResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: AttestationProperties,
-  }),
-).annotate({
-  identifier: "GetAttestationAtResourceResponse",
-}) as any as S.Schema<GetAttestationAtResourceResponse>;
+export const GetAttestationAtResourceResponse =
+  AttestationsCreateOrUpdateAtResourceResponse as any as S.Schema<GetAttestationAtResourceResponse>;
 
 export interface GetAttestationAtResourceGroupRequest {
   /** The ID of the target subscription. */
@@ -1356,17 +1252,8 @@ export interface GetAttestationAtResourceGroupResponse {
   /** Properties for the attestation. */
   properties: AttestationProperties;
 }
-export const GetAttestationAtResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: AttestationProperties,
-  }),
-).annotate({
-  identifier: "GetAttestationAtResourceGroupResponse",
-}) as any as S.Schema<GetAttestationAtResourceGroupResponse>;
+export const GetAttestationAtResourceGroupResponse =
+  AttestationsCreateOrUpdateAtResourceResponse as any as S.Schema<GetAttestationAtResourceGroupResponse>;
 
 export interface GetAttestationAtSubscriptionRequest {
   /** The ID of the target subscription. */
@@ -1402,17 +1289,8 @@ export interface GetAttestationAtSubscriptionResponse {
   /** Properties for the attestation. */
   properties: AttestationProperties;
 }
-export const GetAttestationAtSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: AttestationProperties,
-  }),
-).annotate({
-  identifier: "GetAttestationAtSubscriptionResponse",
-}) as any as S.Schema<GetAttestationAtSubscriptionResponse>;
+export const GetAttestationAtSubscriptionResponse =
+  AttestationsCreateOrUpdateAtResourceResponse as any as S.Schema<GetAttestationAtSubscriptionResponse>;
 
 export interface GetPolicyMetadataResourceRequest {
   /** The name of the policy metadata resource. */
@@ -1534,17 +1412,8 @@ export interface GetRemediationAtManagementGroupResponse {
   /** Properties for the remediation. */
   properties?: RemediationProperties;
 }
-export const GetRemediationAtManagementGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RemediationProperties),
-  }),
-).annotate({
-  identifier: "GetRemediationAtManagementGroupResponse",
-}) as any as S.Schema<GetRemediationAtManagementGroupResponse>;
+export const GetRemediationAtManagementGroupResponse =
+  CancelRemediationAtManagementGroupResponse as any as S.Schema<GetRemediationAtManagementGroupResponse>;
 
 export interface GetRemediationAtResourceRequest {
   /** Resource ID. */
@@ -1580,17 +1449,8 @@ export interface GetRemediationAtResourceResponse {
   /** Properties for the remediation. */
   properties?: RemediationProperties;
 }
-export const GetRemediationAtResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RemediationProperties),
-  }),
-).annotate({
-  identifier: "GetRemediationAtResourceResponse",
-}) as any as S.Schema<GetRemediationAtResourceResponse>;
+export const GetRemediationAtResourceResponse =
+  CancelRemediationAtManagementGroupResponse as any as S.Schema<GetRemediationAtResourceResponse>;
 
 export interface GetRemediationAtResourceGroupRequest {
   /** The ID of the target subscription. */
@@ -1629,17 +1489,8 @@ export interface GetRemediationAtResourceGroupResponse {
   /** Properties for the remediation. */
   properties?: RemediationProperties;
 }
-export const GetRemediationAtResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RemediationProperties),
-  }),
-).annotate({
-  identifier: "GetRemediationAtResourceGroupResponse",
-}) as any as S.Schema<GetRemediationAtResourceGroupResponse>;
+export const GetRemediationAtResourceGroupResponse =
+  CancelRemediationAtManagementGroupResponse as any as S.Schema<GetRemediationAtResourceGroupResponse>;
 
 export interface GetRemediationAtSubscriptionRequest {
   /** The ID of the target subscription. */
@@ -1675,17 +1526,8 @@ export interface GetRemediationAtSubscriptionResponse {
   /** Properties for the remediation. */
   properties?: RemediationProperties;
 }
-export const GetRemediationAtSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RemediationProperties),
-  }),
-).annotate({
-  identifier: "GetRemediationAtSubscriptionResponse",
-}) as any as S.Schema<GetRemediationAtSubscriptionResponse>;
+export const GetRemediationAtSubscriptionResponse =
+  CancelRemediationAtManagementGroupResponse as any as S.Schema<GetRemediationAtSubscriptionResponse>;
 
 export interface ListAttestationForResourceRequest {
   /** Resource ID. */
@@ -1885,9 +1727,8 @@ export const ComponentExpressionEvaluationDetails = ExpressionEvaluationDetails;
 /** Details of the evaluated expressions. */
 export type ComponentPolicyEvaluationDetailsEvaluatedExpressionsList =
   Array<ExpressionEvaluationDetails>;
-export const ComponentPolicyEvaluationDetailsEvaluatedExpressionsList = /*@__PURE__*/ S.Array(
-  ExpressionEvaluationDetails,
-) as any as S.Schema<ComponentPolicyEvaluationDetailsEvaluatedExpressionsList>;
+export const ComponentPolicyEvaluationDetailsEvaluatedExpressionsList =
+  CheckRestrictionEvaluationDetailsEvaluatedExpressionsList as any as S.Schema<ComponentPolicyEvaluationDetailsEvaluatedExpressionsList>;
 
 /** Policy evaluation details. */
 export interface ComponentPolicyEvaluationDetails {
@@ -1907,9 +1748,8 @@ export const ComponentPolicyEvaluationDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Policy definition group names. */
 export type ComponentPolicyStatePolicyDefinitionGroupNamesList = Array<string>;
-export const ComponentPolicyStatePolicyDefinitionGroupNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ComponentPolicyStatePolicyDefinitionGroupNamesList>;
+export const ComponentPolicyStatePolicyDefinitionGroupNamesList =
+  RemediationFiltersLocationsList as any as S.Schema<ComponentPolicyStatePolicyDefinitionGroupNamesList>;
 
 /** Component Policy State record. */
 export interface ComponentPolicyState {
@@ -3248,9 +3088,8 @@ export const ListPolicyStateQueryResultsForManagementGroupRequest = /*@__PURE__*
 
 /** Details of the evaluated expressions. */
 export type PolicyEvaluationDetailsEvaluatedExpressionsList = Array<ExpressionEvaluationDetails>;
-export const PolicyEvaluationDetailsEvaluatedExpressionsList = /*@__PURE__*/ S.Array(
-  ExpressionEvaluationDetails,
-) as any as S.Schema<PolicyEvaluationDetailsEvaluatedExpressionsList>;
+export const PolicyEvaluationDetailsEvaluatedExpressionsList =
+  CheckRestrictionEvaluationDetailsEvaluatedExpressionsList as any as S.Schema<PolicyEvaluationDetailsEvaluatedExpressionsList>;
 
 /** Policy evaluation details. */
 export interface PolicyEvaluationDetails {
@@ -3268,9 +3107,8 @@ export const PolicyEvaluationDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Policy definition group names. */
 export type PolicyStatePolicyDefinitionGroupNamesList = Array<string>;
-export const PolicyStatePolicyDefinitionGroupNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PolicyStatePolicyDefinitionGroupNamesList>;
+export const PolicyStatePolicyDefinitionGroupNamesList =
+  RemediationFiltersLocationsList as any as S.Schema<PolicyStatePolicyDefinitionGroupNamesList>;
 
 /** Component state details. */
 export interface ComponentStateDetails {
@@ -4339,15 +4177,13 @@ export const SummaryResultsResourceDetailsList = /*@__PURE__*/ S.Array(
 
 /** The policy artifact summary at this level. For query scope level, it represents policy assignment summary. For policy assignment level, it represents policy definitions summary. */
 export type SummaryResultsPolicyDetailsList = Array<ComplianceDetail>;
-export const SummaryResultsPolicyDetailsList = /*@__PURE__*/ S.Array(
-  ComplianceDetail,
-) as any as S.Schema<SummaryResultsPolicyDetailsList>;
+export const SummaryResultsPolicyDetailsList =
+  SummaryResultsResourceDetailsList as any as S.Schema<SummaryResultsPolicyDetailsList>;
 
 /** The policy definition group summary at this level. */
 export type SummaryResultsPolicyGroupDetailsList = Array<ComplianceDetail>;
-export const SummaryResultsPolicyGroupDetailsList = /*@__PURE__*/ S.Array(
-  ComplianceDetail,
-) as any as S.Schema<SummaryResultsPolicyGroupDetailsList>;
+export const SummaryResultsPolicyGroupDetailsList =
+  SummaryResultsResourceDetailsList as any as S.Schema<SummaryResultsPolicyGroupDetailsList>;
 
 /** Compliance summary on a particular summary level. */
 export interface SummaryResults {
@@ -4377,9 +4213,8 @@ export const SummaryResults = /*@__PURE__*/ S.suspend(() =>
 
 /** Policy definition group names. */
 export type PolicyDefinitionSummaryPolicyDefinitionGroupNamesList = Array<string>;
-export const PolicyDefinitionSummaryPolicyDefinitionGroupNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PolicyDefinitionSummaryPolicyDefinitionGroupNamesList>;
+export const PolicyDefinitionSummaryPolicyDefinitionGroupNamesList =
+  RemediationFiltersLocationsList as any as S.Schema<PolicyDefinitionSummaryPolicyDefinitionGroupNamesList>;
 
 /** Policy definition summary. */
 export interface PolicyDefinitionSummary {
@@ -4936,17 +4771,8 @@ export interface RemediationsCreateOrUpdateAtManagementGroupResponse {
   /** Properties for the remediation. */
   properties?: RemediationProperties;
 }
-export const RemediationsCreateOrUpdateAtManagementGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RemediationProperties),
-  }),
-).annotate({
-  identifier: "RemediationsCreateOrUpdateAtManagementGroupResponse",
-}) as any as S.Schema<RemediationsCreateOrUpdateAtManagementGroupResponse>;
+export const RemediationsCreateOrUpdateAtManagementGroupResponse =
+  CancelRemediationAtManagementGroupResponse as any as S.Schema<RemediationsCreateOrUpdateAtManagementGroupResponse>;
 
 export interface RemediationsCreateOrUpdateAtResourceRequest {
   /** Resource ID. */
@@ -4985,17 +4811,8 @@ export interface RemediationsCreateOrUpdateAtResourceResponse {
   /** Properties for the remediation. */
   properties?: RemediationProperties;
 }
-export const RemediationsCreateOrUpdateAtResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RemediationProperties),
-  }),
-).annotate({
-  identifier: "RemediationsCreateOrUpdateAtResourceResponse",
-}) as any as S.Schema<RemediationsCreateOrUpdateAtResourceResponse>;
+export const RemediationsCreateOrUpdateAtResourceResponse =
+  CancelRemediationAtManagementGroupResponse as any as S.Schema<RemediationsCreateOrUpdateAtResourceResponse>;
 
 export interface RemediationsCreateOrUpdateAtResourceGroupRequest {
   /** The ID of the target subscription. */
@@ -5037,17 +4854,8 @@ export interface RemediationsCreateOrUpdateAtResourceGroupResponse {
   /** Properties for the remediation. */
   properties?: RemediationProperties;
 }
-export const RemediationsCreateOrUpdateAtResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RemediationProperties),
-  }),
-).annotate({
-  identifier: "RemediationsCreateOrUpdateAtResourceGroupResponse",
-}) as any as S.Schema<RemediationsCreateOrUpdateAtResourceGroupResponse>;
+export const RemediationsCreateOrUpdateAtResourceGroupResponse =
+  CancelRemediationAtManagementGroupResponse as any as S.Schema<RemediationsCreateOrUpdateAtResourceGroupResponse>;
 
 export interface RemediationsCreateOrUpdateAtSubscriptionRequest {
   /** The ID of the target subscription. */
@@ -5086,17 +4894,8 @@ export interface RemediationsCreateOrUpdateAtSubscriptionResponse {
   /** Properties for the remediation. */
   properties?: RemediationProperties;
 }
-export const RemediationsCreateOrUpdateAtSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RemediationProperties),
-  }),
-).annotate({
-  identifier: "RemediationsCreateOrUpdateAtSubscriptionResponse",
-}) as any as S.Schema<RemediationsCreateOrUpdateAtSubscriptionResponse>;
+export const RemediationsCreateOrUpdateAtSubscriptionResponse =
+  CancelRemediationAtManagementGroupResponse as any as S.Schema<RemediationsCreateOrUpdateAtSubscriptionResponse>;
 
 export interface TriggerPolicyStateResourceGroupEvaluationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5121,11 +4920,8 @@ export const TriggerPolicyStateResourceGroupEvaluationRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<TriggerPolicyStateResourceGroupEvaluationRequest>;
 
 export interface TriggerPolicyStateResourceGroupEvaluationResponse {}
-export const TriggerPolicyStateResourceGroupEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TriggerPolicyStateResourceGroupEvaluationResponse",
-}) as any as S.Schema<TriggerPolicyStateResourceGroupEvaluationResponse>;
+export const TriggerPolicyStateResourceGroupEvaluationResponse =
+  DeleteAttestationAtResourceResponse as any as S.Schema<TriggerPolicyStateResourceGroupEvaluationResponse>;
 
 export interface TriggerPolicyStateSubscriptionEvaluationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5147,11 +4943,8 @@ export const TriggerPolicyStateSubscriptionEvaluationRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<TriggerPolicyStateSubscriptionEvaluationRequest>;
 
 export interface TriggerPolicyStateSubscriptionEvaluationResponse {}
-export const TriggerPolicyStateSubscriptionEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TriggerPolicyStateSubscriptionEvaluationResponse",
-}) as any as S.Schema<TriggerPolicyStateSubscriptionEvaluationResponse>;
+export const TriggerPolicyStateSubscriptionEvaluationResponse =
+  DeleteAttestationAtResourceResponse as any as S.Schema<TriggerPolicyStateSubscriptionEvaluationResponse>;
 
 export type AttestationsCreateOrUpdateAtResourceError = AzureOpError;
 /** Creates or updates an attestation at resource scope. */

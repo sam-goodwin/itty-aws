@@ -53,9 +53,8 @@ export const AdGroupAudiencesBodyExcludeList = /*@__PURE__*/ S.Array(
 
 /** IDs of saved audiences to deliver to, prefixed `adaud_`. */
 export type AdGroupAudiencesBodyIncludeList = Array<string>;
-export const AdGroupAudiencesBodyIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AdGroupAudiencesBodyIncludeList>;
+export const AdGroupAudiencesBodyIncludeList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<AdGroupAudiencesBodyIncludeList>;
 
 /** Saved audiences to deliver to or exclude. Can't be combined with demographics.automatic. */
 export interface AdGroupAudiencesBody {
@@ -317,9 +316,8 @@ export const CreateAdGroupRequestFrequencyCap = /*@__PURE__*/ S.suspend(() =>
 
 /** Languages to target, as ISO 639 codes such as `en` or `es`. Empty or omitted targets all languages. */
 export type CreateAdGroupRequestLanguagesList = Array<string>;
-export const CreateAdGroupRequestLanguagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateAdGroupRequestLanguagesList>;
+export const CreateAdGroupRequestLanguagesList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<CreateAdGroupRequestLanguagesList>;
 
 export type CreateAdGroupRequestMessageAppsItem = "messenger" | "instagram" | "whatsapp";
 export const CreateAdGroupRequestMessageAppsItem = S.String;
@@ -369,9 +367,8 @@ export const CreateAdGroupRequestPlacementsCase1ItemPlatform = S.String;
 
 /** Positions to target within the platform, such as `feed` or `story`. Omit to target all of the platform's positions. */
 export type CreateAdGroupRequestPlacementsCase1ItemPositionsList = Array<string>;
-export const CreateAdGroupRequestPlacementsCase1ItemPositionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateAdGroupRequestPlacementsCase1ItemPositionsList>;
+export const CreateAdGroupRequestPlacementsCase1ItemPositionsList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<CreateAdGroupRequestPlacementsCase1ItemPositionsList>;
 
 export interface CreateAdGroupRequestPlacementsCase1Item {
   /** Platform the ads run on. */
@@ -424,15 +421,13 @@ export const AdGroupGeoLocationsBodyCitiesList = /*@__PURE__*/ S.Array(
 
 /** Countries, as ISO 3166-1 alpha-2 codes such as `US`. */
 export type AdGroupGeoLocationsBodyCountriesList = Array<string>;
-export const AdGroupGeoLocationsBodyCountriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AdGroupGeoLocationsBodyCountriesList>;
+export const AdGroupGeoLocationsBodyCountriesList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<AdGroupGeoLocationsBodyCountriesList>;
 
 /** Multi-country groups such as `worldwide` or `europe`. Include-only -- groups can't be excluded. */
 export type AdGroupGeoLocationsBodyCountryGroupsList = Array<string>;
-export const AdGroupGeoLocationsBodyCountryGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AdGroupGeoLocationsBodyCountryGroupsList>;
+export const AdGroupGeoLocationsBodyCountryGroupsList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<AdGroupGeoLocationsBodyCountryGroupsList>;
 
 /** Unit for `radius`. Defaults to `mile`. */
 export type AdGroupGeoLocationsBodyCustomLocationsItemDistanceUnit = "mile" | "kilometer";
@@ -474,9 +469,8 @@ export const AdGroupGeoLocationsBodyCustomLocationsList = /*@__PURE__*/ S.Array(
 
 /** US states and DC, as ISO 3166-2 codes such as `US-CA`. US territories (`PR`, `GU`, `VI`, `AS`, `MP`) and everywhere outside the US are targeted through `countries`. */
 export type AdGroupGeoLocationsBodyRegionsList = Array<string>;
-export const AdGroupGeoLocationsBodyRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AdGroupGeoLocationsBodyRegionsList>;
+export const AdGroupGeoLocationsBodyRegionsList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<AdGroupGeoLocationsBodyRegionsList>;
 
 export interface AdGroupGeoLocationsBodyZipsItemCase1 {
   /** The ad platform's key for the ZIP or postal code. */
@@ -635,14 +629,12 @@ export const AdEntityReference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdEntityReference" }) as any as S.Schema<AdEntityReference>;
 
 export type AdGroupAudiencesExcludeList = Array<string>;
-export const AdGroupAudiencesExcludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AdGroupAudiencesExcludeList>;
+export const AdGroupAudiencesExcludeList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<AdGroupAudiencesExcludeList>;
 
 export type AdGroupAudiencesIncludeList = Array<string>;
-export const AdGroupAudiencesIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AdGroupAudiencesIncludeList>;
+export const AdGroupAudiencesIncludeList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<AdGroupAudiencesIncludeList>;
 
 export interface AdGroupAudiences {
   exclude: AdGroupAudiencesExcludeList;
@@ -786,9 +778,8 @@ export const AdGroupTargetingCategory = AdGroupDetailedTargetingBodyInterestsIte
 
 export type AdGroupDetailedTargetingInterestsList =
   Array<AdGroupDetailedTargetingBodyInterestsItem>;
-export const AdGroupDetailedTargetingInterestsList = /*@__PURE__*/ S.Array(
-  AdGroupDetailedTargetingBodyInterestsItem,
-) as any as S.Schema<AdGroupDetailedTargetingInterestsList>;
+export const AdGroupDetailedTargetingInterestsList =
+  AdGroupDetailedTargetingBodyInterestsList as any as S.Schema<AdGroupDetailedTargetingInterestsList>;
 
 export interface AdGroupDetailedTargeting {
   behaviors: AdGroupDetailedTargetingBehaviorsList;
@@ -887,9 +878,8 @@ export const AdGroupIssuesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AdGroupIssuesList>;
 
 export type AdGroupLanguagesList = Array<string>;
-export const AdGroupLanguagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AdGroupLanguagesList>;
+export const AdGroupLanguagesList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<AdGroupLanguagesList>;
 
 /** Apps the conversation opens in when `conversion_location` is `messaging`. Empty for other conversion locations. */
 export type AdGroupMessageAppsItem = "messenger" | "instagram" | "whatsapp";
@@ -933,9 +923,8 @@ export type AdGroupPlacementPlatform =
 export const AdGroupPlacementPlatform = S.String;
 
 export type AdGroupPlacementPositionsList = Array<string>;
-export const AdGroupPlacementPositionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AdGroupPlacementPositionsList>;
+export const AdGroupPlacementPositionsList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<AdGroupPlacementPositionsList>;
 
 export interface AdGroupPlacement {
   /** Publisher platform where the ad is eligible to appear. */
@@ -977,14 +966,12 @@ export const AdGroupGeoLocationsCitiesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AdGroupGeoLocationsCitiesList>;
 
 export type AdGroupGeoLocationsCountriesList = Array<string>;
-export const AdGroupGeoLocationsCountriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AdGroupGeoLocationsCountriesList>;
+export const AdGroupGeoLocationsCountriesList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<AdGroupGeoLocationsCountriesList>;
 
 export type AdGroupGeoLocationsCountryGroupsList = Array<string>;
-export const AdGroupGeoLocationsCountryGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AdGroupGeoLocationsCountryGroupsList>;
+export const AdGroupGeoLocationsCountryGroupsList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<AdGroupGeoLocationsCountryGroupsList>;
 
 /** Unit for `radius`. */
 export type AdGroupCustomLocationDistanceUnit = "mile" | "kilometer";
@@ -1021,14 +1008,12 @@ export const AdGroupGeoLocationsCustomLocationsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AdGroupGeoLocationsCustomLocationsList>;
 
 export type AdGroupGeoLocationsRegionsList = Array<string>;
-export const AdGroupGeoLocationsRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AdGroupGeoLocationsRegionsList>;
+export const AdGroupGeoLocationsRegionsList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<AdGroupGeoLocationsRegionsList>;
 
 export type AdGroupGeoLocationsZipsList = Array<string>;
-export const AdGroupGeoLocationsZipsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AdGroupGeoLocationsZipsList>;
+export const AdGroupGeoLocationsZipsList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<AdGroupGeoLocationsZipsList>;
 
 export interface AdGroupGeoLocations {
   cities: AdGroupGeoLocationsCitiesList;
@@ -1371,9 +1356,8 @@ export const DuplicateAdGroupResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Languages to target, as ISO 639 codes such as `en` or `es`. Empty or omitted targets all languages. */
 export type EstimateAdGroupReachRequestLanguagesList = Array<string>;
-export const EstimateAdGroupReachRequestLanguagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EstimateAdGroupReachRequestLanguagesList>;
+export const EstimateAdGroupReachRequestLanguagesList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<EstimateAdGroupReachRequestLanguagesList>;
 
 /** The ad network the estimate runs on. */
 export type EstimateAdGroupReachRequestPlatform = "meta";
@@ -1454,9 +1438,8 @@ export const GetAdGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAdGroupRequest" }) as any as S.Schema<GetAdGroupRequest>;
 
 export type ListAdGroupsRequestAdCampaignIdsList = Array<string>;
-export const ListAdGroupsRequestAdCampaignIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListAdGroupsRequestAdCampaignIdsList>;
+export const ListAdGroupsRequestAdCampaignIdsList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<ListAdGroupsRequestAdCampaignIdsList>;
 
 export type ListAdGroupsRequestStatus = "active" | "paused" | "rejected" | "duplicating";
 export const ListAdGroupsRequestStatus = S.String;
@@ -1544,9 +1527,8 @@ export const ListAdGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAdGroupsRequest" }) as any as S.Schema<ListAdGroupsRequest>;
 
 export type ListAdGroupsResponseDataList = Array<AdGroup>;
-export const ListAdGroupsResponseDataList = /*@__PURE__*/ S.Array(
-  AdGroup,
-) as any as S.Schema<ListAdGroupsResponseDataList>;
+export const ListAdGroupsResponseDataList =
+  DuplicateAdGroupResponseDataList as any as S.Schema<ListAdGroupsResponseDataList>;
 
 export interface ListAdGroupsResponsePageInfo {
   end_cursor: string | null;
@@ -1859,9 +1841,8 @@ export const UpdateAdGroupRequestFrequencyCap = CreateAdGroupRequestFrequencyCap
 
 /** Languages to target, as ISO 639 codes such as `en` or `es`. Empty or omitted targets all languages. */
 export type UpdateAdGroupRequestLanguagesList = Array<string>;
-export const UpdateAdGroupRequestLanguagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAdGroupRequestLanguagesList>;
+export const UpdateAdGroupRequestLanguagesList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<UpdateAdGroupRequestLanguagesList>;
 
 export type UpdateAdGroupRequestMessageAppsItem = "messenger" | "instagram" | "whatsapp";
 export const UpdateAdGroupRequestMessageAppsItem = S.String;
@@ -1911,9 +1892,8 @@ export const UpdateAdGroupRequestPlacementsCase1ItemPlatform = S.String;
 
 /** Positions to target within the platform, such as `feed` or `story`. Omit to target all of the platform's positions. */
 export type UpdateAdGroupRequestPlacementsCase1ItemPositionsList = Array<string>;
-export const UpdateAdGroupRequestPlacementsCase1ItemPositionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAdGroupRequestPlacementsCase1ItemPositionsList>;
+export const UpdateAdGroupRequestPlacementsCase1ItemPositionsList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<UpdateAdGroupRequestPlacementsCase1ItemPositionsList>;
 
 export interface UpdateAdGroupRequestPlacementsCase1Item {
   /** Platform the ads run on. */

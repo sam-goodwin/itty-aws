@@ -436,11 +436,10 @@ export interface TagValuePair {
   key?: string;
   value?: string;
 }
-export const TagValuePair = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
-).annotate({ identifier: "TagValuePair" }) as any as S.Schema<TagValuePair>;
+export const TagValuePair = TagCriterionPairForJob as any as S.Schema<TagValuePair>;
 export type __listOfTagValuePair = TagValuePair[];
-export const __listOfTagValuePair = /*@__PURE__*/ S.Array(TagValuePair);
+export const __listOfTagValuePair =
+  __listOfTagCriterionPairForJob as any as S.Schema<__listOfTagValuePair>;
 export type TagTarget = "S3_OBJECT" | (string & {});
 export const TagTarget = S.String;
 
@@ -496,9 +495,7 @@ export const S3JobDefinition = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "S3JobDefinition" }) as any as S.Schema<S3JobDefinition>;
 export interface DailySchedule {}
-export const DailySchedule = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DailySchedule",
-}) as any as S.Schema<DailySchedule>;
+export const DailySchedule = AcceptInvitationResponse as any as S.Schema<DailySchedule>;
 export interface MonthlySchedule {
   dayOfMonth?: number;
 }
@@ -789,9 +786,8 @@ export const CreateSampleFindingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSampleFindingsRequest",
 }) as any as S.Schema<CreateSampleFindingsRequest>;
 export interface CreateSampleFindingsResponse {}
-export const CreateSampleFindingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateSampleFindingsResponse",
-}) as any as S.Schema<CreateSampleFindingsResponse>;
+export const CreateSampleFindingsResponse =
+  AcceptInvitationResponse as any as S.Schema<CreateSampleFindingsResponse>;
 export interface DeclineInvitationsRequest {
   accountIds?: string[];
 }
@@ -805,11 +801,8 @@ export const DeclineInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeclineInvitationsResponse {
   unprocessedAccounts?: UnprocessedAccount[];
 }
-export const DeclineInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ unprocessedAccounts: S.optional(__listOfUnprocessedAccount) }),
-).annotate({
-  identifier: "DeclineInvitationsResponse",
-}) as any as S.Schema<DeclineInvitationsResponse>;
+export const DeclineInvitationsResponse =
+  CreateInvitationsResponse as any as S.Schema<DeclineInvitationsResponse>;
 export interface DeleteAllowListRequest {
   id: string;
   ignoreJobChecks?: string;
@@ -823,9 +816,8 @@ export const DeleteAllowListRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteAllowListRequest" }) as any as S.Schema<DeleteAllowListRequest>;
 export interface DeleteAllowListResponse {}
-export const DeleteAllowListResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAllowListResponse",
-}) as any as S.Schema<DeleteAllowListResponse>;
+export const DeleteAllowListResponse =
+  AcceptInvitationResponse as any as S.Schema<DeleteAllowListResponse>;
 export interface DeleteCustomDataIdentifierRequest {
   id: string;
 }
@@ -860,9 +852,8 @@ export const DeleteFindingsFilterRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteFindingsFilterRequest",
 }) as any as S.Schema<DeleteFindingsFilterRequest>;
 export interface DeleteFindingsFilterResponse {}
-export const DeleteFindingsFilterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFindingsFilterResponse",
-}) as any as S.Schema<DeleteFindingsFilterResponse>;
+export const DeleteFindingsFilterResponse =
+  AcceptInvitationResponse as any as S.Schema<DeleteFindingsFilterResponse>;
 export interface DeleteInvitationsRequest {
   accountIds?: string[];
 }
@@ -874,11 +865,8 @@ export const DeleteInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteInvitationsResponse {
   unprocessedAccounts?: UnprocessedAccount[];
 }
-export const DeleteInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ unprocessedAccounts: S.optional(__listOfUnprocessedAccount) }),
-).annotate({
-  identifier: "DeleteInvitationsResponse",
-}) as any as S.Schema<DeleteInvitationsResponse>;
+export const DeleteInvitationsResponse =
+  CreateInvitationsResponse as any as S.Schema<DeleteInvitationsResponse>;
 export interface DeleteMemberRequest {
   id: string;
 }
@@ -888,9 +876,8 @@ export const DeleteMemberRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteMemberRequest" }) as any as S.Schema<DeleteMemberRequest>;
 export interface DeleteMemberResponse {}
-export const DeleteMemberResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMemberResponse",
-}) as any as S.Schema<DeleteMemberResponse>;
+export const DeleteMemberResponse =
+  AcceptInvitationResponse as any as S.Schema<DeleteMemberResponse>;
 export interface BucketCriteriaAdditionalProperties {
   eq?: string[];
   gt?: number;
@@ -1029,12 +1016,7 @@ export interface BucketPolicy {
   allowsPublicReadAccess?: boolean;
   allowsPublicWriteAccess?: boolean;
 }
-export const BucketPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowsPublicReadAccess: S.optional(S.Boolean),
-    allowsPublicWriteAccess: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "BucketPolicy" }) as any as S.Schema<BucketPolicy>;
+export const BucketPolicy = AccessControlList as any as S.Schema<BucketPolicy>;
 export interface BucketLevelPermissions {
   accessControlList?: AccessControlList;
   blockPublicAccess?: BlockPublicAccess;
@@ -1100,11 +1082,10 @@ export interface KeyValuePair {
   key?: string;
   value?: string;
 }
-export const KeyValuePair = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
-).annotate({ identifier: "KeyValuePair" }) as any as S.Schema<KeyValuePair>;
+export const KeyValuePair = TagCriterionPairForJob as any as S.Schema<KeyValuePair>;
 export type __listOfKeyValuePair = KeyValuePair[];
-export const __listOfKeyValuePair = /*@__PURE__*/ S.Array(KeyValuePair);
+export const __listOfKeyValuePair =
+  __listOfTagCriterionPairForJob as any as S.Schema<__listOfKeyValuePair>;
 export interface ObjectLevelStatistics {
   fileType?: number;
   storageClass?: number;
@@ -1316,9 +1297,8 @@ export const DisableMacieRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DisableMacieRequest" }) as any as S.Schema<DisableMacieRequest>;
 export interface DisableMacieResponse {}
-export const DisableMacieResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisableMacieResponse",
-}) as any as S.Schema<DisableMacieResponse>;
+export const DisableMacieResponse =
+  AcceptInvitationResponse as any as S.Schema<DisableMacieResponse>;
 export interface DisableOrganizationAdminAccountRequest {
   adminAccountId?: string;
 }
@@ -1330,11 +1310,8 @@ export const DisableOrganizationAdminAccountRequest = /*@__PURE__*/ S.suspend(()
   identifier: "DisableOrganizationAdminAccountRequest",
 }) as any as S.Schema<DisableOrganizationAdminAccountRequest>;
 export interface DisableOrganizationAdminAccountResponse {}
-export const DisableOrganizationAdminAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisableOrganizationAdminAccountResponse",
-}) as any as S.Schema<DisableOrganizationAdminAccountResponse>;
+export const DisableOrganizationAdminAccountResponse =
+  DeleteCustomDataIdentifierResponse as any as S.Schema<DisableOrganizationAdminAccountResponse>;
 export interface DisassociateFromAdministratorAccountRequest {}
 export const DisassociateFromAdministratorAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -1351,11 +1328,8 @@ export const DisassociateFromAdministratorAccountRequest = /*@__PURE__*/ S.suspe
   identifier: "DisassociateFromAdministratorAccountRequest",
 }) as any as S.Schema<DisassociateFromAdministratorAccountRequest>;
 export interface DisassociateFromAdministratorAccountResponse {}
-export const DisassociateFromAdministratorAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateFromAdministratorAccountResponse",
-}) as any as S.Schema<DisassociateFromAdministratorAccountResponse>;
+export const DisassociateFromAdministratorAccountResponse =
+  DeleteCustomDataIdentifierResponse as any as S.Schema<DisassociateFromAdministratorAccountResponse>;
 export interface DisassociateFromMasterAccountRequest {}
 export const DisassociateFromMasterAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -1365,11 +1339,8 @@ export const DisassociateFromMasterAccountRequest = /*@__PURE__*/ S.suspend(() =
   identifier: "DisassociateFromMasterAccountRequest",
 }) as any as S.Schema<DisassociateFromMasterAccountRequest>;
 export interface DisassociateFromMasterAccountResponse {}
-export const DisassociateFromMasterAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateFromMasterAccountResponse",
-}) as any as S.Schema<DisassociateFromMasterAccountResponse>;
+export const DisassociateFromMasterAccountResponse =
+  DeleteCustomDataIdentifierResponse as any as S.Schema<DisassociateFromMasterAccountResponse>;
 export interface DisassociateMemberRequest {
   id: string;
 }
@@ -1388,9 +1359,8 @@ export const DisassociateMemberRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisassociateMemberRequest",
 }) as any as S.Schema<DisassociateMemberRequest>;
 export interface DisassociateMemberResponse {}
-export const DisassociateMemberResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisassociateMemberResponse",
-}) as any as S.Schema<DisassociateMemberResponse>;
+export const DisassociateMemberResponse =
+  AcceptInvitationResponse as any as S.Schema<DisassociateMemberResponse>;
 export type FindingPublishingFrequency =
   | "FIFTEEN_MINUTES"
   | "ONE_HOUR"
@@ -1414,9 +1384,7 @@ export const EnableMacieRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/macie" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "EnableMacieRequest" }) as any as S.Schema<EnableMacieRequest>;
 export interface EnableMacieResponse {}
-export const EnableMacieResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "EnableMacieResponse",
-}) as any as S.Schema<EnableMacieResponse>;
+export const EnableMacieResponse = AcceptInvitationResponse as any as S.Schema<EnableMacieResponse>;
 export interface EnableOrganizationAdminAccountRequest {
   adminAccountId?: string;
   clientToken?: string;
@@ -1430,11 +1398,8 @@ export const EnableOrganizationAdminAccountRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "EnableOrganizationAdminAccountRequest",
 }) as any as S.Schema<EnableOrganizationAdminAccountRequest>;
 export interface EnableOrganizationAdminAccountResponse {}
-export const EnableOrganizationAdminAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "EnableOrganizationAdminAccountResponse",
-}) as any as S.Schema<EnableOrganizationAdminAccountResponse>;
+export const EnableOrganizationAdminAccountResponse =
+  DeleteCustomDataIdentifierResponse as any as S.Schema<EnableOrganizationAdminAccountResponse>;
 export interface GetAdministratorAccountRequest {}
 export const GetAdministratorAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -1794,7 +1759,7 @@ export const GetClassificationScopeRequest = /*@__PURE__*/ S.suspend(() =>
 export type ClassificationScopeName = string;
 export type S3BucketName = string;
 export type __listOfS3BucketName = string[];
-export const __listOfS3BucketName = /*@__PURE__*/ S.Array(S.String);
+export const __listOfS3BucketName = __listOf__string as any as S.Schema<__listOfS3BucketName>;
 export interface S3ClassificationScopeExclusion {
   bucketNames?: string[];
 }
@@ -1881,9 +1846,7 @@ export interface SortCriteria {
   attributeName?: string;
   orderBy?: OrderBy;
 }
-export const SortCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attributeName: S.optional(S.String), orderBy: S.optional(OrderBy) }),
-).annotate({ identifier: "SortCriteria" }) as any as S.Schema<SortCriteria>;
+export const SortCriteria = BucketSortCriteria as any as S.Schema<SortCriteria>;
 export interface GetFindingsRequest {
   findingIds?: string[];
   sortCriteria?: SortCriteria;
@@ -2231,15 +2194,7 @@ export interface FederatedUser {
   principalId?: string;
   sessionContext?: SessionContext;
 }
-export const FederatedUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessKeyId: S.optional(S.String),
-    accountId: S.optional(S.String),
-    arn: S.optional(S.String),
-    principalId: S.optional(S.String),
-    sessionContext: S.optional(SessionContext),
-  }),
-).annotate({ identifier: "FederatedUser" }) as any as S.Schema<FederatedUser>;
+export const FederatedUser = AssumedRole as any as S.Schema<FederatedUser>;
 export interface IamUser {
   accountId?: string;
   arn?: string;
@@ -2339,7 +2294,7 @@ export const S3BucketOwner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ displayName: S.optional(S.String), id: S.optional(S.String) }),
 ).annotate({ identifier: "S3BucketOwner" }) as any as S.Schema<S3BucketOwner>;
 export type KeyValuePairList = KeyValuePair[];
-export const KeyValuePairList = /*@__PURE__*/ S.Array(KeyValuePair);
+export const KeyValuePairList = __listOfTagCriterionPairForJob as any as S.Schema<KeyValuePairList>;
 export interface S3Bucket {
   allowsUnencryptedObjectUploads?: AllowsUnencryptedObjectUploads;
   arn?: string;
@@ -3168,14 +3123,8 @@ export interface AutomatedDiscoveryAccount {
   accountId?: string;
   status?: AutomatedDiscoveryAccountStatus;
 }
-export const AutomatedDiscoveryAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.optional(S.String),
-    status: S.optional(AutomatedDiscoveryAccountStatus),
-  }),
-).annotate({
-  identifier: "AutomatedDiscoveryAccount",
-}) as any as S.Schema<AutomatedDiscoveryAccount>;
+export const AutomatedDiscoveryAccount =
+  AutomatedDiscoveryAccountUpdate as any as S.Schema<AutomatedDiscoveryAccount>;
 export type __listOfAutomatedDiscoveryAccount = AutomatedDiscoveryAccount[];
 export const __listOfAutomatedDiscoveryAccount = /*@__PURE__*/ S.Array(AutomatedDiscoveryAccount);
 export interface ListAutomatedDiscoveryAccountsResponse {
@@ -3525,19 +3474,7 @@ export interface Member {
   tags?: { [key: string]: string | undefined };
   updatedAt?: Date;
 }
-export const Member = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.optional(S.String),
-    administratorAccountId: S.optional(S.String),
-    arn: S.optional(S.String),
-    email: S.optional(S.String),
-    invitedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    masterAccountId: S.optional(S.String),
-    relationshipStatus: S.optional(RelationshipStatus),
-    tags: S.optional(TagMap),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "Member" }) as any as S.Schema<Member>;
+export const Member = GetMemberResponse as any as S.Schema<Member>;
 export type __listOfMember = Member[];
 export const __listOfMember = /*@__PURE__*/ S.Array(Member);
 export interface ListMembersResponse {
@@ -3707,11 +3644,8 @@ export interface SensitivityInspectionTemplatesEntry {
   id?: string;
   name?: string;
 }
-export const SensitivityInspectionTemplatesEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.optional(S.String), name: S.optional(S.String) }),
-).annotate({
-  identifier: "SensitivityInspectionTemplatesEntry",
-}) as any as S.Schema<SensitivityInspectionTemplatesEntry>;
+export const SensitivityInspectionTemplatesEntry =
+  ClassificationScopeSummary as any as S.Schema<SensitivityInspectionTemplatesEntry>;
 export type __listOfSensitivityInspectionTemplatesEntry = SensitivityInspectionTemplatesEntry[];
 export const __listOfSensitivityInspectionTemplatesEntry = /*@__PURE__*/ S.Array(
   SensitivityInspectionTemplatesEntry,
@@ -3768,11 +3702,8 @@ export interface PutClassificationExportConfigurationResponse {
     s3Destination: S3Destination & { bucketName: string; kmsKeyArn: string };
   };
 }
-export const PutClassificationExportConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ configuration: S.optional(ClassificationExportConfiguration) }),
-).annotate({
-  identifier: "PutClassificationExportConfigurationResponse",
-}) as any as S.Schema<PutClassificationExportConfigurationResponse>;
+export const PutClassificationExportConfigurationResponse =
+  GetClassificationExportConfigurationResponse as any as S.Schema<PutClassificationExportConfigurationResponse>;
 export interface PutFindingsPublicationConfigurationRequest {
   clientToken?: string;
   securityHubConfiguration?: SecurityHubConfiguration;
@@ -3795,11 +3726,8 @@ export const PutFindingsPublicationConfigurationRequest = /*@__PURE__*/ S.suspen
   identifier: "PutFindingsPublicationConfigurationRequest",
 }) as any as S.Schema<PutFindingsPublicationConfigurationRequest>;
 export interface PutFindingsPublicationConfigurationResponse {}
-export const PutFindingsPublicationConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutFindingsPublicationConfigurationResponse",
-}) as any as S.Schema<PutFindingsPublicationConfigurationResponse>;
+export const PutFindingsPublicationConfigurationResponse =
+  DeleteCustomDataIdentifierResponse as any as S.Schema<PutFindingsPublicationConfigurationResponse>;
 export type SearchResourcesComparator = "EQ" | "NE" | (string & {});
 export const SearchResourcesComparator = S.String;
 
@@ -3995,9 +3923,7 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = AcceptInvitationResponse as any as S.Schema<TagResourceResponse>;
 export interface TestCustomDataIdentifierRequest {
   ignoreWords?: string[];
   keywords?: string[];
@@ -4046,9 +3972,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  AcceptInvitationResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAllowListRequest {
   criteria?: AllowListCriteria;
   description?: string;
@@ -4067,9 +3992,8 @@ export interface UpdateAllowListResponse {
   arn?: string;
   id?: string;
 }
-export const UpdateAllowListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.optional(S.String), id: S.optional(S.String) }),
-).annotate({ identifier: "UpdateAllowListResponse" }) as any as S.Schema<UpdateAllowListResponse>;
+export const UpdateAllowListResponse =
+  CreateAllowListResponse as any as S.Schema<UpdateAllowListResponse>;
 export interface UpdateAutomatedDiscoveryConfigurationRequest {
   autoEnableOrganizationMembers?: AutoEnableMode;
   status?: AutomatedDiscoveryStatus;
@@ -4092,11 +4016,8 @@ export const UpdateAutomatedDiscoveryConfigurationRequest = /*@__PURE__*/ S.susp
   identifier: "UpdateAutomatedDiscoveryConfigurationRequest",
 }) as any as S.Schema<UpdateAutomatedDiscoveryConfigurationRequest>;
 export interface UpdateAutomatedDiscoveryConfigurationResponse {}
-export const UpdateAutomatedDiscoveryConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateAutomatedDiscoveryConfigurationResponse",
-}) as any as S.Schema<UpdateAutomatedDiscoveryConfigurationResponse>;
+export const UpdateAutomatedDiscoveryConfigurationResponse =
+  DeleteCustomDataIdentifierResponse as any as S.Schema<UpdateAutomatedDiscoveryConfigurationResponse>;
 export interface UpdateClassificationJobRequest {
   jobId: string;
   jobStatus?: JobStatus;
@@ -4157,11 +4078,8 @@ export const UpdateClassificationScopeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateClassificationScopeRequest",
 }) as any as S.Schema<UpdateClassificationScopeRequest>;
 export interface UpdateClassificationScopeResponse {}
-export const UpdateClassificationScopeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateClassificationScopeResponse",
-}) as any as S.Schema<UpdateClassificationScopeResponse>;
+export const UpdateClassificationScopeResponse =
+  DeleteCustomDataIdentifierResponse as any as S.Schema<UpdateClassificationScopeResponse>;
 export interface UpdateFindingsFilterRequest {
   action?: FindingsFilterAction;
   clientToken?: string;
@@ -4190,11 +4108,8 @@ export interface UpdateFindingsFilterResponse {
   arn?: string;
   id?: string;
 }
-export const UpdateFindingsFilterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.optional(S.String), id: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateFindingsFilterResponse",
-}) as any as S.Schema<UpdateFindingsFilterResponse>;
+export const UpdateFindingsFilterResponse =
+  CreateFindingsFilterResponse as any as S.Schema<UpdateFindingsFilterResponse>;
 export interface UpdateMacieSessionRequest {
   findingPublishingFrequency?: FindingPublishingFrequency;
   status?: MacieStatus;
@@ -4208,9 +4123,8 @@ export const UpdateMacieSessionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateMacieSessionRequest",
 }) as any as S.Schema<UpdateMacieSessionRequest>;
 export interface UpdateMacieSessionResponse {}
-export const UpdateMacieSessionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateMacieSessionResponse",
-}) as any as S.Schema<UpdateMacieSessionResponse>;
+export const UpdateMacieSessionResponse =
+  AcceptInvitationResponse as any as S.Schema<UpdateMacieSessionResponse>;
 export interface UpdateMemberSessionRequest {
   id: string;
   status?: MacieStatus;
@@ -4223,9 +4137,8 @@ export const UpdateMemberSessionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateMemberSessionRequest",
 }) as any as S.Schema<UpdateMemberSessionRequest>;
 export interface UpdateMemberSessionResponse {}
-export const UpdateMemberSessionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateMemberSessionResponse",
-}) as any as S.Schema<UpdateMemberSessionResponse>;
+export const UpdateMemberSessionResponse =
+  AcceptInvitationResponse as any as S.Schema<UpdateMemberSessionResponse>;
 export interface UpdateOrganizationConfigurationRequest {
   autoEnable?: boolean;
 }
@@ -4237,11 +4150,8 @@ export const UpdateOrganizationConfigurationRequest = /*@__PURE__*/ S.suspend(()
   identifier: "UpdateOrganizationConfigurationRequest",
 }) as any as S.Schema<UpdateOrganizationConfigurationRequest>;
 export interface UpdateOrganizationConfigurationResponse {}
-export const UpdateOrganizationConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateOrganizationConfigurationResponse",
-}) as any as S.Schema<UpdateOrganizationConfigurationResponse>;
+export const UpdateOrganizationConfigurationResponse =
+  DeleteCustomDataIdentifierResponse as any as S.Schema<UpdateOrganizationConfigurationResponse>;
 export interface UpdateResourceProfileRequest {
   resourceArn?: string;
   sensitivityScoreOverride?: number;
@@ -4257,9 +4167,8 @@ export const UpdateResourceProfileRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResourceProfileRequest",
 }) as any as S.Schema<UpdateResourceProfileRequest>;
 export interface UpdateResourceProfileResponse {}
-export const UpdateResourceProfileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateResourceProfileResponse",
-}) as any as S.Schema<UpdateResourceProfileResponse>;
+export const UpdateResourceProfileResponse =
+  AcceptInvitationResponse as any as S.Schema<UpdateResourceProfileResponse>;
 export interface SuppressDataIdentifier {
   id?: string;
   type?: DataIdentifierType;
@@ -4291,11 +4200,8 @@ export const UpdateResourceProfileDetectionsRequest = /*@__PURE__*/ S.suspend(()
   identifier: "UpdateResourceProfileDetectionsRequest",
 }) as any as S.Schema<UpdateResourceProfileDetectionsRequest>;
 export interface UpdateResourceProfileDetectionsResponse {}
-export const UpdateResourceProfileDetectionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateResourceProfileDetectionsResponse",
-}) as any as S.Schema<UpdateResourceProfileDetectionsResponse>;
+export const UpdateResourceProfileDetectionsResponse =
+  DeleteCustomDataIdentifierResponse as any as S.Schema<UpdateResourceProfileDetectionsResponse>;
 export interface UpdateRetrievalConfiguration {
   retrievalMode?: RetrievalMode;
   roleName?: string;
@@ -4323,14 +4229,8 @@ export interface UpdateRevealConfigurationResponse {
   configuration?: RevealConfiguration & { status: RevealStatus };
   retrievalConfiguration?: RetrievalConfiguration & { retrievalMode: RetrievalMode };
 }
-export const UpdateRevealConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configuration: S.optional(RevealConfiguration),
-    retrievalConfiguration: S.optional(RetrievalConfiguration),
-  }),
-).annotate({
-  identifier: "UpdateRevealConfigurationResponse",
-}) as any as S.Schema<UpdateRevealConfigurationResponse>;
+export const UpdateRevealConfigurationResponse =
+  GetRevealConfigurationResponse as any as S.Schema<UpdateRevealConfigurationResponse>;
 export interface UpdateSensitivityInspectionTemplateRequest {
   description?: string;
   excludes?: SensitivityInspectionTemplateExcludes;
@@ -4357,11 +4257,8 @@ export const UpdateSensitivityInspectionTemplateRequest = /*@__PURE__*/ S.suspen
   identifier: "UpdateSensitivityInspectionTemplateRequest",
 }) as any as S.Schema<UpdateSensitivityInspectionTemplateRequest>;
 export interface UpdateSensitivityInspectionTemplateResponse {}
-export const UpdateSensitivityInspectionTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateSensitivityInspectionTemplateResponse",
-}) as any as S.Schema<UpdateSensitivityInspectionTemplateResponse>;
+export const UpdateSensitivityInspectionTemplateResponse =
+  DeleteCustomDataIdentifierResponse as any as S.Schema<UpdateSensitivityInspectionTemplateResponse>;
 export type AcceptInvitationError =
   | AccessDeniedException
   | ConflictException

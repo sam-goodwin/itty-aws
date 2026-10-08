@@ -354,9 +354,8 @@ export type RulesCreateRequestActionsItemType = "drop" | "forward" | "worker";
 export const RulesCreateRequestActionsItemType = S.String;
 
 export type RulesCreateRequestActionsItemValueList = Array<string>;
-export const RulesCreateRequestActionsItemValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesCreateRequestActionsItemValueList>;
+export const RulesCreateRequestActionsItemValueList =
+  AccountRulesListResultItemActionsItemValueList as any as S.Schema<RulesCreateRequestActionsItemValueList>;
 
 export interface RulesCreateRequestActionsItem {
   /** Type of supported action. */
@@ -447,9 +446,8 @@ export type RulesCreateResponseActionsItemType = "drop" | "forward" | "worker";
 export const RulesCreateResponseActionsItemType = S.String;
 
 export type RulesCreateResponseActionsItemValueList = Array<string>;
-export const RulesCreateResponseActionsItemValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesCreateResponseActionsItemValueList>;
+export const RulesCreateResponseActionsItemValueList =
+  AccountRulesListResultItemActionsItemValueList as any as S.Schema<RulesCreateResponseActionsItemValueList>;
 
 export interface RulesCreateResponseActionsItem {
   /** Type of supported action. */
@@ -571,16 +569,8 @@ export interface DeleteAddressResponse {
   /** The date and time the destination address has been verified. Null means not verified yet. */
   verified?: string | null;
 }
-export const DeleteAddressResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    created: S.optional(S.NullOr(S.String)),
-    email: S.optional(S.NullOr(S.String)),
-    modified: S.optional(S.NullOr(S.String)),
-    tag: S.optional(S.NullOr(S.String)),
-    verified: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteAddressResponse" }) as any as S.Schema<DeleteAddressResponse>;
+export const DeleteAddressResponse =
+  CreateAddressResponse as any as S.Schema<DeleteAddressResponse>;
 
 export interface DeleteDnsRequest {
   /** Identifier. */
@@ -662,9 +652,8 @@ export type RulesDeleteResponseActionsItemType = "drop" | "forward" | "worker";
 export const RulesDeleteResponseActionsItemType = S.String;
 
 export type RulesDeleteResponseActionsItemValueList = Array<string>;
-export const RulesDeleteResponseActionsItemValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesDeleteResponseActionsItemValueList>;
+export const RulesDeleteResponseActionsItemValueList =
+  AccountRulesListResultItemActionsItemValueList as any as S.Schema<RulesDeleteResponseActionsItemValueList>;
 
 export interface RulesDeleteResponseActionsItem {
   /** Type of supported action. */
@@ -915,16 +904,7 @@ export interface EditAddressResponse {
   /** The date and time the destination address has been verified. Null means not verified yet. */
   verified?: string | null;
 }
-export const EditAddressResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    created: S.optional(S.NullOr(S.String)),
-    email: S.optional(S.NullOr(S.String)),
-    modified: S.optional(S.NullOr(S.String)),
-    tag: S.optional(S.NullOr(S.String)),
-    verified: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "EditAddressResponse" }) as any as S.Schema<EditAddressResponse>;
+export const EditAddressResponse = CreateAddressResponse as any as S.Schema<EditAddressResponse>;
 
 export interface EnableEmailRoutingRequest {
   /** Identifier. */
@@ -1021,16 +1001,7 @@ export interface GetAddressResponse {
   /** The date and time the destination address has been verified. Null means not verified yet. */
   verified?: string | null;
 }
-export const GetAddressResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    created: S.optional(S.NullOr(S.String)),
-    email: S.optional(S.NullOr(S.String)),
-    modified: S.optional(S.NullOr(S.String)),
-    tag: S.optional(S.NullOr(S.String)),
-    verified: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetAddressResponse" }) as any as S.Schema<GetAddressResponse>;
+export const GetAddressResponse = CreateAddressResponse as any as S.Schema<GetAddressResponse>;
 
 export interface GetDnsRequest {
   /** Identifier. */
@@ -1180,9 +1151,8 @@ export type RulesGetResponseActionsItemType = "drop" | "forward" | "worker";
 export const RulesGetResponseActionsItemType = S.String;
 
 export type RulesGetResponseActionsItemValueList = Array<string>;
-export const RulesGetResponseActionsItemValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesGetResponseActionsItemValueList>;
+export const RulesGetResponseActionsItemValueList =
+  AccountRulesListResultItemActionsItemValueList as any as S.Schema<RulesGetResponseActionsItemValueList>;
 
 export interface RulesGetResponseActionsItem {
   /** Type of supported action. */
@@ -1286,9 +1256,8 @@ export type RulesCatchAllsGetResponseActionsItemType = "drop" | "forward" | "wor
 export const RulesCatchAllsGetResponseActionsItemType = S.String;
 
 export type RulesCatchAllsGetResponseActionsItemValueList = Array<string>;
-export const RulesCatchAllsGetResponseActionsItemValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesCatchAllsGetResponseActionsItemValueList>;
+export const RulesCatchAllsGetResponseActionsItemValueList =
+  AccountRulesListResultItemActionsItemValueList as any as S.Schema<RulesCatchAllsGetResponseActionsItemValueList>;
 
 export interface RulesCatchAllsGetResponseActionsItem {
   /** Type of action for catch-all rule. */
@@ -1533,9 +1502,8 @@ export type RulesCatchAllsUpdateRequestActionsItemType = "drop" | "forward" | "w
 export const RulesCatchAllsUpdateRequestActionsItemType = S.String;
 
 export type RulesCatchAllsUpdateRequestActionsItemValueList = Array<string>;
-export const RulesCatchAllsUpdateRequestActionsItemValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesCatchAllsUpdateRequestActionsItemValueList>;
+export const RulesCatchAllsUpdateRequestActionsItemValueList =
+  AccountRulesListResultItemActionsItemValueList as any as S.Schema<RulesCatchAllsUpdateRequestActionsItemValueList>;
 
 export interface RulesCatchAllsUpdateRequestActionsItem {
   /** Type of action for catch-all rule. */
@@ -1617,9 +1585,8 @@ export type RulesCatchAllsUpdateResponseActionsItemType = "drop" | "forward" | "
 export const RulesCatchAllsUpdateResponseActionsItemType = S.String;
 
 export type RulesCatchAllsUpdateResponseActionsItemValueList = Array<string>;
-export const RulesCatchAllsUpdateResponseActionsItemValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesCatchAllsUpdateResponseActionsItemValueList>;
+export const RulesCatchAllsUpdateResponseActionsItemValueList =
+  AccountRulesListResultItemActionsItemValueList as any as S.Schema<RulesCatchAllsUpdateResponseActionsItemValueList>;
 
 export interface RulesCatchAllsUpdateResponseActionsItem {
   /** Type of action for catch-all rule. */
@@ -1722,9 +1689,8 @@ export type RulesListResultItemActionsItemType = "drop" | "forward" | "worker";
 export const RulesListResultItemActionsItemType = S.String;
 
 export type RulesListResultItemActionsItemValueList = Array<string>;
-export const RulesListResultItemActionsItemValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesListResultItemActionsItemValueList>;
+export const RulesListResultItemActionsItemValueList =
+  AccountRulesListResultItemActionsItemValueList as any as S.Schema<RulesListResultItemActionsItemValueList>;
 
 export interface RulesListResultItemActionsItem {
   /** Type of supported action. */
@@ -1972,9 +1938,8 @@ export type RulesUpdateRequestActionsItemType = "drop" | "forward" | "worker";
 export const RulesUpdateRequestActionsItemType = S.String;
 
 export type RulesUpdateRequestActionsItemValueList = Array<string>;
-export const RulesUpdateRequestActionsItemValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesUpdateRequestActionsItemValueList>;
+export const RulesUpdateRequestActionsItemValueList =
+  AccountRulesListResultItemActionsItemValueList as any as S.Schema<RulesUpdateRequestActionsItemValueList>;
 
 export interface RulesUpdateRequestActionsItem {
   /** Type of supported action. */
@@ -2074,9 +2039,8 @@ export type RulesUpdateResponseActionsItemType = "drop" | "forward" | "worker";
 export const RulesUpdateResponseActionsItemType = S.String;
 
 export type RulesUpdateResponseActionsItemValueList = Array<string>;
-export const RulesUpdateResponseActionsItemValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesUpdateResponseActionsItemValueList>;
+export const RulesUpdateResponseActionsItemValueList =
+  AccountRulesListResultItemActionsItemValueList as any as S.Schema<RulesUpdateResponseActionsItemValueList>;
 
 export interface RulesUpdateResponseActionsItem {
   /** Type of supported action. */

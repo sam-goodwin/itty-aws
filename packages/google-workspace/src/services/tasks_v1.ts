@@ -103,9 +103,8 @@ export const DeleteTasklistsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTasklistsRequest" }) as any as S.Schema<DeleteTasklistsRequest>;
 
 export interface DeleteTasklistsResponse {}
-export const DeleteTasklistsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTasklistsResponse",
-}) as any as S.Schema<DeleteTasklistsResponse>;
+export const DeleteTasklistsResponse =
+  ClearTasksResponse as any as S.Schema<DeleteTasklistsResponse>;
 
 export interface DeleteTasksRequest {
   /** Task list identifier. */
@@ -127,9 +126,7 @@ export const DeleteTasksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTasksRequest" }) as any as S.Schema<DeleteTasksRequest>;
 
 export interface DeleteTasksResponse {}
-export const DeleteTasksResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTasksResponse",
-}) as any as S.Schema<DeleteTasksResponse>;
+export const DeleteTasksResponse = ClearTasksResponse as any as S.Schema<DeleteTasksResponse>;
 
 export interface GetTasklistsRequest {
   /** Task list identifier. */

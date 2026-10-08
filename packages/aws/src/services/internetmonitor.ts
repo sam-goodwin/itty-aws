@@ -343,7 +343,7 @@ export const InternetHealth = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InternetHealth" }) as any as S.Schema<InternetHealth>;
 export type Ipv4PrefixList = string[];
-export const Ipv4PrefixList = /*@__PURE__*/ S.Array(S.String);
+export const Ipv4PrefixList = SetOfARNs as any as S.Schema<Ipv4PrefixList>;
 export interface ImpactedLocation {
   ASName: string;
   ASNumber: number;
@@ -557,7 +557,7 @@ export const QueryField = /*@__PURE__*/ S.suspend(() =>
 export type QueryFields = QueryField[];
 export const QueryFields = /*@__PURE__*/ S.Array(QueryField);
 export type QueryRow = string[];
-export const QueryRow = /*@__PURE__*/ S.Array(S.String);
+export const QueryRow = SetOfARNs as any as S.Schema<QueryRow>;
 export type QueryData = string[][];
 export const QueryData = /*@__PURE__*/ S.Array(QueryRow);
 export interface GetQueryResultsOutput {
@@ -641,21 +641,7 @@ export interface HealthEvent {
   ImpactType: string;
   HealthScoreThreshold?: number;
 }
-export const HealthEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EventArn: S.String,
-    EventId: S.String,
-    StartedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    EndedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    LastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ImpactedLocations: ImpactedLocationsList,
-    Status: S.String,
-    PercentOfTotalTrafficImpacted: S.optional(S.Number),
-    ImpactType: S.String,
-    HealthScoreThreshold: S.optional(S.Number),
-  }),
-).annotate({ identifier: "HealthEvent" }) as any as S.Schema<HealthEvent>;
+export const HealthEvent = GetHealthEventOutput as any as S.Schema<HealthEvent>;
 export type HealthEventList = HealthEvent[];
 export const HealthEventList = /*@__PURE__*/ S.Array(HealthEvent);
 export interface ListHealthEventsOutput {
@@ -706,17 +692,7 @@ export interface InternetEventSummary {
   EventType: string;
   EventStatus: string;
 }
-export const InternetEventSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EventId: S.String,
-    EventArn: S.String,
-    StartedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    EndedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    ClientLocation: ClientLocation,
-    EventType: S.String,
-    EventStatus: S.String,
-  }),
-).annotate({ identifier: "InternetEventSummary" }) as any as S.Schema<InternetEventSummary>;
+export const InternetEventSummary = GetInternetEventOutput as any as S.Schema<InternetEventSummary>;
 export type InternetEventsList = InternetEventSummary[];
 export const InternetEventsList = /*@__PURE__*/ S.Array(InternetEventSummary);
 export interface ListInternetEventsOutput {
@@ -784,7 +760,7 @@ export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
 export type QueryType = string;
 export type Operator = string;
 export type FilterList = string[];
-export const FilterList = /*@__PURE__*/ S.Array(S.String);
+export const FilterList = SetOfARNs as any as S.Schema<FilterList>;
 export interface FilterParameter {
   Field?: string;
   Operator?: string;
@@ -852,9 +828,7 @@ export const StopQueryInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopQueryInput" }) as any as S.Schema<StopQueryInput>;
 export interface StopQueryOutput {}
-export const StopQueryOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopQueryOutput",
-}) as any as S.Schema<StopQueryOutput>;
+export const StopQueryOutput = DeleteMonitorOutput as any as S.Schema<StopQueryOutput>;
 export interface TagResourceInput {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
@@ -865,11 +839,9 @@ export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-export const TagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceOutput",
-}) as any as S.Schema<TagResourceOutput>;
+export const TagResourceOutput = DeleteMonitorOutput as any as S.Schema<TagResourceOutput>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = SetOfARNs as any as S.Schema<TagKeys>;
 export interface UntagResourceInput {
   ResourceArn: string;
   TagKeys: string[];
@@ -883,9 +855,7 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceOutput",
-}) as any as S.Schema<UntagResourceOutput>;
+export const UntagResourceOutput = DeleteMonitorOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateMonitorInput {
   MonitorName: string;
   ResourcesToAdd?: string[];

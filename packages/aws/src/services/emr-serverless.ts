@@ -204,7 +204,7 @@ export type SubnetIds = string[];
 export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
 export type SecurityGroupString = string;
 export type SecurityGroupIds = string[];
-export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroupIds = SubnetIds as any as S.Schema<SecurityGroupIds>;
 export interface NetworkConfiguration {
   subnetIds?: string[];
   securityGroupIds?: string[];
@@ -291,7 +291,7 @@ export type LogGroupName = string;
 export type LogStreamNamePrefix = string;
 export type LogTypeString = string;
 export type LogTypeList = string[];
-export const LogTypeList = /*@__PURE__*/ S.Array(S.String);
+export const LogTypeList = SubnetIds as any as S.Schema<LogTypeList>;
 export type LogTypeMap = { [key: string]: string[] | undefined };
 export const LogTypeMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -343,10 +343,7 @@ export const MonitoringConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type EncryptionContextKey = string;
 export type EncryptionContextValue = string;
 export type EncryptionContext = { [key: string]: string | undefined };
-export const EncryptionContext = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const EncryptionContext = SensitivePropertiesMap as any as S.Schema<EncryptionContext>;
 export interface DiskEncryptionConfiguration {
   encryptionContext?: { [key: string]: string | undefined };
   encryptionKeyArn?: string;
@@ -655,7 +652,7 @@ export type IAMRoleArn = string;
 export type PolicyDocument = string;
 export type Arn = string;
 export type PolicyArnList = string[];
-export const PolicyArnList = /*@__PURE__*/ S.Array(S.String);
+export const PolicyArnList = SubnetIds as any as S.Schema<PolicyArnList>;
 export interface JobRunExecutionIamPolicy {
   policy?: string;
   policyArns?: string[];
@@ -733,13 +730,7 @@ export interface ResourceUtilization {
   memoryGBHour?: number;
   storageGBHour?: number;
 }
-export const ResourceUtilization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vCPUHour: S.optional(S.Number),
-    memoryGBHour: S.optional(S.Number),
-    storageGBHour: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ResourceUtilization" }) as any as S.Schema<ResourceUtilization>;
+export const ResourceUtilization = TotalResourceUtilization as any as S.Schema<ResourceUtilization>;
 export type JobRunMode = string;
 export interface RetryPolicy {
   maxAttempts?: number;
@@ -848,11 +839,8 @@ export const GetResourceDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetResourceDashboardResponse {
   url?: string;
 }
-export const GetResourceDashboardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ url: S.optional(S.String) }),
-).annotate({
-  identifier: "GetResourceDashboardResponse",
-}) as any as S.Schema<GetResourceDashboardResponse>;
+export const GetResourceDashboardResponse =
+  GetDashboardForJobRunResponse as any as S.Schema<GetResourceDashboardResponse>;
 export type SessionId = string;
 export interface GetSessionRequest {
   applicationId: string;
@@ -980,7 +968,7 @@ export const GetSessionEndpointResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSessionEndpointResponse>;
 export type NextToken = string;
 export type ApplicationStateSet = string[];
-export const ApplicationStateSet = /*@__PURE__*/ S.Array(S.String);
+export const ApplicationStateSet = SubnetIds as any as S.Schema<ApplicationStateSet>;
 export interface ListApplicationsRequest {
   nextToken?: string;
   maxResults?: number;
@@ -1102,7 +1090,7 @@ export const ListJobRunAttemptsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListJobRunAttemptsResponse",
 }) as any as S.Schema<ListJobRunAttemptsResponse>;
 export type JobRunStateSet = string[];
-export const JobRunStateSet = /*@__PURE__*/ S.Array(S.String);
+export const JobRunStateSet = SubnetIds as any as S.Schema<JobRunStateSet>;
 export interface ListJobRunsRequest {
   applicationId: string;
   nextToken?: string;
@@ -1184,7 +1172,7 @@ export const ListJobRunsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ jobRuns: JobRuns, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListJobRunsResponse" }) as any as S.Schema<ListJobRunsResponse>;
 export type SessionStateSet = string[];
-export const SessionStateSet = /*@__PURE__*/ S.Array(S.String);
+export const SessionStateSet = SubnetIds as any as S.Schema<SessionStateSet>;
 export interface ListSessionsRequest {
   applicationId: string;
   nextToken?: string;
@@ -1288,9 +1276,8 @@ export const StartApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StartApplicationRequest" }) as any as S.Schema<StartApplicationRequest>;
 export interface StartApplicationResponse {}
-export const StartApplicationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartApplicationResponse",
-}) as any as S.Schema<StartApplicationResponse>;
+export const StartApplicationResponse =
+  DeleteApplicationResponse as any as S.Schema<StartApplicationResponse>;
 export interface StartJobRunRequest {
   applicationId: string;
   clientToken: string;
@@ -1389,9 +1376,8 @@ export const StopApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopApplicationRequest" }) as any as S.Schema<StopApplicationRequest>;
 export interface StopApplicationResponse {}
-export const StopApplicationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopApplicationResponse",
-}) as any as S.Schema<StopApplicationResponse>;
+export const StopApplicationResponse =
+  DeleteApplicationResponse as any as S.Schema<StopApplicationResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
@@ -1402,9 +1388,8 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteApplicationResponse as any as S.Schema<TagResourceResponse>;
 export interface TerminateSessionRequest {
   applicationId: string;
   sessionId: string;
@@ -1432,7 +1417,7 @@ export const TerminateSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ applicationId: S.String, sessionId: S.String }),
 ).annotate({ identifier: "TerminateSessionResponse" }) as any as S.Schema<TerminateSessionResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = SubnetIds as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -1446,9 +1431,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteApplicationResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateApplicationRequest {
   applicationId: string;
   clientToken: string;

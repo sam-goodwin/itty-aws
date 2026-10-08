@@ -506,9 +506,7 @@ export const PublishRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/topics/{topic}" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "PublishRequest" }) as any as S.Schema<PublishRequest>;
 export interface PublishResponse {}
-export const PublishResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PublishResponse",
-}) as any as S.Schema<PublishResponse>;
+export const PublishResponse = DeleteConnectionResponse as any as S.Schema<PublishResponse>;
 export type Confirmation = boolean;
 export type TimeoutInSeconds = number;
 export interface SendDirectMessageRequest {

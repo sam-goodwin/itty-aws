@@ -255,7 +255,8 @@ export const CreateChannelRequest = /*@__PURE__*/ S.suspend(() =>
     ),
 ).annotate({ identifier: "CreateChannelRequest" }) as any as S.Schema<CreateChannelRequest>;
 export type AttachedMultiviewChannelList = string[];
-export const AttachedMultiviewChannelList = /*@__PURE__*/ S.Array(S.String);
+export const AttachedMultiviewChannelList =
+  MultiviewSourceList as any as S.Schema<AttachedMultiviewChannelList>;
 export interface IngestEndpoint {
   Id?: string;
   Url?: string;
@@ -357,11 +358,10 @@ export const HarvestedHlsManifestsList = /*@__PURE__*/ S.Array(HarvestedHlsManif
 export interface HarvestedDashManifest {
   ManifestName: string;
 }
-export const HarvestedDashManifest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ManifestName: S.String }),
-).annotate({ identifier: "HarvestedDashManifest" }) as any as S.Schema<HarvestedDashManifest>;
+export const HarvestedDashManifest = HarvestedHlsManifest as any as S.Schema<HarvestedDashManifest>;
 export type HarvestedDashManifestsList = HarvestedDashManifest[];
-export const HarvestedDashManifestsList = /*@__PURE__*/ S.Array(HarvestedDashManifest);
+export const HarvestedDashManifestsList =
+  HarvestedHlsManifestsList as any as S.Schema<HarvestedDashManifestsList>;
 export interface HarvestedLowLatencyHlsManifest {
   ManifestName: string;
 }
@@ -790,21 +790,8 @@ export interface CreateLowLatencyHlsManifestConfiguration {
   UrlEncodeChildManifest?: boolean;
   UriPathType?: UriPathType;
 }
-export const CreateLowLatencyHlsManifestConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ManifestName: S.String,
-    ChildManifestName: S.optional(S.String),
-    ScteHls: S.optional(ScteHls),
-    StartTag: S.optional(StartTag),
-    ManifestWindowSeconds: S.optional(S.Number),
-    ProgramDateTimeIntervalSeconds: S.optional(S.Number),
-    FilterConfiguration: S.optional(FilterConfiguration),
-    UrlEncodeChildManifest: S.optional(S.Boolean),
-    UriPathType: S.optional(UriPathType),
-  }),
-).annotate({
-  identifier: "CreateLowLatencyHlsManifestConfiguration",
-}) as any as S.Schema<CreateLowLatencyHlsManifestConfiguration>;
+export const CreateLowLatencyHlsManifestConfiguration =
+  CreateHlsManifestConfiguration as any as S.Schema<CreateLowLatencyHlsManifestConfiguration>;
 export type CreateLowLatencyHlsManifests = CreateLowLatencyHlsManifestConfiguration[];
 export const CreateLowLatencyHlsManifests = /*@__PURE__*/ S.Array(
   CreateLowLatencyHlsManifestConfiguration,
@@ -1145,22 +1132,8 @@ export interface GetLowLatencyHlsManifestConfiguration {
   UrlEncodeChildManifest?: boolean;
   UriPathType?: UriPathType;
 }
-export const GetLowLatencyHlsManifestConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ManifestName: S.String,
-    Url: S.String,
-    ChildManifestName: S.optional(S.String),
-    ManifestWindowSeconds: S.optional(S.Number),
-    ProgramDateTimeIntervalSeconds: S.optional(S.Number),
-    ScteHls: S.optional(ScteHls),
-    FilterConfiguration: S.optional(FilterConfiguration),
-    StartTag: S.optional(StartTag),
-    UrlEncodeChildManifest: S.optional(S.Boolean),
-    UriPathType: S.optional(UriPathType),
-  }),
-).annotate({
-  identifier: "GetLowLatencyHlsManifestConfiguration",
-}) as any as S.Schema<GetLowLatencyHlsManifestConfiguration>;
+export const GetLowLatencyHlsManifestConfiguration =
+  GetHlsManifestConfiguration as any as S.Schema<GetLowLatencyHlsManifestConfiguration>;
 export type GetLowLatencyHlsManifests = GetLowLatencyHlsManifestConfiguration[];
 export const GetLowLatencyHlsManifests = /*@__PURE__*/ S.Array(
   GetLowLatencyHlsManifestConfiguration,
@@ -1303,9 +1276,8 @@ export const DeleteChannelRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteChannelRequest" }) as any as S.Schema<DeleteChannelRequest>;
 export interface DeleteChannelResponse {}
-export const DeleteChannelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteChannelResponse",
-}) as any as S.Schema<DeleteChannelResponse>;
+export const DeleteChannelResponse =
+  CancelHarvestJobResponse as any as S.Schema<DeleteChannelResponse>;
 export interface DeleteChannelGroupRequest {
   ChannelGroupName: string;
 }
@@ -1324,9 +1296,8 @@ export const DeleteChannelGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteChannelGroupRequest",
 }) as any as S.Schema<DeleteChannelGroupRequest>;
 export interface DeleteChannelGroupResponse {}
-export const DeleteChannelGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteChannelGroupResponse",
-}) as any as S.Schema<DeleteChannelGroupResponse>;
+export const DeleteChannelGroupResponse =
+  CancelHarvestJobResponse as any as S.Schema<DeleteChannelGroupResponse>;
 export interface DeleteChannelPolicyRequest {
   ChannelGroupName: string;
   ChannelName: string;
@@ -1352,9 +1323,8 @@ export const DeleteChannelPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteChannelPolicyRequest",
 }) as any as S.Schema<DeleteChannelPolicyRequest>;
 export interface DeleteChannelPolicyResponse {}
-export const DeleteChannelPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteChannelPolicyResponse",
-}) as any as S.Schema<DeleteChannelPolicyResponse>;
+export const DeleteChannelPolicyResponse =
+  CancelHarvestJobResponse as any as S.Schema<DeleteChannelPolicyResponse>;
 export interface DeleteOriginEndpointRequest {
   ChannelGroupName: string;
   ChannelName: string;
@@ -1382,9 +1352,8 @@ export const DeleteOriginEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteOriginEndpointRequest",
 }) as any as S.Schema<DeleteOriginEndpointRequest>;
 export interface DeleteOriginEndpointResponse {}
-export const DeleteOriginEndpointResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOriginEndpointResponse",
-}) as any as S.Schema<DeleteOriginEndpointResponse>;
+export const DeleteOriginEndpointResponse =
+  CancelHarvestJobResponse as any as S.Schema<DeleteOriginEndpointResponse>;
 export interface DeleteOriginEndpointPolicyRequest {
   ChannelGroupName: string;
   ChannelName: string;
@@ -1585,25 +1554,8 @@ export interface GetHarvestJobResponse {
   ETag?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const GetHarvestJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ChannelGroupName: S.String,
-    ChannelName: S.String,
-    OriginEndpointName: S.String,
-    Destination: Destination,
-    HarvestJobName: S.String,
-    HarvestedManifests: HarvestedManifests,
-    Description: S.optional(S.String),
-    ScheduleConfiguration: HarvesterScheduleConfiguration,
-    Arn: S.String,
-    CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    ModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    Status: HarvestJobStatus,
-    ErrorMessage: S.optional(S.String),
-    ETag: S.optional(S.String),
-    Tags: S.optional(TagMap),
-  }),
-).annotate({ identifier: "GetHarvestJobResponse" }) as any as S.Schema<GetHarvestJobResponse>;
+export const GetHarvestJobResponse =
+  CreateHarvestJobResponse as any as S.Schema<GetHarvestJobResponse>;
 export interface GetOriginEndpointRequest {
   ChannelGroupName: string;
   ChannelName: string;
@@ -1704,7 +1656,8 @@ export const GetOriginEndpointPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOriginEndpointPolicyRequest>;
 export type CdnIdentifierSecretArn = string;
 export type CdnIdentifierSecretArns = string[];
-export const CdnIdentifierSecretArns = /*@__PURE__*/ S.Array(S.String);
+export const CdnIdentifierSecretArns =
+  MultiviewSourceList as any as S.Schema<CdnIdentifierSecretArns>;
 export interface CdnAuthConfiguration {
   CdnIdentifierSecretArns: string[];
   SecretsRoleArn: string;
@@ -1945,15 +1898,8 @@ export interface ListLowLatencyHlsManifestConfiguration {
   ChildManifestName?: string;
   Url?: string;
 }
-export const ListLowLatencyHlsManifestConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ManifestName: S.String,
-    ChildManifestName: S.optional(S.String),
-    Url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListLowLatencyHlsManifestConfiguration",
-}) as any as S.Schema<ListLowLatencyHlsManifestConfiguration>;
+export const ListLowLatencyHlsManifestConfiguration =
+  ListHlsManifestConfiguration as any as S.Schema<ListLowLatencyHlsManifestConfiguration>;
 export type ListLowLatencyHlsManifests = ListLowLatencyHlsManifestConfiguration[];
 export const ListLowLatencyHlsManifests = /*@__PURE__*/ S.Array(
   ListLowLatencyHlsManifestConfiguration,
@@ -1973,13 +1919,10 @@ export interface ListMssManifestConfiguration {
   ManifestName: string;
   Url?: string;
 }
-export const ListMssManifestConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ManifestName: S.String, Url: S.optional(S.String) }),
-).annotate({
-  identifier: "ListMssManifestConfiguration",
-}) as any as S.Schema<ListMssManifestConfiguration>;
+export const ListMssManifestConfiguration =
+  ListDashManifestConfiguration as any as S.Schema<ListMssManifestConfiguration>;
 export type ListMssManifests = ListMssManifestConfiguration[];
-export const ListMssManifests = /*@__PURE__*/ S.Array(ListMssManifestConfiguration);
+export const ListMssManifests = ListDashManifests as any as S.Schema<ListMssManifests>;
 export interface OriginEndpointListConfiguration {
   Arn: string;
   ChannelGroupName: string;
@@ -2073,9 +2016,8 @@ export const PutChannelPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutChannelPolicyRequest" }) as any as S.Schema<PutChannelPolicyRequest>;
 export interface PutChannelPolicyResponse {}
-export const PutChannelPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutChannelPolicyResponse",
-}) as any as S.Schema<PutChannelPolicyResponse>;
+export const PutChannelPolicyResponse =
+  CancelHarvestJobResponse as any as S.Schema<PutChannelPolicyResponse>;
 export interface PutOriginEndpointPolicyRequest {
   ChannelGroupName: string;
   ChannelName: string;
@@ -2204,11 +2146,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
     ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = CancelHarvestJobResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = MultiviewSourceList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -2222,9 +2162,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  CancelHarvestJobResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateChannelRequest {
   ChannelGroupName: string;
   ChannelName: string;

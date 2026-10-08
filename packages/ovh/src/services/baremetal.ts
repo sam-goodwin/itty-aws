@@ -451,9 +451,8 @@ export const CreateDedicatedServerFeatureBackupCloudRequest = /*@__PURE__*/ S.su
 
 /** Agreement ids waiting for validation */
 export type DedicatedServerBackupCloudAgreementsList = Array<number>;
-export const DedicatedServerBackupCloudAgreementsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<DedicatedServerBackupCloudAgreementsList>;
+export const DedicatedServerBackupCloudAgreementsList =
+  CreateDedicatedServerChangeContactResponseBodyList as any as S.Schema<DedicatedServerBackupCloudAgreementsList>;
 
 /** Cloud project struct. */
 export interface DedicatedServerBackupBackupProject {
@@ -1596,9 +1595,8 @@ export const CreateDedicatedServerNetworkingRequest = /*@__PURE__*/ S.suspend(()
 
 /** Interface or interfaces aggregation */
 export type DedicatedServerNetworkingInterfacesList = Array<DedicatedServerInterfaces>;
-export const DedicatedServerNetworkingInterfacesList = /*@__PURE__*/ S.Array(
-  DedicatedServerInterfaces,
-) as any as S.Schema<DedicatedServerNetworkingInterfacesList>;
+export const DedicatedServerNetworkingInterfacesList =
+  CreateDedicatedServerNetworkingRequestInterfacesList as any as S.Schema<DedicatedServerNetworkingInterfacesList>;
 
 /** Network operation states */
 export type DedicatedServerNetworkingOperationEnum = "active" | "deploying";
@@ -1745,10 +1743,8 @@ export const DedicatedServerReinstallCustomizations = /*@__PURE__*/ S.suspend(()
 export type CreateDedicatedServerReinstallRequestPropertiesMap = {
   [key: string]: string | undefined;
 };
-export const CreateDedicatedServerReinstallRequestPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateDedicatedServerReinstallRequestPropertiesMap>;
+export const CreateDedicatedServerReinstallRequestPropertiesMap =
+  DedicatedServerReinstallCustomizationsHttpHeadersMap as any as S.Schema<CreateDedicatedServerReinstallRequestPropertiesMap>;
 
 /** Hardware raid types */
 export type DedicatedServerReinstallStorageHardwareRaidRaidLevelEnum = 0 | 1 | 5 | 6 | 10 | 50 | 60;
@@ -1802,14 +1798,8 @@ export interface DedicatedServerReinstallStoragePartitioningLayoutExtrasZp {
   /** zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible) */
   name?: string;
 }
-export const DedicatedServerReinstallStoragePartitioningLayoutExtrasZp = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "DedicatedServerReinstallStoragePartitioningLayoutExtrasZp",
-}) as any as S.Schema<DedicatedServerReinstallStoragePartitioningLayoutExtrasZp>;
+export const DedicatedServerReinstallStoragePartitioningLayoutExtrasZp =
+  DedicatedServerReinstallStoragePartitioningLayoutExtrasLv as any as S.Schema<DedicatedServerReinstallStoragePartitioningLayoutExtrasZp>;
 
 /** Partition extras parameters */
 export interface DedicatedServerReinstallStoragePartitioningLayoutExtras {
@@ -2058,11 +2048,8 @@ export const CreateDedicatedServerSecondaryDnsDomainRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<CreateDedicatedServerSecondaryDnsDomainRequest>;
 
 export interface CreateDedicatedServerSecondaryDnsDomainResponse {}
-export const CreateDedicatedServerSecondaryDnsDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateDedicatedServerSecondaryDnsDomainResponse",
-}) as any as S.Schema<CreateDedicatedServerSecondaryDnsDomainResponse>;
+export const CreateDedicatedServerSecondaryDnsDomainResponse =
+  CancelDedicatedServerTaskResponse as any as S.Schema<CreateDedicatedServerSecondaryDnsDomainResponse>;
 
 /** SPLA license type */
 export type DedicatedServerSplaTypeEnum = "os" | "sqlstd" | "sqlweb";
@@ -2190,9 +2177,8 @@ export const CreateDedicatedServerSupportReplaceHardDiskDriveRequest = /*@__PURE
 
 /** The list of faulty RAM slots (if you have the information) */
 export type CreateDedicatedServerSupportReplaceMemoryRequestSlotsList = Array<string>;
-export const CreateDedicatedServerSupportReplaceMemoryRequestSlotsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDedicatedServerSupportReplaceMemoryRequestSlotsList>;
+export const CreateDedicatedServerSupportReplaceMemoryRequestSlotsList =
+  DedicatedServerInterfacesMacsList as any as S.Schema<CreateDedicatedServerSupportReplaceMemoryRequestSlotsList>;
 
 export interface CreateDedicatedServerSupportReplaceMemoryRequest {
   /** The internal name of your dedicated server */
@@ -2249,11 +2235,8 @@ export const CreateDedicatedServerTaskScheduleRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateDedicatedServerTaskScheduleRequest>;
 
 export interface CreateDedicatedServerTaskScheduleResponse {}
-export const CreateDedicatedServerTaskScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateDedicatedServerTaskScheduleResponse",
-}) as any as S.Schema<CreateDedicatedServerTaskScheduleResponse>;
+export const CreateDedicatedServerTaskScheduleResponse =
+  CancelDedicatedServerTaskResponse as any as S.Schema<CreateDedicatedServerTaskScheduleResponse>;
 
 /** Distinct type of virtual mac */
 export type DedicatedServerVmacTypeEnum = "ovh" | "vmware";
@@ -2326,11 +2309,8 @@ export const DeleteDedicatedServerFeatureBackupCloudRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteDedicatedServerFeatureBackupCloudRequest>;
 
 export interface DeleteDedicatedServerFeatureBackupCloudResponse {}
-export const DeleteDedicatedServerFeatureBackupCloudResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDedicatedServerFeatureBackupCloudResponse",
-}) as any as S.Schema<DeleteDedicatedServerFeatureBackupCloudResponse>;
+export const DeleteDedicatedServerFeatureBackupCloudResponse =
+  CancelDedicatedServerTaskResponse as any as S.Schema<DeleteDedicatedServerFeatureBackupCloudResponse>;
 
 export interface DeleteDedicatedServerFeatureBackupFTPRequest {
   /** The internal name of your dedicated server */
@@ -2418,11 +2398,8 @@ export const DeleteDedicatedServerOptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDedicatedServerOptionRequest>;
 
 export interface DeleteDedicatedServerOptionResponse {}
-export const DeleteDedicatedServerOptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDedicatedServerOptionResponse",
-}) as any as S.Schema<DeleteDedicatedServerOptionResponse>;
+export const DeleteDedicatedServerOptionResponse =
+  CancelDedicatedServerTaskResponse as any as S.Schema<DeleteDedicatedServerOptionResponse>;
 
 export interface DeleteDedicatedServerSecondaryDnsDomainRequest {
   /** The internal name of your dedicated server */
@@ -2446,11 +2423,8 @@ export const DeleteDedicatedServerSecondaryDnsDomainRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteDedicatedServerSecondaryDnsDomainRequest>;
 
 export interface DeleteDedicatedServerSecondaryDnsDomainResponse {}
-export const DeleteDedicatedServerSecondaryDnsDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDedicatedServerSecondaryDnsDomainResponse",
-}) as any as S.Schema<DeleteDedicatedServerSecondaryDnsDomainResponse>;
+export const DeleteDedicatedServerSecondaryDnsDomainResponse =
+  CancelDedicatedServerTaskResponse as any as S.Schema<DeleteDedicatedServerSecondaryDnsDomainResponse>;
 
 export interface DeleteDedicatedServerVirtualMacVirtualAddressRequest {
   /** The internal name of your dedicated server */
@@ -2594,10 +2568,8 @@ export const DedicatedDatacenterEnum = S.String;
 
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
-export const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IamResourceMetadataTagsMap>;
+export const IamResourceMetadataTagsMap =
+  DedicatedServerReinstallCustomizationsHttpHeadersMap as any as S.Schema<IamResourceMetadataTagsMap>;
 
 /** IAM resource metadata embedded in services models */
 export interface IamResourceMetadata {
@@ -3334,14 +3306,8 @@ export interface DedicatedServerBmcWebSolValue {
   /** URL of the Web SOL session */
   url?: string;
 }
-export const DedicatedServerBmcWebSolValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expirationDate: S.optional(S.String),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DedicatedServerBmcWebSolValue",
-}) as any as S.Schema<DedicatedServerBmcWebSolValue>;
+export const DedicatedServerBmcWebSolValue =
+  DedicatedServerBmcWebKvmValue as any as S.Schema<DedicatedServerBmcWebSolValue>;
 
 export interface GetDedicatedServerFeatureFirewallRequest {
   /** The internal name of your dedicated server */
@@ -3599,11 +3565,8 @@ export const GetDedicatedServerIpCanBeMovedToRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<GetDedicatedServerIpCanBeMovedToRequest>;
 
 export interface GetDedicatedServerIpCanBeMovedToResponse {}
-export const GetDedicatedServerIpCanBeMovedToResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetDedicatedServerIpCanBeMovedToResponse",
-}) as any as S.Schema<GetDedicatedServerIpCanBeMovedToResponse>;
+export const GetDedicatedServerIpCanBeMovedToResponse =
+  CancelDedicatedServerTaskResponse as any as S.Schema<GetDedicatedServerIpCanBeMovedToResponse>;
 
 export interface GetDedicatedServerNetworkInterfaceControllerRequest {
   /** The internal name of your dedicated server */
@@ -3788,11 +3751,8 @@ export const GetDedicatedServerOrderableKvmRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetDedicatedServerOrderableKvmRequest>;
 
 export type GetDedicatedServerOrderableKvmResponse = boolean;
-export const GetDedicatedServerOrderableKvmResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetDedicatedServerOrderableKvmResponse",
-}) as any as S.Schema<GetDedicatedServerOrderableKvmResponse>;
+export const GetDedicatedServerOrderableKvmResponse =
+  GetDedicatedServerOrderableFeatureResponse as any as S.Schema<GetDedicatedServerOrderableKvmResponse>;
 
 export interface GetDedicatedServerOrderableKvmExpressRequest {
   /** The internal name of your dedicated server */
@@ -3813,11 +3773,8 @@ export const GetDedicatedServerOrderableKvmExpressRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<GetDedicatedServerOrderableKvmExpressRequest>;
 
 export type GetDedicatedServerOrderableKvmExpressResponse = boolean;
-export const GetDedicatedServerOrderableKvmExpressResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetDedicatedServerOrderableKvmExpressResponse",
-}) as any as S.Schema<GetDedicatedServerOrderableKvmExpressResponse>;
+export const GetDedicatedServerOrderableKvmExpressResponse =
+  GetDedicatedServerOrderableFeatureResponse as any as S.Schema<GetDedicatedServerOrderableKvmExpressResponse>;
 
 export interface GetDedicatedServerOrderableProfessionalUseRequest {
   /** The internal name of your dedicated server */
@@ -3838,11 +3795,8 @@ export const GetDedicatedServerOrderableProfessionalUseRequest = /*@__PURE__*/ S
 }) as any as S.Schema<GetDedicatedServerOrderableProfessionalUseRequest>;
 
 export type GetDedicatedServerOrderableProfessionalUseResponse = boolean;
-export const GetDedicatedServerOrderableProfessionalUseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetDedicatedServerOrderableProfessionalUseResponse",
-}) as any as S.Schema<GetDedicatedServerOrderableProfessionalUseResponse>;
+export const GetDedicatedServerOrderableProfessionalUseResponse =
+  GetDedicatedServerOrderableFeatureResponse as any as S.Schema<GetDedicatedServerOrderableProfessionalUseResponse>;
 
 export interface GetDedicatedServerPlannedInterventionRequest {
   /** The internal name of your dedicated server */
@@ -4072,9 +4026,8 @@ export const GetDedicatedServerServiceInfosRequest = /*@__PURE__*/ S.suspend(() 
 
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-export const ServicesServicePossibleRenewPeriodList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
+export const ServicesServicePossibleRenewPeriodList =
+  CreateDedicatedServerChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
 
 /** Map a possible renew for a specific service */
 export interface ServiceRenewType {
@@ -4779,9 +4732,7 @@ export const GetDedicatedServerVirtualNetworkInterfaceRequest = /*@__PURE__*/ S.
 /** NetworkInterfaceControllers bound to this VirtualNetworkInterface */
 export type DedicatedServerVirtualNetworkInterfaceNetworkInterfaceControllerList = Array<string>;
 export const DedicatedServerVirtualNetworkInterfaceNetworkInterfaceControllerList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DedicatedServerVirtualNetworkInterfaceNetworkInterfaceControllerList>;
+  CreateDedicatedServerOlaAggregationRequestVirtualNetworkInterfacesList as any as S.Schema<DedicatedServerVirtualNetworkInterfaceNetworkInterfaceControllerList>;
 
 /** Your VirtualNetworkInterface */
 export interface DedicatedServerVirtualNetworkInterface {
@@ -4841,9 +4792,7 @@ export const GetDedicatedServerVirtualNetworkInterfaceByUuidRequest = /*@__PURE_
 export type DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceNetworkInterfaceControllerList =
   Array<string>;
 export const DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceNetworkInterfaceControllerList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceNetworkInterfaceControllerList>;
+  CreateDedicatedServerOlaAggregationRequestVirtualNetworkInterfacesList as any as S.Schema<DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceNetworkInterfaceControllerList>;
 
 /** Your VirtualNetworkInterface */
 export interface DedicatedVirtualNetworkInterfaceVirtualNetworkInterface {
@@ -4862,21 +4811,8 @@ export interface DedicatedVirtualNetworkInterfaceVirtualNetworkInterface {
   /** vRack name */
   vrack?: string | null;
 }
-export const DedicatedVirtualNetworkInterfaceVirtualNetworkInterface = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    mode: S.optional(DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceModeEnum),
-    name: S.optional(S.String),
-    networkInterfaceController: S.optional(
-      DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceNetworkInterfaceControllerList,
-    ),
-    serverName: S.optional(S.String),
-    uuid: S.optional(S.String),
-    vrack: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DedicatedVirtualNetworkInterfaceVirtualNetworkInterface",
-}) as any as S.Schema<DedicatedVirtualNetworkInterfaceVirtualNetworkInterface>;
+export const DedicatedVirtualNetworkInterfaceVirtualNetworkInterface =
+  DedicatedServerVirtualNetworkInterface as any as S.Schema<DedicatedVirtualNetworkInterfaceVirtualNetworkInterface>;
 
 export interface GetDedicatedServerVrackRequest {
   /** The internal name of your dedicated server */
@@ -4941,9 +4877,8 @@ export const ListDedicatedServerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDedicatedServerRequest>;
 
 export type ListDedicatedServerResponseBodyList = Array<string>;
-export const ListDedicatedServerResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDedicatedServerResponseBodyList>;
+export const ListDedicatedServerResponseBodyList =
+  DedicatedServerInterfacesMacsList as any as S.Schema<ListDedicatedServerResponseBodyList>;
 
 export type ListDedicatedServerResponse = ListDedicatedServerResponseBodyList;
 export const ListDedicatedServerResponse = /*@__PURE__*/ S.suspend(() =>
@@ -5101,16 +5036,12 @@ export const ListDedicatedServerBootRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDedicatedServerBootRequest>;
 
 export type ListDedicatedServerBootResponseBodyList = Array<number>;
-export const ListDedicatedServerBootResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListDedicatedServerBootResponseBodyList>;
+export const ListDedicatedServerBootResponseBodyList =
+  CreateDedicatedServerChangeContactResponseBodyList as any as S.Schema<ListDedicatedServerBootResponseBodyList>;
 
 export type ListDedicatedServerBootResponse = ListDedicatedServerBootResponseBodyList;
-export const ListDedicatedServerBootResponse = /*@__PURE__*/ S.suspend(() =>
-  ListDedicatedServerBootResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListDedicatedServerBootResponse",
-}) as any as S.Schema<ListDedicatedServerBootResponse>;
+export const ListDedicatedServerBootResponse =
+  CreateDedicatedServerChangeContactResponse as any as S.Schema<ListDedicatedServerBootResponse>;
 
 export interface ListDedicatedServerBootOptionRequest {
   /** The internal name of your dedicated server */
@@ -5571,17 +5502,13 @@ export const ListDedicatedServerFeatureBackupFTPAccessRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListDedicatedServerFeatureBackupFTPAccessRequest>;
 
 export type ListDedicatedServerFeatureBackupFTPAccessResponseBodyList = Array<string>;
-export const ListDedicatedServerFeatureBackupFTPAccessResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDedicatedServerFeatureBackupFTPAccessResponseBodyList>;
+export const ListDedicatedServerFeatureBackupFTPAccessResponseBodyList =
+  DedicatedServerInterfacesMacsList as any as S.Schema<ListDedicatedServerFeatureBackupFTPAccessResponseBodyList>;
 
 export type ListDedicatedServerFeatureBackupFTPAccessResponse =
   ListDedicatedServerFeatureBackupFTPAccessResponseBodyList;
-export const ListDedicatedServerFeatureBackupFTPAccessResponse = /*@__PURE__*/ S.suspend(() =>
-  ListDedicatedServerFeatureBackupFTPAccessResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListDedicatedServerFeatureBackupFTPAccessResponse",
-}) as any as S.Schema<ListDedicatedServerFeatureBackupFTPAccessResponse>;
+export const ListDedicatedServerFeatureBackupFTPAccessResponse =
+  ListDedicatedServerResponse as any as S.Schema<ListDedicatedServerFeatureBackupFTPAccessResponse>;
 
 export interface ListDedicatedServerFeatureBackupFTPAuthorizableBlocksRequest {
   /** The internal name of your dedicated server */
@@ -5604,9 +5531,7 @@ export const ListDedicatedServerFeatureBackupFTPAuthorizableBlocksRequest = /*@_
 
 export type ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponseBodyList = Array<string>;
 export const ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponseBodyList>;
+  CreateDedicatedServerOlaAggregationRequestVirtualNetworkInterfacesList as any as S.Schema<ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponseBodyList>;
 
 export type ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponse =
   ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponseBodyList;
@@ -5641,9 +5566,7 @@ export const ListDedicatedServerInstallCompatibleTemplatePartitionSchemesRequest
 export type ListDedicatedServerInstallCompatibleTemplatePartitionSchemesResponseBodyList =
   Array<string>;
 export const ListDedicatedServerInstallCompatibleTemplatePartitionSchemesResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListDedicatedServerInstallCompatibleTemplatePartitionSchemesResponseBodyList>;
+  CreateDedicatedServerOlaAggregationRequestVirtualNetworkInterfacesList as any as S.Schema<ListDedicatedServerInstallCompatibleTemplatePartitionSchemesResponseBodyList>;
 
 export type ListDedicatedServerInstallCompatibleTemplatePartitionSchemesResponse =
   ListDedicatedServerInstallCompatibleTemplatePartitionSchemesResponseBodyList;
@@ -5676,15 +5599,13 @@ export const ListDedicatedServerInstallCompatibleTemplatesRequest = /*@__PURE__*
 
 /** Names list of ovh installationtemplates compatibles with this server */
 export type DedicatedServerInstallTemplateOvhList = Array<string>;
-export const DedicatedServerInstallTemplateOvhList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DedicatedServerInstallTemplateOvhList>;
+export const DedicatedServerInstallTemplateOvhList =
+  DedicatedServerInterfacesMacsList as any as S.Schema<DedicatedServerInstallTemplateOvhList>;
 
 /** Names list of yours installation templates compatibles with this server */
 export type DedicatedServerInstallTemplatePersonalList = Array<string>;
-export const DedicatedServerInstallTemplatePersonalList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DedicatedServerInstallTemplatePersonalList>;
+export const DedicatedServerInstallTemplatePersonalList =
+  DedicatedServerInterfacesMacsList as any as S.Schema<DedicatedServerInstallTemplatePersonalList>;
 
 /** A structure describing informations about an Installation templates */
 export interface DedicatedServerInstallTemplate {
@@ -5722,9 +5643,8 @@ export const ListDedicatedServerInstallHardwareRaidProfileRequest = /*@__PURE__*
 
 /** Disk names */
 export type DedicatedServerHardwareRaidDiskGroupNamesList = Array<string>;
-export const DedicatedServerHardwareRaidDiskGroupNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DedicatedServerHardwareRaidDiskGroupNamesList>;
+export const DedicatedServerHardwareRaidDiskGroupNamesList =
+  DedicatedServerInterfacesMacsList as any as S.Schema<DedicatedServerHardwareRaidDiskGroupNamesList>;
 
 /** A numeric value tagged with its unit */
 export interface ComplexTypeUnitAndValueString {
@@ -5973,17 +5893,13 @@ export const ListDedicatedServerInterventionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListDedicatedServerInterventionRequest>;
 
 export type ListDedicatedServerInterventionResponseBodyList = Array<number>;
-export const ListDedicatedServerInterventionResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListDedicatedServerInterventionResponseBodyList>;
+export const ListDedicatedServerInterventionResponseBodyList =
+  CreateDedicatedServerChangeContactResponseBodyList as any as S.Schema<ListDedicatedServerInterventionResponseBodyList>;
 
 export type ListDedicatedServerInterventionResponse =
   ListDedicatedServerInterventionResponseBodyList;
-export const ListDedicatedServerInterventionResponse = /*@__PURE__*/ S.suspend(() =>
-  ListDedicatedServerInterventionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListDedicatedServerInterventionResponse",
-}) as any as S.Schema<ListDedicatedServerInterventionResponse>;
+export const ListDedicatedServerInterventionResponse =
+  CreateDedicatedServerChangeContactResponse as any as S.Schema<ListDedicatedServerInterventionResponse>;
 
 export interface ListDedicatedServerIpCountryAvailableRequest {
   /** The internal name of your dedicated server */
@@ -6048,16 +5964,12 @@ export const ListDedicatedServerIpsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDedicatedServerIpsRequest>;
 
 export type ListDedicatedServerIpsResponseBodyList = Array<string>;
-export const ListDedicatedServerIpsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDedicatedServerIpsResponseBodyList>;
+export const ListDedicatedServerIpsResponseBodyList =
+  DedicatedServerInterfacesMacsList as any as S.Schema<ListDedicatedServerIpsResponseBodyList>;
 
 export type ListDedicatedServerIpsResponse = ListDedicatedServerIpsResponseBodyList;
-export const ListDedicatedServerIpsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListDedicatedServerIpsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListDedicatedServerIpsResponse",
-}) as any as S.Schema<ListDedicatedServerIpsResponse>;
+export const ListDedicatedServerIpsResponse =
+  ListDedicatedServerResponse as any as S.Schema<ListDedicatedServerIpsResponse>;
 
 export interface ListDedicatedServerLicenseCompliantWindowsRequest {
   /** The internal name of your dedicated server */
@@ -6192,17 +6104,13 @@ export const ListDedicatedServerNetworkInterfaceControllerRequest = /*@__PURE__*
 }) as any as S.Schema<ListDedicatedServerNetworkInterfaceControllerRequest>;
 
 export type ListDedicatedServerNetworkInterfaceControllerResponseBodyList = Array<string>;
-export const ListDedicatedServerNetworkInterfaceControllerResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDedicatedServerNetworkInterfaceControllerResponseBodyList>;
+export const ListDedicatedServerNetworkInterfaceControllerResponseBodyList =
+  DedicatedServerInterfacesMacsList as any as S.Schema<ListDedicatedServerNetworkInterfaceControllerResponseBodyList>;
 
 export type ListDedicatedServerNetworkInterfaceControllerResponse =
   ListDedicatedServerNetworkInterfaceControllerResponseBodyList;
-export const ListDedicatedServerNetworkInterfaceControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  ListDedicatedServerNetworkInterfaceControllerResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListDedicatedServerNetworkInterfaceControllerResponse",
-}) as any as S.Schema<ListDedicatedServerNetworkInterfaceControllerResponse>;
+export const ListDedicatedServerNetworkInterfaceControllerResponse =
+  ListDedicatedServerResponse as any as S.Schema<ListDedicatedServerNetworkInterfaceControllerResponse>;
 
 /** distincts MRTG period */
 export type DedicatedServerMrtgPeriodEnum = "daily" | "hourly" | "monthly" | "weekly" | "yearly";
@@ -6342,16 +6250,12 @@ export const ListDedicatedServerOperationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDedicatedServerOperationRequest>;
 
 export type ListDedicatedServerOperationResponseBodyList = Array<string>;
-export const ListDedicatedServerOperationResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDedicatedServerOperationResponseBodyList>;
+export const ListDedicatedServerOperationResponseBodyList =
+  DedicatedServerInterfacesMacsList as any as S.Schema<ListDedicatedServerOperationResponseBodyList>;
 
 export type ListDedicatedServerOperationResponse = ListDedicatedServerOperationResponseBodyList;
-export const ListDedicatedServerOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  ListDedicatedServerOperationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListDedicatedServerOperationResponse",
-}) as any as S.Schema<ListDedicatedServerOperationResponse>;
+export const ListDedicatedServerOperationResponse =
+  ListDedicatedServerResponse as any as S.Schema<ListDedicatedServerOperationResponse>;
 
 export interface ListDedicatedServerOptionRequest {
   /** The internal name of your dedicated server */
@@ -6453,16 +6357,14 @@ export const DedicatedServerBandwidthOrderablePlatinumList = /*@__PURE__*/ S.Arr
 
 /** Bandwidth "premium" orderable in mbps */
 export type DedicatedServerBandwidthOrderablePremiumList = Array<DedicatedServerBandwidthOrderEnum>;
-export const DedicatedServerBandwidthOrderablePremiumList = /*@__PURE__*/ S.Array(
-  DedicatedServerBandwidthOrderEnum,
-) as any as S.Schema<DedicatedServerBandwidthOrderablePremiumList>;
+export const DedicatedServerBandwidthOrderablePremiumList =
+  DedicatedServerBandwidthOrderablePlatinumList as any as S.Schema<DedicatedServerBandwidthOrderablePremiumList>;
 
 /** Bandwidth "ultimate" orderable in mbps */
 export type DedicatedServerBandwidthOrderableUltimateList =
   Array<DedicatedServerBandwidthOrderEnum>;
-export const DedicatedServerBandwidthOrderableUltimateList = /*@__PURE__*/ S.Array(
-  DedicatedServerBandwidthOrderEnum,
-) as any as S.Schema<DedicatedServerBandwidthOrderableUltimateList>;
+export const DedicatedServerBandwidthOrderableUltimateList =
+  DedicatedServerBandwidthOrderablePlatinumList as any as S.Schema<DedicatedServerBandwidthOrderableUltimateList>;
 
 /** A structure describing informations bandwidth orderable for this dedicated server */
 export interface DedicatedServerBandwidthOrderable {
@@ -6599,9 +6501,8 @@ export const DedicatedServerIpOrderableIpv4List = /*@__PURE__*/ S.Array(
 
 /** Orderable IP v6 details */
 export type DedicatedServerIpOrderableIpv6List = Array<DedicatedServerIpOrderableDetails>;
-export const DedicatedServerIpOrderableIpv6List = /*@__PURE__*/ S.Array(
-  DedicatedServerIpOrderableDetails,
-) as any as S.Schema<DedicatedServerIpOrderableIpv6List>;
+export const DedicatedServerIpOrderableIpv6List =
+  DedicatedServerIpOrderableIpv4List as any as S.Schema<DedicatedServerIpOrderableIpv6List>;
 
 /** A structure describing informations about orderable IP address */
 export interface DedicatedServerIpOrderable {
@@ -6767,17 +6668,13 @@ export const ListDedicatedServerOsAvailabilitiesRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListDedicatedServerOsAvailabilitiesRequest>;
 
 export type ListDedicatedServerOsAvailabilitiesResponseBodyList = Array<string>;
-export const ListDedicatedServerOsAvailabilitiesResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDedicatedServerOsAvailabilitiesResponseBodyList>;
+export const ListDedicatedServerOsAvailabilitiesResponseBodyList =
+  DedicatedServerInterfacesMacsList as any as S.Schema<ListDedicatedServerOsAvailabilitiesResponseBodyList>;
 
 export type ListDedicatedServerOsAvailabilitiesResponse =
   ListDedicatedServerOsAvailabilitiesResponseBodyList;
-export const ListDedicatedServerOsAvailabilitiesResponse = /*@__PURE__*/ S.suspend(() =>
-  ListDedicatedServerOsAvailabilitiesResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListDedicatedServerOsAvailabilitiesResponse",
-}) as any as S.Schema<ListDedicatedServerOsAvailabilitiesResponse>;
+export const ListDedicatedServerOsAvailabilitiesResponse =
+  ListDedicatedServerResponse as any as S.Schema<ListDedicatedServerOsAvailabilitiesResponse>;
 
 export interface ListDedicatedServerPlannedInterventionRequest {
   /** The internal name of your dedicated server */
@@ -6798,17 +6695,13 @@ export const ListDedicatedServerPlannedInterventionRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListDedicatedServerPlannedInterventionRequest>;
 
 export type ListDedicatedServerPlannedInterventionResponseBodyList = Array<number>;
-export const ListDedicatedServerPlannedInterventionResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListDedicatedServerPlannedInterventionResponseBodyList>;
+export const ListDedicatedServerPlannedInterventionResponseBodyList =
+  CreateDedicatedServerChangeContactResponseBodyList as any as S.Schema<ListDedicatedServerPlannedInterventionResponseBodyList>;
 
 export type ListDedicatedServerPlannedInterventionResponse =
   ListDedicatedServerPlannedInterventionResponseBodyList;
-export const ListDedicatedServerPlannedInterventionResponse = /*@__PURE__*/ S.suspend(() =>
-  ListDedicatedServerPlannedInterventionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListDedicatedServerPlannedInterventionResponse",
-}) as any as S.Schema<ListDedicatedServerPlannedInterventionResponse>;
+export const ListDedicatedServerPlannedInterventionResponse =
+  CreateDedicatedServerChangeContactResponse as any as S.Schema<ListDedicatedServerPlannedInterventionResponse>;
 
 /** The region */
 export type DedicatedServerAvailabilityRegionalizationEnum =
@@ -7029,17 +6922,13 @@ export const ListDedicatedServerSecondaryDnsDomainsRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListDedicatedServerSecondaryDnsDomainsRequest>;
 
 export type ListDedicatedServerSecondaryDnsDomainsResponseBodyList = Array<string>;
-export const ListDedicatedServerSecondaryDnsDomainsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDedicatedServerSecondaryDnsDomainsResponseBodyList>;
+export const ListDedicatedServerSecondaryDnsDomainsResponseBodyList =
+  DedicatedServerInterfacesMacsList as any as S.Schema<ListDedicatedServerSecondaryDnsDomainsResponseBodyList>;
 
 export type ListDedicatedServerSecondaryDnsDomainsResponse =
   ListDedicatedServerSecondaryDnsDomainsResponseBodyList;
-export const ListDedicatedServerSecondaryDnsDomainsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListDedicatedServerSecondaryDnsDomainsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListDedicatedServerSecondaryDnsDomainsResponse",
-}) as any as S.Schema<ListDedicatedServerSecondaryDnsDomainsResponse>;
+export const ListDedicatedServerSecondaryDnsDomainsResponse =
+  ListDedicatedServerResponse as any as S.Schema<ListDedicatedServerSecondaryDnsDomainsResponse>;
 
 export interface ListDedicatedServerSpecificationIpRequest {
   /** The internal name of your dedicated server */
@@ -7074,16 +6963,12 @@ export const ListDedicatedServerSplaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDedicatedServerSplaRequest>;
 
 export type ListDedicatedServerSplaResponseBodyList = Array<number>;
-export const ListDedicatedServerSplaResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListDedicatedServerSplaResponseBodyList>;
+export const ListDedicatedServerSplaResponseBodyList =
+  CreateDedicatedServerChangeContactResponseBodyList as any as S.Schema<ListDedicatedServerSplaResponseBodyList>;
 
 export type ListDedicatedServerSplaResponse = ListDedicatedServerSplaResponseBodyList;
-export const ListDedicatedServerSplaResponse = /*@__PURE__*/ S.suspend(() =>
-  ListDedicatedServerSplaResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListDedicatedServerSplaResponse",
-}) as any as S.Schema<ListDedicatedServerSplaResponse>;
+export const ListDedicatedServerSplaResponse =
+  CreateDedicatedServerChangeContactResponse as any as S.Schema<ListDedicatedServerSplaResponse>;
 
 export interface ListDedicatedServerTaskRequest {
   /** The internal name of your dedicated server */
@@ -7104,16 +6989,12 @@ export const ListDedicatedServerTaskRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDedicatedServerTaskRequest>;
 
 export type ListDedicatedServerTaskResponseBodyList = Array<number>;
-export const ListDedicatedServerTaskResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListDedicatedServerTaskResponseBodyList>;
+export const ListDedicatedServerTaskResponseBodyList =
+  CreateDedicatedServerChangeContactResponseBodyList as any as S.Schema<ListDedicatedServerTaskResponseBodyList>;
 
 export type ListDedicatedServerTaskResponse = ListDedicatedServerTaskResponseBodyList;
-export const ListDedicatedServerTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  ListDedicatedServerTaskResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListDedicatedServerTaskResponse",
-}) as any as S.Schema<ListDedicatedServerTaskResponse>;
+export const ListDedicatedServerTaskResponse =
+  CreateDedicatedServerChangeContactResponse as any as S.Schema<ListDedicatedServerTaskResponse>;
 
 export interface ListDedicatedServerTaskAvailableTimeslotsRequest {
   /** The internal name of your dedicated server */
@@ -7252,17 +7133,13 @@ export const DedicatedServerHardwareUpgradeTimeslot = DedicatedPlannedInterventi
 
 export type ListDedicatedServerUpgradeAvailableTimeslotsResponseBodyList =
   Array<DedicatedPlannedInterventionTimeSlot>;
-export const ListDedicatedServerUpgradeAvailableTimeslotsResponseBodyList = /*@__PURE__*/ S.Array(
-  DedicatedPlannedInterventionTimeSlot,
-) as any as S.Schema<ListDedicatedServerUpgradeAvailableTimeslotsResponseBodyList>;
+export const ListDedicatedServerUpgradeAvailableTimeslotsResponseBodyList =
+  ListDedicatedServerTaskAvailableTimeslotsResponseBodyList as any as S.Schema<ListDedicatedServerUpgradeAvailableTimeslotsResponseBodyList>;
 
 export type ListDedicatedServerUpgradeAvailableTimeslotsResponse =
   ListDedicatedServerUpgradeAvailableTimeslotsResponseBodyList;
-export const ListDedicatedServerUpgradeAvailableTimeslotsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListDedicatedServerUpgradeAvailableTimeslotsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListDedicatedServerUpgradeAvailableTimeslotsResponse",
-}) as any as S.Schema<ListDedicatedServerUpgradeAvailableTimeslotsResponse>;
+export const ListDedicatedServerUpgradeAvailableTimeslotsResponse =
+  ListDedicatedServerTaskAvailableTimeslotsResponse as any as S.Schema<ListDedicatedServerUpgradeAvailableTimeslotsResponse>;
 
 export interface ListDedicatedServerVirtualMacRequest {
   /** The internal name of your dedicated server */
@@ -7277,16 +7154,12 @@ export const ListDedicatedServerVirtualMacRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListDedicatedServerVirtualMacRequest>;
 
 export type ListDedicatedServerVirtualMacResponseBodyList = Array<string>;
-export const ListDedicatedServerVirtualMacResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDedicatedServerVirtualMacResponseBodyList>;
+export const ListDedicatedServerVirtualMacResponseBodyList =
+  DedicatedServerInterfacesMacsList as any as S.Schema<ListDedicatedServerVirtualMacResponseBodyList>;
 
 export type ListDedicatedServerVirtualMacResponse = ListDedicatedServerVirtualMacResponseBodyList;
-export const ListDedicatedServerVirtualMacResponse = /*@__PURE__*/ S.suspend(() =>
-  ListDedicatedServerVirtualMacResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListDedicatedServerVirtualMacResponse",
-}) as any as S.Schema<ListDedicatedServerVirtualMacResponse>;
+export const ListDedicatedServerVirtualMacResponse =
+  ListDedicatedServerResponse as any as S.Schema<ListDedicatedServerVirtualMacResponse>;
 
 export interface ListDedicatedServerVirtualMacVirtualAddressRequest {
   /** The internal name of your dedicated server */
@@ -7310,17 +7183,13 @@ export const ListDedicatedServerVirtualMacVirtualAddressRequest = /*@__PURE__*/ 
 }) as any as S.Schema<ListDedicatedServerVirtualMacVirtualAddressRequest>;
 
 export type ListDedicatedServerVirtualMacVirtualAddressResponseBodyList = Array<string>;
-export const ListDedicatedServerVirtualMacVirtualAddressResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDedicatedServerVirtualMacVirtualAddressResponseBodyList>;
+export const ListDedicatedServerVirtualMacVirtualAddressResponseBodyList =
+  DedicatedServerInterfacesMacsList as any as S.Schema<ListDedicatedServerVirtualMacVirtualAddressResponseBodyList>;
 
 export type ListDedicatedServerVirtualMacVirtualAddressResponse =
   ListDedicatedServerVirtualMacVirtualAddressResponseBodyList;
-export const ListDedicatedServerVirtualMacVirtualAddressResponse = /*@__PURE__*/ S.suspend(() =>
-  ListDedicatedServerVirtualMacVirtualAddressResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListDedicatedServerVirtualMacVirtualAddressResponse",
-}) as any as S.Schema<ListDedicatedServerVirtualMacVirtualAddressResponse>;
+export const ListDedicatedServerVirtualMacVirtualAddressResponse =
+  ListDedicatedServerResponse as any as S.Schema<ListDedicatedServerVirtualMacVirtualAddressResponse>;
 
 export interface ListDedicatedServerVirtualNetworkInterfaceRequest {
   /** The internal name of your dedicated server */
@@ -7355,17 +7224,13 @@ export const ListDedicatedServerVirtualNetworkInterfaceRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ListDedicatedServerVirtualNetworkInterfaceRequest>;
 
 export type ListDedicatedServerVirtualNetworkInterfaceResponseBodyList = Array<string>;
-export const ListDedicatedServerVirtualNetworkInterfaceResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDedicatedServerVirtualNetworkInterfaceResponseBodyList>;
+export const ListDedicatedServerVirtualNetworkInterfaceResponseBodyList =
+  DedicatedServerInterfacesMacsList as any as S.Schema<ListDedicatedServerVirtualNetworkInterfaceResponseBodyList>;
 
 export type ListDedicatedServerVirtualNetworkInterfaceResponse =
   ListDedicatedServerVirtualNetworkInterfaceResponseBodyList;
-export const ListDedicatedServerVirtualNetworkInterfaceResponse = /*@__PURE__*/ S.suspend(() =>
-  ListDedicatedServerVirtualNetworkInterfaceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListDedicatedServerVirtualNetworkInterfaceResponse",
-}) as any as S.Schema<ListDedicatedServerVirtualNetworkInterfaceResponse>;
+export const ListDedicatedServerVirtualNetworkInterfaceResponse =
+  ListDedicatedServerResponse as any as S.Schema<ListDedicatedServerVirtualNetworkInterfaceResponse>;
 
 export interface ListDedicatedServerVrackRequest {
   /** The internal name of your dedicated server */
@@ -7380,16 +7245,12 @@ export const ListDedicatedServerVrackRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDedicatedServerVrackRequest>;
 
 export type ListDedicatedServerVrackResponseBodyList = Array<string>;
-export const ListDedicatedServerVrackResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDedicatedServerVrackResponseBodyList>;
+export const ListDedicatedServerVrackResponseBodyList =
+  DedicatedServerInterfacesMacsList as any as S.Schema<ListDedicatedServerVrackResponseBodyList>;
 
 export type ListDedicatedServerVrackResponse = ListDedicatedServerVrackResponseBodyList;
-export const ListDedicatedServerVrackResponse = /*@__PURE__*/ S.suspend(() =>
-  ListDedicatedServerVrackResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListDedicatedServerVrackResponse",
-}) as any as S.Schema<ListDedicatedServerVrackResponse>;
+export const ListDedicatedServerVrackResponse =
+  ListDedicatedServerResponse as any as S.Schema<ListDedicatedServerVrackResponse>;
 
 export interface PutDedicatedServerRequest {
   /** The internal name of your dedicated server */
@@ -7428,9 +7289,8 @@ export const PutDedicatedServerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutDedicatedServerRequest>;
 
 export interface PutDedicatedServerResponse {}
-export const PutDedicatedServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutDedicatedServerResponse",
-}) as any as S.Schema<PutDedicatedServerResponse>;
+export const PutDedicatedServerResponse =
+  IamResourceTagFilterInput as any as S.Schema<PutDedicatedServerResponse>;
 
 export interface PutDedicatedServerBurstRequest {
   /** The internal name of your dedicated server */
@@ -7483,11 +7343,8 @@ export const PutDedicatedServerFeatureBackupFTPAccessRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<PutDedicatedServerFeatureBackupFTPAccessRequest>;
 
 export interface PutDedicatedServerFeatureBackupFTPAccessResponse {}
-export const PutDedicatedServerFeatureBackupFTPAccessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutDedicatedServerFeatureBackupFTPAccessResponse",
-}) as any as S.Schema<PutDedicatedServerFeatureBackupFTPAccessResponse>;
+export const PutDedicatedServerFeatureBackupFTPAccessResponse =
+  CancelDedicatedServerTaskResponse as any as S.Schema<PutDedicatedServerFeatureBackupFTPAccessResponse>;
 
 export interface PutDedicatedServerFeatureFirewallRequest {
   /** The internal name of your dedicated server */
@@ -7506,11 +7363,8 @@ export const PutDedicatedServerFeatureFirewallRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PutDedicatedServerFeatureFirewallRequest>;
 
 export interface PutDedicatedServerFeatureFirewallResponse {}
-export const PutDedicatedServerFeatureFirewallResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutDedicatedServerFeatureFirewallResponse",
-}) as any as S.Schema<PutDedicatedServerFeatureFirewallResponse>;
+export const PutDedicatedServerFeatureFirewallResponse =
+  CancelDedicatedServerTaskResponse as any as S.Schema<PutDedicatedServerFeatureFirewallResponse>;
 
 export interface PutDedicatedServerSecondaryDnsDomainRequest {
   /** The internal name of your dedicated server */
@@ -7537,11 +7391,8 @@ export const PutDedicatedServerSecondaryDnsDomainRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<PutDedicatedServerSecondaryDnsDomainRequest>;
 
 export interface PutDedicatedServerSecondaryDnsDomainResponse {}
-export const PutDedicatedServerSecondaryDnsDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutDedicatedServerSecondaryDnsDomainResponse",
-}) as any as S.Schema<PutDedicatedServerSecondaryDnsDomainResponse>;
+export const PutDedicatedServerSecondaryDnsDomainResponse =
+  CancelDedicatedServerTaskResponse as any as S.Schema<PutDedicatedServerSecondaryDnsDomainResponse>;
 
 export interface PutDedicatedServerServiceInfosRequest {
   /** The internal name of your dedicated server */
@@ -7561,11 +7412,8 @@ export const PutDedicatedServerServiceInfosRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<PutDedicatedServerServiceInfosRequest>;
 
 export interface PutDedicatedServerServiceInfosResponse {}
-export const PutDedicatedServerServiceInfosResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutDedicatedServerServiceInfosResponse",
-}) as any as S.Schema<PutDedicatedServerServiceInfosResponse>;
+export const PutDedicatedServerServiceInfosResponse =
+  CancelDedicatedServerTaskResponse as any as S.Schema<PutDedicatedServerServiceInfosResponse>;
 
 export interface PutDedicatedServerSplaRequest {
   /** The internal name of your dedicated server */
@@ -7586,9 +7434,8 @@ export const PutDedicatedServerSplaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutDedicatedServerSplaRequest>;
 
 export interface PutDedicatedServerSplaResponse {}
-export const PutDedicatedServerSplaResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutDedicatedServerSplaResponse",
-}) as any as S.Schema<PutDedicatedServerSplaResponse>;
+export const PutDedicatedServerSplaResponse =
+  IamResourceTagFilterInput as any as S.Schema<PutDedicatedServerSplaResponse>;
 
 export interface PutDedicatedServerUpgradeScheduleRequest {
   /** The internal name of your dedicated server */
@@ -7611,11 +7458,8 @@ export const PutDedicatedServerUpgradeScheduleRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PutDedicatedServerUpgradeScheduleRequest>;
 
 export interface PutDedicatedServerUpgradeScheduleResponse {}
-export const PutDedicatedServerUpgradeScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutDedicatedServerUpgradeScheduleResponse",
-}) as any as S.Schema<PutDedicatedServerUpgradeScheduleResponse>;
+export const PutDedicatedServerUpgradeScheduleResponse =
+  CancelDedicatedServerTaskResponse as any as S.Schema<PutDedicatedServerUpgradeScheduleResponse>;
 
 export interface RebootDedicatedServerRequest {
   /** The internal name of your dedicated server */
@@ -7734,11 +7578,8 @@ export const RevokeDedicatedServerSplaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevokeDedicatedServerSplaRequest>;
 
 export interface RevokeDedicatedServerSplaResponse {}
-export const RevokeDedicatedServerSplaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RevokeDedicatedServerSplaResponse",
-}) as any as S.Schema<RevokeDedicatedServerSplaResponse>;
+export const RevokeDedicatedServerSplaResponse =
+  CancelDedicatedServerTaskResponse as any as S.Schema<RevokeDedicatedServerSplaResponse>;
 
 /** A structure describing informations about installation custom */
 export interface DedicatedServerInstallCustom {
@@ -7828,11 +7669,8 @@ export const TerminateDedicatedServerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminateDedicatedServerRequest>;
 
 export type TerminateDedicatedServerResponse = string;
-export const TerminateDedicatedServerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "TerminateDedicatedServerResponse",
-}) as any as S.Schema<TerminateDedicatedServerResponse>;
+export const TerminateDedicatedServerResponse =
+  ConfirmDedicatedServerTerminationResponse as any as S.Schema<TerminateDedicatedServerResponse>;
 
 export interface TestDedicatedServerFeaturesBmcRequest {
   /** The internal name of your dedicated server */

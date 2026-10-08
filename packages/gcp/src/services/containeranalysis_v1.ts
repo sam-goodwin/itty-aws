@@ -93,22 +93,14 @@ export interface Hint {
   /** Required. The human readable name of this attestation authority, for example "qa". */
   humanReadableName?: string;
 }
-export const Hint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    humanReadableName: S.optional(S.String),
-  }),
-).annotate({ identifier: "Hint" }) as any as S.Schema<Hint>;
+export const Hint = DSSEHint as any as S.Schema<Hint>;
 
 /** Note kind that represents a logical attestation "role" or "authority". For example, an organization might have one `Authority` for "QA" and one for "build". This note is intended to act strictly as a grouping mechanism for the attached occurrences (Attestations). This grouping mechanism also provides a security boundary, since IAM ACLs gate the ability for a principle to attach an occurrence to a given note. It also provides a single point of lookup to find all attached attestation occurrences, even if they don't all live in the same project. */
 export interface AttestationNote {
   /** Hint hints at the purpose of the attestation authority. */
   hint?: Hint;
 }
-export const AttestationNote = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hint: S.optional(Hint),
-  }),
-).annotate({ identifier: "AttestationNote" }) as any as S.Schema<AttestationNote>;
+export const AttestationNote = DSSEAttestationNote as any as S.Schema<AttestationNote>;
 
 export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
@@ -2069,15 +2061,10 @@ export interface File {
   name?: string;
   digest?: StringMap;
 }
-export const File = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    digest: S.optional(StringMap),
-  }),
-).annotate({ identifier: "File" }) as any as S.Schema<File>;
+export const File = Subject as any as S.Schema<File>;
 
 export type FileList = Array<File>;
-export const FileList = /*@__PURE__*/ S.Array(File) as any as S.Schema<FileList>;
+export const FileList = SubjectList as any as S.Schema<FileList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -3203,13 +3190,8 @@ export interface BatchCreateOccurrencesResponse {
   /** The occurrences that were created. */
   occurrences?: OccurrenceList;
 }
-export const BatchCreateOccurrencesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    occurrences: S.optional(OccurrenceList),
-  }),
-).annotate({
-  identifier: "BatchCreateOccurrencesResponse",
-}) as any as S.Schema<BatchCreateOccurrencesResponse>;
+export const BatchCreateOccurrencesResponse =
+  BatchCreateOccurrencesRequest as any as S.Schema<BatchCreateOccurrencesResponse>;
 
 export interface BatchCreateProjectsNotesRequest {
   /** Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the notes are to be created. */
@@ -3363,9 +3345,7 @@ export const DeleteProjectsLocationsNotesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = SecretNote as any as S.Schema<Empty>;
 
 export interface DeleteProjectsLocationsOccurrencesRequest {
   /** Required. The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`. */
@@ -4309,13 +4289,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsOccurrencesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */

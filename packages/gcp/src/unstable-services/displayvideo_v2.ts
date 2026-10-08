@@ -1427,15 +1427,8 @@ export interface BrowserAssignedTargetingOptionDetails {
   /** Indicates if this option is being negatively targeted. All assigned browser targeting options on the same resource must have the same value for this field. */
   negative?: boolean;
 }
-export const BrowserAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetingOptionId: S.optional(S.String),
-    displayName: S.optional(S.String),
-    negative: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "BrowserAssignedTargetingOptionDetails",
-}) as any as S.Schema<BrowserAssignedTargetingOptionDetails>;
+export const BrowserAssignedTargetingOptionDetails =
+  DeviceMakeModelAssignedTargetingOptionDetails as any as S.Schema<BrowserAssignedTargetingOptionDetails>;
 
 /** Details for assigned sub-exchange targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_SUB_EXCHANGE`. */
 export interface SubExchangeAssignedTargetingOptionDetails {
@@ -2024,15 +2017,8 @@ export interface ContentGenreAssignedTargetingOptionDetails {
   /** Required. The targeting_option_id field when targeting_type is `TARGETING_TYPE_CONTENT_GENRE`. */
   targetingOptionId?: string;
 }
-export const ContentGenreAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    negative: S.optional(S.Boolean),
-    displayName: S.optional(S.String),
-    targetingOptionId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ContentGenreAssignedTargetingOptionDetails",
-}) as any as S.Schema<ContentGenreAssignedTargetingOptionDetails>;
+export const ContentGenreAssignedTargetingOptionDetails =
+  CategoryAssignedTargetingOptionDetails as any as S.Schema<ContentGenreAssignedTargetingOptionDetails>;
 
 export type DeviceTypeAssignedTargetingOptionDetailsDeviceTypeEnum =
   | "DEVICE_TYPE_UNSPECIFIED"
@@ -6754,9 +6740,7 @@ export const DeleteAdvertisersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = ActivateManualTriggerRequest as any as S.Schema<Empty>;
 
 export interface DeleteAdvertisersCampaignsRequest {
   /** The ID of the advertiser this campaign belongs to. */
@@ -7303,11 +7287,8 @@ export interface GoogleBytestreamMedia {
   /** Name of the media resource. */
   resourceName?: string;
 }
-export const GoogleBytestreamMedia = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.optional(S.String),
-  }),
-).annotate({ identifier: "GoogleBytestreamMedia" }) as any as S.Schema<GoogleBytestreamMedia>;
+export const GoogleBytestreamMedia =
+  CustomBiddingScriptRef as any as S.Schema<GoogleBytestreamMedia>;
 
 export type DuplicateLineItemRequestContainsEuPoliticalAdsEnum =
   | "EU_POLITICAL_ADVERTISING_STATUS_UNKNOWN"
@@ -7421,14 +7402,8 @@ export interface BulkEditPartnerAssignedTargetingOptionsRequest {
   /** The assigned targeting options to create in batch, specified as a list of `CreateAssignedTargetingOptionsRequest`. Supported targeting types: * `TARGETING_TYPE_CHANNEL` */
   createRequests?: CreateAssignedTargetingOptionsRequestList;
 }
-export const BulkEditPartnerAssignedTargetingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deleteRequests: S.optional(DeleteAssignedTargetingOptionsRequestList),
-    createRequests: S.optional(CreateAssignedTargetingOptionsRequestList),
-  }),
-).annotate({
-  identifier: "BulkEditPartnerAssignedTargetingOptionsRequest",
-}) as any as S.Schema<BulkEditPartnerAssignedTargetingOptionsRequest>;
+export const BulkEditPartnerAssignedTargetingOptionsRequest =
+  BulkEditAdvertiserAssignedTargetingOptionsRequest as any as S.Schema<BulkEditPartnerAssignedTargetingOptionsRequest>;
 
 export interface EditAssignedTargetingOptionsPartnersRequest {
   /** Required. The ID of the partner. */
@@ -7455,13 +7430,8 @@ export interface BulkEditPartnerAssignedTargetingOptionsResponse {
   /** The list of assigned targeting options that have been successfully created. This list will be absent if empty. */
   createdAssignedTargetingOptions?: AssignedTargetingOptionList;
 }
-export const BulkEditPartnerAssignedTargetingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAssignedTargetingOptions: S.optional(AssignedTargetingOptionList),
-  }),
-).annotate({
-  identifier: "BulkEditPartnerAssignedTargetingOptionsResponse",
-}) as any as S.Schema<BulkEditPartnerAssignedTargetingOptionsResponse>;
+export const BulkEditPartnerAssignedTargetingOptionsResponse =
+  BulkEditAdvertiserAssignedTargetingOptionsResponse as any as S.Schema<BulkEditPartnerAssignedTargetingOptionsResponse>;
 
 /** Request message for GuaranteedOrderService.EditGuaranteedOrderReadAccessors. */
 export interface EditGuaranteedOrderReadAccessorsRequest {
@@ -9719,13 +9689,8 @@ export interface ContentGenreTargetingOptionDetails {
   /** Output only. The display name of the content genre */
   displayName?: string;
 }
-export const ContentGenreTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ContentGenreTargetingOptionDetails",
-}) as any as S.Schema<ContentGenreTargetingOptionDetails>;
+export const ContentGenreTargetingOptionDetails =
+  OperatingSystemTargetingOptionDetails as any as S.Schema<ContentGenreTargetingOptionDetails>;
 
 export type NativeContentPositionTargetingOptionDetailsContentPositionEnum =
   | "NATIVE_CONTENT_POSITION_UNSPECIFIED"
@@ -9754,13 +9719,8 @@ export interface BrowserTargetingOptionDetails {
   /** Output only. The display name of the browser. */
   displayName?: string;
 }
-export const BrowserTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BrowserTargetingOptionDetails",
-}) as any as S.Schema<BrowserTargetingOptionDetails>;
+export const BrowserTargetingOptionDetails =
+  OperatingSystemTargetingOptionDetails as any as S.Schema<BrowserTargetingOptionDetails>;
 
 export type ExchangeTargetingOptionDetailsExchangeEnum =
   | "EXCHANGE_UNSPECIFIED"
@@ -9911,13 +9871,8 @@ export interface DeviceMakeModelTargetingOptionDetails {
   /** Output only. The display name of the device make and model. */
   displayName?: string;
 }
-export const DeviceMakeModelTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeviceMakeModelTargetingOptionDetails",
-}) as any as S.Schema<DeviceMakeModelTargetingOptionDetails>;
+export const DeviceMakeModelTargetingOptionDetails =
+  OperatingSystemTargetingOptionDetails as any as S.Schema<DeviceMakeModelTargetingOptionDetails>;
 
 export type ViewabilityTargetingOptionDetailsViewabilityEnum =
   | "VIEWABILITY_UNSPECIFIED"
@@ -10052,13 +10007,8 @@ export interface CategoryTargetingOptionDetails {
   /** Output only. The display name of the category. */
   displayName?: string;
 }
-export const CategoryTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CategoryTargetingOptionDetails",
-}) as any as S.Schema<CategoryTargetingOptionDetails>;
+export const CategoryTargetingOptionDetails =
+  OperatingSystemTargetingOptionDetails as any as S.Schema<CategoryTargetingOptionDetails>;
 
 export type TargetingOptionTargetingTypeEnum =
   | "TARGETING_TYPE_UNSPECIFIED"
@@ -10117,26 +10067,16 @@ export interface LanguageTargetingOptionDetails {
   /** Output only. The display name of the language (e.g., "French"). */
   displayName?: string;
 }
-export const LanguageTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LanguageTargetingOptionDetails",
-}) as any as S.Schema<LanguageTargetingOptionDetails>;
+export const LanguageTargetingOptionDetails =
+  OperatingSystemTargetingOptionDetails as any as S.Schema<LanguageTargetingOptionDetails>;
 
 /** Represents a targetable collection of apps. A collection lets you target dynamic groups of related apps that are maintained by the platform, for example `All Apps/Google Play/Games`. This will be populated in the app_category_details field when targeting_type is `TARGETING_TYPE_APP_CATEGORY`. */
 export interface AppCategoryTargetingOptionDetails {
   /** Output only. The name of the app collection. */
   displayName?: string;
 }
-export const AppCategoryTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AppCategoryTargetingOptionDetails",
-}) as any as S.Schema<AppCategoryTargetingOptionDetails>;
+export const AppCategoryTargetingOptionDetails =
+  OperatingSystemTargetingOptionDetails as any as S.Schema<AppCategoryTargetingOptionDetails>;
 
 export type GenderTargetingOptionDetailsGenderEnum =
   | "GENDER_UNSPECIFIED"
@@ -10240,13 +10180,8 @@ export interface SubExchangeTargetingOptionDetails {
   /** Output only. The display name of the sub-exchange. */
   displayName?: string;
 }
-export const SubExchangeTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SubExchangeTargetingOptionDetails",
-}) as any as S.Schema<SubExchangeTargetingOptionDetails>;
+export const SubExchangeTargetingOptionDetails =
+  OperatingSystemTargetingOptionDetails as any as S.Schema<SubExchangeTargetingOptionDetails>;
 
 export type ContentStreamTypeTargetingOptionDetailsContentStreamTypeEnum =
   | "CONTENT_STREAM_TYPE_UNSPECIFIED"
@@ -11547,14 +11482,8 @@ export interface ListYoutubeAdGroupAssignedTargetingOptionsResponse {
   /** The list of assigned targeting options. This list will be absent if empty. */
   assignedTargetingOptions?: AssignedTargetingOptionList;
 }
-export const ListYoutubeAdGroupAssignedTargetingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    assignedTargetingOptions: S.optional(AssignedTargetingOptionList),
-  }),
-).annotate({
-  identifier: "ListYoutubeAdGroupAssignedTargetingOptionsResponse",
-}) as any as S.Schema<ListYoutubeAdGroupAssignedTargetingOptionsResponse>;
+export const ListYoutubeAdGroupAssignedTargetingOptionsResponse =
+  ListAdvertiserAssignedTargetingOptionsResponse as any as S.Schema<ListYoutubeAdGroupAssignedTargetingOptionsResponse>;
 
 export interface ListAssignedTargetingOptionsAdvertisersRequest {
   /** Field by which to sort the list. Acceptable values are: * `targetingType` (default) The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `targetingType desc`. */
@@ -11592,14 +11521,8 @@ export interface BulkListAdvertiserAssignedTargetingOptionsResponse {
   /** The list of assigned targeting options. This list will be absent if empty. */
   assignedTargetingOptions?: AssignedTargetingOptionList;
 }
-export const BulkListAdvertiserAssignedTargetingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    assignedTargetingOptions: S.optional(AssignedTargetingOptionList),
-  }),
-).annotate({
-  identifier: "BulkListAdvertiserAssignedTargetingOptionsResponse",
-}) as any as S.Schema<BulkListAdvertiserAssignedTargetingOptionsResponse>;
+export const BulkListAdvertiserAssignedTargetingOptionsResponse =
+  ListAdvertiserAssignedTargetingOptionsResponse as any as S.Schema<BulkListAdvertiserAssignedTargetingOptionsResponse>;
 
 export interface ListCombinedAudiencesRequest {
   /** The ID of the partner that has access to the fetched combined audiences. */
@@ -12269,14 +12192,8 @@ export interface ListPartnerAssignedTargetingOptionsResponse {
   /** A token identifying the next page of results. This value should be specified as the pageToken in a subsequent ListPartnerAssignedTargetingOptionsRequest to fetch the next page of results. This token will be absent if there are no more assigned_targeting_options to return. */
   nextPageToken?: string;
 }
-export const ListPartnerAssignedTargetingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    assignedTargetingOptions: S.optional(AssignedTargetingOptionList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPartnerAssignedTargetingOptionsResponse",
-}) as any as S.Schema<ListPartnerAssignedTargetingOptionsResponse>;
+export const ListPartnerAssignedTargetingOptionsResponse =
+  ListLineItemAssignedTargetingOptionsResponse as any as S.Schema<ListPartnerAssignedTargetingOptionsResponse>;
 
 export type ListTargetingTypesTargetingOptionsTargetingTypeEnum =
   | "TARGETING_TYPE_UNSPECIFIED"
@@ -12904,11 +12821,7 @@ export interface ReplaceSitesResponse {
   /** The list of sites in the channel after replacing. */
   sites?: SiteList;
 }
-export const ReplaceSitesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sites: S.optional(SiteList),
-  }),
-).annotate({ identifier: "ReplaceSitesResponse" }) as any as S.Schema<ReplaceSitesResponse>;
+export const ReplaceSitesResponse = BulkEditSitesResponse as any as S.Schema<ReplaceSitesResponse>;
 
 /** Request message for NegativeKeywordService.ReplaceNegativeKeywords. */
 export interface ReplaceNegativeKeywordsRequest {
@@ -12953,13 +12866,8 @@ export interface ReplaceNegativeKeywordsResponse {
   /** The full list of negative keywords now present in the negative keyword list. */
   negativeKeywords?: NegativeKeywordList_;
 }
-export const ReplaceNegativeKeywordsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    negativeKeywords: S.optional(NegativeKeywordList_),
-  }),
-).annotate({
-  identifier: "ReplaceNegativeKeywordsResponse",
-}) as any as S.Schema<ReplaceNegativeKeywordsResponse>;
+export const ReplaceNegativeKeywordsResponse =
+  BulkEditNegativeKeywordsResponse as any as S.Schema<ReplaceNegativeKeywordsResponse>;
 
 export interface ReplacePartnersChannelsSitesRequest {
   /** The ID of the partner that owns the parent channel. */

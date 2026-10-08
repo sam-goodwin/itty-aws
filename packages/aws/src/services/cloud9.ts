@@ -412,7 +412,7 @@ export const ListEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListEnvironmentsRequest" }) as any as S.Schema<ListEnvironmentsRequest>;
 export type EnvironmentIdList = string[];
-export const EnvironmentIdList = /*@__PURE__*/ S.Array(S.String);
+export const EnvironmentIdList = BoundedEnvironmentIdList as any as S.Schema<EnvironmentIdList>;
 export interface ListEnvironmentsResult {
   nextToken?: string;
   environmentIds?: string[];
@@ -449,9 +449,7 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteEnvironmentResult as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = (string | redacted.Redacted<string>)[];
 export const TagKeyList = /*@__PURE__*/ S.Array(SensitiveString);
 export interface UntagResourceRequest {
@@ -464,9 +462,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteEnvironmentResult as any as S.Schema<UntagResourceResponse>;
 export type ManagedCredentialsAction = "ENABLE" | "DISABLE" | (string & {});
 export const ManagedCredentialsAction = S.String;
 
@@ -485,9 +482,8 @@ export const UpdateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateEnvironmentRequest" }) as any as S.Schema<UpdateEnvironmentRequest>;
 export interface UpdateEnvironmentResult {}
-export const UpdateEnvironmentResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateEnvironmentResult",
-}) as any as S.Schema<UpdateEnvironmentResult>;
+export const UpdateEnvironmentResult =
+  DeleteEnvironmentResult as any as S.Schema<UpdateEnvironmentResult>;
 export interface UpdateEnvironmentMembershipRequest {
   environmentId: string;
   userArn: string;

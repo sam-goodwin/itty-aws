@@ -1173,9 +1173,8 @@ export const SubscriptionsCreateResponseDestination = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<SubscriptionsCreateResponseDestination>;
 
 export type SubscriptionsCreateResponseEventsList = Array<string>;
-export const SubscriptionsCreateResponseEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscriptionsCreateResponseEventsList>;
+export const SubscriptionsCreateResponseEventsList =
+  SubscriptionsCreateRequestEventsList as any as S.Schema<SubscriptionsCreateResponseEventsList>;
 
 export type SubscriptionsCreateResponseSourceMqEventSourceImagesType = "images";
 export const SubscriptionsCreateResponseSourceMqEventSourceImagesType = S.String;
@@ -1522,9 +1521,7 @@ export const DeleteQueueRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteQueueRequest" }) as any as S.Schema<DeleteQueueRequest>;
 
 export interface DeleteQueueResponse {}
-export const DeleteQueueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteQueueResponse" }) as any as S.Schema<DeleteQueueResponse>;
+export const DeleteQueueResponse = DeleteConsumerResponse as any as S.Schema<DeleteQueueResponse>;
 
 export interface DeleteSubscriptionRequest {
   /** A Resource identifier. */
@@ -1568,9 +1565,8 @@ export const SubscriptionsDeleteResponseDestination = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<SubscriptionsDeleteResponseDestination>;
 
 export type SubscriptionsDeleteResponseEventsList = Array<string>;
-export const SubscriptionsDeleteResponseEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscriptionsDeleteResponseEventsList>;
+export const SubscriptionsDeleteResponseEventsList =
+  SubscriptionsCreateRequestEventsList as any as S.Schema<SubscriptionsDeleteResponseEventsList>;
 
 export type SubscriptionsDeleteResponseSourceMqEventSourceImagesType = "images";
 export const SubscriptionsDeleteResponseSourceMqEventSourceImagesType = S.String;
@@ -2223,9 +2219,8 @@ export const SubscriptionsGetResponseDestination = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriptionsGetResponseDestination>;
 
 export type SubscriptionsGetResponseEventsList = Array<string>;
-export const SubscriptionsGetResponseEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscriptionsGetResponseEventsList>;
+export const SubscriptionsGetResponseEventsList =
+  SubscriptionsCreateRequestEventsList as any as S.Schema<SubscriptionsGetResponseEventsList>;
 
 export type SubscriptionsGetResponseSourceMqEventSourceImagesType = "images";
 export const SubscriptionsGetResponseSourceMqEventSourceImagesType = S.String;
@@ -2880,9 +2875,8 @@ export const SubscriptionsListResultItemDestination = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<SubscriptionsListResultItemDestination>;
 
 export type SubscriptionsListResultItemEventsList = Array<string>;
-export const SubscriptionsListResultItemEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscriptionsListResultItemEventsList>;
+export const SubscriptionsListResultItemEventsList =
+  SubscriptionsCreateRequestEventsList as any as S.Schema<SubscriptionsListResultItemEventsList>;
 
 export type SubscriptionsListResultItemSourceMqEventSourceImagesType = "images";
 export const SubscriptionsListResultItemSourceMqEventSourceImagesType = S.String;
@@ -3486,9 +3480,8 @@ export const SubscriptionsUpdateRequestDestination = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<SubscriptionsUpdateRequestDestination>;
 
 export type SubscriptionsUpdateRequestEventsList = Array<string>;
-export const SubscriptionsUpdateRequestEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscriptionsUpdateRequestEventsList>;
+export const SubscriptionsUpdateRequestEventsList =
+  SubscriptionsCreateRequestEventsList as any as S.Schema<SubscriptionsUpdateRequestEventsList>;
 
 export interface PatchSubscriptionRequest {
   /** A Resource identifier. */
@@ -3542,9 +3535,8 @@ export const SubscriptionsUpdateResponseDestination = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<SubscriptionsUpdateResponseDestination>;
 
 export type SubscriptionsUpdateResponseEventsList = Array<string>;
-export const SubscriptionsUpdateResponseEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscriptionsUpdateResponseEventsList>;
+export const SubscriptionsUpdateResponseEventsList =
+  SubscriptionsCreateRequestEventsList as any as S.Schema<SubscriptionsUpdateResponseEventsList>;
 
 export type SubscriptionsUpdateResponseSourceMqEventSourceImagesType = "images";
 export const SubscriptionsUpdateResponseSourceMqEventSourceImagesType = S.String;
@@ -3978,10 +3970,8 @@ export const PurgeMessageResponseErrorsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PurgeMessageResponseErrorsList>;
 
 export type PurgeMessageResponseWarningsMap = { [key: string]: string | undefined };
-export const PurgeMessageResponseWarningsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PurgeMessageResponseWarningsMap>;
+export const PurgeMessageResponseWarningsMap =
+  MessagesAckResponseWarningsMap as any as S.Schema<PurgeMessageResponseWarningsMap>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PurgeMessageResponse {
@@ -4069,11 +4059,7 @@ export const MessagesPushResponseMetadata = MessagesBulkPushResponseMetadata;
 export interface PushMessageResponse {
   metadata?: MessagesBulkPushResponseMetadata | null;
 }
-export const PushMessageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: S.optional(S.NullOr(MessagesBulkPushResponseMetadata)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PushMessageResponse" }) as any as S.Schema<PushMessageResponse>;
+export const PushMessageResponse = BulkPushMessagesResponse as any as S.Schema<PushMessageResponse>;
 
 export interface StartPurgeRequest {
   /** A Resource identifier. */

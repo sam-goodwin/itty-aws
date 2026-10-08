@@ -94,10 +94,8 @@ export const AccessConnectorsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type AccessConnectorsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const AccessConnectorsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccessConnectorsCreateOrUpdateResponseTagsMap>;
+export const AccessConnectorsCreateOrUpdateResponseTagsMap =
+  AccessConnectorsCreateOrUpdateRequestTagsMap as any as S.Schema<AccessConnectorsCreateOrUpdateResponseTagsMap>;
 
 /** Provisioning status of the workspace. */
 export type ProvisioningState =
@@ -212,9 +210,8 @@ export const PrivateEndpointInput = AccessConnectorPropertiesInput;
 
 /** GroupIds from the private link service resource. */
 export type PrivateEndpointConnectionPropertiesInputGroupIdsList = Array<string>;
-export const PrivateEndpointConnectionPropertiesInputGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateEndpointConnectionPropertiesInputGroupIdsList>;
+export const PrivateEndpointConnectionPropertiesInputGroupIdsList =
+  AccessConnectorPropertiesReferedByList as any as S.Schema<PrivateEndpointConnectionPropertiesInputGroupIdsList>;
 
 /** The status of a private endpoint connection */
 export type PrivateLinkServiceConnectionStatus =
@@ -306,9 +303,8 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** GroupIds from the private link service resource. */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
-export const PrivateEndpointConnectionPropertiesGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
+export const PrivateEndpointConnectionPropertiesGroupIdsList =
+  AccessConnectorPropertiesReferedByList as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
 
 /** The current provisioning state. */
 export type PrivateEndpointConnectionProvisioningState =
@@ -388,9 +384,8 @@ export const DeleteAccessConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAccessConnectorRequest>;
 
 export interface DeleteAccessConnectorResponse {}
-export const DeleteAccessConnectorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAccessConnectorResponse",
-}) as any as S.Schema<DeleteAccessConnectorResponse>;
+export const DeleteAccessConnectorResponse =
+  AccessConnectorPropertiesInput as any as S.Schema<DeleteAccessConnectorResponse>;
 
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -454,9 +449,8 @@ export const DeleteVNetPeeringRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteVNetPeeringRequest" }) as any as S.Schema<DeleteVNetPeeringRequest>;
 
 export interface DeleteVNetPeeringResponse {}
-export const DeleteVNetPeeringResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVNetPeeringResponse",
-}) as any as S.Schema<DeleteVNetPeeringResponse>;
+export const DeleteVNetPeeringResponse =
+  AccessConnectorPropertiesInput as any as S.Schema<DeleteVNetPeeringResponse>;
 
 export interface DeleteWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -485,9 +479,8 @@ export const DeleteWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWorkspaceRequest" }) as any as S.Schema<DeleteWorkspaceRequest>;
 
 export interface DeleteWorkspaceResponse {}
-export const DeleteWorkspaceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkspaceResponse",
-}) as any as S.Schema<DeleteWorkspaceResponse>;
+export const DeleteWorkspaceResponse =
+  AccessConnectorPropertiesInput as any as S.Schema<DeleteWorkspaceResponse>;
 
 export interface GetAccessConnectorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -516,10 +509,8 @@ export const GetAccessConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAccessConnectorResponseTagsMap = { [key: string]: string | undefined };
-export const GetAccessConnectorResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAccessConnectorResponseTagsMap>;
+export const GetAccessConnectorResponseTagsMap =
+  AccessConnectorsCreateOrUpdateRequestTagsMap as any as S.Schema<GetAccessConnectorResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetAccessConnectorResponseIdentity = AccessConnectorsCreateOrUpdateResponseIdentity;
@@ -541,19 +532,8 @@ export interface GetAccessConnectorResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: AccessConnectorsCreateOrUpdateResponseIdentity;
 }
-export const GetAccessConnectorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(GetAccessConnectorResponseTagsMap),
-    location: S.String,
-    properties: S.optional(AccessConnectorProperties),
-    identity: S.optional(AccessConnectorsCreateOrUpdateResponseIdentity),
-  }),
-).annotate({
-  identifier: "GetAccessConnectorResponse",
-}) as any as S.Schema<GetAccessConnectorResponse>;
+export const GetAccessConnectorResponse =
+  AccessConnectorsCreateOrUpdateResponse as any as S.Schema<GetAccessConnectorResponse>;
 
 export interface GetPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -593,16 +573,8 @@ export interface GetPrivateEndpointConnectionResponse {
   /** The private endpoint connection properties. */
   properties: PrivateEndpointConnectionProperties;
 }
-export const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: PrivateEndpointConnectionProperties,
-  }),
-).annotate({
-  identifier: "GetPrivateEndpointConnectionResponse",
-}) as any as S.Schema<GetPrivateEndpointConnectionResponse>;
+export const GetPrivateEndpointConnectionResponse =
+  CreatePrivateEndpointConnectionResponse as any as S.Schema<GetPrivateEndpointConnectionResponse>;
 
 export interface GetPrivateLinkResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -634,15 +606,13 @@ export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The required members for a specific group id */
 export type GroupIdInformationPropertiesRequiredMembersList = Array<string>;
-export const GroupIdInformationPropertiesRequiredMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GroupIdInformationPropertiesRequiredMembersList>;
+export const GroupIdInformationPropertiesRequiredMembersList =
+  AccessConnectorPropertiesReferedByList as any as S.Schema<GroupIdInformationPropertiesRequiredMembersList>;
 
 /** The required DNS zones for a specific group id */
 export type GroupIdInformationPropertiesRequiredZoneNamesList = Array<string>;
-export const GroupIdInformationPropertiesRequiredZoneNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GroupIdInformationPropertiesRequiredZoneNamesList>;
+export const GroupIdInformationPropertiesRequiredZoneNamesList =
+  AccessConnectorPropertiesReferedByList as any as S.Schema<GroupIdInformationPropertiesRequiredZoneNamesList>;
 
 /** The properties for a group information object */
 export interface GroupIdInformationProperties {
@@ -726,9 +696,8 @@ export const VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork =
 
 /** A list of address blocks reserved for this virtual network in CIDR notation. */
 export type AddressSpaceAddressPrefixesList = Array<string>;
-export const AddressSpaceAddressPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddressSpaceAddressPrefixesList>;
+export const AddressSpaceAddressPrefixesList =
+  AccessConnectorPropertiesReferedByList as any as S.Schema<AddressSpaceAddressPrefixesList>;
 
 /** AddressSpace contains an array of IP address ranges that can be used by subnets of the virtual network. */
 export interface AddressSpace {
@@ -849,10 +818,8 @@ export const GetWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetWorkspaceResponseTagsMap = { [key: string]: string | undefined };
-export const GetWorkspaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetWorkspaceResponseTagsMap>;
+export const GetWorkspaceResponseTagsMap =
+  AccessConnectorsCreateOrUpdateRequestTagsMap as any as S.Schema<GetWorkspaceResponseTagsMap>;
 
 /** The workspace compute mode. Required on create, cannot be changed. Possible values include: 'Serverless', 'Hybrid' */
 export type ComputeMode = "Serverless" | "Hybrid";
@@ -1116,15 +1083,8 @@ export interface ManagedDiskEncryptionKeyVaultProperties {
   /** The version of KeyVault key. */
   keyVersion: string;
 }
-export const ManagedDiskEncryptionKeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyVaultUri: S.String,
-    keyName: S.String,
-    keyVersion: S.String,
-  }),
-).annotate({
-  identifier: "ManagedDiskEncryptionKeyVaultProperties",
-}) as any as S.Schema<ManagedDiskEncryptionKeyVaultProperties>;
+export const ManagedDiskEncryptionKeyVaultProperties =
+  EncryptionV2KeyVaultProperties as any as S.Schema<ManagedDiskEncryptionKeyVaultProperties>;
 
 /** The object that contains details of encryption used on the workspace. */
 export interface ManagedDiskEncryption {
@@ -1189,9 +1149,8 @@ export const AutomaticClusterUpdateDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Compliance standards associated with the workspace. */
 export type ComplianceSecurityProfileDefinitionComplianceStandardsList = Array<string>;
-export const ComplianceSecurityProfileDefinitionComplianceStandardsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ComplianceSecurityProfileDefinitionComplianceStandardsList>;
+export const ComplianceSecurityProfileDefinitionComplianceStandardsList =
+  AccessConnectorPropertiesReferedByList as any as S.Schema<ComplianceSecurityProfileDefinitionComplianceStandardsList>;
 
 export type ComplianceSecurityProfileValue = "Enabled" | "Disabled";
 export const ComplianceSecurityProfileValue = S.String;
@@ -1256,16 +1215,8 @@ export interface PrivateEndpointConnection {
   /** The private endpoint connection properties. */
   properties: PrivateEndpointConnectionProperties;
 }
-export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: PrivateEndpointConnectionProperties,
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnection",
-}) as any as S.Schema<PrivateEndpointConnection>;
+export const PrivateEndpointConnection =
+  CreatePrivateEndpointConnectionResponse as any as S.Schema<PrivateEndpointConnection>;
 
 /** Private endpoint connections created on the workspace. Supported in both Serverless and Hybrid ComputeMode workspace. */
 export type WorkspacePropertiesPrivateEndpointConnectionsList = Array<PrivateEndpointConnection>;
@@ -1469,10 +1420,8 @@ export const ListAccessConnectorByResourceGroupRequest = /*@__PURE__*/ S.suspend
 
 /** Resource tags. */
 export type AccessConnectorTagsMap = { [key: string]: string | undefined };
-export const AccessConnectorTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccessConnectorTagsMap>;
+export const AccessConnectorTagsMap =
+  AccessConnectorsCreateOrUpdateRequestTagsMap as any as S.Schema<AccessConnectorTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type AccessConnectorIdentity = AccessConnectorsCreateOrUpdateResponseIdentity;
@@ -1641,9 +1590,8 @@ export const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionsListValueList = Array<PrivateEndpointConnection>;
-export const PrivateEndpointConnectionsListValueList = /*@__PURE__*/ S.Array(
-  PrivateEndpointConnection,
-) as any as S.Schema<PrivateEndpointConnectionsListValueList>;
+export const PrivateEndpointConnectionsListValueList =
+  WorkspacePropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionsListValueList>;
 
 /** List of private link connections. */
 export interface PrivateEndpointConnectionsList {
@@ -1762,14 +1710,8 @@ export interface VirtualNetworkPeering {
   /** List of properties for vNet Peering */
   properties: VirtualNetworkPeeringPropertiesFormat;
 }
-export const VirtualNetworkPeering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: VirtualNetworkPeeringPropertiesFormat,
-  }),
-).annotate({ identifier: "VirtualNetworkPeering" }) as any as S.Schema<VirtualNetworkPeering>;
+export const VirtualNetworkPeering =
+  GetVNetPeeringResponse as any as S.Schema<VirtualNetworkPeering>;
 
 /** The VirtualNetworkPeering items on this page */
 export type VirtualNetworkPeeringListValueList = Array<VirtualNetworkPeering>;
@@ -1817,10 +1759,8 @@ export const ListWorkspaceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WorkspaceTagsMap = { [key: string]: string | undefined };
-export const WorkspaceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WorkspaceTagsMap>;
+export const WorkspaceTagsMap =
+  AccessConnectorsCreateOrUpdateRequestTagsMap as any as S.Schema<WorkspaceTagsMap>;
 
 /** Information about workspace. */
 export interface Workspace {
@@ -1839,17 +1779,7 @@ export interface Workspace {
   /** The SKU of the resource. */
   sku?: Sku;
 }
-export const Workspace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(WorkspaceTagsMap),
-    location: S.String,
-    properties: WorkspaceProperties,
-    sku: S.optional(Sku),
-  }),
-).annotate({ identifier: "Workspace" }) as any as S.Schema<Workspace>;
+export const Workspace = GetWorkspaceResponse as any as S.Schema<Workspace>;
 
 /** The Workspace items on this page */
 export type WorkspaceListResultValueList = Array<Workspace>;
@@ -1892,10 +1822,8 @@ export const ListWorkspaceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAccessConnectorRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAccessConnectorRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAccessConnectorRequestTagsMap>;
+export const UpdateAccessConnectorRequestTagsMap =
+  AccessConnectorsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAccessConnectorRequestTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateAccessConnectorRequestIdentity = AccessConnectorsCreateOrUpdateRequestIdentity;
@@ -1934,10 +1862,8 @@ export const UpdateAccessConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAccessConnectorResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAccessConnectorResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAccessConnectorResponseTagsMap>;
+export const UpdateAccessConnectorResponseTagsMap =
+  AccessConnectorsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAccessConnectorResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateAccessConnectorResponseIdentity = AccessConnectorsCreateOrUpdateResponseIdentity;
@@ -1959,26 +1885,13 @@ export interface UpdateAccessConnectorResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: AccessConnectorsCreateOrUpdateResponseIdentity;
 }
-export const UpdateAccessConnectorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(UpdateAccessConnectorResponseTagsMap),
-    location: S.String,
-    properties: S.optional(AccessConnectorProperties),
-    identity: S.optional(AccessConnectorsCreateOrUpdateResponseIdentity),
-  }),
-).annotate({
-  identifier: "UpdateAccessConnectorResponse",
-}) as any as S.Schema<UpdateAccessConnectorResponse>;
+export const UpdateAccessConnectorResponse =
+  AccessConnectorsCreateOrUpdateResponse as any as S.Schema<UpdateAccessConnectorResponse>;
 
 /** Resource tags. */
 export type UpdateWorkspaceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateWorkspaceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWorkspaceRequestTagsMap>;
+export const UpdateWorkspaceRequestTagsMap =
+  AccessConnectorsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateWorkspaceRequestTagsMap>;
 
 export interface UpdateWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2008,10 +1921,8 @@ export const UpdateWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateWorkspaceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateWorkspaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWorkspaceResponseTagsMap>;
+export const UpdateWorkspaceResponseTagsMap =
+  AccessConnectorsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateWorkspaceResponseTagsMap>;
 
 export interface UpdateWorkspaceResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2029,17 +1940,8 @@ export interface UpdateWorkspaceResponse {
   /** The SKU of the resource. */
   sku?: Sku;
 }
-export const UpdateWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(UpdateWorkspaceResponseTagsMap),
-    location: S.String,
-    properties: WorkspaceProperties,
-    sku: S.optional(Sku),
-  }),
-).annotate({ identifier: "UpdateWorkspaceResponse" }) as any as S.Schema<UpdateWorkspaceResponse>;
+export const UpdateWorkspaceResponse =
+  GetWorkspaceResponse as any as S.Schema<UpdateWorkspaceResponse>;
 
 export interface VNetPeeringCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2095,16 +1997,13 @@ export const VNetPeeringCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WorkspacesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const WorkspacesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WorkspacesCreateOrUpdateRequestTagsMap>;
+export const WorkspacesCreateOrUpdateRequestTagsMap =
+  AccessConnectorsCreateOrUpdateRequestTagsMap as any as S.Schema<WorkspacesCreateOrUpdateRequestTagsMap>;
 
 /** The workspace provider authorizations. */
 export type WorkspacePropertiesInputAuthorizationsList = Array<WorkspaceProviderAuthorization>;
-export const WorkspacePropertiesInputAuthorizationsList = /*@__PURE__*/ S.Array(
-  WorkspaceProviderAuthorization,
-) as any as S.Schema<WorkspacePropertiesInputAuthorizationsList>;
+export const WorkspacePropertiesInputAuthorizationsList =
+  WorkspacePropertiesAuthorizationsList as any as S.Schema<WorkspacePropertiesInputAuthorizationsList>;
 
 /** Provides details of the entity that created/updated the workspace. */
 export type CreatedByInput = AccessConnectorPropertiesInput;
@@ -2209,10 +2108,8 @@ export const WorkspacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WorkspacesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const WorkspacesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WorkspacesCreateOrUpdateResponseTagsMap>;
+export const WorkspacesCreateOrUpdateResponseTagsMap =
+  AccessConnectorsCreateOrUpdateRequestTagsMap as any as S.Schema<WorkspacesCreateOrUpdateResponseTagsMap>;
 
 export interface WorkspacesCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */

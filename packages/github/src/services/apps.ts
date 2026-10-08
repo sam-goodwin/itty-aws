@@ -584,9 +584,8 @@ export type NullableScopedInstallationRepositorySelection = "all" | "selected";
 export const NullableScopedInstallationRepositorySelection = S.String;
 
 export type NullableScopedInstallationSingleFilePathsList = Array<string>;
-export const NullableScopedInstallationSingleFilePathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NullableScopedInstallationSingleFilePathsList>;
+export const NullableScopedInstallationSingleFilePathsList =
+  AuthorizationScopesList as any as S.Schema<NullableScopedInstallationSingleFilePathsList>;
 
 /** A GitHub user. */
 export type SimpleUser = NullableSimpleUser;
@@ -725,9 +724,8 @@ export const CreateFromManifestResponsePermissions = /*@__PURE__*/ S.suspend(() 
 
 /** The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation. */
 export type CreateFromManifestResponseEventsList = Array<string>;
-export const CreateFromManifestResponseEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateFromManifestResponseEventsList>;
+export const CreateFromManifestResponseEventsList =
+  AuthorizationScopesList as any as S.Schema<CreateFromManifestResponseEventsList>;
 
 export interface CreateFromManifestResponse {
   /** Unique identifier of the GitHub app */
@@ -780,9 +778,8 @@ export const CreateFromManifestResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of repository names that the token should have access to */
 export type CreateInstallationAccessTokenRequestRepositoriesList = Array<string>;
-export const CreateInstallationAccessTokenRequestRepositoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateInstallationAccessTokenRequestRepositoriesList>;
+export const CreateInstallationAccessTokenRequestRepositoriesList =
+  AuthorizationScopesList as any as S.Schema<CreateInstallationAccessTokenRequestRepositoriesList>;
 
 /** List of repository IDs that the token should have access to */
 export type CreateInstallationAccessTokenRequestRepositoryIdsList = Array<number>;
@@ -857,9 +854,8 @@ export const RepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepositoryPermissions" }) as any as S.Schema<RepositoryPermissions>;
 
 export type RepositoryTopicsList = Array<string>;
-export const RepositoryTopicsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepositoryTopicsList>;
+export const RepositoryTopicsList =
+  AuthorizationScopesList as any as S.Schema<RepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type RepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
@@ -1136,9 +1132,8 @@ export const InstallationTokenRepositoriesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<InstallationTokenRepositoriesList>;
 
 export type InstallationTokenSingleFilePathsList = Array<string>;
-export const InstallationTokenSingleFilePathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstallationTokenSingleFilePathsList>;
+export const InstallationTokenSingleFilePathsList =
+  AuthorizationScopesList as any as S.Schema<InstallationTokenSingleFilePathsList>;
 
 /** Authentication token for a GitHub App installed on a user or org. */
 export interface InstallationToken {
@@ -1197,9 +1192,8 @@ export const DeleteInstallationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteInstallationRequest>;
 
 export interface DeleteInstallationResponse {}
-export const DeleteInstallationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteInstallationResponse",
-}) as any as S.Schema<DeleteInstallationResponse>;
+export const DeleteInstallationResponse =
+  DeleteAuthorizationResponse as any as S.Schema<DeleteInstallationResponse>;
 
 export interface DeleteTokenRequest {
   /** The client ID of the GitHub app. */
@@ -1215,9 +1209,8 @@ export const DeleteTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTokenRequest" }) as any as S.Schema<DeleteTokenRequest>;
 
 export interface DeleteTokenResponse {}
-export const DeleteTokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTokenResponse",
-}) as any as S.Schema<DeleteTokenResponse>;
+export const DeleteTokenResponse =
+  DeleteAuthorizationResponse as any as S.Schema<DeleteTokenResponse>;
 
 export interface GetAuthenticatedRequest {}
 export const GetAuthenticatedRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1233,9 +1226,8 @@ export const IntegrationPermissions = CreateFromManifestResponsePermissions;
 
 /** The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation. */
 export type IntegrationEventsList = Array<string>;
-export const IntegrationEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IntegrationEventsList>;
+export const IntegrationEventsList =
+  AuthorizationScopesList as any as S.Schema<IntegrationEventsList>;
 
 /** GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub. */
 export interface Integration {
@@ -1306,14 +1298,12 @@ export type InstallationRepositorySelection = "all" | "selected";
 export const InstallationRepositorySelection = S.String;
 
 export type InstallationEventsList = Array<string>;
-export const InstallationEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstallationEventsList>;
+export const InstallationEventsList =
+  AuthorizationScopesList as any as S.Schema<InstallationEventsList>;
 
 export type InstallationSingleFilePathsList = Array<string>;
-export const InstallationSingleFilePathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstallationSingleFilePathsList>;
+export const InstallationSingleFilePathsList =
+  AuthorizationScopesList as any as S.Schema<InstallationSingleFilePathsList>;
 
 /** Installation */
 export interface Installation {
@@ -1411,9 +1401,8 @@ export type MarketplaceListingPlanPriceModel = "FREE" | "FLAT_RATE" | "PER_UNIT"
 export const MarketplaceListingPlanPriceModel = S.String;
 
 export type MarketplaceListingPlanBulletsList = Array<string>;
-export const MarketplaceListingPlanBulletsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MarketplaceListingPlanBulletsList>;
+export const MarketplaceListingPlanBulletsList =
+  AuthorizationScopesList as any as S.Schema<MarketplaceListingPlanBulletsList>;
 
 /** Marketplace Listing Plan */
 export interface MarketplaceListingPlan {
@@ -1589,10 +1578,8 @@ export const HookDeliveryRequestHeadersMap = /*@__PURE__*/ S.Record(
 
 /** The webhook payload. */
 export type HookDeliveryRequestPayloadMap = { [key: string]: unknown | undefined };
-export const HookDeliveryRequestPayloadMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<HookDeliveryRequestPayloadMap>;
+export const HookDeliveryRequestPayloadMap =
+  HookDeliveryRequestHeadersMap as any as S.Schema<HookDeliveryRequestPayloadMap>;
 
 export interface HookDeliveryRequest {
   /** The request headers sent with the webhook delivery. */
@@ -1609,17 +1596,13 @@ export const HookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The response headers received when the delivery was made. */
 export type HookDeliveryResponseHeadersMap = { [key: string]: unknown | undefined };
-export const HookDeliveryResponseHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<HookDeliveryResponseHeadersMap>;
+export const HookDeliveryResponseHeadersMap =
+  HookDeliveryRequestHeadersMap as any as S.Schema<HookDeliveryResponseHeadersMap>;
 
 /** The response payload received. */
 export type HookDeliveryResponsePayloadMap = { [key: string]: unknown | undefined };
-export const HookDeliveryResponsePayloadMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<HookDeliveryResponsePayloadMap>;
+export const HookDeliveryResponsePayloadMap =
+  HookDeliveryRequestHeadersMap as any as S.Schema<HookDeliveryResponsePayloadMap>;
 
 export interface HookDeliveryResponse {
   /** The response headers received when the delivery was made. */
@@ -1627,12 +1610,7 @@ export interface HookDeliveryResponse {
   /** The response payload received. */
   payload: HookDeliveryResponsePayloadMap | null;
 }
-export const HookDeliveryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    headers: S.NullOr(HookDeliveryResponseHeadersMap),
-    payload: S.NullOr(HookDeliveryResponsePayloadMap),
-  }),
-).annotate({ identifier: "HookDeliveryResponse" }) as any as S.Schema<HookDeliveryResponse>;
+export const HookDeliveryResponse = HookDeliveryRequest as any as S.Schema<HookDeliveryResponse>;
 
 /** Delivery made by a webhook. */
 export interface HookDelivery {
@@ -1766,16 +1744,12 @@ export const ListAccountsForPlanStubbedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsForPlanStubbedRequest>;
 
 export type ListAccountsForPlanStubbedResponseBodyList = Array<MarketplacePurchase>;
-export const ListAccountsForPlanStubbedResponseBodyList = /*@__PURE__*/ S.Array(
-  MarketplacePurchase,
-) as any as S.Schema<ListAccountsForPlanStubbedResponseBodyList>;
+export const ListAccountsForPlanStubbedResponseBodyList =
+  ListAccountsForPlanResponseBodyList as any as S.Schema<ListAccountsForPlanStubbedResponseBodyList>;
 
 export type ListAccountsForPlanStubbedResponse = ListAccountsForPlanStubbedResponseBodyList;
-export const ListAccountsForPlanStubbedResponse = /*@__PURE__*/ S.suspend(() =>
-  ListAccountsForPlanStubbedResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListAccountsForPlanStubbedResponse",
-}) as any as S.Schema<ListAccountsForPlanStubbedResponse>;
+export const ListAccountsForPlanStubbedResponse =
+  ListAccountsForPlanResponse as any as S.Schema<ListAccountsForPlanStubbedResponse>;
 
 export interface ListInstallationReposForAuthenticatedUserRequest {
   /** The unique identifier of the installation. */
@@ -2238,9 +2212,8 @@ export const ListInstallationsForAuthenticatedUserRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListInstallationsForAuthenticatedUserRequest>;
 
 export type ListInstallationsForAuthenticatedUserResponseInstallationsList = Array<Installation>;
-export const ListInstallationsForAuthenticatedUserResponseInstallationsList = /*@__PURE__*/ S.Array(
-  Installation,
-) as any as S.Schema<ListInstallationsForAuthenticatedUserResponseInstallationsList>;
+export const ListInstallationsForAuthenticatedUserResponseInstallationsList =
+  ListInstallationsResponseBodyList as any as S.Schema<ListInstallationsForAuthenticatedUserResponseInstallationsList>;
 
 export interface ListInstallationsForAuthenticatedUserResponse {
   total_count: number;
@@ -2292,14 +2265,12 @@ export const ListPlansStubbedRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPlansStubbedRequest" }) as any as S.Schema<ListPlansStubbedRequest>;
 
 export type ListPlansStubbedResponseBodyList = Array<MarketplaceListingPlan>;
-export const ListPlansStubbedResponseBodyList = /*@__PURE__*/ S.Array(
-  MarketplaceListingPlan,
-) as any as S.Schema<ListPlansStubbedResponseBodyList>;
+export const ListPlansStubbedResponseBodyList =
+  ListPlansResponseBodyList as any as S.Schema<ListPlansStubbedResponseBodyList>;
 
 export type ListPlansStubbedResponse = ListPlansStubbedResponseBodyList;
-export const ListPlansStubbedResponse = /*@__PURE__*/ S.suspend(() =>
-  ListPlansStubbedResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListPlansStubbedResponse" }) as any as S.Schema<ListPlansStubbedResponse>;
+export const ListPlansStubbedResponse =
+  ListPlansResponse as any as S.Schema<ListPlansStubbedResponse>;
 
 export interface ListReposAccessibleToInstallationRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
@@ -2323,9 +2294,7 @@ export const ListReposAccessibleToInstallationResponseRepositoriesItemPermission
 
 export type ListReposAccessibleToInstallationResponseRepositoriesItemTopicsList = Array<string>;
 export const ListReposAccessibleToInstallationResponseRepositoriesItemTopicsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListReposAccessibleToInstallationResponseRepositoriesItemTopicsList>;
+  ListInstallationReposForAuthenticatedUserResponseRepositoriesItemTopicsList as any as S.Schema<ListReposAccessibleToInstallationResponseRepositoriesItemTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type ListReposAccessibleToInstallationResponseRepositoriesItemPullRequestCreationPolicy =
@@ -2373,10 +2342,7 @@ export type ListReposAccessibleToInstallationResponseRepositoriesItemCustomPrope
   [key: string]: unknown | undefined;
 };
 export const ListReposAccessibleToInstallationResponseRepositoriesItemCustomPropertiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListReposAccessibleToInstallationResponseRepositoriesItemCustomPropertiesMap>;
+  ListInstallationReposForAuthenticatedUserResponseRepositoriesItemCustomPropertiesMap as any as S.Schema<ListReposAccessibleToInstallationResponseRepositoriesItemCustomPropertiesMap>;
 
 export interface ListReposAccessibleToInstallationResponseRepositoriesItem {
   /** Unique identifier of the repository */
@@ -2741,17 +2707,13 @@ export const ListSubscriptionsForAuthenticatedUserStubbedRequest = /*@__PURE__*/
 
 export type ListSubscriptionsForAuthenticatedUserStubbedResponseBodyList =
   Array<UserMarketplacePurchase>;
-export const ListSubscriptionsForAuthenticatedUserStubbedResponseBodyList = /*@__PURE__*/ S.Array(
-  UserMarketplacePurchase,
-) as any as S.Schema<ListSubscriptionsForAuthenticatedUserStubbedResponseBodyList>;
+export const ListSubscriptionsForAuthenticatedUserStubbedResponseBodyList =
+  ListSubscriptionsForAuthenticatedUserResponseBodyList as any as S.Schema<ListSubscriptionsForAuthenticatedUserStubbedResponseBodyList>;
 
 export type ListSubscriptionsForAuthenticatedUserStubbedResponse =
   ListSubscriptionsForAuthenticatedUserStubbedResponseBodyList;
-export const ListSubscriptionsForAuthenticatedUserStubbedResponse = /*@__PURE__*/ S.suspend(() =>
-  ListSubscriptionsForAuthenticatedUserStubbedResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListSubscriptionsForAuthenticatedUserStubbedResponse",
-}) as any as S.Schema<ListSubscriptionsForAuthenticatedUserStubbedResponse>;
+export const ListSubscriptionsForAuthenticatedUserStubbedResponse =
+  ListSubscriptionsForAuthenticatedUserResponse as any as S.Schema<ListSubscriptionsForAuthenticatedUserStubbedResponse>;
 
 export type ListWebhookDeliveriesRequestStatus = "success" | "failure";
 export const ListWebhookDeliveriesRequestStatus = S.String;
@@ -2844,11 +2806,8 @@ export const RedeliverWebhookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RedeliverWebhookDeliveryRequest>;
 
 export interface RedeliverWebhookDeliveryResponse {}
-export const RedeliverWebhookDeliveryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RedeliverWebhookDeliveryResponse",
-}) as any as S.Schema<RedeliverWebhookDeliveryResponse>;
+export const RedeliverWebhookDeliveryResponse =
+  AddRepoToInstallationForAuthenticatedUserResponse as any as S.Schema<RedeliverWebhookDeliveryResponse>;
 
 export interface RemoveRepoFromInstallationForAuthenticatedUserRequest {
   /** The unique identifier of the installation. */
@@ -2872,11 +2831,8 @@ export const RemoveRepoFromInstallationForAuthenticatedUserRequest = /*@__PURE__
 }) as any as S.Schema<RemoveRepoFromInstallationForAuthenticatedUserRequest>;
 
 export interface RemoveRepoFromInstallationForAuthenticatedUserResponse {}
-export const RemoveRepoFromInstallationForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveRepoFromInstallationForAuthenticatedUserResponse",
-}) as any as S.Schema<RemoveRepoFromInstallationForAuthenticatedUserResponse>;
+export const RemoveRepoFromInstallationForAuthenticatedUserResponse =
+  AddRepoToInstallationForAuthenticatedUserResponse as any as S.Schema<RemoveRepoFromInstallationForAuthenticatedUserResponse>;
 
 export interface ResetTokenRequest {
   /** The client ID of the GitHub app. */
@@ -2899,23 +2855,18 @@ export const RevokeInstallationAccessTokenRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<RevokeInstallationAccessTokenRequest>;
 
 export interface RevokeInstallationAccessTokenResponse {}
-export const RevokeInstallationAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RevokeInstallationAccessTokenResponse",
-}) as any as S.Schema<RevokeInstallationAccessTokenResponse>;
+export const RevokeInstallationAccessTokenResponse =
+  AddRepoToInstallationForAuthenticatedUserResponse as any as S.Schema<RevokeInstallationAccessTokenResponse>;
 
 /** The list of repository names to scope the user access token to. `repositories` may not be specified if `repository_ids` is specified. */
 export type ScopeTokenRequestRepositoriesList = Array<string>;
-export const ScopeTokenRequestRepositoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScopeTokenRequestRepositoriesList>;
+export const ScopeTokenRequestRepositoriesList =
+  AuthorizationScopesList as any as S.Schema<ScopeTokenRequestRepositoriesList>;
 
 /** The list of repository IDs to scope the user access token to. `repository_ids` may not be specified if `repositories` is specified. */
 export type ScopeTokenRequestRepositoryIdsList = Array<number>;
-export const ScopeTokenRequestRepositoryIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ScopeTokenRequestRepositoryIdsList>;
+export const ScopeTokenRequestRepositoryIdsList =
+  CreateInstallationAccessTokenRequestRepositoryIdsList as any as S.Schema<ScopeTokenRequestRepositoryIdsList>;
 
 export interface ScopeTokenRequest {
   /** The client ID of the GitHub app. */
@@ -2959,9 +2910,8 @@ export const SuspendInstallationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SuspendInstallationRequest>;
 
 export interface SuspendInstallationResponse {}
-export const SuspendInstallationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SuspendInstallationResponse",
-}) as any as S.Schema<SuspendInstallationResponse>;
+export const SuspendInstallationResponse =
+  DeleteAuthorizationResponse as any as S.Schema<SuspendInstallationResponse>;
 
 export interface UnsuspendInstallationRequest {
   /** The unique identifier of the installation. */
@@ -2978,9 +2928,8 @@ export const UnsuspendInstallationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnsuspendInstallationRequest>;
 
 export interface UnsuspendInstallationResponse {}
-export const UnsuspendInstallationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UnsuspendInstallationResponse",
-}) as any as S.Schema<UnsuspendInstallationResponse>;
+export const UnsuspendInstallationResponse =
+  DeleteAuthorizationResponse as any as S.Schema<UnsuspendInstallationResponse>;
 
 export interface UpdateWebhookConfigForAppRequest {
   url?: string;

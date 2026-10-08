@@ -118,13 +118,7 @@ export interface DeleteChatResponse {
   channel: string;
   ts: string;
 }
-export const DeleteChatResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-    channel: S.String,
-    ts: S.String,
-  }),
-).annotate({ identifier: "DeleteChatResponse" }) as any as S.Schema<DeleteChatResponse>;
+export const DeleteChatResponse = AppendStreamResponse as any as S.Schema<DeleteChatResponse>;
 
 export interface DeleteScheduledMessageRequest {
   /** Pass true to delete the message as the authed user with `chat:write:user` scope. Bot users in this context are considered authed users. If unused or false, the message will be deleted with `chat:write:bot` scope. */
@@ -311,15 +305,12 @@ export const PostEphemeralRequestAttachments = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type PostEphemeralRequestBlocksCase1ItemMap = { [key: string]: unknown | undefined };
-export const PostEphemeralRequestBlocksCase1ItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PostEphemeralRequestBlocksCase1ItemMap>;
+export const PostEphemeralRequestBlocksCase1ItemMap =
+  PostEphemeralRequestAttachmentsCase1ItemMap as any as S.Schema<PostEphemeralRequestBlocksCase1ItemMap>;
 
 export type PostEphemeralRequestBlocksCase1List = Array<PostEphemeralRequestBlocksCase1ItemMap>;
-export const PostEphemeralRequestBlocksCase1List = /*@__PURE__*/ S.Array(
-  PostEphemeralRequestBlocksCase1ItemMap,
-) as any as S.Schema<PostEphemeralRequestBlocksCase1List>;
+export const PostEphemeralRequestBlocksCase1List =
+  PostEphemeralRequestAttachmentsCase1List as any as S.Schema<PostEphemeralRequestBlocksCase1List>;
 
 /** A JSON-based array of structured blocks, presented as a URL-encoded string. */
 export type PostEphemeralRequestBlocks = string | PostEphemeralRequestBlocksCase1List;
@@ -392,16 +383,13 @@ export const PostEphemeralResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostEphemeralResponse" }) as any as S.Schema<PostEphemeralResponse>;
 
 export type PostMessageRequestAttachmentsCase1ItemMap = { [key: string]: unknown | undefined };
-export const PostMessageRequestAttachmentsCase1ItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PostMessageRequestAttachmentsCase1ItemMap>;
+export const PostMessageRequestAttachmentsCase1ItemMap =
+  PostEphemeralRequestAttachmentsCase1ItemMap as any as S.Schema<PostMessageRequestAttachmentsCase1ItemMap>;
 
 export type PostMessageRequestAttachmentsCase1List =
   Array<PostMessageRequestAttachmentsCase1ItemMap>;
-export const PostMessageRequestAttachmentsCase1List = /*@__PURE__*/ S.Array(
-  PostMessageRequestAttachmentsCase1ItemMap,
-) as any as S.Schema<PostMessageRequestAttachmentsCase1List>;
+export const PostMessageRequestAttachmentsCase1List =
+  PostEphemeralRequestAttachmentsCase1List as any as S.Schema<PostMessageRequestAttachmentsCase1List>;
 
 /** A JSON-based array of structured attachments, presented as a URL-encoded string. */
 export type PostMessageRequestAttachments = string | PostMessageRequestAttachmentsCase1List;
@@ -410,15 +398,12 @@ export const PostMessageRequestAttachments = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type PostMessageRequestBlocksCase1ItemMap = { [key: string]: unknown | undefined };
-export const PostMessageRequestBlocksCase1ItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PostMessageRequestBlocksCase1ItemMap>;
+export const PostMessageRequestBlocksCase1ItemMap =
+  PostEphemeralRequestAttachmentsCase1ItemMap as any as S.Schema<PostMessageRequestBlocksCase1ItemMap>;
 
 export type PostMessageRequestBlocksCase1List = Array<PostMessageRequestBlocksCase1ItemMap>;
-export const PostMessageRequestBlocksCase1List = /*@__PURE__*/ S.Array(
-  PostMessageRequestBlocksCase1ItemMap,
-) as any as S.Schema<PostMessageRequestBlocksCase1List>;
+export const PostMessageRequestBlocksCase1List =
+  PostEphemeralRequestAttachmentsCase1List as any as S.Schema<PostMessageRequestBlocksCase1List>;
 
 /** A JSON-based array of structured blocks, presented as a URL-encoded string. */
 export type PostMessageRequestBlocks = string | PostMessageRequestBlocksCase1List;
@@ -510,16 +495,13 @@ export const PostMessageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostMessageResponse" }) as any as S.Schema<PostMessageResponse>;
 
 export type ScheduleMessageRequestAttachmentsCase1ItemMap = { [key: string]: unknown | undefined };
-export const ScheduleMessageRequestAttachmentsCase1ItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ScheduleMessageRequestAttachmentsCase1ItemMap>;
+export const ScheduleMessageRequestAttachmentsCase1ItemMap =
+  PostEphemeralRequestAttachmentsCase1ItemMap as any as S.Schema<ScheduleMessageRequestAttachmentsCase1ItemMap>;
 
 export type ScheduleMessageRequestAttachmentsCase1List =
   Array<ScheduleMessageRequestAttachmentsCase1ItemMap>;
-export const ScheduleMessageRequestAttachmentsCase1List = /*@__PURE__*/ S.Array(
-  ScheduleMessageRequestAttachmentsCase1ItemMap,
-) as any as S.Schema<ScheduleMessageRequestAttachmentsCase1List>;
+export const ScheduleMessageRequestAttachmentsCase1List =
+  PostEphemeralRequestAttachmentsCase1List as any as S.Schema<ScheduleMessageRequestAttachmentsCase1List>;
 
 /** A JSON-based array of structured attachments, presented as a URL-encoded string. */
 export type ScheduleMessageRequestAttachments = string | ScheduleMessageRequestAttachmentsCase1List;
@@ -528,15 +510,12 @@ export const ScheduleMessageRequestAttachments = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type ScheduleMessageRequestBlocksCase1ItemMap = { [key: string]: unknown | undefined };
-export const ScheduleMessageRequestBlocksCase1ItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ScheduleMessageRequestBlocksCase1ItemMap>;
+export const ScheduleMessageRequestBlocksCase1ItemMap =
+  PostEphemeralRequestAttachmentsCase1ItemMap as any as S.Schema<ScheduleMessageRequestBlocksCase1ItemMap>;
 
 export type ScheduleMessageRequestBlocksCase1List = Array<ScheduleMessageRequestBlocksCase1ItemMap>;
-export const ScheduleMessageRequestBlocksCase1List = /*@__PURE__*/ S.Array(
-  ScheduleMessageRequestBlocksCase1ItemMap,
-) as any as S.Schema<ScheduleMessageRequestBlocksCase1List>;
+export const ScheduleMessageRequestBlocksCase1List =
+  PostEphemeralRequestAttachmentsCase1List as any as S.Schema<ScheduleMessageRequestBlocksCase1List>;
 
 /** A JSON-based array of structured blocks, presented as a URL-encoded string. */
 export type ScheduleMessageRequestBlocks = string | ScheduleMessageRequestBlocksCase1List;
@@ -598,10 +577,8 @@ export const ScheduleMessageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScheduleMessageRequest" }) as any as S.Schema<ScheduleMessageRequest>;
 
 export type ScheduleMessageResponseMessageMap = { [key: string]: unknown | undefined };
-export const ScheduleMessageResponseMessageMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ScheduleMessageResponseMessageMap>;
+export const ScheduleMessageResponseMessageMap =
+  PostEphemeralRequestAttachmentsCase1ItemMap as any as S.Schema<ScheduleMessageResponseMessageMap>;
 
 export interface ScheduleMessageResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -623,9 +600,8 @@ export const ScheduleMessageResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of streaming chunks. Can include [markdown text chunk](#markdown_text-chunks) objects, [task update chunk](#task_update-chunks) objects, [plan update chunks](#plan_update-chunks), or [blocks chunks](#blocks-chunks). */
 export type StartStreamRequestChunksList = Array<unknown>;
-export const StartStreamRequestChunksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<StartStreamRequestChunksList>;
+export const StartStreamRequestChunksList =
+  AppendStreamRequestChunksList as any as S.Schema<StartStreamRequestChunksList>;
 
 /** Specifies how tasks are displayed in the message. `timeline` task updates render as individual task cards interleaved with streamed text. `plan` task updates render together in a plan block. */
 export type StartStreamRequestTaskDisplayMode = "timeline" | "plan";
@@ -675,13 +651,7 @@ export interface StartStreamResponse {
   /** The timestamp of the streaming message. */
   ts: string;
 }
-export const StartStreamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-    channel: S.String,
-    ts: S.String,
-  }),
-).annotate({ identifier: "StartStreamResponse" }) as any as S.Schema<StartStreamResponse>;
+export const StartStreamResponse = AppendStreamResponse as any as S.Schema<StartStreamResponse>;
 
 /** The session status to set after stopping the stream. */
 export type StopStreamRequestSessionStatus = "active" | "processing" | "suspended" | "closed";
@@ -738,15 +708,12 @@ export const UpdateChatRequestAsUser = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type UpdateChatRequestAttachmentsCase1ItemMap = { [key: string]: unknown | undefined };
-export const UpdateChatRequestAttachmentsCase1ItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateChatRequestAttachmentsCase1ItemMap>;
+export const UpdateChatRequestAttachmentsCase1ItemMap =
+  PostEphemeralRequestAttachmentsCase1ItemMap as any as S.Schema<UpdateChatRequestAttachmentsCase1ItemMap>;
 
 export type UpdateChatRequestAttachmentsCase1List = Array<UpdateChatRequestAttachmentsCase1ItemMap>;
-export const UpdateChatRequestAttachmentsCase1List = /*@__PURE__*/ S.Array(
-  UpdateChatRequestAttachmentsCase1ItemMap,
-) as any as S.Schema<UpdateChatRequestAttachmentsCase1List>;
+export const UpdateChatRequestAttachmentsCase1List =
+  PostEphemeralRequestAttachmentsCase1List as any as S.Schema<UpdateChatRequestAttachmentsCase1List>;
 
 /** A JSON-based array of structured attachments, presented as a URL-encoded string. */
 export type UpdateChatRequestAttachments = string | UpdateChatRequestAttachmentsCase1List;
@@ -755,15 +722,12 @@ export const UpdateChatRequestAttachments = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type UpdateChatRequestBlocksCase1ItemMap = { [key: string]: unknown | undefined };
-export const UpdateChatRequestBlocksCase1ItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateChatRequestBlocksCase1ItemMap>;
+export const UpdateChatRequestBlocksCase1ItemMap =
+  PostEphemeralRequestAttachmentsCase1ItemMap as any as S.Schema<UpdateChatRequestBlocksCase1ItemMap>;
 
 export type UpdateChatRequestBlocksCase1List = Array<UpdateChatRequestBlocksCase1ItemMap>;
-export const UpdateChatRequestBlocksCase1List = /*@__PURE__*/ S.Array(
-  UpdateChatRequestBlocksCase1ItemMap,
-) as any as S.Schema<UpdateChatRequestBlocksCase1List>;
+export const UpdateChatRequestBlocksCase1List =
+  PostEphemeralRequestAttachmentsCase1List as any as S.Schema<UpdateChatRequestBlocksCase1List>;
 
 /** A JSON-based array of structured blocks, presented as a URL-encoded string. */
 export type UpdateChatRequestBlocks = string | UpdateChatRequestBlocksCase1List;
@@ -830,22 +794,17 @@ export const UpdateChatRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateChatRequest" }) as any as S.Schema<UpdateChatRequest>;
 
 export type UpdateChatResponseMessageAttachmentsItemMap = { [key: string]: unknown | undefined };
-export const UpdateChatResponseMessageAttachmentsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateChatResponseMessageAttachmentsItemMap>;
+export const UpdateChatResponseMessageAttachmentsItemMap =
+  PostEphemeralRequestAttachmentsCase1ItemMap as any as S.Schema<UpdateChatResponseMessageAttachmentsItemMap>;
 
 export type UpdateChatResponseMessageAttachmentsList =
   Array<UpdateChatResponseMessageAttachmentsItemMap>;
-export const UpdateChatResponseMessageAttachmentsList = /*@__PURE__*/ S.Array(
-  UpdateChatResponseMessageAttachmentsItemMap,
-) as any as S.Schema<UpdateChatResponseMessageAttachmentsList>;
+export const UpdateChatResponseMessageAttachmentsList =
+  PostEphemeralRequestAttachmentsCase1List as any as S.Schema<UpdateChatResponseMessageAttachmentsList>;
 
 export type UpdateChatResponseMessageMetadataMap = { [key: string]: unknown | undefined };
-export const UpdateChatResponseMessageMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateChatResponseMessageMetadataMap>;
+export const UpdateChatResponseMessageMetadataMap =
+  PostEphemeralRequestAttachmentsCase1ItemMap as any as S.Schema<UpdateChatResponseMessageMetadataMap>;
 
 export interface UpdateChatResponseMessage {
   text: string;

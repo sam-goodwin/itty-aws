@@ -42,10 +42,8 @@ export const CreatePlacementGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export type CreatePlacementGroupResponsePlacementGroupLabelsMap = {
   [key: string]: string | undefined;
 };
-export const CreatePlacementGroupResponsePlacementGroupLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreatePlacementGroupResponsePlacementGroupLabelsMap>;
+export const CreatePlacementGroupResponsePlacementGroupLabelsMap =
+  CreatePlacementGroupRequestLabelsMap as any as S.Schema<CreatePlacementGroupResponsePlacementGroupLabelsMap>;
 
 /** Type of Placement Group. */
 export type CreatePlacementGroupResponsePlacementGroupType = "spread";
@@ -203,10 +201,8 @@ export const GetPlacementGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetPlacementGroupResponsePlacementGroupLabelsMap = {
   [key: string]: string | undefined;
 };
-export const GetPlacementGroupResponsePlacementGroupLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPlacementGroupResponsePlacementGroupLabelsMap>;
+export const GetPlacementGroupResponsePlacementGroupLabelsMap =
+  CreatePlacementGroupRequestLabelsMap as any as S.Schema<GetPlacementGroupResponsePlacementGroupLabelsMap>;
 
 /** Type of Placement Group. */
 export type GetPlacementGroupResponsePlacementGroupType = "spread";
@@ -214,9 +210,8 @@ export const GetPlacementGroupResponsePlacementGroupType = S.String;
 
 /** Array of IDs of Servers that are part of this Placement Group. */
 export type GetPlacementGroupResponsePlacementGroupServersList = Array<number>;
-export const GetPlacementGroupResponsePlacementGroupServersList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetPlacementGroupResponsePlacementGroupServersList>;
+export const GetPlacementGroupResponsePlacementGroupServersList =
+  CreatePlacementGroupResponsePlacementGroupServersList as any as S.Schema<GetPlacementGroupResponsePlacementGroupServersList>;
 
 export interface GetPlacementGroupResponsePlacementGroup {
   /** ID of the [Placement Group](#tag/placement-groups). */
@@ -317,10 +312,8 @@ export const ListPlacementGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListPlacementGroupsResponsePlacementGroupsItemLabelsMap = {
   [key: string]: string | undefined;
 };
-export const ListPlacementGroupsResponsePlacementGroupsItemLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListPlacementGroupsResponsePlacementGroupsItemLabelsMap>;
+export const ListPlacementGroupsResponsePlacementGroupsItemLabelsMap =
+  CreatePlacementGroupRequestLabelsMap as any as S.Schema<ListPlacementGroupsResponsePlacementGroupsItemLabelsMap>;
 
 /** Type of Placement Group. */
 export type ListPlacementGroupsResponsePlacementGroupsItemType = "spread";
@@ -328,9 +321,8 @@ export const ListPlacementGroupsResponsePlacementGroupsItemType = S.String;
 
 /** Array of IDs of Servers that are part of this Placement Group. */
 export type ListPlacementGroupsResponsePlacementGroupsItemServersList = Array<number>;
-export const ListPlacementGroupsResponsePlacementGroupsItemServersList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListPlacementGroupsResponsePlacementGroupsItemServersList>;
+export const ListPlacementGroupsResponsePlacementGroupsItemServersList =
+  CreatePlacementGroupResponsePlacementGroupServersList as any as S.Schema<ListPlacementGroupsResponsePlacementGroupsItemServersList>;
 
 export interface ListPlacementGroupsResponsePlacementGroupsItem {
   /** ID of the [Placement Group](#tag/placement-groups). */
@@ -420,10 +412,8 @@ export const ListPlacementGroupsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
 export type UpdatePlacementGroupRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdatePlacementGroupRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePlacementGroupRequestLabelsMap>;
+export const UpdatePlacementGroupRequestLabelsMap =
+  CreatePlacementGroupRequestLabelsMap as any as S.Schema<UpdatePlacementGroupRequestLabelsMap>;
 
 export interface UpdatePlacementGroupRequest {
   /** ID of the Placement Group. */
@@ -447,10 +437,8 @@ export const UpdatePlacementGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdatePlacementGroupResponsePlacementGroupLabelsMap = {
   [key: string]: string | undefined;
 };
-export const UpdatePlacementGroupResponsePlacementGroupLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePlacementGroupResponsePlacementGroupLabelsMap>;
+export const UpdatePlacementGroupResponsePlacementGroupLabelsMap =
+  CreatePlacementGroupRequestLabelsMap as any as S.Schema<UpdatePlacementGroupResponsePlacementGroupLabelsMap>;
 
 /** Type of Placement Group. */
 export type UpdatePlacementGroupResponsePlacementGroupType = "spread";
@@ -458,9 +446,8 @@ export const UpdatePlacementGroupResponsePlacementGroupType = S.String;
 
 /** Array of IDs of Servers that are part of this Placement Group. */
 export type UpdatePlacementGroupResponsePlacementGroupServersList = Array<number>;
-export const UpdatePlacementGroupResponsePlacementGroupServersList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdatePlacementGroupResponsePlacementGroupServersList>;
+export const UpdatePlacementGroupResponsePlacementGroupServersList =
+  CreatePlacementGroupResponsePlacementGroupServersList as any as S.Schema<UpdatePlacementGroupResponsePlacementGroupServersList>;
 
 export interface UpdatePlacementGroupResponsePlacementGroup {
   /** ID of the [Placement Group](#tag/placement-groups). */

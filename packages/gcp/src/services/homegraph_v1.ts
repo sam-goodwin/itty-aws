@@ -539,9 +539,7 @@ export const RequestSyncDevicesRequest_ = /*@__PURE__*/ S.suspend(() =>
 
 /** Response type for the [`RequestSyncDevices`](#google.home.graph.v1.HomeGraphApiService.RequestSyncDevices) call. Intentionally empty upon success. An HTTP response code is returned with more details upon failure. */
 export interface RequestSyncDevicesResponse {}
-export const RequestSyncDevicesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RequestSyncDevicesResponse",
-}) as any as S.Schema<RequestSyncDevicesResponse>;
+export const RequestSyncDevicesResponse = Empty as any as S.Schema<RequestSyncDevicesResponse>;
 
 /** Request type for the [`Sync`](#google.home.graph.v1.HomeGraphApiService.Sync) call. */
 export interface SyncRequest {

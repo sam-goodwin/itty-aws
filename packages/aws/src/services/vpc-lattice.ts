@@ -483,7 +483,7 @@ export const ArnResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ArnResource" }) as any as S.Schema<ArnResource>;
 export type CidrRange = string;
 export type CidrRangeList = string[];
-export const CidrRangeList = /*@__PURE__*/ S.Array(S.String);
+export const CidrRangeList = PortRangeList as any as S.Schema<CidrRangeList>;
 export interface CidrResource {
   cidrRanges?: string[];
 }
@@ -590,10 +590,10 @@ export type ResourceGatewayName = string;
 export type VpcId = string;
 export type SubnetId = string;
 export type SubnetList = string[];
-export const SubnetList = /*@__PURE__*/ S.Array(S.String);
+export const SubnetList = PortRangeList as any as S.Schema<SubnetList>;
 export type SecurityGroupId = string;
 export type SecurityGroupList = string[];
-export const SecurityGroupList = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroupList = PortRangeList as any as S.Schema<SecurityGroupList>;
 export type ResourceGatewayIpAddressType = string;
 export type Ipv4AddressesPerEni = number;
 export type ResourceConfigDnsResolution = string;
@@ -911,7 +911,8 @@ export const CreateServiceNetworkServiceAssociationResponse = /*@__PURE__*/ S.su
 export type PrivateDnsPreference = string;
 export type PrivateDnsSpecifiedDomain = string;
 export type PrivateDnsSpecifiedDomainsList = string[];
-export const PrivateDnsSpecifiedDomainsList = /*@__PURE__*/ S.Array(S.String);
+export const PrivateDnsSpecifiedDomainsList =
+  PortRangeList as any as S.Schema<PrivateDnsSpecifiedDomainsList>;
 export interface DnsOptions {
   privateDnsPreference?: string;
   privateDnsSpecifiedDomains?: string[];
@@ -1147,11 +1148,8 @@ export const DeleteDomainVerificationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDomainVerificationRequest",
 }) as any as S.Schema<DeleteDomainVerificationRequest>;
 export interface DeleteDomainVerificationResponse {}
-export const DeleteDomainVerificationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDomainVerificationResponse",
-}) as any as S.Schema<DeleteDomainVerificationResponse>;
+export const DeleteDomainVerificationResponse =
+  DeleteAccessLogSubscriptionResponse as any as S.Schema<DeleteDomainVerificationResponse>;
 export interface DeleteListenerRequest {
   serviceIdentifier: string;
   listenerIdentifier: string;
@@ -1175,9 +1173,8 @@ export const DeleteListenerRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteListenerRequest" }) as any as S.Schema<DeleteListenerRequest>;
 export interface DeleteListenerResponse {}
-export const DeleteListenerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteListenerResponse",
-}) as any as S.Schema<DeleteListenerResponse>;
+export const DeleteListenerResponse =
+  DeleteAuthPolicyResponse as any as S.Schema<DeleteListenerResponse>;
 export interface DeleteResourceConfigurationRequest {
   resourceConfigurationIdentifier: string;
 }
@@ -1201,11 +1198,8 @@ export const DeleteResourceConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourceConfigurationRequest",
 }) as any as S.Schema<DeleteResourceConfigurationRequest>;
 export interface DeleteResourceConfigurationResponse {}
-export const DeleteResourceConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteResourceConfigurationResponse",
-}) as any as S.Schema<DeleteResourceConfigurationResponse>;
+export const DeleteResourceConfigurationResponse =
+  DeleteAccessLogSubscriptionResponse as any as S.Schema<DeleteResourceConfigurationResponse>;
 export type ResourceEndpointAssociationIdentifier = string;
 export interface DeleteResourceEndpointAssociationRequest {
   resourceEndpointAssociationIdentifier: string;
@@ -1305,9 +1299,8 @@ export const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourcePolicyRequest",
 }) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {}
-export const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteResourcePolicyResponse",
-}) as any as S.Schema<DeleteResourcePolicyResponse>;
+export const DeleteResourcePolicyResponse =
+  DeleteAuthPolicyResponse as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface DeleteRuleRequest {
   serviceIdentifier: string;
   listenerIdentifier: string;
@@ -1333,9 +1326,7 @@ export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteRuleRequest" }) as any as S.Schema<DeleteRuleRequest>;
 export interface DeleteRuleResponse {}
-export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRuleResponse",
-}) as any as S.Schema<DeleteRuleResponse>;
+export const DeleteRuleResponse = DeleteAuthPolicyResponse as any as S.Schema<DeleteRuleResponse>;
 export interface DeleteServiceRequest {
   serviceIdentifier: string;
 }
@@ -1385,9 +1376,8 @@ export const DeleteServiceNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteServiceNetworkRequest",
 }) as any as S.Schema<DeleteServiceNetworkRequest>;
 export interface DeleteServiceNetworkResponse {}
-export const DeleteServiceNetworkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteServiceNetworkResponse",
-}) as any as S.Schema<DeleteServiceNetworkResponse>;
+export const DeleteServiceNetworkResponse =
+  DeleteAuthPolicyResponse as any as S.Schema<DeleteServiceNetworkResponse>;
 export type ServiceNetworkResourceAssociationIdentifier = string;
 export interface DeleteServiceNetworkResourceAssociationRequest {
   serviceNetworkResourceAssociationIdentifier: string;
@@ -1487,11 +1477,8 @@ export interface DeleteServiceNetworkVpcAssociationResponse {
   status?: string;
   arn?: string;
 }
-export const DeleteServiceNetworkVpcAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.optional(S.String), status: S.optional(S.String), arn: S.optional(S.String) }),
-).annotate({
-  identifier: "DeleteServiceNetworkVpcAssociationResponse",
-}) as any as S.Schema<DeleteServiceNetworkVpcAssociationResponse>;
+export const DeleteServiceNetworkVpcAssociationResponse =
+  DeleteServiceNetworkServiceAssociationResponse as any as S.Schema<DeleteServiceNetworkVpcAssociationResponse>;
 export interface DeleteTargetGroupRequest {
   targetGroupIdentifier: string;
 }
@@ -1512,11 +1499,8 @@ export interface DeleteTargetGroupResponse {
   arn?: string;
   status?: string;
 }
-export const DeleteTargetGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.optional(S.String), arn: S.optional(S.String), status: S.optional(S.String) }),
-).annotate({
-  identifier: "DeleteTargetGroupResponse",
-}) as any as S.Schema<DeleteTargetGroupResponse>;
+export const DeleteTargetGroupResponse =
+  DeleteServiceNetworkResourceAssociationResponse as any as S.Schema<DeleteTargetGroupResponse>;
 export interface Target {
   id: string;
   port?: number;
@@ -2238,7 +2222,7 @@ export const GetTargetGroupRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetTargetGroupRequest" }) as any as S.Schema<GetTargetGroupRequest>;
 export type ServiceArnList = string[];
-export const ServiceArnList = /*@__PURE__*/ S.Array(S.String);
+export const ServiceArnList = PortRangeList as any as S.Schema<ServiceArnList>;
 export interface GetTargetGroupResponse {
   id?: string;
   arn?: string;
@@ -2295,20 +2279,8 @@ export interface AccessLogSubscriptionSummary {
   createdAt: Date;
   lastUpdatedAt: Date;
 }
-export const AccessLogSubscriptionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    arn: S.String,
-    resourceId: S.String,
-    resourceArn: S.String,
-    destinationArn: S.String,
-    serviceNetworkLogType: S.optional(S.String),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "AccessLogSubscriptionSummary",
-}) as any as S.Schema<AccessLogSubscriptionSummary>;
+export const AccessLogSubscriptionSummary =
+  GetAccessLogSubscriptionResponse as any as S.Schema<AccessLogSubscriptionSummary>;
 export type AccessLogSubscriptionList = AccessLogSubscriptionSummary[];
 export const AccessLogSubscriptionList = /*@__PURE__*/ S.Array(AccessLogSubscriptionSummary);
 export interface ListAccessLogSubscriptionsResponse {
@@ -2344,20 +2316,8 @@ export interface DomainVerificationSummary {
   lastVerifiedTime?: Date;
   tags?: { [key: string]: string | undefined };
 }
-export const DomainVerificationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    arn: S.String,
-    domainName: S.String,
-    status: S.String,
-    txtMethodConfig: S.optional(TxtMethodConfig),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastVerifiedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    tags: S.optional(TagMap),
-  }),
-).annotate({
-  identifier: "DomainVerificationSummary",
-}) as any as S.Schema<DomainVerificationSummary>;
+export const DomainVerificationSummary =
+  GetDomainVerificationResponse as any as S.Schema<DomainVerificationSummary>;
 export type DomainVerificationList = DomainVerificationSummary[];
 export const DomainVerificationList = /*@__PURE__*/ S.Array(DomainVerificationSummary);
 export interface ListDomainVerificationsResponse {
@@ -3226,9 +3186,8 @@ export const PutResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutResourcePolicyRequest" }) as any as S.Schema<PutResourcePolicyRequest>;
 export interface PutResourcePolicyResponse {}
-export const PutResourcePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutResourcePolicyResponse",
-}) as any as S.Schema<PutResourcePolicyResponse>;
+export const PutResourcePolicyResponse =
+  DeleteAuthPolicyResponse as any as S.Schema<PutResourcePolicyResponse>;
 export interface RegisterTargetsRequest {
   targetGroupIdentifier: string;
   targets: Target[];
@@ -3299,11 +3258,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteAuthPolicyResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = PortRangeList as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -3317,9 +3274,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteAuthPolicyResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAccessLogSubscriptionRequest {
   accessLogSubscriptionIdentifier: string;
   destinationArn: string;
@@ -3393,18 +3349,8 @@ export interface UpdateListenerResponse {
   serviceId?: string;
   defaultAction?: RuleAction;
 }
-export const UpdateListenerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    protocol: S.optional(S.String),
-    port: S.optional(S.Number),
-    serviceArn: S.optional(S.String),
-    serviceId: S.optional(S.String),
-    defaultAction: S.optional(RuleAction),
-  }),
-).annotate({ identifier: "UpdateListenerResponse" }) as any as S.Schema<UpdateListenerResponse>;
+export const UpdateListenerResponse =
+  CreateListenerResponse as any as S.Schema<UpdateListenerResponse>;
 export interface UpdateResourceConfigurationRequest {
   resourceConfigurationIdentifier: string;
   resourceConfigurationDefinition?: ResourceConfigurationDefinition;
@@ -3544,17 +3490,7 @@ export interface UpdateRuleResponse {
   priority?: number;
   action?: RuleAction;
 }
-export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    isDefault: S.optional(S.Boolean),
-    match: S.optional(RuleMatch),
-    priority: S.optional(S.Number),
-    action: S.optional(RuleAction),
-  }),
-).annotate({ identifier: "UpdateRuleResponse" }) as any as S.Schema<UpdateRuleResponse>;
+export const UpdateRuleResponse = RuleUpdateSuccess as any as S.Schema<UpdateRuleResponse>;
 export interface UpdateServiceRequest {
   serviceIdentifier: string;
   certificateArn?: string;
@@ -3714,18 +3650,8 @@ export interface UpdateTargetGroupResponse {
   config?: TargetGroupConfig;
   status?: string;
 }
-export const UpdateTargetGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    arn: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    config: S.optional(TargetGroupConfig),
-    status: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateTargetGroupResponse",
-}) as any as S.Schema<UpdateTargetGroupResponse>;
+export const UpdateTargetGroupResponse =
+  CreateTargetGroupResponse as any as S.Schema<UpdateTargetGroupResponse>;
 export type ValidationExceptionReason = string;
 export interface ValidationExceptionField {
   name: string;

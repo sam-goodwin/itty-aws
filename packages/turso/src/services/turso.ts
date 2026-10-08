@@ -311,9 +311,8 @@ export type CreateDatabaseTokenRequestAuthorization = "full-access" | "read-only
 export const CreateDatabaseTokenRequestAuthorization = S.String;
 
 export type CreateDatabaseTokenRequestPermissionsReadAttachDatabasesList = Array<string>;
-export const CreateDatabaseTokenRequestPermissionsReadAttachDatabasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDatabaseTokenRequestPermissionsReadAttachDatabasesList>;
+export const CreateDatabaseTokenRequestPermissionsReadAttachDatabasesList =
+  GroupLocationsList as any as S.Schema<CreateDatabaseTokenRequestPermissionsReadAttachDatabasesList>;
 
 /** Read `ATTACH` permission for the token. */
 export interface CreateDatabaseTokenRequestPermissionsReadAttach {
@@ -443,34 +442,23 @@ export type CreateGroupTokenRequestAuthorization = "full-access" | "read-only";
 export const CreateGroupTokenRequestAuthorization = S.String;
 
 export type CreateGroupTokenRequestPermissionsReadAttachDatabasesList = Array<string>;
-export const CreateGroupTokenRequestPermissionsReadAttachDatabasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateGroupTokenRequestPermissionsReadAttachDatabasesList>;
+export const CreateGroupTokenRequestPermissionsReadAttachDatabasesList =
+  GroupLocationsList as any as S.Schema<CreateGroupTokenRequestPermissionsReadAttachDatabasesList>;
 
 /** Read `ATTACH` permission for the token. */
 export interface CreateGroupTokenRequestPermissionsReadAttach {
   databases?: CreateGroupTokenRequestPermissionsReadAttachDatabasesList;
 }
-export const CreateGroupTokenRequestPermissionsReadAttach = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    databases: S.optional(CreateGroupTokenRequestPermissionsReadAttachDatabasesList),
-  }),
-).annotate({
-  identifier: "CreateGroupTokenRequestPermissionsReadAttach",
-}) as any as S.Schema<CreateGroupTokenRequestPermissionsReadAttach>;
+export const CreateGroupTokenRequestPermissionsReadAttach =
+  CreateDatabaseTokenRequestPermissionsReadAttach as any as S.Schema<CreateGroupTokenRequestPermissionsReadAttach>;
 
 /** The permissions for the token. */
 export interface CreateGroupTokenRequestPermissions {
   /** Read `ATTACH` permission for the token. */
   read_attach?: CreateGroupTokenRequestPermissionsReadAttach;
 }
-export const CreateGroupTokenRequestPermissions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    read_attach: S.optional(CreateGroupTokenRequestPermissionsReadAttach),
-  }),
-).annotate({
-  identifier: "CreateGroupTokenRequestPermissions",
-}) as any as S.Schema<CreateGroupTokenRequestPermissions>;
+export const CreateGroupTokenRequestPermissions =
+  CreateDatabaseTokenRequestPermissions as any as S.Schema<CreateGroupTokenRequestPermissions>;
 
 export interface CreateGroupTokenRequest {
   /** The slug of the organization or user account. */
@@ -561,11 +549,7 @@ export const DeleteGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteGroupResponse {
   group?: Group;
 }
-export const DeleteGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    group: S.optional(Group),
-  }),
-).annotate({ identifier: "DeleteGroupResponse" }) as any as S.Schema<DeleteGroupResponse>;
+export const DeleteGroupResponse = CreateGroupResponse as any as S.Schema<DeleteGroupResponse>;
 
 export interface DeleteOrganizationInviteByEmailV2Request {
   /** The slug of the organization or user account. */
@@ -659,9 +643,7 @@ export const GetDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of regions for the group the database belongs to. */
 export type DatabaseRegionsList = Array<string>;
-export const DatabaseRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatabaseRegionsList>;
+export const DatabaseRegionsList = GroupLocationsList as any as S.Schema<DatabaseRegionsList>;
 
 export interface DatabaseParent {
   /** The parent database identifier. */
@@ -747,15 +729,13 @@ export const GetDatabaseConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of allowed IP addresses and CIDR blocks. Empty means no IP restriction. */
 export type DatabaseConfigurationResponseAllowedIpsList = Array<string>;
-export const DatabaseConfigurationResponseAllowedIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatabaseConfigurationResponseAllowedIpsList>;
+export const DatabaseConfigurationResponseAllowedIpsList =
+  GroupLocationsList as any as S.Schema<DatabaseConfigurationResponseAllowedIpsList>;
 
 /** List of allowed AWS VPC endpoint IDs. Empty means no VPC endpoint restriction. */
 export type DatabaseConfigurationResponseAllowedAwsVpcIdsList = Array<string>;
-export const DatabaseConfigurationResponseAllowedAwsVpcIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatabaseConfigurationResponseAllowedAwsVpcIdsList>;
+export const DatabaseConfigurationResponseAllowedAwsVpcIdsList =
+  GroupLocationsList as any as S.Schema<DatabaseConfigurationResponseAllowedAwsVpcIdsList>;
 
 export interface DatabaseConfigurationResponse {
   /** The maximum size of the database in bytes. Values with units are also accepted, e.g. 1mb, 256mb, 1gb. */
@@ -1011,11 +991,7 @@ export const GetGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetGroupResponse {
   group?: Group;
 }
-export const GetGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    group: S.optional(Group),
-  }),
-).annotate({ identifier: "GetGroupResponse" }) as any as S.Schema<GetGroupResponse>;
+export const GetGroupResponse = CreateGroupResponse as any as S.Schema<GetGroupResponse>;
 
 export interface GetGroupConfigurationRequest {
   /** The slug of the organization or user account. */
@@ -1313,11 +1289,8 @@ export const InvalidateDatabaseTokensRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvalidateDatabaseTokensRequest>;
 
 export interface InvalidateDatabaseTokensResponse {}
-export const InvalidateDatabaseTokensResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "InvalidateDatabaseTokensResponse",
-}) as any as S.Schema<InvalidateDatabaseTokensResponse>;
+export const InvalidateDatabaseTokensResponse =
+  DeleteOrganizationInviteByEmailV2Response as any as S.Schema<InvalidateDatabaseTokensResponse>;
 
 export interface InvalidateGroupTokensRequest {
   /** The slug of the organization or user account. */
@@ -1410,9 +1383,7 @@ export const ListAPITokensRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The expanded list of scopes granted to this token. Present only for group-scoped tokens. Presets passed at creation time (`read-only`, `full-access`) are stored as the underlying individual scopes and are returned in that form. */
 export type APITokenScopesList = Array<string>;
-export const APITokenScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<APITokenScopesList>;
+export const APITokenScopesList = GroupLocationsList as any as S.Schema<APITokenScopesList>;
 
 export interface APIToken {
   /** The name given to the API Token. */
@@ -1553,9 +1524,8 @@ export const ListDeletedDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The regions the database was located in. */
 export type DeletedDatabaseRegionsList = Array<string>;
-export const DeletedDatabaseRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeletedDatabaseRegionsList>;
+export const DeletedDatabaseRegionsList =
+  GroupLocationsList as any as S.Schema<DeletedDatabaseRegionsList>;
 
 export interface DeletedDatabase {
   /** The database name. */
@@ -1742,9 +1712,8 @@ export const ListOrganizationAPITokensRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The expanded scope list. Present only for group-scoped tokens. */
 export type ListOrganizationAPITokensResponseTokensItemScopesList = Array<string>;
-export const ListOrganizationAPITokensResponseTokensItemScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationAPITokensResponseTokensItemScopesList>;
+export const ListOrganizationAPITokensResponseTokensItemScopesList =
+  GroupLocationsList as any as S.Schema<ListOrganizationAPITokensResponseTokensItemScopesList>;
 
 /** The user who minted the token. Returned to admins and owners so they can see who provisioned each token. */
 export interface ListOrganizationAPITokensResponseTokensItemOwner {
@@ -2206,13 +2175,8 @@ export interface RemoveLocationFromGroupResponse {
   /** The group with the removed location */
   group?: Group;
 }
-export const RemoveLocationFromGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    group: S.optional(Group),
-  }),
-).annotate({
-  identifier: "RemoveLocationFromGroupResponse",
-}) as any as S.Schema<RemoveLocationFromGroupResponse>;
+export const RemoveLocationFromGroupResponse =
+  AddLocationToGroupResponse as any as S.Schema<RemoveLocationFromGroupResponse>;
 
 export interface RemoveOrganizationMemberRequest {
   /** The slug of the organization or user account. */
@@ -2299,16 +2263,13 @@ export const RestoreGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The member databases restored with the group, in restore order. */
 export type RestoreGroupResponseDatabasesList = Array<DeletedDatabase>;
-export const RestoreGroupResponseDatabasesList = /*@__PURE__*/ S.Array(
-  DeletedDatabase,
-) as any as S.Schema<RestoreGroupResponseDatabasesList>;
+export const RestoreGroupResponseDatabasesList =
+  ListDeletedDatabasesResponseDatabasesList as any as S.Schema<RestoreGroupResponseDatabasesList>;
 
 /** Maps database UUID to error message for members whose restore failed. Retry them individually with Restore Database. */
 export type RestoreGroupResponseFailuresMap = { [key: string]: string | undefined };
-export const RestoreGroupResponseFailuresMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RestoreGroupResponseFailuresMap>;
+export const RestoreGroupResponseFailuresMap =
+  ListLocationsResponseLocationsMap as any as S.Schema<RestoreGroupResponseFailuresMap>;
 
 export interface RestoreGroupResponse {
   /** The restored group. */
@@ -2403,9 +2364,8 @@ export const TransferGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of location keys the group is located. */
 export type TransferGroupResponseLocationsList = Array<string>;
-export const TransferGroupResponseLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TransferGroupResponseLocationsList>;
+export const TransferGroupResponseLocationsList =
+  GroupLocationsList as any as S.Schema<TransferGroupResponseLocationsList>;
 
 export interface TransferGroupResponse {
   /** The group name, unique across your organization. */
@@ -2421,16 +2381,7 @@ export interface TransferGroupResponse {
   /** The current status for delete protection. If enabled, the group and all its databases cannot be deleted. */
   delete_protection?: boolean;
 }
-export const TransferGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    version: S.optional(S.String),
-    uuid: S.optional(S.String),
-    locations: S.optional(TransferGroupResponseLocationsList),
-    primary: S.optional(S.String),
-    delete_protection: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "TransferGroupResponse" }) as any as S.Schema<TransferGroupResponse>;
+export const TransferGroupResponse = Group as any as S.Schema<TransferGroupResponse>;
 
 export interface UnarchiveGroupRequest {
   /** The slug of the organization or user account. */
@@ -2455,23 +2406,18 @@ export interface UnarchiveGroupResponse {
   /** The group that was unarchived */
   group?: Group;
 }
-export const UnarchiveGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    group: S.optional(Group),
-  }),
-).annotate({ identifier: "UnarchiveGroupResponse" }) as any as S.Schema<UnarchiveGroupResponse>;
+export const UnarchiveGroupResponse =
+  CreateGroupResponse as any as S.Schema<UnarchiveGroupResponse>;
 
 /** List of allowed IP addresses and CIDR blocks. Only connections from these sources are accepted. Pass an empty array to clear the list. Omit to leave unchanged. */
 export type UpdateDatabaseConfigurationRequestAllowedIpsList = Array<string>;
-export const UpdateDatabaseConfigurationRequestAllowedIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDatabaseConfigurationRequestAllowedIpsList>;
+export const UpdateDatabaseConfigurationRequestAllowedIpsList =
+  GroupLocationsList as any as S.Schema<UpdateDatabaseConfigurationRequestAllowedIpsList>;
 
 /** List of allowed AWS VPC endpoint IDs (vpce-...). Only connections arriving through these endpoints are accepted. Pass an empty array to clear the list. Omit to leave unchanged. */
 export type UpdateDatabaseConfigurationRequestAllowedAwsVpcIdsList = Array<string>;
-export const UpdateDatabaseConfigurationRequestAllowedAwsVpcIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDatabaseConfigurationRequestAllowedAwsVpcIdsList>;
+export const UpdateDatabaseConfigurationRequestAllowedAwsVpcIdsList =
+  GroupLocationsList as any as S.Schema<UpdateDatabaseConfigurationRequestAllowedAwsVpcIdsList>;
 
 export interface UpdateDatabaseConfigurationRequest {
   /** The slug of the organization or user account. */
@@ -2561,9 +2507,8 @@ export const UpdateGroupDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateGroupDatabasesRequest>;
 
 export interface UpdateGroupDatabasesResponse {}
-export const UpdateGroupDatabasesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateGroupDatabasesResponse",
-}) as any as S.Schema<UpdateGroupDatabasesResponse>;
+export const UpdateGroupDatabasesResponse =
+  InvalidateGroupTokensResponse as any as S.Schema<UpdateGroupDatabasesResponse>;
 
 /** The new role to assign to the member. */
 export type UpdateMemberRoleRequestRole = "admin" | "member" | "viewer";

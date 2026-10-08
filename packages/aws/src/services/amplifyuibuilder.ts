@@ -308,10 +308,8 @@ export const ComponentVariantValues = /*@__PURE__*/ S.Record(
   /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export type ComponentOverridesValue = { [key: string]: string | undefined };
-export const ComponentOverridesValue = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ComponentOverridesValue =
+  ComponentVariantValues as any as S.Schema<ComponentOverridesValue>;
 export type ComponentOverrides = {
   [key: string]: { [key: string]: string | undefined } | undefined;
 };
@@ -574,11 +572,8 @@ export interface FormInputValuePropertyBindingProperties {
   property: string;
   field?: string;
 }
-export const FormInputValuePropertyBindingProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ property: S.String, field: S.optional(S.String) }),
-).annotate({
-  identifier: "FormInputValuePropertyBindingProperties",
-}) as any as S.Schema<FormInputValuePropertyBindingProperties>;
+export const FormInputValuePropertyBindingProperties =
+  ComponentPropertyBindingProperties as any as S.Schema<FormInputValuePropertyBindingProperties>;
 export type FormInputValuePropertyList = FormInputValueProperty[];
 export const FormInputValuePropertyList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend((): S.Schema<FormInputValueProperty> => FormInputValueProperty).annotate({
@@ -648,7 +643,7 @@ export type StorageAccessLevel = "public" | "protected" | "private" | (string & 
 export const StorageAccessLevel = S.String;
 
 export type StrValues = string[];
-export const StrValues = /*@__PURE__*/ S.Array(S.String);
+export const StrValues = IdentifierList as any as S.Schema<StrValues>;
 export interface FileUploaderFieldConfig {
   accessLevel: StorageAccessLevel;
   acceptedFileTypes: string[];
@@ -1055,9 +1050,7 @@ export const DeleteFormRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteFormRequest" }) as any as S.Schema<DeleteFormRequest>;
 export interface DeleteFormResponse {}
-export const DeleteFormResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFormResponse",
-}) as any as S.Schema<DeleteFormResponse>;
+export const DeleteFormResponse = DeleteComponentResponse as any as S.Schema<DeleteFormResponse>;
 export interface DeleteThemeRequest {
   appId: string;
   environmentName: string;
@@ -1080,9 +1073,7 @@ export const DeleteThemeRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteThemeRequest" }) as any as S.Schema<DeleteThemeRequest>;
 export interface DeleteThemeResponse {}
-export const DeleteThemeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteThemeResponse",
-}) as any as S.Schema<DeleteThemeResponse>;
+export const DeleteThemeResponse = DeleteComponentResponse as any as S.Schema<DeleteThemeResponse>;
 export type TokenProviders = string;
 export type SensitiveString = string | redacted.Redacted<string>;
 export interface ExchangeCodeForTokenRequestBody {
@@ -1265,13 +1256,10 @@ export const GraphQLRenderConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GraphQLRenderConfig" }) as any as S.Schema<GraphQLRenderConfig>;
 export interface DataStoreRenderConfig {}
-export const DataStoreRenderConfig = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DataStoreRenderConfig",
-}) as any as S.Schema<DataStoreRenderConfig>;
+export const DataStoreRenderConfig =
+  DeleteComponentResponse as any as S.Schema<DataStoreRenderConfig>;
 export interface NoApiRenderConfig {}
-export const NoApiRenderConfig = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "NoApiRenderConfig",
-}) as any as S.Schema<NoApiRenderConfig>;
+export const NoApiRenderConfig = DeleteComponentResponse as any as S.Schema<NoApiRenderConfig>;
 export type ApiConfiguration =
   | { graphQLConfig: GraphQLRenderConfig; dataStoreConfig?: never; noApiConfig?: never }
   | { graphQLConfig?: never; dataStoreConfig: DataStoreRenderConfig; noApiConfig?: never }
@@ -1282,10 +1270,8 @@ export const ApiConfiguration = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ noApiConfig: NoApiRenderConfig }),
 ]);
 export type ReactCodegenDependencies = { [key: string]: string | undefined };
-export const ReactCodegenDependencies = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ReactCodegenDependencies =
+  ComponentVariantValues as any as S.Schema<ReactCodegenDependencies>;
 export interface ReactStartCodegenJobData {
   module?: JSModule;
   target?: JSTarget;
@@ -1338,9 +1324,9 @@ export type GenericDataRelationshipType = "HAS_MANY" | "HAS_ONE" | "BELONGS_TO" 
 export const GenericDataRelationshipType = S.String;
 
 export type RelatedModelFieldsList = string[];
-export const RelatedModelFieldsList = /*@__PURE__*/ S.Array(S.String);
+export const RelatedModelFieldsList = IdentifierList as any as S.Schema<RelatedModelFieldsList>;
 export type AssociatedFieldsList = string[];
-export const AssociatedFieldsList = /*@__PURE__*/ S.Array(S.String);
+export const AssociatedFieldsList = IdentifierList as any as S.Schema<AssociatedFieldsList>;
 export interface CodegenGenericDataRelationshipType {
   type: GenericDataRelationshipType;
   relatedModelName: string;
@@ -1391,7 +1377,7 @@ export const CodegenGenericDataFields = /*@__PURE__*/ S.Record(
   /*@__PURE__*/ CodegenGenericDataField.pipe(S.optional),
 );
 export type CodegenPrimaryKeysList = string[];
-export const CodegenPrimaryKeysList = /*@__PURE__*/ S.Array(S.String);
+export const CodegenPrimaryKeysList = IdentifierList as any as S.Schema<CodegenPrimaryKeysList>;
 export interface CodegenGenericDataModel {
   fields: { [key: string]: CodegenGenericDataField | undefined };
   isJoinTable?: boolean;
@@ -1410,7 +1396,8 @@ export const CodegenGenericDataModels = /*@__PURE__*/ S.Record(
   /*@__PURE__*/ CodegenGenericDataModel.pipe(S.optional),
 );
 export type CodegenGenericDataEnumValuesList = string[];
-export const CodegenGenericDataEnumValuesList = /*@__PURE__*/ S.Array(S.String);
+export const CodegenGenericDataEnumValuesList =
+  IdentifierList as any as S.Schema<CodegenGenericDataEnumValuesList>;
 export interface CodegenGenericDataEnum {
   values: string[];
 }
@@ -1425,10 +1412,8 @@ export const CodegenGenericDataEnums = /*@__PURE__*/ S.Record(
 export type CodegenGenericDataNonModelFields = {
   [key: string]: CodegenGenericDataField | undefined;
 };
-export const CodegenGenericDataNonModelFields = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ CodegenGenericDataField.pipe(S.optional),
-);
+export const CodegenGenericDataNonModelFields =
+  CodegenGenericDataFields as any as S.Schema<CodegenGenericDataNonModelFields>;
 export interface CodegenGenericDataNonModel {
   fields: { [key: string]: CodegenGenericDataField | undefined };
 }
@@ -1611,10 +1596,7 @@ export const GetMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetMetadataRequest" }) as any as S.Schema<GetMetadataRequest>;
 export type FeaturesMap = { [key: string]: string | undefined };
-export const FeaturesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const FeaturesMap = ComponentVariantValues as any as S.Schema<FeaturesMap>;
 export interface GetMetadataResponse {
   features: { [key: string]: string | undefined };
 }
@@ -1888,9 +1870,8 @@ export const PutMetadataFlagRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutMetadataFlagRequest" }) as any as S.Schema<PutMetadataFlagRequest>;
 export interface PutMetadataFlagResponse {}
-export const PutMetadataFlagResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutMetadataFlagResponse",
-}) as any as S.Schema<PutMetadataFlagResponse>;
+export const PutMetadataFlagResponse =
+  DeleteComponentResponse as any as S.Schema<PutMetadataFlagResponse>;
 export interface RefreshTokenRequestBody {
   token: string | redacted.Redacted<string>;
   clientId?: string | redacted.Redacted<string>;
@@ -1985,11 +1966,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteComponentResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = IdentifierList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -2003,9 +1982,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteComponentResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateComponentData {
   id?: string;
   name?: string;
@@ -2069,11 +2047,8 @@ export const UpdateComponentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateComponentResponse {
   entity?: Component;
 }
-export const UpdateComponentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entity: S.optional(Component).pipe(T.HttpPayload()).annotate({ identifier: "Component" }),
-  }),
-).annotate({ identifier: "UpdateComponentResponse" }) as any as S.Schema<UpdateComponentResponse>;
+export const UpdateComponentResponse =
+  CreateComponentResponse as any as S.Schema<UpdateComponentResponse>;
 export interface UpdateFormData {
   name?: string;
   dataType?: FormDataTypeConfig;
@@ -2126,9 +2101,7 @@ export const UpdateFormRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateFormResponse {
   entity?: Form;
 }
-export const UpdateFormResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ entity: S.optional(Form).pipe(T.HttpPayload()).annotate({ identifier: "Form" }) }),
-).annotate({ identifier: "UpdateFormResponse" }) as any as S.Schema<UpdateFormResponse>;
+export const UpdateFormResponse = CreateFormResponse as any as S.Schema<UpdateFormResponse>;
 export interface UpdateThemeData {
   id?: string;
   name?: string;
@@ -2171,9 +2144,7 @@ export const UpdateThemeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateThemeResponse {
   entity?: Theme;
 }
-export const UpdateThemeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ entity: S.optional(Theme).pipe(T.HttpPayload()).annotate({ identifier: "Theme" }) }),
-).annotate({ identifier: "UpdateThemeResponse" }) as any as S.Schema<UpdateThemeResponse>;
+export const UpdateThemeResponse = CreateThemeResponse as any as S.Schema<UpdateThemeResponse>;
 export type CreateComponentError =
   | InternalServerException
   | InvalidParameterException

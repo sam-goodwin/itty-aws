@@ -379,9 +379,8 @@ export const AddOnsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddOnsRequest" }) as any as S.Schema<AddOnsRequest>;
 
 export type AddOnsResponseEdgesItemNodeReadRegionsList = Array<string>;
-export const AddOnsResponseEdgesItemNodeReadRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddOnsResponseEdgesItemNodeReadRegionsList>;
+export const AddOnsResponseEdgesItemNodeReadRegionsList =
+  AddOnResponseReadRegionsList as any as S.Schema<AddOnsResponseEdgesItemNodeReadRegionsList>;
 
 export type AddOnsResponseEdgesItemNodeAddOnPlan = AddOnResponseAddOnPlan;
 export const AddOnsResponseEdgesItemNodeAddOnPlan = AddOnResponseAddOnPlan;
@@ -461,9 +460,8 @@ export const AddOnsResponseEdgesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AddOnsResponseEdgesList>;
 
 export type AddOnsResponseNodesItemReadRegionsList = Array<string>;
-export const AddOnsResponseNodesItemReadRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddOnsResponseNodesItemReadRegionsList>;
+export const AddOnsResponseNodesItemReadRegionsList =
+  AddOnResponseReadRegionsList as any as S.Schema<AddOnsResponseNodesItemReadRegionsList>;
 
 export interface AddOnsResponseNodesItem {
   id: string;
@@ -621,9 +619,8 @@ export const CreateAddOnRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateAddOnRequest" }) as any as S.Schema<CreateAddOnRequest>;
 
 export type CreateAddOnResponseAddOnReadRegionsList = Array<string>;
-export const CreateAddOnResponseAddOnReadRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateAddOnResponseAddOnReadRegionsList>;
+export const CreateAddOnResponseAddOnReadRegionsList =
+  AddOnResponseReadRegionsList as any as S.Schema<CreateAddOnResponseAddOnReadRegionsList>;
 
 export interface CreateAddOnResponseAddOn {
   id: string;
@@ -643,26 +640,8 @@ export interface CreateAddOnResponseAddOn {
   updatedAt: string;
   addOnPlanName: string | null;
 }
-export const CreateAddOnResponseAddOn = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.NullOr(S.String),
-    primaryRegion: S.NullOr(S.String),
-    readRegions: S.NullOr(CreateAddOnResponseAddOnReadRegionsList),
-    status: S.NullOr(S.String),
-    errorMessage: S.NullOr(S.String),
-    publicUrl: S.NullOr(S.String).pipe(T.SensitiveValue({})),
-    privateIp: S.NullOr(S.String),
-    password: S.NullOr(S.String).pipe(T.SensitiveValue({})),
-    ssoLink: S.NullOr(S.String),
-    environment: S.NullOr(S.Unknown),
-    options: S.NullOr(S.Unknown),
-    metadata: S.NullOr(S.Unknown),
-    createdAt: S.String,
-    updatedAt: S.String,
-    addOnPlanName: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "CreateAddOnResponseAddOn" }) as any as S.Schema<CreateAddOnResponseAddOn>;
+export const CreateAddOnResponseAddOn =
+  AddOnsResponseNodesItem as any as S.Schema<CreateAddOnResponseAddOn>;
 
 /** Selection set for `createAddOn` (unwrapped from the GraphQL `data` envelope). */
 export interface CreateAddOnResponse {
@@ -802,9 +781,8 @@ export const OrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrganizationRequest" }) as any as S.Schema<OrganizationRequest>;
 
 export type OrganizationResponseAddOnsEdgesItemNodeReadRegionsList = Array<string>;
-export const OrganizationResponseAddOnsEdgesItemNodeReadRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrganizationResponseAddOnsEdgesItemNodeReadRegionsList>;
+export const OrganizationResponseAddOnsEdgesItemNodeReadRegionsList =
+  AddOnResponseReadRegionsList as any as S.Schema<OrganizationResponseAddOnsEdgesItemNodeReadRegionsList>;
 
 export interface OrganizationResponseAddOnsEdgesItemNode {
   id: string;
@@ -943,9 +921,8 @@ export const ResetAddOnPasswordRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResetAddOnPasswordRequest>;
 
 export type ResetAddOnPasswordResponseAddOnReadRegionsList = Array<string>;
-export const ResetAddOnPasswordResponseAddOnReadRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResetAddOnPasswordResponseAddOnReadRegionsList>;
+export const ResetAddOnPasswordResponseAddOnReadRegionsList =
+  AddOnResponseReadRegionsList as any as S.Schema<ResetAddOnPasswordResponseAddOnReadRegionsList>;
 
 export interface ResetAddOnPasswordResponseAddOn {
   id: string;
@@ -965,28 +942,8 @@ export interface ResetAddOnPasswordResponseAddOn {
   updatedAt: string;
   addOnPlanName: string | null;
 }
-export const ResetAddOnPasswordResponseAddOn = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.NullOr(S.String),
-    primaryRegion: S.NullOr(S.String),
-    readRegions: S.NullOr(ResetAddOnPasswordResponseAddOnReadRegionsList),
-    status: S.NullOr(S.String),
-    errorMessage: S.NullOr(S.String),
-    publicUrl: S.NullOr(S.String).pipe(T.SensitiveValue({})),
-    privateIp: S.NullOr(S.String),
-    password: S.NullOr(S.String).pipe(T.SensitiveValue({})),
-    ssoLink: S.NullOr(S.String),
-    environment: S.NullOr(S.Unknown),
-    options: S.NullOr(S.Unknown),
-    metadata: S.NullOr(S.Unknown),
-    createdAt: S.String,
-    updatedAt: S.String,
-    addOnPlanName: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "ResetAddOnPasswordResponseAddOn",
-}) as any as S.Schema<ResetAddOnPasswordResponseAddOn>;
+export const ResetAddOnPasswordResponseAddOn =
+  OrganizationResponseAddOnsEdgesItemNode as any as S.Schema<ResetAddOnPasswordResponseAddOn>;
 
 /** Selection set for `resetAddOnPassword` (unwrapped from the GraphQL `data` envelope). */
 export interface ResetAddOnPasswordResponse {
@@ -1057,9 +1014,8 @@ export const UpdateAddOnRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateAddOnRequest" }) as any as S.Schema<UpdateAddOnRequest>;
 
 export type UpdateAddOnResponseAddOnReadRegionsList = Array<string>;
-export const UpdateAddOnResponseAddOnReadRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAddOnResponseAddOnReadRegionsList>;
+export const UpdateAddOnResponseAddOnReadRegionsList =
+  AddOnResponseReadRegionsList as any as S.Schema<UpdateAddOnResponseAddOnReadRegionsList>;
 
 export interface UpdateAddOnResponseAddOn {
   id: string;
@@ -1079,26 +1035,8 @@ export interface UpdateAddOnResponseAddOn {
   updatedAt: string;
   addOnPlanName: string | null;
 }
-export const UpdateAddOnResponseAddOn = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.NullOr(S.String),
-    primaryRegion: S.NullOr(S.String),
-    readRegions: S.NullOr(UpdateAddOnResponseAddOnReadRegionsList),
-    status: S.NullOr(S.String),
-    errorMessage: S.NullOr(S.String),
-    publicUrl: S.NullOr(S.String).pipe(T.SensitiveValue({})),
-    privateIp: S.NullOr(S.String),
-    password: S.NullOr(S.String).pipe(T.SensitiveValue({})),
-    ssoLink: S.NullOr(S.String),
-    environment: S.NullOr(S.Unknown),
-    options: S.NullOr(S.Unknown),
-    metadata: S.NullOr(S.Unknown),
-    createdAt: S.String,
-    updatedAt: S.String,
-    addOnPlanName: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "UpdateAddOnResponseAddOn" }) as any as S.Schema<UpdateAddOnResponseAddOn>;
+export const UpdateAddOnResponseAddOn =
+  AddOnsResponseNodesItem as any as S.Schema<UpdateAddOnResponseAddOn>;
 
 /** Selection set for `updateAddOn` (unwrapped from the GraphQL `data` envelope). */
 export interface UpdateAddOnResponse {

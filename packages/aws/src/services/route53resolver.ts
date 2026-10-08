@@ -519,11 +519,8 @@ export type FirewallAdvancedThreatCategoryValue = string;
 export interface FirewallAdvancedThreatCategoryConfig {
   Category: string;
 }
-export const FirewallAdvancedThreatCategoryConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Category: S.String }),
-).annotate({
-  identifier: "FirewallAdvancedThreatCategoryConfig",
-}) as any as S.Schema<FirewallAdvancedThreatCategoryConfig>;
+export const FirewallAdvancedThreatCategoryConfig =
+  FirewallAdvancedContentCategoryConfig as any as S.Schema<FirewallAdvancedThreatCategoryConfig>;
 export type DnsThreatProtectionRuleTypeValue = string;
 export interface DnsThreatProtectionRuleTypeConfig {
   Value: string;
@@ -1092,11 +1089,8 @@ export const CreateResolverEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateResolverEndpointResponse {
   ResolverEndpoint?: ResolverEndpoint;
 }
-export const CreateResolverEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResolverEndpoint: S.optional(ResolverEndpoint) }),
-).annotate({
-  identifier: "CreateResolverEndpointResponse",
-}) as any as S.Schema<CreateResolverEndpointResponse>;
+export const CreateResolverEndpointResponse =
+  AssociateResolverEndpointIpAddressResponse as any as S.Schema<CreateResolverEndpointResponse>;
 export type ResolverQueryLogConfigName = string;
 export type DestinationArn = string;
 export interface CreateResolverQueryLogConfigRequest {
@@ -1267,11 +1261,8 @@ export const DeleteFirewallDomainListRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteFirewallDomainListResponse {
   FirewallDomainList?: FirewallDomainList;
 }
-export const DeleteFirewallDomainListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FirewallDomainList: S.optional(FirewallDomainList) }),
-).annotate({
-  identifier: "DeleteFirewallDomainListResponse",
-}) as any as S.Schema<DeleteFirewallDomainListResponse>;
+export const DeleteFirewallDomainListResponse =
+  CreateFirewallDomainListResponse as any as S.Schema<DeleteFirewallDomainListResponse>;
 export interface DeleteFirewallRuleRequest {
   FirewallRuleGroupId: string;
   FirewallDomainListId?: string;
@@ -1291,11 +1282,8 @@ export const DeleteFirewallRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteFirewallRuleResponse {
   FirewallRule?: FirewallRule;
 }
-export const DeleteFirewallRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FirewallRule: S.optional(FirewallRule) }),
-).annotate({
-  identifier: "DeleteFirewallRuleResponse",
-}) as any as S.Schema<DeleteFirewallRuleResponse>;
+export const DeleteFirewallRuleResponse =
+  CreateFirewallRuleResponse as any as S.Schema<DeleteFirewallRuleResponse>;
 export interface DeleteFirewallRuleGroupRequest {
   FirewallRuleGroupId: string;
 }
@@ -1309,11 +1297,8 @@ export const DeleteFirewallRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteFirewallRuleGroupResponse {
   FirewallRuleGroup?: FirewallRuleGroup;
 }
-export const DeleteFirewallRuleGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FirewallRuleGroup: S.optional(FirewallRuleGroup) }),
-).annotate({
-  identifier: "DeleteFirewallRuleGroupResponse",
-}) as any as S.Schema<DeleteFirewallRuleGroupResponse>;
+export const DeleteFirewallRuleGroupResponse =
+  CreateFirewallRuleGroupResponse as any as S.Schema<DeleteFirewallRuleGroupResponse>;
 export interface DeleteOutpostResolverRequest {
   Id: string;
 }
@@ -1327,11 +1312,8 @@ export const DeleteOutpostResolverRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteOutpostResolverResponse {
   OutpostResolver?: OutpostResolver;
 }
-export const DeleteOutpostResolverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OutpostResolver: S.optional(OutpostResolver) }),
-).annotate({
-  identifier: "DeleteOutpostResolverResponse",
-}) as any as S.Schema<DeleteOutpostResolverResponse>;
+export const DeleteOutpostResolverResponse =
+  CreateOutpostResolverResponse as any as S.Schema<DeleteOutpostResolverResponse>;
 export interface DeleteResolverEndpointRequest {
   ResolverEndpointId: string;
 }
@@ -1345,11 +1327,8 @@ export const DeleteResolverEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteResolverEndpointResponse {
   ResolverEndpoint?: ResolverEndpoint;
 }
-export const DeleteResolverEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResolverEndpoint: S.optional(ResolverEndpoint) }),
-).annotate({
-  identifier: "DeleteResolverEndpointResponse",
-}) as any as S.Schema<DeleteResolverEndpointResponse>;
+export const DeleteResolverEndpointResponse =
+  AssociateResolverEndpointIpAddressResponse as any as S.Schema<DeleteResolverEndpointResponse>;
 export interface DeleteResolverQueryLogConfigRequest {
   ResolverQueryLogConfigId: string;
 }
@@ -1363,11 +1342,8 @@ export const DeleteResolverQueryLogConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteResolverQueryLogConfigResponse {
   ResolverQueryLogConfig?: ResolverQueryLogConfig;
 }
-export const DeleteResolverQueryLogConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResolverQueryLogConfig: S.optional(ResolverQueryLogConfig) }),
-).annotate({
-  identifier: "DeleteResolverQueryLogConfigResponse",
-}) as any as S.Schema<DeleteResolverQueryLogConfigResponse>;
+export const DeleteResolverQueryLogConfigResponse =
+  CreateResolverQueryLogConfigResponse as any as S.Schema<DeleteResolverQueryLogConfigResponse>;
 export interface DeleteResolverRuleRequest {
   ResolverRuleId: string;
 }
@@ -1381,11 +1357,8 @@ export const DeleteResolverRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteResolverRuleResponse {
   ResolverRule?: ResolverRule;
 }
-export const DeleteResolverRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResolverRule: S.optional(ResolverRule) }),
-).annotate({
-  identifier: "DeleteResolverRuleResponse",
-}) as any as S.Schema<DeleteResolverRuleResponse>;
+export const DeleteResolverRuleResponse =
+  CreateResolverRuleResponse as any as S.Schema<DeleteResolverRuleResponse>;
 export interface DisassociateFirewallRuleGroupRequest {
   FirewallRuleGroupAssociationId: string;
 }
@@ -1399,11 +1372,8 @@ export const DisassociateFirewallRuleGroupRequest = /*@__PURE__*/ S.suspend(() =
 export interface DisassociateFirewallRuleGroupResponse {
   FirewallRuleGroupAssociation?: FirewallRuleGroupAssociation;
 }
-export const DisassociateFirewallRuleGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FirewallRuleGroupAssociation: S.optional(FirewallRuleGroupAssociation) }),
-).annotate({
-  identifier: "DisassociateFirewallRuleGroupResponse",
-}) as any as S.Schema<DisassociateFirewallRuleGroupResponse>;
+export const DisassociateFirewallRuleGroupResponse =
+  AssociateFirewallRuleGroupResponse as any as S.Schema<DisassociateFirewallRuleGroupResponse>;
 export interface DisassociateResolverEndpointIpAddressRequest {
   ResolverEndpointId: string;
   IpAddress: IpAddressUpdate;
@@ -1418,11 +1388,8 @@ export const DisassociateResolverEndpointIpAddressRequest = /*@__PURE__*/ S.susp
 export interface DisassociateResolverEndpointIpAddressResponse {
   ResolverEndpoint?: ResolverEndpoint;
 }
-export const DisassociateResolverEndpointIpAddressResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResolverEndpoint: S.optional(ResolverEndpoint) }),
-).annotate({
-  identifier: "DisassociateResolverEndpointIpAddressResponse",
-}) as any as S.Schema<DisassociateResolverEndpointIpAddressResponse>;
+export const DisassociateResolverEndpointIpAddressResponse =
+  AssociateResolverEndpointIpAddressResponse as any as S.Schema<DisassociateResolverEndpointIpAddressResponse>;
 export interface DisassociateResolverQueryLogConfigRequest {
   ResolverQueryLogConfigId: string;
   ResourceId: string;
@@ -1437,11 +1404,8 @@ export const DisassociateResolverQueryLogConfigRequest = /*@__PURE__*/ S.suspend
 export interface DisassociateResolverQueryLogConfigResponse {
   ResolverQueryLogConfigAssociation?: ResolverQueryLogConfigAssociation;
 }
-export const DisassociateResolverQueryLogConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResolverQueryLogConfigAssociation: S.optional(ResolverQueryLogConfigAssociation) }),
-).annotate({
-  identifier: "DisassociateResolverQueryLogConfigResponse",
-}) as any as S.Schema<DisassociateResolverQueryLogConfigResponse>;
+export const DisassociateResolverQueryLogConfigResponse =
+  AssociateResolverQueryLogConfigResponse as any as S.Schema<DisassociateResolverQueryLogConfigResponse>;
 export interface DisassociateResolverRuleRequest {
   VPCId: string;
   ResolverRuleId: string;
@@ -1456,11 +1420,8 @@ export const DisassociateResolverRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DisassociateResolverRuleResponse {
   ResolverRuleAssociation?: ResolverRuleAssociation;
 }
-export const DisassociateResolverRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResolverRuleAssociation: S.optional(ResolverRuleAssociation) }),
-).annotate({
-  identifier: "DisassociateResolverRuleResponse",
-}) as any as S.Schema<DisassociateResolverRuleResponse>;
+export const DisassociateResolverRuleResponse =
+  AssociateResolverRuleResponse as any as S.Schema<DisassociateResolverRuleResponse>;
 export interface GetFirewallConfigRequest {
   ResourceId: string;
 }
@@ -1511,11 +1472,8 @@ export const GetFirewallDomainListRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetFirewallDomainListResponse {
   FirewallDomainList?: FirewallDomainList;
 }
-export const GetFirewallDomainListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FirewallDomainList: S.optional(FirewallDomainList) }),
-).annotate({
-  identifier: "GetFirewallDomainListResponse",
-}) as any as S.Schema<GetFirewallDomainListResponse>;
+export const GetFirewallDomainListResponse =
+  CreateFirewallDomainListResponse as any as S.Schema<GetFirewallDomainListResponse>;
 export interface GetFirewallRuleGroupRequest {
   FirewallRuleGroupId: string;
 }
@@ -1529,11 +1487,8 @@ export const GetFirewallRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetFirewallRuleGroupResponse {
   FirewallRuleGroup?: FirewallRuleGroup;
 }
-export const GetFirewallRuleGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FirewallRuleGroup: S.optional(FirewallRuleGroup) }),
-).annotate({
-  identifier: "GetFirewallRuleGroupResponse",
-}) as any as S.Schema<GetFirewallRuleGroupResponse>;
+export const GetFirewallRuleGroupResponse =
+  CreateFirewallRuleGroupResponse as any as S.Schema<GetFirewallRuleGroupResponse>;
 export interface GetFirewallRuleGroupAssociationRequest {
   FirewallRuleGroupAssociationId: string;
 }
@@ -1547,11 +1502,8 @@ export const GetFirewallRuleGroupAssociationRequest = /*@__PURE__*/ S.suspend(()
 export interface GetFirewallRuleGroupAssociationResponse {
   FirewallRuleGroupAssociation?: FirewallRuleGroupAssociation;
 }
-export const GetFirewallRuleGroupAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FirewallRuleGroupAssociation: S.optional(FirewallRuleGroupAssociation) }),
-).annotate({
-  identifier: "GetFirewallRuleGroupAssociationResponse",
-}) as any as S.Schema<GetFirewallRuleGroupAssociationResponse>;
+export const GetFirewallRuleGroupAssociationResponse =
+  AssociateFirewallRuleGroupResponse as any as S.Schema<GetFirewallRuleGroupAssociationResponse>;
 export interface GetFirewallRuleGroupPolicyRequest {
   Arn: string;
 }
@@ -1584,11 +1536,8 @@ export const GetOutpostResolverRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetOutpostResolverResponse {
   OutpostResolver?: OutpostResolver;
 }
-export const GetOutpostResolverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OutpostResolver: S.optional(OutpostResolver) }),
-).annotate({
-  identifier: "GetOutpostResolverResponse",
-}) as any as S.Schema<GetOutpostResolverResponse>;
+export const GetOutpostResolverResponse =
+  CreateOutpostResolverResponse as any as S.Schema<GetOutpostResolverResponse>;
 export interface GetResolverConfigRequest {
   ResourceId: string;
 }
@@ -1684,11 +1633,8 @@ export const GetResolverEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetResolverEndpointResponse {
   ResolverEndpoint?: ResolverEndpoint;
 }
-export const GetResolverEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResolverEndpoint: S.optional(ResolverEndpoint) }),
-).annotate({
-  identifier: "GetResolverEndpointResponse",
-}) as any as S.Schema<GetResolverEndpointResponse>;
+export const GetResolverEndpointResponse =
+  AssociateResolverEndpointIpAddressResponse as any as S.Schema<GetResolverEndpointResponse>;
 export interface GetResolverQueryLogConfigRequest {
   ResolverQueryLogConfigId: string;
 }
@@ -1702,11 +1648,8 @@ export const GetResolverQueryLogConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetResolverQueryLogConfigResponse {
   ResolverQueryLogConfig?: ResolverQueryLogConfig;
 }
-export const GetResolverQueryLogConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResolverQueryLogConfig: S.optional(ResolverQueryLogConfig) }),
-).annotate({
-  identifier: "GetResolverQueryLogConfigResponse",
-}) as any as S.Schema<GetResolverQueryLogConfigResponse>;
+export const GetResolverQueryLogConfigResponse =
+  CreateResolverQueryLogConfigResponse as any as S.Schema<GetResolverQueryLogConfigResponse>;
 export interface GetResolverQueryLogConfigAssociationRequest {
   ResolverQueryLogConfigAssociationId: string;
 }
@@ -1720,11 +1663,8 @@ export const GetResolverQueryLogConfigAssociationRequest = /*@__PURE__*/ S.suspe
 export interface GetResolverQueryLogConfigAssociationResponse {
   ResolverQueryLogConfigAssociation?: ResolverQueryLogConfigAssociation;
 }
-export const GetResolverQueryLogConfigAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResolverQueryLogConfigAssociation: S.optional(ResolverQueryLogConfigAssociation) }),
-).annotate({
-  identifier: "GetResolverQueryLogConfigAssociationResponse",
-}) as any as S.Schema<GetResolverQueryLogConfigAssociationResponse>;
+export const GetResolverQueryLogConfigAssociationResponse =
+  AssociateResolverQueryLogConfigResponse as any as S.Schema<GetResolverQueryLogConfigAssociationResponse>;
 export interface GetResolverQueryLogConfigPolicyRequest {
   Arn: string;
 }
@@ -1771,11 +1711,8 @@ export const GetResolverRuleAssociationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetResolverRuleAssociationResponse {
   ResolverRuleAssociation?: ResolverRuleAssociation;
 }
-export const GetResolverRuleAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResolverRuleAssociation: S.optional(ResolverRuleAssociation) }),
-).annotate({
-  identifier: "GetResolverRuleAssociationResponse",
-}) as any as S.Schema<GetResolverRuleAssociationResponse>;
+export const GetResolverRuleAssociationResponse =
+  AssociateResolverRuleResponse as any as S.Schema<GetResolverRuleAssociationResponse>;
 export interface GetResolverRulePolicyRequest {
   Arn: string;
 }
@@ -1918,7 +1855,7 @@ export const ListFirewallDomainsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFirewallDomainsRequest>;
 export type FirewallDomainName = string;
 export type FirewallDomains = string[];
-export const FirewallDomains = /*@__PURE__*/ S.Array(S.String);
+export const FirewallDomains = SecurityGroupIds as any as S.Schema<FirewallDomains>;
 export interface ListFirewallDomainsResponse {
   NextToken?: string;
   Domains?: string[];
@@ -2142,7 +2079,7 @@ export const ListResolverConfigsResponse = /*@__PURE__*/ S.suspend(() =>
 export type FilterName = string;
 export type FilterValue = string;
 export type FilterValues = string[];
-export const FilterValues = /*@__PURE__*/ S.Array(S.String);
+export const FilterValues = SecurityGroupIds as any as S.Schema<FilterValues>;
 export interface Filter {
   Name?: string;
   Values?: string[];
@@ -2472,11 +2409,8 @@ export const PutResolverQueryLogConfigPolicyRequest = /*@__PURE__*/ S.suspend(()
 export interface PutResolverQueryLogConfigPolicyResponse {
   ReturnValue?: boolean;
 }
-export const PutResolverQueryLogConfigPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ReturnValue: S.optional(S.Boolean) }),
-).annotate({
-  identifier: "PutResolverQueryLogConfigPolicyResponse",
-}) as any as S.Schema<PutResolverQueryLogConfigPolicyResponse>;
+export const PutResolverQueryLogConfigPolicyResponse =
+  PutFirewallRuleGroupPolicyResponse as any as S.Schema<PutResolverQueryLogConfigPolicyResponse>;
 export interface PutResolverRulePolicyRequest {
   Arn: string;
   ResolverRulePolicy: string;
@@ -2491,11 +2425,8 @@ export const PutResolverRulePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutResolverRulePolicyResponse {
   ReturnValue?: boolean;
 }
-export const PutResolverRulePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ReturnValue: S.optional(S.Boolean) }),
-).annotate({
-  identifier: "PutResolverRulePolicyResponse",
-}) as any as S.Schema<PutResolverRulePolicyResponse>;
+export const PutResolverRulePolicyResponse =
+  PutFirewallRuleGroupPolicyResponse as any as S.Schema<PutResolverRulePolicyResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
@@ -2510,7 +2441,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = SecurityGroupIds as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -2521,9 +2452,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateFirewallConfigRequest {
   ResourceId: string;
   FirewallFailOpen: FirewallFailOpenStatus;
@@ -2538,11 +2467,8 @@ export const UpdateFirewallConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateFirewallConfigResponse {
   FirewallConfig?: FirewallConfig;
 }
-export const UpdateFirewallConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FirewallConfig: S.optional(FirewallConfig) }),
-).annotate({
-  identifier: "UpdateFirewallConfigResponse",
-}) as any as S.Schema<UpdateFirewallConfigResponse>;
+export const UpdateFirewallConfigResponse =
+  GetFirewallConfigResponse as any as S.Schema<UpdateFirewallConfigResponse>;
 export type FirewallDomainUpdateOperation = "ADD" | "REMOVE" | "REPLACE" | (string & {});
 export const FirewallDomainUpdateOperation = S.String;
 
@@ -2566,16 +2492,8 @@ export interface UpdateFirewallDomainsResponse {
   Status?: FirewallDomainListStatus;
   StatusMessage?: string;
 }
-export const UpdateFirewallDomainsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    Name: S.optional(S.String),
-    Status: S.optional(FirewallDomainListStatus),
-    StatusMessage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateFirewallDomainsResponse",
-}) as any as S.Schema<UpdateFirewallDomainsResponse>;
+export const UpdateFirewallDomainsResponse =
+  ImportFirewallDomainsResponse as any as S.Schema<UpdateFirewallDomainsResponse>;
 export interface UpdateFirewallRuleRequest {
   FirewallRuleGroupId: string;
   FirewallDomainListId?: string;
@@ -2617,11 +2535,8 @@ export const UpdateFirewallRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateFirewallRuleResponse {
   FirewallRule?: FirewallRule;
 }
-export const UpdateFirewallRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FirewallRule: S.optional(FirewallRule) }),
-).annotate({
-  identifier: "UpdateFirewallRuleResponse",
-}) as any as S.Schema<UpdateFirewallRuleResponse>;
+export const UpdateFirewallRuleResponse =
+  CreateFirewallRuleResponse as any as S.Schema<UpdateFirewallRuleResponse>;
 export interface UpdateFirewallRuleGroupAssociationRequest {
   FirewallRuleGroupAssociationId: string;
   Priority?: number;
@@ -2641,11 +2556,8 @@ export const UpdateFirewallRuleGroupAssociationRequest = /*@__PURE__*/ S.suspend
 export interface UpdateFirewallRuleGroupAssociationResponse {
   FirewallRuleGroupAssociation?: FirewallRuleGroupAssociation;
 }
-export const UpdateFirewallRuleGroupAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FirewallRuleGroupAssociation: S.optional(FirewallRuleGroupAssociation) }),
-).annotate({
-  identifier: "UpdateFirewallRuleGroupAssociationResponse",
-}) as any as S.Schema<UpdateFirewallRuleGroupAssociationResponse>;
+export const UpdateFirewallRuleGroupAssociationResponse =
+  AssociateFirewallRuleGroupResponse as any as S.Schema<UpdateFirewallRuleGroupAssociationResponse>;
 export interface UpdateOutpostResolverRequest {
   Id: string;
   Name?: string;
@@ -2665,11 +2577,8 @@ export const UpdateOutpostResolverRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateOutpostResolverResponse {
   OutpostResolver?: OutpostResolver;
 }
-export const UpdateOutpostResolverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OutpostResolver: S.optional(OutpostResolver) }),
-).annotate({
-  identifier: "UpdateOutpostResolverResponse",
-}) as any as S.Schema<UpdateOutpostResolverResponse>;
+export const UpdateOutpostResolverResponse =
+  CreateOutpostResolverResponse as any as S.Schema<UpdateOutpostResolverResponse>;
 export type AutodefinedReverseFlag =
   | "ENABLE"
   | "DISABLE"
@@ -2691,11 +2600,8 @@ export const UpdateResolverConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateResolverConfigResponse {
   ResolverConfig?: ResolverConfig;
 }
-export const UpdateResolverConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResolverConfig: S.optional(ResolverConfig) }),
-).annotate({
-  identifier: "UpdateResolverConfigResponse",
-}) as any as S.Schema<UpdateResolverConfigResponse>;
+export const UpdateResolverConfigResponse =
+  GetResolverConfigResponse as any as S.Schema<UpdateResolverConfigResponse>;
 export type Validation = "ENABLE" | "DISABLE" | "USE_LOCAL_RESOURCE_SETTING" | (string & {});
 export const Validation = S.String;
 
@@ -2713,11 +2619,8 @@ export const UpdateResolverDnssecConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateResolverDnssecConfigResponse {
   ResolverDNSSECConfig?: ResolverDnssecConfig;
 }
-export const UpdateResolverDnssecConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResolverDNSSECConfig: S.optional(ResolverDnssecConfig) }),
-).annotate({
-  identifier: "UpdateResolverDnssecConfigResponse",
-}) as any as S.Schema<UpdateResolverDnssecConfigResponse>;
+export const UpdateResolverDnssecConfigResponse =
+  GetResolverDnssecConfigResponse as any as S.Schema<UpdateResolverDnssecConfigResponse>;
 export interface UpdateIpAddress {
   IpId: string;
   Ipv6: string;
@@ -2756,11 +2659,8 @@ export const UpdateResolverEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateResolverEndpointResponse {
   ResolverEndpoint?: ResolverEndpoint;
 }
-export const UpdateResolverEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResolverEndpoint: S.optional(ResolverEndpoint) }),
-).annotate({
-  identifier: "UpdateResolverEndpointResponse",
-}) as any as S.Schema<UpdateResolverEndpointResponse>;
+export const UpdateResolverEndpointResponse =
+  AssociateResolverEndpointIpAddressResponse as any as S.Schema<UpdateResolverEndpointResponse>;
 export interface ResolverRuleConfig {
   Name?: string;
   TargetIps?: TargetAddress[];
@@ -2787,11 +2687,8 @@ export const UpdateResolverRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateResolverRuleResponse {
   ResolverRule?: ResolverRule;
 }
-export const UpdateResolverRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResolverRule: S.optional(ResolverRule) }),
-).annotate({
-  identifier: "UpdateResolverRuleResponse",
-}) as any as S.Schema<UpdateResolverRuleResponse>;
+export const UpdateResolverRuleResponse =
+  CreateResolverRuleResponse as any as S.Schema<UpdateResolverRuleResponse>;
 export type ExceptionMessage = string;
 export type AssociateFirewallRuleGroupError =
   | AccessDeniedException

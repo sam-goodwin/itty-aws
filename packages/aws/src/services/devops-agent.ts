@@ -229,7 +229,8 @@ export const DynatraceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ envId: S.String, resources: S.optional(DynatraceResourceList) }),
 ).annotate({ identifier: "DynatraceConfiguration" }) as any as S.Schema<DynatraceConfiguration>;
 export type ServiceNowAuthenticationScopeList = string[];
-export const ServiceNowAuthenticationScopeList = /*@__PURE__*/ S.Array(S.String);
+export const ServiceNowAuthenticationScopeList =
+  DynatraceResourceList as any as S.Schema<ServiceNowAuthenticationScopeList>;
 export interface ServiceNowConfiguration {
   instanceId?: string;
   authScopes?: string[];
@@ -270,7 +271,7 @@ export const MCPServerDatadogConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "MCPServerDatadogConfiguration",
 }) as any as S.Schema<MCPServerDatadogConfiguration>;
 export type MCPToolsList = string[];
-export const MCPToolsList = /*@__PURE__*/ S.Array(S.String);
+export const MCPToolsList = DynatraceResourceList as any as S.Schema<MCPToolsList>;
 export interface MCPServerConfiguration {
   tools: string[];
   toolDetails?: MCPToolDetail[];
@@ -297,9 +298,8 @@ export const MCPServerSplunkConfiguration = /*@__PURE__*/ S.suspend(() => S.Stru
   identifier: "MCPServerSplunkConfiguration",
 }) as any as S.Schema<MCPServerSplunkConfiguration>;
 export interface EventChannelConfiguration {}
-export const EventChannelConfiguration = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "EventChannelConfiguration",
-}) as any as S.Schema<EventChannelConfiguration>;
+export const EventChannelConfiguration =
+  MCPServerSplunkConfiguration as any as S.Schema<EventChannelConfiguration>;
 export interface AzureConfiguration {
   subscriptionId: string;
 }
@@ -331,7 +331,8 @@ export const MCPServerGrafanaConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "MCPServerGrafanaConfiguration",
 }) as any as S.Schema<MCPServerGrafanaConfiguration>;
 export type PagerDutyServicesList = string[];
-export const PagerDutyServicesList = /*@__PURE__*/ S.Array(S.String);
+export const PagerDutyServicesList =
+  DynatraceResourceList as any as S.Schema<PagerDutyServicesList>;
 export type EmailAddress = string | redacted.Redacted<string>;
 export interface PagerDutyConfiguration {
   services: string[];
@@ -350,13 +351,11 @@ export const MCPServerSigV4Configuration = /*@__PURE__*/ S.suspend(() =>
   identifier: "MCPServerSigV4Configuration",
 }) as any as S.Schema<MCPServerSigV4Configuration>;
 export interface RemoteAgentConfiguration {}
-export const RemoteAgentConfiguration = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RemoteAgentConfiguration",
-}) as any as S.Schema<RemoteAgentConfiguration>;
+export const RemoteAgentConfiguration =
+  MCPServerSplunkConfiguration as any as S.Schema<RemoteAgentConfiguration>;
 export interface RemoteAgentSigV4Configuration {}
-export const RemoteAgentSigV4Configuration = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RemoteAgentSigV4Configuration",
-}) as any as S.Schema<RemoteAgentSigV4Configuration>;
+export const RemoteAgentSigV4Configuration =
+  MCPServerSplunkConfiguration as any as S.Schema<RemoteAgentSigV4Configuration>;
 export type ServiceConfiguration =
   | {
       sourceAws: SourceAwsConfiguration;
@@ -791,7 +790,8 @@ export type TriggerEventList = TriggerEvent[];
 export const TriggerEventList = /*@__PURE__*/ S.Array(TriggerEvent);
 export type TriggerRegexPattern = string;
 export type TriggerRegexPatternList = string[];
-export const TriggerRegexPatternList = /*@__PURE__*/ S.Array(S.String);
+export const TriggerRegexPatternList =
+  DynatraceResourceList as any as S.Schema<TriggerRegexPatternList>;
 export interface PatternFilter {
   patterns: string[];
 }
@@ -1171,15 +1171,7 @@ export interface ReferenceOutput {
   referenceUrl: string;
   associationId: string;
 }
-export const ReferenceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    system: S.String,
-    title: S.optional(S.String),
-    referenceId: S.String,
-    referenceUrl: S.String,
-    associationId: S.String,
-  }),
-).annotate({ identifier: "ReferenceOutput" }) as any as S.Schema<ReferenceOutput>;
+export const ReferenceOutput = ReferenceInput as any as S.Schema<ReferenceOutput>;
 export type TaskStatus =
   | "PENDING_TRIAGE"
   | "LINKED"
@@ -1280,17 +1272,18 @@ export type IpAddressOrDnsName = string;
 export type VpcId = string;
 export type SubnetId = string;
 export type ListOfSubnetIds = string[];
-export const ListOfSubnetIds = /*@__PURE__*/ S.Array(S.String);
+export const ListOfSubnetIds = DynatraceResourceList as any as S.Schema<ListOfSubnetIds>;
 export type SecurityGroupId = string;
 export type ListOfSecurityGroupIds = string[];
-export const ListOfSecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export const ListOfSecurityGroupIds =
+  DynatraceResourceList as any as S.Schema<ListOfSecurityGroupIds>;
 export type IpAddressType = "IPV4" | "IPV6" | "DUAL_STACK" | (string & {});
 export const IpAddressType = S.String;
 
 export type MaxIpv4AddressesPerEni = number;
 export type PortRange = string;
 export type PortRanges = string[];
-export const PortRanges = /*@__PURE__*/ S.Array(S.String);
+export const PortRanges = DynatraceResourceList as any as S.Schema<PortRanges>;
 export type CertificateString = string;
 export type ResourceConfigDnsResolution = "PUBLIC" | "IN_VPC" | (string & {});
 export const ResourceConfigDnsResolution = S.String;
@@ -1475,9 +1468,8 @@ export const DeleteAgentSpaceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteAgentSpaceInput" }) as any as S.Schema<DeleteAgentSpaceInput>;
 export interface DeleteAgentSpaceOutput {}
-export const DeleteAgentSpaceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAgentSpaceOutput",
-}) as any as S.Schema<DeleteAgentSpaceOutput>;
+export const DeleteAgentSpaceOutput =
+  MCPServerSplunkConfiguration as any as S.Schema<DeleteAgentSpaceOutput>;
 export interface DeleteAssetRequest {
   agentSpaceId: string;
   assetId: string;
@@ -1498,9 +1490,8 @@ export const DeleteAssetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteAssetRequest" }) as any as S.Schema<DeleteAssetRequest>;
 export interface DeleteAssetResponse {}
-export const DeleteAssetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAssetResponse",
-}) as any as S.Schema<DeleteAssetResponse>;
+export const DeleteAssetResponse =
+  MCPServerSplunkConfiguration as any as S.Schema<DeleteAssetResponse>;
 export interface DeleteAssetFileRequest {
   agentSpaceId: string;
   assetId: string;
@@ -1526,9 +1517,8 @@ export const DeleteAssetFileRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteAssetFileRequest" }) as any as S.Schema<DeleteAssetFileRequest>;
 export interface DeleteAssetFileResponse {}
-export const DeleteAssetFileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAssetFileResponse",
-}) as any as S.Schema<DeleteAssetFileResponse>;
+export const DeleteAssetFileResponse =
+  MCPServerSplunkConfiguration as any as S.Schema<DeleteAssetFileResponse>;
 export interface DeletePrivateConnectionInput {
   name: string;
 }
@@ -1575,9 +1565,8 @@ export const DeleteTriggerRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteTriggerRequest" }) as any as S.Schema<DeleteTriggerRequest>;
 export interface DeleteTriggerResponse {}
-export const DeleteTriggerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTriggerResponse",
-}) as any as S.Schema<DeleteTriggerResponse>;
+export const DeleteTriggerResponse =
+  MCPServerSplunkConfiguration as any as S.Schema<DeleteTriggerResponse>;
 export interface DeregisterServiceInput {
   serviceId: string;
 }
@@ -1594,9 +1583,8 @@ export const DeregisterServiceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeregisterServiceInput" }) as any as S.Schema<DeregisterServiceInput>;
 export interface DeregisterServiceOutput {}
-export const DeregisterServiceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeregisterServiceOutput",
-}) as any as S.Schema<DeregisterServiceOutput>;
+export const DeregisterServiceOutput =
+  MCPServerSplunkConfiguration as any as S.Schema<DeregisterServiceOutput>;
 export interface DescribePrivateConnectionInput {
   name: string;
 }
@@ -1627,23 +1615,8 @@ export interface DescribePrivateConnectionOutput {
   failureMessage?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const DescribePrivateConnectionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: PrivateConnectionType,
-    resourceGatewayId: S.optional(S.String),
-    hostAddress: S.optional(S.String),
-    vpcId: S.optional(S.String),
-    resourceConfigurationId: S.optional(S.String),
-    status: PrivateConnectionStatus,
-    certificateExpiryTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    dnsResolution: S.optional(ResourceConfigDnsResolution),
-    failureMessage: S.optional(S.String),
-    tags: S.optional(Tags),
-  }),
-).annotate({
-  identifier: "DescribePrivateConnectionOutput",
-}) as any as S.Schema<DescribePrivateConnectionOutput>;
+export const DescribePrivateConnectionOutput =
+  CreatePrivateConnectionOutput as any as S.Schema<DescribePrivateConnectionOutput>;
 export type AuthFlow = "iam" | "idc" | "idp" | (string & {});
 export const AuthFlow = S.String;
 
@@ -1667,9 +1640,8 @@ export const DisableOperatorAppInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DisableOperatorAppInput" }) as any as S.Schema<DisableOperatorAppInput>;
 export interface DisableOperatorAppResponse {}
-export const DisableOperatorAppResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisableOperatorAppResponse",
-}) as any as S.Schema<DisableOperatorAppResponse>;
+export const DisableOperatorAppResponse =
+  MCPServerSplunkConfiguration as any as S.Schema<DisableOperatorAppResponse>;
 export interface DisassociateServiceInput {
   agentSpaceId: string;
   associationId: string;
@@ -1693,9 +1665,8 @@ export const DisassociateServiceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DisassociateServiceInput" }) as any as S.Schema<DisassociateServiceInput>;
 export interface DisassociateServiceOutput {}
-export const DisassociateServiceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisassociateServiceOutput",
-}) as any as S.Schema<DisassociateServiceOutput>;
+export const DisassociateServiceOutput =
+  MCPServerSplunkConfiguration as any as S.Schema<DisassociateServiceOutput>;
 export type IdpClientId = string;
 export type IdpClientSecret = string | redacted.Redacted<string>;
 export interface EnableOperatorAppInput {
@@ -1842,9 +1813,7 @@ export interface GetAgentSpaceOutput {
   agentSpace: AgentSpace;
   tags?: { [key: string]: string | undefined };
 }
-export const GetAgentSpaceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ agentSpace: AgentSpace, tags: S.optional(Tags) }),
-).annotate({ identifier: "GetAgentSpaceOutput" }) as any as S.Schema<GetAgentSpaceOutput>;
+export const GetAgentSpaceOutput = CreateAgentSpaceOutput as any as S.Schema<GetAgentSpaceOutput>;
 export interface GetAssetRequest {
   agentSpaceId: string;
   assetId: string;
@@ -1929,9 +1898,8 @@ export const GetAssetFileRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetAssetFileResponse {
   file: AssetFile;
 }
-export const GetAssetFileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ file: AssetFile }),
-).annotate({ identifier: "GetAssetFileResponse" }) as any as S.Schema<GetAssetFileResponse>;
+export const GetAssetFileResponse =
+  CreateAssetFileResponse as any as S.Schema<GetAssetFileResponse>;
 export interface GetAssociationInput {
   agentSpaceId: string;
   associationId: string;
@@ -2226,7 +2194,8 @@ export const RegisteredAzureDevOpsServiceDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegisteredAzureDevOpsServiceDetails>;
 export type Guid = string;
 export type WebIdentityTokenAudienceList = string[];
-export const WebIdentityTokenAudienceList = /*@__PURE__*/ S.Array(S.String);
+export const WebIdentityTokenAudienceList =
+  DynatraceResourceList as any as S.Schema<WebIdentityTokenAudienceList>;
 export interface RegisteredAzureIdentityDetails {
   tenantId: string;
   clientId: string;
@@ -2254,7 +2223,7 @@ export const RegisteredGrafanaServerDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegisteredGrafanaServerDetails",
 }) as any as S.Schema<RegisteredGrafanaServerDetails>;
 export type PagerDutyScopesList = string[];
-export const PagerDutyScopesList = /*@__PURE__*/ S.Array(S.String);
+export const PagerDutyScopesList = DynatraceResourceList as any as S.Schema<PagerDutyScopesList>;
 export interface RegisteredPagerDutyDetails {
   scopes: string[];
 }
@@ -2669,9 +2638,7 @@ export const GetTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetTriggerResponse {
   trigger: Trigger;
 }
-export const GetTriggerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ trigger: Trigger }),
-).annotate({ identifier: "GetTriggerResponse" }) as any as S.Schema<GetTriggerResponse>;
+export const GetTriggerResponse = CreateTriggerResponse as any as S.Schema<GetTriggerResponse>;
 export type NextToken = string;
 export interface ListAgentSpacesInput {
   maxResults?: number;
@@ -3515,10 +3482,7 @@ export const PostRegisterServiceSupportedService = S.String;
 export type ClientId = string | redacted.Redacted<string>;
 export type ExchangeParameterValue = string | redacted.Redacted<string>;
 export type ExchangeParameters = { [key: string]: string | redacted.Redacted<string> | undefined };
-export const ExchangeParameters = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ SensitiveString.pipe(S.optional),
-);
+export const ExchangeParameters = CustomHeaders as any as S.Schema<ExchangeParameters>;
 export type ClientSecret = string | redacted.Redacted<string>;
 export interface DynatraceOAuthClientCredentialsConfig {
   clientName?: string;
@@ -3558,22 +3522,13 @@ export interface ServiceNowOAuthClientCredentialsConfig {
   exchangeParameters?: { [key: string]: string | redacted.Redacted<string> | undefined };
   clientSecret: string | redacted.Redacted<string>;
 }
-export const ServiceNowOAuthClientCredentialsConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientName: S.optional(S.String),
-    clientId: SensitiveString,
-    exchangeParameters: S.optional(ExchangeParameters),
-    clientSecret: SensitiveString,
-  }),
-).annotate({
-  identifier: "ServiceNowOAuthClientCredentialsConfig",
-}) as any as S.Schema<ServiceNowOAuthClientCredentialsConfig>;
+export const ServiceNowOAuthClientCredentialsConfig =
+  DynatraceOAuthClientCredentialsConfig as any as S.Schema<ServiceNowOAuthClientCredentialsConfig>;
 export type ServiceNowServiceAuthorizationConfig = {
   oAuthClientCredentials: ServiceNowOAuthClientCredentialsConfig;
 };
-export const ServiceNowServiceAuthorizationConfig = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ oAuthClientCredentials: ServiceNowOAuthClientCredentialsConfig }),
-]);
+export const ServiceNowServiceAuthorizationConfig =
+  DynatraceServiceAuthorizationConfig as any as S.Schema<ServiceNowServiceAuthorizationConfig>;
 export interface ServiceNowServiceDetails {
   instanceUrl: string;
   authorizationConfig?: ServiceNowServiceAuthorizationConfig;
@@ -3614,7 +3569,7 @@ export const DatadogServiceDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatadogServiceDetails" }) as any as S.Schema<DatadogServiceDetails>;
 export type OAuthScope = string;
 export type Scopes = string[];
-export const Scopes = /*@__PURE__*/ S.Array(S.String);
+export const Scopes = DynatraceResourceList as any as S.Schema<Scopes>;
 export interface MCPServerOAuthClientCredentialsConfig {
   clientName?: string;
   clientId: string | redacted.Redacted<string>;
@@ -3756,11 +3711,13 @@ export const GitLabDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GitLabDetails" }) as any as S.Schema<GitLabDetails>;
 export type NewRelicApiKey = string | redacted.Redacted<string>;
 export type NewRelicApplicationIds = string[];
-export const NewRelicApplicationIds = /*@__PURE__*/ S.Array(S.String);
+export const NewRelicApplicationIds =
+  DynatraceResourceList as any as S.Schema<NewRelicApplicationIds>;
 export type NewRelicEntityGuids = string[];
-export const NewRelicEntityGuids = /*@__PURE__*/ S.Array(S.String);
+export const NewRelicEntityGuids = DynatraceResourceList as any as S.Schema<NewRelicEntityGuids>;
 export type NewRelicAlertPolicyIds = string[];
-export const NewRelicAlertPolicyIds = /*@__PURE__*/ S.Array(S.String);
+export const NewRelicAlertPolicyIds =
+  DynatraceResourceList as any as S.Schema<NewRelicAlertPolicyIds>;
 export interface NewRelicApiKeyConfig {
   apiKey: string | redacted.Redacted<string>;
   accountId: string;
@@ -3804,38 +3761,22 @@ export interface GrafanaServiceDetails {
   description?: string | redacted.Redacted<string>;
   authorizationConfig: MCPServerAuthorizationConfig;
 }
-export const GrafanaServiceDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    endpoint: S.String,
-    description: S.optional(SensitiveString),
-    authorizationConfig: MCPServerAuthorizationConfig,
-  }),
-).annotate({ identifier: "GrafanaServiceDetails" }) as any as S.Schema<GrafanaServiceDetails>;
+export const GrafanaServiceDetails = MCPServerDetails as any as S.Schema<GrafanaServiceDetails>;
 export type PagerDutyScopes = string[];
-export const PagerDutyScopes = /*@__PURE__*/ S.Array(S.String);
+export const PagerDutyScopes = DynatraceResourceList as any as S.Schema<PagerDutyScopes>;
 export interface PagerDutyOAuthClientCredentialsConfig {
   clientName?: string;
   clientId: string | redacted.Redacted<string>;
   exchangeParameters?: { [key: string]: string | redacted.Redacted<string> | undefined };
   clientSecret: string | redacted.Redacted<string>;
 }
-export const PagerDutyOAuthClientCredentialsConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientName: S.optional(S.String),
-    clientId: SensitiveString,
-    exchangeParameters: S.optional(ExchangeParameters),
-    clientSecret: SensitiveString,
-  }),
-).annotate({
-  identifier: "PagerDutyOAuthClientCredentialsConfig",
-}) as any as S.Schema<PagerDutyOAuthClientCredentialsConfig>;
+export const PagerDutyOAuthClientCredentialsConfig =
+  DynatraceOAuthClientCredentialsConfig as any as S.Schema<PagerDutyOAuthClientCredentialsConfig>;
 export type PagerDutyAuthorizationConfig = {
   oAuthClientCredentials: PagerDutyOAuthClientCredentialsConfig;
 };
-export const PagerDutyAuthorizationConfig = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ oAuthClientCredentials: PagerDutyOAuthClientCredentialsConfig }),
-]);
+export const PagerDutyAuthorizationConfig =
+  DynatraceServiceAuthorizationConfig as any as S.Schema<PagerDutyAuthorizationConfig>;
 export interface PagerDutyDetails {
   scopes: string[];
   authorizationConfig: PagerDutyAuthorizationConfig;
@@ -3882,9 +3823,8 @@ export interface RemoteAgentAPIKeyConfig {
   apiKeyValue: string | redacted.Redacted<string>;
   apiKeyHeader: string;
 }
-export const RemoteAgentAPIKeyConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ apiKeyName: S.String, apiKeyValue: SensitiveString, apiKeyHeader: S.String }),
-).annotate({ identifier: "RemoteAgentAPIKeyConfig" }) as any as S.Schema<RemoteAgentAPIKeyConfig>;
+export const RemoteAgentAPIKeyConfig =
+  MCPServerAPIKeyConfig as any as S.Schema<RemoteAgentAPIKeyConfig>;
 export interface RemoteAgentOAuthClientCredentialsConfig {
   clientName?: string;
   clientId: string | redacted.Redacted<string>;
@@ -3893,32 +3833,15 @@ export interface RemoteAgentOAuthClientCredentialsConfig {
   exchangeUrl: string;
   scopes?: string[];
 }
-export const RemoteAgentOAuthClientCredentialsConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientName: S.optional(S.String),
-    clientId: SensitiveString,
-    exchangeParameters: S.optional(ExchangeParameters),
-    clientSecret: SensitiveString,
-    exchangeUrl: S.String,
-    scopes: S.optional(Scopes),
-  }),
-).annotate({
-  identifier: "RemoteAgentOAuthClientCredentialsConfig",
-}) as any as S.Schema<RemoteAgentOAuthClientCredentialsConfig>;
+export const RemoteAgentOAuthClientCredentialsConfig =
+  MCPServerOAuthClientCredentialsConfig as any as S.Schema<RemoteAgentOAuthClientCredentialsConfig>;
 export interface RemoteAgentBearerTokenConfig {
   tokenName: string;
   tokenValue: string | redacted.Redacted<string>;
   authorizationHeader?: string;
 }
-export const RemoteAgentBearerTokenConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tokenName: S.String,
-    tokenValue: SensitiveString,
-    authorizationHeader: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RemoteAgentBearerTokenConfig",
-}) as any as S.Schema<RemoteAgentBearerTokenConfig>;
+export const RemoteAgentBearerTokenConfig =
+  MCPServerBearerTokenConfig as any as S.Schema<RemoteAgentBearerTokenConfig>;
 export type RemoteAgentAuthorizationConfig =
   | { apiKey: RemoteAgentAPIKeyConfig; oAuthClientCredentials?: never; bearerToken?: never }
   | {
@@ -4305,7 +4228,7 @@ export const SendMessageContext = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SendMessageContext" }) as any as S.Schema<SendMessageContext>;
 export type AssetIdList = string[];
-export const AssetIdList = /*@__PURE__*/ S.Array(S.String);
+export const AssetIdList = DynatraceResourceList as any as S.Schema<AssetIdList>;
 export interface SendMessageRequest {
   agentSpaceId: string;
   executionId: string;
@@ -4348,11 +4271,8 @@ export interface SendMessageResponseInProgressEvent {
   responseId?: string;
   sequenceNumber?: number;
 }
-export const SendMessageResponseInProgressEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ responseId: S.optional(S.String), sequenceNumber: S.optional(S.Number) }),
-).annotate({
-  identifier: "SendMessageResponseInProgressEvent",
-}) as any as S.Schema<SendMessageResponseInProgressEvent>;
+export const SendMessageResponseInProgressEvent =
+  SendMessageResponseCreatedEvent as any as S.Schema<SendMessageResponseInProgressEvent>;
 export interface SendMessageUsageInfo {
   inputTokens?: number;
   outputTokens?: number;
@@ -4403,9 +4323,8 @@ export const SendMessageSummaryEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ content: S.optional(S.String), sequenceNumber: S.optional(S.Number) }),
 ).annotate({ identifier: "SendMessageSummaryEvent" }) as any as S.Schema<SendMessageSummaryEvent>;
 export interface SendMessageHeartbeatEvent {}
-export const SendMessageHeartbeatEvent = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SendMessageHeartbeatEvent",
-}) as any as S.Schema<SendMessageHeartbeatEvent>;
+export const SendMessageHeartbeatEvent =
+  MCPServerSplunkConfiguration as any as S.Schema<SendMessageHeartbeatEvent>;
 export interface SendMessageContentBlockStartEvent {
   index?: number;
   type?: string;
@@ -4604,11 +4523,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  MCPServerSplunkConfiguration as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = DynatraceResourceList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -4622,9 +4540,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  MCPServerSplunkConfiguration as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAgentSpaceInput {
   agentSpaceId: string;
   name?: string;
@@ -4757,9 +4674,7 @@ export const UpdateAssetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAssetResponse {
   asset: Asset;
 }
-export const UpdateAssetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ asset: Asset }),
-).annotate({ identifier: "UpdateAssetResponse" }) as any as S.Schema<UpdateAssetResponse>;
+export const UpdateAssetResponse = CreateAssetResponse as any as S.Schema<UpdateAssetResponse>;
 export interface UpdateAssetFileRequest {
   agentSpaceId: string;
   assetId: string;
@@ -4793,9 +4708,8 @@ export const UpdateAssetFileRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAssetFileResponse {
   file: AssetFile;
 }
-export const UpdateAssetFileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ file: AssetFile }),
-).annotate({ identifier: "UpdateAssetFileResponse" }) as any as S.Schema<UpdateAssetFileResponse>;
+export const UpdateAssetFileResponse =
+  CreateAssetFileResponse as any as S.Schema<UpdateAssetFileResponse>;
 export interface UpdateAssociationInput {
   agentSpaceId: string;
   associationId: string;
@@ -4826,9 +4740,8 @@ export interface UpdateAssociationOutput {
   association: Association;
   webhook?: GenericWebhook;
 }
-export const UpdateAssociationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ association: Association, webhook: S.optional(GenericWebhook) }),
-).annotate({ identifier: "UpdateAssociationOutput" }) as any as S.Schema<UpdateAssociationOutput>;
+export const UpdateAssociationOutput =
+  AssociateServiceOutput as any as S.Schema<UpdateAssociationOutput>;
 export interface UpdateBacklogTaskRequest {
   agentSpaceId: string;
   taskId: string;
@@ -4855,11 +4768,8 @@ export const UpdateBacklogTaskRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateBacklogTaskResponse {
   task: Task;
 }
-export const UpdateBacklogTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ task: Task }),
-).annotate({
-  identifier: "UpdateBacklogTaskResponse",
-}) as any as S.Schema<UpdateBacklogTaskResponse>;
+export const UpdateBacklogTaskResponse =
+  CreateBacklogTaskResponse as any as S.Schema<UpdateBacklogTaskResponse>;
 export interface GoalScheduleInput {
   state: SchedulerState;
 }
@@ -5004,11 +4914,8 @@ export const UpdateRecommendationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateRecommendationResponse {
   recommendation: Recommendation;
 }
-export const UpdateRecommendationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ recommendation: Recommendation }),
-).annotate({
-  identifier: "UpdateRecommendationResponse",
-}) as any as S.Schema<UpdateRecommendationResponse>;
+export const UpdateRecommendationResponse =
+  GetRecommendationResponse as any as S.Schema<UpdateRecommendationResponse>;
 export interface UpdateTriggerRequest {
   agentSpaceId: string;
   triggerId: string;
@@ -5035,9 +4942,8 @@ export const UpdateTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateTriggerResponse {
   trigger: Trigger;
 }
-export const UpdateTriggerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ trigger: Trigger }),
-).annotate({ identifier: "UpdateTriggerResponse" }) as any as S.Schema<UpdateTriggerResponse>;
+export const UpdateTriggerResponse =
+  CreateTriggerResponse as any as S.Schema<UpdateTriggerResponse>;
 export interface ValidateAwsAssociationsInput {
   agentSpaceId: string;
 }
@@ -5056,9 +4962,8 @@ export const ValidateAwsAssociationsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ValidateAwsAssociationsInput",
 }) as any as S.Schema<ValidateAwsAssociationsInput>;
 export interface ValidateAwsAssociationsOutput {}
-export const ValidateAwsAssociationsOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ValidateAwsAssociationsOutput",
-}) as any as S.Schema<ValidateAwsAssociationsOutput>;
+export const ValidateAwsAssociationsOutput =
+  MCPServerSplunkConfiguration as any as S.Schema<ValidateAwsAssociationsOutput>;
 export interface ValidationExceptionField {
   path: string;
   message: string;

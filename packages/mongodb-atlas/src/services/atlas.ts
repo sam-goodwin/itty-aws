@@ -234,9 +234,8 @@ export const ClusterEventTypeViewForNdsGroupAlertable = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type ClusterAlertViewForNdsGroupLinksList = Array<Link>;
-export const ClusterAlertViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<ClusterAlertViewForNdsGroupLinksList>;
+export const ClusterAlertViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<ClusterAlertViewForNdsGroupLinksList>;
 
 /** Severity of the event. */
 export type ClusterAlertViewForNdsGroupSeverity = "INFO" | "WARNING" | "ERROR" | "CRITICAL";
@@ -330,9 +329,8 @@ export const HostEventTypeViewForNdsGroupAlertable = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type HostAlertViewForNdsGroupLinksList = Array<Link>;
-export const HostAlertViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<HostAlertViewForNdsGroupLinksList>;
+export const HostAlertViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<HostAlertViewForNdsGroupLinksList>;
 
 /** Severity of the event. */
 export type HostAlertViewForNdsGroupSeverity = "INFO" | "WARNING" | "ERROR" | "CRITICAL";
@@ -463,9 +461,8 @@ export const FlexMetricEventTypeViewAlertable = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type FlexMetricAlertLinksList = Array<Link>;
-export const FlexMetricAlertLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<FlexMetricAlertLinksList>;
+export const FlexMetricAlertLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<FlexMetricAlertLinksList>;
 
 /** Severity of the event. */
 export type FlexMetricAlertSeverity = "INFO" | "WARNING" | "ERROR" | "CRITICAL";
@@ -541,9 +538,8 @@ export const HostMetricEventTypeViewAlertable = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type HostMetricAlertLinksList = Array<Link>;
-export const HostMetricAlertLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<HostMetricAlertLinksList>;
+export const HostMetricAlertLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<HostMetricAlertLinksList>;
 
 /** Severity of the event. */
 export type HostMetricAlertSeverity = "INFO" | "WARNING" | "ERROR" | "CRITICAL";
@@ -631,9 +627,8 @@ export const ReplicaSetEventTypeViewForNdsGroupAlertable = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type ReplicaSetAlertViewForNdsGroupLinksList = Array<Link>;
-export const ReplicaSetAlertViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<ReplicaSetAlertViewForNdsGroupLinksList>;
+export const ReplicaSetAlertViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<ReplicaSetAlertViewForNdsGroupLinksList>;
 
 /** List of unique 24-hexadecimal character strings that identify the replica set members that are not in PRIMARY nor SECONDARY state. */
 export type ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList = Array<string>;
@@ -720,9 +715,8 @@ export const ReplicaSetAlertViewForNdsGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamProcessorAlertViewForNdsGroupLinksList = Array<Link>;
-export const StreamProcessorAlertViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamProcessorAlertViewForNdsGroupLinksList>;
+export const StreamProcessorAlertViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamProcessorAlertViewForNdsGroupLinksList>;
 
 /** Severity of the event. */
 export type StreamProcessorAlertViewForNdsGroupSeverity = "INFO" | "WARNING" | "ERROR" | "CRITICAL";
@@ -1017,9 +1011,8 @@ export const DefaultAlertViewForNdsGroupEventTypeName =
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type DefaultAlertViewForNdsGroupLinksList = Array<Link>;
-export const DefaultAlertViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<DefaultAlertViewForNdsGroupLinksList>;
+export const DefaultAlertViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<DefaultAlertViewForNdsGroupLinksList>;
 
 /** Severity of the event. */
 export type DefaultAlertViewForNdsGroupSeverity = "INFO" | "WARNING" | "ERROR" | "CRITICAL";
@@ -1104,9 +1097,8 @@ export const AcknowledgeGroupAlertResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of roles to grant this API key. If you provide this list, provide a minimum of one role and ensure each role applies to this project. */
 export type UserAccessRoleAssignmentInputRolesList = Array<string>;
-export const UserAccessRoleAssignmentInputRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserAccessRoleAssignmentInputRolesList>;
+export const UserAccessRoleAssignmentInputRolesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<UserAccessRoleAssignmentInputRolesList>;
 
 export interface UserAccessRoleAssignmentInput {
   /** List of roles to grant this API key. If you provide this list, provide a minimum of one role and ensure each role applies to this project. */
@@ -1161,9 +1153,8 @@ export const AddGroupApiKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})
 
 /** One or more project-level roles to assign to the team. */
 export type TeamRoleInputRoleNamesList = Array<string>;
-export const TeamRoleInputRoleNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TeamRoleInputRoleNamesList>;
+export const TeamRoleInputRoleNamesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<TeamRoleInputRoleNamesList>;
 
 export interface TeamRoleInput {
   /** One or more project-level roles to assign to the team. */
@@ -1210,9 +1201,8 @@ export const AddGroupTeamsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedTeamRoleViewLinksList = Array<Link>;
-export const PaginatedTeamRoleViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedTeamRoleViewLinksList>;
+export const PaginatedTeamRoleViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedTeamRoleViewLinksList>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type TeamRoleLinksList = Array<Link>;
@@ -1220,9 +1210,8 @@ export const TeamRoleLinksList = /*@__PURE__*/ S.Array(Link) as any as S.Schema<
 
 /** One or more project-level roles to assign to the team. */
 export type TeamRoleRoleNamesList = Array<string>;
-export const TeamRoleRoleNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TeamRoleRoleNamesList>;
+export const TeamRoleRoleNamesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<TeamRoleRoleNamesList>;
 
 export interface TeamRole {
   /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
@@ -1301,9 +1290,8 @@ export const GroupPendingUserResponseOrgMembershipStatus = S.String;
 
 /** One or more project-level roles assigned to the MongoDB Cloud user. */
 export type GroupPendingUserResponseRolesList = Array<string>;
-export const GroupPendingUserResponseRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GroupPendingUserResponseRolesList>;
+export const GroupPendingUserResponseRolesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<GroupPendingUserResponseRolesList>;
 
 export interface GroupPendingUserResponse {
   /** Two-character alphabetical string that identifies the MongoDB Cloud user's geographic location. This parameter uses the ISO 3166-1a2 code format. */
@@ -1361,9 +1349,8 @@ export const GroupActiveUserResponseOrgMembershipStatus = S.String;
 
 /** One or more project-level roles assigned to the MongoDB Cloud user. */
 export type GroupActiveUserResponseRolesList = Array<string>;
-export const GroupActiveUserResponseRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GroupActiveUserResponseRolesList>;
+export const GroupActiveUserResponseRolesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<GroupActiveUserResponseRolesList>;
 
 export interface GroupActiveUserResponse {
   /** Two-character alphabetical string that identifies the MongoDB Cloud user's geographic location. This parameter uses the ISO 3166-1a2 code format. */
@@ -1416,9 +1403,8 @@ export const GroupUserResponse = S.Unknown as any as S.Schema<GroupUserResponse>
 
 /** One or more project-level roles to assign the MongoDB Cloud user. */
 export type AddGroupUsersRequestRolesList = Array<string>;
-export const AddGroupUsersRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddGroupUsersRequestRolesList>;
+export const AddGroupUsersRequestRolesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<AddGroupUsersRequestRolesList>;
 
 export interface AddGroupUsersRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -1488,9 +1474,8 @@ export const OrgPendingUserResponseOrgMembershipStatus = S.String;
 
 /** One or more project-level roles assigned to the MongoDB Cloud user. */
 export type GroupRoleAssignmentGroupRolesList = Array<string>;
-export const GroupRoleAssignmentGroupRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GroupRoleAssignmentGroupRolesList>;
+export const GroupRoleAssignmentGroupRolesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<GroupRoleAssignmentGroupRolesList>;
 
 export interface GroupRoleAssignment {
   /** Unique 24-hexadecimal digit string that identifies the project to which these roles belong. */
@@ -1544,9 +1529,8 @@ export const OrgUserRolesResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of unique 24-hexadecimal digit strings that identifies the teams to which this MongoDB Cloud user belongs. */
 export type OrgPendingUserResponseTeamIdsList = Array<string>;
-export const OrgPendingUserResponseTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrgPendingUserResponseTeamIdsList>;
+export const OrgPendingUserResponseTeamIdsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<OrgPendingUserResponseTeamIdsList>;
 
 export interface OrgPendingUserResponse {
   /** Two-character alphabetical string that identifies the MongoDB Cloud user's geographic location. This parameter uses the ISO 3166-1a2 code format. */
@@ -1606,9 +1590,8 @@ export const OrgActiveUserResponseOrgMembershipStatus = S.String;
 
 /** List of unique 24-hexadecimal digit strings that identifies the teams to which this MongoDB Cloud user belongs. */
 export type OrgActiveUserResponseTeamIdsList = Array<string>;
-export const OrgActiveUserResponseTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrgActiveUserResponseTeamIdsList>;
+export const OrgActiveUserResponseTeamIdsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<OrgActiveUserResponseTeamIdsList>;
 
 export interface OrgActiveUserResponse {
   /** Two-character alphabetical string that identifies the MongoDB Cloud user's geographic location. This parameter uses the ISO 3166-1a2 code format. */
@@ -1834,9 +1817,8 @@ export const CloudProviderAccessAWSIAMRole = /*@__PURE__*/ S.suspend(() =>
 /** List that contains application features associated with this Azure Service Principal. */
 export type CloudProviderAccessAzureServicePrincipalFeatureUsagesList =
   Array<CloudProviderAccessFeatureUsage>;
-export const CloudProviderAccessAzureServicePrincipalFeatureUsagesList = /*@__PURE__*/ S.Array(
-  CloudProviderAccessFeatureUsage,
-) as any as S.Schema<CloudProviderAccessAzureServicePrincipalFeatureUsagesList>;
+export const CloudProviderAccessAzureServicePrincipalFeatureUsagesList =
+  CloudProviderAccessAWSIAMRoleFeatureUsagesList as any as S.Schema<CloudProviderAccessAzureServicePrincipalFeatureUsagesList>;
 
 /** Provision status of the service account. */
 export type CloudProviderAccessAzureServicePrincipalStatus =
@@ -1908,9 +1890,8 @@ export const CloudProviderAccessAzureServicePrincipal = /*@__PURE__*/ S.suspend(
 /** List that contains application features associated with this Azure Service Principal. */
 export type CloudProviderAccessGCPServiceAccountFeatureUsagesList =
   Array<CloudProviderAccessFeatureUsage>;
-export const CloudProviderAccessGCPServiceAccountFeatureUsagesList = /*@__PURE__*/ S.Array(
-  CloudProviderAccessFeatureUsage,
-) as any as S.Schema<CloudProviderAccessGCPServiceAccountFeatureUsagesList>;
+export const CloudProviderAccessGCPServiceAccountFeatureUsagesList =
+  CloudProviderAccessAWSIAMRoleFeatureUsagesList as any as S.Schema<CloudProviderAccessGCPServiceAccountFeatureUsagesList>;
 
 /** Provision status of the service account. */
 export type CloudProviderAccessGCPServiceAccountStatus =
@@ -2018,11 +1999,8 @@ export const CancelGroupClusterBackupRestoreJobRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<CancelGroupClusterBackupRestoreJobRequest>;
 
 export interface CancelGroupClusterBackupRestoreJobResponse {}
-export const CancelGroupClusterBackupRestoreJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelGroupClusterBackupRestoreJobResponse",
-}) as any as S.Schema<CancelGroupClusterBackupRestoreJobResponse>;
+export const CancelGroupClusterBackupRestoreJobResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<CancelGroupClusterBackupRestoreJobResponse>;
 
 export interface ConnectedOrgConfigRoleAssignment {
   /** Unique 24-hexadecimal digit string that identifies the project to which this role belongs. Each element within `roleAssignments` can have a value for `groupId` or `orgId`, but not both. */
@@ -2173,21 +2151,18 @@ export const CreateFederationSettingIdentityProviderRequest = /*@__PURE__*/ S.su
 
 /** List that contains the domains associated with the identity provider. */
 export type FederationOidcWorkforceIdentityProviderAssociatedDomainsList = Array<string>;
-export const FederationOidcWorkforceIdentityProviderAssociatedDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FederationOidcWorkforceIdentityProviderAssociatedDomainsList>;
+export const FederationOidcWorkforceIdentityProviderAssociatedDomainsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<FederationOidcWorkforceIdentityProviderAssociatedDomainsList>;
 
 /** The collection of unique ids representing the identity providers that can be used for data access in this organization. */
 export type ConnectedOrgConfigDataAccessIdentityProviderIdsList = Array<string>;
-export const ConnectedOrgConfigDataAccessIdentityProviderIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectedOrgConfigDataAccessIdentityProviderIdsList>;
+export const ConnectedOrgConfigDataAccessIdentityProviderIdsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<ConnectedOrgConfigDataAccessIdentityProviderIdsList>;
 
 /** Approved domains that restrict users who can join the organization based on their email address. */
 export type ConnectedOrgConfigDomainAllowListList = Array<string>;
-export const ConnectedOrgConfigDomainAllowListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectedOrgConfigDomainAllowListList>;
+export const ConnectedOrgConfigDomainAllowListList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<ConnectedOrgConfigDomainAllowListList>;
 
 export type ConnectedOrgConfigPostAuthRoleGrantsItem =
   | "ORG_OWNER"
@@ -2295,9 +2270,8 @@ export const FederationOidcWorkforceIdentityProviderProtocol = S.String;
 
 /** Scopes that MongoDB applications will request from the authorization endpoint. */
 export type FederationOidcWorkforceIdentityProviderRequestedScopesList = Array<string>;
-export const FederationOidcWorkforceIdentityProviderRequestedScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FederationOidcWorkforceIdentityProviderRequestedScopesList>;
+export const FederationOidcWorkforceIdentityProviderRequestedScopesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<FederationOidcWorkforceIdentityProviderRequestedScopesList>;
 
 export interface FederationOidcWorkforceIdentityProvider {
   /** List that contains the domains associated with the identity provider. */
@@ -2361,9 +2335,8 @@ export const FederationOidcWorkforceIdentityProvider = /*@__PURE__*/ S.suspend((
 
 /** List that contains the connected organization configurations associated with the identity provider. */
 export type FederationOidcWorkloadIdentityProviderAssociatedOrgsList = Array<ConnectedOrgConfig>;
-export const FederationOidcWorkloadIdentityProviderAssociatedOrgsList = /*@__PURE__*/ S.Array(
-  ConnectedOrgConfig,
-) as any as S.Schema<FederationOidcWorkloadIdentityProviderAssociatedOrgsList>;
+export const FederationOidcWorkloadIdentityProviderAssociatedOrgsList =
+  FederationOidcWorkforceIdentityProviderAssociatedOrgsList as any as S.Schema<FederationOidcWorkloadIdentityProviderAssociatedOrgsList>;
 
 /** Indicates whether authorization is granted based on group membership or user ID. */
 export type FederationOidcWorkloadIdentityProviderAuthorizationType = "GROUP" | "USER";
@@ -2500,7 +2473,7 @@ export const CreateGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type GroupLinksList = Array<Link>;
-export const GroupLinksList = /*@__PURE__*/ S.Array(Link) as any as S.Schema<GroupLinksList>;
+export const GroupLinksList = TeamRoleLinksList as any as S.Schema<GroupLinksList>;
 
 /** Applies to Atlas for Government only. In Commercial Atlas, this field will be rejected in requests and missing in responses. This field sets restrictions on available regions in the project. `COMMERCIAL_FEDRAMP_REGIONS_ONLY`: Only allows deployments in FedRAMP Moderate regions. `GOV_REGIONS_ONLY`: Only allows deployments in GovCloud regions. */
 export type GroupRegionUsageRestrictions = "COMMERCIAL_FEDRAMP_REGIONS_ONLY" | "GOV_REGIONS_ONLY";
@@ -2611,15 +2584,13 @@ export const CreateGroupAccessListEntryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedNetworkAccessViewLinksList = Array<Link>;
-export const PaginatedNetworkAccessViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedNetworkAccessViewLinksList>;
+export const PaginatedNetworkAccessViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedNetworkAccessViewLinksList>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type NetworkPermissionEntryLinksList = Array<Link>;
-export const NetworkPermissionEntryLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<NetworkPermissionEntryLinksList>;
+export const NetworkPermissionEntryLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<NetworkPermissionEntryLinksList>;
 
 export interface NetworkPermissionEntry {
   /** Unique string of the Amazon Web Services (AWS) security group that you want to add to the project's IP access list. Your IP access list entry can be one `awsSecurityGroup`, one `cidrBlock`, or one `ipAddress`. You must configure Virtual Private Connection (VPC) peering for your project before you can add an AWS security group to an IP access list. You cannot set AWS security groups as temporary access list entries. Don't set this parameter if you set `cidrBlock` or `ipAddress`. */
@@ -3045,9 +3016,8 @@ export const EmailNotification = /*@__PURE__*/ S.suspend(() =>
 
 /** List that contains the one or more project roles that receive the configured alert. This parameter is available when `"notifications.[n].typeName" : "GROUP"` or `"notifications.[n].typeName" : "ORG"`. If you include this parameter, MongoDB Cloud sends alerts only to users assigned the roles you specify in the array. If you omit this parameter, MongoDB Cloud sends alerts to users assigned any role. */
 export type GroupNotificationRolesList = Array<string>;
-export const GroupNotificationRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GroupNotificationRolesList>;
+export const GroupNotificationRolesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<GroupNotificationRolesList>;
 
 /** Human-readable label that displays the alert notification type. */
 export type GroupNotificationTypeName = "GROUP";
@@ -3579,9 +3549,8 @@ export const AppServiceAlertConfigViewForNdsGroupInputMatchersList = /*@__PURE__
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type AppServiceAlertConfigViewForNdsGroupInputNotificationsList =
   Array<AlertsNotificationRootForGroup>;
-export const AppServiceAlertConfigViewForNdsGroupInputNotificationsList = /*@__PURE__*/ S.Array(
-  AlertsNotificationRootForGroup,
-) as any as S.Schema<AppServiceAlertConfigViewForNdsGroupInputNotificationsList>;
+export const AppServiceAlertConfigViewForNdsGroupInputNotificationsList =
+  DefaultAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<AppServiceAlertConfigViewForNdsGroupInputNotificationsList>;
 
 /** App Services metric alert configuration allows to select which app service conditions and events trigger alerts and how users are notified. */
 export interface AppServiceAlertConfigViewForNdsGroupInput {
@@ -3613,9 +3582,8 @@ export const AppServiceEventTypeViewAlertableWithThreshold = S.String;
 /** List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the `eventTypeName` specifies an event for a host, replica set, or sharded cluster. */
 export type AppServiceMetricAlertConfigViewForNdsGroupInputMatchersList =
   Array<AppServiceMetricMatcher>;
-export const AppServiceMetricAlertConfigViewForNdsGroupInputMatchersList = /*@__PURE__*/ S.Array(
-  AppServiceMetricMatcher,
-) as any as S.Schema<AppServiceMetricAlertConfigViewForNdsGroupInputMatchersList>;
+export const AppServiceMetricAlertConfigViewForNdsGroupInputMatchersList =
+  AppServiceAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<AppServiceMetricAlertConfigViewForNdsGroupInputMatchersList>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type RawMetricThresholdViewMode = "AVERAGE";
@@ -3784,17 +3752,14 @@ export const BillingEventTypeViewAlertableWithThreshold = S.String;
 
 /** Matching conditions for target resources. */
 export type BillingThresholdAlertConfigViewForNdsGroupInputMatchersList = Array<AlertMatcher>;
-export const BillingThresholdAlertConfigViewForNdsGroupInputMatchersList = /*@__PURE__*/ S.Array(
-  AlertMatcher,
-) as any as S.Schema<BillingThresholdAlertConfigViewForNdsGroupInputMatchersList>;
+export const BillingThresholdAlertConfigViewForNdsGroupInputMatchersList =
+  DefaultAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<BillingThresholdAlertConfigViewForNdsGroupInputMatchersList>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type BillingThresholdAlertConfigViewForNdsGroupInputNotificationsList =
   Array<AlertsNotificationRootForGroup>;
 export const BillingThresholdAlertConfigViewForNdsGroupInputNotificationsList =
-  /*@__PURE__*/ S.Array(
-    AlertsNotificationRootForGroup,
-  ) as any as S.Schema<BillingThresholdAlertConfigViewForNdsGroupInputNotificationsList>;
+  AppServiceMetricAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<BillingThresholdAlertConfigViewForNdsGroupInputNotificationsList>;
 
 /** Comparison operator to apply when checking the current metric value. */
 export type GreaterThanRawThresholdOperator = "GREATER_THAN";
@@ -3881,9 +3846,8 @@ export const ClusterAlertConfigViewForNdsGroupInputMatchersList = /*@__PURE__*/ 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type ClusterAlertConfigViewForNdsGroupInputNotificationsList =
   Array<AlertsNotificationRootForGroup>;
-export const ClusterAlertConfigViewForNdsGroupInputNotificationsList = /*@__PURE__*/ S.Array(
-  AlertsNotificationRootForGroup,
-) as any as S.Schema<ClusterAlertConfigViewForNdsGroupInputNotificationsList>;
+export const ClusterAlertConfigViewForNdsGroupInputNotificationsList =
+  DefaultAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<ClusterAlertConfigViewForNdsGroupInputNotificationsList>;
 
 /** Cluster alert configuration allows to select which conditions of mongod cluster which trigger alerts and how users are notified. */
 export interface ClusterAlertConfigViewForNdsGroupInput {
@@ -3917,17 +3881,14 @@ export const CpsBackupEventTypeViewForNdsGroupAlertableWithThreshold = S.String;
 
 /** Matching conditions for target resources. */
 export type CpsBackupThresholdAlertConfigViewForNdsGroupInputMatchersList = Array<AlertMatcher>;
-export const CpsBackupThresholdAlertConfigViewForNdsGroupInputMatchersList = /*@__PURE__*/ S.Array(
-  AlertMatcher,
-) as any as S.Schema<CpsBackupThresholdAlertConfigViewForNdsGroupInputMatchersList>;
+export const CpsBackupThresholdAlertConfigViewForNdsGroupInputMatchersList =
+  DefaultAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<CpsBackupThresholdAlertConfigViewForNdsGroupInputMatchersList>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type CpsBackupThresholdAlertConfigViewForNdsGroupInputNotificationsList =
   Array<AlertsNotificationRootForGroup>;
 export const CpsBackupThresholdAlertConfigViewForNdsGroupInputNotificationsList =
-  /*@__PURE__*/ S.Array(
-    AlertsNotificationRootForGroup,
-  ) as any as S.Schema<CpsBackupThresholdAlertConfigViewForNdsGroupInputNotificationsList>;
+  AppServiceMetricAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<CpsBackupThresholdAlertConfigViewForNdsGroupInputNotificationsList>;
 
 /** Comparison operator to apply when checking the current metric value. */
 export type GreaterThanTimeThresholdOperator = "GREATER_THAN";
@@ -3986,16 +3947,14 @@ export const EncryptionKeyEventTypeViewAlertable = S.String;
 
 /** Matching conditions for target resources. */
 export type EncryptionKeyAlertConfigViewForNdsGroupInputMatchersList = Array<AlertMatcher>;
-export const EncryptionKeyAlertConfigViewForNdsGroupInputMatchersList = /*@__PURE__*/ S.Array(
-  AlertMatcher,
-) as any as S.Schema<EncryptionKeyAlertConfigViewForNdsGroupInputMatchersList>;
+export const EncryptionKeyAlertConfigViewForNdsGroupInputMatchersList =
+  DefaultAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<EncryptionKeyAlertConfigViewForNdsGroupInputMatchersList>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type EncryptionKeyAlertConfigViewForNdsGroupInputNotificationsList =
   Array<AlertsNotificationRootForGroup>;
-export const EncryptionKeyAlertConfigViewForNdsGroupInputNotificationsList = /*@__PURE__*/ S.Array(
-  AlertsNotificationRootForGroup,
-) as any as S.Schema<EncryptionKeyAlertConfigViewForNdsGroupInputNotificationsList>;
+export const EncryptionKeyAlertConfigViewForNdsGroupInputNotificationsList =
+  DefaultAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<EncryptionKeyAlertConfigViewForNdsGroupInputNotificationsList>;
 
 /** Comparison operator to apply when checking the current metric value. */
 export type GreaterThanDaysThresholdViewOperator = "GREATER_THAN";
@@ -4105,9 +4064,8 @@ export const HostAlertConfigViewForNdsGroupInputMatchersList = /*@__PURE__*/ S.A
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type HostAlertConfigViewForNdsGroupInputNotificationsList =
   Array<AlertsNotificationRootForGroup>;
-export const HostAlertConfigViewForNdsGroupInputNotificationsList = /*@__PURE__*/ S.Array(
-  AlertsNotificationRootForGroup,
-) as any as S.Schema<HostAlertConfigViewForNdsGroupInputNotificationsList>;
+export const HostAlertConfigViewForNdsGroupInputNotificationsList =
+  DefaultAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<HostAlertConfigViewForNdsGroupInputNotificationsList>;
 
 /** Host alert configuration allows to select which mongod host events trigger alerts and how users are notified. */
 export interface HostAlertConfigViewForNdsGroupInput {
@@ -4134,9 +4092,8 @@ export const HostAlertConfigViewForNdsGroupInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the `eventTypeName` specifies an event for a host, replica set, or sharded cluster. */
 export type HostMetricAlertConfigViewForNdsGroupInputMatchersList = Array<HostMatcher>;
-export const HostMetricAlertConfigViewForNdsGroupInputMatchersList = /*@__PURE__*/ S.Array(
-  HostMatcher,
-) as any as S.Schema<HostMetricAlertConfigViewForNdsGroupInputMatchersList>;
+export const HostMetricAlertConfigViewForNdsGroupInputMatchersList =
+  HostAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<HostMetricAlertConfigViewForNdsGroupInputMatchersList>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type AssertRegularRawMetricThresholdViewMode = "AVERAGE";
@@ -9381,9 +9338,8 @@ export const HostMetricThreshold = S.Unknown as any as S.Schema<HostMetricThresh
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type HostMetricAlertConfigViewForNdsGroupInputNotificationsList =
   Array<AlertsNotificationRootForGroup>;
-export const HostMetricAlertConfigViewForNdsGroupInputNotificationsList = /*@__PURE__*/ S.Array(
-  AlertsNotificationRootForGroup,
-) as any as S.Schema<HostMetricAlertConfigViewForNdsGroupInputNotificationsList>;
+export const HostMetricAlertConfigViewForNdsGroupInputNotificationsList =
+  DefaultAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<HostMetricAlertConfigViewForNdsGroupInputNotificationsList>;
 
 /** Host metric alert configuration allows to select which mongod host metrics trigger alerts and how users are notified. */
 export interface HostMetricAlertConfigViewForNdsGroupInput {
@@ -9416,16 +9372,14 @@ export const MongotuneEventTypeViewAlertable = S.String;
 
 /** Matching conditions for target resources. */
 export type MongotuneAlertConfigViewForNdsGroupInputMatchersList = Array<AlertMatcher>;
-export const MongotuneAlertConfigViewForNdsGroupInputMatchersList = /*@__PURE__*/ S.Array(
-  AlertMatcher,
-) as any as S.Schema<MongotuneAlertConfigViewForNdsGroupInputMatchersList>;
+export const MongotuneAlertConfigViewForNdsGroupInputMatchersList =
+  DefaultAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<MongotuneAlertConfigViewForNdsGroupInputMatchersList>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type MongotuneAlertConfigViewForNdsGroupInputNotificationsList =
   Array<AlertsNotificationRootForGroup>;
-export const MongotuneAlertConfigViewForNdsGroupInputNotificationsList = /*@__PURE__*/ S.Array(
-  AlertsNotificationRootForGroup,
-) as any as S.Schema<MongotuneAlertConfigViewForNdsGroupInputNotificationsList>;
+export const MongotuneAlertConfigViewForNdsGroupInputNotificationsList =
+  DefaultAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<MongotuneAlertConfigViewForNdsGroupInputNotificationsList>;
 
 /** Intelligent Workload Management alert configuration allows to select which Intelligent Workload Management events trigger alerts and how users are notified. */
 export interface MongotuneAlertConfigViewForNdsGroupInput {
@@ -9516,9 +9470,8 @@ export const NDSAutoscalingAlertConfigViewForNdsGroupInputMatchersList = /*@__PU
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type NDSAutoscalingAlertConfigViewForNdsGroupInputNotificationsList =
   Array<AlertsNotificationRootForGroup>;
-export const NDSAutoscalingAlertConfigViewForNdsGroupInputNotificationsList = /*@__PURE__*/ S.Array(
-  AlertsNotificationRootForGroup,
-) as any as S.Schema<NDSAutoscalingAlertConfigViewForNdsGroupInputNotificationsList>;
+export const NDSAutoscalingAlertConfigViewForNdsGroupInputNotificationsList =
+  DefaultAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<NDSAutoscalingAlertConfigViewForNdsGroupInputNotificationsList>;
 
 /** NDS Auto-Scaling alert configuration allows selecting which auto-scaling events trigger alerts and how users are notified. */
 export interface NDSAutoscalingAlertConfigViewForNdsGroupInput {
@@ -9562,9 +9515,7 @@ export const NDSX509UserAuthenticationAlertConfigViewForNdsGroupInputMatchersLis
 export type NDSX509UserAuthenticationAlertConfigViewForNdsGroupInputNotificationsList =
   Array<AlertsNotificationRootForGroup>;
 export const NDSX509UserAuthenticationAlertConfigViewForNdsGroupInputNotificationsList =
-  /*@__PURE__*/ S.Array(
-    AlertsNotificationRootForGroup,
-  ) as any as S.Schema<NDSX509UserAuthenticationAlertConfigViewForNdsGroupInputNotificationsList>;
+  AppServiceMetricAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<NDSX509UserAuthenticationAlertConfigViewForNdsGroupInputNotificationsList>;
 
 /** Comparison operator to apply when checking the current metric value. */
 export type LessThanDaysThresholdViewOperator = "LESS_THAN";
@@ -9665,9 +9616,8 @@ export const ReplicaSetAlertConfigViewForNdsGroupInputMatchersList = /*@__PURE__
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type ReplicaSetAlertConfigViewForNdsGroupInputNotificationsList =
   Array<AlertsNotificationRootForGroup>;
-export const ReplicaSetAlertConfigViewForNdsGroupInputNotificationsList = /*@__PURE__*/ S.Array(
-  AlertsNotificationRootForGroup,
-) as any as S.Schema<ReplicaSetAlertConfigViewForNdsGroupInputNotificationsList>;
+export const ReplicaSetAlertConfigViewForNdsGroupInputNotificationsList =
+  DefaultAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<ReplicaSetAlertConfigViewForNdsGroupInputNotificationsList>;
 
 /** Comparison operator to apply when checking the current metric value. */
 export type Operator = "<" | ">";
@@ -9765,17 +9715,14 @@ export const ReplicaSetEventTypeViewForNdsGroupAlertableWithThreshold = S.String
 /** List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the `eventTypeName` specifies an event for a host, replica set, or sharded cluster. */
 export type ReplicaSetThresholdAlertConfigViewForNdsGroupInputMatchersList =
   Array<ReplicaSetMatcher>;
-export const ReplicaSetThresholdAlertConfigViewForNdsGroupInputMatchersList = /*@__PURE__*/ S.Array(
-  ReplicaSetMatcher,
-) as any as S.Schema<ReplicaSetThresholdAlertConfigViewForNdsGroupInputMatchersList>;
+export const ReplicaSetThresholdAlertConfigViewForNdsGroupInputMatchersList =
+  ReplicaSetAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<ReplicaSetThresholdAlertConfigViewForNdsGroupInputMatchersList>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type ReplicaSetThresholdAlertConfigViewForNdsGroupInputNotificationsList =
   Array<AlertsNotificationRootForGroup>;
 export const ReplicaSetThresholdAlertConfigViewForNdsGroupInputNotificationsList =
-  /*@__PURE__*/ S.Array(
-    AlertsNotificationRootForGroup,
-  ) as any as S.Schema<ReplicaSetThresholdAlertConfigViewForNdsGroupInputNotificationsList>;
+  AppServiceMetricAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<ReplicaSetThresholdAlertConfigViewForNdsGroupInputNotificationsList>;
 
 /** Replica Set threshold alert configuration allows to select thresholds for conditions of mongod replica set which trigger alerts and how users are notified. */
 export interface ReplicaSetThresholdAlertConfigViewForNdsGroupInput {
@@ -9808,9 +9755,8 @@ export const ServerlessEventTypeViewAlertable = S.String;
 
 /** Matching conditions for target resources. */
 export type ServerlessMetricAlertConfigViewForNdsGroupInputMatchersList = Array<AlertMatcher>;
-export const ServerlessMetricAlertConfigViewForNdsGroupInputMatchersList = /*@__PURE__*/ S.Array(
-  AlertMatcher,
-) as any as S.Schema<ServerlessMetricAlertConfigViewForNdsGroupInputMatchersList>;
+export const ServerlessMetricAlertConfigViewForNdsGroupInputMatchersList =
+  DefaultAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<ServerlessMetricAlertConfigViewForNdsGroupInputMatchersList>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type ServerlessAVGCommandExecutionTimeMetricThresholdViewMode = "AVERAGE";
@@ -10287,9 +10233,7 @@ export const ServerlessMetricThreshold = S.Unknown as any as S.Schema<Serverless
 export type ServerlessMetricAlertConfigViewForNdsGroupInputNotificationsList =
   Array<AlertsNotificationRootForGroup>;
 export const ServerlessMetricAlertConfigViewForNdsGroupInputNotificationsList =
-  /*@__PURE__*/ S.Array(
-    AlertsNotificationRootForGroup,
-  ) as any as S.Schema<ServerlessMetricAlertConfigViewForNdsGroupInputNotificationsList>;
+  AppServiceMetricAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<ServerlessMetricAlertConfigViewForNdsGroupInputNotificationsList>;
 
 /** Serverless metric alert configuration allows to select which serverless database metrics trigger alerts and how users are notified. */
 export interface ServerlessMetricAlertConfigViewForNdsGroupInput {
@@ -10318,9 +10262,8 @@ export const ServerlessMetricAlertConfigViewForNdsGroupInput = /*@__PURE__*/ S.s
 
 /** Matching conditions for target resources. */
 export type FlexMetricAlertConfigViewForNdsGroupInputMatchersList = Array<AlertMatcher>;
-export const FlexMetricAlertConfigViewForNdsGroupInputMatchersList = /*@__PURE__*/ S.Array(
-  AlertMatcher,
-) as any as S.Schema<FlexMetricAlertConfigViewForNdsGroupInputMatchersList>;
+export const FlexMetricAlertConfigViewForNdsGroupInputMatchersList =
+  DefaultAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<FlexMetricAlertConfigViewForNdsGroupInputMatchersList>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type FlexConnectionPercentRawMetricThresholdViewMode = "AVERAGE";
@@ -10716,9 +10659,8 @@ export const FlexClusterMetricThreshold = S.Unknown as any as S.Schema<FlexClust
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type FlexMetricAlertConfigViewForNdsGroupInputNotificationsList =
   Array<AlertsNotificationRootForGroup>;
-export const FlexMetricAlertConfigViewForNdsGroupInputNotificationsList = /*@__PURE__*/ S.Array(
-  AlertsNotificationRootForGroup,
-) as any as S.Schema<FlexMetricAlertConfigViewForNdsGroupInputNotificationsList>;
+export const FlexMetricAlertConfigViewForNdsGroupInputNotificationsList =
+  DefaultAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<FlexMetricAlertConfigViewForNdsGroupInputNotificationsList>;
 
 /** Flex metric alert configuration allows to select which Flex database metrics trigger alerts and how users are notified. */
 export interface FlexMetricAlertConfigViewForNdsGroupInput {
@@ -10792,9 +10734,7 @@ export const StreamProcessorAlertConfigViewForNdsGroupInputMatchersList = /*@__P
 export type StreamProcessorAlertConfigViewForNdsGroupInputNotificationsList =
   Array<AlertsNotificationRootForGroup>;
 export const StreamProcessorAlertConfigViewForNdsGroupInputNotificationsList =
-  /*@__PURE__*/ S.Array(
-    AlertsNotificationRootForGroup,
-  ) as any as S.Schema<StreamProcessorAlertConfigViewForNdsGroupInputNotificationsList>;
+  AppServiceMetricAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<StreamProcessorAlertConfigViewForNdsGroupInputNotificationsList>;
 
 /** Host metric alert configuration allows to select which Atlas streams processors trigger alerts and how users are notified. */
 export interface StreamProcessorAlertConfigViewForNdsGroupInput {
@@ -10907,9 +10847,7 @@ export const StreamProcessorMetricThreshold =
 export type StreamProcessorMetricAlertConfigViewForNdsGroupInputNotificationsList =
   Array<AlertsNotificationRootForGroup>;
 export const StreamProcessorMetricAlertConfigViewForNdsGroupInputNotificationsList =
-  /*@__PURE__*/ S.Array(
-    AlertsNotificationRootForGroup,
-  ) as any as S.Schema<StreamProcessorMetricAlertConfigViewForNdsGroupInputNotificationsList>;
+  AppServiceMetricAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<StreamProcessorMetricAlertConfigViewForNdsGroupInputNotificationsList>;
 
 /** Stream Processor threshold alert configuration allows to select thresholds on metrics which trigger alerts and how users are notified. */
 export interface StreamProcessorMetricAlertConfigViewForNdsGroupInput {
@@ -11167,22 +11105,19 @@ export const DefaultAlertConfigViewForNdsGroupEventTypeName =
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type DefaultAlertConfigViewForNdsGroupLinksList = Array<Link>;
-export const DefaultAlertConfigViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<DefaultAlertConfigViewForNdsGroupLinksList>;
+export const DefaultAlertConfigViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<DefaultAlertConfigViewForNdsGroupLinksList>;
 
 /** Matching conditions for target resources. */
 export type DefaultAlertConfigViewForNdsGroupMatchersList = Array<AlertMatcher>;
-export const DefaultAlertConfigViewForNdsGroupMatchersList = /*@__PURE__*/ S.Array(
-  AlertMatcher,
-) as any as S.Schema<DefaultAlertConfigViewForNdsGroupMatchersList>;
+export const DefaultAlertConfigViewForNdsGroupMatchersList =
+  DefaultAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<DefaultAlertConfigViewForNdsGroupMatchersList>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type DefaultAlertConfigViewForNdsGroupNotificationsList =
   Array<AlertsNotificationRootForGroup>;
-export const DefaultAlertConfigViewForNdsGroupNotificationsList = /*@__PURE__*/ S.Array(
-  AlertsNotificationRootForGroup,
-) as any as S.Schema<DefaultAlertConfigViewForNdsGroupNotificationsList>;
+export const DefaultAlertConfigViewForNdsGroupNotificationsList =
+  DefaultAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<DefaultAlertConfigViewForNdsGroupNotificationsList>;
 
 /** Other alerts which don't have extra details beside of basic one. */
 export interface DefaultAlertConfigViewForNdsGroup {
@@ -11225,22 +11160,19 @@ export const DefaultAlertConfigViewForNdsGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type AppServiceAlertConfigViewForNdsGroupLinksList = Array<Link>;
-export const AppServiceAlertConfigViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<AppServiceAlertConfigViewForNdsGroupLinksList>;
+export const AppServiceAlertConfigViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<AppServiceAlertConfigViewForNdsGroupLinksList>;
 
 /** List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the `eventTypeName` specifies an event for a host, replica set, or sharded cluster. */
 export type AppServiceAlertConfigViewForNdsGroupMatchersList = Array<AppServiceMetricMatcher>;
-export const AppServiceAlertConfigViewForNdsGroupMatchersList = /*@__PURE__*/ S.Array(
-  AppServiceMetricMatcher,
-) as any as S.Schema<AppServiceAlertConfigViewForNdsGroupMatchersList>;
+export const AppServiceAlertConfigViewForNdsGroupMatchersList =
+  AppServiceAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<AppServiceAlertConfigViewForNdsGroupMatchersList>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type AppServiceAlertConfigViewForNdsGroupNotificationsList =
   Array<AlertsNotificationRootForGroup>;
-export const AppServiceAlertConfigViewForNdsGroupNotificationsList = /*@__PURE__*/ S.Array(
-  AlertsNotificationRootForGroup,
-) as any as S.Schema<AppServiceAlertConfigViewForNdsGroupNotificationsList>;
+export const AppServiceAlertConfigViewForNdsGroupNotificationsList =
+  DefaultAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<AppServiceAlertConfigViewForNdsGroupNotificationsList>;
 
 /** App Services metric alert configuration allows to select which app service conditions and events trigger alerts and how users are notified. */
 export interface AppServiceAlertConfigViewForNdsGroup {
@@ -11282,22 +11214,19 @@ export const AppServiceAlertConfigViewForNdsGroup = /*@__PURE__*/ S.suspend(() =
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type AppServiceMetricAlertConfigViewForNdsGroupLinksList = Array<Link>;
-export const AppServiceMetricAlertConfigViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<AppServiceMetricAlertConfigViewForNdsGroupLinksList>;
+export const AppServiceMetricAlertConfigViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<AppServiceMetricAlertConfigViewForNdsGroupLinksList>;
 
 /** List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the `eventTypeName` specifies an event for a host, replica set, or sharded cluster. */
 export type AppServiceMetricAlertConfigViewForNdsGroupMatchersList = Array<AppServiceMetricMatcher>;
-export const AppServiceMetricAlertConfigViewForNdsGroupMatchersList = /*@__PURE__*/ S.Array(
-  AppServiceMetricMatcher,
-) as any as S.Schema<AppServiceMetricAlertConfigViewForNdsGroupMatchersList>;
+export const AppServiceMetricAlertConfigViewForNdsGroupMatchersList =
+  AppServiceAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<AppServiceMetricAlertConfigViewForNdsGroupMatchersList>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type AppServiceMetricAlertConfigViewForNdsGroupNotificationsList =
   Array<AlertsNotificationRootForGroup>;
-export const AppServiceMetricAlertConfigViewForNdsGroupNotificationsList = /*@__PURE__*/ S.Array(
-  AlertsNotificationRootForGroup,
-) as any as S.Schema<AppServiceMetricAlertConfigViewForNdsGroupNotificationsList>;
+export const AppServiceMetricAlertConfigViewForNdsGroupNotificationsList =
+  DefaultAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<AppServiceMetricAlertConfigViewForNdsGroupNotificationsList>;
 
 /** App Services metric alert configuration allows to select which app service metrics trigger alerts and how users are notified. */
 export interface AppServiceMetricAlertConfigViewForNdsGroup {
@@ -11341,22 +11270,19 @@ export const AppServiceMetricAlertConfigViewForNdsGroup = /*@__PURE__*/ S.suspen
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type BillingThresholdAlertConfigViewForNdsGroupLinksList = Array<Link>;
-export const BillingThresholdAlertConfigViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<BillingThresholdAlertConfigViewForNdsGroupLinksList>;
+export const BillingThresholdAlertConfigViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<BillingThresholdAlertConfigViewForNdsGroupLinksList>;
 
 /** Matching conditions for target resources. */
 export type BillingThresholdAlertConfigViewForNdsGroupMatchersList = Array<AlertMatcher>;
-export const BillingThresholdAlertConfigViewForNdsGroupMatchersList = /*@__PURE__*/ S.Array(
-  AlertMatcher,
-) as any as S.Schema<BillingThresholdAlertConfigViewForNdsGroupMatchersList>;
+export const BillingThresholdAlertConfigViewForNdsGroupMatchersList =
+  DefaultAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<BillingThresholdAlertConfigViewForNdsGroupMatchersList>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type BillingThresholdAlertConfigViewForNdsGroupNotificationsList =
   Array<AlertsNotificationRootForGroup>;
-export const BillingThresholdAlertConfigViewForNdsGroupNotificationsList = /*@__PURE__*/ S.Array(
-  AlertsNotificationRootForGroup,
-) as any as S.Schema<BillingThresholdAlertConfigViewForNdsGroupNotificationsList>;
+export const BillingThresholdAlertConfigViewForNdsGroupNotificationsList =
+  DefaultAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<BillingThresholdAlertConfigViewForNdsGroupNotificationsList>;
 
 /** Billing threshold alert configuration allows to select thresholds for bills and invoices which trigger alerts and how users are notified. */
 export interface BillingThresholdAlertConfigViewForNdsGroup {
@@ -11400,22 +11326,19 @@ export const BillingThresholdAlertConfigViewForNdsGroup = /*@__PURE__*/ S.suspen
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type ClusterAlertConfigViewForNdsGroupLinksList = Array<Link>;
-export const ClusterAlertConfigViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<ClusterAlertConfigViewForNdsGroupLinksList>;
+export const ClusterAlertConfigViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<ClusterAlertConfigViewForNdsGroupLinksList>;
 
 /** List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the `eventTypeName` specifies an event for a host, replica set, or sharded cluster. */
 export type ClusterAlertConfigViewForNdsGroupMatchersList = Array<ClusterMatcher>;
-export const ClusterAlertConfigViewForNdsGroupMatchersList = /*@__PURE__*/ S.Array(
-  ClusterMatcher,
-) as any as S.Schema<ClusterAlertConfigViewForNdsGroupMatchersList>;
+export const ClusterAlertConfigViewForNdsGroupMatchersList =
+  ClusterAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<ClusterAlertConfigViewForNdsGroupMatchersList>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type ClusterAlertConfigViewForNdsGroupNotificationsList =
   Array<AlertsNotificationRootForGroup>;
-export const ClusterAlertConfigViewForNdsGroupNotificationsList = /*@__PURE__*/ S.Array(
-  AlertsNotificationRootForGroup,
-) as any as S.Schema<ClusterAlertConfigViewForNdsGroupNotificationsList>;
+export const ClusterAlertConfigViewForNdsGroupNotificationsList =
+  DefaultAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<ClusterAlertConfigViewForNdsGroupNotificationsList>;
 
 /** Cluster alert configuration allows to select which conditions of mongod cluster which trigger alerts and how users are notified. */
 export interface ClusterAlertConfigViewForNdsGroup {
@@ -11457,22 +11380,19 @@ export const ClusterAlertConfigViewForNdsGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type CpsBackupThresholdAlertConfigViewForNdsGroupLinksList = Array<Link>;
-export const CpsBackupThresholdAlertConfigViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<CpsBackupThresholdAlertConfigViewForNdsGroupLinksList>;
+export const CpsBackupThresholdAlertConfigViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<CpsBackupThresholdAlertConfigViewForNdsGroupLinksList>;
 
 /** Matching conditions for target resources. */
 export type CpsBackupThresholdAlertConfigViewForNdsGroupMatchersList = Array<AlertMatcher>;
-export const CpsBackupThresholdAlertConfigViewForNdsGroupMatchersList = /*@__PURE__*/ S.Array(
-  AlertMatcher,
-) as any as S.Schema<CpsBackupThresholdAlertConfigViewForNdsGroupMatchersList>;
+export const CpsBackupThresholdAlertConfigViewForNdsGroupMatchersList =
+  DefaultAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<CpsBackupThresholdAlertConfigViewForNdsGroupMatchersList>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type CpsBackupThresholdAlertConfigViewForNdsGroupNotificationsList =
   Array<AlertsNotificationRootForGroup>;
-export const CpsBackupThresholdAlertConfigViewForNdsGroupNotificationsList = /*@__PURE__*/ S.Array(
-  AlertsNotificationRootForGroup,
-) as any as S.Schema<CpsBackupThresholdAlertConfigViewForNdsGroupNotificationsList>;
+export const CpsBackupThresholdAlertConfigViewForNdsGroupNotificationsList =
+  DefaultAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<CpsBackupThresholdAlertConfigViewForNdsGroupNotificationsList>;
 
 /** Cps Backup threshold alert configuration allows to select thresholds for conditions of CPS backup or oplogs anomalies which trigger alerts and how users are notified. */
 export interface CpsBackupThresholdAlertConfigViewForNdsGroup {
@@ -11516,22 +11436,19 @@ export const CpsBackupThresholdAlertConfigViewForNdsGroup = /*@__PURE__*/ S.susp
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type EncryptionKeyAlertConfigViewForNdsGroupLinksList = Array<Link>;
-export const EncryptionKeyAlertConfigViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<EncryptionKeyAlertConfigViewForNdsGroupLinksList>;
+export const EncryptionKeyAlertConfigViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<EncryptionKeyAlertConfigViewForNdsGroupLinksList>;
 
 /** Matching conditions for target resources. */
 export type EncryptionKeyAlertConfigViewForNdsGroupMatchersList = Array<AlertMatcher>;
-export const EncryptionKeyAlertConfigViewForNdsGroupMatchersList = /*@__PURE__*/ S.Array(
-  AlertMatcher,
-) as any as S.Schema<EncryptionKeyAlertConfigViewForNdsGroupMatchersList>;
+export const EncryptionKeyAlertConfigViewForNdsGroupMatchersList =
+  DefaultAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<EncryptionKeyAlertConfigViewForNdsGroupMatchersList>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type EncryptionKeyAlertConfigViewForNdsGroupNotificationsList =
   Array<AlertsNotificationRootForGroup>;
-export const EncryptionKeyAlertConfigViewForNdsGroupNotificationsList = /*@__PURE__*/ S.Array(
-  AlertsNotificationRootForGroup,
-) as any as S.Schema<EncryptionKeyAlertConfigViewForNdsGroupNotificationsList>;
+export const EncryptionKeyAlertConfigViewForNdsGroupNotificationsList =
+  DefaultAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<EncryptionKeyAlertConfigViewForNdsGroupNotificationsList>;
 
 /** Encryption key alert configuration allows to select thresholds which trigger alerts and how users are notified. */
 export interface EncryptionKeyAlertConfigViewForNdsGroup {
@@ -11575,21 +11492,18 @@ export const EncryptionKeyAlertConfigViewForNdsGroup = /*@__PURE__*/ S.suspend((
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type HostAlertConfigViewForNdsGroupLinksList = Array<Link>;
-export const HostAlertConfigViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<HostAlertConfigViewForNdsGroupLinksList>;
+export const HostAlertConfigViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<HostAlertConfigViewForNdsGroupLinksList>;
 
 /** List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the `eventTypeName` specifies an event for a host, replica set, or sharded cluster. */
 export type HostAlertConfigViewForNdsGroupMatchersList = Array<HostMatcher>;
-export const HostAlertConfigViewForNdsGroupMatchersList = /*@__PURE__*/ S.Array(
-  HostMatcher,
-) as any as S.Schema<HostAlertConfigViewForNdsGroupMatchersList>;
+export const HostAlertConfigViewForNdsGroupMatchersList =
+  HostAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<HostAlertConfigViewForNdsGroupMatchersList>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type HostAlertConfigViewForNdsGroupNotificationsList = Array<AlertsNotificationRootForGroup>;
-export const HostAlertConfigViewForNdsGroupNotificationsList = /*@__PURE__*/ S.Array(
-  AlertsNotificationRootForGroup,
-) as any as S.Schema<HostAlertConfigViewForNdsGroupNotificationsList>;
+export const HostAlertConfigViewForNdsGroupNotificationsList =
+  DefaultAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<HostAlertConfigViewForNdsGroupNotificationsList>;
 
 /** Host alert configuration allows to select which mongod host events trigger alerts and how users are notified. */
 export interface HostAlertConfigViewForNdsGroup {
@@ -11631,22 +11545,19 @@ export const HostAlertConfigViewForNdsGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type HostMetricAlertConfigViewForNdsGroupLinksList = Array<Link>;
-export const HostMetricAlertConfigViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<HostMetricAlertConfigViewForNdsGroupLinksList>;
+export const HostMetricAlertConfigViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<HostMetricAlertConfigViewForNdsGroupLinksList>;
 
 /** List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the `eventTypeName` specifies an event for a host, replica set, or sharded cluster. */
 export type HostMetricAlertConfigViewForNdsGroupMatchersList = Array<HostMatcher>;
-export const HostMetricAlertConfigViewForNdsGroupMatchersList = /*@__PURE__*/ S.Array(
-  HostMatcher,
-) as any as S.Schema<HostMetricAlertConfigViewForNdsGroupMatchersList>;
+export const HostMetricAlertConfigViewForNdsGroupMatchersList =
+  HostAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<HostMetricAlertConfigViewForNdsGroupMatchersList>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type HostMetricAlertConfigViewForNdsGroupNotificationsList =
   Array<AlertsNotificationRootForGroup>;
-export const HostMetricAlertConfigViewForNdsGroupNotificationsList = /*@__PURE__*/ S.Array(
-  AlertsNotificationRootForGroup,
-) as any as S.Schema<HostMetricAlertConfigViewForNdsGroupNotificationsList>;
+export const HostMetricAlertConfigViewForNdsGroupNotificationsList =
+  DefaultAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<HostMetricAlertConfigViewForNdsGroupNotificationsList>;
 
 /** Host metric alert configuration allows to select which mongod host metrics trigger alerts and how users are notified. */
 export interface HostMetricAlertConfigViewForNdsGroup {
@@ -11690,22 +11601,19 @@ export const HostMetricAlertConfigViewForNdsGroup = /*@__PURE__*/ S.suspend(() =
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type MongotuneAlertConfigViewForNdsGroupLinksList = Array<Link>;
-export const MongotuneAlertConfigViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<MongotuneAlertConfigViewForNdsGroupLinksList>;
+export const MongotuneAlertConfigViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<MongotuneAlertConfigViewForNdsGroupLinksList>;
 
 /** Matching conditions for target resources. */
 export type MongotuneAlertConfigViewForNdsGroupMatchersList = Array<AlertMatcher>;
-export const MongotuneAlertConfigViewForNdsGroupMatchersList = /*@__PURE__*/ S.Array(
-  AlertMatcher,
-) as any as S.Schema<MongotuneAlertConfigViewForNdsGroupMatchersList>;
+export const MongotuneAlertConfigViewForNdsGroupMatchersList =
+  DefaultAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<MongotuneAlertConfigViewForNdsGroupMatchersList>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type MongotuneAlertConfigViewForNdsGroupNotificationsList =
   Array<AlertsNotificationRootForGroup>;
-export const MongotuneAlertConfigViewForNdsGroupNotificationsList = /*@__PURE__*/ S.Array(
-  AlertsNotificationRootForGroup,
-) as any as S.Schema<MongotuneAlertConfigViewForNdsGroupNotificationsList>;
+export const MongotuneAlertConfigViewForNdsGroupNotificationsList =
+  DefaultAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<MongotuneAlertConfigViewForNdsGroupNotificationsList>;
 
 /** Intelligent Workload Management alert configuration allows to select which Intelligent Workload Management events trigger alerts and how users are notified. */
 export interface MongotuneAlertConfigViewForNdsGroup {
@@ -11747,22 +11655,19 @@ export const MongotuneAlertConfigViewForNdsGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type NDSAutoscalingAlertConfigViewForNdsGroupLinksList = Array<Link>;
-export const NDSAutoscalingAlertConfigViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<NDSAutoscalingAlertConfigViewForNdsGroupLinksList>;
+export const NDSAutoscalingAlertConfigViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<NDSAutoscalingAlertConfigViewForNdsGroupLinksList>;
 
 /** List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. */
 export type NDSAutoscalingAlertConfigViewForNdsGroupMatchersList = Array<NDSAutoscalingMatcher>;
-export const NDSAutoscalingAlertConfigViewForNdsGroupMatchersList = /*@__PURE__*/ S.Array(
-  NDSAutoscalingMatcher,
-) as any as S.Schema<NDSAutoscalingAlertConfigViewForNdsGroupMatchersList>;
+export const NDSAutoscalingAlertConfigViewForNdsGroupMatchersList =
+  NDSAutoscalingAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<NDSAutoscalingAlertConfigViewForNdsGroupMatchersList>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type NDSAutoscalingAlertConfigViewForNdsGroupNotificationsList =
   Array<AlertsNotificationRootForGroup>;
-export const NDSAutoscalingAlertConfigViewForNdsGroupNotificationsList = /*@__PURE__*/ S.Array(
-  AlertsNotificationRootForGroup,
-) as any as S.Schema<NDSAutoscalingAlertConfigViewForNdsGroupNotificationsList>;
+export const NDSAutoscalingAlertConfigViewForNdsGroupNotificationsList =
+  DefaultAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<NDSAutoscalingAlertConfigViewForNdsGroupNotificationsList>;
 
 /** NDS Auto-Scaling alert configuration allows selecting which auto-scaling events trigger alerts and how users are notified. */
 export interface NDSAutoscalingAlertConfigViewForNdsGroup {
@@ -11804,24 +11709,19 @@ export const NDSAutoscalingAlertConfigViewForNdsGroup = /*@__PURE__*/ S.suspend(
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type NDSX509UserAuthenticationAlertConfigViewForNdsGroupLinksList = Array<Link>;
-export const NDSX509UserAuthenticationAlertConfigViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<NDSX509UserAuthenticationAlertConfigViewForNdsGroupLinksList>;
+export const NDSX509UserAuthenticationAlertConfigViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<NDSX509UserAuthenticationAlertConfigViewForNdsGroupLinksList>;
 
 /** Matching conditions for target resources. */
 export type NDSX509UserAuthenticationAlertConfigViewForNdsGroupMatchersList = Array<AlertMatcher>;
 export const NDSX509UserAuthenticationAlertConfigViewForNdsGroupMatchersList =
-  /*@__PURE__*/ S.Array(
-    AlertMatcher,
-  ) as any as S.Schema<NDSX509UserAuthenticationAlertConfigViewForNdsGroupMatchersList>;
+  NDSX509UserAuthenticationAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<NDSX509UserAuthenticationAlertConfigViewForNdsGroupMatchersList>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type NDSX509UserAuthenticationAlertConfigViewForNdsGroupNotificationsList =
   Array<AlertsNotificationRootForGroup>;
 export const NDSX509UserAuthenticationAlertConfigViewForNdsGroupNotificationsList =
-  /*@__PURE__*/ S.Array(
-    AlertsNotificationRootForGroup,
-  ) as any as S.Schema<NDSX509UserAuthenticationAlertConfigViewForNdsGroupNotificationsList>;
+  AppServiceMetricAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<NDSX509UserAuthenticationAlertConfigViewForNdsGroupNotificationsList>;
 
 /** X509 User Authentication alert configuration allows to select thresholds for expiration of client, CA certificates and CRL which trigger alerts and how users are notified. */
 export interface NDSX509UserAuthenticationAlertConfigViewForNdsGroup {
@@ -11865,22 +11765,19 @@ export const NDSX509UserAuthenticationAlertConfigViewForNdsGroup = /*@__PURE__*/
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type ReplicaSetAlertConfigViewForNdsGroupLinksList = Array<Link>;
-export const ReplicaSetAlertConfigViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<ReplicaSetAlertConfigViewForNdsGroupLinksList>;
+export const ReplicaSetAlertConfigViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<ReplicaSetAlertConfigViewForNdsGroupLinksList>;
 
 /** List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the `eventTypeName` specifies an event for a host, replica set, or sharded cluster. */
 export type ReplicaSetAlertConfigViewForNdsGroupMatchersList = Array<ReplicaSetMatcher>;
-export const ReplicaSetAlertConfigViewForNdsGroupMatchersList = /*@__PURE__*/ S.Array(
-  ReplicaSetMatcher,
-) as any as S.Schema<ReplicaSetAlertConfigViewForNdsGroupMatchersList>;
+export const ReplicaSetAlertConfigViewForNdsGroupMatchersList =
+  ReplicaSetAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<ReplicaSetAlertConfigViewForNdsGroupMatchersList>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type ReplicaSetAlertConfigViewForNdsGroupNotificationsList =
   Array<AlertsNotificationRootForGroup>;
-export const ReplicaSetAlertConfigViewForNdsGroupNotificationsList = /*@__PURE__*/ S.Array(
-  AlertsNotificationRootForGroup,
-) as any as S.Schema<ReplicaSetAlertConfigViewForNdsGroupNotificationsList>;
+export const ReplicaSetAlertConfigViewForNdsGroupNotificationsList =
+  DefaultAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<ReplicaSetAlertConfigViewForNdsGroupNotificationsList>;
 
 /** Replica Set alert configuration allows to select which conditions of mongod replica set trigger alerts and how users are notified. */
 export interface ReplicaSetAlertConfigViewForNdsGroup {
@@ -11924,22 +11821,19 @@ export const ReplicaSetAlertConfigViewForNdsGroup = /*@__PURE__*/ S.suspend(() =
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type ReplicaSetThresholdAlertConfigViewForNdsGroupLinksList = Array<Link>;
-export const ReplicaSetThresholdAlertConfigViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<ReplicaSetThresholdAlertConfigViewForNdsGroupLinksList>;
+export const ReplicaSetThresholdAlertConfigViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<ReplicaSetThresholdAlertConfigViewForNdsGroupLinksList>;
 
 /** List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the `eventTypeName` specifies an event for a host, replica set, or sharded cluster. */
 export type ReplicaSetThresholdAlertConfigViewForNdsGroupMatchersList = Array<ReplicaSetMatcher>;
-export const ReplicaSetThresholdAlertConfigViewForNdsGroupMatchersList = /*@__PURE__*/ S.Array(
-  ReplicaSetMatcher,
-) as any as S.Schema<ReplicaSetThresholdAlertConfigViewForNdsGroupMatchersList>;
+export const ReplicaSetThresholdAlertConfigViewForNdsGroupMatchersList =
+  ReplicaSetAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<ReplicaSetThresholdAlertConfigViewForNdsGroupMatchersList>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type ReplicaSetThresholdAlertConfigViewForNdsGroupNotificationsList =
   Array<AlertsNotificationRootForGroup>;
-export const ReplicaSetThresholdAlertConfigViewForNdsGroupNotificationsList = /*@__PURE__*/ S.Array(
-  AlertsNotificationRootForGroup,
-) as any as S.Schema<ReplicaSetThresholdAlertConfigViewForNdsGroupNotificationsList>;
+export const ReplicaSetThresholdAlertConfigViewForNdsGroupNotificationsList =
+  DefaultAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<ReplicaSetThresholdAlertConfigViewForNdsGroupNotificationsList>;
 
 /** Replica Set threshold alert configuration allows to select thresholds for conditions of mongod replica set which trigger alerts and how users are notified. */
 export interface ReplicaSetThresholdAlertConfigViewForNdsGroup {
@@ -11983,22 +11877,19 @@ export const ReplicaSetThresholdAlertConfigViewForNdsGroup = /*@__PURE__*/ S.sus
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type ServerlessMetricAlertConfigViewForNdsGroupLinksList = Array<Link>;
-export const ServerlessMetricAlertConfigViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<ServerlessMetricAlertConfigViewForNdsGroupLinksList>;
+export const ServerlessMetricAlertConfigViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<ServerlessMetricAlertConfigViewForNdsGroupLinksList>;
 
 /** Matching conditions for target resources. */
 export type ServerlessMetricAlertConfigViewForNdsGroupMatchersList = Array<AlertMatcher>;
-export const ServerlessMetricAlertConfigViewForNdsGroupMatchersList = /*@__PURE__*/ S.Array(
-  AlertMatcher,
-) as any as S.Schema<ServerlessMetricAlertConfigViewForNdsGroupMatchersList>;
+export const ServerlessMetricAlertConfigViewForNdsGroupMatchersList =
+  DefaultAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<ServerlessMetricAlertConfigViewForNdsGroupMatchersList>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type ServerlessMetricAlertConfigViewForNdsGroupNotificationsList =
   Array<AlertsNotificationRootForGroup>;
-export const ServerlessMetricAlertConfigViewForNdsGroupNotificationsList = /*@__PURE__*/ S.Array(
-  AlertsNotificationRootForGroup,
-) as any as S.Schema<ServerlessMetricAlertConfigViewForNdsGroupNotificationsList>;
+export const ServerlessMetricAlertConfigViewForNdsGroupNotificationsList =
+  DefaultAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<ServerlessMetricAlertConfigViewForNdsGroupNotificationsList>;
 
 /** Serverless metric alert configuration allows to select which serverless database metrics trigger alerts and how users are notified. */
 export interface ServerlessMetricAlertConfigViewForNdsGroup {
@@ -12042,22 +11933,19 @@ export const ServerlessMetricAlertConfigViewForNdsGroup = /*@__PURE__*/ S.suspen
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type FlexMetricAlertConfigViewForNdsGroupLinksList = Array<Link>;
-export const FlexMetricAlertConfigViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<FlexMetricAlertConfigViewForNdsGroupLinksList>;
+export const FlexMetricAlertConfigViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<FlexMetricAlertConfigViewForNdsGroupLinksList>;
 
 /** Matching conditions for target resources. */
 export type FlexMetricAlertConfigViewForNdsGroupMatchersList = Array<AlertMatcher>;
-export const FlexMetricAlertConfigViewForNdsGroupMatchersList = /*@__PURE__*/ S.Array(
-  AlertMatcher,
-) as any as S.Schema<FlexMetricAlertConfigViewForNdsGroupMatchersList>;
+export const FlexMetricAlertConfigViewForNdsGroupMatchersList =
+  DefaultAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<FlexMetricAlertConfigViewForNdsGroupMatchersList>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type FlexMetricAlertConfigViewForNdsGroupNotificationsList =
   Array<AlertsNotificationRootForGroup>;
-export const FlexMetricAlertConfigViewForNdsGroupNotificationsList = /*@__PURE__*/ S.Array(
-  AlertsNotificationRootForGroup,
-) as any as S.Schema<FlexMetricAlertConfigViewForNdsGroupNotificationsList>;
+export const FlexMetricAlertConfigViewForNdsGroupNotificationsList =
+  DefaultAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<FlexMetricAlertConfigViewForNdsGroupNotificationsList>;
 
 /** Flex metric alert configuration allows to select which Flex database metrics trigger alerts and how users are notified. */
 export interface FlexMetricAlertConfigViewForNdsGroup {
@@ -12101,22 +11989,19 @@ export const FlexMetricAlertConfigViewForNdsGroup = /*@__PURE__*/ S.suspend(() =
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamProcessorAlertConfigViewForNdsGroupLinksList = Array<Link>;
-export const StreamProcessorAlertConfigViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamProcessorAlertConfigViewForNdsGroupLinksList>;
+export const StreamProcessorAlertConfigViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamProcessorAlertConfigViewForNdsGroupLinksList>;
 
 /** List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. */
 export type StreamProcessorAlertConfigViewForNdsGroupMatchersList = Array<StreamsMatcher>;
-export const StreamProcessorAlertConfigViewForNdsGroupMatchersList = /*@__PURE__*/ S.Array(
-  StreamsMatcher,
-) as any as S.Schema<StreamProcessorAlertConfigViewForNdsGroupMatchersList>;
+export const StreamProcessorAlertConfigViewForNdsGroupMatchersList =
+  StreamProcessorAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<StreamProcessorAlertConfigViewForNdsGroupMatchersList>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type StreamProcessorAlertConfigViewForNdsGroupNotificationsList =
   Array<AlertsNotificationRootForGroup>;
-export const StreamProcessorAlertConfigViewForNdsGroupNotificationsList = /*@__PURE__*/ S.Array(
-  AlertsNotificationRootForGroup,
-) as any as S.Schema<StreamProcessorAlertConfigViewForNdsGroupNotificationsList>;
+export const StreamProcessorAlertConfigViewForNdsGroupNotificationsList =
+  DefaultAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<StreamProcessorAlertConfigViewForNdsGroupNotificationsList>;
 
 /** Host metric alert configuration allows to select which Atlas streams processors trigger alerts and how users are notified. */
 export interface StreamProcessorAlertConfigViewForNdsGroup {
@@ -12158,23 +12043,19 @@ export const StreamProcessorAlertConfigViewForNdsGroup = /*@__PURE__*/ S.suspend
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamProcessorMetricAlertConfigViewForNdsGroupLinksList = Array<Link>;
-export const StreamProcessorMetricAlertConfigViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamProcessorMetricAlertConfigViewForNdsGroupLinksList>;
+export const StreamProcessorMetricAlertConfigViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamProcessorMetricAlertConfigViewForNdsGroupLinksList>;
 
 /** List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. */
 export type StreamProcessorMetricAlertConfigViewForNdsGroupMatchersList = Array<StreamsMatcher>;
-export const StreamProcessorMetricAlertConfigViewForNdsGroupMatchersList = /*@__PURE__*/ S.Array(
-  StreamsMatcher,
-) as any as S.Schema<StreamProcessorMetricAlertConfigViewForNdsGroupMatchersList>;
+export const StreamProcessorMetricAlertConfigViewForNdsGroupMatchersList =
+  StreamProcessorAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<StreamProcessorMetricAlertConfigViewForNdsGroupMatchersList>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type StreamProcessorMetricAlertConfigViewForNdsGroupNotificationsList =
   Array<AlertsNotificationRootForGroup>;
 export const StreamProcessorMetricAlertConfigViewForNdsGroupNotificationsList =
-  /*@__PURE__*/ S.Array(
-    AlertsNotificationRootForGroup,
-  ) as any as S.Schema<StreamProcessorMetricAlertConfigViewForNdsGroupNotificationsList>;
+  AppServiceMetricAlertConfigViewForNdsGroupInputNotificationsList as any as S.Schema<StreamProcessorMetricAlertConfigViewForNdsGroupNotificationsList>;
 
 /** Stream Processor threshold alert configuration allows to select thresholds on metrics which trigger alerts and how users are notified. */
 export interface StreamProcessorMetricAlertConfigViewForNdsGroup {
@@ -12248,9 +12129,8 @@ export const CreateGroupAlertConfigResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of roles to grant this API key. If you provide this list, provide a minimum of one role and ensure each role applies to this project. */
 export type CreateGroupApiKeyRequestRolesList = Array<string>;
-export const CreateGroupApiKeyRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateGroupApiKeyRequestRolesList>;
+export const CreateGroupApiKeyRequestRolesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<CreateGroupApiKeyRequestRolesList>;
 
 export interface CreateGroupApiKeyRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -12283,9 +12163,8 @@ export const CreateGroupApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type ApiKeyUserDetailsLinksList = Array<Link>;
-export const ApiKeyUserDetailsLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<ApiKeyUserDetailsLinksList>;
+export const ApiKeyUserDetailsLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<ApiKeyUserDetailsLinksList>;
 
 /** MongoDB Cloud user's roles and the corresponding organization or project to which that role applies. Each role can apply to one organization or one project but not both. */
 export interface CloudAccessRoleAssignment {
@@ -12376,9 +12255,8 @@ export const DiskBackupSnapshotExportBucketResponseCloudProvider = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type DiskBackupSnapshotExportBucketResponseLinksList = Array<Link>;
-export const DiskBackupSnapshotExportBucketResponseLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<DiskBackupSnapshotExportBucketResponseLinksList>;
+export const DiskBackupSnapshotExportBucketResponseLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<DiskBackupSnapshotExportBucketResponseLinksList>;
 
 /** Disk backup snapshot Export Bucket. */
 export interface DiskBackupSnapshotExportBucketResponse {
@@ -13902,9 +13780,8 @@ export const CreateGroupClusterRequestRootCertType = S.String;
 
 /** List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the cluster. */
 export type CreateGroupClusterRequestTagsList = Array<ResourceTag>;
-export const CreateGroupClusterRequestTagsList = /*@__PURE__*/ S.Array(
-  ResourceTag,
-) as any as S.Schema<CreateGroupClusterRequestTagsList>;
+export const CreateGroupClusterRequestTagsList =
+  CreateGroupRequestTagsList as any as S.Schema<CreateGroupClusterRequestTagsList>;
 
 /** Method by which the cluster maintains the MongoDB versions. If value is `CONTINUOUS`, you must not specify `mongoDBMajorVersion`. */
 export type CreateGroupClusterRequestVersionReleaseSystem = "LTS" | "CONTINUOUS";
@@ -14035,10 +13912,8 @@ export const ClusterConnectionStringsAwsPrivateLinkMap = /*@__PURE__*/ S.Record(
 
 /** Private endpoint-aware connection strings that use AWS-hosted clusters with Amazon Web Services (AWS) PrivateLink. Each key identifies an Amazon Web Services (AWS) interface endpoint. Each value identifies the related `mongodb://` connection string that you use to connect to Atlas through the interface endpoint that the key names. If the cluster uses an optimized connection string, `awsPrivateLinkSrv` contains the optimized connection string. If the cluster has the non-optimized (legacy) connection string, `awsPrivateLinkSrv` contains the non-optimized connection string even if an optimized connection string is also present. */
 export type ClusterConnectionStringsAwsPrivateLinkSrvMap = { [key: string]: string | undefined };
-export const ClusterConnectionStringsAwsPrivateLinkSrvMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ClusterConnectionStringsAwsPrivateLinkSrvMap>;
+export const ClusterConnectionStringsAwsPrivateLinkSrvMap =
+  ClusterConnectionStringsAwsPrivateLinkMap as any as S.Schema<ClusterConnectionStringsAwsPrivateLinkSrvMap>;
 
 /** Cloud provider in which MongoDB Cloud deploys the private endpoint. */
 export type ClusterDescriptionConnectionStringsPrivateEndpointEndpointProviderName =
@@ -15394,15 +15269,13 @@ export const ClusterDescription20240805InternalClusterRole = S.String;
 
 /** Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels. Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use Resource Tags instead. */
 export type ClusterDescription20240805LabelsList = Array<ComponentLabel>;
-export const ClusterDescription20240805LabelsList = /*@__PURE__*/ S.Array(
-  ComponentLabel,
-) as any as S.Schema<ClusterDescription20240805LabelsList>;
+export const ClusterDescription20240805LabelsList =
+  CreateGroupClusterRequestLabelsList as any as S.Schema<ClusterDescription20240805LabelsList>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type ClusterDescription20240805LinksList = Array<Link>;
-export const ClusterDescription20240805LinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<ClusterDescription20240805LinksList>;
+export const ClusterDescription20240805LinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<ClusterDescription20240805LinksList>;
 
 /** Level of access to grant to MongoDB Employees. */
 export type EmployeeAccessGrantViewGrantType =
@@ -15413,9 +15286,8 @@ export const EmployeeAccessGrantViewGrantType = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type EmployeeAccessGrantViewLinksList = Array<Link>;
-export const EmployeeAccessGrantViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<EmployeeAccessGrantViewLinksList>;
+export const EmployeeAccessGrantViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<EmployeeAccessGrantViewLinksList>;
 
 /** MongoDB employee granted access level and expiration for a cluster. */
 export interface EmployeeAccessGrantView {
@@ -15443,9 +15315,8 @@ export const ClusterDescription20240805ReplicaSetScalingStrategy = S.String;
 
 /** List of settings that configure your cluster regions. This array has one object per shard representing node configurations in each shard. For replica sets there is only one object representing node configurations. */
 export type ClusterDescription20240805ReplicationSpecsList = Array<ReplicationSpec20240805>;
-export const ClusterDescription20240805ReplicationSpecsList = /*@__PURE__*/ S.Array(
-  ReplicationSpec20240805,
-) as any as S.Schema<ClusterDescription20240805ReplicationSpecsList>;
+export const ClusterDescription20240805ReplicationSpecsList =
+  ClusterDescription20240805EffectiveReplicationSpecsList as any as S.Schema<ClusterDescription20240805ReplicationSpecsList>;
 
 /** Root Certificate Authority that MongoDB Atlas cluster uses. MongoDB Cloud supports Internet Security Research Group. */
 export type ClusterDescription20240805RootCertType = "ISRGROOTX1";
@@ -15462,9 +15333,8 @@ export const ClusterDescription20240805StateName = S.String;
 
 /** List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the cluster. */
 export type ClusterDescription20240805TagsList = Array<ResourceTag>;
-export const ClusterDescription20240805TagsList = /*@__PURE__*/ S.Array(
-  ResourceTag,
-) as any as S.Schema<ClusterDescription20240805TagsList>;
+export const ClusterDescription20240805TagsList =
+  CreateGroupRequestTagsList as any as S.Schema<ClusterDescription20240805TagsList>;
 
 /** Method by which the cluster maintains the MongoDB versions. If value is `CONTINUOUS`, you must not specify `mongoDBMajorVersion`. */
 export type ClusterDescription20240805VersionReleaseSystem = "LTS" | "CONTINUOUS";
@@ -15600,18 +15470,12 @@ export interface BackupLabel {
   /** Value for the key to include in file that MongoDB Cloud uploads to the bucket when the export job finishes. */
   value?: string;
 }
-export const BackupLabel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "BackupLabel" }) as any as S.Schema<BackupLabel>;
+export const BackupLabel = ComponentLabel as any as S.Schema<BackupLabel>;
 
 /** Collection of key-value pairs that represent custom data to add to the metadata file that MongoDB Cloud uploads to the bucket when the export job finishes. */
 export type CreateGroupClusterBackupExportRequestCustomDataList = Array<BackupLabel>;
-export const CreateGroupClusterBackupExportRequestCustomDataList = /*@__PURE__*/ S.Array(
-  BackupLabel,
-) as any as S.Schema<CreateGroupClusterBackupExportRequestCustomDataList>;
+export const CreateGroupClusterBackupExportRequestCustomDataList =
+  CreateGroupClusterRequestLabelsList as any as S.Schema<CreateGroupClusterBackupExportRequestCustomDataList>;
 
 export interface CreateGroupClusterBackupExportRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -15668,9 +15532,8 @@ export const DiskBackupExportJobComponentsList = /*@__PURE__*/ S.Array(
 
 /** Collection of key-value pairs that represent custom data for the metadata file that MongoDB Cloud uploads when the Export Job finishes. */
 export type DiskBackupExportJobCustomDataList = Array<BackupLabel>;
-export const DiskBackupExportJobCustomDataList = /*@__PURE__*/ S.Array(
-  BackupLabel,
-) as any as S.Schema<DiskBackupExportJobCustomDataList>;
+export const DiskBackupExportJobCustomDataList =
+  CreateGroupClusterRequestLabelsList as any as S.Schema<DiskBackupExportJobCustomDataList>;
 
 /** State of the Export Job. */
 export interface ExportStatus {
@@ -15688,9 +15551,8 @@ export const ExportStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type DiskBackupExportJobLinksList = Array<Link>;
-export const DiskBackupExportJobLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<DiskBackupExportJobLinksList>;
+export const DiskBackupExportJobLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<DiskBackupExportJobLinksList>;
 
 /** State of the Export Job. */
 export type DiskBackupExportJobState =
@@ -15863,9 +15725,8 @@ export const DiskBackupSnapshotRestoreJobDeliveryType = S.String;
 
 /** One or more Uniform Resource Locators (URLs) that point to the compressed snapshot files for manual download. MongoDB Cloud returns this parameter when `"deliveryType" : "download"`. */
 export type DiskBackupSnapshotRestoreJobDeliveryUrlList = Array<string>;
-export const DiskBackupSnapshotRestoreJobDeliveryUrlList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DiskBackupSnapshotRestoreJobDeliveryUrlList>;
+export const DiskBackupSnapshotRestoreJobDeliveryUrlList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<DiskBackupSnapshotRestoreJobDeliveryUrlList>;
 
 /** BSON timestamp that indicates when the checkpoint token entry in the oplog occurred. */
 export interface ApiBSONTimestampView {
@@ -15883,16 +15744,14 @@ export const ApiBSONTimestampView = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type DiskBackupSnapshotRestoreJobLinksList = Array<Link>;
-export const DiskBackupSnapshotRestoreJobLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<DiskBackupSnapshotRestoreJobLinksList>;
+export const DiskBackupSnapshotRestoreJobLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<DiskBackupSnapshotRestoreJobLinksList>;
 
 /** One or more Uniform Resource Locators (URLs) that point to the compressed snapshot files for manual download and the corresponding private endpoint(s). MongoDB Cloud returns this parameter when `"deliveryType" : "download"` and the download can be performed privately. */
 export type DiskBackupSnapshotRestoreJobPrivateDownloadDeliveryUrlsList =
   Array<ApiPrivateDownloadDeliveryUrl>;
-export const DiskBackupSnapshotRestoreJobPrivateDownloadDeliveryUrlsList = /*@__PURE__*/ S.Array(
-  ApiPrivateDownloadDeliveryUrl,
-) as any as S.Schema<DiskBackupSnapshotRestoreJobPrivateDownloadDeliveryUrlsList>;
+export const DiskBackupSnapshotRestoreJobPrivateDownloadDeliveryUrlsList =
+  DiskBackupRestoreMemberPrivateDownloadDeliveryUrlsList as any as S.Schema<DiskBackupSnapshotRestoreJobPrivateDownloadDeliveryUrlsList>;
 
 export interface DiskBackupSnapshotRestoreJob {
   /** Flag that indicates whether someone canceled this restore job. */
@@ -15991,21 +15850,14 @@ export interface ApiAtlasRestoreDatabaseNamespaceView {
   /** Requested target database name; if empty, source database name is used. */
   targetNamespace?: string;
 }
-export const ApiAtlasRestoreDatabaseNamespaceView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourceNamespace: S.String,
-    targetNamespace: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApiAtlasRestoreDatabaseNamespaceView",
-}) as any as S.Schema<ApiAtlasRestoreDatabaseNamespaceView>;
+export const ApiAtlasRestoreDatabaseNamespaceView =
+  ApiAtlasRestoreCollectionNamespaceView as any as S.Schema<ApiAtlasRestoreDatabaseNamespaceView>;
 
 /** List of databases to restore (up to 100 items). */
 export type CreateGroupClusterCollectionRestoreJobRequestDatabasesList =
   Array<ApiAtlasRestoreDatabaseNamespaceView>;
-export const CreateGroupClusterCollectionRestoreJobRequestDatabasesList = /*@__PURE__*/ S.Array(
-  ApiAtlasRestoreDatabaseNamespaceView,
-) as any as S.Schema<CreateGroupClusterCollectionRestoreJobRequestDatabasesList>;
+export const CreateGroupClusterCollectionRestoreJobRequestDatabasesList =
+  CreateGroupClusterCollectionRestoreJobRequestCollectionsList as any as S.Schema<CreateGroupClusterCollectionRestoreJobRequestDatabasesList>;
 
 /** Strategy for restoring indexes (all, none, or all except TTL). */
 export type CreateGroupClusterCollectionRestoreJobRequestIndexStrategy =
@@ -16087,16 +15939,14 @@ export const CreateGroupClusterCollectionRestoreJobRequest = /*@__PURE__*/ S.sus
 /** List of collections in the restore scope (up to 100 items). */
 export type ApiAtlasCollectionRestoreJobResponseCollectionsList =
   Array<ApiAtlasRestoreCollectionNamespaceView>;
-export const ApiAtlasCollectionRestoreJobResponseCollectionsList = /*@__PURE__*/ S.Array(
-  ApiAtlasRestoreCollectionNamespaceView,
-) as any as S.Schema<ApiAtlasCollectionRestoreJobResponseCollectionsList>;
+export const ApiAtlasCollectionRestoreJobResponseCollectionsList =
+  CreateGroupClusterCollectionRestoreJobRequestCollectionsList as any as S.Schema<ApiAtlasCollectionRestoreJobResponseCollectionsList>;
 
 /** List of databases in the restore scope (up to 100 items). */
 export type ApiAtlasCollectionRestoreJobResponseDatabasesList =
   Array<ApiAtlasRestoreDatabaseNamespaceView>;
-export const ApiAtlasCollectionRestoreJobResponseDatabasesList = /*@__PURE__*/ S.Array(
-  ApiAtlasRestoreDatabaseNamespaceView,
-) as any as S.Schema<ApiAtlasCollectionRestoreJobResponseDatabasesList>;
+export const ApiAtlasCollectionRestoreJobResponseDatabasesList =
+  CreateGroupClusterCollectionRestoreJobRequestCollectionsList as any as S.Schema<ApiAtlasCollectionRestoreJobResponseDatabasesList>;
 
 /** Index build state indicating the status of index creation during or after a restore operation. */
 export type ApiAtlasCollectionRestoreJobIndexStatusState =
@@ -16265,10 +16115,8 @@ export const CreateGroupClusterGlobalWriteCustomZoneMappingRequest = /*@__PURE__
 
 /** List that contains comma-separated key value pairs to map zones to geographic regions. These pairs map an ISO 3166-1a2 location code, with an ISO 3166-2 subdivision code when possible, to a unique 24-hexadecimal string that identifies the custom zone. The 24-hexadecimal string corresponds to a `Replication Specifications` `zoneId` property. This parameter returns an empty object if no custom zones exist. Example: `{"US-VA": "6716c5a804f4ce77e899bf99", "DE": "6716c5a804f4ce77e899bf9a"}`. */
 export type GeoSharding20240805CustomZoneMappingMap = { [key: string]: string | undefined };
-export const GeoSharding20240805CustomZoneMappingMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GeoSharding20240805CustomZoneMappingMap>;
+export const GeoSharding20240805CustomZoneMappingMap =
+  ClusterConnectionStringsAwsPrivateLinkMap as any as S.Schema<GeoSharding20240805CustomZoneMappingMap>;
 
 export interface ManagedNamespaces {
   /** Human-readable label of the collection to manage for this Global Cluster. */
@@ -16534,10 +16382,8 @@ export const Collation = /*@__PURE__*/ S.suspend(() =>
 export type CreateGroupClusterIndexRollingIndexRequestKeysItemMap = {
   [key: string]: string | undefined;
 };
-export const CreateGroupClusterIndexRollingIndexRequestKeysItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateGroupClusterIndexRollingIndexRequestKeysItemMap>;
+export const CreateGroupClusterIndexRollingIndexRequestKeysItemMap =
+  ClusterConnectionStringsAwsPrivateLinkMap as any as S.Schema<CreateGroupClusterIndexRollingIndexRequestKeysItemMap>;
 
 /** List that contains one or more objects that describe the parameters that you want to index. */
 export type CreateGroupClusterIndexRollingIndexRequestKeysList =
@@ -16562,17 +16408,13 @@ export const IndexOptionsPartialFilterExpressionMap = /*@__PURE__*/ S.Record(
 
 /** Storage engine set for the specific index. This value can be set only at creation. This option uses the following format: `"storageEngine" : { "<storage-engine-name>" : "<options>" }` MongoDB validates storage engine configuration options when creating indexes. To support replica sets with members with different storage engines, MongoDB logs these options to the oplog during replication. This option applies to all index types. */
 export type IndexOptionsStorageEngineMap = { [key: string]: unknown | undefined };
-export const IndexOptionsStorageEngineMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<IndexOptionsStorageEngineMap>;
+export const IndexOptionsStorageEngineMap =
+  IndexOptionsPartialFilterExpressionMap as any as S.Schema<IndexOptionsStorageEngineMap>;
 
 /** Relative importance to place upon provided index parameters. This object expresses this as key/value pairs of index parameter and weight to apply to that parameter. You can specify weights for some or all the indexed parameters. The weight must be an integer between 1 and 99,999. MongoDB 5.0 and later can apply **weights** to **text** indexes only. */
 export type IndexOptionsWeightsMap = { [key: string]: unknown | undefined };
-export const IndexOptionsWeightsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<IndexOptionsWeightsMap>;
+export const IndexOptionsWeightsMap =
+  IndexOptionsPartialFilterExpressionMap as any as S.Schema<IndexOptionsWeightsMap>;
 
 /** One or more settings that determine how the MongoDB Cloud creates this MongoDB index. */
 export interface IndexOptions {
@@ -16675,11 +16517,8 @@ export const CreateGroupClusterIndexRollingIndexRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CreateGroupClusterIndexRollingIndexRequest>;
 
 export interface CreateGroupClusterIndexRollingIndexResponse {}
-export const CreateGroupClusterIndexRollingIndexResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateGroupClusterIndexRollingIndexResponse",
-}) as any as S.Schema<CreateGroupClusterIndexRollingIndexResponse>;
+export const CreateGroupClusterIndexRollingIndexResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<CreateGroupClusterIndexRollingIndexResponse>;
 
 /** Classification of MongoDB database collection that you want to return. If you set this parameter to `TIMESERIES`, set `"criteria.type" : "date"` and `"criteria.dateFormat" : "ISODATE"`. */
 export type CreateGroupClusterOnlineArchiveRequestCollectionType = "TIMESERIES" | "STANDARD";
@@ -17303,9 +17142,8 @@ export const ApiSearchDeploymentResponseViewBaselineSpecsList = /*@__PURE__*/ S.
 /** List of settings that configure the Search Nodes for your cluster. Each entry describes one region or, when `shardId` is present, one shard in one region. */
 export type ApiSearchDeploymentResponseViewEffectiveSpecsList =
   Array<ApiSearchDeploymentEffectiveSpecView>;
-export const ApiSearchDeploymentResponseViewEffectiveSpecsList = /*@__PURE__*/ S.Array(
-  ApiSearchDeploymentEffectiveSpecView,
-) as any as S.Schema<ApiSearchDeploymentResponseViewEffectiveSpecsList>;
+export const ApiSearchDeploymentResponseViewEffectiveSpecsList =
+  ApiSearchDeploymentResponseViewBaselineSpecsList as any as S.Schema<ApiSearchDeploymentResponseViewEffectiveSpecsList>;
 
 /** Cloud service provider that manages your customer keys to provide an additional layer of Encryption At Rest for the cluster. */
 export type ApiSearchDeploymentResponseViewEncryptionAtRestProvider =
@@ -18493,11 +18331,8 @@ export const CreateGroupCustomDbRoleRoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateGroupCustomDbRoleRoleRequest>;
 
 export interface CreateGroupCustomDbRoleRoleResponse {}
-export const CreateGroupCustomDbRoleRoleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateGroupCustomDbRoleRoleResponse",
-}) as any as S.Schema<CreateGroupCustomDbRoleRoleResponse>;
+export const CreateGroupCustomDbRoleRoleResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<CreateGroupCustomDbRoleRoleResponse>;
 
 /** Human-readable label that indicates whether the new database user authenticates with the Amazon Web Services (AWS) Identity and Access Management (IAM) credentials associated with the user or the user's role. */
 export type CreateGroupDatabaseUserRequestAwsIAMType = "NONE" | "USER" | "ROLE";
@@ -18509,9 +18344,8 @@ export const CreateGroupDatabaseUserRequestDatabaseName = S.String;
 
 /** List that contains the key-value pairs for tagging and categorizing the MongoDB database user. The labels that you define do not appear in the console. */
 export type CreateGroupDatabaseUserRequestLabelsList = Array<ComponentLabel>;
-export const CreateGroupDatabaseUserRequestLabelsList = /*@__PURE__*/ S.Array(
-  ComponentLabel,
-) as any as S.Schema<CreateGroupDatabaseUserRequestLabelsList>;
+export const CreateGroupDatabaseUserRequestLabelsList =
+  CreateGroupClusterRequestLabelsList as any as S.Schema<CreateGroupDatabaseUserRequestLabelsList>;
 
 /** Part of the Lightweight Directory Access Protocol (LDAP) record that the database uses to authenticate this database user on the LDAP host. */
 export type CreateGroupDatabaseUserRequestLdapAuthType = "NONE" | "GROUP" | "USER";
@@ -18658,9 +18492,8 @@ export const CloudDatabaseUserOutputDatabaseName = S.String;
 
 /** List that contains the key-value pairs for tagging and categorizing the MongoDB database user. The labels that you define do not appear in the console. */
 export type CloudDatabaseUserOutputLabelsList = Array<ComponentLabel>;
-export const CloudDatabaseUserOutputLabelsList = /*@__PURE__*/ S.Array(
-  ComponentLabel,
-) as any as S.Schema<CloudDatabaseUserOutputLabelsList>;
+export const CloudDatabaseUserOutputLabelsList =
+  CreateGroupClusterRequestLabelsList as any as S.Schema<CloudDatabaseUserOutputLabelsList>;
 
 /** Part of the Lightweight Directory Access Protocol (LDAP) record that the database uses to authenticate this database user on the LDAP host. */
 export type CloudDatabaseUserOutputLdapAuthType = "NONE" | "GROUP" | "USER";
@@ -18668,9 +18501,8 @@ export const CloudDatabaseUserOutputLdapAuthType = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type CloudDatabaseUserOutputLinksList = Array<Link>;
-export const CloudDatabaseUserOutputLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<CloudDatabaseUserOutputLinksList>;
+export const CloudDatabaseUserOutputLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<CloudDatabaseUserOutputLinksList>;
 
 /** Human-readable label that indicates whether the new database user or group authenticates with OIDC federated authentication. To create a federated authentication user, specify the value of USER in this field. To create a federated authentication group, specify the value of `IDP_GROUP` in this field. */
 export type CloudDatabaseUserOutputOidcAuthType = "NONE" | "IDP_GROUP" | "USER";
@@ -18678,15 +18510,13 @@ export const CloudDatabaseUserOutputOidcAuthType = S.String;
 
 /** List that provides the pairings of one role with one applicable database. */
 export type CloudDatabaseUserOutputRolesList = Array<DatabaseUserRole>;
-export const CloudDatabaseUserOutputRolesList = /*@__PURE__*/ S.Array(
-  DatabaseUserRole,
-) as any as S.Schema<CloudDatabaseUserOutputRolesList>;
+export const CloudDatabaseUserOutputRolesList =
+  CreateGroupDatabaseUserRequestRolesList as any as S.Schema<CloudDatabaseUserOutputRolesList>;
 
 /** List that contains clusters, MongoDB Atlas Data Lakes, and MongoDB Atlas Streams Workspaces that this database user can access. If omitted, MongoDB Cloud grants the database user access to all the clusters, MongoDB Atlas Data Lakes, and MongoDB Atlas Streams Workspaces in the project. */
 export type CloudDatabaseUserOutputScopesList = Array<UserScope>;
-export const CloudDatabaseUserOutputScopesList = /*@__PURE__*/ S.Array(
-  UserScope,
-) as any as S.Schema<CloudDatabaseUserOutputScopesList>;
+export const CloudDatabaseUserOutputScopesList =
+  CreateGroupDatabaseUserRequestScopesList as any as S.Schema<CloudDatabaseUserOutputScopesList>;
 
 /** X.509 method that MongoDB Cloud uses to authenticate the database user. - For application-managed X.509, specify `MANAGED`. - For self-managed X.509, specify `CUSTOMER`. Users created with the `CUSTOMER` method require a Common Name (CN) in the **username** parameter. You must create externally authenticated users on the `$external` database. */
 export type CloudDatabaseUserOutputX509Type = "NONE" | "CUSTOMER" | "MANAGED";
@@ -18897,9 +18727,8 @@ export const DataLakeDatabaseDataSourceSettingsDefaultFormat = S.String;
 
 /** URLs of the publicly accessible data files. You can't specify URLs that require authentication. Atlas Data Lake creates a partition for each URL. If empty or omitted, Data Lake uses the URLs from the store specified in the **dataSources.storeName** parameter. */
 export type DataLakeDatabaseDataSourceSettingsUrlsList = Array<string>;
-export const DataLakeDatabaseDataSourceSettingsUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataLakeDatabaseDataSourceSettingsUrlsList>;
+export const DataLakeDatabaseDataSourceSettingsUrlsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<DataLakeDatabaseDataSourceSettingsUrlsList>;
 
 /** Data store that maps to a collection for this data lake. */
 export interface DataLakeDatabaseDataSourceSettings {
@@ -19145,9 +18974,8 @@ export const DataLakeAtlasStoreReadPreference = /*@__PURE__*/ S.suspend(() =>
 
 /** Comma-separated list of publicly accessible HTTP URLs where data is stored. You can't specify URLs that require authentication. */
 export type DataLakeS3StoreSettingsInputUrlsList = Array<string>;
-export const DataLakeS3StoreSettingsInputUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataLakeS3StoreSettingsInputUrlsList>;
+export const DataLakeS3StoreSettingsInputUrlsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<DataLakeS3StoreSettingsInputUrlsList>;
 
 /** AWS S3 [storage class](https://aws.amazon.com/s3/storage-classes/) where the files to include in the results are stored. */
 export type DataLakeS3StoreSettingsInputAdditionalStorageClassesItem =
@@ -19264,9 +19092,8 @@ export const DataLakeDLSAWSStoreInputRegion = S.String;
 
 /** Comma-separated list of publicly accessible HTTP URLs where data is stored. You can't specify URLs that require authentication. */
 export type DataLakeDLSAWSStoreInputUrlsList = Array<string>;
-export const DataLakeDLSAWSStoreInputUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataLakeDLSAWSStoreInputUrlsList>;
+export const DataLakeDLSAWSStoreInputUrlsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<DataLakeDLSAWSStoreInputUrlsList>;
 
 /** AWS S3 [storage class](https://aws.amazon.com/s3/storage-classes/) where the files to include in the results are stored. */
 export type DataLakeDLSAWSStoreInputAdditionalStorageClassesItem =
@@ -19381,9 +19208,8 @@ export const DataLakeDLSAzureStoreInputRegion = S.String;
 
 /** Comma-separated list of publicly accessible HTTP URLs where data is stored. You can't specify URLs that require authentication. */
 export type DataLakeDLSAzureStoreInputUrlsList = Array<string>;
-export const DataLakeDLSAzureStoreInputUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataLakeDLSAzureStoreInputUrlsList>;
+export const DataLakeDLSAzureStoreInputUrlsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<DataLakeDLSAzureStoreInputUrlsList>;
 
 /** AWS S3 [storage class](https://aws.amazon.com/s3/storage-classes/) where the files to include in the results are stored. */
 export type DataLakeDLSAzureStoreInputAdditionalStorageClassesItem =
@@ -19500,9 +19326,8 @@ export const DataLakeDLSGCPStoreInputRegion = S.String;
 
 /** Comma-separated list of publicly accessible HTTP URLs where data is stored. You can't specify URLs that require authentication. */
 export type DataLakeDLSGCPStoreInputUrlsList = Array<string>;
-export const DataLakeDLSGCPStoreInputUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataLakeDLSGCPStoreInputUrlsList>;
+export const DataLakeDLSGCPStoreInputUrlsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<DataLakeDLSGCPStoreInputUrlsList>;
 
 /** AWS S3 [storage class](https://aws.amazon.com/s3/storage-classes/) where the files to include in the results are stored. */
 export type DataLakeDLSGCPStoreInputAdditionalStorageClassesItem =
@@ -19617,9 +19442,8 @@ export const DataLakeAtlasStoreInstanceInputRegion = S.String;
 
 /** Comma-separated list of publicly accessible HTTP URLs where data is stored. You can't specify URLs that require authentication. */
 export type DataLakeAtlasStoreInstanceInputUrlsList = Array<string>;
-export const DataLakeAtlasStoreInstanceInputUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataLakeAtlasStoreInstanceInputUrlsList>;
+export const DataLakeAtlasStoreInstanceInputUrlsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<DataLakeAtlasStoreInstanceInputUrlsList>;
 
 /** AWS S3 [storage class](https://aws.amazon.com/s3/storage-classes/) where the files to include in the results are stored. */
 export type DataLakeAtlasStoreInstanceInputAdditionalStorageClassesItem =
@@ -19738,9 +19562,8 @@ export const DataLakeHTTPStoreInputRegion = S.String;
 
 /** Comma-separated list of publicly accessible HTTP URLs where data is stored. You can't specify URLs that require authentication. */
 export type DataLakeHTTPStoreInputUrlsList = Array<string>;
-export const DataLakeHTTPStoreInputUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataLakeHTTPStoreInputUrlsList>;
+export const DataLakeHTTPStoreInputUrlsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<DataLakeHTTPStoreInputUrlsList>;
 
 /** AWS S3 [storage class](https://aws.amazon.com/s3/storage-classes/) where the files to include in the results are stored. */
 export type DataLakeHTTPStoreInputAdditionalStorageClassesItem =
@@ -19855,9 +19678,8 @@ export const DataLakeAzureBlobStoreInputRegion = S.String;
 
 /** Comma-separated list of publicly accessible HTTP URLs where data is stored. You can't specify URLs that require authentication. */
 export type DataLakeAzureBlobStoreInputUrlsList = Array<string>;
-export const DataLakeAzureBlobStoreInputUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataLakeAzureBlobStoreInputUrlsList>;
+export const DataLakeAzureBlobStoreInputUrlsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<DataLakeAzureBlobStoreInputUrlsList>;
 
 /** AWS S3 [storage class](https://aws.amazon.com/s3/storage-classes/) where the files to include in the results are stored. */
 export type DataLakeAzureBlobStoreInputAdditionalStorageClassesItem =
@@ -19974,9 +19796,8 @@ export const DataLakeGoogleCloudStorageStoreInputRegion = S.String;
 
 /** Comma-separated list of publicly accessible HTTP URLs where data is stored. You can't specify URLs that require authentication. */
 export type DataLakeGoogleCloudStorageStoreInputUrlsList = Array<string>;
-export const DataLakeGoogleCloudStorageStoreInputUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataLakeGoogleCloudStorageStoreInputUrlsList>;
+export const DataLakeGoogleCloudStorageStoreInputUrlsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<DataLakeGoogleCloudStorageStoreInputUrlsList>;
 
 /** AWS S3 [storage class](https://aws.amazon.com/s3/storage-classes/) where the files to include in the results are stored. */
 export type DataLakeGoogleCloudStorageStoreInputAdditionalStorageClassesItem =
@@ -20203,9 +20024,8 @@ export const DataLakeCloudProviderConfigOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** List that contains the hostnames assigned to the Federated Database Instance. */
 export type DataLakeTenantOutputHostnamesList = Array<string>;
-export const DataLakeTenantOutputHostnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataLakeTenantOutputHostnamesList>;
+export const DataLakeTenantOutputHostnamesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<DataLakeTenantOutputHostnamesList>;
 
 /** Set of Private endpoint and hostnames. */
 export interface PrivateEndpointHostname {
@@ -20233,9 +20053,8 @@ export const DataLakeTenantOutputState = S.String;
 
 /** Array that contains the queryable databases and collections for this data lake. */
 export type DataLakeStorageDatabasesList = Array<DataLakeDatabaseInstance>;
-export const DataLakeStorageDatabasesList = /*@__PURE__*/ S.Array(
-  DataLakeDatabaseInstance,
-) as any as S.Schema<DataLakeStorageDatabasesList>;
+export const DataLakeStorageDatabasesList =
+  DataLakeStorageInputDatabasesList as any as S.Schema<DataLakeStorageDatabasesList>;
 
 /** Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts. */
 export type DataLakeS3StoreSettingsRegion =
@@ -20277,9 +20096,8 @@ export const DataLakeS3StoreSettingsRegion = S.String;
 
 /** Comma-separated list of publicly accessible HTTP URLs where data is stored. You can't specify URLs that require authentication. */
 export type DataLakeS3StoreSettingsUrlsList = Array<string>;
-export const DataLakeS3StoreSettingsUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataLakeS3StoreSettingsUrlsList>;
+export const DataLakeS3StoreSettingsUrlsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<DataLakeS3StoreSettingsUrlsList>;
 
 /** AWS S3 [storage class](https://aws.amazon.com/s3/storage-classes/) where the files to include in the results are stored. */
 export type DataLakeS3StoreSettingsAdditionalStorageClassesItem =
@@ -20396,9 +20214,8 @@ export const DataLakeDLSAWSStoreRegion = S.String;
 
 /** Comma-separated list of publicly accessible HTTP URLs where data is stored. You can't specify URLs that require authentication. */
 export type DataLakeDLSAWSStoreUrlsList = Array<string>;
-export const DataLakeDLSAWSStoreUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataLakeDLSAWSStoreUrlsList>;
+export const DataLakeDLSAWSStoreUrlsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<DataLakeDLSAWSStoreUrlsList>;
 
 /** AWS S3 [storage class](https://aws.amazon.com/s3/storage-classes/) where the files to include in the results are stored. */
 export type DataLakeDLSAWSStoreAdditionalStorageClassesItem =
@@ -20515,9 +20332,8 @@ export const DataLakeDLSAzureStoreRegion = S.String;
 
 /** Comma-separated list of publicly accessible HTTP URLs where data is stored. You can't specify URLs that require authentication. */
 export type DataLakeDLSAzureStoreUrlsList = Array<string>;
-export const DataLakeDLSAzureStoreUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataLakeDLSAzureStoreUrlsList>;
+export const DataLakeDLSAzureStoreUrlsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<DataLakeDLSAzureStoreUrlsList>;
 
 /** AWS S3 [storage class](https://aws.amazon.com/s3/storage-classes/) where the files to include in the results are stored. */
 export type DataLakeDLSAzureStoreAdditionalStorageClassesItem =
@@ -20634,9 +20450,8 @@ export const DataLakeDLSGCPStoreRegion = S.String;
 
 /** Comma-separated list of publicly accessible HTTP URLs where data is stored. You can't specify URLs that require authentication. */
 export type DataLakeDLSGCPStoreUrlsList = Array<string>;
-export const DataLakeDLSGCPStoreUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataLakeDLSGCPStoreUrlsList>;
+export const DataLakeDLSGCPStoreUrlsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<DataLakeDLSGCPStoreUrlsList>;
 
 /** AWS S3 [storage class](https://aws.amazon.com/s3/storage-classes/) where the files to include in the results are stored. */
 export type DataLakeDLSGCPStoreAdditionalStorageClassesItem =
@@ -20753,9 +20568,8 @@ export const DataLakeAtlasStoreInstanceRegion = S.String;
 
 /** Comma-separated list of publicly accessible HTTP URLs where data is stored. You can't specify URLs that require authentication. */
 export type DataLakeAtlasStoreInstanceUrlsList = Array<string>;
-export const DataLakeAtlasStoreInstanceUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataLakeAtlasStoreInstanceUrlsList>;
+export const DataLakeAtlasStoreInstanceUrlsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<DataLakeAtlasStoreInstanceUrlsList>;
 
 /** AWS S3 [storage class](https://aws.amazon.com/s3/storage-classes/) where the files to include in the results are stored. */
 export type DataLakeAtlasStoreInstanceAdditionalStorageClassesItem =
@@ -20874,9 +20688,8 @@ export const DataLakeHTTPStoreRegion = S.String;
 
 /** Comma-separated list of publicly accessible HTTP URLs where data is stored. You can't specify URLs that require authentication. */
 export type DataLakeHTTPStoreUrlsList = Array<string>;
-export const DataLakeHTTPStoreUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataLakeHTTPStoreUrlsList>;
+export const DataLakeHTTPStoreUrlsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<DataLakeHTTPStoreUrlsList>;
 
 /** AWS S3 [storage class](https://aws.amazon.com/s3/storage-classes/) where the files to include in the results are stored. */
 export type DataLakeHTTPStoreAdditionalStorageClassesItem =
@@ -20993,9 +20806,8 @@ export const DataLakeAzureBlobStoreRegion = S.String;
 
 /** Comma-separated list of publicly accessible HTTP URLs where data is stored. You can't specify URLs that require authentication. */
 export type DataLakeAzureBlobStoreUrlsList = Array<string>;
-export const DataLakeAzureBlobStoreUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataLakeAzureBlobStoreUrlsList>;
+export const DataLakeAzureBlobStoreUrlsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<DataLakeAzureBlobStoreUrlsList>;
 
 /** AWS S3 [storage class](https://aws.amazon.com/s3/storage-classes/) where the files to include in the results are stored. */
 export type DataLakeAzureBlobStoreAdditionalStorageClassesItem =
@@ -21112,9 +20924,8 @@ export const DataLakeGoogleCloudStorageStoreRegion = S.String;
 
 /** Comma-separated list of publicly accessible HTTP URLs where data is stored. You can't specify URLs that require authentication. */
 export type DataLakeGoogleCloudStorageStoreUrlsList = Array<string>;
-export const DataLakeGoogleCloudStorageStoreUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataLakeGoogleCloudStorageStoreUrlsList>;
+export const DataLakeGoogleCloudStorageStoreUrlsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<DataLakeGoogleCloudStorageStoreUrlsList>;
 
 /** AWS S3 [storage class](https://aws.amazon.com/s3/storage-classes/) where the files to include in the results are stored. */
 export type DataLakeGoogleCloudStorageStoreAdditionalStorageClassesItem =
@@ -21400,11 +21211,8 @@ export const CreateGroupEncryptionAtRestPrivateEndpointRequest = /*@__PURE__*/ S
 }) as any as S.Schema<CreateGroupEncryptionAtRestPrivateEndpointRequest>;
 
 export interface CreateGroupEncryptionAtRestPrivateEndpointResponse {}
-export const CreateGroupEncryptionAtRestPrivateEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateGroupEncryptionAtRestPrivateEndpointResponse",
-}) as any as S.Schema<CreateGroupEncryptionAtRestPrivateEndpointResponse>;
+export const CreateGroupEncryptionAtRestPrivateEndpointResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<CreateGroupEncryptionAtRestPrivateEndpointResponse>;
 
 /** Available in Public Preview: Optional field that indicates whether your tenant cluster will be upgraded to Atlas INFINITE or CORE. */
 export type CreateGroupFlexClusterRequestDatabaseEdition = "CORE" | "INFINITE";
@@ -21432,9 +21240,8 @@ export const FlexProviderSettingsCreate20241113Input = /*@__PURE__*/ S.suspend((
 
 /** List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the instance. */
 export type CreateGroupFlexClusterRequestTagsList = Array<ResourceTag>;
-export const CreateGroupFlexClusterRequestTagsList = /*@__PURE__*/ S.Array(
-  ResourceTag,
-) as any as S.Schema<CreateGroupFlexClusterRequestTagsList>;
+export const CreateGroupFlexClusterRequestTagsList =
+  CreateGroupRequestTagsList as any as S.Schema<CreateGroupFlexClusterRequestTagsList>;
 
 export interface CreateGroupFlexClusterRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -21514,9 +21321,8 @@ export const FlexClusterDescription20241113DatabaseEdition = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type FlexClusterDescription20241113LinksList = Array<Link>;
-export const FlexClusterDescription20241113LinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<FlexClusterDescription20241113LinksList>;
+export const FlexClusterDescription20241113LinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<FlexClusterDescription20241113LinksList>;
 
 /** Cloud service provider on which MongoDB Cloud provisioned the flex cluster. */
 export type FlexProviderSettings20241113BackingProviderName = "AWS" | "AZURE" | "GCP";
@@ -21559,9 +21365,8 @@ export const FlexClusterDescription20241113StateName = S.String;
 
 /** List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the instance. */
 export type FlexClusterDescription20241113TagsList = Array<ResourceTag>;
-export const FlexClusterDescription20241113TagsList = /*@__PURE__*/ S.Array(
-  ResourceTag,
-) as any as S.Schema<FlexClusterDescription20241113TagsList>;
+export const FlexClusterDescription20241113TagsList =
+  CreateGroupRequestTagsList as any as S.Schema<FlexClusterDescription20241113TagsList>;
 
 /** Method by which the cluster maintains the MongoDB versions. */
 export type FlexClusterDescription20241113VersionReleaseSystem = "LTS";
@@ -21662,9 +21467,8 @@ export const FlexBackupRestoreJob20241113DeliveryType = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type FlexBackupRestoreJob20241113LinksList = Array<Link>;
-export const FlexBackupRestoreJob20241113LinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<FlexBackupRestoreJob20241113LinksList>;
+export const FlexBackupRestoreJob20241113LinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<FlexBackupRestoreJob20241113LinksList>;
 
 /** Phase of the restore workflow for this job at the time this resource made this request. */
 export type FlexBackupRestoreJob20241113Status =
@@ -21799,9 +21603,8 @@ export const CreateGroupIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedIntegrationViewOutputLinksList = Array<Link>;
-export const PaginatedIntegrationViewOutputLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedIntegrationViewOutputLinksList>;
+export const PaginatedIntegrationViewOutputLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedIntegrationViewOutputLinksList>;
 
 /** PagerDuty region that indicates the API Uniform Resource Locator (URL) to use. */
 export type PagerDutyRegion = "US" | "EU";
@@ -22132,15 +21935,12 @@ export const Destination = /*@__PURE__*/ S.suspend(() =>
 
 /** List of migration hosts used for this migration. */
 export type CreateGroupLiveMigrationRequestMigrationHostsList = Array<string>;
-export const CreateGroupLiveMigrationRequestMigrationHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateGroupLiveMigrationRequestMigrationHostsList>;
+export const CreateGroupLiveMigrationRequestMigrationHostsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<CreateGroupLiveMigrationRequestMigrationHostsList>;
 
 export type ShardKeysKeyItemMap = { [key: string]: unknown | undefined };
-export const ShardKeysKeyItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ShardKeysKeyItemMap>;
+export const ShardKeysKeyItemMap =
+  IndexOptionsPartialFilterExpressionMap as any as S.Schema<ShardKeysKeyItemMap>;
 
 /** List of fields to use for the shard key. */
 export type ShardKeysKeyList = Array<ShardKeysKeyItemMap>;
@@ -22263,9 +22063,8 @@ export const CreateGroupLiveMigrationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of hosts running MongoDB Agents. These Agents can transfer your MongoDB data between one source and one destination cluster. */
 export type LiveMigrationResponseMigrationHostsList = Array<string>;
-export const LiveMigrationResponseMigrationHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LiveMigrationResponseMigrationHostsList>;
+export const LiveMigrationResponseMigrationHostsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<LiveMigrationResponseMigrationHostsList>;
 
 /** Progress made in migrating one cluster to MongoDB Atlas. `NEW`: Someone scheduled a local cluster migration to MongoDB Atlas. `FAILED`: The cluster migration to MongoDB Atlas failed. `COMPLETE`: The cluster migration to MongoDB Atlas succeeded. `EXPIRED`: MongoDB Atlas prepares to begin the cut over of the migrating cluster when source and destination clusters have almost synchronized. If `"readyForCutover" : true`, this synchronization starts a timer of 120 hours. You can extend this timer. If the timer expires, MongoDB Atlas returns this status. `WORKING`: The cluster migration to MongoDB Atlas is performing one of the following tasks: - Preparing connections to source and destination clusters. - Replicating data from source to destination. - Verifying MongoDB Atlas connection settings. - Stopping replication after the cut over. */
 export type LiveMigrationResponseStatus = "NEW" | "WORKING" | "FAILED" | "COMPLETE" | "EXPIRED";
@@ -22475,9 +22274,8 @@ export const DatadogLogIntegrationResponseOutputType = S.String;
 
 /** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. */
 export type DatadogLogIntegrationResponseOutputOtelSuppliedHeadersList = Array<HeaderOutput>;
-export const DatadogLogIntegrationResponseOutputOtelSuppliedHeadersList = /*@__PURE__*/ S.Array(
-  HeaderOutput,
-) as any as S.Schema<DatadogLogIntegrationResponseOutputOtelSuppliedHeadersList>;
+export const DatadogLogIntegrationResponseOutputOtelSuppliedHeadersList =
+  S3LogIntegrationResponseOutputOtelSuppliedHeadersList as any as S.Schema<DatadogLogIntegrationResponseOutputOtelSuppliedHeadersList>;
 
 export type DatadogLogIntegrationResponseOutputLogTypesItem =
   | "MONGOD"
@@ -22572,9 +22370,8 @@ export const GcsLogIntegrationResponseOutputType = S.String;
 
 /** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. */
 export type GcsLogIntegrationResponseOutputOtelSuppliedHeadersList = Array<HeaderOutput>;
-export const GcsLogIntegrationResponseOutputOtelSuppliedHeadersList = /*@__PURE__*/ S.Array(
-  HeaderOutput,
-) as any as S.Schema<GcsLogIntegrationResponseOutputOtelSuppliedHeadersList>;
+export const GcsLogIntegrationResponseOutputOtelSuppliedHeadersList =
+  S3LogIntegrationResponseOutputOtelSuppliedHeadersList as any as S.Schema<GcsLogIntegrationResponseOutputOtelSuppliedHeadersList>;
 
 export type GcsLogIntegrationResponseOutputLogTypesItem =
   | "MONGOD"
@@ -22669,9 +22466,8 @@ export const OtelLogIntegrationResponseOutputType = S.String;
 
 /** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. */
 export type OtelLogIntegrationResponseOutputOtelSuppliedHeadersList = Array<HeaderOutput>;
-export const OtelLogIntegrationResponseOutputOtelSuppliedHeadersList = /*@__PURE__*/ S.Array(
-  HeaderOutput,
-) as any as S.Schema<OtelLogIntegrationResponseOutputOtelSuppliedHeadersList>;
+export const OtelLogIntegrationResponseOutputOtelSuppliedHeadersList =
+  S3LogIntegrationResponseOutputOtelSuppliedHeadersList as any as S.Schema<OtelLogIntegrationResponseOutputOtelSuppliedHeadersList>;
 
 export type OtelLogIntegrationResponseOutputLogTypesItem =
   | "MONGOD"
@@ -22766,9 +22562,8 @@ export const SplunkLogIntegrationResponseOutputType = S.String;
 
 /** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. */
 export type SplunkLogIntegrationResponseOutputOtelSuppliedHeadersList = Array<HeaderOutput>;
-export const SplunkLogIntegrationResponseOutputOtelSuppliedHeadersList = /*@__PURE__*/ S.Array(
-  HeaderOutput,
-) as any as S.Schema<SplunkLogIntegrationResponseOutputOtelSuppliedHeadersList>;
+export const SplunkLogIntegrationResponseOutputOtelSuppliedHeadersList =
+  S3LogIntegrationResponseOutputOtelSuppliedHeadersList as any as S.Schema<SplunkLogIntegrationResponseOutputOtelSuppliedHeadersList>;
 
 export type SplunkLogIntegrationResponseOutputLogTypesItem =
   | "MONGOD"
@@ -22863,9 +22658,8 @@ export const AzureLogIntegrationResponseOutputType = S.String;
 
 /** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. */
 export type AzureLogIntegrationResponseOutputOtelSuppliedHeadersList = Array<HeaderOutput>;
-export const AzureLogIntegrationResponseOutputOtelSuppliedHeadersList = /*@__PURE__*/ S.Array(
-  HeaderOutput,
-) as any as S.Schema<AzureLogIntegrationResponseOutputOtelSuppliedHeadersList>;
+export const AzureLogIntegrationResponseOutputOtelSuppliedHeadersList =
+  S3LogIntegrationResponseOutputOtelSuppliedHeadersList as any as S.Schema<AzureLogIntegrationResponseOutputOtelSuppliedHeadersList>;
 
 export type AzureLogIntegrationResponseOutputLogTypesItem =
   | "MONGOD"
@@ -22978,9 +22772,8 @@ export const CreateGroupMcpConfigRequestIpAccessListList = /*@__PURE__*/ S.Array
 
 /** List of project roles to assign to this MCP configuration. */
 export type CreateGroupMcpConfigRequestRolesList = Array<string>;
-export const CreateGroupMcpConfigRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateGroupMcpConfigRequestRolesList>;
+export const CreateGroupMcpConfigRequestRolesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<CreateGroupMcpConfigRequestRolesList>;
 
 export interface CreateGroupMcpConfigRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -23045,9 +22838,8 @@ export const GroupMcpConfigResponseIpAccessListList = /*@__PURE__*/ S.Array(
 
 /** List of project roles associated with this MCP configuration. */
 export type GroupMcpConfigResponseRolesList = Array<string>;
-export const GroupMcpConfigResponseRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GroupMcpConfigResponseRolesList>;
+export const GroupMcpConfigResponseRolesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<GroupMcpConfigResponseRolesList>;
 
 export interface GroupMcpConfigResponse {
   /** Unique identifier for the Service Account client associated with this MCP configuration. Use this Service Account to connect to the Atlas Remote MCP. */
@@ -23176,16 +22968,13 @@ export const OAuthConfigRequestClientAuthMethod = S.String;
 
 /** Optional OAuth 2.0 scopes requested on the token, sent as a space delimited `scope` parameter. Applies to both client authentication methods. */
 export type OAuthConfigRequestScopesList = Array<string>;
-export const OAuthConfigRequestScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OAuthConfigRequestScopesList>;
+export const OAuthConfigRequestScopesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<OAuthConfigRequestScopesList>;
 
 /** Optional provider-specific parameters added to the token request, for example a resource indicator. Applies to both client authentication methods. */
 export type OAuthConfigRequestTokenRequestParamsMap = { [key: string]: string | undefined };
-export const OAuthConfigRequestTokenRequestParamsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OAuthConfigRequestTokenRequestParamsMap>;
+export const OAuthConfigRequestTokenRequestParamsMap =
+  ClusterConnectionStringsAwsPrivateLinkMap as any as S.Schema<OAuthConfigRequestTokenRequestParamsMap>;
 
 /** OAuth 2.0 client credentials configuration. Required when `authType` is `OAUTH2`. Secrets are never returned. */
 export interface OAuthConfigRequest {
@@ -23284,18 +23073,12 @@ export interface RedactedHeader {
   /** Redacted header value. */
   value: string;
 }
-export const RedactedHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-  }),
-).annotate({ identifier: "RedactedHeader" }) as any as S.Schema<RedactedHeader>;
+export const RedactedHeader = Header as any as S.Schema<RedactedHeader>;
 
 /** HTTP headers for authentication and configuration. Values are redacted and never returned in plaintext. */
 export type MetricIntegrationResponseHeadersRedactedList = Array<RedactedHeader>;
-export const MetricIntegrationResponseHeadersRedactedList = /*@__PURE__*/ S.Array(
-  RedactedHeader,
-) as any as S.Schema<MetricIntegrationResponseHeadersRedactedList>;
+export const MetricIntegrationResponseHeadersRedactedList =
+  CreateGroupMetricIntegrationRequestHeadersList as any as S.Schema<MetricIntegrationResponseHeadersRedactedList>;
 
 /** Type of metric integration. Identifies which protocol will be used for the integration. */
 export type MetricIntegrationResponseIntegrationType = "OTEL";
@@ -23320,9 +23103,8 @@ export const OAuthConfigResponseClientAuthMethod = S.String;
 
 /** OAuth 2.0 scopes requested on the token. */
 export type OAuthConfigResponseScopesList = Array<string>;
-export const OAuthConfigResponseScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OAuthConfigResponseScopesList>;
+export const OAuthConfigResponseScopesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<OAuthConfigResponseScopesList>;
 
 /** Read-only metadata for the Atlas-managed signing key used by `PRIVATE_KEY_JWT`. Present only for that method. Register the `jwksUri` with your identity provider. Atlas rotates the underlying key without changing this URL. */
 export interface OAuthSigningKeyInfo {
@@ -23346,10 +23128,8 @@ export const OAuthSigningKeyInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Provider-specific parameters added to the token request. */
 export type OAuthConfigResponseTokenRequestParamsMap = { [key: string]: string | undefined };
-export const OAuthConfigResponseTokenRequestParamsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OAuthConfigResponseTokenRequestParamsMap>;
+export const OAuthConfigResponseTokenRequestParamsMap =
+  ClusterConnectionStringsAwsPrivateLinkMap as any as S.Schema<OAuthConfigResponseTokenRequestParamsMap>;
 
 /** OAuth 2.0 configuration returned for a metric integration. Secrets are never returned. */
 export interface OAuthConfigResponse {
@@ -23839,9 +23619,8 @@ export const CreateGroupPrivateNetworkSettingEndpointIdRequest = /*@__PURE__*/ S
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedPrivateNetworkEndpointIdEntryViewLinksList = Array<Link>;
-export const PaginatedPrivateNetworkEndpointIdEntryViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedPrivateNetworkEndpointIdEntryViewLinksList>;
+export const PaginatedPrivateNetworkEndpointIdEntryViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedPrivateNetworkEndpointIdEntryViewLinksList>;
 
 /** Human-readable label that identifies the cloud service provider. Atlas Data Lake supports Amazon Web Services and Azure. */
 export type PrivateNetworkEndpointIdEntryProvider = "AWS" | "AZURE";
@@ -23921,9 +23700,8 @@ export const PaginatedPrivateNetworkEndpointIdEntryView = /*@__PURE__*/ S.suspen
 
 /** A list of project-level roles for the Service Account. */
 export type CreateGroupServiceAccountRequestRolesList = Array<string>;
-export const CreateGroupServiceAccountRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateGroupServiceAccountRequestRolesList>;
+export const CreateGroupServiceAccountRequestRolesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<CreateGroupServiceAccountRequestRolesList>;
 
 export interface CreateGroupServiceAccountRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -23967,9 +23745,8 @@ export const CreateGroupServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of Project roles associated with the Service Account. */
 export type GroupServiceAccountRolesList = Array<string>;
-export const GroupServiceAccountRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GroupServiceAccountRolesList>;
+export const GroupServiceAccountRolesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<GroupServiceAccountRolesList>;
 
 /** A list of secrets associated with the specified Service Account. */
 export type GroupServiceAccountSecretsList = Array<ServiceAccountSecret>;
@@ -24007,9 +23784,8 @@ export const GroupServiceAccount = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateGroupServiceAccountAccessListRequestBodyList =
   Array<ServiceAccountIPAccessListEntryInput>;
-export const CreateGroupServiceAccountAccessListRequestBodyList = /*@__PURE__*/ S.Array(
-  ServiceAccountIPAccessListEntryInput,
-) as any as S.Schema<CreateGroupServiceAccountAccessListRequestBodyList>;
+export const CreateGroupServiceAccountAccessListRequestBodyList =
+  CreateGroupMcpConfigRequestIpAccessListList as any as S.Schema<CreateGroupServiceAccountAccessListRequestBodyList>;
 
 export interface CreateGroupServiceAccountAccessListRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -24052,16 +23828,14 @@ export const CreateGroupServiceAccountAccessListRequest = /*@__PURE__*/ S.suspen
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedServiceAccountIPAccessEntryViewLinksList = Array<Link>;
-export const PaginatedServiceAccountIPAccessEntryViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedServiceAccountIPAccessEntryViewLinksList>;
+export const PaginatedServiceAccountIPAccessEntryViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedServiceAccountIPAccessEntryViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedServiceAccountIPAccessEntryViewResultsList =
   Array<ServiceAccountIPAccessListEntry>;
-export const PaginatedServiceAccountIPAccessEntryViewResultsList = /*@__PURE__*/ S.Array(
-  ServiceAccountIPAccessListEntry,
-) as any as S.Schema<PaginatedServiceAccountIPAccessEntryViewResultsList>;
+export const PaginatedServiceAccountIPAccessEntryViewResultsList =
+  GroupMcpConfigResponseIpAccessListList as any as S.Schema<PaginatedServiceAccountIPAccessEntryViewResultsList>;
 
 export interface PaginatedServiceAccountIPAccessEntryView {
   /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
@@ -24164,9 +23938,8 @@ export const CreateGroupStreamConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type DBRoleToExecuteLinksList = Array<Link>;
-export const DBRoleToExecuteLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<DBRoleToExecuteLinksList>;
+export const DBRoleToExecuteLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<DBRoleToExecuteLinksList>;
 
 /** Type of the DB role. Can be either Built In or Custom. */
 export type DBRoleToExecuteType = "BUILT_IN" | "CUSTOM";
@@ -24191,9 +23964,8 @@ export const DBRoleToExecute = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsAWSConnectionConfigLinksList = Array<Link>;
-export const StreamsAWSConnectionConfigLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamsAWSConnectionConfigLinksList>;
+export const StreamsAWSConnectionConfigLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamsAWSConnectionConfigLinksList>;
 
 /** AWS configurations for AWS-based connection types. */
 export interface StreamsAWSConnectionConfig {
@@ -24216,9 +23988,8 @@ export const StreamsAWSConnectionConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsKafkaAuthenticationOutputLinksList = Array<Link>;
-export const StreamsKafkaAuthenticationOutputLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamsKafkaAuthenticationOutputLinksList>;
+export const StreamsKafkaAuthenticationOutputLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamsKafkaAuthenticationOutputLinksList>;
 
 /** User credentials required to connect to a Kafka Cluster. Includes the authentication type, as well as the parameters for that authentication mode. */
 export interface StreamsKafkaAuthenticationOutput {
@@ -24261,16 +24032,13 @@ export const StreamsKafkaAuthenticationOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
 export type StreamsClusterConnectionOutputConfigMap = { [key: string]: string | undefined };
-export const StreamsClusterConnectionOutputConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StreamsClusterConnectionOutputConfigMap>;
+export const StreamsClusterConnectionOutputConfigMap =
+  ClusterConnectionStringsAwsPrivateLinkMap as any as S.Schema<StreamsClusterConnectionOutputConfigMap>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsKafkaNetworkingAccessLinksList = Array<Link>;
-export const StreamsKafkaNetworkingAccessLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamsKafkaNetworkingAccessLinksList>;
+export const StreamsKafkaNetworkingAccessLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamsKafkaNetworkingAccessLinksList>;
 
 /** Selected networking type. Either `PUBLIC`, `VPC`, `PRIVATE_LINK`, or `TRANSIT_GATEWAY`. Defaults to `PUBLIC`. For VPC, ensure that VPC peering exists and connectivity has been established between Atlas VPC and the VPC where Kafka cluster is hosted for the connection to function properly. `TRANSIT_GATEWAY` support is coming soon. */
 export type StreamsKafkaNetworkingAccessType =
@@ -24307,9 +24075,8 @@ export const StreamsKafkaNetworkingAccess = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsKafkaNetworkingLinksList = Array<Link>;
-export const StreamsKafkaNetworkingLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamsKafkaNetworkingLinksList>;
+export const StreamsKafkaNetworkingLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamsKafkaNetworkingLinksList>;
 
 /** Networking configuration for Streams connections. */
 export interface StreamsKafkaNetworking {
@@ -24326,9 +24093,8 @@ export const StreamsKafkaNetworking = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsKafkaSecurityLinksList = Array<Link>;
-export const StreamsKafkaSecurityLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamsKafkaSecurityLinksList>;
+export const StreamsKafkaSecurityLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamsKafkaSecurityLinksList>;
 
 /** Properties for the secure transport connection to Kafka. For SSL, this can include the trusted certificate to use. */
 export interface StreamsKafkaSecurity {
@@ -24349,16 +24115,13 @@ export const StreamsKafkaSecurity = /*@__PURE__*/ S.suspend(() =>
 
 /** A map of key-value pairs that will be passed as headers for the request. */
 export type StreamsClusterConnectionOutputHeadersMap = { [key: string]: string | undefined };
-export const StreamsClusterConnectionOutputHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StreamsClusterConnectionOutputHeadersMap>;
+export const StreamsClusterConnectionOutputHeadersMap =
+  ClusterConnectionStringsAwsPrivateLinkMap as any as S.Schema<StreamsClusterConnectionOutputHeadersMap>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsPublicPrivateLinkNetworkingAccessLinksList = Array<Link>;
-export const StreamsPublicPrivateLinkNetworkingAccessLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamsPublicPrivateLinkNetworkingAccessLinksList>;
+export const StreamsPublicPrivateLinkNetworkingAccessLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamsPublicPrivateLinkNetworkingAccessLinksList>;
 
 /** Selected networking type. Either `PUBLIC` or `PRIVATE_LINK`. Defaults to `PUBLIC`. For AWS, Azure, and GCP connections, use `PRIVATE_LINK` for AWS PrivateLink, Azure Private Link, or GCP Private Service Connect (PSC) respectively. */
 export type StreamsPublicPrivateLinkNetworkingAccessType = "PUBLIC" | "PRIVATE_LINK";
@@ -24385,9 +24148,8 @@ export const StreamsPublicPrivateLinkNetworkingAccess = /*@__PURE__*/ S.suspend(
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsPublicPrivateLinkNetworkingLinksList = Array<Link>;
-export const StreamsPublicPrivateLinkNetworkingLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamsPublicPrivateLinkNetworkingLinksList>;
+export const StreamsPublicPrivateLinkNetworkingLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamsPublicPrivateLinkNetworkingLinksList>;
 
 /** Networking configuration for connections that support `PUBLIC` and `PRIVATE_LINK` access types. For GCP connections, use `PRIVATE_LINK` for GCP Private Service Connect (PSC). */
 export interface StreamsPublicPrivateLinkNetworking {
@@ -24435,15 +24197,13 @@ export const SchemaRegistryAuthenticationOutput =
 
 /** List of Schema Registry endpoint URLs used by this connection. Each URL must use the http or https scheme and specify a valid host and optional port. */
 export type StreamsClusterConnectionOutputSchemaRegistryUrlsList = Array<string>;
-export const StreamsClusterConnectionOutputSchemaRegistryUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StreamsClusterConnectionOutputSchemaRegistryUrlsList>;
+export const StreamsClusterConnectionOutputSchemaRegistryUrlsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<StreamsClusterConnectionOutputSchemaRegistryUrlsList>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type AzureConnectionLinksList = Array<Link>;
-export const AzureConnectionLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<AzureConnectionLinksList>;
+export const AzureConnectionLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<AzureConnectionLinksList>;
 
 /** Azure-specific configuration for the connection. */
 export interface AzureConnection {
@@ -24467,9 +24227,8 @@ export const AzureConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsGCPConnectionConfigLinksList = Array<Link>;
-export const StreamsGCPConnectionConfigLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamsGCPConnectionConfigLinksList>;
+export const StreamsGCPConnectionConfigLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamsGCPConnectionConfigLinksList>;
 
 /** GCP-specific configuration for the connection. */
 export interface StreamsGCPConnectionConfig {
@@ -24489,9 +24248,8 @@ export const StreamsGCPConnectionConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsClusterConnectionOutputLinksList = Array<Link>;
-export const StreamsClusterConnectionOutputLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamsClusterConnectionOutputLinksList>;
+export const StreamsClusterConnectionOutputLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamsClusterConnectionOutputLinksList>;
 
 /** Connection state. */
 export type StreamsClusterConnectionOutputState = "PENDING" | "READY" | "DELETING" | "FAILED";
@@ -24581,17 +24339,13 @@ export const StreamsClusterConnectionOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
 export type StreamsKafkaConnectionOutputConfigMap = { [key: string]: string | undefined };
-export const StreamsKafkaConnectionOutputConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StreamsKafkaConnectionOutputConfigMap>;
+export const StreamsKafkaConnectionOutputConfigMap =
+  ClusterConnectionStringsAwsPrivateLinkMap as any as S.Schema<StreamsKafkaConnectionOutputConfigMap>;
 
 /** A map of key-value pairs that will be passed as headers for the request. */
 export type StreamsKafkaConnectionOutputHeadersMap = { [key: string]: string | undefined };
-export const StreamsKafkaConnectionOutputHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StreamsKafkaConnectionOutputHeadersMap>;
+export const StreamsKafkaConnectionOutputHeadersMap =
+  ClusterConnectionStringsAwsPrivateLinkMap as any as S.Schema<StreamsKafkaConnectionOutputHeadersMap>;
 
 /** The Schema Registry provider. */
 export type StreamsKafkaConnectionOutputProvider = "CONFLUENT";
@@ -24599,15 +24353,13 @@ export const StreamsKafkaConnectionOutputProvider = S.String;
 
 /** List of Schema Registry endpoint URLs used by this connection. Each URL must use the http or https scheme and specify a valid host and optional port. */
 export type StreamsKafkaConnectionOutputSchemaRegistryUrlsList = Array<string>;
-export const StreamsKafkaConnectionOutputSchemaRegistryUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StreamsKafkaConnectionOutputSchemaRegistryUrlsList>;
+export const StreamsKafkaConnectionOutputSchemaRegistryUrlsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<StreamsKafkaConnectionOutputSchemaRegistryUrlsList>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsKafkaConnectionOutputLinksList = Array<Link>;
-export const StreamsKafkaConnectionOutputLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamsKafkaConnectionOutputLinksList>;
+export const StreamsKafkaConnectionOutputLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamsKafkaConnectionOutputLinksList>;
 
 /** Connection state. */
 export type StreamsKafkaConnectionOutputState = "PENDING" | "READY" | "DELETING" | "FAILED";
@@ -24697,17 +24449,13 @@ export const StreamsKafkaConnectionOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
 export type StreamsHttpsConnectionOutputConfigMap = { [key: string]: string | undefined };
-export const StreamsHttpsConnectionOutputConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StreamsHttpsConnectionOutputConfigMap>;
+export const StreamsHttpsConnectionOutputConfigMap =
+  ClusterConnectionStringsAwsPrivateLinkMap as any as S.Schema<StreamsHttpsConnectionOutputConfigMap>;
 
 /** A map of key-value pairs that will be passed as headers for the request. */
 export type StreamsHttpsConnectionOutputHeadersMap = { [key: string]: string | undefined };
-export const StreamsHttpsConnectionOutputHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StreamsHttpsConnectionOutputHeadersMap>;
+export const StreamsHttpsConnectionOutputHeadersMap =
+  ClusterConnectionStringsAwsPrivateLinkMap as any as S.Schema<StreamsHttpsConnectionOutputHeadersMap>;
 
 /** The Schema Registry provider. */
 export type StreamsHttpsConnectionOutputProvider = "CONFLUENT";
@@ -24715,15 +24463,13 @@ export const StreamsHttpsConnectionOutputProvider = S.String;
 
 /** List of Schema Registry endpoint URLs used by this connection. Each URL must use the http or https scheme and specify a valid host and optional port. */
 export type StreamsHttpsConnectionOutputSchemaRegistryUrlsList = Array<string>;
-export const StreamsHttpsConnectionOutputSchemaRegistryUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StreamsHttpsConnectionOutputSchemaRegistryUrlsList>;
+export const StreamsHttpsConnectionOutputSchemaRegistryUrlsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<StreamsHttpsConnectionOutputSchemaRegistryUrlsList>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsHttpsConnectionOutputLinksList = Array<Link>;
-export const StreamsHttpsConnectionOutputLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamsHttpsConnectionOutputLinksList>;
+export const StreamsHttpsConnectionOutputLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamsHttpsConnectionOutputLinksList>;
 
 /** Connection state. */
 export type StreamsHttpsConnectionOutputState = "PENDING" | "READY" | "DELETING" | "FAILED";
@@ -24813,17 +24559,13 @@ export const StreamsHttpsConnectionOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
 export type StreamsAWSLambdaConnectionOutputConfigMap = { [key: string]: string | undefined };
-export const StreamsAWSLambdaConnectionOutputConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StreamsAWSLambdaConnectionOutputConfigMap>;
+export const StreamsAWSLambdaConnectionOutputConfigMap =
+  ClusterConnectionStringsAwsPrivateLinkMap as any as S.Schema<StreamsAWSLambdaConnectionOutputConfigMap>;
 
 /** A map of key-value pairs that will be passed as headers for the request. */
 export type StreamsAWSLambdaConnectionOutputHeadersMap = { [key: string]: string | undefined };
-export const StreamsAWSLambdaConnectionOutputHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StreamsAWSLambdaConnectionOutputHeadersMap>;
+export const StreamsAWSLambdaConnectionOutputHeadersMap =
+  ClusterConnectionStringsAwsPrivateLinkMap as any as S.Schema<StreamsAWSLambdaConnectionOutputHeadersMap>;
 
 /** The Schema Registry provider. */
 export type StreamsAWSLambdaConnectionOutputProvider = "CONFLUENT";
@@ -24831,15 +24573,13 @@ export const StreamsAWSLambdaConnectionOutputProvider = S.String;
 
 /** List of Schema Registry endpoint URLs used by this connection. Each URL must use the http or https scheme and specify a valid host and optional port. */
 export type StreamsAWSLambdaConnectionOutputSchemaRegistryUrlsList = Array<string>;
-export const StreamsAWSLambdaConnectionOutputSchemaRegistryUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StreamsAWSLambdaConnectionOutputSchemaRegistryUrlsList>;
+export const StreamsAWSLambdaConnectionOutputSchemaRegistryUrlsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<StreamsAWSLambdaConnectionOutputSchemaRegistryUrlsList>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsAWSLambdaConnectionOutputLinksList = Array<Link>;
-export const StreamsAWSLambdaConnectionOutputLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamsAWSLambdaConnectionOutputLinksList>;
+export const StreamsAWSLambdaConnectionOutputLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamsAWSLambdaConnectionOutputLinksList>;
 
 /** Connection state. */
 export type StreamsAWSLambdaConnectionOutputState = "PENDING" | "READY" | "DELETING" | "FAILED";
@@ -24930,17 +24670,13 @@ export const StreamsAWSLambdaConnectionOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
 export type StreamsS3ConnectionOutputConfigMap = { [key: string]: string | undefined };
-export const StreamsS3ConnectionOutputConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StreamsS3ConnectionOutputConfigMap>;
+export const StreamsS3ConnectionOutputConfigMap =
+  ClusterConnectionStringsAwsPrivateLinkMap as any as S.Schema<StreamsS3ConnectionOutputConfigMap>;
 
 /** A map of key-value pairs that will be passed as headers for the request. */
 export type StreamsS3ConnectionOutputHeadersMap = { [key: string]: string | undefined };
-export const StreamsS3ConnectionOutputHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StreamsS3ConnectionOutputHeadersMap>;
+export const StreamsS3ConnectionOutputHeadersMap =
+  ClusterConnectionStringsAwsPrivateLinkMap as any as S.Schema<StreamsS3ConnectionOutputHeadersMap>;
 
 /** The Schema Registry provider. */
 export type StreamsS3ConnectionOutputProvider = "CONFLUENT";
@@ -24948,15 +24684,13 @@ export const StreamsS3ConnectionOutputProvider = S.String;
 
 /** List of Schema Registry endpoint URLs used by this connection. Each URL must use the http or https scheme and specify a valid host and optional port. */
 export type StreamsS3ConnectionOutputSchemaRegistryUrlsList = Array<string>;
-export const StreamsS3ConnectionOutputSchemaRegistryUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StreamsS3ConnectionOutputSchemaRegistryUrlsList>;
+export const StreamsS3ConnectionOutputSchemaRegistryUrlsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<StreamsS3ConnectionOutputSchemaRegistryUrlsList>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsS3ConnectionOutputLinksList = Array<Link>;
-export const StreamsS3ConnectionOutputLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamsS3ConnectionOutputLinksList>;
+export const StreamsS3ConnectionOutputLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamsS3ConnectionOutputLinksList>;
 
 /** Connection state. */
 export type StreamsS3ConnectionOutputState = "PENDING" | "READY" | "DELETING" | "FAILED";
@@ -25049,19 +24783,15 @@ export const StreamsS3ConnectionOutput = /*@__PURE__*/ S.suspend(() =>
 export type StreamsAWSKinesisDataStreamsConnectionOutputConfigMap = {
   [key: string]: string | undefined;
 };
-export const StreamsAWSKinesisDataStreamsConnectionOutputConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StreamsAWSKinesisDataStreamsConnectionOutputConfigMap>;
+export const StreamsAWSKinesisDataStreamsConnectionOutputConfigMap =
+  ClusterConnectionStringsAwsPrivateLinkMap as any as S.Schema<StreamsAWSKinesisDataStreamsConnectionOutputConfigMap>;
 
 /** A map of key-value pairs that will be passed as headers for the request. */
 export type StreamsAWSKinesisDataStreamsConnectionOutputHeadersMap = {
   [key: string]: string | undefined;
 };
-export const StreamsAWSKinesisDataStreamsConnectionOutputHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StreamsAWSKinesisDataStreamsConnectionOutputHeadersMap>;
+export const StreamsAWSKinesisDataStreamsConnectionOutputHeadersMap =
+  ClusterConnectionStringsAwsPrivateLinkMap as any as S.Schema<StreamsAWSKinesisDataStreamsConnectionOutputHeadersMap>;
 
 /** The Schema Registry provider. */
 export type StreamsAWSKinesisDataStreamsConnectionOutputProvider = "CONFLUENT";
@@ -25070,15 +24800,12 @@ export const StreamsAWSKinesisDataStreamsConnectionOutputProvider = S.String;
 /** List of Schema Registry endpoint URLs used by this connection. Each URL must use the http or https scheme and specify a valid host and optional port. */
 export type StreamsAWSKinesisDataStreamsConnectionOutputSchemaRegistryUrlsList = Array<string>;
 export const StreamsAWSKinesisDataStreamsConnectionOutputSchemaRegistryUrlsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<StreamsAWSKinesisDataStreamsConnectionOutputSchemaRegistryUrlsList>;
+  CreateGroupPrivateEndpointEndpointServiceRequestSupportedRemoteRegionsList as any as S.Schema<StreamsAWSKinesisDataStreamsConnectionOutputSchemaRegistryUrlsList>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsAWSKinesisDataStreamsConnectionOutputLinksList = Array<Link>;
-export const StreamsAWSKinesisDataStreamsConnectionOutputLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamsAWSKinesisDataStreamsConnectionOutputLinksList>;
+export const StreamsAWSKinesisDataStreamsConnectionOutputLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamsAWSKinesisDataStreamsConnectionOutputLinksList>;
 
 /** Connection state. */
 export type StreamsAWSKinesisDataStreamsConnectionOutputState =
@@ -25175,17 +24902,13 @@ export const StreamsAWSKinesisDataStreamsConnectionOutput = /*@__PURE__*/ S.susp
 
 /** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
 export type StreamsSchemaRegistryConnectionOutputConfigMap = { [key: string]: string | undefined };
-export const StreamsSchemaRegistryConnectionOutputConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StreamsSchemaRegistryConnectionOutputConfigMap>;
+export const StreamsSchemaRegistryConnectionOutputConfigMap =
+  ClusterConnectionStringsAwsPrivateLinkMap as any as S.Schema<StreamsSchemaRegistryConnectionOutputConfigMap>;
 
 /** A map of key-value pairs that will be passed as headers for the request. */
 export type StreamsSchemaRegistryConnectionOutputHeadersMap = { [key: string]: string | undefined };
-export const StreamsSchemaRegistryConnectionOutputHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StreamsSchemaRegistryConnectionOutputHeadersMap>;
+export const StreamsSchemaRegistryConnectionOutputHeadersMap =
+  ClusterConnectionStringsAwsPrivateLinkMap as any as S.Schema<StreamsSchemaRegistryConnectionOutputHeadersMap>;
 
 /** The Schema Registry provider. */
 export type StreamsSchemaRegistryConnectionOutputProvider = "CONFLUENT";
@@ -25193,15 +24916,13 @@ export const StreamsSchemaRegistryConnectionOutputProvider = S.String;
 
 /** List of Schema Registry endpoint URLs used by this connection. Each URL must use the http or https scheme and specify a valid host and optional port. */
 export type StreamsSchemaRegistryConnectionOutputSchemaRegistryUrlsList = Array<string>;
-export const StreamsSchemaRegistryConnectionOutputSchemaRegistryUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StreamsSchemaRegistryConnectionOutputSchemaRegistryUrlsList>;
+export const StreamsSchemaRegistryConnectionOutputSchemaRegistryUrlsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<StreamsSchemaRegistryConnectionOutputSchemaRegistryUrlsList>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsSchemaRegistryConnectionOutputLinksList = Array<Link>;
-export const StreamsSchemaRegistryConnectionOutputLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamsSchemaRegistryConnectionOutputLinksList>;
+export const StreamsSchemaRegistryConnectionOutputLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamsSchemaRegistryConnectionOutputLinksList>;
 
 /** Connection state. */
 export type StreamsSchemaRegistryConnectionOutputState =
@@ -25298,19 +25019,15 @@ export const StreamsSchemaRegistryConnectionOutput = /*@__PURE__*/ S.suspend(() 
 export type StreamsAzureBlobStorageConnectionOutputConfigMap = {
   [key: string]: string | undefined;
 };
-export const StreamsAzureBlobStorageConnectionOutputConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StreamsAzureBlobStorageConnectionOutputConfigMap>;
+export const StreamsAzureBlobStorageConnectionOutputConfigMap =
+  ClusterConnectionStringsAwsPrivateLinkMap as any as S.Schema<StreamsAzureBlobStorageConnectionOutputConfigMap>;
 
 /** A map of key-value pairs that will be passed as headers for the request. */
 export type StreamsAzureBlobStorageConnectionOutputHeadersMap = {
   [key: string]: string | undefined;
 };
-export const StreamsAzureBlobStorageConnectionOutputHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StreamsAzureBlobStorageConnectionOutputHeadersMap>;
+export const StreamsAzureBlobStorageConnectionOutputHeadersMap =
+  ClusterConnectionStringsAwsPrivateLinkMap as any as S.Schema<StreamsAzureBlobStorageConnectionOutputHeadersMap>;
 
 /** The Schema Registry provider. */
 export type StreamsAzureBlobStorageConnectionOutputProvider = "CONFLUENT";
@@ -25318,15 +25035,13 @@ export const StreamsAzureBlobStorageConnectionOutputProvider = S.String;
 
 /** List of Schema Registry endpoint URLs used by this connection. Each URL must use the http or https scheme and specify a valid host and optional port. */
 export type StreamsAzureBlobStorageConnectionOutputSchemaRegistryUrlsList = Array<string>;
-export const StreamsAzureBlobStorageConnectionOutputSchemaRegistryUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StreamsAzureBlobStorageConnectionOutputSchemaRegistryUrlsList>;
+export const StreamsAzureBlobStorageConnectionOutputSchemaRegistryUrlsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<StreamsAzureBlobStorageConnectionOutputSchemaRegistryUrlsList>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsAzureBlobStorageConnectionOutputLinksList = Array<Link>;
-export const StreamsAzureBlobStorageConnectionOutputLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamsAzureBlobStorageConnectionOutputLinksList>;
+export const StreamsAzureBlobStorageConnectionOutputLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamsAzureBlobStorageConnectionOutputLinksList>;
 
 /** Connection state. */
 export type StreamsAzureBlobStorageConnectionOutputState =
@@ -25421,17 +25136,13 @@ export const StreamsAzureBlobStorageConnectionOutput = /*@__PURE__*/ S.suspend((
 
 /** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
 export type StreamsGCPPubSubConnectionOutputConfigMap = { [key: string]: string | undefined };
-export const StreamsGCPPubSubConnectionOutputConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StreamsGCPPubSubConnectionOutputConfigMap>;
+export const StreamsGCPPubSubConnectionOutputConfigMap =
+  ClusterConnectionStringsAwsPrivateLinkMap as any as S.Schema<StreamsGCPPubSubConnectionOutputConfigMap>;
 
 /** A map of key-value pairs that will be passed as headers for the request. */
 export type StreamsGCPPubSubConnectionOutputHeadersMap = { [key: string]: string | undefined };
-export const StreamsGCPPubSubConnectionOutputHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StreamsGCPPubSubConnectionOutputHeadersMap>;
+export const StreamsGCPPubSubConnectionOutputHeadersMap =
+  ClusterConnectionStringsAwsPrivateLinkMap as any as S.Schema<StreamsGCPPubSubConnectionOutputHeadersMap>;
 
 /** The Schema Registry provider. */
 export type StreamsGCPPubSubConnectionOutputProvider = "CONFLUENT";
@@ -25439,15 +25150,13 @@ export const StreamsGCPPubSubConnectionOutputProvider = S.String;
 
 /** List of Schema Registry endpoint URLs used by this connection. Each URL must use the http or https scheme and specify a valid host and optional port. */
 export type StreamsGCPPubSubConnectionOutputSchemaRegistryUrlsList = Array<string>;
-export const StreamsGCPPubSubConnectionOutputSchemaRegistryUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StreamsGCPPubSubConnectionOutputSchemaRegistryUrlsList>;
+export const StreamsGCPPubSubConnectionOutputSchemaRegistryUrlsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<StreamsGCPPubSubConnectionOutputSchemaRegistryUrlsList>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsGCPPubSubConnectionOutputLinksList = Array<Link>;
-export const StreamsGCPPubSubConnectionOutputLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamsGCPPubSubConnectionOutputLinksList>;
+export const StreamsGCPPubSubConnectionOutputLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamsGCPPubSubConnectionOutputLinksList>;
 
 /** Connection state. */
 export type StreamsGCPPubSubConnectionOutputState = "PENDING" | "READY" | "DELETING" | "FAILED";
@@ -25595,16 +25304,13 @@ export const CreateGroupStreamConnectionFailoverConnectionRequest = /*@__PURE__*
 
 /** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
 export type StreamsFailoverClusterConnectionOutputConfigMap = { [key: string]: string | undefined };
-export const StreamsFailoverClusterConnectionOutputConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StreamsFailoverClusterConnectionOutputConfigMap>;
+export const StreamsFailoverClusterConnectionOutputConfigMap =
+  ClusterConnectionStringsAwsPrivateLinkMap as any as S.Schema<StreamsFailoverClusterConnectionOutputConfigMap>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsFailoverClusterConnectionOutputLinksList = Array<Link>;
-export const StreamsFailoverClusterConnectionOutputLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamsFailoverClusterConnectionOutputLinksList>;
+export const StreamsFailoverClusterConnectionOutputLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamsFailoverClusterConnectionOutputLinksList>;
 
 /** Connection state. */
 export type StreamsFailoverClusterConnectionOutputState =
@@ -25667,16 +25373,13 @@ export const StreamsFailoverClusterConnectionOutput = /*@__PURE__*/ S.suspend(()
 
 /** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
 export type StreamsFailoverKafkaConnectionOutputConfigMap = { [key: string]: string | undefined };
-export const StreamsFailoverKafkaConnectionOutputConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StreamsFailoverKafkaConnectionOutputConfigMap>;
+export const StreamsFailoverKafkaConnectionOutputConfigMap =
+  ClusterConnectionStringsAwsPrivateLinkMap as any as S.Schema<StreamsFailoverKafkaConnectionOutputConfigMap>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsFailoverKafkaConnectionOutputLinksList = Array<Link>;
-export const StreamsFailoverKafkaConnectionOutputLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamsFailoverKafkaConnectionOutputLinksList>;
+export const StreamsFailoverKafkaConnectionOutputLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamsFailoverKafkaConnectionOutputLinksList>;
 
 /** Connection state. */
 export type StreamsFailoverKafkaConnectionOutputState = "PENDING" | "READY" | "DELETING" | "FAILED";
@@ -25750,30 +25453,23 @@ export const CreateGroupStreamPrivateLinkConnectionRequestAuthenticationScheme =
 /** Azure Resource IDs of each availability zone for the Azure Confluent cluster. */
 export type CreateGroupStreamPrivateLinkConnectionRequestAzureResourceIdsList = Array<string>;
 export const CreateGroupStreamPrivateLinkConnectionRequestAzureResourceIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateGroupStreamPrivateLinkConnectionRequestAzureResourceIdsList>;
+  CreateGroupPrivateEndpointEndpointServiceRequestSupportedRemoteRegionsList as any as S.Schema<CreateGroupStreamPrivateLinkConnectionRequestAzureResourceIdsList>;
 
 /** Sub-Domain name of Confluent cluster. These are typically your availability zones. Required for AWS Provider and CONFLUENT vendor, if your AWS CONFLUENT cluster doesn't use subdomains, you must set this to the empty array []. */
 export type CreateGroupStreamPrivateLinkConnectionRequestDnsSubDomainList = Array<string>;
-export const CreateGroupStreamPrivateLinkConnectionRequestDnsSubDomainList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateGroupStreamPrivateLinkConnectionRequestDnsSubDomainList>;
+export const CreateGroupStreamPrivateLinkConnectionRequestDnsSubDomainList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<CreateGroupStreamPrivateLinkConnectionRequestDnsSubDomainList>;
 
 /** List of GCP Private Service Connect connection IDs. */
 export type CreateGroupStreamPrivateLinkConnectionRequestGcpConnectionIdsList = Array<string>;
 export const CreateGroupStreamPrivateLinkConnectionRequestGcpConnectionIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateGroupStreamPrivateLinkConnectionRequestGcpConnectionIdsList>;
+  CreateGroupPrivateEndpointEndpointServiceRequestSupportedRemoteRegionsList as any as S.Schema<CreateGroupStreamPrivateLinkConnectionRequestGcpConnectionIdsList>;
 
 /** Service Attachment URIs of each availability zone for the GCP Confluent cluster. */
 export type CreateGroupStreamPrivateLinkConnectionRequestGcpServiceAttachmentUrisList =
   Array<string>;
 export const CreateGroupStreamPrivateLinkConnectionRequestGcpServiceAttachmentUrisList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateGroupStreamPrivateLinkConnectionRequestGcpServiceAttachmentUrisList>;
+  CreateGroupPrivateEndpointEndpointServiceRequestSupportedRemoteRegionsList as any as S.Schema<CreateGroupStreamPrivateLinkConnectionRequestGcpServiceAttachmentUrisList>;
 
 export interface CreateGroupStreamPrivateLinkConnectionRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -25845,33 +25541,28 @@ export const StreamsPrivateLinkConnectionAuthenticationScheme = S.String;
 
 /** Azure Resource IDs of each availability zone for the Azure Confluent cluster. */
 export type StreamsPrivateLinkConnectionAzureResourceIdsList = Array<string>;
-export const StreamsPrivateLinkConnectionAzureResourceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StreamsPrivateLinkConnectionAzureResourceIdsList>;
+export const StreamsPrivateLinkConnectionAzureResourceIdsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<StreamsPrivateLinkConnectionAzureResourceIdsList>;
 
 /** Sub-Domain name of Confluent cluster. These are typically your availability zones. Required for AWS Provider and CONFLUENT vendor, if your AWS CONFLUENT cluster doesn't use subdomains, you must set this to the empty array []. */
 export type StreamsPrivateLinkConnectionDnsSubDomainList = Array<string>;
-export const StreamsPrivateLinkConnectionDnsSubDomainList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StreamsPrivateLinkConnectionDnsSubDomainList>;
+export const StreamsPrivateLinkConnectionDnsSubDomainList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<StreamsPrivateLinkConnectionDnsSubDomainList>;
 
 /** List of GCP Private Service Connect connection IDs. */
 export type StreamsPrivateLinkConnectionGcpConnectionIdsList = Array<string>;
-export const StreamsPrivateLinkConnectionGcpConnectionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StreamsPrivateLinkConnectionGcpConnectionIdsList>;
+export const StreamsPrivateLinkConnectionGcpConnectionIdsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<StreamsPrivateLinkConnectionGcpConnectionIdsList>;
 
 /** Service Attachment URIs of each availability zone for the GCP Confluent cluster. */
 export type StreamsPrivateLinkConnectionGcpServiceAttachmentUrisList = Array<string>;
-export const StreamsPrivateLinkConnectionGcpServiceAttachmentUrisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StreamsPrivateLinkConnectionGcpServiceAttachmentUrisList>;
+export const StreamsPrivateLinkConnectionGcpServiceAttachmentUrisList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<StreamsPrivateLinkConnectionGcpServiceAttachmentUrisList>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsPrivateLinkConnectionLinksList = Array<Link>;
-export const StreamsPrivateLinkConnectionLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamsPrivateLinkConnectionLinksList>;
+export const StreamsPrivateLinkConnectionLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamsPrivateLinkConnectionLinksList>;
 
 /** Container for metadata needed to create a Private Link connection. */
 export interface StreamsPrivateLinkConnection {
@@ -26052,15 +25743,13 @@ export const StreamsProcessorEffectiveTier = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsProcessorLinksList = Array<Link>;
-export const StreamsProcessorLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamsProcessorLinksList>;
+export const StreamsProcessorLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamsProcessorLinksList>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsAutoscalingLinksList = Array<Link>;
-export const StreamsAutoscalingLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamsAutoscalingLinksList>;
+export const StreamsAutoscalingLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamsAutoscalingLinksList>;
 
 /** Tier ceiling for autoscaling (scale-up limit). - **Omitted:** - On `CREATE`: falls back to the workspace max tier (there is no current bound to preserve). - On `MODIFY` or `:startWith`: the current bound is preserved. - **`null`** on `CREATE`, `MODIFY`, or `:startWith`: resets the bound to the workspace max tier. - **A tier value** on `CREATE`, `MODIFY`, or `:startWith`: sets the bound to that tier. */
 export type StreamsAutoscalingMaxTier = "SP50" | "SP30" | "SP10" | "SP5" | "SP2";
@@ -26092,9 +25781,8 @@ export const StreamsAutoscaling = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsDLQLinksList = Array<Link>;
-export const StreamsDLQLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamsDLQLinksList>;
+export const StreamsDLQLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamsDLQLinksList>;
 
 /** Dead letter queue for the stream processor. */
 export interface StreamsDLQ {
@@ -26118,9 +25806,8 @@ export const StreamsDLQ = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsOptionsLinksList = Array<Link>;
-export const StreamsOptionsLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamsOptionsLinksList>;
+export const StreamsOptionsLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamsOptionsLinksList>;
 
 /** Optional configuration for the stream processor. */
 export interface StreamsOptions {
@@ -26139,9 +25826,8 @@ export const StreamsOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** Stream aggregation pipeline you want to apply to your streaming data. */
 export type StreamsProcessorPipelineList = Array<Document>;
-export const StreamsProcessorPipelineList = /*@__PURE__*/ S.Array(
-  Document,
-) as any as S.Schema<StreamsProcessorPipelineList>;
+export const StreamsProcessorPipelineList =
+  CreateGroupStreamProcessorRequestPipelineList as any as S.Schema<StreamsProcessorPipelineList>;
 
 /** Selected tier for the Stream Workspace. Configures Memory or VCPU allowances. */
 export type StreamsProcessorTier = "SP50" | "SP30" | "SP10" | "SP5" | "SP2";
@@ -26340,9 +26026,8 @@ export const StreamsDataProcessRegionCloudProvider = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsDataProcessRegionLinksList = Array<Link>;
-export const StreamsDataProcessRegionLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamsDataProcessRegionLinksList>;
+export const StreamsDataProcessRegionLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamsDataProcessRegionLinksList>;
 
 /** Information about the cloud provider region in which MongoDB Cloud processes the stream. */
 export interface StreamsDataProcessRegion {
@@ -26368,21 +26053,18 @@ export const StreamsTenantOutputFailoverRegionsList = /*@__PURE__*/ S.Array(
 
 /** List that contains the hostnames assigned to the stream workspace. */
 export type StreamsTenantOutputHostnamesList = Array<string>;
-export const StreamsTenantOutputHostnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StreamsTenantOutputHostnamesList>;
+export const StreamsTenantOutputHostnamesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<StreamsTenantOutputHostnamesList>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsTenantOutputLinksList = Array<Link>;
-export const StreamsTenantOutputLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamsTenantOutputLinksList>;
+export const StreamsTenantOutputLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamsTenantOutputLinksList>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsSampleConnectionsLinksList = Array<Link>;
-export const StreamsSampleConnectionsLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamsSampleConnectionsLinksList>;
+export const StreamsSampleConnectionsLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamsSampleConnectionsLinksList>;
 
 /** Sample connections to add to SPI. */
 export interface StreamsSampleConnections {
@@ -26400,9 +26082,8 @@ export const StreamsSampleConnections = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamConfigLinksList = Array<Link>;
-export const StreamConfigLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamConfigLinksList>;
+export const StreamConfigLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamConfigLinksList>;
 
 /** Max tier size for the Stream Workspace. Configures Memory or VCPU allowances. */
 export type StreamConfigMaxTierSize = "SP50" | "SP30" | "SP10" | "SP5" | "SP2";
@@ -26577,9 +26258,8 @@ export const CreateOrgRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type AtlasOrganizationLinksList = Array<Link>;
-export const AtlasOrganizationLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<AtlasOrganizationLinksList>;
+export const AtlasOrganizationLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<AtlasOrganizationLinksList>;
 
 /** Details that describe the organization. */
 export interface AtlasOrganization {
@@ -26623,9 +26303,8 @@ export const OrgServiceAccountRolesList = /*@__PURE__*/ S.Array(
 
 /** A list of secrets associated with the specified Service Account. */
 export type OrgServiceAccountSecretsList = Array<ServiceAccountSecret>;
-export const OrgServiceAccountSecretsList = /*@__PURE__*/ S.Array(
-  ServiceAccountSecret,
-) as any as S.Schema<OrgServiceAccountSecretsList>;
+export const OrgServiceAccountSecretsList =
+  GroupServiceAccountSecretsList as any as S.Schema<OrgServiceAccountSecretsList>;
 
 /** Organization Service Account that Atlas created for the organization. */
 export interface OrgServiceAccount {
@@ -26786,15 +26465,13 @@ export const CreateOrgApiKeyAccessListEntryRequest = /*@__PURE__*/ S.suspend(() 
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedApiUserAccessListResponseViewLinksList = Array<Link>;
-export const PaginatedApiUserAccessListResponseViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedApiUserAccessListResponseViewLinksList>;
+export const PaginatedApiUserAccessListResponseViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedApiUserAccessListResponseViewLinksList>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type UserAccessListResponseLinksList = Array<Link>;
-export const UserAccessListResponseLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<UserAccessListResponseLinksList>;
+export const UserAccessListResponseLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<UserAccessListResponseLinksList>;
 
 export interface UserAccessListResponse {
   /** Range of IP addresses in Classless Inter-Domain Routing (CIDR) notation in the access list for the API key. */
@@ -26850,9 +26527,8 @@ export const PaginatedApiUserAccessListResponseView = /*@__PURE__*/ S.suspend(()
 
 /** The list of clusters to be included in the Cost Explorer Query. */
 export type CreateOrgBillingCostExplorerUsageProcessRequestClustersList = Array<string>;
-export const CreateOrgBillingCostExplorerUsageProcessRequestClustersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrgBillingCostExplorerUsageProcessRequestClustersList>;
+export const CreateOrgBillingCostExplorerUsageProcessRequestClustersList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<CreateOrgBillingCostExplorerUsageProcessRequestClustersList>;
 
 /** The dimension to group the returned usage results by. At least one filter value needs to be provided for a dimension to be used. */
 export type CreateOrgBillingCostExplorerUsageProcessRequestGroupBy =
@@ -26865,15 +26541,12 @@ export const CreateOrgBillingCostExplorerUsageProcessRequestGroupBy = S.String;
 /** The list of organizations to be included in the Cost Explorer Query. */
 export type CreateOrgBillingCostExplorerUsageProcessRequestOrganizationsList = Array<string>;
 export const CreateOrgBillingCostExplorerUsageProcessRequestOrganizationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateOrgBillingCostExplorerUsageProcessRequestOrganizationsList>;
+  CreateGroupPrivateEndpointEndpointServiceRequestSupportedRemoteRegionsList as any as S.Schema<CreateOrgBillingCostExplorerUsageProcessRequestOrganizationsList>;
 
 /** The list of projects to be included in the Cost Explorer Query. */
 export type CreateOrgBillingCostExplorerUsageProcessRequestProjectsList = Array<string>;
-export const CreateOrgBillingCostExplorerUsageProcessRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrgBillingCostExplorerUsageProcessRequestProjectsList>;
+export const CreateOrgBillingCostExplorerUsageProcessRequestProjectsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<CreateOrgBillingCostExplorerUsageProcessRequestProjectsList>;
 
 export type CreateOrgBillingCostExplorerUsageProcessRequestServicesItem =
   | "Atlas"
@@ -26954,11 +26627,8 @@ export const CreateOrgBillingCostExplorerUsageProcessRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<CreateOrgBillingCostExplorerUsageProcessRequest>;
 
 export interface CreateOrgBillingCostExplorerUsageProcessResponse {}
-export const CreateOrgBillingCostExplorerUsageProcessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateOrgBillingCostExplorerUsageProcessResponse",
-}) as any as S.Schema<CreateOrgBillingCostExplorerUsageProcessResponse>;
+export const CreateOrgBillingCostExplorerUsageProcessResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<CreateOrgBillingCostExplorerUsageProcessResponse>;
 
 /** Format of the report. */
 export type CreateOrgInvoiceReportRequestReportFormat = "CSV";
@@ -27048,9 +26718,8 @@ export const InvoiceReportResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** IP address access list entries associated with the API key. */
 export type CreateOrgLiveMigrationLinkTokenRequestAccessListIpsList = Array<string>;
-export const CreateOrgLiveMigrationLinkTokenRequestAccessListIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrgLiveMigrationLinkTokenRequestAccessListIpsList>;
+export const CreateOrgLiveMigrationLinkTokenRequestAccessListIpsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<CreateOrgLiveMigrationLinkTokenRequestAccessListIpsList>;
 
 export interface CreateOrgLiveMigrationLinkTokenRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -27170,9 +26839,8 @@ export const CreateOrgLogIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IP access list entries that define allowed source addresses for this MCP configuration. */
 export type CreateOrgMcpConfigRequestIpAccessListList = Array<ServiceAccountIPAccessListEntryInput>;
-export const CreateOrgMcpConfigRequestIpAccessListList = /*@__PURE__*/ S.Array(
-  ServiceAccountIPAccessListEntryInput,
-) as any as S.Schema<CreateOrgMcpConfigRequestIpAccessListList>;
+export const CreateOrgMcpConfigRequestIpAccessListList =
+  CreateGroupMcpConfigRequestIpAccessListList as any as S.Schema<CreateOrgMcpConfigRequestIpAccessListList>;
 
 /** Organization roles available for Service Accounts. */
 export type CreateOrgMcpConfigRequestRolesItem =
@@ -27223,9 +26891,8 @@ export const CreateOrgMcpConfigRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IP access list entries that define allowed source addresses for this MCP configuration. */
 export type OrgMcpConfigResponseIpAccessListList = Array<ServiceAccountIPAccessListEntry>;
-export const OrgMcpConfigResponseIpAccessListList = /*@__PURE__*/ S.Array(
-  ServiceAccountIPAccessListEntry,
-) as any as S.Schema<OrgMcpConfigResponseIpAccessListList>;
+export const OrgMcpConfigResponseIpAccessListList =
+  GroupMcpConfigResponseIpAccessListList as any as S.Schema<OrgMcpConfigResponseIpAccessListList>;
 
 /** Organization roles available for Service Accounts. */
 export type OrgMcpConfigResponseRolesItem =
@@ -27475,9 +27142,8 @@ export const CreateOrgServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateOrgServiceAccountAccessListRequestBodyList =
   Array<ServiceAccountIPAccessListEntryInput>;
-export const CreateOrgServiceAccountAccessListRequestBodyList = /*@__PURE__*/ S.Array(
-  ServiceAccountIPAccessListEntryInput,
-) as any as S.Schema<CreateOrgServiceAccountAccessListRequestBodyList>;
+export const CreateOrgServiceAccountAccessListRequestBodyList =
+  CreateGroupMcpConfigRequestIpAccessListList as any as S.Schema<CreateOrgServiceAccountAccessListRequestBodyList>;
 
 export interface CreateOrgServiceAccountAccessListRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -27551,9 +27217,8 @@ export const CreateOrgServiceAccountSecretRequest = /*@__PURE__*/ S.suspend(() =
 
 /** List that contains the MongoDB Cloud users in this team. */
 export type CreateOrgTeamRequestUsernamesList = Array<string>;
-export const CreateOrgTeamRequestUsernamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrgTeamRequestUsernamesList>;
+export const CreateOrgTeamRequestUsernamesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<CreateOrgTeamRequestUsernamesList>;
 
 export interface CreateOrgTeamRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -27586,13 +27251,12 @@ export const CreateOrgTeamRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type TeamLinksList = Array<Link>;
-export const TeamLinksList = /*@__PURE__*/ S.Array(Link) as any as S.Schema<TeamLinksList>;
+export const TeamLinksList = TeamRoleLinksList as any as S.Schema<TeamLinksList>;
 
 /** List that contains the MongoDB Cloud users in this team. */
 export type TeamUsernamesList = Array<string>;
-export const TeamUsernamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TeamUsernamesList>;
+export const TeamUsernamesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<TeamUsernamesList>;
 
 export interface Team {
   /** Unique 24-hexadecimal digit string that identifies this team. */
@@ -27615,9 +27279,8 @@ export const Team = /*@__PURE__*/ S.suspend(() =>
 
 /** List of project level role assignments to assign the MongoDB Cloud user. */
 export type OrgUserRolesRequestGroupRoleAssignmentsList = Array<GroupRoleAssignment>;
-export const OrgUserRolesRequestGroupRoleAssignmentsList = /*@__PURE__*/ S.Array(
-  GroupRoleAssignment,
-) as any as S.Schema<OrgUserRolesRequestGroupRoleAssignmentsList>;
+export const OrgUserRolesRequestGroupRoleAssignmentsList =
+  OrgUserRolesResponseGroupRoleAssignmentsList as any as S.Schema<OrgUserRolesRequestGroupRoleAssignmentsList>;
 
 /** Organization-level role. */
 export type OrgUserRolesRequestOrgRolesItem =
@@ -27654,9 +27317,8 @@ export const OrgUserRolesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of unique 24-hexadecimal digit strings that identifies the teams to which this MongoDB Cloud user belongs. */
 export type CreateOrgUserRequestTeamIdsList = Array<string>;
-export const CreateOrgUserRequestTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrgUserRequestTeamIdsList>;
+export const CreateOrgUserRequestTeamIdsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<CreateOrgUserRequestTeamIdsList>;
 
 export interface CreateOrgUserRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -27718,11 +27380,8 @@ export const CutoverGroupLiveMigrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CutoverGroupLiveMigrationRequest>;
 
 export interface CutoverGroupLiveMigrationResponse {}
-export const CutoverGroupLiveMigrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CutoverGroupLiveMigrationResponse",
-}) as any as S.Schema<CutoverGroupLiveMigrationResponse>;
+export const CutoverGroupLiveMigrationResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<CutoverGroupLiveMigrationResponse>;
 
 export type DeauthorizeGroupCloudProviderAccessRoleRequestCloudProvider = "AWS" | "AZURE" | "GCP";
 export const DeauthorizeGroupCloudProviderAccessRoleRequestCloudProvider = S.String;
@@ -27759,11 +27418,8 @@ export const DeauthorizeGroupCloudProviderAccessRoleRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeauthorizeGroupCloudProviderAccessRoleRequest>;
 
 export interface DeauthorizeGroupCloudProviderAccessRoleResponse {}
-export const DeauthorizeGroupCloudProviderAccessRoleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeauthorizeGroupCloudProviderAccessRoleResponse",
-}) as any as S.Schema<DeauthorizeGroupCloudProviderAccessRoleResponse>;
+export const DeauthorizeGroupCloudProviderAccessRoleResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeauthorizeGroupCloudProviderAccessRoleResponse>;
 
 export interface DeferGroupMaintenanceWindowRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -27788,11 +27444,8 @@ export const DeferGroupMaintenanceWindowRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeferGroupMaintenanceWindowRequest>;
 
 export interface DeferGroupMaintenanceWindowResponse {}
-export const DeferGroupMaintenanceWindowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeferGroupMaintenanceWindowResponse",
-}) as any as S.Schema<DeferGroupMaintenanceWindowResponse>;
+export const DeferGroupMaintenanceWindowResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeferGroupMaintenanceWindowResponse>;
 
 export interface DeleteFederationSettingRequest {
   /** Unique 24-hexadecimal digit string that identifies your federation. */
@@ -27880,11 +27533,8 @@ export const DeleteFederationSettingIdentityProviderRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteFederationSettingIdentityProviderRequest>;
 
 export interface DeleteFederationSettingIdentityProviderResponse {}
-export const DeleteFederationSettingIdentityProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteFederationSettingIdentityProviderResponse",
-}) as any as S.Schema<DeleteFederationSettingIdentityProviderResponse>;
+export const DeleteFederationSettingIdentityProviderResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteFederationSettingIdentityProviderResponse>;
 
 export interface DeleteGroupRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -27910,9 +27560,7 @@ export const DeleteGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteGroupRequest" }) as any as S.Schema<DeleteGroupRequest>;
 
 export interface DeleteGroupResponse {}
-export const DeleteGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGroupResponse",
-}) as any as S.Schema<DeleteGroupResponse>;
+export const DeleteGroupResponse = AddGroupApiKeyResponse as any as S.Schema<DeleteGroupResponse>;
 
 export interface DeleteGroupAccessListEntryRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -27943,11 +27591,8 @@ export const DeleteGroupAccessListEntryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGroupAccessListEntryRequest>;
 
 export interface DeleteGroupAccessListEntryResponse {}
-export const DeleteGroupAccessListEntryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupAccessListEntryResponse",
-}) as any as S.Schema<DeleteGroupAccessListEntryResponse>;
+export const DeleteGroupAccessListEntryResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteGroupAccessListEntryResponse>;
 
 export interface DeleteGroupAiModelApiKeyRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -27978,11 +27623,8 @@ export const DeleteGroupAiModelApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGroupAiModelApiKeyRequest>;
 
 export interface DeleteGroupAiModelApiKeyResponse {}
-export const DeleteGroupAiModelApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupAiModelApiKeyResponse",
-}) as any as S.Schema<DeleteGroupAiModelApiKeyResponse>;
+export const DeleteGroupAiModelApiKeyResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteGroupAiModelApiKeyResponse>;
 
 export interface DeleteGroupAlertConfigRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -28013,9 +27655,8 @@ export const DeleteGroupAlertConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGroupAlertConfigRequest>;
 
 export interface DeleteGroupAlertConfigResponse {}
-export const DeleteGroupAlertConfigResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGroupAlertConfigResponse",
-}) as any as S.Schema<DeleteGroupAlertConfigResponse>;
+export const DeleteGroupAlertConfigResponse =
+  AddGroupApiKeyResponse as any as S.Schema<DeleteGroupAlertConfigResponse>;
 
 export interface DeleteGroupBackupExportBucketRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -28043,11 +27684,8 @@ export const DeleteGroupBackupExportBucketRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteGroupBackupExportBucketRequest>;
 
 export interface DeleteGroupBackupExportBucketResponse {}
-export const DeleteGroupBackupExportBucketResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupBackupExportBucketResponse",
-}) as any as S.Schema<DeleteGroupBackupExportBucketResponse>;
+export const DeleteGroupBackupExportBucketResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteGroupBackupExportBucketResponse>;
 
 export type DeleteGroupBackupPrivateEndpointRequestCloudProvider = "AWS";
 export const DeleteGroupBackupPrivateEndpointRequestCloudProvider = S.String;
@@ -28084,11 +27722,8 @@ export const DeleteGroupBackupPrivateEndpointRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteGroupBackupPrivateEndpointRequest>;
 
 export interface DeleteGroupBackupPrivateEndpointResponse {}
-export const DeleteGroupBackupPrivateEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupBackupPrivateEndpointResponse",
-}) as any as S.Schema<DeleteGroupBackupPrivateEndpointResponse>;
+export const DeleteGroupBackupPrivateEndpointResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteGroupBackupPrivateEndpointResponse>;
 
 export interface DeleteGroupClusterRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -28122,9 +27757,8 @@ export const DeleteGroupClusterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGroupClusterRequest>;
 
 export interface DeleteGroupClusterResponse {}
-export const DeleteGroupClusterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGroupClusterResponse",
-}) as any as S.Schema<DeleteGroupClusterResponse>;
+export const DeleteGroupClusterResponse =
+  AddGroupApiKeyResponse as any as S.Schema<DeleteGroupClusterResponse>;
 
 export interface DeleteGroupClusterBackupScheduleRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -28307,9 +27941,8 @@ export const DiskBackupSnapshotSchedule20240805OutputExtraRetentionSettingsList 
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type DiskBackupSnapshotSchedule20240805OutputLinksList = Array<Link>;
-export const DiskBackupSnapshotSchedule20240805OutputLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<DiskBackupSnapshotSchedule20240805OutputLinksList>;
+export const DiskBackupSnapshotSchedule20240805OutputLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<DiskBackupSnapshotSchedule20240805OutputLinksList>;
 
 /** Number that indicates the frequency interval for a set of Snapshots. A value of `1` specifies the first instance of the corresponding `frequencyType`. - In a yearly policy item, `1` indicates that the yearly Snapshot occurs on the first day of January and `12` indicates the first day of December. - In a monthly policy item, `1` indicates that the monthly Snapshot occurs on the first day of the month and `40` indicates the last day of the month. - In a weekly policy item, `1` indicates that the weekly Snapshot occurs on Monday and `7` indicates Sunday. - In an hourly policy item, you can set the frequency interval to `1`, `2`, `4`, `6`, `8`, or `12`. For hourly policy items for NVMe clusters, MongoDB Cloud accepts only `12` as the frequency interval value. MongoDB Cloud ignores this setting for non-hourly policy items in Backup Compliance Policy settings. */
 export type DiskBackupApiPolicyItemFrequencyInterval =
@@ -28498,11 +28131,8 @@ export const DeleteGroupClusterBackupSnapshotRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteGroupClusterBackupSnapshotRequest>;
 
 export interface DeleteGroupClusterBackupSnapshotResponse {}
-export const DeleteGroupClusterBackupSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupClusterBackupSnapshotResponse",
-}) as any as S.Schema<DeleteGroupClusterBackupSnapshotResponse>;
+export const DeleteGroupClusterBackupSnapshotResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteGroupClusterBackupSnapshotResponse>;
 
 export interface DeleteGroupClusterBackupSnapshotShardedClusterRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -28536,11 +28166,8 @@ export const DeleteGroupClusterBackupSnapshotShardedClusterRequest = /*@__PURE__
 }) as any as S.Schema<DeleteGroupClusterBackupSnapshotShardedClusterRequest>;
 
 export interface DeleteGroupClusterBackupSnapshotShardedClusterResponse {}
-export const DeleteGroupClusterBackupSnapshotShardedClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupClusterBackupSnapshotShardedClusterResponse",
-}) as any as S.Schema<DeleteGroupClusterBackupSnapshotShardedClusterResponse>;
+export const DeleteGroupClusterBackupSnapshotShardedClusterResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteGroupClusterBackupSnapshotShardedClusterResponse>;
 
 export interface DeleteGroupClusterGlobalWriteCustomZoneMappingRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -28636,11 +28263,8 @@ export const DeleteGroupClusterOnlineArchiveRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteGroupClusterOnlineArchiveRequest>;
 
 export interface DeleteGroupClusterOnlineArchiveResponse {}
-export const DeleteGroupClusterOnlineArchiveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupClusterOnlineArchiveResponse",
-}) as any as S.Schema<DeleteGroupClusterOnlineArchiveResponse>;
+export const DeleteGroupClusterOnlineArchiveResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteGroupClusterOnlineArchiveResponse>;
 
 export interface DeleteGroupClusterOverloadSimulationRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -28674,11 +28298,8 @@ export const DeleteGroupClusterOverloadSimulationRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteGroupClusterOverloadSimulationRequest>;
 
 export interface DeleteGroupClusterOverloadSimulationResponse {}
-export const DeleteGroupClusterOverloadSimulationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupClusterOverloadSimulationResponse",
-}) as any as S.Schema<DeleteGroupClusterOverloadSimulationResponse>;
+export const DeleteGroupClusterOverloadSimulationResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteGroupClusterOverloadSimulationResponse>;
 
 export interface DeleteGroupClusterSearchDeploymentRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -28709,11 +28330,8 @@ export const DeleteGroupClusterSearchDeploymentRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteGroupClusterSearchDeploymentRequest>;
 
 export interface DeleteGroupClusterSearchDeploymentResponse {}
-export const DeleteGroupClusterSearchDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupClusterSearchDeploymentResponse",
-}) as any as S.Schema<DeleteGroupClusterSearchDeploymentResponse>;
+export const DeleteGroupClusterSearchDeploymentResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteGroupClusterSearchDeploymentResponse>;
 
 export interface DeleteGroupClusterSearchIndexRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -28747,11 +28365,8 @@ export const DeleteGroupClusterSearchIndexRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteGroupClusterSearchIndexRequest>;
 
 export interface DeleteGroupClusterSearchIndexResponse {}
-export const DeleteGroupClusterSearchIndexResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupClusterSearchIndexResponse",
-}) as any as S.Schema<DeleteGroupClusterSearchIndexResponse>;
+export const DeleteGroupClusterSearchIndexResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteGroupClusterSearchIndexResponse>;
 
 export interface DeleteGroupClusterSearchIndexByNameRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -28791,11 +28406,8 @@ export const DeleteGroupClusterSearchIndexByNameRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteGroupClusterSearchIndexByNameRequest>;
 
 export interface DeleteGroupClusterSearchIndexByNameResponse {}
-export const DeleteGroupClusterSearchIndexByNameResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupClusterSearchIndexByNameResponse",
-}) as any as S.Schema<DeleteGroupClusterSearchIndexByNameResponse>;
+export const DeleteGroupClusterSearchIndexByNameResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteGroupClusterSearchIndexByNameResponse>;
 
 export interface DeleteGroupContainerRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -28826,9 +28438,8 @@ export const DeleteGroupContainerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGroupContainerRequest>;
 
 export interface DeleteGroupContainerResponse {}
-export const DeleteGroupContainerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGroupContainerResponse",
-}) as any as S.Schema<DeleteGroupContainerResponse>;
+export const DeleteGroupContainerResponse =
+  AddGroupApiKeyResponse as any as S.Schema<DeleteGroupContainerResponse>;
 
 export interface DeleteGroupCustomDbRoleRoleRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -28859,11 +28470,8 @@ export const DeleteGroupCustomDbRoleRoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGroupCustomDbRoleRoleRequest>;
 
 export interface DeleteGroupCustomDbRoleRoleResponse {}
-export const DeleteGroupCustomDbRoleRoleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupCustomDbRoleRoleResponse",
-}) as any as S.Schema<DeleteGroupCustomDbRoleRoleResponse>;
+export const DeleteGroupCustomDbRoleRoleResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteGroupCustomDbRoleRoleResponse>;
 
 export interface DeleteGroupDatabaseUserRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -28897,9 +28505,8 @@ export const DeleteGroupDatabaseUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGroupDatabaseUserRequest>;
 
 export interface DeleteGroupDatabaseUserResponse {}
-export const DeleteGroupDatabaseUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteGroupDatabaseUserResponse" },
-) as any as S.Schema<DeleteGroupDatabaseUserResponse>;
+export const DeleteGroupDatabaseUserResponse =
+  DeleteFederationSettingResponse as any as S.Schema<DeleteGroupDatabaseUserResponse>;
 
 export interface DeleteGroupDataFederationRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -28930,11 +28537,8 @@ export const DeleteGroupDataFederationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGroupDataFederationRequest>;
 
 export interface DeleteGroupDataFederationResponse {}
-export const DeleteGroupDataFederationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupDataFederationResponse",
-}) as any as S.Schema<DeleteGroupDataFederationResponse>;
+export const DeleteGroupDataFederationResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteGroupDataFederationResponse>;
 
 export type DeleteGroupDataFederationLimitRequestLimitName =
   | "bytesProcessed.query"
@@ -28972,11 +28576,8 @@ export const DeleteGroupDataFederationLimitRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteGroupDataFederationLimitRequest>;
 
 export interface DeleteGroupDataFederationLimitResponse {}
-export const DeleteGroupDataFederationLimitResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupDataFederationLimitResponse",
-}) as any as S.Schema<DeleteGroupDataFederationLimitResponse>;
+export const DeleteGroupDataFederationLimitResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteGroupDataFederationLimitResponse>;
 
 export interface DeleteGroupFlexClusterRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -29007,9 +28608,8 @@ export const DeleteGroupFlexClusterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGroupFlexClusterRequest>;
 
 export interface DeleteGroupFlexClusterResponse {}
-export const DeleteGroupFlexClusterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGroupFlexClusterResponse",
-}) as any as S.Schema<DeleteGroupFlexClusterResponse>;
+export const DeleteGroupFlexClusterResponse =
+  AddGroupApiKeyResponse as any as S.Schema<DeleteGroupFlexClusterResponse>;
 
 export type DeleteGroupIntegrationRequestIntegrationType =
   | "PAGER_DUTY"
@@ -29053,9 +28653,8 @@ export const DeleteGroupIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGroupIntegrationRequest>;
 
 export interface DeleteGroupIntegrationResponse {}
-export const DeleteGroupIntegrationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGroupIntegrationResponse",
-}) as any as S.Schema<DeleteGroupIntegrationResponse>;
+export const DeleteGroupIntegrationResponse =
+  AddGroupApiKeyResponse as any as S.Schema<DeleteGroupIntegrationResponse>;
 
 export type DeleteGroupLimitRequestLimitName =
   | "atlas.project.security.databaseAccess.users"
@@ -29100,9 +28699,8 @@ export const DeleteGroupLimitRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteGroupLimitRequest" }) as any as S.Schema<DeleteGroupLimitRequest>;
 
 export interface DeleteGroupLimitResponse {}
-export const DeleteGroupLimitResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGroupLimitResponse",
-}) as any as S.Schema<DeleteGroupLimitResponse>;
+export const DeleteGroupLimitResponse =
+  AddGroupApiKeyResponse as any as S.Schema<DeleteGroupLimitResponse>;
 
 export interface DeleteGroupLogIntegrationRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -29133,11 +28731,8 @@ export const DeleteGroupLogIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGroupLogIntegrationRequest>;
 
 export interface DeleteGroupLogIntegrationResponse {}
-export const DeleteGroupLogIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupLogIntegrationResponse",
-}) as any as S.Schema<DeleteGroupLogIntegrationResponse>;
+export const DeleteGroupLogIntegrationResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteGroupLogIntegrationResponse>;
 
 export interface DeleteGroupMcpConfigRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -29165,9 +28760,8 @@ export const DeleteGroupMcpConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGroupMcpConfigRequest>;
 
 export interface DeleteGroupMcpConfigResponse {}
-export const DeleteGroupMcpConfigResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGroupMcpConfigResponse",
-}) as any as S.Schema<DeleteGroupMcpConfigResponse>;
+export const DeleteGroupMcpConfigResponse =
+  AddGroupApiKeyResponse as any as S.Schema<DeleteGroupMcpConfigResponse>;
 
 export interface DeleteGroupMcpConfigSecretRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -29195,11 +28789,8 @@ export const DeleteGroupMcpConfigSecretRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGroupMcpConfigSecretRequest>;
 
 export interface DeleteGroupMcpConfigSecretResponse {}
-export const DeleteGroupMcpConfigSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupMcpConfigSecretResponse",
-}) as any as S.Schema<DeleteGroupMcpConfigSecretResponse>;
+export const DeleteGroupMcpConfigSecretResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteGroupMcpConfigSecretResponse>;
 
 export interface DeleteGroupMetricIntegrationRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -29230,11 +28821,8 @@ export const DeleteGroupMetricIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGroupMetricIntegrationRequest>;
 
 export interface DeleteGroupMetricIntegrationResponse {}
-export const DeleteGroupMetricIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupMetricIntegrationResponse",
-}) as any as S.Schema<DeleteGroupMetricIntegrationResponse>;
+export const DeleteGroupMetricIntegrationResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteGroupMetricIntegrationResponse>;
 
 export interface DeleteGroupPeerRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -29263,9 +28851,8 @@ export const DeleteGroupPeerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteGroupPeerRequest" }) as any as S.Schema<DeleteGroupPeerRequest>;
 
 export interface DeleteGroupPeerResponse {}
-export const DeleteGroupPeerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGroupPeerResponse",
-}) as any as S.Schema<DeleteGroupPeerResponse>;
+export const DeleteGroupPeerResponse =
+  AddGroupApiKeyResponse as any as S.Schema<DeleteGroupPeerResponse>;
 
 export type DeleteGroupPrivateEndpointEndpointServiceRequestCloudProvider = "AWS" | "AZURE" | "GCP";
 export const DeleteGroupPrivateEndpointEndpointServiceRequestCloudProvider = S.String;
@@ -29302,11 +28889,8 @@ export const DeleteGroupPrivateEndpointEndpointServiceRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DeleteGroupPrivateEndpointEndpointServiceRequest>;
 
 export interface DeleteGroupPrivateEndpointEndpointServiceResponse {}
-export const DeleteGroupPrivateEndpointEndpointServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupPrivateEndpointEndpointServiceResponse",
-}) as any as S.Schema<DeleteGroupPrivateEndpointEndpointServiceResponse>;
+export const DeleteGroupPrivateEndpointEndpointServiceResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteGroupPrivateEndpointEndpointServiceResponse>;
 
 export type DeleteGroupPrivateEndpointEndpointServiceEndpointRequestCloudProvider =
   | "AWS"
@@ -29354,11 +28938,8 @@ export const DeleteGroupPrivateEndpointEndpointServiceEndpointRequest = /*@__PUR
 }) as any as S.Schema<DeleteGroupPrivateEndpointEndpointServiceEndpointRequest>;
 
 export interface DeleteGroupPrivateEndpointEndpointServiceEndpointResponse {}
-export const DeleteGroupPrivateEndpointEndpointServiceEndpointResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupPrivateEndpointEndpointServiceEndpointResponse",
-}) as any as S.Schema<DeleteGroupPrivateEndpointEndpointServiceEndpointResponse>;
+export const DeleteGroupPrivateEndpointEndpointServiceEndpointResponse =
+  DeleteFederationSettingConnectedOrgConfigRoleMappingResponse as any as S.Schema<DeleteGroupPrivateEndpointEndpointServiceEndpointResponse>;
 
 export interface DeleteGroupPrivateNetworkSettingEndpointIdRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -29389,11 +28970,8 @@ export const DeleteGroupPrivateNetworkSettingEndpointIdRequest = /*@__PURE__*/ S
 }) as any as S.Schema<DeleteGroupPrivateNetworkSettingEndpointIdRequest>;
 
 export interface DeleteGroupPrivateNetworkSettingEndpointIdResponse {}
-export const DeleteGroupPrivateNetworkSettingEndpointIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupPrivateNetworkSettingEndpointIdResponse",
-}) as any as S.Schema<DeleteGroupPrivateNetworkSettingEndpointIdResponse>;
+export const DeleteGroupPrivateNetworkSettingEndpointIdResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteGroupPrivateNetworkSettingEndpointIdResponse>;
 
 export interface DeleteGroupServiceAccountRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -29424,11 +29002,8 @@ export const DeleteGroupServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGroupServiceAccountRequest>;
 
 export interface DeleteGroupServiceAccountResponse {}
-export const DeleteGroupServiceAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupServiceAccountResponse",
-}) as any as S.Schema<DeleteGroupServiceAccountResponse>;
+export const DeleteGroupServiceAccountResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteGroupServiceAccountResponse>;
 
 export interface DeleteGroupServiceAccountAccessListEntryRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -29462,11 +29037,8 @@ export const DeleteGroupServiceAccountAccessListEntryRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<DeleteGroupServiceAccountAccessListEntryRequest>;
 
 export interface DeleteGroupServiceAccountAccessListEntryResponse {}
-export const DeleteGroupServiceAccountAccessListEntryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupServiceAccountAccessListEntryResponse",
-}) as any as S.Schema<DeleteGroupServiceAccountAccessListEntryResponse>;
+export const DeleteGroupServiceAccountAccessListEntryResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteGroupServiceAccountAccessListEntryResponse>;
 
 export interface DeleteGroupServiceAccountSecretRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -29500,11 +29072,8 @@ export const DeleteGroupServiceAccountSecretRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteGroupServiceAccountSecretRequest>;
 
 export interface DeleteGroupServiceAccountSecretResponse {}
-export const DeleteGroupServiceAccountSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupServiceAccountSecretResponse",
-}) as any as S.Schema<DeleteGroupServiceAccountSecretResponse>;
+export const DeleteGroupServiceAccountSecretResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteGroupServiceAccountSecretResponse>;
 
 export interface DeleteGroupStreamConnectionRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -29538,11 +29107,8 @@ export const DeleteGroupStreamConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGroupStreamConnectionRequest>;
 
 export interface DeleteGroupStreamConnectionResponse {}
-export const DeleteGroupStreamConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupStreamConnectionResponse",
-}) as any as S.Schema<DeleteGroupStreamConnectionResponse>;
+export const DeleteGroupStreamConnectionResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteGroupStreamConnectionResponse>;
 
 export interface DeleteGroupStreamConnectionFailoverConnectionRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -29579,11 +29145,8 @@ export const DeleteGroupStreamConnectionFailoverConnectionRequest = /*@__PURE__*
 }) as any as S.Schema<DeleteGroupStreamConnectionFailoverConnectionRequest>;
 
 export interface DeleteGroupStreamConnectionFailoverConnectionResponse {}
-export const DeleteGroupStreamConnectionFailoverConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupStreamConnectionFailoverConnectionResponse",
-}) as any as S.Schema<DeleteGroupStreamConnectionFailoverConnectionResponse>;
+export const DeleteGroupStreamConnectionFailoverConnectionResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteGroupStreamConnectionFailoverConnectionResponse>;
 
 export interface DeleteGroupStreamPrivateLinkConnectionRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -29614,11 +29177,8 @@ export const DeleteGroupStreamPrivateLinkConnectionRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteGroupStreamPrivateLinkConnectionRequest>;
 
 export interface DeleteGroupStreamPrivateLinkConnectionResponse {}
-export const DeleteGroupStreamPrivateLinkConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupStreamPrivateLinkConnectionResponse",
-}) as any as S.Schema<DeleteGroupStreamPrivateLinkConnectionResponse>;
+export const DeleteGroupStreamPrivateLinkConnectionResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteGroupStreamPrivateLinkConnectionResponse>;
 
 export interface DeleteGroupStreamProcessorRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -29652,11 +29212,8 @@ export const DeleteGroupStreamProcessorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGroupStreamProcessorRequest>;
 
 export interface DeleteGroupStreamProcessorResponse {}
-export const DeleteGroupStreamProcessorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupStreamProcessorResponse",
-}) as any as S.Schema<DeleteGroupStreamProcessorResponse>;
+export const DeleteGroupStreamProcessorResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteGroupStreamProcessorResponse>;
 
 export interface DeleteGroupStreamVpcPeeringConnectionRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -29684,11 +29241,8 @@ export const DeleteGroupStreamVpcPeeringConnectionRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DeleteGroupStreamVpcPeeringConnectionRequest>;
 
 export interface DeleteGroupStreamVpcPeeringConnectionResponse {}
-export const DeleteGroupStreamVpcPeeringConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupStreamVpcPeeringConnectionResponse",
-}) as any as S.Schema<DeleteGroupStreamVpcPeeringConnectionResponse>;
+export const DeleteGroupStreamVpcPeeringConnectionResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteGroupStreamVpcPeeringConnectionResponse>;
 
 export interface DeleteGroupStreamWorkspaceRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -29719,11 +29273,8 @@ export const DeleteGroupStreamWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGroupStreamWorkspaceRequest>;
 
 export interface DeleteGroupStreamWorkspaceResponse {}
-export const DeleteGroupStreamWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupStreamWorkspaceResponse",
-}) as any as S.Schema<DeleteGroupStreamWorkspaceResponse>;
+export const DeleteGroupStreamWorkspaceResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteGroupStreamWorkspaceResponse>;
 
 export interface DeleteGroupUserSecurityLdapUserToDnMappingRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -29751,11 +29302,8 @@ export const DeleteGroupUserSecurityLdapUserToDnMappingRequest = /*@__PURE__*/ S
 }) as any as S.Schema<DeleteGroupUserSecurityLdapUserToDnMappingRequest>;
 
 export interface DeleteGroupUserSecurityLdapUserToDnMappingResponse {}
-export const DeleteGroupUserSecurityLdapUserToDnMappingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupUserSecurityLdapUserToDnMappingResponse",
-}) as any as S.Schema<DeleteGroupUserSecurityLdapUserToDnMappingResponse>;
+export const DeleteGroupUserSecurityLdapUserToDnMappingResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteGroupUserSecurityLdapUserToDnMappingResponse>;
 
 export interface DeleteOrgRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -29778,9 +29326,7 @@ export const DeleteOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteOrgRequest" }) as any as S.Schema<DeleteOrgRequest>;
 
 export interface DeleteOrgResponse {}
-export const DeleteOrgResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOrgResponse",
-}) as any as S.Schema<DeleteOrgResponse>;
+export const DeleteOrgResponse = AddGroupApiKeyResponse as any as S.Schema<DeleteOrgResponse>;
 
 export interface DeleteOrgApiKeyRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -29809,9 +29355,8 @@ export const DeleteOrgApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteOrgApiKeyRequest" }) as any as S.Schema<DeleteOrgApiKeyRequest>;
 
 export interface DeleteOrgApiKeyResponse {}
-export const DeleteOrgApiKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOrgApiKeyResponse",
-}) as any as S.Schema<DeleteOrgApiKeyResponse>;
+export const DeleteOrgApiKeyResponse =
+  AddGroupApiKeyResponse as any as S.Schema<DeleteOrgApiKeyResponse>;
 
 export interface DeleteOrgApiKeyAccessListEntryRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -29845,11 +29390,8 @@ export const DeleteOrgApiKeyAccessListEntryRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteOrgApiKeyAccessListEntryRequest>;
 
 export interface DeleteOrgApiKeyAccessListEntryResponse {}
-export const DeleteOrgApiKeyAccessListEntryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrgApiKeyAccessListEntryResponse",
-}) as any as S.Schema<DeleteOrgApiKeyAccessListEntryResponse>;
+export const DeleteOrgApiKeyAccessListEntryResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteOrgApiKeyAccessListEntryResponse>;
 
 export interface DeleteOrgLiveMigrationLinkTokensRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -29874,11 +29416,8 @@ export const DeleteOrgLiveMigrationLinkTokensRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteOrgLiveMigrationLinkTokensRequest>;
 
 export interface DeleteOrgLiveMigrationLinkTokensResponse {}
-export const DeleteOrgLiveMigrationLinkTokensResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrgLiveMigrationLinkTokensResponse",
-}) as any as S.Schema<DeleteOrgLiveMigrationLinkTokensResponse>;
+export const DeleteOrgLiveMigrationLinkTokensResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteOrgLiveMigrationLinkTokensResponse>;
 
 export interface DeleteOrgLogIntegrationRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -29909,9 +29448,8 @@ export const DeleteOrgLogIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrgLogIntegrationRequest>;
 
 export interface DeleteOrgLogIntegrationResponse {}
-export const DeleteOrgLogIntegrationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteOrgLogIntegrationResponse" },
-) as any as S.Schema<DeleteOrgLogIntegrationResponse>;
+export const DeleteOrgLogIntegrationResponse =
+  DeleteFederationSettingResponse as any as S.Schema<DeleteOrgLogIntegrationResponse>;
 
 export interface DeleteOrgMcpConfigRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -29939,9 +29477,8 @@ export const DeleteOrgMcpConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrgMcpConfigRequest>;
 
 export interface DeleteOrgMcpConfigResponse {}
-export const DeleteOrgMcpConfigResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOrgMcpConfigResponse",
-}) as any as S.Schema<DeleteOrgMcpConfigResponse>;
+export const DeleteOrgMcpConfigResponse =
+  AddGroupApiKeyResponse as any as S.Schema<DeleteOrgMcpConfigResponse>;
 
 export interface DeleteOrgMcpConfigSecretRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -29969,11 +29506,8 @@ export const DeleteOrgMcpConfigSecretRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrgMcpConfigSecretRequest>;
 
 export interface DeleteOrgMcpConfigSecretResponse {}
-export const DeleteOrgMcpConfigSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrgMcpConfigSecretResponse",
-}) as any as S.Schema<DeleteOrgMcpConfigSecretResponse>;
+export const DeleteOrgMcpConfigSecretResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteOrgMcpConfigSecretResponse>;
 
 export interface DeleteOrgResourcePolicyRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -30004,9 +29538,8 @@ export const DeleteOrgResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrgResourcePolicyRequest>;
 
 export interface DeleteOrgResourcePolicyResponse {}
-export const DeleteOrgResourcePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteOrgResourcePolicyResponse" },
-) as any as S.Schema<DeleteOrgResourcePolicyResponse>;
+export const DeleteOrgResourcePolicyResponse =
+  DeleteFederationSettingResponse as any as S.Schema<DeleteOrgResourcePolicyResponse>;
 
 export interface DeleteOrgServiceAccountRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -30037,9 +29570,8 @@ export const DeleteOrgServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrgServiceAccountRequest>;
 
 export interface DeleteOrgServiceAccountResponse {}
-export const DeleteOrgServiceAccountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteOrgServiceAccountResponse" },
-) as any as S.Schema<DeleteOrgServiceAccountResponse>;
+export const DeleteOrgServiceAccountResponse =
+  DeleteFederationSettingResponse as any as S.Schema<DeleteOrgServiceAccountResponse>;
 
 export interface DeleteOrgServiceAccountAccessListEntryRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -30073,11 +29605,8 @@ export const DeleteOrgServiceAccountAccessListEntryRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteOrgServiceAccountAccessListEntryRequest>;
 
 export interface DeleteOrgServiceAccountAccessListEntryResponse {}
-export const DeleteOrgServiceAccountAccessListEntryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrgServiceAccountAccessListEntryResponse",
-}) as any as S.Schema<DeleteOrgServiceAccountAccessListEntryResponse>;
+export const DeleteOrgServiceAccountAccessListEntryResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteOrgServiceAccountAccessListEntryResponse>;
 
 export interface DeleteOrgServiceAccountSecretRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -30111,11 +29640,8 @@ export const DeleteOrgServiceAccountSecretRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteOrgServiceAccountSecretRequest>;
 
 export interface DeleteOrgServiceAccountSecretResponse {}
-export const DeleteOrgServiceAccountSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrgServiceAccountSecretResponse",
-}) as any as S.Schema<DeleteOrgServiceAccountSecretResponse>;
+export const DeleteOrgServiceAccountSecretResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DeleteOrgServiceAccountSecretResponse>;
 
 export interface DeleteOrgTeamRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -30144,9 +29670,8 @@ export const DeleteOrgTeamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteOrgTeamRequest" }) as any as S.Schema<DeleteOrgTeamRequest>;
 
 export interface DeleteOrgTeamResponse {}
-export const DeleteOrgTeamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOrgTeamResponse",
-}) as any as S.Schema<DeleteOrgTeamResponse>;
+export const DeleteOrgTeamResponse =
+  AddGroupApiKeyResponse as any as S.Schema<DeleteOrgTeamResponse>;
 
 export interface DisableGroupBackupCompliancePolicyRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -30174,11 +29699,8 @@ export const DisableGroupBackupCompliancePolicyRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DisableGroupBackupCompliancePolicyRequest>;
 
 export interface DisableGroupBackupCompliancePolicyResponse {}
-export const DisableGroupBackupCompliancePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisableGroupBackupCompliancePolicyResponse",
-}) as any as S.Schema<DisableGroupBackupCompliancePolicyResponse>;
+export const DisableGroupBackupCompliancePolicyResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DisableGroupBackupCompliancePolicyResponse>;
 
 export interface DisableGroupManagedSlowMsRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -30206,11 +29728,8 @@ export const DisableGroupManagedSlowMsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisableGroupManagedSlowMsRequest>;
 
 export interface DisableGroupManagedSlowMsResponse {}
-export const DisableGroupManagedSlowMsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisableGroupManagedSlowMsResponse",
-}) as any as S.Schema<DisableGroupManagedSlowMsResponse>;
+export const DisableGroupManagedSlowMsResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DisableGroupManagedSlowMsResponse>;
 
 export interface DisableGroupUserSecurityCustomerX509Request {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -30235,11 +29754,8 @@ export const DisableGroupUserSecurityCustomerX509Request = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DisableGroupUserSecurityCustomerX509Request>;
 
 export interface DisableGroupUserSecurityCustomerX509Response {}
-export const DisableGroupUserSecurityCustomerX509Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisableGroupUserSecurityCustomerX509Response",
-}) as any as S.Schema<DisableGroupUserSecurityCustomerX509Response>;
+export const DisableGroupUserSecurityCustomerX509Response =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DisableGroupUserSecurityCustomerX509Response>;
 
 export type DownloadGroupClusterLogRequestLogName =
   | "mongodb"
@@ -30283,9 +29799,8 @@ export const DownloadGroupClusterLogRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DownloadGroupClusterLogRequest>;
 
 export interface DownloadGroupClusterLogResponse {}
-export const DownloadGroupClusterLogResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DownloadGroupClusterLogResponse" },
-) as any as S.Schema<DownloadGroupClusterLogResponse>;
+export const DownloadGroupClusterLogResponse =
+  DeleteFederationSettingResponse as any as S.Schema<DownloadGroupClusterLogResponse>;
 
 export interface DownloadGroupClusterOnlineArchiveQueryLogsRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -30322,11 +29837,8 @@ export const DownloadGroupClusterOnlineArchiveQueryLogsRequest = /*@__PURE__*/ S
 }) as any as S.Schema<DownloadGroupClusterOnlineArchiveQueryLogsRequest>;
 
 export interface DownloadGroupClusterOnlineArchiveQueryLogsResponse {}
-export const DownloadGroupClusterOnlineArchiveQueryLogsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DownloadGroupClusterOnlineArchiveQueryLogsResponse",
-}) as any as S.Schema<DownloadGroupClusterOnlineArchiveQueryLogsResponse>;
+export const DownloadGroupClusterOnlineArchiveQueryLogsResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DownloadGroupClusterOnlineArchiveQueryLogsResponse>;
 
 export interface DownloadGroupDataFederationQueryLogsRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -30357,11 +29869,8 @@ export const DownloadGroupDataFederationQueryLogsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DownloadGroupDataFederationQueryLogsRequest>;
 
 export interface DownloadGroupDataFederationQueryLogsResponse {}
-export const DownloadGroupDataFederationQueryLogsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DownloadGroupDataFederationQueryLogsResponse",
-}) as any as S.Schema<DownloadGroupDataFederationQueryLogsResponse>;
+export const DownloadGroupDataFederationQueryLogsResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DownloadGroupDataFederationQueryLogsResponse>;
 
 export interface DownloadGroupFlexClusterBackupRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -30429,11 +29938,8 @@ export const DownloadGroupStreamAuditLogsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DownloadGroupStreamAuditLogsRequest>;
 
 export interface DownloadGroupStreamAuditLogsResponse {}
-export const DownloadGroupStreamAuditLogsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DownloadGroupStreamAuditLogsResponse",
-}) as any as S.Schema<DownloadGroupStreamAuditLogsResponse>;
+export const DownloadGroupStreamAuditLogsResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DownloadGroupStreamAuditLogsResponse>;
 
 export interface DownloadGroupStreamOperationalLogsRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -30470,11 +29976,8 @@ export const DownloadGroupStreamOperationalLogsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DownloadGroupStreamOperationalLogsRequest>;
 
 export interface DownloadGroupStreamOperationalLogsResponse {}
-export const DownloadGroupStreamOperationalLogsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DownloadGroupStreamOperationalLogsResponse",
-}) as any as S.Schema<DownloadGroupStreamOperationalLogsResponse>;
+export const DownloadGroupStreamOperationalLogsResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<DownloadGroupStreamOperationalLogsResponse>;
 
 export interface EnableGroupManagedSlowMsRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -30502,11 +30005,8 @@ export const EnableGroupManagedSlowMsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableGroupManagedSlowMsRequest>;
 
 export interface EnableGroupManagedSlowMsResponse {}
-export const EnableGroupManagedSlowMsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "EnableGroupManagedSlowMsResponse",
-}) as any as S.Schema<EnableGroupManagedSlowMsResponse>;
+export const EnableGroupManagedSlowMsResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<EnableGroupManagedSlowMsResponse>;
 
 export interface EndGroupClusterOutageSimulationRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -30688,15 +30188,13 @@ export const GetFederationSettingIdentityProviderRequest = /*@__PURE__*/ S.suspe
 
 /** List that contains the domains associated with the identity provider. */
 export type FederationSamlIdentityProviderAssociatedDomainsList = Array<string>;
-export const FederationSamlIdentityProviderAssociatedDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FederationSamlIdentityProviderAssociatedDomainsList>;
+export const FederationSamlIdentityProviderAssociatedDomainsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<FederationSamlIdentityProviderAssociatedDomainsList>;
 
 /** List that contains the connected organization configurations associated with the identity provider. */
 export type FederationSamlIdentityProviderAssociatedOrgsList = Array<ConnectedOrgConfig>;
-export const FederationSamlIdentityProviderAssociatedOrgsList = /*@__PURE__*/ S.Array(
-  ConnectedOrgConfig,
-) as any as S.Schema<FederationSamlIdentityProviderAssociatedOrgsList>;
+export const FederationSamlIdentityProviderAssociatedOrgsList =
+  FederationOidcWorkforceIdentityProviderAssociatedOrgsList as any as S.Schema<FederationSamlIdentityProviderAssociatedOrgsList>;
 
 /** String enum that indicates the type of the identity provider. Default is WORKFORCE. */
 export type FederationSamlIdentityProviderIdpType = "WORKFORCE" | "WORKLOAD";
@@ -30850,11 +30348,8 @@ export const GetFederationSettingIdentityProviderMetadataRequest = /*@__PURE__*/
 }) as any as S.Schema<GetFederationSettingIdentityProviderMetadataRequest>;
 
 export type GetFederationSettingIdentityProviderMetadataResponse = string;
-export const GetFederationSettingIdentityProviderMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetFederationSettingIdentityProviderMetadataResponse",
-}) as any as S.Schema<GetFederationSettingIdentityProviderMetadataResponse>;
+export const GetFederationSettingIdentityProviderMetadataResponse =
+  CreateGroupDatabaseUserCertResponse as any as S.Schema<GetFederationSettingIdentityProviderMetadataResponse>;
 
 export interface GetGroupRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -31917,9 +31412,8 @@ export const GetGroupActivityFeedRequestEventTypeList = /*@__PURE__*/ S.Array(
 
 /** List of cluster names to filter the activity feed. */
 export type GetGroupActivityFeedRequestClusterNameList = Array<string>;
-export const GetGroupActivityFeedRequestClusterNameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetGroupActivityFeedRequestClusterNameList>;
+export const GetGroupActivityFeedRequestClusterNameList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<GetGroupActivityFeedRequestClusterNameList>;
 
 export interface GetGroupActivityFeedRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -31957,9 +31451,8 @@ export const GetGroupActivityFeedRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type ActivityFeedLinkResponseLinksList = Array<Link>;
-export const ActivityFeedLinkResponseLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<ActivityFeedLinkResponseLinksList>;
+export const ActivityFeedLinkResponseLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<ActivityFeedLinkResponseLinksList>;
 
 /** Response containing a shareable activity feed link. */
 export interface ActivityFeedLinkResponse {
@@ -32022,9 +31515,8 @@ export const GetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequest =
 
 /** List of embedding model names included in this model group. */
 export type AiModelRateLimitResponseModelNamesList = Array<string>;
-export const AiModelRateLimitResponseModelNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AiModelRateLimitResponseModelNamesList>;
+export const AiModelRateLimitResponseModelNamesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<AiModelRateLimitResponseModelNamesList>;
 
 export interface AiModelRateLimitResponse {
   /** Cloud provider scope for this rate limit. Use "ANY" for cloud-agnostic scope. */
@@ -32115,9 +31607,8 @@ export const GetGroupAiModelApiRateLimitsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedAtlasAiModelRateLimitsResponseLinksList = Array<Link>;
-export const PaginatedAtlasAiModelRateLimitsResponseLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedAtlasAiModelRateLimitsResponseLinksList>;
+export const PaginatedAtlasAiModelRateLimitsResponseLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedAtlasAiModelRateLimitsResponseLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedAtlasAiModelRateLimitsResponseResultsList = Array<AiModelRateLimitResponse>;
@@ -32214,9 +31705,8 @@ export const GetGroupAlertAlertConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedAlertConfigViewLinksList = Array<Link>;
-export const PaginatedAlertConfigViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedAlertConfigViewLinksList>;
+export const PaginatedAlertConfigViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedAlertConfigViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedAlertConfigViewResultsList = Array<GroupAlertsConfig>;
@@ -32269,11 +31759,8 @@ export const GetGroupAlertConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetGroupAlertConfigRequest>;
 
 export type GetGroupAlertConfigResponse = GroupAlertsConfig;
-export const GetGroupAlertConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  GroupAlertsConfig.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetGroupAlertConfigResponse",
-}) as any as S.Schema<GetGroupAlertConfigResponse>;
+export const GetGroupAlertConfigResponse =
+  CreateGroupAlertConfigResponse as any as S.Schema<GetGroupAlertConfigResponse>;
 
 export interface GetGroupAlertConfigAlertsRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -32314,9 +31801,8 @@ export const GetGroupAlertConfigAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedAlertViewLinksList = Array<Link>;
-export const PaginatedAlertViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedAlertViewLinksList>;
+export const PaginatedAlertViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedAlertViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedAlertViewResultsList = Array<AlertViewForNdsGroup>;
@@ -32815,19 +32301,15 @@ export const GetGroupClusterAdaptiveSettingsRequest = /*@__PURE__*/ S.suspend(()
 
 /** Map of customer-specified overrides for Adaptive Settings, applied on a best-effort basis. Each supported entry that you specify in this object takes precedence over the corresponding Atlas-managed default. For example, if a setting is enabled by default, you can add an override to disable it for your cluster. */
 export type AdaptiveSettingsOverrides = { [key: string]: unknown | undefined };
-export const AdaptiveSettingsOverrides = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AdaptiveSettingsOverrides>;
+export const AdaptiveSettingsOverrides =
+  IndexOptionsPartialFilterExpressionMap as any as S.Schema<AdaptiveSettingsOverrides>;
 
 /** The effective state of Adaptive Settings currently applied to your cluster, based on your overrides and Atlas-managed defaults. Atlas-managed defaults can vary by MongoDB version, so the same setting may default differently across clusters running different versions. If you set an override for a setting that your cluster's current MongoDB version doesn't support, the override doesn't take effect and the effective value reflects the Atlas-managed default instead. */
 export type AdaptiveSettingsResponseEffectiveAdaptiveSettingsMap = {
   [key: string]: unknown | undefined;
 };
-export const AdaptiveSettingsResponseEffectiveAdaptiveSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AdaptiveSettingsResponseEffectiveAdaptiveSettingsMap>;
+export const AdaptiveSettingsResponseEffectiveAdaptiveSettingsMap =
+  IndexOptionsPartialFilterExpressionMap as any as S.Schema<AdaptiveSettingsResponseEffectiveAdaptiveSettingsMap>;
 
 /** Adaptive Settings for a cluster, including client-provided overrides and the effective settings derived from those overrides and Atlas-managed defaults. */
 export interface AdaptiveSettingsResponse {
@@ -32966,9 +32448,8 @@ export const DiskBackupReplicaSetCloudProvider = S.String;
 
 /** List that identifies the regions to which MongoDB Cloud copies the snapshot. */
 export type DiskBackupReplicaSetCopyRegionsList = Array<string>;
-export const DiskBackupReplicaSetCopyRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DiskBackupReplicaSetCopyRegionsList>;
+export const DiskBackupReplicaSetCopyRegionsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<DiskBackupReplicaSetCopyRegionsList>;
 
 /** Human-readable label that identifies how often this snapshot triggers. */
 export type DiskBackupReplicaSetFrequencyType =
@@ -32981,15 +32462,13 @@ export const DiskBackupReplicaSetFrequencyType = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type DiskBackupReplicaSetLinksList = Array<Link>;
-export const DiskBackupReplicaSetLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<DiskBackupReplicaSetLinksList>;
+export const DiskBackupReplicaSetLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<DiskBackupReplicaSetLinksList>;
 
 /** List that contains unique identifiers for the policy items. */
 export type DiskBackupReplicaSetPolicyItemsList = Array<string>;
-export const DiskBackupReplicaSetPolicyItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DiskBackupReplicaSetPolicyItemsList>;
+export const DiskBackupReplicaSetPolicyItemsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<DiskBackupReplicaSetPolicyItemsList>;
 
 /** Human-readable label that identifies when this snapshot triggers. */
 export type DiskBackupReplicaSetSnapshotType = "onDemand" | "scheduled" | "fallback";
@@ -33095,9 +32574,8 @@ export const GetGroupClusterBackupSnapshotDatabaseRequest = /*@__PURE__*/ S.susp
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type DiskBackupDatabaseResponseLinksList = Array<Link>;
-export const DiskBackupDatabaseResponseLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<DiskBackupDatabaseResponseLinksList>;
+export const DiskBackupDatabaseResponseLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<DiskBackupDatabaseResponseLinksList>;
 
 export interface DiskBackupDatabaseResponse {
   /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
@@ -33153,9 +32631,8 @@ export const GetGroupClusterBackupSnapshotDatabaseCollectionRequest = /*@__PURE_
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type DiskBackupCollectionResponseLinksList = Array<Link>;
-export const DiskBackupCollectionResponseLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<DiskBackupCollectionResponseLinksList>;
+export const DiskBackupCollectionResponseLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<DiskBackupCollectionResponseLinksList>;
 
 export interface DiskBackupCollectionResponse {
   /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
@@ -33163,14 +32640,8 @@ export interface DiskBackupCollectionResponse {
   /** Human-readable label that identifies the collection in the database within the snapshot. */
   name: string;
 }
-export const DiskBackupCollectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    links: S.optional(DiskBackupCollectionResponseLinksList),
-    name: S.String,
-  }),
-).annotate({
-  identifier: "DiskBackupCollectionResponse",
-}) as any as S.Schema<DiskBackupCollectionResponse>;
+export const DiskBackupCollectionResponse =
+  DiskBackupDatabaseResponse as any as S.Schema<DiskBackupCollectionResponse>;
 
 export interface GetGroupClusterBackupSnapshotShardedClusterRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -33218,9 +32689,8 @@ export const DiskBackupShardedClusterSnapshotFrequencyType = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type DiskBackupShardedClusterSnapshotLinksList = Array<Link>;
-export const DiskBackupShardedClusterSnapshotLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<DiskBackupShardedClusterSnapshotLinksList>;
+export const DiskBackupShardedClusterSnapshotLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<DiskBackupShardedClusterSnapshotLinksList>;
 
 /** Human-readable label that identifies the cloud provider. */
 export type DiskBackupShardedClusterSnapshotMemberCloudProvider = "AWS" | "AZURE" | "GCP";
@@ -33253,15 +32723,13 @@ export const DiskBackupShardedClusterSnapshotMembersList = /*@__PURE__*/ S.Array
 
 /** List that contains unique identifiers for the policy items. */
 export type DiskBackupShardedClusterSnapshotPolicyItemsList = Array<string>;
-export const DiskBackupShardedClusterSnapshotPolicyItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DiskBackupShardedClusterSnapshotPolicyItemsList>;
+export const DiskBackupShardedClusterSnapshotPolicyItemsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<DiskBackupShardedClusterSnapshotPolicyItemsList>;
 
 /** List that contains the unique identifiers of the snapshots created for the shards and config host for a sharded cluster. The resource returns this parameter when `"type": "SHARDED_CLUSTER"`. These identifiers should match the ones specified in the **members[n].id** parameters. This allows you to map a snapshot to its shard or config host name. */
 export type DiskBackupShardedClusterSnapshotSnapshotIdsList = Array<string>;
-export const DiskBackupShardedClusterSnapshotSnapshotIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DiskBackupShardedClusterSnapshotSnapshotIdsList>;
+export const DiskBackupShardedClusterSnapshotSnapshotIdsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<DiskBackupShardedClusterSnapshotSnapshotIdsList>;
 
 /** Human-readable label that identifies when this snapshot triggers. */
 export type DiskBackupShardedClusterSnapshotSnapshotType = "onDemand" | "scheduled" | "fallback";
@@ -33406,17 +32874,14 @@ export const GetGroupClusterCollectionRestoreJobCollectionRequest = /*@__PURE__*
 export type ApiAtlasCollectionRestoreIndexStatusFailedIndexesItemMap = {
   [key: string]: unknown | undefined;
 };
-export const ApiAtlasCollectionRestoreIndexStatusFailedIndexesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ApiAtlasCollectionRestoreIndexStatusFailedIndexesItemMap>;
+export const ApiAtlasCollectionRestoreIndexStatusFailedIndexesItemMap =
+  IndexOptionsPartialFilterExpressionMap as any as S.Schema<ApiAtlasCollectionRestoreIndexStatusFailedIndexesItemMap>;
 
 /** List of index specifications that failed to build (up to 64 items). */
 export type ApiAtlasCollectionRestoreIndexStatusFailedIndexesList =
   Array<ApiAtlasCollectionRestoreIndexStatusFailedIndexesItemMap>;
-export const ApiAtlasCollectionRestoreIndexStatusFailedIndexesList = /*@__PURE__*/ S.Array(
-  ApiAtlasCollectionRestoreIndexStatusFailedIndexesItemMap,
-) as any as S.Schema<ApiAtlasCollectionRestoreIndexStatusFailedIndexesList>;
+export const ApiAtlasCollectionRestoreIndexStatusFailedIndexesList =
+  ShardKeysKeyList as any as S.Schema<ApiAtlasCollectionRestoreIndexStatusFailedIndexesList>;
 
 /** Index build state indicating the status of index creation during or after a restore operation. */
 export type ApiAtlasCollectionRestoreIndexStatusState =
@@ -33534,9 +32999,8 @@ export const GetGroupClusterCollStatNamespacesRequest = /*@__PURE__*/ S.suspend(
 
 /** Ordered list of the hottest namespaces, highest value first. */
 export type CollStatsRankedNamespacesViewRankedNamespacesList = Array<string>;
-export const CollStatsRankedNamespacesViewRankedNamespacesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CollStatsRankedNamespacesViewRankedNamespacesList>;
+export const CollStatsRankedNamespacesViewRankedNamespacesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<CollStatsRankedNamespacesViewRankedNamespacesList>;
 
 export interface CollStatsRankedNamespacesView {
   /** Unique 24-hexadecimal digit string that identifies the request project. */
@@ -33876,9 +33340,8 @@ export const QueryShapeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueryShapeResponse" }) as any as S.Schema<QueryShapeResponse>;
 
 export type GetGroupClusterQueryShapeInsightDetailsRequestProcessIdsList = Array<string>;
-export const GetGroupClusterQueryShapeInsightDetailsRequestProcessIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetGroupClusterQueryShapeInsightDetailsRequestProcessIdsList>;
+export const GetGroupClusterQueryShapeInsightDetailsRequestProcessIdsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<GetGroupClusterQueryShapeInsightDetailsRequestProcessIdsList>;
 
 export interface GetGroupClusterQueryShapeInsightDetailsRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -34243,9 +33706,8 @@ export const ClusterStatusChangeStatus = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type ClusterStatusLinksList = Array<Link>;
-export const ClusterStatusLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<ClusterStatusLinksList>;
+export const ClusterStatusLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<ClusterStatusLinksList>;
 
 export interface ClusterStatus {
   /** State of cluster at the time of this request. Atlas returns **Applied** if it completed adding a user to, or removing a user from, your cluster. Atlas returns **Pending** if it's still making the requested user changes. When status is **Pending**, new users can't log in. */
@@ -34316,15 +33778,13 @@ export const GetGroupCustomDbRoleRoleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of the individual privilege actions that the role grants. */
 export type UserCustomDBRoleActionsList = Array<DatabasePrivilegeAction>;
-export const UserCustomDBRoleActionsList = /*@__PURE__*/ S.Array(
-  DatabasePrivilegeAction,
-) as any as S.Schema<UserCustomDBRoleActionsList>;
+export const UserCustomDBRoleActionsList =
+  CreateGroupCustomDbRoleRoleRequestActionsList as any as S.Schema<UserCustomDBRoleActionsList>;
 
 /** List of the built-in roles that this custom role inherits. */
 export type UserCustomDBRoleInheritedRolesList = Array<DatabaseInheritedRole>;
-export const UserCustomDBRoleInheritedRolesList = /*@__PURE__*/ S.Array(
-  DatabaseInheritedRole,
-) as any as S.Schema<UserCustomDBRoleInheritedRolesList>;
+export const UserCustomDBRoleInheritedRolesList =
+  CreateGroupCustomDbRoleRoleRequestInheritedRolesList as any as S.Schema<UserCustomDBRoleInheritedRolesList>;
 
 export interface UserCustomDBRole {
   /** List of the individual privilege actions that the role grants. */
@@ -35565,9 +35025,8 @@ export const DefaultEventViewForNdsGroupEventTypeName =
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type DefaultEventViewForNdsGroupLinksList = Array<Link>;
-export const DefaultEventViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<DefaultEventViewForNdsGroupLinksList>;
+export const DefaultEventViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<DefaultEventViewForNdsGroupLinksList>;
 
 /** Severity of the event. */
 export type RawSeverity = "INFO" | "WARNING" | "ERROR" | "CRITICAL";
@@ -35667,9 +35126,8 @@ export const AlertAuditTypeView = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type AlertAuditLinksList = Array<Link>;
-export const AlertAuditLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<AlertAuditLinksList>;
+export const AlertAuditLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<AlertAuditLinksList>;
 
 /** Alert audit indicates acknowledgement status of an alert. */
 export interface AlertAudit {
@@ -35732,9 +35190,8 @@ export const AlertConfigAuditTypeView = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type AlertConfigAuditLinksList = Array<Link>;
-export const AlertConfigAuditLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<AlertConfigAuditLinksList>;
+export const AlertConfigAuditLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<AlertConfigAuditLinksList>;
 
 /** Alert configuration audit indicates any activities around alert settings. */
 export interface AlertConfigAudit {
@@ -35802,9 +35259,8 @@ export const ApiUserEventTypeViewForNdsGroup = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type ApiUserEventViewForNdsGroupLinksList = Array<Link>;
-export const ApiUserEventViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<ApiUserEventViewForNdsGroupLinksList>;
+export const ApiUserEventViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<ApiUserEventViewForNdsGroupLinksList>;
 
 /** API User event identifies different activities around user API keys. */
 export interface ApiUserEventViewForNdsGroup {
@@ -35879,9 +35335,8 @@ export const ServiceAccountEventTypeViewForNdsGroup = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type ServiceAccountGroupEventsLinksList = Array<Link>;
-export const ServiceAccountGroupEventsLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<ServiceAccountGroupEventsLinksList>;
+export const ServiceAccountGroupEventsLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<ServiceAccountGroupEventsLinksList>;
 
 /** Service Account event identifies different activities around user API keys. */
 export interface ServiceAccountGroupEvents {
@@ -35938,9 +35393,8 @@ export const AutomationConfigEventTypeView = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type AutomationConfigEventViewLinksList = Array<Link>;
-export const AutomationConfigEventViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<AutomationConfigEventViewLinksList>;
+export const AutomationConfigEventViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<AutomationConfigEventViewLinksList>;
 
 /** Automation configuration event identifies that deployment configuration is published. */
 export interface AutomationConfigEventView {
@@ -36009,9 +35463,8 @@ export const AppServiceEventTypeView = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type AppServiceEventViewLinksList = Array<Link>;
-export const AppServiceEventViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<AppServiceEventViewLinksList>;
+export const AppServiceEventViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<AppServiceEventViewLinksList>;
 
 /** App Services event identifies different activities about a BAAS application. */
 export interface AppServiceEventView {
@@ -36058,9 +35511,8 @@ export const BillingEventTypeViewForNdsGroup = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type BillingEventViewForNdsGroupLinksList = Array<Link>;
-export const BillingEventViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<BillingEventViewForNdsGroupLinksList>;
+export const BillingEventViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<BillingEventViewForNdsGroupLinksList>;
 
 /** Billing event identifies different activities related to billing, payment or financial status change of an organization. */
 export interface BillingEventViewForNdsGroup {
@@ -36125,9 +35577,8 @@ export const ClusterEventTypeViewForNdsGroup = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type ClusterEventViewForNdsGroupLinksList = Array<Link>;
-export const ClusterEventViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<ClusterEventViewForNdsGroupLinksList>;
+export const ClusterEventViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<ClusterEventViewForNdsGroupLinksList>;
 
 /** Cluster event identifies different activities about cluster of mongod hosts. */
 export interface ClusterEventViewForNdsGroup {
@@ -36171,9 +35622,8 @@ export const DataExplorerAccessedEventTypeView = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type DataExplorerAccessedEventViewLinksList = Array<Link>;
-export const DataExplorerAccessedEventViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<DataExplorerAccessedEventViewLinksList>;
+export const DataExplorerAccessedEventViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<DataExplorerAccessedEventViewLinksList>;
 
 /** Data Explorer accessed event tracks different data operations via Data Explorer interactions. */
 export interface DataExplorerAccessedEventView {
@@ -36239,9 +35689,8 @@ export const DataExplorerEventTypeView = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type DataExplorerEventLinksList = Array<Link>;
-export const DataExplorerEventLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<DataExplorerEventLinksList>;
+export const DataExplorerEventLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<DataExplorerEventLinksList>;
 
 /** Data Explorer event tracks different Data Explorer operations. */
 export interface DataExplorerEvent {
@@ -36313,9 +35762,8 @@ export const FTSIndexAuditTypeView = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type FTSIndexAuditViewLinksList = Array<Link>;
-export const FTSIndexAuditViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<FTSIndexAuditViewLinksList>;
+export const FTSIndexAuditViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<FTSIndexAuditViewLinksList>;
 
 /** FTS index audit indicates any activities about search index. */
 export interface FTSIndexAuditView {
@@ -36409,9 +35857,8 @@ export const HostEventTypeViewForNdsGroup = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type HostEventViewForNdsGroupLinksList = Array<Link>;
-export const HostEventViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<HostEventViewForNdsGroupLinksList>;
+export const HostEventViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<HostEventViewForNdsGroupLinksList>;
 
 /** Host event identifies different activities about mongod host. */
 export interface HostEventViewForNdsGroup {
@@ -36481,9 +35928,8 @@ export const HostMetricEventTypeView = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type HostMetricEventLinksList = Array<Link>;
-export const HostMetricEventLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<HostMetricEventLinksList>;
+export const HostMetricEventLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<HostMetricEventLinksList>;
 
 /** Host Metric Event reflects different measurements and metrics about mongod host. */
 export interface HostMetricEvent {
@@ -36869,9 +36315,8 @@ export const NDSAuditTypeViewForNdsGroup = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type NDSAuditViewForNdsGroupLinksList = Array<Link>;
-export const NDSAuditViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<NDSAuditViewForNdsGroupLinksList>;
+export const NDSAuditViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<NDSAuditViewForNdsGroupLinksList>;
 
 /** Audit saving information about Atlas cloud provider and other Atlas related details. */
 export interface NDSAuditViewForNdsGroup {
@@ -36954,9 +36399,8 @@ export const NDSAutoScalingAuditTypeViewForNdsGroup = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type NDSAutoScalingAuditViewForNdsGroupLinksList = Array<Link>;
-export const NDSAutoScalingAuditViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<NDSAutoScalingAuditViewForNdsGroupLinksList>;
+export const NDSAutoScalingAuditViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<NDSAutoScalingAuditViewForNdsGroupLinksList>;
 
 /** Auto scaling audit indicates when Atlas auto-scaling cluster tier up or down. */
 export interface NDSAutoScalingAuditViewForNdsGroup {
@@ -37021,9 +36465,8 @@ export const NDSServerlessInstanceAuditTypeView = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type NDSServerlessInstanceAuditViewLinksList = Array<Link>;
-export const NDSServerlessInstanceAuditViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<NDSServerlessInstanceAuditViewLinksList>;
+export const NDSServerlessInstanceAuditViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<NDSServerlessInstanceAuditViewLinksList>;
 
 /** Serverless instance audit identifies any activities around serverless instance. */
 export interface NDSServerlessInstanceAuditView {
@@ -37090,9 +36533,8 @@ export const NDSTenantEndpointAuditTypeView = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type NDSTenantEndpointAuditViewLinksList = Array<Link>;
-export const NDSTenantEndpointAuditViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<NDSTenantEndpointAuditViewLinksList>;
+export const NDSTenantEndpointAuditViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<NDSTenantEndpointAuditViewLinksList>;
 
 /** Tenant endpoint audit indicates when Atlas auto-scaling cluster tier up or down. */
 export interface NDSTenantEndpointAuditView {
@@ -37163,9 +36605,8 @@ export const ReplicaSetEventTypeViewForNdsGroup = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type ForNdsGroupLinksList = Array<Link>;
-export const ForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<ForNdsGroupLinksList>;
+export const ForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<ForNdsGroupLinksList>;
 
 /** Replica Set Event identifies different activities about replica set of mongod instances. */
 export interface ForNdsGroup {
@@ -37215,9 +36656,8 @@ export const SearchDeploymentAuditTypeView = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type SearchDeploymentAuditViewLinksList = Array<Link>;
-export const SearchDeploymentAuditViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<SearchDeploymentAuditViewLinksList>;
+export const SearchDeploymentAuditViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<SearchDeploymentAuditViewLinksList>;
 
 /** Indicates activities on decoupled search nodes. */
 export interface SearchDeploymentAuditView {
@@ -37277,9 +36717,8 @@ export const TeamEventTypeViewForNdsGroup = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type TeamEventViewForNdsGroupLinksList = Array<Link>;
-export const TeamEventViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<TeamEventViewForNdsGroupLinksList>;
+export const TeamEventViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<TeamEventViewForNdsGroupLinksList>;
 
 /** Team event identifies different activities around organization teams. */
 export interface TeamEventViewForNdsGroup {
@@ -37345,9 +36784,8 @@ export const UserEventTypeViewForNdsGroup = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type UserEventViewForNdsGroupLinksList = Array<Link>;
-export const UserEventViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<UserEventViewForNdsGroupLinksList>;
+export const UserEventViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<UserEventViewForNdsGroupLinksList>;
 
 /** User event reflects different activities about the atlas user. */
 export interface UserEventViewForNdsGroup {
@@ -37408,9 +36846,8 @@ export const ResourceEventTypeView = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type ResourceEventViewForNdsGroupLinksList = Array<Link>;
-export const ResourceEventViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<ResourceEventViewForNdsGroupLinksList>;
+export const ResourceEventViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<ResourceEventViewForNdsGroupLinksList>;
 
 /** Resource event reflects different activities about resources. */
 export interface ResourceEventViewForNdsGroup {
@@ -37473,9 +36910,8 @@ export const StreamsEventTypeViewForNdsGroup = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsEventViewForNdsGroupLinksList = Array<Link>;
-export const StreamsEventViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamsEventViewForNdsGroupLinksList>;
+export const StreamsEventViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamsEventViewForNdsGroupLinksList>;
 
 /** Streams event identifies different activities about Atlas Streams. */
 export interface StreamsEventViewForNdsGroup {
@@ -37524,9 +36960,8 @@ export const StreamProcessorEventTypeViewForNdsGroup = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamProcessorEventViewForNdsGroupLinksList = Array<Link>;
-export const StreamProcessorEventViewForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamProcessorEventViewForNdsGroupLinksList>;
+export const StreamProcessorEventViewForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamProcessorEventViewForNdsGroupLinksList>;
 
 /** Stream Processor event identifies different activities about a stream processor in Atlas Streams. */
 export interface StreamProcessorEventViewForNdsGroup {
@@ -37593,9 +37028,8 @@ export const ChartsAuditTypeView = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type ChartsAuditLinksList = Array<Link>;
-export const ChartsAuditLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<ChartsAuditLinksList>;
+export const ChartsAuditLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<ChartsAuditLinksList>;
 
 /** Audit events related to Atlas Charts. */
 export interface ChartsAudit {
@@ -37650,15 +37084,13 @@ export const AtlasResourcePolicyAuditForNdsGroupEventTypeName = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type AtlasResourcePolicyAuditForNdsGroupLinksList = Array<Link>;
-export const AtlasResourcePolicyAuditForNdsGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<AtlasResourcePolicyAuditForNdsGroupLinksList>;
+export const AtlasResourcePolicyAuditForNdsGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<AtlasResourcePolicyAuditForNdsGroupLinksList>;
 
 /** String representation of the violated resource policy ids. */
 export type AtlasResourcePolicyAuditForNdsGroupViolatedPoliciesList = Array<string>;
-export const AtlasResourcePolicyAuditForNdsGroupViolatedPoliciesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AtlasResourcePolicyAuditForNdsGroupViolatedPoliciesList>;
+export const AtlasResourcePolicyAuditForNdsGroupViolatedPoliciesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<AtlasResourcePolicyAuditForNdsGroupViolatedPoliciesList>;
 
 /** Atlas resource policy audits indicate organization level changes to resource policies. */
 export interface AtlasResourcePolicyAuditForNdsGroup {
@@ -37843,9 +37275,8 @@ export const GetGroupFlexClusterBackupSnapshotRequest = /*@__PURE__*/ S.suspend(
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type FlexBackupSnapshot20241113LinksList = Array<Link>;
-export const FlexBackupSnapshot20241113LinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<FlexBackupSnapshot20241113LinksList>;
+export const FlexBackupSnapshot20241113LinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<FlexBackupSnapshot20241113LinksList>;
 
 /** Phase of the workflow for this snapshot at the time this resource made this request. */
 export type FlexBackupSnapshot20241113Status =
@@ -38028,9 +37459,8 @@ export const MeasurementsIndexesIndexStatsMeasurementsList = /*@__PURE__*/ S.Arr
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type MeasurementsIndexesLinksList = Array<Link>;
-export const MeasurementsIndexesLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<MeasurementsIndexesLinksList>;
+export const MeasurementsIndexesLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<MeasurementsIndexesLinksList>;
 
 export interface MeasurementsIndexes {
   /** Human-readable label that identifies the collection. */
@@ -38137,27 +37567,23 @@ export const GetGroupIpAddressesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of future inbound IP addresses associated with the cluster. If your network allows outbound HTTP requests only to specific IP addresses, you must allow access to the following IP addresses so that your application can connect to your Atlas cluster. */
 export type ClusterIPAddressesFutureInboundList = Array<string>;
-export const ClusterIPAddressesFutureInboundList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClusterIPAddressesFutureInboundList>;
+export const ClusterIPAddressesFutureInboundList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<ClusterIPAddressesFutureInboundList>;
 
 /** List of future outbound IP addresses associated with the cluster. If your network allows inbound HTTP requests only from specific IP addresses, you must allow access from the following IP addresses so that your Atlas cluster can communicate with your webhooks and KMS. */
 export type ClusterIPAddressesFutureOutboundList = Array<string>;
-export const ClusterIPAddressesFutureOutboundList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClusterIPAddressesFutureOutboundList>;
+export const ClusterIPAddressesFutureOutboundList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<ClusterIPAddressesFutureOutboundList>;
 
 /** List of inbound IP addresses associated with the cluster. If your network allows outbound HTTP requests only to specific IP addresses, you must allow access to the following IP addresses so that your application can connect to your Atlas cluster. */
 export type ClusterIPAddressesInboundList = Array<string>;
-export const ClusterIPAddressesInboundList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClusterIPAddressesInboundList>;
+export const ClusterIPAddressesInboundList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<ClusterIPAddressesInboundList>;
 
 /** List of outbound IP addresses associated with the cluster. If your network allows inbound HTTP requests only from specific IP addresses, you must allow access from the following IP addresses so that your Atlas cluster can communicate with your webhooks and KMS. */
 export type ClusterIPAddressesOutboundList = Array<string>;
-export const ClusterIPAddressesOutboundList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClusterIPAddressesOutboundList>;
+export const ClusterIPAddressesOutboundList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<ClusterIPAddressesOutboundList>;
 
 /** List of IP addresses in a cluster. */
 export interface ClusterIPAddresses {
@@ -38621,9 +38047,8 @@ export const GetGroupMongoDbVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedAvailableVersionViewLinksList = Array<Link>;
-export const PaginatedAvailableVersionViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedAvailableVersionViewLinksList>;
+export const PaginatedAvailableVersionViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedAvailableVersionViewLinksList>;
 
 /** Cloud service provider on which MongoDB Cloud provisions the hosts. Set dedicated clusters to `AWS`, `GCP`, `AZURE` or `TENANT`. */
 export type MdbAvailableVersionCloudProvider = "AWS" | "AZURE" | "GCP" | "TENANT";
@@ -38635,9 +38060,8 @@ export const MdbAvailableVersionDefaultStatus = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type MdbAvailableVersionLinksList = Array<Link>;
-export const MdbAvailableVersionLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<MdbAvailableVersionLinksList>;
+export const MdbAvailableVersionLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<MdbAvailableVersionLinksList>;
 
 export interface MdbAvailableVersion {
   /** Cloud service provider on which MongoDB Cloud provisions the hosts. Set dedicated clusters to `AWS`, `GCP`, `AZURE` or `TENANT`. */
@@ -38815,11 +38239,8 @@ export interface ProjectSettingItemView {
   /** Flag that indicates whether someone enabled the regionalized private endpoint setting for the specified project. - Set this value to `true` to enable regionalized private endpoints. This allows you to create more than one private endpoint in a cloud provider region. You need to enable this setting to connect to multi-region and global MongoDB Cloud sharded clusters. Enabling regionalized private endpoints introduces the following limitations: - Your applications must use the new connection strings for existing multi-region and global sharded clusters. This might cause downtime. - Your MongoDB Cloud project can't contain replica sets nor can you create new replica sets in this project. - You can't disable this setting if you have: - more than one private endpoint in more than one region - more than one private endpoint in one region and one private endpoint in one or more regions. - Set this value to `false` to disable regionalized private endpoints. */
   enabled: boolean;
 }
-export const ProjectSettingItemView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-  }),
-).annotate({ identifier: "ProjectSettingItemView" }) as any as S.Schema<ProjectSettingItemView>;
+export const ProjectSettingItemView =
+  AWSCustomDNSEnabledView as any as S.Schema<ProjectSettingItemView>;
 
 export interface GetGroupPrivateNetworkSettingEndpointIdRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -38880,9 +38301,8 @@ export const LinkAtlas = Link;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type ApiHostViewAtlasLinksList = Array<Link>;
-export const ApiHostViewAtlasLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<ApiHostViewAtlasLinksList>;
+export const ApiHostViewAtlasLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<ApiHostViewAtlasLinksList>;
 
 /** Type of MongoDB process that MongoDB Cloud tracks. MongoDB Cloud returns new processes as `NO_DATA` until MongoDB Cloud completes deploying the process. */
 export type ApiHostViewAtlasTypeName =
@@ -39007,9 +38427,8 @@ export const GetGroupProcessDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type MesurementsDatabaseLinksList = Array<Link>;
-export const MesurementsDatabaseLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<MesurementsDatabaseLinksList>;
+export const MesurementsDatabaseLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<MesurementsDatabaseLinksList>;
 
 export interface MesurementsDatabase {
   /** Human-readable label that identifies the database that the specified MongoDB process serves. */
@@ -39096,9 +38515,8 @@ export const ApiMeasurementsGeneralViewAtlasGranularity = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type ApiMeasurementsGeneralViewAtlasLinksList = Array<Link>;
-export const ApiMeasurementsGeneralViewAtlasLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<ApiMeasurementsGeneralViewAtlasLinksList>;
+export const ApiMeasurementsGeneralViewAtlasLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<ApiMeasurementsGeneralViewAtlasLinksList>;
 
 /** Value of, and metadata provided for, one data point generated at a particular moment in time. If no data point exists for a particular moment in time, the `value` parameter returns `null`. */
 export type MetricDataPointAtlas = MetricDataPoint;
@@ -39106,9 +38524,8 @@ export const MetricDataPointAtlas = MetricDataPoint;
 
 /** List that contains the value of, and metadata provided for, one data point generated at a particular moment in time. If no data point exists for a particular moment in time, the `value` parameter returns `null`. */
 export type MetricsMeasurementAtlasDataPointsList = Array<MetricDataPoint>;
-export const MetricsMeasurementAtlasDataPointsList = /*@__PURE__*/ S.Array(
-  MetricDataPoint,
-) as any as S.Schema<MetricsMeasurementAtlasDataPointsList>;
+export const MetricsMeasurementAtlasDataPointsList =
+  MetricsMeasurementDataPointsList as any as S.Schema<MetricsMeasurementAtlasDataPointsList>;
 
 /** Element used to quantify the measurement. The resource returns units of throughput, storage, and time. */
 export type MetricsMeasurementAtlasUnits =
@@ -39215,9 +38632,8 @@ export const GetGroupProcessDiskRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type MeasurementDiskPartitionLinksList = Array<Link>;
-export const MeasurementDiskPartitionLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<MeasurementDiskPartitionLinksList>;
+export const MeasurementDiskPartitionLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<MeasurementDiskPartitionLinksList>;
 
 export interface MeasurementDiskPartition {
   /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
@@ -39715,9 +39131,8 @@ export const GetGroupStreamAccountDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type AWSAccountDetailsLinksList = Array<Link>;
-export const AWSAccountDetailsLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<AWSAccountDetailsLinksList>;
+export const AWSAccountDetailsLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<AWSAccountDetailsLinksList>;
 
 export interface AWSAccountDetails {
   /** The AWS Account ID. */
@@ -39743,9 +39158,8 @@ export const AWSAccountDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type AzureAccountDetailsLinksList = Array<Link>;
-export const AzureAccountDetailsLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<AzureAccountDetailsLinksList>;
+export const AzureAccountDetailsLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<AzureAccountDetailsLinksList>;
 
 export interface AzureAccountDetails {
   /** The Azure Subscription ID. */
@@ -39771,9 +39185,8 @@ export const AzureAccountDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type GCPAccountDetailsLinksList = Array<Link>;
-export const GCPAccountDetailsLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<GCPAccountDetailsLinksList>;
+export const GCPAccountDetailsLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<GCPAccountDetailsLinksList>;
 
 export interface GCPAccountDetails {
   /** The VPC CIDR Block. */
@@ -39932,28 +39345,22 @@ export const StreamsProcessorWithStatsEffectiveTier = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsProcessorWithStatsLinksList = Array<Link>;
-export const StreamsProcessorWithStatsLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamsProcessorWithStatsLinksList>;
+export const StreamsProcessorWithStatsLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<StreamsProcessorWithStatsLinksList>;
 
 export type StreamsProcessorWithStatsPipelineItemMap = { [key: string]: unknown | undefined };
-export const StreamsProcessorWithStatsPipelineItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<StreamsProcessorWithStatsPipelineItemMap>;
+export const StreamsProcessorWithStatsPipelineItemMap =
+  IndexOptionsPartialFilterExpressionMap as any as S.Schema<StreamsProcessorWithStatsPipelineItemMap>;
 
 /** Stream aggregation pipeline you want to apply to your streaming data. */
 export type StreamsProcessorWithStatsPipelineList = Array<StreamsProcessorWithStatsPipelineItemMap>;
-export const StreamsProcessorWithStatsPipelineList = /*@__PURE__*/ S.Array(
-  StreamsProcessorWithStatsPipelineItemMap,
-) as any as S.Schema<StreamsProcessorWithStatsPipelineList>;
+export const StreamsProcessorWithStatsPipelineList =
+  ShardKeysKeyList as any as S.Schema<StreamsProcessorWithStatsPipelineList>;
 
 /** The stats associated with the stream processor. */
 export type StreamsProcessorWithStatsStatsMap = { [key: string]: unknown | undefined };
-export const StreamsProcessorWithStatsStatsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<StreamsProcessorWithStatsStatsMap>;
+export const StreamsProcessorWithStatsStatsMap =
+  IndexOptionsPartialFilterExpressionMap as any as S.Schema<StreamsProcessorWithStatsStatsMap>;
 
 /** Selected tier for the Stream Workspace. Configures Memory or VCPU allowances. */
 export type StreamsProcessorWithStatsTier = "SP50" | "SP30" | "SP10" | "SP5" | "SP2";
@@ -40040,9 +39447,8 @@ export const GetGroupStreamProcessorsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedApiStreamsStreamProcessorWithStatsViewLinksList = Array<Link>;
-export const PaginatedApiStreamsStreamProcessorWithStatsViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedApiStreamsStreamProcessorWithStatsViewLinksList>;
+export const PaginatedApiStreamsStreamProcessorWithStatsViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedApiStreamsStreamProcessorWithStatsViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedApiStreamsStreamProcessorWithStatsViewResultsList =
@@ -40193,9 +39599,8 @@ export const GetGroupUserSecurityRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type DBUserTLSX509SettingsLinksList = Array<Link>;
-export const DBUserTLSX509SettingsLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<DBUserTLSX509SettingsLinksList>;
+export const DBUserTLSX509SettingsLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<DBUserTLSX509SettingsLinksList>;
 
 /** Settings to configure TLS Certificates for database users. */
 export interface DBUserTLSX509Settings {
@@ -40213,9 +39618,8 @@ export const DBUserTLSX509Settings = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type LDAPSecuritySettingsOutputLinksList = Array<Link>;
-export const LDAPSecuritySettingsOutputLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<LDAPSecuritySettingsOutputLinksList>;
+export const LDAPSecuritySettingsOutputLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<LDAPSecuritySettingsOutputLinksList>;
 
 /** User-to-Distinguished Name (DN) map that MongoDB Cloud uses to transform a Lightweight Directory Access Protocol (LDAP) username into an LDAP DN. */
 export interface UserToDNMapping {
@@ -40279,9 +39683,8 @@ export const LDAPSecuritySettingsOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type UserSecurityOutputLinksList = Array<Link>;
-export const UserSecurityOutputLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<UserSecurityOutputLinksList>;
+export const UserSecurityOutputLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<UserSecurityOutputLinksList>;
 
 export interface UserSecurityOutput {
   customerX509?: DBUserTLSX509Settings;
@@ -40327,15 +39730,13 @@ export const GetGroupUserSecurityLdapVerifyRequest = /*@__PURE__*/ S.suspend(() 
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type LDAPVerifyConnectivityJobRequestOutputLinksList = Array<Link>;
-export const LDAPVerifyConnectivityJobRequestOutputLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<LDAPVerifyConnectivityJobRequestOutputLinksList>;
+export const LDAPVerifyConnectivityJobRequestOutputLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<LDAPVerifyConnectivityJobRequestOutputLinksList>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type LDAPVerifyConnectivityJobRequestParamsOutputLinksList = Array<Link>;
-export const LDAPVerifyConnectivityJobRequestParamsOutputLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<LDAPVerifyConnectivityJobRequestParamsOutputLinksList>;
+export const LDAPVerifyConnectivityJobRequestParamsOutputLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<LDAPVerifyConnectivityJobRequestParamsOutputLinksList>;
 
 /** Request information needed to verify an Lightweight Directory Access Protocol (LDAP) over Transport Layer Security (TLS) configuration. The response does not return the `bindPassword`. */
 export interface LDAPVerifyConnectivityJobRequestParamsOutput {
@@ -41332,9 +40733,8 @@ export const DefaultEventViewForOrgEventTypeName =
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type DefaultEventViewForOrgLinksList = Array<Link>;
-export const DefaultEventViewForOrgLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<DefaultEventViewForOrgLinksList>;
+export const DefaultEventViewForOrgLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<DefaultEventViewForOrgLinksList>;
 
 /** Other events which don't have extra details beside of basic one. */
 export interface DefaultEventViewForOrg {
@@ -41400,9 +40800,8 @@ export const ApiUserEventTypeViewForOrg = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type ApiUserEventViewForOrgLinksList = Array<Link>;
-export const ApiUserEventViewForOrgLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<ApiUserEventViewForOrgLinksList>;
+export const ApiUserEventViewForOrgLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<ApiUserEventViewForOrgLinksList>;
 
 /** API User event identifies different activities around user API keys. */
 export interface ApiUserEventViewForOrg {
@@ -41475,9 +40874,8 @@ export const ServiceAccountEventTypeViewForOrg = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type ServiceAccountOrgEventsLinksList = Array<Link>;
-export const ServiceAccountOrgEventsLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<ServiceAccountOrgEventsLinksList>;
+export const ServiceAccountOrgEventsLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<ServiceAccountOrgEventsLinksList>;
 
 /** Service Account event identifies different activities around user API keys. */
 export interface ServiceAccountOrgEvents {
@@ -41613,9 +41011,8 @@ export const BillingEventTypeViewForOrg = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type BillingEventViewForOrgLinksList = Array<Link>;
-export const BillingEventViewForOrgLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<BillingEventViewForOrgLinksList>;
+export const BillingEventViewForOrgLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<BillingEventViewForOrgLinksList>;
 
 /** Billing event identifies different activities related to billing, payment or financial status change of an organization. */
 export interface BillingEventViewForOrg {
@@ -41683,9 +41080,8 @@ export const NDSAuditTypeViewForOrg = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type NDSAuditViewForOrgLinksList = Array<Link>;
-export const NDSAuditViewForOrgLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<NDSAuditViewForOrgLinksList>;
+export const NDSAuditViewForOrgLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<NDSAuditViewForOrgLinksList>;
 
 /** Audit saving information about Atlas cloud provider and other Atlas related details. */
 export interface NDSAuditViewForOrg {
@@ -41829,9 +41225,8 @@ export const OrgEventTypeViewForOrg = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type OrgEventViewForOrgLinksList = Array<Link>;
-export const OrgEventViewForOrgLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<OrgEventViewForOrgLinksList>;
+export const OrgEventViewForOrgLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<OrgEventViewForOrgLinksList>;
 
 /** Organization event identifies different activities and changes in an organization settings. */
 export interface OrgEventViewForOrg {
@@ -41896,9 +41291,8 @@ export const TeamEventTypeView = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type TeamEventLinksList = Array<Link>;
-export const TeamEventLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<TeamEventLinksList>;
+export const TeamEventLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<TeamEventLinksList>;
 
 /** Team event identifies different activities around organization teams. */
 export interface TeamEvent {
@@ -41966,9 +41360,8 @@ export const UserEventTypeViewForOrg = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type UserEventViewForOrgLinksList = Array<Link>;
-export const UserEventViewForOrgLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<UserEventViewForOrgLinksList>;
+export const UserEventViewForOrgLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<UserEventViewForOrgLinksList>;
 
 /** User event reflects different activities about the atlas user. */
 export interface UserEventViewForOrg {
@@ -42026,9 +41419,8 @@ export const ResourceEventTypeViewForOrg = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type ResourceEventViewForOrgLinksList = Array<Link>;
-export const ResourceEventViewForOrgLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<ResourceEventViewForOrgLinksList>;
+export const ResourceEventViewForOrgLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<ResourceEventViewForOrgLinksList>;
 
 /** Resource event reflects different activities about resources. */
 export interface ResourceEventViewForOrg {
@@ -42093,9 +41485,8 @@ export const AtlasResourcePolicyAuditForOrgEventTypeName = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type AtlasResourcePolicyAuditForOrgLinksList = Array<Link>;
-export const AtlasResourcePolicyAuditForOrgLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<AtlasResourcePolicyAuditForOrgLinksList>;
+export const AtlasResourcePolicyAuditForOrgLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<AtlasResourcePolicyAuditForOrgLinksList>;
 
 /** Atlas resource policy audits indicate organization level changes to resource policies. */
 export interface AtlasResourcePolicyAuditForOrg {
@@ -42197,9 +41588,8 @@ export const GetOrgFederationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of domains associated with the organization's identity provider. */
 export type OrgFederationSettingsFederatedDomainsList = Array<string>;
-export const OrgFederationSettingsFederatedDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrgFederationSettingsFederatedDomainsList>;
+export const OrgFederationSettingsFederatedDomainsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<OrgFederationSettingsFederatedDomainsList>;
 
 /** String enum that indicates whether the identity provider is active. */
 export type OrgFederationSettingsIdentityProviderStatus = "ACTIVE" | "INACTIVE";
@@ -42265,9 +41655,8 @@ export const GetOrgGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedAtlasGroupViewLinksList = Array<Link>;
-export const PaginatedAtlasGroupViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedAtlasGroupViewLinksList>;
+export const PaginatedAtlasGroupViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedAtlasGroupViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedAtlasGroupViewResultsList = Array<Group>;
@@ -42323,9 +41712,8 @@ export const InvoiceLineItemCloudProvider = S.String;
 
 /** A map of key-value pairs corresponding to the tags associated with the line item resource. */
 export type InvoiceLineItemTagsValueList = Array<string>;
-export const InvoiceLineItemTagsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InvoiceLineItemTagsValueList>;
+export const InvoiceLineItemTagsValueList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<InvoiceLineItemTagsValueList>;
 
 /** A map of key-value pairs corresponding to the tags associated with the line item resource. */
 export type InvoiceLineItemTagsMap = { [key: string]: InvoiceLineItemTagsValueList | undefined };
@@ -42413,9 +41801,8 @@ export const BillingInvoiceLinkedInvoicesList = /*@__PURE__*/ S.Array(
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type BillingInvoiceLinksList = Array<Link>;
-export const BillingInvoiceLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<BillingInvoiceLinksList>;
+export const BillingInvoiceLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<BillingInvoiceLinksList>;
 
 /** Phase of payment processing for the associated invoice when you made this request. These phases include: - `CANCELLED`: Customer or MongoDB cancelled the payment. - `ERROR`: Issue arose when attempting to complete payment. - `FAILED`: MongoDB tried to charge the credit card without success. - `FAILED_AUTHENTICATION`: Strong Customer Authentication has failed. Confirm that your payment method is authenticated. - `FORGIVEN`: Customer initiated payment which MongoDB later forgave. - `INVOICED`: MongoDB issued an invoice that included this line item. - `NEW`: Customer provided a method of payment, but MongoDB hasn't tried to charge the credit card. - `PAID`: Customer submitted a successful payment. - `PARTIAL_PAID`: Customer paid for part of this line item. */
 export type BillingPaymentStatusName =
@@ -42602,9 +41989,8 @@ export const GetOrgInvoiceCsvRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetOrgInvoiceCsvRequest" }) as any as S.Schema<GetOrgInvoiceCsvRequest>;
 
 export interface GetOrgInvoiceCsvResponse {}
-export const GetOrgInvoiceCsvResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetOrgInvoiceCsvResponse",
-}) as any as S.Schema<GetOrgInvoiceCsvResponse>;
+export const GetOrgInvoiceCsvResponse =
+  AddGroupApiKeyResponse as any as S.Schema<GetOrgInvoiceCsvResponse>;
 
 export interface GetOrgInvoiceReportRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -43016,15 +42402,13 @@ export const GetOrgServiceAccountGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedServiceAccountGroupLinksList = Array<Link>;
-export const PaginatedServiceAccountGroupLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedServiceAccountGroupLinksList>;
+export const PaginatedServiceAccountGroupLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedServiceAccountGroupLinksList>;
 
 /** A list of project roles assigned to the Service Account in this project. */
 export type ServiceAccountGroupRolesList = Array<string>;
-export const ServiceAccountGroupRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServiceAccountGroupRolesList>;
+export const ServiceAccountGroupRolesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<ServiceAccountGroupRolesList>;
 
 export interface ServiceAccountGroup {
   /** Unique 24-hexadecimal digit string that identifies your project. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -43163,9 +42547,8 @@ export const GetOrgTeamRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type TeamResponseLinksList = Array<Link>;
-export const TeamResponseLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<TeamResponseLinksList>;
+export const TeamResponseLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<TeamResponseLinksList>;
 
 export interface TeamResponse {
   /** Unique 24-hexadecimal digit string that identifies this team. */
@@ -43335,14 +42718,8 @@ export interface RateLimitEndpointSetRefillDurationSeconds {
   /** The applied rate limit refill duration of the endpoint set. */
   value?: number;
 }
-export const RateLimitEndpointSetRefillDurationSeconds = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultValue: S.optional(S.NullOr(S.Number)),
-    value: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RateLimitEndpointSetRefillDurationSeconds",
-}) as any as S.Schema<RateLimitEndpointSetRefillDurationSeconds>;
+export const RateLimitEndpointSetRefillDurationSeconds =
+  RateLimitEndpointSetCapacity as any as S.Schema<RateLimitEndpointSetRefillDurationSeconds>;
 
 /** The rate limit refill rate for the endpoint set. */
 export interface RateLimitEndpointSetRefillRate {
@@ -43351,14 +42728,8 @@ export interface RateLimitEndpointSetRefillRate {
   /** The applied rate limit refill rate of the endpoint set. */
   value?: number;
 }
-export const RateLimitEndpointSetRefillRate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultValue: S.optional(S.NullOr(S.Number)),
-    value: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RateLimitEndpointSetRefillRate",
-}) as any as S.Schema<RateLimitEndpointSetRefillRate>;
+export const RateLimitEndpointSetRefillRate =
+  RateLimitEndpointSetCapacity as any as S.Schema<RateLimitEndpointSetRefillRate>;
 
 /** The scope of the endpoint set. */
 export type RateLimitEndpointSetResponseScope = "IP" | "GROUP" | "ORGANIZATION" | "USER";
@@ -43468,9 +42839,7 @@ export const ApiKeyAccessListList = /*@__PURE__*/ S.Array(
 
 /** List that contains roles that the API key needs to have. All roles you provide must be valid for the specified project or organization. Each request must include a minimum of one valid role. The resource returns all project and organization roles assigned to the Cloud user. */
 export type ApiKeyRolesList = Array<CloudAccessRoleAssignment>;
-export const ApiKeyRolesList = /*@__PURE__*/ S.Array(
-  CloudAccessRoleAssignment,
-) as any as S.Schema<ApiKeyRolesList>;
+export const ApiKeyRolesList = ApiKeyUserDetailsRolesList as any as S.Schema<ApiKeyRolesList>;
 
 /** Details contained in one API key. */
 export interface ApiKey {
@@ -43498,9 +42867,8 @@ export const SystemStatusAppName = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type SystemStatusLinksList = Array<Link>;
-export const SystemStatusLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<SystemStatusLinksList>;
+export const SystemStatusLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<SystemStatusLinksList>;
 
 /** Details about the MongoDB Cloud user that this request is authenticated as. */
 export interface AuthenticatedUser {
@@ -43581,17 +42949,13 @@ export const GrantGroupClusterMongoDbEmployeeAccessRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<GrantGroupClusterMongoDbEmployeeAccessRequest>;
 
 export interface GrantGroupClusterMongoDbEmployeeAccessResponse {}
-export const GrantGroupClusterMongoDbEmployeeAccessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GrantGroupClusterMongoDbEmployeeAccessResponse",
-}) as any as S.Schema<GrantGroupClusterMongoDbEmployeeAccessResponse>;
+export const GrantGroupClusterMongoDbEmployeeAccessResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<GrantGroupClusterMongoDbEmployeeAccessResponse>;
 
 /** The Project permissions for the Service Account in the specified Project. */
 export type InviteGroupServiceAccountRequestRolesList = Array<string>;
-export const InviteGroupServiceAccountRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InviteGroupServiceAccountRequestRolesList>;
+export const InviteGroupServiceAccountRequestRolesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<InviteGroupServiceAccountRequestRolesList>;
 
 export interface InviteGroupServiceAccountRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -43733,9 +43097,8 @@ export const ListClusterDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedOrgGroupViewLinksList = Array<Link>;
-export const PaginatedOrgGroupViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedOrgGroupViewLinksList>;
+export const PaginatedOrgGroupViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedOrgGroupViewLinksList>;
 
 /** Term that expresses how many nodes of the cluster can be accessed when MongoDB Cloud receives this request. This parameter returns `available` when all nodes are accessible, `warning` only when some nodes in the cluster can be accessed, `unavailable` when the cluster can't be accessed, or `dead` when the cluster has been deactivated. */
 export type CloudClusterAvailability = "available" | "dead" | "unavailable" | "warning";
@@ -43747,9 +43110,8 @@ export const CloudClusterType = S.String;
 
 /** List that contains the versions of MongoDB that each node in the cluster runs. */
 export type CloudClusterVersionsList = Array<string>;
-export const CloudClusterVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudClusterVersionsList>;
+export const CloudClusterVersionsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<CloudClusterVersionsList>;
 
 /** Settings that describe the clusters in each project that the API key is authorized to view. */
 export interface CloudCluster {
@@ -43800,9 +43162,8 @@ export const OrgGroupClustersList = /*@__PURE__*/ S.Array(
 
 /** List of human-readable labels that categorize the specified project. MongoDB Cloud returns an empty array. */
 export type OrgGroupTagsList = Array<string>;
-export const OrgGroupTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrgGroupTagsList>;
+export const OrgGroupTagsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<OrgGroupTagsList>;
 
 export interface OrgGroup {
   /** Settings that describe the clusters in each project that the API key is authorized to view. */
@@ -43875,48 +43236,39 @@ export const ListControlPlaneIpAddressesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Control plane IP addresses in AWS. Each key identifies an Amazon Web Services (AWS) region. Each value identifies control plane IP addresses in the AWS region. */
 export type InboundControlPlaneCloudProviderIPAddressesAwsValueList = Array<string>;
-export const InboundControlPlaneCloudProviderIPAddressesAwsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InboundControlPlaneCloudProviderIPAddressesAwsValueList>;
+export const InboundControlPlaneCloudProviderIPAddressesAwsValueList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<InboundControlPlaneCloudProviderIPAddressesAwsValueList>;
 
 /** Control plane IP addresses in AWS. Each key identifies an Amazon Web Services (AWS) region. Each value identifies control plane IP addresses in the AWS region. */
 export type InboundControlPlaneCloudProviderIPAddressesAwsMap = {
   [key: string]: InboundControlPlaneCloudProviderIPAddressesAwsValueList | undefined;
 };
-export const InboundControlPlaneCloudProviderIPAddressesAwsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  InboundControlPlaneCloudProviderIPAddressesAwsValueList,
-) as any as S.Schema<InboundControlPlaneCloudProviderIPAddressesAwsMap>;
+export const InboundControlPlaneCloudProviderIPAddressesAwsMap =
+  InvoiceLineItemTagsMap as any as S.Schema<InboundControlPlaneCloudProviderIPAddressesAwsMap>;
 
 /** Control plane IP addresses in Azure. Each key identifies an Azure region. Each value identifies control plane IP addresses in the Azure region. */
 export type InboundControlPlaneCloudProviderIPAddressesAzureValueList = Array<string>;
-export const InboundControlPlaneCloudProviderIPAddressesAzureValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InboundControlPlaneCloudProviderIPAddressesAzureValueList>;
+export const InboundControlPlaneCloudProviderIPAddressesAzureValueList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<InboundControlPlaneCloudProviderIPAddressesAzureValueList>;
 
 /** Control plane IP addresses in Azure. Each key identifies an Azure region. Each value identifies control plane IP addresses in the Azure region. */
 export type InboundControlPlaneCloudProviderIPAddressesAzureMap = {
   [key: string]: InboundControlPlaneCloudProviderIPAddressesAzureValueList | undefined;
 };
-export const InboundControlPlaneCloudProviderIPAddressesAzureMap = /*@__PURE__*/ S.Record(
-  S.String,
-  InboundControlPlaneCloudProviderIPAddressesAzureValueList,
-) as any as S.Schema<InboundControlPlaneCloudProviderIPAddressesAzureMap>;
+export const InboundControlPlaneCloudProviderIPAddressesAzureMap =
+  InvoiceLineItemTagsMap as any as S.Schema<InboundControlPlaneCloudProviderIPAddressesAzureMap>;
 
 /** Control plane IP addresses in GCP. Each key identifies a Google Cloud (GCP) region. Each value identifies control plane IP addresses in the GCP region. */
 export type InboundControlPlaneCloudProviderIPAddressesGcpValueList = Array<string>;
-export const InboundControlPlaneCloudProviderIPAddressesGcpValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InboundControlPlaneCloudProviderIPAddressesGcpValueList>;
+export const InboundControlPlaneCloudProviderIPAddressesGcpValueList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<InboundControlPlaneCloudProviderIPAddressesGcpValueList>;
 
 /** Control plane IP addresses in GCP. Each key identifies a Google Cloud (GCP) region. Each value identifies control plane IP addresses in the GCP region. */
 export type InboundControlPlaneCloudProviderIPAddressesGcpMap = {
   [key: string]: InboundControlPlaneCloudProviderIPAddressesGcpValueList | undefined;
 };
-export const InboundControlPlaneCloudProviderIPAddressesGcpMap = /*@__PURE__*/ S.Record(
-  S.String,
-  InboundControlPlaneCloudProviderIPAddressesGcpValueList,
-) as any as S.Schema<InboundControlPlaneCloudProviderIPAddressesGcpMap>;
+export const InboundControlPlaneCloudProviderIPAddressesGcpMap =
+  InvoiceLineItemTagsMap as any as S.Schema<InboundControlPlaneCloudProviderIPAddressesGcpMap>;
 
 /** List of inbound IP addresses to the Atlas control plane, categorized by cloud provider. If your application allows outbound HTTP requests only to specific IP addresses, you must allow access to the following IP addresses so that your API requests can reach the Atlas control plane. */
 export interface InboundControlPlaneCloudProviderIPAddresses {
@@ -43939,48 +43291,39 @@ export const InboundControlPlaneCloudProviderIPAddresses = /*@__PURE__*/ S.suspe
 
 /** Control plane IP addresses in AWS. Each key identifies an Amazon Web Services (AWS) region. Each value identifies control plane IP addresses in the AWS region. */
 export type OutboundControlPlaneCloudProviderIPAddressesAwsValueList = Array<string>;
-export const OutboundControlPlaneCloudProviderIPAddressesAwsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OutboundControlPlaneCloudProviderIPAddressesAwsValueList>;
+export const OutboundControlPlaneCloudProviderIPAddressesAwsValueList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<OutboundControlPlaneCloudProviderIPAddressesAwsValueList>;
 
 /** Control plane IP addresses in AWS. Each key identifies an Amazon Web Services (AWS) region. Each value identifies control plane IP addresses in the AWS region. */
 export type OutboundControlPlaneCloudProviderIPAddressesAwsMap = {
   [key: string]: OutboundControlPlaneCloudProviderIPAddressesAwsValueList | undefined;
 };
-export const OutboundControlPlaneCloudProviderIPAddressesAwsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  OutboundControlPlaneCloudProviderIPAddressesAwsValueList,
-) as any as S.Schema<OutboundControlPlaneCloudProviderIPAddressesAwsMap>;
+export const OutboundControlPlaneCloudProviderIPAddressesAwsMap =
+  InvoiceLineItemTagsMap as any as S.Schema<OutboundControlPlaneCloudProviderIPAddressesAwsMap>;
 
 /** Control plane IP addresses in Azure. Each key identifies an Azure region. Each value identifies control plane IP addresses in the Azure region. */
 export type OutboundControlPlaneCloudProviderIPAddressesAzureValueList = Array<string>;
-export const OutboundControlPlaneCloudProviderIPAddressesAzureValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OutboundControlPlaneCloudProviderIPAddressesAzureValueList>;
+export const OutboundControlPlaneCloudProviderIPAddressesAzureValueList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<OutboundControlPlaneCloudProviderIPAddressesAzureValueList>;
 
 /** Control plane IP addresses in Azure. Each key identifies an Azure region. Each value identifies control plane IP addresses in the Azure region. */
 export type OutboundControlPlaneCloudProviderIPAddressesAzureMap = {
   [key: string]: OutboundControlPlaneCloudProviderIPAddressesAzureValueList | undefined;
 };
-export const OutboundControlPlaneCloudProviderIPAddressesAzureMap = /*@__PURE__*/ S.Record(
-  S.String,
-  OutboundControlPlaneCloudProviderIPAddressesAzureValueList,
-) as any as S.Schema<OutboundControlPlaneCloudProviderIPAddressesAzureMap>;
+export const OutboundControlPlaneCloudProviderIPAddressesAzureMap =
+  InvoiceLineItemTagsMap as any as S.Schema<OutboundControlPlaneCloudProviderIPAddressesAzureMap>;
 
 /** Control plane IP addresses in GCP. Each key identifies a Google Cloud (GCP) region. Each value identifies control plane IP addresses in the GCP region. */
 export type OutboundControlPlaneCloudProviderIPAddressesGcpValueList = Array<string>;
-export const OutboundControlPlaneCloudProviderIPAddressesGcpValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OutboundControlPlaneCloudProviderIPAddressesGcpValueList>;
+export const OutboundControlPlaneCloudProviderIPAddressesGcpValueList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<OutboundControlPlaneCloudProviderIPAddressesGcpValueList>;
 
 /** Control plane IP addresses in GCP. Each key identifies a Google Cloud (GCP) region. Each value identifies control plane IP addresses in the GCP region. */
 export type OutboundControlPlaneCloudProviderIPAddressesGcpMap = {
   [key: string]: OutboundControlPlaneCloudProviderIPAddressesGcpValueList | undefined;
 };
-export const OutboundControlPlaneCloudProviderIPAddressesGcpMap = /*@__PURE__*/ S.Record(
-  S.String,
-  OutboundControlPlaneCloudProviderIPAddressesGcpValueList,
-) as any as S.Schema<OutboundControlPlaneCloudProviderIPAddressesGcpMap>;
+export const OutboundControlPlaneCloudProviderIPAddressesGcpMap =
+  InvoiceLineItemTagsMap as any as S.Schema<OutboundControlPlaneCloudProviderIPAddressesGcpMap>;
 
 /** List of outbound IP addresses from the Atlas control plane, categorized by cloud provider. If your network allows inbound HTTP requests only from specific IP addresses, you must allow access from the following IP addresses so that Atlas can communicate with your webhooks and KMS. */
 export interface OutboundControlPlaneCloudProviderIPAddresses {
@@ -43991,15 +43334,8 @@ export interface OutboundControlPlaneCloudProviderIPAddresses {
   /** Control plane IP addresses in GCP. Each key identifies a Google Cloud (GCP) region. Each value identifies control plane IP addresses in the GCP region. */
   gcp?: OutboundControlPlaneCloudProviderIPAddressesGcpMap;
 }
-export const OutboundControlPlaneCloudProviderIPAddresses = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aws: S.optional(OutboundControlPlaneCloudProviderIPAddressesAwsMap),
-    azure: S.optional(OutboundControlPlaneCloudProviderIPAddressesAzureMap),
-    gcp: S.optional(OutboundControlPlaneCloudProviderIPAddressesGcpMap),
-  }),
-).annotate({
-  identifier: "OutboundControlPlaneCloudProviderIPAddresses",
-}) as any as S.Schema<OutboundControlPlaneCloudProviderIPAddresses>;
+export const OutboundControlPlaneCloudProviderIPAddresses =
+  InboundControlPlaneCloudProviderIPAddresses as any as S.Schema<OutboundControlPlaneCloudProviderIPAddresses>;
 
 /** IP addresses for a specific gateway, organized by direction and cloud provider. */
 export interface GatewayIpAddresses {
@@ -44078,9 +43414,8 @@ export const ListEventTypesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedEventTypeDetailsResponseLinksList = Array<Link>;
-export const PaginatedEventTypeDetailsResponseLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedEventTypeDetailsResponseLinksList>;
+export const PaginatedEventTypeDetailsResponseLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedEventTypeDetailsResponseLinksList>;
 
 /** A singular type of event. */
 export interface EventTypeDetails {
@@ -44151,15 +43486,13 @@ export const ListFederationSettingConnectedOrgConfigRoleMappingsRequest = /*@__P
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedRoleMappingViewLinksList = Array<Link>;
-export const PaginatedRoleMappingViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedRoleMappingViewLinksList>;
+export const PaginatedRoleMappingViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedRoleMappingViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedRoleMappingViewResultsList = Array<AuthFederationRoleMapping>;
-export const PaginatedRoleMappingViewResultsList = /*@__PURE__*/ S.Array(
-  AuthFederationRoleMapping,
-) as any as S.Schema<PaginatedRoleMappingViewResultsList>;
+export const PaginatedRoleMappingViewResultsList =
+  ConnectedOrgConfigRoleMappingsList as any as S.Schema<PaginatedRoleMappingViewResultsList>;
 
 /** List role mappings from the specified organization in the specified federation. */
 export interface PaginatedRoleMappingView {
@@ -44208,15 +43541,13 @@ export const ListFederationSettingConnectedOrgConfigsRequest = /*@__PURE__*/ S.s
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedConnectedOrgConfigsViewLinksList = Array<Link>;
-export const PaginatedConnectedOrgConfigsViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedConnectedOrgConfigsViewLinksList>;
+export const PaginatedConnectedOrgConfigsViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedConnectedOrgConfigsViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedConnectedOrgConfigsViewResultsList = Array<ConnectedOrgConfig>;
-export const PaginatedConnectedOrgConfigsViewResultsList = /*@__PURE__*/ S.Array(
-  ConnectedOrgConfig,
-) as any as S.Schema<PaginatedConnectedOrgConfigsViewResultsList>;
+export const PaginatedConnectedOrgConfigsViewResultsList =
+  FederationOidcWorkforceIdentityProviderAssociatedOrgsList as any as S.Schema<PaginatedConnectedOrgConfigsViewResultsList>;
 
 export interface PaginatedConnectedOrgConfigsView {
   /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
@@ -44292,9 +43623,8 @@ export const ListFederationSettingIdentityProvidersRequest = /*@__PURE__*/ S.sus
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedFederationIdentityProviderLinksList = Array<Link>;
-export const PaginatedFederationIdentityProviderLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedFederationIdentityProviderLinksList>;
+export const PaginatedFederationIdentityProviderLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedFederationIdentityProviderLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedFederationIdentityProviderResultsList = Array<FederationIdentityProvider>;
@@ -44387,9 +43717,8 @@ export const ListGroupAiModelApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedAtlasAiModelApiKeysResponseLinksList = Array<Link>;
-export const PaginatedAtlasAiModelApiKeysResponseLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedAtlasAiModelApiKeysResponseLinksList>;
+export const PaginatedAtlasAiModelApiKeysResponseLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedAtlasAiModelApiKeysResponseLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedAtlasAiModelApiKeysResponseResultsList = Array<AiModelApiKeyResponse>;
@@ -44522,9 +43851,8 @@ export const ListGroupApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedApiApiUserViewLinksList = Array<Link>;
-export const PaginatedApiApiUserViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedApiApiUserViewLinksList>;
+export const PaginatedApiApiUserViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedApiApiUserViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedApiApiUserViewResultsList = Array<ApiKeyUserDetails>;
@@ -44584,9 +43912,8 @@ export const ListGroupBackupExportBucketsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedBackupSnapshotExportBucketsViewLinksList = Array<Link>;
-export const PaginatedBackupSnapshotExportBucketsViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedBackupSnapshotExportBucketsViewLinksList>;
+export const PaginatedBackupSnapshotExportBucketsViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedBackupSnapshotExportBucketsViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedBackupSnapshotExportBucketsViewResultsList =
@@ -44787,9 +44114,8 @@ export const ListGroupClusterBackupExportsRequest = /*@__PURE__*/ S.suspend(() =
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedApiAtlasDiskBackupExportJobViewLinksList = Array<Link>;
-export const PaginatedApiAtlasDiskBackupExportJobViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedApiAtlasDiskBackupExportJobViewLinksList>;
+export const PaginatedApiAtlasDiskBackupExportJobViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedApiAtlasDiskBackupExportJobViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedApiAtlasDiskBackupExportJobViewResultsList = Array<DiskBackupExportJob>;
@@ -44854,9 +44180,8 @@ export const ListGroupClusterBackupRestoreJobsRequest = /*@__PURE__*/ S.suspend(
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedCloudBackupRestoreJobViewLinksList = Array<Link>;
-export const PaginatedCloudBackupRestoreJobViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedCloudBackupRestoreJobViewLinksList>;
+export const PaginatedCloudBackupRestoreJobViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedCloudBackupRestoreJobViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedCloudBackupRestoreJobViewResultsList = Array<DiskBackupSnapshotRestoreJob>;
@@ -44928,9 +44253,8 @@ export const ListGroupClusterBackupSnapshotDatabaseCollectionsRequest = /*@__PUR
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedApiAtlasDiskBackupCollectionViewLinksList = Array<Link>;
-export const PaginatedApiAtlasDiskBackupCollectionViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedApiAtlasDiskBackupCollectionViewLinksList>;
+export const PaginatedApiAtlasDiskBackupCollectionViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedApiAtlasDiskBackupCollectionViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedApiAtlasDiskBackupCollectionViewResultsList =
@@ -44999,15 +44323,13 @@ export const ListGroupClusterBackupSnapshotDatabasesRequest = /*@__PURE__*/ S.su
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedApiAtlasDiskBackupDatabaseViewLinksList = Array<Link>;
-export const PaginatedApiAtlasDiskBackupDatabaseViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedApiAtlasDiskBackupDatabaseViewLinksList>;
+export const PaginatedApiAtlasDiskBackupDatabaseViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedApiAtlasDiskBackupDatabaseViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedApiAtlasDiskBackupDatabaseViewResultsList = Array<DiskBackupDatabaseResponse>;
-export const PaginatedApiAtlasDiskBackupDatabaseViewResultsList = /*@__PURE__*/ S.Array(
-  DiskBackupDatabaseResponse,
-) as any as S.Schema<PaginatedApiAtlasDiskBackupDatabaseViewResultsList>;
+export const PaginatedApiAtlasDiskBackupDatabaseViewResultsList =
+  PaginatedApiAtlasDiskBackupCollectionViewResultsList as any as S.Schema<PaginatedApiAtlasDiskBackupDatabaseViewResultsList>;
 
 export interface PaginatedApiAtlasDiskBackupDatabaseView {
   /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
@@ -45017,15 +44339,8 @@ export interface PaginatedApiAtlasDiskBackupDatabaseView {
   /** Total number of documents available. When `includeCount` is set to `false`, MongoDB Cloud may omit this value or return it when the count is available without additional calculation. The total number is an estimate and may not be exact. */
   totalCount?: number;
 }
-export const PaginatedApiAtlasDiskBackupDatabaseView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    links: S.optional(PaginatedApiAtlasDiskBackupDatabaseViewLinksList),
-    results: PaginatedApiAtlasDiskBackupDatabaseViewResultsList,
-    totalCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PaginatedApiAtlasDiskBackupDatabaseView",
-}) as any as S.Schema<PaginatedApiAtlasDiskBackupDatabaseView>;
+export const PaginatedApiAtlasDiskBackupDatabaseView =
+  PaginatedApiAtlasDiskBackupCollectionView as any as S.Schema<PaginatedApiAtlasDiskBackupDatabaseView>;
 
 export interface ListGroupClusterBackupSnapshotsRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -45075,9 +44390,8 @@ export const ListGroupClusterBackupSnapshotsRequest = /*@__PURE__*/ S.suspend(()
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedCloudBackupReplicaSetViewLinksList = Array<Link>;
-export const PaginatedCloudBackupReplicaSetViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedCloudBackupReplicaSetViewLinksList>;
+export const PaginatedCloudBackupReplicaSetViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedCloudBackupReplicaSetViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedCloudBackupReplicaSetViewResultsList = Array<DiskBackupReplicaSet>;
@@ -45133,9 +44447,8 @@ export const ListGroupClusterBackupSnapshotShardedClustersRequest = /*@__PURE__*
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedCloudBackupShardedClusterSnapshotViewLinksList = Array<Link>;
-export const PaginatedCloudBackupShardedClusterSnapshotViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedCloudBackupShardedClusterSnapshotViewLinksList>;
+export const PaginatedCloudBackupShardedClusterSnapshotViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedCloudBackupShardedClusterSnapshotViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedCloudBackupShardedClusterSnapshotViewResultsList =
@@ -45223,9 +44536,8 @@ export const ListGroupClusterCollectionRestoreJobCollectionsRequest = /*@__PURE_
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedApiAtlasCollectionRestoreCollectionStateViewLinksList = Array<Link>;
-export const PaginatedApiAtlasCollectionRestoreCollectionStateViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedApiAtlasCollectionRestoreCollectionStateViewLinksList>;
+export const PaginatedApiAtlasCollectionRestoreCollectionStateViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedApiAtlasCollectionRestoreCollectionStateViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedApiAtlasCollectionRestoreCollectionStateViewResultsList =
@@ -45289,9 +44601,8 @@ export const ListGroupClusterCollectionRestoreJobsRequest = /*@__PURE__*/ S.susp
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedApiAtlasCollectionRestoreJobViewLinksList = Array<Link>;
-export const PaginatedApiAtlasCollectionRestoreJobViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedApiAtlasCollectionRestoreJobViewLinksList>;
+export const PaginatedApiAtlasCollectionRestoreJobViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedApiAtlasCollectionRestoreJobViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedApiAtlasCollectionRestoreJobViewResultsList =
@@ -45411,15 +44722,13 @@ export const MeasurementsCollStatsLatencyClusterGranularity = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type MeasurementsCollStatsLatencyClusterLinksList = Array<Link>;
-export const MeasurementsCollStatsLatencyClusterLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<MeasurementsCollStatsLatencyClusterLinksList>;
+export const MeasurementsCollStatsLatencyClusterLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<MeasurementsCollStatsLatencyClusterLinksList>;
 
 /** List that contains measurements and their data points. */
 export type MeasurementsCollStatsLatencyClusterMeasurementsList = Array<MetricsMeasurement>;
-export const MeasurementsCollStatsLatencyClusterMeasurementsList = /*@__PURE__*/ S.Array(
-  MetricsMeasurement,
-) as any as S.Schema<MeasurementsCollStatsLatencyClusterMeasurementsList>;
+export const MeasurementsCollStatsLatencyClusterMeasurementsList =
+  MeasurementsIndexesIndexStatsMeasurementsList as any as S.Schema<MeasurementsCollStatsLatencyClusterMeasurementsList>;
 
 export interface MeasurementsCollStatsLatencyCluster {
   /** Unique identifier for Clusters. */
@@ -45490,9 +44799,8 @@ export const ListGroupClusterCollStatPinnedNamespacesRequest = /*@__PURE__*/ S.s
 
 /** List of all pinned namespaces. */
 export type PinnedNamespacesPinnedNamespacesList = Array<string>;
-export const PinnedNamespacesPinnedNamespacesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PinnedNamespacesPinnedNamespacesList>;
+export const PinnedNamespacesPinnedNamespacesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<PinnedNamespacesPinnedNamespacesList>;
 
 /** Pinned namespaces view for cluster. */
 export interface PinnedNamespaces {
@@ -45550,9 +44858,8 @@ export const ListGroupClusterOnlineArchivesRequest = /*@__PURE__*/ S.suspend(() 
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedOnlineArchiveViewLinksList = Array<Link>;
-export const PaginatedOnlineArchiveViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedOnlineArchiveViewLinksList>;
+export const PaginatedOnlineArchiveViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedOnlineArchiveViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedOnlineArchiveViewResultsList = Array<BackupOnlineArchive>;
@@ -45614,9 +44921,8 @@ export const ListGroupClusterOverloadSimulationsRequest = /*@__PURE__*/ S.suspen
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedOverloadProtectionSimulationResponseLinksList = Array<Link>;
-export const PaginatedOverloadProtectionSimulationResponseLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedOverloadProtectionSimulationResponseLinksList>;
+export const PaginatedOverloadProtectionSimulationResponseLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedOverloadProtectionSimulationResponseLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedOverloadProtectionSimulationResponseResultsList =
@@ -45672,10 +44978,8 @@ export const ListGroupClusterPerformanceAdvisorDropIndexSuggestionsRequest =
 
 /** Collation this index was built with. An index only serves a query that runs with the same collation. Absent when the index uses the default (simple) collation. */
 export type DropIndexSuggestionsIndexCollationMap = { [key: string]: unknown | undefined };
-export const DropIndexSuggestionsIndexCollationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DropIndexSuggestionsIndexCollationMap>;
+export const DropIndexSuggestionsIndexCollationMap =
+  IndexOptionsPartialFilterExpressionMap as any as S.Schema<DropIndexSuggestionsIndexCollationMap>;
 
 /** List that contains documents that specify a key in the index and its sort order. */
 export type DropIndexSuggestionsIndexIndexList = Array<unknown>;
@@ -45685,9 +44989,8 @@ export const DropIndexSuggestionsIndexIndexList = /*@__PURE__*/ S.Array(
 
 /** List that contains strings that specifies the shards where the index is found. */
 export type DropIndexSuggestionsIndexShardsList = Array<string>;
-export const DropIndexSuggestionsIndexShardsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DropIndexSuggestionsIndexShardsList>;
+export const DropIndexSuggestionsIndexShardsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<DropIndexSuggestionsIndexShardsList>;
 
 export interface DropIndexSuggestionsIndex {
   /** Usage count (since last restart) of index. */
@@ -45730,15 +45033,13 @@ export const DropIndexSuggestionsResponseHiddenIndexesList = /*@__PURE__*/ S.Arr
 
 /** List that contains the documents with information about the redundant indexes that the Performance Advisor suggests to remove. */
 export type DropIndexSuggestionsResponseRedundantIndexesList = Array<DropIndexSuggestionsIndex>;
-export const DropIndexSuggestionsResponseRedundantIndexesList = /*@__PURE__*/ S.Array(
-  DropIndexSuggestionsIndex,
-) as any as S.Schema<DropIndexSuggestionsResponseRedundantIndexesList>;
+export const DropIndexSuggestionsResponseRedundantIndexesList =
+  DropIndexSuggestionsResponseHiddenIndexesList as any as S.Schema<DropIndexSuggestionsResponseRedundantIndexesList>;
 
 /** List that contains the documents with information about the unused indexes that the Performance Advisor suggests to remove. */
 export type DropIndexSuggestionsResponseUnusedIndexesList = Array<DropIndexSuggestionsIndex>;
-export const DropIndexSuggestionsResponseUnusedIndexesList = /*@__PURE__*/ S.Array(
-  DropIndexSuggestionsIndex,
-) as any as S.Schema<DropIndexSuggestionsResponseUnusedIndexesList>;
+export const DropIndexSuggestionsResponseUnusedIndexesList =
+  DropIndexSuggestionsResponseHiddenIndexesList as any as S.Schema<DropIndexSuggestionsResponseUnusedIndexesList>;
 
 /** Response that contains Performance Advisor drop index suggestions. */
 export interface DropIndexSuggestionsResponse {
@@ -45761,15 +45062,13 @@ export const DropIndexSuggestionsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type EnvelopedDropIndexSuggestionsResponseLinksList = Array<Link>;
-export const EnvelopedDropIndexSuggestionsResponseLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<EnvelopedDropIndexSuggestionsResponseLinksList>;
+export const EnvelopedDropIndexSuggestionsResponseLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<EnvelopedDropIndexSuggestionsResponseLinksList>;
 
 /** URLs of resources created by this request. */
 export type EnvelopedDropIndexSuggestionsResponseLocationsList = Array<string>;
-export const EnvelopedDropIndexSuggestionsResponseLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnvelopedDropIndexSuggestionsResponseLocationsList>;
+export const EnvelopedDropIndexSuggestionsResponseLocationsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<EnvelopedDropIndexSuggestionsResponseLocationsList>;
 
 /** Response envelope that wraps the response payload in `content` and includes response metadata such as `status` and `locations`. */
 export interface EnvelopedDropIndexSuggestionsResponse {
@@ -45919,15 +45218,13 @@ export const SchemaAdvisorResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type EnvelopedSchemaAdvisorResponseLinksList = Array<Link>;
-export const EnvelopedSchemaAdvisorResponseLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<EnvelopedSchemaAdvisorResponseLinksList>;
+export const EnvelopedSchemaAdvisorResponseLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<EnvelopedSchemaAdvisorResponseLinksList>;
 
 /** URLs of resources created by this request. */
 export type EnvelopedSchemaAdvisorResponseLocationsList = Array<string>;
-export const EnvelopedSchemaAdvisorResponseLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnvelopedSchemaAdvisorResponseLocationsList>;
+export const EnvelopedSchemaAdvisorResponseLocationsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<EnvelopedSchemaAdvisorResponseLocationsList>;
 
 /** Response envelope that wraps the response payload in `content` and includes response metadata such as `status` and `locations`. */
 export interface EnvelopedSchemaAdvisorResponse {
@@ -45952,15 +45249,11 @@ export const EnvelopedSchemaAdvisorResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type ListGroupClusterPerformanceAdvisorSuggestedIndexesRequestProcessIdsList = Array<string>;
 export const ListGroupClusterPerformanceAdvisorSuggestedIndexesRequestProcessIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListGroupClusterPerformanceAdvisorSuggestedIndexesRequestProcessIdsList>;
+  CreateGroupPrivateEndpointEndpointServiceRequestSupportedRemoteRegionsList as any as S.Schema<ListGroupClusterPerformanceAdvisorSuggestedIndexesRequestProcessIdsList>;
 
 export type ListGroupClusterPerformanceAdvisorSuggestedIndexesRequestNamespacesList = Array<string>;
 export const ListGroupClusterPerformanceAdvisorSuggestedIndexesRequestNamespacesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListGroupClusterPerformanceAdvisorSuggestedIndexesRequestNamespacesList>;
+  CreateGroupPrivateEndpointEndpointServiceRequestSupportedRemoteRegionsList as any as S.Schema<ListGroupClusterPerformanceAdvisorSuggestedIndexesRequestNamespacesList>;
 
 export interface ListGroupClusterPerformanceAdvisorSuggestedIndexesRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -46006,9 +45299,8 @@ export const ListGroupClusterPerformanceAdvisorSuggestedIndexesRequest = /*@__PU
 
 /** List that contains the search criteria that the query uses. To use the values in key-value pairs in these predicates requires **Project Observability Viewer** or **Project Data Access Read Only** permissions or greater. Otherwise, MongoDB Cloud redacts these values. */
 export type PerformanceAdvisorOperationViewPredicatesList = Array<unknown>;
-export const PerformanceAdvisorOperationViewPredicatesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<PerformanceAdvisorOperationViewPredicatesList>;
+export const PerformanceAdvisorOperationViewPredicatesList =
+  DropIndexSuggestionsIndexIndexList as any as S.Schema<PerformanceAdvisorOperationViewPredicatesList>;
 
 /** Details that this resource returned about the specified query. */
 export interface PerformanceAdvisorOpStats {
@@ -46088,16 +45380,13 @@ export const PerformanceAdvisorResponseShapesList = /*@__PURE__*/ S.Array(
 
 /** Collation the queries behind this suggestion run with. An index only serves a query when the two share a collation, so an index created from this suggestion must be created with it. Absent when those queries use the default (simple) collation. */
 export type PerformanceAdvisorIndexCollationMap = { [key: string]: unknown | undefined };
-export const PerformanceAdvisorIndexCollationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PerformanceAdvisorIndexCollationMap>;
+export const PerformanceAdvisorIndexCollationMap =
+  IndexOptionsPartialFilterExpressionMap as any as S.Schema<PerformanceAdvisorIndexCollationMap>;
 
 /** List that contains unique 24-hexadecimal character string that identifies the query shapes in this response that the Performance Advisor suggests. */
 export type PerformanceAdvisorIndexImpactList = Array<string>;
-export const PerformanceAdvisorIndexImpactList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PerformanceAdvisorIndexImpactList>;
+export const PerformanceAdvisorIndexImpactList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<PerformanceAdvisorIndexImpactList>;
 
 /** One index key paired with its sort order. A value of `1` indicates an ascending sort order. A value of `-1` indicates a descending sort order. Keys in indexes with multiple keys appear in the same order that they appear in the index. */
 export type PerformanceAdvisorIndexIndexItemValue = 1 | -1;
@@ -46170,15 +45459,13 @@ export const PerformanceAdvisorResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type EnvelopedPerformanceAdvisorResponseLinksList = Array<Link>;
-export const EnvelopedPerformanceAdvisorResponseLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<EnvelopedPerformanceAdvisorResponseLinksList>;
+export const EnvelopedPerformanceAdvisorResponseLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<EnvelopedPerformanceAdvisorResponseLinksList>;
 
 /** URLs of resources created by this request. */
 export type EnvelopedPerformanceAdvisorResponseLocationsList = Array<string>;
-export const EnvelopedPerformanceAdvisorResponseLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnvelopedPerformanceAdvisorResponseLocationsList>;
+export const EnvelopedPerformanceAdvisorResponseLocationsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<EnvelopedPerformanceAdvisorResponseLocationsList>;
 
 /** Response envelope that wraps the response payload in `content` and includes response metadata such as `status` and `locations`. */
 export interface EnvelopedPerformanceAdvisorResponse {
@@ -46202,9 +45489,8 @@ export const EnvelopedPerformanceAdvisorResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvelopedPerformanceAdvisorResponse>;
 
 export type ListGroupClusterProviderRegionsRequestProvidersList = Array<string>;
-export const ListGroupClusterProviderRegionsRequestProvidersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListGroupClusterProviderRegionsRequestProvidersList>;
+export const ListGroupClusterProviderRegionsRequestProvidersList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<ListGroupClusterProviderRegionsRequestProvidersList>;
 
 export interface ListGroupClusterProviderRegionsRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -46248,9 +45534,8 @@ export const ListGroupClusterProviderRegionsRequest = /*@__PURE__*/ S.suspend(()
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedApiAtlasProviderRegionsViewLinksList = Array<Link>;
-export const PaginatedApiAtlasProviderRegionsViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedApiAtlasProviderRegionsViewLinksList>;
+export const PaginatedApiAtlasProviderRegionsViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedApiAtlasProviderRegionsViewLinksList>;
 
 export interface AvailableCloudProviderRegion {
   /** Flag that indicates whether the cloud provider sets this region as its default. AWS defaults to `US_EAST_1`, GCP defaults to `CENTRAL_US`, and AZURE defaults to `US_WEST_2`. */
@@ -46338,15 +45623,11 @@ export const PaginatedApiAtlasProviderRegionsView = /*@__PURE__*/ S.suspend(() =
 
 export type ListGroupClusterQueryShapeInsightSummariesRequestProcessIdsList = Array<string>;
 export const ListGroupClusterQueryShapeInsightSummariesRequestProcessIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListGroupClusterQueryShapeInsightSummariesRequestProcessIdsList>;
+  CreateGroupPrivateEndpointEndpointServiceRequestSupportedRemoteRegionsList as any as S.Schema<ListGroupClusterQueryShapeInsightSummariesRequestProcessIdsList>;
 
 export type ListGroupClusterQueryShapeInsightSummariesRequestNamespacesList = Array<string>;
 export const ListGroupClusterQueryShapeInsightSummariesRequestNamespacesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListGroupClusterQueryShapeInsightSummariesRequestNamespacesList>;
+  CreateGroupPrivateEndpointEndpointServiceRequestSupportedRemoteRegionsList as any as S.Schema<ListGroupClusterQueryShapeInsightSummariesRequestNamespacesList>;
 
 export type ListGroupClusterQueryShapeInsightSummariesRequestCommandsItem =
   | "find"
@@ -46402,9 +45683,7 @@ export const ListGroupClusterQueryShapeInsightSummariesRequestSeriesList = /*@__
 /** A list of SHA256 hashes of desired query shapes, output by MongoDB commands like `$queryStats` and `$explain` or slow query logs. To include multiple series, pass the parameter multiple times delimited with an ampersand (`&`) between each series. Omit this parameter to return results for all available series. */
 export type ListGroupClusterQueryShapeInsightSummariesRequestQueryShapeHashesList = Array<string>;
 export const ListGroupClusterQueryShapeInsightSummariesRequestQueryShapeHashesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListGroupClusterQueryShapeInsightSummariesRequestQueryShapeHashesList>;
+  CreateGroupPrivateEndpointEndpointServiceRequestSupportedRemoteRegionsList as any as S.Schema<ListGroupClusterQueryShapeInsightSummariesRequestQueryShapeHashesList>;
 
 export interface ListGroupClusterQueryShapeInsightSummariesRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -46531,9 +45810,8 @@ export const ListGroupClusterQueryShapesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedQueryShapesLinksList = Array<Link>;
-export const PaginatedQueryShapesLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedQueryShapesLinksList>;
+export const PaginatedQueryShapesLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedQueryShapesLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedQueryShapesResultsList = Array<QueryShapeResponse>;
@@ -46595,9 +45873,8 @@ export const ListGroupClustersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedClusterDescription20240805LinksList = Array<Link>;
-export const PaginatedClusterDescription20240805LinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedClusterDescription20240805LinksList>;
+export const PaginatedClusterDescription20240805LinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedClusterDescription20240805LinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedClusterDescription20240805ResultsList = Array<ClusterDescription20240805>;
@@ -46700,16 +45977,12 @@ export const ListGroupClusterSearchIndexesRequest = /*@__PURE__*/ S.suspend(() =
 
 /** List of Atlas Search indexes that MongoDB Cloud returns for this request. */
 export type ListGroupClusterSearchIndexesResponseBodyList = Array<SearchIndexResponse>;
-export const ListGroupClusterSearchIndexesResponseBodyList = /*@__PURE__*/ S.Array(
-  SearchIndexResponse,
-) as any as S.Schema<ListGroupClusterSearchIndexesResponseBodyList>;
+export const ListGroupClusterSearchIndexesResponseBodyList =
+  ListGroupClusterSearchIndexResponseBodyList as any as S.Schema<ListGroupClusterSearchIndexesResponseBodyList>;
 
 export type ListGroupClusterSearchIndexesResponse = ListGroupClusterSearchIndexesResponseBodyList;
-export const ListGroupClusterSearchIndexesResponse = /*@__PURE__*/ S.suspend(() =>
-  ListGroupClusterSearchIndexesResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListGroupClusterSearchIndexesResponse",
-}) as any as S.Schema<ListGroupClusterSearchIndexesResponse>;
+export const ListGroupClusterSearchIndexesResponse =
+  ListGroupClusterSearchIndexResponse as any as S.Schema<ListGroupClusterSearchIndexesResponse>;
 
 export interface ListGroupCollStatMetricsRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -46735,9 +46008,8 @@ export const ListGroupCollStatMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type CollStatsLatencyNamespaceMetricsLinksList = Array<Link>;
-export const CollStatsLatencyNamespaceMetricsLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<CollStatsLatencyNamespaceMetricsLinksList>;
+export const CollStatsLatencyNamespaceMetricsLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<CollStatsLatencyNamespaceMetricsLinksList>;
 
 /** Human-readable label that identifies this metric. */
 export type CollStatsLatencyNamespaceMetricMetricName =
@@ -46847,9 +46119,8 @@ export const ListGroupContainerAllRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedCloudProviderContainerViewLinksList = Array<Link>;
-export const PaginatedCloudProviderContainerViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedCloudProviderContainerViewLinksList>;
+export const PaginatedCloudProviderContainerViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedCloudProviderContainerViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedCloudProviderContainerViewResultsList = Array<CloudProviderContainer>;
@@ -46992,15 +46263,13 @@ export const ListGroupDatabaseUserCertsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedUserCertViewOutputLinksList = Array<Link>;
-export const PaginatedUserCertViewOutputLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedUserCertViewOutputLinksList>;
+export const PaginatedUserCertViewOutputLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedUserCertViewOutputLinksList>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type UserCertOutputLinksList = Array<Link>;
-export const UserCertOutputLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<UserCertOutputLinksList>;
+export const UserCertOutputLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<UserCertOutputLinksList>;
 
 export interface UserCertOutput {
   /** Unique 24-hexadecimal character string that identifies this certificate. */
@@ -47087,9 +46356,8 @@ export const ListGroupDatabaseUsersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedApiAtlasDatabaseUserViewOutputLinksList = Array<Link>;
-export const PaginatedApiAtlasDatabaseUserViewOutputLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedApiAtlasDatabaseUserViewOutputLinksList>;
+export const PaginatedApiAtlasDatabaseUserViewOutputLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedApiAtlasDatabaseUserViewOutputLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedApiAtlasDatabaseUserViewOutputResultsList = Array<CloudDatabaseUserOutput>;
@@ -47241,9 +46509,8 @@ export const ListGroupEncryptionAtRestPrivateEndpointsRequest = /*@__PURE__*/ S.
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedApiAtlasEARPrivateEndpointViewLinksList = Array<Link>;
-export const PaginatedApiAtlasEARPrivateEndpointViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedApiAtlasEARPrivateEndpointViewLinksList>;
+export const PaginatedApiAtlasEARPrivateEndpointViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedApiAtlasEARPrivateEndpointViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedApiAtlasEARPrivateEndpointViewResultsList = Array<EARPrivateEndpoint>;
@@ -47270,19 +46537,16 @@ export const PaginatedApiAtlasEARPrivateEndpointView = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<PaginatedApiAtlasEARPrivateEndpointView>;
 
 export type ListGroupEventsRequestClusterNamesList = Array<string>;
-export const ListGroupEventsRequestClusterNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListGroupEventsRequestClusterNamesList>;
+export const ListGroupEventsRequestClusterNamesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<ListGroupEventsRequestClusterNamesList>;
 
 export type ListGroupEventsRequestEventTypeList = Array<EventTypeForNdsGroup>;
-export const ListGroupEventsRequestEventTypeList = /*@__PURE__*/ S.Array(
-  EventTypeForNdsGroup,
-) as any as S.Schema<ListGroupEventsRequestEventTypeList>;
+export const ListGroupEventsRequestEventTypeList =
+  GetGroupActivityFeedRequestEventTypeList as any as S.Schema<ListGroupEventsRequestEventTypeList>;
 
 export type ListGroupEventsRequestExcludedEventTypeList = Array<EventTypeForNdsGroup>;
-export const ListGroupEventsRequestExcludedEventTypeList = /*@__PURE__*/ S.Array(
-  EventTypeForNdsGroup,
-) as any as S.Schema<ListGroupEventsRequestExcludedEventTypeList>;
+export const ListGroupEventsRequestExcludedEventTypeList =
+  GetGroupActivityFeedRequestEventTypeList as any as S.Schema<ListGroupEventsRequestExcludedEventTypeList>;
 
 export interface ListGroupEventsRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -47336,9 +46600,8 @@ export const ListGroupEventsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type GroupPaginatedEventViewLinksList = Array<Link>;
-export const GroupPaginatedEventViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<GroupPaginatedEventViewLinksList>;
+export const GroupPaginatedEventViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<GroupPaginatedEventViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type GroupPaginatedEventViewResultsList = Array<EventViewForNdsGroup>;
@@ -47401,9 +46664,8 @@ export const ListGroupFlexClusterBackupRestoreJobsRequest = /*@__PURE__*/ S.susp
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedApiAtlasFlexBackupRestoreJob20241113ViewLinksList = Array<Link>;
-export const PaginatedApiAtlasFlexBackupRestoreJob20241113ViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedApiAtlasFlexBackupRestoreJob20241113ViewLinksList>;
+export const PaginatedApiAtlasFlexBackupRestoreJob20241113ViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedApiAtlasFlexBackupRestoreJob20241113ViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedApiAtlasFlexBackupRestoreJob20241113ViewResultsList =
@@ -47469,9 +46731,8 @@ export const ListGroupFlexClusterBackupSnapshotsRequest = /*@__PURE__*/ S.suspen
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedApiAtlasFlexBackupSnapshot20241113ViewLinksList = Array<Link>;
-export const PaginatedApiAtlasFlexBackupSnapshot20241113ViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedApiAtlasFlexBackupSnapshot20241113ViewLinksList>;
+export const PaginatedApiAtlasFlexBackupSnapshot20241113ViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedApiAtlasFlexBackupSnapshot20241113ViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedApiAtlasFlexBackupSnapshot20241113ViewResultsList =
@@ -47534,9 +46795,8 @@ export const ListGroupFlexClustersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedFlexClusters20241113LinksList = Array<Link>;
-export const PaginatedFlexClusters20241113LinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedFlexClusters20241113LinksList>;
+export const PaginatedFlexClusters20241113LinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedFlexClusters20241113LinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedFlexClusters20241113ResultsList = Array<FlexClusterDescription20241113>;
@@ -47697,21 +46957,18 @@ export const MeasurementsNonIndexGranularity = S.String;
 
 /** List that contains the Atlas Search hardware measurements. */
 export type MeasurementsNonIndexHardwareMeasurementsList = Array<MetricsMeasurement>;
-export const MeasurementsNonIndexHardwareMeasurementsList = /*@__PURE__*/ S.Array(
-  MetricsMeasurement,
-) as any as S.Schema<MeasurementsNonIndexHardwareMeasurementsList>;
+export const MeasurementsNonIndexHardwareMeasurementsList =
+  MeasurementsIndexesIndexStatsMeasurementsList as any as S.Schema<MeasurementsNonIndexHardwareMeasurementsList>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type MeasurementsNonIndexLinksList = Array<Link>;
-export const MeasurementsNonIndexLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<MeasurementsNonIndexLinksList>;
+export const MeasurementsNonIndexLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<MeasurementsNonIndexLinksList>;
 
 /** List that contains the Atlas Search status measurements. */
 export type MeasurementsNonIndexStatusMeasurementsList = Array<MetricsMeasurement>;
-export const MeasurementsNonIndexStatusMeasurementsList = /*@__PURE__*/ S.Array(
-  MetricsMeasurement,
-) as any as S.Schema<MeasurementsNonIndexStatusMeasurementsList>;
+export const MeasurementsNonIndexStatusMeasurementsList =
+  MeasurementsIndexesIndexStatsMeasurementsList as any as S.Schema<MeasurementsNonIndexStatusMeasurementsList>;
 
 export interface MeasurementsNonIndex {
   /** Date and time that specifies when to stop retrieving measurements. If you set **end**, you must set **start**. You can't set this parameter and **period** in the same request. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
@@ -47833,21 +47090,18 @@ export const CloudSearchMetricsHardwareMetricsList = /*@__PURE__*/ S.Array(
 
 /** List that contains all performance and utilization measurements that Atlas Search index performed by the time MongoDB Atlas received this request. */
 export type CloudSearchMetricsIndexMetricsList = Array<FTSMetric>;
-export const CloudSearchMetricsIndexMetricsList = /*@__PURE__*/ S.Array(
-  FTSMetric,
-) as any as S.Schema<CloudSearchMetricsIndexMetricsList>;
+export const CloudSearchMetricsIndexMetricsList =
+  CloudSearchMetricsHardwareMetricsList as any as S.Schema<CloudSearchMetricsIndexMetricsList>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type CloudSearchMetricsLinksList = Array<Link>;
-export const CloudSearchMetricsLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<CloudSearchMetricsLinksList>;
+export const CloudSearchMetricsLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<CloudSearchMetricsLinksList>;
 
 /** List that contains all available Atlas Search status metrics when MongoDB Atlas received this request. */
 export type CloudSearchMetricsStatusMetricsList = Array<FTSMetric>;
-export const CloudSearchMetricsStatusMetricsList = /*@__PURE__*/ S.Array(
-  FTSMetric,
-) as any as S.Schema<CloudSearchMetricsStatusMetricsList>;
+export const CloudSearchMetricsStatusMetricsList =
+  CloudSearchMetricsHardwareMetricsList as any as S.Schema<CloudSearchMetricsStatusMetricsList>;
 
 export interface CloudSearchMetrics {
   /** Unique 24-hexadecimal digit string that identifies the project. */
@@ -47980,9 +47234,8 @@ export const ListGroupLogIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedLogIntegrationResponseOutputLinksList = Array<Link>;
-export const PaginatedLogIntegrationResponseOutputLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedLogIntegrationResponseOutputLinksList>;
+export const PaginatedLogIntegrationResponseOutputLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedLogIntegrationResponseOutputLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedLogIntegrationResponseOutputResultsList = Array<LogIntegrationResponseOutput>;
@@ -48044,9 +47297,8 @@ export const ListGroupMcpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedGroupMcpConfigViewLinksList = Array<Link>;
-export const PaginatedGroupMcpConfigViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedGroupMcpConfigViewLinksList>;
+export const PaginatedGroupMcpConfigViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedGroupMcpConfigViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedGroupMcpConfigViewResultsList = Array<GroupMcpConfigResponse>;
@@ -48111,15 +47363,13 @@ export const ListGroupMcpConfigSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedMcpConfigSecretViewLinksList = Array<Link>;
-export const PaginatedMcpConfigSecretViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedMcpConfigSecretViewLinksList>;
+export const PaginatedMcpConfigSecretViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedMcpConfigSecretViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedMcpConfigSecretViewResultsList = Array<ServiceAccountSecret>;
-export const PaginatedMcpConfigSecretViewResultsList = /*@__PURE__*/ S.Array(
-  ServiceAccountSecret,
-) as any as S.Schema<PaginatedMcpConfigSecretViewResultsList>;
+export const PaginatedMcpConfigSecretViewResultsList =
+  GroupServiceAccountSecretsList as any as S.Schema<PaginatedMcpConfigSecretViewResultsList>;
 
 export interface PaginatedMcpConfigSecretView {
   /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
@@ -48181,9 +47431,8 @@ export const ListGroupMetricIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedMetricIntegrationResponseLinksList = Array<Link>;
-export const PaginatedMetricIntegrationResponseLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedMetricIntegrationResponseLinksList>;
+export const PaginatedMetricIntegrationResponseLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedMetricIntegrationResponseLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedMetricIntegrationResponseResultsList = Array<MetricIntegrationResponse>;
@@ -48249,9 +47498,8 @@ export const ListGroupPeersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedContainerPeerViewLinksList = Array<Link>;
-export const PaginatedContainerPeerViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedContainerPeerViewLinksList>;
+export const PaginatedContainerPeerViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedContainerPeerViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedContainerPeerViewResultsList = Array<BaseNetworkPeeringConnectionSettings>;
@@ -48440,15 +47688,13 @@ export const MeasurementsCollStatsLatencyHostGranularity = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type MeasurementsCollStatsLatencyHostLinksList = Array<Link>;
-export const MeasurementsCollStatsLatencyHostLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<MeasurementsCollStatsLatencyHostLinksList>;
+export const MeasurementsCollStatsLatencyHostLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<MeasurementsCollStatsLatencyHostLinksList>;
 
 /** List that contains measurements and their data points. */
 export type MeasurementsCollStatsLatencyHostMeasurementsList = Array<MetricsMeasurement>;
-export const MeasurementsCollStatsLatencyHostMeasurementsList = /*@__PURE__*/ S.Array(
-  MetricsMeasurement,
-) as any as S.Schema<MeasurementsCollStatsLatencyHostMeasurementsList>;
+export const MeasurementsCollStatsLatencyHostMeasurementsList =
+  MeasurementsIndexesIndexStatsMeasurementsList as any as S.Schema<MeasurementsCollStatsLatencyHostMeasurementsList>;
 
 export interface MeasurementsCollStatsLatencyHost {
   /** Human-readable label that identifies the collection. */
@@ -48525,9 +47771,8 @@ export const ListGroupProcessDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedDatabaseViewLinksList = Array<Link>;
-export const PaginatedDatabaseViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedDatabaseViewLinksList>;
+export const PaginatedDatabaseViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedDatabaseViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedDatabaseViewResultsList = Array<MesurementsDatabase>;
@@ -48590,9 +47835,8 @@ export const ListGroupProcessDisksRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedDiskPartitionViewLinksList = Array<Link>;
-export const PaginatedDiskPartitionViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedDiskPartitionViewLinksList>;
+export const PaginatedDiskPartitionViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedDiskPartitionViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedDiskPartitionViewResultsList = Array<MeasurementDiskPartition>;
@@ -48654,9 +47898,8 @@ export const ListGroupProcessesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedHostViewAtlasLinksList = Array<Link>;
-export const PaginatedHostViewAtlasLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedHostViewAtlasLinksList>;
+export const PaginatedHostViewAtlasLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedHostViewAtlasLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedHostViewAtlasResultsList = Array<ApiHostViewAtlas>;
@@ -48750,9 +47993,7 @@ export const Namespaces = /*@__PURE__*/ S.suspend(() =>
 
 export type ListGroupProcessPerformanceAdvisorSlowQueryLogsRequestNamespacesList = Array<string>;
 export const ListGroupProcessPerformanceAdvisorSlowQueryLogsRequestNamespacesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListGroupProcessPerformanceAdvisorSlowQueryLogsRequestNamespacesList>;
+  CreateGroupPrivateEndpointEndpointServiceRequestSupportedRemoteRegionsList as any as S.Schema<ListGroupProcessPerformanceAdvisorSlowQueryLogsRequestNamespacesList>;
 
 export interface ListGroupProcessPerformanceAdvisorSlowQueryLogsRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -48901,9 +48142,7 @@ export const PerformanceAdvisorSlowQueryList = /*@__PURE__*/ S.suspend(() =>
 
 export type ListGroupProcessPerformanceAdvisorSuggestedIndexesRequestNamespacesList = Array<string>;
 export const ListGroupProcessPerformanceAdvisorSuggestedIndexesRequestNamespacesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListGroupProcessPerformanceAdvisorSuggestedIndexesRequestNamespacesList>;
+  CreateGroupPrivateEndpointEndpointServiceRequestSupportedRemoteRegionsList as any as S.Schema<ListGroupProcessPerformanceAdvisorSuggestedIndexesRequestNamespacesList>;
 
 export interface ListGroupProcessPerformanceAdvisorSuggestedIndexesRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -49062,9 +48301,8 @@ export const ListGroupServiceAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedGroupServiceAccountsLinksList = Array<Link>;
-export const PaginatedGroupServiceAccountsLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedGroupServiceAccountsLinksList>;
+export const PaginatedGroupServiceAccountsLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedGroupServiceAccountsLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedGroupServiceAccountsResultsList = Array<GroupServiceAccount>;
@@ -49124,15 +48362,13 @@ export const ListGroupStreamActiveVpcPeeringConnectionsRequest = /*@__PURE__*/ S
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedApiStreamsVPCPeeringConnectionViewLinksList = Array<Link>;
-export const PaginatedApiStreamsVPCPeeringConnectionViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedApiStreamsVPCPeeringConnectionViewLinksList>;
+export const PaginatedApiStreamsVPCPeeringConnectionViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedApiStreamsVPCPeeringConnectionViewLinksList>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type VPCPeeringConnectionLinksList = Array<Link>;
-export const VPCPeeringConnectionLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<VPCPeeringConnectionLinksList>;
+export const VPCPeeringConnectionLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<VPCPeeringConnectionLinksList>;
 
 /** The local status of the VPC Peering Connection. */
 export type VPCPeeringConnectionLocalStatus =
@@ -49261,9 +48497,8 @@ export const ListGroupStreamConnectionFailoverConnectionsRequest = /*@__PURE__*/
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedApiStreamsFailoverConnectionOutputLinksList = Array<Link>;
-export const PaginatedApiStreamsFailoverConnectionOutputLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedApiStreamsFailoverConnectionOutputLinksList>;
+export const PaginatedApiStreamsFailoverConnectionOutputLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedApiStreamsFailoverConnectionOutputLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedApiStreamsFailoverConnectionOutputResultsList =
@@ -49326,15 +48561,13 @@ export const ListGroupStreamConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedApiStreamsConnectionViewOutputLinksList = Array<Link>;
-export const PaginatedApiStreamsConnectionViewOutputLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedApiStreamsConnectionViewOutputLinksList>;
+export const PaginatedApiStreamsConnectionViewOutputLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedApiStreamsConnectionViewOutputLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedApiStreamsConnectionViewOutputResultsList = Array<StreamsConnectionOutput>;
-export const PaginatedApiStreamsConnectionViewOutputResultsList = /*@__PURE__*/ S.Array(
-  StreamsConnectionOutput,
-) as any as S.Schema<PaginatedApiStreamsConnectionViewOutputResultsList>;
+export const PaginatedApiStreamsConnectionViewOutputResultsList =
+  StreamsTenantOutputConnectionsList as any as S.Schema<PaginatedApiStreamsConnectionViewOutputResultsList>;
 
 export interface PaginatedApiStreamsConnectionViewOutput {
   /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
@@ -49387,9 +48620,8 @@ export const ListGroupStreamPrivateLinkConnectionsRequest = /*@__PURE__*/ S.susp
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedApiStreamsPrivateLinkViewLinksList = Array<Link>;
-export const PaginatedApiStreamsPrivateLinkViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedApiStreamsPrivateLinkViewLinksList>;
+export const PaginatedApiStreamsPrivateLinkViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedApiStreamsPrivateLinkViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedApiStreamsPrivateLinkViewResultsList = Array<StreamsPrivateLinkConnection>;
@@ -49482,9 +48714,8 @@ export const ListGroupStreamWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedApiStreamsTenantViewOutputLinksList = Array<Link>;
-export const PaginatedApiStreamsTenantViewOutputLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedApiStreamsTenantViewOutputLinksList>;
+export const PaginatedApiStreamsTenantViewOutputLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedApiStreamsTenantViewOutputLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedApiStreamsTenantViewOutputResultsList = Array<StreamsTenantOutput>;
@@ -49607,9 +48838,8 @@ export const ListGroupUsersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedGroupUserViewLinksList = Array<Link>;
-export const PaginatedGroupUserViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedGroupUserViewLinksList>;
+export const PaginatedGroupUserViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedGroupUserViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedGroupUserViewResultsList = Array<GroupUserResponse>;
@@ -49734,9 +48964,8 @@ export const ListOrgApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListOrgApiKeysRequest" }) as any as S.Schema<ListOrgApiKeysRequest>;
 
 export type ListOrgEventsRequestEventTypeList = Array<EventTypeForOrg>;
-export const ListOrgEventsRequestEventTypeList = /*@__PURE__*/ S.Array(
-  EventTypeForOrg,
-) as any as S.Schema<ListOrgEventsRequestEventTypeList>;
+export const ListOrgEventsRequestEventTypeList =
+  GetOrgActivityFeedRequestEventTypeList as any as S.Schema<ListOrgEventsRequestEventTypeList>;
 
 export interface ListOrgEventsRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -49784,9 +49013,8 @@ export const ListOrgEventsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type OrgPaginatedEventViewLinksList = Array<Link>;
-export const OrgPaginatedEventViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<OrgPaginatedEventViewLinksList>;
+export const OrgPaginatedEventViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<OrgPaginatedEventViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type OrgPaginatedEventViewResultsList = Array<EventViewForOrg>;
@@ -49837,9 +49065,8 @@ export const ListOrgInvoicePendingRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedApiInvoiceViewLinksList = Array<Link>;
-export const PaginatedApiInvoiceViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedApiInvoiceViewLinksList>;
+export const PaginatedApiInvoiceViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedApiInvoiceViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedApiInvoiceViewResultsList = Array<BillingInvoice>;
@@ -49902,9 +49129,8 @@ export const ListOrgInvoiceReportsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedInvoiceReportViewLinksList = Array<Link>;
-export const PaginatedInvoiceReportViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedInvoiceReportViewLinksList>;
+export const PaginatedInvoiceReportViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedInvoiceReportViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedInvoiceReportViewResultsList = Array<InvoiceReportResponse>;
@@ -50006,9 +49232,8 @@ export const ListOrgInvoicesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedApiInvoiceMetadataViewLinksList = Array<Link>;
-export const PaginatedApiInvoiceMetadataViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedApiInvoiceMetadataViewLinksList>;
+export const PaginatedApiInvoiceMetadataViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedApiInvoiceMetadataViewLinksList>;
 
 /** List that contains the invoices for organizations linked to the paying organization. */
 export type BillingInvoiceMetadataLinkedInvoicesList = Array<BillingInvoiceMetadata>;
@@ -50018,9 +49243,8 @@ export const BillingInvoiceMetadataLinkedInvoicesList = /*@__PURE__*/ S.Array(
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type BillingInvoiceMetadataLinksList = Array<Link>;
-export const BillingInvoiceMetadataLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<BillingInvoiceMetadataLinksList>;
+export const BillingInvoiceMetadataLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<BillingInvoiceMetadataLinksList>;
 
 /** Phase of payment processing in which this invoice exists when you made this request. Accepted phases include: - `CLOSED`: MongoDB finalized all charges in the billing cycle but has yet to charge the customer. - `FAILED`: MongoDB attempted to charge the provided credit card but charge for that amount failed. - `FORGIVEN`: Customer initiated payment which MongoDB later forgave. - `FREE`: All charges totalled zero so the customer won't be charged. - `INVOICED`: MongoDB handled these charges using elastic invoicing. - `PAID`: MongoDB succeeded in charging the provided credit card. - `PENDING`: Invoice includes charges for the current billing cycle. - `PREPAID`: Customer has a pre-paid plan so they won't be charged. */
 export type BillingInvoiceMetadataStatusName =
@@ -50186,9 +49410,8 @@ export const LiveImportAvailableProjectDeploymentsList = /*@__PURE__*/ S.Array(
 
 /** Hostname of MongoDB Agent list that you configured to perform a migration. */
 export type LiveImportAvailableProjectMigrationHostsList = Array<string>;
-export const LiveImportAvailableProjectMigrationHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LiveImportAvailableProjectMigrationHostsList>;
+export const LiveImportAvailableProjectMigrationHostsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<LiveImportAvailableProjectMigrationHostsList>;
 
 export interface LiveImportAvailableProject {
   /** List of clusters that can be migrated to MongoDB Cloud. */
@@ -50261,9 +49484,8 @@ export const ListOrgLogIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedOrgLogIntegrationResponseLinksList = Array<Link>;
-export const PaginatedOrgLogIntegrationResponseLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedOrgLogIntegrationResponseLinksList>;
+export const PaginatedOrgLogIntegrationResponseLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedOrgLogIntegrationResponseLinksList>;
 
 export type OrgOtelLogIntegrationResponseLogTypesItem = "EVENTS";
 export const OrgOtelLogIntegrationResponseLogTypesItem = S.String;
@@ -50286,18 +49508,12 @@ export interface OrgLogIntegrationHeader {
   /** Header value. Redacted in responses. */
   value: string;
 }
-export const OrgLogIntegrationHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-  }),
-).annotate({ identifier: "OrgLogIntegrationHeader" }) as any as S.Schema<OrgLogIntegrationHeader>;
+export const OrgLogIntegrationHeader = Header as any as S.Schema<OrgLogIntegrationHeader>;
 
 /** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. Values are redacted. */
 export type OrgOtelLogIntegrationResponseOtelSuppliedHeadersList = Array<OrgLogIntegrationHeader>;
-export const OrgOtelLogIntegrationResponseOtelSuppliedHeadersList = /*@__PURE__*/ S.Array(
-  OrgLogIntegrationHeader,
-) as any as S.Schema<OrgOtelLogIntegrationResponseOtelSuppliedHeadersList>;
+export const OrgOtelLogIntegrationResponseOtelSuppliedHeadersList =
+  CreateGroupMetricIntegrationRequestHeadersList as any as S.Schema<OrgOtelLogIntegrationResponseOtelSuppliedHeadersList>;
 
 /** Details to integrate OpenTelemetry event export with one Atlas organization. */
 export interface OrgOtelLogIntegrationResponse {
@@ -50382,9 +49598,8 @@ export const ListOrgMcpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedOrgMcpConfigViewLinksList = Array<Link>;
-export const PaginatedOrgMcpConfigViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedOrgMcpConfigViewLinksList>;
+export const PaginatedOrgMcpConfigViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedOrgMcpConfigViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedOrgMcpConfigViewResultsList = Array<OrgMcpConfigResponse>;
@@ -50518,9 +49733,8 @@ export const ListOrgsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedOrganizationViewLinksList = Array<Link>;
-export const PaginatedOrganizationViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedOrganizationViewLinksList>;
+export const PaginatedOrganizationViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedOrganizationViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedOrganizationViewResultsList = Array<AtlasOrganization>;
@@ -50619,9 +49833,8 @@ export const ListOrgServiceAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedOrgServiceAccountsLinksList = Array<Link>;
-export const PaginatedOrgServiceAccountsLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedOrgServiceAccountsLinksList>;
+export const PaginatedOrgServiceAccountsLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedOrgServiceAccountsLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedOrgServiceAccountsResultsList = Array<OrgServiceAccount>;
@@ -50682,9 +49895,8 @@ export const ListOrgTeamsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedTeamViewLinksList = Array<Link>;
-export const PaginatedTeamViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedTeamViewLinksList>;
+export const PaginatedTeamViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedTeamViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedTeamViewResultsList = Array<TeamResponse>;
@@ -50770,9 +49982,8 @@ export const ListOrgTeamUsersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedOrgUserViewLinksList = Array<Link>;
-export const PaginatedOrgUserViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedOrgUserViewLinksList>;
+export const PaginatedOrgUserViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedOrgUserViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedOrgUserViewResultsList = Array<OrgUserResponse>;
@@ -50897,9 +50108,8 @@ export const ListRateLimitsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedRateLimitEndpointSetsLinksList = Array<Link>;
-export const PaginatedRateLimitEndpointSetsLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedRateLimitEndpointSetsLinksList>;
+export const PaginatedRateLimitEndpointSetsLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedRateLimitEndpointSetsLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedRateLimitEndpointSetsResultsList = Array<RateLimitEndpointSetResponse>;
@@ -50957,9 +50167,8 @@ export const ListSkusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedApiSKUViewLinksList = Array<Link>;
-export const PaginatedApiSKUViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedApiSKUViewLinksList>;
+export const PaginatedApiSKUViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedApiSKUViewLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedApiSKUViewResultsList = Array<SkuResponse>;
@@ -51014,9 +50223,8 @@ export const MigrateGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of namespace strings (combination of database and collection) on the specified host or cluster. */
 export type PinGroupClusterCollStatPinnedNamespacesRequestNamespacesList = Array<string>;
-export const PinGroupClusterCollStatPinnedNamespacesRequestNamespacesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PinGroupClusterCollStatPinnedNamespacesRequestNamespacesList>;
+export const PinGroupClusterCollStatPinnedNamespacesRequestNamespacesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<PinGroupClusterCollStatPinnedNamespacesRequestNamespacesList>;
 
 export interface PinGroupClusterCollStatPinnedNamespacesRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -51078,11 +50286,8 @@ export const PinGroupClusterFeatureCompatibilityVersionRequest = /*@__PURE__*/ S
 }) as any as S.Schema<PinGroupClusterFeatureCompatibilityVersionRequest>;
 
 export interface PinGroupClusterFeatureCompatibilityVersionResponse {}
-export const PinGroupClusterFeatureCompatibilityVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PinGroupClusterFeatureCompatibilityVersionResponse",
-}) as any as S.Schema<PinGroupClusterFeatureCompatibilityVersionResponse>;
+export const PinGroupClusterFeatureCompatibilityVersionResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<PinGroupClusterFeatureCompatibilityVersionResponse>;
 
 export interface RejectGroupStreamVpcPeeringConnectionRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -51110,11 +50315,8 @@ export const RejectGroupStreamVpcPeeringConnectionRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<RejectGroupStreamVpcPeeringConnectionRequest>;
 
 export interface RejectGroupStreamVpcPeeringConnectionResponse {}
-export const RejectGroupStreamVpcPeeringConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RejectGroupStreamVpcPeeringConnectionResponse",
-}) as any as S.Schema<RejectGroupStreamVpcPeeringConnectionResponse>;
+export const RejectGroupStreamVpcPeeringConnectionResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<RejectGroupStreamVpcPeeringConnectionResponse>;
 
 export interface RemoveFederationSettingConnectedOrgConfigRequest {
   /** Unique 24-hexadecimal digit string that identifies your federation. */
@@ -51142,11 +50344,8 @@ export const RemoveFederationSettingConnectedOrgConfigRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<RemoveFederationSettingConnectedOrgConfigRequest>;
 
 export interface RemoveFederationSettingConnectedOrgConfigResponse {}
-export const RemoveFederationSettingConnectedOrgConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveFederationSettingConnectedOrgConfigResponse",
-}) as any as S.Schema<RemoveFederationSettingConnectedOrgConfigResponse>;
+export const RemoveFederationSettingConnectedOrgConfigResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<RemoveFederationSettingConnectedOrgConfigResponse>;
 
 export interface RemoveGroupApiKeyRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -51175,9 +50374,8 @@ export const RemoveGroupApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RemoveGroupApiKeyRequest" }) as any as S.Schema<RemoveGroupApiKeyRequest>;
 
 export interface RemoveGroupApiKeyResponse {}
-export const RemoveGroupApiKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RemoveGroupApiKeyResponse",
-}) as any as S.Schema<RemoveGroupApiKeyResponse>;
+export const RemoveGroupApiKeyResponse =
+  AddGroupApiKeyResponse as any as S.Schema<RemoveGroupApiKeyResponse>;
 
 export interface RemoveGroupTeamRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -51203,9 +50401,8 @@ export const RemoveGroupTeamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RemoveGroupTeamRequest" }) as any as S.Schema<RemoveGroupTeamRequest>;
 
 export interface RemoveGroupTeamResponse {}
-export const RemoveGroupTeamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RemoveGroupTeamResponse",
-}) as any as S.Schema<RemoveGroupTeamResponse>;
+export const RemoveGroupTeamResponse =
+  AddGroupApiKeyResponse as any as S.Schema<RemoveGroupTeamResponse>;
 
 export interface RemoveGroupUserRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -51234,9 +50431,8 @@ export const RemoveGroupUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RemoveGroupUserRequest" }) as any as S.Schema<RemoveGroupUserRequest>;
 
 export interface RemoveGroupUserResponse {}
-export const RemoveGroupUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RemoveGroupUserResponse",
-}) as any as S.Schema<RemoveGroupUserResponse>;
+export const RemoveGroupUserResponse =
+  AddGroupApiKeyResponse as any as S.Schema<RemoveGroupUserResponse>;
 
 export interface RemoveGroupUserRoleRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -51325,9 +50521,8 @@ export const RemoveOrgUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RemoveOrgUserRequest" }) as any as S.Schema<RemoveOrgUserRequest>;
 
 export interface RemoveOrgUserResponse {}
-export const RemoveOrgUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RemoveOrgUserResponse",
-}) as any as S.Schema<RemoveOrgUserResponse>;
+export const RemoveOrgUserResponse =
+  AddGroupApiKeyResponse as any as S.Schema<RemoveOrgUserResponse>;
 
 /** Organization-level role. */
 export type RemoveOrgUserRoleRequestOrgRole =
@@ -51440,11 +50635,8 @@ export const RequestGroupEncryptionAtRestPrivateEndpointDeletionRequest = /*@__P
 }) as any as S.Schema<RequestGroupEncryptionAtRestPrivateEndpointDeletionRequest>;
 
 export interface RequestGroupEncryptionAtRestPrivateEndpointDeletionResponse {}
-export const RequestGroupEncryptionAtRestPrivateEndpointDeletionResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "RequestGroupEncryptionAtRestPrivateEndpointDeletionResponse",
-}) as any as S.Schema<RequestGroupEncryptionAtRestPrivateEndpointDeletionResponse>;
+export const RequestGroupEncryptionAtRestPrivateEndpointDeletionResponse =
+  DeleteFederationSettingConnectedOrgConfigRoleMappingResponse as any as S.Schema<RequestGroupEncryptionAtRestPrivateEndpointDeletionResponse>;
 
 export interface RequestGroupSampleDatasetLoadRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -51564,11 +50756,8 @@ export const ResetGroupMaintenanceWindowRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResetGroupMaintenanceWindowRequest>;
 
 export interface ResetGroupMaintenanceWindowResponse {}
-export const ResetGroupMaintenanceWindowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResetGroupMaintenanceWindowResponse",
-}) as any as S.Schema<ResetGroupMaintenanceWindowResponse>;
+export const ResetGroupMaintenanceWindowResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<ResetGroupMaintenanceWindowResponse>;
 
 export interface ResetOrgMaintenanceSettingsRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -51624,11 +50813,8 @@ export const RestartGroupClusterPrimariesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestartGroupClusterPrimariesRequest>;
 
 export interface RestartGroupClusterPrimariesResponse {}
-export const RestartGroupClusterPrimariesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RestartGroupClusterPrimariesResponse",
-}) as any as S.Schema<RestartGroupClusterPrimariesResponse>;
+export const RestartGroupClusterPrimariesResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<RestartGroupClusterPrimariesResponse>;
 
 export interface RevokeFederationSettingIdentityProviderJwksRequest {
   /** Unique 24-hexadecimal digit string that identifies your federation. */
@@ -51656,11 +50842,8 @@ export const RevokeFederationSettingIdentityProviderJwksRequest = /*@__PURE__*/ 
 }) as any as S.Schema<RevokeFederationSettingIdentityProviderJwksRequest>;
 
 export interface RevokeFederationSettingIdentityProviderJwksResponse {}
-export const RevokeFederationSettingIdentityProviderJwksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RevokeFederationSettingIdentityProviderJwksResponse",
-}) as any as S.Schema<RevokeFederationSettingIdentityProviderJwksResponse>;
+export const RevokeFederationSettingIdentityProviderJwksResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<RevokeFederationSettingIdentityProviderJwksResponse>;
 
 export interface RevokeGroupClusterMongoDbEmployeeAccessRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -51691,23 +50874,18 @@ export const RevokeGroupClusterMongoDbEmployeeAccessRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<RevokeGroupClusterMongoDbEmployeeAccessRequest>;
 
 export interface RevokeGroupClusterMongoDbEmployeeAccessResponse {}
-export const RevokeGroupClusterMongoDbEmployeeAccessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RevokeGroupClusterMongoDbEmployeeAccessResponse",
-}) as any as S.Schema<RevokeGroupClusterMongoDbEmployeeAccessResponse>;
+export const RevokeGroupClusterMongoDbEmployeeAccessResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<RevokeGroupClusterMongoDbEmployeeAccessResponse>;
 
 /** The list of unique cluster ids to be included in the Usage Details filter. */
 export type UsageDetailsFilterRequestClusterIdsList = Array<string>;
-export const UsageDetailsFilterRequestClusterIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UsageDetailsFilterRequestClusterIdsList>;
+export const UsageDetailsFilterRequestClusterIdsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<UsageDetailsFilterRequestClusterIdsList>;
 
 /** The list of groups to be included in the Usage Details filter. */
 export type UsageDetailsFilterRequestGroupIdsList = Array<string>;
-export const UsageDetailsFilterRequestGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UsageDetailsFilterRequestGroupIdsList>;
+export const UsageDetailsFilterRequestGroupIdsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<UsageDetailsFilterRequestGroupIdsList>;
 
 export type UsageDetailsFilterRequestSkuServicesItem =
   | "Atlas"
@@ -51827,9 +51005,8 @@ export const SearchOrgInvoiceLineItemsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type PaginatedPublicApiUsageDetailsLineItemViewLinksList = Array<Link>;
-export const PaginatedPublicApiUsageDetailsLineItemViewLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedPublicApiUsageDetailsLineItemViewLinksList>;
+export const PaginatedPublicApiUsageDetailsLineItemViewLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<PaginatedPublicApiUsageDetailsLineItemViewLinksList>;
 
 /** Additional metadata associated with the line item. */
 export interface AdditionalData {
@@ -52008,9 +51185,8 @@ export const SetGroupLimitRequest = /*@__PURE__*/ S.suspend(() =>
 /** List of settings that specify the type of cluster outage simulation. */
 export type StartGroupClusterOutageSimulationRequestOutageFiltersList =
   Array<AtlasClusterOutageSimulationOutageFilter>;
-export const StartGroupClusterOutageSimulationRequestOutageFiltersList = /*@__PURE__*/ S.Array(
-  AtlasClusterOutageSimulationOutageFilter,
-) as any as S.Schema<StartGroupClusterOutageSimulationRequestOutageFiltersList>;
+export const StartGroupClusterOutageSimulationRequestOutageFiltersList =
+  ClusterOutageSimulationOutageFiltersList as any as S.Schema<StartGroupClusterOutageSimulationRequestOutageFiltersList>;
 
 export interface StartGroupClusterOutageSimulationRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -52075,11 +51251,8 @@ export const StartGroupStreamProcessorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartGroupStreamProcessorRequest>;
 
 export interface StartGroupStreamProcessorResponse {}
-export const StartGroupStreamProcessorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StartGroupStreamProcessorResponse",
-}) as any as S.Schema<StartGroupStreamProcessorResponse>;
+export const StartGroupStreamProcessorResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<StartGroupStreamProcessorResponse>;
 
 /** Strategy for the processor: GRACEFUL - attempt to stop the processor, error if processor cannot be stopped. if stop was successful, start the processor in the new region with the latest checkpoint. FORCED - attempt to stop the processor, proceed to starting the processor in the new region with checkpoints disabled regardless of whether or not the stop succeeds. */
 export type StreamsStartProcessorFailoverMode = "GRACEFUL" | "FORCED";
@@ -52156,11 +51329,8 @@ export const StartGroupStreamProcessorWithRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<StartGroupStreamProcessorWithRequest>;
 
 export interface StartGroupStreamProcessorWithResponse {}
-export const StartGroupStreamProcessorWithResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StartGroupStreamProcessorWithResponse",
-}) as any as S.Schema<StartGroupStreamProcessorWithResponse>;
+export const StartGroupStreamProcessorWithResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<StartGroupStreamProcessorWithResponse>;
 
 export interface StopGroupStreamProcessorRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -52194,11 +51364,8 @@ export const StopGroupStreamProcessorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopGroupStreamProcessorRequest>;
 
 export interface StopGroupStreamProcessorResponse {}
-export const StopGroupStreamProcessorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StopGroupStreamProcessorResponse",
-}) as any as S.Schema<StopGroupStreamProcessorResponse>;
+export const StopGroupStreamProcessorResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<StopGroupStreamProcessorResponse>;
 
 export interface TakeGroupClusterBackupSnapshotsRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -52240,15 +51407,13 @@ export const DiskBackupSnapshotFrequencyType = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type DiskBackupSnapshotLinksList = Array<Link>;
-export const DiskBackupSnapshotLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<DiskBackupSnapshotLinksList>;
+export const DiskBackupSnapshotLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<DiskBackupSnapshotLinksList>;
 
 /** List that contains unique identifiers for the policy items. */
 export type DiskBackupSnapshotPolicyItemsList = Array<string>;
-export const DiskBackupSnapshotPolicyItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DiskBackupSnapshotPolicyItemsList>;
+export const DiskBackupSnapshotPolicyItemsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<DiskBackupSnapshotPolicyItemsList>;
 
 /** Human-readable label that identifies when this snapshot triggers. */
 export type DiskBackupSnapshotSnapshotType = "onDemand" | "scheduled" | "fallback";
@@ -52345,9 +51510,8 @@ export const TenantGroupFlexClusterUpgradeRequestEncryptionAtRestProvider = S.St
 
 /** Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels. Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use Resource Tags instead. */
 export type TenantGroupFlexClusterUpgradeRequestLabelsList = Array<ComponentLabel>;
-export const TenantGroupFlexClusterUpgradeRequestLabelsList = /*@__PURE__*/ S.Array(
-  ComponentLabel,
-) as any as S.Schema<TenantGroupFlexClusterUpgradeRequestLabelsList>;
+export const TenantGroupFlexClusterUpgradeRequestLabelsList =
+  CreateGroupClusterRequestLabelsList as any as S.Schema<TenantGroupFlexClusterUpgradeRequestLabelsList>;
 
 /** Set this field to configure the replica set scaling mode for your cluster. By default, Atlas scales under `WORKLOAD_TYPE`. This mode allows Atlas to scale your analytics nodes in parallel to your operational nodes. When configured as `SEQUENTIAL`, Atlas scales all nodes sequentially. This mode is intended for steady-state workloads and applications performing latency-sensitive secondary reads. When configured as `NODE_TYPE`, Atlas scales your electable nodes in parallel with your read-only and analytics nodes. This mode is intended for large, dynamic workloads requiring frequent and timely cluster tier scaling. This is the fastest scaling strategy, but it might impact latency of workloads when performing extensive secondary reads. */
 export type TenantGroupFlexClusterUpgradeRequestReplicaSetScalingStrategy =
@@ -52359,9 +51523,8 @@ export const TenantGroupFlexClusterUpgradeRequestReplicaSetScalingStrategy = S.S
 /** List of settings that configure your cluster regions. This array has one object per shard representing node configurations in each shard. For replica sets there is only one object representing node configurations. */
 export type TenantGroupFlexClusterUpgradeRequestReplicationSpecsList =
   Array<ReplicationSpec20240805Input>;
-export const TenantGroupFlexClusterUpgradeRequestReplicationSpecsList = /*@__PURE__*/ S.Array(
-  ReplicationSpec20240805Input,
-) as any as S.Schema<TenantGroupFlexClusterUpgradeRequestReplicationSpecsList>;
+export const TenantGroupFlexClusterUpgradeRequestReplicationSpecsList =
+  CreateGroupClusterRequestReplicationSpecsList as any as S.Schema<TenantGroupFlexClusterUpgradeRequestReplicationSpecsList>;
 
 /** Root Certificate Authority that MongoDB Atlas cluster uses. MongoDB Cloud supports Internet Security Research Group. */
 export type TenantGroupFlexClusterUpgradeRequestRootCertType = "ISRGROOTX1";
@@ -52369,9 +51532,8 @@ export const TenantGroupFlexClusterUpgradeRequestRootCertType = S.String;
 
 /** List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the cluster. */
 export type TenantGroupFlexClusterUpgradeRequestTagsList = Array<ResourceTag>;
-export const TenantGroupFlexClusterUpgradeRequestTagsList = /*@__PURE__*/ S.Array(
-  ResourceTag,
-) as any as S.Schema<TenantGroupFlexClusterUpgradeRequestTagsList>;
+export const TenantGroupFlexClusterUpgradeRequestTagsList =
+  CreateGroupRequestTagsList as any as S.Schema<TenantGroupFlexClusterUpgradeRequestTagsList>;
 
 /** Method by which the cluster maintains the MongoDB versions. If value is `CONTINUOUS`, you must not specify `mongoDBMajorVersion`. */
 export type TenantGroupFlexClusterUpgradeRequestVersionReleaseSystem = "LTS" | "CONTINUOUS";
@@ -52519,11 +51681,8 @@ export const ToggleGroupAlertConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ToggleGroupAlertConfigRequest>;
 
 export type ToggleGroupAlertConfigResponse = GroupAlertsConfig;
-export const ToggleGroupAlertConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  GroupAlertsConfig.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ToggleGroupAlertConfigResponse",
-}) as any as S.Schema<ToggleGroupAlertConfigResponse>;
+export const ToggleGroupAlertConfigResponse =
+  CreateGroupAlertConfigResponse as any as S.Schema<ToggleGroupAlertConfigResponse>;
 
 export interface ToggleGroupAwsCustomDnsRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -52576,11 +51735,8 @@ export const ToggleGroupMaintenanceWindowAutoDeferRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ToggleGroupMaintenanceWindowAutoDeferRequest>;
 
 export interface ToggleGroupMaintenanceWindowAutoDeferResponse {}
-export const ToggleGroupMaintenanceWindowAutoDeferResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ToggleGroupMaintenanceWindowAutoDeferResponse",
-}) as any as S.Schema<ToggleGroupMaintenanceWindowAutoDeferResponse>;
+export const ToggleGroupMaintenanceWindowAutoDeferResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<ToggleGroupMaintenanceWindowAutoDeferResponse>;
 
 export interface ToggleGroupPrivateEndpointRegionalModeRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -52612,9 +51768,8 @@ export const ToggleGroupPrivateEndpointRegionalModeRequest = /*@__PURE__*/ S.sus
 
 /** List of namespace strings (combination of database and collection) on the specified host or cluster. */
 export type UnpinGroupClusterCollStatUnpinNamespacesRequestNamespacesList = Array<string>;
-export const UnpinGroupClusterCollStatUnpinNamespacesRequestNamespacesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UnpinGroupClusterCollStatUnpinNamespacesRequestNamespacesList>;
+export const UnpinGroupClusterCollStatUnpinNamespacesRequestNamespacesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<UnpinGroupClusterCollStatUnpinNamespacesRequestNamespacesList>;
 
 export interface UnpinGroupClusterCollStatUnpinNamespacesRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -52673,26 +51828,19 @@ export const UnpinGroupClusterFeatureCompatibilityVersionRequest = /*@__PURE__*/
 }) as any as S.Schema<UnpinGroupClusterFeatureCompatibilityVersionRequest>;
 
 export interface UnpinGroupClusterFeatureCompatibilityVersionResponse {}
-export const UnpinGroupClusterFeatureCompatibilityVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UnpinGroupClusterFeatureCompatibilityVersionResponse",
-}) as any as S.Schema<UnpinGroupClusterFeatureCompatibilityVersionResponse>;
+export const UnpinGroupClusterFeatureCompatibilityVersionResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<UnpinGroupClusterFeatureCompatibilityVersionResponse>;
 
 /** The collection of unique ids representing the identity providers that can be used for data access in this organization. */
 export type UpdateFederationSettingConnectedOrgConfigRequestDataAccessIdentityProviderIdsList =
   Array<string>;
 export const UpdateFederationSettingConnectedOrgConfigRequestDataAccessIdentityProviderIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateFederationSettingConnectedOrgConfigRequestDataAccessIdentityProviderIdsList>;
+  CreateGroupPrivateEndpointEndpointServiceRequestSupportedRemoteRegionsList as any as S.Schema<UpdateFederationSettingConnectedOrgConfigRequestDataAccessIdentityProviderIdsList>;
 
 /** Approved domains that restrict users who can join the organization based on their email address. */
 export type UpdateFederationSettingConnectedOrgConfigRequestDomainAllowListList = Array<string>;
 export const UpdateFederationSettingConnectedOrgConfigRequestDomainAllowListList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateFederationSettingConnectedOrgConfigRequestDomainAllowListList>;
+  CreateGroupPrivateEndpointEndpointServiceRequestSupportedRemoteRegionsList as any as S.Schema<UpdateFederationSettingConnectedOrgConfigRequestDomainAllowListList>;
 
 export type UpdateFederationSettingConnectedOrgConfigRequestPostAuthRoleGrantsItem =
   | "ORG_OWNER"
@@ -52716,9 +51864,8 @@ export const UpdateFederationSettingConnectedOrgConfigRequestPostAuthRoleGrantsL
 /** Atlas roles and the unique identifiers of the groups and organizations associated with each role. The array must include at least one element with an Organization role and its respective `orgId`. Each element in the array can have a value for `orgId` or `groupId`, but not both. */
 export type AuthFederationRoleMappingInputRoleAssignmentsList =
   Array<ConnectedOrgConfigRoleAssignment>;
-export const AuthFederationRoleMappingInputRoleAssignmentsList = /*@__PURE__*/ S.Array(
-  ConnectedOrgConfigRoleAssignment,
-) as any as S.Schema<AuthFederationRoleMappingInputRoleAssignmentsList>;
+export const AuthFederationRoleMappingInputRoleAssignmentsList =
+  AuthFederationRoleMappingRoleAssignmentsList as any as S.Schema<AuthFederationRoleMappingInputRoleAssignmentsList>;
 
 /** Mapping settings that link one IdP and MongoDB Cloud. */
 export interface AuthFederationRoleMappingInput {
@@ -52831,9 +51978,7 @@ export const UpdateFederationSettingConnectedOrgConfigRequest = /*@__PURE__*/ S.
 export type UpdateFederationSettingConnectedOrgConfigRoleMappingRequestRoleAssignmentsList =
   Array<ConnectedOrgConfigRoleAssignment>;
 export const UpdateFederationSettingConnectedOrgConfigRoleMappingRequestRoleAssignmentsList =
-  /*@__PURE__*/ S.Array(
-    ConnectedOrgConfigRoleAssignment,
-  ) as any as S.Schema<UpdateFederationSettingConnectedOrgConfigRoleMappingRequestRoleAssignmentsList>;
+  CreateFederationSettingConnectedOrgConfigRoleMappingRequestRoleAssignmentsList as any as S.Schema<UpdateFederationSettingConnectedOrgConfigRoleMappingRequestRoleAssignmentsList>;
 
 export interface UpdateFederationSettingConnectedOrgConfigRoleMappingRequest {
   /** Unique 24-hexadecimal digit string that identifies your federation. */
@@ -52921,9 +52066,8 @@ export const UpdateFederationSettingIdentityProviderRequest = /*@__PURE__*/ S.su
 
 /** List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the project. */
 export type UpdateGroupRequestTagsList = Array<ResourceTag>;
-export const UpdateGroupRequestTagsList = /*@__PURE__*/ S.Array(
-  ResourceTag,
-) as any as S.Schema<UpdateGroupRequestTagsList>;
+export const UpdateGroupRequestTagsList =
+  CreateGroupRequestTagsList as any as S.Schema<UpdateGroupRequestTagsList>;
 
 export interface UpdateGroupRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -53072,17 +52216,13 @@ export const UpdateGroupAlertConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateGroupAlertConfigRequest>;
 
 export type UpdateGroupAlertConfigResponse = GroupAlertsConfig;
-export const UpdateGroupAlertConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  GroupAlertsConfig.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UpdateGroupAlertConfigResponse",
-}) as any as S.Schema<UpdateGroupAlertConfigResponse>;
+export const UpdateGroupAlertConfigResponse =
+  CreateGroupAlertConfigResponse as any as S.Schema<UpdateGroupAlertConfigResponse>;
 
 /** List of roles to grant this API key. If you provide this list, provide a minimum of one role and ensure each role applies to this project. */
 export type UpdateGroupApiKeyRolesRequestRolesList = Array<string>;
-export const UpdateGroupApiKeyRolesRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateGroupApiKeyRolesRequestRolesList>;
+export const UpdateGroupApiKeyRolesRequestRolesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<UpdateGroupApiKeyRolesRequestRolesList>;
 
 export interface UpdateGroupApiKeyRolesRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -53405,9 +52545,8 @@ export const DiskBackupSnapshotAWSExportBucketResponseCloudProvider = S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type DiskBackupSnapshotAWSExportBucketResponseLinksList = Array<Link>;
-export const DiskBackupSnapshotAWSExportBucketResponseLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<DiskBackupSnapshotAWSExportBucketResponseLinksList>;
+export const DiskBackupSnapshotAWSExportBucketResponseLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<DiskBackupSnapshotAWSExportBucketResponseLinksList>;
 
 export interface DiskBackupSnapshotAWSExportBucketResponse {
   /** Unique 24-hexadecimal character string that identifies the Export Bucket. */
@@ -53467,9 +52606,8 @@ export const UpdateGroupClusterRequestEncryptionAtRestProvider = S.String;
 
 /** Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels. Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use Resource Tags instead. */
 export type UpdateGroupClusterRequestLabelsList = Array<ComponentLabel>;
-export const UpdateGroupClusterRequestLabelsList = /*@__PURE__*/ S.Array(
-  ComponentLabel,
-) as any as S.Schema<UpdateGroupClusterRequestLabelsList>;
+export const UpdateGroupClusterRequestLabelsList =
+  CreateGroupClusterRequestLabelsList as any as S.Schema<UpdateGroupClusterRequestLabelsList>;
 
 /** Set this field to configure the replica set scaling mode for your cluster. By default, Atlas scales under `WORKLOAD_TYPE`. This mode allows Atlas to scale your analytics nodes in parallel to your operational nodes. When configured as `SEQUENTIAL`, Atlas scales all nodes sequentially. This mode is intended for steady-state workloads and applications performing latency-sensitive secondary reads. When configured as `NODE_TYPE`, Atlas scales your electable nodes in parallel with your read-only and analytics nodes. This mode is intended for large, dynamic workloads requiring frequent and timely cluster tier scaling. This is the fastest scaling strategy, but it might impact latency of workloads when performing extensive secondary reads. */
 export type UpdateGroupClusterRequestReplicaSetScalingStrategy =
@@ -53480,9 +52618,8 @@ export const UpdateGroupClusterRequestReplicaSetScalingStrategy = S.String;
 
 /** List of settings that configure your cluster regions. This array has one object per shard representing node configurations in each shard. For replica sets there is only one object representing node configurations. */
 export type UpdateGroupClusterRequestReplicationSpecsList = Array<ReplicationSpec20240805Input>;
-export const UpdateGroupClusterRequestReplicationSpecsList = /*@__PURE__*/ S.Array(
-  ReplicationSpec20240805Input,
-) as any as S.Schema<UpdateGroupClusterRequestReplicationSpecsList>;
+export const UpdateGroupClusterRequestReplicationSpecsList =
+  CreateGroupClusterRequestReplicationSpecsList as any as S.Schema<UpdateGroupClusterRequestReplicationSpecsList>;
 
 /** Root Certificate Authority that MongoDB Atlas cluster uses. MongoDB Cloud supports Internet Security Research Group. */
 export type UpdateGroupClusterRequestRootCertType = "ISRGROOTX1";
@@ -53490,9 +52627,8 @@ export const UpdateGroupClusterRequestRootCertType = S.String;
 
 /** List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the cluster. */
 export type UpdateGroupClusterRequestTagsList = Array<ResourceTag>;
-export const UpdateGroupClusterRequestTagsList = /*@__PURE__*/ S.Array(
-  ResourceTag,
-) as any as S.Schema<UpdateGroupClusterRequestTagsList>;
+export const UpdateGroupClusterRequestTagsList =
+  CreateGroupRequestTagsList as any as S.Schema<UpdateGroupClusterRequestTagsList>;
 
 /** Method by which the cluster maintains the MongoDB versions. If value is `CONTINUOUS`, you must not specify `mongoDBMajorVersion`. */
 export type UpdateGroupClusterRequestVersionReleaseSystem = "LTS" | "CONTINUOUS";
@@ -53771,9 +52907,7 @@ export const UpdateGroupClusterBackupScheduleRequestDeleteCopiedBackupsList = /*
 export type UpdateGroupClusterBackupScheduleRequestExtraRetentionSettingsList =
   Array<ExtraRetentionSetting>;
 export const UpdateGroupClusterBackupScheduleRequestExtraRetentionSettingsList =
-  /*@__PURE__*/ S.Array(
-    ExtraRetentionSetting,
-  ) as any as S.Schema<UpdateGroupClusterBackupScheduleRequestExtraRetentionSettingsList>;
+  DiskBackupSnapshotSchedule20240805OutputExtraRetentionSettingsList as any as S.Schema<UpdateGroupClusterBackupScheduleRequestExtraRetentionSettingsList>;
 
 /** Number that indicates the frequency interval for a set of Snapshots. A value of `1` specifies the first instance of the corresponding `frequencyType`. - In a yearly policy item, `1` indicates that the yearly Snapshot occurs on the first day of January and `12` indicates the first day of December. - In a monthly policy item, `1` indicates that the monthly Snapshot occurs on the first day of the month and `40` indicates the last day of the month. - In a weekly policy item, `1` indicates that the weekly Snapshot occurs on Monday and `7` indicates Sunday. - In an hourly policy item, you can set the frequency interval to `1`, `2`, `4`, `6`, `8`, or `12`. For hourly policy items for NVMe clusters, MongoDB Cloud accepts only `12` as the frequency interval value. MongoDB Cloud ignores this setting for non-hourly policy items in Backup Compliance Policy settings. */
 export type DiskBackupApiPolicyItemInputFrequencyInterval =
@@ -53999,9 +53133,7 @@ export const UpdateGroupClusterBackupSnapshotRequest = /*@__PURE__*/ S.suspend((
 /** List of namespace strings (combination of database and collection) on the specified host or cluster. */
 export type UpdateGroupClusterCollStatPinnedNamespacesRequestNamespacesList = Array<string>;
 export const UpdateGroupClusterCollStatPinnedNamespacesRequestNamespacesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateGroupClusterCollStatPinnedNamespacesRequestNamespacesList>;
+  CreateGroupPrivateEndpointEndpointServiceRequestSupportedRemoteRegionsList as any as S.Schema<UpdateGroupClusterCollStatPinnedNamespacesRequestNamespacesList>;
 
 export interface UpdateGroupClusterCollStatPinnedNamespacesRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -54238,9 +53370,8 @@ export const UpdateGroupClusterQueryShapeRequest = /*@__PURE__*/ S.suspend(() =>
 /** List of settings that configure the Search Nodes for your cluster. Provide one element per region when configuring asymmetric deployments; a single element applies to all regions. */
 export type UpdateGroupClusterSearchDeploymentRequestSpecsList =
   Array<ApiSearchDeploymentRequestSpecView>;
-export const UpdateGroupClusterSearchDeploymentRequestSpecsList = /*@__PURE__*/ S.Array(
-  ApiSearchDeploymentRequestSpecView,
-) as any as S.Schema<UpdateGroupClusterSearchDeploymentRequestSpecsList>;
+export const UpdateGroupClusterSearchDeploymentRequestSpecsList =
+  CreateGroupClusterSearchDeploymentRequestSpecsList as any as S.Schema<UpdateGroupClusterSearchDeploymentRequestSpecsList>;
 
 export interface UpdateGroupClusterSearchDeploymentRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -54330,29 +53461,23 @@ export type TextSearchIndexDefinitionAnalyzer =
 export const TextSearchIndexDefinitionAnalyzer = S.String;
 
 export type BasicDBObject = { [key: string]: unknown | undefined };
-export const BasicDBObject = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<BasicDBObject>;
+export const BasicDBObject =
+  IndexOptionsPartialFilterExpressionMap as any as S.Schema<BasicDBObject>;
 
 /** Filters that examine text one character at a time and perform filtering operations. */
 export type AtlasSearchAnalyzerCharFiltersList = Array<BasicDBObject>;
-export const AtlasSearchAnalyzerCharFiltersList = /*@__PURE__*/ S.Array(
-  BasicDBObject,
-) as any as S.Schema<AtlasSearchAnalyzerCharFiltersList>;
+export const AtlasSearchAnalyzerCharFiltersList =
+  ShardKeysKeyList as any as S.Schema<AtlasSearchAnalyzerCharFiltersList>;
 
 /** Filter that performs operations such as: - Stemming, which reduces related words, such as "talking", "talked", and "talks" to their root word "talk". - Redaction, which is the removal of sensitive information from public documents. */
 export type AtlasSearchAnalyzerTokenFiltersList = Array<BasicDBObject>;
-export const AtlasSearchAnalyzerTokenFiltersList = /*@__PURE__*/ S.Array(
-  BasicDBObject,
-) as any as S.Schema<AtlasSearchAnalyzerTokenFiltersList>;
+export const AtlasSearchAnalyzerTokenFiltersList =
+  ShardKeysKeyList as any as S.Schema<AtlasSearchAnalyzerTokenFiltersList>;
 
 /** Tokenizer that you want to use to create tokens. Tokens determine how Atlas Search splits up text into discrete chunks for indexing. */
 export type AtlasSearchAnalyzerTokenizerMap = { [key: string]: unknown | undefined };
-export const AtlasSearchAnalyzerTokenizerMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AtlasSearchAnalyzerTokenizerMap>;
+export const AtlasSearchAnalyzerTokenizerMap =
+  IndexOptionsPartialFilterExpressionMap as any as S.Schema<AtlasSearchAnalyzerTokenizerMap>;
 
 export interface AtlasSearchAnalyzer {
   /** Filters that examine text one character at a time and perform filtering operations. */
@@ -54381,10 +53506,8 @@ export const TextSearchIndexDefinitionAnalyzersList = /*@__PURE__*/ S.Array(
 
 /** One or more field specifications for the Atlas Search index. Required if `mappings.dynamic` is omitted or set to `false`. */
 export type SearchMappingsFieldsMap = { [key: string]: unknown | undefined };
-export const SearchMappingsFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SearchMappingsFieldsMap>;
+export const SearchMappingsFieldsMap =
+  IndexOptionsPartialFilterExpressionMap as any as S.Schema<SearchMappingsFieldsMap>;
 
 /** Index specifications for the collection's fields. */
 export interface SearchMappings {
@@ -54537,9 +53660,7 @@ export const TextSearchIndexDefinitionSynonymsList = /*@__PURE__*/ S.Array(
 
 /** List of types associated with the type set. Each type definition must include a `type` field specifying the search field type (`autocomplete`, `boolean`, `date`, `geo`, `number`, `objectId`, `string`, `token`, or `uuid`) and may include additional configuration properties specific to that type. */
 export type SearchTypeSetsTypesList = Array<BasicDBObject>;
-export const SearchTypeSetsTypesList = /*@__PURE__*/ S.Array(
-  BasicDBObject,
-) as any as S.Schema<SearchTypeSetsTypesList>;
+export const SearchTypeSetsTypesList = ShardKeysKeyList as any as S.Schema<SearchTypeSetsTypesList>;
 
 /** Type sets for an Atlas Search index definition. */
 export interface SearchTypeSets {
@@ -54599,9 +53720,8 @@ export const TextSearchIndexDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Settings that configure the fields, one per object, to index. You must define at least one "vector" type field. You can optionally define "filter" type fields also. */
 export type VectorSearchIndexDefinitionFieldsList = Array<BasicDBObject>;
-export const VectorSearchIndexDefinitionFieldsList = /*@__PURE__*/ S.Array(
-  BasicDBObject,
-) as any as S.Schema<VectorSearchIndexDefinitionFieldsList>;
+export const VectorSearchIndexDefinitionFieldsList =
+  ShardKeysKeyList as any as S.Schema<VectorSearchIndexDefinitionFieldsList>;
 
 /** The vector search index definition set by the user. */
 export interface VectorSearchIndexDefinition {
@@ -54755,15 +53875,13 @@ export const UpdateGroupContainerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of the individual privilege actions that the role grants. */
 export type UpdateGroupCustomDbRoleRoleRequestActionsList = Array<DatabasePrivilegeAction>;
-export const UpdateGroupCustomDbRoleRoleRequestActionsList = /*@__PURE__*/ S.Array(
-  DatabasePrivilegeAction,
-) as any as S.Schema<UpdateGroupCustomDbRoleRoleRequestActionsList>;
+export const UpdateGroupCustomDbRoleRoleRequestActionsList =
+  CreateGroupCustomDbRoleRoleRequestActionsList as any as S.Schema<UpdateGroupCustomDbRoleRoleRequestActionsList>;
 
 /** List of the built-in roles that this custom role inherits. */
 export type UpdateGroupCustomDbRoleRoleRequestInheritedRolesList = Array<DatabaseInheritedRole>;
-export const UpdateGroupCustomDbRoleRoleRequestInheritedRolesList = /*@__PURE__*/ S.Array(
-  DatabaseInheritedRole,
-) as any as S.Schema<UpdateGroupCustomDbRoleRoleRequestInheritedRolesList>;
+export const UpdateGroupCustomDbRoleRoleRequestInheritedRolesList =
+  CreateGroupCustomDbRoleRoleRequestInheritedRolesList as any as S.Schema<UpdateGroupCustomDbRoleRoleRequestInheritedRolesList>;
 
 export interface UpdateGroupCustomDbRoleRoleRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -54805,9 +53923,8 @@ export const UpdateGroupDatabaseUserRequestAwsIAMType = S.String;
 
 /** List that contains the key-value pairs for tagging and categorizing the MongoDB database user. The labels that you define do not appear in the console. */
 export type UpdateGroupDatabaseUserRequestLabelsList = Array<ComponentLabel>;
-export const UpdateGroupDatabaseUserRequestLabelsList = /*@__PURE__*/ S.Array(
-  ComponentLabel,
-) as any as S.Schema<UpdateGroupDatabaseUserRequestLabelsList>;
+export const UpdateGroupDatabaseUserRequestLabelsList =
+  CreateGroupClusterRequestLabelsList as any as S.Schema<UpdateGroupDatabaseUserRequestLabelsList>;
 
 /** Part of the Lightweight Directory Access Protocol (LDAP) record that the database uses to authenticate this database user on the LDAP host. */
 export type UpdateGroupDatabaseUserRequestLdapAuthType = "NONE" | "GROUP" | "USER";
@@ -54819,15 +53936,13 @@ export const UpdateGroupDatabaseUserRequestOidcAuthType = S.String;
 
 /** List that provides the pairings of one role with one applicable database. */
 export type UpdateGroupDatabaseUserRequestRolesList = Array<DatabaseUserRole>;
-export const UpdateGroupDatabaseUserRequestRolesList = /*@__PURE__*/ S.Array(
-  DatabaseUserRole,
-) as any as S.Schema<UpdateGroupDatabaseUserRequestRolesList>;
+export const UpdateGroupDatabaseUserRequestRolesList =
+  CreateGroupDatabaseUserRequestRolesList as any as S.Schema<UpdateGroupDatabaseUserRequestRolesList>;
 
 /** List that contains clusters, MongoDB Atlas Data Lakes, and MongoDB Atlas Streams Workspaces that this database user can access. If omitted, MongoDB Cloud grants the database user access to all the clusters, MongoDB Atlas Data Lakes, and MongoDB Atlas Streams Workspaces in the project. */
 export type UpdateGroupDatabaseUserRequestScopesList = Array<UserScope>;
-export const UpdateGroupDatabaseUserRequestScopesList = /*@__PURE__*/ S.Array(
-  UserScope,
-) as any as S.Schema<UpdateGroupDatabaseUserRequestScopesList>;
+export const UpdateGroupDatabaseUserRequestScopesList =
+  CreateGroupDatabaseUserRequestScopesList as any as S.Schema<UpdateGroupDatabaseUserRequestScopesList>;
 
 /** X.509 method that MongoDB Cloud uses to authenticate the database user. - For application-managed X.509, specify `MANAGED`. - For self-managed X.509, specify `CUSTOMER`. Users created with the `CUSTOMER` method require a Common Name (CN) in the **username** parameter. You must create externally authenticated users on the `$external` database. */
 export type UpdateGroupDatabaseUserRequestX509Type = "NONE" | "CUSTOMER" | "MANAGED";
@@ -55111,9 +54226,8 @@ export const UpdateGroupFlexClusterRequestDatabaseEdition = S.String;
 
 /** List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the instance. */
 export type UpdateGroupFlexClusterRequestTagsList = Array<ResourceTag>;
-export const UpdateGroupFlexClusterRequestTagsList = /*@__PURE__*/ S.Array(
-  ResourceTag,
-) as any as S.Schema<UpdateGroupFlexClusterRequestTagsList>;
+export const UpdateGroupFlexClusterRequestTagsList =
+  CreateGroupRequestTagsList as any as S.Schema<UpdateGroupFlexClusterRequestTagsList>;
 
 export interface UpdateGroupFlexClusterRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -55322,24 +54436,19 @@ export const UpdateGroupMaintenanceWindowRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateGroupMaintenanceWindowRequest>;
 
 export interface UpdateGroupMaintenanceWindowResponse {}
-export const UpdateGroupMaintenanceWindowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateGroupMaintenanceWindowResponse",
-}) as any as S.Schema<UpdateGroupMaintenanceWindowResponse>;
+export const UpdateGroupMaintenanceWindowResponse =
+  AcceptGroupStreamVpcPeeringConnectionResponse as any as S.Schema<UpdateGroupMaintenanceWindowResponse>;
 
 /** List of IP access list entries that define allowed source addresses for this MCP configuration. If provided, replaces the existing IP access list. */
 export type UpdateGroupMcpConfigRequestIpAccessListList =
   Array<ServiceAccountIPAccessListEntryInput>;
-export const UpdateGroupMcpConfigRequestIpAccessListList = /*@__PURE__*/ S.Array(
-  ServiceAccountIPAccessListEntryInput,
-) as any as S.Schema<UpdateGroupMcpConfigRequestIpAccessListList>;
+export const UpdateGroupMcpConfigRequestIpAccessListList =
+  CreateGroupMcpConfigRequestIpAccessListList as any as S.Schema<UpdateGroupMcpConfigRequestIpAccessListList>;
 
 /** List of project roles associated with this MCP configuration. If provided, replaces the existing list of roles. */
 export type UpdateGroupMcpConfigRequestRolesList = Array<string>;
-export const UpdateGroupMcpConfigRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateGroupMcpConfigRequestRolesList>;
+export const UpdateGroupMcpConfigRequestRolesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<UpdateGroupMcpConfigRequestRolesList>;
 
 export interface UpdateGroupMcpConfigRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -55385,9 +54494,8 @@ export const UpdateGroupMetricIntegrationRequestAuthType = S.String;
 
 /** HTTP headers for authentication and configuration. Total size limit 2KB. Required when `authType` is `HEADER`. */
 export type UpdateGroupMetricIntegrationRequestHeadersList = Array<Header>;
-export const UpdateGroupMetricIntegrationRequestHeadersList = /*@__PURE__*/ S.Array(
-  Header,
-) as any as S.Schema<UpdateGroupMetricIntegrationRequestHeadersList>;
+export const UpdateGroupMetricIntegrationRequestHeadersList =
+  CreateGroupMetricIntegrationRequestHeadersList as any as S.Schema<UpdateGroupMetricIntegrationRequestHeadersList>;
 
 /** Type of metric integration. Identifies which protocol will be used for the integration. This value cannot be modified after the integration is created. */
 export type UpdateGroupMetricIntegrationRequestIntegrationType = "OTEL";
@@ -55510,9 +54618,7 @@ export const UpdateGroupPrivateEndpointEndpointServiceRequestCloudProvider = S.S
 export type UpdateGroupPrivateEndpointEndpointServiceRequestSupportedRemoteRegionsList =
   Array<string>;
 export const UpdateGroupPrivateEndpointEndpointServiceRequestSupportedRemoteRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateGroupPrivateEndpointEndpointServiceRequestSupportedRemoteRegionsList>;
+  CreateGroupPrivateEndpointEndpointServiceRequestSupportedRemoteRegionsList as any as S.Schema<UpdateGroupPrivateEndpointEndpointServiceRequestSupportedRemoteRegionsList>;
 
 export interface UpdateGroupPrivateEndpointEndpointServiceRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -55552,9 +54658,8 @@ export const UpdateGroupPrivateEndpointEndpointServiceRequest = /*@__PURE__*/ S.
 
 /** A list of Project roles associated with the Service Account. */
 export type UpdateGroupServiceAccountRequestRolesList = Array<string>;
-export const UpdateGroupServiceAccountRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateGroupServiceAccountRequestRolesList>;
+export const UpdateGroupServiceAccountRequestRolesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<UpdateGroupServiceAccountRequestRolesList>;
 
 export interface UpdateGroupServiceAccountRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -55804,9 +54909,8 @@ export const StreamsModifyStreamProcessorOptionsInput = /*@__PURE__*/ S.suspend(
 
 /** New pipeline for the stream processor. */
 export type UpdateGroupStreamProcessorRequestPipelineList = Array<Document>;
-export const UpdateGroupStreamProcessorRequestPipelineList = /*@__PURE__*/ S.Array(
-  Document,
-) as any as S.Schema<UpdateGroupStreamProcessorRequestPipelineList>;
+export const UpdateGroupStreamProcessorRequestPipelineList =
+  CreateGroupStreamProcessorRequestPipelineList as any as S.Schema<UpdateGroupStreamProcessorRequestPipelineList>;
 
 /** Selected tier for the Stream Workspace. Configures Memory or VCPU allowances. */
 export type UpdateGroupStreamProcessorRequestTier = "SP50" | "SP30" | "SP10" | "SP5" | "SP2";
@@ -55869,9 +54973,8 @@ export const UpdateGroupStreamWorkspaceRequestCloudProvider = S.String;
 /** Failover regions for the stream workspace. */
 export type UpdateGroupStreamWorkspaceRequestFailoverRegionsList =
   Array<StreamsDataProcessRegionInput>;
-export const UpdateGroupStreamWorkspaceRequestFailoverRegionsList = /*@__PURE__*/ S.Array(
-  StreamsDataProcessRegionInput,
-) as any as S.Schema<UpdateGroupStreamWorkspaceRequestFailoverRegionsList>;
+export const UpdateGroupStreamWorkspaceRequestFailoverRegionsList =
+  CreateGroupStreamWorkspaceRequestFailoverRegionsList as any as S.Schema<UpdateGroupStreamWorkspaceRequestFailoverRegionsList>;
 
 /** Strategy for the processor: GRACEFUL - attempt to stop the processor, error if processor cannot be stopped. if stop was successful, start the processor in the new region with the latest checkpoint. FORCED - attempt to stop the processor, proceed to starting the processor in the new region with checkpoints disabled regardless of whether or not the stop succeeds. */
 export type StreamsProcessorStatusInputMode = "GRACEFUL" | "FORCED";
@@ -55942,9 +55045,8 @@ export const UpdateGroupStreamWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** One or more project-level roles to assign to the team. */
 export type UpdateGroupTeamRequestRoleNamesList = Array<string>;
-export const UpdateGroupTeamRequestRoleNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateGroupTeamRequestRoleNamesList>;
+export const UpdateGroupTeamRequestRoleNamesList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<UpdateGroupTeamRequestRoleNamesList>;
 
 export interface UpdateGroupTeamRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -55990,9 +55092,8 @@ export const DBUserTLSX509SettingsInput = /*@__PURE__*/ S.suspend(() =>
 
 /** User-to-Distinguished Name (DN) map that MongoDB Cloud uses to transform a Lightweight Directory Access Protocol (LDAP) username into an LDAP DN. */
 export type LDAPSecuritySettingsInputUserToDNMappingList = Array<UserToDNMapping>;
-export const LDAPSecuritySettingsInputUserToDNMappingList = /*@__PURE__*/ S.Array(
-  UserToDNMapping,
-) as any as S.Schema<LDAPSecuritySettingsInputUserToDNMappingList>;
+export const LDAPSecuritySettingsInputUserToDNMappingList =
+  LDAPSecuritySettingsOutputUserToDNMappingList as any as S.Schema<LDAPSecuritySettingsInputUserToDNMappingList>;
 
 /** Lightweight Directory Access Protocol (LDAP) over Transport Layer Security (TLS) configuration details that apply to the specified project. */
 export interface LDAPSecuritySettingsInput {
@@ -56061,9 +55162,8 @@ export const UpdateGroupUserSecurityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateGroupUserSecurityRequest>;
 
 export interface UpdateGroupUserSecurityResponse {}
-export const UpdateGroupUserSecurityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "UpdateGroupUserSecurityResponse" },
-) as any as S.Schema<UpdateGroupUserSecurityResponse>;
+export const UpdateGroupUserSecurityResponse =
+  DeleteFederationSettingResponse as any as S.Schema<UpdateGroupUserSecurityResponse>;
 
 export interface UpdateOrgRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -56312,9 +55412,8 @@ export const UpdateOrgMaintenanceSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IP access list entries that define allowed source addresses for this MCP configuration. If provided, replaces the existing IP access list. */
 export type UpdateOrgMcpConfigRequestIpAccessListList = Array<ServiceAccountIPAccessListEntryInput>;
-export const UpdateOrgMcpConfigRequestIpAccessListList = /*@__PURE__*/ S.Array(
-  ServiceAccountIPAccessListEntryInput,
-) as any as S.Schema<UpdateOrgMcpConfigRequestIpAccessListList>;
+export const UpdateOrgMcpConfigRequestIpAccessListList =
+  CreateGroupMcpConfigRequestIpAccessListList as any as S.Schema<UpdateOrgMcpConfigRequestIpAccessListList>;
 
 /** Organization roles available for Service Accounts. */
 export type UpdateOrgMcpConfigRequestRolesItem =
@@ -56371,9 +55470,8 @@ export const UpdateOrgMcpConfigRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of policies that make up the atlas resource policy. */
 export type UpdateOrgResourcePolicyRequestPoliciesList = Array<ApiAtlasPolicyCreateView>;
-export const UpdateOrgResourcePolicyRequestPoliciesList = /*@__PURE__*/ S.Array(
-  ApiAtlasPolicyCreateView,
-) as any as S.Schema<UpdateOrgResourcePolicyRequestPoliciesList>;
+export const UpdateOrgResourcePolicyRequestPoliciesList =
+  CreateOrgResourcePolicyRequestPoliciesList as any as S.Schema<UpdateOrgResourcePolicyRequestPoliciesList>;
 
 export interface UpdateOrgResourcePolicyRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -56519,9 +55617,8 @@ export const UpdateOrgSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of unique 24-hexadecimal digit strings that identifies the teams to assign the MongoDB Cloud user. */
 export type UpdateOrgUserRequestTeamIdsList = Array<string>;
-export const UpdateOrgUserRequestTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrgUserRequestTeamIdsList>;
+export const UpdateOrgUserRequestTeamIdsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<UpdateOrgUserRequestTeamIdsList>;
 
 export interface UpdateOrgUserRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -56561,14 +55658,8 @@ export interface ClusterComputeAutoScaling {
   /** Flag that indicates whether the cluster tier can scale down via reactive auto-scaling. This is required if `autoScaling.compute.enabled` is `true`. If you enable this option, specify a value for `providerSettings.autoScaling.compute.minInstanceSize`. */
   scaleDownEnabled?: boolean;
 }
-export const ClusterComputeAutoScaling = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    scaleDownEnabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ClusterComputeAutoScaling",
-}) as any as S.Schema<ClusterComputeAutoScaling>;
+export const ClusterComputeAutoScaling =
+  AdvancedComputeAutoScalingInput as any as S.Schema<ClusterComputeAutoScaling>;
 
 /** Range of instance sizes to which your cluster can scale. */
 export interface ClusterAutoScalingSettings {
@@ -56618,9 +55709,8 @@ export const UpgradeGroupClusterTenantUpgradeRequestEncryptionAtRestProvider = S
 
 /** Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels. Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use Resource Tags instead. */
 export type UpgradeGroupClusterTenantUpgradeRequestLabelsList = Array<ComponentLabel>;
-export const UpgradeGroupClusterTenantUpgradeRequestLabelsList = /*@__PURE__*/ S.Array(
-  ComponentLabel,
-) as any as S.Schema<UpgradeGroupClusterTenantUpgradeRequestLabelsList>;
+export const UpgradeGroupClusterTenantUpgradeRequestLabelsList =
+  CreateGroupClusterRequestLabelsList as any as S.Schema<UpgradeGroupClusterTenantUpgradeRequestLabelsList>;
 
 /** Maximum instance size to which your cluster can automatically scale. */
 export type AzureComputeAutoScalingRulesMaxInstanceSize =
@@ -57483,10 +56573,8 @@ export const UpgradeGroupClusterTenantUpgradeRequestReplicationSpecMap = /*@__PU
 
 /** Physical location where MongoDB Cloud provisions cluster nodes. */
 export type LegacyRegionsConfig = { [key: string]: RegionSpec | undefined };
-export const LegacyRegionsConfig = /*@__PURE__*/ S.Record(
-  S.String,
-  RegionSpec,
-) as any as S.Schema<LegacyRegionsConfig>;
+export const LegacyRegionsConfig =
+  UpgradeGroupClusterTenantUpgradeRequestReplicationSpecMap as any as S.Schema<LegacyRegionsConfig>;
 
 export interface LegacyReplicationSpec {
   /** Unique 24-hexadecimal digit string that identifies the replication object for a zone in a Global Cluster. - If you include existing zones in the request, you must specify this parameter. - If you add a new zone to an existing Global Cluster, you may specify this parameter. The request deletes any existing zones in a Global Cluster that you exclude from the request. */
@@ -57519,9 +56607,8 @@ export const UpgradeGroupClusterTenantUpgradeRequestRootCertType = S.String;
 
 /** List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the cluster. */
 export type UpgradeGroupClusterTenantUpgradeRequestTagsList = Array<ResourceTag>;
-export const UpgradeGroupClusterTenantUpgradeRequestTagsList = /*@__PURE__*/ S.Array(
-  ResourceTag,
-) as any as S.Schema<UpgradeGroupClusterTenantUpgradeRequestTagsList>;
+export const UpgradeGroupClusterTenantUpgradeRequestTagsList =
+  CreateGroupRequestTagsList as any as S.Schema<UpgradeGroupClusterTenantUpgradeRequestTagsList>;
 
 /** Method by which the cluster maintains the MongoDB versions. If value is `CONTINUOUS`, you must not specify `mongoDBMajorVersion`. */
 export type UpgradeGroupClusterTenantUpgradeRequestVersionReleaseSystem = "LTS" | "CONTINUOUS";
@@ -57682,15 +56769,13 @@ export const LegacyAtlasClusterEncryptionAtRestProvider = S.String;
 
 /** Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels. Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use Resource Tags instead. */
 export type LegacyAtlasClusterLabelsList = Array<ComponentLabel>;
-export const LegacyAtlasClusterLabelsList = /*@__PURE__*/ S.Array(
-  ComponentLabel,
-) as any as S.Schema<LegacyAtlasClusterLabelsList>;
+export const LegacyAtlasClusterLabelsList =
+  CreateGroupClusterRequestLabelsList as any as S.Schema<LegacyAtlasClusterLabelsList>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type LegacyAtlasClusterLinksList = Array<Link>;
-export const LegacyAtlasClusterLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<LegacyAtlasClusterLinksList>;
+export const LegacyAtlasClusterLinksList =
+  AppServiceAlertViewLinksList as any as S.Schema<LegacyAtlasClusterLinksList>;
 
 /** Disk type that corresponds to the host's root volume for Azure instances. If omitted, the default disk type for the selected `providerSettings.instanceSizeName` applies. */
 export type AWSCloudProviderSettingsDiskTypeName =
@@ -58455,16 +57540,13 @@ export const LegacyAtlasClusterReplicationFactor = S.Number;
 
 /** Physical location where MongoDB Cloud provisions cluster nodes. */
 export type LegacyAtlasClusterReplicationSpecMap = { [key: string]: RegionSpec | undefined };
-export const LegacyAtlasClusterReplicationSpecMap = /*@__PURE__*/ S.Record(
-  S.String,
-  RegionSpec,
-) as any as S.Schema<LegacyAtlasClusterReplicationSpecMap>;
+export const LegacyAtlasClusterReplicationSpecMap =
+  UpgradeGroupClusterTenantUpgradeRequestReplicationSpecMap as any as S.Schema<LegacyAtlasClusterReplicationSpecMap>;
 
 /** List of settings that configure your cluster regions. - For Global Clusters, each object in the array represents one zone where MongoDB Cloud deploys your clusters nodes. - For non-Global sharded clusters and replica sets, the single object represents where MongoDB Cloud deploys your clusters nodes. */
 export type LegacyAtlasClusterReplicationSpecsList = Array<LegacyReplicationSpec>;
-export const LegacyAtlasClusterReplicationSpecsList = /*@__PURE__*/ S.Array(
-  LegacyReplicationSpec,
-) as any as S.Schema<LegacyAtlasClusterReplicationSpecsList>;
+export const LegacyAtlasClusterReplicationSpecsList =
+  UpgradeGroupClusterTenantUpgradeRequestReplicationSpecsList as any as S.Schema<LegacyAtlasClusterReplicationSpecsList>;
 
 /** Root Certificate Authority that MongoDB Atlas cluster uses. MongoDB Cloud supports Internet Security Research Group. */
 export type LegacyAtlasClusterRootCertType = "ISRGROOTX1";
@@ -58481,9 +57563,8 @@ export const LegacyAtlasClusterStateName = S.String;
 
 /** List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the cluster. */
 export type LegacyAtlasClusterTagsList = Array<ResourceTag>;
-export const LegacyAtlasClusterTagsList = /*@__PURE__*/ S.Array(
-  ResourceTag,
-) as any as S.Schema<LegacyAtlasClusterTagsList>;
+export const LegacyAtlasClusterTagsList =
+  CreateGroupRequestTagsList as any as S.Schema<LegacyAtlasClusterTagsList>;
 
 /** Method by which the cluster maintains the MongoDB versions. If value is `CONTINUOUS`, you must not specify `mongoDBMajorVersion`. */
 export type LegacyAtlasClusterVersionReleaseSystem = "LTS" | "CONTINUOUS";
@@ -58631,9 +57712,8 @@ export const LegacyAtlasCluster = /*@__PURE__*/ S.suspend(() =>
 
 /** List of migration hosts used for this migration. */
 export type ValidateGroupLiveMigrationsRequestMigrationHostsList = Array<string>;
-export const ValidateGroupLiveMigrationsRequestMigrationHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ValidateGroupLiveMigrationsRequestMigrationHostsList>;
+export const ValidateGroupLiveMigrationsRequestMigrationHostsList =
+  ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList as any as S.Schema<ValidateGroupLiveMigrationsRequestMigrationHostsList>;
 
 export interface ValidateGroupLiveMigrationsRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -58674,9 +57754,8 @@ export const ValidateGroupLiveMigrationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of policies that make up the atlas resource policy. */
 export type ValidateOrgResourcePoliciesRequestPoliciesList = Array<ApiAtlasPolicyCreateView>;
-export const ValidateOrgResourcePoliciesRequestPoliciesList = /*@__PURE__*/ S.Array(
-  ApiAtlasPolicyCreateView,
-) as any as S.Schema<ValidateOrgResourcePoliciesRequestPoliciesList>;
+export const ValidateOrgResourcePoliciesRequestPoliciesList =
+  CreateOrgResourcePolicyRequestPoliciesList as any as S.Schema<ValidateOrgResourcePoliciesRequestPoliciesList>;
 
 export interface ValidateOrgResourcePoliciesRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */

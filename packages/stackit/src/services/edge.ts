@@ -190,9 +190,8 @@ export const DeleteInstanceByNameRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteInstanceByNameRequest>;
 
 export interface DeleteInstanceByNameResponse {}
-export const DeleteInstanceByNameResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteInstanceByNameResponse",
-}) as any as S.Schema<DeleteInstanceByNameResponse>;
+export const DeleteInstanceByNameResponse =
+  DeleteInstanceResponse as any as S.Schema<DeleteInstanceByNameResponse>;
 
 export interface GetInstanceRequest {
   /** The STACKIT portal project UUID the instance is part of. */
@@ -530,9 +529,8 @@ export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateInstanceRequest" }) as any as S.Schema<UpdateInstanceRequest>;
 
 export interface UpdateInstanceResponse {}
-export const UpdateInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateInstanceResponse",
-}) as any as S.Schema<UpdateInstanceResponse>;
+export const UpdateInstanceResponse =
+  DeleteInstanceResponse as any as S.Schema<UpdateInstanceResponse>;
 
 export interface UpdateInstanceByNameRequest {
   /** The STACKIT portal project UUID the instance is part of. */
@@ -566,9 +564,8 @@ export const UpdateInstanceByNameRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateInstanceByNameRequest>;
 
 export interface UpdateInstanceByNameResponse {}
-export const UpdateInstanceByNameResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateInstanceByNameResponse",
-}) as any as S.Schema<UpdateInstanceByNameResponse>;
+export const UpdateInstanceByNameResponse =
+  DeleteInstanceResponse as any as S.Schema<UpdateInstanceByNameResponse>;
 
 export type CreateInstanceError = BadRequest | Conflict | StackitOpError;
 /** Creates a new instance within the project. */

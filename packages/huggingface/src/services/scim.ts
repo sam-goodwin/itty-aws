@@ -75,9 +75,8 @@ export type CreateScimGroupResponseMembersItem = CreateScimGroupRequestMembersIt
 export const CreateScimGroupResponseMembersItem = CreateScimGroupRequestMembersItem;
 
 export type CreateScimGroupResponseMembersList = Array<CreateScimGroupRequestMembersItem>;
-export const CreateScimGroupResponseMembersList = /*@__PURE__*/ S.Array(
-  CreateScimGroupRequestMembersItem,
-) as any as S.Schema<CreateScimGroupResponseMembersList>;
+export const CreateScimGroupResponseMembersList =
+  CreateScimGroupRequestMembersList as any as S.Schema<CreateScimGroupResponseMembersList>;
 
 export type CreateScimGroupResponseMetaResourceType = "Group";
 export const CreateScimGroupResponseMetaResourceType = S.String;
@@ -123,9 +122,8 @@ export type CreateScimInvitationRequestEmailsItem = CreateScimGroupRequestMember
 export const CreateScimInvitationRequestEmailsItem = CreateScimGroupRequestMembersItem;
 
 export type CreateScimInvitationRequestEmailsList = Array<CreateScimGroupRequestMembersItem>;
-export const CreateScimInvitationRequestEmailsList = /*@__PURE__*/ S.Array(
-  CreateScimGroupRequestMembersItem,
-) as any as S.Schema<CreateScimInvitationRequestEmailsList>;
+export const CreateScimInvitationRequestEmailsList =
+  CreateScimGroupRequestMembersList as any as S.Schema<CreateScimInvitationRequestEmailsList>;
 
 export interface CreateScimInvitationRequest {
   name: string;
@@ -254,9 +252,8 @@ export const CreateScimProvisioningGroupRequestMembersItem = CreateScimGroupRequ
 /** Array of SCIM user ids */
 export type CreateScimProvisioningGroupRequestMembersList =
   Array<CreateScimGroupRequestMembersItem>;
-export const CreateScimProvisioningGroupRequestMembersList = /*@__PURE__*/ S.Array(
-  CreateScimGroupRequestMembersItem,
-) as any as S.Schema<CreateScimProvisioningGroupRequestMembersList>;
+export const CreateScimProvisioningGroupRequestMembersList =
+  CreateScimGroupRequestMembersList as any as S.Schema<CreateScimProvisioningGroupRequestMembersList>;
 
 export interface CreateScimProvisioningGroupRequest {
   name: string;
@@ -297,9 +294,8 @@ export const CreateScimProvisioningGroupResponseMembersItem = CreateScimGroupReq
 
 export type CreateScimProvisioningGroupResponseMembersList =
   Array<CreateScimGroupRequestMembersItem>;
-export const CreateScimProvisioningGroupResponseMembersList = /*@__PURE__*/ S.Array(
-  CreateScimGroupRequestMembersItem,
-) as any as S.Schema<CreateScimProvisioningGroupResponseMembersList>;
+export const CreateScimProvisioningGroupResponseMembersList =
+  CreateScimGroupRequestMembersList as any as S.Schema<CreateScimProvisioningGroupResponseMembersList>;
 
 export type CreateScimProvisioningGroupResponseMetaResourceType = "Group";
 export const CreateScimProvisioningGroupResponseMetaResourceType = S.String;
@@ -339,17 +335,15 @@ export const CreateScimProvisioningGroupResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateScimProvisioningGroupResponse>;
 
 export type CreateScimUserRequestSchemasList = Array<string>;
-export const CreateScimUserRequestSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateScimUserRequestSchemasList>;
+export const CreateScimUserRequestSchemasList =
+  CreateScimInvitationRequestSchemasList as any as S.Schema<CreateScimUserRequestSchemasList>;
 
 export type CreateScimUserRequestEmailsItem = CreateScimGroupRequestMembersItem;
 export const CreateScimUserRequestEmailsItem = CreateScimGroupRequestMembersItem;
 
 export type CreateScimUserRequestEmailsList = Array<CreateScimGroupRequestMembersItem>;
-export const CreateScimUserRequestEmailsList = /*@__PURE__*/ S.Array(
-  CreateScimGroupRequestMembersItem,
-) as any as S.Schema<CreateScimUserRequestEmailsList>;
+export const CreateScimUserRequestEmailsList =
+  CreateScimGroupRequestMembersList as any as S.Schema<CreateScimUserRequestEmailsList>;
 
 export interface CreateScimUserRequest {
   name: string;
@@ -517,11 +511,8 @@ export const DeleteScimProvisioningUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteScimProvisioningUserRequest>;
 
 export type DeleteScimProvisioningUserResponse = unknown;
-export const DeleteScimProvisioningUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteScimProvisioningUserResponse",
-}) as any as S.Schema<DeleteScimProvisioningUserResponse>;
+export const DeleteScimProvisioningUserResponse =
+  DeleteScimProvisioningGroupResponse as any as S.Schema<DeleteScimProvisioningUserResponse>;
 
 export interface DeleteScimUserRequest {
   name: string;
@@ -541,9 +532,8 @@ export const DeleteScimUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteScimUserRequest" }) as any as S.Schema<DeleteScimUserRequest>;
 
 export type DeleteScimUserResponse = unknown;
-export const DeleteScimUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "DeleteScimUserResponse" }) as any as S.Schema<DeleteScimUserResponse>;
+export const DeleteScimUserResponse =
+  DeleteScimGroupResponse as any as S.Schema<DeleteScimUserResponse>;
 
 export interface GetScimConfigurationRequest {
   name: string;
@@ -563,9 +553,8 @@ export const GetScimConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetScimConfigurationRequest>;
 
 export type GetScimConfigurationResponseSchemasList = Array<string>;
-export const GetScimConfigurationResponseSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetScimConfigurationResponseSchemasList>;
+export const GetScimConfigurationResponseSchemasList =
+  CreateScimInvitationRequestSchemasList as any as S.Schema<GetScimConfigurationResponseSchemasList>;
 
 export interface GetScimConfigurationResponsePatch {
   supported: boolean;
@@ -709,9 +698,8 @@ export type GetScimGroupResponseMembersItem = CreateScimGroupRequestMembersItem;
 export const GetScimGroupResponseMembersItem = CreateScimGroupRequestMembersItem;
 
 export type GetScimGroupResponseMembersList = Array<CreateScimGroupRequestMembersItem>;
-export const GetScimGroupResponseMembersList = /*@__PURE__*/ S.Array(
-  CreateScimGroupRequestMembersItem,
-) as any as S.Schema<GetScimGroupResponseMembersList>;
+export const GetScimGroupResponseMembersList =
+  CreateScimGroupRequestMembersList as any as S.Schema<GetScimGroupResponseMembersList>;
 
 export type GetScimGroupResponseMetaResourceType = "Group";
 export const GetScimGroupResponseMetaResourceType = S.String;
@@ -781,9 +769,8 @@ export type GetScimProvisioningGroupResponseMembersItem = CreateScimGroupRequest
 export const GetScimProvisioningGroupResponseMembersItem = CreateScimGroupRequestMembersItem;
 
 export type GetScimProvisioningGroupResponseMembersList = Array<CreateScimGroupRequestMembersItem>;
-export const GetScimProvisioningGroupResponseMembersList = /*@__PURE__*/ S.Array(
-  CreateScimGroupRequestMembersItem,
-) as any as S.Schema<GetScimProvisioningGroupResponseMembersList>;
+export const GetScimProvisioningGroupResponseMembersList =
+  CreateScimGroupRequestMembersList as any as S.Schema<GetScimProvisioningGroupResponseMembersList>;
 
 export type GetScimProvisioningGroupResponseMetaResourceType = "Group";
 export const GetScimProvisioningGroupResponseMetaResourceType = S.String;
@@ -937,9 +924,8 @@ export const GetScimResourceTypesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetScimResourceTypesRequest>;
 
 export type GetScimResourceTypesResponseBodyItemSchemasList = Array<string>;
-export const GetScimResourceTypesResponseBodyItemSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetScimResourceTypesResponseBodyItemSchemasList>;
+export const GetScimResourceTypesResponseBodyItemSchemasList =
+  CreateScimInvitationRequestSchemasList as any as S.Schema<GetScimResourceTypesResponseBodyItemSchemasList>;
 
 export type GetScimResourceTypesResponseBodyItemMeta = GetScimConfigurationResponseMeta;
 export const GetScimResourceTypesResponseBodyItemMeta = GetScimConfigurationResponseMeta;
@@ -997,9 +983,8 @@ export const GetScimSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetScimSchemaRequest" }) as any as S.Schema<GetScimSchemaRequest>;
 
 export type GetScimSchemaResponseSchemasList = Array<string>;
-export const GetScimSchemaResponseSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetScimSchemaResponseSchemasList>;
+export const GetScimSchemaResponseSchemasList =
+  CreateScimInvitationRequestSchemasList as any as S.Schema<GetScimSchemaResponseSchemasList>;
 
 export type GetScimSchemaResponseAttributesList = Array<unknown>;
 export const GetScimSchemaResponseAttributesList = /*@__PURE__*/ S.Array(
@@ -1038,14 +1023,12 @@ export const GetScimSchemasRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetScimSchemasRequest" }) as any as S.Schema<GetScimSchemasRequest>;
 
 export type GetScimSchemasResponseBodyItemSchemasList = Array<string>;
-export const GetScimSchemasResponseBodyItemSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetScimSchemasResponseBodyItemSchemasList>;
+export const GetScimSchemasResponseBodyItemSchemasList =
+  CreateScimInvitationRequestSchemasList as any as S.Schema<GetScimSchemasResponseBodyItemSchemasList>;
 
 export type GetScimSchemasResponseBodyItemAttributesList = Array<unknown>;
-export const GetScimSchemasResponseBodyItemAttributesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetScimSchemasResponseBodyItemAttributesList>;
+export const GetScimSchemasResponseBodyItemAttributesList =
+  GetScimSchemaResponseAttributesList as any as S.Schema<GetScimSchemasResponseBodyItemAttributesList>;
 
 export type GetScimSchemasResponseBodyItemMeta = GetScimConfigurationResponseMeta;
 export const GetScimSchemasResponseBodyItemMeta = GetScimConfigurationResponseMeta;
@@ -1210,9 +1193,8 @@ export const ListScimGroupsResponseResourcesItemMembersItem = CreateScimGroupReq
 
 export type ListScimGroupsResponseResourcesItemMembersList =
   Array<CreateScimGroupRequestMembersItem>;
-export const ListScimGroupsResponseResourcesItemMembersList = /*@__PURE__*/ S.Array(
-  CreateScimGroupRequestMembersItem,
-) as any as S.Schema<ListScimGroupsResponseResourcesItemMembersList>;
+export const ListScimGroupsResponseResourcesItemMembersList =
+  CreateScimGroupRequestMembersList as any as S.Schema<ListScimGroupsResponseResourcesItemMembersList>;
 
 export type ListScimGroupsResponseResourcesItemMetaResourceType = "Group";
 export const ListScimGroupsResponseResourcesItemMetaResourceType = S.String;
@@ -1465,9 +1447,8 @@ export const ListScimProvisioningGroupsResponseResourcesItemMembersItem =
 
 export type ListScimProvisioningGroupsResponseResourcesItemMembersList =
   Array<CreateScimGroupRequestMembersItem>;
-export const ListScimProvisioningGroupsResponseResourcesItemMembersList = /*@__PURE__*/ S.Array(
-  CreateScimGroupRequestMembersItem,
-) as any as S.Schema<ListScimProvisioningGroupsResponseResourcesItemMembersList>;
+export const ListScimProvisioningGroupsResponseResourcesItemMembersList =
+  CreateScimGroupRequestMembersList as any as S.Schema<ListScimProvisioningGroupsResponseResourcesItemMembersList>;
 
 export type ListScimProvisioningGroupsResponseResourcesItemMetaResourceType = "Group";
 export const ListScimProvisioningGroupsResponseResourcesItemMetaResourceType = S.String;
@@ -1659,17 +1640,15 @@ export const ListScimUsersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListScimUsersResponse" }) as any as S.Schema<ListScimUsersResponse>;
 
 export type ReplaceScimGroupRequestSchemasList = Array<string>;
-export const ReplaceScimGroupRequestSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReplaceScimGroupRequestSchemasList>;
+export const ReplaceScimGroupRequestSchemasList =
+  CreateScimInvitationRequestSchemasList as any as S.Schema<ReplaceScimGroupRequestSchemasList>;
 
 export type ReplaceScimGroupRequestMembersItem = CreateScimGroupRequestMembersItem;
 export const ReplaceScimGroupRequestMembersItem = CreateScimGroupRequestMembersItem;
 
 export type ReplaceScimGroupRequestMembersList = Array<CreateScimGroupRequestMembersItem>;
-export const ReplaceScimGroupRequestMembersList = /*@__PURE__*/ S.Array(
-  CreateScimGroupRequestMembersItem,
-) as any as S.Schema<ReplaceScimGroupRequestMembersList>;
+export const ReplaceScimGroupRequestMembersList =
+  CreateScimGroupRequestMembersList as any as S.Schema<ReplaceScimGroupRequestMembersList>;
 
 export interface ReplaceScimGroupRequest {
   name: string;
@@ -1704,9 +1683,8 @@ export type ReplaceScimGroupResponseMembersItem = CreateScimGroupRequestMembersI
 export const ReplaceScimGroupResponseMembersItem = CreateScimGroupRequestMembersItem;
 
 export type ReplaceScimGroupResponseMembersList = Array<CreateScimGroupRequestMembersItem>;
-export const ReplaceScimGroupResponseMembersList = /*@__PURE__*/ S.Array(
-  CreateScimGroupRequestMembersItem,
-) as any as S.Schema<ReplaceScimGroupResponseMembersList>;
+export const ReplaceScimGroupResponseMembersList =
+  CreateScimGroupRequestMembersList as any as S.Schema<ReplaceScimGroupResponseMembersList>;
 
 export type ReplaceScimGroupResponseMetaResourceType = "Group";
 export const ReplaceScimGroupResponseMetaResourceType = S.String;
@@ -1744,18 +1722,16 @@ export const ReplaceScimGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReplaceScimGroupResponse" }) as any as S.Schema<ReplaceScimGroupResponse>;
 
 export type ReplaceScimProvisioningGroupRequestSchemasList = Array<string>;
-export const ReplaceScimProvisioningGroupRequestSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReplaceScimProvisioningGroupRequestSchemasList>;
+export const ReplaceScimProvisioningGroupRequestSchemasList =
+  CreateScimInvitationRequestSchemasList as any as S.Schema<ReplaceScimProvisioningGroupRequestSchemasList>;
 
 export type ReplaceScimProvisioningGroupRequestMembersItem = CreateScimGroupRequestMembersItem;
 export const ReplaceScimProvisioningGroupRequestMembersItem = CreateScimGroupRequestMembersItem;
 
 export type ReplaceScimProvisioningGroupRequestMembersList =
   Array<CreateScimGroupRequestMembersItem>;
-export const ReplaceScimProvisioningGroupRequestMembersList = /*@__PURE__*/ S.Array(
-  CreateScimGroupRequestMembersItem,
-) as any as S.Schema<ReplaceScimProvisioningGroupRequestMembersList>;
+export const ReplaceScimProvisioningGroupRequestMembersList =
+  CreateScimGroupRequestMembersList as any as S.Schema<ReplaceScimProvisioningGroupRequestMembersList>;
 
 export interface ReplaceScimProvisioningGroupRequest {
   name: string;
@@ -1799,9 +1775,8 @@ export const ReplaceScimProvisioningGroupResponseMembersItem = CreateScimGroupRe
 
 export type ReplaceScimProvisioningGroupResponseMembersList =
   Array<CreateScimGroupRequestMembersItem>;
-export const ReplaceScimProvisioningGroupResponseMembersList = /*@__PURE__*/ S.Array(
-  CreateScimGroupRequestMembersItem,
-) as any as S.Schema<ReplaceScimProvisioningGroupResponseMembersList>;
+export const ReplaceScimProvisioningGroupResponseMembersList =
+  CreateScimGroupRequestMembersList as any as S.Schema<ReplaceScimProvisioningGroupResponseMembersList>;
 
 export type ReplaceScimProvisioningGroupResponseMetaResourceType = "Group";
 export const ReplaceScimProvisioningGroupResponseMetaResourceType = S.String;
@@ -1841,9 +1816,8 @@ export const ReplaceScimProvisioningGroupResponse = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ReplaceScimProvisioningGroupResponse>;
 
 export type ReplaceScimProvisioningUserRequestSchemasList = Array<string>;
-export const ReplaceScimProvisioningUserRequestSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReplaceScimProvisioningUserRequestSchemasList>;
+export const ReplaceScimProvisioningUserRequestSchemasList =
+  CreateScimInvitationRequestSchemasList as any as S.Schema<ReplaceScimProvisioningUserRequestSchemasList>;
 
 export interface ReplaceScimProvisioningUserRequest {
   name: string;
@@ -1953,17 +1927,15 @@ export const ReplaceScimProvisioningUserResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplaceScimProvisioningUserResponse>;
 
 export type ReplaceScimUserRequestSchemasList = Array<string>;
-export const ReplaceScimUserRequestSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReplaceScimUserRequestSchemasList>;
+export const ReplaceScimUserRequestSchemasList =
+  CreateScimInvitationRequestSchemasList as any as S.Schema<ReplaceScimUserRequestSchemasList>;
 
 export type ReplaceScimUserRequestEmailsItem = CreateScimGroupRequestMembersItem;
 export const ReplaceScimUserRequestEmailsItem = CreateScimGroupRequestMembersItem;
 
 export type ReplaceScimUserRequestEmailsList = Array<CreateScimGroupRequestMembersItem>;
-export const ReplaceScimUserRequestEmailsList = /*@__PURE__*/ S.Array(
-  CreateScimGroupRequestMembersItem,
-) as any as S.Schema<ReplaceScimUserRequestEmailsList>;
+export const ReplaceScimUserRequestEmailsList =
+  CreateScimGroupRequestMembersList as any as S.Schema<ReplaceScimUserRequestEmailsList>;
 
 export interface ReplaceScimUserRequest {
   name: string;
@@ -2067,18 +2039,16 @@ export const ReplaceScimUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReplaceScimUserResponse" }) as any as S.Schema<ReplaceScimUserResponse>;
 
 export type UpdateScimGroupRequestSchemasList = Array<string>;
-export const UpdateScimGroupRequestSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateScimGroupRequestSchemasList>;
+export const UpdateScimGroupRequestSchemasList =
+  CreateScimInvitationRequestSchemasList as any as S.Schema<UpdateScimGroupRequestSchemasList>;
 
 export type UpdateScimGroupRequestOperationsItemCase0ValueItem = CreateScimGroupRequestMembersItem;
 export const UpdateScimGroupRequestOperationsItemCase0ValueItem = CreateScimGroupRequestMembersItem;
 
 export type UpdateScimGroupRequestOperationsItemCase0ValueList =
   Array<CreateScimGroupRequestMembersItem>;
-export const UpdateScimGroupRequestOperationsItemCase0ValueList = /*@__PURE__*/ S.Array(
-  CreateScimGroupRequestMembersItem,
-) as any as S.Schema<UpdateScimGroupRequestOperationsItemCase0ValueList>;
+export const UpdateScimGroupRequestOperationsItemCase0ValueList =
+  CreateScimGroupRequestMembersList as any as S.Schema<UpdateScimGroupRequestOperationsItemCase0ValueList>;
 
 export interface UpdateScimGroupRequestOperationsItemCase0 {
   op: string;
@@ -2154,9 +2124,8 @@ export type UpdateScimGroupResponseMembersItem = CreateScimGroupRequestMembersIt
 export const UpdateScimGroupResponseMembersItem = CreateScimGroupRequestMembersItem;
 
 export type UpdateScimGroupResponseMembersList = Array<CreateScimGroupRequestMembersItem>;
-export const UpdateScimGroupResponseMembersList = /*@__PURE__*/ S.Array(
-  CreateScimGroupRequestMembersItem,
-) as any as S.Schema<UpdateScimGroupResponseMembersList>;
+export const UpdateScimGroupResponseMembersList =
+  CreateScimGroupRequestMembersList as any as S.Schema<UpdateScimGroupResponseMembersList>;
 
 export type UpdateScimGroupResponseMetaResourceType = "Group";
 export const UpdateScimGroupResponseMetaResourceType = S.String;
@@ -2194,9 +2163,8 @@ export const UpdateScimGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateScimGroupResponse" }) as any as S.Schema<UpdateScimGroupResponse>;
 
 export type UpdateScimProvisioningGroupRequestSchemasList = Array<string>;
-export const UpdateScimProvisioningGroupRequestSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateScimProvisioningGroupRequestSchemasList>;
+export const UpdateScimProvisioningGroupRequestSchemasList =
+  CreateScimInvitationRequestSchemasList as any as S.Schema<UpdateScimProvisioningGroupRequestSchemasList>;
 
 export type UpdateScimProvisioningGroupRequestOperationsItemCase0ValueItem =
   CreateScimGroupRequestMembersItem;
@@ -2205,24 +2173,16 @@ export const UpdateScimProvisioningGroupRequestOperationsItemCase0ValueItem =
 
 export type UpdateScimProvisioningGroupRequestOperationsItemCase0ValueList =
   Array<CreateScimGroupRequestMembersItem>;
-export const UpdateScimProvisioningGroupRequestOperationsItemCase0ValueList = /*@__PURE__*/ S.Array(
-  CreateScimGroupRequestMembersItem,
-) as any as S.Schema<UpdateScimProvisioningGroupRequestOperationsItemCase0ValueList>;
+export const UpdateScimProvisioningGroupRequestOperationsItemCase0ValueList =
+  CreateScimGroupRequestMembersList as any as S.Schema<UpdateScimProvisioningGroupRequestOperationsItemCase0ValueList>;
 
 export interface UpdateScimProvisioningGroupRequestOperationsItemCase0 {
   op: string;
   path: string;
   value?: UpdateScimProvisioningGroupRequestOperationsItemCase0ValueList;
 }
-export const UpdateScimProvisioningGroupRequestOperationsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    op: S.String,
-    path: S.String,
-    value: S.optional(UpdateScimProvisioningGroupRequestOperationsItemCase0ValueList),
-  }),
-).annotate({
-  identifier: "UpdateScimProvisioningGroupRequestOperationsItemCase0",
-}) as any as S.Schema<UpdateScimProvisioningGroupRequestOperationsItemCase0>;
+export const UpdateScimProvisioningGroupRequestOperationsItemCase0 =
+  UpdateScimGroupRequestOperationsItemCase0 as any as S.Schema<UpdateScimProvisioningGroupRequestOperationsItemCase0>;
 
 export type UpdateScimProvisioningGroupRequestOperationsItemCase1 =
   UpdateScimGroupRequestOperationsItemCase1;
@@ -2279,9 +2239,8 @@ export const UpdateScimProvisioningGroupResponseMembersItem = CreateScimGroupReq
 
 export type UpdateScimProvisioningGroupResponseMembersList =
   Array<CreateScimGroupRequestMembersItem>;
-export const UpdateScimProvisioningGroupResponseMembersList = /*@__PURE__*/ S.Array(
-  CreateScimGroupRequestMembersItem,
-) as any as S.Schema<UpdateScimProvisioningGroupResponseMembersList>;
+export const UpdateScimProvisioningGroupResponseMembersList =
+  CreateScimGroupRequestMembersList as any as S.Schema<UpdateScimProvisioningGroupResponseMembersList>;
 
 export type UpdateScimProvisioningGroupResponseMetaResourceType = "Group";
 export const UpdateScimProvisioningGroupResponseMetaResourceType = S.String;
@@ -2321,9 +2280,8 @@ export const UpdateScimProvisioningGroupResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateScimProvisioningGroupResponse>;
 
 export type UpdateScimProvisioningUserRequestSchemasList = Array<string>;
-export const UpdateScimProvisioningUserRequestSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateScimProvisioningUserRequestSchemasList>;
+export const UpdateScimProvisioningUserRequestSchemasList =
+  CreateScimInvitationRequestSchemasList as any as S.Schema<UpdateScimProvisioningUserRequestSchemasList>;
 
 /** `remove` operation is not supported for non-managed organizations */
 export type UpdateScimProvisioningUserRequestOperationsItemOp = "add" | "remove" | "replace";
@@ -2466,9 +2424,8 @@ export const UpdateScimProvisioningUserResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateScimProvisioningUserResponse>;
 
 export type UpdateScimUserRequestSchemasList = Array<string>;
-export const UpdateScimUserRequestSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateScimUserRequestSchemasList>;
+export const UpdateScimUserRequestSchemasList =
+  CreateScimInvitationRequestSchemasList as any as S.Schema<UpdateScimUserRequestSchemasList>;
 
 export type UpdateScimUserRequestOperationsItemPath =
   | "active"

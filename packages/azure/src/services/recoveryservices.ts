@@ -1190,15 +1190,13 @@ export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** [backup-ecs1, backup-prot1, backup-prot1b, backup-prot1c, backup-id1] */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+export const PrivateLinkResourcePropertiesRequiredMembersList =
+  VaultPropertiesResourceGuardOperationRequestsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  VaultPropertiesResourceGuardOperationRequestsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of the private link resource. */
 export interface PrivateLinkResourceProperties {
@@ -1268,10 +1266,8 @@ export const GetVaultRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetVaultResponseTagsMap = { [key: string]: string | undefined };
-export const GetVaultResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetVaultResponseTagsMap>;
+export const GetVaultResponseTagsMap =
+  GetOperationResultResponseTagsMap as any as S.Schema<GetVaultResponseTagsMap>;
 
 export interface GetVaultResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1417,15 +1413,7 @@ export interface DeletedVault {
   /** The resource-specific properties for this resource. */
   properties?: DeletedVaultProperties;
 }
-export const DeletedVault = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DeletedVaultProperties),
-  }),
-).annotate({ identifier: "DeletedVault" }) as any as S.Schema<DeletedVault>;
+export const DeletedVault = GetDeletedVaultResponse as any as S.Schema<DeletedVault>;
 
 /** The DeletedVault items on this page */
 export type DeletedVaultListValueList = Array<DeletedVault>;
@@ -1870,10 +1858,7 @@ export const ListVaultByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type VaultTagsMap = { [key: string]: string | undefined };
-export const VaultTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VaultTagsMap>;
+export const VaultTagsMap = GetOperationResultResponseTagsMap as any as S.Schema<VaultTagsMap>;
 
 /** Resource information, as returned by the resource provider. */
 export interface Vault {
@@ -1898,20 +1883,7 @@ export interface Vault {
   /** etag for the resource. */
   etag?: string;
 }
-export const Vault = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(VaultTagsMap),
-    location: S.String,
-    properties: S.optional(VaultProperties),
-    identity: S.optional(IdentityData),
-    sku: S.optional(Sku),
-    etag: S.optional(S.String),
-  }),
-).annotate({ identifier: "Vault" }) as any as S.Schema<Vault>;
+export const Vault = GetVaultResponse as any as S.Schema<Vault>;
 
 /** The Vault items on this page */
 export type VaultListValueList = Array<Vault>;
@@ -2008,9 +1980,8 @@ export const RecoveryServicesCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The private link resource Private link DNS zone names. */
 export type DNSZoneResponseRequiredZoneNamesList = Array<string>;
-export const DNSZoneResponseRequiredZoneNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DNSZoneResponseRequiredZoneNamesList>;
+export const DNSZoneResponseRequiredZoneNamesList =
+  VaultPropertiesResourceGuardOperationRequestsList as any as S.Schema<DNSZoneResponseRequiredZoneNamesList>;
 
 /** DNSZone information for Microsoft.RecoveryServices */
 export interface DNSZoneResponse {
@@ -2125,16 +2096,12 @@ export const UndeleteDeletedVaultResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateVaultRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateVaultRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateVaultRequestTagsMap>;
+export const UpdateVaultRequestTagsMap =
+  GetOperationResultResponseTagsMap as any as S.Schema<UpdateVaultRequestTagsMap>;
 
 /** Details for upgrading vault. */
 export interface UpgradeDetailsInput {}
-export const UpgradeDetailsInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpgradeDetailsInput",
-}) as any as S.Schema<UpgradeDetailsInput>;
+export const UpgradeDetailsInput = DeleteVaultResponse as any as S.Schema<UpgradeDetailsInput>;
 
 /** The details of the latest move operation performed on the Azure Resource */
 export type VaultPropertiesMoveDetailsInput = UpgradeDetailsInput;
@@ -2142,9 +2109,8 @@ export const VaultPropertiesMoveDetailsInput = UpgradeDetailsInput;
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type VaultPropertiesInputResourceGuardOperationRequestsList = Array<string>;
-export const VaultPropertiesInputResourceGuardOperationRequestsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VaultPropertiesInputResourceGuardOperationRequestsList>;
+export const VaultPropertiesInputResourceGuardOperationRequestsList =
+  VaultPropertiesResourceGuardOperationRequestsList as any as S.Schema<VaultPropertiesInputResourceGuardOperationRequestsList>;
 
 /** Properties of the vault. */
 export interface VaultPropertiesInput {
@@ -2259,10 +2225,8 @@ export const UpdateVaultRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateVaultResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateVaultResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateVaultResponseTagsMap>;
+export const UpdateVaultResponseTagsMap =
+  GetOperationResultResponseTagsMap as any as S.Schema<UpdateVaultResponseTagsMap>;
 
 export interface UpdateVaultResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2286,20 +2250,7 @@ export interface UpdateVaultResponse {
   /** etag for the resource. */
   etag?: string;
 }
-export const UpdateVaultResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateVaultResponseTagsMap),
-    location: S.String,
-    properties: S.optional(VaultProperties),
-    identity: S.optional(IdentityData),
-    sku: S.optional(Sku),
-    etag: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateVaultResponse" }) as any as S.Schema<UpdateVaultResponse>;
+export const UpdateVaultResponse = GetVaultResponse as any as S.Schema<UpdateVaultResponse>;
 
 export interface UpdateVaultExtendedInfoRequest {
   /** The ID of the target subscription. */
@@ -2346,18 +2297,8 @@ export interface UpdateVaultExtendedInfoResponse {
   /** etag for the resource. */
   etag?: string;
 }
-export const UpdateVaultExtendedInfoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VaultExtendedInfo),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateVaultExtendedInfoResponse",
-}) as any as S.Schema<UpdateVaultExtendedInfoResponse>;
+export const UpdateVaultExtendedInfoResponse =
+  GetVaultExtendedInfoResponse as any as S.Schema<UpdateVaultExtendedInfoResponse>;
 
 export interface VaultExtendedInfoCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -2404,25 +2345,13 @@ export interface VaultExtendedInfoCreateOrUpdateResponse {
   /** etag for the resource. */
   etag?: string;
 }
-export const VaultExtendedInfoCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VaultExtendedInfo),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VaultExtendedInfoCreateOrUpdateResponse",
-}) as any as S.Schema<VaultExtendedInfoCreateOrUpdateResponse>;
+export const VaultExtendedInfoCreateOrUpdateResponse =
+  GetVaultExtendedInfoResponse as any as S.Schema<VaultExtendedInfoCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type VaultsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const VaultsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VaultsCreateOrUpdateRequestTagsMap>;
+export const VaultsCreateOrUpdateRequestTagsMap =
+  GetOperationResultResponseTagsMap as any as S.Schema<VaultsCreateOrUpdateRequestTagsMap>;
 
 export interface VaultsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -2469,10 +2398,8 @@ export const VaultsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type VaultsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const VaultsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VaultsCreateOrUpdateResponseTagsMap>;
+export const VaultsCreateOrUpdateResponseTagsMap =
+  GetOperationResultResponseTagsMap as any as S.Schema<VaultsCreateOrUpdateResponseTagsMap>;
 
 export interface VaultsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2496,22 +2423,8 @@ export interface VaultsCreateOrUpdateResponse {
   /** etag for the resource. */
   etag?: string;
 }
-export const VaultsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(VaultsCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(VaultProperties),
-    identity: S.optional(IdentityData),
-    sku: S.optional(Sku),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VaultsCreateOrUpdateResponse",
-}) as any as S.Schema<VaultsCreateOrUpdateResponse>;
+export const VaultsCreateOrUpdateResponse =
+  GetOperationResultResponse as any as S.Schema<VaultsCreateOrUpdateResponse>;
 
 export type CheckRecoveryServiceNameAvailabilityError = AzureOpError;
 /** API to check for resource name availability. A name is available if no other resource exists that has the same SubscriptionId, Resource Name and Type or if one or more such resources exist, each of these must be GC'd and their time of deletion be more than 24 Hours Ago API to check for resource name availability. A name is available if no other resource exists that has the same SubscriptionId, Resource Name and Type or if one or more such resources exist, each of these must be GC'd and their time of deletion be more than 24 Hours Ago */

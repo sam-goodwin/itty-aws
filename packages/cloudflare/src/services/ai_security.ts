@@ -119,19 +119,15 @@ export interface PutAiSecurityResponse {
   /** Whether AI Security for Apps is enabled on the zone. */
   enabled?: boolean | null;
 }
-export const PutAiSecurityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({ identifier: "PutAiSecurityResponse" }) as any as S.Schema<PutAiSecurityResponse>;
+export const PutAiSecurityResponse =
+  GetAiSecurityResponse as any as S.Schema<PutAiSecurityResponse>;
 
 export type CustomTopicsUpdateRequestTopicsItem = CustomTopicsGetResponseTopicsItem;
 export const CustomTopicsUpdateRequestTopicsItem = CustomTopicsGetResponseTopicsItem;
 
 export type CustomTopicsUpdateRequestTopicsList = Array<CustomTopicsGetResponseTopicsItem>;
-export const CustomTopicsUpdateRequestTopicsList = /*@__PURE__*/ S.Array(
-  CustomTopicsGetResponseTopicsItem,
-) as any as S.Schema<CustomTopicsUpdateRequestTopicsList>;
+export const CustomTopicsUpdateRequestTopicsList =
+  CustomTopicsGetResponseTopicsList as any as S.Schema<CustomTopicsUpdateRequestTopicsList>;
 
 export interface PutCustomTopicRequest {
   /** Defines the zone. */
@@ -150,20 +146,16 @@ export type CustomTopicsUpdateResponseTopicsItem = CustomTopicsGetResponseTopics
 export const CustomTopicsUpdateResponseTopicsItem = CustomTopicsGetResponseTopicsItem;
 
 export type CustomTopicsUpdateResponseTopicsList = Array<CustomTopicsGetResponseTopicsItem>;
-export const CustomTopicsUpdateResponseTopicsList = /*@__PURE__*/ S.Array(
-  CustomTopicsGetResponseTopicsItem,
-) as any as S.Schema<CustomTopicsUpdateResponseTopicsList>;
+export const CustomTopicsUpdateResponseTopicsList =
+  CustomTopicsGetResponseTopicsList as any as S.Schema<CustomTopicsUpdateResponseTopicsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutCustomTopicResponse {
   /** Custom topic categories for AI Security for Apps content detection. */
   topics?: CustomTopicsUpdateResponseTopicsList | null;
 }
-export const PutCustomTopicResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    topics: S.optional(S.NullOr(CustomTopicsUpdateResponseTopicsList)),
-  }),
-).annotate({ identifier: "PutCustomTopicResponse" }) as any as S.Schema<PutCustomTopicResponse>;
+export const PutCustomTopicResponse =
+  GetCustomTopicResponse as any as S.Schema<PutCustomTopicResponse>;
 
 export type GetAiSecurityError =
   | AiSecurityNotEntitled

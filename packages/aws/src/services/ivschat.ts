@@ -292,7 +292,8 @@ export const MessageReviewHandler = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MessageReviewHandler" }) as any as S.Schema<MessageReviewHandler>;
 export type LoggingConfigurationIdentifier = string;
 export type LoggingConfigurationIdentifierList = string[];
-export const LoggingConfigurationIdentifierList = /*@__PURE__*/ S.Array(S.String);
+export const LoggingConfigurationIdentifierList =
+  ChatTokenCapabilities as any as S.Schema<LoggingConfigurationIdentifierList>;
 export interface CreateRoomRequest {
   name?: string;
   maximumMessageRatePerSecond?: number;
@@ -406,9 +407,7 @@ export const DisconnectUserRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/DisconnectUser" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "DisconnectUserRequest" }) as any as S.Schema<DisconnectUserRequest>;
 export interface DisconnectUserResponse {}
-export const DisconnectUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisconnectUserResponse",
-}) as any as S.Schema<DisconnectUserResponse>;
+export const DisconnectUserResponse = DeleteRoomResponse as any as S.Schema<DisconnectUserResponse>;
 export interface GetLoggingConfigurationRequest {
   identifier: string;
 }
@@ -437,20 +436,8 @@ export interface GetLoggingConfigurationResponse {
   state?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const GetLoggingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    id: S.optional(S.String),
-    createTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    updateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    name: S.optional(S.String),
-    destinationConfiguration: S.optional(DestinationConfiguration),
-    state: S.optional(S.String),
-    tags: S.optional(Tags),
-  }),
-).annotate({
-  identifier: "GetLoggingConfigurationResponse",
-}) as any as S.Schema<GetLoggingConfigurationResponse>;
+export const GetLoggingConfigurationResponse =
+  CreateLoggingConfigurationResponse as any as S.Schema<GetLoggingConfigurationResponse>;
 export interface GetRoomRequest {
   identifier: string;
 }
@@ -471,20 +458,7 @@ export interface GetRoomResponse {
   tags?: { [key: string]: string | undefined };
   loggingConfigurationIdentifiers?: string[];
 }
-export const GetRoomResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    createTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    updateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    maximumMessageRatePerSecond: S.optional(S.Number),
-    maximumMessageLength: S.optional(S.Number),
-    messageReviewHandler: S.optional(MessageReviewHandler),
-    tags: S.optional(Tags),
-    loggingConfigurationIdentifiers: S.optional(LoggingConfigurationIdentifierList),
-  }),
-).annotate({ identifier: "GetRoomResponse" }) as any as S.Schema<GetRoomResponse>;
+export const GetRoomResponse = CreateRoomResponse as any as S.Schema<GetRoomResponse>;
 export type PaginationToken = string;
 export type MaxLoggingConfigurationResults = number;
 export interface ListLoggingConfigurationsRequest {
@@ -515,20 +489,8 @@ export interface LoggingConfigurationSummary {
   state?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const LoggingConfigurationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    id: S.optional(S.String),
-    createTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    updateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    name: S.optional(S.String),
-    destinationConfiguration: S.optional(DestinationConfiguration),
-    state: S.optional(S.String),
-    tags: S.optional(Tags),
-  }),
-).annotate({
-  identifier: "LoggingConfigurationSummary",
-}) as any as S.Schema<LoggingConfigurationSummary>;
+export const LoggingConfigurationSummary =
+  CreateLoggingConfigurationResponse as any as S.Schema<LoggingConfigurationSummary>;
 export type LoggingConfigurationList = LoggingConfigurationSummary[];
 export const LoggingConfigurationList = /*@__PURE__*/ S.Array(LoggingConfigurationSummary);
 export interface ListLoggingConfigurationsResponse {
@@ -609,10 +571,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTagsForResourceResponse>;
 export type EventName = string;
 export type EventAttributes = { [key: string]: string | undefined };
-export const EventAttributes = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const EventAttributes = ChatTokenAttributes as any as S.Schema<EventAttributes>;
 export interface SendEventRequest {
   roomIdentifier: string;
   eventName: string;
@@ -628,9 +587,7 @@ export const SendEventRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SendEventResponse {
   id?: string;
 }
-export const SendEventResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.optional(S.String) }),
-).annotate({ identifier: "SendEventResponse" }) as any as S.Schema<SendEventResponse>;
+export const SendEventResponse = DeleteMessageResponse as any as S.Schema<SendEventResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
@@ -641,11 +598,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteRoomResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = ChatTokenCapabilities as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -659,9 +614,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = DeleteRoomResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateLoggingConfigurationRequest {
   identifier: string;
   name?: string;
@@ -696,20 +649,8 @@ export interface UpdateLoggingConfigurationResponse {
   state?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const UpdateLoggingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    id: S.optional(S.String),
-    createTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    updateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    name: S.optional(S.String),
-    destinationConfiguration: S.optional(DestinationConfiguration),
-    state: S.optional(S.String),
-    tags: S.optional(Tags),
-  }),
-).annotate({
-  identifier: "UpdateLoggingConfigurationResponse",
-}) as any as S.Schema<UpdateLoggingConfigurationResponse>;
+export const UpdateLoggingConfigurationResponse =
+  CreateLoggingConfigurationResponse as any as S.Schema<UpdateLoggingConfigurationResponse>;
 export interface UpdateRoomRequest {
   identifier: string;
   name?: string;
@@ -740,20 +681,7 @@ export interface UpdateRoomResponse {
   tags?: { [key: string]: string | undefined };
   loggingConfigurationIdentifiers?: string[];
 }
-export const UpdateRoomResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    createTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    updateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    maximumMessageRatePerSecond: S.optional(S.Number),
-    maximumMessageLength: S.optional(S.Number),
-    messageReviewHandler: S.optional(MessageReviewHandler),
-    tags: S.optional(Tags),
-    loggingConfigurationIdentifiers: S.optional(LoggingConfigurationIdentifierList),
-  }),
-).annotate({ identifier: "UpdateRoomResponse" }) as any as S.Schema<UpdateRoomResponse>;
+export const UpdateRoomResponse = CreateRoomResponse as any as S.Schema<UpdateRoomResponse>;
 export type ErrorMessage = string;
 export type ResourceId = string;
 export type ResourceType = string;

@@ -145,9 +145,8 @@ export const DeleteApiKeyForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteApiKeyForUserRequest>;
 
 export interface DeleteApiKeyForUserResponse {}
-export const DeleteApiKeyForUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteApiKeyForUserResponse",
-}) as any as S.Schema<DeleteApiKeyForUserResponse>;
+export const DeleteApiKeyForUserResponse =
+  DeleteApiKeyResponse as any as S.Schema<DeleteApiKeyForUserResponse>;
 
 export interface GetApiKeyRequest {
   name: string;

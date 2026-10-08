@@ -768,9 +768,7 @@ export interface DisconnectionEvent {
   eventId?: string;
   clientTimestampMillis?: number;
 }
-export const DisconnectionEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ eventId: S.optional(S.String), clientTimestampMillis: S.optional(S.Number) }),
-).annotate({ identifier: "DisconnectionEvent" }) as any as S.Schema<DisconnectionEvent>;
+export const DisconnectionEvent = PlaybackCompletionEvent as any as S.Schema<DisconnectionEvent>;
 export type StartConversationRequestEventStream =
   | {
       ConfigurationEvent: ConfigurationEvent;

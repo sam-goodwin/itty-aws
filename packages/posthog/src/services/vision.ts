@@ -56,9 +56,8 @@ export const VisionAlertSelectionVerdictList = /*@__PURE__*/ S.Array(
 
 /** Classifier tags to match; an observation matches when it carries any of them. */
 export type VisionAlertSelectionTagsList = Array<string>;
-export const VisionAlertSelectionTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VisionAlertSelectionTagsList>;
+export const VisionAlertSelectionTagsList =
+  VisionAlertSelectionVerdictList as any as S.Schema<VisionAlertSelectionTagsList>;
 
 export interface VisionAlertSelection {
   /** Monitor verdicts to match, e.g. ['yes']. */
@@ -358,9 +357,8 @@ export const CreateVisionAlertsDestinationRequest = /*@__PURE__*/ S.suspend(() =
 
 /** HogFunctions backing the created destination, one per event kind. */
 export type VisionAlertDestinationResponseHogFunctionIdsList = Array<string>;
-export const VisionAlertDestinationResponseHogFunctionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VisionAlertDestinationResponseHogFunctionIdsList>;
+export const VisionAlertDestinationResponseHogFunctionIdsList =
+  VisionAlertSelectionVerdictList as any as S.Schema<VisionAlertDestinationResponseHogFunctionIdsList>;
 
 export interface VisionAlertDestinationResponse {
   /** HogFunctions backing the created destination, one per event kind. */
@@ -445,9 +443,8 @@ export const CreateVisionObservationsViewedResponse = /*@__PURE__*/ S.suspend(()
 
 /** Organizational tags for this scanner. Distinct from a classifier's categories in scanner_config. Tags cannot contain commas. */
 export type CreateVisionScannerRequestTagsList = Array<string>;
-export const CreateVisionScannerRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateVisionScannerRequestTagsList>;
+export const CreateVisionScannerRequestTagsList =
+  VisionAlertSelectionVerdictList as any as S.Schema<CreateVisionScannerRequestTagsList>;
 
 /** * `monitor` - Monitor * `classifier` - Classifier * `scorer` - Scorer * `summarizer` - Summarizer * `experiment` - Experiment */
 export type ScannerTypeEnum = "monitor" | "classifier" | "scorer" | "summarizer" | "experiment";
@@ -552,9 +549,8 @@ export const CreateVisionScannerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Organizational tags for this scanner. Distinct from a classifier's categories in scanner_config. Tags cannot contain commas. */
 export type ReplayScannerOutputTagsList = Array<string>;
-export const ReplayScannerOutputTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReplayScannerOutputTagsList>;
+export const ReplayScannerOutputTagsList =
+  VisionAlertSelectionVerdictList as any as S.Schema<ReplayScannerOutputTagsList>;
 
 /** A Replay Vision scanner: its type, targeting query, and AI configuration. */
 export interface ReplayScannerOutput {
@@ -914,9 +910,8 @@ export const DraftScannerResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The variant keys it watches. Null or omitted means every variant. */
 export type EstimateExperimentScopeVariantsList = Array<string>;
-export const EstimateExperimentScopeVariantsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EstimateExperimentScopeVariantsList>;
+export const EstimateExperimentScopeVariantsList =
+  VisionAlertSelectionVerdictList as any as S.Schema<EstimateExperimentScopeVariantsList>;
 
 export interface EstimateExperimentScope {
   /** The experiment an experiment scanner watches. */
@@ -1004,9 +999,8 @@ export const EstimateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Session recording IDs to scan, at most 200 per request. Scans start until the in-flight limit or monthly credit quota is reached; the rest are reported as skipped rather than failing the whole batch. */
 export type CreateVisionScannersInlineScanRequestSessionIdsList = Array<string>;
-export const CreateVisionScannersInlineScanRequestSessionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateVisionScannersInlineScanRequestSessionIdsList>;
+export const CreateVisionScannersInlineScanRequestSessionIdsList =
+  VisionAlertSelectionVerdictList as any as S.Schema<CreateVisionScannersInlineScanRequestSessionIdsList>;
 
 export interface CreateVisionScannersInlineScanRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1042,11 +1036,8 @@ export const CreateVisionScannersInlineScanRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateVisionScannersInlineScanRequest>;
 
 export interface CreateVisionScannersInlineScanResponse {}
-export const CreateVisionScannersInlineScanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateVisionScannersInlineScanResponse",
-}) as any as S.Schema<CreateVisionScannersInlineScanResponse>;
+export const CreateVisionScannersInlineScanResponse =
+  CreateVisionObservationsViewedResponse as any as S.Schema<CreateVisionScannersInlineScanResponse>;
 
 export interface CreateVisionScannersObservationsLabelRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1101,11 +1092,8 @@ export const CreateVisionScannersObservationsViewedRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<CreateVisionScannersObservationsViewedRequest>;
 
 export interface CreateVisionScannersObservationsViewedResponse {}
-export const CreateVisionScannersObservationsViewedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateVisionScannersObservationsViewedResponse",
-}) as any as S.Schema<CreateVisionScannersObservationsViewedResponse>;
+export const CreateVisionScannersObservationsViewedResponse =
+  CreateVisionObservationsViewedResponse as any as S.Schema<CreateVisionScannersObservationsViewedResponse>;
 
 export interface CreateVisionScannersObserveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1144,42 +1132,35 @@ export const ObserveAlreadyScanned = /*@__PURE__*/ S.suspend(() =>
 
 /** Free-form labels for grouping the fleet, e.g. `["revenue", "on-call"]`. Normalized to lowercase kebab-case (`On Call` and `on_call` both become `on-call`), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set -- a write replaces the existing tags rather than merging into them. Filter the config list with the `tags` query parameter. */
 export type SignalScoutConfigOptionsTagsList = Array<string>;
-export const SignalScoutConfigOptionsTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SignalScoutConfigOptionsTagsList>;
+export const SignalScoutConfigOptionsTagsList =
+  VisionAlertSelectionVerdictList as any as S.Schema<SignalScoutConfigOptionsTagsList>;
 
 /** Optional JSON Schema (draft 2020-12) describing ONE structured record this scout produces via `scout-record-output` -- e.g. a per-report quality judgment (`{"type": "object", "properties": {"verdict": {"enum": ["good", "bad", "unsure"]}, "reason": {"type": "string"}}, "required": ["verdict", "reason"]}`). The root must be `"type": "object"`. Setting a schema turns the structured-output channel on: the run prompt renders the schema and every submitted record is validated against it and recorded in the project as a `$scout_structured_output` event, queryable like any event. The channel also requires emit -- a dry-run scout has nowhere to record to. Cardinality is the scout's call (one record per run, one per judged entity, ...). Null = channel off. Setting a schema requires skill-authoring authorization (the `llm_skill:write` scope and skill editor access) since the scout reads it verbatim in its prompt; clearing it needs only the config write. Records validate against the schema in force when the run was dispatched. */
 export type SignalScoutConfigOptionsStructuredOutputSchemaMap = {
   [key: string]: unknown | undefined;
 };
-export const SignalScoutConfigOptionsStructuredOutputSchemaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SignalScoutConfigOptionsStructuredOutputSchemaMap>;
+export const SignalScoutConfigOptionsStructuredOutputSchemaMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<SignalScoutConfigOptionsStructuredOutputSchemaMap>;
 
 /** MCP gateway servers (by id) this scout's runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout's next run. */
 export type SignalScoutConfigOptionsMcpGatewayServerIdsList = Array<string>;
-export const SignalScoutConfigOptionsMcpGatewayServerIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SignalScoutConfigOptionsMcpGatewayServerIdsList>;
+export const SignalScoutConfigOptionsMcpGatewayServerIdsList =
+  VisionAlertSelectionVerdictList as any as S.Schema<SignalScoutConfigOptionsMcpGatewayServerIdsList>;
 
 /** GitHub repositories this scout clones into its sandbox, each in `organization/repo` format. Set them for a scout that reads code, so it can search the tree and run the project's own tests instead of reading files one API call at a time. Empty (the default) leaves the sandbox without a checkout. The scout's GitHub access stays read-only either way, so a repository listed here is never writable from a run. At most 10, each reachable through the project's GitHub connection. Applies from the scout's next run. */
 export type SignalScoutConfigOptionsRepositoriesList = Array<string>;
-export const SignalScoutConfigOptionsRepositoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SignalScoutConfigOptionsRepositoriesList>;
+export const SignalScoutConfigOptionsRepositoriesList =
+  VisionAlertSelectionVerdictList as any as S.Schema<SignalScoutConfigOptionsRepositoriesList>;
 
 /** Extra write access granted to this one scout, as scope strings. The grantable set is `alert:write`, `annotation:write`, `customer_task:write`, `dashboard:write`, `hog_flow_proposal:write`, `insight:write`, `llm_skill:write`, `replay_scanner:write`, `warehouse_table:write`, `warehouse_view:write`. Empty (the default) means the scout reads the project and writes only what every scout may write: notebooks, its findings, and its own memory. Each scope is project-wide and object-level, so a scout holding `dashboard:write` can update or delete any dashboard in the project, not only ones it made. Grant only what this scout maintains. Only the person the scout's runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (`emit=false`) never holds the grant. Applies from the scout's next run. */
 export type SignalScoutConfigOptionsWriteScopesList = Array<string>;
-export const SignalScoutConfigOptionsWriteScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SignalScoutConfigOptionsWriteScopesList>;
+export const SignalScoutConfigOptionsWriteScopesList =
+  VisionAlertSelectionVerdictList as any as S.Schema<SignalScoutConfigOptionsWriteScopesList>;
 
 /** Slack members to send output to as direct messages, each in `member_id|@display-name` format (a bare member ID like `U0123ABC456` also works). Each member gets their own DM from the PostHog app; at most 5. Set either this or `channel`, not both. Useful for personal scouts where a DM beats a channel. */
 export type SignalScoutSlackDestinationUsersList = Array<string>;
-export const SignalScoutSlackDestinationUsersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SignalScoutSlackDestinationUsersList>;
+export const SignalScoutSlackDestinationUsersList =
+  VisionAlertSelectionVerdictList as any as S.Schema<SignalScoutSlackDestinationUsersList>;
 
 export interface SignalScoutSlackDestination {
   /** ID of the Slack integration whose bot posts this scout's findings and reports. */
@@ -1380,34 +1361,28 @@ export const SignalScoutConfigManagedByEnum = S.String;
 
 /** Optional JSON Schema (draft 2020-12) describing ONE structured record this scout produces via `scout-record-output` -- e.g. a per-report quality judgment (`{"type": "object", "properties": {"verdict": {"enum": ["good", "bad", "unsure"]}, "reason": {"type": "string"}}, "required": ["verdict", "reason"]}`). The root must be `"type": "object"`. Setting a schema turns the structured-output channel on: the run prompt renders the schema and every submitted record is validated against it and recorded in the project as a `$scout_structured_output` event, queryable like any event. The channel also requires emit -- a dry-run scout has nowhere to record to. Cardinality is the scout's call (one record per run, one per judged entity, ...). Null = channel off. Setting a schema requires skill-authoring authorization (the `llm_skill:write` scope and skill editor access) since the scout reads it verbatim in its prompt; clearing it needs only the config write. Records validate against the schema in force when the run was dispatched. */
 export type SignalScoutConfigStructuredOutputSchemaMap = { [key: string]: unknown | undefined };
-export const SignalScoutConfigStructuredOutputSchemaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SignalScoutConfigStructuredOutputSchemaMap>;
+export const SignalScoutConfigStructuredOutputSchemaMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<SignalScoutConfigStructuredOutputSchemaMap>;
 
 /** MCP gateway servers (by id) this scout's runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout's next run. */
 export type SignalScoutConfigMcpGatewayServerIdsList = Array<string>;
-export const SignalScoutConfigMcpGatewayServerIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SignalScoutConfigMcpGatewayServerIdsList>;
+export const SignalScoutConfigMcpGatewayServerIdsList =
+  VisionAlertSelectionVerdictList as any as S.Schema<SignalScoutConfigMcpGatewayServerIdsList>;
 
 /** GitHub repositories this scout clones into its sandbox, each in `organization/repo` format. Set them for a scout that reads code, so it can search the tree and run the project's own tests instead of reading files one API call at a time. Empty (the default) leaves the sandbox without a checkout. The scout's GitHub access stays read-only either way, so a repository listed here is never writable from a run. At most 10, each reachable through the project's GitHub connection. Applies from the scout's next run. */
 export type SignalScoutConfigRepositoriesList = Array<string>;
-export const SignalScoutConfigRepositoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SignalScoutConfigRepositoriesList>;
+export const SignalScoutConfigRepositoriesList =
+  VisionAlertSelectionVerdictList as any as S.Schema<SignalScoutConfigRepositoriesList>;
 
 /** Extra write access granted to this one scout, as scope strings. The grantable set is `alert:write`, `annotation:write`, `customer_task:write`, `dashboard:write`, `hog_flow_proposal:write`, `insight:write`, `llm_skill:write`, `replay_scanner:write`, `warehouse_table:write`, `warehouse_view:write`. Empty (the default) means the scout reads the project and writes only what every scout may write: notebooks, its findings, and its own memory. Each scope is project-wide and object-level, so a scout holding `dashboard:write` can update or delete any dashboard in the project, not only ones it made. Grant only what this scout maintains. Only the person the scout's runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (`emit=false`) never holds the grant. Applies from the scout's next run. */
 export type SignalScoutConfigWriteScopesList = Array<string>;
-export const SignalScoutConfigWriteScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SignalScoutConfigWriteScopesList>;
+export const SignalScoutConfigWriteScopesList =
+  VisionAlertSelectionVerdictList as any as S.Schema<SignalScoutConfigWriteScopesList>;
 
 /** Free-form labels for grouping the fleet, e.g. `["revenue", "on-call"]`. Normalized to lowercase kebab-case (`On Call` and `on_call` both become `on-call`), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set -- a write replaces the existing tags rather than merging into them. Filter the config list with the `tags` query parameter. */
 export type SignalScoutConfigTagsList = Array<string>;
-export const SignalScoutConfigTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SignalScoutConfigTagsList>;
+export const SignalScoutConfigTagsList =
+  VisionAlertSelectionVerdictList as any as S.Schema<SignalScoutConfigTagsList>;
 
 /** Read shape for a per-(team, skill) scout config. One row per scout skill on the team. The coordinator auto-creates a row when it discovers a scout skill; this serializer lets agents tune the row. */
 export interface SignalScoutConfig {
@@ -1529,9 +1504,8 @@ export const ScannerScoutCreateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The categories already configured, so suggestions never duplicate one the user has. */
 export type CreateVisionScannersSuggestTagRequestTagsList = Array<string>;
-export const CreateVisionScannersSuggestTagRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateVisionScannersSuggestTagRequestTagsList>;
+export const CreateVisionScannersSuggestTagRequestTagsList =
+  VisionAlertSelectionVerdictList as any as S.Schema<CreateVisionScannersSuggestTagRequestTagsList>;
 
 export interface CreateVisionScannersSuggestTagRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1729,9 +1703,8 @@ export const GetVisionAlertRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** HogFunctions backing the created destination, one per event kind. */
 export type VisionAlertDestinationConfigHogFunctionIdsList = Array<string>;
-export const VisionAlertDestinationConfigHogFunctionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VisionAlertDestinationConfigHogFunctionIdsList>;
+export const VisionAlertDestinationConfigHogFunctionIdsList =
+  VisionAlertSelectionVerdictList as any as S.Schema<VisionAlertDestinationConfigHogFunctionIdsList>;
 
 export interface VisionAlertDestinationConfig {
   /** HogFunctions backing the created destination, one per event kind. */
@@ -2149,11 +2122,8 @@ export const GetVisionObservationsThumbnailRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetVisionObservationsThumbnailRequest>;
 
 export interface GetVisionObservationsThumbnailResponse {}
-export const GetVisionObservationsThumbnailResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetVisionObservationsThumbnailResponse",
-}) as any as S.Schema<GetVisionObservationsThumbnailResponse>;
+export const GetVisionObservationsThumbnailResponse =
+  CreateVisionObservationsViewedResponse as any as S.Schema<GetVisionObservationsThumbnailResponse>;
 
 export interface GetVisionScannerRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2213,9 +2183,8 @@ export const GetVisionScannersCreatorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Users who created at least one scanner on this team. Returned regardless of pagination state so the dropdown stays stable across pages. */
 export type ScannerCreatorsResponseCreatorsList = Array<UserBasic>;
-export const ScannerCreatorsResponseCreatorsList = /*@__PURE__*/ S.Array(
-  UserBasic,
-) as any as S.Schema<ScannerCreatorsResponseCreatorsList>;
+export const ScannerCreatorsResponseCreatorsList =
+  SignalScoutConfigOwnersList as any as S.Schema<ScannerCreatorsResponseCreatorsList>;
 
 /** Distinct creators across all scanners on the team -- feeds the `Created by` filter dropdown. */
 export interface ScannerCreatorsResponse {
@@ -2502,9 +2471,8 @@ export const ObservationLabelStatsByDayList = /*@__PURE__*/ S.Array(
 
 /** Daily label counts over the last `recent_days` days, bucketed by the day the rating was last set or changed: the team's rating activity. Days without rating changes are omitted. */
 export type ObservationLabelStatsByRatingDayList = Array<ObservationLabelDayCount>;
-export const ObservationLabelStatsByRatingDayList = /*@__PURE__*/ S.Array(
-  ObservationLabelDayCount,
-) as any as S.Schema<ObservationLabelStatsByRatingDayList>;
+export const ObservationLabelStatsByRatingDayList =
+  ObservationLabelStatsByDayList as any as S.Schema<ObservationLabelStatsByRatingDayList>;
 
 export interface ObservationVersionMarker {
   /** First day (UTC) this prompt version produced observations. */
@@ -2585,9 +2553,8 @@ export const ObservationLabelStats = /*@__PURE__*/ S.suspend(() =>
 
 /** All distinct tags (fixed + freeform) emitted by succeeded observations in the filtered set. */
 export type ObservationStatsAvailableTagsList = Array<string>;
-export const ObservationStatsAvailableTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ObservationStatsAvailableTagsList>;
+export const ObservationStatsAvailableTagsList =
+  VisionAlertSelectionVerdictList as any as S.Schema<ObservationStatsAvailableTagsList>;
 
 export interface MonitorStats {
   /** Succeeded observations whose verdict was `yes`. */
@@ -2626,9 +2593,8 @@ export const ClassifierStatsFixedRankedList = /*@__PURE__*/ S.Array(
 
 /** Top freeform tags by emission count. */
 export type ClassifierStatsFreeformRankedList = Array<TagCount>;
-export const ClassifierStatsFreeformRankedList = /*@__PURE__*/ S.Array(
-  TagCount,
-) as any as S.Schema<ClassifierStatsFreeformRankedList>;
+export const ClassifierStatsFreeformRankedList =
+  ClassifierStatsFixedRankedList as any as S.Schema<ClassifierStatsFreeformRankedList>;
 
 export interface ClassifierStats {
   /** Top fixed-vocabulary tags by emission count. */
@@ -2676,9 +2642,8 @@ export const ScorerSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** Bucket labels (one per histogram bar) spanning the scanner's configured scale. */
 export type ScorerHistogramLabelsList = Array<string>;
-export const ScorerHistogramLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScorerHistogramLabelsList>;
+export const ScorerHistogramLabelsList =
+  VisionAlertSelectionVerdictList as any as S.Schema<ScorerHistogramLabelsList>;
 
 /** Observation count per bucket; same length as `labels`. */
 export type ScorerHistogramCountsList = Array<number>;
@@ -2767,11 +2732,8 @@ export const GetVisionScannersObservationsThumbnailRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<GetVisionScannersObservationsThumbnailRequest>;
 
 export interface GetVisionScannersObservationsThumbnailResponse {}
-export const GetVisionScannersObservationsThumbnailResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetVisionScannersObservationsThumbnailResponse",
-}) as any as S.Schema<GetVisionScannersObservationsThumbnailResponse>;
+export const GetVisionScannersObservationsThumbnailResponse =
+  CreateVisionObservationsViewedResponse as any as S.Schema<GetVisionScannersObservationsThumbnailResponse>;
 
 export interface GetVisionScannersScoutReportRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -3556,17 +3518,13 @@ export const ListVisionScannersObservationsSignalReportsRequest = /*@__PURE__*/ 
 
 export type ListVisionScannersObservationsSignalReportsResponseBodyList =
   Array<ObservationSignalReport>;
-export const ListVisionScannersObservationsSignalReportsResponseBodyList = /*@__PURE__*/ S.Array(
-  ObservationSignalReport,
-) as any as S.Schema<ListVisionScannersObservationsSignalReportsResponseBodyList>;
+export const ListVisionScannersObservationsSignalReportsResponseBodyList =
+  ListVisionObservationsSignalReportsResponseBodyList as any as S.Schema<ListVisionScannersObservationsSignalReportsResponseBodyList>;
 
 export type ListVisionScannersObservationsSignalReportsResponse =
   ListVisionScannersObservationsSignalReportsResponseBodyList;
-export const ListVisionScannersObservationsSignalReportsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListVisionScannersObservationsSignalReportsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListVisionScannersObservationsSignalReportsResponse",
-}) as any as S.Schema<ListVisionScannersObservationsSignalReportsResponse>;
+export const ListVisionScannersObservationsSignalReportsResponse =
+  ListVisionObservationsSignalReportsResponse as any as S.Schema<ListVisionScannersObservationsSignalReportsResponse>;
 
 export interface ListVisionScannersScoutReportsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -3666,9 +3624,8 @@ export const VariantsWindow = /*@__PURE__*/ S.suspend(() =>
 
 /** Observations of this variant the scout cited for the theme. Ids it can't back are dropped. */
 export type VariantAnalysisLineExampleObservationIdsList = Array<string>;
-export const VariantAnalysisLineExampleObservationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantAnalysisLineExampleObservationIdsList>;
+export const VariantAnalysisLineExampleObservationIdsList =
+  VisionAlertSelectionVerdictList as any as S.Schema<VariantAnalysisLineExampleObservationIdsList>;
 
 export interface VariantAnalysisLine {
   /** A short label for the theme, shared across variants. */
@@ -3697,9 +3654,8 @@ export const VariantReadoutDigestList = /*@__PURE__*/ S.Array(
 
 /** This variant's most recent observations, newest first. */
 export type VariantReadoutLatestObservationsList = Array<ReplayObservation>;
-export const VariantReadoutLatestObservationsList = /*@__PURE__*/ S.Array(
-  ReplayObservation,
-) as any as S.Schema<VariantReadoutLatestObservationsList>;
+export const VariantReadoutLatestObservationsList =
+  PaginatedReplayObservationListResultsList as any as S.Schema<VariantReadoutLatestObservationsList>;
 
 export interface VariantReadout {
   /** The variant key. */
@@ -3740,10 +3696,8 @@ export const ExperimentVariantsReadoutVariantsList = /*@__PURE__*/ S.Array(
 
 /** Summaries the analysis read that show the theme, per variant key, as the scout counted them. */
 export type VariantAnalysisDifferenceCountsMap = { [key: string]: number | undefined };
-export const VariantAnalysisDifferenceCountsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<VariantAnalysisDifferenceCountsMap>;
+export const VariantAnalysisDifferenceCountsMap =
+  ScannerSnapshotVariantSamplingRatesMap as any as S.Schema<VariantAnalysisDifferenceCountsMap>;
 
 export interface VariantAnalysisDifference {
   /** The theme the difference rests on. */
@@ -3954,9 +3908,8 @@ export const UpdateVisionAlertsPartialRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Organizational tags for this scanner. Distinct from a classifier's categories in scanner_config. Tags cannot contain commas. */
 export type UpdateVisionScannersPartialRequestTagsList = Array<string>;
-export const UpdateVisionScannersPartialRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateVisionScannersPartialRequestTagsList>;
+export const UpdateVisionScannersPartialRequestTagsList =
+  VisionAlertSelectionVerdictList as any as S.Schema<UpdateVisionScannersPartialRequestTagsList>;
 
 export interface UpdateVisionScannersPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -4025,9 +3978,8 @@ export const UpdateVisionScannersPartialRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** HogFunction IDs to delete as one atomic destination group. */
 export type VisionAlertsDestinationsDeleteCreateRequestHogFunctionIdsList = Array<string>;
-export const VisionAlertsDestinationsDeleteCreateRequestHogFunctionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VisionAlertsDestinationsDeleteCreateRequestHogFunctionIdsList>;
+export const VisionAlertsDestinationsDeleteCreateRequestHogFunctionIdsList =
+  VisionAlertSelectionVerdictList as any as S.Schema<VisionAlertsDestinationsDeleteCreateRequestHogFunctionIdsList>;
 
 export interface VisionAlertsDestinationsDeleteCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -4054,11 +4006,8 @@ export const VisionAlertsDestinationsDeleteCreateRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<VisionAlertsDestinationsDeleteCreateRequest>;
 
 export interface VisionAlertsDestinationsDeleteCreateResponse {}
-export const VisionAlertsDestinationsDeleteCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "VisionAlertsDestinationsDeleteCreateResponse",
-}) as any as S.Schema<VisionAlertsDestinationsDeleteCreateResponse>;
+export const VisionAlertsDestinationsDeleteCreateResponse =
+  CreateVisionObservationsViewedResponse as any as S.Schema<VisionAlertsDestinationsDeleteCreateResponse>;
 
 export interface VisionAlertsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -4159,11 +4108,8 @@ export const VisionObservationsLabelDestroyRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<VisionObservationsLabelDestroyRequest>;
 
 export interface VisionObservationsLabelDestroyResponse {}
-export const VisionObservationsLabelDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "VisionObservationsLabelDestroyResponse",
-}) as any as S.Schema<VisionObservationsLabelDestroyResponse>;
+export const VisionObservationsLabelDestroyResponse =
+  CreateVisionObservationsViewedResponse as any as S.Schema<VisionObservationsLabelDestroyResponse>;
 
 export interface VisionObservationsRetryCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -4187,11 +4133,8 @@ export const VisionObservationsRetryCreateRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<VisionObservationsRetryCreateRequest>;
 
 export interface VisionObservationsRetryCreateResponse {}
-export const VisionObservationsRetryCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "VisionObservationsRetryCreateResponse",
-}) as any as S.Schema<VisionObservationsRetryCreateResponse>;
+export const VisionObservationsRetryCreateResponse =
+  CreateVisionObservationsViewedResponse as any as S.Schema<VisionObservationsRetryCreateResponse>;
 
 export interface VisionObservationsSearchRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -4301,9 +4244,8 @@ export const VisionObservationsSearchSuggestionsRetrieveRequest = /*@__PURE__*/ 
 
 /** Up to 4 example searches naming themes in recent observations. Empty until a scheduled refresh has run for a scanner someone viewed. */
 export type SearchSuggestionsResponseQueriesList = Array<string>;
-export const SearchSuggestionsResponseQueriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchSuggestionsResponseQueriesList>;
+export const SearchSuggestionsResponseQueriesList =
+  VisionAlertSelectionVerdictList as any as S.Schema<SearchSuggestionsResponseQueriesList>;
 
 export interface SearchSuggestionsResponse {
   /** Up to 4 example searches naming themes in recent observations. Empty until a scheduled refresh has run for a scanner someone viewed. */
@@ -4339,11 +4281,8 @@ export const VisionObservationsSearchViewedCreateRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<VisionObservationsSearchViewedCreateRequest>;
 
 export interface VisionObservationsSearchViewedCreateResponse {}
-export const VisionObservationsSearchViewedCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "VisionObservationsSearchViewedCreateResponse",
-}) as any as S.Schema<VisionObservationsSearchViewedCreateResponse>;
+export const VisionObservationsSearchViewedCreateResponse =
+  CreateVisionObservationsViewedResponse as any as S.Schema<VisionObservationsSearchViewedCreateResponse>;
 
 export interface VisionScannersBackfillsCancelCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -4393,9 +4332,8 @@ export const VisionScannersBackfillsResumeCreateRequest = /*@__PURE__*/ S.suspen
 
 /** Session recording IDs to scan on demand, at most 200 per request. Scans start until the in-flight limit or monthly credit quota is reached; the rest are reported as skipped rather than failing the whole batch. Already-running sessions are a no-op. */
 export type VisionScannersBulkObserveCreateRequestSessionIdsList = Array<string>;
-export const VisionScannersBulkObserveCreateRequestSessionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VisionScannersBulkObserveCreateRequestSessionIdsList>;
+export const VisionScannersBulkObserveCreateRequestSessionIdsList =
+  VisionAlertSelectionVerdictList as any as S.Schema<VisionScannersBulkObserveCreateRequestSessionIdsList>;
 
 export interface VisionScannersBulkObserveCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -4422,11 +4360,8 @@ export const VisionScannersBulkObserveCreateRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<VisionScannersBulkObserveCreateRequest>;
 
 export interface VisionScannersBulkObserveCreateResponse {}
-export const VisionScannersBulkObserveCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "VisionScannersBulkObserveCreateResponse",
-}) as any as S.Schema<VisionScannersBulkObserveCreateResponse>;
+export const VisionScannersBulkObserveCreateResponse =
+  CreateVisionObservationsViewedResponse as any as S.Schema<VisionScannersBulkObserveCreateResponse>;
 
 export interface VisionScannersDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -4450,9 +4385,8 @@ export const VisionScannersDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VisionScannersDestroyRequest>;
 
 export interface VisionScannersDestroyResponse {}
-export const VisionScannersDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "VisionScannersDestroyResponse",
-}) as any as S.Schema<VisionScannersDestroyResponse>;
+export const VisionScannersDestroyResponse =
+  VisionAlertsDestroyResponse as any as S.Schema<VisionScannersDestroyResponse>;
 
 export interface VisionScannersDuplicateCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -4522,11 +4456,8 @@ export const VisionScannersObservationsLabelDestroyRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<VisionScannersObservationsLabelDestroyRequest>;
 
 export interface VisionScannersObservationsLabelDestroyResponse {}
-export const VisionScannersObservationsLabelDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "VisionScannersObservationsLabelDestroyResponse",
-}) as any as S.Schema<VisionScannersObservationsLabelDestroyResponse>;
+export const VisionScannersObservationsLabelDestroyResponse =
+  CreateVisionObservationsViewedResponse as any as S.Schema<VisionScannersObservationsLabelDestroyResponse>;
 
 export interface VisionScannersObservationsRetryCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -4552,11 +4483,8 @@ export const VisionScannersObservationsRetryCreateRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<VisionScannersObservationsRetryCreateRequest>;
 
 export interface VisionScannersObservationsRetryCreateResponse {}
-export const VisionScannersObservationsRetryCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "VisionScannersObservationsRetryCreateResponse",
-}) as any as S.Schema<VisionScannersObservationsRetryCreateResponse>;
+export const VisionScannersObservationsRetryCreateResponse =
+  CreateVisionObservationsViewedResponse as any as S.Schema<VisionScannersObservationsRetryCreateResponse>;
 
 export type VisionScannersWatchFeedRetrieveRequestScannerType =
   | "monitor"
@@ -4622,9 +4550,8 @@ export const WatchFeedReasonEnum = S.String;
 
 /** Issue type of each emitted signal (`bug`, `crash`, `design_flaw`, `ux_friction`), one entry per signal in the order raised, for `signal_emitted`. Absent on signals scanned before this shipped. */
 export type WatchFeedReasonProblemTypesList = Array<string>;
-export const WatchFeedReasonProblemTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WatchFeedReasonProblemTypesList>;
+export const WatchFeedReasonProblemTypesList =
+  VisionAlertSelectionVerdictList as any as S.Schema<WatchFeedReasonProblemTypesList>;
 
 /** One signal an observation raised, named rather than counted. */
 export interface WatchFeedSignal {

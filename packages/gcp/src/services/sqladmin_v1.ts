@@ -776,16 +776,8 @@ export interface ImportContextTdeImportOptions {
   /** Required. Path to the TDE certificate public key in the form gs://bucketName/fileName. The instance must have read access to the file. Applicable only for SQL Server instances. */
   certificatePath?: string;
 }
-export const ImportContextTdeImportOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    privateKeyPassword: S.optional(S.String),
-    privateKeyPath: S.optional(S.String),
-    name: S.optional(S.String),
-    certificatePath: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ImportContextTdeImportOptions",
-}) as any as S.Schema<ImportContextTdeImportOptions>;
+export const ImportContextTdeImportOptions =
+  ExportContextTdeExportOptions as any as S.Schema<ImportContextTdeImportOptions>;
 
 /** Database instance import context. */
 export interface ImportContext {
@@ -5959,13 +5951,8 @@ export interface SqlInstancesReleaseSsrsLeaseResponse {
   /** The unique identifier for this operation. */
   operationId?: string;
 }
-export const SqlInstancesReleaseSsrsLeaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operationId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SqlInstancesReleaseSsrsLeaseResponse",
-}) as any as S.Schema<SqlInstancesReleaseSsrsLeaseResponse>;
+export const SqlInstancesReleaseSsrsLeaseResponse =
+  SqlInstancesAcquireSsrsLeaseResponse as any as S.Schema<SqlInstancesReleaseSsrsLeaseResponse>;
 
 export type RescheduleRescheduleTypeEnum =
   | "RESCHEDULE_TYPE_UNSPECIFIED"
@@ -6374,12 +6361,7 @@ export interface SyncFlags {
   /** The name of the flag. */
   name?: string;
 }
-export const SyncFlags = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "SyncFlags" }) as any as S.Schema<SyncFlags>;
+export const SyncFlags = ConnectionPoolFlags as any as S.Schema<SyncFlags>;
 
 export type SyncFlagsList = Array<SyncFlags>;
 export const SyncFlagsList = /*@__PURE__*/ S.Array(SyncFlags) as any as S.Schema<SyncFlagsList>;

@@ -981,13 +981,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface UpdateIapSettingsV1Request {
   /** Required. The resource name of the IAP protected resource. */
@@ -1036,11 +1031,8 @@ export const ValidateAttributeExpressionV1Request = /*@__PURE__*/ S.suspend(() =
 
 /** IAP Expression Linter endpoint returns empty response body. */
 export interface ValidateIapAttributeExpressionResponse {}
-export const ValidateIapAttributeExpressionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ValidateIapAttributeExpressionResponse",
-}) as any as S.Schema<ValidateIapAttributeExpressionResponse>;
+export const ValidateIapAttributeExpressionResponse =
+  ResetIdentityAwareProxyClientSecretRequest as any as S.Schema<ValidateIapAttributeExpressionResponse>;
 
 export type CreateProjectsBrandsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Constructs a new OAuth brand for the project if one does not exist. The created brand is "internal only", meaning that OAuth clients created under it only accept requests from users who belong to the same Google Workspace organization as the project. The brand is created in an un-reviewed status. NOTE: The "internal only" status can be manually changed in the Google Cloud Console. Requires that a brand does not already exist for the project, and that the specified support email is owned by the caller. */

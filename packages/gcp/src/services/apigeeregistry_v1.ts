@@ -90,9 +90,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export type StringMap = { [key: string]: string | undefined };
 export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
@@ -2067,14 +2065,8 @@ export interface ListApiDeploymentRevisionsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListApiDeploymentRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiDeployments: S.optional(ApiDeploymentList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListApiDeploymentRevisionsResponse",
-}) as any as S.Schema<ListApiDeploymentRevisionsResponse>;
+export const ListApiDeploymentRevisionsResponse =
+  ListApiDeploymentsResponse as any as S.Schema<ListApiDeploymentRevisionsResponse>;
 
 export interface ListRevisionsProjectsLocationsApisVersionsSpecsRequest {
   /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields. */
@@ -2374,13 +2366,8 @@ export interface RollbackApiSpecRequest {
   /** Required. The revision ID to roll back to. It must be a revision of the same spec. Example: `c7cfa2a8` */
   revisionId?: string;
 }
-export const RollbackApiSpecRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revisionId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RollbackApiSpecRequest",
-}) as any as S.Schema<RollbackApiSpecRequest>;
+export const RollbackApiSpecRequest =
+  RollbackApiDeploymentRequest as any as S.Schema<RollbackApiSpecRequest>;
 
 export interface RollbackProjectsLocationsApisVersionsSpecsRequest {
   /** Required. The spec being rolled back. */
@@ -2747,13 +2734,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsApisArtifactsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */

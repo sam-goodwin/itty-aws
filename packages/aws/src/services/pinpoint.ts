@@ -1041,14 +1041,7 @@ export interface ExportJobResource {
   SegmentId?: string;
   SegmentVersion?: number;
 }
-export const ExportJobResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RoleArn: S.optional(S.String),
-    S3UrlPrefix: S.optional(S.String),
-    SegmentId: S.optional(S.String),
-    SegmentVersion: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ExportJobResource" }) as any as S.Schema<ExportJobResource>;
+export const ExportJobResource = ExportJobRequest as any as S.Schema<ExportJobResource>;
 export type JobStatus =
   | "CREATED"
   | "PREPARING_FOR_INITIALIZATION"
@@ -1167,18 +1160,7 @@ export interface ImportJobResource {
   SegmentId?: string;
   SegmentName?: string;
 }
-export const ImportJobResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DefineSegment: S.optional(S.Boolean),
-    ExternalId: S.optional(S.String),
-    Format: S.optional(Format),
-    RegisterEndpoints: S.optional(S.Boolean),
-    RoleArn: S.optional(S.String),
-    S3Url: S.optional(S.String),
-    SegmentId: S.optional(S.String),
-    SegmentName: S.optional(S.String),
-  }),
-).annotate({ identifier: "ImportJobResource" }) as any as S.Schema<ImportJobResource>;
+export const ImportJobResource = ImportJobRequest as any as S.Schema<ImportJobResource>;
 export interface ImportJobResponse {
   ApplicationId?: string;
   CompletedPieces?: number;
@@ -1272,15 +1254,8 @@ export interface TemplateCreateMessageBody {
   Message?: string;
   RequestID?: string;
 }
-export const TemplateCreateMessageBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Message: S.optional(S.String),
-    RequestID: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TemplateCreateMessageBody",
-}) as any as S.Schema<TemplateCreateMessageBody>;
+export const TemplateCreateMessageBody =
+  CreateTemplateMessageBody as any as S.Schema<TemplateCreateMessageBody>;
 export interface CreateInAppTemplateResponse {
   TemplateCreateMessageBody: TemplateCreateMessageBody;
 }
@@ -1296,9 +1271,7 @@ export const CreateInAppTemplateResponse = /*@__PURE__*/ S.suspend(() =>
 export interface JourneyCustomMessage {
   Data?: string;
 }
-export const JourneyCustomMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Data: S.optional(S.String) }),
-).annotate({ identifier: "JourneyCustomMessage" }) as any as S.Schema<JourneyCustomMessage>;
+export const JourneyCustomMessage = CampaignCustomMessage as any as S.Schema<JourneyCustomMessage>;
 export interface CustomMessageActivity {
   DeliveryUri?: string;
   EndpointTypes?: __EndpointTypesElement[];
@@ -1525,9 +1498,7 @@ export interface RandomSplitEntry {
   NextActivity?: string;
   Percentage?: number;
 }
-export const RandomSplitEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextActivity: S.optional(S.String), Percentage: S.optional(S.Number) }),
-).annotate({ identifier: "RandomSplitEntry" }) as any as S.Schema<RandomSplitEntry>;
+export const RandomSplitEntry = HoldoutActivity as any as S.Schema<RandomSplitEntry>;
 export type ListOfRandomSplitEntry = RandomSplitEntry[];
 export const ListOfRandomSplitEntry = /*@__PURE__*/ S.Array(RandomSplitEntry);
 export interface RandomSplitActivity {
@@ -1654,9 +1625,7 @@ export interface EventFilter {
   Dimensions?: EventDimensions;
   FilterType?: FilterType;
 }
-export const EventFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Dimensions: S.optional(EventDimensions), FilterType: S.optional(FilterType) }),
-).annotate({ identifier: "EventFilter" }) as any as S.Schema<EventFilter>;
+export const EventFilter = CampaignEventFilter as any as S.Schema<EventFilter>;
 export interface EventStartCondition {
   EventFilter?: EventFilter;
   SegmentId?: string;
@@ -2151,15 +2120,8 @@ export const CreatePushTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreatePushTemplateResponse {
   CreateTemplateMessageBody: CreateTemplateMessageBody;
 }
-export const CreatePushTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CreateTemplateMessageBody: S.optional(CreateTemplateMessageBody)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "CreateTemplateMessageBody" }),
-  }),
-).annotate({
-  identifier: "CreatePushTemplateResponse",
-}) as any as S.Schema<CreatePushTemplateResponse>;
+export const CreatePushTemplateResponse =
+  CreateEmailTemplateResponse as any as S.Schema<CreatePushTemplateResponse>;
 export interface CreateRecommenderConfigurationShape {
   Attributes?: { [key: string]: string | undefined };
   Description?: string;
@@ -2508,15 +2470,8 @@ export const CreateSmsTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateSmsTemplateResponse {
   CreateTemplateMessageBody: CreateTemplateMessageBody;
 }
-export const CreateSmsTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CreateTemplateMessageBody: S.optional(CreateTemplateMessageBody)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "CreateTemplateMessageBody" }),
-  }),
-).annotate({
-  identifier: "CreateSmsTemplateResponse",
-}) as any as S.Schema<CreateSmsTemplateResponse>;
+export const CreateSmsTemplateResponse =
+  CreateEmailTemplateResponse as any as S.Schema<CreateSmsTemplateResponse>;
 export interface VoiceTemplateRequest {
   Body?: string;
   DefaultSubstitutions?: string;
@@ -2561,15 +2516,8 @@ export const CreateVoiceTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateVoiceTemplateResponse {
   CreateTemplateMessageBody: CreateTemplateMessageBody;
 }
-export const CreateVoiceTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CreateTemplateMessageBody: S.optional(CreateTemplateMessageBody)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "CreateTemplateMessageBody" }),
-  }),
-).annotate({
-  identifier: "CreateVoiceTemplateResponse",
-}) as any as S.Schema<CreateVoiceTemplateResponse>;
+export const CreateVoiceTemplateResponse =
+  CreateEmailTemplateResponse as any as S.Schema<CreateVoiceTemplateResponse>;
 export interface DeleteAdmChannelRequest {
   ApplicationId: string;
 }
@@ -2770,22 +2718,8 @@ export interface APNSVoipChannelResponse {
   Platform?: string;
   Version?: number;
 }
-export const APNSVoipChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    CreationDate: S.optional(S.String),
-    DefaultAuthenticationMethod: S.optional(S.String),
-    Enabled: S.optional(S.Boolean),
-    HasCredential: S.optional(S.Boolean),
-    HasTokenKey: S.optional(S.Boolean),
-    Id: S.optional(S.String),
-    IsArchived: S.optional(S.Boolean),
-    LastModifiedBy: S.optional(S.String),
-    LastModifiedDate: S.optional(S.String),
-    Platform: S.optional(S.String),
-    Version: S.optional(S.Number),
-  }),
-).annotate({ identifier: "APNSVoipChannelResponse" }) as any as S.Schema<APNSVoipChannelResponse>;
+export const APNSVoipChannelResponse =
+  APNSChannelResponse as any as S.Schema<APNSVoipChannelResponse>;
 export interface DeleteApnsVoipChannelResponse {
   APNSVoipChannelResponse: APNSVoipChannelResponse & { Platform: string };
 }
@@ -2829,24 +2763,8 @@ export interface APNSVoipSandboxChannelResponse {
   Platform?: string;
   Version?: number;
 }
-export const APNSVoipSandboxChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    CreationDate: S.optional(S.String),
-    DefaultAuthenticationMethod: S.optional(S.String),
-    Enabled: S.optional(S.Boolean),
-    HasCredential: S.optional(S.Boolean),
-    HasTokenKey: S.optional(S.Boolean),
-    Id: S.optional(S.String),
-    IsArchived: S.optional(S.Boolean),
-    LastModifiedBy: S.optional(S.String),
-    LastModifiedDate: S.optional(S.String),
-    Platform: S.optional(S.String),
-    Version: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "APNSVoipSandboxChannelResponse",
-}) as any as S.Schema<APNSVoipSandboxChannelResponse>;
+export const APNSVoipSandboxChannelResponse =
+  APNSSandboxChannelResponse as any as S.Schema<APNSVoipSandboxChannelResponse>;
 export interface DeleteApnsVoipSandboxChannelResponse {
   APNSVoipSandboxChannelResponse: APNSVoipSandboxChannelResponse & { Platform: string };
 }
@@ -2877,13 +2795,7 @@ export const DeleteAppRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteAppResponse {
   ApplicationResponse: ApplicationResponse & { Arn: string; Id: string; Name: string };
 }
-export const DeleteAppResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationResponse: S.optional(ApplicationResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "ApplicationResponse" }),
-  }),
-).annotate({ identifier: "DeleteAppResponse" }) as any as S.Schema<DeleteAppResponse>;
+export const DeleteAppResponse = CreateAppResponse as any as S.Schema<DeleteAppResponse>;
 export interface DeleteBaiduChannelRequest {
   ApplicationId: string;
 }
@@ -3079,13 +2991,8 @@ export interface DeleteCampaignResponse {
     };
   };
 }
-export const DeleteCampaignResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CampaignResponse: S.optional(CampaignResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "CampaignResponse" }),
-  }),
-).annotate({ identifier: "DeleteCampaignResponse" }) as any as S.Schema<DeleteCampaignResponse>;
+export const DeleteCampaignResponse =
+  CreateCampaignResponse as any as S.Schema<DeleteCampaignResponse>;
 export interface DeleteEmailChannelRequest {
   ApplicationId: string;
 }
@@ -3275,10 +3182,7 @@ export const EndpointLocation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EndpointLocation" }) as any as S.Schema<EndpointLocation>;
 export type MapOf__double = { [key: string]: number | undefined };
-export const MapOf__double = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.Number.pipe(S.optional),
-);
+export const MapOf__double = MapOf__integer as any as S.Schema<MapOf__double>;
 export interface EndpointUser {
   UserAttributes?: { [key: string]: string[] | undefined };
   UserId?: string;
@@ -3462,15 +3366,8 @@ export const DeleteInAppTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteInAppTemplateResponse {
   MessageBody: MessageBody;
 }
-export const DeleteInAppTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MessageBody: S.optional(MessageBody)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "MessageBody" }),
-  }),
-).annotate({
-  identifier: "DeleteInAppTemplateResponse",
-}) as any as S.Schema<DeleteInAppTemplateResponse>;
+export const DeleteInAppTemplateResponse =
+  DeleteEmailTemplateResponse as any as S.Schema<DeleteInAppTemplateResponse>;
 export interface DeleteJourneyRequest {
   ApplicationId: string;
   JourneyId: string;
@@ -3627,13 +3524,8 @@ export interface DeleteJourneyResponse {
     };
   };
 }
-export const DeleteJourneyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JourneyResponse: S.optional(JourneyResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "JourneyResponse" }),
-  }),
-).annotate({ identifier: "DeleteJourneyResponse" }) as any as S.Schema<DeleteJourneyResponse>;
+export const DeleteJourneyResponse =
+  CreateJourneyResponse as any as S.Schema<DeleteJourneyResponse>;
 export interface DeletePushTemplateRequest {
   TemplateName: string;
   Version?: string;
@@ -3658,15 +3550,8 @@ export const DeletePushTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeletePushTemplateResponse {
   MessageBody: MessageBody;
 }
-export const DeletePushTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MessageBody: S.optional(MessageBody)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "MessageBody" }),
-  }),
-).annotate({
-  identifier: "DeletePushTemplateResponse",
-}) as any as S.Schema<DeletePushTemplateResponse>;
+export const DeletePushTemplateResponse =
+  DeleteEmailTemplateResponse as any as S.Schema<DeletePushTemplateResponse>;
 export interface DeleteRecommenderConfigurationRequest {
   RecommenderId: string;
 }
@@ -3693,15 +3578,8 @@ export interface DeleteRecommenderConfigurationResponse {
     RecommendationProviderUri: string;
   };
 }
-export const DeleteRecommenderConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RecommenderConfigurationResponse: S.optional(RecommenderConfigurationResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "RecommenderConfigurationResponse" }),
-  }),
-).annotate({
-  identifier: "DeleteRecommenderConfigurationResponse",
-}) as any as S.Schema<DeleteRecommenderConfigurationResponse>;
+export const DeleteRecommenderConfigurationResponse =
+  CreateRecommenderConfigurationResponse as any as S.Schema<DeleteRecommenderConfigurationResponse>;
 export interface DeleteSegmentRequest {
   ApplicationId: string;
   SegmentId: string;
@@ -3800,13 +3678,8 @@ export interface DeleteSegmentResponse {
     };
   };
 }
-export const DeleteSegmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SegmentResponse: S.optional(SegmentResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "SegmentResponse" }),
-  }),
-).annotate({ identifier: "DeleteSegmentResponse" }) as any as S.Schema<DeleteSegmentResponse>;
+export const DeleteSegmentResponse =
+  CreateSegmentResponse as any as S.Schema<DeleteSegmentResponse>;
 export interface DeleteSmsChannelRequest {
   ApplicationId: string;
 }
@@ -3888,15 +3761,8 @@ export const DeleteSmsTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSmsTemplateResponse {
   MessageBody: MessageBody;
 }
-export const DeleteSmsTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MessageBody: S.optional(MessageBody)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "MessageBody" }),
-  }),
-).annotate({
-  identifier: "DeleteSmsTemplateResponse",
-}) as any as S.Schema<DeleteSmsTemplateResponse>;
+export const DeleteSmsTemplateResponse =
+  DeleteEmailTemplateResponse as any as S.Schema<DeleteSmsTemplateResponse>;
 export interface DeleteUserEndpointsRequest {
   ApplicationId: string;
   UserId: string;
@@ -3967,20 +3833,7 @@ export interface VoiceChannelResponse {
   Platform?: string;
   Version?: number;
 }
-export const VoiceChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    CreationDate: S.optional(S.String),
-    Enabled: S.optional(S.Boolean),
-    HasCredential: S.optional(S.Boolean),
-    Id: S.optional(S.String),
-    IsArchived: S.optional(S.Boolean),
-    LastModifiedBy: S.optional(S.String),
-    LastModifiedDate: S.optional(S.String),
-    Platform: S.optional(S.String),
-    Version: S.optional(S.Number),
-  }),
-).annotate({ identifier: "VoiceChannelResponse" }) as any as S.Schema<VoiceChannelResponse>;
+export const VoiceChannelResponse = ADMChannelResponse as any as S.Schema<VoiceChannelResponse>;
 export interface DeleteVoiceChannelResponse {
   VoiceChannelResponse: VoiceChannelResponse & { Platform: string };
 }
@@ -4017,15 +3870,8 @@ export const DeleteVoiceTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteVoiceTemplateResponse {
   MessageBody: MessageBody;
 }
-export const DeleteVoiceTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MessageBody: S.optional(MessageBody)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "MessageBody" }),
-  }),
-).annotate({
-  identifier: "DeleteVoiceTemplateResponse",
-}) as any as S.Schema<DeleteVoiceTemplateResponse>;
+export const DeleteVoiceTemplateResponse =
+  DeleteEmailTemplateResponse as any as S.Schema<DeleteVoiceTemplateResponse>;
 export interface GetAdmChannelRequest {
   ApplicationId: string;
 }
@@ -4044,13 +3890,8 @@ export const GetAdmChannelRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetAdmChannelResponse {
   ADMChannelResponse: ADMChannelResponse & { Platform: string };
 }
-export const GetAdmChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ADMChannelResponse: S.optional(ADMChannelResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "ADMChannelResponse" }),
-  }),
-).annotate({ identifier: "GetAdmChannelResponse" }) as any as S.Schema<GetAdmChannelResponse>;
+export const GetAdmChannelResponse =
+  DeleteAdmChannelResponse as any as S.Schema<GetAdmChannelResponse>;
 export interface GetApnsChannelRequest {
   ApplicationId: string;
 }
@@ -4096,15 +3937,8 @@ export const GetApnsSandboxChannelRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetApnsSandboxChannelResponse {
   APNSSandboxChannelResponse: APNSSandboxChannelResponse & { Platform: string };
 }
-export const GetApnsSandboxChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    APNSSandboxChannelResponse: S.optional(APNSSandboxChannelResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "APNSSandboxChannelResponse" }),
-  }),
-).annotate({
-  identifier: "GetApnsSandboxChannelResponse",
-}) as any as S.Schema<GetApnsSandboxChannelResponse>;
+export const GetApnsSandboxChannelResponse =
+  DeleteApnsSandboxChannelResponse as any as S.Schema<GetApnsSandboxChannelResponse>;
 export interface GetApnsVoipChannelRequest {
   ApplicationId: string;
 }
@@ -4125,15 +3959,8 @@ export const GetApnsVoipChannelRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetApnsVoipChannelResponse {
   APNSVoipChannelResponse: APNSVoipChannelResponse & { Platform: string };
 }
-export const GetApnsVoipChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    APNSVoipChannelResponse: S.optional(APNSVoipChannelResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "APNSVoipChannelResponse" }),
-  }),
-).annotate({
-  identifier: "GetApnsVoipChannelResponse",
-}) as any as S.Schema<GetApnsVoipChannelResponse>;
+export const GetApnsVoipChannelResponse =
+  DeleteApnsVoipChannelResponse as any as S.Schema<GetApnsVoipChannelResponse>;
 export interface GetApnsVoipSandboxChannelRequest {
   ApplicationId: string;
 }
@@ -4154,15 +3981,8 @@ export const GetApnsVoipSandboxChannelRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetApnsVoipSandboxChannelResponse {
   APNSVoipSandboxChannelResponse: APNSVoipSandboxChannelResponse & { Platform: string };
 }
-export const GetApnsVoipSandboxChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    APNSVoipSandboxChannelResponse: S.optional(APNSVoipSandboxChannelResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "APNSVoipSandboxChannelResponse" }),
-  }),
-).annotate({
-  identifier: "GetApnsVoipSandboxChannelResponse",
-}) as any as S.Schema<GetApnsVoipSandboxChannelResponse>;
+export const GetApnsVoipSandboxChannelResponse =
+  DeleteApnsVoipSandboxChannelResponse as any as S.Schema<GetApnsVoipSandboxChannelResponse>;
 export interface GetAppRequest {
   ApplicationId: string;
 }
@@ -4174,13 +3994,7 @@ export const GetAppRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetAppResponse {
   ApplicationResponse: ApplicationResponse & { Arn: string; Id: string; Name: string };
 }
-export const GetAppResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationResponse: S.optional(ApplicationResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "ApplicationResponse" }),
-  }),
-).annotate({ identifier: "GetAppResponse" }) as any as S.Schema<GetAppResponse>;
+export const GetAppResponse = CreateAppResponse as any as S.Schema<GetAppResponse>;
 export interface GetApplicationDateRangeKpiRequest {
   ApplicationId: string;
   EndTime?: Date;
@@ -4542,13 +4356,7 @@ export interface GetCampaignResponse {
     };
   };
 }
-export const GetCampaignResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CampaignResponse: S.optional(CampaignResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "CampaignResponse" }),
-  }),
-).annotate({ identifier: "GetCampaignResponse" }) as any as S.Schema<GetCampaignResponse>;
+export const GetCampaignResponse = CreateCampaignResponse as any as S.Schema<GetCampaignResponse>;
 export interface GetCampaignActivitiesRequest {
   ApplicationId: string;
   CampaignId: string;
@@ -5360,13 +5168,7 @@ export const GetEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetEndpointResponse {
   EndpointResponse: EndpointResponse;
 }
-export const GetEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EndpointResponse: S.optional(EndpointResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "EndpointResponse" }),
-  }),
-).annotate({ identifier: "GetEndpointResponse" }) as any as S.Schema<GetEndpointResponse>;
+export const GetEndpointResponse = DeleteEndpointResponse as any as S.Schema<GetEndpointResponse>;
 export interface GetEventStreamRequest {
   ApplicationId: string;
 }
@@ -5425,13 +5227,8 @@ export interface GetExportJobResponse {
     Type: string;
   };
 }
-export const GetExportJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ExportJobResponse: S.optional(ExportJobResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "ExportJobResponse" }),
-  }),
-).annotate({ identifier: "GetExportJobResponse" }) as any as S.Schema<GetExportJobResponse>;
+export const GetExportJobResponse =
+  CreateExportJobResponse as any as S.Schema<GetExportJobResponse>;
 export interface GetExportJobsRequest {
   ApplicationId: string;
   PageSize?: string;
@@ -5499,13 +5296,8 @@ export const GetGcmChannelRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetGcmChannelResponse {
   GCMChannelResponse: GCMChannelResponse & { Platform: string };
 }
-export const GetGcmChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GCMChannelResponse: S.optional(GCMChannelResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "GCMChannelResponse" }),
-  }),
-).annotate({ identifier: "GetGcmChannelResponse" }) as any as S.Schema<GetGcmChannelResponse>;
+export const GetGcmChannelResponse =
+  DeleteGcmChannelResponse as any as S.Schema<GetGcmChannelResponse>;
 export interface GetImportJobRequest {
   ApplicationId: string;
   JobId: string;
@@ -5535,13 +5327,8 @@ export interface GetImportJobResponse {
     Type: string;
   };
 }
-export const GetImportJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ImportJobResponse: S.optional(ImportJobResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "ImportJobResponse" }),
-  }),
-).annotate({ identifier: "GetImportJobResponse" }) as any as S.Schema<GetImportJobResponse>;
+export const GetImportJobResponse =
+  CreateImportJobResponse as any as S.Schema<GetImportJobResponse>;
 export interface GetImportJobsRequest {
   ApplicationId: string;
   PageSize?: string;
@@ -5970,13 +5757,7 @@ export interface GetJourneyResponse {
     };
   };
 }
-export const GetJourneyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JourneyResponse: S.optional(JourneyResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "JourneyResponse" }),
-  }),
-).annotate({ identifier: "GetJourneyResponse" }) as any as S.Schema<GetJourneyResponse>;
+export const GetJourneyResponse = CreateJourneyResponse as any as S.Schema<GetJourneyResponse>;
 export interface GetJourneyDateRangeKpiRequest {
   ApplicationId: string;
   EndTime?: Date;
@@ -6497,15 +6278,8 @@ export interface GetRecommenderConfigurationResponse {
     RecommendationProviderUri: string;
   };
 }
-export const GetRecommenderConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RecommenderConfigurationResponse: S.optional(RecommenderConfigurationResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "RecommenderConfigurationResponse" }),
-  }),
-).annotate({
-  identifier: "GetRecommenderConfigurationResponse",
-}) as any as S.Schema<GetRecommenderConfigurationResponse>;
+export const GetRecommenderConfigurationResponse =
+  CreateRecommenderConfigurationResponse as any as S.Schema<GetRecommenderConfigurationResponse>;
 export interface GetRecommenderConfigurationsRequest {
   PageSize?: string;
   Token?: string;
@@ -6652,13 +6426,7 @@ export interface GetSegmentResponse {
     };
   };
 }
-export const GetSegmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SegmentResponse: S.optional(SegmentResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "SegmentResponse" }),
-  }),
-).annotate({ identifier: "GetSegmentResponse" }) as any as S.Schema<GetSegmentResponse>;
+export const GetSegmentResponse = CreateSegmentResponse as any as S.Schema<GetSegmentResponse>;
 export interface GetSegmentExportJobsRequest {
   ApplicationId: string;
   PageSize?: string;
@@ -7118,13 +6886,8 @@ export const GetSmsChannelRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetSmsChannelResponse {
   SMSChannelResponse: SMSChannelResponse & { Platform: string };
 }
-export const GetSmsChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SMSChannelResponse: S.optional(SMSChannelResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "SMSChannelResponse" }),
-  }),
-).annotate({ identifier: "GetSmsChannelResponse" }) as any as S.Schema<GetSmsChannelResponse>;
+export const GetSmsChannelResponse =
+  DeleteSmsChannelResponse as any as S.Schema<GetSmsChannelResponse>;
 export interface GetSmsTemplateRequest {
   TemplateName: string;
   Version?: string;
@@ -7859,9 +7622,7 @@ export interface EventItemResponse {
   Message?: string;
   StatusCode?: number;
 }
-export const EventItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Message: S.optional(S.String), StatusCode: S.optional(S.Number) }),
-).annotate({ identifier: "EventItemResponse" }) as any as S.Schema<EventItemResponse>;
+export const EventItemResponse = EndpointItemResponse as any as S.Schema<EventItemResponse>;
 export type MapOfEventItemResponse = { [key: string]: EventItemResponse | undefined };
 export const MapOfEventItemResponse = /*@__PURE__*/ S.Record(
   S.String,
@@ -7933,13 +7694,8 @@ export interface PutEventStreamResponse {
     RoleArn: string;
   };
 }
-export const PutEventStreamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EventStream: S.optional(EventStream)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "EventStream" }),
-  }),
-).annotate({ identifier: "PutEventStreamResponse" }) as any as S.Schema<PutEventStreamResponse>;
+export const PutEventStreamResponse =
+  GetEventStreamResponse as any as S.Schema<PutEventStreamResponse>;
 export interface UpdateAttributesRequest {
   Blacklist?: string[];
 }
@@ -8534,13 +8290,8 @@ export interface SendOTPMessageResponse {
     };
   };
 }
-export const SendOTPMessageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MessageResponse: S.optional(MessageResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "MessageResponse" }),
-  }),
-).annotate({ identifier: "SendOTPMessageResponse" }) as any as S.Schema<SendOTPMessageResponse>;
+export const SendOTPMessageResponse =
+  SendMessagesResponse as any as S.Schema<SendOTPMessageResponse>;
 export interface SendUsersMessageRequest {
   Context?: { [key: string]: string | undefined };
   MessageConfiguration?: DirectMessageConfiguration;
@@ -8656,9 +8407,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface ADMChannelRequest {
   ClientId?: string;
   ClientSecret?: string;
@@ -8695,13 +8444,8 @@ export const UpdateAdmChannelRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAdmChannelResponse {
   ADMChannelResponse: ADMChannelResponse & { Platform: string };
 }
-export const UpdateAdmChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ADMChannelResponse: S.optional(ADMChannelResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "ADMChannelResponse" }),
-  }),
-).annotate({ identifier: "UpdateAdmChannelResponse" }) as any as S.Schema<UpdateAdmChannelResponse>;
+export const UpdateAdmChannelResponse =
+  DeleteAdmChannelResponse as any as S.Schema<UpdateAdmChannelResponse>;
 export interface APNSChannelRequest {
   BundleId?: string;
   Certificate?: string;
@@ -8748,15 +8492,8 @@ export const UpdateApnsChannelRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateApnsChannelResponse {
   APNSChannelResponse: APNSChannelResponse & { Platform: string };
 }
-export const UpdateApnsChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    APNSChannelResponse: S.optional(APNSChannelResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "APNSChannelResponse" }),
-  }),
-).annotate({
-  identifier: "UpdateApnsChannelResponse",
-}) as any as S.Schema<UpdateApnsChannelResponse>;
+export const UpdateApnsChannelResponse =
+  DeleteApnsChannelResponse as any as S.Schema<UpdateApnsChannelResponse>;
 export interface APNSSandboxChannelRequest {
   BundleId?: string;
   Certificate?: string;
@@ -8807,15 +8544,8 @@ export const UpdateApnsSandboxChannelRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateApnsSandboxChannelResponse {
   APNSSandboxChannelResponse: APNSSandboxChannelResponse & { Platform: string };
 }
-export const UpdateApnsSandboxChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    APNSSandboxChannelResponse: S.optional(APNSSandboxChannelResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "APNSSandboxChannelResponse" }),
-  }),
-).annotate({
-  identifier: "UpdateApnsSandboxChannelResponse",
-}) as any as S.Schema<UpdateApnsSandboxChannelResponse>;
+export const UpdateApnsSandboxChannelResponse =
+  DeleteApnsSandboxChannelResponse as any as S.Schema<UpdateApnsSandboxChannelResponse>;
 export interface APNSVoipChannelRequest {
   BundleId?: string;
   Certificate?: string;
@@ -8826,18 +8556,7 @@ export interface APNSVoipChannelRequest {
   TokenKey?: string;
   TokenKeyId?: string;
 }
-export const APNSVoipChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BundleId: S.optional(S.String),
-    Certificate: S.optional(S.String),
-    DefaultAuthenticationMethod: S.optional(S.String),
-    Enabled: S.optional(S.Boolean),
-    PrivateKey: S.optional(S.String),
-    TeamId: S.optional(S.String),
-    TokenKey: S.optional(S.String),
-    TokenKeyId: S.optional(S.String),
-  }),
-).annotate({ identifier: "APNSVoipChannelRequest" }) as any as S.Schema<APNSVoipChannelRequest>;
+export const APNSVoipChannelRequest = APNSChannelRequest as any as S.Schema<APNSVoipChannelRequest>;
 export interface UpdateApnsVoipChannelRequest {
   APNSVoipChannelRequest?: APNSVoipChannelRequest;
   ApplicationId: string;
@@ -8864,15 +8583,8 @@ export const UpdateApnsVoipChannelRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateApnsVoipChannelResponse {
   APNSVoipChannelResponse: APNSVoipChannelResponse & { Platform: string };
 }
-export const UpdateApnsVoipChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    APNSVoipChannelResponse: S.optional(APNSVoipChannelResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "APNSVoipChannelResponse" }),
-  }),
-).annotate({
-  identifier: "UpdateApnsVoipChannelResponse",
-}) as any as S.Schema<UpdateApnsVoipChannelResponse>;
+export const UpdateApnsVoipChannelResponse =
+  DeleteApnsVoipChannelResponse as any as S.Schema<UpdateApnsVoipChannelResponse>;
 export interface APNSVoipSandboxChannelRequest {
   BundleId?: string;
   Certificate?: string;
@@ -8883,20 +8595,8 @@ export interface APNSVoipSandboxChannelRequest {
   TokenKey?: string;
   TokenKeyId?: string;
 }
-export const APNSVoipSandboxChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BundleId: S.optional(S.String),
-    Certificate: S.optional(S.String),
-    DefaultAuthenticationMethod: S.optional(S.String),
-    Enabled: S.optional(S.Boolean),
-    PrivateKey: S.optional(S.String),
-    TeamId: S.optional(S.String),
-    TokenKey: S.optional(S.String),
-    TokenKeyId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "APNSVoipSandboxChannelRequest",
-}) as any as S.Schema<APNSVoipSandboxChannelRequest>;
+export const APNSVoipSandboxChannelRequest =
+  APNSSandboxChannelRequest as any as S.Schema<APNSVoipSandboxChannelRequest>;
 export interface UpdateApnsVoipSandboxChannelRequest {
   APNSVoipSandboxChannelRequest?: APNSVoipSandboxChannelRequest;
   ApplicationId: string;
@@ -8923,15 +8623,8 @@ export const UpdateApnsVoipSandboxChannelRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateApnsVoipSandboxChannelResponse {
   APNSVoipSandboxChannelResponse: APNSVoipSandboxChannelResponse & { Platform: string };
 }
-export const UpdateApnsVoipSandboxChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    APNSVoipSandboxChannelResponse: S.optional(APNSVoipSandboxChannelResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "APNSVoipSandboxChannelResponse" }),
-  }),
-).annotate({
-  identifier: "UpdateApnsVoipSandboxChannelResponse",
-}) as any as S.Schema<UpdateApnsVoipSandboxChannelResponse>;
+export const UpdateApnsVoipSandboxChannelResponse =
+  DeleteApnsVoipSandboxChannelResponse as any as S.Schema<UpdateApnsVoipSandboxChannelResponse>;
 export interface WriteApplicationSettingsRequest {
   CampaignHook?: CampaignHook;
   CloudWatchMetricsEnabled?: boolean;
@@ -8978,15 +8671,8 @@ export const UpdateApplicationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateApplicationSettingsResponse {
   ApplicationSettingsResource: ApplicationSettingsResource & { ApplicationId: string };
 }
-export const UpdateApplicationSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationSettingsResource: S.optional(ApplicationSettingsResource)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "ApplicationSettingsResource" }),
-  }),
-).annotate({
-  identifier: "UpdateApplicationSettingsResponse",
-}) as any as S.Schema<UpdateApplicationSettingsResponse>;
+export const UpdateApplicationSettingsResponse =
+  GetApplicationSettingsResponse as any as S.Schema<UpdateApplicationSettingsResponse>;
 export interface BaiduChannelRequest {
   ApiKey?: string;
   Enabled?: boolean;
@@ -9025,15 +8711,8 @@ export const UpdateBaiduChannelRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateBaiduChannelResponse {
   BaiduChannelResponse: BaiduChannelResponse & { Credential: string; Platform: string };
 }
-export const UpdateBaiduChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BaiduChannelResponse: S.optional(BaiduChannelResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "BaiduChannelResponse" }),
-  }),
-).annotate({
-  identifier: "UpdateBaiduChannelResponse",
-}) as any as S.Schema<UpdateBaiduChannelResponse>;
+export const UpdateBaiduChannelResponse =
+  DeleteBaiduChannelResponse as any as S.Schema<UpdateBaiduChannelResponse>;
 export interface UpdateCampaignRequest {
   ApplicationId: string;
   CampaignId: string;
@@ -9176,13 +8855,8 @@ export interface UpdateCampaignResponse {
     };
   };
 }
-export const UpdateCampaignResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CampaignResponse: S.optional(CampaignResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "CampaignResponse" }),
-  }),
-).annotate({ identifier: "UpdateCampaignResponse" }) as any as S.Schema<UpdateCampaignResponse>;
+export const UpdateCampaignResponse =
+  CreateCampaignResponse as any as S.Schema<UpdateCampaignResponse>;
 export interface EmailChannelRequest {
   ConfigurationSet?: string;
   Enabled?: boolean;
@@ -9227,15 +8901,8 @@ export const UpdateEmailChannelRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateEmailChannelResponse {
   EmailChannelResponse: EmailChannelResponse & { Platform: string };
 }
-export const UpdateEmailChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EmailChannelResponse: S.optional(EmailChannelResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "EmailChannelResponse" }),
-  }),
-).annotate({
-  identifier: "UpdateEmailChannelResponse",
-}) as any as S.Schema<UpdateEmailChannelResponse>;
+export const UpdateEmailChannelResponse =
+  DeleteEmailChannelResponse as any as S.Schema<UpdateEmailChannelResponse>;
 export interface UpdateEmailTemplateRequest {
   CreateNewVersion?: boolean;
   EmailTemplateRequest?: EmailTemplateRequest;
@@ -9266,15 +8933,8 @@ export const UpdateEmailTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateEmailTemplateResponse {
   MessageBody: MessageBody;
 }
-export const UpdateEmailTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MessageBody: S.optional(MessageBody)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "MessageBody" }),
-  }),
-).annotate({
-  identifier: "UpdateEmailTemplateResponse",
-}) as any as S.Schema<UpdateEmailTemplateResponse>;
+export const UpdateEmailTemplateResponse =
+  DeleteEmailTemplateResponse as any as S.Schema<UpdateEmailTemplateResponse>;
 export interface EndpointRequest {
   Address?: string;
   Attributes?: { [key: string]: string[] | undefined };
@@ -9288,21 +8948,7 @@ export interface EndpointRequest {
   RequestId?: string;
   User?: EndpointUser;
 }
-export const EndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Address: S.optional(S.String),
-    Attributes: S.optional(MapOfListOf__string),
-    ChannelType: S.optional(ChannelType),
-    Demographic: S.optional(EndpointDemographic),
-    EffectiveDate: S.optional(S.String),
-    EndpointStatus: S.optional(S.String),
-    Location: S.optional(EndpointLocation),
-    Metrics: S.optional(MapOf__double),
-    OptOut: S.optional(S.String),
-    RequestId: S.optional(S.String),
-    User: S.optional(EndpointUser),
-  }),
-).annotate({ identifier: "EndpointRequest" }) as any as S.Schema<EndpointRequest>;
+export const EndpointRequest = PublicEndpoint as any as S.Schema<EndpointRequest>;
 export interface UpdateEndpointRequest {
   ApplicationId: string;
   EndpointId: string;
@@ -9400,15 +9046,8 @@ export const UpdateEndpointsBatchRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateEndpointsBatchResponse {
   MessageBody: MessageBody;
 }
-export const UpdateEndpointsBatchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MessageBody: S.optional(MessageBody)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "MessageBody" }),
-  }),
-).annotate({
-  identifier: "UpdateEndpointsBatchResponse",
-}) as any as S.Schema<UpdateEndpointsBatchResponse>;
+export const UpdateEndpointsBatchResponse =
+  DeleteEmailTemplateResponse as any as S.Schema<UpdateEndpointsBatchResponse>;
 export interface GCMChannelRequest {
   ApiKey?: string;
   DefaultAuthenticationMethod?: string;
@@ -9447,13 +9086,8 @@ export const UpdateGcmChannelRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateGcmChannelResponse {
   GCMChannelResponse: GCMChannelResponse & { Platform: string };
 }
-export const UpdateGcmChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GCMChannelResponse: S.optional(GCMChannelResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "GCMChannelResponse" }),
-  }),
-).annotate({ identifier: "UpdateGcmChannelResponse" }) as any as S.Schema<UpdateGcmChannelResponse>;
+export const UpdateGcmChannelResponse =
+  DeleteGcmChannelResponse as any as S.Schema<UpdateGcmChannelResponse>;
 export interface UpdateInAppTemplateRequest {
   CreateNewVersion?: boolean;
   InAppTemplateRequest?: InAppTemplateRequest;
@@ -9484,15 +9118,8 @@ export const UpdateInAppTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateInAppTemplateResponse {
   MessageBody: MessageBody;
 }
-export const UpdateInAppTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MessageBody: S.optional(MessageBody)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "MessageBody" }),
-  }),
-).annotate({
-  identifier: "UpdateInAppTemplateResponse",
-}) as any as S.Schema<UpdateInAppTemplateResponse>;
+export const UpdateInAppTemplateResponse =
+  DeleteEmailTemplateResponse as any as S.Schema<UpdateInAppTemplateResponse>;
 export interface UpdateJourneyRequest {
   ApplicationId: string;
   JourneyId: string;
@@ -9653,13 +9280,8 @@ export interface UpdateJourneyResponse {
     };
   };
 }
-export const UpdateJourneyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JourneyResponse: S.optional(JourneyResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "JourneyResponse" }),
-  }),
-).annotate({ identifier: "UpdateJourneyResponse" }) as any as S.Schema<UpdateJourneyResponse>;
+export const UpdateJourneyResponse =
+  CreateJourneyResponse as any as S.Schema<UpdateJourneyResponse>;
 export interface JourneyStateRequest {
   State?: State;
 }
@@ -9867,15 +9489,8 @@ export const UpdatePushTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdatePushTemplateResponse {
   MessageBody: MessageBody;
 }
-export const UpdatePushTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MessageBody: S.optional(MessageBody)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "MessageBody" }),
-  }),
-).annotate({
-  identifier: "UpdatePushTemplateResponse",
-}) as any as S.Schema<UpdatePushTemplateResponse>;
+export const UpdatePushTemplateResponse =
+  DeleteEmailTemplateResponse as any as S.Schema<UpdatePushTemplateResponse>;
 export interface UpdateRecommenderConfigurationShape {
   Attributes?: { [key: string]: string | undefined };
   Description?: string;
@@ -9887,21 +9502,8 @@ export interface UpdateRecommenderConfigurationShape {
   RecommendationsDisplayName?: string;
   RecommendationsPerMessage?: number;
 }
-export const UpdateRecommenderConfigurationShape = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Attributes: S.optional(MapOf__string),
-    Description: S.optional(S.String),
-    Name: S.optional(S.String),
-    RecommendationProviderIdType: S.optional(S.String),
-    RecommendationProviderRoleArn: S.optional(S.String),
-    RecommendationProviderUri: S.optional(S.String),
-    RecommendationTransformerUri: S.optional(S.String),
-    RecommendationsDisplayName: S.optional(S.String),
-    RecommendationsPerMessage: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UpdateRecommenderConfigurationShape",
-}) as any as S.Schema<UpdateRecommenderConfigurationShape>;
+export const UpdateRecommenderConfigurationShape =
+  CreateRecommenderConfigurationShape as any as S.Schema<UpdateRecommenderConfigurationShape>;
 export interface UpdateRecommenderConfigurationRequest {
   RecommenderId: string;
   UpdateRecommenderConfiguration?: UpdateRecommenderConfigurationShape;
@@ -9934,15 +9536,8 @@ export interface UpdateRecommenderConfigurationResponse {
     RecommendationProviderUri: string;
   };
 }
-export const UpdateRecommenderConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RecommenderConfigurationResponse: S.optional(RecommenderConfigurationResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "RecommenderConfigurationResponse" }),
-  }),
-).annotate({
-  identifier: "UpdateRecommenderConfigurationResponse",
-}) as any as S.Schema<UpdateRecommenderConfigurationResponse>;
+export const UpdateRecommenderConfigurationResponse =
+  CreateRecommenderConfigurationResponse as any as S.Schema<UpdateRecommenderConfigurationResponse>;
 export interface UpdateSegmentRequest {
   ApplicationId: string;
   SegmentId: string;
@@ -10045,13 +9640,8 @@ export interface UpdateSegmentResponse {
     };
   };
 }
-export const UpdateSegmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SegmentResponse: S.optional(SegmentResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "SegmentResponse" }),
-  }),
-).annotate({ identifier: "UpdateSegmentResponse" }) as any as S.Schema<UpdateSegmentResponse>;
+export const UpdateSegmentResponse =
+  CreateSegmentResponse as any as S.Schema<UpdateSegmentResponse>;
 export interface SMSChannelRequest {
   Enabled?: boolean;
   SenderId?: string;
@@ -10088,13 +9678,8 @@ export const UpdateSmsChannelRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSmsChannelResponse {
   SMSChannelResponse: SMSChannelResponse & { Platform: string };
 }
-export const UpdateSmsChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SMSChannelResponse: S.optional(SMSChannelResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "SMSChannelResponse" }),
-  }),
-).annotate({ identifier: "UpdateSmsChannelResponse" }) as any as S.Schema<UpdateSmsChannelResponse>;
+export const UpdateSmsChannelResponse =
+  DeleteSmsChannelResponse as any as S.Schema<UpdateSmsChannelResponse>;
 export interface UpdateSmsTemplateRequest {
   CreateNewVersion?: boolean;
   SMSTemplateRequest?: SMSTemplateRequest;
@@ -10123,15 +9708,8 @@ export const UpdateSmsTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSmsTemplateResponse {
   MessageBody: MessageBody;
 }
-export const UpdateSmsTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MessageBody: S.optional(MessageBody)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "MessageBody" }),
-  }),
-).annotate({
-  identifier: "UpdateSmsTemplateResponse",
-}) as any as S.Schema<UpdateSmsTemplateResponse>;
+export const UpdateSmsTemplateResponse =
+  DeleteEmailTemplateResponse as any as S.Schema<UpdateSmsTemplateResponse>;
 export interface TemplateActiveVersionRequest {
   Version?: string;
 }
@@ -10168,15 +9746,8 @@ export const UpdateTemplateActiveVersionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateTemplateActiveVersionResponse {
   MessageBody: MessageBody;
 }
-export const UpdateTemplateActiveVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MessageBody: S.optional(MessageBody)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "MessageBody" }),
-  }),
-).annotate({
-  identifier: "UpdateTemplateActiveVersionResponse",
-}) as any as S.Schema<UpdateTemplateActiveVersionResponse>;
+export const UpdateTemplateActiveVersionResponse =
+  DeleteEmailTemplateResponse as any as S.Schema<UpdateTemplateActiveVersionResponse>;
 export interface VoiceChannelRequest {
   Enabled?: boolean;
 }
@@ -10209,15 +9780,8 @@ export const UpdateVoiceChannelRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateVoiceChannelResponse {
   VoiceChannelResponse: VoiceChannelResponse & { Platform: string };
 }
-export const UpdateVoiceChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    VoiceChannelResponse: S.optional(VoiceChannelResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "VoiceChannelResponse" }),
-  }),
-).annotate({
-  identifier: "UpdateVoiceChannelResponse",
-}) as any as S.Schema<UpdateVoiceChannelResponse>;
+export const UpdateVoiceChannelResponse =
+  DeleteVoiceChannelResponse as any as S.Schema<UpdateVoiceChannelResponse>;
 export interface UpdateVoiceTemplateRequest {
   CreateNewVersion?: boolean;
   TemplateName: string;
@@ -10248,15 +9812,8 @@ export const UpdateVoiceTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateVoiceTemplateResponse {
   MessageBody: MessageBody;
 }
-export const UpdateVoiceTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MessageBody: S.optional(MessageBody)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "MessageBody" }),
-  }),
-).annotate({
-  identifier: "UpdateVoiceTemplateResponse",
-}) as any as S.Schema<UpdateVoiceTemplateResponse>;
+export const UpdateVoiceTemplateResponse =
+  DeleteEmailTemplateResponse as any as S.Schema<UpdateVoiceTemplateResponse>;
 export interface VerifyOTPMessageRequestParameters {
   DestinationIdentity?: string;
   Otp?: string;

@@ -169,11 +169,8 @@ export const ApplyVirtualMachineArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplyVirtualMachineArtifactsRequest>;
 
 export interface ApplyVirtualMachineArtifactsResponse {}
-export const ApplyVirtualMachineArtifactsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ApplyVirtualMachineArtifactsResponse",
-}) as any as S.Schema<ApplyVirtualMachineArtifactsResponse>;
+export const ApplyVirtualMachineArtifactsResponse =
+  AddVirtualMachineDataDiskResponse as any as S.Schema<ApplyVirtualMachineArtifactsResponse>;
 
 /** The artifact source's type. */
 export type SourceControlType = "VsoGit" | "GitHub" | "StorageAccount";
@@ -338,10 +335,8 @@ export const ArtifactSourceProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ArtifactSourcesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ArtifactSourcesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ArtifactSourcesCreateOrUpdateResponseTagsMap>;
+export const ArtifactSourcesCreateOrUpdateResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<ArtifactSourcesCreateOrUpdateResponseTagsMap>;
 
 export interface ArtifactSourcesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -434,9 +429,7 @@ export const ClaimLabAnyVmRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClaimLabAnyVmRequest" }) as any as S.Schema<ClaimLabAnyVmRequest>;
 
 export interface ClaimLabAnyVmResponse {}
-export const ClaimLabAnyVmResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ClaimLabAnyVmResponse",
-}) as any as S.Schema<ClaimLabAnyVmResponse>;
+export const ClaimLabAnyVmResponse = AttachDiskResponse as any as S.Schema<ClaimLabAnyVmResponse>;
 
 export interface ClaimVirtualMachineRequest {
   /** The ID of the target subscription. */
@@ -467,9 +460,8 @@ export const ClaimVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClaimVirtualMachineRequest>;
 
 export interface ClaimVirtualMachineResponse {}
-export const ClaimVirtualMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ClaimVirtualMachineResponse",
-}) as any as S.Schema<ClaimVirtualMachineResponse>;
+export const ClaimVirtualMachineResponse =
+  AttachDiskResponse as any as S.Schema<ClaimVirtualMachineResponse>;
 
 export interface ClaimVirtualMachinesUnRequest {
   /** The ID of the target subscription. */
@@ -500,9 +492,8 @@ export const ClaimVirtualMachinesUnRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClaimVirtualMachinesUnRequest>;
 
 export interface ClaimVirtualMachinesUnResponse {}
-export const ClaimVirtualMachinesUnResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ClaimVirtualMachinesUnResponse",
-}) as any as S.Schema<ClaimVirtualMachinesUnResponse>;
+export const ClaimVirtualMachinesUnResponse =
+  AttachDiskResponse as any as S.Schema<ClaimVirtualMachinesUnResponse>;
 
 /** Target cost status */
 export type TargetCostStatus = "Enabled" | "Disabled";
@@ -609,10 +600,8 @@ export const LabCostPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CostsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const CostsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CostsCreateOrUpdateRequestTagsMap>;
+export const CostsCreateOrUpdateRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<CostsCreateOrUpdateRequestTagsMap>;
 
 export interface CostsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -772,10 +761,8 @@ export const LabCostProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CostsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const CostsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CostsCreateOrUpdateResponseTagsMap>;
+export const CostsCreateOrUpdateResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<CostsCreateOrUpdateResponseTagsMap>;
 
 export interface CostsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -821,9 +808,8 @@ export const BulkCreationParameters = /*@__PURE__*/ S.suspend(() =>
 /** The artifacts to be installed on the virtual machine. */
 export type LabVirtualMachineCreationParameterPropertiesInputArtifactsList =
   Array<ArtifactInstallProperties>;
-export const LabVirtualMachineCreationParameterPropertiesInputArtifactsList = /*@__PURE__*/ S.Array(
-  ArtifactInstallProperties,
-) as any as S.Schema<LabVirtualMachineCreationParameterPropertiesInputArtifactsList>;
+export const LabVirtualMachineCreationParameterPropertiesInputArtifactsList =
+  ApplyVirtualMachineArtifactsRequestArtifactsList as any as S.Schema<LabVirtualMachineCreationParameterPropertiesInputArtifactsList>;
 
 /** The reference information for an Azure Marketplace image. */
 export interface GalleryImageReference {
@@ -1059,10 +1045,8 @@ export const ScheduleCreationParameterProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type ScheduleCreationParameterInputTagsMap = { [key: string]: string | undefined };
-export const ScheduleCreationParameterInputTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ScheduleCreationParameterInputTagsMap>;
+export const ScheduleCreationParameterInputTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<ScheduleCreationParameterInputTagsMap>;
 
 /** Properties for creating a schedule. */
 export interface ScheduleCreationParameterInput {
@@ -1179,10 +1163,8 @@ export const LabVirtualMachineCreationParameterPropertiesInput = /*@__PURE__*/ S
 
 /** The tags of the resource. */
 export type CreateLabEnvironmentRequestTagsMap = { [key: string]: string | undefined };
-export const CreateLabEnvironmentRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateLabEnvironmentRequestTagsMap>;
+export const CreateLabEnvironmentRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<CreateLabEnvironmentRequestTagsMap>;
 
 export interface CreateLabEnvironmentRequest {
   /** The ID of the target subscription. */
@@ -1219,9 +1201,8 @@ export const CreateLabEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateLabEnvironmentRequest>;
 
 export interface CreateLabEnvironmentResponse {}
-export const CreateLabEnvironmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateLabEnvironmentResponse",
-}) as any as S.Schema<CreateLabEnvironmentResponse>;
+export const CreateLabEnvironmentResponse =
+  AttachDiskResponse as any as S.Schema<CreateLabEnvironmentResponse>;
 
 /** The state of the Windows OS (i.e. NonSysprepped, SysprepRequested, SysprepApplied). */
 export type WindowsOsState = "NonSysprepped" | "SysprepRequested" | "SysprepApplied";
@@ -1373,10 +1354,8 @@ export const CustomImagePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CustomImagesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const CustomImagesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CustomImagesCreateOrUpdateRequestTagsMap>;
+export const CustomImagesCreateOrUpdateRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<CustomImagesCreateOrUpdateRequestTagsMap>;
 
 export interface CustomImagesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -1417,9 +1396,8 @@ export const CustomImagesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Storage information about the data disks present in the custom image */
 export type CustomImagePropertiesDataDiskStorageInfoList = Array<DataDiskStorageTypeInfo>;
-export const CustomImagePropertiesDataDiskStorageInfoList = /*@__PURE__*/ S.Array(
-  DataDiskStorageTypeInfo,
-) as any as S.Schema<CustomImagePropertiesDataDiskStorageInfoList>;
+export const CustomImagePropertiesDataDiskStorageInfoList =
+  CustomImagePropertiesInputDataDiskStorageInfoList as any as S.Schema<CustomImagePropertiesDataDiskStorageInfoList>;
 
 /** Properties of a custom image. */
 export interface CustomImageProperties {
@@ -1467,10 +1445,8 @@ export const CustomImageProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CustomImagesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const CustomImagesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CustomImagesCreateOrUpdateResponseTagsMap>;
+export const CustomImagesCreateOrUpdateResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<CustomImagesCreateOrUpdateResponseTagsMap>;
 
 export interface CustomImagesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1531,9 +1507,8 @@ export const DeleteArtifactSourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteArtifactSourceRequest>;
 
 export interface DeleteArtifactSourceResponse {}
-export const DeleteArtifactSourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteArtifactSourceResponse",
-}) as any as S.Schema<DeleteArtifactSourceResponse>;
+export const DeleteArtifactSourceResponse =
+  AttachDiskResponse as any as S.Schema<DeleteArtifactSourceResponse>;
 
 export interface DeleteCustomImageRequest {
   /** The ID of the target subscription. */
@@ -1562,9 +1537,8 @@ export const DeleteCustomImageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCustomImageRequest" }) as any as S.Schema<DeleteCustomImageRequest>;
 
 export interface DeleteCustomImageResponse {}
-export const DeleteCustomImageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCustomImageResponse",
-}) as any as S.Schema<DeleteCustomImageResponse>;
+export const DeleteCustomImageResponse =
+  AttachDiskResponse as any as S.Schema<DeleteCustomImageResponse>;
 
 export interface DeleteDiskRequest {
   /** The ID of the target subscription. */
@@ -1596,9 +1570,7 @@ export const DeleteDiskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDiskRequest" }) as any as S.Schema<DeleteDiskRequest>;
 
 export interface DeleteDiskResponse {}
-export const DeleteDiskResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDiskResponse",
-}) as any as S.Schema<DeleteDiskResponse>;
+export const DeleteDiskResponse = AttachDiskResponse as any as S.Schema<DeleteDiskResponse>;
 
 export interface DeleteEnvironmentRequest {
   /** The ID of the target subscription. */
@@ -1630,9 +1602,8 @@ export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEnvironmentRequest" }) as any as S.Schema<DeleteEnvironmentRequest>;
 
 export interface DeleteEnvironmentResponse {}
-export const DeleteEnvironmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEnvironmentResponse",
-}) as any as S.Schema<DeleteEnvironmentResponse>;
+export const DeleteEnvironmentResponse =
+  AttachDiskResponse as any as S.Schema<DeleteEnvironmentResponse>;
 
 export interface DeleteFormulasRequest {
   /** The ID of the target subscription. */
@@ -1661,9 +1632,7 @@ export const DeleteFormulasRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFormulasRequest" }) as any as S.Schema<DeleteFormulasRequest>;
 
 export interface DeleteFormulasResponse {}
-export const DeleteFormulasResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFormulasResponse",
-}) as any as S.Schema<DeleteFormulasResponse>;
+export const DeleteFormulasResponse = AttachDiskResponse as any as S.Schema<DeleteFormulasResponse>;
 
 export interface DeleteGlobalScheduleRequest {
   /** The ID of the target subscription. */
@@ -1691,9 +1660,8 @@ export const DeleteGlobalScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGlobalScheduleRequest>;
 
 export interface DeleteGlobalScheduleResponse {}
-export const DeleteGlobalScheduleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGlobalScheduleResponse",
-}) as any as S.Schema<DeleteGlobalScheduleResponse>;
+export const DeleteGlobalScheduleResponse =
+  AttachDiskResponse as any as S.Schema<DeleteGlobalScheduleResponse>;
 
 export interface DeleteLabRequest {
   /** The ID of the target subscription. */
@@ -1719,9 +1687,7 @@ export const DeleteLabRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteLabRequest" }) as any as S.Schema<DeleteLabRequest>;
 
 export interface DeleteLabResponse {}
-export const DeleteLabResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLabResponse",
-}) as any as S.Schema<DeleteLabResponse>;
+export const DeleteLabResponse = AttachDiskResponse as any as S.Schema<DeleteLabResponse>;
 
 export interface DeleteNotificationChannelRequest {
   /** The ID of the target subscription. */
@@ -1752,11 +1718,8 @@ export const DeleteNotificationChannelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteNotificationChannelRequest>;
 
 export interface DeleteNotificationChannelResponse {}
-export const DeleteNotificationChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteNotificationChannelResponse",
-}) as any as S.Schema<DeleteNotificationChannelResponse>;
+export const DeleteNotificationChannelResponse =
+  AddVirtualMachineDataDiskResponse as any as S.Schema<DeleteNotificationChannelResponse>;
 
 export interface DeletePolicyRequest {
   /** The ID of the target subscription. */
@@ -1788,9 +1751,7 @@ export const DeletePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePolicyRequest" }) as any as S.Schema<DeletePolicyRequest>;
 
 export interface DeletePolicyResponse {}
-export const DeletePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePolicyResponse",
-}) as any as S.Schema<DeletePolicyResponse>;
+export const DeletePolicyResponse = AttachDiskResponse as any as S.Schema<DeletePolicyResponse>;
 
 export interface DeleteScheduleRequest {
   /** The ID of the target subscription. */
@@ -1819,9 +1780,7 @@ export const DeleteScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteScheduleRequest" }) as any as S.Schema<DeleteScheduleRequest>;
 
 export interface DeleteScheduleResponse {}
-export const DeleteScheduleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteScheduleResponse",
-}) as any as S.Schema<DeleteScheduleResponse>;
+export const DeleteScheduleResponse = AttachDiskResponse as any as S.Schema<DeleteScheduleResponse>;
 
 export interface DeleteSecretRequest {
   /** The ID of the target subscription. */
@@ -1853,9 +1812,7 @@ export const DeleteSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSecretRequest" }) as any as S.Schema<DeleteSecretRequest>;
 
 export interface DeleteSecretResponse {}
-export const DeleteSecretResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSecretResponse",
-}) as any as S.Schema<DeleteSecretResponse>;
+export const DeleteSecretResponse = AttachDiskResponse as any as S.Schema<DeleteSecretResponse>;
 
 export interface DeleteServiceFabricRequest {
   /** The ID of the target subscription. */
@@ -1889,9 +1846,8 @@ export const DeleteServiceFabricRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteServiceFabricRequest>;
 
 export interface DeleteServiceFabricResponse {}
-export const DeleteServiceFabricResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteServiceFabricResponse",
-}) as any as S.Schema<DeleteServiceFabricResponse>;
+export const DeleteServiceFabricResponse =
+  AttachDiskResponse as any as S.Schema<DeleteServiceFabricResponse>;
 
 export interface DeleteServiceFabricScheduleRequest {
   /** The ID of the target subscription. */
@@ -1928,11 +1884,8 @@ export const DeleteServiceFabricScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteServiceFabricScheduleRequest>;
 
 export interface DeleteServiceFabricScheduleResponse {}
-export const DeleteServiceFabricScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteServiceFabricScheduleResponse",
-}) as any as S.Schema<DeleteServiceFabricScheduleResponse>;
+export const DeleteServiceFabricScheduleResponse =
+  AddVirtualMachineDataDiskResponse as any as S.Schema<DeleteServiceFabricScheduleResponse>;
 
 export interface DeleteServiceRunnerRequest {
   /** The ID of the target subscription. */
@@ -1963,9 +1916,8 @@ export const DeleteServiceRunnerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteServiceRunnerRequest>;
 
 export interface DeleteServiceRunnerResponse {}
-export const DeleteServiceRunnerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteServiceRunnerResponse",
-}) as any as S.Schema<DeleteServiceRunnerResponse>;
+export const DeleteServiceRunnerResponse =
+  AttachDiskResponse as any as S.Schema<DeleteServiceRunnerResponse>;
 
 export interface DeleteUserRequest {
   /** The ID of the target subscription. */
@@ -1994,9 +1946,7 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUserRequest" }) as any as S.Schema<DeleteUserRequest>;
 
 export interface DeleteUserResponse {}
-export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserResponse",
-}) as any as S.Schema<DeleteUserResponse>;
+export const DeleteUserResponse = AttachDiskResponse as any as S.Schema<DeleteUserResponse>;
 
 export interface DeleteVirtualMachineRequest {
   /** The ID of the target subscription. */
@@ -2027,9 +1977,8 @@ export const DeleteVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVirtualMachineRequest>;
 
 export interface DeleteVirtualMachineResponse {}
-export const DeleteVirtualMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVirtualMachineResponse",
-}) as any as S.Schema<DeleteVirtualMachineResponse>;
+export const DeleteVirtualMachineResponse =
+  AttachDiskResponse as any as S.Schema<DeleteVirtualMachineResponse>;
 
 export interface DeleteVirtualMachineScheduleRequest {
   /** The ID of the target subscription. */
@@ -2063,11 +2012,8 @@ export const DeleteVirtualMachineScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVirtualMachineScheduleRequest>;
 
 export interface DeleteVirtualMachineScheduleResponse {}
-export const DeleteVirtualMachineScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteVirtualMachineScheduleResponse",
-}) as any as S.Schema<DeleteVirtualMachineScheduleResponse>;
+export const DeleteVirtualMachineScheduleResponse =
+  AddVirtualMachineDataDiskResponse as any as S.Schema<DeleteVirtualMachineScheduleResponse>;
 
 export interface DeleteVirtualNetworkRequest {
   /** The ID of the target subscription. */
@@ -2098,9 +2044,8 @@ export const DeleteVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVirtualNetworkRequest>;
 
 export interface DeleteVirtualNetworkResponse {}
-export const DeleteVirtualNetworkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVirtualNetworkResponse",
-}) as any as S.Schema<DeleteVirtualNetworkResponse>;
+export const DeleteVirtualNetworkResponse =
+  AttachDiskResponse as any as S.Schema<DeleteVirtualNetworkResponse>;
 
 export interface DetachDiskRequest {
   /** The ID of the target subscription. */
@@ -2135,9 +2080,7 @@ export const DetachDiskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DetachDiskRequest" }) as any as S.Schema<DetachDiskRequest>;
 
 export interface DetachDiskResponse {}
-export const DetachDiskResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DetachDiskResponse",
-}) as any as S.Schema<DetachDiskResponse>;
+export const DetachDiskResponse = AttachDiskResponse as any as S.Schema<DetachDiskResponse>;
 
 export interface DetachVirtualMachineDataDiskRequest {
   /** The ID of the target subscription. */
@@ -2171,11 +2114,8 @@ export const DetachVirtualMachineDataDiskRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DetachVirtualMachineDataDiskRequest>;
 
 export interface DetachVirtualMachineDataDiskResponse {}
-export const DetachVirtualMachineDataDiskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DetachVirtualMachineDataDiskResponse",
-}) as any as S.Schema<DetachVirtualMachineDataDiskResponse>;
+export const DetachVirtualMachineDataDiskResponse =
+  AddVirtualMachineDataDiskResponse as any as S.Schema<DetachVirtualMachineDataDiskResponse>;
 
 /** Properties of a disk. */
 export interface DiskPropertiesInput {
@@ -2211,10 +2151,8 @@ export const DiskPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DisksCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const DisksCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DisksCreateOrUpdateRequestTagsMap>;
+export const DisksCreateOrUpdateRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<DisksCreateOrUpdateRequestTagsMap>;
 
 export interface DisksCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -2299,10 +2237,8 @@ export const DiskProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DisksCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const DisksCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DisksCreateOrUpdateResponseTagsMap>;
+export const DisksCreateOrUpdateResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<DisksCreateOrUpdateResponseTagsMap>;
 
 export interface DisksCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2341,20 +2277,13 @@ export interface ArmTemplateParameterProperties {
   /** The value of the template parameter. */
   value?: string;
 }
-export const ArmTemplateParameterProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ArmTemplateParameterProperties",
-}) as any as S.Schema<ArmTemplateParameterProperties>;
+export const ArmTemplateParameterProperties =
+  ArtifactParameterProperties as any as S.Schema<ArmTemplateParameterProperties>;
 
 /** The parameters of the Azure Resource Manager template. */
 export type EnvironmentDeploymentPropertiesParametersList = Array<ArmTemplateParameterProperties>;
-export const EnvironmentDeploymentPropertiesParametersList = /*@__PURE__*/ S.Array(
-  ArmTemplateParameterProperties,
-) as any as S.Schema<EnvironmentDeploymentPropertiesParametersList>;
+export const EnvironmentDeploymentPropertiesParametersList =
+  ArtifactInstallPropertiesParametersList as any as S.Schema<EnvironmentDeploymentPropertiesParametersList>;
 
 /** Properties of an environment deployment. */
 export interface EnvironmentDeploymentProperties {
@@ -2390,10 +2319,8 @@ export const EnvironmentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type EnvironmentsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const EnvironmentsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EnvironmentsCreateOrUpdateRequestTagsMap>;
+export const EnvironmentsCreateOrUpdateRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<EnvironmentsCreateOrUpdateRequestTagsMap>;
 
 export interface EnvironmentsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -2463,10 +2390,8 @@ export const EnvironmentProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type EnvironmentsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const EnvironmentsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EnvironmentsCreateOrUpdateResponseTagsMap>;
+export const EnvironmentsCreateOrUpdateResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<EnvironmentsCreateOrUpdateResponseTagsMap>;
 
 export interface EnvironmentsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2524,9 +2449,8 @@ export const ExecuteGlobalScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExecuteGlobalScheduleRequest>;
 
 export interface ExecuteGlobalScheduleResponse {}
-export const ExecuteGlobalScheduleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ExecuteGlobalScheduleResponse",
-}) as any as S.Schema<ExecuteGlobalScheduleResponse>;
+export const ExecuteGlobalScheduleResponse =
+  AttachDiskResponse as any as S.Schema<ExecuteGlobalScheduleResponse>;
 
 export interface ExecuteScheduleRequest {
   /** The ID of the target subscription. */
@@ -2555,9 +2479,8 @@ export const ExecuteScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExecuteScheduleRequest" }) as any as S.Schema<ExecuteScheduleRequest>;
 
 export interface ExecuteScheduleResponse {}
-export const ExecuteScheduleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ExecuteScheduleResponse",
-}) as any as S.Schema<ExecuteScheduleResponse>;
+export const ExecuteScheduleResponse =
+  AttachDiskResponse as any as S.Schema<ExecuteScheduleResponse>;
 
 export interface ExecuteServiceFabricScheduleRequest {
   /** The ID of the target subscription. */
@@ -2594,11 +2517,8 @@ export const ExecuteServiceFabricScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExecuteServiceFabricScheduleRequest>;
 
 export interface ExecuteServiceFabricScheduleResponse {}
-export const ExecuteServiceFabricScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ExecuteServiceFabricScheduleResponse",
-}) as any as S.Schema<ExecuteServiceFabricScheduleResponse>;
+export const ExecuteServiceFabricScheduleResponse =
+  AddVirtualMachineDataDiskResponse as any as S.Schema<ExecuteServiceFabricScheduleResponse>;
 
 export interface ExecuteVirtualMachineScheduleRequest {
   /** The ID of the target subscription. */
@@ -2632,11 +2552,8 @@ export const ExecuteVirtualMachineScheduleRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ExecuteVirtualMachineScheduleRequest>;
 
 export interface ExecuteVirtualMachineScheduleResponse {}
-export const ExecuteVirtualMachineScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ExecuteVirtualMachineScheduleResponse",
-}) as any as S.Schema<ExecuteVirtualMachineScheduleResponse>;
+export const ExecuteVirtualMachineScheduleResponse =
+  AddVirtualMachineDataDiskResponse as any as S.Schema<ExecuteVirtualMachineScheduleResponse>;
 
 export interface ExportLabResourceUsageRequest {
   /** The ID of the target subscription. */
@@ -2670,16 +2587,13 @@ export const ExportLabResourceUsageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExportLabResourceUsageRequest>;
 
 export interface ExportLabResourceUsageResponse {}
-export const ExportLabResourceUsageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ExportLabResourceUsageResponse",
-}) as any as S.Schema<ExportLabResourceUsageResponse>;
+export const ExportLabResourceUsageResponse =
+  AttachDiskResponse as any as S.Schema<ExportLabResourceUsageResponse>;
 
 /** The tags of the resource. */
 export type LabVirtualMachineCreationParameterInputTagsMap = { [key: string]: string | undefined };
-export const LabVirtualMachineCreationParameterInputTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LabVirtualMachineCreationParameterInputTagsMap>;
+export const LabVirtualMachineCreationParameterInputTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<LabVirtualMachineCreationParameterInputTagsMap>;
 
 /** Properties for creating a virtual machine. */
 export interface LabVirtualMachineCreationParameterInput {
@@ -2736,10 +2650,8 @@ export const FormulaPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type FormulasCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const FormulasCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FormulasCreateOrUpdateRequestTagsMap>;
+export const FormulasCreateOrUpdateRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<FormulasCreateOrUpdateRequestTagsMap>;
 
 export interface FormulasCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -2781,24 +2693,19 @@ export const FormulasCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 /** The artifacts to be installed on the virtual machine. */
 export type LabVirtualMachineCreationParameterPropertiesArtifactsList =
   Array<ArtifactInstallProperties>;
-export const LabVirtualMachineCreationParameterPropertiesArtifactsList = /*@__PURE__*/ S.Array(
-  ArtifactInstallProperties,
-) as any as S.Schema<LabVirtualMachineCreationParameterPropertiesArtifactsList>;
+export const LabVirtualMachineCreationParameterPropertiesArtifactsList =
+  ApplyVirtualMachineArtifactsRequestArtifactsList as any as S.Schema<LabVirtualMachineCreationParameterPropertiesArtifactsList>;
 
 /** New or existing data disks to attach to the virtual machine after creation */
 export type LabVirtualMachineCreationParameterPropertiesDataDiskParametersList =
   Array<DataDiskProperties>;
 export const LabVirtualMachineCreationParameterPropertiesDataDiskParametersList =
-  /*@__PURE__*/ S.Array(
-    DataDiskProperties,
-  ) as any as S.Schema<LabVirtualMachineCreationParameterPropertiesDataDiskParametersList>;
+  LabVirtualMachineCreationParameterPropertiesInputDataDiskParametersList as any as S.Schema<LabVirtualMachineCreationParameterPropertiesDataDiskParametersList>;
 
 /** The tags of the resource. */
 export type ScheduleCreationParameterTagsMap = { [key: string]: string | undefined };
-export const ScheduleCreationParameterTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ScheduleCreationParameterTagsMap>;
+export const ScheduleCreationParameterTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<ScheduleCreationParameterTagsMap>;
 
 /** Properties for creating a schedule. */
 export interface ScheduleCreationParameter {
@@ -2918,10 +2825,8 @@ export const LabVirtualMachineCreationParameterProperties = /*@__PURE__*/ S.susp
 
 /** The tags of the resource. */
 export type LabVirtualMachineCreationParameterTagsMap = { [key: string]: string | undefined };
-export const LabVirtualMachineCreationParameterTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LabVirtualMachineCreationParameterTagsMap>;
+export const LabVirtualMachineCreationParameterTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<LabVirtualMachineCreationParameterTagsMap>;
 
 /** Properties for creating a virtual machine. */
 export interface LabVirtualMachineCreationParameter {
@@ -2979,10 +2884,8 @@ export const FormulaProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type FormulasCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const FormulasCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FormulasCreateOrUpdateResponseTagsMap>;
+export const FormulasCreateOrUpdateResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<FormulasCreateOrUpdateResponseTagsMap>;
 
 export interface FormulasCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3020,9 +2923,8 @@ export const ParameterInfo = ArtifactParameterProperties;
 
 /** The parameters of the ARM template. */
 export type GenerateArtifactArmTemplateRequestParametersList = Array<ArtifactParameterProperties>;
-export const GenerateArtifactArmTemplateRequestParametersList = /*@__PURE__*/ S.Array(
-  ArtifactParameterProperties,
-) as any as S.Schema<GenerateArtifactArmTemplateRequestParametersList>;
+export const GenerateArtifactArmTemplateRequestParametersList =
+  ArtifactInstallPropertiesParametersList as any as S.Schema<GenerateArtifactArmTemplateRequestParametersList>;
 
 /** Options for uploading the files for the artifact. UploadFilesAndGenerateSasTokens is the default value. */
 export type FileUploadOptions = "UploadFilesAndGenerateSasTokens" | "None";
@@ -3080,10 +2982,8 @@ export const ArmTemplateInfoTemplateMap = /*@__PURE__*/ S.Record(
 
 /** The parameters of the ARM template. */
 export type ArmTemplateInfoParametersMap = { [key: string]: unknown | undefined };
-export const ArmTemplateInfoParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ArmTemplateInfoParametersMap>;
+export const ArmTemplateInfoParametersMap =
+  ArmTemplateInfoTemplateMap as any as S.Schema<ArmTemplateInfoParametersMap>;
 
 /** Information about a generated ARM template. */
 export interface ArmTemplateInfo {
@@ -3133,17 +3033,13 @@ export const GetArmTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The contents of the ARM template. */
 export type ArmTemplatePropertiesContentsMap = { [key: string]: unknown | undefined };
-export const ArmTemplatePropertiesContentsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ArmTemplatePropertiesContentsMap>;
+export const ArmTemplatePropertiesContentsMap =
+  ArmTemplateInfoTemplateMap as any as S.Schema<ArmTemplatePropertiesContentsMap>;
 
 /** Contents of the file. */
 export type ParametersValueFileInfoParametersValueInfoMap = { [key: string]: unknown | undefined };
-export const ParametersValueFileInfoParametersValueInfoMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ParametersValueFileInfoParametersValueInfoMap>;
+export const ParametersValueFileInfoParametersValueInfoMap =
+  ArmTemplateInfoTemplateMap as any as S.Schema<ParametersValueFileInfoParametersValueInfoMap>;
 
 /** A file containing a set of parameter values for an ARM template. */
 export interface ParametersValueFileInfo {
@@ -3199,10 +3095,8 @@ export const ArmTemplateProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetArmTemplateResponseTagsMap = { [key: string]: string | undefined };
-export const GetArmTemplateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetArmTemplateResponseTagsMap>;
+export const GetArmTemplateResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetArmTemplateResponseTagsMap>;
 
 export interface GetArmTemplateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3266,10 +3160,8 @@ export const GetArtifactRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The artifact's parameters. */
 export type ArtifactPropertiesParametersMap = { [key: string]: unknown | undefined };
-export const ArtifactPropertiesParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ArtifactPropertiesParametersMap>;
+export const ArtifactPropertiesParametersMap =
+  ArmTemplateInfoTemplateMap as any as S.Schema<ArtifactPropertiesParametersMap>;
 
 /** Properties of an artifact. */
 export interface ArtifactProperties {
@@ -3305,10 +3197,8 @@ export const ArtifactProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetArtifactResponseTagsMap = { [key: string]: string | undefined };
-export const GetArtifactResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetArtifactResponseTagsMap>;
+export const GetArtifactResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetArtifactResponseTagsMap>;
 
 export interface GetArtifactResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3369,10 +3259,8 @@ export const GetArtifactSourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetArtifactSourceResponseTagsMap = { [key: string]: string | undefined };
-export const GetArtifactSourceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetArtifactSourceResponseTagsMap>;
+export const GetArtifactSourceResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetArtifactSourceResponseTagsMap>;
 
 export interface GetArtifactSourceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3390,19 +3278,8 @@ export interface GetArtifactSourceResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const GetArtifactSourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ArtifactSourceProperties,
-    tags: S.optional(GetArtifactSourceResponseTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetArtifactSourceResponse",
-}) as any as S.Schema<GetArtifactSourceResponse>;
+export const GetArtifactSourceResponse =
+  ArtifactSourcesCreateOrUpdateResponse as any as S.Schema<GetArtifactSourceResponse>;
 
 export interface GetCostRequest {
   /** The ID of the target subscription. */
@@ -3435,10 +3312,8 @@ export const GetCostRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetCostResponseTagsMap = { [key: string]: string | undefined };
-export const GetCostResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetCostResponseTagsMap>;
+export const GetCostResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetCostResponseTagsMap>;
 
 export interface GetCostResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3499,10 +3374,8 @@ export const GetCustomImageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetCustomImageResponseTagsMap = { [key: string]: string | undefined };
-export const GetCustomImageResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetCustomImageResponseTagsMap>;
+export const GetCustomImageResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetCustomImageResponseTagsMap>;
 
 export interface GetCustomImageResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3566,10 +3439,8 @@ export const GetDiskRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetDiskResponseTagsMap = { [key: string]: string | undefined };
-export const GetDiskResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDiskResponseTagsMap>;
+export const GetDiskResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetDiskResponseTagsMap>;
 
 export interface GetDiskResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3633,10 +3504,8 @@ export const GetEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetEnvironmentResponseTagsMap = { [key: string]: string | undefined };
-export const GetEnvironmentResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetEnvironmentResponseTagsMap>;
+export const GetEnvironmentResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetEnvironmentResponseTagsMap>;
 
 export interface GetEnvironmentResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3697,10 +3566,8 @@ export const GetFormulasRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetFormulasResponseTagsMap = { [key: string]: string | undefined };
-export const GetFormulasResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetFormulasResponseTagsMap>;
+export const GetFormulasResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetFormulasResponseTagsMap>;
 
 export interface GetFormulasResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3803,10 +3670,8 @@ export const ScheduleProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetGlobalScheduleResponseTagsMap = { [key: string]: string | undefined };
-export const GetGlobalScheduleResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetGlobalScheduleResponseTagsMap>;
+export const GetGlobalScheduleResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetGlobalScheduleResponseTagsMap>;
 
 export interface GetGlobalScheduleResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3870,15 +3735,13 @@ export const LabPropertiesLabStorageType = S.String;
 
 /** The ordered list of artifact resource IDs that should be applied on all Linux VM creations by default, prior to the artifacts specified by the user. */
 export type LabPropertiesMandatoryArtifactsResourceIdsLinuxList = Array<string>;
-export const LabPropertiesMandatoryArtifactsResourceIdsLinuxList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LabPropertiesMandatoryArtifactsResourceIdsLinuxList>;
+export const LabPropertiesMandatoryArtifactsResourceIdsLinuxList =
+  WeekDetailsWeekdaysList as any as S.Schema<LabPropertiesMandatoryArtifactsResourceIdsLinuxList>;
 
 /** The ordered list of artifact resource IDs that should be applied on all Windows VM creations by default, prior to the artifacts specified by the user. */
 export type LabPropertiesMandatoryArtifactsResourceIdsWindowsList = Array<string>;
-export const LabPropertiesMandatoryArtifactsResourceIdsWindowsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LabPropertiesMandatoryArtifactsResourceIdsWindowsList>;
+export const LabPropertiesMandatoryArtifactsResourceIdsWindowsList =
+  WeekDetailsWeekdaysList as any as S.Schema<LabPropertiesMandatoryArtifactsResourceIdsWindowsList>;
 
 /** The setting to enable usage of premium data disks. When its value is 'Enabled', creation of standard or premium data disks is allowed. When its value is 'Disabled', only creation of standard data disks is allowed. */
 export type PremiumDataDisk = "Disabled" | "Enabled";
@@ -3935,10 +3798,8 @@ export const LabSupportProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Extended properties of the lab used for experimental features */
 export type LabPropertiesExtendedPropertiesMap = { [key: string]: string | undefined };
-export const LabPropertiesExtendedPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LabPropertiesExtendedPropertiesMap>;
+export const LabPropertiesExtendedPropertiesMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<LabPropertiesExtendedPropertiesMap>;
 
 /** Properties of a lab. */
 export interface LabProperties {
@@ -4014,10 +3875,8 @@ export const LabProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetLabResponseTagsMap = { [key: string]: string | undefined };
-export const GetLabResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetLabResponseTagsMap>;
+export const GetLabResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetLabResponseTagsMap>;
 
 export interface GetLabResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4135,10 +3994,8 @@ export const NotificationChannelProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetNotificationChannelResponseTagsMap = { [key: string]: string | undefined };
-export const GetNotificationChannelResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetNotificationChannelResponseTagsMap>;
+export const GetNotificationChannelResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetNotificationChannelResponseTagsMap>;
 
 export interface GetNotificationChannelResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4366,10 +4223,8 @@ export const PolicyProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type GetPolicyResponseTagsMap = { [key: string]: string | undefined };
-export const GetPolicyResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPolicyResponseTagsMap>;
+export const GetPolicyResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetPolicyResponseTagsMap>;
 
 export interface GetPolicyResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4430,10 +4285,8 @@ export const GetScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetScheduleResponseTagsMap = { [key: string]: string | undefined };
-export const GetScheduleResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetScheduleResponseTagsMap>;
+export const GetScheduleResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetScheduleResponseTagsMap>;
 
 export interface GetScheduleResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4514,10 +4367,8 @@ export const SecretProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetSecretResponseTagsMap = { [key: string]: string | undefined };
-export const GetSecretResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetSecretResponseTagsMap>;
+export const GetSecretResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetSecretResponseTagsMap>;
 
 export interface GetSecretResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4581,17 +4432,13 @@ export const GetServiceFabricRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type ApplicableScheduleTagsMap = { [key: string]: string | undefined };
-export const ApplicableScheduleTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ApplicableScheduleTagsMap>;
+export const ApplicableScheduleTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicableScheduleTagsMap>;
 
 /** Resource tags. */
 export type ScheduleTagsMap = { [key: string]: string | undefined };
-export const ScheduleTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ScheduleTagsMap>;
+export const ScheduleTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<ScheduleTagsMap>;
 
 /** A schedule. */
 export interface Schedule {
@@ -4610,17 +4457,7 @@ export interface Schedule {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const Schedule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ScheduleProperties,
-    tags: S.optional(ScheduleTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
+export const Schedule = GetScheduleResponse as any as S.Schema<Schedule>;
 
 /** Properties of a schedules applicable to a virtual machine. */
 export interface ApplicableScheduleProperties {
@@ -4692,10 +4529,8 @@ export const ServiceFabricProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetServiceFabricResponseTagsMap = { [key: string]: string | undefined };
-export const GetServiceFabricResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetServiceFabricResponseTagsMap>;
+export const GetServiceFabricResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetServiceFabricResponseTagsMap>;
 
 export interface GetServiceFabricResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4764,10 +4599,8 @@ export const GetServiceFabricScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetServiceFabricScheduleResponseTagsMap = { [key: string]: string | undefined };
-export const GetServiceFabricScheduleResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetServiceFabricScheduleResponseTagsMap>;
+export const GetServiceFabricScheduleResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetServiceFabricScheduleResponseTagsMap>;
 
 export interface GetServiceFabricScheduleResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4785,19 +4618,8 @@ export interface GetServiceFabricScheduleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const GetServiceFabricScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ScheduleProperties,
-    tags: S.optional(GetServiceFabricScheduleResponseTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetServiceFabricScheduleResponse",
-}) as any as S.Schema<GetServiceFabricScheduleResponse>;
+export const GetServiceFabricScheduleResponse =
+  GetGlobalScheduleResponse as any as S.Schema<GetServiceFabricScheduleResponse>;
 
 export interface GetServiceRunnerRequest {
   /** The ID of the target subscription. */
@@ -4827,10 +4649,8 @@ export const GetServiceRunnerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetServiceRunnerResponseTagsMap = { [key: string]: string | undefined };
-export const GetServiceRunnerResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetServiceRunnerResponseTagsMap>;
+export const GetServiceRunnerResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetServiceRunnerResponseTagsMap>;
 
 /** Managed identity. */
 export type ManagedIdentityType =
@@ -5007,10 +4827,8 @@ export const UserProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetUserResponseTagsMap = { [key: string]: string | undefined };
-export const GetUserResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetUserResponseTagsMap>;
+export const GetUserResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetUserResponseTagsMap>;
 
 export interface GetUserResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5071,9 +4889,8 @@ export const GetVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The artifacts to be installed on the virtual machine. */
 export type LabVirtualMachinePropertiesArtifactsList = Array<ArtifactInstallProperties>;
-export const LabVirtualMachinePropertiesArtifactsList = /*@__PURE__*/ S.Array(
-  ArtifactInstallProperties,
-) as any as S.Schema<LabVirtualMachinePropertiesArtifactsList>;
+export const LabVirtualMachinePropertiesArtifactsList =
+  ApplyVirtualMachineArtifactsRequestArtifactsList as any as S.Schema<LabVirtualMachinePropertiesArtifactsList>;
 
 /** Properties of an artifact deployment. */
 export interface ArtifactDeploymentStatusProperties {
@@ -5121,9 +4938,8 @@ export const ComputeVmPropertiesStatusesList = /*@__PURE__*/ S.Array(
 
 /** Gets data disks blob uri for the virtual machine. */
 export type ComputeVmPropertiesDataDiskIdsList = Array<string>;
-export const ComputeVmPropertiesDataDiskIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ComputeVmPropertiesDataDiskIdsList>;
+export const ComputeVmPropertiesDataDiskIdsList =
+  WeekDetailsWeekdaysList as any as S.Schema<ComputeVmPropertiesDataDiskIdsList>;
 
 /** A data disks attached to a virtual machine. */
 export interface ComputeDataDisk {
@@ -5316,10 +5132,8 @@ export const LabVirtualMachineProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetVirtualMachineResponseTagsMap = { [key: string]: string | undefined };
-export const GetVirtualMachineResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetVirtualMachineResponseTagsMap>;
+export const GetVirtualMachineResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetVirtualMachineResponseTagsMap>;
 
 export interface GetVirtualMachineResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5426,10 +5240,8 @@ export const GetVirtualMachineScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetVirtualMachineScheduleResponseTagsMap = { [key: string]: string | undefined };
-export const GetVirtualMachineScheduleResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetVirtualMachineScheduleResponseTagsMap>;
+export const GetVirtualMachineScheduleResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetVirtualMachineScheduleResponseTagsMap>;
 
 export interface GetVirtualMachineScheduleResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5447,19 +5259,8 @@ export interface GetVirtualMachineScheduleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const GetVirtualMachineScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ScheduleProperties,
-    tags: S.optional(GetVirtualMachineScheduleResponseTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetVirtualMachineScheduleResponse",
-}) as any as S.Schema<GetVirtualMachineScheduleResponse>;
+export const GetVirtualMachineScheduleResponse =
+  GetGlobalScheduleResponse as any as S.Schema<GetVirtualMachineScheduleResponse>;
 
 export interface GetVirtualNetworkRequest {
   /** The ID of the target subscription. */
@@ -5636,10 +5437,8 @@ export const VirtualNetworkProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetVirtualNetworkResponseTagsMap = { [key: string]: string | undefined };
-export const GetVirtualNetworkResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetVirtualNetworkResponseTagsMap>;
+export const GetVirtualNetworkResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetVirtualNetworkResponseTagsMap>;
 
 export interface GetVirtualNetworkResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5709,10 +5508,8 @@ export const SchedulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GlobalSchedulesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const GlobalSchedulesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GlobalSchedulesCreateOrUpdateRequestTagsMap>;
+export const GlobalSchedulesCreateOrUpdateRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GlobalSchedulesCreateOrUpdateRequestTagsMap>;
 
 export interface GlobalSchedulesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -5750,10 +5547,8 @@ export const GlobalSchedulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type GlobalSchedulesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const GlobalSchedulesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GlobalSchedulesCreateOrUpdateResponseTagsMap>;
+export const GlobalSchedulesCreateOrUpdateResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GlobalSchedulesCreateOrUpdateResponseTagsMap>;
 
 export interface GlobalSchedulesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5771,19 +5566,8 @@ export interface GlobalSchedulesCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const GlobalSchedulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ScheduleProperties,
-    tags: S.optional(GlobalSchedulesCreateOrUpdateResponseTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GlobalSchedulesCreateOrUpdateResponse",
-}) as any as S.Schema<GlobalSchedulesCreateOrUpdateResponse>;
+export const GlobalSchedulesCreateOrUpdateResponse =
+  GetGlobalScheduleResponse as any as S.Schema<GlobalSchedulesCreateOrUpdateResponse>;
 
 export interface GlobalSchedulesRetargetRequest {
   /** The ID of the target subscription. */
@@ -5853,9 +5637,8 @@ export const ImportLabVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImportLabVirtualMachineRequest>;
 
 export interface ImportLabVirtualMachineResponse {}
-export const ImportLabVirtualMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "ImportLabVirtualMachineResponse" },
-) as any as S.Schema<ImportLabVirtualMachineResponse>;
+export const ImportLabVirtualMachineResponse =
+  GlobalSchedulesRetargetResponse as any as S.Schema<ImportLabVirtualMachineResponse>;
 
 /** Type of storage used by the lab. It can be either Premium or Standard. Default is Premium. */
 export type LabPropertiesInputLabStorageType = "Standard" | "Premium" | "StandardSSD";
@@ -5863,15 +5646,13 @@ export const LabPropertiesInputLabStorageType = S.String;
 
 /** The ordered list of artifact resource IDs that should be applied on all Linux VM creations by default, prior to the artifacts specified by the user. */
 export type LabPropertiesInputMandatoryArtifactsResourceIdsLinuxList = Array<string>;
-export const LabPropertiesInputMandatoryArtifactsResourceIdsLinuxList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LabPropertiesInputMandatoryArtifactsResourceIdsLinuxList>;
+export const LabPropertiesInputMandatoryArtifactsResourceIdsLinuxList =
+  WeekDetailsWeekdaysList as any as S.Schema<LabPropertiesInputMandatoryArtifactsResourceIdsLinuxList>;
 
 /** The ordered list of artifact resource IDs that should be applied on all Windows VM creations by default, prior to the artifacts specified by the user. */
 export type LabPropertiesInputMandatoryArtifactsResourceIdsWindowsList = Array<string>;
-export const LabPropertiesInputMandatoryArtifactsResourceIdsWindowsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LabPropertiesInputMandatoryArtifactsResourceIdsWindowsList>;
+export const LabPropertiesInputMandatoryArtifactsResourceIdsWindowsList =
+  WeekDetailsWeekdaysList as any as S.Schema<LabPropertiesInputMandatoryArtifactsResourceIdsWindowsList>;
 
 /** Properties of a lab's announcement banner */
 export interface LabAnnouncementPropertiesInput {
@@ -5900,10 +5681,8 @@ export const LabAnnouncementPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Extended properties of the lab used for experimental features */
 export type LabPropertiesInputExtendedPropertiesMap = { [key: string]: string | undefined };
-export const LabPropertiesInputExtendedPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LabPropertiesInputExtendedPropertiesMap>;
+export const LabPropertiesInputExtendedPropertiesMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<LabPropertiesInputExtendedPropertiesMap>;
 
 /** Properties of a lab. */
 export interface LabPropertiesInput {
@@ -5943,10 +5722,8 @@ export const LabPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type LabsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const LabsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LabsCreateOrUpdateRequestTagsMap>;
+export const LabsCreateOrUpdateRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<LabsCreateOrUpdateRequestTagsMap>;
 
 export interface LabsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -5984,10 +5761,8 @@ export const LabsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type LabsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const LabsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LabsCreateOrUpdateResponseTagsMap>;
+export const LabsCreateOrUpdateResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<LabsCreateOrUpdateResponseTagsMap>;
 
 export interface LabsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6100,10 +5875,8 @@ export const ListArmTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ArmTemplateTagsMap = { [key: string]: string | undefined };
-export const ArmTemplateTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ArmTemplateTagsMap>;
+export const ArmTemplateTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<ArmTemplateTagsMap>;
 
 /** An Azure Resource Manager template. */
 export interface ArmTemplate {
@@ -6122,17 +5895,7 @@ export interface ArmTemplate {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const ArmTemplate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ArmTemplateProperties,
-    tags: S.optional(ArmTemplateTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({ identifier: "ArmTemplate" }) as any as S.Schema<ArmTemplate>;
+export const ArmTemplate = GetArmTemplateResponse as any as S.Schema<ArmTemplate>;
 
 /** The ArmTemplate items on this page */
 export type ArmTemplateListValueList = Array<ArmTemplate>;
@@ -6194,10 +5957,8 @@ export const ListArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ArtifactTagsMap = { [key: string]: string | undefined };
-export const ArtifactTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ArtifactTagsMap>;
+export const ArtifactTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<ArtifactTagsMap>;
 
 /** An artifact. */
 export interface Artifact {
@@ -6216,17 +5977,7 @@ export interface Artifact {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const Artifact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ArtifactProperties,
-    tags: S.optional(ArtifactTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({ identifier: "Artifact" }) as any as S.Schema<Artifact>;
+export const Artifact = GetArtifactResponse as any as S.Schema<Artifact>;
 
 /** The Artifact items on this page */
 export type ArtifactListValueList = Array<Artifact>;
@@ -6287,10 +6038,8 @@ export const ListArtifactSourcesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ArtifactSourceTagsMap = { [key: string]: string | undefined };
-export const ArtifactSourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ArtifactSourceTagsMap>;
+export const ArtifactSourceTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<ArtifactSourceTagsMap>;
 
 /** Properties of an artifact source. */
 export interface ArtifactSource {
@@ -6378,10 +6127,8 @@ export const ListCustomImagesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CustomImageTagsMap = { [key: string]: string | undefined };
-export const CustomImageTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CustomImageTagsMap>;
+export const CustomImageTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<CustomImageTagsMap>;
 
 /** A custom image. */
 export interface CustomImage {
@@ -6400,17 +6147,7 @@ export interface CustomImage {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const CustomImage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: CustomImageProperties,
-    tags: S.optional(CustomImageTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({ identifier: "CustomImage" }) as any as S.Schema<CustomImage>;
+export const CustomImage = GetCustomImageResponse as any as S.Schema<CustomImage>;
 
 /** The CustomImage items on this page */
 export type CustomImageListValueList = Array<CustomImage>;
@@ -6472,10 +6209,8 @@ export const ListDisksRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DiskTagsMap = { [key: string]: string | undefined };
-export const DiskTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DiskTagsMap>;
+export const DiskTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<DiskTagsMap>;
 
 /** A Disk. */
 export interface Disk {
@@ -6494,17 +6229,7 @@ export interface Disk {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const Disk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: DiskProperties,
-    tags: S.optional(DiskTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({ identifier: "Disk" }) as any as S.Schema<Disk>;
+export const Disk = GetDiskResponse as any as S.Schema<Disk>;
 
 /** The Disk items on this page */
 export type DiskListValueList = Array<Disk>;
@@ -6564,10 +6289,8 @@ export const ListEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DtlEnvironmentTagsMap = { [key: string]: string | undefined };
-export const DtlEnvironmentTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DtlEnvironmentTagsMap>;
+export const DtlEnvironmentTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<DtlEnvironmentTagsMap>;
 
 /** An environment, which is essentially an ARM template deployment. */
 export interface DtlEnvironment {
@@ -6586,17 +6309,7 @@ export interface DtlEnvironment {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const DtlEnvironment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: EnvironmentProperties,
-    tags: S.optional(DtlEnvironmentTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({ identifier: "DtlEnvironment" }) as any as S.Schema<DtlEnvironment>;
+export const DtlEnvironment = GetEnvironmentResponse as any as S.Schema<DtlEnvironment>;
 
 /** The DtlEnvironment items on this page */
 export type DtlEnvironmentListValueList = Array<DtlEnvironment>;
@@ -6655,10 +6368,8 @@ export const ListFormulasRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type FormulaTagsMap = { [key: string]: string | undefined };
-export const FormulaTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FormulaTagsMap>;
+export const FormulaTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<FormulaTagsMap>;
 
 /** A formula for creating a VM, specifying an image base and other parameters */
 export interface Formula {
@@ -6677,17 +6388,7 @@ export interface Formula {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const Formula = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: FormulaProperties,
-    tags: S.optional(FormulaTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({ identifier: "Formula" }) as any as S.Schema<Formula>;
+export const Formula = GetFormulasResponse as any as S.Schema<Formula>;
 
 /** The Formula items on this page */
 export type FormulaListValueList = Array<Formula>;
@@ -6778,10 +6479,8 @@ export const GalleryImageProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GalleryImageTagsMap = { [key: string]: string | undefined };
-export const GalleryImageTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GalleryImageTagsMap>;
+export const GalleryImageTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GalleryImageTagsMap>;
 
 /** A gallery image. */
 export interface GalleryImage {
@@ -7126,10 +6825,8 @@ export const ListNotificationChannelsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type NotificationChannelTagsMap = { [key: string]: string | undefined };
-export const NotificationChannelTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NotificationChannelTagsMap>;
+export const NotificationChannelTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<NotificationChannelTagsMap>;
 
 /** A notification. */
 export interface NotificationChannel {
@@ -7220,10 +6917,8 @@ export const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type PolicyTagsMap = { [key: string]: string | undefined };
-export const PolicyTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PolicyTagsMap>;
+export const PolicyTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<PolicyTagsMap>;
 
 /** A Policy. */
 export interface Policy {
@@ -7242,17 +6937,7 @@ export interface Policy {
   /** The location of the resource. */
   location?: string;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: PolicyProperties,
-    tags: S.optional(PolicyTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
+export const Policy = GetPolicyResponse as any as S.Schema<Policy>;
 
 /** The Policy items on this page */
 export type PolicyListValueList = Array<Policy>;
@@ -7463,10 +7148,8 @@ export const ListSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type SecretTagsMap = { [key: string]: string | undefined };
-export const SecretTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SecretTagsMap>;
+export const SecretTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<SecretTagsMap>;
 
 /** A secret. */
 export interface Secret {
@@ -7485,17 +7168,7 @@ export interface Secret {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const Secret = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: SecretProperties,
-    tags: S.optional(SecretTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({ identifier: "Secret" }) as any as S.Schema<Secret>;
+export const Secret = GetSecretResponse as any as S.Schema<Secret>;
 
 /** The Secret items on this page */
 export type SecretListValueList = Array<Secret>;
@@ -7552,10 +7225,8 @@ export const ListServiceFabricApplicableSchedulesRequest = /*@__PURE__*/ S.suspe
 export type ListServiceFabricApplicableSchedulesResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const ListServiceFabricApplicableSchedulesResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListServiceFabricApplicableSchedulesResponseTagsMap>;
+export const ListServiceFabricApplicableSchedulesResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<ListServiceFabricApplicableSchedulesResponseTagsMap>;
 
 export interface ListServiceFabricApplicableSchedulesResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -7629,10 +7300,8 @@ export const ListServiceFabricsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ServiceFabricTagsMap = { [key: string]: string | undefined };
-export const ServiceFabricTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServiceFabricTagsMap>;
+export const ServiceFabricTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<ServiceFabricTagsMap>;
 
 /** A Service Fabric. */
 export interface ServiceFabric {
@@ -7651,17 +7320,7 @@ export interface ServiceFabric {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const ServiceFabric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ServiceFabricProperties,
-    tags: S.optional(ServiceFabricTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({ identifier: "ServiceFabric" }) as any as S.Schema<ServiceFabric>;
+export const ServiceFabric = GetServiceFabricResponse as any as S.Schema<ServiceFabric>;
 
 /** The ServiceFabric items on this page */
 export type ServiceFabricListValueList = Array<ServiceFabric>;
@@ -7763,10 +7422,8 @@ export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UserTagsMap = { [key: string]: string | undefined };
-export const UserTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UserTagsMap>;
+export const UserTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UserTagsMap>;
 
 /** A user profile. */
 export interface User {
@@ -7785,17 +7442,7 @@ export interface User {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: UserProperties,
-    tags: S.optional(UserTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({ identifier: "User" }) as any as S.Schema<User>;
+export const User = GetUserResponse as any as S.Schema<User>;
 
 /** The User items on this page */
 export type UserListValueList = Array<User>;
@@ -7847,10 +7494,8 @@ export const ListVirtualMachineApplicableSchedulesRequest = /*@__PURE__*/ S.susp
 export type ListVirtualMachineApplicableSchedulesResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const ListVirtualMachineApplicableSchedulesResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListVirtualMachineApplicableSchedulesResponseTagsMap>;
+export const ListVirtualMachineApplicableSchedulesResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<ListVirtualMachineApplicableSchedulesResponseTagsMap>;
 
 export interface ListVirtualMachineApplicableSchedulesResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -7868,19 +7513,8 @@ export interface ListVirtualMachineApplicableSchedulesResponse {
   /** The properties of the resource. */
   properties: ApplicableScheduleProperties;
 }
-export const ListVirtualMachineApplicableSchedulesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    location: S.optional(S.String),
-    tags: S.optional(ListVirtualMachineApplicableSchedulesResponseTagsMap),
-    properties: ApplicableScheduleProperties,
-  }),
-).annotate({
-  identifier: "ListVirtualMachineApplicableSchedulesResponse",
-}) as any as S.Schema<ListVirtualMachineApplicableSchedulesResponse>;
+export const ListVirtualMachineApplicableSchedulesResponse =
+  ListServiceFabricApplicableSchedulesResponse as any as S.Schema<ListVirtualMachineApplicableSchedulesResponse>;
 
 export interface ListVirtualMachinesRequest {
   /** The ID of the target subscription. */
@@ -7921,10 +7555,8 @@ export const ListVirtualMachinesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type LabVirtualMachineTagsMap = { [key: string]: string | undefined };
-export const LabVirtualMachineTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LabVirtualMachineTagsMap>;
+export const LabVirtualMachineTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<LabVirtualMachineTagsMap>;
 
 /** A virtual machine. */
 export interface LabVirtualMachine {
@@ -8054,10 +7686,8 @@ export const ListVirtualNetworksRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type VirtualNetworkTagsMap = { [key: string]: string | undefined };
-export const VirtualNetworkTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VirtualNetworkTagsMap>;
+export const VirtualNetworkTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<VirtualNetworkTagsMap>;
 
 /** A virtual network. */
 export interface VirtualNetwork {
@@ -8110,9 +7740,8 @@ export const VirtualNetworkList = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of event for which this notification is enabled. */
 export type NotificationChannelPropertiesInputEventsList = Array<Event>;
-export const NotificationChannelPropertiesInputEventsList = /*@__PURE__*/ S.Array(
-  Event,
-) as any as S.Schema<NotificationChannelPropertiesInputEventsList>;
+export const NotificationChannelPropertiesInputEventsList =
+  NotificationChannelPropertiesEventsList as any as S.Schema<NotificationChannelPropertiesInputEventsList>;
 
 /** Properties of a schedule. */
 export interface NotificationChannelPropertiesInput {
@@ -8143,10 +7772,8 @@ export const NotificationChannelPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 export type NotificationChannelsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const NotificationChannelsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NotificationChannelsCreateOrUpdateRequestTagsMap>;
+export const NotificationChannelsCreateOrUpdateRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<NotificationChannelsCreateOrUpdateRequestTagsMap>;
 
 export interface NotificationChannelsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -8189,10 +7816,8 @@ export const NotificationChannelsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend
 export type NotificationChannelsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const NotificationChannelsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NotificationChannelsCreateOrUpdateResponseTagsMap>;
+export const NotificationChannelsCreateOrUpdateResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<NotificationChannelsCreateOrUpdateResponseTagsMap>;
 
 export interface NotificationChannelsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -8210,19 +7835,8 @@ export interface NotificationChannelsCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const NotificationChannelsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: NotificationChannelProperties,
-    tags: S.optional(NotificationChannelsCreateOrUpdateResponseTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NotificationChannelsCreateOrUpdateResponse",
-}) as any as S.Schema<NotificationChannelsCreateOrUpdateResponse>;
+export const NotificationChannelsCreateOrUpdateResponse =
+  GetNotificationChannelResponse as any as S.Schema<NotificationChannelsCreateOrUpdateResponse>;
 
 export interface NotifyNotificationChannelRequest {
   /** The ID of the target subscription. */
@@ -8259,11 +7873,8 @@ export const NotifyNotificationChannelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotifyNotificationChannelRequest>;
 
 export interface NotifyNotificationChannelResponse {}
-export const NotifyNotificationChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "NotifyNotificationChannelResponse",
-}) as any as S.Schema<NotifyNotificationChannelResponse>;
+export const NotifyNotificationChannelResponse =
+  AddVirtualMachineDataDiskResponse as any as S.Schema<NotifyNotificationChannelResponse>;
 
 /** Properties of a Policy. */
 export interface PolicyPropertiesInput {
@@ -8293,10 +7904,8 @@ export const PolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type PoliciesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const PoliciesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PoliciesCreateOrUpdateRequestTagsMap>;
+export const PoliciesCreateOrUpdateRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<PoliciesCreateOrUpdateRequestTagsMap>;
 
 export interface PoliciesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -8340,10 +7949,8 @@ export const PoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type PoliciesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const PoliciesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PoliciesCreateOrUpdateResponseTagsMap>;
+export const PoliciesCreateOrUpdateResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<PoliciesCreateOrUpdateResponseTagsMap>;
 
 export interface PoliciesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -8441,12 +8048,7 @@ export interface PolicyViolation {
   /** The message of the policy violation. */
   message?: string;
 }
-export const PolicyViolation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  }),
-).annotate({ identifier: "PolicyViolation" }) as any as S.Schema<PolicyViolation>;
+export const PolicyViolation = OperationError as any as S.Schema<PolicyViolation>;
 
 /** The list of policy violations. */
 export type PolicySetResultPolicyViolationsList = Array<PolicyViolation>;
@@ -8514,9 +8116,8 @@ export const RedeployVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RedeployVirtualMachineRequest>;
 
 export interface RedeployVirtualMachineResponse {}
-export const RedeployVirtualMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RedeployVirtualMachineResponse",
-}) as any as S.Schema<RedeployVirtualMachineResponse>;
+export const RedeployVirtualMachineResponse =
+  AttachDiskResponse as any as S.Schema<RedeployVirtualMachineResponse>;
 
 export interface ResizeVirtualMachineRequest {
   /** The ID of the target subscription. */
@@ -8550,9 +8151,8 @@ export const ResizeVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResizeVirtualMachineRequest>;
 
 export interface ResizeVirtualMachineResponse {}
-export const ResizeVirtualMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResizeVirtualMachineResponse",
-}) as any as S.Schema<ResizeVirtualMachineResponse>;
+export const ResizeVirtualMachineResponse =
+  AttachDiskResponse as any as S.Schema<ResizeVirtualMachineResponse>;
 
 export interface RestartVirtualMachineRequest {
   /** The ID of the target subscription. */
@@ -8583,16 +8183,13 @@ export const RestartVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestartVirtualMachineRequest>;
 
 export interface RestartVirtualMachineResponse {}
-export const RestartVirtualMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RestartVirtualMachineResponse",
-}) as any as S.Schema<RestartVirtualMachineResponse>;
+export const RestartVirtualMachineResponse =
+  AttachDiskResponse as any as S.Schema<RestartVirtualMachineResponse>;
 
 /** Resource tags. */
 export type SchedulesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const SchedulesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SchedulesCreateOrUpdateRequestTagsMap>;
+export const SchedulesCreateOrUpdateRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<SchedulesCreateOrUpdateRequestTagsMap>;
 
 export interface SchedulesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -8633,10 +8230,8 @@ export const SchedulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type SchedulesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const SchedulesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SchedulesCreateOrUpdateResponseTagsMap>;
+export const SchedulesCreateOrUpdateResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<SchedulesCreateOrUpdateResponseTagsMap>;
 
 export interface SchedulesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -8654,19 +8249,8 @@ export interface SchedulesCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const SchedulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ScheduleProperties,
-    tags: S.optional(SchedulesCreateOrUpdateResponseTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SchedulesCreateOrUpdateResponse",
-}) as any as S.Schema<SchedulesCreateOrUpdateResponse>;
+export const SchedulesCreateOrUpdateResponse =
+  GetGlobalScheduleResponse as any as S.Schema<SchedulesCreateOrUpdateResponse>;
 
 /** Properties of a secret. */
 export interface SecretPropertiesInput {
@@ -8681,10 +8265,8 @@ export const SecretPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type SecretsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const SecretsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SecretsCreateOrUpdateRequestTagsMap>;
+export const SecretsCreateOrUpdateRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<SecretsCreateOrUpdateRequestTagsMap>;
 
 export interface SecretsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -8728,10 +8310,8 @@ export const SecretsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type SecretsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const SecretsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SecretsCreateOrUpdateResponseTagsMap>;
+export const SecretsCreateOrUpdateResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<SecretsCreateOrUpdateResponseTagsMap>;
 
 export interface SecretsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -8767,10 +8347,8 @@ export const SecretsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 export type ServiceFabricSchedulesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const ServiceFabricSchedulesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServiceFabricSchedulesCreateOrUpdateRequestTagsMap>;
+export const ServiceFabricSchedulesCreateOrUpdateRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<ServiceFabricSchedulesCreateOrUpdateRequestTagsMap>;
 
 export interface ServiceFabricSchedulesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -8819,10 +8397,8 @@ export const ServiceFabricSchedulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspe
 export type ServiceFabricSchedulesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const ServiceFabricSchedulesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServiceFabricSchedulesCreateOrUpdateResponseTagsMap>;
+export const ServiceFabricSchedulesCreateOrUpdateResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<ServiceFabricSchedulesCreateOrUpdateResponseTagsMap>;
 
 export interface ServiceFabricSchedulesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -8840,19 +8416,8 @@ export interface ServiceFabricSchedulesCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const ServiceFabricSchedulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ScheduleProperties,
-    tags: S.optional(ServiceFabricSchedulesCreateOrUpdateResponseTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ServiceFabricSchedulesCreateOrUpdateResponse",
-}) as any as S.Schema<ServiceFabricSchedulesCreateOrUpdateResponse>;
+export const ServiceFabricSchedulesCreateOrUpdateResponse =
+  GetGlobalScheduleResponse as any as S.Schema<ServiceFabricSchedulesCreateOrUpdateResponse>;
 
 /** Properties of a service fabric. */
 export interface ServiceFabricPropertiesInput {
@@ -8872,10 +8437,8 @@ export const ServiceFabricPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ServiceFabricsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ServiceFabricsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServiceFabricsCreateOrUpdateRequestTagsMap>;
+export const ServiceFabricsCreateOrUpdateRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<ServiceFabricsCreateOrUpdateRequestTagsMap>;
 
 export interface ServiceFabricsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -8919,10 +8482,8 @@ export const ServiceFabricsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ServiceFabricsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ServiceFabricsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServiceFabricsCreateOrUpdateResponseTagsMap>;
+export const ServiceFabricsCreateOrUpdateResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<ServiceFabricsCreateOrUpdateResponseTagsMap>;
 
 export interface ServiceFabricsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -8956,10 +8517,8 @@ export const ServiceFabricsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type ServiceRunnersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ServiceRunnersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServiceRunnersCreateOrUpdateRequestTagsMap>;
+export const ServiceRunnersCreateOrUpdateRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<ServiceRunnersCreateOrUpdateRequestTagsMap>;
 
 /** Properties of a service runner. */
 export interface ServiceRunnerProperties {
@@ -9014,10 +8573,8 @@ export const ServiceRunnersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ServiceRunnersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ServiceRunnersCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServiceRunnersCreateOrUpdateResponseTagsMap>;
+export const ServiceRunnersCreateOrUpdateResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<ServiceRunnersCreateOrUpdateResponseTagsMap>;
 
 export interface ServiceRunnersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -9081,9 +8638,8 @@ export const StartServiceFabricRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartServiceFabricRequest>;
 
 export interface StartServiceFabricResponse {}
-export const StartServiceFabricResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartServiceFabricResponse",
-}) as any as S.Schema<StartServiceFabricResponse>;
+export const StartServiceFabricResponse =
+  AttachDiskResponse as any as S.Schema<StartServiceFabricResponse>;
 
 export interface StartVirtualMachineRequest {
   /** The ID of the target subscription. */
@@ -9114,9 +8670,8 @@ export const StartVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartVirtualMachineRequest>;
 
 export interface StartVirtualMachineResponse {}
-export const StartVirtualMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartVirtualMachineResponse",
-}) as any as S.Schema<StartVirtualMachineResponse>;
+export const StartVirtualMachineResponse =
+  AttachDiskResponse as any as S.Schema<StartVirtualMachineResponse>;
 
 export interface StopServiceFabricRequest {
   /** The ID of the target subscription. */
@@ -9148,9 +8703,8 @@ export const StopServiceFabricRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopServiceFabricRequest" }) as any as S.Schema<StopServiceFabricRequest>;
 
 export interface StopServiceFabricResponse {}
-export const StopServiceFabricResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopServiceFabricResponse",
-}) as any as S.Schema<StopServiceFabricResponse>;
+export const StopServiceFabricResponse =
+  AttachDiskResponse as any as S.Schema<StopServiceFabricResponse>;
 
 export interface StopVirtualMachineRequest {
   /** The ID of the target subscription. */
@@ -9181,9 +8735,8 @@ export const StopVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopVirtualMachineRequest>;
 
 export interface StopVirtualMachineResponse {}
-export const StopVirtualMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopVirtualMachineResponse",
-}) as any as S.Schema<StopVirtualMachineResponse>;
+export const StopVirtualMachineResponse =
+  AttachDiskResponse as any as S.Schema<StopVirtualMachineResponse>;
 
 export interface TransferVirtualMachineDisksRequest {
   /** The ID of the target subscription. */
@@ -9214,18 +8767,13 @@ export const TransferVirtualMachineDisksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TransferVirtualMachineDisksRequest>;
 
 export interface TransferVirtualMachineDisksResponse {}
-export const TransferVirtualMachineDisksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TransferVirtualMachineDisksResponse",
-}) as any as S.Schema<TransferVirtualMachineDisksResponse>;
+export const TransferVirtualMachineDisksResponse =
+  AddVirtualMachineDataDiskResponse as any as S.Schema<TransferVirtualMachineDisksResponse>;
 
 /** The tags of the resource. */
 export type UpdateArtifactSourceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateArtifactSourceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateArtifactSourceRequestTagsMap>;
+export const UpdateArtifactSourceRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateArtifactSourceRequestTagsMap>;
 
 export interface UpdateArtifactSourceRequest {
   /** The ID of the target subscription. */
@@ -9260,10 +8808,8 @@ export const UpdateArtifactSourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateArtifactSourceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateArtifactSourceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateArtifactSourceResponseTagsMap>;
+export const UpdateArtifactSourceResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateArtifactSourceResponseTagsMap>;
 
 export interface UpdateArtifactSourceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -9281,26 +8827,13 @@ export interface UpdateArtifactSourceResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const UpdateArtifactSourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ArtifactSourceProperties,
-    tags: S.optional(UpdateArtifactSourceResponseTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateArtifactSourceResponse",
-}) as any as S.Schema<UpdateArtifactSourceResponse>;
+export const UpdateArtifactSourceResponse =
+  ArtifactSourcesCreateOrUpdateResponse as any as S.Schema<UpdateArtifactSourceResponse>;
 
 /** The tags of the resource. */
 export type UpdateCustomImageRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateCustomImageRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCustomImageRequestTagsMap>;
+export const UpdateCustomImageRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCustomImageRequestTagsMap>;
 
 export interface UpdateCustomImageRequest {
   /** The ID of the target subscription. */
@@ -9333,10 +8866,8 @@ export const UpdateCustomImageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateCustomImageResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateCustomImageResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCustomImageResponseTagsMap>;
+export const UpdateCustomImageResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCustomImageResponseTagsMap>;
 
 export interface UpdateCustomImageResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -9354,26 +8885,13 @@ export interface UpdateCustomImageResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const UpdateCustomImageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: CustomImageProperties,
-    tags: S.optional(UpdateCustomImageResponseTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateCustomImageResponse",
-}) as any as S.Schema<UpdateCustomImageResponse>;
+export const UpdateCustomImageResponse =
+  CustomImagesCreateOrUpdateResponse as any as S.Schema<UpdateCustomImageResponse>;
 
 /** The tags of the resource. */
 export type UpdateDiskRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateDiskRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDiskRequestTagsMap>;
+export const UpdateDiskRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDiskRequestTagsMap>;
 
 export interface UpdateDiskRequest {
   /** The ID of the target subscription. */
@@ -9409,10 +8927,8 @@ export const UpdateDiskRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateDiskResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateDiskResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDiskResponseTagsMap>;
+export const UpdateDiskResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDiskResponseTagsMap>;
 
 export interface UpdateDiskResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -9430,24 +8946,12 @@ export interface UpdateDiskResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const UpdateDiskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: DiskProperties,
-    tags: S.optional(UpdateDiskResponseTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateDiskResponse" }) as any as S.Schema<UpdateDiskResponse>;
+export const UpdateDiskResponse = GetDiskResponse as any as S.Schema<UpdateDiskResponse>;
 
 /** The tags of the resource. */
 export type UpdateEnvironmentRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateEnvironmentRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateEnvironmentRequestTagsMap>;
+export const UpdateEnvironmentRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateEnvironmentRequestTagsMap>;
 
 export interface UpdateEnvironmentRequest {
   /** The ID of the target subscription. */
@@ -9483,10 +8987,8 @@ export const UpdateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateEnvironmentResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateEnvironmentResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateEnvironmentResponseTagsMap>;
+export const UpdateEnvironmentResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateEnvironmentResponseTagsMap>;
 
 export interface UpdateEnvironmentResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -9504,26 +9006,13 @@ export interface UpdateEnvironmentResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const UpdateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: EnvironmentProperties,
-    tags: S.optional(UpdateEnvironmentResponseTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateEnvironmentResponse",
-}) as any as S.Schema<UpdateEnvironmentResponse>;
+export const UpdateEnvironmentResponse =
+  EnvironmentsCreateOrUpdateResponse as any as S.Schema<UpdateEnvironmentResponse>;
 
 /** The tags of the resource. */
 export type UpdateFormulasRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateFormulasRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateFormulasRequestTagsMap>;
+export const UpdateFormulasRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateFormulasRequestTagsMap>;
 
 export interface UpdateFormulasRequest {
   /** The ID of the target subscription. */
@@ -9556,10 +9045,8 @@ export const UpdateFormulasRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateFormulasResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateFormulasResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateFormulasResponseTagsMap>;
+export const UpdateFormulasResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateFormulasResponseTagsMap>;
 
 export interface UpdateFormulasResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -9577,24 +9064,13 @@ export interface UpdateFormulasResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const UpdateFormulasResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: FormulaProperties,
-    tags: S.optional(UpdateFormulasResponseTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateFormulasResponse" }) as any as S.Schema<UpdateFormulasResponse>;
+export const UpdateFormulasResponse =
+  GetFormulasResponse as any as S.Schema<UpdateFormulasResponse>;
 
 /** The tags of the resource. */
 export type UpdateGlobalScheduleRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateGlobalScheduleRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateGlobalScheduleRequestTagsMap>;
+export const UpdateGlobalScheduleRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateGlobalScheduleRequestTagsMap>;
 
 export interface UpdateGlobalScheduleRequest {
   /** The ID of the target subscription. */
@@ -9626,10 +9102,8 @@ export const UpdateGlobalScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateGlobalScheduleResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateGlobalScheduleResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateGlobalScheduleResponseTagsMap>;
+export const UpdateGlobalScheduleResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateGlobalScheduleResponseTagsMap>;
 
 export interface UpdateGlobalScheduleResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -9647,26 +9121,13 @@ export interface UpdateGlobalScheduleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const UpdateGlobalScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ScheduleProperties,
-    tags: S.optional(UpdateGlobalScheduleResponseTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateGlobalScheduleResponse",
-}) as any as S.Schema<UpdateGlobalScheduleResponse>;
+export const UpdateGlobalScheduleResponse =
+  GetGlobalScheduleResponse as any as S.Schema<UpdateGlobalScheduleResponse>;
 
 /** The tags of the resource. */
 export type UpdateLabRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateLabRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateLabRequestTagsMap>;
+export const UpdateLabRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateLabRequestTagsMap>;
 
 export interface UpdateLabRequest {
   /** The ID of the target subscription. */
@@ -9696,10 +9157,8 @@ export const UpdateLabRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateLabResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateLabResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateLabResponseTagsMap>;
+export const UpdateLabResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateLabResponseTagsMap>;
 
 export interface UpdateLabResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -9717,24 +9176,12 @@ export interface UpdateLabResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const UpdateLabResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: LabProperties,
-    tags: S.optional(UpdateLabResponseTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateLabResponse" }) as any as S.Schema<UpdateLabResponse>;
+export const UpdateLabResponse = GetLabResponse as any as S.Schema<UpdateLabResponse>;
 
 /** The tags of the resource. */
 export type UpdateNotificationChannelRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateNotificationChannelRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateNotificationChannelRequestTagsMap>;
+export const UpdateNotificationChannelRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateNotificationChannelRequestTagsMap>;
 
 export interface UpdateNotificationChannelRequest {
   /** The ID of the target subscription. */
@@ -9769,10 +9216,8 @@ export const UpdateNotificationChannelRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateNotificationChannelResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateNotificationChannelResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateNotificationChannelResponseTagsMap>;
+export const UpdateNotificationChannelResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateNotificationChannelResponseTagsMap>;
 
 export interface UpdateNotificationChannelResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -9790,26 +9235,13 @@ export interface UpdateNotificationChannelResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const UpdateNotificationChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: NotificationChannelProperties,
-    tags: S.optional(UpdateNotificationChannelResponseTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateNotificationChannelResponse",
-}) as any as S.Schema<UpdateNotificationChannelResponse>;
+export const UpdateNotificationChannelResponse =
+  GetNotificationChannelResponse as any as S.Schema<UpdateNotificationChannelResponse>;
 
 /** The tags of the resource. */
 export type UpdatePolicyRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePolicyRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePolicyRequestTagsMap>;
+export const UpdatePolicyRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdatePolicyRequestTagsMap>;
 
 export interface UpdatePolicyRequest {
   /** The ID of the target subscription. */
@@ -9845,10 +9277,8 @@ export const UpdatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type UpdatePolicyResponseTagsMap = { [key: string]: string | undefined };
-export const UpdatePolicyResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePolicyResponseTagsMap>;
+export const UpdatePolicyResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdatePolicyResponseTagsMap>;
 
 export interface UpdatePolicyResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -9866,24 +9296,12 @@ export interface UpdatePolicyResponse {
   /** The location of the resource. */
   location?: string;
 }
-export const UpdatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: PolicyProperties,
-    tags: S.optional(UpdatePolicyResponseTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdatePolicyResponse" }) as any as S.Schema<UpdatePolicyResponse>;
+export const UpdatePolicyResponse = GetPolicyResponse as any as S.Schema<UpdatePolicyResponse>;
 
 /** The tags of the resource. */
 export type UpdateScheduleRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateScheduleRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateScheduleRequestTagsMap>;
+export const UpdateScheduleRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateScheduleRequestTagsMap>;
 
 export interface UpdateScheduleRequest {
   /** The ID of the target subscription. */
@@ -9916,10 +9334,8 @@ export const UpdateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateScheduleResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateScheduleResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateScheduleResponseTagsMap>;
+export const UpdateScheduleResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateScheduleResponseTagsMap>;
 
 export interface UpdateScheduleResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -9937,24 +9353,13 @@ export interface UpdateScheduleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const UpdateScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ScheduleProperties,
-    tags: S.optional(UpdateScheduleResponseTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateScheduleResponse" }) as any as S.Schema<UpdateScheduleResponse>;
+export const UpdateScheduleResponse =
+  GetScheduleResponse as any as S.Schema<UpdateScheduleResponse>;
 
 /** The tags of the resource. */
 export type UpdateSecretRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateSecretRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSecretRequestTagsMap>;
+export const UpdateSecretRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateSecretRequestTagsMap>;
 
 export interface UpdateSecretRequest {
   /** The ID of the target subscription. */
@@ -9990,10 +9395,8 @@ export const UpdateSecretRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateSecretResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateSecretResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSecretResponseTagsMap>;
+export const UpdateSecretResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateSecretResponseTagsMap>;
 
 export interface UpdateSecretResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -10011,24 +9414,12 @@ export interface UpdateSecretResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const UpdateSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: SecretProperties,
-    tags: S.optional(UpdateSecretResponseTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateSecretResponse" }) as any as S.Schema<UpdateSecretResponse>;
+export const UpdateSecretResponse = GetSecretResponse as any as S.Schema<UpdateSecretResponse>;
 
 /** The tags of the resource. */
 export type UpdateServiceFabricRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateServiceFabricRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateServiceFabricRequestTagsMap>;
+export const UpdateServiceFabricRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateServiceFabricRequestTagsMap>;
 
 export interface UpdateServiceFabricRequest {
   /** The ID of the target subscription. */
@@ -10066,10 +9457,8 @@ export const UpdateServiceFabricRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateServiceFabricResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateServiceFabricResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateServiceFabricResponseTagsMap>;
+export const UpdateServiceFabricResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateServiceFabricResponseTagsMap>;
 
 export interface UpdateServiceFabricResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -10087,26 +9476,13 @@ export interface UpdateServiceFabricResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const UpdateServiceFabricResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ServiceFabricProperties,
-    tags: S.optional(UpdateServiceFabricResponseTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateServiceFabricResponse",
-}) as any as S.Schema<UpdateServiceFabricResponse>;
+export const UpdateServiceFabricResponse =
+  ServiceFabricsCreateOrUpdateResponse as any as S.Schema<UpdateServiceFabricResponse>;
 
 /** The tags of the resource. */
 export type UpdateServiceFabricScheduleRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateServiceFabricScheduleRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateServiceFabricScheduleRequestTagsMap>;
+export const UpdateServiceFabricScheduleRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateServiceFabricScheduleRequestTagsMap>;
 
 export interface UpdateServiceFabricScheduleRequest {
   /** The ID of the target subscription. */
@@ -10147,10 +9523,8 @@ export const UpdateServiceFabricScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateServiceFabricScheduleResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateServiceFabricScheduleResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateServiceFabricScheduleResponseTagsMap>;
+export const UpdateServiceFabricScheduleResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateServiceFabricScheduleResponseTagsMap>;
 
 export interface UpdateServiceFabricScheduleResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -10168,26 +9542,13 @@ export interface UpdateServiceFabricScheduleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const UpdateServiceFabricScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ScheduleProperties,
-    tags: S.optional(UpdateServiceFabricScheduleResponseTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateServiceFabricScheduleResponse",
-}) as any as S.Schema<UpdateServiceFabricScheduleResponse>;
+export const UpdateServiceFabricScheduleResponse =
+  GetGlobalScheduleResponse as any as S.Schema<UpdateServiceFabricScheduleResponse>;
 
 /** The tags of the resource. */
 export type UpdateUserRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateUserRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateUserRequestTagsMap>;
+export const UpdateUserRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateUserRequestTagsMap>;
 
 export interface UpdateUserRequest {
   /** The ID of the target subscription. */
@@ -10220,10 +9581,8 @@ export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateUserResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateUserResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateUserResponseTagsMap>;
+export const UpdateUserResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateUserResponseTagsMap>;
 
 export interface UpdateUserResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -10241,24 +9600,12 @@ export interface UpdateUserResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const UpdateUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: UserProperties,
-    tags: S.optional(UpdateUserResponseTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateUserResponse" }) as any as S.Schema<UpdateUserResponse>;
+export const UpdateUserResponse = GetUserResponse as any as S.Schema<UpdateUserResponse>;
 
 /** The tags of the resource. */
 export type UpdateVirtualMachineRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateVirtualMachineRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateVirtualMachineRequestTagsMap>;
+export const UpdateVirtualMachineRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVirtualMachineRequestTagsMap>;
 
 export interface UpdateVirtualMachineRequest {
   /** The ID of the target subscription. */
@@ -10293,10 +9640,8 @@ export const UpdateVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateVirtualMachineResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateVirtualMachineResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateVirtualMachineResponseTagsMap>;
+export const UpdateVirtualMachineResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVirtualMachineResponseTagsMap>;
 
 export interface UpdateVirtualMachineResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -10314,26 +9659,13 @@ export interface UpdateVirtualMachineResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const UpdateVirtualMachineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: LabVirtualMachineProperties,
-    tags: S.optional(UpdateVirtualMachineResponseTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateVirtualMachineResponse",
-}) as any as S.Schema<UpdateVirtualMachineResponse>;
+export const UpdateVirtualMachineResponse =
+  GetVirtualMachineResponse as any as S.Schema<UpdateVirtualMachineResponse>;
 
 /** The tags of the resource. */
 export type UpdateVirtualMachineScheduleRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateVirtualMachineScheduleRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateVirtualMachineScheduleRequestTagsMap>;
+export const UpdateVirtualMachineScheduleRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVirtualMachineScheduleRequestTagsMap>;
 
 export interface UpdateVirtualMachineScheduleRequest {
   /** The ID of the target subscription. */
@@ -10371,10 +9703,8 @@ export const UpdateVirtualMachineScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateVirtualMachineScheduleResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateVirtualMachineScheduleResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateVirtualMachineScheduleResponseTagsMap>;
+export const UpdateVirtualMachineScheduleResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVirtualMachineScheduleResponseTagsMap>;
 
 export interface UpdateVirtualMachineScheduleResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -10392,26 +9722,13 @@ export interface UpdateVirtualMachineScheduleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const UpdateVirtualMachineScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ScheduleProperties,
-    tags: S.optional(UpdateVirtualMachineScheduleResponseTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateVirtualMachineScheduleResponse",
-}) as any as S.Schema<UpdateVirtualMachineScheduleResponse>;
+export const UpdateVirtualMachineScheduleResponse =
+  GetGlobalScheduleResponse as any as S.Schema<UpdateVirtualMachineScheduleResponse>;
 
 /** The tags of the resource. */
 export type UpdateVirtualNetworkRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateVirtualNetworkRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateVirtualNetworkRequestTagsMap>;
+export const UpdateVirtualNetworkRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVirtualNetworkRequestTagsMap>;
 
 export interface UpdateVirtualNetworkRequest {
   /** The ID of the target subscription. */
@@ -10446,10 +9763,8 @@ export const UpdateVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateVirtualNetworkResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateVirtualNetworkResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateVirtualNetworkResponseTagsMap>;
+export const UpdateVirtualNetworkResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVirtualNetworkResponseTagsMap>;
 
 export interface UpdateVirtualNetworkResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -10467,19 +9782,8 @@ export interface UpdateVirtualNetworkResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const UpdateVirtualNetworkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: VirtualNetworkProperties,
-    tags: S.optional(UpdateVirtualNetworkResponseTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateVirtualNetworkResponse",
-}) as any as S.Schema<UpdateVirtualNetworkResponse>;
+export const UpdateVirtualNetworkResponse =
+  GetVirtualNetworkResponse as any as S.Schema<UpdateVirtualNetworkResponse>;
 
 /** Properties of a lab user profile. */
 export interface UserPropertiesInput {
@@ -10497,10 +9801,8 @@ export const UserPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UsersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const UsersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UsersCreateOrUpdateRequestTagsMap>;
+export const UsersCreateOrUpdateRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UsersCreateOrUpdateRequestTagsMap>;
 
 export interface UsersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -10541,10 +9843,8 @@ export const UsersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UsersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const UsersCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UsersCreateOrUpdateResponseTagsMap>;
+export const UsersCreateOrUpdateResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UsersCreateOrUpdateResponseTagsMap>;
 
 export interface UsersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -10580,10 +9880,8 @@ export const UsersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 export type VirtualMachineSchedulesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const VirtualMachineSchedulesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VirtualMachineSchedulesCreateOrUpdateRequestTagsMap>;
+export const VirtualMachineSchedulesCreateOrUpdateRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<VirtualMachineSchedulesCreateOrUpdateRequestTagsMap>;
 
 export interface VirtualMachineSchedulesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -10629,10 +9927,8 @@ export const VirtualMachineSchedulesCreateOrUpdateRequest = /*@__PURE__*/ S.susp
 export type VirtualMachineSchedulesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const VirtualMachineSchedulesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VirtualMachineSchedulesCreateOrUpdateResponseTagsMap>;
+export const VirtualMachineSchedulesCreateOrUpdateResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<VirtualMachineSchedulesCreateOrUpdateResponseTagsMap>;
 
 export interface VirtualMachineSchedulesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -10650,31 +9946,18 @@ export interface VirtualMachineSchedulesCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const VirtualMachineSchedulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ScheduleProperties,
-    tags: S.optional(VirtualMachineSchedulesCreateOrUpdateResponseTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VirtualMachineSchedulesCreateOrUpdateResponse",
-}) as any as S.Schema<VirtualMachineSchedulesCreateOrUpdateResponse>;
+export const VirtualMachineSchedulesCreateOrUpdateResponse =
+  GetGlobalScheduleResponse as any as S.Schema<VirtualMachineSchedulesCreateOrUpdateResponse>;
 
 /** The artifacts to be installed on the virtual machine. */
 export type LabVirtualMachinePropertiesInputArtifactsList = Array<ArtifactInstallProperties>;
-export const LabVirtualMachinePropertiesInputArtifactsList = /*@__PURE__*/ S.Array(
-  ArtifactInstallProperties,
-) as any as S.Schema<LabVirtualMachinePropertiesInputArtifactsList>;
+export const LabVirtualMachinePropertiesInputArtifactsList =
+  ApplyVirtualMachineArtifactsRequestArtifactsList as any as S.Schema<LabVirtualMachinePropertiesInputArtifactsList>;
 
 /** New or existing data disks to attach to the virtual machine after creation */
 export type LabVirtualMachinePropertiesInputDataDiskParametersList = Array<DataDiskProperties>;
-export const LabVirtualMachinePropertiesInputDataDiskParametersList = /*@__PURE__*/ S.Array(
-  DataDiskProperties,
-) as any as S.Schema<LabVirtualMachinePropertiesInputDataDiskParametersList>;
+export const LabVirtualMachinePropertiesInputDataDiskParametersList =
+  LabVirtualMachinePropertiesDataDiskParametersList as any as S.Schema<LabVirtualMachinePropertiesInputDataDiskParametersList>;
 
 /** Virtual Machine schedules to be created */
 export type LabVirtualMachinePropertiesInputScheduleParametersList =
@@ -10764,10 +10047,8 @@ export const LabVirtualMachinePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type VirtualMachinesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const VirtualMachinesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VirtualMachinesCreateOrUpdateRequestTagsMap>;
+export const VirtualMachinesCreateOrUpdateRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<VirtualMachinesCreateOrUpdateRequestTagsMap>;
 
 export interface VirtualMachinesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -10808,10 +10089,8 @@ export const VirtualMachinesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type VirtualMachinesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const VirtualMachinesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VirtualMachinesCreateOrUpdateResponseTagsMap>;
+export const VirtualMachinesCreateOrUpdateResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<VirtualMachinesCreateOrUpdateResponseTagsMap>;
 
 export interface VirtualMachinesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -10829,31 +10108,18 @@ export interface VirtualMachinesCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const VirtualMachinesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: LabVirtualMachineProperties,
-    tags: S.optional(VirtualMachinesCreateOrUpdateResponseTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VirtualMachinesCreateOrUpdateResponse",
-}) as any as S.Schema<VirtualMachinesCreateOrUpdateResponse>;
+export const VirtualMachinesCreateOrUpdateResponse =
+  GetVirtualMachineResponse as any as S.Schema<VirtualMachinesCreateOrUpdateResponse>;
 
 /** The allowed subnets of the virtual network. */
 export type VirtualNetworkPropertiesInputAllowedSubnetsList = Array<Subnet>;
-export const VirtualNetworkPropertiesInputAllowedSubnetsList = /*@__PURE__*/ S.Array(
-  Subnet,
-) as any as S.Schema<VirtualNetworkPropertiesInputAllowedSubnetsList>;
+export const VirtualNetworkPropertiesInputAllowedSubnetsList =
+  VirtualNetworkPropertiesAllowedSubnetsList as any as S.Schema<VirtualNetworkPropertiesInputAllowedSubnetsList>;
 
 /** The subnet overrides of the virtual network. */
 export type VirtualNetworkPropertiesInputSubnetOverridesList = Array<SubnetOverride>;
-export const VirtualNetworkPropertiesInputSubnetOverridesList = /*@__PURE__*/ S.Array(
-  SubnetOverride,
-) as any as S.Schema<VirtualNetworkPropertiesInputSubnetOverridesList>;
+export const VirtualNetworkPropertiesInputSubnetOverridesList =
+  VirtualNetworkPropertiesSubnetOverridesList as any as S.Schema<VirtualNetworkPropertiesInputSubnetOverridesList>;
 
 /** Properties of a virtual network. */
 export interface VirtualNetworkPropertiesInput {
@@ -10879,10 +10145,8 @@ export const VirtualNetworkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type VirtualNetworksCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const VirtualNetworksCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VirtualNetworksCreateOrUpdateRequestTagsMap>;
+export const VirtualNetworksCreateOrUpdateRequestTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<VirtualNetworksCreateOrUpdateRequestTagsMap>;
 
 export interface VirtualNetworksCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -10923,10 +10187,8 @@ export const VirtualNetworksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type VirtualNetworksCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const VirtualNetworksCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VirtualNetworksCreateOrUpdateResponseTagsMap>;
+export const VirtualNetworksCreateOrUpdateResponseTagsMap =
+  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<VirtualNetworksCreateOrUpdateResponseTagsMap>;
 
 export interface VirtualNetworksCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -10944,19 +10206,8 @@ export interface VirtualNetworksCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const VirtualNetworksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: VirtualNetworkProperties,
-    tags: S.optional(VirtualNetworksCreateOrUpdateResponseTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VirtualNetworksCreateOrUpdateResponse",
-}) as any as S.Schema<VirtualNetworksCreateOrUpdateResponse>;
+export const VirtualNetworksCreateOrUpdateResponse =
+  GetVirtualNetworkResponse as any as S.Schema<VirtualNetworksCreateOrUpdateResponse>;
 
 export type AddVirtualMachineDataDiskError = AzureOpError;
 /** Attach a new or existing data disk to virtual machine. This operation can take a while to complete. */

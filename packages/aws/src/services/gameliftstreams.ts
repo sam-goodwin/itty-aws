@@ -224,7 +224,7 @@ export const AddStreamGroupLocationsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddStreamGroupLocationsOutput",
 }) as any as S.Schema<AddStreamGroupLocationsOutput>;
 export type Identifiers = string[];
-export const Identifiers = /*@__PURE__*/ S.Array(S.String);
+export const Identifiers = Ipv4CidrBlockList as any as S.Schema<Identifiers>;
 export interface AssociateApplicationsInput {
   Identifier: string;
   ApplicationIdentifiers: string[];
@@ -248,7 +248,7 @@ export const AssociateApplicationsInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssociateApplicationsInput>;
 export type Arn = string;
 export type ArnList = string[];
-export const ArnList = /*@__PURE__*/ S.Array(S.String);
+export const ArnList = Ipv4CidrBlockList as any as S.Schema<ArnList>;
 export interface AssociateApplicationsOutput {
   Arn?: string;
   ApplicationArns?: string[];
@@ -274,7 +274,7 @@ export type ExecutablePath = string;
 export type ApplicationSourceUri = string;
 export type FilePath = string;
 export type FilePaths = string[];
-export const FilePaths = /*@__PURE__*/ S.Array(S.String);
+export const FilePaths = Ipv4CidrBlockList as any as S.Schema<FilePaths>;
 export type ApplicationLogOutputUri = string;
 export type TagKey = string;
 export type TagValue = string;
@@ -541,10 +541,10 @@ export const Protocol = S.String;
 export type UrlExpiresAfterMinutes = number;
 export type UsageLimit = number;
 export type LocationList = string[];
-export const LocationList = /*@__PURE__*/ S.Array(S.String);
+export const LocationList = Ipv4CidrBlockList as any as S.Schema<LocationList>;
 export type SessionLengthSeconds = number;
 export type GameLaunchArgList = string[];
-export const GameLaunchArgList = /*@__PURE__*/ S.Array(S.String);
+export const GameLaunchArgList = Ipv4CidrBlockList as any as S.Schema<GameLaunchArgList>;
 export type EnvironmentVariables = { [key: string]: string | undefined };
 export const EnvironmentVariables = /*@__PURE__*/ S.Record(
   S.String,
@@ -700,9 +700,8 @@ export const DeleteStreamGroupInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteStreamGroupInput" }) as any as S.Schema<DeleteStreamGroupInput>;
 export interface DeleteStreamGroupResponse {}
-export const DeleteStreamGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteStreamGroupResponse",
-}) as any as S.Schema<DeleteStreamGroupResponse>;
+export const DeleteStreamGroupResponse =
+  DeleteApplicationResponse as any as S.Schema<DeleteStreamGroupResponse>;
 export interface DisassociateApplicationsInput {
   Identifier: string;
   ApplicationIdentifiers: string[];
@@ -728,11 +727,8 @@ export interface DisassociateApplicationsOutput {
   Arn?: string;
   ApplicationArns?: string[];
 }
-export const DisassociateApplicationsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String), ApplicationArns: S.optional(ArnList) }),
-).annotate({
-  identifier: "DisassociateApplicationsOutput",
-}) as any as S.Schema<DisassociateApplicationsOutput>;
+export const DisassociateApplicationsOutput =
+  AssociateApplicationsOutput as any as S.Schema<DisassociateApplicationsOutput>;
 export type OutputUri = string;
 export interface ExportStreamSessionFilesInput {
   Identifier: string;
@@ -761,9 +757,8 @@ export const ExportStreamSessionFilesInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExportStreamSessionFilesInput",
 }) as any as S.Schema<ExportStreamSessionFilesInput>;
 export interface ExportStreamSessionFilesOutput {}
-export const ExportStreamSessionFilesOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ExportStreamSessionFilesOutput",
-}) as any as S.Schema<ExportStreamSessionFilesOutput>;
+export const ExportStreamSessionFilesOutput =
+  DeleteApplicationResponse as any as S.Schema<ExportStreamSessionFilesOutput>;
 export interface GetApplicationInput {
   Identifier: string;
 }
@@ -795,24 +790,8 @@ export interface GetApplicationOutput {
   LastUpdatedAt?: Date;
   AssociatedStreamGroups?: string[];
 }
-export const GetApplicationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.String,
-    Description: S.optional(S.String),
-    RuntimeEnvironment: S.optional(RuntimeEnvironment),
-    ExecutablePath: S.optional(S.String),
-    ApplicationLogPaths: S.optional(FilePaths),
-    ApplicationLogOutputUri: S.optional(S.String),
-    ApplicationSourceUri: S.optional(S.String),
-    Id: S.optional(S.String),
-    Status: S.optional(ApplicationStatus),
-    StatusReason: S.optional(ApplicationStatusReason),
-    ReplicationStatuses: S.optional(ReplicationStatuses),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    AssociatedStreamGroups: S.optional(ArnList),
-  }),
-).annotate({ identifier: "GetApplicationOutput" }) as any as S.Schema<GetApplicationOutput>;
+export const GetApplicationOutput =
+  CreateApplicationOutput as any as S.Schema<GetApplicationOutput>;
 export interface GetStreamGroupInput {
   Identifier: string;
 }
@@ -842,22 +821,8 @@ export interface GetStreamGroupOutput {
   ExpiresAt?: Date;
   AssociatedApplications?: string[];
 }
-export const GetStreamGroupOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.String,
-    Description: S.optional(S.String),
-    DefaultApplication: S.optional(DefaultApplication),
-    LocationStates: S.optional(LocationStates),
-    StreamClass: S.optional(StreamClass),
-    Id: S.optional(S.String),
-    Status: S.optional(StreamGroupStatus),
-    StatusReason: S.optional(StreamGroupStatusReason),
-    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    AssociatedApplications: S.optional(ArnList),
-  }),
-).annotate({ identifier: "GetStreamGroupOutput" }) as any as S.Schema<GetStreamGroupOutput>;
+export const GetStreamGroupOutput =
+  CreateStreamGroupOutput as any as S.Schema<GetStreamGroupOutput>;
 export interface GetStreamSessionInput {
   Identifier: string;
   StreamSessionIdentifier: string;
@@ -1351,7 +1316,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
 export type LocationsList = string[];
-export const LocationsList = /*@__PURE__*/ S.Array(S.String);
+export const LocationsList = Ipv4CidrBlockList as any as S.Schema<LocationsList>;
 export interface RemoveStreamGroupLocationsInput {
   Identifier: string;
   Locations: string[];
@@ -1407,9 +1372,8 @@ export const RevokeStreamUrlInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RevokeStreamUrlInput" }) as any as S.Schema<RevokeStreamUrlInput>;
 export interface RevokeStreamUrlResponse {}
-export const RevokeStreamUrlResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RevokeStreamUrlResponse",
-}) as any as S.Schema<RevokeStreamUrlResponse>;
+export const RevokeStreamUrlResponse =
+  DeleteApplicationResponse as any as S.Schema<RevokeStreamUrlResponse>;
 export interface StartStreamSessionInput {
   ClientToken?: string;
   Description?: string;
@@ -1480,33 +1444,8 @@ export interface StartStreamSessionOutput {
   RoleArn?: string | redacted.Redacted<string>;
   DisplayConfiguration?: DisplayConfiguration;
 }
-export const StartStreamSessionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Description: S.optional(S.String),
-    StreamGroupId: S.optional(S.String),
-    UserId: S.optional(S.String),
-    Status: S.optional(StreamSessionStatus),
-    StatusReason: S.optional(StreamSessionStatusReason),
-    Protocol: S.optional(Protocol),
-    Location: S.optional(S.String),
-    SignalRequest: S.optional(SensitiveString),
-    SignalResponse: S.optional(SensitiveString),
-    ConnectionTimeoutSeconds: S.optional(S.Number),
-    SessionLengthSeconds: S.optional(S.Number),
-    AdditionalLaunchArgs: S.optional(GameLaunchArgList),
-    AdditionalEnvironmentVariables: S.optional(EnvironmentVariables),
-    PerformanceStatsConfiguration: S.optional(PerformanceStatsConfiguration),
-    LogFileLocationUri: S.optional(S.String),
-    WebSdkProtocolUrl: S.optional(S.String),
-    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ApplicationArn: S.optional(S.String),
-    ExportFilesMetadata: S.optional(ExportFilesMetadata),
-    RoleArn: S.optional(SensitiveString),
-    DisplayConfiguration: S.optional(DisplayConfiguration),
-  }),
-).annotate({ identifier: "StartStreamSessionOutput" }) as any as S.Schema<StartStreamSessionOutput>;
+export const StartStreamSessionOutput =
+  GetStreamSessionOutput as any as S.Schema<StartStreamSessionOutput>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
@@ -1517,9 +1456,8 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteApplicationResponse as any as S.Schema<TagResourceResponse>;
 export interface TerminateStreamSessionInput {
   Identifier: string;
   StreamSessionIdentifier: string;
@@ -1545,11 +1483,10 @@ export const TerminateStreamSessionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "TerminateStreamSessionInput",
 }) as any as S.Schema<TerminateStreamSessionInput>;
 export interface TerminateStreamSessionResponse {}
-export const TerminateStreamSessionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TerminateStreamSessionResponse",
-}) as any as S.Schema<TerminateStreamSessionResponse>;
+export const TerminateStreamSessionResponse =
+  DeleteApplicationResponse as any as S.Schema<TerminateStreamSessionResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = Ipv4CidrBlockList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -1563,9 +1500,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteApplicationResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateApplicationInput {
   Identifier: string;
   Description?: string;
@@ -1605,24 +1541,8 @@ export interface UpdateApplicationOutput {
   LastUpdatedAt?: Date;
   AssociatedStreamGroups?: string[];
 }
-export const UpdateApplicationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.String,
-    Description: S.optional(S.String),
-    RuntimeEnvironment: S.optional(RuntimeEnvironment),
-    ExecutablePath: S.optional(S.String),
-    ApplicationLogPaths: S.optional(FilePaths),
-    ApplicationLogOutputUri: S.optional(S.String),
-    ApplicationSourceUri: S.optional(S.String),
-    Id: S.optional(S.String),
-    Status: S.optional(ApplicationStatus),
-    StatusReason: S.optional(ApplicationStatusReason),
-    ReplicationStatuses: S.optional(ReplicationStatuses),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    AssociatedStreamGroups: S.optional(ArnList),
-  }),
-).annotate({ identifier: "UpdateApplicationOutput" }) as any as S.Schema<UpdateApplicationOutput>;
+export const UpdateApplicationOutput =
+  CreateApplicationOutput as any as S.Schema<UpdateApplicationOutput>;
 export interface UpdateStreamGroupInput {
   Identifier: string;
   LocationConfigurations?: LocationConfiguration[];
@@ -1660,22 +1580,8 @@ export interface UpdateStreamGroupOutput {
   ExpiresAt?: Date;
   AssociatedApplications?: string[];
 }
-export const UpdateStreamGroupOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.String,
-    Description: S.optional(S.String),
-    DefaultApplication: S.optional(DefaultApplication),
-    LocationStates: S.optional(LocationStates),
-    StreamClass: S.optional(StreamClass),
-    Id: S.optional(S.String),
-    Status: S.optional(StreamGroupStatus),
-    StatusReason: S.optional(StreamGroupStatusReason),
-    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    AssociatedApplications: S.optional(ArnList),
-  }),
-).annotate({ identifier: "UpdateStreamGroupOutput" }) as any as S.Schema<UpdateStreamGroupOutput>;
+export const UpdateStreamGroupOutput =
+  CreateStreamGroupOutput as any as S.Schema<UpdateStreamGroupOutput>;
 export type AddStreamGroupLocationsError =
   | AccessDeniedException
   | InternalServerException

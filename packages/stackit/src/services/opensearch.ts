@@ -164,15 +164,13 @@ export const InstanceParametersPluginsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<InstanceParametersPluginsList>;
 
 export type InstanceParametersSyslogList = Array<string>;
-export const InstanceParametersSyslogList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstanceParametersSyslogList>;
+export const InstanceParametersSyslogList =
+  CredentialsHostsList as any as S.Schema<InstanceParametersSyslogList>;
 
 /** This property is deprecated and will be removed in a future release. */
 export type InstanceParametersTlsCiphersList = Array<string>;
-export const InstanceParametersTlsCiphersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstanceParametersTlsCiphersList>;
+export const InstanceParametersTlsCiphersList =
+  CredentialsHostsList as any as S.Schema<InstanceParametersTlsCiphersList>;
 
 export type InstanceParametersTlsProtocolsItem = "TLSv1.2" | "TLSv1.3";
 export const InstanceParametersTlsProtocolsItem = S.String;
@@ -320,9 +318,8 @@ export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteInstanceRequest" }) as any as S.Schema<DeleteInstanceRequest>;
 
 export interface DeleteInstanceResponse {}
-export const DeleteInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteInstanceResponse",
-}) as any as S.Schema<DeleteInstanceResponse>;
+export const DeleteInstanceResponse =
+  DeleteCredentialsResponse as any as S.Schema<DeleteInstanceResponse>;
 
 export interface DownloadBackupRequest {
   /** Project id on which user has permissions */
@@ -351,9 +348,8 @@ export const DownloadBackupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DownloadBackupRequest" }) as any as S.Schema<DownloadBackupRequest>;
 
 export interface DownloadBackupResponse {}
-export const DownloadBackupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DownloadBackupResponse",
-}) as any as S.Schema<DownloadBackupResponse>;
+export const DownloadBackupResponse =
+  DeleteCredentialsResponse as any as S.Schema<DownloadBackupResponse>;
 
 export interface GetCredentialsRequest {
   /** Project id on which user has permissions */
@@ -856,9 +852,8 @@ export const PartialUpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PartialUpdateInstanceRequest>;
 
 export interface PartialUpdateInstanceResponse {}
-export const PartialUpdateInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PartialUpdateInstanceResponse",
-}) as any as S.Schema<PartialUpdateInstanceResponse>;
+export const PartialUpdateInstanceResponse =
+  DeleteCredentialsResponse as any as S.Schema<PartialUpdateInstanceResponse>;
 
 export interface TriggerRecreateRequest {
   /** Project id on which user has permissions */

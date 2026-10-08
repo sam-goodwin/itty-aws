@@ -251,9 +251,8 @@ export const CancelRunRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CancelRunRequest" }) as any as S.Schema<CancelRunRequest>;
 export interface CancelRunResponse {}
-export const CancelRunResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CancelRunResponse",
-}) as any as S.Schema<CancelRunResponse>;
+export const CancelRunResponse =
+  CancelAnnotationImportResponse as any as S.Schema<CancelRunResponse>;
 export type BatchId = string;
 export interface CancelRunBatchRequest {
   batchId: string;
@@ -264,9 +263,8 @@ export const CancelRunBatchRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CancelRunBatchRequest" }) as any as S.Schema<CancelRunBatchRequest>;
 export interface CancelRunBatchResponse {}
-export const CancelRunBatchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CancelRunBatchResponse",
-}) as any as S.Schema<CancelRunBatchResponse>;
+export const CancelRunBatchResponse =
+  CancelAnnotationImportResponse as any as S.Schema<CancelRunBatchResponse>;
 export interface CancelVariantImportRequest {
   jobId: string;
 }
@@ -285,9 +283,8 @@ export const CancelVariantImportRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CancelVariantImportRequest",
 }) as any as S.Schema<CancelVariantImportRequest>;
 export interface CancelVariantImportResponse {}
-export const CancelVariantImportResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CancelVariantImportResponse",
-}) as any as S.Schema<CancelVariantImportResponse>;
+export const CancelVariantImportResponse =
+  CancelAnnotationImportResponse as any as S.Schema<CancelVariantImportResponse>;
 export type ReadSetPartSource = string;
 export interface CompleteReadSetUploadPartListItem {
   partNumber: number;
@@ -367,7 +364,7 @@ export const FormatToHeader = /*@__PURE__*/ S.Record(
 );
 export type SchemaValueType = string;
 export type SchemaItem = { [key: string]: string | undefined };
-export const SchemaItem = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const SchemaItem = TagMap as any as S.Schema<SchemaItem>;
 export type Schema = { [key: string]: string | undefined }[];
 export const Schema = /*@__PURE__*/ S.Array(SchemaItem);
 export interface TsvStoreOptions {
@@ -441,13 +438,7 @@ export interface TsvVersionOptions {
   formatToHeader?: { [key: string]: string | undefined };
   schema?: { [key: string]: string | undefined }[];
 }
-export const TsvVersionOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    annotationType: S.optional(S.String),
-    formatToHeader: S.optional(FormatToHeader),
-    schema: S.optional(Schema),
-  }),
-).annotate({ identifier: "TsvVersionOptions" }) as any as S.Schema<TsvVersionOptions>;
+export const TsvVersionOptions = TsvStoreOptions as any as S.Schema<TsvVersionOptions>;
 export type VersionOptions = { tsvVersionOptions: TsvVersionOptions };
 export const VersionOptions = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ tsvVersionOptions: TsvVersionOptions }),
@@ -506,10 +497,10 @@ export type ConfigurationName = string;
 export type ConfigurationDescription = string;
 export type SecurityGroupId = string;
 export type SecurityGroupIds = string[];
-export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroupIds = ReadSetIdList as any as S.Schema<SecurityGroupIds>;
 export type SubnetId = string;
 export type SubnetIds = string[];
-export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
+export const SubnetIds = ReadSetIdList as any as S.Schema<SubnetIds>;
 export interface VpcConfig {
   securityGroupIds?: string[];
   subnetIds?: string[];
@@ -787,7 +778,7 @@ export type SequenceStoreDescription = string;
 export type FallbackLocation = string;
 export type ETagAlgorithmFamily = string;
 export type PropagatedSetLevelTags = string[];
-export const PropagatedSetLevelTags = /*@__PURE__*/ S.Array(S.String);
+export const PropagatedSetLevelTags = ReadSetIdList as any as S.Schema<PropagatedSetLevelTags>;
 export type AccessLogLocation = string;
 export interface S3AccessConfig {
   accessLogLocation?: string;
@@ -1006,7 +997,7 @@ export const SourceReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: S.String, value: S.String }),
 ).annotate({ identifier: "SourceReference" }) as any as S.Schema<SourceReference>;
 export type ExcludeFilePatternList = string[];
-export const ExcludeFilePatternList = /*@__PURE__*/ S.Array(S.String);
+export const ExcludeFilePatternList = ReadSetIdList as any as S.Schema<ExcludeFilePatternList>;
 export interface DefinitionRepository {
   connectionArn: string;
   fullRepositoryId: string;
@@ -1201,7 +1192,7 @@ export const DeleteAnnotationStoreResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAnnotationStoreResponse",
 }) as any as S.Schema<DeleteAnnotationStoreResponse>;
 export type VersionList = string[];
-export const VersionList = /*@__PURE__*/ S.Array(S.String);
+export const VersionList = ReadSetIdList as any as S.Schema<VersionList>;
 export interface DeleteAnnotationStoreVersionsRequest {
   name: string;
   versions: string[];
@@ -1251,9 +1242,8 @@ export const DeleteBatchRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteBatchRequest" }) as any as S.Schema<DeleteBatchRequest>;
 export interface DeleteBatchResponse {}
-export const DeleteBatchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBatchResponse",
-}) as any as S.Schema<DeleteBatchResponse>;
+export const DeleteBatchResponse =
+  CancelAnnotationImportResponse as any as S.Schema<DeleteBatchResponse>;
 export interface DeleteConfigurationRequest {
   name: string;
 }
@@ -1265,9 +1255,8 @@ export const DeleteConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteConfigurationRequest",
 }) as any as S.Schema<DeleteConfigurationRequest>;
 export interface DeleteConfigurationResponse {}
-export const DeleteConfigurationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteConfigurationResponse",
-}) as any as S.Schema<DeleteConfigurationResponse>;
+export const DeleteConfigurationResponse =
+  CancelAnnotationImportResponse as any as S.Schema<DeleteConfigurationResponse>;
 export type ReferenceId = string;
 export interface DeleteReferenceRequest {
   id: string;
@@ -1289,9 +1278,8 @@ export const DeleteReferenceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteReferenceRequest" }) as any as S.Schema<DeleteReferenceRequest>;
 export interface DeleteReferenceResponse {}
-export const DeleteReferenceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteReferenceResponse",
-}) as any as S.Schema<DeleteReferenceResponse>;
+export const DeleteReferenceResponse =
+  CancelAnnotationImportResponse as any as S.Schema<DeleteReferenceResponse>;
 export interface DeleteReferenceStoreRequest {
   id: string;
 }
@@ -1303,9 +1291,8 @@ export const DeleteReferenceStoreRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteReferenceStoreRequest",
 }) as any as S.Schema<DeleteReferenceStoreRequest>;
 export interface DeleteReferenceStoreResponse {}
-export const DeleteReferenceStoreResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteReferenceStoreResponse",
-}) as any as S.Schema<DeleteReferenceStoreResponse>;
+export const DeleteReferenceStoreResponse =
+  CancelAnnotationImportResponse as any as S.Schema<DeleteReferenceStoreResponse>;
 export interface DeleteRunRequest {
   id: string;
 }
@@ -1315,9 +1302,8 @@ export const DeleteRunRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteRunRequest" }) as any as S.Schema<DeleteRunRequest>;
 export interface DeleteRunResponse {}
-export const DeleteRunResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRunResponse",
-}) as any as S.Schema<DeleteRunResponse>;
+export const DeleteRunResponse =
+  CancelAnnotationImportResponse as any as S.Schema<DeleteRunResponse>;
 export interface DeleteRunBatchRequest {
   batchId: string;
 }
@@ -1327,9 +1313,8 @@ export const DeleteRunBatchRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteRunBatchRequest" }) as any as S.Schema<DeleteRunBatchRequest>;
 export interface DeleteRunBatchResponse {}
-export const DeleteRunBatchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRunBatchResponse",
-}) as any as S.Schema<DeleteRunBatchResponse>;
+export const DeleteRunBatchResponse =
+  CancelAnnotationImportResponse as any as S.Schema<DeleteRunBatchResponse>;
 export interface DeleteRunCacheRequest {
   id: string;
 }
@@ -1339,9 +1324,8 @@ export const DeleteRunCacheRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteRunCacheRequest" }) as any as S.Schema<DeleteRunCacheRequest>;
 export interface DeleteRunCacheResponse {}
-export const DeleteRunCacheResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRunCacheResponse",
-}) as any as S.Schema<DeleteRunCacheResponse>;
+export const DeleteRunCacheResponse =
+  CancelAnnotationImportResponse as any as S.Schema<DeleteRunCacheResponse>;
 export interface DeleteRunGroupRequest {
   id: string;
 }
@@ -1351,9 +1335,8 @@ export const DeleteRunGroupRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteRunGroupRequest" }) as any as S.Schema<DeleteRunGroupRequest>;
 export interface DeleteRunGroupResponse {}
-export const DeleteRunGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRunGroupResponse",
-}) as any as S.Schema<DeleteRunGroupResponse>;
+export const DeleteRunGroupResponse =
+  CancelAnnotationImportResponse as any as S.Schema<DeleteRunGroupResponse>;
 export interface DeleteS3AccessPolicyRequest {
   s3AccessPointArn: string;
 }
@@ -1372,9 +1355,8 @@ export const DeleteS3AccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteS3AccessPolicyRequest",
 }) as any as S.Schema<DeleteS3AccessPolicyRequest>;
 export interface DeleteS3AccessPolicyResponse {}
-export const DeleteS3AccessPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteS3AccessPolicyResponse",
-}) as any as S.Schema<DeleteS3AccessPolicyResponse>;
+export const DeleteS3AccessPolicyResponse =
+  CancelAnnotationImportResponse as any as S.Schema<DeleteS3AccessPolicyResponse>;
 export interface DeleteSequenceStoreRequest {
   id: string;
 }
@@ -1386,9 +1368,8 @@ export const DeleteSequenceStoreRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSequenceStoreRequest",
 }) as any as S.Schema<DeleteSequenceStoreRequest>;
 export interface DeleteSequenceStoreResponse {}
-export const DeleteSequenceStoreResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSequenceStoreResponse",
-}) as any as S.Schema<DeleteSequenceStoreResponse>;
+export const DeleteSequenceStoreResponse =
+  CancelAnnotationImportResponse as any as S.Schema<DeleteSequenceStoreResponse>;
 export interface DeleteShareRequest {
   shareId: string;
 }
@@ -1400,9 +1381,7 @@ export const DeleteShareRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteShareResponse {
   status?: string;
 }
-export const DeleteShareResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: S.optional(S.String) }),
-).annotate({ identifier: "DeleteShareResponse" }) as any as S.Schema<DeleteShareResponse>;
+export const DeleteShareResponse = AcceptShareResponse as any as S.Schema<DeleteShareResponse>;
 export interface DeleteVariantStoreRequest {
   name: string;
   force?: boolean;
@@ -1420,11 +1399,8 @@ export const DeleteVariantStoreRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteVariantStoreResponse {
   status: string;
 }
-export const DeleteVariantStoreResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: S.String }),
-).annotate({
-  identifier: "DeleteVariantStoreResponse",
-}) as any as S.Schema<DeleteVariantStoreResponse>;
+export const DeleteVariantStoreResponse =
+  DeleteAnnotationStoreResponse as any as S.Schema<DeleteVariantStoreResponse>;
 export interface DeleteWorkflowRequest {
   id: string;
 }
@@ -1434,9 +1410,8 @@ export const DeleteWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteWorkflowRequest" }) as any as S.Schema<DeleteWorkflowRequest>;
 export interface DeleteWorkflowResponse {}
-export const DeleteWorkflowResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkflowResponse",
-}) as any as S.Schema<DeleteWorkflowResponse>;
+export const DeleteWorkflowResponse =
+  CancelAnnotationImportResponse as any as S.Schema<DeleteWorkflowResponse>;
 export interface DeleteWorkflowVersionRequest {
   workflowId: string;
   versionName: string;
@@ -1459,9 +1434,8 @@ export const DeleteWorkflowVersionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteWorkflowVersionRequest",
 }) as any as S.Schema<DeleteWorkflowVersionRequest>;
 export interface DeleteWorkflowVersionResponse {}
-export const DeleteWorkflowVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkflowVersionResponse",
-}) as any as S.Schema<DeleteWorkflowVersionResponse>;
+export const DeleteWorkflowVersionResponse =
+  CancelAnnotationImportResponse as any as S.Schema<DeleteWorkflowVersionResponse>;
 export interface GetAnnotationImportRequest {
   jobId: string;
 }
@@ -1550,10 +1524,7 @@ export const FormatOptions = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ vcfOptions: VcfOptions }),
 ]);
 export type AnnotationFieldMap = { [key: string]: string | undefined };
-export const AnnotationFieldMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const AnnotationFieldMap = FormatToHeader as any as S.Schema<AnnotationFieldMap>;
 export interface GetAnnotationImportResponse {
   id: string;
   destinationName: string;
@@ -2271,9 +2242,7 @@ export const GetReferenceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetReferenceResponse {
   payload?: T.StreamingOutputBody;
 }
-export const GetReferenceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ payload: S.optional(T.StreamingOutput).pipe(T.HttpPayload()) }),
-).annotate({ identifier: "GetReferenceResponse" }) as any as S.Schema<GetReferenceResponse>;
+export const GetReferenceResponse = GetReadSetResponse as any as S.Schema<GetReferenceResponse>;
 export interface GetReferenceImportJobRequest {
   id: string;
   referenceStoreId: string;
@@ -2426,21 +2395,11 @@ export interface GetReferenceStoreResponse {
   sseConfig?: SseConfig;
   creationTime: Date;
 }
-export const GetReferenceStoreResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    arn: S.String,
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    sseConfig: S.optional(SseConfig),
-    creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "GetReferenceStoreResponse",
-}) as any as S.Schema<GetReferenceStoreResponse>;
+export const GetReferenceStoreResponse =
+  CreateReferenceStoreResponse as any as S.Schema<GetReferenceStoreResponse>;
 export type RunExport = string;
 export type RunExportList = string[];
-export const RunExportList = /*@__PURE__*/ S.Array(S.String);
+export const RunExportList = ReadSetIdList as any as S.Schema<RunExportList>;
 export interface GetRunRequest {
   id: string;
   export?: string[];
@@ -2458,10 +2417,7 @@ export type WorkflowDigest = string;
 export type RunResourceDigestKey = string;
 export type RunResourceDigest = string;
 export type RunResourceDigests = { [key: string]: string | undefined };
-export const RunResourceDigests = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const RunResourceDigests = FormatToHeader as any as S.Schema<RunResourceDigests>;
 export type RunStartedBy = string;
 export type RunTimestamp = Date;
 export type RunStatusMessage = string;
@@ -2922,7 +2878,7 @@ export const GetVariantStoreResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetVariantStoreResponse" }) as any as S.Schema<GetVariantStoreResponse>;
 export type WorkflowExport = string;
 export type WorkflowExportList = string[];
-export const WorkflowExportList = /*@__PURE__*/ S.Array(S.String);
+export const WorkflowExportList = ReadSetIdList as any as S.Schema<WorkflowExportList>;
 export interface GetWorkflowRequest {
   id: string;
   type?: string;
@@ -2942,10 +2898,7 @@ export type WorkflowStatusMessage = string;
 export type WorkflowMetadataKey = string;
 export type WorkflowMetadataValue = string;
 export type WorkflowMetadata = { [key: string]: string | undefined };
-export const WorkflowMetadata = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const WorkflowMetadata = FormatToHeader as any as S.Schema<WorkflowMetadata>;
 export type ReadmeS3PresignedUrl = string;
 export interface DefinitionRepositoryDetails {
   connectionArn?: string;
@@ -2967,7 +2920,7 @@ export const DefinitionRepositoryDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DefinitionRepositoryDetails>;
 export type WorkflowProfileName = string;
 export type WorkflowProfileList = string[];
-export const WorkflowProfileList = /*@__PURE__*/ S.Array(S.String);
+export const WorkflowProfileList = ReadSetIdList as any as S.Schema<WorkflowProfileList>;
 export type WorkflowProfileParameterTemplates = {
   [key: string]: { [key: string]: WorkflowParameter | undefined } | undefined;
 };
@@ -3124,7 +3077,7 @@ export const GetWorkflowVersionResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetWorkflowVersionResponse>;
 export type ResourceIdentifier = string;
 export type IdList = string[];
-export const IdList = /*@__PURE__*/ S.Array(S.String);
+export const IdList = ReadSetIdList as any as S.Schema<IdList>;
 export interface ListAnnotationImportJobsFilter {
   status?: string;
   storeName?: string;
@@ -3262,11 +3215,8 @@ export const ListAnnotationStoresResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListAnnotationStoreVersionsFilter {
   status?: string;
 }
-export const ListAnnotationStoreVersionsFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: S.optional(S.String) }),
-).annotate({
-  identifier: "ListAnnotationStoreVersionsFilter",
-}) as any as S.Schema<ListAnnotationStoreVersionsFilter>;
+export const ListAnnotationStoreVersionsFilter =
+  ListAnnotationStoresFilter as any as S.Schema<ListAnnotationStoreVersionsFilter>;
 export interface ListAnnotationStoreVersionsRequest {
   name: string;
   maxResults?: number;
@@ -3554,13 +3504,7 @@ export interface ExportReadSetFilter {
   createdAfter?: Date;
   createdBefore?: Date;
 }
-export const ExportReadSetFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(S.String),
-    createdAfter: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    createdBefore: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "ExportReadSetFilter" }) as any as S.Schema<ExportReadSetFilter>;
+export const ExportReadSetFilter = ActivateReadSetFilter as any as S.Schema<ExportReadSetFilter>;
 export interface ListReadSetExportJobsRequest {
   sequenceStoreId: string;
   maxResults?: number;
@@ -3620,13 +3564,7 @@ export interface ImportReadSetFilter {
   createdAfter?: Date;
   createdBefore?: Date;
 }
-export const ImportReadSetFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(S.String),
-    createdAfter: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    createdBefore: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "ImportReadSetFilter" }) as any as S.Schema<ImportReadSetFilter>;
+export const ImportReadSetFilter = ActivateReadSetFilter as any as S.Schema<ImportReadSetFilter>;
 export interface ListReadSetImportJobsRequest {
   maxResults?: number;
   nextToken?: string;
@@ -3851,13 +3789,8 @@ export interface ImportReferenceFilter {
   createdAfter?: Date;
   createdBefore?: Date;
 }
-export const ImportReferenceFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(S.String),
-    createdAfter: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    createdBefore: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "ImportReferenceFilter" }) as any as S.Schema<ImportReferenceFilter>;
+export const ImportReferenceFilter =
+  ActivateReadSetFilter as any as S.Schema<ImportReferenceFilter>;
 export interface ListReferenceImportJobsRequest {
   maxResults?: number;
   nextToken?: string;
@@ -4364,12 +4297,12 @@ export const ListSequenceStoresResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSequenceStoresResponse>;
 export type ResourceOwner = string;
 export type ArnList = string[];
-export const ArnList = /*@__PURE__*/ S.Array(S.String);
+export const ArnList = ReadSetIdList as any as S.Schema<ArnList>;
 export type StatusList = string[];
-export const StatusList = /*@__PURE__*/ S.Array(S.String);
+export const StatusList = ReadSetIdList as any as S.Schema<StatusList>;
 export type ShareResourceType = string;
 export type TypeList = string[];
-export const TypeList = /*@__PURE__*/ S.Array(S.String);
+export const TypeList = ReadSetIdList as any as S.Schema<TypeList>;
 export interface Filter {
   resourceArns?: string[];
   status?: string[];
@@ -4428,11 +4361,8 @@ export interface ListVariantImportJobsFilter {
   status?: string;
   storeName?: string;
 }
-export const ListVariantImportJobsFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: S.optional(S.String), storeName: S.optional(S.String) }),
-).annotate({
-  identifier: "ListVariantImportJobsFilter",
-}) as any as S.Schema<ListVariantImportJobsFilter>;
+export const ListVariantImportJobsFilter =
+  ListAnnotationImportJobsFilter as any as S.Schema<ListVariantImportJobsFilter>;
 export interface ListVariantImportJobsRequest {
   maxResults?: number;
   ids?: string[];
@@ -4490,9 +4420,8 @@ export const ListVariantImportJobsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListVariantStoresFilter {
   status?: string;
 }
-export const ListVariantStoresFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: S.optional(S.String) }),
-).annotate({ identifier: "ListVariantStoresFilter" }) as any as S.Schema<ListVariantStoresFilter>;
+export const ListVariantStoresFilter =
+  AcceptShareResponse as any as S.Schema<ListVariantStoresFilter>;
 export interface ListVariantStoresRequest {
   maxResults?: number;
   ids?: string[];
@@ -4733,11 +4662,8 @@ export const StartAnnotationImportResponse = /*@__PURE__*/ S.suspend(() =>
 export interface StartReadSetActivationJobSourceItem {
   readSetId: string;
 }
-export const StartReadSetActivationJobSourceItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ readSetId: S.String }),
-).annotate({
-  identifier: "StartReadSetActivationJobSourceItem",
-}) as any as S.Schema<StartReadSetActivationJobSourceItem>;
+export const StartReadSetActivationJobSourceItem =
+  CompleteMultipartReadSetUploadResponse as any as S.Schema<StartReadSetActivationJobSourceItem>;
 export type StartReadSetActivationJobSourceList = StartReadSetActivationJobSourceItem[];
 export const StartReadSetActivationJobSourceList = /*@__PURE__*/ S.Array(
   StartReadSetActivationJobSourceItem,
@@ -5141,11 +5067,8 @@ export const StartVariantImportRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartVariantImportResponse {
   jobId: string;
 }
-export const StartVariantImportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobId: S.String }),
-).annotate({
-  identifier: "StartVariantImportResponse",
-}) as any as S.Schema<StartVariantImportResponse>;
+export const StartVariantImportResponse =
+  StartAnnotationImportResponse as any as S.Schema<StartVariantImportResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
@@ -5156,11 +5079,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  CancelAnnotationImportResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = ReadSetIdList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -5174,9 +5096,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  CancelAnnotationImportResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAnnotationStoreRequest {
   name: string;
   description?: string;
@@ -5276,9 +5197,8 @@ export const UpdateRunCacheRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/runCache/{id}" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateRunCacheRequest" }) as any as S.Schema<UpdateRunCacheRequest>;
 export interface UpdateRunCacheResponse {}
-export const UpdateRunCacheResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateRunCacheResponse",
-}) as any as S.Schema<UpdateRunCacheResponse>;
+export const UpdateRunCacheResponse =
+  CancelAnnotationImportResponse as any as S.Schema<UpdateRunCacheResponse>;
 export interface UpdateRunGroupRequest {
   id: string;
   name?: string;
@@ -5298,9 +5218,8 @@ export const UpdateRunGroupRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/runGroup/{id}" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateRunGroupRequest" }) as any as S.Schema<UpdateRunGroupRequest>;
 export interface UpdateRunGroupResponse {}
-export const UpdateRunGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateRunGroupResponse",
-}) as any as S.Schema<UpdateRunGroupResponse>;
+export const UpdateRunGroupResponse =
+  CancelAnnotationImportResponse as any as S.Schema<UpdateRunGroupResponse>;
 export interface UpdateSequenceStoreRequest {
   id: string;
   name?: string;
@@ -5411,9 +5330,8 @@ export const UpdateWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/workflow/{id}" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateWorkflowRequest" }) as any as S.Schema<UpdateWorkflowRequest>;
 export interface UpdateWorkflowResponse {}
-export const UpdateWorkflowResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateWorkflowResponse",
-}) as any as S.Schema<UpdateWorkflowResponse>;
+export const UpdateWorkflowResponse =
+  CancelAnnotationImportResponse as any as S.Schema<UpdateWorkflowResponse>;
 export interface UpdateWorkflowVersionRequest {
   workflowId: string;
   versionName: string;
@@ -5444,9 +5362,8 @@ export const UpdateWorkflowVersionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateWorkflowVersionRequest",
 }) as any as S.Schema<UpdateWorkflowVersionRequest>;
 export interface UpdateWorkflowVersionResponse {}
-export const UpdateWorkflowVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateWorkflowVersionResponse",
-}) as any as S.Schema<UpdateWorkflowVersionResponse>;
+export const UpdateWorkflowVersionResponse =
+  CancelAnnotationImportResponse as any as S.Schema<UpdateWorkflowVersionResponse>;
 export interface UploadReadSetPartRequest {
   sequenceStoreId: string;
   uploadId: string;

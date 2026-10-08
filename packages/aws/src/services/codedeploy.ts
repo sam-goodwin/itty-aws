@@ -681,9 +681,7 @@ export interface AppSpecContent {
   content?: string;
   sha256?: string;
 }
-export const AppSpecContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ content: S.optional(S.String), sha256: S.optional(S.String) }),
-).annotate({ identifier: "AppSpecContent" }) as any as S.Schema<AppSpecContent>;
+export const AppSpecContent = RawString as any as S.Schema<AppSpecContent>;
 export interface RevisionLocation {
   revisionType?: RevisionLocationType;
   s3Location?: S3Location;
@@ -717,7 +715,7 @@ export type ErrorMessage = string;
 export type Description = string;
 export type DeploymentGroupName = string;
 export type DeploymentGroupsList = string[];
-export const DeploymentGroupsList = /*@__PURE__*/ S.Array(S.String);
+export const DeploymentGroupsList = InstanceNameList as any as S.Schema<DeploymentGroupsList>;
 export interface GenericRevisionInfo {
   description?: string;
   deploymentGroups?: string[];
@@ -761,7 +759,7 @@ export const BatchGetApplicationRevisionsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchGetApplicationRevisionsOutput",
 }) as any as S.Schema<BatchGetApplicationRevisionsOutput>;
 export type ApplicationsList = string[];
-export const ApplicationsList = /*@__PURE__*/ S.Array(S.String);
+export const ApplicationsList = InstanceNameList as any as S.Schema<ApplicationsList>;
 export interface BatchGetApplicationsInput {
   applicationNames: string[];
 }
@@ -1020,23 +1018,19 @@ export type ELBName = string;
 export interface ELBInfo {
   name?: string;
 }
-export const ELBInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.optional(S.String) }),
-).annotate({ identifier: "ELBInfo" }) as any as S.Schema<ELBInfo>;
+export const ELBInfo = Alarm as any as S.Schema<ELBInfo>;
 export type ELBInfoList = ELBInfo[];
-export const ELBInfoList = /*@__PURE__*/ S.Array(ELBInfo);
+export const ELBInfoList = AlarmList as any as S.Schema<ELBInfoList>;
 export type TargetGroupName = string;
 export interface TargetGroupInfo {
   name?: string;
 }
-export const TargetGroupInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.optional(S.String) }),
-).annotate({ identifier: "TargetGroupInfo" }) as any as S.Schema<TargetGroupInfo>;
+export const TargetGroupInfo = Alarm as any as S.Schema<TargetGroupInfo>;
 export type TargetGroupInfoList = TargetGroupInfo[];
-export const TargetGroupInfoList = /*@__PURE__*/ S.Array(TargetGroupInfo);
+export const TargetGroupInfoList = AlarmList as any as S.Schema<TargetGroupInfoList>;
 export type ListenerArn = string;
 export type ListenerArnList = string[];
-export const ListenerArnList = /*@__PURE__*/ S.Array(S.String);
+export const ListenerArnList = InstanceNameList as any as S.Schema<ListenerArnList>;
 export interface TrafficRoute {
   listenerArns?: string[];
 }
@@ -1191,7 +1185,7 @@ export const BatchGetDeploymentGroupsOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchGetDeploymentGroupsOutput>;
 export type InstanceId = string;
 export type InstancesList = string[];
-export const InstancesList = /*@__PURE__*/ S.Array(S.String);
+export const InstancesList = InstanceNameList as any as S.Schema<InstancesList>;
 export interface BatchGetDeploymentInstancesInput {
   deploymentId: string;
   instanceIds: string[];
@@ -1306,7 +1300,7 @@ export const BatchGetDeploymentInstancesOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchGetDeploymentInstancesOutput",
 }) as any as S.Schema<BatchGetDeploymentInstancesOutput>;
 export type DeploymentsList = string[];
-export const DeploymentsList = /*@__PURE__*/ S.Array(S.String);
+export const DeploymentsList = InstanceNameList as any as S.Schema<DeploymentsList>;
 export interface BatchGetDeploymentsInput {
   deploymentIds: string[];
 }
@@ -1404,7 +1398,8 @@ export const RollbackInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RollbackInfo" }) as any as S.Schema<RollbackInfo>;
 export type AutoScalingGroupNameList = string[];
-export const AutoScalingGroupNameList = /*@__PURE__*/ S.Array(S.String);
+export const AutoScalingGroupNameList =
+  InstanceNameList as any as S.Schema<AutoScalingGroupNameList>;
 export interface TargetInstances {
   tagFilters?: EC2TagFilter[];
   autoScalingGroups?: string[];
@@ -1425,7 +1420,8 @@ export type DeploymentMode = "STANDARD" | "RESTART" | (string & {});
 export const DeploymentMode = S.String;
 
 export type DeploymentStatusMessageList = string[];
-export const DeploymentStatusMessageList = /*@__PURE__*/ S.Array(S.String);
+export const DeploymentStatusMessageList =
+  InstanceNameList as any as S.Schema<DeploymentStatusMessageList>;
 export type ExternalId = string;
 export interface RelatedDeployments {
   autoUpdateOutdatedInstancesRootDeploymentId?: string;
@@ -1517,7 +1513,7 @@ export const BatchGetDeploymentsOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchGetDeploymentsOutput>;
 export type TargetId = string;
 export type TargetIdList = string[];
-export const TargetIdList = /*@__PURE__*/ S.Array(S.String);
+export const TargetIdList = InstanceNameList as any as S.Schema<TargetIdList>;
 export interface BatchGetDeploymentTargetsInput {
   deploymentId: string;
   targetIds: string[];
@@ -1763,11 +1759,8 @@ export const ContinueDeploymentInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ContinueDeploymentInput" }) as any as S.Schema<ContinueDeploymentInput>;
 export interface ContinueDeploymentResponse {}
-export const ContinueDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "ContinueDeploymentResponse",
-}) as any as S.Schema<ContinueDeploymentResponse>;
+export const ContinueDeploymentResponse =
+  AddTagsToOnPremisesInstancesResponse as any as S.Schema<ContinueDeploymentResponse>;
 export interface CreateApplicationInput {
   applicationName: string;
   computePlatform?: ComputePlatform;
@@ -1984,11 +1977,8 @@ export const DeleteApplicationInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteApplicationInput" }) as any as S.Schema<DeleteApplicationInput>;
 export interface DeleteApplicationResponse {}
-export const DeleteApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteApplicationResponse",
-}) as any as S.Schema<DeleteApplicationResponse>;
+export const DeleteApplicationResponse =
+  AddTagsToOnPremisesInstancesResponse as any as S.Schema<DeleteApplicationResponse>;
 export interface DeleteDeploymentConfigInput {
   deploymentConfigName: string;
 }
@@ -2000,11 +1990,8 @@ export const DeleteDeploymentConfigInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDeploymentConfigInput",
 }) as any as S.Schema<DeleteDeploymentConfigInput>;
 export interface DeleteDeploymentConfigResponse {}
-export const DeleteDeploymentConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteDeploymentConfigResponse",
-}) as any as S.Schema<DeleteDeploymentConfigResponse>;
+export const DeleteDeploymentConfigResponse =
+  AddTagsToOnPremisesInstancesResponse as any as S.Schema<DeleteDeploymentConfigResponse>;
 export interface DeleteDeploymentGroupInput {
   applicationName: string;
   deploymentGroupName: string;
@@ -2053,11 +2040,8 @@ export const DeleteResourcesByExternalIdInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourcesByExternalIdInput",
 }) as any as S.Schema<DeleteResourcesByExternalIdInput>;
 export interface DeleteResourcesByExternalIdOutput {}
-export const DeleteResourcesByExternalIdOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteResourcesByExternalIdOutput",
-}) as any as S.Schema<DeleteResourcesByExternalIdOutput>;
+export const DeleteResourcesByExternalIdOutput =
+  AddTagsToOnPremisesInstancesResponse as any as S.Schema<DeleteResourcesByExternalIdOutput>;
 export interface DeregisterOnPremisesInstanceInput {
   instanceName: string;
 }
@@ -2069,11 +2053,8 @@ export const DeregisterOnPremisesInstanceInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeregisterOnPremisesInstanceInput",
 }) as any as S.Schema<DeregisterOnPremisesInstanceInput>;
 export interface DeregisterOnPremisesInstanceResponse {}
-export const DeregisterOnPremisesInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeregisterOnPremisesInstanceResponse",
-}) as any as S.Schema<DeregisterOnPremisesInstanceResponse>;
+export const DeregisterOnPremisesInstanceResponse =
+  AddTagsToOnPremisesInstancesResponse as any as S.Schema<DeregisterOnPremisesInstanceResponse>;
 export interface GetApplicationInput {
   applicationName: string;
 }
@@ -2307,7 +2288,7 @@ export const ListDeploymentConfigsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDeploymentConfigsInput",
 }) as any as S.Schema<ListDeploymentConfigsInput>;
 export type DeploymentConfigsList = string[];
-export const DeploymentConfigsList = /*@__PURE__*/ S.Array(S.String);
+export const DeploymentConfigsList = InstanceNameList as any as S.Schema<DeploymentConfigsList>;
 export interface ListDeploymentConfigsOutput {
   deploymentConfigsList?: string[];
   nextToken?: string;
@@ -2416,7 +2397,7 @@ export const TargetFilterName = S.String;
 
 export type FilterValue = string;
 export type FilterValueList = string[];
-export const FilterValueList = /*@__PURE__*/ S.Array(S.String);
+export const FilterValueList = InstanceNameList as any as S.Schema<FilterValueList>;
 export type TargetFilters = { [key in TargetFilterName]?: string[] };
 export const TargetFilters = /*@__PURE__*/ S.Record(
   TargetFilterName,
@@ -2456,7 +2437,8 @@ export const ListGitHubAccountTokenNamesInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListGitHubAccountTokenNamesInput",
 }) as any as S.Schema<ListGitHubAccountTokenNamesInput>;
 export type GitHubAccountTokenNameList = string[];
-export const GitHubAccountTokenNameList = /*@__PURE__*/ S.Array(S.String);
+export const GitHubAccountTokenNameList =
+  InstanceNameList as any as S.Schema<GitHubAccountTokenNameList>;
 export interface ListGitHubAccountTokenNamesOutput {
   tokenNameList?: string[];
   nextToken?: string;
@@ -2554,11 +2536,8 @@ export const RegisterApplicationRevisionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegisterApplicationRevisionInput",
 }) as any as S.Schema<RegisterApplicationRevisionInput>;
 export interface RegisterApplicationRevisionResponse {}
-export const RegisterApplicationRevisionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "RegisterApplicationRevisionResponse",
-}) as any as S.Schema<RegisterApplicationRevisionResponse>;
+export const RegisterApplicationRevisionResponse =
+  AddTagsToOnPremisesInstancesResponse as any as S.Schema<RegisterApplicationRevisionResponse>;
 export interface RegisterOnPremisesInstanceInput {
   instanceName: string;
   iamSessionArn?: string;
@@ -2574,11 +2553,8 @@ export const RegisterOnPremisesInstanceInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegisterOnPremisesInstanceInput",
 }) as any as S.Schema<RegisterOnPremisesInstanceInput>;
 export interface RegisterOnPremisesInstanceResponse {}
-export const RegisterOnPremisesInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "RegisterOnPremisesInstanceResponse",
-}) as any as S.Schema<RegisterOnPremisesInstanceResponse>;
+export const RegisterOnPremisesInstanceResponse =
+  AddTagsToOnPremisesInstancesResponse as any as S.Schema<RegisterOnPremisesInstanceResponse>;
 export interface RemoveTagsFromOnPremisesInstancesInput {
   tags: Tag[];
   instanceNames: string[];
@@ -2591,11 +2567,8 @@ export const RemoveTagsFromOnPremisesInstancesInput = /*@__PURE__*/ S.suspend(()
   identifier: "RemoveTagsFromOnPremisesInstancesInput",
 }) as any as S.Schema<RemoveTagsFromOnPremisesInstancesInput>;
 export interface RemoveTagsFromOnPremisesInstancesResponse {}
-export const RemoveTagsFromOnPremisesInstancesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "RemoveTagsFromOnPremisesInstancesResponse",
-}) as any as S.Schema<RemoveTagsFromOnPremisesInstancesResponse>;
+export const RemoveTagsFromOnPremisesInstancesResponse =
+  AddTagsToOnPremisesInstancesResponse as any as S.Schema<RemoveTagsFromOnPremisesInstancesResponse>;
 export interface SkipWaitTimeForInstanceTerminationInput {
   deploymentId?: string;
 }
@@ -2607,11 +2580,8 @@ export const SkipWaitTimeForInstanceTerminationInput = /*@__PURE__*/ S.suspend((
   identifier: "SkipWaitTimeForInstanceTerminationInput",
 }) as any as S.Schema<SkipWaitTimeForInstanceTerminationInput>;
 export interface SkipWaitTimeForInstanceTerminationResponse {}
-export const SkipWaitTimeForInstanceTerminationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "SkipWaitTimeForInstanceTerminationResponse",
-}) as any as S.Schema<SkipWaitTimeForInstanceTerminationResponse>;
+export const SkipWaitTimeForInstanceTerminationResponse =
+  AddTagsToOnPremisesInstancesResponse as any as S.Schema<SkipWaitTimeForInstanceTerminationResponse>;
 export interface StopDeploymentInput {
   deploymentId: string;
   autoRollbackEnabled?: boolean;
@@ -2646,7 +2616,7 @@ export const TagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe
   identifier: "TagResourceOutput",
 }) as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = InstanceNameList as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   ResourceArn: string;
   TagKeys: string[];
@@ -2657,9 +2627,7 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UntagResourceOutput",
-}) as any as S.Schema<UntagResourceOutput>;
+export const UntagResourceOutput = TagResourceOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateApplicationInput {
   applicationName?: string;
   newApplicationName?: string;
@@ -2671,11 +2639,8 @@ export const UpdateApplicationInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateApplicationInput" }) as any as S.Schema<UpdateApplicationInput>;
 export interface UpdateApplicationResponse {}
-export const UpdateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateApplicationResponse",
-}) as any as S.Schema<UpdateApplicationResponse>;
+export const UpdateApplicationResponse =
+  AddTagsToOnPremisesInstancesResponse as any as S.Schema<UpdateApplicationResponse>;
 export interface UpdateDeploymentGroupInput {
   applicationName: string;
   currentDeploymentGroupName: string;
@@ -2725,11 +2690,8 @@ export const UpdateDeploymentGroupInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDeploymentGroupOutput {
   hooksNotCleanedUp?: AutoScalingGroup[];
 }
-export const UpdateDeploymentGroupOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ hooksNotCleanedUp: S.optional(AutoScalingGroupList) }).pipe(ns),
-).annotate({
-  identifier: "UpdateDeploymentGroupOutput",
-}) as any as S.Schema<UpdateDeploymentGroupOutput>;
+export const UpdateDeploymentGroupOutput =
+  DeleteDeploymentGroupOutput as any as S.Schema<UpdateDeploymentGroupOutput>;
 export type AddTagsToOnPremisesInstancesError =
   | InstanceLimitExceededException
   | InstanceNameRequiredException

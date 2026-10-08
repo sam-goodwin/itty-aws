@@ -2440,12 +2440,7 @@ export interface BodyFat {
   /** Required. Body fat percentage. Must be in the range `[0, 100]`. */
   percentage?: number;
 }
-export const BodyFat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sampleTime: S.optional(ObservationSampleTime),
-    percentage: S.optional(S.Number),
-  }),
-).annotate({ identifier: "BodyFat" }) as any as S.Schema<BodyFat>;
+export const BodyFat = OxygenSaturation as any as S.Schema<BodyFat>;
 
 /** Step count over the time interval. */
 export interface Steps {
@@ -3067,11 +3062,7 @@ export interface StepsRollupValue {
   /** Total number of steps in the interval. */
   countSum?: string;
 }
-export const StepsRollupValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    countSum: S.optional(S.String),
-  }),
-).annotate({ identifier: "StepsRollupValue" }) as any as S.Schema<StepsRollupValue>;
+export const StepsRollupValue = FloorsRollupValue as any as S.Schema<StepsRollupValue>;
 
 export type WeightQuantityRollupUserProvidedUnitLastEnum =
   | "WEIGHT_UNIT_UNSPECIFIED"

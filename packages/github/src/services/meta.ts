@@ -45,114 +45,87 @@ export const ApiOverviewSshKeysList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ApiOverviewSshKeysList>;
 
 export type ApiOverviewHooksList = Array<string>;
-export const ApiOverviewHooksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiOverviewHooksList>;
+export const ApiOverviewHooksList = ApiOverviewSshKeysList as any as S.Schema<ApiOverviewHooksList>;
 
 export type ApiOverviewGithubEnterpriseImporterList = Array<string>;
-export const ApiOverviewGithubEnterpriseImporterList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiOverviewGithubEnterpriseImporterList>;
+export const ApiOverviewGithubEnterpriseImporterList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewGithubEnterpriseImporterList>;
 
 export type ApiOverviewWebList = Array<string>;
-export const ApiOverviewWebList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiOverviewWebList>;
+export const ApiOverviewWebList = ApiOverviewSshKeysList as any as S.Schema<ApiOverviewWebList>;
 
 export type ApiOverviewApiList = Array<string>;
-export const ApiOverviewApiList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiOverviewApiList>;
+export const ApiOverviewApiList = ApiOverviewSshKeysList as any as S.Schema<ApiOverviewApiList>;
 
 export type ApiOverviewGitList = Array<string>;
-export const ApiOverviewGitList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiOverviewGitList>;
+export const ApiOverviewGitList = ApiOverviewSshKeysList as any as S.Schema<ApiOverviewGitList>;
 
 export type ApiOverviewPackagesList = Array<string>;
-export const ApiOverviewPackagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiOverviewPackagesList>;
+export const ApiOverviewPackagesList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewPackagesList>;
 
 export type ApiOverviewPagesList = Array<string>;
-export const ApiOverviewPagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiOverviewPagesList>;
+export const ApiOverviewPagesList = ApiOverviewSshKeysList as any as S.Schema<ApiOverviewPagesList>;
 
 export type ApiOverviewImporterList = Array<string>;
-export const ApiOverviewImporterList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiOverviewImporterList>;
+export const ApiOverviewImporterList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewImporterList>;
 
 export type ApiOverviewActionsList = Array<string>;
-export const ApiOverviewActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiOverviewActionsList>;
+export const ApiOverviewActionsList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewActionsList>;
 
 export type ApiOverviewActionsMacosList = Array<string>;
-export const ApiOverviewActionsMacosList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiOverviewActionsMacosList>;
+export const ApiOverviewActionsMacosList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewActionsMacosList>;
 
 export type ApiOverviewCodespacesList = Array<string>;
-export const ApiOverviewCodespacesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiOverviewCodespacesList>;
+export const ApiOverviewCodespacesList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewCodespacesList>;
 
 export type ApiOverviewDependabotList = Array<string>;
-export const ApiOverviewDependabotList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiOverviewDependabotList>;
+export const ApiOverviewDependabotList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewDependabotList>;
 
 export type ApiOverviewCopilotList = Array<string>;
-export const ApiOverviewCopilotList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiOverviewCopilotList>;
+export const ApiOverviewCopilotList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewCopilotList>;
 
 export type ApiOverviewCommitSigningKeysList = Array<string>;
-export const ApiOverviewCommitSigningKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiOverviewCommitSigningKeysList>;
+export const ApiOverviewCommitSigningKeysList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewCommitSigningKeysList>;
 
 export type ApiOverviewDomainsWebsiteList = Array<string>;
-export const ApiOverviewDomainsWebsiteList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiOverviewDomainsWebsiteList>;
+export const ApiOverviewDomainsWebsiteList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewDomainsWebsiteList>;
 
 export type ApiOverviewDomainsCodespacesList = Array<string>;
-export const ApiOverviewDomainsCodespacesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiOverviewDomainsCodespacesList>;
+export const ApiOverviewDomainsCodespacesList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewDomainsCodespacesList>;
 
 export type ApiOverviewDomainsCopilotList = Array<string>;
-export const ApiOverviewDomainsCopilotList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiOverviewDomainsCopilotList>;
+export const ApiOverviewDomainsCopilotList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewDomainsCopilotList>;
 
 export type ApiOverviewDomainsPackagesList = Array<string>;
-export const ApiOverviewDomainsPackagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiOverviewDomainsPackagesList>;
+export const ApiOverviewDomainsPackagesList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewDomainsPackagesList>;
 
 export type ApiOverviewDomainsStorageList = Array<string>;
-export const ApiOverviewDomainsStorageList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiOverviewDomainsStorageList>;
+export const ApiOverviewDomainsStorageList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewDomainsStorageList>;
 
 export type ApiOverviewDomainsActionsList = Array<string>;
-export const ApiOverviewDomainsActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiOverviewDomainsActionsList>;
+export const ApiOverviewDomainsActionsList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewDomainsActionsList>;
 
 export type ApiOverviewDomainsActionsInboundFullDomainsList = Array<string>;
-export const ApiOverviewDomainsActionsInboundFullDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiOverviewDomainsActionsInboundFullDomainsList>;
+export const ApiOverviewDomainsActionsInboundFullDomainsList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewDomainsActionsInboundFullDomainsList>;
 
 export type ApiOverviewDomainsActionsInboundWildcardDomainsList = Array<string>;
-export const ApiOverviewDomainsActionsInboundWildcardDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiOverviewDomainsActionsInboundWildcardDomainsList>;
+export const ApiOverviewDomainsActionsInboundWildcardDomainsList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewDomainsActionsInboundWildcardDomainsList>;
 
 export interface ApiOverviewDomainsActionsInbound {
   full_domains?: ApiOverviewDomainsActionsInboundFullDomainsList;
@@ -168,9 +141,8 @@ export const ApiOverviewDomainsActionsInbound = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApiOverviewDomainsActionsInbound>;
 
 export type ApiOverviewDomainsArtifactAttestationsServicesList = Array<string>;
-export const ApiOverviewDomainsArtifactAttestationsServicesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiOverviewDomainsArtifactAttestationsServicesList>;
+export const ApiOverviewDomainsArtifactAttestationsServicesList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewDomainsArtifactAttestationsServicesList>;
 
 export interface ApiOverviewDomainsArtifactAttestations {
   trust_domain?: string;
@@ -258,9 +230,8 @@ export const GetAllVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAllVersionsRequest" }) as any as S.Schema<GetAllVersionsRequest>;
 
 export type GetAllVersionsResponseBodyList = Array<string>;
-export const GetAllVersionsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetAllVersionsResponseBodyList>;
+export const GetAllVersionsResponseBodyList =
+  ApiOverviewSshKeysList as any as S.Schema<GetAllVersionsResponseBodyList>;
 
 export type GetAllVersionsResponse = GetAllVersionsResponseBodyList;
 export const GetAllVersionsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -288,9 +259,7 @@ export const GetZenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetZenRequest" }) as any as S.Schema<GetZenRequest>;
 
 export interface GetZenResponse {}
-export const GetZenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetZenResponse",
-}) as any as S.Schema<GetZenResponse>;
+export const GetZenResponse = GetOctocatResponse as any as S.Schema<GetZenResponse>;
 
 export interface Root2Request {}
 export const Root2Request = /*@__PURE__*/ S.suspend(() =>

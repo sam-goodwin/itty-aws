@@ -225,20 +225,7 @@ export interface AiChatListItem {
   /** The user who owns this AI chat conversation. */
   user: AiChatUser;
 }
-export const AiChatListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agent_identifier: AiChatAgentIdentifiers,
-    blended_token_usage: S.String,
-    created_at: S.String,
-    id: S.String,
-    last_message_at: S.NullOr(S.String),
-    message_count: S.Number,
-    notification_preference: AiChatNotificationPreferences,
-    title: S.NullOr(S.String),
-    updated_at: S.String,
-    user: AiChatUser,
-  }),
-).annotate({ identifier: "AiChatListItem" }) as any as S.Schema<AiChatListItem>;
+export const AiChatListItem = AiChat as any as S.Schema<AiChatListItem>;
 
 /** A list of nodes. */
 export type ListAiChatResponseDataList = Array<AiChatListItem>;

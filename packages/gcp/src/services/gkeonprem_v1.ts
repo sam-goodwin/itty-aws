@@ -107,9 +107,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 /** BareMetalAdminWorkloadNodeConfig specifies the workload node configurations. */
 export interface BareMetalAdminWorkloadNodeConfig {
@@ -620,13 +618,8 @@ export interface BareMetalAdminManualLbConfig {
   /** Whether manual load balancing is enabled. */
   enabled?: boolean;
 }
-export const BareMetalAdminManualLbConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "BareMetalAdminManualLbConfig",
-}) as any as S.Schema<BareMetalAdminManualLbConfig>;
+export const BareMetalAdminManualLbConfig =
+  BareMetalAdminMultipleNetworkInterfacesConfig as any as S.Schema<BareMetalAdminManualLbConfig>;
 
 /** BareMetalAdminBgpPeerConfig represents configuration parameters for a Border Gateway Protocol (BGP) peer. */
 export interface BareMetalAdminBgpPeerConfig {
@@ -685,13 +678,8 @@ export interface BareMetalAdminLoadBalancerNodePoolConfig {
   /** The generic configuration for a node pool running a load balancer. */
   nodePoolConfig?: BareMetalNodePoolConfig;
 }
-export const BareMetalAdminLoadBalancerNodePoolConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodePoolConfig: S.optional(BareMetalNodePoolConfig),
-  }),
-).annotate({
-  identifier: "BareMetalAdminLoadBalancerNodePoolConfig",
-}) as any as S.Schema<BareMetalAdminLoadBalancerNodePoolConfig>;
+export const BareMetalAdminLoadBalancerNodePoolConfig =
+  BareMetalAdminControlPlaneNodePoolConfig as any as S.Schema<BareMetalAdminLoadBalancerNodePoolConfig>;
 
 /** BareMetalAdminBgpLbConfig represents configuration parameters for a Border Gateway Protocol (BGP) load balancer. */
 export interface BareMetalAdminBgpLbConfig {
@@ -1062,19 +1050,12 @@ export interface BareMetalApiServerArgument {
   /** Required. The value of the arg as it will be passed to the API Server command line. */
   value?: string;
 }
-export const BareMetalApiServerArgument = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    argument: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BareMetalApiServerArgument",
-}) as any as S.Schema<BareMetalApiServerArgument>;
+export const BareMetalApiServerArgument =
+  BareMetalAdminApiServerArgument as any as S.Schema<BareMetalApiServerArgument>;
 
 export type BareMetalApiServerArgumentList = Array<BareMetalApiServerArgument>;
-export const BareMetalApiServerArgumentList = /*@__PURE__*/ S.Array(
-  BareMetalApiServerArgument,
-) as any as S.Schema<BareMetalApiServerArgumentList>;
+export const BareMetalApiServerArgumentList =
+  BareMetalAdminApiServerArgumentList as any as S.Schema<BareMetalApiServerArgumentList>;
 
 /** Specifies the control plane configuration. */
 export interface BareMetalControlPlaneConfig {
@@ -1083,14 +1064,8 @@ export interface BareMetalControlPlaneConfig {
   /** Customizes the default API server args. Only a subset of customized flags are supported. For the exact format, refer to the [API server documentation](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/). */
   apiServerArgs?: BareMetalApiServerArgumentList;
 }
-export const BareMetalControlPlaneConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    controlPlaneNodePoolConfig: S.optional(BareMetalAdminControlPlaneNodePoolConfig),
-    apiServerArgs: S.optional(BareMetalApiServerArgumentList),
-  }),
-).annotate({
-  identifier: "BareMetalControlPlaneConfig",
-}) as any as S.Schema<BareMetalControlPlaneConfig>;
+export const BareMetalControlPlaneConfig =
+  BareMetalAdminControlPlaneConfig as any as S.Schema<BareMetalControlPlaneConfig>;
 
 export type BareMetalClusterStateEnum =
   | "STATE_UNSPECIFIED"
@@ -1160,13 +1135,8 @@ export interface BareMetalNodeAccessConfig {
   /** LoginUser is the user name used to access node machines. It defaults to "root" if not set. */
   loginUser?: string;
 }
-export const BareMetalNodeAccessConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    loginUser: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BareMetalNodeAccessConfig",
-}) as any as S.Schema<BareMetalNodeAccessConfig>;
+export const BareMetalNodeAccessConfig =
+  BareMetalAdminNodeAccessConfig as any as S.Schema<BareMetalNodeAccessConfig>;
 
 export type BareMetalClusterUpgradePolicyPolicyEnum =
   | "NODE_POOL_POLICY_UNSPECIFIED"
@@ -1197,14 +1167,8 @@ export interface BareMetalIslandModeCidrConfig {
   /** Required. All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field is mutable after creation starting with version 1.15. */
   serviceAddressCidrBlocks?: StringList;
 }
-export const BareMetalIslandModeCidrConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    podAddressCidrBlocks: S.optional(StringList),
-    serviceAddressCidrBlocks: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "BareMetalIslandModeCidrConfig",
-}) as any as S.Schema<BareMetalIslandModeCidrConfig>;
+export const BareMetalIslandModeCidrConfig =
+  BareMetalAdminIslandModeCidrConfig as any as S.Schema<BareMetalIslandModeCidrConfig>;
 
 /** Specifies the multiple networking interfaces cluster configuration. */
 export type BareMetalMultipleNetworkInterfacesConfig =
@@ -1259,13 +1223,8 @@ export interface BareMetalOsEnvironmentConfig {
   /** Whether the package repo should not be included when initializing bare metal machines. */
   packageRepoExcluded?: boolean;
 }
-export const BareMetalOsEnvironmentConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageRepoExcluded: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "BareMetalOsEnvironmentConfig",
-}) as any as S.Schema<BareMetalOsEnvironmentConfig>;
+export const BareMetalOsEnvironmentConfig =
+  BareMetalAdminOsEnvironmentConfig as any as S.Schema<BareMetalOsEnvironmentConfig>;
 
 /** Specifies the bare metal user cluster's observability infrastructure. */
 export type BareMetalClusterOperationsConfig = BareMetalAdminClusterOperationsConfig;
@@ -1276,9 +1235,8 @@ export type BareMetalDrainedMachine = BareMetalAdminDrainedMachine;
 export const BareMetalDrainedMachine = BareMetalAdminDrainedMachine;
 
 export type BareMetalDrainedMachineList = Array<BareMetalAdminDrainedMachine>;
-export const BareMetalDrainedMachineList = /*@__PURE__*/ S.Array(
-  BareMetalAdminDrainedMachine,
-) as any as S.Schema<BareMetalDrainedMachineList>;
+export const BareMetalDrainedMachineList =
+  BareMetalAdminDrainedMachineList as any as S.Schema<BareMetalDrainedMachineList>;
 
 /** Represents a machine that is currently draining. */
 export interface BareMetalDrainingMachine {
@@ -1732,11 +1690,8 @@ export interface VmwareAdminMetalLbConfig {
   /** Whether MetalLB is enabled. */
   enabled?: boolean;
 }
-export const VmwareAdminMetalLbConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "VmwareAdminMetalLbConfig" }) as any as S.Schema<VmwareAdminMetalLbConfig>;
+export const VmwareAdminMetalLbConfig =
+  BareMetalSrIovConfig as any as S.Schema<VmwareAdminMetalLbConfig>;
 
 export interface VmwareAdminManualLbConfig {
   /** NodePort for ingress service's http. The ingress service in the admin cluster is implemented as a Service of type NodePort (ex. 32527). */
@@ -1892,22 +1847,16 @@ export interface VmwareAutoRepairConfig {
   /** Whether auto repair is enabled. */
   enabled?: boolean;
 }
-export const VmwareAutoRepairConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "VmwareAutoRepairConfig" }) as any as S.Schema<VmwareAutoRepairConfig>;
+export const VmwareAutoRepairConfig =
+  BareMetalSrIovConfig as any as S.Schema<VmwareAutoRepairConfig>;
 
 /** Represents auto resizing configurations for the VMware user cluster. */
 export interface VmwareAutoResizeConfig {
   /** Whether to enable controle plane node auto resizing. */
   enabled?: boolean;
 }
-export const VmwareAutoResizeConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "VmwareAutoResizeConfig" }) as any as S.Schema<VmwareAutoResizeConfig>;
+export const VmwareAutoResizeConfig =
+  BareMetalSrIovConfig as any as S.Schema<VmwareAutoResizeConfig>;
 
 /** VmwareAdminAddonNodeConfig contains add-on node configurations for VMware admin cluster. */
 export interface VmwareAdminAddonNodeConfig {
@@ -1981,13 +1930,8 @@ export interface VmwareAdminPreparedSecretsConfig {
   /** Whether prepared secrets is enabled. */
   enabled?: boolean;
 }
-export const VmwareAdminPreparedSecretsConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "VmwareAdminPreparedSecretsConfig",
-}) as any as S.Schema<VmwareAdminPreparedSecretsConfig>;
+export const VmwareAdminPreparedSecretsConfig =
+  BareMetalAdminMultipleNetworkInterfacesConfig as any as S.Schema<VmwareAdminPreparedSecretsConfig>;
 
 /** VmwareAdminProxy represents configuration for admin cluster proxy. */
 export interface VmwareAdminProxy {
@@ -2099,11 +2043,7 @@ export interface VmwareDhcpIpConfig {
   /** enabled is a flag to mark if DHCP IP allocation is used for VMware user clusters. */
   enabled?: boolean;
 }
-export const VmwareDhcpIpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "VmwareDhcpIpConfig" }) as any as S.Schema<VmwareDhcpIpConfig>;
+export const VmwareDhcpIpConfig = BareMetalSrIovConfig as any as S.Schema<VmwareDhcpIpConfig>;
 
 /** VmwareAdminNetworkConfig contains network configuration for VMware admin cluster. */
 export interface VmwareAdminNetworkConfig {
@@ -2409,12 +2349,7 @@ export interface VmwareVipConfig {
   /** The VIP which you previously set aside for ingress traffic into this cluster. */
   ingressVip?: string;
 }
-export const VmwareVipConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    controlPlaneVip: S.optional(S.String),
-    ingressVip: S.optional(S.String),
-  }),
-).annotate({ identifier: "VmwareVipConfig" }) as any as S.Schema<VmwareVipConfig>;
+export const VmwareVipConfig = BareMetalVipConfig as any as S.Schema<VmwareVipConfig>;
 
 /** Represents an IP pool used by the load balancer. */
 export interface VmwareAddressPool {
@@ -2543,13 +2478,8 @@ export interface VmwareControlPlaneV2Config {
   /** Static IP addresses for the control plane nodes. */
   controlPlaneIpBlock?: VmwareIpBlock;
 }
-export const VmwareControlPlaneV2Config = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    controlPlaneIpBlock: S.optional(VmwareIpBlock),
-  }),
-).annotate({
-  identifier: "VmwareControlPlaneV2Config",
-}) as any as S.Schema<VmwareControlPlaneV2Config>;
+export const VmwareControlPlaneV2Config =
+  VmwareAdminHAControlPlaneConfig as any as S.Schema<VmwareControlPlaneV2Config>;
 
 /** Specifies network config for the VMware user cluster. */
 export interface VmwareNetworkConfig {
@@ -4647,13 +4577,8 @@ export interface QueryBareMetalVersionConfigResponse {
   /** List of available versions to install or to upgrade to. */
   versions?: BareMetalVersionInfoList;
 }
-export const QueryBareMetalVersionConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    versions: S.optional(BareMetalVersionInfoList),
-  }),
-).annotate({
-  identifier: "QueryBareMetalVersionConfigResponse",
-}) as any as S.Schema<QueryBareMetalVersionConfigResponse>;
+export const QueryBareMetalVersionConfigResponse =
+  QueryBareMetalAdminVersionConfigResponse as any as S.Schema<QueryBareMetalVersionConfigResponse>;
 
 export interface QueryVersionConfigProjectsLocationsVmwareClustersRequest {
   /** The user cluster resource name. This is the full resource name of the user cluster resource. Format: "projects/{project}/locations/{location}/vmwareClusters/{vmware_cluster}" */
@@ -4901,13 +4826,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsBareMetalClustersRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */

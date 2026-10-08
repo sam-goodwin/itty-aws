@@ -171,9 +171,8 @@ export const ExecuteSqlRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** JSON-encoded ProductValues conforming to schema. */
 export type ExecuteSqlResponseBodyItemRowsList = Array<unknown>;
-export const ExecuteSqlResponseBodyItemRowsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ExecuteSqlResponseBodyItemRowsList>;
+export const ExecuteSqlResponseBodyItemRowsList =
+  CallReducerRequestBodyList as any as S.Schema<ExecuteSqlResponseBodyItemRowsList>;
 
 export interface ExecuteSqlResponseBodyItem {
   /** JSON-encoded ProductType of the returned rows. */
@@ -329,9 +328,8 @@ export const GetPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetPublicKeyRequest" }) as any as S.Schema<GetPublicKeyRequest>;
 
 export type GetPublicKeyResponse = string;
-export const GetPublicKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetPublicKeyResponse" }) as any as S.Schema<GetPublicKeyResponse>;
+export const GetPublicKeyResponse =
+  GetDatabaseLogsResponse as any as S.Schema<GetPublicKeyResponse>;
 
 export interface ListIdentityDatabasesRequest {
   /** A Spacetime identity. */
@@ -347,9 +345,8 @@ export const ListIdentityDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Identities of databases owned by the path identity. */
 export type ListIdentityDatabasesResponseIdentitiesList = Array<string>;
-export const ListIdentityDatabasesResponseIdentitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIdentityDatabasesResponseIdentitiesList>;
+export const ListIdentityDatabasesResponseIdentitiesList =
+  GetDatabaseNamesResponseNamesList as any as S.Schema<ListIdentityDatabasesResponseIdentitiesList>;
 
 export interface ListIdentityDatabasesResponse {
   /** Identities of databases owned by the path identity. */
@@ -369,9 +366,7 @@ export const PingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PingRequest" }) as any as S.Schema<PingRequest>;
 
 export interface PingResponse {}
-export const PingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PingResponse",
-}) as any as S.Schema<PingResponse>;
+export const PingResponse = DeleteDatabaseResponse as any as S.Schema<PingResponse>;
 
 export interface PublishDatabaseRequest {
   body: string | Uint8Array | Blob;
@@ -416,9 +411,8 @@ export const PublishDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Names for this database. */
 export type SetDatabaseNamesRequestBodyList = Array<string>;
-export const SetDatabaseNamesRequestBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetDatabaseNamesRequestBodyList>;
+export const SetDatabaseNamesRequestBodyList =
+  GetDatabaseNamesResponseNamesList as any as S.Schema<SetDatabaseNamesRequestBodyList>;
 
 export interface SetDatabaseNamesRequest {
   /** Database name or Spacetime identity. */
@@ -501,9 +495,8 @@ export const VerifyIdentityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VerifyIdentityRequest" }) as any as S.Schema<VerifyIdentityRequest>;
 
 export interface VerifyIdentityResponse {}
-export const VerifyIdentityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "VerifyIdentityResponse",
-}) as any as S.Schema<VerifyIdentityResponse>;
+export const VerifyIdentityResponse =
+  DeleteDatabaseResponse as any as S.Schema<VerifyIdentityResponse>;
 
 export type AddDatabaseNameError = SpacetimeDBOpError;
 /** Add a new name for this database. Takes as the request body a string containing the new name of the database. */

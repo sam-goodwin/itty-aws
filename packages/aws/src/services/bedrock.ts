@@ -321,11 +321,8 @@ export type S3UriFolder = string;
 export interface AdvancedPromptOptimizationOutputConfig {
   s3Uri: string;
 }
-export const AdvancedPromptOptimizationOutputConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ s3Uri: S.String }),
-).annotate({
-  identifier: "AdvancedPromptOptimizationOutputConfig",
-}) as any as S.Schema<AdvancedPromptOptimizationOutputConfig>;
+export const AdvancedPromptOptimizationOutputConfig =
+  AdvancedPromptOptimizationInputConfig as any as S.Schema<AdvancedPromptOptimizationOutputConfig>;
 export type KmsKeyArn = string;
 export type TagKey = string;
 export type TagValue = string;
@@ -340,7 +337,8 @@ export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
 export type AdvancedPromptOptimizationModelIdentifier = string;
 export type NonEmptyStringList = string[];
-export const NonEmptyStringList = /*@__PURE__*/ S.Array(S.String);
+export const NonEmptyStringList =
+  AdvancedPromptOptimizationJobIdentifiers as any as S.Schema<NonEmptyStringList>;
 export interface InferenceConfiguration {
   maxTokens?: number;
   temperature?: number;
@@ -799,7 +797,8 @@ export const EvaluationDataset = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EvaluationDataset" }) as any as S.Schema<EvaluationDataset>;
 export type EvaluationMetricName = string | redacted.Redacted<string>;
 export type EvaluationMetricNames = (string | redacted.Redacted<string>)[];
-export const EvaluationMetricNames = /*@__PURE__*/ S.Array(SensitiveString);
+export const EvaluationMetricNames =
+  EvaluationJobIdentifiers as any as S.Schema<EvaluationMetricNames>;
 export interface EvaluationDatasetMetricConfig {
   taskType: EvaluationTaskType;
   dataset: EvaluationDataset;
@@ -1387,7 +1386,8 @@ export type Temperature = number;
 export type TopP = number;
 export type MaxTokens = number;
 export type RAGStopSequences = string[];
-export const RAGStopSequences = /*@__PURE__*/ S.Array(S.String);
+export const RAGStopSequences =
+  AdvancedPromptOptimizationJobIdentifiers as any as S.Schema<RAGStopSequences>;
 export interface TextInferenceConfig {
   temperature?: number;
   topP?: number;
@@ -1557,11 +1557,8 @@ export const EvaluationPrecomputedRetrieveSourceConfig = /*@__PURE__*/ S.suspend
 export interface EvaluationPrecomputedRetrieveAndGenerateSourceConfig {
   ragSourceIdentifier: string;
 }
-export const EvaluationPrecomputedRetrieveAndGenerateSourceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ragSourceIdentifier: S.String }),
-).annotate({
-  identifier: "EvaluationPrecomputedRetrieveAndGenerateSourceConfig",
-}) as any as S.Schema<EvaluationPrecomputedRetrieveAndGenerateSourceConfig>;
+export const EvaluationPrecomputedRetrieveAndGenerateSourceConfig =
+  EvaluationPrecomputedRetrieveSourceConfig as any as S.Schema<EvaluationPrecomputedRetrieveAndGenerateSourceConfig>;
 export type EvaluationPrecomputedRagSourceConfig =
   | {
       retrieveSourceConfig: EvaluationPrecomputedRetrieveSourceConfig;
@@ -1599,11 +1596,8 @@ export const EvaluationInferenceConfig = /*@__PURE__*/ S.Union([
 export interface EvaluationOutputDataConfig {
   s3Uri: string;
 }
-export const EvaluationOutputDataConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ s3Uri: S.String }),
-).annotate({
-  identifier: "EvaluationOutputDataConfig",
-}) as any as S.Schema<EvaluationOutputDataConfig>;
+export const EvaluationOutputDataConfig =
+  AdvancedPromptOptimizationInputConfig as any as S.Schema<EvaluationOutputDataConfig>;
 export interface CreateEvaluationJobRequest {
   jobName: string;
   jobDescription?: string | redacted.Redacted<string>;
@@ -1636,11 +1630,8 @@ export type EvaluationJobArn = string;
 export interface CreateEvaluationJobResponse {
   jobArn: string;
 }
-export const CreateEvaluationJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobArn: S.String }),
-).annotate({
-  identifier: "CreateEvaluationJobResponse",
-}) as any as S.Schema<CreateEvaluationJobResponse>;
+export const CreateEvaluationJobResponse =
+  CreateAdvancedPromptOptimizationJobResponse as any as S.Schema<CreateEvaluationJobResponse>;
 export type OfferToken = string;
 export type BedrockModelId = string;
 export interface CreateFoundationModelAgreementRequest {
@@ -1675,7 +1666,8 @@ export type GuardrailTopicName = string | redacted.Redacted<string>;
 export type GuardrailTopicDefinition = string | redacted.Redacted<string>;
 export type GuardrailTopicExample = string | redacted.Redacted<string>;
 export type GuardrailTopicExamples = (string | redacted.Redacted<string>)[];
-export const GuardrailTopicExamples = /*@__PURE__*/ S.Array(SensitiveString);
+export const GuardrailTopicExamples =
+  EvaluationJobIdentifiers as any as S.Schema<GuardrailTopicExamples>;
 export type GuardrailTopicType = "DENY" | (string & {});
 export const GuardrailTopicType = S.String;
 
@@ -1986,7 +1978,8 @@ export const GuardrailContextualGroundingPolicyConfig = /*@__PURE__*/ S.suspend(
   identifier: "GuardrailContextualGroundingPolicyConfig",
 }) as any as S.Schema<GuardrailContextualGroundingPolicyConfig>;
 export type AutomatedReasoningPolicyArnList = string[];
-export const AutomatedReasoningPolicyArnList = /*@__PURE__*/ S.Array(S.String);
+export const AutomatedReasoningPolicyArnList =
+  AdvancedPromptOptimizationJobIdentifiers as any as S.Schema<AutomatedReasoningPolicyArnList>;
 export type AutomatedReasoningConfidenceFilterThreshold = number;
 export interface GuardrailAutomatedReasoningPolicyConfig {
   policies: string[];
@@ -2140,10 +2133,11 @@ export type InstanceCount = number;
 export type InstanceType = string;
 export type SubnetId = string;
 export type SubnetIds = string[];
-export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
+export const SubnetIds = AdvancedPromptOptimizationJobIdentifiers as any as S.Schema<SubnetIds>;
 export type SecurityGroupId = string;
 export type SecurityGroupIds = string[];
-export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroupIds =
+  AdvancedPromptOptimizationJobIdentifiers as any as S.Schema<SecurityGroupIds>;
 export interface VpcConfig {
   subnetIds: string[];
   securityGroupIds: string[];
@@ -2260,11 +2254,8 @@ export type ModelCopyJobArn = string;
 export interface CreateModelCopyJobResponse {
   jobArn: string;
 }
-export const CreateModelCopyJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobArn: S.String }),
-).annotate({
-  identifier: "CreateModelCopyJobResponse",
-}) as any as S.Schema<CreateModelCopyJobResponse>;
+export const CreateModelCopyJobResponse =
+  CreateAdvancedPromptOptimizationJobResponse as any as S.Schema<CreateModelCopyJobResponse>;
 export type JobName = string;
 export type BaseModelIdentifier = string;
 export type CustomizationType =
@@ -2278,9 +2269,8 @@ export const CustomizationType = S.String;
 
 export type UsePromptResponse = boolean;
 export type InvocationLogSource = { s3Uri: string };
-export const InvocationLogSource = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ s3Uri: S.String }),
-]);
+export const InvocationLogSource =
+  EvaluationDatasetLocation as any as S.Schema<InvocationLogSource>;
 export type RequestMetadataMap = { [key: string]: string | undefined };
 export const RequestMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -2340,9 +2330,7 @@ export const TrainingDataConfig = /*@__PURE__*/ S.suspend(() =>
 export interface Validator {
   s3Uri: string;
 }
-export const Validator = /*@__PURE__*/ S.suspend(() => S.Struct({ s3Uri: S.String })).annotate({
-  identifier: "Validator",
-}) as any as S.Schema<Validator>;
+export const Validator = S3DataSource as any as S.Schema<Validator>;
 export type Validators = Validator[];
 export const Validators = /*@__PURE__*/ S.Array(Validator);
 export interface ValidationDataConfig {
@@ -2358,10 +2346,8 @@ export const OutputDataConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ s3Uri: S.String }),
 ).annotate({ identifier: "OutputDataConfig" }) as any as S.Schema<OutputDataConfig>;
 export type ModelCustomizationHyperParameters = { [key: string]: string | undefined };
-export const ModelCustomizationHyperParameters = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ModelCustomizationHyperParameters =
+  RequestMetadataMap as any as S.Schema<ModelCustomizationHyperParameters>;
 export type TeacherModelIdentifier = string;
 export interface TeacherModelConfig {
   teacherModelIdentifier: string;
@@ -2490,11 +2476,8 @@ export type ModelCustomizationJobArn = string;
 export interface CreateModelCustomizationJobResponse {
   jobArn: string;
 }
-export const CreateModelCustomizationJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobArn: S.String }),
-).annotate({
-  identifier: "CreateModelCustomizationJobResponse",
-}) as any as S.Schema<CreateModelCustomizationJobResponse>;
+export const CreateModelCustomizationJobResponse =
+  CreateAdvancedPromptOptimizationJobResponse as any as S.Schema<CreateModelCustomizationJobResponse>;
 export type ImportedModelName = string;
 export interface CreateModelImportJobRequest {
   jobName: string;
@@ -2528,11 +2511,8 @@ export type ModelImportJobArn = string;
 export interface CreateModelImportJobResponse {
   jobArn: string;
 }
-export const CreateModelImportJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobArn: S.String }),
-).annotate({
-  identifier: "CreateModelImportJobResponse",
-}) as any as S.Schema<CreateModelImportJobResponse>;
+export const CreateModelImportJobResponse =
+  CreateAdvancedPromptOptimizationJobResponse as any as S.Schema<CreateModelImportJobResponse>;
 export type ModelInvocationJobName = string;
 export type ModelInvocationIdempotencyToken = string;
 export type ModelId = string;
@@ -2618,11 +2598,8 @@ export type ModelInvocationJobArn = string;
 export interface CreateModelInvocationJobResponse {
   jobArn: string;
 }
-export const CreateModelInvocationJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobArn: S.String }),
-).annotate({
-  identifier: "CreateModelInvocationJobResponse",
-}) as any as S.Schema<CreateModelInvocationJobResponse>;
+export const CreateModelInvocationJobResponse =
+  CreateAdvancedPromptOptimizationJobResponse as any as S.Schema<CreateModelInvocationJobResponse>;
 export type PromptRouterName = string;
 export type PromptRouterTargetModelArn = string;
 export interface PromptRouterTargetModel {
@@ -2737,11 +2714,8 @@ export const DeleteAutomatedReasoningPolicyRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "DeleteAutomatedReasoningPolicyRequest",
 }) as any as S.Schema<DeleteAutomatedReasoningPolicyRequest>;
 export interface DeleteAutomatedReasoningPolicyResponse {}
-export const DeleteAutomatedReasoningPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAutomatedReasoningPolicyResponse",
-}) as any as S.Schema<DeleteAutomatedReasoningPolicyResponse>;
+export const DeleteAutomatedReasoningPolicyResponse =
+  CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<DeleteAutomatedReasoningPolicyResponse>;
 export interface DeleteAutomatedReasoningPolicyBuildWorkflowRequest {
   policyArn: string;
   buildWorkflowId: string;
@@ -2771,11 +2745,8 @@ export const DeleteAutomatedReasoningPolicyBuildWorkflowRequest = /*@__PURE__*/ 
   identifier: "DeleteAutomatedReasoningPolicyBuildWorkflowRequest",
 }) as any as S.Schema<DeleteAutomatedReasoningPolicyBuildWorkflowRequest>;
 export interface DeleteAutomatedReasoningPolicyBuildWorkflowResponse {}
-export const DeleteAutomatedReasoningPolicyBuildWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAutomatedReasoningPolicyBuildWorkflowResponse",
-}) as any as S.Schema<DeleteAutomatedReasoningPolicyBuildWorkflowResponse>;
+export const DeleteAutomatedReasoningPolicyBuildWorkflowResponse =
+  CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<DeleteAutomatedReasoningPolicyBuildWorkflowResponse>;
 export interface DeleteAutomatedReasoningPolicyTestCaseRequest {
   policyArn: string;
   testCaseId: string;
@@ -2805,11 +2776,8 @@ export const DeleteAutomatedReasoningPolicyTestCaseRequest = /*@__PURE__*/ S.sus
   identifier: "DeleteAutomatedReasoningPolicyTestCaseRequest",
 }) as any as S.Schema<DeleteAutomatedReasoningPolicyTestCaseRequest>;
 export interface DeleteAutomatedReasoningPolicyTestCaseResponse {}
-export const DeleteAutomatedReasoningPolicyTestCaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAutomatedReasoningPolicyTestCaseResponse",
-}) as any as S.Schema<DeleteAutomatedReasoningPolicyTestCaseResponse>;
+export const DeleteAutomatedReasoningPolicyTestCaseResponse =
+  CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<DeleteAutomatedReasoningPolicyTestCaseResponse>;
 export interface DeleteCustomModelRequest {
   modelIdentifier: string;
 }
@@ -2853,11 +2821,8 @@ export const DeleteCustomModelDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteCustomModelDeploymentRequest",
 }) as any as S.Schema<DeleteCustomModelDeploymentRequest>;
 export interface DeleteCustomModelDeploymentResponse {}
-export const DeleteCustomModelDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCustomModelDeploymentResponse",
-}) as any as S.Schema<DeleteCustomModelDeploymentResponse>;
+export const DeleteCustomModelDeploymentResponse =
+  CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<DeleteCustomModelDeploymentResponse>;
 export type AccountEnforcedGuardrailConfigurationId = string;
 export interface DeleteEnforcedGuardrailConfigurationRequest {
   configId: string;
@@ -2877,11 +2842,8 @@ export const DeleteEnforcedGuardrailConfigurationRequest = /*@__PURE__*/ S.suspe
   identifier: "DeleteEnforcedGuardrailConfigurationRequest",
 }) as any as S.Schema<DeleteEnforcedGuardrailConfigurationRequest>;
 export interface DeleteEnforcedGuardrailConfigurationResponse {}
-export const DeleteEnforcedGuardrailConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteEnforcedGuardrailConfigurationResponse",
-}) as any as S.Schema<DeleteEnforcedGuardrailConfigurationResponse>;
+export const DeleteEnforcedGuardrailConfigurationResponse =
+  CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<DeleteEnforcedGuardrailConfigurationResponse>;
 export interface DeleteFoundationModelAgreementRequest {
   modelId: string;
 }
@@ -2900,11 +2862,8 @@ export const DeleteFoundationModelAgreementRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "DeleteFoundationModelAgreementRequest",
 }) as any as S.Schema<DeleteFoundationModelAgreementRequest>;
 export interface DeleteFoundationModelAgreementResponse {}
-export const DeleteFoundationModelAgreementResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteFoundationModelAgreementResponse",
-}) as any as S.Schema<DeleteFoundationModelAgreementResponse>;
+export const DeleteFoundationModelAgreementResponse =
+  CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<DeleteFoundationModelAgreementResponse>;
 export interface DeleteGuardrailRequest {
   guardrailIdentifier: string;
   guardrailVersion?: string;
@@ -2925,9 +2884,8 @@ export const DeleteGuardrailRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteGuardrailRequest" }) as any as S.Schema<DeleteGuardrailRequest>;
 export interface DeleteGuardrailResponse {}
-export const DeleteGuardrailResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGuardrailResponse",
-}) as any as S.Schema<DeleteGuardrailResponse>;
+export const DeleteGuardrailResponse =
+  DeleteCustomModelResponse as any as S.Schema<DeleteGuardrailResponse>;
 export type ImportedModelIdentifier = string;
 export interface DeleteImportedModelRequest {
   modelIdentifier: string;
@@ -2947,9 +2905,8 @@ export const DeleteImportedModelRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteImportedModelRequest",
 }) as any as S.Schema<DeleteImportedModelRequest>;
 export interface DeleteImportedModelResponse {}
-export const DeleteImportedModelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteImportedModelResponse",
-}) as any as S.Schema<DeleteImportedModelResponse>;
+export const DeleteImportedModelResponse =
+  DeleteCustomModelResponse as any as S.Schema<DeleteImportedModelResponse>;
 export type InferenceProfileIdentifier = string;
 export interface DeleteInferenceProfileRequest {
   inferenceProfileIdentifier: string;
@@ -2971,9 +2928,8 @@ export const DeleteInferenceProfileRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteInferenceProfileRequest",
 }) as any as S.Schema<DeleteInferenceProfileRequest>;
 export interface DeleteInferenceProfileResponse {}
-export const DeleteInferenceProfileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteInferenceProfileResponse",
-}) as any as S.Schema<DeleteInferenceProfileResponse>;
+export const DeleteInferenceProfileResponse =
+  DeleteCustomModelResponse as any as S.Schema<DeleteInferenceProfileResponse>;
 export interface DeleteMarketplaceModelEndpointRequest {
   endpointArn: string;
 }
@@ -2992,11 +2948,8 @@ export const DeleteMarketplaceModelEndpointRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "DeleteMarketplaceModelEndpointRequest",
 }) as any as S.Schema<DeleteMarketplaceModelEndpointRequest>;
 export interface DeleteMarketplaceModelEndpointResponse {}
-export const DeleteMarketplaceModelEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMarketplaceModelEndpointResponse",
-}) as any as S.Schema<DeleteMarketplaceModelEndpointResponse>;
+export const DeleteMarketplaceModelEndpointResponse =
+  CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<DeleteMarketplaceModelEndpointResponse>;
 export interface DeleteModelInvocationLoggingConfigurationRequest {}
 export const DeleteModelInvocationLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -3013,11 +2966,8 @@ export const DeleteModelInvocationLoggingConfigurationRequest = /*@__PURE__*/ S.
   identifier: "DeleteModelInvocationLoggingConfigurationRequest",
 }) as any as S.Schema<DeleteModelInvocationLoggingConfigurationRequest>;
 export interface DeleteModelInvocationLoggingConfigurationResponse {}
-export const DeleteModelInvocationLoggingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteModelInvocationLoggingConfigurationResponse",
-}) as any as S.Schema<DeleteModelInvocationLoggingConfigurationResponse>;
+export const DeleteModelInvocationLoggingConfigurationResponse =
+  CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<DeleteModelInvocationLoggingConfigurationResponse>;
 export interface DeletePromptRouterRequest {
   promptRouterArn: string;
 }
@@ -3036,9 +2986,8 @@ export const DeletePromptRouterRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeletePromptRouterRequest",
 }) as any as S.Schema<DeletePromptRouterRequest>;
 export interface DeletePromptRouterResponse {}
-export const DeletePromptRouterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePromptRouterResponse",
-}) as any as S.Schema<DeletePromptRouterResponse>;
+export const DeletePromptRouterResponse =
+  DeleteCustomModelResponse as any as S.Schema<DeletePromptRouterResponse>;
 export type ProvisionedModelId = string;
 export interface DeleteProvisionedModelThroughputRequest {
   provisionedModelId: string;
@@ -3058,11 +3007,8 @@ export const DeleteProvisionedModelThroughputRequest = /*@__PURE__*/ S.suspend((
   identifier: "DeleteProvisionedModelThroughputRequest",
 }) as any as S.Schema<DeleteProvisionedModelThroughputRequest>;
 export interface DeleteProvisionedModelThroughputResponse {}
-export const DeleteProvisionedModelThroughputResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteProvisionedModelThroughputResponse",
-}) as any as S.Schema<DeleteProvisionedModelThroughputResponse>;
+export const DeleteProvisionedModelThroughputResponse =
+  CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<DeleteProvisionedModelThroughputResponse>;
 export type ResourcePolicyResourceArn = string;
 export interface DeleteResourcePolicyRequest {
   resourceArn: string;
@@ -3082,9 +3028,8 @@ export const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourcePolicyRequest",
 }) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {}
-export const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteResourcePolicyResponse",
-}) as any as S.Schema<DeleteResourcePolicyResponse>;
+export const DeleteResourcePolicyResponse =
+  DeleteCustomModelResponse as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface DeregisterMarketplaceModelEndpointRequest {
   endpointArn: string;
 }
@@ -3103,11 +3048,8 @@ export const DeregisterMarketplaceModelEndpointRequest = /*@__PURE__*/ S.suspend
   identifier: "DeregisterMarketplaceModelEndpointRequest",
 }) as any as S.Schema<DeregisterMarketplaceModelEndpointRequest>;
 export interface DeregisterMarketplaceModelEndpointResponse {}
-export const DeregisterMarketplaceModelEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeregisterMarketplaceModelEndpointResponse",
-}) as any as S.Schema<DeregisterMarketplaceModelEndpointResponse>;
+export const DeregisterMarketplaceModelEndpointResponse =
+  CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<DeregisterMarketplaceModelEndpointResponse>;
 export interface ExportAutomatedReasoningPolicyVersionRequest {
   policyArn: string;
 }
@@ -3300,11 +3242,8 @@ export interface AutomatedReasoningPolicyAddTypeValue {
   value: string;
   description?: string | redacted.Redacted<string>;
 }
-export const AutomatedReasoningPolicyAddTypeValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ value: S.String, description: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyAddTypeValue",
-}) as any as S.Schema<AutomatedReasoningPolicyAddTypeValue>;
+export const AutomatedReasoningPolicyAddTypeValue =
+  AutomatedReasoningPolicyDefinitionTypeValue as any as S.Schema<AutomatedReasoningPolicyAddTypeValue>;
 export interface AutomatedReasoningPolicyUpdateTypeValue {
   value: string;
   newValue?: string;
@@ -3382,11 +3321,8 @@ export interface AutomatedReasoningPolicyAddVariableAnnotation {
   type: string | redacted.Redacted<string>;
   description: string | redacted.Redacted<string>;
 }
-export const AutomatedReasoningPolicyAddVariableAnnotation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: SensitiveString, type: SensitiveString, description: SensitiveString }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyAddVariableAnnotation",
-}) as any as S.Schema<AutomatedReasoningPolicyAddVariableAnnotation>;
+export const AutomatedReasoningPolicyAddVariableAnnotation =
+  AutomatedReasoningPolicyDefinitionVariable as any as S.Schema<AutomatedReasoningPolicyAddVariableAnnotation>;
 export interface AutomatedReasoningPolicyUpdateVariableAnnotation {
   name: string | redacted.Redacted<string>;
   newName?: string | redacted.Redacted<string>;
@@ -3404,11 +3340,8 @@ export const AutomatedReasoningPolicyUpdateVariableAnnotation = /*@__PURE__*/ S.
 export interface AutomatedReasoningPolicyDeleteVariableAnnotation {
   name: string | redacted.Redacted<string>;
 }
-export const AutomatedReasoningPolicyDeleteVariableAnnotation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: SensitiveString }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyDeleteVariableAnnotation",
-}) as any as S.Schema<AutomatedReasoningPolicyDeleteVariableAnnotation>;
+export const AutomatedReasoningPolicyDeleteVariableAnnotation =
+  AutomatedReasoningPolicyDeleteTypeAnnotation as any as S.Schema<AutomatedReasoningPolicyDeleteVariableAnnotation>;
 export interface AutomatedReasoningPolicyAddRuleAnnotation {
   expression: string | redacted.Redacted<string>;
 }
@@ -3446,7 +3379,8 @@ export const AutomatedReasoningPolicyAddRuleFromNaturalLanguageAnnotation = /*@_
   identifier: "AutomatedReasoningPolicyAddRuleFromNaturalLanguageAnnotation",
 }) as any as S.Schema<AutomatedReasoningPolicyAddRuleFromNaturalLanguageAnnotation>;
 export type AutomatedReasoningPolicyDefinitionRuleIdList = string[];
-export const AutomatedReasoningPolicyDefinitionRuleIdList = /*@__PURE__*/ S.Array(S.String);
+export const AutomatedReasoningPolicyDefinitionRuleIdList =
+  AdvancedPromptOptimizationJobIdentifiers as any as S.Schema<AutomatedReasoningPolicyDefinitionRuleIdList>;
 export type AutomatedReasoningPolicyAnnotationFeedbackNaturalLanguage =
   | string
   | redacted.Redacted<string>;
@@ -3851,7 +3785,7 @@ export const GetAutomatedReasoningPolicyBuildWorkflowResultAssetsRequest = /*@__
 }) as any as S.Schema<GetAutomatedReasoningPolicyBuildWorkflowResultAssetsRequest>;
 export type AutomatedReasoningPolicyDefinitionTypeNameList = (string | redacted.Redacted<string>)[];
 export const AutomatedReasoningPolicyDefinitionTypeNameList =
-  /*@__PURE__*/ S.Array(SensitiveString);
+  EvaluationJobIdentifiers as any as S.Schema<AutomatedReasoningPolicyDefinitionTypeNameList>;
 export interface AutomatedReasoningPolicyDefinitionTypeValuePair {
   typeName: string | redacted.Redacted<string>;
   valueName: string;
@@ -3871,11 +3805,13 @@ export type AutomatedReasoningPolicyDefinitionVariableNameList = (
   | redacted.Redacted<string>
 )[];
 export const AutomatedReasoningPolicyDefinitionVariableNameList =
-  /*@__PURE__*/ S.Array(SensitiveString);
+  EvaluationJobIdentifiers as any as S.Schema<AutomatedReasoningPolicyDefinitionVariableNameList>;
 export type AutomatedReasoningPolicyConflictedRuleIdList = string[];
-export const AutomatedReasoningPolicyConflictedRuleIdList = /*@__PURE__*/ S.Array(S.String);
+export const AutomatedReasoningPolicyConflictedRuleIdList =
+  AdvancedPromptOptimizationJobIdentifiers as any as S.Schema<AutomatedReasoningPolicyConflictedRuleIdList>;
 export type AutomatedReasoningPolicyDisjointedRuleIdList = string[];
-export const AutomatedReasoningPolicyDisjointedRuleIdList = /*@__PURE__*/ S.Array(S.String);
+export const AutomatedReasoningPolicyDisjointedRuleIdList =
+  AdvancedPromptOptimizationJobIdentifiers as any as S.Schema<AutomatedReasoningPolicyDisjointedRuleIdList>;
 export interface AutomatedReasoningPolicyDisjointRuleSet {
   variables: (string | redacted.Redacted<string>)[];
   rules: string[];
@@ -3920,11 +3856,8 @@ export type AutomatedReasoningPolicyAnnotationStatus = "APPLIED" | "FAILED" | (s
 export const AutomatedReasoningPolicyAnnotationStatus = S.String;
 
 export interface AutomatedReasoningPolicyPlanning {}
-export const AutomatedReasoningPolicyPlanning = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AutomatedReasoningPolicyPlanning",
-}) as any as S.Schema<AutomatedReasoningPolicyPlanning>;
+export const AutomatedReasoningPolicyPlanning =
+  CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<AutomatedReasoningPolicyPlanning>;
 export interface AutomatedReasoningPolicyAddTypeMutation {
   type: AutomatedReasoningPolicyDefinitionType;
 }
@@ -3936,19 +3869,13 @@ export const AutomatedReasoningPolicyAddTypeMutation = /*@__PURE__*/ S.suspend((
 export interface AutomatedReasoningPolicyUpdateTypeMutation {
   type: AutomatedReasoningPolicyDefinitionType;
 }
-export const AutomatedReasoningPolicyUpdateTypeMutation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ type: AutomatedReasoningPolicyDefinitionType }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyUpdateTypeMutation",
-}) as any as S.Schema<AutomatedReasoningPolicyUpdateTypeMutation>;
+export const AutomatedReasoningPolicyUpdateTypeMutation =
+  AutomatedReasoningPolicyAddTypeMutation as any as S.Schema<AutomatedReasoningPolicyUpdateTypeMutation>;
 export interface AutomatedReasoningPolicyDeleteTypeMutation {
   name: string | redacted.Redacted<string>;
 }
-export const AutomatedReasoningPolicyDeleteTypeMutation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: SensitiveString }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyDeleteTypeMutation",
-}) as any as S.Schema<AutomatedReasoningPolicyDeleteTypeMutation>;
+export const AutomatedReasoningPolicyDeleteTypeMutation =
+  AutomatedReasoningPolicyDeleteTypeAnnotation as any as S.Schema<AutomatedReasoningPolicyDeleteTypeMutation>;
 export interface AutomatedReasoningPolicyAddVariableMutation {
   variable: AutomatedReasoningPolicyDefinitionVariable;
 }
@@ -3960,19 +3887,13 @@ export const AutomatedReasoningPolicyAddVariableMutation = /*@__PURE__*/ S.suspe
 export interface AutomatedReasoningPolicyUpdateVariableMutation {
   variable: AutomatedReasoningPolicyDefinitionVariable;
 }
-export const AutomatedReasoningPolicyUpdateVariableMutation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ variable: AutomatedReasoningPolicyDefinitionVariable }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyUpdateVariableMutation",
-}) as any as S.Schema<AutomatedReasoningPolicyUpdateVariableMutation>;
+export const AutomatedReasoningPolicyUpdateVariableMutation =
+  AutomatedReasoningPolicyAddVariableMutation as any as S.Schema<AutomatedReasoningPolicyUpdateVariableMutation>;
 export interface AutomatedReasoningPolicyDeleteVariableMutation {
   name: string | redacted.Redacted<string>;
 }
-export const AutomatedReasoningPolicyDeleteVariableMutation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: SensitiveString }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyDeleteVariableMutation",
-}) as any as S.Schema<AutomatedReasoningPolicyDeleteVariableMutation>;
+export const AutomatedReasoningPolicyDeleteVariableMutation =
+  AutomatedReasoningPolicyDeleteTypeAnnotation as any as S.Schema<AutomatedReasoningPolicyDeleteVariableMutation>;
 export interface AutomatedReasoningPolicyAddRuleMutation {
   rule: AutomatedReasoningPolicyDefinitionRule;
 }
@@ -3984,11 +3905,8 @@ export const AutomatedReasoningPolicyAddRuleMutation = /*@__PURE__*/ S.suspend((
 export interface AutomatedReasoningPolicyUpdateRuleMutation {
   rule: AutomatedReasoningPolicyDefinitionRule;
 }
-export const AutomatedReasoningPolicyUpdateRuleMutation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ rule: AutomatedReasoningPolicyDefinitionRule }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyUpdateRuleMutation",
-}) as any as S.Schema<AutomatedReasoningPolicyUpdateRuleMutation>;
+export const AutomatedReasoningPolicyUpdateRuleMutation =
+  AutomatedReasoningPolicyAddRuleMutation as any as S.Schema<AutomatedReasoningPolicyUpdateRuleMutation>;
 export interface AutomatedReasoningPolicyDeleteRuleMutation {
   id: string;
 }
@@ -4323,7 +4241,8 @@ export const AutomatedReasoningPolicyStatementReferenceList = /*@__PURE__*/ S.Ar
 );
 export type AutomatedReasoningPolicyJustificationText = string | redacted.Redacted<string>;
 export type AutomatedReasoningPolicyJustificationList = (string | redacted.Redacted<string>)[];
-export const AutomatedReasoningPolicyJustificationList = /*@__PURE__*/ S.Array(SensitiveString);
+export const AutomatedReasoningPolicyJustificationList =
+  EvaluationJobIdentifiers as any as S.Schema<AutomatedReasoningPolicyJustificationList>;
 export interface AutomatedReasoningPolicyRuleReport {
   rule: string;
   groundingStatements?: AutomatedReasoningPolicyStatementReference[];
@@ -4846,15 +4765,8 @@ export interface AutomatedReasoningCheckImpossibleFinding {
   contradictingRules?: AutomatedReasoningCheckRule[];
   logicWarning?: AutomatedReasoningCheckLogicWarning;
 }
-export const AutomatedReasoningCheckImpossibleFinding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    translation: S.optional(AutomatedReasoningCheckTranslation),
-    contradictingRules: S.optional(AutomatedReasoningCheckRuleList),
-    logicWarning: S.optional(AutomatedReasoningCheckLogicWarning),
-  }),
-).annotate({
-  identifier: "AutomatedReasoningCheckImpossibleFinding",
-}) as any as S.Schema<AutomatedReasoningCheckImpossibleFinding>;
+export const AutomatedReasoningCheckImpossibleFinding =
+  AutomatedReasoningCheckInvalidFinding as any as S.Schema<AutomatedReasoningCheckImpossibleFinding>;
 export type AutomatedReasoningCheckTranslationList = AutomatedReasoningCheckTranslation[];
 export const AutomatedReasoningCheckTranslationList = /*@__PURE__*/ S.Array(
   AutomatedReasoningCheckTranslation,
@@ -4889,17 +4801,11 @@ export const AutomatedReasoningCheckTranslationAmbiguousFinding = /*@__PURE__*/ 
   identifier: "AutomatedReasoningCheckTranslationAmbiguousFinding",
 }) as any as S.Schema<AutomatedReasoningCheckTranslationAmbiguousFinding>;
 export interface AutomatedReasoningCheckTooComplexFinding {}
-export const AutomatedReasoningCheckTooComplexFinding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AutomatedReasoningCheckTooComplexFinding",
-}) as any as S.Schema<AutomatedReasoningCheckTooComplexFinding>;
+export const AutomatedReasoningCheckTooComplexFinding =
+  CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<AutomatedReasoningCheckTooComplexFinding>;
 export interface AutomatedReasoningCheckNoTranslationsFinding {}
-export const AutomatedReasoningCheckNoTranslationsFinding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AutomatedReasoningCheckNoTranslationsFinding",
-}) as any as S.Schema<AutomatedReasoningCheckNoTranslationsFinding>;
+export const AutomatedReasoningCheckNoTranslationsFinding =
+  CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<AutomatedReasoningCheckNoTranslationsFinding>;
 export type AutomatedReasoningCheckFinding =
   | {
       valid: AutomatedReasoningCheckValidFinding;
@@ -5171,7 +5077,8 @@ export type EvaluationJobType = "Human" | "Automated" | (string & {});
 export const EvaluationJobType = S.String;
 
 export type ErrorMessages = string[];
-export const ErrorMessages = /*@__PURE__*/ S.Array(S.String);
+export const ErrorMessages =
+  AdvancedPromptOptimizationJobIdentifiers as any as S.Schema<ErrorMessages>;
 export interface GetEvaluationJobResponse {
   jobName: string;
   status: EvaluationJobStatus;
@@ -5448,11 +5355,8 @@ export const GuardrailContentFilters = /*@__PURE__*/ S.Array(GuardrailContentFil
 export interface GuardrailContentFiltersTier {
   tierName: GuardrailContentFiltersTierName;
 }
-export const GuardrailContentFiltersTier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tierName: GuardrailContentFiltersTierName }),
-).annotate({
-  identifier: "GuardrailContentFiltersTier",
-}) as any as S.Schema<GuardrailContentFiltersTier>;
+export const GuardrailContentFiltersTier =
+  GuardrailContentFiltersTierConfig as any as S.Schema<GuardrailContentFiltersTier>;
 export interface GuardrailContentPolicy {
   filters?: GuardrailContentFilter[];
   tier?: GuardrailContentFiltersTier;
@@ -5470,17 +5374,9 @@ export interface GuardrailWord {
   inputEnabled?: boolean;
   outputEnabled?: boolean;
 }
-export const GuardrailWord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.String,
-    inputAction: S.optional(GuardrailWordAction),
-    outputAction: S.optional(GuardrailWordAction),
-    inputEnabled: S.optional(S.Boolean),
-    outputEnabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "GuardrailWord" }) as any as S.Schema<GuardrailWord>;
+export const GuardrailWord = GuardrailWordConfig as any as S.Schema<GuardrailWord>;
 export type GuardrailWords = GuardrailWord[];
-export const GuardrailWords = /*@__PURE__*/ S.Array(GuardrailWord);
+export const GuardrailWords = GuardrailWordsConfig as any as S.Schema<GuardrailWords>;
 export interface GuardrailManagedWords {
   type: GuardrailManagedWordsType;
   inputAction?: GuardrailWordAction;
@@ -5517,18 +5413,10 @@ export interface GuardrailPiiEntity {
   inputEnabled?: boolean;
   outputEnabled?: boolean;
 }
-export const GuardrailPiiEntity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GuardrailPiiEntityType,
-    action: GuardrailSensitiveInformationAction,
-    inputAction: S.optional(GuardrailSensitiveInformationAction),
-    outputAction: S.optional(GuardrailSensitiveInformationAction),
-    inputEnabled: S.optional(S.Boolean),
-    outputEnabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "GuardrailPiiEntity" }) as any as S.Schema<GuardrailPiiEntity>;
+export const GuardrailPiiEntity = GuardrailPiiEntityConfig as any as S.Schema<GuardrailPiiEntity>;
 export type GuardrailPiiEntities = GuardrailPiiEntity[];
-export const GuardrailPiiEntities = /*@__PURE__*/ S.Array(GuardrailPiiEntity);
+export const GuardrailPiiEntities =
+  GuardrailPiiEntitiesConfig as any as S.Schema<GuardrailPiiEntities>;
 export interface GuardrailRegex {
   name: string;
   description?: string;
@@ -5539,20 +5427,9 @@ export interface GuardrailRegex {
   inputEnabled?: boolean;
   outputEnabled?: boolean;
 }
-export const GuardrailRegex = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(S.String),
-    pattern: S.String,
-    action: GuardrailSensitiveInformationAction,
-    inputAction: S.optional(GuardrailSensitiveInformationAction),
-    outputAction: S.optional(GuardrailSensitiveInformationAction),
-    inputEnabled: S.optional(S.Boolean),
-    outputEnabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "GuardrailRegex" }) as any as S.Schema<GuardrailRegex>;
+export const GuardrailRegex = GuardrailRegexConfig as any as S.Schema<GuardrailRegex>;
 export type GuardrailRegexes = GuardrailRegex[];
-export const GuardrailRegexes = /*@__PURE__*/ S.Array(GuardrailRegex);
+export const GuardrailRegexes = GuardrailRegexesConfig as any as S.Schema<GuardrailRegexes>;
 export interface GuardrailSensitiveInformationPolicy {
   piiEntities?: GuardrailPiiEntity[];
   regexes?: GuardrailRegex[];
@@ -5571,20 +5448,11 @@ export interface GuardrailContextualGroundingFilter {
   action?: GuardrailContextualGroundingAction;
   enabled?: boolean;
 }
-export const GuardrailContextualGroundingFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GuardrailContextualGroundingFilterType,
-    threshold: S.Number,
-    action: S.optional(GuardrailContextualGroundingAction),
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GuardrailContextualGroundingFilter",
-}) as any as S.Schema<GuardrailContextualGroundingFilter>;
+export const GuardrailContextualGroundingFilter =
+  GuardrailContextualGroundingFilterConfig as any as S.Schema<GuardrailContextualGroundingFilter>;
 export type GuardrailContextualGroundingFilters = GuardrailContextualGroundingFilter[];
-export const GuardrailContextualGroundingFilters = /*@__PURE__*/ S.Array(
-  GuardrailContextualGroundingFilter,
-);
+export const GuardrailContextualGroundingFilters =
+  GuardrailContextualGroundingFiltersConfig as any as S.Schema<GuardrailContextualGroundingFilters>;
 export interface GuardrailContextualGroundingPolicy {
   filters: GuardrailContextualGroundingFilter[];
 }
@@ -5597,14 +5465,8 @@ export interface GuardrailAutomatedReasoningPolicy {
   policies: string[];
   confidenceThreshold?: number;
 }
-export const GuardrailAutomatedReasoningPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policies: AutomatedReasoningPolicyArnList,
-    confidenceThreshold: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GuardrailAutomatedReasoningPolicy",
-}) as any as S.Schema<GuardrailAutomatedReasoningPolicy>;
+export const GuardrailAutomatedReasoningPolicy =
+  GuardrailAutomatedReasoningPolicyConfig as any as S.Schema<GuardrailAutomatedReasoningPolicy>;
 export type GuardrailCrossRegionGuardrailProfileId = string;
 export type GuardrailCrossRegionGuardrailProfileArn = string;
 export interface GuardrailCrossRegionDetails {
@@ -5618,10 +5480,12 @@ export const GuardrailCrossRegionDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GuardrailCrossRegionDetails>;
 export type GuardrailStatusReason = string | redacted.Redacted<string>;
 export type GuardrailStatusReasons = (string | redacted.Redacted<string>)[];
-export const GuardrailStatusReasons = /*@__PURE__*/ S.Array(SensitiveString);
+export const GuardrailStatusReasons =
+  EvaluationJobIdentifiers as any as S.Schema<GuardrailStatusReasons>;
 export type GuardrailFailureRecommendation = string | redacted.Redacted<string>;
 export type GuardrailFailureRecommendations = (string | redacted.Redacted<string>)[];
-export const GuardrailFailureRecommendations = /*@__PURE__*/ S.Array(SensitiveString);
+export const GuardrailFailureRecommendations =
+  EvaluationJobIdentifiers as any as S.Schema<GuardrailFailureRecommendations>;
 export interface GetGuardrailResponse {
   name: string | redacted.Redacted<string>;
   description?: string | redacted.Redacted<string>;
@@ -5744,11 +5608,11 @@ export const GetInferenceProfileRequest = /*@__PURE__*/ S.suspend(() =>
 export interface InferenceProfileModel {
   modelArn?: string;
 }
-export const InferenceProfileModel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ modelArn: S.optional(S.String) }),
-).annotate({ identifier: "InferenceProfileModel" }) as any as S.Schema<InferenceProfileModel>;
+export const InferenceProfileModel =
+  PromptRouterTargetModel as any as S.Schema<InferenceProfileModel>;
 export type InferenceProfileModels = InferenceProfileModel[];
-export const InferenceProfileModels = /*@__PURE__*/ S.Array(InferenceProfileModel);
+export const InferenceProfileModels =
+  PromptRouterTargetModels as any as S.Schema<InferenceProfileModels>;
 export type InferenceProfileId = string;
 export type InferenceProfileType = "SYSTEM_DEFINED" | "APPLICATION" | (string & {});
 export const InferenceProfileType = S.String;
@@ -5904,25 +5768,13 @@ export interface DataProcessingDetails {
   creationTime?: Date;
   lastModifiedTime?: Date;
 }
-export const DataProcessingDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(JobStatusDetails),
-    creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    lastModifiedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "DataProcessingDetails" }) as any as S.Schema<DataProcessingDetails>;
+export const DataProcessingDetails = ValidationDetails as any as S.Schema<DataProcessingDetails>;
 export interface TrainingDetails {
   status?: JobStatusDetails;
   creationTime?: Date;
   lastModifiedTime?: Date;
 }
-export const TrainingDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(JobStatusDetails),
-    creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    lastModifiedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "TrainingDetails" }) as any as S.Schema<TrainingDetails>;
+export const TrainingDetails = ValidationDetails as any as S.Schema<TrainingDetails>;
 export interface StatusDetails {
   validationDetails?: ValidationDetails;
   dataProcessingDetails?: DataProcessingDetails;
@@ -6786,10 +6638,12 @@ export const SelectiveContentGuarding = /*@__PURE__*/ S.suspend(() =>
 export type ConfigurationOwner = string;
 export type IncludedModelId = string;
 export type IncludedModelsList = string[];
-export const IncludedModelsList = /*@__PURE__*/ S.Array(S.String);
+export const IncludedModelsList =
+  AdvancedPromptOptimizationJobIdentifiers as any as S.Schema<IncludedModelsList>;
 export type ExcludedModelId = string;
 export type ExcludedModelsList = string[];
-export const ExcludedModelsList = /*@__PURE__*/ S.Array(S.String);
+export const ExcludedModelsList =
+  AdvancedPromptOptimizationJobIdentifiers as any as S.Schema<ExcludedModelsList>;
 export interface ModelEnforcement {
   includedModels: string[];
   excludedModels: string[];
@@ -6879,13 +6733,17 @@ export const ListEvaluationJobsRequest = /*@__PURE__*/ S.suspend(() =>
 export type EvaluationTaskTypes = EvaluationTaskType[];
 export const EvaluationTaskTypes = /*@__PURE__*/ S.Array(EvaluationTaskType);
 export type EvaluationBedrockModelIdentifiers = string[];
-export const EvaluationBedrockModelIdentifiers = /*@__PURE__*/ S.Array(S.String);
+export const EvaluationBedrockModelIdentifiers =
+  AdvancedPromptOptimizationJobIdentifiers as any as S.Schema<EvaluationBedrockModelIdentifiers>;
 export type EvaluationBedrockKnowledgeBaseIdentifiers = string[];
-export const EvaluationBedrockKnowledgeBaseIdentifiers = /*@__PURE__*/ S.Array(S.String);
+export const EvaluationBedrockKnowledgeBaseIdentifiers =
+  AdvancedPromptOptimizationJobIdentifiers as any as S.Schema<EvaluationBedrockKnowledgeBaseIdentifiers>;
 export type EvaluatorModelIdentifiers = string[];
-export const EvaluatorModelIdentifiers = /*@__PURE__*/ S.Array(S.String);
+export const EvaluatorModelIdentifiers =
+  AdvancedPromptOptimizationJobIdentifiers as any as S.Schema<EvaluatorModelIdentifiers>;
 export type EvaluationPrecomputedInferenceSourceIdentifiers = string[];
-export const EvaluationPrecomputedInferenceSourceIdentifiers = /*@__PURE__*/ S.Array(S.String);
+export const EvaluationPrecomputedInferenceSourceIdentifiers =
+  AdvancedPromptOptimizationJobIdentifiers as any as S.Schema<EvaluationPrecomputedInferenceSourceIdentifiers>;
 export interface EvaluationModelConfigSummary {
   bedrockModelIdentifiers?: string[];
   precomputedInferenceSourceIdentifiers?: string[];
@@ -6901,7 +6759,8 @@ export const EvaluationModelConfigSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "EvaluationModelConfigSummary",
 }) as any as S.Schema<EvaluationModelConfigSummary>;
 export type EvaluationPrecomputedRagSourceIdentifiers = string[];
-export const EvaluationPrecomputedRagSourceIdentifiers = /*@__PURE__*/ S.Array(S.String);
+export const EvaluationPrecomputedRagSourceIdentifiers =
+  AdvancedPromptOptimizationJobIdentifiers as any as S.Schema<EvaluationPrecomputedRagSourceIdentifiers>;
 export interface EvaluationRagConfigSummary {
   bedrockKnowledgeBaseIdentifiers?: string[];
   precomputedRagSourceIdentifiers?: string[];
@@ -7096,20 +6955,8 @@ export interface FoundationModelSummary {
   inferenceTypesSupported?: InferenceType[];
   modelLifecycle?: FoundationModelLifecycle;
 }
-export const FoundationModelSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modelArn: S.String,
-    modelId: S.String,
-    modelName: S.optional(S.String),
-    providerName: S.optional(S.String),
-    inputModalities: S.optional(ModelModalityList),
-    outputModalities: S.optional(ModelModalityList),
-    responseStreamingSupported: S.optional(S.Boolean),
-    customizationsSupported: S.optional(ModelCustomizationList),
-    inferenceTypesSupported: S.optional(InferenceTypeList),
-    modelLifecycle: S.optional(FoundationModelLifecycle),
-  }),
-).annotate({ identifier: "FoundationModelSummary" }) as any as S.Schema<FoundationModelSummary>;
+export const FoundationModelSummary =
+  FoundationModelDetails as any as S.Schema<FoundationModelSummary>;
 export type FoundationModelSummaryList = FoundationModelSummary[];
 export const FoundationModelSummaryList = /*@__PURE__*/ S.Array(FoundationModelSummary);
 export interface ListFoundationModelsResponse {
@@ -7378,21 +7225,7 @@ export interface ModelCopyJobSummary {
   failureMessage?: string;
   sourceModelName?: string;
 }
-export const ModelCopyJobSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobArn: S.String,
-    status: ModelCopyJobStatus,
-    creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    targetModelArn: S.String,
-    targetModelName: S.optional(S.String),
-    sourceAccountId: S.String,
-    sourceModelArn: S.String,
-    targetModelKmsKeyArn: S.optional(S.String),
-    targetModelTags: S.optional(TagList),
-    failureMessage: S.optional(S.String),
-    sourceModelName: S.optional(S.String),
-  }),
-).annotate({ identifier: "ModelCopyJobSummary" }) as any as S.Schema<ModelCopyJobSummary>;
+export const ModelCopyJobSummary = GetModelCopyJobResponse as any as S.Schema<ModelCopyJobSummary>;
 export type ModelCopyJobSummaries = ModelCopyJobSummary[];
 export const ModelCopyJobSummaries = /*@__PURE__*/ S.Array(ModelCopyJobSummary);
 export interface ListModelCopyJobsResponse {
@@ -7679,20 +7512,7 @@ export interface PromptRouterSummary {
   status: PromptRouterStatus;
   type: PromptRouterType;
 }
-export const PromptRouterSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    promptRouterName: S.String,
-    routingCriteria: RoutingCriteria,
-    description: S.optional(SensitiveString),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    promptRouterArn: S.String,
-    models: PromptRouterTargetModels,
-    fallbackModel: PromptRouterTargetModel,
-    status: PromptRouterStatus,
-    type: PromptRouterType,
-  }),
-).annotate({ identifier: "PromptRouterSummary" }) as any as S.Schema<PromptRouterSummary>;
+export const PromptRouterSummary = GetPromptRouterResponse as any as S.Schema<PromptRouterSummary>;
 export type PromptRouterSummaries = PromptRouterSummary[];
 export const PromptRouterSummaries = /*@__PURE__*/ S.Array(PromptRouterSummary);
 export interface ListPromptRoutersResponse {
@@ -7829,14 +7649,8 @@ export interface PutAccountDataRetentionResponse {
   mode: DataRetentionMode;
   updatedAt?: Date;
 }
-export const PutAccountDataRetentionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: DataRetentionMode,
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({
-  identifier: "PutAccountDataRetentionResponse",
-}) as any as S.Schema<PutAccountDataRetentionResponse>;
+export const PutAccountDataRetentionResponse =
+  GetAccountDataRetentionResponse as any as S.Schema<PutAccountDataRetentionResponse>;
 export interface AccountEnforcedGuardrailInferenceInputConfiguration {
   guardrailIdentifier: string;
   guardrailVersion: string;
@@ -7906,11 +7720,8 @@ export const PutModelInvocationLoggingConfigurationRequest = /*@__PURE__*/ S.sus
   identifier: "PutModelInvocationLoggingConfigurationRequest",
 }) as any as S.Schema<PutModelInvocationLoggingConfigurationRequest>;
 export interface PutModelInvocationLoggingConfigurationResponse {}
-export const PutModelInvocationLoggingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutModelInvocationLoggingConfigurationResponse",
-}) as any as S.Schema<PutModelInvocationLoggingConfigurationResponse>;
+export const PutModelInvocationLoggingConfigurationResponse =
+  CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<PutModelInvocationLoggingConfigurationResponse>;
 export interface PutResourcePolicyRequest {
   resourceArn: string;
   resourcePolicy: string;
@@ -7946,11 +7757,8 @@ export const PutUseCaseForModelAccessRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutUseCaseForModelAccessRequest",
 }) as any as S.Schema<PutUseCaseForModelAccessRequest>;
 export interface PutUseCaseForModelAccessResponse {}
-export const PutUseCaseForModelAccessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutUseCaseForModelAccessResponse",
-}) as any as S.Schema<PutUseCaseForModelAccessResponse>;
+export const PutUseCaseForModelAccessResponse =
+  CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<PutUseCaseForModelAccessResponse>;
 export interface RegisterMarketplaceModelEndpointRequest {
   endpointIdentifier: string;
   modelSourceIdentifier: string;
@@ -7978,11 +7786,8 @@ export const RegisterMarketplaceModelEndpointRequest = /*@__PURE__*/ S.suspend((
 export interface RegisterMarketplaceModelEndpointResponse {
   marketplaceModelEndpoint: MarketplaceModelEndpoint;
 }
-export const RegisterMarketplaceModelEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ marketplaceModelEndpoint: MarketplaceModelEndpoint }),
-).annotate({
-  identifier: "RegisterMarketplaceModelEndpointResponse",
-}) as any as S.Schema<RegisterMarketplaceModelEndpointResponse>;
+export const RegisterMarketplaceModelEndpointResponse =
+  CreateMarketplaceModelEndpointResponse as any as S.Schema<RegisterMarketplaceModelEndpointResponse>;
 export interface AutomatedReasoningPolicyBuildWorkflowDocument {
   document: Uint8Array | redacted.Redacted<Uint8Array>;
   documentContentType: AutomatedReasoningPolicyBuildDocumentContentType;
@@ -8014,9 +7819,8 @@ export const AutomatedReasoningPolicyBuildWorkflowRepairContent = /*@__PURE__*/ 
 }) as any as S.Schema<AutomatedReasoningPolicyBuildWorkflowRepairContent>;
 export type AutomatedReasoningPolicyGenerateFidelityReportDocumentList =
   AutomatedReasoningPolicyBuildWorkflowDocument[];
-export const AutomatedReasoningPolicyGenerateFidelityReportDocumentList = /*@__PURE__*/ S.Array(
-  AutomatedReasoningPolicyBuildWorkflowDocument,
-);
+export const AutomatedReasoningPolicyGenerateFidelityReportDocumentList =
+  AutomatedReasoningPolicyBuildWorkflowDocumentList as any as S.Schema<AutomatedReasoningPolicyGenerateFidelityReportDocumentList>;
 export type AutomatedReasoningPolicyGenerateFidelityReportContent = {
   documents: AutomatedReasoningPolicyBuildWorkflowDocument[];
 };
@@ -8025,9 +7829,8 @@ export const AutomatedReasoningPolicyGenerateFidelityReportContent = /*@__PURE__
 ]);
 export type AutomatedReasoningPolicyIterativeRefinementDocumentList =
   AutomatedReasoningPolicyBuildWorkflowDocument[];
-export const AutomatedReasoningPolicyIterativeRefinementDocumentList = /*@__PURE__*/ S.Array(
-  AutomatedReasoningPolicyBuildWorkflowDocument,
-);
+export const AutomatedReasoningPolicyIterativeRefinementDocumentList =
+  AutomatedReasoningPolicyBuildWorkflowDocumentList as any as S.Schema<AutomatedReasoningPolicyIterativeRefinementDocumentList>;
 export type AutomatedReasoningPolicyBuildFeedback = string | redacted.Redacted<string>;
 export interface AutomatedReasoningPolicyIterativeRefinementContent {
   documents: AutomatedReasoningPolicyBuildWorkflowDocument[];
@@ -8135,7 +7938,8 @@ export const StartAutomatedReasoningPolicyBuildWorkflowResponse = /*@__PURE__*/ 
   identifier: "StartAutomatedReasoningPolicyBuildWorkflowResponse",
 }) as any as S.Schema<StartAutomatedReasoningPolicyBuildWorkflowResponse>;
 export type AutomatedReasoningPolicyTestCaseIdList = string[];
-export const AutomatedReasoningPolicyTestCaseIdList = /*@__PURE__*/ S.Array(S.String);
+export const AutomatedReasoningPolicyTestCaseIdList =
+  AdvancedPromptOptimizationJobIdentifiers as any as S.Schema<AutomatedReasoningPolicyTestCaseIdList>;
 export interface StartAutomatedReasoningPolicyTestWorkflowRequest {
   policyArn: string;
   buildWorkflowId: string;
@@ -8190,11 +7994,8 @@ export const StopAdvancedPromptOptimizationJobRequest = /*@__PURE__*/ S.suspend(
   identifier: "StopAdvancedPromptOptimizationJobRequest",
 }) as any as S.Schema<StopAdvancedPromptOptimizationJobRequest>;
 export interface StopAdvancedPromptOptimizationJobResponse {}
-export const StopAdvancedPromptOptimizationJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StopAdvancedPromptOptimizationJobResponse",
-}) as any as S.Schema<StopAdvancedPromptOptimizationJobResponse>;
+export const StopAdvancedPromptOptimizationJobResponse =
+  CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<StopAdvancedPromptOptimizationJobResponse>;
 export interface StopEvaluationJobRequest {
   jobIdentifier: string | redacted.Redacted<string>;
 }
@@ -8211,9 +8012,8 @@ export const StopEvaluationJobRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopEvaluationJobRequest" }) as any as S.Schema<StopEvaluationJobRequest>;
 export interface StopEvaluationJobResponse {}
-export const StopEvaluationJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopEvaluationJobResponse",
-}) as any as S.Schema<StopEvaluationJobResponse>;
+export const StopEvaluationJobResponse =
+  DeleteCustomModelResponse as any as S.Schema<StopEvaluationJobResponse>;
 export interface StopModelCustomizationJobRequest {
   jobIdentifier: string;
 }
@@ -8232,11 +8032,8 @@ export const StopModelCustomizationJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopModelCustomizationJobRequest",
 }) as any as S.Schema<StopModelCustomizationJobRequest>;
 export interface StopModelCustomizationJobResponse {}
-export const StopModelCustomizationJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StopModelCustomizationJobResponse",
-}) as any as S.Schema<StopModelCustomizationJobResponse>;
+export const StopModelCustomizationJobResponse =
+  CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<StopModelCustomizationJobResponse>;
 export interface StopModelInvocationJobRequest {
   jobIdentifier: string;
 }
@@ -8255,9 +8052,8 @@ export const StopModelInvocationJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopModelInvocationJobRequest",
 }) as any as S.Schema<StopModelInvocationJobRequest>;
 export interface StopModelInvocationJobResponse {}
-export const StopModelInvocationJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopModelInvocationJobResponse",
-}) as any as S.Schema<StopModelInvocationJobResponse>;
+export const StopModelInvocationJobResponse =
+  DeleteCustomModelResponse as any as S.Schema<StopModelInvocationJobResponse>;
 export interface TagResourceRequest {
   resourceARN: string;
   tags: Tag[];
@@ -8268,11 +8064,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteCustomModelResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = AdvancedPromptOptimizationJobIdentifiers as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceARN: string;
   tagKeys: string[];
@@ -8283,9 +8078,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteCustomModelResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAutomatedReasoningPolicyRequest {
   policyArn: string;
   policyDefinition: AutomatedReasoningPolicyDefinition;
@@ -8411,11 +8205,8 @@ export interface UpdateAutomatedReasoningPolicyTestCaseResponse {
   policyArn: string;
   testCaseId: string;
 }
-export const UpdateAutomatedReasoningPolicyTestCaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyArn: S.String, testCaseId: S.String }),
-).annotate({
-  identifier: "UpdateAutomatedReasoningPolicyTestCaseResponse",
-}) as any as S.Schema<UpdateAutomatedReasoningPolicyTestCaseResponse>;
+export const UpdateAutomatedReasoningPolicyTestCaseResponse =
+  CreateAutomatedReasoningPolicyTestCaseResponse as any as S.Schema<UpdateAutomatedReasoningPolicyTestCaseResponse>;
 export interface UpdateCustomModelDeploymentRequest {
   modelArn: string;
   customModelDeploymentIdentifier: string;
@@ -8443,11 +8234,8 @@ export const UpdateCustomModelDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateCustomModelDeploymentResponse {
   customModelDeploymentArn: string;
 }
-export const UpdateCustomModelDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ customModelDeploymentArn: S.String }),
-).annotate({
-  identifier: "UpdateCustomModelDeploymentResponse",
-}) as any as S.Schema<UpdateCustomModelDeploymentResponse>;
+export const UpdateCustomModelDeploymentResponse =
+  CreateCustomModelDeploymentResponse as any as S.Schema<UpdateCustomModelDeploymentResponse>;
 export interface UpdateGuardrailRequest {
   guardrailIdentifier: string;
   name: string | redacted.Redacted<string>;
@@ -8529,11 +8317,8 @@ export const UpdateMarketplaceModelEndpointRequest = /*@__PURE__*/ S.suspend(() 
 export interface UpdateMarketplaceModelEndpointResponse {
   marketplaceModelEndpoint: MarketplaceModelEndpoint;
 }
-export const UpdateMarketplaceModelEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ marketplaceModelEndpoint: MarketplaceModelEndpoint }),
-).annotate({
-  identifier: "UpdateMarketplaceModelEndpointResponse",
-}) as any as S.Schema<UpdateMarketplaceModelEndpointResponse>;
+export const UpdateMarketplaceModelEndpointResponse =
+  CreateMarketplaceModelEndpointResponse as any as S.Schema<UpdateMarketplaceModelEndpointResponse>;
 export interface UpdateProvisionedModelThroughputRequest {
   provisionedModelId: string;
   desiredProvisionedModelName?: string;
@@ -8558,11 +8343,8 @@ export const UpdateProvisionedModelThroughputRequest = /*@__PURE__*/ S.suspend((
   identifier: "UpdateProvisionedModelThroughputRequest",
 }) as any as S.Schema<UpdateProvisionedModelThroughputRequest>;
 export interface UpdateProvisionedModelThroughputResponse {}
-export const UpdateProvisionedModelThroughputResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateProvisionedModelThroughputResponse",
-}) as any as S.Schema<UpdateProvisionedModelThroughputResponse>;
+export const UpdateProvisionedModelThroughputResponse =
+  CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<UpdateProvisionedModelThroughputResponse>;
 export type NonBlankString = string;
 export type BatchDeleteAdvancedPromptOptimizationJobError =
   | AccessDeniedException

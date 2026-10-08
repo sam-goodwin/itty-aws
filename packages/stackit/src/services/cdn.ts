@@ -121,27 +121,23 @@ export const CreateDistributionRequestBackend =
 
 /** Restricts access to your content based on country. We use the ISO 3166-1 alpha-2 standard for country codes (e.g., DE, ES, GB). This setting blocks users from the specified countries. */
 export type CreateDistributionRequestBlockedCountriesList = Array<string>;
-export const CreateDistributionRequestBlockedCountriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDistributionRequestBlockedCountriesList>;
+export const CreateDistributionRequestBlockedCountriesList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<CreateDistributionRequestBlockedCountriesList>;
 
 /** Restricts access to your content by specifying a list of blocked IPv4 addresses. This feature enhances security and privacy by preventing these addresses from accessing your distribution. */
 export type CreateDistributionRequestBlockedIpsList = Array<string>;
-export const CreateDistributionRequestBlockedIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDistributionRequestBlockedIpsList>;
+export const CreateDistributionRequestBlockedIpsList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<CreateDistributionRequestBlockedIpsList>;
 
 /** HTTP request header names whose values participate in the cache key. Each entry multiplies the number of cache variants by the number of distinct values observed for that header. */
 export type CacheConfigCreateCacheKeyHeadersList = Array<string>;
-export const CacheConfigCreateCacheKeyHeadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CacheConfigCreateCacheKeyHeadersList>;
+export const CacheConfigCreateCacheKeyHeadersList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<CacheConfigCreateCacheKeyHeadersList>;
 
 /** Allowlist of query-string parameter names that participate in the cache key when `queryStringVaryEnabled` is true. Ignored while `queryStringVaryEnabled` is false, but still stored so it can be re-activated without losing the list. */
 export type CacheConfigCreateQueryStringVaryParametersList = Array<string>;
-export const CacheConfigCreateQueryStringVaryParametersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CacheConfigCreateQueryStringVaryParametersList>;
+export const CacheConfigCreateQueryStringVaryParametersList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<CacheConfigCreateQueryStringVaryParametersList>;
 
 /** Groups the cache options that influence how the CDN builds its cache key on distribution creation. **Cache cardinality warning:** enabling query-string vary produces one cache entry per unique query-string combination (**unbounded** when `queryStringVaryParameters` is empty). Each entry in `cacheKeyHeaders` multiplies the number of cache variants by the number of distinct values observed for that header. Use these settings sparingly. `queryStringVaryParameters` is stored independently of `queryStringVaryEnabled` so that this feature can be toggled on and off without losing the configured allowlist. Only `queryStringVaryEnabled` gates whether the parameter allowlist actually varies the cache. **Optimizer interaction:** when the Optimizer is enabled, the CDN automatically enables query-string vary for image responses regardless of this setting. */
 export interface CacheConfigCreate {
@@ -162,10 +158,8 @@ export const CacheConfigCreate = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels are key-value string pairs that can be attached to a distribution. */
 export type CreateDistributionRequestLabelsMap = { [key: string]: string | undefined };
-export const CreateDistributionRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateDistributionRequestLabelsMap>;
+export const CreateDistributionRequestLabelsMap =
+  HttpBackendCreateOriginRequestHeadersMap as any as S.Schema<CreateDistributionRequestLabelsMap>;
 
 /** The authentication credentials required for the CDN to push logs to your Loki instance. */
 export interface LokiLogSinkCredentials {
@@ -291,9 +285,8 @@ export const MatchCondition = S.String;
 
 /** A list of glob patterns to match against the request path. At least one value is required. Examples: "/shop/*" or "*\/img/*" */
 export type MatcherValuesList = Array<string>;
-export const MatcherValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MatcherValuesList>;
+export const MatcherValuesList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<MatcherValuesList>;
 
 /** A matcher containing a list of string values to compare against the request path. */
 export interface Matcher {
@@ -386,74 +379,62 @@ export const TlsConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** This whitelist restricts which HTTP methods the distribution accepts. Requests using non-whitelisted methods are blocked by the WAF before reaching the origin. Common methods: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`, `OPTIONS`, `CONNECT`, `TRACE` Validation ensures: 1. At least one method is allowed 2. No duplicate methods (e.g., `GET` appearing twice) 3. Each method is valid per HTTP standards */
 export type WafConfigAllowedHttpMethodsList = Array<string>;
-export const WafConfigAllowedHttpMethodsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WafConfigAllowedHttpMethodsList>;
+export const WafConfigAllowedHttpMethodsList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<WafConfigAllowedHttpMethodsList>;
 
 export type WafConfigAllowedHttpVersionsList = Array<string>;
-export const WafConfigAllowedHttpVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WafConfigAllowedHttpVersionsList>;
+export const WafConfigAllowedHttpVersionsList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<WafConfigAllowedHttpVersionsList>;
 
 /** This allow list restricts which Content-Type headers are accepted in request bodies. Format: Must be `type/subtype` with no spaces. Common content types: - `application/json` - `application/x-www-form-urlencoded` - `multipart/form-data` - `text/html` - `text/plain` - `application/xml` */
 export type WafConfigAllowedRequestContentTypesList = Array<string>;
-export const WafConfigAllowedRequestContentTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WafConfigAllowedRequestContentTypesList>;
+export const WafConfigAllowedRequestContentTypesList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<WafConfigAllowedRequestContentTypesList>;
 
 /** Ids of WAF Collections to mark as disabled */
 export type WafConfigDisabledRuleCollectionIdsList = Array<string>;
-export const WafConfigDisabledRuleCollectionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WafConfigDisabledRuleCollectionIdsList>;
+export const WafConfigDisabledRuleCollectionIdsList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<WafConfigDisabledRuleCollectionIdsList>;
 
 /** Ids of WAF Rule Groups to mark as disabled */
 export type WafConfigDisabledRuleGroupIdsList = Array<string>;
-export const WafConfigDisabledRuleGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WafConfigDisabledRuleGroupIdsList>;
+export const WafConfigDisabledRuleGroupIdsList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<WafConfigDisabledRuleGroupIdsList>;
 
 /** Ids of WAF Rules that are **explicitly** disabled for this distribution. */
 export type WafConfigDisabledRuleIdsList = Array<string>;
-export const WafConfigDisabledRuleIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WafConfigDisabledRuleIdsList>;
+export const WafConfigDisabledRuleIdsList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<WafConfigDisabledRuleIdsList>;
 
 /** Ids of WAF Collections to mark as enabled */
 export type WafConfigEnabledRuleCollectionIdsList = Array<string>;
-export const WafConfigEnabledRuleCollectionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WafConfigEnabledRuleCollectionIdsList>;
+export const WafConfigEnabledRuleCollectionIdsList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<WafConfigEnabledRuleCollectionIdsList>;
 
 /** Ids of WAF Rule Groups to mark as enabled */
 export type WafConfigEnabledRuleGroupIdsList = Array<string>;
-export const WafConfigEnabledRuleGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WafConfigEnabledRuleGroupIdsList>;
+export const WafConfigEnabledRuleGroupIdsList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<WafConfigEnabledRuleGroupIdsList>;
 
 /** Ids of the WAF rules that are **explicitly** enabled for this distribution. If this rule is in a disabled / log Only RuleGroup or Collection, it will be enabled regardless as `enabledRuleIds` overrides those in specificity. Do note that rules can also be enabled because a Rulegroup or Collection is enabled. **DO NOT** use this property to find all active rules. Instead, pass `?withWafStatus=true` as a query parameter to `GetDistribution` or `ListDistributions`. This will expose the `waf` Property on distribution Level. From there you can `$.waf.enabledRules.map(e => e.id)` to get a list of all enabled rules. */
 export type WafConfigEnabledRuleIdsList = Array<string>;
-export const WafConfigEnabledRuleIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WafConfigEnabledRuleIdsList>;
+export const WafConfigEnabledRuleIdsList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<WafConfigEnabledRuleIdsList>;
 
 /** Ids of WAF Collections to mark as log Only. */
 export type WafConfigLogOnlyRuleCollectionIdsList = Array<string>;
-export const WafConfigLogOnlyRuleCollectionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WafConfigLogOnlyRuleCollectionIdsList>;
+export const WafConfigLogOnlyRuleCollectionIdsList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<WafConfigLogOnlyRuleCollectionIdsList>;
 
 /** Ids of WAF Rule Groups to mark as log Only. */
 export type WafConfigLogOnlyRuleGroupIdsList = Array<string>;
-export const WafConfigLogOnlyRuleGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WafConfigLogOnlyRuleGroupIdsList>;
+export const WafConfigLogOnlyRuleGroupIdsList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<WafConfigLogOnlyRuleGroupIdsList>;
 
 /** Ids of WAF Rules that are **explicitly** marked as Log Only for this distribution. */
 export type WafConfigLogOnlyRuleIdsList = Array<string>;
-export const WafConfigLogOnlyRuleIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WafConfigLogOnlyRuleIdsList>;
+export const WafConfigLogOnlyRuleIdsList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<WafConfigLogOnlyRuleIdsList>;
 
 /** - `ENABLED`: The WAF actively inspects and blocks malicious requests. - `DISABLED`: The WAF is completely off. No inspection occurs. - `LOG_ONLY`: The WAF inspects requests and logs matches but never blocks. */
 export type WafMode = "DISABLED" | "ENABLED" | "LOG_ONLY";
@@ -578,25 +559,20 @@ export const CreateDistributionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDistributionRequest>;
 
 export type HttpBackendGeofencingValueList = Array<string>;
-export const HttpBackendGeofencingValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HttpBackendGeofencingValueList>;
+export const HttpBackendGeofencingValueList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<HttpBackendGeofencingValueList>;
 
 /** An object mapping multiple alternative origins to country codes. Any request from one of those country codes will route to the alternative origin. Do note that country codes may only be used once. You cannot have a country be assigned to multiple alternative origins. */
 export type HttpBackendGeofencingMap = {
   [key: string]: HttpBackendGeofencingValueList | undefined;
 };
-export const HttpBackendGeofencingMap = /*@__PURE__*/ S.Record(
-  S.String,
-  HttpBackendGeofencingValueList,
-) as any as S.Schema<HttpBackendGeofencingMap>;
+export const HttpBackendGeofencingMap =
+  HttpBackendCreateGeofencingMap as any as S.Schema<HttpBackendGeofencingMap>;
 
 /** Headers that will be sent with every request to the configured origin. **WARNING**: Do not store sensitive values in the headers. The configuration is stored as plain text. */
 export type HttpBackendOriginRequestHeadersMap = { [key: string]: string | undefined };
-export const HttpBackendOriginRequestHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<HttpBackendOriginRequestHeadersMap>;
+export const HttpBackendOriginRequestHeadersMap =
+  HttpBackendCreateOriginRequestHeadersMap as any as S.Schema<HttpBackendOriginRequestHeadersMap>;
 
 /** Defines the type of content origin. For this schema, it must be set to `http`. */
 export type HttpBackendType = "http";
@@ -646,27 +622,23 @@ export const ConfigBackend = /*@__PURE__*/ S.Unknown as any as S.Schema<ConfigBa
 
 /** Restricts access to your content based on country. We use the ISO 3166-1 alpha-2 standard for country codes (e.g. DE, ES, GB). This setting blocks users from the specified countries. */
 export type ConfigBlockedCountriesList = Array<string>;
-export const ConfigBlockedCountriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigBlockedCountriesList>;
+export const ConfigBlockedCountriesList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<ConfigBlockedCountriesList>;
 
 /** Restricts access to your content by specifying a list of blocked IPv4 addresses. This feature enhances security and privacy by preventing these addresses from accessing your distribution. */
 export type ConfigBlockedIpsList = Array<string>;
-export const ConfigBlockedIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigBlockedIpsList>;
+export const ConfigBlockedIpsList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<ConfigBlockedIpsList>;
 
 /** HTTP request header names whose values participate in the cache key. Each entry multiplies the number of cache variants by the number of distinct values observed for that header. */
 export type CacheConfigCacheKeyHeadersList = Array<string>;
-export const CacheConfigCacheKeyHeadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CacheConfigCacheKeyHeadersList>;
+export const CacheConfigCacheKeyHeadersList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<CacheConfigCacheKeyHeadersList>;
 
 /** Allowlist of query-string parameter names that participate in the cache key when `queryStringVaryEnabled` is true. Ignored while `queryStringVaryEnabled` is false, but still stored so it can be re-activated without losing the list. */
 export type CacheConfigQueryStringVaryParametersList = Array<string>;
-export const CacheConfigQueryStringVaryParametersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CacheConfigQueryStringVaryParametersList>;
+export const CacheConfigQueryStringVaryParametersList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<CacheConfigQueryStringVaryParametersList>;
 
 /** Groups the cache options that influence how the CDN builds its cache key. **Cache cardinality warning:** enabling query-string vary produces one cache entry per unique query-string combination (**unbounded** when `queryStringVaryParameters` is empty). Each entry in `cacheKeyHeaders` multiplies the number of cache variants by the number of distinct values observed for that header. Use these settings sparingly. `queryStringVaryParameters` is stored independently of `queryStringVaryEnabled` so that this feature can be toggled on and off without losing the configured allowlist. Only `queryStringVaryEnabled` gates whether the parameter allowlist actually varies the cache. **Optimizer interaction:** when the Optimizer is enabled, the CDN automatically enables query-string vary for image responses regardless of this setting. */
 export interface CacheConfig {
@@ -687,10 +659,8 @@ export const CacheConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels are key-value string pairs that can be attached to a distribution. */
 export type ConfigLabelsMap = { [key: string]: string | undefined };
-export const ConfigLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConfigLabelsMap>;
+export const ConfigLabelsMap =
+  HttpBackendCreateOriginRequestHeadersMap as any as S.Schema<ConfigLabelsMap>;
 
 /** Defines the type of the log sink. */
 export type LokiLogSinkType = "loki";
@@ -730,9 +700,8 @@ export type ConfigLogSink = LokiLogSink | OtlpLogSink;
 export const ConfigLogSink = /*@__PURE__*/ S.Unknown as any as S.Schema<ConfigLogSink>;
 
 export type ConfigRegionsList = Array<Region>;
-export const ConfigRegionsList = /*@__PURE__*/ S.Array(
-  Region,
-) as any as S.Schema<ConfigRegionsList>;
+export const ConfigRegionsList =
+  CreateDistributionRequestRegionsList as any as S.Schema<ConfigRegionsList>;
 
 export interface Config {
   backend: ConfigBackend;
@@ -849,9 +818,7 @@ export const DistributionDomainsList = /*@__PURE__*/ S.Array(
 
 /** This object may be present if, and only if the distribution has encountered an error state. */
 export type DistributionErrorsList = Array<StatusError>;
-export const DistributionErrorsList = /*@__PURE__*/ S.Array(
-  StatusError,
-) as any as S.Schema<DistributionErrorsList>;
+export const DistributionErrorsList = DomainErrorsList as any as S.Schema<DistributionErrorsList>;
 
 /** - `CREATING`: The distribution was just created. All the relevant resources are created in the background. Once fully reconciled, this switches to `ACTIVE`. If there are any issues, the status changes to `ERROR`. You can look at the `errors` array to get more infos. - `ACTIVE`: The usual state. The desired configuration is synced, there are no errors - `UPDATING`: The state when there is a discrepancy between the desired and actual configuration state. This occurs right after an update. Will switch to `ACTIVE` or `ERROR`, depending on if synchronizing succeeds or not. - `DELETING`: The state right after a delete request was received. The distribution will stay in this status until all resources have been successfully removed, or until we encounter an `ERROR` state. **NOTE:** You can keep fetching the distribution while it is deleting. After successful deletion, trying to get a distribution will return a 404 Not Found response - `ERROR`: The error state. Look at the `errors` array for more info. */
 export type DistributionStatus = "CREATING" | "ACTIVE" | "UPDATING" | "DELETING" | "ERROR";
@@ -874,13 +841,8 @@ export interface WafStatusRuleBlockReasonDirectlyDefined {
   /** This is always `directlyDefined` */
   type: string;
 }
-export const WafStatusRuleBlockReasonDirectlyDefined = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-  }),
-).annotate({
-  identifier: "WafStatusRuleBlockReasonDirectlyDefined",
-}) as any as S.Schema<WafStatusRuleBlockReasonDirectlyDefined>;
+export const WafStatusRuleBlockReasonDirectlyDefined =
+  WafStatusRuleBlockReasonNeverDefined as any as S.Schema<WafStatusRuleBlockReasonDirectlyDefined>;
 
 /** A list containing all WAF Types which can use this Rule. You must patch you WAF to one of these WAF Types to make use of this rule. Rules show up with this state if they would have been enabled or logOnly otherwise. */
 export type WafStatusRuleBlockReasonInvalidWafTypeAllowedWafTypesList = Array<WafType>;
@@ -961,14 +923,12 @@ export const DistributionWafDisabledRulesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DistributionWafDisabledRulesList>;
 
 export type DistributionWafEnabledRulesList = Array<WafStatusRuleBlock>;
-export const DistributionWafEnabledRulesList = /*@__PURE__*/ S.Array(
-  WafStatusRuleBlock,
-) as any as S.Schema<DistributionWafEnabledRulesList>;
+export const DistributionWafEnabledRulesList =
+  DistributionWafDisabledRulesList as any as S.Schema<DistributionWafEnabledRulesList>;
 
 export type DistributionWafLogOnlyRulesList = Array<WafStatusRuleBlock>;
-export const DistributionWafLogOnlyRulesList = /*@__PURE__*/ S.Array(
-  WafStatusRuleBlock,
-) as any as S.Schema<DistributionWafLogOnlyRulesList>;
+export const DistributionWafLogOnlyRulesList =
+  DistributionWafDisabledRulesList as any as S.Schema<DistributionWafLogOnlyRulesList>;
 
 /** For this property to be present two pre-conditions must be met: - the WAF was enabled at least once - the query parameter ?withWafStatus is truthy This property contains the waf Status. At this point in time, this contains all resolved rules. Rules are split into 3 groups: - enabledRules - logOnlyRules - disabledRules **Do note that the global waf mode (Disabled, LogOnly, Enabled) is *NOT* reflected in this list!** */
 export interface DistributionWaf {
@@ -1052,9 +1012,7 @@ export const DeleteCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** This object is present if the custom domain has errors. */
 export type CustomDomainErrorsList = Array<StatusError>;
-export const CustomDomainErrorsList = /*@__PURE__*/ S.Array(
-  StatusError,
-) as any as S.Schema<CustomDomainErrorsList>;
+export const CustomDomainErrorsList = DomainErrorsList as any as S.Schema<CustomDomainErrorsList>;
 
 /** Definition of a custom domain */
 export interface CustomDomain {
@@ -1246,13 +1204,8 @@ export const GetCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetCustomDomainManagedCertificate {
   type: string;
 }
-export const GetCustomDomainManagedCertificate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-  }),
-).annotate({
-  identifier: "GetCustomDomainManagedCertificate",
-}) as any as S.Schema<GetCustomDomainManagedCertificate>;
+export const GetCustomDomainManagedCertificate =
+  WafStatusRuleBlockReasonNeverDefined as any as S.Schema<GetCustomDomainManagedCertificate>;
 
 /** Returned if a custom certificate is used. Response does not contain the certificate or key. */
 export interface GetCustomDomainCustomCertificate {
@@ -1391,10 +1344,8 @@ export const GetLogsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetLogsRequest" }) as any as S.Schema<GetLogsRequest>;
 
 export type WAFViolationRequestHeadersMap = { [key: string]: string | undefined };
-export const WAFViolationRequestHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WAFViolationRequestHeadersMap>;
+export const WAFViolationRequestHeadersMap =
+  HttpBackendCreateOriginRequestHeadersMap as any as S.Schema<WAFViolationRequestHeadersMap>;
 
 /** Information about a violated WAF rule in case the WAF is enabled and a rule was triggered (either in BLOCK or LOG_ONLY mode) */
 export interface WAFViolation {
@@ -1519,27 +1470,23 @@ export const GetLogsSearchFiltersResponseDatacenterBlockAFList = /*@__PURE__*/ S
 
 export type GetLogsSearchFiltersResponseDatacenterBlockASIAList =
   Array<GetLogsSearchFiltersResponseDatacenterBlockItem>;
-export const GetLogsSearchFiltersResponseDatacenterBlockASIAList = /*@__PURE__*/ S.Array(
-  GetLogsSearchFiltersResponseDatacenterBlockItem,
-) as any as S.Schema<GetLogsSearchFiltersResponseDatacenterBlockASIAList>;
+export const GetLogsSearchFiltersResponseDatacenterBlockASIAList =
+  GetLogsSearchFiltersResponseDatacenterBlockAFList as any as S.Schema<GetLogsSearchFiltersResponseDatacenterBlockASIAList>;
 
 export type GetLogsSearchFiltersResponseDatacenterBlockEUList =
   Array<GetLogsSearchFiltersResponseDatacenterBlockItem>;
-export const GetLogsSearchFiltersResponseDatacenterBlockEUList = /*@__PURE__*/ S.Array(
-  GetLogsSearchFiltersResponseDatacenterBlockItem,
-) as any as S.Schema<GetLogsSearchFiltersResponseDatacenterBlockEUList>;
+export const GetLogsSearchFiltersResponseDatacenterBlockEUList =
+  GetLogsSearchFiltersResponseDatacenterBlockAFList as any as S.Schema<GetLogsSearchFiltersResponseDatacenterBlockEUList>;
 
 export type GetLogsSearchFiltersResponseDatacenterBlockNAList =
   Array<GetLogsSearchFiltersResponseDatacenterBlockItem>;
-export const GetLogsSearchFiltersResponseDatacenterBlockNAList = /*@__PURE__*/ S.Array(
-  GetLogsSearchFiltersResponseDatacenterBlockItem,
-) as any as S.Schema<GetLogsSearchFiltersResponseDatacenterBlockNAList>;
+export const GetLogsSearchFiltersResponseDatacenterBlockNAList =
+  GetLogsSearchFiltersResponseDatacenterBlockAFList as any as S.Schema<GetLogsSearchFiltersResponseDatacenterBlockNAList>;
 
 export type GetLogsSearchFiltersResponseDatacenterBlockSAList =
   Array<GetLogsSearchFiltersResponseDatacenterBlockItem>;
-export const GetLogsSearchFiltersResponseDatacenterBlockSAList = /*@__PURE__*/ S.Array(
-  GetLogsSearchFiltersResponseDatacenterBlockItem,
-) as any as S.Schema<GetLogsSearchFiltersResponseDatacenterBlockSAList>;
+export const GetLogsSearchFiltersResponseDatacenterBlockSAList =
+  GetLogsSearchFiltersResponseDatacenterBlockAFList as any as S.Schema<GetLogsSearchFiltersResponseDatacenterBlockSAList>;
 
 /** Object containing Datacenters to filter for. Each datacenter is grouped to the respective region. */
 export interface GetLogsSearchFiltersResponseDatacenterBlock {
@@ -1563,9 +1510,8 @@ export const GetLogsSearchFiltersResponseDatacenterBlock = /*@__PURE__*/ S.suspe
 
 /** List of ISO-3166 Alpha2 Country Codes matching the input filter. Response is ordered in ascending order. For more Info about the country codes, see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2 */
 export type GetLogsSearchFiltersResponseRemoteCountryList = Array<string>;
-export const GetLogsSearchFiltersResponseRemoteCountryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetLogsSearchFiltersResponseRemoteCountryList>;
+export const GetLogsSearchFiltersResponseRemoteCountryList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<GetLogsSearchFiltersResponseRemoteCountryList>;
 
 /** List of Status Codes matching the input filter. Response is ordered in ascending order. */
 export type GetLogsSearchFiltersResponseStatusList = Array<number>;
@@ -1784,10 +1730,8 @@ export const ListWafCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** LocalizedString is a map from language to string value */
 export type LocalizedString = { [key: string]: string | undefined };
-export const LocalizedString = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LocalizedString>;
+export const LocalizedString =
+  HttpBackendCreateOriginRequestHeadersMap as any as S.Schema<LocalizedString>;
 
 export interface WafRule {
   /** Optional CoreRuleSet rule Id in case this is a CRS rule */
@@ -1856,25 +1800,20 @@ export const ListWafCollectionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWafCollectionsResponse>;
 
 export type HttpBackendPatchGeofencingValueList = Array<string>;
-export const HttpBackendPatchGeofencingValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HttpBackendPatchGeofencingValueList>;
+export const HttpBackendPatchGeofencingValueList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<HttpBackendPatchGeofencingValueList>;
 
 /** An object mapping multiple alternative origins to country codes. Any request from one of those country codes will route to the alternative origin. Do note that country codes may only be used once. You cannot have a country be assigned to multiple alternative origins. */
 export type HttpBackendPatchGeofencingMap = {
   [key: string]: HttpBackendPatchGeofencingValueList | undefined;
 };
-export const HttpBackendPatchGeofencingMap = /*@__PURE__*/ S.Record(
-  S.String,
-  HttpBackendPatchGeofencingValueList,
-) as any as S.Schema<HttpBackendPatchGeofencingMap>;
+export const HttpBackendPatchGeofencingMap =
+  HttpBackendCreateGeofencingMap as any as S.Schema<HttpBackendPatchGeofencingMap>;
 
 /** Headers that will be sent with every request to the configured origin. **WARNING**: Do not store sensitive values in the headers. The configuration is stored as plain text. */
 export type HttpBackendPatchOriginRequestHeadersMap = { [key: string]: string | undefined };
-export const HttpBackendPatchOriginRequestHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<HttpBackendPatchOriginRequestHeadersMap>;
+export const HttpBackendPatchOriginRequestHeadersMap =
+  HttpBackendCreateOriginRequestHeadersMap as any as S.Schema<HttpBackendPatchOriginRequestHeadersMap>;
 
 /** Defines the type of content origin. For this schema, it must be set to `http`. */
 export type HttpBackendPatchType = "http";
@@ -1927,27 +1866,23 @@ export const ConfigPatchBackend = /*@__PURE__*/ S.Unknown as any as S.Schema<Con
 
 /** Restricts access to your content based on country. We use the ISO 3166-1 alpha-2 standard for country codes (e.g., DE, ES, GB). This setting blocks users from the specified countries. */
 export type ConfigPatchBlockedCountriesList = Array<string>;
-export const ConfigPatchBlockedCountriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigPatchBlockedCountriesList>;
+export const ConfigPatchBlockedCountriesList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<ConfigPatchBlockedCountriesList>;
 
 /** Restricts access to your content by specifying a list of blocked IPv4 addresses. This feature enhances security and privacy by preventing these addresses from accessing your distribution. */
 export type ConfigPatchBlockedIpsList = Array<string>;
-export const ConfigPatchBlockedIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigPatchBlockedIpsList>;
+export const ConfigPatchBlockedIpsList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<ConfigPatchBlockedIpsList>;
 
 /** HTTP request header names that participate in the cache key. Omit to leave unchanged; send `[]` to clear. */
 export type CacheConfigPatchCacheKeyHeadersList = Array<string>;
-export const CacheConfigPatchCacheKeyHeadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CacheConfigPatchCacheKeyHeadersList>;
+export const CacheConfigPatchCacheKeyHeadersList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<CacheConfigPatchCacheKeyHeadersList>;
 
 /** Allowlist of query-string parameter names. Omit to leave unchanged; send `[]` to clear. */
 export type CacheConfigPatchQueryStringVaryParametersList = Array<string>;
-export const CacheConfigPatchQueryStringVaryParametersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CacheConfigPatchQueryStringVaryParametersList>;
+export const CacheConfigPatchQueryStringVaryParametersList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<CacheConfigPatchQueryStringVaryParametersList>;
 
 /** PATCH variant of `CacheConfig`. Follows the standard PATCH conventions for this API: - Field omitted from the request: current value is left unchanged. - Array field sent as `[]`: current list is cleared. - `queryStringVaryEnabled` is a plain boolean (non-nullable); omit it to leave unchanged. `queryStringVaryParameters` is stored independently of `queryStringVaryEnabled`. Sending a non-empty `queryStringVaryParameters` together with `queryStringVaryEnabled=false` is accepted: the list is persisted for later re-activation but does not affect the cache while the flag is false. */
 export interface CacheConfigPatch {
@@ -1958,13 +1893,7 @@ export interface CacheConfigPatch {
   /** Allowlist of query-string parameter names. Omit to leave unchanged; send `[]` to clear. */
   queryStringVaryParameters?: CacheConfigPatchQueryStringVaryParametersList;
 }
-export const CacheConfigPatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cacheKeyHeaders: S.optional(CacheConfigPatchCacheKeyHeadersList),
-    queryStringVaryEnabled: S.optional(S.Boolean),
-    queryStringVaryParameters: S.optional(CacheConfigPatchQueryStringVaryParametersList),
-  }),
-).annotate({ identifier: "CacheConfigPatch" }) as any as S.Schema<CacheConfigPatch>;
+export const CacheConfigPatch = CacheConfigCreate as any as S.Schema<CacheConfigPatch>;
 
 /** Labels are key-value string pairs that can be attached to a distribution. JSON Merge Patch is supported, meaning setting a key to null will remove it. */
 export type ConfigPatchLabelsMap = { [key: string]: string | null | undefined };
@@ -2032,9 +1961,8 @@ export const OptimizerPatch = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OptimizerPatch" }) as any as S.Schema<OptimizerPatch>;
 
 export type ConfigPatchRegionsList = Array<Region | (string & {})>;
-export const ConfigPatchRegionsList = /*@__PURE__*/ S.Array(
-  Region,
-) as any as S.Schema<ConfigPatchRegionsList>;
+export const ConfigPatchRegionsList =
+  CreateDistributionRequestRegionsList as any as S.Schema<ConfigPatchRegionsList>;
 
 /** Configuration for TLS protocol versions. Note: Enabling older TLS versions (1.0, 1.1) is generally discouraged for security reasons. */
 export interface TlsConfigPatch {
@@ -2051,73 +1979,61 @@ export const TlsConfigPatch = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TlsConfigPatch" }) as any as S.Schema<TlsConfigPatch>;
 
 export type WafConfigPatchAllowedHttpMethodsList = Array<string>;
-export const WafConfigPatchAllowedHttpMethodsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WafConfigPatchAllowedHttpMethodsList>;
+export const WafConfigPatchAllowedHttpMethodsList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<WafConfigPatchAllowedHttpMethodsList>;
 
 export type WafConfigPatchAllowedHttpVersionsList = Array<string>;
-export const WafConfigPatchAllowedHttpVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WafConfigPatchAllowedHttpVersionsList>;
+export const WafConfigPatchAllowedHttpVersionsList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<WafConfigPatchAllowedHttpVersionsList>;
 
 export type WafConfigPatchAllowedRequestContentTypesList = Array<string>;
-export const WafConfigPatchAllowedRequestContentTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WafConfigPatchAllowedRequestContentTypesList>;
+export const WafConfigPatchAllowedRequestContentTypesList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<WafConfigPatchAllowedRequestContentTypesList>;
 
 /** Ids of WAF Collections to mark as disabled */
 export type WafConfigPatchDisabledRuleCollectionIdsList = Array<string>;
-export const WafConfigPatchDisabledRuleCollectionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WafConfigPatchDisabledRuleCollectionIdsList>;
+export const WafConfigPatchDisabledRuleCollectionIdsList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<WafConfigPatchDisabledRuleCollectionIdsList>;
 
 /** Ids of WAF Rule Groups to mark as disabled */
 export type WafConfigPatchDisabledRuleGroupIdsList = Array<string>;
-export const WafConfigPatchDisabledRuleGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WafConfigPatchDisabledRuleGroupIdsList>;
+export const WafConfigPatchDisabledRuleGroupIdsList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<WafConfigPatchDisabledRuleGroupIdsList>;
 
 /** Ids of WAF Rules that are **explicitly** disabled for this distribution. */
 export type WafConfigPatchDisabledRuleIdsList = Array<string>;
-export const WafConfigPatchDisabledRuleIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WafConfigPatchDisabledRuleIdsList>;
+export const WafConfigPatchDisabledRuleIdsList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<WafConfigPatchDisabledRuleIdsList>;
 
 /** Ids of WAF Collections to mark as enabled */
 export type WafConfigPatchEnabledRuleCollectionIdsList = Array<string>;
-export const WafConfigPatchEnabledRuleCollectionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WafConfigPatchEnabledRuleCollectionIdsList>;
+export const WafConfigPatchEnabledRuleCollectionIdsList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<WafConfigPatchEnabledRuleCollectionIdsList>;
 
 /** Ids of WAF Rule Groups to mark as enabled */
 export type WafConfigPatchEnabledRuleGroupIdsList = Array<string>;
-export const WafConfigPatchEnabledRuleGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WafConfigPatchEnabledRuleGroupIdsList>;
+export const WafConfigPatchEnabledRuleGroupIdsList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<WafConfigPatchEnabledRuleGroupIdsList>;
 
 /** Ids of WAF Rules that are **explicitly** enabled for this distribution. */
 export type WafConfigPatchEnabledRuleIdsList = Array<string>;
-export const WafConfigPatchEnabledRuleIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WafConfigPatchEnabledRuleIdsList>;
+export const WafConfigPatchEnabledRuleIdsList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<WafConfigPatchEnabledRuleIdsList>;
 
 /** Ids of WAF Collections to mark as log Only. */
 export type WafConfigPatchLogOnlyRuleCollectionIdsList = Array<string>;
-export const WafConfigPatchLogOnlyRuleCollectionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WafConfigPatchLogOnlyRuleCollectionIdsList>;
+export const WafConfigPatchLogOnlyRuleCollectionIdsList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<WafConfigPatchLogOnlyRuleCollectionIdsList>;
 
 /** Ids of WAF Rule Groups to mark as log Only. */
 export type WafConfigPatchLogOnlyRuleGroupIdsList = Array<string>;
-export const WafConfigPatchLogOnlyRuleGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WafConfigPatchLogOnlyRuleGroupIdsList>;
+export const WafConfigPatchLogOnlyRuleGroupIdsList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<WafConfigPatchLogOnlyRuleGroupIdsList>;
 
 /** Ids of WAF Rules that are **explicitly** marked as Log Only for this distribution. */
 export type WafConfigPatchLogOnlyRuleIdsList = Array<string>;
-export const WafConfigPatchLogOnlyRuleIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WafConfigPatchLogOnlyRuleIdsList>;
+export const WafConfigPatchLogOnlyRuleIdsList =
+  HttpBackendCreateGeofencingValueList as any as S.Schema<WafConfigPatchLogOnlyRuleIdsList>;
 
 /** Modify the WAF Configuration ## WAF Rules You can modify the set of enabled, disabled and log-only Rules by modifying these 9 properties: - enabledRuleIds - disabledRuleIds - logOnlyRuleIds - enabledRuleGroupIds - disabledRuleGroupIds - logOnlyRuleGroupIds - enabledRuleCollectionIds - disabledRuleCollectionIds - logOnlyRuleCollectionIds Please inquire the `WafConfig` Description on how the effective configuration is determined. For patching, if an ID is already used in one of the properties, it will be removed (and effectively moved) to the new property. If patching multiple properties with the same ID (e.g. writing `@builtin/crs/response` to `logOnlyRuleCollectionIds` and `enabledRuleCollectionIds`), the request will be rejected with a 400. */
 export interface WafConfigPatch {
@@ -2237,13 +2153,8 @@ export const PatchDistributionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PatchDistributionResponse {
   distribution: Distribution;
 }
-export const PatchDistributionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    distribution: Distribution,
-  }),
-).annotate({
-  identifier: "PatchDistributionResponse",
-}) as any as S.Schema<PatchDistributionResponse>;
+export const PatchDistributionResponse =
+  CreateDistributionResponse as any as S.Schema<PatchDistributionResponse>;
 
 export interface PurgeCacheRequest {
   /** Your STACKIT Project Id */

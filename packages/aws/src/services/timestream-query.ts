@@ -683,9 +683,8 @@ export const ExecuteScheduledQueryRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExecuteScheduledQueryRequest",
 }) as any as S.Schema<ExecuteScheduledQueryRequest>;
 export interface ExecuteScheduledQueryResponse {}
-export const ExecuteScheduledQueryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ExecuteScheduledQueryResponse",
-}) as any as S.Schema<ExecuteScheduledQueryResponse>;
+export const ExecuteScheduledQueryResponse =
+  DeleteScheduledQueryResponse as any as S.Schema<ExecuteScheduledQueryResponse>;
 export type MaxScheduledQueriesResults = number;
 export type NextScheduledQueriesResultsToken = string;
 export interface ListScheduledQueriesRequest {
@@ -1010,11 +1009,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteScheduledQueryResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = PartitionKeyList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
@@ -1025,9 +1023,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteScheduledQueryResponse as any as S.Schema<UntagResourceResponse>;
 export interface ProvisionedCapacityRequest {
   TargetQueryTCU: number;
   NotificationConfiguration?: AccountSettingsNotificationConfiguration;
@@ -1069,15 +1066,8 @@ export interface UpdateAccountSettingsResponse {
   QueryPricingModel?: QueryPricingModel;
   QueryCompute?: QueryComputeResponse;
 }
-export const UpdateAccountSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MaxQueryTCU: S.optional(S.Number),
-    QueryPricingModel: S.optional(QueryPricingModel),
-    QueryCompute: S.optional(QueryComputeResponse),
-  }),
-).annotate({
-  identifier: "UpdateAccountSettingsResponse",
-}) as any as S.Schema<UpdateAccountSettingsResponse>;
+export const UpdateAccountSettingsResponse =
+  DescribeAccountSettingsResponse as any as S.Schema<UpdateAccountSettingsResponse>;
 export interface UpdateScheduledQueryRequest {
   ScheduledQueryArn: string;
   State: ScheduledQueryState;
@@ -1090,9 +1080,8 @@ export const UpdateScheduledQueryRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateScheduledQueryRequest",
 }) as any as S.Schema<UpdateScheduledQueryRequest>;
 export interface UpdateScheduledQueryResponse {}
-export const UpdateScheduledQueryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateScheduledQueryResponse",
-}) as any as S.Schema<UpdateScheduledQueryResponse>;
+export const UpdateScheduledQueryResponse =
+  DeleteScheduledQueryResponse as any as S.Schema<UpdateScheduledQueryResponse>;
 export type ServiceErrorMessage = string;
 export type CancelQueryError =
   | AccessDeniedException

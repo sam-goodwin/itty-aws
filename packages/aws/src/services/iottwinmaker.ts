@@ -389,10 +389,7 @@ export const DataType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataType" }) as any as S.Schema<DataType>;
 export type Value = string;
 export type Configuration = { [key: string]: string | undefined };
-export const Configuration = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const Configuration = ExternalIdProperty as any as S.Schema<Configuration>;
 export type PropertyDisplayName = string;
 export interface PropertyDefinitionRequest {
   dataType?: DataType;
@@ -426,7 +423,7 @@ export const PropertyDefinitionsRequest = /*@__PURE__*/ S.Record(
 export type ExtendsFrom = string[];
 export const ExtendsFrom = /*@__PURE__*/ S.Array(S.String);
 export type RequiredProperties = string[];
-export const RequiredProperties = /*@__PURE__*/ S.Array(S.String);
+export const RequiredProperties = ExtendsFrom as any as S.Schema<RequiredProperties>;
 export type Scope = string;
 export type LambdaArn = string;
 export interface LambdaFunction {
@@ -465,7 +462,7 @@ export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type GroupType = string;
 export type PropertyNames = string[];
-export const PropertyNames = /*@__PURE__*/ S.Array(S.String);
+export const PropertyNames = ExtendsFrom as any as S.Schema<PropertyNames>;
 export interface PropertyGroupRequest {
   groupType?: string;
   propertyNames?: string[];
@@ -850,13 +847,10 @@ export const CreateMetadataTransferJobResponse = /*@__PURE__*/ S.suspend(() =>
 export type S3Url = string;
 export type SceneCapability = string;
 export type SceneCapabilities = string[];
-export const SceneCapabilities = /*@__PURE__*/ S.Array(S.String);
+export const SceneCapabilities = ExtendsFrom as any as S.Schema<SceneCapabilities>;
 export type SceneMetadataValue = string;
 export type SceneMetadataMap = { [key: string]: string | undefined };
-export const SceneMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const SceneMetadataMap = ExternalIdProperty as any as S.Schema<SceneMetadataMap>;
 export interface CreateSceneRequest {
   workspaceId: string;
   sceneId: string;
@@ -961,9 +955,8 @@ export interface CreateWorkspaceResponse {
   arn: string;
   creationDateTime: Date;
 }
-export const CreateWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.String, creationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }),
-).annotate({ identifier: "CreateWorkspaceResponse" }) as any as S.Schema<CreateWorkspaceResponse>;
+export const CreateWorkspaceResponse =
+  CreateSceneResponse as any as S.Schema<CreateWorkspaceResponse>;
 export interface DeleteComponentTypeRequest {
   workspaceId: string;
   componentTypeId: string;
@@ -1068,9 +1061,7 @@ export const DeleteSyncJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSyncJobResponse {
   state: string;
 }
-export const DeleteSyncJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ state: S.String }),
-).annotate({ identifier: "DeleteSyncJobResponse" }) as any as S.Schema<DeleteSyncJobResponse>;
+export const DeleteSyncJobResponse = DeleteEntityResponse as any as S.Schema<DeleteSyncJobResponse>;
 export interface DeleteWorkspaceRequest {
   workspaceId: string;
 }
@@ -1495,7 +1486,7 @@ export const GetPricingPlanRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetPricingPlanRequest" }) as any as S.Schema<GetPricingPlanRequest>;
 export type BundleName = string;
 export type PricingBundles = string[];
-export const PricingBundles = /*@__PURE__*/ S.Array(S.String);
+export const PricingBundles = ExtendsFrom as any as S.Schema<PricingBundles>;
 export type PricingTier = string;
 export interface BundleInformation {
   bundleNames: string[];
@@ -1532,7 +1523,7 @@ export const GetPricingPlanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ currentPricingPlan: PricingPlan, pendingPricingPlan: S.optional(PricingPlan) }),
 ).annotate({ identifier: "GetPricingPlanResponse" }) as any as S.Schema<GetPricingPlanResponse>;
 export type SelectedPropertyList = string[];
-export const SelectedPropertyList = /*@__PURE__*/ S.Array(S.String);
+export const SelectedPropertyList = ExtendsFrom as any as S.Schema<SelectedPropertyList>;
 export type MaxResults = number;
 export type Order = string;
 export interface OrderBy {
@@ -1693,7 +1684,7 @@ export const GetPropertyValueHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPropertyValueHistoryRequest",
 }) as any as S.Schema<GetPropertyValueHistoryRequest>;
 export type Values = PropertyValue[];
-export const Values = /*@__PURE__*/ S.Array(PropertyValue);
+export const Values = PropertyValues as any as S.Schema<Values>;
 export interface PropertyValueHistory {
   entityPropertyReference: EntityPropertyReference;
   values?: PropertyValue[];
@@ -1732,18 +1723,14 @@ export const GetSceneRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetSceneRequest" }) as any as S.Schema<GetSceneRequest>;
 export type GeneratedSceneMetadataMap = { [key: string]: string | undefined };
-export const GeneratedSceneMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const GeneratedSceneMetadataMap =
+  ExternalIdProperty as any as S.Schema<GeneratedSceneMetadataMap>;
 export type SceneErrorCode = string;
 export interface SceneError {
   code?: string;
   message?: string;
 }
-export const SceneError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ code: S.optional(S.String), message: S.optional(S.String) }),
-).annotate({ identifier: "SceneError" }) as any as S.Schema<SceneError>;
+export const SceneError = ErrorDetails as any as S.Schema<SceneError>;
 export interface GetSceneResponse {
   workspaceId: string;
   sceneId: string;
@@ -1788,9 +1775,7 @@ export interface SyncJobStatus {
   state?: string;
   error?: ErrorDetails;
 }
-export const SyncJobStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ state: S.optional(S.String), error: S.optional(ErrorDetails) }),
-).annotate({ identifier: "SyncJobStatus" }) as any as S.Schema<SyncJobStatus>;
+export const SyncJobStatus = Status as any as S.Schema<SyncJobStatus>;
 export interface GetSyncJobResponse {
   arn: string;
   workspaceId: string;
@@ -1829,7 +1814,7 @@ export const GetWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetWorkspaceRequest" }) as any as S.Schema<GetWorkspaceRequest>;
 export type LinkedService = string;
 export type LinkedServices = string[];
-export const LinkedServices = /*@__PURE__*/ S.Array(S.String);
+export const LinkedServices = ExtendsFrom as any as S.Schema<LinkedServices>;
 export interface GetWorkspaceResponse {
   workspaceId: string;
   arn: string;
@@ -2295,9 +2280,7 @@ export interface SyncResourceStatus {
   state?: string;
   error?: ErrorDetails;
 }
-export const SyncResourceStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ state: S.optional(S.String), error: S.optional(ErrorDetails) }),
-).annotate({ identifier: "SyncResourceStatus" }) as any as S.Schema<SyncResourceStatus>;
+export const SyncResourceStatus = Status as any as S.Schema<SyncResourceStatus>;
 export interface SyncResourceSummary {
   resourceType?: string;
   externalId?: string;
@@ -2394,11 +2377,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteSceneResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = ExtendsFrom as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceARN: string;
   tagKeys: string[];
@@ -2410,9 +2391,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "DELETE", uri: "/tags" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = DeleteSceneResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateComponentTypeRequest {
   workspaceId: string;
   isSingleton?: boolean;
@@ -2629,9 +2608,8 @@ export const UpdateWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateWorkspaceResponse {
   updateDateTime: Date;
 }
-export const UpdateWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ updateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }),
-).annotate({ identifier: "UpdateWorkspaceResponse" }) as any as S.Schema<UpdateWorkspaceResponse>;
+export const UpdateWorkspaceResponse =
+  UpdateSceneResponse as any as S.Schema<UpdateWorkspaceResponse>;
 export type ExceptionMessage = string;
 export type BatchPutPropertyValuesError =
   | InternalServerException

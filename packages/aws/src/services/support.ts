@@ -251,7 +251,7 @@ export type CcEmailAddressList = string[];
 export const CcEmailAddressList = /*@__PURE__*/ S.Array(S.String);
 export type UploadId = string;
 export type UploadIds = string[];
-export const UploadIds = /*@__PURE__*/ S.Array(S.String);
+export const UploadIds = CcEmailAddressList as any as S.Schema<UploadIds>;
 export interface AddCommunicationToCaseRequest {
   caseId?: string;
   communicationBody: string;
@@ -410,7 +410,7 @@ export const DescribeAttachmentUploadStatusResponse = /*@__PURE__*/ S.suspend(()
   identifier: "DescribeAttachmentUploadStatusResponse",
 }) as any as S.Schema<DescribeAttachmentUploadStatusResponse>;
 export type CaseIdList = string[];
-export const CaseIdList = /*@__PURE__*/ S.Array(S.String);
+export const CaseIdList = CcEmailAddressList as any as S.Schema<CaseIdList>;
 export type DisplayId = string;
 export type AfterTime = string;
 export type BeforeTime = string;
@@ -623,7 +623,7 @@ export const DescribeCreateCaseOptionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeCreateCaseOptionsResponse",
 }) as any as S.Schema<DescribeCreateCaseOptionsResponse>;
 export type ServiceCodeList = string[];
-export const ServiceCodeList = /*@__PURE__*/ S.Array(S.String);
+export const ServiceCodeList = CcEmailAddressList as any as S.Schema<ServiceCodeList>;
 export interface DescribeServicesRequest {
   serviceCodeList?: string[];
   language?: string;
@@ -684,11 +684,9 @@ export interface SeverityLevel {
   code?: string;
   name?: string;
 }
-export const SeverityLevel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ code: S.optional(S.String), name: S.optional(S.String) }),
-).annotate({ identifier: "SeverityLevel" }) as any as S.Schema<SeverityLevel>;
+export const SeverityLevel = Category as any as S.Schema<SeverityLevel>;
 export type SeverityLevelsList = SeverityLevel[];
-export const SeverityLevelsList = /*@__PURE__*/ S.Array(SeverityLevel);
+export const SeverityLevelsList = CategoryList as any as S.Schema<SeverityLevelsList>;
 export interface DescribeSeverityLevelsResponse {
   severityLevels?: SeverityLevel[];
 }

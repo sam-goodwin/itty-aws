@@ -55,21 +55,18 @@ export const CorsRuleAllowedOriginsList = /*@__PURE__*/ S.Array(
 
 /** The methods (HTTP request verbs) that the origin domain may use for a CORS request. */
 export type CorsRuleAllowedMethodsList = Array<string>;
-export const CorsRuleAllowedMethodsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CorsRuleAllowedMethodsList>;
+export const CorsRuleAllowedMethodsList =
+  CorsRuleAllowedOriginsList as any as S.Schema<CorsRuleAllowedMethodsList>;
 
 /** The request headers that the origin domain may specify on the CORS request. */
 export type CorsRuleAllowedHeadersList = Array<string>;
-export const CorsRuleAllowedHeadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CorsRuleAllowedHeadersList>;
+export const CorsRuleAllowedHeadersList =
+  CorsRuleAllowedOriginsList as any as S.Schema<CorsRuleAllowedHeadersList>;
 
 /** The response headers to expose to CORS clients. */
 export type CorsRuleExposedHeadersList = Array<string>;
-export const CorsRuleExposedHeadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CorsRuleExposedHeadersList>;
+export const CorsRuleExposedHeadersList =
+  CorsRuleAllowedOriginsList as any as S.Schema<CorsRuleExposedHeadersList>;
 
 /** CORS details. */
 export interface CorsRule {
@@ -156,10 +153,8 @@ export const AccountsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type AccountsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const AccountsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountsCreateOrUpdateResponseTagsMap>;
+export const AccountsCreateOrUpdateResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<AccountsCreateOrUpdateResponseTagsMap>;
 
 /** Account configuration. This can only be set at RecommendationsService Account creation. */
 export type AccountsCreateOrUpdateResponsePropertiesConfiguration = "Free" | "Capacity";
@@ -366,9 +361,8 @@ export const DeleteModelingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteModelingRequest" }) as any as S.Schema<DeleteModelingRequest>;
 
 export interface DeleteModelingResponse {}
-export const DeleteModelingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteModelingResponse",
-}) as any as S.Schema<DeleteModelingResponse>;
+export const DeleteModelingResponse =
+  DeleteAccountResponse as any as S.Schema<DeleteModelingResponse>;
 
 export interface DeleteServiceEndpointRequest {
   /** The ID of the target subscription. */
@@ -399,9 +393,8 @@ export const DeleteServiceEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteServiceEndpointRequest>;
 
 export interface DeleteServiceEndpointResponse {}
-export const DeleteServiceEndpointResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteServiceEndpointResponse",
-}) as any as S.Schema<DeleteServiceEndpointResponse>;
+export const DeleteServiceEndpointResponse =
+  DeleteAccountResponse as any as S.Schema<DeleteServiceEndpointResponse>;
 
 export interface GetAccountRequest {
   /** The ID of the target subscription. */
@@ -428,10 +421,8 @@ export const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAccountResponseTagsMap = { [key: string]: string | undefined };
-export const GetAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAccountResponseTagsMap>;
+export const GetAccountResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<GetAccountResponseTagsMap>;
 
 /** Account configuration. This can only be set at RecommendationsService Account creation. */
 export type GetAccountResponsePropertiesConfiguration = "Free" | "Capacity";
@@ -639,10 +630,8 @@ export const GetModelingRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetModelingResponseTagsMap = { [key: string]: string | undefined };
-export const GetModelingResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetModelingResponseTagsMap>;
+export const GetModelingResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<GetModelingResponseTagsMap>;
 
 /** Modeling features controls the set of supported scenarios\models being computed. This can only be set at Modeling creation. */
 export type GetModelingResponsePropertiesFeatures = "Basic" | "Standard" | "Premium";
@@ -951,10 +940,8 @@ export const GetServiceEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetServiceEndpointResponseTagsMap = { [key: string]: string | undefined };
-export const GetServiceEndpointResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetServiceEndpointResponseTagsMap>;
+export const GetServiceEndpointResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<GetServiceEndpointResponseTagsMap>;
 
 /** ServiceEndpoint resource properties. */
 export interface GetServiceEndpointResponseProperties {
@@ -1076,10 +1063,8 @@ export const ListAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type AccountResourceTagsMap = { [key: string]: string | undefined };
-export const AccountResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountResourceTagsMap>;
+export const AccountResourceTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<AccountResourceTagsMap>;
 
 /** Account configuration. This can only be set at RecommendationsService Account creation. */
 export type AccountResourcePropertiesConfiguration = "Free" | "Capacity";
@@ -1249,10 +1234,8 @@ export const ListModelingByAccountResourceRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type ModelingResourceTagsMap = { [key: string]: string | undefined };
-export const ModelingResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ModelingResourceTagsMap>;
+export const ModelingResourceTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<ModelingResourceTagsMap>;
 
 /** Modeling features controls the set of supported scenarios\models being computed. This can only be set at Modeling creation. */
 export type ModelingResourcePropertiesFeatures = "Basic" | "Standard" | "Premium";
@@ -1493,10 +1476,8 @@ export const ListServiceEndpointByAccountResourceRequest = /*@__PURE__*/ S.suspe
 
 /** Resource tags. */
 export type ServiceEndpointResourceTagsMap = { [key: string]: string | undefined };
-export const ServiceEndpointResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServiceEndpointResourceTagsMap>;
+export const ServiceEndpointResourceTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<ServiceEndpointResourceTagsMap>;
 
 /** ServiceEndpoint resource properties. */
 export type ServiceEndpointResourceProperties = GetServiceEndpointResponseProperties;
@@ -1599,10 +1580,8 @@ export const ServiceEndpointResourceList = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ModelingCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ModelingCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ModelingCreateOrUpdateRequestTagsMap>;
+export const ModelingCreateOrUpdateRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<ModelingCreateOrUpdateRequestTagsMap>;
 
 /** Modeling features controls the set of supported scenarios\models being computed. This can only be set at Modeling creation. */
 export type ModelingCreateOrUpdateRequestPropertiesFeatures = "Basic" | "Standard" | "Premium";
@@ -1677,10 +1656,8 @@ export const ModelingCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ModelingCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ModelingCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ModelingCreateOrUpdateResponseTagsMap>;
+export const ModelingCreateOrUpdateResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<ModelingCreateOrUpdateResponseTagsMap>;
 
 /** Modeling features controls the set of supported scenarios\models being computed. This can only be set at Modeling creation. */
 export type ModelingCreateOrUpdateResponsePropertiesFeatures = "Basic" | "Standard" | "Premium";
@@ -1795,10 +1772,8 @@ export const ModelingCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ServiceEndpointsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ServiceEndpointsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServiceEndpointsCreateOrUpdateRequestTagsMap>;
+export const ServiceEndpointsCreateOrUpdateRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<ServiceEndpointsCreateOrUpdateRequestTagsMap>;
 
 /** ServiceEndpoint resource properties. */
 export interface ServiceEndpointsCreateOrUpdateRequestProperties {
@@ -1852,10 +1827,8 @@ export const ServiceEndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type ServiceEndpointsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ServiceEndpointsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServiceEndpointsCreateOrUpdateResponseTagsMap>;
+export const ServiceEndpointsCreateOrUpdateResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<ServiceEndpointsCreateOrUpdateResponseTagsMap>;
 
 /** ServiceEndpoint resource properties. */
 export type ServiceEndpointsCreateOrUpdateResponseProperties = GetServiceEndpointResponseProperties;
@@ -1992,10 +1965,8 @@ export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAccountResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAccountResponseTagsMap>;
+export const UpdateAccountResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAccountResponseTagsMap>;
 
 /** Account configuration. This can only be set at RecommendationsService Account creation. */
 export type UpdateAccountResponsePropertiesConfiguration = "Free" | "Capacity";
@@ -2145,10 +2116,8 @@ export const UpdateModelingRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateModelingResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateModelingResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateModelingResponseTagsMap>;
+export const UpdateModelingResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateModelingResponseTagsMap>;
 
 /** Modeling features controls the set of supported scenarios\models being computed. This can only be set at Modeling creation. */
 export type UpdateModelingResponsePropertiesFeatures = "Basic" | "Standard" | "Premium";
@@ -2292,10 +2261,8 @@ export const UpdateServiceEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateServiceEndpointResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateServiceEndpointResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateServiceEndpointResponseTagsMap>;
+export const UpdateServiceEndpointResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateServiceEndpointResponseTagsMap>;
 
 /** ServiceEndpoint resource properties. */
 export type UpdateServiceEndpointResponseProperties = GetServiceEndpointResponseProperties;

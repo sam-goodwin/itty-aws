@@ -551,13 +551,8 @@ export interface GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue {
   /** Required. The display name of the enum value. Must not be an empty string. */
   displayName?: string;
 }
-export const GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue",
-}) as any as S.Schema<GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>;
+export const GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue =
+  GoogleCloudDatacatalogV1beta1TagFieldEnumValue as any as S.Schema<GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>;
 
 export type GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueList =
   Array<GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>;
@@ -1396,13 +1391,8 @@ export interface GoogleCloudDatacatalogV1beta1InlineSource {
   /** Required. Taxonomies to be imported. */
   taxonomies?: GoogleCloudDatacatalogV1beta1SerializedTaxonomyList;
 }
-export const GoogleCloudDatacatalogV1beta1InlineSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    taxonomies: S.optional(GoogleCloudDatacatalogV1beta1SerializedTaxonomyList),
-  }),
-).annotate({
-  identifier: "GoogleCloudDatacatalogV1beta1InlineSource",
-}) as any as S.Schema<GoogleCloudDatacatalogV1beta1InlineSource>;
+export const GoogleCloudDatacatalogV1beta1InlineSource =
+  GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse as any as S.Schema<GoogleCloudDatacatalogV1beta1InlineSource>;
 
 /** Request message for ImportTaxonomies. */
 export interface GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest {
@@ -2253,13 +2243,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsEntryGroupsEntriesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */

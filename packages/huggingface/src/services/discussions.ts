@@ -833,9 +833,8 @@ export const CreateBlogCommentResponseNewMessageDataEditorsList = /*@__PURE__*/ 
 ) as any as S.Schema<CreateBlogCommentResponseNewMessageDataEditorsList>;
 
 export type CreateBlogCommentResponseNewMessageDataEditorAvatarUrlsList = Array<string>;
-export const CreateBlogCommentResponseNewMessageDataEditorAvatarUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateBlogCommentResponseNewMessageDataEditorAvatarUrlsList>;
+export const CreateBlogCommentResponseNewMessageDataEditorAvatarUrlsList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<CreateBlogCommentResponseNewMessageDataEditorAvatarUrlsList>;
 
 export type CreateBlogCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83d\udd25"
@@ -853,9 +852,8 @@ export type CreateBlogCommentResponseNewMessageDataReactionsItemReaction =
 export const CreateBlogCommentResponseNewMessageDataReactionsItemReaction = S.String;
 
 export type CreateBlogCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
-export const CreateBlogCommentResponseNewMessageDataReactionsItemUsersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateBlogCommentResponseNewMessageDataReactionsItemUsersList>;
+export const CreateBlogCommentResponseNewMessageDataReactionsItemUsersList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<CreateBlogCommentResponseNewMessageDataReactionsItemUsersList>;
 
 export interface CreateBlogCommentResponseNewMessageDataReactionsItem {
   reaction: CreateBlogCommentResponseNewMessageDataReactionsItemReaction;
@@ -1299,9 +1297,8 @@ export const CreateCommunityBlogCommentResponseNewMessageDataLatest = /*@__PURE_
 }) as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageDataLatest>;
 
 export type CreateCommunityBlogCommentResponseNewMessageDataEditorsList = Array<string>;
-export const CreateCommunityBlogCommentResponseNewMessageDataEditorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageDataEditorsList>;
+export const CreateCommunityBlogCommentResponseNewMessageDataEditorsList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageDataEditorsList>;
 
 export type CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList = Array<string>;
 export const CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList =
@@ -1326,9 +1323,7 @@ export const CreateCommunityBlogCommentResponseNewMessageDataReactionsItemReacti
 
 export type CreateCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
 export const CreateCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList>;
+  CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList>;
 
 export interface CreateCommunityBlogCommentResponseNewMessageDataReactionsItem {
   reaction: CreateCommunityBlogCommentResponseNewMessageDataReactionsItemReaction;
@@ -1827,15 +1822,12 @@ export const CreateDiscussionCommentResponseNewMessageDataLatest = /*@__PURE__*/
 }) as any as S.Schema<CreateDiscussionCommentResponseNewMessageDataLatest>;
 
 export type CreateDiscussionCommentResponseNewMessageDataEditorsList = Array<string>;
-export const CreateDiscussionCommentResponseNewMessageDataEditorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDiscussionCommentResponseNewMessageDataEditorsList>;
+export const CreateDiscussionCommentResponseNewMessageDataEditorsList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<CreateDiscussionCommentResponseNewMessageDataEditorsList>;
 
 export type CreateDiscussionCommentResponseNewMessageDataEditorAvatarUrlsList = Array<string>;
 export const CreateDiscussionCommentResponseNewMessageDataEditorAvatarUrlsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDiscussionCommentResponseNewMessageDataEditorAvatarUrlsList>;
+  CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<CreateDiscussionCommentResponseNewMessageDataEditorAvatarUrlsList>;
 
 export type CreateDiscussionCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83d\udd25"
@@ -1854,9 +1846,7 @@ export const CreateDiscussionCommentResponseNewMessageDataReactionsItemReaction 
 
 export type CreateDiscussionCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
 export const CreateDiscussionCommentResponseNewMessageDataReactionsItemUsersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDiscussionCommentResponseNewMessageDataReactionsItemUsersList>;
+  CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<CreateDiscussionCommentResponseNewMessageDataReactionsItemUsersList>;
 
 export interface CreateDiscussionCommentResponseNewMessageDataReactionsItem {
   reaction: CreateDiscussionCommentResponseNewMessageDataReactionsItemReaction;
@@ -2282,14 +2272,12 @@ export const CreatePaperCommentResponseNewMessageDataLatest = /*@__PURE__*/ S.su
 }) as any as S.Schema<CreatePaperCommentResponseNewMessageDataLatest>;
 
 export type CreatePaperCommentResponseNewMessageDataEditorsList = Array<string>;
-export const CreatePaperCommentResponseNewMessageDataEditorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreatePaperCommentResponseNewMessageDataEditorsList>;
+export const CreatePaperCommentResponseNewMessageDataEditorsList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<CreatePaperCommentResponseNewMessageDataEditorsList>;
 
 export type CreatePaperCommentResponseNewMessageDataEditorAvatarUrlsList = Array<string>;
-export const CreatePaperCommentResponseNewMessageDataEditorAvatarUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreatePaperCommentResponseNewMessageDataEditorAvatarUrlsList>;
+export const CreatePaperCommentResponseNewMessageDataEditorAvatarUrlsList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<CreatePaperCommentResponseNewMessageDataEditorAvatarUrlsList>;
 
 export type CreatePaperCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83d\udd25"
@@ -2307,9 +2295,8 @@ export type CreatePaperCommentResponseNewMessageDataReactionsItemReaction =
 export const CreatePaperCommentResponseNewMessageDataReactionsItemReaction = S.String;
 
 export type CreatePaperCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
-export const CreatePaperCommentResponseNewMessageDataReactionsItemUsersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreatePaperCommentResponseNewMessageDataReactionsItemUsersList>;
+export const CreatePaperCommentResponseNewMessageDataReactionsItemUsersList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<CreatePaperCommentResponseNewMessageDataReactionsItemUsersList>;
 
 export interface CreatePaperCommentResponseNewMessageDataReactionsItem {
   reaction: CreatePaperCommentResponseNewMessageDataReactionsItemReaction;
@@ -2734,14 +2721,12 @@ export const CreatePostCommentResponseNewMessageDataLatest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<CreatePostCommentResponseNewMessageDataLatest>;
 
 export type CreatePostCommentResponseNewMessageDataEditorsList = Array<string>;
-export const CreatePostCommentResponseNewMessageDataEditorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreatePostCommentResponseNewMessageDataEditorsList>;
+export const CreatePostCommentResponseNewMessageDataEditorsList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<CreatePostCommentResponseNewMessageDataEditorsList>;
 
 export type CreatePostCommentResponseNewMessageDataEditorAvatarUrlsList = Array<string>;
-export const CreatePostCommentResponseNewMessageDataEditorAvatarUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreatePostCommentResponseNewMessageDataEditorAvatarUrlsList>;
+export const CreatePostCommentResponseNewMessageDataEditorAvatarUrlsList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<CreatePostCommentResponseNewMessageDataEditorAvatarUrlsList>;
 
 export type CreatePostCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83d\udd25"
@@ -2759,9 +2744,8 @@ export type CreatePostCommentResponseNewMessageDataReactionsItemReaction =
 export const CreatePostCommentResponseNewMessageDataReactionsItemReaction = S.String;
 
 export type CreatePostCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
-export const CreatePostCommentResponseNewMessageDataReactionsItemUsersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreatePostCommentResponseNewMessageDataReactionsItemUsersList>;
+export const CreatePostCommentResponseNewMessageDataReactionsItemUsersList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<CreatePostCommentResponseNewMessageDataReactionsItemUsersList>;
 
 export interface CreatePostCommentResponseNewMessageDataReactionsItem {
   reaction: CreatePostCommentResponseNewMessageDataReactionsItemReaction;
@@ -2895,9 +2879,7 @@ export const DeletePostRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePostRequest" }) as any as S.Schema<DeletePostRequest>;
 
 export interface DeletePostResponse {}
-export const DeletePostResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePostResponse",
-}) as any as S.Schema<DeletePostResponse>;
+export const DeletePostResponse = DeleteDiscussionResponse as any as S.Schema<DeletePostResponse>;
 
 export type DeletePrRefRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
 export const DeletePrRefRequestRepoType = S.String;
@@ -2924,9 +2906,7 @@ export const DeletePrRefRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePrRefRequest" }) as any as S.Schema<DeletePrRefRequest>;
 
 export interface DeletePrRefResponse {}
-export const DeletePrRefResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePrRefResponse",
-}) as any as S.Schema<DeletePrRefResponse>;
+export const DeletePrRefResponse = DeleteDiscussionResponse as any as S.Schema<DeletePrRefResponse>;
 
 export type GetDiscussionDetailsRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
 export const GetDiscussionDetailsRequestRepoType = S.String;
@@ -3474,16 +3454,12 @@ export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatest =
 
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataEditorsList = Array<string>;
 export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataEditorsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataEditorsList>;
+  CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataEditorsList>;
 
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataEditorAvatarUrlsList =
   Array<string>;
 export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataEditorAvatarUrlsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataEditorAvatarUrlsList>;
+  CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataEditorAvatarUrlsList>;
 
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataReactionsItemReaction =
   | "\ud83d\udd25"
@@ -3504,9 +3480,7 @@ export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataReactionsIt
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataReactionsItemUsersList =
   Array<string>;
 export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataReactionsItemUsersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataReactionsItemUsersList>;
+  CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataReactionsItemUsersList>;
 
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataReactionsItem {
   reaction: GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataReactionsItemReaction;
@@ -5784,16 +5758,12 @@ export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatest =
 
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataEditorsList = Array<string>;
 export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataEditorsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataEditorsList>;
+  CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataEditorsList>;
 
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataEditorAvatarUrlsList =
   Array<string>;
 export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataEditorAvatarUrlsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataEditorAvatarUrlsList>;
+  CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataEditorAvatarUrlsList>;
 
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataReactionsItemReaction =
   | "\ud83d\udd25"
@@ -5814,9 +5784,7 @@ export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataReactionsIt
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataReactionsItemUsersList =
   Array<string>;
 export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataReactionsItemUsersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataReactionsItemUsersList>;
+  CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataReactionsItemUsersList>;
 
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataReactionsItem {
   reaction: GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataReactionsItemReaction;
@@ -7504,9 +7472,7 @@ export const GetDiscussionDetailsResponseBodyCase1EventsList = /*@__PURE__*/ S.A
 
 export type GetDiscussionDetailsResponseBodyCase1FilesWithConflictsCase0List = Array<string>;
 export const GetDiscussionDetailsResponseBodyCase1FilesWithConflictsCase0List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDiscussionDetailsResponseBodyCase1FilesWithConflictsCase0List>;
+  CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<GetDiscussionDetailsResponseBodyCase1FilesWithConflictsCase0List>;
 
 /** The list of files with conflicts. `true` means there are conflicts but we cannot list them. */
 export type GetDiscussionDetailsResponseBodyCase1FilesWithConflicts =
@@ -7613,9 +7579,8 @@ export const HideBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HideBlogCommentRequest" }) as any as S.Schema<HideBlogCommentRequest>;
 
 export interface HideBlogCommentResponse {}
-export const HideBlogCommentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "HideBlogCommentResponse",
-}) as any as S.Schema<HideBlogCommentResponse>;
+export const HideBlogCommentResponse =
+  DeleteDiscussionResponse as any as S.Schema<HideBlogCommentResponse>;
 
 export type HideCommunityBlogCommentRequestReason =
   | "Spam"
@@ -7696,9 +7661,8 @@ export const HideDiscussionCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HideDiscussionCommentRequest>;
 
 export interface HideDiscussionCommentResponse {}
-export const HideDiscussionCommentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "HideDiscussionCommentResponse",
-}) as any as S.Schema<HideDiscussionCommentResponse>;
+export const HideDiscussionCommentResponse =
+  DeleteDiscussionResponse as any as S.Schema<HideDiscussionCommentResponse>;
 
 export type HidePaperCommentRequestReason =
   | "Spam"
@@ -7725,9 +7689,8 @@ export const HidePaperCommentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HidePaperCommentRequest" }) as any as S.Schema<HidePaperCommentRequest>;
 
 export interface HidePaperCommentResponse {}
-export const HidePaperCommentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "HidePaperCommentResponse",
-}) as any as S.Schema<HidePaperCommentResponse>;
+export const HidePaperCommentResponse =
+  DeleteDiscussionResponse as any as S.Schema<HidePaperCommentResponse>;
 
 export type HidePostCommentRequestReason =
   | "Spam"
@@ -7760,9 +7723,8 @@ export const HidePostCommentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HidePostCommentRequest" }) as any as S.Schema<HidePostCommentRequest>;
 
 export interface HidePostCommentResponse {}
-export const HidePostCommentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "HidePostCommentResponse",
-}) as any as S.Schema<HidePostCommentResponse>;
+export const HidePostCommentResponse =
+  DeleteDiscussionResponse as any as S.Schema<HidePostCommentResponse>;
 
 export type ListDiscussionsRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
 export const ListDiscussionsRequestRepoType = S.String;
@@ -8067,9 +8029,8 @@ export const MergePullRequestRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MergePullRequestRequest" }) as any as S.Schema<MergePullRequestRequest>;
 
 export interface MergePullRequestResponse {}
-export const MergePullRequestResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "MergePullRequestResponse",
-}) as any as S.Schema<MergePullRequestResponse>;
+export const MergePullRequestResponse =
+  DeleteDiscussionResponse as any as S.Schema<MergePullRequestResponse>;
 
 export type PinDiscussionRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
 export const PinDiscussionRequestRepoType = S.String;
@@ -8098,9 +8059,8 @@ export const PinDiscussionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PinDiscussionRequest" }) as any as S.Schema<PinDiscussionRequest>;
 
 export interface PinDiscussionResponse {}
-export const PinDiscussionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PinDiscussionResponse",
-}) as any as S.Schema<PinDiscussionResponse>;
+export const PinDiscussionResponse =
+  DeleteDiscussionResponse as any as S.Schema<PinDiscussionResponse>;
 
 export type PrStorageEstimateRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
 export const PrStorageEstimateRequestRepoType = S.String;
@@ -8179,9 +8139,8 @@ export const ReactToBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReactToBlogCommentRequest>;
 
 export interface ReactToBlogCommentResponse {}
-export const ReactToBlogCommentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ReactToBlogCommentResponse",
-}) as any as S.Schema<ReactToBlogCommentResponse>;
+export const ReactToBlogCommentResponse =
+  DeleteDiscussionResponse as any as S.Schema<ReactToBlogCommentResponse>;
 
 export type ReactToCommunityBlogCommentRequestReaction =
   | "\ud83d\udd25"
@@ -8227,11 +8186,8 @@ export const ReactToCommunityBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReactToCommunityBlogCommentRequest>;
 
 export interface ReactToCommunityBlogCommentResponse {}
-export const ReactToCommunityBlogCommentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ReactToCommunityBlogCommentResponse",
-}) as any as S.Schema<ReactToCommunityBlogCommentResponse>;
+export const ReactToCommunityBlogCommentResponse =
+  HideCommunityBlogCommentResponse as any as S.Schema<ReactToCommunityBlogCommentResponse>;
 
 export type ReactToDiscussionCommentRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
 export const ReactToDiscussionCommentRequestRepoType = S.String;
@@ -8284,11 +8240,8 @@ export const ReactToDiscussionCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReactToDiscussionCommentRequest>;
 
 export interface ReactToDiscussionCommentResponse {}
-export const ReactToDiscussionCommentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ReactToDiscussionCommentResponse",
-}) as any as S.Schema<ReactToDiscussionCommentResponse>;
+export const ReactToDiscussionCommentResponse =
+  HideCommunityBlogCommentResponse as any as S.Schema<ReactToDiscussionCommentResponse>;
 
 export type ReactToPaperCommentRequestReaction =
   | "\ud83d\udd25"
@@ -8332,9 +8285,8 @@ export const ReactToPaperCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReactToPaperCommentRequest>;
 
 export interface ReactToPaperCommentResponse {}
-export const ReactToPaperCommentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ReactToPaperCommentResponse",
-}) as any as S.Schema<ReactToPaperCommentResponse>;
+export const ReactToPaperCommentResponse =
+  DeleteDiscussionResponse as any as S.Schema<ReactToPaperCommentResponse>;
 
 export type ReactToPostCommentRequestReaction =
   | "\ud83d\udd25"
@@ -8380,9 +8332,8 @@ export const ReactToPostCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReactToPostCommentRequest>;
 
 export interface ReactToPostCommentResponse {}
-export const ReactToPostCommentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ReactToPostCommentResponse",
-}) as any as S.Schema<ReactToPostCommentResponse>;
+export const ReactToPostCommentResponse =
+  DeleteDiscussionResponse as any as S.Schema<ReactToPostCommentResponse>;
 
 export interface ReplyToBlogCommentRequest {
   slug: string;
@@ -8718,14 +8669,12 @@ export const ReplyToBlogCommentResponseNewMessageDataLatest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ReplyToBlogCommentResponseNewMessageDataLatest>;
 
 export type ReplyToBlogCommentResponseNewMessageDataEditorsList = Array<string>;
-export const ReplyToBlogCommentResponseNewMessageDataEditorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReplyToBlogCommentResponseNewMessageDataEditorsList>;
+export const ReplyToBlogCommentResponseNewMessageDataEditorsList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<ReplyToBlogCommentResponseNewMessageDataEditorsList>;
 
 export type ReplyToBlogCommentResponseNewMessageDataEditorAvatarUrlsList = Array<string>;
-export const ReplyToBlogCommentResponseNewMessageDataEditorAvatarUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReplyToBlogCommentResponseNewMessageDataEditorAvatarUrlsList>;
+export const ReplyToBlogCommentResponseNewMessageDataEditorAvatarUrlsList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<ReplyToBlogCommentResponseNewMessageDataEditorAvatarUrlsList>;
 
 export type ReplyToBlogCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83d\udd25"
@@ -8743,9 +8692,8 @@ export type ReplyToBlogCommentResponseNewMessageDataReactionsItemReaction =
 export const ReplyToBlogCommentResponseNewMessageDataReactionsItemReaction = S.String;
 
 export type ReplyToBlogCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
-export const ReplyToBlogCommentResponseNewMessageDataReactionsItemUsersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReplyToBlogCommentResponseNewMessageDataReactionsItemUsersList>;
+export const ReplyToBlogCommentResponseNewMessageDataReactionsItemUsersList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<ReplyToBlogCommentResponseNewMessageDataReactionsItemUsersList>;
 
 export interface ReplyToBlogCommentResponseNewMessageDataReactionsItem {
   reaction: ReplyToBlogCommentResponseNewMessageDataReactionsItemReaction;
@@ -9190,15 +9138,12 @@ export const ReplyToCommunityBlogCommentResponseNewMessageDataLatest = /*@__PURE
 }) as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageDataLatest>;
 
 export type ReplyToCommunityBlogCommentResponseNewMessageDataEditorsList = Array<string>;
-export const ReplyToCommunityBlogCommentResponseNewMessageDataEditorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageDataEditorsList>;
+export const ReplyToCommunityBlogCommentResponseNewMessageDataEditorsList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageDataEditorsList>;
 
 export type ReplyToCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList = Array<string>;
 export const ReplyToCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList>;
+  CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList>;
 
 export type ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83d\udd25"
@@ -9217,9 +9162,7 @@ export const ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemReact
 
 export type ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
 export const ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList>;
+  CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList>;
 
 export interface ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItem {
   reaction: ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemReaction;
@@ -9650,14 +9593,12 @@ export const ReplyToPaperCommentResponseNewMessageDataLatest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ReplyToPaperCommentResponseNewMessageDataLatest>;
 
 export type ReplyToPaperCommentResponseNewMessageDataEditorsList = Array<string>;
-export const ReplyToPaperCommentResponseNewMessageDataEditorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReplyToPaperCommentResponseNewMessageDataEditorsList>;
+export const ReplyToPaperCommentResponseNewMessageDataEditorsList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<ReplyToPaperCommentResponseNewMessageDataEditorsList>;
 
 export type ReplyToPaperCommentResponseNewMessageDataEditorAvatarUrlsList = Array<string>;
-export const ReplyToPaperCommentResponseNewMessageDataEditorAvatarUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReplyToPaperCommentResponseNewMessageDataEditorAvatarUrlsList>;
+export const ReplyToPaperCommentResponseNewMessageDataEditorAvatarUrlsList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<ReplyToPaperCommentResponseNewMessageDataEditorAvatarUrlsList>;
 
 export type ReplyToPaperCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83d\udd25"
@@ -9676,9 +9617,7 @@ export const ReplyToPaperCommentResponseNewMessageDataReactionsItemReaction = S.
 
 export type ReplyToPaperCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
 export const ReplyToPaperCommentResponseNewMessageDataReactionsItemUsersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ReplyToPaperCommentResponseNewMessageDataReactionsItemUsersList>;
+  CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<ReplyToPaperCommentResponseNewMessageDataReactionsItemUsersList>;
 
 export interface ReplyToPaperCommentResponseNewMessageDataReactionsItem {
   reaction: ReplyToPaperCommentResponseNewMessageDataReactionsItemReaction;
@@ -10113,14 +10052,12 @@ export const ReplyToPostCommentResponseNewMessageDataLatest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ReplyToPostCommentResponseNewMessageDataLatest>;
 
 export type ReplyToPostCommentResponseNewMessageDataEditorsList = Array<string>;
-export const ReplyToPostCommentResponseNewMessageDataEditorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReplyToPostCommentResponseNewMessageDataEditorsList>;
+export const ReplyToPostCommentResponseNewMessageDataEditorsList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<ReplyToPostCommentResponseNewMessageDataEditorsList>;
 
 export type ReplyToPostCommentResponseNewMessageDataEditorAvatarUrlsList = Array<string>;
-export const ReplyToPostCommentResponseNewMessageDataEditorAvatarUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReplyToPostCommentResponseNewMessageDataEditorAvatarUrlsList>;
+export const ReplyToPostCommentResponseNewMessageDataEditorAvatarUrlsList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<ReplyToPostCommentResponseNewMessageDataEditorAvatarUrlsList>;
 
 export type ReplyToPostCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83d\udd25"
@@ -10138,9 +10075,8 @@ export type ReplyToPostCommentResponseNewMessageDataReactionsItemReaction =
 export const ReplyToPostCommentResponseNewMessageDataReactionsItemReaction = S.String;
 
 export type ReplyToPostCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
-export const ReplyToPostCommentResponseNewMessageDataReactionsItemUsersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReplyToPostCommentResponseNewMessageDataReactionsItemUsersList>;
+export const ReplyToPostCommentResponseNewMessageDataReactionsItemUsersList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<ReplyToPostCommentResponseNewMessageDataReactionsItemUsersList>;
 
 export interface ReplyToPostCommentResponseNewMessageDataReactionsItem {
   reaction: ReplyToPostCommentResponseNewMessageDataReactionsItemReaction;
@@ -10265,9 +10201,8 @@ export const ToggleIgnoreDiscussionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ToggleIgnoreDiscussionRequest>;
 
 export interface ToggleIgnoreDiscussionResponse {}
-export const ToggleIgnoreDiscussionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ToggleIgnoreDiscussionResponse",
-}) as any as S.Schema<ToggleIgnoreDiscussionResponse>;
+export const ToggleIgnoreDiscussionResponse =
+  DeleteDiscussionResponse as any as S.Schema<ToggleIgnoreDiscussionResponse>;
 
 export interface UpdateBlogCommentRequest {
   slug: string;
@@ -10283,9 +10218,8 @@ export const UpdateBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateBlogCommentRequest" }) as any as S.Schema<UpdateBlogCommentRequest>;
 
 export interface UpdateBlogCommentResponse {}
-export const UpdateBlogCommentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateBlogCommentResponse",
-}) as any as S.Schema<UpdateBlogCommentResponse>;
+export const UpdateBlogCommentResponse =
+  DeleteDiscussionResponse as any as S.Schema<UpdateBlogCommentResponse>;
 
 export interface UpdateCommunityBlogCommentRequest {
   namespace: string;
@@ -10311,11 +10245,8 @@ export const UpdateCommunityBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateCommunityBlogCommentRequest>;
 
 export interface UpdateCommunityBlogCommentResponse {}
-export const UpdateCommunityBlogCommentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateCommunityBlogCommentResponse",
-}) as any as S.Schema<UpdateCommunityBlogCommentResponse>;
+export const UpdateCommunityBlogCommentResponse =
+  HideCommunityBlogCommentResponse as any as S.Schema<UpdateCommunityBlogCommentResponse>;
 
 export type UpdateDiscussionCommentRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
 export const UpdateDiscussionCommentRequestRepoType = S.String;
@@ -10370,9 +10301,8 @@ export const UpdatePaperCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdatePaperCommentRequest>;
 
 export interface UpdatePaperCommentResponse {}
-export const UpdatePaperCommentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdatePaperCommentResponse",
-}) as any as S.Schema<UpdatePaperCommentResponse>;
+export const UpdatePaperCommentResponse =
+  DeleteDiscussionResponse as any as S.Schema<UpdatePaperCommentResponse>;
 
 export interface UpdatePostCommentRequest {
   username: string;
@@ -10396,9 +10326,8 @@ export const UpdatePostCommentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdatePostCommentRequest" }) as any as S.Schema<UpdatePostCommentRequest>;
 
 export interface UpdatePostCommentResponse {}
-export const UpdatePostCommentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdatePostCommentResponse",
-}) as any as S.Schema<UpdatePostCommentResponse>;
+export const UpdatePostCommentResponse =
+  DeleteDiscussionResponse as any as S.Schema<UpdatePostCommentResponse>;
 
 export type ChangeStatusError = HuggingFaceOpError;
 /** Change status Change the status of a discussion */

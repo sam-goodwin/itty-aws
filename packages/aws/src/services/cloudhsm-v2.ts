@@ -421,9 +421,8 @@ export const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteClusterResponse {
   Cluster?: Cluster;
 }
-export const DeleteClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Cluster: S.optional(Cluster) }),
-).annotate({ identifier: "DeleteClusterResponse" }) as any as S.Schema<DeleteClusterResponse>;
+export const DeleteClusterResponse =
+  CreateClusterResponse as any as S.Schema<DeleteClusterResponse>;
 export interface DeleteHsmRequest {
   ClusterId: string;
   HsmId?: string;
@@ -469,7 +468,7 @@ export type NextToken = string;
 export type BackupsMaxSize = number;
 export type Field = string;
 export type Strings = string[];
-export const Strings = /*@__PURE__*/ S.Array(S.String);
+export const Strings = SubnetIds as any as S.Schema<Strings>;
 export type Filters = { [key: string]: string[] | undefined };
 export const Filters = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ Strings.pipe(S.optional));
 export interface DescribeBackupsRequest {
@@ -609,9 +608,8 @@ export const ModifyClusterRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ModifyClusterResponse {
   Cluster?: Cluster;
 }
-export const ModifyClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Cluster: S.optional(Cluster) }),
-).annotate({ identifier: "ModifyClusterResponse" }) as any as S.Schema<ModifyClusterResponse>;
+export const ModifyClusterResponse =
+  CreateClusterResponse as any as S.Schema<ModifyClusterResponse>;
 export interface PutResourcePolicyRequest {
   ResourceArn?: string;
   Policy?: string;
@@ -625,11 +623,8 @@ export interface PutResourcePolicyResponse {
   ResourceArn?: string;
   Policy?: string;
 }
-export const PutResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.optional(S.String), Policy: S.optional(S.String) }),
-).annotate({
-  identifier: "PutResourcePolicyResponse",
-}) as any as S.Schema<PutResourcePolicyResponse>;
+export const PutResourcePolicyResponse =
+  DeleteResourcePolicyResponse as any as S.Schema<PutResourcePolicyResponse>;
 export interface RestoreBackupRequest {
   BackupId: string;
 }
@@ -641,9 +636,7 @@ export const RestoreBackupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RestoreBackupResponse {
   Backup?: Backup;
 }
-export const RestoreBackupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Backup: S.optional(Backup) }),
-).annotate({ identifier: "RestoreBackupResponse" }) as any as S.Schema<RestoreBackupResponse>;
+export const RestoreBackupResponse = DeleteBackupResponse as any as S.Schema<RestoreBackupResponse>;
 export interface TagResourceRequest {
   ResourceId: string;
   TagList: Tag[];
@@ -658,7 +651,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = SubnetIds as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceId: string;
   TagKeyList: string[];
@@ -669,9 +662,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export type ErrorMessage = string;
 export type CopyBackupToRegionError =
   | CloudHsmAccessDeniedException

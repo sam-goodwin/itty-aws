@@ -371,10 +371,8 @@ export const ClusterProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ClustersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ClustersCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ClustersCreateOrUpdateResponseTagsMap>;
+export const ClustersCreateOrUpdateResponseTagsMap =
+  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<ClustersCreateOrUpdateResponseTagsMap>;
 
 export interface ClustersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -557,9 +555,8 @@ export const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteClusterRequest" }) as any as S.Schema<DeleteClusterRequest>;
 
 export interface DeleteClusterResponse {}
-export const DeleteClusterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteClusterResponse",
-}) as any as S.Schema<DeleteClusterResponse>;
+export const DeleteClusterResponse =
+  DeleteApplicationGroupResponse as any as S.Schema<DeleteClusterResponse>;
 
 export interface DeleteConsumerGroupRequest {
   /** The ID of the target subscription. */
@@ -593,9 +590,8 @@ export const DeleteConsumerGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteConsumerGroupRequest>;
 
 export interface DeleteConsumerGroupResponse {}
-export const DeleteConsumerGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteConsumerGroupResponse",
-}) as any as S.Schema<DeleteConsumerGroupResponse>;
+export const DeleteConsumerGroupResponse =
+  DeleteApplicationGroupResponse as any as S.Schema<DeleteConsumerGroupResponse>;
 
 export interface DeleteDisasterRecoveryConfigRequest {
   /** The ID of the target subscription. */
@@ -659,9 +655,8 @@ export const DeleteEventHubRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEventHubRequest" }) as any as S.Schema<DeleteEventHubRequest>;
 
 export interface DeleteEventHubResponse {}
-export const DeleteEventHubResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEventHubResponse",
-}) as any as S.Schema<DeleteEventHubResponse>;
+export const DeleteEventHubResponse =
+  DeleteApplicationGroupResponse as any as S.Schema<DeleteEventHubResponse>;
 
 export interface DeleteEventHubAuthorizationRuleRequest {
   /** The ID of the target subscription. */
@@ -695,11 +690,8 @@ export const DeleteEventHubAuthorizationRuleRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteEventHubAuthorizationRuleRequest>;
 
 export interface DeleteEventHubAuthorizationRuleResponse {}
-export const DeleteEventHubAuthorizationRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteEventHubAuthorizationRuleResponse",
-}) as any as S.Schema<DeleteEventHubAuthorizationRuleResponse>;
+export const DeleteEventHubAuthorizationRuleResponse =
+  DeleteDisasterRecoveryConfigResponse as any as S.Schema<DeleteEventHubAuthorizationRuleResponse>;
 
 export interface DeleteNamespaceRequest {
   /** The ID of the target subscription. */
@@ -725,9 +717,8 @@ export const DeleteNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteNamespaceRequest" }) as any as S.Schema<DeleteNamespaceRequest>;
 
 export interface DeleteNamespaceResponse {}
-export const DeleteNamespaceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNamespaceResponse",
-}) as any as S.Schema<DeleteNamespaceResponse>;
+export const DeleteNamespaceResponse =
+  DeleteApplicationGroupResponse as any as S.Schema<DeleteNamespaceResponse>;
 
 export interface DeleteNamespaceAuthorizationRuleRequest {
   /** The ID of the target subscription. */
@@ -758,11 +749,8 @@ export const DeleteNamespaceAuthorizationRuleRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteNamespaceAuthorizationRuleRequest>;
 
 export interface DeleteNamespaceAuthorizationRuleResponse {}
-export const DeleteNamespaceAuthorizationRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteNamespaceAuthorizationRuleResponse",
-}) as any as S.Schema<DeleteNamespaceAuthorizationRuleResponse>;
+export const DeleteNamespaceAuthorizationRuleResponse =
+  DeleteDisasterRecoveryConfigResponse as any as S.Schema<DeleteNamespaceAuthorizationRuleResponse>;
 
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. */
@@ -793,11 +781,8 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePrivateEndpointConnectionResponse",
-}) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
+export const DeletePrivateEndpointConnectionResponse =
+  DeleteDisasterRecoveryConfigResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
 
 export interface DeleteSchemaRegistryRequest {
   /** The ID of the target subscription. */
@@ -828,9 +813,8 @@ export const DeleteSchemaRegistryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSchemaRegistryRequest>;
 
 export interface DeleteSchemaRegistryResponse {}
-export const DeleteSchemaRegistryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSchemaRegistryResponse",
-}) as any as S.Schema<DeleteSchemaRegistryResponse>;
+export const DeleteSchemaRegistryResponse =
+  DeleteApplicationGroupResponse as any as S.Schema<DeleteSchemaRegistryResponse>;
 
 export interface DisasterRecoveryConfigsBreakPairingRequest {
   /** The ID of the target subscription. */
@@ -861,11 +845,8 @@ export const DisasterRecoveryConfigsBreakPairingRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DisasterRecoveryConfigsBreakPairingRequest>;
 
 export interface DisasterRecoveryConfigsBreakPairingResponse {}
-export const DisasterRecoveryConfigsBreakPairingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisasterRecoveryConfigsBreakPairingResponse",
-}) as any as S.Schema<DisasterRecoveryConfigsBreakPairingResponse>;
+export const DisasterRecoveryConfigsBreakPairingResponse =
+  DeleteDisasterRecoveryConfigResponse as any as S.Schema<DisasterRecoveryConfigsBreakPairingResponse>;
 
 /** Properties required to the Create Or Update Alias(Disaster Recovery configurations) */
 export interface ArmDisasterRecoveryPropertiesInput {
@@ -1003,11 +984,8 @@ export const DisasterRecoveryConfigsFailOverRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DisasterRecoveryConfigsFailOverRequest>;
 
 export interface DisasterRecoveryConfigsFailOverResponse {}
-export const DisasterRecoveryConfigsFailOverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisasterRecoveryConfigsFailOverResponse",
-}) as any as S.Schema<DisasterRecoveryConfigsFailOverResponse>;
+export const DisasterRecoveryConfigsFailOverResponse =
+  DeleteDisasterRecoveryConfigResponse as any as S.Schema<DisasterRecoveryConfigsFailOverResponse>;
 
 /** Enumerates the possible values for the status of the Event Hub. */
 export type EntityStatus =
@@ -1412,18 +1390,8 @@ export interface GetApplicationGroupResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const GetApplicationGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ApplicationGroupProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetApplicationGroupResponse",
-}) as any as S.Schema<GetApplicationGroupResponse>;
+export const GetApplicationGroupResponse =
+  ApplicationGroupCreateOrUpdateApplicationGroupResponse as any as S.Schema<GetApplicationGroupResponse>;
 
 export interface GetClusterRequest {
   /** The ID of the target subscription. */
@@ -1450,10 +1418,8 @@ export const GetClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetClusterResponseTagsMap = { [key: string]: string | undefined };
-export const GetClusterResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetClusterResponseTagsMap>;
+export const GetClusterResponseTagsMap =
+  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<GetClusterResponseTagsMap>;
 
 export interface GetClusterResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1511,10 +1477,8 @@ export const GetConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All possible Cluster settings - a collection of key/value paired settings which apply to quotas and configurations imposed on the cluster. */
 export type ClusterQuotaConfigurationPropertiesSettingsMap = { [key: string]: string | undefined };
-export const ClusterQuotaConfigurationPropertiesSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ClusterQuotaConfigurationPropertiesSettingsMap>;
+export const ClusterQuotaConfigurationPropertiesSettingsMap =
+  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<ClusterQuotaConfigurationPropertiesSettingsMap>;
 
 /** Contains all settings for the cluster. */
 export interface ClusterQuotaConfigurationProperties {
@@ -1625,18 +1589,8 @@ export interface GetDisasterRecoveryConfigResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const GetDisasterRecoveryConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ArmDisasterRecoveryProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDisasterRecoveryConfigResponse",
-}) as any as S.Schema<GetDisasterRecoveryConfigResponse>;
+export const GetDisasterRecoveryConfigResponse =
+  DisasterRecoveryConfigsCreateOrUpdateResponse as any as S.Schema<GetDisasterRecoveryConfigResponse>;
 
 export interface GetDisasterRecoveryConfigAuthorizationRuleRequest {
   /** The ID of the target subscription. */
@@ -1683,18 +1637,8 @@ export interface GetDisasterRecoveryConfigAuthorizationRuleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const GetDisasterRecoveryConfigAuthorizationRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AuthorizationRuleProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDisasterRecoveryConfigAuthorizationRuleResponse",
-}) as any as S.Schema<GetDisasterRecoveryConfigAuthorizationRuleResponse>;
+export const GetDisasterRecoveryConfigAuthorizationRuleResponse =
+  EventHubsCreateOrUpdateAuthorizationRuleResponse as any as S.Schema<GetDisasterRecoveryConfigAuthorizationRuleResponse>;
 
 export interface GetEventHubRequest {
   /** The ID of the target subscription. */
@@ -1792,18 +1736,8 @@ export interface GetEventHubAuthorizationRuleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const GetEventHubAuthorizationRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AuthorizationRuleProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetEventHubAuthorizationRuleResponse",
-}) as any as S.Schema<GetEventHubAuthorizationRuleResponse>;
+export const GetEventHubAuthorizationRuleResponse =
+  EventHubsCreateOrUpdateAuthorizationRuleResponse as any as S.Schema<GetEventHubAuthorizationRuleResponse>;
 
 export interface GetNamespaceRequest {
   /** The ID of the target subscription. */
@@ -2182,10 +2116,8 @@ export const Identity = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetNamespaceResponseTagsMap = { [key: string]: string | undefined };
-export const GetNamespaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetNamespaceResponseTagsMap>;
+export const GetNamespaceResponseTagsMap =
+  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<GetNamespaceResponseTagsMap>;
 
 export interface GetNamespaceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2263,18 +2195,8 @@ export interface GetNamespaceAuthorizationRuleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const GetNamespaceAuthorizationRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AuthorizationRuleProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetNamespaceAuthorizationRuleResponse",
-}) as any as S.Schema<GetNamespaceAuthorizationRuleResponse>;
+export const GetNamespaceAuthorizationRuleResponse =
+  EventHubsCreateOrUpdateAuthorizationRuleResponse as any as S.Schema<GetNamespaceAuthorizationRuleResponse>;
 
 export interface GetNamespaceNetworkRuleSetRequest {
   /** The ID of the target subscription. */
@@ -2310,11 +2232,7 @@ export interface Subnet {
   /** Resource ID of Virtual Network Subnet */
   id?: string;
 }
-export const Subnet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "Subnet" }) as any as S.Schema<Subnet>;
+export const Subnet = PrivateEndpoint as any as S.Schema<Subnet>;
 
 /** The response from the List namespace operation. */
 export interface NWRuleSetVirtualNetworkRules {
@@ -2550,9 +2468,8 @@ export const NspAccessRuleDirection = S.String;
 
 /** Address prefixes in the CIDR format for inbound rules */
 export type NspAccessRulePropertiesAddressPrefixesList = Array<string>;
-export const NspAccessRulePropertiesAddressPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NspAccessRulePropertiesAddressPrefixesList>;
+export const NspAccessRulePropertiesAddressPrefixesList =
+  EventhubPropertiesPartitionIdsList as any as S.Schema<NspAccessRulePropertiesAddressPrefixesList>;
 
 /** Subscription for inbound rule */
 export interface NspAccessRulePropertiesSubscriptionsItem {
@@ -2582,9 +2499,8 @@ export const NspAccessRulePropertiesNetworkSecurityPerimetersList = /*@__PURE__*
 
 /** FQDN for outbound rules */
 export type NspAccessRulePropertiesFullyQualifiedDomainNamesList = Array<string>;
-export const NspAccessRulePropertiesFullyQualifiedDomainNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NspAccessRulePropertiesFullyQualifiedDomainNamesList>;
+export const NspAccessRulePropertiesFullyQualifiedDomainNamesList =
+  EventhubPropertiesPartitionIdsList as any as S.Schema<NspAccessRulePropertiesFullyQualifiedDomainNamesList>;
 
 /** Properties of Access Rule */
 export interface NspAccessRuleProperties {
@@ -2776,18 +2692,8 @@ export interface GetPrivateEndpointConnectionResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPrivateEndpointConnectionResponse",
-}) as any as S.Schema<GetPrivateEndpointConnectionResponse>;
+export const GetPrivateEndpointConnectionResponse =
+  PrivateEndpointConnection as any as S.Schema<GetPrivateEndpointConnectionResponse>;
 
 export interface GetPrivateLinkResourceRequest {
   /** The ID of the target subscription. */
@@ -2816,15 +2722,13 @@ export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+export const PrivateLinkResourcePropertiesRequiredMembersList =
+  EventhubPropertiesPartitionIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  EventhubPropertiesPartitionIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of PrivateLinkResource */
 export interface PrivateLinkResourceProperties {
@@ -2915,10 +2819,8 @@ export const GetSchemaRegistryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** dictionary object for SchemaGroup group properties */
 export type SchemaGroupPropertiesGroupPropertiesMap = { [key: string]: string | undefined };
-export const SchemaGroupPropertiesGroupPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SchemaGroupPropertiesGroupPropertiesMap>;
+export const SchemaGroupPropertiesGroupPropertiesMap =
+  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<SchemaGroupPropertiesGroupPropertiesMap>;
 
 export type SchemaCompatibility = "None" | "Backward" | "Forward";
 export const SchemaCompatibility = S.String;
@@ -3118,10 +3020,8 @@ export const ListClusterByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ClusterTagsMap = { [key: string]: string | undefined };
-export const ClusterTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ClusterTagsMap>;
+export const ClusterTagsMap =
+  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<ClusterTagsMap>;
 
 /** Single Event Hubs Cluster resource in List or Get operations. */
 export interface Cluster {
@@ -3142,18 +3042,7 @@ export interface Cluster {
   /** Resource tags. */
   tags?: ClusterTagsMap;
 }
-export const Cluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ClusterProperties),
-    sku: S.optional(ClusterSku),
-    location: S.optional(S.String),
-    tags: S.optional(ClusterTagsMap),
-  }),
-).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
+export const Cluster = GetClusterResponse as any as S.Schema<Cluster>;
 
 /** The Cluster items on this page */
 export type ClusterListResultValueList = Array<Cluster>;
@@ -3224,11 +3113,7 @@ export interface EHNamespaceIdContainer {
   /** id parameter */
   id?: string;
 }
-export const EHNamespaceIdContainer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "EHNamespaceIdContainer" }) as any as S.Schema<EHNamespaceIdContainer>;
+export const EHNamespaceIdContainer = PrivateEndpoint as any as S.Schema<EHNamespaceIdContainer>;
 
 /** Result of the List Namespace IDs operation */
 export type EHNamespaceIdListResultValueList = Array<EHNamespaceIdContainer>;
@@ -3296,16 +3181,7 @@ export interface ConsumerGroup {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const ConsumerGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ConsumerGroupProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({ identifier: "ConsumerGroup" }) as any as S.Schema<ConsumerGroup>;
+export const ConsumerGroup = GetConsumerGroupResponse as any as S.Schema<ConsumerGroup>;
 
 /** The ConsumerGroup items on this page */
 export type ConsumerGroupListResultValueList = Array<ConsumerGroup>;
@@ -3610,16 +3486,7 @@ export interface Eventhub2 {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const Eventhub2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(EventhubProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({ identifier: "Eventhub2" }) as any as S.Schema<Eventhub2>;
+export const Eventhub2 = GetEventHubResponse as any as S.Schema<Eventhub2>;
 
 /** The Eventhub items on this page */
 export type EventHubListResultValueList = Array<Eventhub2>;
@@ -3719,10 +3586,8 @@ export const ListNamespaceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type EHNamespaceTagsMap = { [key: string]: string | undefined };
-export const EHNamespaceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EHNamespaceTagsMap>;
+export const EHNamespaceTagsMap =
+  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<EHNamespaceTagsMap>;
 
 /** Single Namespace item in List or Get Operation */
 export interface EHNamespace {
@@ -3745,19 +3610,7 @@ export interface EHNamespace {
   /** Resource tags. */
   tags?: EHNamespaceTagsMap;
 }
-export const EHNamespace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(EHNamespaceProperties),
-    sku: S.optional(Sku),
-    identity: S.optional(Identity),
-    location: S.optional(S.String),
-    tags: S.optional(EHNamespaceTagsMap),
-  }),
-).annotate({ identifier: "EHNamespace" }) as any as S.Schema<EHNamespace>;
+export const EHNamespace = GetNamespaceResponse as any as S.Schema<EHNamespace>;
 
 /** The EHNamespace items on this page */
 export type EHNamespaceListResultValueList = Array<EHNamespace>;
@@ -4068,9 +3921,8 @@ export const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
-export const PrivateEndpointConnectionListResultValueList = /*@__PURE__*/ S.Array(
-  PrivateEndpointConnection,
-) as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
+export const PrivateEndpointConnectionListResultValueList =
+  EHNamespacePropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
 
 /** The response of a PrivateEndpointConnection list operation. */
 export interface PrivateEndpointConnectionListResult {
@@ -4287,9 +4139,8 @@ export const EHNamespacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Recognized Dictionary value. */
 export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UserAssignedIdentityInput",
-}) as any as S.Schema<UserAssignedIdentityInput>;
+export const UserAssignedIdentityInput =
+  DeleteApplicationGroupResponse as any as S.Schema<UserAssignedIdentityInput>;
 
 /** Properties for User Assigned Identities */
 export type IdentityInputUserAssignedIdentitiesMap = {
@@ -4316,10 +4167,8 @@ export const IdentityInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type NamespacesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const NamespacesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamespacesCreateOrUpdateRequestTagsMap>;
+export const NamespacesCreateOrUpdateRequestTagsMap =
+  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<NamespacesCreateOrUpdateRequestTagsMap>;
 
 export interface NamespacesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -4363,10 +4212,8 @@ export const NamespacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type NamespacesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const NamespacesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamespacesCreateOrUpdateResponseTagsMap>;
+export const NamespacesCreateOrUpdateResponseTagsMap =
+  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<NamespacesCreateOrUpdateResponseTagsMap>;
 
 export interface NamespacesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4449,18 +4296,8 @@ export interface NamespacesCreateOrUpdateAuthorizationRuleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const NamespacesCreateOrUpdateAuthorizationRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AuthorizationRuleProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NamespacesCreateOrUpdateAuthorizationRuleResponse",
-}) as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleResponse>;
+export const NamespacesCreateOrUpdateAuthorizationRuleResponse =
+  EventHubsCreateOrUpdateAuthorizationRuleResponse as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleResponse>;
 
 export interface NamespacesCreateOrUpdateNetworkRuleSetRequest {
   /** The ID of the target subscription. */
@@ -4504,18 +4341,8 @@ export interface NamespacesCreateOrUpdateNetworkRuleSetResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const NamespacesCreateOrUpdateNetworkRuleSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(NetworkRuleSetProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NamespacesCreateOrUpdateNetworkRuleSetResponse",
-}) as any as S.Schema<NamespacesCreateOrUpdateNetworkRuleSetResponse>;
+export const NamespacesCreateOrUpdateNetworkRuleSetResponse =
+  GetNamespaceNetworkRuleSetResponse as any as S.Schema<NamespacesCreateOrUpdateNetworkRuleSetResponse>;
 
 export interface FailOverProperties {
   /** Query parameter for the new primary location after failover. */
@@ -4558,9 +4385,8 @@ export const NamespacesFailoverRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespacesFailoverRequest>;
 
 export interface NamespacesFailoverResponse {}
-export const NamespacesFailoverResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "NamespacesFailoverResponse",
-}) as any as S.Schema<NamespacesFailoverResponse>;
+export const NamespacesFailoverResponse =
+  DeleteApplicationGroupResponse as any as S.Schema<NamespacesFailoverResponse>;
 
 export interface NetworkSecurityPerimeterConfigurationsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -4600,10 +4426,8 @@ export const NetworkSecurityPerimeterConfigurationsCreateOrUpdateResponse = /*@_
 
 /** All possible Cluster settings - a collection of key/value paired settings which apply to quotas and configurations imposed on the cluster. */
 export type PatchConfigurationRequestSettingsMap = { [key: string]: string | undefined };
-export const PatchConfigurationRequestSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PatchConfigurationRequestSettingsMap>;
+export const PatchConfigurationRequestSettingsMap =
+  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<PatchConfigurationRequestSettingsMap>;
 
 export interface PatchConfigurationRequest {
   /** The ID of the target subscription. */
@@ -4678,18 +4502,8 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const PrivateEndpointConnectionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionsCreateOrUpdateResponse",
-}) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
+export const PrivateEndpointConnectionsCreateOrUpdateResponse =
+  PrivateEndpointConnection as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
 
 /** The access key to regenerate. */
 export type KeyType = "PrimaryKey" | "SecondaryKey";
@@ -4768,10 +4582,8 @@ export const RegenerateNamespaceKeysRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** dictionary object for SchemaGroup group properties */
 export type SchemaGroupPropertiesInputGroupPropertiesMap = { [key: string]: string | undefined };
-export const SchemaGroupPropertiesInputGroupPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SchemaGroupPropertiesInputGroupPropertiesMap>;
+export const SchemaGroupPropertiesInputGroupPropertiesMap =
+  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<SchemaGroupPropertiesInputGroupPropertiesMap>;
 
 export interface SchemaGroupPropertiesInput {
   /** dictionary object for SchemaGroup group properties */
@@ -4832,25 +4644,13 @@ export interface SchemaRegistryCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const SchemaRegistryCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SchemaGroupProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SchemaRegistryCreateOrUpdateResponse",
-}) as any as S.Schema<SchemaRegistryCreateOrUpdateResponse>;
+export const SchemaRegistryCreateOrUpdateResponse =
+  GetSchemaRegistryResponse as any as S.Schema<SchemaRegistryCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type UpdateClusterRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateClusterRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateClusterRequestTagsMap>;
+export const UpdateClusterRequestTagsMap =
+  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateClusterRequestTagsMap>;
 
 export interface UpdateClusterRequest {
   /** The ID of the target subscription. */
@@ -4889,10 +4689,8 @@ export const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateClusterResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateClusterResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateClusterResponseTagsMap>;
+export const UpdateClusterResponseTagsMap =
+  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateClusterResponseTagsMap>;
 
 export interface UpdateClusterResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4912,25 +4710,12 @@ export interface UpdateClusterResponse {
   /** Resource tags. */
   tags?: UpdateClusterResponseTagsMap;
 }
-export const UpdateClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ClusterProperties),
-    sku: S.optional(ClusterSku),
-    location: S.optional(S.String),
-    tags: S.optional(UpdateClusterResponseTagsMap),
-  }),
-).annotate({ identifier: "UpdateClusterResponse" }) as any as S.Schema<UpdateClusterResponse>;
+export const UpdateClusterResponse = GetClusterResponse as any as S.Schema<UpdateClusterResponse>;
 
 /** Resource tags. */
 export type UpdateNamespaceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateNamespaceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateNamespaceRequestTagsMap>;
+export const UpdateNamespaceRequestTagsMap =
+  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateNamespaceRequestTagsMap>;
 
 export interface UpdateNamespaceRequest {
   /** The ID of the target subscription. */
@@ -4972,10 +4757,8 @@ export const UpdateNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateNamespaceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateNamespaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateNamespaceResponseTagsMap>;
+export const UpdateNamespaceResponseTagsMap =
+  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateNamespaceResponseTagsMap>;
 
 export interface UpdateNamespaceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4997,19 +4780,8 @@ export interface UpdateNamespaceResponse {
   /** Resource tags. */
   tags?: UpdateNamespaceResponseTagsMap;
 }
-export const UpdateNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(EHNamespaceProperties),
-    sku: S.optional(Sku),
-    identity: S.optional(Identity),
-    location: S.optional(S.String),
-    tags: S.optional(UpdateNamespaceResponseTagsMap),
-  }),
-).annotate({ identifier: "UpdateNamespaceResponse" }) as any as S.Schema<UpdateNamespaceResponse>;
+export const UpdateNamespaceResponse =
+  GetNamespaceResponse as any as S.Schema<UpdateNamespaceResponse>;
 
 export type ApplicationGroupCreateOrUpdateApplicationGroupError = AzureOpError;
 /** Creates or updates an ApplicationGroup for a Namespace. */

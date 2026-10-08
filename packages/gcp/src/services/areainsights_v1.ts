@@ -281,11 +281,7 @@ export interface PlaceInsight {
   /** The unique identifier of the place. This resource name can be used to retrieve details about the place using the [Places API](https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places/get). */
   place?: string;
 }
-export const PlaceInsight = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    place: S.optional(S.String),
-  }),
-).annotate({ identifier: "PlaceInsight" }) as any as S.Schema<PlaceInsight>;
+export const PlaceInsight = Region as any as S.Schema<PlaceInsight>;
 
 export type PlaceInsightList = Array<PlaceInsight>;
 export const PlaceInsightList = /*@__PURE__*/ S.Array(

@@ -986,9 +986,7 @@ export const VerifyDomainsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** [Developer Preview](https://developers.google.com/workspace/preview): Response message for VerifyDomain. */
 export interface VerifyDomainResponse {}
-export const VerifyDomainResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "VerifyDomainResponse",
-}) as any as S.Schema<VerifyDomainResponse>;
+export const VerifyDomainResponse = Empty as any as S.Schema<VerifyDomainResponse>;
 
 export type BatchQueryDomainStatsError =
   | NotFound

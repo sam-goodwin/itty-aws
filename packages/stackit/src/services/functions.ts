@@ -69,10 +69,8 @@ export const CreateFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateFunctionRequest" }) as any as S.Schema<CreateFunctionRequest>;
 
 export type FunctionLabelsMap = { [key: string]: string | undefined };
-export const FunctionLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FunctionLabelsMap>;
+export const FunctionLabelsMap =
+  CreateFunctionRequestLabelsMap as any as S.Schema<FunctionLabelsMap>;
 
 /** Status of this function's latest revision. */
 export type FunctionState = "CREATING" | "ACTIVE" | "FAILED";
@@ -117,10 +115,8 @@ export const Function = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Function" }) as any as S.Schema<Function>;
 
 export type CreateFunctionRevisionRequestLabelsMap = { [key: string]: string | undefined };
-export const CreateFunctionRevisionRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateFunctionRevisionRequestLabelsMap>;
+export const CreateFunctionRevisionRequestLabelsMap =
+  CreateFunctionRequestLabelsMap as any as S.Schema<CreateFunctionRevisionRequestLabelsMap>;
 
 /** Resource utilization limitations */
 export interface ResourceLimits {
@@ -227,10 +223,8 @@ export const CreateFunctionRevisionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateFunctionRevisionRequest>;
 
 export type RevisionLabelsMap = { [key: string]: string | undefined };
-export const RevisionLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RevisionLabelsMap>;
+export const RevisionLabelsMap =
+  CreateFunctionRequestLabelsMap as any as S.Schema<RevisionLabelsMap>;
 
 /** Status of this revision. */
 export type RevisionState = "CANCELLED" | "CREATING" | "ACTIVE" | "FAILED";
@@ -238,9 +232,8 @@ export const RevisionState = S.String;
 
 /** Variable values for this revision. Each variable must reference a variable definition on the function. */
 export type RevisionVariablesList = Array<RevisionVariable>;
-export const RevisionVariablesList = /*@__PURE__*/ S.Array(
-  RevisionVariable,
-) as any as S.Schema<RevisionVariablesList>;
+export const RevisionVariablesList =
+  CreateFunctionRevisionRequestVariablesList as any as S.Schema<RevisionVariablesList>;
 
 /** The function revision */
 export interface Revision {
@@ -294,10 +287,8 @@ export const Revision = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Revision" }) as any as S.Schema<Revision>;
 
 export type CreatePullCredentialRequestLabelsMap = { [key: string]: string | undefined };
-export const CreatePullCredentialRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreatePullCredentialRequestLabelsMap>;
+export const CreatePullCredentialRequestLabelsMap =
+  CreateFunctionRequestLabelsMap as any as S.Schema<CreatePullCredentialRequestLabelsMap>;
 
 export interface CreatePullCredentialRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -336,10 +327,8 @@ export const CreatePullCredentialRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePullCredentialRequest>;
 
 export type PullCredentialLabelsMap = { [key: string]: string | undefined };
-export const PullCredentialLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PullCredentialLabelsMap>;
+export const PullCredentialLabelsMap =
+  CreateFunctionRequestLabelsMap as any as S.Schema<PullCredentialLabelsMap>;
 
 export interface PullCredential {
   /** The OCI registry address. */
@@ -413,9 +402,8 @@ export const DeletePullCredentialRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePullCredentialRequest>;
 
 export interface DeletePullCredentialResponse {}
-export const DeletePullCredentialResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePullCredentialResponse",
-}) as any as S.Schema<DeletePullCredentialResponse>;
+export const DeletePullCredentialResponse =
+  DeleteFunctionResponse as any as S.Schema<DeletePullCredentialResponse>;
 
 export interface DeleteRevisionRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -441,9 +429,8 @@ export const DeleteRevisionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRevisionRequest" }) as any as S.Schema<DeleteRevisionRequest>;
 
 export interface DeleteRevisionResponse {}
-export const DeleteRevisionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRevisionResponse",
-}) as any as S.Schema<DeleteRevisionResponse>;
+export const DeleteRevisionResponse =
+  DeleteFunctionResponse as any as S.Schema<DeleteRevisionResponse>;
 
 export interface GetFunctionRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -625,10 +612,8 @@ export const ListRevisions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRevisions" }) as any as S.Schema<ListRevisions>;
 
 export type UpdateFunctionRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateFunctionRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateFunctionRequestLabelsMap>;
+export const UpdateFunctionRequestLabelsMap =
+  CreateFunctionRequestLabelsMap as any as S.Schema<UpdateFunctionRequestLabelsMap>;
 
 export interface UpdateFunctionRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -656,10 +641,8 @@ export const UpdateFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateFunctionRequest" }) as any as S.Schema<UpdateFunctionRequest>;
 
 export type UpdatePullCredentialRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdatePullCredentialRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePullCredentialRequestLabelsMap>;
+export const UpdatePullCredentialRequestLabelsMap =
+  CreateFunctionRequestLabelsMap as any as S.Schema<UpdatePullCredentialRequestLabelsMap>;
 
 export interface UpdatePullCredentialRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -698,10 +681,8 @@ export const UpdatePullCredentialRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdatePullCredentialRequest>;
 
 export type UpdateRevisionRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateRevisionRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateRevisionRequestLabelsMap>;
+export const UpdateRevisionRequestLabelsMap =
+  CreateFunctionRequestLabelsMap as any as S.Schema<UpdateRevisionRequestLabelsMap>;
 
 export interface UpdateRevisionRequest {
   /** The STACKIT portal project UUID the resource is located in. */

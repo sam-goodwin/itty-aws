@@ -361,11 +361,8 @@ export interface DeleteListItemResponse {
   /** The unique operation ID of the asynchronous action. */
   operationId: string;
 }
-export const DeleteListItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operationId: S.String.pipe(T.Body("operation_id")),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteListItemResponse" }) as any as S.Schema<DeleteListItemResponse>;
+export const DeleteListItemResponse =
+  CreateListItemResponse as any as S.Schema<DeleteListItemResponse>;
 
 export interface GetListRequest {
   /** The Account ID for this resource. */
@@ -1083,11 +1080,8 @@ export interface UpdateListItemResponse {
   /** The unique operation ID of the asynchronous action. */
   operationId: string;
 }
-export const UpdateListItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operationId: S.String.pipe(T.Body("operation_id")),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UpdateListItemResponse" }) as any as S.Schema<UpdateListItemResponse>;
+export const UpdateListItemResponse =
+  CreateListItemResponse as any as S.Schema<UpdateListItemResponse>;
 
 export type CreateListError = ListAlreadyExists | Forbidden | CloudflareOpError;
 /** Creates a new list of the specified kind. */

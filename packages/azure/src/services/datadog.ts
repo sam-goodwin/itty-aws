@@ -190,10 +190,8 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateMonitorResponseTagsMap = { [key: string]: string | undefined };
-export const CreateMonitorResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateMonitorResponseTagsMap>;
+export const CreateMonitorResponseTagsMap =
+  CreateMonitorRequestTagsMap as any as S.Schema<CreateMonitorResponseTagsMap>;
 
 export type ProvisioningState =
   | "Accepted"
@@ -513,10 +511,8 @@ export const GetMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetMonitorResponseTagsMap = { [key: string]: string | undefined };
-export const GetMonitorResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetMonitorResponseTagsMap>;
+export const GetMonitorResponseTagsMap =
+  CreateMonitorRequestTagsMap as any as S.Schema<GetMonitorResponseTagsMap>;
 
 export interface GetMonitorResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -536,19 +532,7 @@ export interface GetMonitorResponse {
   sku?: ResourceSku;
   identity?: IdentityProperties;
 }
-export const GetMonitorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetMonitorResponseTagsMap),
-    location: S.String,
-    properties: S.optional(MonitorProperties),
-    sku: S.optional(ResourceSku),
-    identity: S.optional(IdentityProperties),
-  }),
-).annotate({ identifier: "GetMonitorResponse" }) as any as S.Schema<GetMonitorResponse>;
+export const GetMonitorResponse = CreateMonitorResponse as any as S.Schema<GetMonitorResponse>;
 
 export interface GetMonitorDefaultKeyRequest {
   /** The ID of the target subscription. */
@@ -679,9 +663,8 @@ export const LogRules = /*@__PURE__*/ S.suspend(() =>
 
 /** List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
 export type MetricRulesFilteringTagsList = Array<FilteringTag>;
-export const MetricRulesFilteringTagsList = /*@__PURE__*/ S.Array(
-  FilteringTag,
-) as any as S.Schema<MetricRulesFilteringTagsList>;
+export const MetricRulesFilteringTagsList =
+  LogRulesFilteringTagsList as any as S.Schema<MetricRulesFilteringTagsList>;
 
 /** Set of rules for sending metrics for the Monitor resource. */
 export interface MetricRules {
@@ -696,9 +679,8 @@ export const MetricRules = /*@__PURE__*/ S.suspend(() =>
 
 /** List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
 export type AgentRulesFilteringTagsList = Array<FilteringTag>;
-export const AgentRulesFilteringTagsList = /*@__PURE__*/ S.Array(
-  FilteringTag,
-) as any as S.Schema<AgentRulesFilteringTagsList>;
+export const AgentRulesFilteringTagsList =
+  LogRulesFilteringTagsList as any as S.Schema<AgentRulesFilteringTagsList>;
 
 /** Set of rules for managing agents for the Monitor resource. */
 export interface AgentRules {
@@ -1184,10 +1166,8 @@ export const ListMonitorByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DatadogMonitorResourceTagsMap = { [key: string]: string | undefined };
-export const DatadogMonitorResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DatadogMonitorResourceTagsMap>;
+export const DatadogMonitorResourceTagsMap =
+  CreateMonitorRequestTagsMap as any as S.Schema<DatadogMonitorResourceTagsMap>;
 
 /** Concrete tracked resource types can be created by aliasing this type using a specific property type. */
 export interface DatadogMonitorResource {
@@ -1208,19 +1188,8 @@ export interface DatadogMonitorResource {
   sku?: ResourceSku;
   identity?: IdentityProperties;
 }
-export const DatadogMonitorResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(DatadogMonitorResourceTagsMap),
-    location: S.String,
-    properties: S.optional(MonitorProperties),
-    sku: S.optional(ResourceSku),
-    identity: S.optional(IdentityProperties),
-  }),
-).annotate({ identifier: "DatadogMonitorResource" }) as any as S.Schema<DatadogMonitorResource>;
+export const DatadogMonitorResource =
+  CreateMonitorResponse as any as S.Schema<DatadogMonitorResource>;
 
 /** The DatadogMonitorResource items on this page */
 export type DatadogMonitorResourceListResponseValueList = Array<DatadogMonitorResource>;
@@ -1282,17 +1251,8 @@ export interface MonitoredSubscriptionProperties {
   /** The request to update subscriptions needed to be monitored by the Datadog monitor resource. */
   properties?: SubscriptionList;
 }
-export const MonitoredSubscriptionProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SubscriptionList),
-  }),
-).annotate({
-  identifier: "MonitoredSubscriptionProperties",
-}) as any as S.Schema<MonitoredSubscriptionProperties>;
+export const MonitoredSubscriptionProperties =
+  GetMonitoredSubscriptionResponse as any as S.Schema<MonitoredSubscriptionProperties>;
 
 /** The MonitoredSubscriptionProperties items on this page */
 export type MonitoredSubscriptionPropertiesListValueList = Array<MonitoredSubscriptionProperties>;
@@ -1347,9 +1307,7 @@ export const DatadogHostAliasesList = /*@__PURE__*/ S.Array(
 
 /** The Datadog integrations reporting metrics for the host. */
 export type DatadogHostAppsList = Array<string>;
-export const DatadogHostAppsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatadogHostAppsList>;
+export const DatadogHostAppsList = DatadogHostAliasesList as any as S.Schema<DatadogHostAppsList>;
 
 export interface DatadogInstallMethod {
   /** The tool. */
@@ -1683,17 +1641,8 @@ export interface DatadogSingleSignOnResource {
   systemData?: SystemData;
   properties?: DatadogSingleSignOnProperties;
 }
-export const DatadogSingleSignOnResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DatadogSingleSignOnProperties),
-  }),
-).annotate({
-  identifier: "DatadogSingleSignOnResource",
-}) as any as S.Schema<DatadogSingleSignOnResource>;
+export const DatadogSingleSignOnResource =
+  GetSingleSignOnConfigurationResponse as any as S.Schema<DatadogSingleSignOnResource>;
 
 /** The DatadogSingleSignOnResource items on this page */
 export type DatadogSingleSignOnResourceListResponseValueList = Array<DatadogSingleSignOnResource>;
@@ -1753,15 +1702,7 @@ export interface MonitoringTagRules {
   /** Definition of the properties for a TagRules resource. */
   properties?: MonitoringTagRulesProperties;
 }
-export const MonitoringTagRules = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(MonitoringTagRulesProperties),
-  }),
-).annotate({ identifier: "MonitoringTagRules" }) as any as S.Schema<MonitoringTagRules>;
+export const MonitoringTagRules = GetTagRuleResponse as any as S.Schema<MonitoringTagRules>;
 
 /** The MonitoringTagRules items on this page */
 export type MonitoringTagRulesListResponseValueList = Array<MonitoringTagRules>;
@@ -1842,10 +1783,8 @@ export const OrganizationsResubscribeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type OrganizationsResubscribeResponseTagsMap = { [key: string]: string | undefined };
-export const OrganizationsResubscribeResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OrganizationsResubscribeResponseTagsMap>;
+export const OrganizationsResubscribeResponseTagsMap =
+  CreateMonitorRequestTagsMap as any as S.Schema<OrganizationsResubscribeResponseTagsMap>;
 
 export interface OrganizationsResubscribeResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1953,9 +1892,8 @@ export const SetMonitorDefaultKeyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetMonitorDefaultKeyRequest>;
 
 export interface SetMonitorDefaultKeyResponse {}
-export const SetMonitorDefaultKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SetMonitorDefaultKeyResponse",
-}) as any as S.Schema<SetMonitorDefaultKeyResponse>;
+export const SetMonitorDefaultKeyResponse =
+  DeleteMonitorResponse as any as S.Schema<SetMonitorDefaultKeyResponse>;
 
 export interface DatadogSingleSignOnPropertiesInput {
   /** Various states of the SSO resource */
@@ -2013,17 +1951,8 @@ export interface SingleSignOnConfigurationsCreateOrUpdateResponse {
   systemData?: SystemData;
   properties?: DatadogSingleSignOnProperties;
 }
-export const SingleSignOnConfigurationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DatadogSingleSignOnProperties),
-  }),
-).annotate({
-  identifier: "SingleSignOnConfigurationsCreateOrUpdateResponse",
-}) as any as S.Schema<SingleSignOnConfigurationsCreateOrUpdateResponse>;
+export const SingleSignOnConfigurationsCreateOrUpdateResponse =
+  GetSingleSignOnConfigurationResponse as any as S.Schema<SingleSignOnConfigurationsCreateOrUpdateResponse>;
 
 /** Definition of the properties for a TagRules resource. */
 export interface MonitoringTagRulesPropertiesInput {
@@ -2128,10 +2057,8 @@ export const MonitorUpdateProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The new tags of the monitor resource. */
 export type UpdateMonitorRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateMonitorRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateMonitorRequestTagsMap>;
+export const UpdateMonitorRequestTagsMap =
+  CreateMonitorRequestTagsMap as any as S.Schema<UpdateMonitorRequestTagsMap>;
 
 export interface UpdateMonitorRequest {
   /** The ID of the target subscription. */
@@ -2166,10 +2093,8 @@ export const UpdateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateMonitorResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateMonitorResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateMonitorResponseTagsMap>;
+export const UpdateMonitorResponseTagsMap =
+  CreateMonitorRequestTagsMap as any as S.Schema<UpdateMonitorResponseTagsMap>;
 
 export interface UpdateMonitorResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2189,19 +2114,8 @@ export interface UpdateMonitorResponse {
   sku?: ResourceSku;
   identity?: IdentityProperties;
 }
-export const UpdateMonitorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateMonitorResponseTagsMap),
-    location: S.String,
-    properties: S.optional(MonitorProperties),
-    sku: S.optional(ResourceSku),
-    identity: S.optional(IdentityProperties),
-  }),
-).annotate({ identifier: "UpdateMonitorResponse" }) as any as S.Schema<UpdateMonitorResponse>;
+export const UpdateMonitorResponse =
+  CreateMonitorResponse as any as S.Schema<UpdateMonitorResponse>;
 
 /** The list of subscriptions and it's monitoring status by current Datadog monitor. */
 export interface MonitoredSubscriptionInput {
@@ -2288,17 +2202,8 @@ export interface UpdateMonitoredSubscriptionResponse {
   /** The request to update subscriptions needed to be monitored by the Datadog monitor resource. */
   properties?: SubscriptionList;
 }
-export const UpdateMonitoredSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SubscriptionList),
-  }),
-).annotate({
-  identifier: "UpdateMonitoredSubscriptionResponse",
-}) as any as S.Schema<UpdateMonitoredSubscriptionResponse>;
+export const UpdateMonitoredSubscriptionResponse =
+  GetMonitoredSubscriptionResponse as any as S.Schema<UpdateMonitoredSubscriptionResponse>;
 
 export interface UpdateMonitoredSubscriptionsCreateorRequest {
   /** The ID of the target subscription. */
@@ -2343,17 +2248,8 @@ export interface UpdateMonitoredSubscriptionsCreateorResponse {
   /** The request to update subscriptions needed to be monitored by the Datadog monitor resource. */
   properties?: SubscriptionList;
 }
-export const UpdateMonitoredSubscriptionsCreateorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SubscriptionList),
-  }),
-).annotate({
-  identifier: "UpdateMonitoredSubscriptionsCreateorResponse",
-}) as any as S.Schema<UpdateMonitoredSubscriptionsCreateorResponse>;
+export const UpdateMonitoredSubscriptionsCreateorResponse =
+  GetMonitoredSubscriptionResponse as any as S.Schema<UpdateMonitoredSubscriptionsCreateorResponse>;
 
 export type CreateMonitorError = AzureOpError;
 /** Create a monitor resource. Create a monitor resource. */

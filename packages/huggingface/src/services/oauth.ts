@@ -232,9 +232,8 @@ export const PostUserInfoRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Hardware SKU as [type, vendor, model] */
 export type PostUserInfoResponseHardwareItemsItemSkuList = Array<unknown>;
-export const PostUserInfoResponseHardwareItemsItemSkuList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<PostUserInfoResponseHardwareItemsItemSkuList>;
+export const PostUserInfoResponseHardwareItemsItemSkuList =
+  GetUserInfoResponseHardwareItemsItemSkuList as any as S.Schema<PostUserInfoResponseHardwareItemsItemSkuList>;
 
 export interface PostUserInfoResponseHardwareItemsItem {
   /** Hardware SKU as [type, vendor, model] */
@@ -245,22 +244,13 @@ export interface PostUserInfoResponseHardwareItemsItem {
   num: number;
   isPrimary?: boolean;
 }
-export const PostUserInfoResponseHardwareItemsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sku: PostUserInfoResponseHardwareItemsItemSkuList,
-    mem: S.Number,
-    num: S.Number,
-    isPrimary: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "PostUserInfoResponseHardwareItemsItem",
-}) as any as S.Schema<PostUserInfoResponseHardwareItemsItem>;
+export const PostUserInfoResponseHardwareItemsItem =
+  GetUserInfoResponseHardwareItemsItem as any as S.Schema<PostUserInfoResponseHardwareItemsItem>;
 
 /** The user's hardware items, if the `profile` scope is granted and the user did not set them as private */
 export type PostUserInfoResponseHardwareItemsList = Array<PostUserInfoResponseHardwareItemsItem>;
-export const PostUserInfoResponseHardwareItemsList = /*@__PURE__*/ S.Array(
-  PostUserInfoResponseHardwareItemsItem,
-) as any as S.Schema<PostUserInfoResponseHardwareItemsList>;
+export const PostUserInfoResponseHardwareItemsList =
+  GetUserInfoResponseHardwareItemsList as any as S.Schema<PostUserInfoResponseHardwareItemsList>;
 
 /** Whether the user is on prepaid or postpaid billing */
 export type PostUserInfoResponseBillingMode = "prepaid" | "postpaid";
@@ -414,9 +404,8 @@ export const RegisterOAuthAppRequestRedirectUrisList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RegisterOAuthAppRequestRedirectUrisList>;
 
 export type RegisterOAuthAppRequestContactsList = Array<string>;
-export const RegisterOAuthAppRequestContactsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RegisterOAuthAppRequestContactsList>;
+export const RegisterOAuthAppRequestContactsList =
+  RegisterOAuthAppRequestRedirectUrisList as any as S.Schema<RegisterOAuthAppRequestContactsList>;
 
 export type RegisterOAuthAppRequestTokenEndpointAuthMethod =
   | "client_secret_basic"
@@ -450,9 +439,8 @@ export const RegisterOAuthAppRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RegisterOAuthAppRequest" }) as any as S.Schema<RegisterOAuthAppRequest>;
 
 export type RegisterOAuthAppResponseRedirectUrisList = Array<string>;
-export const RegisterOAuthAppResponseRedirectUrisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RegisterOAuthAppResponseRedirectUrisList>;
+export const RegisterOAuthAppResponseRedirectUrisList =
+  RegisterOAuthAppRequestRedirectUrisList as any as S.Schema<RegisterOAuthAppResponseRedirectUrisList>;
 
 export type RegisterOAuthAppResponseGrantTypesItem =
   | "urn:ietf:params:oauth:grant-type:token-exchange"
@@ -467,9 +455,8 @@ export const RegisterOAuthAppResponseGrantTypesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RegisterOAuthAppResponseGrantTypesList>;
 
 export type RegisterOAuthAppResponseContactsList = Array<string>;
-export const RegisterOAuthAppResponseContactsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RegisterOAuthAppResponseContactsList>;
+export const RegisterOAuthAppResponseContactsList =
+  RegisterOAuthAppRequestRedirectUrisList as any as S.Schema<RegisterOAuthAppResponseContactsList>;
 
 export type RegisterOAuthAppResponseTokenEndpointAuthMethod =
   | "client_secret_basic"

@@ -273,13 +273,8 @@ export const EnableSerialConsoleResultProperties = DisableSerialConsoleResultPro
 export interface EnableSerialConsoleResult {
   properties?: DisableSerialConsoleResultProperties;
 }
-export const EnableSerialConsoleResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    properties: S.optional(DisableSerialConsoleResultProperties),
-  }),
-).annotate({
-  identifier: "EnableSerialConsoleResult",
-}) as any as S.Schema<EnableSerialConsoleResult>;
+export const EnableSerialConsoleResult =
+  DisableSerialConsoleResult as any as S.Schema<EnableSerialConsoleResult>;
 
 export interface GetConsoleStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -358,15 +353,8 @@ export interface GetSerialPortResponse {
   /** The properties of the serial port. */
   properties?: SerialPortProperties;
 }
-export const GetSerialPortResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SerialPortProperties),
-  }),
-).annotate({ identifier: "GetSerialPortResponse" }) as any as S.Schema<GetSerialPortResponse>;
+export const GetSerialPortResponse =
+  CreateSerialPortResponse as any as S.Schema<GetSerialPortResponse>;
 
 export interface ListOperationsRequest {}
 export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -461,15 +449,7 @@ export interface SerialPort {
   /** The properties of the serial port. */
   properties?: SerialPortProperties;
 }
-export const SerialPort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SerialPortProperties),
-  }),
-).annotate({ identifier: "SerialPort" }) as any as S.Schema<SerialPort>;
+export const SerialPort = CreateSerialPortResponse as any as S.Schema<SerialPort>;
 
 /** The list of serial ports. */
 export type SerialPortListResultValueList = Array<SerialPort>;

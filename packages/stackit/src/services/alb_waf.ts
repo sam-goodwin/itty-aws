@@ -247,9 +247,8 @@ export const GetBehavior = /*@__PURE__*/ S.suspend(() =>
 
 /** [HINT] Order matters! First condition match triggers execution. */
 export type GetCustomRuleConditionsList = Array<Condition>;
-export const GetCustomRuleConditionsList = /*@__PURE__*/ S.Array(
-  Condition,
-) as any as S.Schema<GetCustomRuleConditionsList>;
+export const GetCustomRuleConditionsList =
+  CreateCustomRuleConditionsList as any as S.Schema<GetCustomRuleConditionsList>;
 
 export interface GetCustomRule {
   behavior: GetBehavior;
@@ -393,9 +392,7 @@ export const GetManagedRuleSetResponseGroupsMap = /*@__PURE__*/ S.Record(
 
 /** List of WAFs that use this Managed Rule Set. */
 export type MRSUsageItemsList = Array<string>;
-export const MRSUsageItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MRSUsageItemsList>;
+export const MRSUsageItemsList = CRGUsageItemsList as any as S.Schema<MRSUsageItemsList>;
 
 export interface MRSUsage {
   /** Number of WAFs using this Managed Rule Set. */
@@ -403,12 +400,7 @@ export interface MRSUsage {
   /** List of WAFs that use this Managed Rule Set. */
   items?: MRSUsageItemsList;
 }
-export const MRSUsage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.optional(S.Number),
-    items: S.optional(MRSUsageItemsList),
-  }),
-).annotate({ identifier: "MRSUsage" }) as any as S.Schema<MRSUsage>;
+export const MRSUsage = CRGUsage as any as S.Schema<MRSUsage>;
 
 /** GetManagedRuleSetResponse returns rule configuration name and it's rules. */
 export interface GetManagedRuleSetResponse {
@@ -472,16 +464,13 @@ export const CreateWAFRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels represent user-defined metadata as key-value pairs. Label count should not exceed 64 per WAF. **Key Formatting Rules:** Length: 1-63 characters. Characters: Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. Keys starting with 'stackit-' are system-reserved; users MUST NOT manage them. **Value Formatting Rules:** Length: 0-63 characters (empty string explicitly allowed). Characters (for non-empty values): Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. */
 export type GetWAFResponseLabelsMap = { [key: string]: string | undefined };
-export const GetWAFResponseLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetWAFResponseLabelsMap>;
+export const GetWAFResponseLabelsMap =
+  CreateWAFRequestLabelsMap as any as S.Schema<GetWAFResponseLabelsMap>;
 
 /** The list of listener names in this Load Balancer, that are using the WAF. */
 export type WAFUsageItemListenerNamesList = Array<string>;
-export const WAFUsageItemListenerNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WAFUsageItemListenerNamesList>;
+export const WAFUsageItemListenerNamesList =
+  CRGUsageItemsList as any as S.Schema<WAFUsageItemListenerNamesList>;
 
 export interface WAFUsageItem {
   /** The list of listener names in this Load Balancer, that are using the WAF. */
@@ -589,11 +578,8 @@ export const DeleteManagedRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteManagedRuleSetRequest>;
 
 export type DeleteManagedRuleSetResponse2 = unknown;
-export const DeleteManagedRuleSetResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteManagedRuleSetResponse2",
-}) as any as S.Schema<DeleteManagedRuleSetResponse2>;
+export const DeleteManagedRuleSetResponse2 =
+  DeleteCustomRuleGroupResponse2 as any as S.Schema<DeleteManagedRuleSetResponse2>;
 
 export interface DeleteWAFRequest {
   projectId: string;
@@ -701,12 +687,7 @@ export interface MRSConfigQuota {
   /** The number of Managed Rule Set configurations that are currently existing in this project. */
   usage?: number;
 }
-export const MRSConfigQuota = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    limit: S.optional(S.Number),
-    usage: S.optional(S.Number),
-  }),
-).annotate({ identifier: "MRSConfigQuota" }) as any as S.Schema<MRSConfigQuota>;
+export const MRSConfigQuota = CRGConfigQuota as any as S.Schema<MRSConfigQuota>;
 
 /** WAF Config quota holds the limit and usage for Web Application Firewall configuration resources */
 export interface WAFConfigQuota {
@@ -715,12 +696,7 @@ export interface WAFConfigQuota {
   /** The number of Web Application Firewall configurations that are currently existing in this project. */
   usage?: number;
 }
-export const WAFConfigQuota = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    limit: S.optional(S.Number),
-    usage: S.optional(S.Number),
-  }),
-).annotate({ identifier: "WAFConfigQuota" }) as any as S.Schema<WAFConfigQuota>;
+export const WAFConfigQuota = CRGConfigQuota as any as S.Schema<WAFConfigQuota>;
 
 /** Quotas holds the specific quota elements for different resources */
 export interface Quotas {
@@ -982,9 +958,8 @@ export const PatchManagedRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of custom rule group SecLang parameters forming this execution group. Replaces the existing rules atomically. */
 export type UpdateCustomRuleGroupRequestRulesList = Array<CreateCustomRule>;
-export const UpdateCustomRuleGroupRequestRulesList = /*@__PURE__*/ S.Array(
-  CreateCustomRule,
-) as any as S.Schema<UpdateCustomRuleGroupRequestRulesList>;
+export const UpdateCustomRuleGroupRequestRulesList =
+  CreateCustomRuleGroupRequestRulesList as any as S.Schema<UpdateCustomRuleGroupRequestRulesList>;
 
 export interface UpdateCustomRuleGroupRequest {
   projectId: string;
@@ -1013,10 +988,8 @@ export const UpdateCustomRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels represent user-defined metadata as key-value pairs. Label count should not exceed 64 per WAF. **Key Formatting Rules:** Length: 1-63 characters. Characters: Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. Keys starting with 'stackit-' are system-reserved; users MUST NOT manage them. **Value Formatting Rules:** Length: 0-63 characters (empty string explicitly allowed). Characters (for non-empty values): Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. */
 export type UpdateWAFRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateWAFRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWAFRequestLabelsMap>;
+export const UpdateWAFRequestLabelsMap =
+  CreateWAFRequestLabelsMap as any as S.Schema<UpdateWAFRequestLabelsMap>;
 
 export interface UpdateWAFRequest {
   projectId: string;

@@ -188,9 +188,7 @@ export const OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList =
 /** The read-only replica host URLs */
 export type OrganizationTeamMembershipPasswordsItemAccessHostRegionalUrlsList = Array<string>;
 export const OrganizationTeamMembershipPasswordsItemAccessHostRegionalUrlsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OrganizationTeamMembershipPasswordsItemAccessHostRegionalUrlsList>;
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<OrganizationTeamMembershipPasswordsItemAccessHostRegionalUrlsList>;
 
 export type OrganizationTeamMembershipPasswordsItemActor = OrganizationTeamMembershipActor;
 export const OrganizationTeamMembershipPasswordsItemActor = OrganizationTeamMembershipActor;
@@ -198,9 +196,7 @@ export const OrganizationTeamMembershipPasswordsItemActor = OrganizationTeamMemb
 /** Public IP addresses for the region */
 export type OrganizationTeamMembershipPasswordsItemRegionPublicIpAddressesList = Array<string>;
 export const OrganizationTeamMembershipPasswordsItemRegionPublicIpAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OrganizationTeamMembershipPasswordsItemRegionPublicIpAddressesList>;
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<OrganizationTeamMembershipPasswordsItemRegionPublicIpAddressesList>;
 
 export interface OrganizationTeamMembershipPasswordsItemRegion {
   /** The ID of the region */
@@ -375,9 +371,8 @@ export const OrganizationTeamMembership = /*@__PURE__*/ S.suspend(() =>
 
 /** The IDs of the shards to assign */
 export type AssignShardConfigurationProfileShardsRequestShardIdsList = Array<string>;
-export const AssignShardConfigurationProfileShardsRequestShardIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AssignShardConfigurationProfileShardsRequestShardIdsList>;
+export const AssignShardConfigurationProfileShardsRequestShardIdsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<AssignShardConfigurationProfileShardsRequestShardIdsList>;
 
 export interface AssignShardConfigurationProfileShardsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -477,9 +472,8 @@ export const BulkCreateShardConfigurationProfileShardsRequest = /*@__PURE__*/ S.
 
 /** The public IDs of the created shards */
 export type BulkCreateShardConfigurationProfileShardsResponseShardIdsList = Array<string>;
-export const BulkCreateShardConfigurationProfileShardsResponseShardIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkCreateShardConfigurationProfileShardsResponseShardIdsList>;
+export const BulkCreateShardConfigurationProfileShardsResponseShardIdsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<BulkCreateShardConfigurationProfileShardsResponseShardIdsList>;
 
 export interface BulkCreateShardConfigurationProfileShardsResponse {
   /** The number of shards created */
@@ -558,11 +552,8 @@ export const CancelBouncerResizeRequestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelBouncerResizeRequestRequest>;
 
 export interface CancelBouncerResizeRequestResponse {}
-export const CancelBouncerResizeRequestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelBouncerResizeRequestResponse",
-}) as any as S.Schema<CancelBouncerResizeRequestResponse>;
+export const CancelBouncerResizeRequestResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<CancelBouncerResizeRequestResponse>;
 
 export interface CancelBranchChangeRequestRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -589,11 +580,8 @@ export const CancelBranchChangeRequestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelBranchChangeRequestRequest>;
 
 export interface CancelBranchChangeRequestResponse {}
-export const CancelBranchChangeRequestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelBranchChangeRequestResponse",
-}) as any as S.Schema<CancelBranchChangeRequestResponse>;
+export const CancelBranchChangeRequestResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<CancelBranchChangeRequestResponse>;
 
 export interface CancelBranchConfigChangeRequestRequest {
   /** The name of the organization the branch belongs to */
@@ -623,11 +611,8 @@ export const CancelBranchConfigChangeRequestRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CancelBranchConfigChangeRequestRequest>;
 
 export interface CancelBranchConfigChangeRequestResponse {}
-export const CancelBranchConfigChangeRequestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelBranchConfigChangeRequestResponse",
-}) as any as S.Schema<CancelBranchConfigChangeRequestResponse>;
+export const CancelBranchConfigChangeRequestResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<CancelBranchConfigChangeRequestResponse>;
 
 export interface CancelDeployRequestRequest {
   /** The name of the deploy request's organization */
@@ -717,10 +702,8 @@ export const DatabaseDeployRequestDeploymentState2 = S.String;
 export type DatabaseDeployRequestDeploymentPrecedingDeploymentsItemMap = {
   [key: string]: unknown | undefined;
 };
-export const DatabaseDeployRequestDeploymentPrecedingDeploymentsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DatabaseDeployRequestDeploymentPrecedingDeploymentsItemMap>;
+export const DatabaseDeployRequestDeploymentPrecedingDeploymentsItemMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<DatabaseDeployRequestDeploymentPrecedingDeploymentsItemMap>;
 
 /** The deployments ahead of this one in the queue */
 export type DatabaseDeployRequestDeploymentPrecedingDeploymentsList =
@@ -743,9 +726,7 @@ export const DatabaseDeployRequestDeploymentDeployOperationsItemState = S.String
 export type DatabaseDeployRequestDeploymentDeployOperationsItemRemovedForeignKeyNamesList =
   Array<string>;
 export const DatabaseDeployRequestDeploymentDeployOperationsItemRemovedForeignKeyNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DatabaseDeployRequestDeploymentDeployOperationsItemRemovedForeignKeyNamesList>;
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<DatabaseDeployRequestDeploymentDeployOperationsItemRemovedForeignKeyNamesList>;
 
 export interface DatabaseDeployRequestDeploymentDeployOperationsItem {
   /** The ID for the deploy operation */
@@ -834,17 +815,13 @@ export const DatabaseDeployRequestDeploymentDeployOperationSummariesItemState = 
 export type DatabaseDeployRequestDeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList =
   Array<string>;
 export const DatabaseDeployRequestDeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DatabaseDeployRequestDeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList>;
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<DatabaseDeployRequestDeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList>;
 
 /** Names of shards in the keyspace modified by the deploy operation summary */
 export type DatabaseDeployRequestDeploymentDeployOperationSummariesItemShardNamesList =
   Array<string>;
 export const DatabaseDeployRequestDeploymentDeployOperationSummariesItemShardNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DatabaseDeployRequestDeploymentDeployOperationSummariesItemShardNamesList>;
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<DatabaseDeployRequestDeploymentDeployOperationSummariesItemShardNamesList>;
 
 /** The state of the deploy operation */
 export type DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsItemState =
@@ -968,17 +945,14 @@ export const DatabaseDeployRequestDeploymentDeployOperationSummariesList = /*@__
 export type DatabaseDeployRequestDeploymentLintErrorsItemMap = {
   [key: string]: unknown | undefined;
 };
-export const DatabaseDeployRequestDeploymentLintErrorsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DatabaseDeployRequestDeploymentLintErrorsItemMap>;
+export const DatabaseDeployRequestDeploymentLintErrorsItemMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<DatabaseDeployRequestDeploymentLintErrorsItemMap>;
 
 /** Schema lint errors preventing the deployment from completing */
 export type DatabaseDeployRequestDeploymentLintErrorsList =
   Array<DatabaseDeployRequestDeploymentLintErrorsItemMap>;
-export const DatabaseDeployRequestDeploymentLintErrorsList = /*@__PURE__*/ S.Array(
-  DatabaseDeployRequestDeploymentLintErrorsItemMap,
-) as any as S.Schema<DatabaseDeployRequestDeploymentLintErrorsList>;
+export const DatabaseDeployRequestDeploymentLintErrorsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<DatabaseDeployRequestDeploymentLintErrorsList>;
 
 export type DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap = {
   [key: string]: unknown | undefined;
@@ -999,35 +973,28 @@ export const DatabaseDeployRequestDeploymentSequentialDiffDependenciesList = /*@
 export type DatabaseDeployRequestDeploymentLookupVindexOperationsItemMap = {
   [key: string]: unknown | undefined;
 };
-export const DatabaseDeployRequestDeploymentLookupVindexOperationsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DatabaseDeployRequestDeploymentLookupVindexOperationsItemMap>;
+export const DatabaseDeployRequestDeploymentLookupVindexOperationsItemMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<DatabaseDeployRequestDeploymentLookupVindexOperationsItemMap>;
 
 /** Lookup Vitess index operations */
 export type DatabaseDeployRequestDeploymentLookupVindexOperationsList =
   Array<DatabaseDeployRequestDeploymentLookupVindexOperationsItemMap>;
-export const DatabaseDeployRequestDeploymentLookupVindexOperationsList = /*@__PURE__*/ S.Array(
-  DatabaseDeployRequestDeploymentLookupVindexOperationsItemMap,
-) as any as S.Schema<DatabaseDeployRequestDeploymentLookupVindexOperationsList>;
+export const DatabaseDeployRequestDeploymentLookupVindexOperationsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<DatabaseDeployRequestDeploymentLookupVindexOperationsList>;
 
 /** Deployment throttling configurations. */
 export type DatabaseDeployRequestDeploymentThrottlerConfigurationsMap = {
   [key: string]: unknown | undefined;
 };
-export const DatabaseDeployRequestDeploymentThrottlerConfigurationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DatabaseDeployRequestDeploymentThrottlerConfigurationsMap>;
+export const DatabaseDeployRequestDeploymentThrottlerConfigurationsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<DatabaseDeployRequestDeploymentThrottlerConfigurationsMap>;
 
 /** The request to revert the schema operations in this deployment */
 export type DatabaseDeployRequestDeploymentDeploymentRevertRequestMap = {
   [key: string]: unknown | undefined;
 };
-export const DatabaseDeployRequestDeploymentDeploymentRevertRequestMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DatabaseDeployRequestDeploymentDeploymentRevertRequestMap>;
+export const DatabaseDeployRequestDeploymentDeploymentRevertRequestMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<DatabaseDeployRequestDeploymentDeploymentRevertRequestMap>;
 
 export type DatabaseDeployRequestDeploymentActor = OrganizationTeamMembershipActor;
 export const DatabaseDeployRequestDeploymentActor = OrganizationTeamMembershipActor;
@@ -1261,11 +1228,8 @@ export const CancelKeyspaceConfigChangeRequestRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CancelKeyspaceConfigChangeRequestRequest>;
 
 export interface CancelKeyspaceConfigChangeRequestResponse {}
-export const CancelKeyspaceConfigChangeRequestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelKeyspaceConfigChangeRequestResponse",
-}) as any as S.Schema<CancelKeyspaceConfigChangeRequestResponse>;
+export const CancelKeyspaceConfigChangeRequestResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<CancelKeyspaceConfigChangeRequestResponse>;
 
 export interface CancelKeyspaceResizeRequestRequest {
   /** The name of the organization the branch belongs to */
@@ -1295,11 +1259,8 @@ export const CancelKeyspaceResizeRequestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelKeyspaceResizeRequestRequest>;
 
 export interface CancelKeyspaceResizeRequestResponse {}
-export const CancelKeyspaceResizeRequestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelKeyspaceResizeRequestResponse",
-}) as any as S.Schema<CancelKeyspaceResizeRequestResponse>;
+export const CancelKeyspaceResizeRequestResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<CancelKeyspaceResizeRequestResponse>;
 
 export interface CancelMoveTablesWorkflowRequest {
   /** Organization name */
@@ -1329,11 +1290,8 @@ export const CancelMoveTablesWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelMoveTablesWorkflowRequest>;
 
 export interface CancelMoveTablesWorkflowResponse {}
-export const CancelMoveTablesWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelMoveTablesWorkflowResponse",
-}) as any as S.Schema<CancelMoveTablesWorkflowResponse>;
+export const CancelMoveTablesWorkflowResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<CancelMoveTablesWorkflowResponse>;
 
 export interface CancelNekiChangeRequestRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -1385,11 +1343,8 @@ export const CancelOrganizationInvitationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelOrganizationInvitationRequest>;
 
 export interface CancelOrganizationInvitationResponse {}
-export const CancelOrganizationInvitationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelOrganizationInvitationResponse",
-}) as any as S.Schema<CancelOrganizationInvitationResponse>;
+export const CancelOrganizationInvitationResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<CancelOrganizationInvitationResponse>;
 
 export interface CancelRouterChangeRequestRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -1422,11 +1377,8 @@ export const CancelRouterChangeRequestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelRouterChangeRequestRequest>;
 
 export interface CancelRouterChangeRequestResponse {}
-export const CancelRouterChangeRequestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelRouterChangeRequestResponse",
-}) as any as S.Schema<CancelRouterChangeRequestResponse>;
+export const CancelRouterChangeRequestResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<CancelRouterChangeRequestResponse>;
 
 export interface CancelShardConfigurationProfileChangeRequestRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -1459,11 +1411,8 @@ export const CancelShardConfigurationProfileChangeRequestRequest = /*@__PURE__*/
 }) as any as S.Schema<CancelShardConfigurationProfileChangeRequestRequest>;
 
 export interface CancelShardConfigurationProfileChangeRequestResponse {}
-export const CancelShardConfigurationProfileChangeRequestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelShardConfigurationProfileChangeRequestResponse",
-}) as any as S.Schema<CancelShardConfigurationProfileChangeRequestResponse>;
+export const CancelShardConfigurationProfileChangeRequestResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<CancelShardConfigurationProfileChangeRequestResponse>;
 
 export interface CancelSidecarChangeRequestRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -1496,11 +1445,8 @@ export const CancelSidecarChangeRequestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelSidecarChangeRequestRequest>;
 
 export interface CancelSidecarChangeRequestResponse {}
-export const CancelSidecarChangeRequestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelSidecarChangeRequestResponse",
-}) as any as S.Schema<CancelSidecarChangeRequestResponse>;
+export const CancelSidecarChangeRequestResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<CancelSidecarChangeRequestResponse>;
 
 export interface CancelWorkflowRequest {
   /** The name of the organization the workflow belongs to */
@@ -2188,9 +2134,8 @@ export const PostgresBouncerParametersItemParameterType = S.String;
 
 /** Valid options for the parameter value */
 export type PostgresBouncerParametersItemOptionsList = Array<string>;
-export const PostgresBouncerParametersItemOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostgresBouncerParametersItemOptionsList>;
+export const PostgresBouncerParametersItemOptionsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PostgresBouncerParametersItemOptionsList>;
 
 export type PostgresBouncerParametersItemActor = OrganizationTeamMembershipActor;
 export const PostgresBouncerParametersItemActor = OrganizationTeamMembershipActor;
@@ -2307,21 +2252,18 @@ export const CreateBranchRequestSeedData = S.String;
 
 /** For MySQL backup restores, per-keyspace cluster sizes. Each entry is { "keyspace_name": "main", "cluster_size": "PS_40" }. When provided, each restored keyspace must have a size here or via cluster_size. */
 export type CreateBranchRequestKeyspaceClusterSizesList = Array<string>;
-export const CreateBranchRequestKeyspaceClusterSizesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateBranchRequestKeyspaceClusterSizesList>;
+export const CreateBranchRequestKeyspaceClusterSizesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<CreateBranchRequestKeyspaceClusterSizesList>;
 
 /** For Neki backup restores, per-configuration-profile cluster size and replica count. Each entry is { "name": "default", "cluster_size": "PS_40", "replicas": 2 }. Omitted profiles inherit the source size and replica count. */
 export type CreateBranchRequestConfigurationProfileSizesList = Array<string>;
-export const CreateBranchRequestConfigurationProfileSizesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateBranchRequestConfigurationProfileSizesList>;
+export const CreateBranchRequestConfigurationProfileSizesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<CreateBranchRequestConfigurationProfileSizesList>;
 
 /** For Neki backup restores, per-router size and replica count. Each entry is { "name": "default", "router_size": "NKR_20", "replicas_per_cell": 1 }. Omitted routers inherit the source size and replica count. */
 export type CreateBranchRequestRouterSizesList = Array<string>;
-export const CreateBranchRequestRouterSizesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateBranchRequestRouterSizesList>;
+export const CreateBranchRequestRouterSizesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<CreateBranchRequestRouterSizesList>;
 
 export interface CreateBranchRequestStorage {
   /** The minimum storage size in bytes. */
@@ -2429,9 +2371,8 @@ export const DatabaseBranchRestoredFromBranch = OrganizationTeamMembershipUserDe
 
 /** Public IP addresses for the region */
 export type DatabaseBranchRegionPublicIpAddressesList = Array<string>;
-export const DatabaseBranchRegionPublicIpAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatabaseBranchRegionPublicIpAddressesList>;
+export const DatabaseBranchRegionPublicIpAddressesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<DatabaseBranchRegionPublicIpAddressesList>;
 
 export interface DatabaseBranchRegion {
   /** The ID of the region */
@@ -2475,10 +2416,8 @@ export const DatabaseBranchRegion = /*@__PURE__*/ S.suspend(() =>
 
 /** VTGate configuration options */
 export type DatabaseBranchVtgateOptionsMap = { [key: string]: unknown | undefined };
-export const DatabaseBranchVtgateOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DatabaseBranchVtgateOptionsMap>;
+export const DatabaseBranchVtgateOptionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<DatabaseBranchVtgateOptionsMap>;
 
 export interface DatabaseBranch {
   /** The ID of the branch */
@@ -2614,10 +2553,8 @@ export const CreateBranchConfigChangeRequestRequestChangeType = S.String;
 export type CreateBranchConfigChangeRequestRequestOptionsMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateBranchConfigChangeRequestRequestOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateBranchConfigChangeRequestRequestOptionsMap>;
+export const CreateBranchConfigChangeRequestRequestOptionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<CreateBranchConfigChangeRequestRequestOptionsMap>;
 
 export interface CreateBranchConfigChangeRequestRequest {
   /** The name of the organization the branch belongs to */
@@ -2666,17 +2603,13 @@ export const BranchConfigChangeRequestChangeType = S.String;
 
 /** The previous option values */
 export type BranchConfigChangeRequestPreviousOptionsMap = { [key: string]: unknown | undefined };
-export const BranchConfigChangeRequestPreviousOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<BranchConfigChangeRequestPreviousOptionsMap>;
+export const BranchConfigChangeRequestPreviousOptionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<BranchConfigChangeRequestPreviousOptionsMap>;
 
 /** The new option values */
 export type BranchConfigChangeRequestNewOptionsMap = { [key: string]: unknown | undefined };
-export const BranchConfigChangeRequestNewOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<BranchConfigChangeRequestNewOptionsMap>;
+export const BranchConfigChangeRequestNewOptionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<BranchConfigChangeRequestNewOptionsMap>;
 
 export type BranchConfigChangeRequestActor = OrganizationTeamMembershipActor;
 export const BranchConfigChangeRequestActor = OrganizationTeamMembershipActor;
@@ -2780,14 +2713,8 @@ export interface CreateDatabaseRequestStorage {
   /** The maximum storage size in bytes for autoscaling. */
   maximum_storage_bytes?: number;
 }
-export const CreateDatabaseRequestStorage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minimum_storage_bytes: S.optional(S.Number),
-    maximum_storage_bytes: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CreateDatabaseRequestStorage",
-}) as any as S.Schema<CreateDatabaseRequestStorage>;
+export const CreateDatabaseRequestStorage =
+  CreateBranchRequestStorage as any as S.Schema<CreateDatabaseRequestStorage>;
 
 export interface CreateDatabaseRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -2821,9 +2748,8 @@ export const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Public IP addresses for the region */
 export type DatabaseRegionPublicIpAddressesList = Array<string>;
-export const DatabaseRegionPublicIpAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatabaseRegionPublicIpAddressesList>;
+export const DatabaseRegionPublicIpAddressesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<DatabaseRegionPublicIpAddressesList>;
 
 export interface DatabaseRegion {
   /** The ID of the region */
@@ -2849,21 +2775,7 @@ export interface DatabaseRegion {
   /** Whether the region supports Neki databases */
   neki_supported: boolean;
 }
-export const DatabaseRegion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    provider: S.String,
-    enabled: S.Boolean,
-    public_ip_addresses: DatabaseRegionPublicIpAddressesList,
-    display_name: S.String,
-    location: S.String,
-    slug: S.String,
-    current_default: S.Boolean,
-    mysql_supported: S.Boolean,
-    postgresql_supported: S.Boolean,
-    neki_supported: S.Boolean,
-  }),
-).annotate({ identifier: "DatabaseRegion" }) as any as S.Schema<DatabaseRegion>;
+export const DatabaseRegion = DatabaseBranchRegion as any as S.Schema<DatabaseRegion>;
 
 /** State of the database */
 export type DatabaseState =
@@ -3017,9 +2929,8 @@ export const Database = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IPv4 CIDR ranges (e.g., ['192.168.1.0/24', '192.168.1.1/32']). Must contain at least one valid IPv4 address or range. */
 export type CreateDatabasePostgresCidrRequestCidrsList = Array<string>;
-export const CreateDatabasePostgresCidrRequestCidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDatabasePostgresCidrRequestCidrsList>;
+export const CreateDatabasePostgresCidrRequestCidrsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<CreateDatabasePostgresCidrRequestCidrsList>;
 
 export interface CreateDatabasePostgresCidrRequest {
   /** The name of the organization the database belongs to */
@@ -3056,9 +2967,8 @@ export const CreateDatabasePostgresCidrRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of CIDR ranges */
 export type PostgresClusterCidrCidrsList = Array<string>;
-export const PostgresClusterCidrCidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostgresClusterCidrCidrsList>;
+export const PostgresClusterCidrCidrsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PostgresClusterCidrCidrsList>;
 
 export type PostgresClusterCidrActor = OrganizationTeamMembershipActor;
 export const PostgresClusterCidrActor = OrganizationTeamMembershipActor;
@@ -3172,9 +3082,8 @@ export const PostgresReadOnlyReplicaActor = OrganizationTeamMembershipActor;
 
 /** Public IP addresses for the region */
 export type PostgresReadOnlyReplicaRegionPublicIpAddressesList = Array<string>;
-export const PostgresReadOnlyReplicaRegionPublicIpAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostgresReadOnlyReplicaRegionPublicIpAddressesList>;
+export const PostgresReadOnlyReplicaRegionPublicIpAddressesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PostgresReadOnlyReplicaRegionPublicIpAddressesList>;
 
 export interface PostgresReadOnlyReplicaRegion {
   /** The ID of the region */
@@ -3228,15 +3137,13 @@ export const PostgresReadOnlyReplicaParametersItemParameterType = S.String;
 
 /** Valid options for the parameter value */
 export type PostgresReadOnlyReplicaParametersItemOptionsList = Array<string>;
-export const PostgresReadOnlyReplicaParametersItemOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostgresReadOnlyReplicaParametersItemOptionsList>;
+export const PostgresReadOnlyReplicaParametersItemOptionsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PostgresReadOnlyReplicaParametersItemOptionsList>;
 
 /** Display units for the parameter value */
 export type PostgresReadOnlyReplicaParametersItemUnitsList = Array<string>;
-export const PostgresReadOnlyReplicaParametersItemUnitsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostgresReadOnlyReplicaParametersItemUnitsList>;
+export const PostgresReadOnlyReplicaParametersItemUnitsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PostgresReadOnlyReplicaParametersItemUnitsList>;
 
 export type PostgresReadOnlyReplicaParametersItemActor = OrganizationTeamMembershipActor;
 export const PostgresReadOnlyReplicaParametersItemActor = OrganizationTeamMembershipActor;
@@ -3434,15 +3341,13 @@ export const CreateInsightsAgentRunRequestType = S.String;
 
 /** The slow query patterns to review */
 export type CreateInsightsAgentRunRequestQueryPatternsAttributesList = Array<string>;
-export const CreateInsightsAgentRunRequestQueryPatternsAttributesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateInsightsAgentRunRequestQueryPatternsAttributesList>;
+export const CreateInsightsAgentRunRequestQueryPatternsAttributesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<CreateInsightsAgentRunRequestQueryPatternsAttributesList>;
 
 /** The schema recommendation numbers to implement */
 export type CreateInsightsAgentRunRequestSchemaNumbersList = Array<string>;
-export const CreateInsightsAgentRunRequestSchemaNumbersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateInsightsAgentRunRequestSchemaNumbersList>;
+export const CreateInsightsAgentRunRequestSchemaNumbersList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<CreateInsightsAgentRunRequestSchemaNumbersList>;
 
 export interface CreateInsightsAgentRunRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -3487,29 +3392,22 @@ export const InsightsAgentRunState = S.String;
 
 /** The repository snapshot and analyzed commit */
 export type InsightsAgentRunRepositoryMap = { [key: string]: unknown | undefined };
-export const InsightsAgentRunRepositoryMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<InsightsAgentRunRepositoryMap>;
+export const InsightsAgentRunRepositoryMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<InsightsAgentRunRepositoryMap>;
 
 /** The agent execution snapshot */
 export type InsightsAgentRunAgentMap = { [key: string]: unknown | undefined };
-export const InsightsAgentRunAgentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<InsightsAgentRunAgentMap>;
+export const InsightsAgentRunAgentMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<InsightsAgentRunAgentMap>;
 
 export type InsightsAgentRunSelectedTargetsItemMap = { [key: string]: unknown | undefined };
-export const InsightsAgentRunSelectedTargetsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<InsightsAgentRunSelectedTargetsItemMap>;
+export const InsightsAgentRunSelectedTargetsItemMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<InsightsAgentRunSelectedTargetsItemMap>;
 
 /** The query patterns or schema recommendations selected for the run */
 export type InsightsAgentRunSelectedTargetsList = Array<InsightsAgentRunSelectedTargetsItemMap>;
-export const InsightsAgentRunSelectedTargetsList = /*@__PURE__*/ S.Array(
-  InsightsAgentRunSelectedTargetsItemMap,
-) as any as S.Schema<InsightsAgentRunSelectedTargetsList>;
+export const InsightsAgentRunSelectedTargetsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<InsightsAgentRunSelectedTargetsList>;
 
 export interface InsightsAgentRun {
   /** The Insights agent run ID */
@@ -3701,17 +3599,13 @@ export const DatabaseBranchKeyspaceThrottler = /*@__PURE__*/ S.suspend(() =>
 
 /** MySQL daemon configuration options */
 export type DatabaseBranchKeyspaceMysqldOptionsMap = { [key: string]: unknown | undefined };
-export const DatabaseBranchKeyspaceMysqldOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DatabaseBranchKeyspaceMysqldOptionsMap>;
+export const DatabaseBranchKeyspaceMysqldOptionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<DatabaseBranchKeyspaceMysqldOptionsMap>;
 
 /** VTTablet configuration options */
 export type DatabaseBranchKeyspaceVttabletOptionsMap = { [key: string]: unknown | undefined };
-export const DatabaseBranchKeyspaceVttabletOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DatabaseBranchKeyspaceVttabletOptionsMap>;
+export const DatabaseBranchKeyspaceVttabletOptionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<DatabaseBranchKeyspaceVttabletOptionsMap>;
 
 export interface DatabaseBranchKeyspace {
   /** The ID of the keyspace */
@@ -3808,10 +3702,8 @@ export const CreateKeyspaceConfigChangeRequestRequestChangeType = S.String;
 export type CreateKeyspaceConfigChangeRequestRequestOptionsMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateKeyspaceConfigChangeRequestRequestOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateKeyspaceConfigChangeRequestRequestOptionsMap>;
+export const CreateKeyspaceConfigChangeRequestRequestOptionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<CreateKeyspaceConfigChangeRequestRequestOptionsMap>;
 
 export interface CreateKeyspaceConfigChangeRequestRequest {
   /** The name of the organization the branch belongs to */
@@ -3863,17 +3755,13 @@ export const KeyspaceConfigChangeRequestChangeType = S.String;
 
 /** The previous option values */
 export type KeyspaceConfigChangeRequestPreviousOptionsMap = { [key: string]: unknown | undefined };
-export const KeyspaceConfigChangeRequestPreviousOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<KeyspaceConfigChangeRequestPreviousOptionsMap>;
+export const KeyspaceConfigChangeRequestPreviousOptionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<KeyspaceConfigChangeRequestPreviousOptionsMap>;
 
 /** The new option values */
 export type KeyspaceConfigChangeRequestNewOptionsMap = { [key: string]: unknown | undefined };
-export const KeyspaceConfigChangeRequestNewOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<KeyspaceConfigChangeRequestNewOptionsMap>;
+export const KeyspaceConfigChangeRequestNewOptionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<KeyspaceConfigChangeRequestNewOptionsMap>;
 
 export type KeyspaceConfigChangeRequestActor = OrganizationTeamMembershipActor;
 export const KeyspaceConfigChangeRequestActor = OrganizationTeamMembershipActor;
@@ -3950,11 +3838,8 @@ export const CreateMoveTablesWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMoveTablesWorkflowRequest>;
 
 export interface CreateMoveTablesWorkflowResponse {}
-export const CreateMoveTablesWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateMoveTablesWorkflowResponse",
-}) as any as S.Schema<CreateMoveTablesWorkflowResponse>;
+export const CreateMoveTablesWorkflowResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<CreateMoveTablesWorkflowResponse>;
 
 /** Whether an OAuth grant code or a refresh token is being exchanged for an OAuth token */
 export type CreateOauthTokenRequestGrantType = "authorization_code" | "refresh_token";
@@ -4131,9 +4016,8 @@ export const ServiceTokenOauthAccessesByResourceOrganizationAccessesItem =
 
 export type ServiceTokenOauthAccessesByResourceOrganizationAccessesList =
   Array<ServiceTokenOauthAccessesByResourceDatabaseAccessesItem>;
-export const ServiceTokenOauthAccessesByResourceOrganizationAccessesList = /*@__PURE__*/ S.Array(
-  ServiceTokenOauthAccessesByResourceDatabaseAccessesItem,
-) as any as S.Schema<ServiceTokenOauthAccessesByResourceOrganizationAccessesList>;
+export const ServiceTokenOauthAccessesByResourceOrganizationAccessesList =
+  ServiceTokenOauthAccessesByResourceDatabaseAccessesList as any as S.Schema<ServiceTokenOauthAccessesByResourceOrganizationAccessesList>;
 
 export interface ServiceTokenOauthAccessesByResourceOrganization {
   organizations: ServiceTokenOauthAccessesByResourceOrganizationOrganizationsList;
@@ -4185,9 +4069,8 @@ export const ServiceTokenOauthAccessesByResourceBranchAccessesItem =
 
 export type ServiceTokenOauthAccessesByResourceBranchAccessesList =
   Array<ServiceTokenOauthAccessesByResourceDatabaseAccessesItem>;
-export const ServiceTokenOauthAccessesByResourceBranchAccessesList = /*@__PURE__*/ S.Array(
-  ServiceTokenOauthAccessesByResourceDatabaseAccessesItem,
-) as any as S.Schema<ServiceTokenOauthAccessesByResourceBranchAccessesList>;
+export const ServiceTokenOauthAccessesByResourceBranchAccessesList =
+  ServiceTokenOauthAccessesByResourceDatabaseAccessesList as any as S.Schema<ServiceTokenOauthAccessesByResourceBranchAccessesList>;
 
 export interface ServiceTokenOauthAccessesByResourceBranch {
   branches: ServiceTokenOauthAccessesByResourceBranchBranchesList;
@@ -4230,9 +4113,8 @@ export const ServiceTokenOauthAccessesByResourceUserAccessesItem =
 
 export type ServiceTokenOauthAccessesByResourceUserAccessesList =
   Array<ServiceTokenOauthAccessesByResourceDatabaseAccessesItem>;
-export const ServiceTokenOauthAccessesByResourceUserAccessesList = /*@__PURE__*/ S.Array(
-  ServiceTokenOauthAccessesByResourceDatabaseAccessesItem,
-) as any as S.Schema<ServiceTokenOauthAccessesByResourceUserAccessesList>;
+export const ServiceTokenOauthAccessesByResourceUserAccessesList =
+  ServiceTokenOauthAccessesByResourceDatabaseAccessesList as any as S.Schema<ServiceTokenOauthAccessesByResourceUserAccessesList>;
 
 export interface ServiceTokenOauthAccessesByResourceUser {
   users: ServiceTokenOauthAccessesByResourceUserUsersList;
@@ -4404,13 +4286,8 @@ export interface CreateOrganizationSsoDomainResponse {
   /** URL to open for verifying an email domain */
   portal_url: string;
 }
-export const CreateOrganizationSsoDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    portal_url: S.String,
-  }),
-).annotate({
-  identifier: "CreateOrganizationSsoDomainResponse",
-}) as any as S.Schema<CreateOrganizationSsoDomainResponse>;
+export const CreateOrganizationSsoDomainResponse =
+  ConfigureOrganizationSsoResponse as any as S.Schema<CreateOrganizationSsoDomainResponse>;
 
 export interface CreateOrganizationTeamRequest {
   /** The name of the organization */
@@ -4476,9 +4353,8 @@ export type OrganizationTeamAnalystDatabasesItem = OrganizationTeamDatabasesItem
 export const OrganizationTeamAnalystDatabasesItem = OrganizationTeamDatabasesItem;
 
 export type OrganizationTeamAnalystDatabasesList = Array<OrganizationTeamDatabasesItem>;
-export const OrganizationTeamAnalystDatabasesList = /*@__PURE__*/ S.Array(
-  OrganizationTeamDatabasesItem,
-) as any as S.Schema<OrganizationTeamAnalystDatabasesList>;
+export const OrganizationTeamAnalystDatabasesList =
+  OrganizationTeamDatabasesList as any as S.Schema<OrganizationTeamAnalystDatabasesList>;
 
 export interface OrganizationTeam {
   /** The ID of the team */
@@ -4525,9 +4401,8 @@ export const CreatePasswordRequestRole = S.String;
 
 /** List of IP addresses or CIDR ranges that can use this password */
 export type CreatePasswordRequestCidrsList = Array<string>;
-export const CreatePasswordRequestCidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreatePasswordRequestCidrsList>;
+export const CreatePasswordRequestCidrsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<CreatePasswordRequestCidrsList>;
 
 export interface CreatePasswordRequest {
   /** The name of the organization the password belongs to */
@@ -4575,30 +4450,26 @@ export const DatabaseBranchPasswordWithSecretRole = S.String;
 
 /** List of IP addresses or CIDR ranges that can use this password */
 export type DatabaseBranchPasswordWithSecretCidrsList = Array<string>;
-export const DatabaseBranchPasswordWithSecretCidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatabaseBranchPasswordWithSecretCidrsList>;
+export const DatabaseBranchPasswordWithSecretCidrsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<DatabaseBranchPasswordWithSecretCidrsList>;
 
 /** The list of hosts in each availability zone providing direct access to a vtgate */
 export type DatabaseBranchPasswordWithSecretDirectVtgateAddressesList = Array<string>;
-export const DatabaseBranchPasswordWithSecretDirectVtgateAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatabaseBranchPasswordWithSecretDirectVtgateAddressesList>;
+export const DatabaseBranchPasswordWithSecretDirectVtgateAddressesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<DatabaseBranchPasswordWithSecretDirectVtgateAddressesList>;
 
 /** The read-only replica host URLs */
 export type DatabaseBranchPasswordWithSecretAccessHostRegionalUrlsList = Array<string>;
-export const DatabaseBranchPasswordWithSecretAccessHostRegionalUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatabaseBranchPasswordWithSecretAccessHostRegionalUrlsList>;
+export const DatabaseBranchPasswordWithSecretAccessHostRegionalUrlsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<DatabaseBranchPasswordWithSecretAccessHostRegionalUrlsList>;
 
 export type DatabaseBranchPasswordWithSecretActor = OrganizationTeamMembershipActor;
 export const DatabaseBranchPasswordWithSecretActor = OrganizationTeamMembershipActor;
 
 /** Public IP addresses for the region */
 export type DatabaseBranchPasswordWithSecretRegionPublicIpAddressesList = Array<string>;
-export const DatabaseBranchPasswordWithSecretRegionPublicIpAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatabaseBranchPasswordWithSecretRegionPublicIpAddressesList>;
+export const DatabaseBranchPasswordWithSecretRegionPublicIpAddressesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<DatabaseBranchPasswordWithSecretRegionPublicIpAddressesList>;
 
 export interface DatabaseBranchPasswordWithSecretRegion {
   /** The ID of the region */
@@ -4624,23 +4495,8 @@ export interface DatabaseBranchPasswordWithSecretRegion {
   /** Whether the region supports Neki databases */
   neki_supported: boolean;
 }
-export const DatabaseBranchPasswordWithSecretRegion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    provider: S.String,
-    enabled: S.Boolean,
-    public_ip_addresses: DatabaseBranchPasswordWithSecretRegionPublicIpAddressesList,
-    display_name: S.String,
-    location: S.String,
-    slug: S.String,
-    current_default: S.Boolean,
-    mysql_supported: S.Boolean,
-    postgresql_supported: S.Boolean,
-    neki_supported: S.Boolean,
-  }),
-).annotate({
-  identifier: "DatabaseBranchPasswordWithSecretRegion",
-}) as any as S.Schema<DatabaseBranchPasswordWithSecretRegion>;
+export const DatabaseBranchPasswordWithSecretRegion =
+  PostgresReadOnlyReplicaRegion as any as S.Schema<DatabaseBranchPasswordWithSecretRegion>;
 
 export type DatabaseBranchPasswordWithSecretDatabaseBranch =
   OrganizationTeamMembershipPasswordsItemDatabaseBranch;
@@ -5395,9 +5251,8 @@ export const CreateTrafficBudgetRequestMode = S.String;
 
 /** Array of traffic rules to apply to the budget */
 export type CreateTrafficBudgetRequestRulesList = Array<string>;
-export const CreateTrafficBudgetRequestRulesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateTrafficBudgetRequestRulesList>;
+export const CreateTrafficBudgetRequestRulesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<CreateTrafficBudgetRequestRulesList>;
 
 export interface CreateTrafficBudgetRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -5575,9 +5430,8 @@ export const CreateTrafficRuleRequestKind = S.String;
 
 /** Optional array of tags for this rule. Each rules take exactly one tag. */
 export type CreateTrafficRuleRequestTagsList = Array<string>;
-export const CreateTrafficRuleRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateTrafficRuleRequestTagsList>;
+export const CreateTrafficRuleRequestTagsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<CreateTrafficRuleRequestTagsList>;
 
 export interface CreateTrafficRuleRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -5685,9 +5539,8 @@ export const TrafficRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The events this webhook should subscribe to */
 export type CreateWebhookRequestEventsList = Array<string>;
-export const CreateWebhookRequestEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateWebhookRequestEventsList>;
+export const CreateWebhookRequestEventsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<CreateWebhookRequestEventsList>;
 
 export interface CreateWebhookRequest {
   /** The name of the organization */
@@ -5797,9 +5650,8 @@ export const CreateWorkflowRequestOnDdl = S.String;
 
 /** List of tables to move */
 export type CreateWorkflowRequestTablesList = Array<string>;
-export const CreateWorkflowRequestTablesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateWorkflowRequestTablesList>;
+export const CreateWorkflowRequestTablesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<CreateWorkflowRequestTablesList>;
 
 export interface CreateWorkflowRequest {
   /** The name of the organization the workflow belongs to */
@@ -5867,9 +5719,7 @@ export const DeleteBackupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBackupRequest" }) as any as S.Schema<DeleteBackupRequest>;
 
 export interface DeleteBackupResponse {}
-export const DeleteBackupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBackupResponse",
-}) as any as S.Schema<DeleteBackupResponse>;
+export const DeleteBackupResponse = CreateShardResponse as any as S.Schema<DeleteBackupResponse>;
 
 export interface DeleteBackupPolicyRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -5896,9 +5746,8 @@ export const DeleteBackupPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBackupPolicyRequest>;
 
 export interface DeleteBackupPolicyResponse {}
-export const DeleteBackupPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBackupPolicyResponse",
-}) as any as S.Schema<DeleteBackupPolicyResponse>;
+export const DeleteBackupPolicyResponse =
+  CreateShardResponse as any as S.Schema<DeleteBackupPolicyResponse>;
 
 export interface DeleteBouncerRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -5926,9 +5775,7 @@ export const DeleteBouncerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBouncerRequest" }) as any as S.Schema<DeleteBouncerRequest>;
 
 export interface DeleteBouncerResponse {}
-export const DeleteBouncerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBouncerResponse",
-}) as any as S.Schema<DeleteBouncerResponse>;
+export const DeleteBouncerResponse = CreateShardResponse as any as S.Schema<DeleteBouncerResponse>;
 
 export interface DeleteBranchRequest {
   /** The name of the organization the branch belongs to */
@@ -5956,9 +5803,7 @@ export const DeleteBranchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBranchRequest" }) as any as S.Schema<DeleteBranchRequest>;
 
 export interface DeleteBranchResponse {}
-export const DeleteBranchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBranchResponse",
-}) as any as S.Schema<DeleteBranchResponse>;
+export const DeleteBranchResponse = CreateShardResponse as any as S.Schema<DeleteBranchResponse>;
 
 export interface DeleteDatabaseRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -5980,9 +5825,8 @@ export const DeleteDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDatabaseRequest" }) as any as S.Schema<DeleteDatabaseRequest>;
 
 export interface DeleteDatabaseResponse {}
-export const DeleteDatabaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDatabaseResponse",
-}) as any as S.Schema<DeleteDatabaseResponse>;
+export const DeleteDatabaseResponse =
+  CreateShardResponse as any as S.Schema<DeleteDatabaseResponse>;
 
 export interface DeleteDatabasePostgresCidrRequest {
   /** The name of the organization the database belongs to */
@@ -6009,11 +5853,8 @@ export const DeleteDatabasePostgresCidrRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDatabasePostgresCidrRequest>;
 
 export interface DeleteDatabasePostgresCidrResponse {}
-export const DeleteDatabasePostgresCidrResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDatabasePostgresCidrResponse",
-}) as any as S.Schema<DeleteDatabasePostgresCidrResponse>;
+export const DeleteDatabasePostgresCidrResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<DeleteDatabasePostgresCidrResponse>;
 
 export interface DeleteDedicatedReadReplicaRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -6043,11 +5884,8 @@ export const DeleteDedicatedReadReplicaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDedicatedReadReplicaRequest>;
 
 export interface DeleteDedicatedReadReplicaResponse {}
-export const DeleteDedicatedReadReplicaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDedicatedReadReplicaResponse",
-}) as any as S.Schema<DeleteDedicatedReadReplicaResponse>;
+export const DeleteDedicatedReadReplicaResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<DeleteDedicatedReadReplicaResponse>;
 
 export interface DeleteKeyspaceRequest {
   /** The name of the organization the branch belongs to */
@@ -6075,9 +5913,8 @@ export const DeleteKeyspaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteKeyspaceRequest" }) as any as S.Schema<DeleteKeyspaceRequest>;
 
 export interface DeleteKeyspaceResponse {}
-export const DeleteKeyspaceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteKeyspaceResponse",
-}) as any as S.Schema<DeleteKeyspaceResponse>;
+export const DeleteKeyspaceResponse =
+  CreateShardResponse as any as S.Schema<DeleteKeyspaceResponse>;
 
 export interface DeleteOauthTokenRequest {
   /** The name of the organization the OAuth application belongs to */
@@ -6102,9 +5939,8 @@ export const DeleteOauthTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteOauthTokenRequest" }) as any as S.Schema<DeleteOauthTokenRequest>;
 
 export interface DeleteOauthTokenResponse {}
-export const DeleteOauthTokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOauthTokenResponse",
-}) as any as S.Schema<DeleteOauthTokenResponse>;
+export const DeleteOauthTokenResponse =
+  CreateShardResponse as any as S.Schema<DeleteOauthTokenResponse>;
 
 export interface DeleteOrganizationBillingPaymentMethodRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -6125,11 +5961,8 @@ export const DeleteOrganizationBillingPaymentMethodRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteOrganizationBillingPaymentMethodRequest>;
 
 export interface DeleteOrganizationBillingPaymentMethodResponse {}
-export const DeleteOrganizationBillingPaymentMethodResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationBillingPaymentMethodResponse",
-}) as any as S.Schema<DeleteOrganizationBillingPaymentMethodResponse>;
+export const DeleteOrganizationBillingPaymentMethodResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<DeleteOrganizationBillingPaymentMethodResponse>;
 
 export interface DeleteOrganizationSsoDomainRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -6149,11 +5982,8 @@ export const DeleteOrganizationSsoDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationSsoDomainRequest>;
 
 export interface DeleteOrganizationSsoDomainResponse {}
-export const DeleteOrganizationSsoDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationSsoDomainResponse",
-}) as any as S.Schema<DeleteOrganizationSsoDomainResponse>;
+export const DeleteOrganizationSsoDomainResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<DeleteOrganizationSsoDomainResponse>;
 
 export interface DeleteOrganizationTeamRequest {
   /** The name of the organization */
@@ -6173,9 +6003,8 @@ export const DeleteOrganizationTeamRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationTeamRequest>;
 
 export interface DeleteOrganizationTeamResponse {}
-export const DeleteOrganizationTeamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOrganizationTeamResponse",
-}) as any as S.Schema<DeleteOrganizationTeamResponse>;
+export const DeleteOrganizationTeamResponse =
+  CreateShardResponse as any as S.Schema<DeleteOrganizationTeamResponse>;
 
 export interface DeletePasswordRequest {
   /** The name of the organization the password belongs to */
@@ -6203,9 +6032,8 @@ export const DeletePasswordRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePasswordRequest" }) as any as S.Schema<DeletePasswordRequest>;
 
 export interface DeletePasswordResponse {}
-export const DeletePasswordResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePasswordResponse",
-}) as any as S.Schema<DeletePasswordResponse>;
+export const DeletePasswordResponse =
+  CreateShardResponse as any as S.Schema<DeletePasswordResponse>;
 
 export interface DeleteQueryPatternsReportRequest {
   /** The name of the organization the branch belongs to */
@@ -6235,11 +6063,8 @@ export const DeleteQueryPatternsReportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteQueryPatternsReportRequest>;
 
 export interface DeleteQueryPatternsReportResponse {}
-export const DeleteQueryPatternsReportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteQueryPatternsReportResponse",
-}) as any as S.Schema<DeleteQueryPatternsReportResponse>;
+export const DeleteQueryPatternsReportResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<DeleteQueryPatternsReportResponse>;
 
 export interface DeleteRoleRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -6270,9 +6095,7 @@ export const DeleteRoleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRoleRequest" }) as any as S.Schema<DeleteRoleRequest>;
 
 export interface DeleteRoleResponse {}
-export const DeleteRoleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRoleResponse",
-}) as any as S.Schema<DeleteRoleResponse>;
+export const DeleteRoleResponse = CreateShardResponse as any as S.Schema<DeleteRoleResponse>;
 
 export interface DeleteRouterRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -6300,9 +6123,7 @@ export const DeleteRouterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRouterRequest" }) as any as S.Schema<DeleteRouterRequest>;
 
 export interface DeleteRouterResponse {}
-export const DeleteRouterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRouterResponse",
-}) as any as S.Schema<DeleteRouterResponse>;
+export const DeleteRouterResponse = CreateShardResponse as any as S.Schema<DeleteRouterResponse>;
 
 export interface DeleteServiceTokenRequest {
   /** The name of the organization */
@@ -6326,9 +6147,8 @@ export const DeleteServiceTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteServiceTokenRequest>;
 
 export interface DeleteServiceTokenResponse {}
-export const DeleteServiceTokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteServiceTokenResponse",
-}) as any as S.Schema<DeleteServiceTokenResponse>;
+export const DeleteServiceTokenResponse =
+  CreateShardResponse as any as S.Schema<DeleteServiceTokenResponse>;
 
 export interface DeleteShardRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -6356,9 +6176,7 @@ export const DeleteShardRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteShardRequest" }) as any as S.Schema<DeleteShardRequest>;
 
 export interface DeleteShardResponse {}
-export const DeleteShardResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteShardResponse",
-}) as any as S.Schema<DeleteShardResponse>;
+export const DeleteShardResponse = CreateShardResponse as any as S.Schema<DeleteShardResponse>;
 
 export interface DeleteShardConfigurationProfileRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -6388,11 +6206,8 @@ export const DeleteShardConfigurationProfileRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteShardConfigurationProfileRequest>;
 
 export interface DeleteShardConfigurationProfileResponse {}
-export const DeleteShardConfigurationProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteShardConfigurationProfileResponse",
-}) as any as S.Schema<DeleteShardConfigurationProfileResponse>;
+export const DeleteShardConfigurationProfileResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<DeleteShardConfigurationProfileResponse>;
 
 export interface DeleteShardConfigurationProfileShardRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -6425,16 +6240,12 @@ export const DeleteShardConfigurationProfileShardRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteShardConfigurationProfileShardRequest>;
 
 export interface DeleteShardConfigurationProfileShardResponse {}
-export const DeleteShardConfigurationProfileShardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteShardConfigurationProfileShardResponse",
-}) as any as S.Schema<DeleteShardConfigurationProfileShardResponse>;
+export const DeleteShardConfigurationProfileShardResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<DeleteShardConfigurationProfileShardResponse>;
 
 export type DeleteShardConfigurationProfileShardsRequestShardIdsList = Array<string>;
-export const DeleteShardConfigurationProfileShardsRequestShardIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteShardConfigurationProfileShardsRequestShardIdsList>;
+export const DeleteShardConfigurationProfileShardsRequestShardIdsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<DeleteShardConfigurationProfileShardsRequestShardIdsList>;
 
 export interface DeleteShardConfigurationProfileShardsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -6467,11 +6278,8 @@ export const DeleteShardConfigurationProfileShardsRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DeleteShardConfigurationProfileShardsRequest>;
 
 export interface DeleteShardConfigurationProfileShardsResponse {}
-export const DeleteShardConfigurationProfileShardsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteShardConfigurationProfileShardsResponse",
-}) as any as S.Schema<DeleteShardConfigurationProfileShardsResponse>;
+export const DeleteShardConfigurationProfileShardsResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<DeleteShardConfigurationProfileShardsResponse>;
 
 export interface DeleteTrafficBudgetRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -6501,9 +6309,8 @@ export const DeleteTrafficBudgetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTrafficBudgetRequest>;
 
 export interface DeleteTrafficBudgetResponse {}
-export const DeleteTrafficBudgetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTrafficBudgetResponse",
-}) as any as S.Schema<DeleteTrafficBudgetResponse>;
+export const DeleteTrafficBudgetResponse =
+  CreateShardResponse as any as S.Schema<DeleteTrafficBudgetResponse>;
 
 export interface DeleteTrafficRuleRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -6534,9 +6341,8 @@ export const DeleteTrafficRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTrafficRuleRequest" }) as any as S.Schema<DeleteTrafficRuleRequest>;
 
 export interface DeleteTrafficRuleResponse {}
-export const DeleteTrafficRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTrafficRuleResponse",
-}) as any as S.Schema<DeleteTrafficRuleResponse>;
+export const DeleteTrafficRuleResponse =
+  CreateShardResponse as any as S.Schema<DeleteTrafficRuleResponse>;
 
 export interface DeleteWebhookRequest {
   /** The name of the organization */
@@ -6561,9 +6367,7 @@ export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWebhookRequest" }) as any as S.Schema<DeleteWebhookRequest>;
 
 export interface DeleteWebhookResponse {}
-export const DeleteWebhookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWebhookResponse",
-}) as any as S.Schema<DeleteWebhookResponse>;
+export const DeleteWebhookResponse = CreateShardResponse as any as S.Schema<DeleteWebhookResponse>;
 
 export interface DemoteBranchRequest {
   /** The name of the organization the branch belongs to */
@@ -7156,13 +6960,8 @@ export interface EnableOrganizationSsoDirectoryResponse {
   /** URL to open for configuring directory sync */
   portal_url: string;
 }
-export const EnableOrganizationSsoDirectoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    portal_url: S.String,
-  }),
-).annotate({
-  identifier: "EnableOrganizationSsoDirectoryResponse",
-}) as any as S.Schema<EnableOrganizationSsoDirectoryResponse>;
+export const EnableOrganizationSsoDirectoryResponse =
+  ConfigureOrganizationSsoResponse as any as S.Schema<EnableOrganizationSsoDirectoryResponse>;
 
 export interface EnableSafeMigrationsRequest {
   /** The name of the organization the branch belongs to */
@@ -7222,15 +7021,7 @@ export interface NekiAdminSku {
   /** The sort order of the Neki admin SKU */
   sort_order: number;
 }
-export const NekiAdminSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    display_name: S.String,
-    cpu: S.String,
-    ram: S.Number,
-    sort_order: S.Number,
-  }),
-).annotate({ identifier: "NekiAdminSku" }) as any as S.Schema<NekiAdminSku>;
+export const NekiAdminSku = PostgresBouncerSku as any as S.Schema<NekiAdminSku>;
 
 /** The current state of the admin */
 export type NekiAdminState = "pending" | "applying" | "ready";
@@ -7288,9 +7079,8 @@ export const GetAdminChangeRequestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAdminChangeRequestRequest>;
 
 export interface GetAdminChangeRequestResponse {}
-export const GetAdminChangeRequestResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetAdminChangeRequestResponse",
-}) as any as S.Schema<GetAdminChangeRequestResponse>;
+export const GetAdminChangeRequestResponse =
+  CreateShardResponse as any as S.Schema<GetAdminChangeRequestResponse>;
 
 export interface GetBackupRequest {
   /** The name of the organization the branch belongs to */
@@ -7522,19 +7312,15 @@ export const PostgresClusterResizeRequestActor = OrganizationTeamMembershipActor
 
 /** The branch parameters */
 export type PostgresClusterResizeRequestParametersMap = { [key: string]: unknown | undefined };
-export const PostgresClusterResizeRequestParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PostgresClusterResizeRequestParametersMap>;
+export const PostgresClusterResizeRequestParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PostgresClusterResizeRequestParametersMap>;
 
 /** The previous branch parameters */
 export type PostgresClusterResizeRequestPreviousParametersMap = {
   [key: string]: unknown | undefined;
 };
-export const PostgresClusterResizeRequestPreviousParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PostgresClusterResizeRequestPreviousParametersMap>;
+export const PostgresClusterResizeRequestPreviousParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PostgresClusterResizeRequestPreviousParametersMap>;
 
 /** The storage type (gp3 or io2) */
 export type PostgresClusterResizeRequestStorageType =
@@ -7707,11 +7493,8 @@ export const GetBranchKeyspaceTableMetricsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetBranchKeyspaceTableMetricsRequest>;
 
 export interface GetBranchKeyspaceTableMetricsResponse {}
-export const GetBranchKeyspaceTableMetricsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetBranchKeyspaceTableMetricsResponse",
-}) as any as S.Schema<GetBranchKeyspaceTableMetricsResponse>;
+export const GetBranchKeyspaceTableMetricsResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<GetBranchKeyspaceTableMetricsResponse>;
 
 export type GetBranchMetricsRequestMetricsItem =
   | "avg_parallel_workers"
@@ -7856,14 +7639,12 @@ export type GetBranchMetricsRequestTabletType = "primary" | "replica" | "rdonly"
 export const GetBranchMetricsRequestTabletType = S.String;
 
 export type GetBranchMetricsRequestPodsList = Array<string>;
-export const GetBranchMetricsRequestPodsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetBranchMetricsRequestPodsList>;
+export const GetBranchMetricsRequestPodsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<GetBranchMetricsRequestPodsList>;
 
 export type GetBranchMetricsRequestQueryIdsList = Array<string>;
-export const GetBranchMetricsRequestQueryIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetBranchMetricsRequestQueryIdsList>;
+export const GetBranchMetricsRequestQueryIdsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<GetBranchMetricsRequestQueryIdsList>;
 
 export interface GetBranchMetricsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -7946,10 +7727,8 @@ export const GetBranchMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Key/value labels, also known as tags, identifying the time series */
 export type MetricSeriesSeriesItemLabelsMap = { [key: string]: unknown | undefined };
-export const MetricSeriesSeriesItemLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MetricSeriesSeriesItemLabelsMap>;
+export const MetricSeriesSeriesItemLabelsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<MetricSeriesSeriesItemLabelsMap>;
 
 export type MetricSeriesSeriesItemPointsItemList = Array<number>;
 export const MetricSeriesSeriesItemPointsItemList = /*@__PURE__*/ S.Array(
@@ -8037,22 +7816,15 @@ export const GetBranchQueryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The database password used for the query */
 export type QueryPasswordMap = { [key: string]: unknown | undefined };
-export const QueryPasswordMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<QueryPasswordMap>;
+export const QueryPasswordMap = NekiShardAssignmentErrorMap as any as S.Schema<QueryPasswordMap>;
 
 export type QueryTagsItemMap = { [key: string]: unknown | undefined };
-export const QueryTagsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<QueryTagsItemMap>;
+export const QueryTagsItemMap = NekiShardAssignmentErrorMap as any as S.Schema<QueryTagsItemMap>;
 
 /** Tags associated with the query */
 export type QueryTagsList = Array<QueryTagsItemMap>;
-export const QueryTagsList = /*@__PURE__*/ S.Array(
-  QueryTagsItemMap,
-) as any as S.Schema<QueryTagsList>;
+export const QueryTagsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<QueryTagsList>;
 
 /** Tables accessed by the query */
 export type QueryTablesList = Array<string>;
@@ -8193,28 +7965,22 @@ export const GetBranchQueryErrorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The database password used for the query */
 export type PaginatedQueryDataItemPasswordMap = { [key: string]: unknown | undefined };
-export const PaginatedQueryDataItemPasswordMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedQueryDataItemPasswordMap>;
+export const PaginatedQueryDataItemPasswordMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedQueryDataItemPasswordMap>;
 
 export type PaginatedQueryDataItemTagsItemMap = { [key: string]: unknown | undefined };
-export const PaginatedQueryDataItemTagsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedQueryDataItemTagsItemMap>;
+export const PaginatedQueryDataItemTagsItemMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedQueryDataItemTagsItemMap>;
 
 /** Tags associated with the query */
 export type PaginatedQueryDataItemTagsList = Array<PaginatedQueryDataItemTagsItemMap>;
-export const PaginatedQueryDataItemTagsList = /*@__PURE__*/ S.Array(
-  PaginatedQueryDataItemTagsItemMap,
-) as any as S.Schema<PaginatedQueryDataItemTagsList>;
+export const PaginatedQueryDataItemTagsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<PaginatedQueryDataItemTagsList>;
 
 /** Tables accessed by the query */
 export type PaginatedQueryDataItemTablesList = Array<string>;
-export const PaginatedQueryDataItemTablesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaginatedQueryDataItemTablesList>;
+export const PaginatedQueryDataItemTablesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedQueryDataItemTablesList>;
 
 export interface PaginatedQueryDataItem {
   /** The ID of the query */
@@ -8378,9 +8144,8 @@ export const GetBranchQueryMetricsRequestMetricsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetBranchQueryMetricsRequestMetricsList>;
 
 export type GetBranchQueryMetricsRequestQueryIdsList = Array<string>;
-export const GetBranchQueryMetricsRequestQueryIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetBranchQueryMetricsRequestQueryIdsList>;
+export const GetBranchQueryMetricsRequestQueryIdsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<GetBranchQueryMetricsRequestQueryIdsList>;
 
 export type GetBranchQueryMetricsRequestPeriod =
   | "15m"
@@ -8766,9 +8531,8 @@ export const GetBranchTableMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBranchTableMetricsRequest>;
 
 export interface GetBranchTableMetricsResponse {}
-export const GetBranchTableMetricsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetBranchTableMetricsResponse",
-}) as any as S.Schema<GetBranchTableMetricsResponse>;
+export const GetBranchTableMetricsResponse =
+  CreateShardResponse as any as S.Schema<GetBranchTableMetricsResponse>;
 
 export type GetBranchTagMetricsRequestMetricsItem =
   | "avg_parallel_workers"
@@ -8815,9 +8579,8 @@ export const GetBranchTagMetricsRequestMetricsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetBranchTagMetricsRequestMetricsList>;
 
 export type GetBranchTagMetricsRequestTagSetsList = Array<string>;
-export const GetBranchTagMetricsRequestTagSetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetBranchTagMetricsRequestTagSetsList>;
+export const GetBranchTagMetricsRequestTagSetsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<GetBranchTagMetricsRequestTagSetsList>;
 
 export type GetBranchTagMetricsRequestPeriod =
   | "15m"
@@ -9003,9 +8766,8 @@ export const GetDatabaseThrottlerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Keyspaces that are eligible for throttler configuration in the configurable resource (database or deploy request) */
 export type ThrottlerConfigurationsKeyspacesList = Array<string>;
-export const ThrottlerConfigurationsKeyspacesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ThrottlerConfigurationsKeyspacesList>;
+export const ThrottlerConfigurationsKeyspacesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<ThrottlerConfigurationsKeyspacesList>;
 
 export type ThrottlerConfigurationsConfigurable = OrganizationTeamMembershipUserDefaultOrganization;
 export const ThrottlerConfigurationsConfigurable =
@@ -9070,10 +8832,8 @@ export const GetDataTopologyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The data topology for the branch */
 export type NekiDataTopologyDataTopologyMap = { [key: string]: unknown | undefined };
-export const NekiDataTopologyDataTopologyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<NekiDataTopologyDataTopologyMap>;
+export const NekiDataTopologyDataTopologyMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<NekiDataTopologyDataTopologyMap>;
 
 export interface NekiDataTopology {
   /** The data topology for the branch */
@@ -9162,11 +8922,8 @@ export const GetDefaultShardConfigurationProfileRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<GetDefaultShardConfigurationProfileRequest>;
 
 export interface GetDefaultShardConfigurationProfileResponse {}
-export const GetDefaultShardConfigurationProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetDefaultShardConfigurationProfileResponse",
-}) as any as S.Schema<GetDefaultShardConfigurationProfileResponse>;
+export const GetDefaultShardConfigurationProfileResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<GetDefaultShardConfigurationProfileResponse>;
 
 export interface GetDeploymentRequest {
   /** The name of the deploy request's organization */
@@ -9215,16 +8972,13 @@ export type DeploymentState =
 export const DeploymentState = S.String;
 
 export type DeploymentPrecedingDeploymentsItemMap = { [key: string]: unknown | undefined };
-export const DeploymentPrecedingDeploymentsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DeploymentPrecedingDeploymentsItemMap>;
+export const DeploymentPrecedingDeploymentsItemMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<DeploymentPrecedingDeploymentsItemMap>;
 
 /** The deployments ahead of this one in the queue */
 export type DeploymentPrecedingDeploymentsList = Array<DeploymentPrecedingDeploymentsItemMap>;
-export const DeploymentPrecedingDeploymentsList = /*@__PURE__*/ S.Array(
-  DeploymentPrecedingDeploymentsItemMap,
-) as any as S.Schema<DeploymentPrecedingDeploymentsList>;
+export const DeploymentPrecedingDeploymentsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<DeploymentPrecedingDeploymentsList>;
 
 /** The state of the deploy operation */
 export type DeploymentDeployOperationsItemState =
@@ -9238,9 +8992,8 @@ export const DeploymentDeployOperationsItemState = S.String;
 
 /** Names of foreign keys removed by this operation */
 export type DeploymentDeployOperationsItemRemovedForeignKeyNamesList = Array<string>;
-export const DeploymentDeployOperationsItemRemovedForeignKeyNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeploymentDeployOperationsItemRemovedForeignKeyNamesList>;
+export const DeploymentDeployOperationsItemRemovedForeignKeyNamesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<DeploymentDeployOperationsItemRemovedForeignKeyNamesList>;
 
 export interface DeploymentDeployOperationsItem {
   /** The ID for the deploy operation */
@@ -9325,15 +9078,12 @@ export const DeploymentDeployOperationSummariesItemState = S.String;
 /** Names of foreign keys removed by this operation summary */
 export type DeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList = Array<string>;
 export const DeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList>;
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<DeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList>;
 
 /** Names of shards in the keyspace modified by the deploy operation summary */
 export type DeploymentDeployOperationSummariesItemShardNamesList = Array<string>;
-export const DeploymentDeployOperationSummariesItemShardNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeploymentDeployOperationSummariesItemShardNamesList>;
+export const DeploymentDeployOperationSummariesItemShardNamesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<DeploymentDeployOperationSummariesItemShardNamesList>;
 
 /** The state of the deploy operation */
 export type DeploymentDeployOperationSummariesItemOperationsItemState =
@@ -9449,55 +9199,42 @@ export const DeploymentDeployOperationSummariesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DeploymentDeployOperationSummariesList>;
 
 export type DeploymentLintErrorsItemMap = { [key: string]: unknown | undefined };
-export const DeploymentLintErrorsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DeploymentLintErrorsItemMap>;
+export const DeploymentLintErrorsItemMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<DeploymentLintErrorsItemMap>;
 
 /** Schema lint errors preventing the deployment from completing */
 export type DeploymentLintErrorsList = Array<DeploymentLintErrorsItemMap>;
-export const DeploymentLintErrorsList = /*@__PURE__*/ S.Array(
-  DeploymentLintErrorsItemMap,
-) as any as S.Schema<DeploymentLintErrorsList>;
+export const DeploymentLintErrorsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<DeploymentLintErrorsList>;
 
 export type DeploymentSequentialDiffDependenciesItemMap = { [key: string]: unknown | undefined };
-export const DeploymentSequentialDiffDependenciesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DeploymentSequentialDiffDependenciesItemMap>;
+export const DeploymentSequentialDiffDependenciesItemMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<DeploymentSequentialDiffDependenciesItemMap>;
 
 /** The schema dependencies that must be satisfied */
 export type DeploymentSequentialDiffDependenciesList =
   Array<DeploymentSequentialDiffDependenciesItemMap>;
-export const DeploymentSequentialDiffDependenciesList = /*@__PURE__*/ S.Array(
-  DeploymentSequentialDiffDependenciesItemMap,
-) as any as S.Schema<DeploymentSequentialDiffDependenciesList>;
+export const DeploymentSequentialDiffDependenciesList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<DeploymentSequentialDiffDependenciesList>;
 
 export type DeploymentLookupVindexOperationsItemMap = { [key: string]: unknown | undefined };
-export const DeploymentLookupVindexOperationsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DeploymentLookupVindexOperationsItemMap>;
+export const DeploymentLookupVindexOperationsItemMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<DeploymentLookupVindexOperationsItemMap>;
 
 /** Lookup Vitess index operations */
 export type DeploymentLookupVindexOperationsList = Array<DeploymentLookupVindexOperationsItemMap>;
-export const DeploymentLookupVindexOperationsList = /*@__PURE__*/ S.Array(
-  DeploymentLookupVindexOperationsItemMap,
-) as any as S.Schema<DeploymentLookupVindexOperationsList>;
+export const DeploymentLookupVindexOperationsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<DeploymentLookupVindexOperationsList>;
 
 /** Deployment throttling configurations. */
 export type DeploymentThrottlerConfigurationsMap = { [key: string]: unknown | undefined };
-export const DeploymentThrottlerConfigurationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DeploymentThrottlerConfigurationsMap>;
+export const DeploymentThrottlerConfigurationsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<DeploymentThrottlerConfigurationsMap>;
 
 /** The request to revert the schema operations in this deployment */
 export type DeploymentDeploymentRevertRequestMap = { [key: string]: unknown | undefined };
-export const DeploymentDeploymentRevertRequestMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DeploymentDeploymentRevertRequestMap>;
+export const DeploymentDeploymentRevertRequestMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<DeploymentDeploymentRevertRequestMap>;
 
 export type DeploymentActor = OrganizationTeamMembershipActor;
 export const DeploymentActor = OrganizationTeamMembershipActor;
@@ -9670,17 +9407,14 @@ export const PaginatedDeploymentDataItemState = S.String;
 export type PaginatedDeploymentDataItemPrecedingDeploymentsItemMap = {
   [key: string]: unknown | undefined;
 };
-export const PaginatedDeploymentDataItemPrecedingDeploymentsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedDeploymentDataItemPrecedingDeploymentsItemMap>;
+export const PaginatedDeploymentDataItemPrecedingDeploymentsItemMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedDeploymentDataItemPrecedingDeploymentsItemMap>;
 
 /** The deployments ahead of this one in the queue */
 export type PaginatedDeploymentDataItemPrecedingDeploymentsList =
   Array<PaginatedDeploymentDataItemPrecedingDeploymentsItemMap>;
-export const PaginatedDeploymentDataItemPrecedingDeploymentsList = /*@__PURE__*/ S.Array(
-  PaginatedDeploymentDataItemPrecedingDeploymentsItemMap,
-) as any as S.Schema<PaginatedDeploymentDataItemPrecedingDeploymentsList>;
+export const PaginatedDeploymentDataItemPrecedingDeploymentsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<PaginatedDeploymentDataItemPrecedingDeploymentsList>;
 
 /** The state of the deploy operation */
 export type PaginatedDeploymentDataItemDeployOperationsItemState =
@@ -9696,9 +9430,7 @@ export const PaginatedDeploymentDataItemDeployOperationsItemState = S.String;
 export type PaginatedDeploymentDataItemDeployOperationsItemRemovedForeignKeyNamesList =
   Array<string>;
 export const PaginatedDeploymentDataItemDeployOperationsItemRemovedForeignKeyNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PaginatedDeploymentDataItemDeployOperationsItemRemovedForeignKeyNamesList>;
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<PaginatedDeploymentDataItemDeployOperationsItemRemovedForeignKeyNamesList>;
 
 export interface PaginatedDeploymentDataItemDeployOperationsItem {
   /** The ID for the deploy operation */
@@ -9787,16 +9519,12 @@ export const PaginatedDeploymentDataItemDeployOperationSummariesItemState = S.St
 export type PaginatedDeploymentDataItemDeployOperationSummariesItemRemovedForeignKeyNamesList =
   Array<string>;
 export const PaginatedDeploymentDataItemDeployOperationSummariesItemRemovedForeignKeyNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PaginatedDeploymentDataItemDeployOperationSummariesItemRemovedForeignKeyNamesList>;
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<PaginatedDeploymentDataItemDeployOperationSummariesItemRemovedForeignKeyNamesList>;
 
 /** Names of shards in the keyspace modified by the deploy operation summary */
 export type PaginatedDeploymentDataItemDeployOperationSummariesItemShardNamesList = Array<string>;
 export const PaginatedDeploymentDataItemDeployOperationSummariesItemShardNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PaginatedDeploymentDataItemDeployOperationSummariesItemShardNamesList>;
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<PaginatedDeploymentDataItemDeployOperationSummariesItemShardNamesList>;
 
 /** The state of the deploy operation */
 export type PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsItemState =
@@ -9916,65 +9644,52 @@ export const PaginatedDeploymentDataItemDeployOperationSummariesList = /*@__PURE
 ) as any as S.Schema<PaginatedDeploymentDataItemDeployOperationSummariesList>;
 
 export type PaginatedDeploymentDataItemLintErrorsItemMap = { [key: string]: unknown | undefined };
-export const PaginatedDeploymentDataItemLintErrorsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedDeploymentDataItemLintErrorsItemMap>;
+export const PaginatedDeploymentDataItemLintErrorsItemMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedDeploymentDataItemLintErrorsItemMap>;
 
 /** Schema lint errors preventing the deployment from completing */
 export type PaginatedDeploymentDataItemLintErrorsList =
   Array<PaginatedDeploymentDataItemLintErrorsItemMap>;
-export const PaginatedDeploymentDataItemLintErrorsList = /*@__PURE__*/ S.Array(
-  PaginatedDeploymentDataItemLintErrorsItemMap,
-) as any as S.Schema<PaginatedDeploymentDataItemLintErrorsList>;
+export const PaginatedDeploymentDataItemLintErrorsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<PaginatedDeploymentDataItemLintErrorsList>;
 
 export type PaginatedDeploymentDataItemSequentialDiffDependenciesItemMap = {
   [key: string]: unknown | undefined;
 };
-export const PaginatedDeploymentDataItemSequentialDiffDependenciesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedDeploymentDataItemSequentialDiffDependenciesItemMap>;
+export const PaginatedDeploymentDataItemSequentialDiffDependenciesItemMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedDeploymentDataItemSequentialDiffDependenciesItemMap>;
 
 /** The schema dependencies that must be satisfied */
 export type PaginatedDeploymentDataItemSequentialDiffDependenciesList =
   Array<PaginatedDeploymentDataItemSequentialDiffDependenciesItemMap>;
-export const PaginatedDeploymentDataItemSequentialDiffDependenciesList = /*@__PURE__*/ S.Array(
-  PaginatedDeploymentDataItemSequentialDiffDependenciesItemMap,
-) as any as S.Schema<PaginatedDeploymentDataItemSequentialDiffDependenciesList>;
+export const PaginatedDeploymentDataItemSequentialDiffDependenciesList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<PaginatedDeploymentDataItemSequentialDiffDependenciesList>;
 
 export type PaginatedDeploymentDataItemLookupVindexOperationsItemMap = {
   [key: string]: unknown | undefined;
 };
-export const PaginatedDeploymentDataItemLookupVindexOperationsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedDeploymentDataItemLookupVindexOperationsItemMap>;
+export const PaginatedDeploymentDataItemLookupVindexOperationsItemMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedDeploymentDataItemLookupVindexOperationsItemMap>;
 
 /** Lookup Vitess index operations */
 export type PaginatedDeploymentDataItemLookupVindexOperationsList =
   Array<PaginatedDeploymentDataItemLookupVindexOperationsItemMap>;
-export const PaginatedDeploymentDataItemLookupVindexOperationsList = /*@__PURE__*/ S.Array(
-  PaginatedDeploymentDataItemLookupVindexOperationsItemMap,
-) as any as S.Schema<PaginatedDeploymentDataItemLookupVindexOperationsList>;
+export const PaginatedDeploymentDataItemLookupVindexOperationsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<PaginatedDeploymentDataItemLookupVindexOperationsList>;
 
 /** Deployment throttling configurations. */
 export type PaginatedDeploymentDataItemThrottlerConfigurationsMap = {
   [key: string]: unknown | undefined;
 };
-export const PaginatedDeploymentDataItemThrottlerConfigurationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedDeploymentDataItemThrottlerConfigurationsMap>;
+export const PaginatedDeploymentDataItemThrottlerConfigurationsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedDeploymentDataItemThrottlerConfigurationsMap>;
 
 /** The request to revert the schema operations in this deployment */
 export type PaginatedDeploymentDataItemDeploymentRevertRequestMap = {
   [key: string]: unknown | undefined;
 };
-export const PaginatedDeploymentDataItemDeploymentRevertRequestMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedDeploymentDataItemDeploymentRevertRequestMap>;
+export const PaginatedDeploymentDataItemDeploymentRevertRequestMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedDeploymentDataItemDeploymentRevertRequestMap>;
 
 export type PaginatedDeploymentDataItemActor = OrganizationTeamMembershipActor;
 export const PaginatedDeploymentDataItemActor = OrganizationTeamMembershipActor;
@@ -10404,9 +10119,8 @@ export const GetInstantTabletMetricsResponseMetricsItemValuesItem =
 
 export type GetInstantTabletMetricsResponseMetricsItemValuesList =
   Array<GetInstantBranchMetricsResponseMetricsItemValuesItem>;
-export const GetInstantTabletMetricsResponseMetricsItemValuesList = /*@__PURE__*/ S.Array(
-  GetInstantBranchMetricsResponseMetricsItemValuesItem,
-) as any as S.Schema<GetInstantTabletMetricsResponseMetricsItemValuesList>;
+export const GetInstantTabletMetricsResponseMetricsItemValuesList =
+  GetInstantBranchMetricsResponseMetricsItemValuesList as any as S.Schema<GetInstantTabletMetricsResponseMetricsItemValuesList>;
 
 export interface GetInstantTabletMetricsResponseMetricsItem {
   /** The metric name */
@@ -10415,21 +10129,13 @@ export interface GetInstantTabletMetricsResponseMetricsItem {
   label: string;
   values: GetInstantTabletMetricsResponseMetricsItemValuesList;
 }
-export const GetInstantTabletMetricsResponseMetricsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metric: S.String,
-    label: S.String,
-    values: GetInstantTabletMetricsResponseMetricsItemValuesList,
-  }),
-).annotate({
-  identifier: "GetInstantTabletMetricsResponseMetricsItem",
-}) as any as S.Schema<GetInstantTabletMetricsResponseMetricsItem>;
+export const GetInstantTabletMetricsResponseMetricsItem =
+  GetInstantBranchMetricsResponseMetricsItem as any as S.Schema<GetInstantTabletMetricsResponseMetricsItem>;
 
 export type GetInstantTabletMetricsResponseMetricsList =
   Array<GetInstantTabletMetricsResponseMetricsItem>;
-export const GetInstantTabletMetricsResponseMetricsList = /*@__PURE__*/ S.Array(
-  GetInstantTabletMetricsResponseMetricsItem,
-) as any as S.Schema<GetInstantTabletMetricsResponseMetricsList>;
+export const GetInstantTabletMetricsResponseMetricsList =
+  GetInstantBranchMetricsResponseMetricsList as any as S.Schema<GetInstantTabletMetricsResponseMetricsList>;
 
 export interface GetInstantTabletMetricsResponse {
   /** The metrics response type */
@@ -10437,15 +10143,8 @@ export interface GetInstantTabletMetricsResponse {
   branch: OrganizationTeamMembershipUserDefaultOrganization;
   metrics: GetInstantTabletMetricsResponseMetricsList;
 }
-export const GetInstantTabletMetricsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    branch: OrganizationTeamMembershipUserDefaultOrganization,
-    metrics: GetInstantTabletMetricsResponseMetricsList,
-  }),
-).annotate({
-  identifier: "GetInstantTabletMetricsResponse",
-}) as any as S.Schema<GetInstantTabletMetricsResponse>;
+export const GetInstantTabletMetricsResponse =
+  GetInstantBranchMetricsResponse as any as S.Schema<GetInstantTabletMetricsResponse>;
 
 export interface GetInvoiceRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -10973,17 +10672,14 @@ export const GetMoveTablesWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetMoveTablesWorkflowResponseDataWorkflowsItemMap = {
   [key: string]: unknown | undefined;
 };
-export const GetMoveTablesWorkflowResponseDataWorkflowsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetMoveTablesWorkflowResponseDataWorkflowsItemMap>;
+export const GetMoveTablesWorkflowResponseDataWorkflowsItemMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<GetMoveTablesWorkflowResponseDataWorkflowsItemMap>;
 
 /** The workflows Vitess reports for the target keyspace */
 export type GetMoveTablesWorkflowResponseDataWorkflowsList =
   Array<GetMoveTablesWorkflowResponseDataWorkflowsItemMap>;
-export const GetMoveTablesWorkflowResponseDataWorkflowsList = /*@__PURE__*/ S.Array(
-  GetMoveTablesWorkflowResponseDataWorkflowsItemMap,
-) as any as S.Schema<GetMoveTablesWorkflowResponseDataWorkflowsList>;
+export const GetMoveTablesWorkflowResponseDataWorkflowsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<GetMoveTablesWorkflowResponseDataWorkflowsList>;
 
 export interface GetMoveTablesWorkflowResponseData {
   /** The workflows Vitess reports for the target keyspace */
@@ -11073,10 +10769,8 @@ export const GetMoveTablesWorkflowStatusResponseDataTableCopyStateMap = /*@__PUR
 export type GetMoveTablesWorkflowStatusResponseDataShardStreamsMap = {
   [key: string]: unknown | undefined;
 };
-export const GetMoveTablesWorkflowStatusResponseDataShardStreamsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetMoveTablesWorkflowStatusResponseDataShardStreamsMap>;
+export const GetMoveTablesWorkflowStatusResponseDataShardStreamsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<GetMoveTablesWorkflowStatusResponseDataShardStreamsMap>;
 
 export interface GetMoveTablesWorkflowStatusResponseData {
   /** Human-readable summary of the workflow's current traffic state */
@@ -11163,29 +10857,23 @@ export const NekiChangeRequestTargetType = S.String;
 
 /** The parameters requested for the target resource */
 export type NekiChangeRequestParametersMap = { [key: string]: unknown | undefined };
-export const NekiChangeRequestParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<NekiChangeRequestParametersMap>;
+export const NekiChangeRequestParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<NekiChangeRequestParametersMap>;
 
 /** The target resource parameters before the change */
 export type NekiChangeRequestPreviousParametersMap = { [key: string]: unknown | undefined };
-export const NekiChangeRequestPreviousParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<NekiChangeRequestPreviousParametersMap>;
+export const NekiChangeRequestPreviousParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<NekiChangeRequestPreviousParametersMap>;
 
 /** The cluster flags */
 export type NekiChangeRequestFlagsList = Array<string>;
-export const NekiChangeRequestFlagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NekiChangeRequestFlagsList>;
+export const NekiChangeRequestFlagsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<NekiChangeRequestFlagsList>;
 
 /** The previous cluster flags */
 export type NekiChangeRequestPreviousFlagsList = Array<string>;
-export const NekiChangeRequestPreviousFlagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NekiChangeRequestPreviousFlagsList>;
+export const NekiChangeRequestPreviousFlagsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<NekiChangeRequestPreviousFlagsList>;
 
 export type NekiChangeRequestStorage = NekiShardConfigurationProfileStorage;
 export const NekiChangeRequestStorage = NekiShardConfigurationProfileStorage;
@@ -11382,29 +11070,22 @@ export const GetOauthApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Scopes grouped by resource type (database, organization, branch, user) with scope, description, and admin flag */
 export type OauthApplicationScopesByResourceMap = { [key: string]: unknown | undefined };
-export const OauthApplicationScopesByResourceMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OauthApplicationScopesByResourceMap>;
+export const OauthApplicationScopesByResourceMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<OauthApplicationScopesByResourceMap>;
 
 /** All available scopes grouped by resource type with scope, description, selected, and admin flags */
 export type OauthApplicationAllScopesByResourceMap = { [key: string]: unknown | undefined };
-export const OauthApplicationAllScopesByResourceMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OauthApplicationAllScopesByResourceMap>;
+export const OauthApplicationAllScopesByResourceMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<OauthApplicationAllScopesByResourceMap>;
 
 export type OauthApplicationMcpToolGroupsItemMap = { [key: string]: unknown | undefined };
-export const OauthApplicationMcpToolGroupsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OauthApplicationMcpToolGroupsItemMap>;
+export const OauthApplicationMcpToolGroupsItemMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<OauthApplicationMcpToolGroupsItemMap>;
 
 /** MCP tool groups (id, label, section, tools, scopes, parent_id, default_enabled, roles) selectable when authorizing a DCR app; only present for DCR apps. Database-section groups also carry org_scopes (the organization-tier scope names granting the group across all databases in an organization) and org_roles (the organization roles allowed to grant them); both are null for organization-section groups */
 export type OauthApplicationMcpToolGroupsList = Array<OauthApplicationMcpToolGroupsItemMap>;
-export const OauthApplicationMcpToolGroupsList = /*@__PURE__*/ S.Array(
-  OauthApplicationMcpToolGroupsItemMap,
-) as any as S.Schema<OauthApplicationMcpToolGroupsList>;
+export const OauthApplicationMcpToolGroupsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<OauthApplicationMcpToolGroupsList>;
 
 export interface OauthApplication {
   /** The ID of the app */
@@ -11495,10 +11176,8 @@ export const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Features that can be enabled on the organization */
 export type OrganizationFeaturesMap = { [key: string]: unknown | undefined };
-export const OrganizationFeaturesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OrganizationFeaturesMap>;
+export const OrganizationFeaturesMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<OrganizationFeaturesMap>;
 
 export interface Organization {
   /** The ID for the organization */
@@ -11850,30 +11529,26 @@ export const DatabaseBranchPasswordRole = S.String;
 
 /** List of IP addresses or CIDR ranges that can use this password */
 export type DatabaseBranchPasswordCidrsList = Array<string>;
-export const DatabaseBranchPasswordCidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatabaseBranchPasswordCidrsList>;
+export const DatabaseBranchPasswordCidrsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<DatabaseBranchPasswordCidrsList>;
 
 /** The list of hosts in each availability zone providing direct access to a vtgate */
 export type DatabaseBranchPasswordDirectVtgateAddressesList = Array<string>;
-export const DatabaseBranchPasswordDirectVtgateAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatabaseBranchPasswordDirectVtgateAddressesList>;
+export const DatabaseBranchPasswordDirectVtgateAddressesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<DatabaseBranchPasswordDirectVtgateAddressesList>;
 
 /** The read-only replica host URLs */
 export type DatabaseBranchPasswordAccessHostRegionalUrlsList = Array<string>;
-export const DatabaseBranchPasswordAccessHostRegionalUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatabaseBranchPasswordAccessHostRegionalUrlsList>;
+export const DatabaseBranchPasswordAccessHostRegionalUrlsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<DatabaseBranchPasswordAccessHostRegionalUrlsList>;
 
 export type DatabaseBranchPasswordActor = OrganizationTeamMembershipActor;
 export const DatabaseBranchPasswordActor = OrganizationTeamMembershipActor;
 
 /** Public IP addresses for the region */
 export type DatabaseBranchPasswordRegionPublicIpAddressesList = Array<string>;
-export const DatabaseBranchPasswordRegionPublicIpAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatabaseBranchPasswordRegionPublicIpAddressesList>;
+export const DatabaseBranchPasswordRegionPublicIpAddressesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<DatabaseBranchPasswordRegionPublicIpAddressesList>;
 
 export interface DatabaseBranchPasswordRegion {
   /** The ID of the region */
@@ -11899,23 +11574,8 @@ export interface DatabaseBranchPasswordRegion {
   /** Whether the region supports Neki databases */
   neki_supported: boolean;
 }
-export const DatabaseBranchPasswordRegion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    provider: S.String,
-    enabled: S.Boolean,
-    public_ip_addresses: DatabaseBranchPasswordRegionPublicIpAddressesList,
-    display_name: S.String,
-    location: S.String,
-    slug: S.String,
-    current_default: S.Boolean,
-    mysql_supported: S.Boolean,
-    postgresql_supported: S.Boolean,
-    neki_supported: S.Boolean,
-  }),
-).annotate({
-  identifier: "DatabaseBranchPasswordRegion",
-}) as any as S.Schema<DatabaseBranchPasswordRegion>;
+export const DatabaseBranchPasswordRegion =
+  PostgresReadOnlyReplicaRegion as any as S.Schema<DatabaseBranchPasswordRegion>;
 
 export type DatabaseBranchPasswordDatabaseBranch =
   OrganizationTeamMembershipPasswordsItemDatabaseBranch;
@@ -12085,9 +11745,8 @@ export const GetQueryPatternsReportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetQueryPatternsReportRequest>;
 
 export interface GetQueryPatternsReportResponse {}
-export const GetQueryPatternsReportResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetQueryPatternsReportResponse",
-}) as any as S.Schema<GetQueryPatternsReportResponse>;
+export const GetQueryPatternsReportResponse =
+  CreateShardResponse as any as S.Schema<GetQueryPatternsReportResponse>;
 
 export interface GetQueryPatternsReportStatusRequest {
   /** The name of the organization the branch belongs to */
@@ -12224,45 +11883,36 @@ export const GetQuerySummaryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tables accessed by the query */
 export type QuerySummaryTablesList = Array<string>;
-export const QuerySummaryTablesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<QuerySummaryTablesList>;
+export const QuerySummaryTablesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<QuerySummaryTablesList>;
 
 /** Fully qualified tables accessed by the query */
 export type QuerySummaryQualifiedTablesList = Array<string>;
-export const QuerySummaryQualifiedTablesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<QuerySummaryQualifiedTablesList>;
+export const QuerySummaryQualifiedTablesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<QuerySummaryQualifiedTablesList>;
 
 /** Keyspaces or schemas accessed by the query */
 export type QuerySummaryTableKeyspacesList = Array<string>;
-export const QuerySummaryTableKeyspacesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<QuerySummaryTableKeyspacesList>;
+export const QuerySummaryTableKeyspacesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<QuerySummaryTableKeyspacesList>;
 
 export type QuerySummaryIndexUsagesItemMap = { [key: string]: unknown | undefined };
-export const QuerySummaryIndexUsagesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<QuerySummaryIndexUsagesItemMap>;
+export const QuerySummaryIndexUsagesItemMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<QuerySummaryIndexUsagesItemMap>;
 
 /** Index usage information */
 export type QuerySummaryIndexUsagesList = Array<QuerySummaryIndexUsagesItemMap>;
-export const QuerySummaryIndexUsagesList = /*@__PURE__*/ S.Array(
-  QuerySummaryIndexUsagesItemMap,
-) as any as S.Schema<QuerySummaryIndexUsagesList>;
+export const QuerySummaryIndexUsagesList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<QuerySummaryIndexUsagesList>;
 
 export type QuerySummaryRoutingIndexUsagesItemMap = { [key: string]: unknown | undefined };
-export const QuerySummaryRoutingIndexUsagesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<QuerySummaryRoutingIndexUsagesItemMap>;
+export const QuerySummaryRoutingIndexUsagesItemMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<QuerySummaryRoutingIndexUsagesItemMap>;
 
 /** Routing index usage information */
 export type QuerySummaryRoutingIndexUsagesList = Array<QuerySummaryRoutingIndexUsagesItemMap>;
-export const QuerySummaryRoutingIndexUsagesList = /*@__PURE__*/ S.Array(
-  QuerySummaryRoutingIndexUsagesItemMap,
-) as any as S.Schema<QuerySummaryRoutingIndexUsagesList>;
+export const QuerySummaryRoutingIndexUsagesList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<QuerySummaryRoutingIndexUsagesList>;
 
 export interface QuerySummary {
   /** The ID of the query summary */
@@ -12517,9 +12167,8 @@ export const GetRouterChangeRequestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetRouterChangeRequestRequest>;
 
 export interface GetRouterChangeRequestResponse {}
-export const GetRouterChangeRequestResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetRouterChangeRequestResponse",
-}) as any as S.Schema<GetRouterChangeRequestResponse>;
+export const GetRouterChangeRequestResponse =
+  CreateShardResponse as any as S.Schema<GetRouterChangeRequestResponse>;
 
 export interface GetSchemaRecommendationRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -12643,11 +12292,8 @@ export const GetShardConfigurationProfileChangeRequestRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<GetShardConfigurationProfileChangeRequestRequest>;
 
 export interface GetShardConfigurationProfileChangeRequestResponse {}
-export const GetShardConfigurationProfileChangeRequestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetShardConfigurationProfileChangeRequestResponse",
-}) as any as S.Schema<GetShardConfigurationProfileChangeRequestResponse>;
+export const GetShardConfigurationProfileChangeRequestResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<GetShardConfigurationProfileChangeRequestResponse>;
 
 export interface GetShardConfigurationProfileShardRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -12761,9 +12407,8 @@ export const GetSidecarChangeRequestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSidecarChangeRequestRequest>;
 
 export interface GetSidecarChangeRequestResponse {}
-export const GetSidecarChangeRequestResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "GetSidecarChangeRequestResponse" },
-) as any as S.Schema<GetSidecarChangeRequestResponse>;
+export const GetSidecarChangeRequestResponse =
+  CancelNekiChangeRequestResponse as any as S.Schema<GetSidecarChangeRequestResponse>;
 
 export interface GetSwitchoverRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -12940,17 +12585,13 @@ export const GetVtctldOperationResponseState = S.String;
 
 /** Operation-specific metadata captured when the operation started */
 export type GetVtctldOperationResponseMetadataMap = { [key: string]: unknown | undefined };
-export const GetVtctldOperationResponseMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetVtctldOperationResponseMetadataMap>;
+export const GetVtctldOperationResponseMetadataMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<GetVtctldOperationResponseMetadataMap>;
 
 /** Operation-specific result payload, present once the operation succeeds */
 export type GetVtctldOperationResponseResultMap = { [key: string]: unknown | undefined };
-export const GetVtctldOperationResponseResultMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetVtctldOperationResponseResultMap>;
+export const GetVtctldOperationResponseResultMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<GetVtctldOperationResponseResultMap>;
 
 export interface GetVtctldOperationResponse {
   /** The object type, always VtctldOperation */
@@ -13075,15 +12716,13 @@ export const PaginatedSchemaLintErrorDataItemSubjectType = S.String;
 
 /** A list of invalid foreign key columns in a table */
 export type PaginatedSchemaLintErrorDataItemForeignKeyColumnNamesList = Array<string>;
-export const PaginatedSchemaLintErrorDataItemForeignKeyColumnNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaginatedSchemaLintErrorDataItemForeignKeyColumnNamesList>;
+export const PaginatedSchemaLintErrorDataItemForeignKeyColumnNamesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedSchemaLintErrorDataItemForeignKeyColumnNamesList>;
 
 /** A list of invalid auto-incremented columns */
 export type PaginatedSchemaLintErrorDataItemAutoIncrementColumnNamesList = Array<string>;
-export const PaginatedSchemaLintErrorDataItemAutoIncrementColumnNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaginatedSchemaLintErrorDataItemAutoIncrementColumnNamesList>;
+export const PaginatedSchemaLintErrorDataItemAutoIncrementColumnNamesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedSchemaLintErrorDataItemAutoIncrementColumnNamesList>;
 
 export interface PaginatedSchemaLintErrorDataItem {
   /** Code representing the type of error */
@@ -13231,9 +12870,8 @@ export const ListAdminChangeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAdminChangeRequestsRequest>;
 
 export interface ListAdminChangeRequestsResponse {}
-export const ListAdminChangeRequestsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "ListAdminChangeRequestsResponse" },
-) as any as S.Schema<ListAdminChangeRequestsResponse>;
+export const ListAdminChangeRequestsResponse =
+  CancelNekiChangeRequestResponse as any as S.Schema<ListAdminChangeRequestsResponse>;
 
 export interface ListAdminParametersRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -13277,15 +12915,13 @@ export const NekiParameterParameterType = S.String;
 
 /** Valid options for the parameter value. Null represents an unset value */
 export type NekiParameterOptionsList = Array<string>;
-export const NekiParameterOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NekiParameterOptionsList>;
+export const NekiParameterOptionsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<NekiParameterOptionsList>;
 
 /** The units of the parameter value */
 export type NekiParameterUnitsList = Array<string>;
-export const NekiParameterUnitsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NekiParameterUnitsList>;
+export const NekiParameterUnitsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<NekiParameterUnitsList>;
 
 export type NekiParameterActor = OrganizationTeamMembershipActor;
 export const NekiParameterActor = OrganizationTeamMembershipActor;
@@ -13426,10 +13062,8 @@ export const ListAuditLogsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional metadata containing details about the change */
 export type PaginatedAuditLogEventDataItemMetadataMap = { [key: string]: unknown | undefined };
-export const PaginatedAuditLogEventDataItemMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedAuditLogEventDataItemMetadataMap>;
+export const PaginatedAuditLogEventDataItemMetadataMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedAuditLogEventDataItemMetadataMap>;
 
 export interface PaginatedAuditLogEventDataItem {
   /** The ID for the audit log */
@@ -13718,9 +13352,8 @@ export const PaginatedBackupDataItemRestoredBranchesItem =
 
 export type PaginatedBackupDataItemRestoredBranchesList =
   Array<OrganizationTeamMembershipUserDefaultOrganization>;
-export const PaginatedBackupDataItemRestoredBranchesList = /*@__PURE__*/ S.Array(
-  OrganizationTeamMembershipUserDefaultOrganization,
-) as any as S.Schema<PaginatedBackupDataItemRestoredBranchesList>;
+export const PaginatedBackupDataItemRestoredBranchesList =
+  BackupRestoredBranchesList as any as S.Schema<PaginatedBackupDataItemRestoredBranchesList>;
 
 export type PaginatedBackupDataItemActor = OrganizationTeamMembershipActor;
 export const PaginatedBackupDataItemActor = OrganizationTeamMembershipActor;
@@ -13949,10 +13582,8 @@ export const PaginatedPostgresBouncerResizeRequestDataItemTarget = S.String;
 export type PaginatedPostgresBouncerResizeRequestDataItemParametersMap = {
   [key: string]: unknown | undefined;
 };
-export const PaginatedPostgresBouncerResizeRequestDataItemParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedPostgresBouncerResizeRequestDataItemParametersMap>;
+export const PaginatedPostgresBouncerResizeRequestDataItemParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedPostgresBouncerResizeRequestDataItemParametersMap>;
 
 /** The backend target for the bouncer before the resize */
 export type PaginatedPostgresBouncerResizeRequestDataItemPreviousTarget =
@@ -13966,10 +13597,7 @@ export type PaginatedPostgresBouncerResizeRequestDataItemPreviousParametersMap =
   [key: string]: unknown | undefined;
 };
 export const PaginatedPostgresBouncerResizeRequestDataItemPreviousParametersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<PaginatedPostgresBouncerResizeRequestDataItemPreviousParametersMap>;
+  DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap as any as S.Schema<PaginatedPostgresBouncerResizeRequestDataItemPreviousParametersMap>;
 
 export type PaginatedPostgresBouncerResizeRequestDataItemActor = OrganizationTeamMembershipActor;
 export const PaginatedPostgresBouncerResizeRequestDataItemActor = OrganizationTeamMembershipActor;
@@ -14134,9 +13762,8 @@ export const PaginatedPostgresBouncerDataItemParametersItemParameterType = S.Str
 
 /** Valid options for the parameter value */
 export type PaginatedPostgresBouncerDataItemParametersItemOptionsList = Array<string>;
-export const PaginatedPostgresBouncerDataItemParametersItemOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaginatedPostgresBouncerDataItemParametersItemOptionsList>;
+export const PaginatedPostgresBouncerDataItemParametersItemOptionsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedPostgresBouncerDataItemParametersItemOptionsList>;
 
 export type PaginatedPostgresBouncerDataItemParametersItemActor = OrganizationTeamMembershipActor;
 export const PaginatedPostgresBouncerDataItemParametersItemActor = OrganizationTeamMembershipActor;
@@ -14520,20 +14147,15 @@ export const PaginatedPostgresClusterResizeRequestDataItemActor = OrganizationTe
 export type PaginatedPostgresClusterResizeRequestDataItemParametersMap = {
   [key: string]: unknown | undefined;
 };
-export const PaginatedPostgresClusterResizeRequestDataItemParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedPostgresClusterResizeRequestDataItemParametersMap>;
+export const PaginatedPostgresClusterResizeRequestDataItemParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedPostgresClusterResizeRequestDataItemParametersMap>;
 
 /** The previous branch parameters */
 export type PaginatedPostgresClusterResizeRequestDataItemPreviousParametersMap = {
   [key: string]: unknown | undefined;
 };
 export const PaginatedPostgresClusterResizeRequestDataItemPreviousParametersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<PaginatedPostgresClusterResizeRequestDataItemPreviousParametersMap>;
+  DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap as any as S.Schema<PaginatedPostgresClusterResizeRequestDataItemPreviousParametersMap>;
 
 /** The storage type (gp3 or io2) */
 export type PaginatedPostgresClusterResizeRequestDataItemStorageType =
@@ -14741,19 +14363,15 @@ export const PaginatedConfigChangeRequestDataItemChangeType = S.String;
 export type PaginatedConfigChangeRequestDataItemPreviousOptionsMap = {
   [key: string]: unknown | undefined;
 };
-export const PaginatedConfigChangeRequestDataItemPreviousOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedConfigChangeRequestDataItemPreviousOptionsMap>;
+export const PaginatedConfigChangeRequestDataItemPreviousOptionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedConfigChangeRequestDataItemPreviousOptionsMap>;
 
 /** The new option values */
 export type PaginatedConfigChangeRequestDataItemNewOptionsMap = {
   [key: string]: unknown | undefined;
 };
-export const PaginatedConfigChangeRequestDataItemNewOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedConfigChangeRequestDataItemNewOptionsMap>;
+export const PaginatedConfigChangeRequestDataItemNewOptionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedConfigChangeRequestDataItemNewOptionsMap>;
 
 export type PaginatedConfigChangeRequestDataItemActor = OrganizationTeamMembershipActor;
 export const PaginatedConfigChangeRequestDataItemActor = OrganizationTeamMembershipActor;
@@ -14905,9 +14523,8 @@ export const PaginatedDatabaseBranchDataItemRestoredFromBranch =
 
 /** Public IP addresses for the region */
 export type PaginatedDatabaseBranchDataItemRegionPublicIpAddressesList = Array<string>;
-export const PaginatedDatabaseBranchDataItemRegionPublicIpAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaginatedDatabaseBranchDataItemRegionPublicIpAddressesList>;
+export const PaginatedDatabaseBranchDataItemRegionPublicIpAddressesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedDatabaseBranchDataItemRegionPublicIpAddressesList>;
 
 export interface PaginatedDatabaseBranchDataItemRegion {
   /** The ID of the region */
@@ -14933,32 +14550,15 @@ export interface PaginatedDatabaseBranchDataItemRegion {
   /** Whether the region supports Neki databases */
   neki_supported: boolean;
 }
-export const PaginatedDatabaseBranchDataItemRegion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    provider: S.String,
-    enabled: S.Boolean,
-    public_ip_addresses: PaginatedDatabaseBranchDataItemRegionPublicIpAddressesList,
-    display_name: S.String,
-    location: S.String,
-    slug: S.String,
-    current_default: S.Boolean,
-    mysql_supported: S.Boolean,
-    postgresql_supported: S.Boolean,
-    neki_supported: S.Boolean,
-  }),
-).annotate({
-  identifier: "PaginatedDatabaseBranchDataItemRegion",
-}) as any as S.Schema<PaginatedDatabaseBranchDataItemRegion>;
+export const PaginatedDatabaseBranchDataItemRegion =
+  PostgresReadOnlyReplicaRegion as any as S.Schema<PaginatedDatabaseBranchDataItemRegion>;
 
 /** VTGate configuration options */
 export type PaginatedDatabaseBranchDataItemVtgateOptionsMap = {
   [key: string]: unknown | undefined;
 };
-export const PaginatedDatabaseBranchDataItemVtgateOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedDatabaseBranchDataItemVtgateOptionsMap>;
+export const PaginatedDatabaseBranchDataItemVtgateOptionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedDatabaseBranchDataItemVtgateOptionsMap>;
 
 export interface PaginatedDatabaseBranchDataItem {
   /** The ID of the branch */
@@ -15199,9 +14799,8 @@ export type ListBranchQueriesRequestType = "SELECT" | "INSERT" | "UPDATE" | "DEL
 export const ListBranchQueriesRequestType = S.String;
 
 export type ListBranchQueriesRequestFieldsList = Array<string>;
-export const ListBranchQueriesRequestFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListBranchQueriesRequestFieldsList>;
+export const ListBranchQueriesRequestFieldsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<ListBranchQueriesRequestFieldsList>;
 
 export interface ListBranchQueriesRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -15260,51 +14859,42 @@ export const ListBranchQueriesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tables accessed by the query */
 export type PaginatedQuerySummaryDataItemTablesList = Array<string>;
-export const PaginatedQuerySummaryDataItemTablesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaginatedQuerySummaryDataItemTablesList>;
+export const PaginatedQuerySummaryDataItemTablesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedQuerySummaryDataItemTablesList>;
 
 /** Fully qualified tables accessed by the query */
 export type PaginatedQuerySummaryDataItemQualifiedTablesList = Array<string>;
-export const PaginatedQuerySummaryDataItemQualifiedTablesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaginatedQuerySummaryDataItemQualifiedTablesList>;
+export const PaginatedQuerySummaryDataItemQualifiedTablesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedQuerySummaryDataItemQualifiedTablesList>;
 
 /** Keyspaces or schemas accessed by the query */
 export type PaginatedQuerySummaryDataItemTableKeyspacesList = Array<string>;
-export const PaginatedQuerySummaryDataItemTableKeyspacesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaginatedQuerySummaryDataItemTableKeyspacesList>;
+export const PaginatedQuerySummaryDataItemTableKeyspacesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedQuerySummaryDataItemTableKeyspacesList>;
 
 export type PaginatedQuerySummaryDataItemIndexUsagesItemMap = {
   [key: string]: unknown | undefined;
 };
-export const PaginatedQuerySummaryDataItemIndexUsagesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedQuerySummaryDataItemIndexUsagesItemMap>;
+export const PaginatedQuerySummaryDataItemIndexUsagesItemMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedQuerySummaryDataItemIndexUsagesItemMap>;
 
 /** Index usage information */
 export type PaginatedQuerySummaryDataItemIndexUsagesList =
   Array<PaginatedQuerySummaryDataItemIndexUsagesItemMap>;
-export const PaginatedQuerySummaryDataItemIndexUsagesList = /*@__PURE__*/ S.Array(
-  PaginatedQuerySummaryDataItemIndexUsagesItemMap,
-) as any as S.Schema<PaginatedQuerySummaryDataItemIndexUsagesList>;
+export const PaginatedQuerySummaryDataItemIndexUsagesList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<PaginatedQuerySummaryDataItemIndexUsagesList>;
 
 export type PaginatedQuerySummaryDataItemRoutingIndexUsagesItemMap = {
   [key: string]: unknown | undefined;
 };
-export const PaginatedQuerySummaryDataItemRoutingIndexUsagesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedQuerySummaryDataItemRoutingIndexUsagesItemMap>;
+export const PaginatedQuerySummaryDataItemRoutingIndexUsagesItemMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedQuerySummaryDataItemRoutingIndexUsagesItemMap>;
 
 /** Routing index usage information */
 export type PaginatedQuerySummaryDataItemRoutingIndexUsagesList =
   Array<PaginatedQuerySummaryDataItemRoutingIndexUsagesItemMap>;
-export const PaginatedQuerySummaryDataItemRoutingIndexUsagesList = /*@__PURE__*/ S.Array(
-  PaginatedQuerySummaryDataItemRoutingIndexUsagesItemMap,
-) as any as S.Schema<PaginatedQuerySummaryDataItemRoutingIndexUsagesList>;
+export const PaginatedQuerySummaryDataItemRoutingIndexUsagesList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<PaginatedQuerySummaryDataItemRoutingIndexUsagesList>;
 
 export interface PaginatedQuerySummaryDataItem {
   /** The ID of the query summary */
@@ -15804,9 +15394,8 @@ export const PaginatedQueryTag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PaginatedQueryTag" }) as any as S.Schema<PaginatedQueryTag>;
 
 export type ListBranchQueryTagSummariesRequestTagsList = Array<string>;
-export const ListBranchQueryTagSummariesRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListBranchQueryTagSummariesRequestTagsList>;
+export const ListBranchQueryTagSummariesRequestTagsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<ListBranchQueryTagSummariesRequestTagsList>;
 
 export type ListBranchQueryTagSummariesRequestPeriod =
   | "15m"
@@ -15877,9 +15466,8 @@ export type ListBranchQueryTagSummariesRequestType = "SELECT" | "INSERT" | "UPDA
 export const ListBranchQueryTagSummariesRequestType = S.String;
 
 export type ListBranchQueryTagSummariesRequestFieldsList = Array<string>;
-export const ListBranchQueryTagSummariesRequestFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListBranchQueryTagSummariesRequestFieldsList>;
+export const ListBranchQueryTagSummariesRequestFieldsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<ListBranchQueryTagSummariesRequestFieldsList>;
 
 export interface ListBranchQueryTagSummariesRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -15945,59 +15533,47 @@ export const ListBranchQueryTagSummariesRequest = /*@__PURE__*/ S.suspend(() =>
 export type PaginatedDimensionsQuerySummaryDataItemDimensionsMap = {
   [key: string]: unknown | undefined;
 };
-export const PaginatedDimensionsQuerySummaryDataItemDimensionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemDimensionsMap>;
+export const PaginatedDimensionsQuerySummaryDataItemDimensionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemDimensionsMap>;
 
 /** Tables accessed by the query */
 export type PaginatedDimensionsQuerySummaryDataItemTablesList = Array<string>;
-export const PaginatedDimensionsQuerySummaryDataItemTablesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemTablesList>;
+export const PaginatedDimensionsQuerySummaryDataItemTablesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemTablesList>;
 
 /** Fully qualified tables accessed by the query */
 export type PaginatedDimensionsQuerySummaryDataItemQualifiedTablesList = Array<string>;
-export const PaginatedDimensionsQuerySummaryDataItemQualifiedTablesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemQualifiedTablesList>;
+export const PaginatedDimensionsQuerySummaryDataItemQualifiedTablesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemQualifiedTablesList>;
 
 /** Keyspaces or schemas accessed by the query */
 export type PaginatedDimensionsQuerySummaryDataItemTableKeyspacesList = Array<string>;
-export const PaginatedDimensionsQuerySummaryDataItemTableKeyspacesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemTableKeyspacesList>;
+export const PaginatedDimensionsQuerySummaryDataItemTableKeyspacesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemTableKeyspacesList>;
 
 export type PaginatedDimensionsQuerySummaryDataItemIndexUsagesItemMap = {
   [key: string]: unknown | undefined;
 };
-export const PaginatedDimensionsQuerySummaryDataItemIndexUsagesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemIndexUsagesItemMap>;
+export const PaginatedDimensionsQuerySummaryDataItemIndexUsagesItemMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemIndexUsagesItemMap>;
 
 /** Index usage information */
 export type PaginatedDimensionsQuerySummaryDataItemIndexUsagesList =
   Array<PaginatedDimensionsQuerySummaryDataItemIndexUsagesItemMap>;
-export const PaginatedDimensionsQuerySummaryDataItemIndexUsagesList = /*@__PURE__*/ S.Array(
-  PaginatedDimensionsQuerySummaryDataItemIndexUsagesItemMap,
-) as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemIndexUsagesList>;
+export const PaginatedDimensionsQuerySummaryDataItemIndexUsagesList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemIndexUsagesList>;
 
 export type PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesItemMap = {
   [key: string]: unknown | undefined;
 };
 export const PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesItemMap>;
+  DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesItemMap>;
 
 /** Routing index usage information */
 export type PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesList =
   Array<PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesItemMap>;
-export const PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesList = /*@__PURE__*/ S.Array(
-  PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesItemMap,
-) as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesList>;
+export const PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesList =
+  DatabaseDeployRequestDeploymentSequentialDiffDependenciesList as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesList>;
 
 export interface PaginatedDimensionsQuerySummaryDataItem {
   /** The tag names and values this summary is grouped by */
@@ -16362,9 +15938,8 @@ export const ListBranchVitessParametersResponseVtgateItemComponent = S.String;
 
 /** The allowed values for `select` parameters */
 export type ListBranchVitessParametersResponseVtgateItemOptionsList = Array<string>;
-export const ListBranchVitessParametersResponseVtgateItemOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListBranchVitessParametersResponseVtgateItemOptionsList>;
+export const ListBranchVitessParametersResponseVtgateItemOptionsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<ListBranchVitessParametersResponseVtgateItemOptionsList>;
 
 export interface ListBranchVitessParametersResponseVtgateItem {
   /** The object type. Always "VitessParameterDefinition". */
@@ -16422,9 +15997,8 @@ export const ListBranchVitessParametersResponseKeyspacesValueVttabletList = /*@_
 
 /** The MySQL parameters for the keyspace */
 export type ListBranchVitessParametersResponseKeyspacesValueMysqldList = Array<unknown>;
-export const ListBranchVitessParametersResponseKeyspacesValueMysqldList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ListBranchVitessParametersResponseKeyspacesValueMysqldList>;
+export const ListBranchVitessParametersResponseKeyspacesValueMysqldList =
+  ListBranchVitessParametersResponseKeyspacesValueVttabletList as any as S.Schema<ListBranchVitessParametersResponseKeyspacesValueMysqldList>;
 
 export interface ListBranchVitessParametersResponseKeyspacesValue {
   /** The VTTablet parameters for the keyspace */
@@ -16604,9 +16178,8 @@ export const ListDatabasePostgresCidrsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of CIDR ranges */
 export type PaginatedPostgresClusterCidrDataItemCidrsList = Array<string>;
-export const PaginatedPostgresClusterCidrDataItemCidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaginatedPostgresClusterCidrDataItemCidrsList>;
+export const PaginatedPostgresClusterCidrDataItemCidrsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedPostgresClusterCidrDataItemCidrsList>;
 
 export type PaginatedPostgresClusterCidrDataItemActor = OrganizationTeamMembershipActor;
 export const PaginatedPostgresClusterCidrDataItemActor = OrganizationTeamMembershipActor;
@@ -16718,9 +16291,8 @@ export const ListDatabaseRegionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Public IP addresses for the region */
 export type PaginatedPlanetscaleRegionDataItemPublicIpAddressesList = Array<string>;
-export const PaginatedPlanetscaleRegionDataItemPublicIpAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaginatedPlanetscaleRegionDataItemPublicIpAddressesList>;
+export const PaginatedPlanetscaleRegionDataItemPublicIpAddressesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedPlanetscaleRegionDataItemPublicIpAddressesList>;
 
 export interface PaginatedPlanetscaleRegionDataItem {
   /** The ID of the region */
@@ -16746,23 +16318,8 @@ export interface PaginatedPlanetscaleRegionDataItem {
   /** Whether the region supports Neki databases */
   neki_supported: boolean;
 }
-export const PaginatedPlanetscaleRegionDataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    provider: S.String,
-    enabled: S.Boolean,
-    public_ip_addresses: PaginatedPlanetscaleRegionDataItemPublicIpAddressesList,
-    display_name: S.String,
-    location: S.String,
-    slug: S.String,
-    current_default: S.Boolean,
-    mysql_supported: S.Boolean,
-    postgresql_supported: S.Boolean,
-    neki_supported: S.Boolean,
-  }),
-).annotate({
-  identifier: "PaginatedPlanetscaleRegionDataItem",
-}) as any as S.Schema<PaginatedPlanetscaleRegionDataItem>;
+export const PaginatedPlanetscaleRegionDataItem =
+  PostgresReadOnlyReplicaRegion as any as S.Schema<PaginatedPlanetscaleRegionDataItem>;
 
 export type PaginatedPlanetscaleRegionDataList = Array<PaginatedPlanetscaleRegionDataItem>;
 export const PaginatedPlanetscaleRegionDataList = /*@__PURE__*/ S.Array(
@@ -16822,9 +16379,8 @@ export const ListDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Public IP addresses for the region */
 export type PaginatedDatabaseDataItemRegionPublicIpAddressesList = Array<string>;
-export const PaginatedDatabaseDataItemRegionPublicIpAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaginatedDatabaseDataItemRegionPublicIpAddressesList>;
+export const PaginatedDatabaseDataItemRegionPublicIpAddressesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedDatabaseDataItemRegionPublicIpAddressesList>;
 
 export interface PaginatedDatabaseDataItemRegion {
   /** The ID of the region */
@@ -16850,23 +16406,8 @@ export interface PaginatedDatabaseDataItemRegion {
   /** Whether the region supports Neki databases */
   neki_supported: boolean;
 }
-export const PaginatedDatabaseDataItemRegion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    provider: S.String,
-    enabled: S.Boolean,
-    public_ip_addresses: PaginatedDatabaseDataItemRegionPublicIpAddressesList,
-    display_name: S.String,
-    location: S.String,
-    slug: S.String,
-    current_default: S.Boolean,
-    mysql_supported: S.Boolean,
-    postgresql_supported: S.Boolean,
-    neki_supported: S.Boolean,
-  }),
-).annotate({
-  identifier: "PaginatedDatabaseDataItemRegion",
-}) as any as S.Schema<PaginatedDatabaseDataItemRegion>;
+export const PaginatedDatabaseDataItemRegion =
+  PostgresReadOnlyReplicaRegion as any as S.Schema<PaginatedDatabaseDataItemRegion>;
 
 /** State of the database */
 export type PaginatedDatabaseDataItemState =
@@ -17122,10 +16663,7 @@ export type PaginatedPostgresReadOnlyReplicaChangeRequestDataItemParametersMap =
   [key: string]: unknown | undefined;
 };
 export const PaginatedPostgresReadOnlyReplicaChangeRequestDataItemParametersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<PaginatedPostgresReadOnlyReplicaChangeRequestDataItemParametersMap>;
+  DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap as any as S.Schema<PaginatedPostgresReadOnlyReplicaChangeRequestDataItemParametersMap>;
 
 /** The new storage type */
 export type PaginatedPostgresReadOnlyReplicaChangeRequestDataItemStorageType =
@@ -17141,10 +16679,7 @@ export type PaginatedPostgresReadOnlyReplicaChangeRequestDataItemPreviousParamet
   [key: string]: unknown | undefined;
 };
 export const PaginatedPostgresReadOnlyReplicaChangeRequestDataItemPreviousParametersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<PaginatedPostgresReadOnlyReplicaChangeRequestDataItemPreviousParametersMap>;
+  DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap as any as S.Schema<PaginatedPostgresReadOnlyReplicaChangeRequestDataItemPreviousParametersMap>;
 
 export type PaginatedPostgresReadOnlyReplicaChangeRequestDataItemActor =
   OrganizationTeamMembershipActor;
@@ -17369,9 +16904,8 @@ export const PaginatedDeployOperationDataItemState = S.String;
 
 /** Names of foreign keys removed by this operation */
 export type PaginatedDeployOperationDataItemRemovedForeignKeyNamesList = Array<string>;
-export const PaginatedDeployOperationDataItemRemovedForeignKeyNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaginatedDeployOperationDataItemRemovedForeignKeyNamesList>;
+export const PaginatedDeployOperationDataItemRemovedForeignKeyNamesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedDeployOperationDataItemRemovedForeignKeyNamesList>;
 
 export interface PaginatedDeployOperationDataItem {
   /** The ID for the deploy operation */
@@ -17685,10 +17219,7 @@ export type PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeployments
   [key: string]: unknown | undefined;
 };
 export const PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeploymentsItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeploymentsItemMap>;
+  DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeploymentsItemMap>;
 
 /** The deployments ahead of this one in the queue */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeploymentsList =
@@ -17712,9 +17243,7 @@ export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsIte
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItemRemovedForeignKeyNamesList =
   Array<string>;
 export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItemRemovedForeignKeyNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItemRemovedForeignKeyNamesList>;
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItemRemovedForeignKeyNamesList>;
 
 export interface PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItem {
   /** The ID for the deploy operation */
@@ -17806,17 +17335,13 @@ export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSumm
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList =
   Array<string>;
 export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList>;
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList>;
 
 /** Names of shards in the keyspace modified by the deploy operation summary */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemShardNamesList =
   Array<string>;
 export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemShardNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemShardNamesList>;
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemShardNamesList>;
 
 /** The state of the deploy operation */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemOperationsItemState =
@@ -17946,71 +17471,51 @@ export type PaginatedDatabaseDeployRequestDataItemDeploymentLintErrorsItemMap = 
   [key: string]: unknown | undefined;
 };
 export const PaginatedDatabaseDeployRequestDataItemDeploymentLintErrorsItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentLintErrorsItemMap>;
+  DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentLintErrorsItemMap>;
 
 /** Schema lint errors preventing the deployment from completing */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentLintErrorsList =
   Array<PaginatedDatabaseDeployRequestDataItemDeploymentLintErrorsItemMap>;
-export const PaginatedDatabaseDeployRequestDataItemDeploymentLintErrorsList = /*@__PURE__*/ S.Array(
-  PaginatedDatabaseDeployRequestDataItemDeploymentLintErrorsItemMap,
-) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentLintErrorsList>;
+export const PaginatedDatabaseDeployRequestDataItemDeploymentLintErrorsList =
+  DatabaseDeployRequestDeploymentSequentialDiffDependenciesList as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentLintErrorsList>;
 
 export type PaginatedDatabaseDeployRequestDataItemDeploymentSequentialDiffDependenciesItemMap = {
   [key: string]: unknown | undefined;
 };
 export const PaginatedDatabaseDeployRequestDataItemDeploymentSequentialDiffDependenciesItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentSequentialDiffDependenciesItemMap>;
+  DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentSequentialDiffDependenciesItemMap>;
 
 /** The schema dependencies that must be satisfied */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentSequentialDiffDependenciesList =
   Array<PaginatedDatabaseDeployRequestDataItemDeploymentSequentialDiffDependenciesItemMap>;
 export const PaginatedDatabaseDeployRequestDataItemDeploymentSequentialDiffDependenciesList =
-  /*@__PURE__*/ S.Array(
-    PaginatedDatabaseDeployRequestDataItemDeploymentSequentialDiffDependenciesItemMap,
-  ) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentSequentialDiffDependenciesList>;
+  PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeploymentsList as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentSequentialDiffDependenciesList>;
 
 export type PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperationsItemMap = {
   [key: string]: unknown | undefined;
 };
 export const PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperationsItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperationsItemMap>;
+  DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperationsItemMap>;
 
 /** Lookup Vitess index operations */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperationsList =
   Array<PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperationsItemMap>;
 export const PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperationsList =
-  /*@__PURE__*/ S.Array(
-    PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperationsItemMap,
-  ) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperationsList>;
+  PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeploymentsList as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperationsList>;
 
 /** Deployment throttling configurations. */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentThrottlerConfigurationsMap = {
   [key: string]: unknown | undefined;
 };
 export const PaginatedDatabaseDeployRequestDataItemDeploymentThrottlerConfigurationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentThrottlerConfigurationsMap>;
+  DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentThrottlerConfigurationsMap>;
 
 /** The request to revert the schema operations in this deployment */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeploymentRevertRequestMap = {
   [key: string]: unknown | undefined;
 };
 export const PaginatedDatabaseDeployRequestDataItemDeploymentDeploymentRevertRequestMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentDeploymentRevertRequestMap>;
+  DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentDeploymentRevertRequestMap>;
 
 export type PaginatedDatabaseDeployRequestDataItemDeploymentActor = OrganizationTeamMembershipActor;
 export const PaginatedDatabaseDeployRequestDataItemDeploymentActor =
@@ -18321,9 +17826,8 @@ export const PostgresExtensionDefinitionParametersItemParameterType = S.String;
 
 /** Valid options for the parameter value */
 export type PostgresExtensionDefinitionParametersItemOptionsList = Array<string>;
-export const PostgresExtensionDefinitionParametersItemOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostgresExtensionDefinitionParametersItemOptionsList>;
+export const PostgresExtensionDefinitionParametersItemOptionsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PostgresExtensionDefinitionParametersItemOptionsList>;
 
 export type PostgresExtensionDefinitionParametersItemActor = OrganizationTeamMembershipActor;
 export const PostgresExtensionDefinitionParametersItemActor = OrganizationTeamMembershipActor;
@@ -18587,32 +18091,25 @@ export const PaginatedInsightsAgentRunDataItemState = S.String;
 
 /** The repository snapshot and analyzed commit */
 export type PaginatedInsightsAgentRunDataItemRepositoryMap = { [key: string]: unknown | undefined };
-export const PaginatedInsightsAgentRunDataItemRepositoryMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedInsightsAgentRunDataItemRepositoryMap>;
+export const PaginatedInsightsAgentRunDataItemRepositoryMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedInsightsAgentRunDataItemRepositoryMap>;
 
 /** The agent execution snapshot */
 export type PaginatedInsightsAgentRunDataItemAgentMap = { [key: string]: unknown | undefined };
-export const PaginatedInsightsAgentRunDataItemAgentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedInsightsAgentRunDataItemAgentMap>;
+export const PaginatedInsightsAgentRunDataItemAgentMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedInsightsAgentRunDataItemAgentMap>;
 
 export type PaginatedInsightsAgentRunDataItemSelectedTargetsItemMap = {
   [key: string]: unknown | undefined;
 };
-export const PaginatedInsightsAgentRunDataItemSelectedTargetsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedInsightsAgentRunDataItemSelectedTargetsItemMap>;
+export const PaginatedInsightsAgentRunDataItemSelectedTargetsItemMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedInsightsAgentRunDataItemSelectedTargetsItemMap>;
 
 /** The query patterns or schema recommendations selected for the run */
 export type PaginatedInsightsAgentRunDataItemSelectedTargetsList =
   Array<PaginatedInsightsAgentRunDataItemSelectedTargetsItemMap>;
-export const PaginatedInsightsAgentRunDataItemSelectedTargetsList = /*@__PURE__*/ S.Array(
-  PaginatedInsightsAgentRunDataItemSelectedTargetsItemMap,
-) as any as S.Schema<PaginatedInsightsAgentRunDataItemSelectedTargetsList>;
+export const PaginatedInsightsAgentRunDataItemSelectedTargetsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<PaginatedInsightsAgentRunDataItemSelectedTargetsList>;
 
 export interface PaginatedInsightsAgentRunDataItem {
   /** The Insights agent run ID */
@@ -18836,16 +18333,7 @@ export interface PaginatedInvoiceDataItem {
   /** Whether the invoice is past due and unpaid */
   overdue: boolean;
 }
-export const PaginatedInvoiceDataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    total: S.String,
-    billing_period_start: S.String,
-    billing_period_end: S.String,
-    paid: S.Boolean,
-    overdue: S.Boolean,
-  }),
-).annotate({ identifier: "PaginatedInvoiceDataItem" }) as any as S.Schema<PaginatedInvoiceDataItem>;
+export const PaginatedInvoiceDataItem = Invoice as any as S.Schema<PaginatedInvoiceDataItem>;
 
 export type PaginatedInvoiceDataList = Array<PaginatedInvoiceDataItem>;
 export const PaginatedInvoiceDataList = /*@__PURE__*/ S.Array(
@@ -18935,19 +18423,14 @@ export type PaginatedKeyspaceConfigChangeRequestDataItemPreviousOptionsMap = {
   [key: string]: unknown | undefined;
 };
 export const PaginatedKeyspaceConfigChangeRequestDataItemPreviousOptionsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<PaginatedKeyspaceConfigChangeRequestDataItemPreviousOptionsMap>;
+  DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap as any as S.Schema<PaginatedKeyspaceConfigChangeRequestDataItemPreviousOptionsMap>;
 
 /** The new option values */
 export type PaginatedKeyspaceConfigChangeRequestDataItemNewOptionsMap = {
   [key: string]: unknown | undefined;
 };
-export const PaginatedKeyspaceConfigChangeRequestDataItemNewOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedKeyspaceConfigChangeRequestDataItemNewOptionsMap>;
+export const PaginatedKeyspaceConfigChangeRequestDataItemNewOptionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedKeyspaceConfigChangeRequestDataItemNewOptionsMap>;
 
 export type PaginatedKeyspaceConfigChangeRequestDataItemActor = OrganizationTeamMembershipActor;
 export const PaginatedKeyspaceConfigChangeRequestDataItemActor = OrganizationTeamMembershipActor;
@@ -19273,19 +18756,15 @@ export const PaginatedDatabaseBranchKeyspaceDataItemThrottler = DatabaseBranchKe
 export type PaginatedDatabaseBranchKeyspaceDataItemMysqldOptionsMap = {
   [key: string]: unknown | undefined;
 };
-export const PaginatedDatabaseBranchKeyspaceDataItemMysqldOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedDatabaseBranchKeyspaceDataItemMysqldOptionsMap>;
+export const PaginatedDatabaseBranchKeyspaceDataItemMysqldOptionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedDatabaseBranchKeyspaceDataItemMysqldOptionsMap>;
 
 /** VTTablet configuration options */
 export type PaginatedDatabaseBranchKeyspaceDataItemVttabletOptionsMap = {
   [key: string]: unknown | undefined;
 };
-export const PaginatedDatabaseBranchKeyspaceDataItemVttabletOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedDatabaseBranchKeyspaceDataItemVttabletOptionsMap>;
+export const PaginatedDatabaseBranchKeyspaceDataItemVttabletOptionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedDatabaseBranchKeyspaceDataItemVttabletOptionsMap>;
 
 export interface PaginatedDatabaseBranchKeyspaceDataItem {
   /** The ID of the keyspace */
@@ -19679,17 +19158,14 @@ export const ListMoveTablesWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListMoveTablesWorkflowsResponseDataWorkflowsItemMap = {
   [key: string]: unknown | undefined;
 };
-export const ListMoveTablesWorkflowsResponseDataWorkflowsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListMoveTablesWorkflowsResponseDataWorkflowsItemMap>;
+export const ListMoveTablesWorkflowsResponseDataWorkflowsItemMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<ListMoveTablesWorkflowsResponseDataWorkflowsItemMap>;
 
 /** MoveTables workflows reported by Vitess */
 export type ListMoveTablesWorkflowsResponseDataWorkflowsList =
   Array<ListMoveTablesWorkflowsResponseDataWorkflowsItemMap>;
-export const ListMoveTablesWorkflowsResponseDataWorkflowsList = /*@__PURE__*/ S.Array(
-  ListMoveTablesWorkflowsResponseDataWorkflowsItemMap,
-) as any as S.Schema<ListMoveTablesWorkflowsResponseDataWorkflowsList>;
+export const ListMoveTablesWorkflowsResponseDataWorkflowsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<ListMoveTablesWorkflowsResponseDataWorkflowsList>;
 
 export interface ListMoveTablesWorkflowsResponseData {
   /** MoveTables workflows reported by Vitess */
@@ -19715,14 +19191,12 @@ export const ListMoveTablesWorkflowsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMoveTablesWorkflowsResponse>;
 
 export type ListNekiChangeRequestsRequestStateList = Array<string>;
-export const ListNekiChangeRequestsRequestStateList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListNekiChangeRequestsRequestStateList>;
+export const ListNekiChangeRequestsRequestStateList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<ListNekiChangeRequestsRequestStateList>;
 
 export type ListNekiChangeRequestsRequestTargetTypesList = Array<string>;
-export const ListNekiChangeRequestsRequestTargetTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListNekiChangeRequestsRequestTargetTypesList>;
+export const ListNekiChangeRequestsRequestTargetTypesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<ListNekiChangeRequestsRequestTargetTypesList>;
 
 export type ListNekiChangeRequestsRequestPeriod =
   | "15m"
@@ -19817,31 +19291,25 @@ export const PaginatedNekiChangeRequestDataItemTargetType = S.String;
 export type PaginatedNekiChangeRequestDataItemParametersMap = {
   [key: string]: unknown | undefined;
 };
-export const PaginatedNekiChangeRequestDataItemParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedNekiChangeRequestDataItemParametersMap>;
+export const PaginatedNekiChangeRequestDataItemParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedNekiChangeRequestDataItemParametersMap>;
 
 /** The target resource parameters before the change */
 export type PaginatedNekiChangeRequestDataItemPreviousParametersMap = {
   [key: string]: unknown | undefined;
 };
-export const PaginatedNekiChangeRequestDataItemPreviousParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedNekiChangeRequestDataItemPreviousParametersMap>;
+export const PaginatedNekiChangeRequestDataItemPreviousParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedNekiChangeRequestDataItemPreviousParametersMap>;
 
 /** The cluster flags */
 export type PaginatedNekiChangeRequestDataItemFlagsList = Array<string>;
-export const PaginatedNekiChangeRequestDataItemFlagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaginatedNekiChangeRequestDataItemFlagsList>;
+export const PaginatedNekiChangeRequestDataItemFlagsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedNekiChangeRequestDataItemFlagsList>;
 
 /** The previous cluster flags */
 export type PaginatedNekiChangeRequestDataItemPreviousFlagsList = Array<string>;
-export const PaginatedNekiChangeRequestDataItemPreviousFlagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaginatedNekiChangeRequestDataItemPreviousFlagsList>;
+export const PaginatedNekiChangeRequestDataItemPreviousFlagsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedNekiChangeRequestDataItemPreviousFlagsList>;
 
 export type PaginatedNekiChangeRequestDataItemStorage = NekiShardConfigurationProfileStorage;
 export const PaginatedNekiChangeRequestDataItemStorage = NekiShardConfigurationProfileStorage;
@@ -20082,34 +19550,27 @@ export const ListOauthApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type PaginatedOauthApplicationDataItemScopesByResourceMap = {
   [key: string]: unknown | undefined;
 };
-export const PaginatedOauthApplicationDataItemScopesByResourceMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedOauthApplicationDataItemScopesByResourceMap>;
+export const PaginatedOauthApplicationDataItemScopesByResourceMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedOauthApplicationDataItemScopesByResourceMap>;
 
 /** All available scopes grouped by resource type with scope, description, selected, and admin flags */
 export type PaginatedOauthApplicationDataItemAllScopesByResourceMap = {
   [key: string]: unknown | undefined;
 };
-export const PaginatedOauthApplicationDataItemAllScopesByResourceMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedOauthApplicationDataItemAllScopesByResourceMap>;
+export const PaginatedOauthApplicationDataItemAllScopesByResourceMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedOauthApplicationDataItemAllScopesByResourceMap>;
 
 export type PaginatedOauthApplicationDataItemMcpToolGroupsItemMap = {
   [key: string]: unknown | undefined;
 };
-export const PaginatedOauthApplicationDataItemMcpToolGroupsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedOauthApplicationDataItemMcpToolGroupsItemMap>;
+export const PaginatedOauthApplicationDataItemMcpToolGroupsItemMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedOauthApplicationDataItemMcpToolGroupsItemMap>;
 
 /** MCP tool groups (id, label, section, tools, scopes, parent_id, default_enabled, roles) selectable when authorizing a DCR app; only present for DCR apps. Database-section groups also carry org_scopes (the organization-tier scope names granting the group across all databases in an organization) and org_roles (the organization roles allowed to grant them); both are null for organization-section groups */
 export type PaginatedOauthApplicationDataItemMcpToolGroupsList =
   Array<PaginatedOauthApplicationDataItemMcpToolGroupsItemMap>;
-export const PaginatedOauthApplicationDataItemMcpToolGroupsList = /*@__PURE__*/ S.Array(
-  PaginatedOauthApplicationDataItemMcpToolGroupsItemMap,
-) as any as S.Schema<PaginatedOauthApplicationDataItemMcpToolGroupsList>;
+export const PaginatedOauthApplicationDataItemMcpToolGroupsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<PaginatedOauthApplicationDataItemMcpToolGroupsList>;
 
 export interface PaginatedOauthApplicationDataItem {
   /** The ID of the app */
@@ -20248,9 +19709,8 @@ export const PaginatedServiceTokenDataItemServiceTokenAccessesItem =
 
 export type PaginatedServiceTokenDataItemServiceTokenAccessesList =
   Array<ServiceTokenServiceTokenAccessesItem>;
-export const PaginatedServiceTokenDataItemServiceTokenAccessesList = /*@__PURE__*/ S.Array(
-  ServiceTokenServiceTokenAccessesItem,
-) as any as S.Schema<PaginatedServiceTokenDataItemServiceTokenAccessesList>;
+export const PaginatedServiceTokenDataItemServiceTokenAccessesList =
+  ServiceTokenServiceTokenAccessesList as any as S.Schema<PaginatedServiceTokenDataItemServiceTokenAccessesList>;
 
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabasesItem =
   ServiceTokenOauthAccessesByResourceDatabaseDatabasesItem;
@@ -20298,9 +19758,7 @@ export const PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrg
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsList =
   Array<ServiceTokenOauthAccessesByResourceOrganizationOrganizationsItem>;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsList =
-  /*@__PURE__*/ S.Array(
-    ServiceTokenOauthAccessesByResourceOrganizationOrganizationsItem,
-  ) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsList>;
+  ServiceTokenOauthAccessesByResourceOrganizationOrganizationsList as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsList>;
 
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesItem =
   ServiceTokenOauthAccessesByResourceDatabaseAccessesItem;
@@ -20310,9 +19768,7 @@ export const PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAcc
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesList =
   Array<ServiceTokenOauthAccessesByResourceDatabaseAccessesItem>;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesList =
-  /*@__PURE__*/ S.Array(
-    ServiceTokenOauthAccessesByResourceDatabaseAccessesItem,
-  ) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesList>;
+  PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesList as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesList>;
 
 export interface PaginatedServiceTokenDataItemOauthAccessesByResourceOrganization {
   organizations: PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsList;
@@ -20349,9 +19805,7 @@ export const PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesI
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesList =
   Array<ServiceTokenOauthAccessesByResourceDatabaseAccessesItem>;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesList =
-  /*@__PURE__*/ S.Array(
-    ServiceTokenOauthAccessesByResourceDatabaseAccessesItem,
-  ) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesList>;
+  PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesList as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesList>;
 
 export interface PaginatedServiceTokenDataItemOauthAccessesByResourceBranch {
   branches: PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesList;
@@ -20387,9 +19841,7 @@ export const PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesIte
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesList =
   Array<ServiceTokenOauthAccessesByResourceDatabaseAccessesItem>;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesList =
-  /*@__PURE__*/ S.Array(
-    ServiceTokenOauthAccessesByResourceDatabaseAccessesItem,
-  ) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesList>;
+  PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesList as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesList>;
 
 export interface PaginatedServiceTokenDataItemOauthAccessesByResourceUser {
   users: PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersList;
@@ -20750,10 +20202,8 @@ export const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Features that can be enabled on the organization */
 export type PaginatedOrganizationDataItemFeaturesMap = { [key: string]: unknown | undefined };
-export const PaginatedOrganizationDataItemFeaturesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedOrganizationDataItemFeaturesMap>;
+export const PaginatedOrganizationDataItemFeaturesMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedOrganizationDataItemFeaturesMap>;
 
 export interface PaginatedOrganizationDataItem {
   /** The ID for the organization */
@@ -20931,25 +20381,19 @@ export const PaginatedOrganizationTeamMembershipDataItemPasswordsItemRole = S.St
 /** List of IP addresses or CIDR ranges that can use this password */
 export type PaginatedOrganizationTeamMembershipDataItemPasswordsItemCidrsList = Array<string>;
 export const PaginatedOrganizationTeamMembershipDataItemPasswordsItemCidrsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PaginatedOrganizationTeamMembershipDataItemPasswordsItemCidrsList>;
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<PaginatedOrganizationTeamMembershipDataItemPasswordsItemCidrsList>;
 
 /** The list of hosts in each availability zone providing direct access to a vtgate */
 export type PaginatedOrganizationTeamMembershipDataItemPasswordsItemDirectVtgateAddressesList =
   Array<string>;
 export const PaginatedOrganizationTeamMembershipDataItemPasswordsItemDirectVtgateAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PaginatedOrganizationTeamMembershipDataItemPasswordsItemDirectVtgateAddressesList>;
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<PaginatedOrganizationTeamMembershipDataItemPasswordsItemDirectVtgateAddressesList>;
 
 /** The read-only replica host URLs */
 export type PaginatedOrganizationTeamMembershipDataItemPasswordsItemAccessHostRegionalUrlsList =
   Array<string>;
 export const PaginatedOrganizationTeamMembershipDataItemPasswordsItemAccessHostRegionalUrlsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PaginatedOrganizationTeamMembershipDataItemPasswordsItemAccessHostRegionalUrlsList>;
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<PaginatedOrganizationTeamMembershipDataItemPasswordsItemAccessHostRegionalUrlsList>;
 
 export type PaginatedOrganizationTeamMembershipDataItemPasswordsItemActor =
   OrganizationTeamMembershipActor;
@@ -20960,9 +20404,7 @@ export const PaginatedOrganizationTeamMembershipDataItemPasswordsItemActor =
 export type PaginatedOrganizationTeamMembershipDataItemPasswordsItemRegionPublicIpAddressesList =
   Array<string>;
 export const PaginatedOrganizationTeamMembershipDataItemPasswordsItemRegionPublicIpAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PaginatedOrganizationTeamMembershipDataItemPasswordsItemRegionPublicIpAddressesList>;
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<PaginatedOrganizationTeamMembershipDataItemPasswordsItemRegionPublicIpAddressesList>;
 
 export interface PaginatedOrganizationTeamMembershipDataItemPasswordsItemRegion {
   /** The ID of the region */
@@ -21198,26 +20640,23 @@ export type PaginatedOrganizationTeamDataItemMembersItem = OrganizationTeamMembe
 export const PaginatedOrganizationTeamDataItemMembersItem = OrganizationTeamMembershipUser;
 
 export type PaginatedOrganizationTeamDataItemMembersList = Array<OrganizationTeamMembershipUser>;
-export const PaginatedOrganizationTeamDataItemMembersList = /*@__PURE__*/ S.Array(
-  OrganizationTeamMembershipUser,
-) as any as S.Schema<PaginatedOrganizationTeamDataItemMembersList>;
+export const PaginatedOrganizationTeamDataItemMembersList =
+  OrganizationTeamMembersList as any as S.Schema<PaginatedOrganizationTeamDataItemMembersList>;
 
 export type PaginatedOrganizationTeamDataItemDatabasesItem = OrganizationTeamDatabasesItem;
 export const PaginatedOrganizationTeamDataItemDatabasesItem = OrganizationTeamDatabasesItem;
 
 export type PaginatedOrganizationTeamDataItemDatabasesList = Array<OrganizationTeamDatabasesItem>;
-export const PaginatedOrganizationTeamDataItemDatabasesList = /*@__PURE__*/ S.Array(
-  OrganizationTeamDatabasesItem,
-) as any as S.Schema<PaginatedOrganizationTeamDataItemDatabasesList>;
+export const PaginatedOrganizationTeamDataItemDatabasesList =
+  OrganizationTeamDatabasesList as any as S.Schema<PaginatedOrganizationTeamDataItemDatabasesList>;
 
 export type PaginatedOrganizationTeamDataItemAnalystDatabasesItem = OrganizationTeamDatabasesItem;
 export const PaginatedOrganizationTeamDataItemAnalystDatabasesItem = OrganizationTeamDatabasesItem;
 
 export type PaginatedOrganizationTeamDataItemAnalystDatabasesList =
   Array<OrganizationTeamDatabasesItem>;
-export const PaginatedOrganizationTeamDataItemAnalystDatabasesList = /*@__PURE__*/ S.Array(
-  OrganizationTeamDatabasesItem,
-) as any as S.Schema<PaginatedOrganizationTeamDataItemAnalystDatabasesList>;
+export const PaginatedOrganizationTeamDataItemAnalystDatabasesList =
+  OrganizationTeamDatabasesList as any as S.Schema<PaginatedOrganizationTeamDataItemAnalystDatabasesList>;
 
 export interface PaginatedOrganizationTeamDataItem {
   /** The ID of the team */
@@ -21344,9 +20783,8 @@ export const PostgresClusterParameterParameterType = S.String;
 
 /** Valid options for the parameter value */
 export type PostgresClusterParameterOptionsList = Array<string>;
-export const PostgresClusterParameterOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostgresClusterParameterOptionsList>;
+export const PostgresClusterParameterOptionsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PostgresClusterParameterOptionsList>;
 
 export type PostgresClusterParameterActor = OrganizationTeamMembershipActor;
 export const PostgresClusterParameterActor = OrganizationTeamMembershipActor;
@@ -21471,23 +20909,18 @@ export const PaginatedDatabaseBranchPasswordDataItemRole = S.String;
 
 /** List of IP addresses or CIDR ranges that can use this password */
 export type PaginatedDatabaseBranchPasswordDataItemCidrsList = Array<string>;
-export const PaginatedDatabaseBranchPasswordDataItemCidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaginatedDatabaseBranchPasswordDataItemCidrsList>;
+export const PaginatedDatabaseBranchPasswordDataItemCidrsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedDatabaseBranchPasswordDataItemCidrsList>;
 
 /** The list of hosts in each availability zone providing direct access to a vtgate */
 export type PaginatedDatabaseBranchPasswordDataItemDirectVtgateAddressesList = Array<string>;
 export const PaginatedDatabaseBranchPasswordDataItemDirectVtgateAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PaginatedDatabaseBranchPasswordDataItemDirectVtgateAddressesList>;
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<PaginatedDatabaseBranchPasswordDataItemDirectVtgateAddressesList>;
 
 /** The read-only replica host URLs */
 export type PaginatedDatabaseBranchPasswordDataItemAccessHostRegionalUrlsList = Array<string>;
 export const PaginatedDatabaseBranchPasswordDataItemAccessHostRegionalUrlsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PaginatedDatabaseBranchPasswordDataItemAccessHostRegionalUrlsList>;
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<PaginatedDatabaseBranchPasswordDataItemAccessHostRegionalUrlsList>;
 
 export type PaginatedDatabaseBranchPasswordDataItemActor = OrganizationTeamMembershipActor;
 export const PaginatedDatabaseBranchPasswordDataItemActor = OrganizationTeamMembershipActor;
@@ -21495,9 +20928,7 @@ export const PaginatedDatabaseBranchPasswordDataItemActor = OrganizationTeamMemb
 /** Public IP addresses for the region */
 export type PaginatedDatabaseBranchPasswordDataItemRegionPublicIpAddressesList = Array<string>;
 export const PaginatedDatabaseBranchPasswordDataItemRegionPublicIpAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PaginatedDatabaseBranchPasswordDataItemRegionPublicIpAddressesList>;
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<PaginatedDatabaseBranchPasswordDataItemRegionPublicIpAddressesList>;
 
 export interface PaginatedDatabaseBranchPasswordDataItemRegion {
   /** The ID of the region */
@@ -21523,23 +20954,8 @@ export interface PaginatedDatabaseBranchPasswordDataItemRegion {
   /** Whether the region supports Neki databases */
   neki_supported: boolean;
 }
-export const PaginatedDatabaseBranchPasswordDataItemRegion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    provider: S.String,
-    enabled: S.Boolean,
-    public_ip_addresses: PaginatedDatabaseBranchPasswordDataItemRegionPublicIpAddressesList,
-    display_name: S.String,
-    location: S.String,
-    slug: S.String,
-    current_default: S.Boolean,
-    mysql_supported: S.Boolean,
-    postgresql_supported: S.Boolean,
-    neki_supported: S.Boolean,
-  }),
-).annotate({
-  identifier: "PaginatedDatabaseBranchPasswordDataItemRegion",
-}) as any as S.Schema<PaginatedDatabaseBranchPasswordDataItemRegion>;
+export const PaginatedDatabaseBranchPasswordDataItemRegion =
+  OrganizationTeamMembershipPasswordsItemRegion as any as S.Schema<PaginatedDatabaseBranchPasswordDataItemRegion>;
 
 export type PaginatedDatabaseBranchPasswordDataItemDatabaseBranch =
   OrganizationTeamMembershipPasswordsItemDatabaseBranch;
@@ -21730,9 +21146,7 @@ export const ListPublicRegionsRequest = /*@__PURE__*/ S.suspend(() =>
 /** List of public IP addresses for the region */
 export type PaginatedPublicPlanetscaleRegionSerializerDataItemPublicIpAddressesList = Array<string>;
 export const PaginatedPublicPlanetscaleRegionSerializerDataItemPublicIpAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PaginatedPublicPlanetscaleRegionSerializerDataItemPublicIpAddressesList>;
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<PaginatedPublicPlanetscaleRegionSerializerDataItemPublicIpAddressesList>;
 
 export interface PaginatedPublicPlanetscaleRegionSerializerDataItem {
   /** The ID of the region */
@@ -21836,9 +21250,7 @@ export const PaginatedDatabaseBranchReadOnlyRegionDataItemActor = OrganizationTe
 export type PaginatedDatabaseBranchReadOnlyRegionDataItemRegionPublicIpAddressesList =
   Array<string>;
 export const PaginatedDatabaseBranchReadOnlyRegionDataItemRegionPublicIpAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PaginatedDatabaseBranchReadOnlyRegionDataItemRegionPublicIpAddressesList>;
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<PaginatedDatabaseBranchReadOnlyRegionDataItemRegionPublicIpAddressesList>;
 
 export interface PaginatedDatabaseBranchReadOnlyRegionDataItemRegion {
   /** The ID of the region */
@@ -21864,23 +21276,8 @@ export interface PaginatedDatabaseBranchReadOnlyRegionDataItemRegion {
   /** Whether the region supports Neki databases */
   neki_supported: boolean;
 }
-export const PaginatedDatabaseBranchReadOnlyRegionDataItemRegion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    provider: S.String,
-    enabled: S.Boolean,
-    public_ip_addresses: PaginatedDatabaseBranchReadOnlyRegionDataItemRegionPublicIpAddressesList,
-    display_name: S.String,
-    location: S.String,
-    slug: S.String,
-    current_default: S.Boolean,
-    mysql_supported: S.Boolean,
-    postgresql_supported: S.Boolean,
-    neki_supported: S.Boolean,
-  }),
-).annotate({
-  identifier: "PaginatedDatabaseBranchReadOnlyRegionDataItemRegion",
-}) as any as S.Schema<PaginatedDatabaseBranchReadOnlyRegionDataItemRegion>;
+export const PaginatedDatabaseBranchReadOnlyRegionDataItemRegion =
+  OrganizationTeamMembershipPasswordsItemRegion as any as S.Schema<PaginatedDatabaseBranchReadOnlyRegionDataItemRegion>;
 
 export interface PaginatedDatabaseBranchReadOnlyRegionDataItem {
   /** The ID of the read-only region */
@@ -22235,11 +21632,8 @@ export const ListRouterChangeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRouterChangeRequestsRequest>;
 
 export interface ListRouterChangeRequestsResponse {}
-export const ListRouterChangeRequestsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ListRouterChangeRequestsResponse",
-}) as any as S.Schema<ListRouterChangeRequestsResponse>;
+export const ListRouterChangeRequestsResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<ListRouterChangeRequestsResponse>;
 
 export interface ListRouterParametersRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -22269,16 +21663,12 @@ export const ListRouterParametersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRouterParametersRequest>;
 
 export type ListRouterParametersResponseBodyList = Array<NekiParameter>;
-export const ListRouterParametersResponseBodyList = /*@__PURE__*/ S.Array(
-  NekiParameter,
-) as any as S.Schema<ListRouterParametersResponseBodyList>;
+export const ListRouterParametersResponseBodyList =
+  ListAdminParametersResponseBodyList as any as S.Schema<ListRouterParametersResponseBodyList>;
 
 export type ListRouterParametersResponse = ListRouterParametersResponseBodyList;
-export const ListRouterParametersResponse = /*@__PURE__*/ S.suspend(() =>
-  ListRouterParametersResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListRouterParametersResponse",
-}) as any as S.Schema<ListRouterParametersResponse>;
+export const ListRouterParametersResponse =
+  ListAdminParametersResponse as any as S.Schema<ListRouterParametersResponse>;
 
 export interface ListRoutersRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -22574,11 +21964,8 @@ export const ListShardConfigurationProfileChangeRequestsRequest = /*@__PURE__*/ 
 }) as any as S.Schema<ListShardConfigurationProfileChangeRequestsRequest>;
 
 export interface ListShardConfigurationProfileChangeRequestsResponse {}
-export const ListShardConfigurationProfileChangeRequestsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ListShardConfigurationProfileChangeRequestsResponse",
-}) as any as S.Schema<ListShardConfigurationProfileChangeRequestsResponse>;
+export const ListShardConfigurationProfileChangeRequestsResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<ListShardConfigurationProfileChangeRequestsResponse>;
 
 export interface ListShardConfigurationProfileExtensionsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -22630,15 +22017,13 @@ export const NekiExtensionDefinitionParametersItemParameterType = S.String;
 
 /** Valid options for the parameter value. Null represents an unset value */
 export type NekiExtensionDefinitionParametersItemOptionsList = Array<string>;
-export const NekiExtensionDefinitionParametersItemOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NekiExtensionDefinitionParametersItemOptionsList>;
+export const NekiExtensionDefinitionParametersItemOptionsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<NekiExtensionDefinitionParametersItemOptionsList>;
 
 /** The units of the parameter value */
 export type NekiExtensionDefinitionParametersItemUnitsList = Array<string>;
-export const NekiExtensionDefinitionParametersItemUnitsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NekiExtensionDefinitionParametersItemUnitsList>;
+export const NekiExtensionDefinitionParametersItemUnitsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<NekiExtensionDefinitionParametersItemUnitsList>;
 
 export type NekiExtensionDefinitionParametersItemActor = OrganizationTeamMembershipActor;
 export const NekiExtensionDefinitionParametersItemActor = OrganizationTeamMembershipActor;
@@ -22790,17 +22175,13 @@ export const ListShardConfigurationProfileParametersRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListShardConfigurationProfileParametersRequest>;
 
 export type ListShardConfigurationProfileParametersResponseBodyList = Array<NekiParameter>;
-export const ListShardConfigurationProfileParametersResponseBodyList = /*@__PURE__*/ S.Array(
-  NekiParameter,
-) as any as S.Schema<ListShardConfigurationProfileParametersResponseBodyList>;
+export const ListShardConfigurationProfileParametersResponseBodyList =
+  ListAdminParametersResponseBodyList as any as S.Schema<ListShardConfigurationProfileParametersResponseBodyList>;
 
 export type ListShardConfigurationProfileParametersResponse =
   ListShardConfigurationProfileParametersResponseBodyList;
-export const ListShardConfigurationProfileParametersResponse = /*@__PURE__*/ S.suspend(() =>
-  ListShardConfigurationProfileParametersResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListShardConfigurationProfileParametersResponse",
-}) as any as S.Schema<ListShardConfigurationProfileParametersResponse>;
+export const ListShardConfigurationProfileParametersResponse =
+  ListAdminParametersResponse as any as S.Schema<ListShardConfigurationProfileParametersResponse>;
 
 export interface ListShardConfigurationProfilesRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -23031,11 +22412,8 @@ export const ListSidecarChangeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSidecarChangeRequestsRequest>;
 
 export interface ListSidecarChangeRequestsResponse {}
-export const ListSidecarChangeRequestsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ListSidecarChangeRequestsResponse",
-}) as any as S.Schema<ListSidecarChangeRequestsResponse>;
+export const ListSidecarChangeRequestsResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<ListSidecarChangeRequestsResponse>;
 
 export interface ListSidecarParametersRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -23065,16 +22443,12 @@ export const ListSidecarParametersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSidecarParametersRequest>;
 
 export type ListSidecarParametersResponseBodyList = Array<NekiParameter>;
-export const ListSidecarParametersResponseBodyList = /*@__PURE__*/ S.Array(
-  NekiParameter,
-) as any as S.Schema<ListSidecarParametersResponseBodyList>;
+export const ListSidecarParametersResponseBodyList =
+  ListAdminParametersResponseBodyList as any as S.Schema<ListSidecarParametersResponseBodyList>;
 
 export type ListSidecarParametersResponse = ListSidecarParametersResponseBodyList;
-export const ListSidecarParametersResponse = /*@__PURE__*/ S.suspend(() =>
-  ListSidecarParametersResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListSidecarParametersResponse",
-}) as any as S.Schema<ListSidecarParametersResponse>;
+export const ListSidecarParametersResponse =
+  ListAdminParametersResponse as any as S.Schema<ListSidecarParametersResponse>;
 
 export interface ListSidecarsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -23896,11 +23270,8 @@ export const MoveCompleteTablesWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MoveCompleteTablesWorkflowRequest>;
 
 export interface MoveCompleteTablesWorkflowResponse {}
-export const MoveCompleteTablesWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MoveCompleteTablesWorkflowResponse",
-}) as any as S.Schema<MoveCompleteTablesWorkflowResponse>;
+export const MoveCompleteTablesWorkflowResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<MoveCompleteTablesWorkflowResponse>;
 
 export interface MoveReverseTrafficTablesWorkflowRequest {
   /** Organization name */
@@ -23930,11 +23301,8 @@ export const MoveReverseTrafficTablesWorkflowRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<MoveReverseTrafficTablesWorkflowRequest>;
 
 export interface MoveReverseTrafficTablesWorkflowResponse {}
-export const MoveReverseTrafficTablesWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MoveReverseTrafficTablesWorkflowResponse",
-}) as any as S.Schema<MoveReverseTrafficTablesWorkflowResponse>;
+export const MoveReverseTrafficTablesWorkflowResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<MoveReverseTrafficTablesWorkflowResponse>;
 
 export interface MoveSwitchTrafficTablesWorkflowRequest {
   /** Organization name */
@@ -23964,11 +23332,8 @@ export const MoveSwitchTrafficTablesWorkflowRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<MoveSwitchTrafficTablesWorkflowRequest>;
 
 export interface MoveSwitchTrafficTablesWorkflowResponse {}
-export const MoveSwitchTrafficTablesWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MoveSwitchTrafficTablesWorkflowResponse",
-}) as any as S.Schema<MoveSwitchTrafficTablesWorkflowResponse>;
+export const MoveSwitchTrafficTablesWorkflowResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<MoveSwitchTrafficTablesWorkflowResponse>;
 
 export interface PromoteBranchRequest {
   /** The name of the organization the branch belongs to */
@@ -24023,9 +23388,8 @@ export const ReassignRoleObjectsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReassignRoleObjectsRequest>;
 
 export interface ReassignRoleObjectsResponse {}
-export const ReassignRoleObjectsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ReassignRoleObjectsResponse",
-}) as any as S.Schema<ReassignRoleObjectsResponse>;
+export const ReassignRoleObjectsResponse =
+  CreateShardResponse as any as S.Schema<ReassignRoleObjectsResponse>;
 
 export interface RemoveOrganizationMemberRequest {
   /** The name of the organization */
@@ -24051,11 +23415,8 @@ export const RemoveOrganizationMemberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveOrganizationMemberRequest>;
 
 export interface RemoveOrganizationMemberResponse {}
-export const RemoveOrganizationMemberResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveOrganizationMemberResponse",
-}) as any as S.Schema<RemoveOrganizationMemberResponse>;
+export const RemoveOrganizationMemberResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<RemoveOrganizationMemberResponse>;
 
 export interface RemoveOrganizationTeamMemberRequest {
   /** The name of the organization */
@@ -24085,11 +23446,8 @@ export const RemoveOrganizationTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveOrganizationTeamMemberRequest>;
 
 export interface RemoveOrganizationTeamMemberResponse {}
-export const RemoveOrganizationTeamMemberResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveOrganizationTeamMemberResponse",
-}) as any as S.Schema<RemoveOrganizationTeamMemberResponse>;
+export const RemoveOrganizationTeamMemberResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<RemoveOrganizationTeamMemberResponse>;
 
 export interface RenewPasswordRequest {
   /** The name of the organization the password belongs to */
@@ -24238,9 +23596,8 @@ export const RunBranchMaintenanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RunBranchMaintenanceRequest>;
 
 export interface RunBranchMaintenanceResponse {}
-export const RunBranchMaintenanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RunBranchMaintenanceResponse",
-}) as any as S.Schema<RunBranchMaintenanceResponse>;
+export const RunBranchMaintenanceResponse =
+  CreateShardResponse as any as S.Schema<RunBranchMaintenanceResponse>;
 
 export interface RunShardConfigurationProfileMaintenanceRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -24270,19 +23627,14 @@ export const RunShardConfigurationProfileMaintenanceRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<RunShardConfigurationProfileMaintenanceRequest>;
 
 export interface RunShardConfigurationProfileMaintenanceResponse {}
-export const RunShardConfigurationProfileMaintenanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RunShardConfigurationProfileMaintenanceResponse",
-}) as any as S.Schema<RunShardConfigurationProfileMaintenanceResponse>;
+export const RunShardConfigurationProfileMaintenanceResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<RunShardConfigurationProfileMaintenanceResponse>;
 
 /** The names of the shard configuration profiles to maintain */
 export type RunShardConfigurationProfilesMaintenanceRequestConfigurationProfileNamesList =
   Array<string>;
 export const RunShardConfigurationProfilesMaintenanceRequestConfigurationProfileNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RunShardConfigurationProfilesMaintenanceRequestConfigurationProfileNamesList>;
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<RunShardConfigurationProfilesMaintenanceRequestConfigurationProfileNamesList>;
 
 export interface RunShardConfigurationProfilesMaintenanceRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -24313,11 +23665,8 @@ export const RunShardConfigurationProfilesMaintenanceRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<RunShardConfigurationProfilesMaintenanceRequest>;
 
 export interface RunShardConfigurationProfilesMaintenanceResponse {}
-export const RunShardConfigurationProfilesMaintenanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RunShardConfigurationProfilesMaintenanceResponse",
-}) as any as S.Schema<RunShardConfigurationProfilesMaintenanceResponse>;
+export const RunShardConfigurationProfilesMaintenanceResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<RunShardConfigurationProfilesMaintenanceResponse>;
 
 export interface SetDefaultShardConfigurationProfileRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -24449,30 +23798,19 @@ export interface StopMoveTablesWorkflowResponseData {
   /** Human-readable summary of the stop result */
   summary?: string;
 }
-export const StopMoveTablesWorkflowResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    summary: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StopMoveTablesWorkflowResponseData",
-}) as any as S.Schema<StopMoveTablesWorkflowResponseData>;
+export const StopMoveTablesWorkflowResponseData =
+  StartMoveTablesWorkflowResponseData as any as S.Schema<StopMoveTablesWorkflowResponseData>;
 
 export interface StopMoveTablesWorkflowResponse {
   data: StopMoveTablesWorkflowResponseData;
 }
-export const StopMoveTablesWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: StopMoveTablesWorkflowResponseData,
-  }),
-).annotate({
-  identifier: "StopMoveTablesWorkflowResponse",
-}) as any as S.Schema<StopMoveTablesWorkflowResponse>;
+export const StopMoveTablesWorkflowResponse =
+  StartMoveTablesWorkflowResponse as any as S.Schema<StopMoveTablesWorkflowResponse>;
 
 /** The IDs of the draft config change requests to submit */
 export type SubmitBranchConfigChangeRequestsRequestIdsList = Array<string>;
-export const SubmitBranchConfigChangeRequestsRequestIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubmitBranchConfigChangeRequestsRequestIdsList>;
+export const SubmitBranchConfigChangeRequestsRequestIdsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<SubmitBranchConfigChangeRequestsRequestIdsList>;
 
 export interface SubmitBranchConfigChangeRequestsRequest {
   /** The name of the organization the branch belongs to */
@@ -24536,16 +23874,12 @@ export const TestWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TestWebhookRequest" }) as any as S.Schema<TestWebhookRequest>;
 
 export interface TestWebhookResponse {}
-export const TestWebhookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TestWebhookResponse",
-}) as any as S.Schema<TestWebhookResponse>;
+export const TestWebhookResponse = CreateShardResponse as any as S.Schema<TestWebhookResponse>;
 
 /** Admin parameters nested by namespace (e.g., {"admin": {"recovery-poll-interval": "10s"}}) */
 export type UpdateAdminRequestParametersMap = { [key: string]: unknown | undefined };
-export const UpdateAdminRequestParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateAdminRequestParametersMap>;
+export const UpdateAdminRequestParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<UpdateAdminRequestParametersMap>;
 
 export interface UpdateAdminRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -24720,10 +24054,8 @@ export const UpdateBackupPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Bouncer configuration parameters nested by namespace (e.g., {"pgbouncer": {"default_pool_size": "100"}}). Use the 'List cluster parameters' endpoint to retrieve available parameters. Only parameters with namespace 'pgbouncer' can be updated. */
 export type UpdateBouncerResizeRequestRequestParametersMap = { [key: string]: unknown | undefined };
-export const UpdateBouncerResizeRequestRequestParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateBouncerResizeRequestRequestParametersMap>;
+export const UpdateBouncerResizeRequestRequestParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<UpdateBouncerResizeRequestRequestParametersMap>;
 
 export interface UpdateBouncerResizeRequestRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -24774,10 +24106,8 @@ export const PostgresBouncerResizeRequestTarget = S.String;
 
 /** The bouncer parameters */
 export type PostgresBouncerResizeRequestParametersMap = { [key: string]: unknown | undefined };
-export const PostgresBouncerResizeRequestParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PostgresBouncerResizeRequestParametersMap>;
+export const PostgresBouncerResizeRequestParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PostgresBouncerResizeRequestParametersMap>;
 
 /** The backend target for the bouncer before the resize */
 export type PostgresBouncerResizeRequestPreviousTarget =
@@ -24790,10 +24120,8 @@ export const PostgresBouncerResizeRequestPreviousTarget = S.String;
 export type PostgresBouncerResizeRequestPreviousParametersMap = {
   [key: string]: unknown | undefined;
 };
-export const PostgresBouncerResizeRequestPreviousParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PostgresBouncerResizeRequestPreviousParametersMap>;
+export const PostgresBouncerResizeRequestPreviousParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PostgresBouncerResizeRequestPreviousParametersMap>;
 
 export type PostgresBouncerResizeRequestActor = OrganizationTeamMembershipActor;
 export const PostgresBouncerResizeRequestActor = OrganizationTeamMembershipActor;
@@ -24891,16 +24219,13 @@ export const UpdateBranchRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Extensions to enable. This replaces the current set; omit it to leave them unchanged. */
 export type UpdateBranchChangeRequestRequestExtensionsList = Array<string>;
-export const UpdateBranchChangeRequestRequestExtensionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateBranchChangeRequestRequestExtensionsList>;
+export const UpdateBranchChangeRequestRequestExtensionsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<UpdateBranchChangeRequestRequestExtensionsList>;
 
 /** Cluster configuration parameters nested by namespace (e.g., {"pgconf": {"max_connections": "200"}}). Use the 'List cluster parameters' endpoint to retrieve available parameters. Supported namespaces include 'patroni', 'pgconf', and 'pgbouncer'. */
 export type UpdateBranchChangeRequestRequestParametersMap = { [key: string]: unknown | undefined };
-export const UpdateBranchChangeRequestRequestParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateBranchChangeRequestRequestParametersMap>;
+export const UpdateBranchChangeRequestRequestParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<UpdateBranchChangeRequestRequestParametersMap>;
 
 export interface UpdateBranchChangeRequestRequestStorage {
   /** The minimum storage size in bytes. */
@@ -24995,11 +24320,8 @@ export const UpdateBranchClusterConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateBranchClusterConfigRequest>;
 
 export interface UpdateBranchClusterConfigResponse {}
-export const UpdateBranchClusterConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateBranchClusterConfigResponse",
-}) as any as S.Schema<UpdateBranchClusterConfigResponse>;
+export const UpdateBranchClusterConfigResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<UpdateBranchClusterConfigResponse>;
 
 export interface UpdateBranchResizeRequestRequest {
   /** The name of the organization the branch belongs to */
@@ -25042,9 +24364,8 @@ export const UpdateBranchResizeRequestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IPv4 CIDR ranges (e.g., ['192.168.1.0/24', '192.168.1.1/32']). Only provided fields will be updated. */
 export type UpdateDatabasePostgresCidrRequestCidrsList = Array<string>;
-export const UpdateDatabasePostgresCidrRequestCidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDatabasePostgresCidrRequestCidrsList>;
+export const UpdateDatabasePostgresCidrRequestCidrsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<UpdateDatabasePostgresCidrRequestCidrsList>;
 
 export interface UpdateDatabasePostgresCidrRequest {
   /** The name of the organization the database belongs to */
@@ -25144,9 +24465,8 @@ export const UpdateDatabaseSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** If specifying throttler ratios per keyspace, an array of { "keyspace_name": "mykeyspace", "ratio": 10 }, one for each eligible keyspace */
 export type UpdateDatabaseThrottlerRequestConfigurationsList = Array<string>;
-export const UpdateDatabaseThrottlerRequestConfigurationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDatabaseThrottlerRequestConfigurationsList>;
+export const UpdateDatabaseThrottlerRequestConfigurationsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<UpdateDatabaseThrottlerRequestConfigurationsList>;
 
 export interface UpdateDatabaseThrottlerRequest {
   /** The name of the organization that the throttled deploy requests belong to */
@@ -25177,10 +24497,8 @@ export const UpdateDatabaseThrottlerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The data topology JSON to set for the branch */
 export type UpdateDataTopologyRequestDataTopologyMap = { [key: string]: unknown | undefined };
-export const UpdateDataTopologyRequestDataTopologyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateDataTopologyRequestDataTopologyMap>;
+export const UpdateDataTopologyRequestDataTopologyMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<UpdateDataTopologyRequestDataTopologyMap>;
 
 export interface UpdateDataTopologyRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -25211,10 +24529,8 @@ export const UpdateDataTopologyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Configuration parameters nested by namespace (e.g., {"pgconf": {"max_connections": "300"}}). Values must be greater than or equal to the primary's. */
 export type UpdateDedicatedReadReplicaRequestParametersMap = { [key: string]: unknown | undefined };
-export const UpdateDedicatedReadReplicaRequestParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateDedicatedReadReplicaRequestParametersMap>;
+export const UpdateDedicatedReadReplicaRequestParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<UpdateDedicatedReadReplicaRequestParametersMap>;
 
 export type UpdateDedicatedReadReplicaRequestStorage = CreateDedicatedReadReplicaRequestStorage;
 export const UpdateDedicatedReadReplicaRequestStorage = CreateDedicatedReadReplicaRequestStorage;
@@ -25259,9 +24575,8 @@ export const UpdateDedicatedReadReplicaRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** If specifying throttler ratios per keyspace, an array of { "keyspace_name": "mykeyspace", "ratio": 10 }, one for each eligible keyspace */
 export type UpdateDeployRequestThrottlerRequestConfigurationsList = Array<string>;
-export const UpdateDeployRequestThrottlerRequestConfigurationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDeployRequestThrottlerRequestConfigurationsList>;
+export const UpdateDeployRequestThrottlerRequestConfigurationsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<UpdateDeployRequestThrottlerRequestConfigurationsList>;
 
 export interface UpdateDeployRequestThrottlerRequest {
   /** The name of the deploy request's organization */
@@ -25498,13 +24813,8 @@ export interface UpdateKeyspaceVschemaResponse {
   /** The keyspace's VSchema */
   raw: string;
 }
-export const UpdateKeyspaceVschemaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    raw: S.String,
-  }),
-).annotate({
-  identifier: "UpdateKeyspaceVschemaResponse",
-}) as any as S.Schema<UpdateKeyspaceVschemaResponse>;
+export const UpdateKeyspaceVschemaResponse =
+  GetKeyspaceVschemaResponse as any as S.Schema<UpdateKeyspaceVschemaResponse>;
 
 export interface UpdateOrganizationRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -25572,9 +24882,8 @@ export const UpdateOrganizationTeamRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IP addresses or CIDR ranges that can use this password */
 export type UpdatePasswordRequestCidrsList = Array<string>;
-export const UpdatePasswordRequestCidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdatePasswordRequestCidrsList>;
+export const UpdatePasswordRequestCidrsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<UpdatePasswordRequestCidrsList>;
 
 export interface UpdatePasswordRequest {
   /** The name of the organization the password belongs to */
@@ -25661,10 +24970,8 @@ export const UpdateRoleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Router parameters nested by namespace (e.g., {"router": {"replication-lag-tolerable-max": "15m"}}) */
 export type UpdateRouterRequestParametersMap = { [key: string]: unknown | undefined };
-export const UpdateRouterRequestParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateRouterRequestParametersMap>;
+export const UpdateRouterRequestParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<UpdateRouterRequestParametersMap>;
 
 export interface UpdateRouterRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -25762,24 +25069,19 @@ export const UpdateShardRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateShardRequest" }) as any as S.Schema<UpdateShardRequest>;
 
 export interface UpdateShardResponse {}
-export const UpdateShardResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateShardResponse",
-}) as any as S.Schema<UpdateShardResponse>;
+export const UpdateShardResponse = CreateShardResponse as any as S.Schema<UpdateShardResponse>;
 
 /** Extensions to enable. This replaces the current set; omit it to leave them unchanged. */
 export type UpdateShardConfigurationProfileRequestExtensionsList = Array<string>;
-export const UpdateShardConfigurationProfileRequestExtensionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateShardConfigurationProfileRequestExtensionsList>;
+export const UpdateShardConfigurationProfileRequestExtensionsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<UpdateShardConfigurationProfileRequestExtensionsList>;
 
 /** Configuration profile parameters nested by namespace (e.g., {"pgconf": {"max_connections": "200"}}). */
 export type UpdateShardConfigurationProfileRequestParametersMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateShardConfigurationProfileRequestParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateShardConfigurationProfileRequestParametersMap>;
+export const UpdateShardConfigurationProfileRequestParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<UpdateShardConfigurationProfileRequestParametersMap>;
 
 export type UpdateShardConfigurationProfileRequestStorage =
   CreateDedicatedReadReplicaRequestStorage;
@@ -25871,10 +25173,8 @@ export const UpdateShardConfigurationProfileShardRequest = /*@__PURE__*/ S.suspe
 
 /** Sidecar parameters nested by namespace (e.g., {"sidecar": {"pool-capacity": "100"}}) */
 export type UpdateSidecarRequestParametersMap = { [key: string]: unknown | undefined };
-export const UpdateSidecarRequestParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateSidecarRequestParametersMap>;
+export const UpdateSidecarRequestParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<UpdateSidecarRequestParametersMap>;
 
 export interface UpdateSidecarRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -25910,9 +25210,8 @@ export const UpdateTrafficBudgetRequestMode = S.String;
 
 /** Array of traffic rules to apply to the budget */
 export type UpdateTrafficBudgetRequestRulesList = Array<string>;
-export const UpdateTrafficBudgetRequestRulesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateTrafficBudgetRequestRulesList>;
+export const UpdateTrafficBudgetRequestRulesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<UpdateTrafficBudgetRequestRulesList>;
 
 export interface UpdateTrafficBudgetRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -25967,9 +25266,8 @@ export const UpdateTrafficBudgetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The events this webhook should subscribe to */
 export type UpdateWebhookRequestEventsList = Array<string>;
-export const UpdateWebhookRequestEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateWebhookRequestEventsList>;
+export const UpdateWebhookRequestEventsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<UpdateWebhookRequestEventsList>;
 
 export interface UpdateWebhookRequest {
   /** The name of the organization */

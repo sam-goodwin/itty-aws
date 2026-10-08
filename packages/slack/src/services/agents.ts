@@ -388,9 +388,8 @@ export const SetPropertiesRequestCodeChannelFilePathsList = /*@__PURE__*/ S.Arra
 
 /** Configurable items to display in the channel context bar. A maximum of 5 items will be applied; any beyond that will be silently truncated and a warning returned. */
 export type SetPropertiesRequestCodeChannelContextBarItemsList = Array<unknown>;
-export const SetPropertiesRequestCodeChannelContextBarItemsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<SetPropertiesRequestCodeChannelContextBarItemsList>;
+export const SetPropertiesRequestCodeChannelContextBarItemsList =
+  SetCommandsRequestCommandsList as any as S.Schema<SetPropertiesRequestCodeChannelContextBarItemsList>;
 
 /** Points to the current summary message for this code channel. Must reference a message within this channel. When the channel is archived with a summary_message_ts, this property is also set to record where the summary lives so clients can fetch it. */
 export interface SetPropertiesRequestCodeChannelSummaryMessage {
@@ -586,15 +585,13 @@ export const SetViewRequestAccessLevel = S.String;
 
 /** Origins the view may fetch()/XHR/WebSocket to. Accepted and stored, but not honored at render time yet. */
 export type SetViewRequestCspConnectDomainsList = Array<string>;
-export const SetViewRequestCspConnectDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetViewRequestCspConnectDomainsList>;
+export const SetViewRequestCspConnectDomainsList =
+  SetPropertiesRequestCodeChannelFilePathsList as any as S.Schema<SetViewRequestCspConnectDomainsList>;
 
 /** Origins the view may load scripts/styles/fonts/images/media from, merged into the curated CDN allowlist at render time. */
 export type SetViewRequestCspResourceDomainsList = Array<string>;
-export const SetViewRequestCspResourceDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetViewRequestCspResourceDomainsList>;
+export const SetViewRequestCspResourceDomainsList =
+  SetPropertiesRequestCodeChannelFilePathsList as any as S.Schema<SetViewRequestCspResourceDomainsList>;
 
 /** Content-Security-Policy domain declarations for the view. Domains are validated server-side (https-only, no private/internal hosts) and persisted. Only resource_domains is honored at render time today; connect_domains is accepted and stored for forward-compatibility but NOT honored yet. */
 export interface SetViewRequestCsp {

@@ -491,21 +491,8 @@ export interface CancelAgreementPaymentRequestOutput {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const CancelAgreementPaymentRequestOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paymentRequestId: S.optional(S.String),
-    agreementId: S.optional(S.String),
-    status: S.optional(PaymentRequestStatus),
-    name: S.optional(S.String),
-    description: S.optional(SensitiveString),
-    chargeAmount: S.optional(S.String),
-    currencyCode: S.optional(S.String),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "CancelAgreementPaymentRequestOutput",
-}) as any as S.Schema<CancelAgreementPaymentRequestOutput>;
+export const CancelAgreementPaymentRequestOutput =
+  AcceptAgreementPaymentRequestOutput as any as S.Schema<CancelAgreementPaymentRequestOutput>;
 export type Intent = "NEW" | "AMEND" | "REPLACE" | (string & {});
 export const Intent = S.String;
 
@@ -733,9 +720,7 @@ export const Acceptor = /*@__PURE__*/ S.suspend(() =>
 export interface Proposer {
   accountId?: string;
 }
-export const Proposer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ accountId: S.optional(S.String) }),
-).annotate({ identifier: "Proposer" }) as any as S.Schema<Proposer>;
+export const Proposer = Acceptor as any as S.Schema<Proposer>;
 export type AgreementType = string;
 export interface EstimatedCharges {
   currencyCode?: string;
@@ -861,20 +846,8 @@ export interface GetAgreementCancellationRequestOutput {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const GetAgreementCancellationRequestOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agreementCancellationRequestId: S.optional(S.String),
-    agreementId: S.optional(S.String),
-    reasonCode: S.optional(AgreementCancellationRequestReasonCode),
-    description: S.optional(SensitiveString),
-    status: S.optional(AgreementCancellationRequestStatus),
-    statusMessage: S.optional(S.String),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "GetAgreementCancellationRequestOutput",
-}) as any as S.Schema<GetAgreementCancellationRequestOutput>;
+export const GetAgreementCancellationRequestOutput =
+  CancelAgreementCancellationRequestOutput as any as S.Schema<GetAgreementCancellationRequestOutput>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface GetAgreementEntitlementsInput {
@@ -2128,19 +2101,8 @@ export interface SendAgreementCancellationRequestOutput {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const SendAgreementCancellationRequestOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agreementId: S.optional(S.String),
-    agreementCancellationRequestId: S.optional(S.String),
-    status: S.optional(AgreementCancellationRequestStatus),
-    reasonCode: S.optional(AgreementCancellationRequestReasonCode),
-    description: S.optional(SensitiveString),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "SendAgreementCancellationRequestOutput",
-}) as any as S.Schema<SendAgreementCancellationRequestOutput>;
+export const SendAgreementCancellationRequestOutput =
+  AcceptAgreementCancellationRequestOutput as any as S.Schema<SendAgreementCancellationRequestOutput>;
 export interface SendAgreementPaymentRequestInput {
   clientToken?: string;
   agreementId: string;
@@ -2196,9 +2158,8 @@ export const UpdatePurchaseOrdersInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdatePurchaseOrdersInput",
 }) as any as S.Schema<UpdatePurchaseOrdersInput>;
 export interface UpdatePurchaseOrdersOutput {}
-export const UpdatePurchaseOrdersOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdatePurchaseOrdersOutput",
-}) as any as S.Schema<UpdatePurchaseOrdersOutput>;
+export const UpdatePurchaseOrdersOutput =
+  CancelAgreementOutput as any as S.Schema<UpdatePurchaseOrdersOutput>;
 export type RequestId = string;
 export type ExceptionMessage = string;
 export type AccessDeniedExceptionReason =

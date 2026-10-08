@@ -69,11 +69,8 @@ export const DeleteUserAssignedIdentityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteUserAssignedIdentityRequest>;
 
 export interface DeleteUserAssignedIdentityResponse {}
-export const DeleteUserAssignedIdentityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteUserAssignedIdentityResponse",
-}) as any as S.Schema<DeleteUserAssignedIdentityResponse>;
+export const DeleteUserAssignedIdentityResponse =
+  DeleteFederatedIdentityCredentialsResponse as any as S.Schema<DeleteUserAssignedIdentityResponse>;
 
 /** The list of audiences that can appear in the issued token. */
 export type FederatedIdentityCredentialPropertiesAudiencesList = Array<string>;
@@ -229,17 +226,8 @@ export interface GetFederatedIdentityCredentialsResponse {
   /** The properties associated with the federated identity credential. */
   properties?: FederatedIdentityCredentialProperties;
 }
-export const GetFederatedIdentityCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(FederatedIdentityCredentialProperties),
-  }),
-).annotate({
-  identifier: "GetFederatedIdentityCredentialsResponse",
-}) as any as S.Schema<GetFederatedIdentityCredentialsResponse>;
+export const GetFederatedIdentityCredentialsResponse =
+  FederatedIdentityCredentialsCreateOrUpdateResponse as any as S.Schema<GetFederatedIdentityCredentialsResponse>;
 
 export interface GetSystemAssignedIdentityByScopeRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -343,10 +331,8 @@ export const GetUserAssignedIdentityRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetUserAssignedIdentityResponseTagsMap = { [key: string]: string | undefined };
-export const GetUserAssignedIdentityResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetUserAssignedIdentityResponseTagsMap>;
+export const GetUserAssignedIdentityResponseTagsMap =
+  GetSystemAssignedIdentityByScopeResponseTagsMap as any as S.Schema<GetUserAssignedIdentityResponseTagsMap>;
 
 /** Enum to configure regional restrictions on identity assignment, as necessary. */
 export type IsolationScope = "None" | "Regional";
@@ -448,17 +434,8 @@ export interface FederatedIdentityCredential {
   /** The properties associated with the federated identity credential. */
   properties?: FederatedIdentityCredentialProperties;
 }
-export const FederatedIdentityCredential = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(FederatedIdentityCredentialProperties),
-  }),
-).annotate({
-  identifier: "FederatedIdentityCredential",
-}) as any as S.Schema<FederatedIdentityCredential>;
+export const FederatedIdentityCredential =
+  FederatedIdentityCredentialsCreateOrUpdateResponse as any as S.Schema<FederatedIdentityCredential>;
 
 /** The FederatedIdentityCredential items on this page */
 export type FederatedIdentityCredentialsListResultValueList = Array<FederatedIdentityCredential>;
@@ -572,10 +549,8 @@ export const ListUserAssignedIdentityByResourceGroupRequest = /*@__PURE__*/ S.su
 
 /** Resource tags. */
 export type IdentityTagsMap = { [key: string]: string | undefined };
-export const IdentityTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IdentityTagsMap>;
+export const IdentityTagsMap =
+  GetSystemAssignedIdentityByScopeResponseTagsMap as any as S.Schema<IdentityTagsMap>;
 
 /** Describes an identity resource. */
 export interface Identity {
@@ -649,10 +624,8 @@ export const ListUserAssignedIdentityBySubscriptionRequest = /*@__PURE__*/ S.sus
 
 /** Resource tags */
 export type UpdateUserAssignedIdentityRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateUserAssignedIdentityRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateUserAssignedIdentityRequestTagsMap>;
+export const UpdateUserAssignedIdentityRequestTagsMap =
+  GetSystemAssignedIdentityByScopeResponseTagsMap as any as S.Schema<UpdateUserAssignedIdentityRequestTagsMap>;
 
 export interface UpdateUserAssignedIdentityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -690,10 +663,8 @@ export const UpdateUserAssignedIdentityRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateUserAssignedIdentityResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateUserAssignedIdentityResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateUserAssignedIdentityResponseTagsMap>;
+export const UpdateUserAssignedIdentityResponseTagsMap =
+  GetSystemAssignedIdentityByScopeResponseTagsMap as any as S.Schema<UpdateUserAssignedIdentityResponseTagsMap>;
 
 export interface UpdateUserAssignedIdentityResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -711,28 +682,15 @@ export interface UpdateUserAssignedIdentityResponse {
   /** The properties associated with the identity. */
   properties?: UserAssignedIdentityProperties;
 }
-export const UpdateUserAssignedIdentityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateUserAssignedIdentityResponseTagsMap),
-    location: S.String,
-    properties: S.optional(UserAssignedIdentityProperties),
-  }),
-).annotate({
-  identifier: "UpdateUserAssignedIdentityResponse",
-}) as any as S.Schema<UpdateUserAssignedIdentityResponse>;
+export const UpdateUserAssignedIdentityResponse =
+  GetUserAssignedIdentityResponse as any as S.Schema<UpdateUserAssignedIdentityResponse>;
 
 /** Resource tags. */
 export type UserAssignedIdentitiesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const UserAssignedIdentitiesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UserAssignedIdentitiesCreateOrUpdateRequestTagsMap>;
+export const UserAssignedIdentitiesCreateOrUpdateRequestTagsMap =
+  GetSystemAssignedIdentityByScopeResponseTagsMap as any as S.Schema<UserAssignedIdentitiesCreateOrUpdateRequestTagsMap>;
 
 export interface UserAssignedIdentitiesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -772,10 +730,8 @@ export const UserAssignedIdentitiesCreateOrUpdateRequest = /*@__PURE__*/ S.suspe
 export type UserAssignedIdentitiesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const UserAssignedIdentitiesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UserAssignedIdentitiesCreateOrUpdateResponseTagsMap>;
+export const UserAssignedIdentitiesCreateOrUpdateResponseTagsMap =
+  GetSystemAssignedIdentityByScopeResponseTagsMap as any as S.Schema<UserAssignedIdentitiesCreateOrUpdateResponseTagsMap>;
 
 export interface UserAssignedIdentitiesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -793,19 +749,8 @@ export interface UserAssignedIdentitiesCreateOrUpdateResponse {
   /** The properties associated with the identity. */
   properties?: UserAssignedIdentityProperties;
 }
-export const UserAssignedIdentitiesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UserAssignedIdentitiesCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(UserAssignedIdentityProperties),
-  }),
-).annotate({
-  identifier: "UserAssignedIdentitiesCreateOrUpdateResponse",
-}) as any as S.Schema<UserAssignedIdentitiesCreateOrUpdateResponse>;
+export const UserAssignedIdentitiesCreateOrUpdateResponse =
+  GetUserAssignedIdentityResponse as any as S.Schema<UserAssignedIdentitiesCreateOrUpdateResponse>;
 
 export type DeleteFederatedIdentityCredentialsError = AzureOpError;
 /** Deletes the federated identity credential. */

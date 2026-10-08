@@ -79,9 +79,8 @@ export const DeleteUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteUserSettingsRequest>;
 
 export interface DeleteUserSettingsResponse {}
-export const DeleteUserSettingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserSettingsResponse",
-}) as any as S.Schema<DeleteUserSettingsResponse>;
+export const DeleteUserSettingsResponse =
+  DeleteConsoleResponse as any as S.Schema<DeleteUserSettingsResponse>;
 
 export interface DeleteUserSettingsWithLocationRequest {
   /** The provider location */
@@ -106,11 +105,8 @@ export const DeleteUserSettingsWithLocationRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteUserSettingsWithLocationRequest>;
 
 export interface DeleteUserSettingsWithLocationResponse {}
-export const DeleteUserSettingsWithLocationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteUserSettingsWithLocationResponse",
-}) as any as S.Schema<DeleteUserSettingsWithLocationResponse>;
+export const DeleteUserSettingsWithLocationResponse =
+  DeleteConsoleWithLocationResponse as any as S.Schema<DeleteUserSettingsWithLocationResponse>;
 
 export interface GetConsoleRequest {
   /** The name of the console */
@@ -350,9 +346,7 @@ export const KeepAliveRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KeepAliveRequest" }) as any as S.Schema<KeepAliveRequest>;
 
 export interface KeepAliveResponse {}
-export const KeepAliveResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "KeepAliveResponse",
-}) as any as S.Schema<KeepAliveResponse>;
+export const KeepAliveResponse = DeleteConsoleResponse as any as S.Schema<KeepAliveResponse>;
 
 export interface KeepAliveWithLocationRequest {
   /** The provider location */
@@ -377,9 +371,8 @@ export const KeepAliveWithLocationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KeepAliveWithLocationRequest>;
 
 export interface KeepAliveWithLocationResponse {}
-export const KeepAliveWithLocationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "KeepAliveWithLocationResponse",
-}) as any as S.Schema<KeepAliveWithLocationResponse>;
+export const KeepAliveWithLocationResponse =
+  DeleteConsoleResponse as any as S.Schema<KeepAliveWithLocationResponse>;
 
 export interface PatchUserSettingsRequest {
   /** The name of the user settings */
@@ -403,13 +396,8 @@ export const PatchUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PatchUserSettingsResponse {
   properties: UserProperties;
 }
-export const PatchUserSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    properties: UserProperties,
-  }),
-).annotate({
-  identifier: "PatchUserSettingsResponse",
-}) as any as S.Schema<PatchUserSettingsResponse>;
+export const PatchUserSettingsResponse =
+  GetUserSettingsWithLocationResponse as any as S.Schema<PatchUserSettingsResponse>;
 
 export interface PatchUserSettingsWithLocationRequest {
   /** The provider location */
@@ -438,13 +426,8 @@ export const PatchUserSettingsWithLocationRequest = /*@__PURE__*/ S.suspend(() =
 export interface PatchUserSettingsWithLocationResponse {
   properties: UserProperties;
 }
-export const PatchUserSettingsWithLocationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    properties: UserProperties,
-  }),
-).annotate({
-  identifier: "PatchUserSettingsWithLocationResponse",
-}) as any as S.Schema<PatchUserSettingsWithLocationResponse>;
+export const PatchUserSettingsWithLocationResponse =
+  GetUserSettingsWithLocationResponse as any as S.Schema<PatchUserSettingsWithLocationResponse>;
 
 /** The operating system type of the cloud shell. */
 export type ConsoleCreatePropertiesOsType = "Linux" | "Windows";
@@ -502,11 +485,7 @@ export const PutConsoleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutConsoleResponse {
   properties: ConsoleProperties;
 }
-export const PutConsoleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    properties: ConsoleProperties,
-  }),
-).annotate({ identifier: "PutConsoleResponse" }) as any as S.Schema<PutConsoleResponse>;
+export const PutConsoleResponse = GetConsoleResponse as any as S.Schema<PutConsoleResponse>;
 
 export interface PutConsoleWithLocationRequest {
   /** The provider location */
@@ -533,13 +512,8 @@ export const PutConsoleWithLocationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutConsoleWithLocationResponse {
   properties: ConsoleProperties;
 }
-export const PutConsoleWithLocationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    properties: ConsoleProperties,
-  }),
-).annotate({
-  identifier: "PutConsoleWithLocationResponse",
-}) as any as S.Schema<PutConsoleWithLocationResponse>;
+export const PutConsoleWithLocationResponse =
+  GetConsoleWithLocationResponse as any as S.Schema<PutConsoleWithLocationResponse>;
 
 export interface PutUserSettingsRequest {
   /** The name of the user settings */
@@ -563,11 +537,8 @@ export const PutUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutUserSettingsResponse {
   properties: UserProperties;
 }
-export const PutUserSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    properties: UserProperties,
-  }),
-).annotate({ identifier: "PutUserSettingsResponse" }) as any as S.Schema<PutUserSettingsResponse>;
+export const PutUserSettingsResponse =
+  GetUserSettingsResponse as any as S.Schema<PutUserSettingsResponse>;
 
 export interface PutUserSettingsWithLocationRequest {
   /** The provider location */
@@ -596,13 +567,8 @@ export const PutUserSettingsWithLocationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutUserSettingsWithLocationResponse {
   properties: UserProperties;
 }
-export const PutUserSettingsWithLocationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    properties: UserProperties,
-  }),
-).annotate({
-  identifier: "PutUserSettingsWithLocationResponse",
-}) as any as S.Schema<PutUserSettingsWithLocationResponse>;
+export const PutUserSettingsWithLocationResponse =
+  GetUserSettingsWithLocationResponse as any as S.Schema<PutUserSettingsWithLocationResponse>;
 
 export type DeleteConsoleError = AzureOpError;
 /** Delete console Deletes the console */

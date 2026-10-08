@@ -145,9 +145,7 @@ export const CreateQueryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateQueryRequest" }) as any as S.Schema<CreateQueryRequest>;
 
 export interface CreateQueryResponse {}
-export const CreateQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "CreateQueryResponse" }) as any as S.Schema<CreateQueryResponse>;
+export const CreateQueryResponse = BulkQueryResponse as any as S.Schema<CreateQueryResponse>;
 
 export interface CreateV2LogoRequest {
   accountId: string;
@@ -210,9 +208,7 @@ export const DeleteLogoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteLogoRequest" }) as any as S.Schema<DeleteLogoRequest>;
 
 export interface DeleteLogoResponse {}
-export const DeleteLogoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteLogoResponse" }) as any as S.Schema<DeleteLogoResponse>;
+export const DeleteLogoResponse = BulkQueryResponse as any as S.Schema<DeleteLogoResponse>;
 
 export interface DeleteQueryRequest {
   accountId: string;
@@ -238,9 +234,7 @@ export const DeleteQueryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteQueryRequest" }) as any as S.Schema<DeleteQueryRequest>;
 
 export interface DeleteQueryResponse {}
-export const DeleteQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteQueryResponse" }) as any as S.Schema<DeleteQueryResponse>;
+export const DeleteQueryResponse = BulkQueryResponse as any as S.Schema<DeleteQueryResponse>;
 
 export interface DeleteV2LogoRequest {
   accountId: string;
@@ -300,16 +294,13 @@ export const DownloadLogoMatchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DownloadLogoMatchRequest" }) as any as S.Schema<DownloadLogoMatchRequest>;
 
 export type LogoMatchesDownloadResponseMatchesItemMap = { [key: string]: unknown | undefined };
-export const LogoMatchesDownloadResponseMatchesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LogoMatchesDownloadResponseMatchesItemMap>;
+export const LogoMatchesDownloadResponseMatchesItemMap =
+  QueriesBulkRequestQueriesItemMap as any as S.Schema<LogoMatchesDownloadResponseMatchesItemMap>;
 
 export type LogoMatchesDownloadResponseMatchesList =
   Array<LogoMatchesDownloadResponseMatchesItemMap>;
-export const LogoMatchesDownloadResponseMatchesList = /*@__PURE__*/ S.Array(
-  LogoMatchesDownloadResponseMatchesItemMap,
-) as any as S.Schema<LogoMatchesDownloadResponseMatchesList>;
+export const LogoMatchesDownloadResponseMatchesList =
+  QueriesBulkRequestQueriesList as any as S.Schema<LogoMatchesDownloadResponseMatchesList>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface DownloadLogoMatchResponse {
@@ -353,15 +344,12 @@ export const DownloadMatchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DownloadMatchRequest" }) as any as S.Schema<DownloadMatchRequest>;
 
 export type MatchesDownloadResponseMatchesItemMap = { [key: string]: unknown | undefined };
-export const MatchesDownloadResponseMatchesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MatchesDownloadResponseMatchesItemMap>;
+export const MatchesDownloadResponseMatchesItemMap =
+  QueriesBulkRequestQueriesItemMap as any as S.Schema<MatchesDownloadResponseMatchesItemMap>;
 
 export type MatchesDownloadResponseMatchesList = Array<MatchesDownloadResponseMatchesItemMap>;
-export const MatchesDownloadResponseMatchesList = /*@__PURE__*/ S.Array(
-  MatchesDownloadResponseMatchesItemMap,
-) as any as S.Schema<MatchesDownloadResponseMatchesList>;
+export const MatchesDownloadResponseMatchesList =
+  QueriesBulkRequestQueriesList as any as S.Schema<MatchesDownloadResponseMatchesList>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface DownloadMatchResponse {
@@ -376,9 +364,8 @@ export const DownloadMatchResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DownloadMatchResponse" }) as any as S.Schema<DownloadMatchResponse>;
 
 export type LogoMatchesGetRequestLogoIdList = Array<string>;
-export const LogoMatchesGetRequestLogoIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogoMatchesGetRequestLogoIdList>;
+export const LogoMatchesGetRequestLogoIdList =
+  LogoMatchesDownloadRequestLogoIdList as any as S.Schema<LogoMatchesGetRequestLogoIdList>;
 
 export interface GetLogoMatchRequest {
   accountId: string;
@@ -404,27 +391,19 @@ export const GetLogoMatchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetLogoMatchRequest" }) as any as S.Schema<GetLogoMatchRequest>;
 
 export type LogoMatchesGetResponseMatchesItemMap = { [key: string]: unknown | undefined };
-export const LogoMatchesGetResponseMatchesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LogoMatchesGetResponseMatchesItemMap>;
+export const LogoMatchesGetResponseMatchesItemMap =
+  QueriesBulkRequestQueriesItemMap as any as S.Schema<LogoMatchesGetResponseMatchesItemMap>;
 
 export type LogoMatchesGetResponseMatchesList = Array<LogoMatchesGetResponseMatchesItemMap>;
-export const LogoMatchesGetResponseMatchesList = /*@__PURE__*/ S.Array(
-  LogoMatchesGetResponseMatchesItemMap,
-) as any as S.Schema<LogoMatchesGetResponseMatchesList>;
+export const LogoMatchesGetResponseMatchesList =
+  QueriesBulkRequestQueriesList as any as S.Schema<LogoMatchesGetResponseMatchesList>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetLogoMatchResponse {
   matches?: LogoMatchesGetResponseMatchesList | null;
   total?: number | null;
 }
-export const GetLogoMatchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    matches: S.optional(S.NullOr(LogoMatchesGetResponseMatchesList)),
-    total: S.optional(S.NullOr(S.Number)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetLogoMatchResponse" }) as any as S.Schema<GetLogoMatchResponse>;
+export const GetLogoMatchResponse = DownloadMatchResponse as any as S.Schema<GetLogoMatchResponse>;
 
 export interface GetMatchRequest {
   accountId: string;
@@ -450,27 +429,19 @@ export const GetMatchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetMatchRequest" }) as any as S.Schema<GetMatchRequest>;
 
 export type MatchesGetResponseMatchesItemMap = { [key: string]: unknown | undefined };
-export const MatchesGetResponseMatchesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MatchesGetResponseMatchesItemMap>;
+export const MatchesGetResponseMatchesItemMap =
+  QueriesBulkRequestQueriesItemMap as any as S.Schema<MatchesGetResponseMatchesItemMap>;
 
 export type MatchesGetResponseMatchesList = Array<MatchesGetResponseMatchesItemMap>;
-export const MatchesGetResponseMatchesList = /*@__PURE__*/ S.Array(
-  MatchesGetResponseMatchesItemMap,
-) as any as S.Schema<MatchesGetResponseMatchesList>;
+export const MatchesGetResponseMatchesList =
+  QueriesBulkRequestQueriesList as any as S.Schema<MatchesGetResponseMatchesList>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetMatchResponse {
   matches?: MatchesGetResponseMatchesList | null;
   total?: number | null;
 }
-export const GetMatchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    matches: S.optional(S.NullOr(MatchesGetResponseMatchesList)),
-    total: S.optional(S.NullOr(S.Number)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetMatchResponse" }) as any as S.Schema<GetMatchResponse>;
+export const GetMatchResponse = DownloadMatchResponse as any as S.Schema<GetMatchResponse>;
 
 export interface GetV2LogoRequest {
   accountId: string;
@@ -605,9 +576,8 @@ export const GetV2LogoMatchResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetV2LogoMatchResponse" }) as any as S.Schema<GetV2LogoMatchResponse>;
 
 export type V2MatchesGetRequestQueryIdList = Array<string>;
-export const V2MatchesGetRequestQueryIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V2MatchesGetRequestQueryIdList>;
+export const V2MatchesGetRequestQueryIdList =
+  LogoMatchesDownloadRequestLogoIdList as any as S.Schema<V2MatchesGetRequestQueryIdList>;
 
 export type V2MatchesGetRequestOrder = "asc" | "desc";
 export const V2MatchesGetRequestOrder = S.String;
@@ -828,26 +798,16 @@ export const V2QueriesGetResultCase1ParametersStringMatchesItem =
 
 export type V2QueriesGetResultCase1ParametersStringMatchesList =
   Array<V2QueriesGetResultCase0ItemParametersStringMatchesItem>;
-export const V2QueriesGetResultCase1ParametersStringMatchesList = /*@__PURE__*/ S.Array(
-  V2QueriesGetResultCase0ItemParametersStringMatchesItem,
-) as any as S.Schema<V2QueriesGetResultCase1ParametersStringMatchesList>;
+export const V2QueriesGetResultCase1ParametersStringMatchesList =
+  V2QueriesGetResultCase0ItemParametersStringMatchesList as any as S.Schema<V2QueriesGetResultCase1ParametersStringMatchesList>;
 
 export interface V2QueriesGetResultCase1Parameters {
   stringMatches: V2QueriesGetResultCase1ParametersStringMatchesList;
   maxTime?: string | null;
   minTime?: string | null;
 }
-export const V2QueriesGetResultCase1Parameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stringMatches: V2QueriesGetResultCase1ParametersStringMatchesList.pipe(
-      T.Body("string_matches"),
-    ),
-    maxTime: S.optional(S.NullOr(S.String).pipe(T.Body("max_time"))),
-    minTime: S.optional(S.NullOr(S.String).pipe(T.Body("min_time"))),
-  }),
-).annotate({
-  identifier: "V2QueriesGetResultCase1Parameters",
-}) as any as S.Schema<V2QueriesGetResultCase1Parameters>;
+export const V2QueriesGetResultCase1Parameters =
+  V2QueriesGetResultCase0ItemParameters as any as S.Schema<V2QueriesGetResultCase1Parameters>;
 
 export interface V2QueriesGetResultCase1 {
   created: string;
@@ -897,26 +857,20 @@ export const SubmitBrandProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubmitBrandProtectionRequest>;
 
 export type SubmitResponseSkippedUrlsItemMap = { [key: string]: unknown | undefined };
-export const SubmitResponseSkippedUrlsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SubmitResponseSkippedUrlsItemMap>;
+export const SubmitResponseSkippedUrlsItemMap =
+  QueriesBulkRequestQueriesItemMap as any as S.Schema<SubmitResponseSkippedUrlsItemMap>;
 
 export type SubmitResponseSkippedUrlsList = Array<SubmitResponseSkippedUrlsItemMap>;
-export const SubmitResponseSkippedUrlsList = /*@__PURE__*/ S.Array(
-  SubmitResponseSkippedUrlsItemMap,
-) as any as S.Schema<SubmitResponseSkippedUrlsList>;
+export const SubmitResponseSkippedUrlsList =
+  QueriesBulkRequestQueriesList as any as S.Schema<SubmitResponseSkippedUrlsList>;
 
 export type SubmitResponseSubmittedUrlsItemMap = { [key: string]: unknown | undefined };
-export const SubmitResponseSubmittedUrlsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SubmitResponseSubmittedUrlsItemMap>;
+export const SubmitResponseSubmittedUrlsItemMap =
+  QueriesBulkRequestQueriesItemMap as any as S.Schema<SubmitResponseSubmittedUrlsItemMap>;
 
 export type SubmitResponseSubmittedUrlsList = Array<SubmitResponseSubmittedUrlsItemMap>;
-export const SubmitResponseSubmittedUrlsList = /*@__PURE__*/ S.Array(
-  SubmitResponseSubmittedUrlsItemMap,
-) as any as S.Schema<SubmitResponseSubmittedUrlsList>;
+export const SubmitResponseSubmittedUrlsList =
+  QueriesBulkRequestQueriesList as any as S.Schema<SubmitResponseSubmittedUrlsList>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface SubmitBrandProtectionResponse {
@@ -950,15 +904,12 @@ export const UrlInfoBrandProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UrlInfoBrandProtectionRequest>;
 
 export type UrlInfoResultItemMap = { [key: string]: unknown | undefined };
-export const UrlInfoResultItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UrlInfoResultItemMap>;
+export const UrlInfoResultItemMap =
+  QueriesBulkRequestQueriesItemMap as any as S.Schema<UrlInfoResultItemMap>;
 
 export type UrlInfoResultList = Array<UrlInfoResultItemMap>;
-export const UrlInfoResultList = /*@__PURE__*/ S.Array(
-  UrlInfoResultItemMap,
-) as any as S.Schema<UrlInfoResultList>;
+export const UrlInfoResultList =
+  QueriesBulkRequestQueriesList as any as S.Schema<UrlInfoResultList>;
 
 export interface UrlInfoBrandProtectionResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */

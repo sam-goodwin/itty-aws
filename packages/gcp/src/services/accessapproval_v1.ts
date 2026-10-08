@@ -415,9 +415,8 @@ export const DeleteAccessApprovalSettingsProjectsRequest = /*@__PURE__*/ S.suspe
 
 /** Request to dismiss an approval request. */
 export interface DismissApprovalRequestMessage {}
-export const DismissApprovalRequestMessage = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DismissApprovalRequestMessage",
-}) as any as S.Schema<DismissApprovalRequestMessage>;
+export const DismissApprovalRequestMessage =
+  Empty as any as S.Schema<DismissApprovalRequestMessage>;
 
 export interface DismissFoldersApprovalRequestsRequest {
   /** Name of the ApprovalRequest to dismiss. */

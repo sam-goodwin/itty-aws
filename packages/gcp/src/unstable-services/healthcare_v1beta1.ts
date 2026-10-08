@@ -612,9 +612,8 @@ export const ArchiveProjectsLocationsDatasetsConsentStoresUserDataMappingsReques
 
 /** Archives the specified User data mapping. */
 export interface ArchiveUserDataMappingResponse {}
-export const ArchiveUserDataMappingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ArchiveUserDataMappingResponse",
-}) as any as S.Schema<ArchiveUserDataMappingResponse>;
+export const ArchiveUserDataMappingResponse =
+  ArchiveUserDataMappingRequest as any as S.Schema<ArchiveUserDataMappingResponse>;
 
 export type BatchGetProjectsLocationsDatasetsHl7V2StoresMessagesViewEnum =
   | "MESSAGE_VIEW_UNSPECIFIED"
@@ -1003,9 +1002,7 @@ export const CancelProjectsLocationsDatasetsOperationsRequest = /*@__PURE__*/ S.
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = ArchiveUserDataMappingRequest as any as S.Schema<Empty>;
 
 export interface CapabilitiesProjectsLocationsDatasetsFhirStoresFhirRequest {
   /** Required. Name of the FHIR store to retrieve the capabilities for. */
@@ -4011,11 +4008,7 @@ export interface PubsubDestination {
   /** The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that Pub/Sub messages are published on. Supplied by the client. The `PubsubMessage` contains the following fields: * `PubsubMessage.Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of this notification. It is guaranteed to be unique within the topic. * `PubsubMessage.PublishTime` is the time when the message was published. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. The Cloud Healthcare API service account, service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com, must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail. */
   pubsubTopic?: string;
 }
-export const PubsubDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pubsubTopic: S.optional(S.String),
-  }),
-).annotate({ identifier: "PubsubDestination" }) as any as S.Schema<PubsubDestination>;
+export const PubsubDestination = DicomNotificationConfig as any as S.Schema<PubsubDestination>;
 
 export type GcsDestinationContentStructureEnum = "CONTENT_STRUCTURE_UNSPECIFIED" | "MESSAGE_JSON";
 export const GcsDestinationContentStructureEnum = S.String;
@@ -5219,13 +5212,8 @@ export interface GoogleCloudHealthcareV1beta1DicomGcsSource {
   /** Points to a Cloud Storage URI containing file(s) with content only. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The URI can include wildcards in `object_id` and thus identify multiple files. Supported wildcards: * '*' to match 0 or more non-separator characters * '**' to match 0 or more characters (including separators). Must be used at the end of a path and with no other wildcards in the path. Can also be used with a file extension (such as .dcm), which imports all files with the extension in the specified directory and its sub-directories. For example, `gs://my-bucket/my-directory/**.dcm` imports all files with .dcm extensions in `my-directory/` and its sub-directories. * '?' to match 1 character. All other URI formats are invalid. Files matching the wildcard are expected to contain content only, no metadata. */
   uri?: string;
 }
-export const GoogleCloudHealthcareV1beta1DicomGcsSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudHealthcareV1beta1DicomGcsSource",
-}) as any as S.Schema<GoogleCloudHealthcareV1beta1DicomGcsSource>;
+export const GoogleCloudHealthcareV1beta1DicomGcsSource =
+  GoogleCloudHealthcareV1beta1FhirGcsSource as any as S.Schema<GoogleCloudHealthcareV1beta1DicomGcsSource>;
 
 /** Imports data into the specified DICOM store. Returns an error if any of the files to import are not DICOM files. This API accepts duplicate DICOM instances by ignoring the newly-pushed instance. It does not overwrite. */
 export interface ImportDicomDataRequest {
@@ -5353,11 +5341,7 @@ export interface IngestMessageRequest {
   /** Required. HL7v2 message to ingest. */
   message?: Message;
 }
-export const IngestMessageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(Message),
-  }),
-).annotate({ identifier: "IngestMessageRequest" }) as any as S.Schema<IngestMessageRequest>;
+export const IngestMessageRequest = CreateMessageRequest as any as S.Schema<IngestMessageRequest>;
 
 export interface IngestProjectsLocationsDatasetsHl7V2StoresMessagesRequest {
   /** Required. The name of the HL7v2 store this message belongs to. */
@@ -6345,13 +6329,8 @@ export interface GoogleCloudHealthcareV1beta1ConsentGcsDestination {
   /** URI for a Cloud Storage directory where the server writes result files, in the format `gs://{bucket-id}/{path/to/destination/dir}`. If there is no trailing slash, the service appends one when composing the object path. The user is responsible for creating the Cloud Storage bucket and directory referenced in `uri_prefix`. */
   uriPrefix?: string;
 }
-export const GoogleCloudHealthcareV1beta1ConsentGcsDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uriPrefix: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudHealthcareV1beta1ConsentGcsDestination",
-}) as any as S.Schema<GoogleCloudHealthcareV1beta1ConsentGcsDestination>;
+export const GoogleCloudHealthcareV1beta1ConsentGcsDestination =
+  GoogleCloudHealthcareV1beta1FhirGcsDestination as any as S.Schema<GoogleCloudHealthcareV1beta1ConsentGcsDestination>;
 
 /** Queries all data_ids that are consented for a given use in the given consent store and writes them to a specified destination. The returned Operation includes a progress counter for the number of User data mappings processed. Errors are logged to Cloud Logging (see [Viewing error logs in Cloud Logging] (https://cloud.google.com/healthcare/docs/how-tos/logging) and [QueryAccessibleData] for a sample log entry). */
 export interface QueryAccessibleDataRequest {
@@ -6503,11 +6482,7 @@ export interface RevokeConsentRequest {
   /** Optional. The resource name of the Consent artifact that contains proof of the user's revocation of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. */
   consentArtifact?: string;
 }
-export const RevokeConsentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    consentArtifact: S.optional(S.String),
-  }),
-).annotate({ identifier: "RevokeConsentRequest" }) as any as S.Schema<RevokeConsentRequest>;
+export const RevokeConsentRequest = RejectConsentRequest as any as S.Schema<RevokeConsentRequest>;
 
 export interface RevokeProjectsLocationsDatasetsConsentStoresConsentsRequest {
   /** Required. The resource name of the Consent to revoke, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. An INVALID_ARGUMENT error occurs if `revision_id` is specified in the name. */
@@ -7192,13 +7167,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsDatasetsConsentStoresRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */

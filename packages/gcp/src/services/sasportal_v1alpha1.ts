@@ -1040,9 +1040,8 @@ export const DeleteNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request for GenerateSecret. */
 export interface SasPortalGenerateSecretRequest {}
-export const SasPortalGenerateSecretRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SasPortalGenerateSecretRequest",
-}) as any as S.Schema<SasPortalGenerateSecretRequest>;
+export const SasPortalGenerateSecretRequest =
+  SasPortalEmpty as any as S.Schema<SasPortalGenerateSecretRequest>;
 
 export interface GenerateSecretInstallerRequest {
   /** Request body */
@@ -1100,13 +1099,7 @@ export interface SasPortalCustomer {
   /** Required. Name of the organization that the customer entity represents. */
   displayName?: string;
 }
-export const SasPortalCustomer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sasUserIds: S.optional(StringList),
-    name: S.optional(S.String),
-    displayName: S.optional(S.String),
-  }),
-).annotate({ identifier: "SasPortalCustomer" }) as any as S.Schema<SasPortalCustomer>;
+export const SasPortalCustomer = SasPortalNode as any as S.Schema<SasPortalCustomer>;
 
 export interface GetCustomersDeploymentsRequest {
   /** Required. The name of the deployment. */
@@ -1513,9 +1506,7 @@ export const ListCustomersNodesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCustomersNodesRequest>;
 
 export type SasPortalNodeList = Array<SasPortalNode>;
-export const SasPortalNodeList = /*@__PURE__*/ S.Array(
-  SasPortalNode,
-) as any as S.Schema<SasPortalNodeList>;
+export const SasPortalNodeList = SasPortalCustomerList as any as S.Schema<SasPortalNodeList>;
 
 /** Response for ListNodes. */
 export interface SasPortalListNodesResponse {
@@ -2012,13 +2003,8 @@ export interface SasPortalMoveDeviceRequest {
   /** Required. The name of the new parent resource node or customer to reparent the device under. */
   destination?: string;
 }
-export const SasPortalMoveDeviceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destination: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SasPortalMoveDeviceRequest",
-}) as any as S.Schema<SasPortalMoveDeviceRequest>;
+export const SasPortalMoveDeviceRequest =
+  SasPortalMoveDeploymentRequest as any as S.Schema<SasPortalMoveDeviceRequest>;
 
 export interface MoveCustomersDevicesRequest {
   /** Required. The name of the device to move. */
@@ -2583,14 +2569,8 @@ export interface SasPortalUpdateSignedDeviceRequest {
   /** Required. Unique installer ID (CPI ID) from the Certified Professional Installers database. */
   installerId?: string;
 }
-export const SasPortalUpdateSignedDeviceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encodedDevice: S.optional(S.String),
-    installerId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SasPortalUpdateSignedDeviceRequest",
-}) as any as S.Schema<SasPortalUpdateSignedDeviceRequest>;
+export const SasPortalUpdateSignedDeviceRequest =
+  SasPortalCreateSignedDeviceRequest as any as S.Schema<SasPortalUpdateSignedDeviceRequest>;
 
 export interface UpdateSignedCustomersDevicesRequest {
   /** Required. The name of the device to update. */

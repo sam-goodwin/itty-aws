@@ -2151,9 +2151,7 @@ export const DeleteProjectsLocationsFlagAttributesRequest = /*@__PURE__*/ S.susp
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = Deprovision as any as S.Schema<Empty>;
 
 export interface DeleteProjectsLocationsFlagReleasesRequest {
   /** If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. */

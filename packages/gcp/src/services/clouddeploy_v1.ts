@@ -91,9 +91,8 @@ export const AbandonProjectsLocationsDeliveryPipelinesReleasesRequest = /*@__PUR
 
 /** The response object for `AbandonRelease`. */
 export interface AbandonReleaseResponse {}
-export const AbandonReleaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AbandonReleaseResponse",
-}) as any as S.Schema<AbandonReleaseResponse>;
+export const AbandonReleaseResponse =
+  AbandonReleaseRequest as any as S.Schema<AbandonReleaseResponse>;
 
 export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
@@ -136,9 +135,8 @@ export const AdvanceProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest =
 
 /** The response object from `AdvanceRollout`. */
 export interface AdvanceRolloutResponse {}
-export const AdvanceRolloutResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AdvanceRolloutResponse",
-}) as any as S.Schema<AdvanceRolloutResponse>;
+export const AdvanceRolloutResponse =
+  AbandonReleaseRequest as any as S.Schema<AdvanceRolloutResponse>;
 
 /** The request object used by `ApproveRollout`. */
 export interface ApproveRolloutRequest {
@@ -178,9 +176,8 @@ export const ApproveProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest =
 
 /** The response object from `ApproveRollout`. */
 export interface ApproveRolloutResponse {}
-export const ApproveRolloutResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ApproveRolloutResponse",
-}) as any as S.Schema<ApproveRolloutResponse>;
+export const ApproveRolloutResponse =
+  AbandonReleaseRequest as any as S.Schema<ApproveRolloutResponse>;
 
 /** The request object used by `CancelAutomationRun`. */
 export type CancelAutomationRunRequest = AbandonReleaseRequest;
@@ -210,9 +207,8 @@ export const CancelProjectsLocationsDeliveryPipelinesAutomationRunsRequest =
 
 /** The response object from `CancelAutomationRun`. */
 export interface CancelAutomationRunResponse {}
-export const CancelAutomationRunResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CancelAutomationRunResponse",
-}) as any as S.Schema<CancelAutomationRunResponse>;
+export const CancelAutomationRunResponse =
+  AbandonReleaseRequest as any as S.Schema<CancelAutomationRunResponse>;
 
 /** The request object used by `CancelRollout`. */
 export interface CancelRolloutRequest {
@@ -249,9 +245,8 @@ export const CancelProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest =
 
 /** The response object from `CancelRollout`. */
 export interface CancelRolloutResponse {}
-export const CancelRolloutResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CancelRolloutResponse",
-}) as any as S.Schema<CancelRolloutResponse>;
+export const CancelRolloutResponse =
+  AbandonReleaseRequest as any as S.Schema<CancelRolloutResponse>;
 
 /** The request message for Operations.CancelOperation. */
 export type CancelOperationRequest = AbandonReleaseRequest;
@@ -280,9 +275,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = AbandonReleaseRequest as any as S.Schema<Empty>;
 
 /** Cloud Storage bucket containing Skaffold Config modules. */
 export interface SkaffoldGCSSource {
@@ -2121,12 +2114,7 @@ export interface PostdeployJob {
   /** Output only. The tasks that are executed as part of the postdeploy Job. */
   tasks?: TaskList;
 }
-export const PostdeployJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actions: S.optional(StringList),
-    tasks: S.optional(TaskList),
-  }),
-).annotate({ identifier: "PostdeployJob" }) as any as S.Schema<PostdeployJob>;
+export const PostdeployJob = Predeploy as any as S.Schema<PostdeployJob>;
 
 /** A predeploy Job. */
 export interface PredeployJob {
@@ -2135,12 +2123,7 @@ export interface PredeployJob {
   /** Output only. The tasks that are executed as part of the predeploy Job. */
   tasks?: TaskList;
 }
-export const PredeployJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actions: S.optional(StringList),
-    tasks: S.optional(TaskList),
-  }),
-).annotate({ identifier: "PredeployJob" }) as any as S.Schema<PredeployJob>;
+export const PredeployJob = Predeploy as any as S.Schema<PredeployJob>;
 
 /** An analysis Job. */
 export interface AnalysisJob {
@@ -2151,13 +2134,7 @@ export interface AnalysisJob {
   /** Output only. Google Cloud - based analysis checks that are run as part of the analysis Job. */
   googleCloud?: GoogleCloudAnalysis;
 }
-export const AnalysisJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customChecks: S.optional(CustomCheckList),
-    duration: S.optional(S.String),
-    googleCloud: S.optional(GoogleCloudAnalysis),
-  }),
-).annotate({ identifier: "AnalysisJob" }) as any as S.Schema<AnalysisJob>;
+export const AnalysisJob = Analysis as any as S.Schema<AnalysisJob>;
 
 /** A createChildRollout Job. */
 export type CreateChildRolloutJob = AbandonReleaseRequest;
@@ -2188,11 +2165,7 @@ export interface VerifyJob {
   /** Output only. The tasks that are executed as part of the verify Job. */
   tasks?: TaskList;
 }
-export const VerifyJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tasks: S.optional(TaskList),
-  }),
-).annotate({ identifier: "VerifyJob" }) as any as S.Schema<VerifyJob>;
+export const VerifyJob = Verify as any as S.Schema<VerifyJob>;
 
 /** Job represents an operation for a `Rollout`. */
 export interface Job {
@@ -3708,11 +3681,8 @@ export interface PostdeployJobRunMetadata {
   /** Output only. Custom metadata provided by user-defined postdeploy operation. */
   custom?: CustomMetadata;
 }
-export const PostdeployJobRunMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom: S.optional(CustomMetadata),
-  }),
-).annotate({ identifier: "PostdeployJobRunMetadata" }) as any as S.Schema<PostdeployJobRunMetadata>;
+export const PostdeployJobRunMetadata =
+  PredeployJobRunMetadata as any as S.Schema<PostdeployJobRunMetadata>;
 
 /** PostdeployJobRun contains information specific to a postdeploy `JobRun`. */
 export interface PostdeployJobRun {
@@ -3936,11 +3906,8 @@ export interface VerifyJobRunMetadata {
   /** Output only. Custom metadata provided by user-defined verify operation. */
   custom?: CustomMetadata;
 }
-export const VerifyJobRunMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom: S.optional(CustomMetadata),
-  }),
-).annotate({ identifier: "VerifyJobRunMetadata" }) as any as S.Schema<VerifyJobRunMetadata>;
+export const VerifyJobRunMetadata =
+  PredeployJobRunMetadata as any as S.Schema<VerifyJobRunMetadata>;
 
 export type VerifyJobRunFailureCauseEnum =
   | "FAILURE_CAUSE_UNSPECIFIED"
@@ -4141,9 +4108,7 @@ export const IgnoreJobProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest 
 
 /** The response object from `IgnoreJob`. */
 export interface IgnoreJobResponse {}
-export const IgnoreJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "IgnoreJobResponse",
-}) as any as S.Schema<IgnoreJobResponse>;
+export const IgnoreJobResponse = AbandonReleaseRequest as any as S.Schema<IgnoreJobResponse>;
 
 export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
@@ -4863,13 +4828,7 @@ export interface RetryJobRequest {
   /** Optional. Deploy policies to override. Format is `projects/{project}/locations/{location}/deployPolicies/{deployPolicy}`. */
   overrideDeployPolicy?: StringList;
 }
-export const RetryJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobId: S.optional(S.String),
-    phaseId: S.optional(S.String),
-    overrideDeployPolicy: S.optional(StringList),
-  }),
-).annotate({ identifier: "RetryJobRequest" }) as any as S.Schema<RetryJobRequest>;
+export const RetryJobRequest = IgnoreJobRequest as any as S.Schema<RetryJobRequest>;
 
 export interface RetryJobProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest {
   /** Required. Name of the Rollout. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`. */
@@ -4895,9 +4854,7 @@ export const RetryJobProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest =
 
 /** The response object from 'RetryJob'. */
 export interface RetryJobResponse {}
-export const RetryJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RetryJobResponse",
-}) as any as S.Schema<RetryJobResponse>;
+export const RetryJobResponse = AbandonReleaseRequest as any as S.Schema<RetryJobResponse>;
 
 /** Configs for the Rollback rollout. */
 export interface RollbackTargetConfig {
@@ -5100,9 +5057,8 @@ export const TerminateProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsR
 
 /** The response object from `TerminateJobRun`. */
 export interface TerminateJobRunResponse {}
-export const TerminateJobRunResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TerminateJobRunResponse",
-}) as any as S.Schema<TerminateJobRunResponse>;
+export const TerminateJobRunResponse =
+  AbandonReleaseRequest as any as S.Schema<TerminateJobRunResponse>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -5144,13 +5100,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsTargetsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */

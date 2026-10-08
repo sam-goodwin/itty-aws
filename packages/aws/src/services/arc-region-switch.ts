@@ -263,15 +263,9 @@ export interface Asg {
   externalId?: string;
   arn?: string;
 }
-export const Asg = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    crossAccountRole: S.optional(S.String),
-    externalId: S.optional(S.String),
-    arn: S.optional(S.String),
-  }),
-).annotate({ identifier: "Asg" }) as any as S.Schema<Asg>;
+export const Asg = Lambdas as any as S.Schema<Asg>;
 export type AsgList = Asg[];
-export const AsgList = /*@__PURE__*/ S.Array(Asg);
+export const AsgList = LambdaList as any as S.Schema<AsgList>;
 export interface Ec2Ungraceful {
   minimumSuccessPercentage: number;
 }
@@ -432,9 +426,7 @@ export const ServiceList = /*@__PURE__*/ S.Array(Service);
 export interface EcsUngraceful {
   minimumSuccessPercentage: number;
 }
-export const EcsUngraceful = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ minimumSuccessPercentage: S.Number }),
-).annotate({ identifier: "EcsUngraceful" }) as any as S.Schema<EcsUngraceful>;
+export const EcsUngraceful = Ec2Ungraceful as any as S.Schema<EcsUngraceful>;
 export type EcsCapacityMonitoringApproach =
   | "sampledMaxInLast24Hours"
   | "containerInsightsMaxInLast24Hours"
@@ -593,7 +585,7 @@ export const DocumentDbUngraceful = /*@__PURE__*/ S.suspend(() =>
 export type DocumentDbGlobalClusterIdentifier = string;
 export type DocumentDbClusterArn = string;
 export type DocumentDbClusterArns = string[];
-export const DocumentDbClusterArns = /*@__PURE__*/ S.Array(S.String);
+export const DocumentDbClusterArns = AuroraClusterArns as any as S.Schema<DocumentDbClusterArns>;
 export interface DocumentDbConfiguration {
   timeoutMinutes?: number;
   crossAccountRole?: string;
@@ -642,16 +634,8 @@ export interface RdsCreateCrossRegionReplicaConfiguration {
   externalId?: string;
   dbInstanceArnMap: { [key: string]: string | undefined };
 }
-export const RdsCreateCrossRegionReplicaConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timeoutMinutes: S.optional(S.Number),
-    crossAccountRole: S.optional(S.String),
-    externalId: S.optional(S.String),
-    dbInstanceArnMap: RdsDbInstanceArnMap,
-  }),
-).annotate({
-  identifier: "RdsCreateCrossRegionReplicaConfiguration",
-}) as any as S.Schema<RdsCreateCrossRegionReplicaConfiguration>;
+export const RdsCreateCrossRegionReplicaConfiguration =
+  RdsPromoteReadReplicaConfiguration as any as S.Schema<RdsCreateCrossRegionReplicaConfiguration>;
 export type EventSourceMappingAction = "enable" | "disable" | (string & {});
 export const EventSourceMappingAction = S.String;
 
@@ -701,10 +685,8 @@ export const LambdaEventSourceMappingConfiguration = /*@__PURE__*/ S.suspend(() 
   identifier: "LambdaEventSourceMappingConfiguration",
 }) as any as S.Schema<LambdaEventSourceMappingConfiguration>;
 export type RegionAuroraClusterMap = { [key: string]: string | undefined };
-export const RegionAuroraClusterMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const RegionAuroraClusterMap =
+  RdsDbInstanceArnMap as any as S.Schema<RegionAuroraClusterMap>;
 export interface AuroraServerlessScalingConfiguration {
   timeoutMinutes?: number;
   crossAccountRole?: string;
@@ -727,10 +709,8 @@ export const AuroraServerlessScalingConfiguration = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<AuroraServerlessScalingConfiguration>;
 export type AuroraInstanceArn = string;
 export type RegionAuroraInstanceArnMap = { [key: string]: string | undefined };
-export const RegionAuroraInstanceArnMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const RegionAuroraInstanceArnMap =
+  RdsDbInstanceArnMap as any as S.Schema<RegionAuroraInstanceArnMap>;
 export interface AuroraProvisionedScalingConfiguration {
   timeoutMinutes?: number;
   crossAccountRole?: string;
@@ -766,10 +746,8 @@ export const NeptuneUngraceful = /*@__PURE__*/ S.suspend(() =>
 export type NeptuneGlobalClusterIdentifier = string;
 export type NeptuneClusterArn = string;
 export type RegionNeptuneClusterArnMap = { [key: string]: string | undefined };
-export const RegionNeptuneClusterArnMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const RegionNeptuneClusterArnMap =
+  RdsDbInstanceArnMap as any as S.Schema<RegionNeptuneClusterArnMap>;
 export interface NeptuneGlobalDatabaseConfiguration {
   timeoutMinutes?: number;
   crossAccountRole?: string;
@@ -1343,7 +1321,7 @@ export const ReportConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReportConfiguration" }) as any as S.Schema<ReportConfiguration>;
 export type PlanName = string;
 export type RegionList = string[];
-export const RegionList = /*@__PURE__*/ S.Array(S.String);
+export const RegionList = AuroraClusterArns as any as S.Schema<RegionList>;
 export type RecoveryApproach = "activeActive" | "activePassive" | (string & {});
 export const RecoveryApproach = S.String;
 
@@ -1454,9 +1432,8 @@ export const DeletePlanRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeletePlanRequest" }) as any as S.Schema<DeletePlanRequest>;
 export interface DeletePlanResponse {}
-export const DeletePlanResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePlanResponse",
-}) as any as S.Schema<DeletePlanResponse>;
+export const DeletePlanResponse =
+  CancelPlanExecutionResponse as any as S.Schema<DeletePlanResponse>;
 export interface GetPlanRequest {
   arn: string;
 }
@@ -1476,9 +1453,7 @@ export const GetPlanRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetPlanResponse {
   plan?: Plan;
 }
-export const GetPlanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ plan: S.optional(Plan) }),
-).annotate({ identifier: "GetPlanResponse" }) as any as S.Schema<GetPlanResponse>;
+export const GetPlanResponse = CreatePlanResponse as any as S.Schema<GetPlanResponse>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface GetPlanEvaluationStatusRequest {
@@ -1714,9 +1689,8 @@ export const GetPlanInRegionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetPlanInRegionResponse {
   plan?: Plan;
 }
-export const GetPlanInRegionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ plan: S.optional(Plan) }),
-).annotate({ identifier: "GetPlanInRegionResponse" }) as any as S.Schema<GetPlanInRegionResponse>;
+export const GetPlanInRegionResponse =
+  CreatePlanResponse as any as S.Schema<GetPlanInRegionResponse>;
 export type ListExecutionEventsMaxResults = number;
 export interface ListPlanExecutionEventsRequest {
   planArn: string;
@@ -1767,7 +1741,7 @@ export type ExecutionEventType =
 export const ExecutionEventType = S.String;
 
 export type Resources = string[];
-export const Resources = /*@__PURE__*/ S.Array(S.String);
+export const Resources = AuroraClusterArns as any as S.Schema<Resources>;
 export interface ExecutionEvent {
   timestamp?: Date;
   type?: ExecutionEventType;
@@ -2018,13 +1992,10 @@ export interface ListRoute53HealthChecksInRegionResponse {
   healthChecks?: Route53HealthCheck[];
   nextToken?: string;
 }
-export const ListRoute53HealthChecksInRegionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ healthChecks: S.optional(Route53HealthCheckList), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListRoute53HealthChecksInRegionResponse",
-}) as any as S.Schema<ListRoute53HealthChecksInRegionResponse>;
+export const ListRoute53HealthChecksInRegionResponse =
+  ListRoute53HealthChecksResponse as any as S.Schema<ListRoute53HealthChecksInRegionResponse>;
 export type PlanArnList = string[];
-export const PlanArnList = /*@__PURE__*/ S.Array(S.String);
+export const PlanArnList = AuroraClusterArns as any as S.Schema<PlanArnList>;
 export interface ListServiceQuotaWarningsRequest {
   planArns?: string[];
   maxResults?: number;
@@ -2181,11 +2152,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  CancelPlanExecutionResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = AuroraClusterArns as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   arn: string;
   resourceTagKeys: string[];
@@ -2204,9 +2174,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  CancelPlanExecutionResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdatePlanRequest {
   arn: string;
   description?: string;
@@ -2244,9 +2213,7 @@ export const UpdatePlanRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdatePlanResponse {
   plan?: Plan;
 }
-export const UpdatePlanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ plan: S.optional(Plan) }),
-).annotate({ identifier: "UpdatePlanResponse" }) as any as S.Schema<UpdatePlanResponse>;
+export const UpdatePlanResponse = CreatePlanResponse as any as S.Schema<UpdatePlanResponse>;
 export type UpdatePlanExecutionAction =
   | "switchToGraceful"
   | "switchToUngraceful"
@@ -2272,9 +2239,8 @@ export const UpdatePlanExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdatePlanExecutionRequest",
 }) as any as S.Schema<UpdatePlanExecutionRequest>;
 export interface UpdatePlanExecutionResponse {}
-export const UpdatePlanExecutionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdatePlanExecutionResponse",
-}) as any as S.Schema<UpdatePlanExecutionResponse>;
+export const UpdatePlanExecutionResponse =
+  CancelPlanExecutionResponse as any as S.Schema<UpdatePlanExecutionResponse>;
 export type UpdatePlanExecutionStepAction = "switchToUngraceful" | "skip" | (string & {});
 export const UpdatePlanExecutionStepAction = S.String;
 

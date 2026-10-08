@@ -578,11 +578,8 @@ export const CreateCustomMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCustomMetadataRequest",
 }) as any as S.Schema<CreateCustomMetadataRequest>;
 export interface CreateCustomMetadataResponse {}
-export const CreateCustomMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "CreateCustomMetadataResponse",
-}) as any as S.Schema<CreateCustomMetadataResponse>;
+export const CreateCustomMetadataResponse =
+  AbortDocumentVersionUploadResponse as any as S.Schema<CreateCustomMetadataResponse>;
 export type ResourceNameType = string | redacted.Redacted<string>;
 export interface CreateFolderRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
@@ -748,9 +745,7 @@ export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateUserResponse {
   User?: User;
 }
-export const CreateUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ User: S.optional(User) }).pipe(ns),
-).annotate({ identifier: "CreateUserResponse" }) as any as S.Schema<CreateUserResponse>;
+export const CreateUserResponse = ActivateUserResponse as any as S.Schema<CreateUserResponse>;
 export interface DeactivateUserRequest {
   UserId: string;
   AuthenticationToken?: string | redacted.Redacted<string>;
@@ -803,11 +798,9 @@ export const DeleteCommentRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteCommentRequest" }) as any as S.Schema<DeleteCommentRequest>;
 export interface DeleteCommentResponse {}
-export const DeleteCommentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteCommentResponse",
-}) as any as S.Schema<DeleteCommentResponse>;
+export const DeleteCommentResponse = CreateLabelsResponse as any as S.Schema<DeleteCommentResponse>;
 export type CustomMetadataKeyList = string[];
-export const CustomMetadataKeyList = /*@__PURE__*/ S.Array(S.String);
+export const CustomMetadataKeyList = SharedLabels as any as S.Schema<CustomMetadataKeyList>;
 export interface DeleteCustomMetadataRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   ResourceId: string;
@@ -837,11 +830,8 @@ export const DeleteCustomMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteCustomMetadataRequest",
 }) as any as S.Schema<DeleteCustomMetadataRequest>;
 export interface DeleteCustomMetadataResponse {}
-export const DeleteCustomMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteCustomMetadataResponse",
-}) as any as S.Schema<DeleteCustomMetadataResponse>;
+export const DeleteCustomMetadataResponse =
+  AbortDocumentVersionUploadResponse as any as S.Schema<DeleteCustomMetadataResponse>;
 export interface DeleteDocumentRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   DocumentId: string;
@@ -863,9 +853,8 @@ export const DeleteDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteDocumentRequest" }) as any as S.Schema<DeleteDocumentRequest>;
 export interface DeleteDocumentResponse {}
-export const DeleteDocumentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate(
-  { identifier: "DeleteDocumentResponse" },
-) as any as S.Schema<DeleteDocumentResponse>;
+export const DeleteDocumentResponse =
+  DeactivateUserResponse as any as S.Schema<DeleteDocumentResponse>;
 export interface DeleteDocumentVersionRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   DocumentId: string;
@@ -896,11 +885,8 @@ export const DeleteDocumentVersionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDocumentVersionRequest",
 }) as any as S.Schema<DeleteDocumentVersionRequest>;
 export interface DeleteDocumentVersionResponse {}
-export const DeleteDocumentVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteDocumentVersionResponse",
-}) as any as S.Schema<DeleteDocumentVersionResponse>;
+export const DeleteDocumentVersionResponse =
+  AbortDocumentVersionUploadResponse as any as S.Schema<DeleteDocumentVersionResponse>;
 export interface DeleteFolderRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   FolderId: string;
@@ -922,9 +908,7 @@ export const DeleteFolderRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteFolderRequest" }) as any as S.Schema<DeleteFolderRequest>;
 export interface DeleteFolderResponse {}
-export const DeleteFolderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteFolderResponse",
-}) as any as S.Schema<DeleteFolderResponse>;
+export const DeleteFolderResponse = CreateLabelsResponse as any as S.Schema<DeleteFolderResponse>;
 export interface DeleteFolderContentsRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   FolderId: string;
@@ -948,11 +932,8 @@ export const DeleteFolderContentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteFolderContentsRequest",
 }) as any as S.Schema<DeleteFolderContentsRequest>;
 export interface DeleteFolderContentsResponse {}
-export const DeleteFolderContentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteFolderContentsResponse",
-}) as any as S.Schema<DeleteFolderContentsResponse>;
+export const DeleteFolderContentsResponse =
+  AbortDocumentVersionUploadResponse as any as S.Schema<DeleteFolderContentsResponse>;
 export interface DeleteLabelsRequest {
   ResourceId: string;
   AuthenticationToken?: string | redacted.Redacted<string>;
@@ -978,9 +959,7 @@ export const DeleteLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteLabelsRequest" }) as any as S.Schema<DeleteLabelsRequest>;
 export interface DeleteLabelsResponse {}
-export const DeleteLabelsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteLabelsResponse",
-}) as any as S.Schema<DeleteLabelsResponse>;
+export const DeleteLabelsResponse = CreateLabelsResponse as any as S.Schema<DeleteLabelsResponse>;
 export interface DeleteNotificationSubscriptionRequest {
   SubscriptionId: string;
   OrganizationId: string;
@@ -1007,11 +986,8 @@ export const DeleteNotificationSubscriptionRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "DeleteNotificationSubscriptionRequest",
 }) as any as S.Schema<DeleteNotificationSubscriptionRequest>;
 export interface DeleteNotificationSubscriptionResponse {}
-export const DeleteNotificationSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteNotificationSubscriptionResponse",
-}) as any as S.Schema<DeleteNotificationSubscriptionResponse>;
+export const DeleteNotificationSubscriptionResponse =
+  AbortDocumentVersionUploadResponse as any as S.Schema<DeleteNotificationSubscriptionResponse>;
 export interface DeleteUserRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   UserId: string;
@@ -1033,9 +1009,7 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteUserRequest" }) as any as S.Schema<DeleteUserRequest>;
 export interface DeleteUserResponse {}
-export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteUserResponse",
-}) as any as S.Schema<DeleteUserResponse>;
+export const DeleteUserResponse = CreateLabelsResponse as any as S.Schema<DeleteUserResponse>;
 export type ActivityNamesFilterType = string;
 export type LimitType = number;
 export type SearchMarkerType = string;
@@ -1660,9 +1634,8 @@ export const GetCurrentUserRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetCurrentUserResponse {
   User?: User;
 }
-export const GetCurrentUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ User: S.optional(User) }).pipe(ns),
-).annotate({ identifier: "GetCurrentUserResponse" }) as any as S.Schema<GetCurrentUserResponse>;
+export const GetCurrentUserResponse =
+  ActivateUserResponse as any as S.Schema<GetCurrentUserResponse>;
 export interface GetDocumentRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   DocumentId: string;
@@ -1843,9 +1816,8 @@ export const GetFolderPathRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetFolderPathResponse {
   Path?: ResourcePath;
 }
-export const GetFolderPathResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Path: S.optional(ResourcePath) }).pipe(ns),
-).annotate({ identifier: "GetFolderPathResponse" }) as any as S.Schema<GetFolderPathResponse>;
+export const GetFolderPathResponse =
+  GetDocumentPathResponse as any as S.Schema<GetFolderPathResponse>;
 export type ResourceCollectionType = "SHARED_WITH_ME" | (string & {});
 export const ResourceCollectionType = S.String;
 
@@ -1908,10 +1880,7 @@ export const InitiateDocumentVersionUploadRequest = /*@__PURE__*/ S.suspend(() =
 export type HeaderNameType = string;
 export type HeaderValueType = string;
 export type SignedHeaderMap = { [key: string]: string | undefined };
-export const SignedHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const SignedHeaderMap = CustomMetadataMap as any as S.Schema<SignedHeaderMap>;
 export interface UploadMetadata {
   UploadUrl?: string | redacted.Redacted<string>;
   SignedHeaders?: { [key: string]: string | undefined };
@@ -1954,11 +1923,8 @@ export const RemoveAllResourcePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RemoveAllResourcePermissionsRequest",
 }) as any as S.Schema<RemoveAllResourcePermissionsRequest>;
 export interface RemoveAllResourcePermissionsResponse {}
-export const RemoveAllResourcePermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "RemoveAllResourcePermissionsResponse",
-}) as any as S.Schema<RemoveAllResourcePermissionsResponse>;
+export const RemoveAllResourcePermissionsResponse =
+  AbortDocumentVersionUploadResponse as any as S.Schema<RemoveAllResourcePermissionsResponse>;
 export interface RemoveResourcePermissionRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   ResourceId: string;
@@ -1986,11 +1952,8 @@ export const RemoveResourcePermissionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RemoveResourcePermissionRequest",
 }) as any as S.Schema<RemoveResourcePermissionRequest>;
 export interface RemoveResourcePermissionResponse {}
-export const RemoveResourcePermissionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "RemoveResourcePermissionResponse",
-}) as any as S.Schema<RemoveResourcePermissionResponse>;
+export const RemoveResourcePermissionResponse =
+  AbortDocumentVersionUploadResponse as any as S.Schema<RemoveResourcePermissionResponse>;
 export interface RestoreDocumentVersionsRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   DocumentId: string;
@@ -2014,11 +1977,8 @@ export const RestoreDocumentVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RestoreDocumentVersionsRequest",
 }) as any as S.Schema<RestoreDocumentVersionsRequest>;
 export interface RestoreDocumentVersionsResponse {}
-export const RestoreDocumentVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "RestoreDocumentVersionsResponse",
-}) as any as S.Schema<RestoreDocumentVersionsResponse>;
+export const RestoreDocumentVersionsResponse =
+  AbortDocumentVersionUploadResponse as any as S.Schema<RestoreDocumentVersionsResponse>;
 export type SearchQueryScopeType = "NAME" | "CONTENT" | (string & {});
 export const SearchQueryScopeType = S.String;
 
@@ -2093,7 +2053,7 @@ export type SearchResourceTypeList = SearchResourceType[];
 export const SearchResourceTypeList = /*@__PURE__*/ S.Array(SearchResourceType);
 export type SearchLabel = string;
 export type SearchLabelList = string[];
-export const SearchLabelList = /*@__PURE__*/ S.Array(S.String);
+export const SearchLabelList = SharedLabels as any as S.Schema<SearchLabelList>;
 export type PrincipalRoleType = "VIEWER" | "CONTRIBUTOR" | "OWNER" | "COOWNER" | (string & {});
 export const PrincipalRoleType = S.String;
 
@@ -2110,7 +2070,7 @@ export type SearchPrincipalTypeList = SearchPrincipalType[];
 export const SearchPrincipalTypeList = /*@__PURE__*/ S.Array(SearchPrincipalType);
 export type SearchAncestorId = string;
 export type SearchAncestorIdList = string[];
-export const SearchAncestorIdList = /*@__PURE__*/ S.Array(S.String);
+export const SearchAncestorIdList = SharedLabels as any as S.Schema<SearchAncestorIdList>;
 export type SearchCollectionType = "OWNED" | "SHARED_WITH_ME" | (string & {});
 export const SearchCollectionType = S.String;
 
@@ -2272,9 +2232,8 @@ export const UpdateDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateDocumentRequest" }) as any as S.Schema<UpdateDocumentRequest>;
 export interface UpdateDocumentResponse {}
-export const UpdateDocumentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate(
-  { identifier: "UpdateDocumentResponse" },
-) as any as S.Schema<UpdateDocumentResponse>;
+export const UpdateDocumentResponse =
+  DeactivateUserResponse as any as S.Schema<UpdateDocumentResponse>;
 export type DocumentVersionStatus = "ACTIVE" | (string & {});
 export const DocumentVersionStatus = S.String;
 
@@ -2305,11 +2264,8 @@ export const UpdateDocumentVersionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateDocumentVersionRequest",
 }) as any as S.Schema<UpdateDocumentVersionRequest>;
 export interface UpdateDocumentVersionResponse {}
-export const UpdateDocumentVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateDocumentVersionResponse",
-}) as any as S.Schema<UpdateDocumentVersionResponse>;
+export const UpdateDocumentVersionResponse =
+  AbortDocumentVersionUploadResponse as any as S.Schema<UpdateDocumentVersionResponse>;
 export interface UpdateFolderRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   FolderId: string;
@@ -2337,9 +2293,7 @@ export const UpdateFolderRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateFolderRequest" }) as any as S.Schema<UpdateFolderRequest>;
 export interface UpdateFolderResponse {}
-export const UpdateFolderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UpdateFolderResponse",
-}) as any as S.Schema<UpdateFolderResponse>;
+export const UpdateFolderResponse = CreateLabelsResponse as any as S.Schema<UpdateFolderResponse>;
 export type BooleanEnumType = "TRUE" | "FALSE" | (string & {});
 export const BooleanEnumType = S.String;
 
@@ -2380,12 +2334,10 @@ export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateUserResponse {
   User?: User;
 }
-export const UpdateUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ User: S.optional(User) }).pipe(ns),
-).annotate({ identifier: "UpdateUserResponse" }) as any as S.Schema<UpdateUserResponse>;
+export const UpdateUserResponse = ActivateUserResponse as any as S.Schema<UpdateUserResponse>;
 export type ErrorMessageType = string;
 export type EntityIdList = string[];
-export const EntityIdList = /*@__PURE__*/ S.Array(S.String);
+export const EntityIdList = SharedLabels as any as S.Schema<EntityIdList>;
 export type ExceptionCodeType = string;
 export type AbortDocumentVersionUploadError =
   | ConcurrentModificationException

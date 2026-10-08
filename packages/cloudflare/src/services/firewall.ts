@@ -908,9 +908,8 @@ export const CreateLockdownRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateLockdownRequest" }) as any as S.Schema<CreateLockdownRequest>;
 
 export type LockdownsCreateResponseUrlsList = Array<string>;
-export const LockdownsCreateResponseUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LockdownsCreateResponseUrlsList>;
+export const LockdownsCreateResponseUrlsList =
+  LockdownsCreateRequestUrlsList as any as S.Schema<LockdownsCreateResponseUrlsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateLockdownResponse {
@@ -1208,9 +1207,8 @@ export const CreateUaRuleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateUaRuleResponse" }) as any as S.Schema<CreateUaRuleResponse>;
 
 export type WafOverridesCreateRequestUrlsList = Array<string>;
-export const WafOverridesCreateRequestUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WafOverridesCreateRequestUrlsList>;
+export const WafOverridesCreateRequestUrlsList =
+  LockdownsCreateRequestUrlsList as any as S.Schema<WafOverridesCreateRequestUrlsList>;
 
 export interface CreateWafOverrideRequest {
   /** Defines an identifier. */
@@ -1486,11 +1484,8 @@ export const DeleteWafOverrideRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWafOverrideRequest" }) as any as S.Schema<DeleteWafOverrideRequest>;
 
 export interface DeleteWafOverrideResponse {}
-export const DeleteWafOverrideResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteWafOverrideResponse",
-}) as any as S.Schema<DeleteWafOverrideResponse>;
+export const DeleteWafOverrideResponse =
+  CreateWafOverrideResponse as any as S.Schema<DeleteWafOverrideResponse>;
 
 export interface GetAccessRuleForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
@@ -1749,9 +1744,8 @@ export const GetLockdownRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetLockdownRequest" }) as any as S.Schema<GetLockdownRequest>;
 
 export type LockdownsGetResponseUrlsList = Array<string>;
-export const LockdownsGetResponseUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LockdownsGetResponseUrlsList>;
+export const LockdownsGetResponseUrlsList =
+  LockdownsCreateRequestUrlsList as any as S.Schema<LockdownsGetResponseUrlsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetLockdownResponse {
@@ -1772,18 +1766,7 @@ export interface GetLockdownResponse {
   /** The priority of the Zone Lockdown rule, echoed on reads. */
   priority?: number | null;
 }
-export const GetLockdownResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    configurations: LockdownConfigurationsList,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    description: S.String,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    paused: S.Boolean,
-    urls: LockdownsGetResponseUrlsList,
-    priority: S.optional(S.NullOr(S.Number)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetLockdownResponse" }) as any as S.Schema<GetLockdownResponse>;
+export const GetLockdownResponse = CreateLockdownResponse as any as S.Schema<GetLockdownResponse>;
 
 export interface GetRuleRequest {
   /** Defines an identifier. */
@@ -2027,11 +2010,8 @@ export const GetWafPackageRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetWafPackageRuleRequest" }) as any as S.Schema<GetWafPackageRuleRequest>;
 
 export type GetWafPackageRuleResponse = unknown;
-export const GetWafPackageRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetWafPackageRuleResponse",
-}) as any as S.Schema<GetWafPackageRuleResponse>;
+export const GetWafPackageRuleResponse =
+  GetWafPackageGroupResponse as any as S.Schema<GetWafPackageRuleResponse>;
 
 export type AccessRulesListRequestConfigurationTarget = "ip" | "ip_range" | "asn" | "country";
 export const AccessRulesListRequestConfigurationTarget = S.String;
@@ -2410,9 +2390,8 @@ export const ListLockdownsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListLockdownsRequest" }) as any as S.Schema<ListLockdownsRequest>;
 
 export type LockdownsListResultItemUrlsList = Array<string>;
-export const LockdownsListResultItemUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LockdownsListResultItemUrlsList>;
+export const LockdownsListResultItemUrlsList =
+  LockdownsCreateRequestUrlsList as any as S.Schema<LockdownsListResultItemUrlsList>;
 
 export interface LockdownsListResultItem {
   /** The unique identifier of the Zone Lockdown rule. */
@@ -2678,9 +2657,8 @@ export const ListWafOverridesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListWafOverridesRequest" }) as any as S.Schema<ListWafOverridesRequest>;
 
 export interface ListWafOverridesResponse {}
-export const ListWafOverridesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "ListWafOverridesResponse" }) as any as S.Schema<ListWafOverridesResponse>;
+export const ListWafOverridesResponse =
+  GetWafOverrideResponse as any as S.Schema<ListWafOverridesResponse>;
 
 export type WafPackagesGroupsListRequestDirection = "asc" | "desc";
 export const WafPackagesGroupsListRequestDirection = S.String;
@@ -3135,9 +3113,8 @@ export const ListWafPackagesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListWafPackagesResponse {}
-export const ListWafPackagesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "ListWafPackagesResponse" }) as any as S.Schema<ListWafPackagesResponse>;
+export const ListWafPackagesResponse =
+  GetWafOverrideResponse as any as S.Schema<ListWafPackagesResponse>;
 
 export type AccessRulesEditRequestConfigurationAccessRuleIPConfigurationTarget = "ip";
 export const AccessRulesEditRequestConfigurationAccessRuleIPConfigurationTarget = S.String;
@@ -3650,11 +3627,8 @@ export const PatchWafPackageGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchWafPackageGroupRequest>;
 
 export type PatchWafPackageGroupResponse = unknown;
-export const PatchWafPackageGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PatchWafPackageGroupResponse",
-}) as any as S.Schema<PatchWafPackageGroupResponse>;
+export const PatchWafPackageGroupResponse =
+  GetWafPackageGroupResponse as any as S.Schema<PatchWafPackageGroupResponse>;
 
 export type WafPackagesRulesEditRequestMode =
   | "default"
@@ -3895,9 +3869,8 @@ export const PatchWafPackageRuleResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchWafPackageRuleResponse>;
 
 export type LockdownsUpdateRequestUrlsList = Array<string>;
-export const LockdownsUpdateRequestUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LockdownsUpdateRequestUrlsList>;
+export const LockdownsUpdateRequestUrlsList =
+  LockdownsCreateRequestUrlsList as any as S.Schema<LockdownsUpdateRequestUrlsList>;
 
 export interface UpdateLockdownRequest {
   /** Defines an identifier. */
@@ -3936,9 +3909,8 @@ export const UpdateLockdownRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateLockdownRequest" }) as any as S.Schema<UpdateLockdownRequest>;
 
 export type LockdownsUpdateResponseUrlsList = Array<string>;
-export const LockdownsUpdateResponseUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LockdownsUpdateResponseUrlsList>;
+export const LockdownsUpdateResponseUrlsList =
+  LockdownsCreateRequestUrlsList as any as S.Schema<LockdownsUpdateResponseUrlsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateLockdownResponse {
@@ -3959,18 +3931,8 @@ export interface UpdateLockdownResponse {
   /** The priority of the Zone Lockdown rule, echoed on reads. */
   priority?: number | null;
 }
-export const UpdateLockdownResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    configurations: LockdownConfigurationsList,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    description: S.String,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    paused: S.Boolean,
-    urls: LockdownsUpdateResponseUrlsList,
-    priority: S.optional(S.NullOr(S.Number)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UpdateLockdownResponse" }) as any as S.Schema<UpdateLockdownResponse>;
+export const UpdateLockdownResponse =
+  CreateLockdownResponse as any as S.Schema<UpdateLockdownResponse>;
 
 export type RulesUpdateRequestActionMode =
   | "simulate"
@@ -4348,9 +4310,8 @@ export type WafOverridesUpdateRequestRules =
 export const WafOverridesUpdateRequestRules = S.String;
 
 export type WafOverridesUpdateRequestUrlsList = Array<string>;
-export const WafOverridesUpdateRequestUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WafOverridesUpdateRequestUrlsList>;
+export const WafOverridesUpdateRequestUrlsList =
+  LockdownsCreateRequestUrlsList as any as S.Schema<WafOverridesUpdateRequestUrlsList>;
 
 export interface UpdateWafOverrideRequest {
   /** Defines an identifier. */
@@ -4386,11 +4347,8 @@ export const UpdateWafOverrideRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateWafOverrideRequest" }) as any as S.Schema<UpdateWafOverrideRequest>;
 
 export interface UpdateWafOverrideResponse {}
-export const UpdateWafOverrideResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "UpdateWafOverrideResponse",
-}) as any as S.Schema<UpdateWafOverrideResponse>;
+export const UpdateWafOverrideResponse =
+  CreateWafOverrideResponse as any as S.Schema<UpdateWafOverrideResponse>;
 
 export type BulkDeleteRulesError = CloudflareOpError;
 /** **This endpoint has been deprecated and returns 410 Gone. Please use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/) instead.** Deletes existing firewall rules. */

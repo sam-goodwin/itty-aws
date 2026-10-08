@@ -42,9 +42,8 @@ export const DeleteWebhooksLookupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWebhooksLookupRequest>;
 
 export interface DeleteWebhooksLookupResponse {}
-export const DeleteWebhooksLookupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWebhooksLookupResponse",
-}) as any as S.Schema<DeleteWebhooksLookupResponse>;
+export const DeleteWebhooksLookupResponse =
+  DeleteWebhookResponse as any as S.Schema<DeleteWebhooksLookupResponse>;
 
 export interface GetWebhookRequest {
   /** The ID of the webhook for which to list subscriptions. */
@@ -158,9 +157,8 @@ export const Resource = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.
 
 /** An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type LinkDescriptionList = Array<LinkDescription>;
-export const LinkDescriptionList = /*@__PURE__*/ S.Array(
-  LinkDescription,
-) as any as S.Schema<LinkDescriptionList>;
+export const LinkDescriptionList =
+  DefinitionsLinkDescriptionList as any as S.Schema<LinkDescriptionList>;
 
 /** A webhook event notification. */
 export interface Event {
@@ -377,9 +375,8 @@ export const PostSimulateEventRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostSimulateEventRequest" }) as any as S.Schema<PostSimulateEventRequest>;
 
 export interface PostSimulateEventResponse {}
-export const PostSimulateEventResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PostSimulateEventResponse",
-}) as any as S.Schema<PostSimulateEventResponse>;
+export const PostSimulateEventResponse =
+  DeleteWebhookResponse as any as S.Schema<PostSimulateEventResponse>;
 
 /** An event type. */
 export interface EventTypeInput {
@@ -444,9 +441,8 @@ export const ResendWebhooksEventRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResendWebhooksEventRequest>;
 
 export interface ResendWebhooksEventResponse {}
-export const ResendWebhooksEventResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResendWebhooksEventResponse",
-}) as any as S.Schema<ResendWebhooksEventResponse>;
+export const ResendWebhooksEventResponse =
+  DeleteWebhookResponse as any as S.Schema<ResendWebhooksEventResponse>;
 
 /** The operation. */
 export type PatchOp = "add" | "remove" | "replace" | "move" | "copy" | "test";

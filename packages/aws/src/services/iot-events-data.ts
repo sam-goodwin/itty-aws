@@ -229,18 +229,11 @@ export interface DisableAlarmActionRequest {
   keyValue?: string;
   note?: string;
 }
-export const DisableAlarmActionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.String,
-    alarmModelName: S.String,
-    keyValue: S.optional(S.String),
-    note: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DisableAlarmActionRequest",
-}) as any as S.Schema<DisableAlarmActionRequest>;
+export const DisableAlarmActionRequest =
+  AcknowledgeAlarmActionRequest as any as S.Schema<DisableAlarmActionRequest>;
 export type DisableAlarmActionRequests = DisableAlarmActionRequest[];
-export const DisableAlarmActionRequests = /*@__PURE__*/ S.Array(DisableAlarmActionRequest);
+export const DisableAlarmActionRequests =
+  AcknowledgeAlarmActionRequests as any as S.Schema<DisableAlarmActionRequests>;
 export interface BatchDisableAlarmRequest {
   disableActionRequests: DisableAlarmActionRequest[];
 }
@@ -254,29 +247,19 @@ export const BatchDisableAlarmRequest = /*@__PURE__*/ S.suspend(() =>
 export interface BatchDisableAlarmResponse {
   errorEntries?: BatchAlarmActionErrorEntry[];
 }
-export const BatchDisableAlarmResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ errorEntries: S.optional(BatchAlarmActionErrorEntries) }),
-).annotate({
-  identifier: "BatchDisableAlarmResponse",
-}) as any as S.Schema<BatchDisableAlarmResponse>;
+export const BatchDisableAlarmResponse =
+  BatchAcknowledgeAlarmResponse as any as S.Schema<BatchDisableAlarmResponse>;
 export interface EnableAlarmActionRequest {
   requestId: string;
   alarmModelName: string;
   keyValue?: string;
   note?: string;
 }
-export const EnableAlarmActionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.String,
-    alarmModelName: S.String,
-    keyValue: S.optional(S.String),
-    note: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EnableAlarmActionRequest",
-}) as any as S.Schema<EnableAlarmActionRequest>;
+export const EnableAlarmActionRequest =
+  AcknowledgeAlarmActionRequest as any as S.Schema<EnableAlarmActionRequest>;
 export type EnableAlarmActionRequests = EnableAlarmActionRequest[];
-export const EnableAlarmActionRequests = /*@__PURE__*/ S.Array(EnableAlarmActionRequest);
+export const EnableAlarmActionRequests =
+  AcknowledgeAlarmActionRequests as any as S.Schema<EnableAlarmActionRequests>;
 export interface BatchEnableAlarmRequest {
   enableActionRequests: EnableAlarmActionRequest[];
 }
@@ -290,11 +273,8 @@ export const BatchEnableAlarmRequest = /*@__PURE__*/ S.suspend(() =>
 export interface BatchEnableAlarmResponse {
   errorEntries?: BatchAlarmActionErrorEntry[];
 }
-export const BatchEnableAlarmResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ errorEntries: S.optional(BatchAlarmActionErrorEntries) }),
-).annotate({
-  identifier: "BatchEnableAlarmResponse",
-}) as any as S.Schema<BatchEnableAlarmResponse>;
+export const BatchEnableAlarmResponse =
+  BatchAcknowledgeAlarmResponse as any as S.Schema<BatchEnableAlarmResponse>;
 export type EphemeralInputName = string;
 export type Payload = Uint8Array;
 export type EpochMilliTimestamp = number;
@@ -335,17 +315,11 @@ export interface BatchPutMessageErrorEntry {
   errorCode?: ErrorCode;
   errorMessage?: string;
 }
-export const BatchPutMessageErrorEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    messageId: S.optional(S.String),
-    errorCode: S.optional(ErrorCode),
-    errorMessage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BatchPutMessageErrorEntry",
-}) as any as S.Schema<BatchPutMessageErrorEntry>;
+export const BatchPutMessageErrorEntry =
+  BatchDeleteDetectorErrorEntry as any as S.Schema<BatchPutMessageErrorEntry>;
 export type BatchPutMessageErrorEntries = BatchPutMessageErrorEntry[];
-export const BatchPutMessageErrorEntries = /*@__PURE__*/ S.Array(BatchPutMessageErrorEntry);
+export const BatchPutMessageErrorEntries =
+  BatchDeleteDetectorErrorEntries as any as S.Schema<BatchPutMessageErrorEntries>;
 export interface BatchPutMessageResponse {
   BatchPutMessageErrorEntries?: BatchPutMessageErrorEntry[];
 }
@@ -362,18 +336,11 @@ export interface ResetAlarmActionRequest {
   keyValue?: string;
   note?: string;
 }
-export const ResetAlarmActionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.String,
-    alarmModelName: S.String,
-    keyValue: S.optional(S.String),
-    note: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResetAlarmActionRequest",
-}) as any as S.Schema<ResetAlarmActionRequest>;
+export const ResetAlarmActionRequest =
+  AcknowledgeAlarmActionRequest as any as S.Schema<ResetAlarmActionRequest>;
 export type ResetAlarmActionRequests = ResetAlarmActionRequest[];
-export const ResetAlarmActionRequests = /*@__PURE__*/ S.Array(ResetAlarmActionRequest);
+export const ResetAlarmActionRequests =
+  AcknowledgeAlarmActionRequests as any as S.Schema<ResetAlarmActionRequests>;
 export interface BatchResetAlarmRequest {
   resetActionRequests: ResetAlarmActionRequest[];
 }
@@ -387,11 +354,8 @@ export const BatchResetAlarmRequest = /*@__PURE__*/ S.suspend(() =>
 export interface BatchResetAlarmResponse {
   errorEntries?: BatchAlarmActionErrorEntry[];
 }
-export const BatchResetAlarmResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ errorEntries: S.optional(BatchAlarmActionErrorEntries) }),
-).annotate({
-  identifier: "BatchResetAlarmResponse",
-}) as any as S.Schema<BatchResetAlarmResponse>;
+export const BatchResetAlarmResponse =
+  BatchAcknowledgeAlarmResponse as any as S.Schema<BatchResetAlarmResponse>;
 export type SnoozeDuration = number;
 export interface SnoozeAlarmActionRequest {
   requestId: string;
@@ -426,11 +390,8 @@ export const BatchSnoozeAlarmRequest = /*@__PURE__*/ S.suspend(() =>
 export interface BatchSnoozeAlarmResponse {
   errorEntries?: BatchAlarmActionErrorEntry[];
 }
-export const BatchSnoozeAlarmResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ errorEntries: S.optional(BatchAlarmActionErrorEntries) }),
-).annotate({
-  identifier: "BatchSnoozeAlarmResponse",
-}) as any as S.Schema<BatchSnoozeAlarmResponse>;
+export const BatchSnoozeAlarmResponse =
+  BatchAcknowledgeAlarmResponse as any as S.Schema<BatchSnoozeAlarmResponse>;
 export type StateName = string;
 export type VariableName = string;
 export type VariableValue = string;
@@ -505,17 +466,11 @@ export interface BatchUpdateDetectorErrorEntry {
   errorCode?: ErrorCode;
   errorMessage?: string;
 }
-export const BatchUpdateDetectorErrorEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    messageId: S.optional(S.String),
-    errorCode: S.optional(ErrorCode),
-    errorMessage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BatchUpdateDetectorErrorEntry",
-}) as any as S.Schema<BatchUpdateDetectorErrorEntry>;
+export const BatchUpdateDetectorErrorEntry =
+  BatchDeleteDetectorErrorEntry as any as S.Schema<BatchUpdateDetectorErrorEntry>;
 export type BatchUpdateDetectorErrorEntries = BatchUpdateDetectorErrorEntry[];
-export const BatchUpdateDetectorErrorEntries = /*@__PURE__*/ S.Array(BatchUpdateDetectorErrorEntry);
+export const BatchUpdateDetectorErrorEntries =
+  BatchDeleteDetectorErrorEntries as any as S.Schema<BatchUpdateDetectorErrorEntries>;
 export interface BatchUpdateDetectorResponse {
   batchUpdateDetectorErrorEntries?: BatchUpdateDetectorErrorEntry[];
 }
@@ -622,27 +577,18 @@ export const EnableActionConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface DisableActionConfiguration {
   note?: string;
 }
-export const DisableActionConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ note: S.optional(S.String) }),
-).annotate({
-  identifier: "DisableActionConfiguration",
-}) as any as S.Schema<DisableActionConfiguration>;
+export const DisableActionConfiguration =
+  EnableActionConfiguration as any as S.Schema<DisableActionConfiguration>;
 export interface AcknowledgeActionConfiguration {
   note?: string;
 }
-export const AcknowledgeActionConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ note: S.optional(S.String) }),
-).annotate({
-  identifier: "AcknowledgeActionConfiguration",
-}) as any as S.Schema<AcknowledgeActionConfiguration>;
+export const AcknowledgeActionConfiguration =
+  EnableActionConfiguration as any as S.Schema<AcknowledgeActionConfiguration>;
 export interface ResetActionConfiguration {
   note?: string;
 }
-export const ResetActionConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ note: S.optional(S.String) }),
-).annotate({
-  identifier: "ResetActionConfiguration",
-}) as any as S.Schema<ResetActionConfiguration>;
+export const ResetActionConfiguration =
+  EnableActionConfiguration as any as S.Schema<ResetActionConfiguration>;
 export interface CustomerAction {
   actionName?: CustomerActionName;
   snoozeActionConfiguration?: SnoozeActionConfiguration;

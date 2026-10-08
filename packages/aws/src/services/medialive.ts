@@ -254,12 +254,7 @@ export interface BatchStartResponse {
   Failed?: BatchFailedResultModel[];
   Successful?: BatchSuccessfulResultModel[];
 }
-export const BatchStartResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Failed: S.optional(__listOfBatchFailedResultModel),
-    Successful: S.optional(__listOfBatchSuccessfulResultModel),
-  }).pipe(S.encodeKeys({ Failed: "failed", Successful: "successful" })),
-).annotate({ identifier: "BatchStartResponse" }) as any as S.Schema<BatchStartResponse>;
+export const BatchStartResponse = BatchDeleteResponse as any as S.Schema<BatchStartResponse>;
 export interface BatchStopRequest {
   ChannelIds?: string[];
   MultiplexIds?: string[];
@@ -273,12 +268,7 @@ export interface BatchStopResponse {
   Failed?: BatchFailedResultModel[];
   Successful?: BatchSuccessfulResultModel[];
 }
-export const BatchStopResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Failed: S.optional(__listOfBatchFailedResultModel),
-    Successful: S.optional(__listOfBatchSuccessfulResultModel),
-  }).pipe(S.encodeKeys({ Failed: "failed", Successful: "successful" })),
-).annotate({ identifier: "BatchStopResponse" }) as any as S.Schema<BatchStopResponse>;
+export const BatchStopResponse = BatchDeleteResponse as any as S.Schema<BatchStopResponse>;
 export interface HlsId3SegmentTaggingScheduleActionSettings {
   Tag?: string;
   Id3?: string;
@@ -365,21 +355,8 @@ export interface InputSwitchScheduleActionSettings {
   InputClippingSettings?: InputClippingSettings;
   UrlPath?: string[];
 }
-export const InputSwitchScheduleActionSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    InputAttachmentNameReference: S.optional(S.String),
-    InputClippingSettings: S.optional(InputClippingSettings),
-    UrlPath: S.optional(__listOf__string),
-  }).pipe(
-    S.encodeKeys({
-      InputAttachmentNameReference: "inputAttachmentNameReference",
-      InputClippingSettings: "inputClippingSettings",
-      UrlPath: "urlPath",
-    }),
-  ),
-).annotate({
-  identifier: "InputSwitchScheduleActionSettings",
-}) as any as S.Schema<InputSwitchScheduleActionSettings>;
+export const InputSwitchScheduleActionSettings =
+  InputPrepareScheduleActionSettings as any as S.Schema<InputSwitchScheduleActionSettings>;
 export type __longMin0Max86400000 = number;
 export interface MotionGraphicsActivateScheduleActionSettings {
   Duration?: number;
@@ -405,11 +382,8 @@ export const MotionGraphicsActivateScheduleActionSettings = /*@__PURE__*/ S.susp
   identifier: "MotionGraphicsActivateScheduleActionSettings",
 }) as any as S.Schema<MotionGraphicsActivateScheduleActionSettings>;
 export interface MotionGraphicsDeactivateScheduleActionSettings {}
-export const MotionGraphicsDeactivateScheduleActionSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MotionGraphicsDeactivateScheduleActionSettings",
-}) as any as S.Schema<MotionGraphicsDeactivateScheduleActionSettings>;
+export const MotionGraphicsDeactivateScheduleActionSettings =
+  AcceptInputDeviceTransferResponse as any as S.Schema<MotionGraphicsDeactivateScheduleActionSettings>;
 export type PipelineId = "PIPELINE_0" | "PIPELINE_1" | (string & {});
 export const PipelineId = S.String;
 
@@ -745,11 +719,8 @@ export const Id3SegmentTaggingScheduleActionSettings = /*@__PURE__*/ S.suspend((
 export interface TimedMetadataScheduleActionSettings {
   Id3?: string;
 }
-export const TimedMetadataScheduleActionSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id3: S.optional(S.String) }).pipe(S.encodeKeys({ Id3: "id3" })),
-).annotate({
-  identifier: "TimedMetadataScheduleActionSettings",
-}) as any as S.Schema<TimedMetadataScheduleActionSettings>;
+export const TimedMetadataScheduleActionSettings =
+  HlsTimedMetadataScheduleActionSettings as any as S.Schema<TimedMetadataScheduleActionSettings>;
 export interface ScheduleActionSettings {
   HlsId3SegmentTaggingSettings?: HlsId3SegmentTaggingScheduleActionSettings;
   HlsTimedMetadataSettings?: HlsTimedMetadataScheduleActionSettings;
@@ -838,11 +809,8 @@ export const FollowModeScheduleActionStartSettings = /*@__PURE__*/ S.suspend(() 
   identifier: "FollowModeScheduleActionStartSettings",
 }) as any as S.Schema<FollowModeScheduleActionStartSettings>;
 export interface ImmediateModeScheduleActionStartSettings {}
-export const ImmediateModeScheduleActionStartSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ImmediateModeScheduleActionStartSettings",
-}) as any as S.Schema<ImmediateModeScheduleActionStartSettings>;
+export const ImmediateModeScheduleActionStartSettings =
+  AcceptInputDeviceTransferResponse as any as S.Schema<ImmediateModeScheduleActionStartSettings>;
 export interface ScheduleActionStartSettings {
   FixedModeScheduleActionStartSettings?: FixedModeScheduleActionStartSettings;
   FollowModeScheduleActionStartSettings?: FollowModeScheduleActionStartSettings;
@@ -931,23 +899,13 @@ export const BatchUpdateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface BatchScheduleActionCreateResult {
   ScheduleActions?: ScheduleAction[];
 }
-export const BatchScheduleActionCreateResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ScheduleActions: S.optional(__listOfScheduleAction) }).pipe(
-    S.encodeKeys({ ScheduleActions: "scheduleActions" }),
-  ),
-).annotate({
-  identifier: "BatchScheduleActionCreateResult",
-}) as any as S.Schema<BatchScheduleActionCreateResult>;
+export const BatchScheduleActionCreateResult =
+  BatchScheduleActionCreateRequest as any as S.Schema<BatchScheduleActionCreateResult>;
 export interface BatchScheduleActionDeleteResult {
   ScheduleActions?: ScheduleAction[];
 }
-export const BatchScheduleActionDeleteResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ScheduleActions: S.optional(__listOfScheduleAction) }).pipe(
-    S.encodeKeys({ ScheduleActions: "scheduleActions" }),
-  ),
-).annotate({
-  identifier: "BatchScheduleActionDeleteResult",
-}) as any as S.Schema<BatchScheduleActionDeleteResult>;
+export const BatchScheduleActionDeleteResult =
+  BatchScheduleActionCreateRequest as any as S.Schema<BatchScheduleActionDeleteResult>;
 export interface BatchUpdateScheduleResponse {
   Creates?: BatchScheduleActionCreateResult & {
     ScheduleActions: (ScheduleAction & {
@@ -1106,11 +1064,8 @@ export const CancelInputDeviceTransferRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CancelInputDeviceTransferRequest",
 }) as any as S.Schema<CancelInputDeviceTransferRequest>;
 export interface CancelInputDeviceTransferResponse {}
-export const CancelInputDeviceTransferResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelInputDeviceTransferResponse",
-}) as any as S.Schema<CancelInputDeviceTransferResponse>;
+export const CancelInputDeviceTransferResponse =
+  AcceptInputDeviceTransferResponse as any as S.Schema<CancelInputDeviceTransferResponse>;
 export interface ClaimDeviceRequest {
   Id?: string;
 }
@@ -1412,13 +1367,7 @@ export interface NielsenNwOnly {
   Sid?: number;
   Timezone?: NielsenWatermarkTimezones;
 }
-export const NielsenNwOnly = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CheckDigitString: S.optional(S.String),
-    Sid: S.optional(S.Number),
-    Timezone: S.optional(NielsenWatermarkTimezones),
-  }).pipe(S.encodeKeys({ CheckDigitString: "checkDigitString", Sid: "sid", Timezone: "timezone" })),
-).annotate({ identifier: "NielsenNwOnly" }) as any as S.Schema<NielsenNwOnly>;
+export const NielsenNwOnly = NielsenNaesIiNw as any as S.Schema<NielsenNwOnly>;
 export interface NielsenWatermarksSettings {
   NielsenCbetSettings?: NielsenCBET;
   NielsenDistributionType?: NielsenWatermarksDistributionTypes;
@@ -1787,9 +1736,7 @@ export const Mp2Settings = /*@__PURE__*/ S.suspend(() =>
   }).pipe(S.encodeKeys({ Bitrate: "bitrate", CodingMode: "codingMode", SampleRate: "sampleRate" })),
 ).annotate({ identifier: "Mp2Settings" }) as any as S.Schema<Mp2Settings>;
 export interface PassThroughSettings {}
-export const PassThroughSettings = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PassThroughSettings",
-}) as any as S.Schema<PassThroughSettings>;
+export const PassThroughSettings = ClaimDeviceResponse as any as S.Schema<PassThroughSettings>;
 export type WavCodingMode =
   | "CODING_MODE_1_0"
   | "CODING_MODE_2_0"
@@ -2137,9 +2084,8 @@ export type AccessibilityType =
 export const AccessibilityType = S.String;
 
 export interface AribDestinationSettings {}
-export const AribDestinationSettings = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AribDestinationSettings",
-}) as any as S.Schema<AribDestinationSettings>;
+export const AribDestinationSettings =
+  ClaimDeviceResponse as any as S.Schema<AribDestinationSettings>;
 export type BurnInAlignment = "CENTERED" | "LEFT" | "SMART" | (string & {});
 export const BurnInAlignment = S.String;
 
@@ -2407,35 +2353,23 @@ export const EmbeddedDestinationSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "EmbeddedDestinationSettings",
 }) as any as S.Schema<EmbeddedDestinationSettings>;
 export interface EmbeddedPlusScte20DestinationSettings {}
-export const EmbeddedPlusScte20DestinationSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "EmbeddedPlusScte20DestinationSettings",
-}) as any as S.Schema<EmbeddedPlusScte20DestinationSettings>;
+export const EmbeddedPlusScte20DestinationSettings =
+  AcceptInputDeviceTransferResponse as any as S.Schema<EmbeddedPlusScte20DestinationSettings>;
 export interface RtmpCaptionInfoDestinationSettings {}
-export const RtmpCaptionInfoDestinationSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RtmpCaptionInfoDestinationSettings",
-}) as any as S.Schema<RtmpCaptionInfoDestinationSettings>;
+export const RtmpCaptionInfoDestinationSettings =
+  AcceptInputDeviceTransferResponse as any as S.Schema<RtmpCaptionInfoDestinationSettings>;
 export interface Scte20PlusEmbeddedDestinationSettings {}
-export const Scte20PlusEmbeddedDestinationSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "Scte20PlusEmbeddedDestinationSettings",
-}) as any as S.Schema<Scte20PlusEmbeddedDestinationSettings>;
+export const Scte20PlusEmbeddedDestinationSettings =
+  AcceptInputDeviceTransferResponse as any as S.Schema<Scte20PlusEmbeddedDestinationSettings>;
 export interface Scte27DestinationSettings {}
-export const Scte27DestinationSettings = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Scte27DestinationSettings",
-}) as any as S.Schema<Scte27DestinationSettings>;
+export const Scte27DestinationSettings =
+  ClaimDeviceResponse as any as S.Schema<Scte27DestinationSettings>;
 export interface SmpteTtDestinationSettings {}
-export const SmpteTtDestinationSettings = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SmpteTtDestinationSettings",
-}) as any as S.Schema<SmpteTtDestinationSettings>;
+export const SmpteTtDestinationSettings =
+  ClaimDeviceResponse as any as S.Schema<SmpteTtDestinationSettings>;
 export interface TeletextDestinationSettings {}
-export const TeletextDestinationSettings = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TeletextDestinationSettings",
-}) as any as S.Schema<TeletextDestinationSettings>;
+export const TeletextDestinationSettings =
+  ClaimDeviceResponse as any as S.Schema<TeletextDestinationSettings>;
 export type TtmlDestinationStyleControl =
   | "PASSTHROUGH"
   | "USE_CONFIGURED"
@@ -2742,9 +2676,8 @@ export type MotionGraphicsInsertion = "DISABLED" | "ENABLED" | (string & {});
 export const MotionGraphicsInsertion = S.String;
 
 export interface HtmlMotionGraphicsSettings {}
-export const HtmlMotionGraphicsSettings = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "HtmlMotionGraphicsSettings",
-}) as any as S.Schema<HtmlMotionGraphicsSettings>;
+export const HtmlMotionGraphicsSettings =
+  ClaimDeviceResponse as any as S.Schema<HtmlMotionGraphicsSettings>;
 export interface MotionGraphicsSettings {
   HtmlMotionGraphicsSettings?: HtmlMotionGraphicsSettings;
 }
@@ -2840,9 +2773,7 @@ export const ArchiveGroupSettings = /*@__PURE__*/ S.suspend(() =>
 export interface FrameCaptureS3Settings {
   CannedAcl?: S3CannedAcl;
 }
-export const FrameCaptureS3Settings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CannedAcl: S.optional(S3CannedAcl) }).pipe(S.encodeKeys({ CannedAcl: "cannedAcl" })),
-).annotate({ identifier: "FrameCaptureS3Settings" }) as any as S.Schema<FrameCaptureS3Settings>;
+export const FrameCaptureS3Settings = ArchiveS3Settings as any as S.Schema<FrameCaptureS3Settings>;
 export interface FrameCaptureCdnSettings {
   FrameCaptureS3Settings?: FrameCaptureS3Settings;
 }
@@ -2999,9 +2930,7 @@ export const HlsMediaStoreSettings = /*@__PURE__*/ S.suspend(() =>
 export interface HlsS3Settings {
   CannedAcl?: S3CannedAcl;
 }
-export const HlsS3Settings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CannedAcl: S.optional(S3CannedAcl) }).pipe(S.encodeKeys({ CannedAcl: "cannedAcl" })),
-).annotate({ identifier: "HlsS3Settings" }) as any as S.Schema<HlsS3Settings>;
+export const HlsS3Settings = ArchiveS3Settings as any as S.Schema<HlsS3Settings>;
 export type HlsWebdavHttpTransferMode = "CHUNKED" | "NON_CHUNKED" | (string & {});
 export const HlsWebdavHttpTransferMode = S.String;
 
@@ -3577,9 +3506,8 @@ export const MsSmoothGroupSettings = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "MsSmoothGroupSettings" }) as any as S.Schema<MsSmoothGroupSettings>;
 export interface MultiplexGroupSettings {}
-export const MultiplexGroupSettings = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "MultiplexGroupSettings",
-}) as any as S.Schema<MultiplexGroupSettings>;
+export const MultiplexGroupSettings =
+  ClaimDeviceResponse as any as S.Schema<MultiplexGroupSettings>;
 export type RtmpAdMarkers = "ON_CUE_POINT_SCTE35" | (string & {});
 export const RtmpAdMarkers = S.String;
 
@@ -3695,31 +3623,8 @@ export interface CmafIngestAbWatermarkerIrdetoSettings {
   Profile?: AbWatermarkingProfile;
   WatermarkIdLength?: AbWatermarkerIdLength;
 }
-export const CmafIngestAbWatermarkerIrdetoSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AdditionalDestinationsAlternateDestinations: S.optional(__listOfOutputLocationRef),
-    AlternateDestination: S.optional(OutputLocationRef),
-    CustomProfile: S.optional(AbWatermarkingCustomProfile),
-    License: S.optional(S.String),
-    OperatorId: S.optional(S.Number),
-    PolyPeriod: S.optional(S.Number),
-    Profile: S.optional(AbWatermarkingProfile),
-    WatermarkIdLength: S.optional(AbWatermarkerIdLength),
-  }).pipe(
-    S.encodeKeys({
-      AdditionalDestinationsAlternateDestinations: "additionalDestinationsAlternateDestinations",
-      AlternateDestination: "alternateDestination",
-      CustomProfile: "customProfile",
-      License: "license",
-      OperatorId: "operatorId",
-      PolyPeriod: "polyPeriod",
-      Profile: "profile",
-      WatermarkIdLength: "watermarkIdLength",
-    }),
-  ),
-).annotate({
-  identifier: "CmafIngestAbWatermarkerIrdetoSettings",
-}) as any as S.Schema<CmafIngestAbWatermarkerIrdetoSettings>;
+export const CmafIngestAbWatermarkerIrdetoSettings =
+  MediaPackageV2AbWatermarkerIrdetoSettings as any as S.Schema<CmafIngestAbWatermarkerIrdetoSettings>;
 export interface CmafIngestWatermarkingSettings {
   CmafIngestAbWatermarkerIrdetoSettings?: CmafIngestAbWatermarkerIrdetoSettings;
 }
@@ -4142,9 +4047,7 @@ export const M2tsSettings = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "M2tsSettings" }) as any as S.Schema<M2tsSettings>;
 export interface RawSettings {}
-export const RawSettings = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RawSettings",
-}) as any as S.Schema<RawSettings>;
+export const RawSettings = ClaimDeviceResponse as any as S.Schema<RawSettings>;
 export interface ArchiveContainerSettings {
   M2tsSettings?: M2tsSettings;
   RawSettings?: RawSettings;
@@ -4242,9 +4145,8 @@ export const Fmp4HlsSettings = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "Fmp4HlsSettings" }) as any as S.Schema<Fmp4HlsSettings>;
 export interface FrameCaptureHlsSettings {}
-export const FrameCaptureHlsSettings = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "FrameCaptureHlsSettings",
-}) as any as S.Schema<FrameCaptureHlsSettings>;
+export const FrameCaptureHlsSettings =
+  ClaimDeviceResponse as any as S.Schema<FrameCaptureHlsSettings>;
 export type M3u8NielsenId3Behavior = "NO_PASSTHROUGH" | "PASSTHROUGH" | (string & {});
 export const M3u8NielsenId3Behavior = S.String;
 
@@ -4833,17 +4735,12 @@ export type H264ColorMetadata = "IGNORE" | "INSERT" | (string & {});
 export const H264ColorMetadata = S.String;
 
 export interface ColorSpacePassthroughSettings {}
-export const ColorSpacePassthroughSettings = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ColorSpacePassthroughSettings",
-}) as any as S.Schema<ColorSpacePassthroughSettings>;
+export const ColorSpacePassthroughSettings =
+  ClaimDeviceResponse as any as S.Schema<ColorSpacePassthroughSettings>;
 export interface Rec601Settings {}
-export const Rec601Settings = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Rec601Settings",
-}) as any as S.Schema<Rec601Settings>;
+export const Rec601Settings = ClaimDeviceResponse as any as S.Schema<Rec601Settings>;
 export interface Rec709Settings {}
-export const Rec709Settings = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Rec709Settings",
-}) as any as S.Schema<Rec709Settings>;
+export const Rec709Settings = ClaimDeviceResponse as any as S.Schema<Rec709Settings>;
 export interface H264ColorSpaceSettings {
   ColorSpacePassthroughSettings?: ColorSpacePassthroughSettings;
   Rec601Settings?: Rec601Settings;
@@ -5204,9 +5101,7 @@ export type H265ColorMetadata = "IGNORE" | "INSERT" | (string & {});
 export const H265ColorMetadata = S.String;
 
 export interface DolbyVision81Settings {}
-export const DolbyVision81Settings = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DolbyVision81Settings",
-}) as any as S.Schema<DolbyVision81Settings>;
+export const DolbyVision81Settings = ClaimDeviceResponse as any as S.Schema<DolbyVision81Settings>;
 export type __integerMin0Max32768 = number;
 export interface Hdr10Settings {
   MaxCll?: number;
@@ -5218,9 +5113,7 @@ export const Hdr10Settings = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "Hdr10Settings" }) as any as S.Schema<Hdr10Settings>;
 export interface Hlg2020Settings {}
-export const Hlg2020Settings = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Hlg2020Settings",
-}) as any as S.Schema<Hlg2020Settings>;
+export const Hlg2020Settings = ClaimDeviceResponse as any as S.Schema<Hlg2020Settings>;
 export interface H265ColorSpaceSettings {
   ColorSpacePassthroughSettings?: ColorSpacePassthroughSettings;
   DolbyVision81Settings?: DolbyVision81Settings;
@@ -5252,17 +5145,7 @@ export interface H265FilterSettings {
   TemporalFilterSettings?: TemporalFilterSettings;
   BandwidthReductionFilterSettings?: BandwidthReductionFilterSettings;
 }
-export const H265FilterSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TemporalFilterSettings: S.optional(TemporalFilterSettings),
-    BandwidthReductionFilterSettings: S.optional(BandwidthReductionFilterSettings),
-  }).pipe(
-    S.encodeKeys({
-      TemporalFilterSettings: "temporalFilterSettings",
-      BandwidthReductionFilterSettings: "bandwidthReductionFilterSettings",
-    }),
-  ),
-).annotate({ identifier: "H265FilterSettings" }) as any as S.Schema<H265FilterSettings>;
+export const H265FilterSettings = H264FilterSettings as any as S.Schema<H265FilterSettings>;
 export type H265FlickerAq = "DISABLED" | "ENABLED" | (string & {});
 export const H265FlickerAq = S.String;
 
@@ -6157,9 +6040,7 @@ export const AncillarySourceSettings = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "AncillarySourceSettings" }) as any as S.Schema<AncillarySourceSettings>;
 export interface AribSourceSettings {}
-export const AribSourceSettings = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AribSourceSettings",
-}) as any as S.Schema<AribSourceSettings>;
+export const AribSourceSettings = ClaimDeviceResponse as any as S.Schema<AribSourceSettings>;
 export type DvbSubOcrLanguage = "DEU" | "ENG" | "FRA" | "NLD" | "POR" | "SPA" | (string & {});
 export const DvbSubOcrLanguage = S.String;
 
@@ -6924,11 +6805,8 @@ export interface DescribeAnywhereSettings {
   ChannelPlacementGroupId?: string;
   ClusterId?: string;
 }
-export const DescribeAnywhereSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ChannelPlacementGroupId: S.optional(S.String), ClusterId: S.optional(S.String) }).pipe(
-    S.encodeKeys({ ChannelPlacementGroupId: "channelPlacementGroupId", ClusterId: "clusterId" }),
-  ),
-).annotate({ identifier: "DescribeAnywhereSettings" }) as any as S.Schema<DescribeAnywhereSettings>;
+export const DescribeAnywhereSettings =
+  AnywhereSettings as any as S.Schema<DescribeAnywhereSettings>;
 export interface DescribeFollowerChannelSettings {
   LinkedChannelType?: LinkedChannelType;
   PrimaryChannelArn?: string;
@@ -7499,7 +7377,7 @@ export type CloudWatchAlarmTemplateStatistic =
 export const CloudWatchAlarmTemplateStatistic = S.String;
 
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const TagMap = Tags as any as S.Schema<TagMap>;
 export type CloudWatchAlarmTemplateTargetResourceType =
   | "CLOUDFRONT_DISTRIBUTION"
   | "MEDIALIVE_MULTIPLEX"
@@ -7999,29 +7877,8 @@ export interface CreateEventBridgeRuleTemplateGroupResponse {
   Name?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateEventBridgeRuleTemplateGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Description: S.optional(S.String),
-    Id: S.optional(S.String),
-    ModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Name: S.optional(S.String),
-    Tags: S.optional(TagMap),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      CreatedAt: "createdAt",
-      Description: "description",
-      Id: "id",
-      ModifiedAt: "modifiedAt",
-      Name: "name",
-      Tags: "tags",
-    }),
-  ),
-).annotate({
-  identifier: "CreateEventBridgeRuleTemplateGroupResponse",
-}) as any as S.Schema<CreateEventBridgeRuleTemplateGroupResponse>;
+export const CreateEventBridgeRuleTemplateGroupResponse =
+  CreateCloudWatchAlarmTemplateGroupResponse as any as S.Schema<CreateEventBridgeRuleTemplateGroupResponse>;
 export interface InputRequestDestinationRoute {
   Cidr?: string;
   Gateway?: string;
@@ -8164,13 +8021,8 @@ export interface SrtListenerDecryptionRequest {
   Algorithm?: Algorithm;
   PassphraseSecretArn?: string;
 }
-export const SrtListenerDecryptionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Algorithm: S.optional(Algorithm), PassphraseSecretArn: S.optional(S.String) }).pipe(
-    S.encodeKeys({ Algorithm: "algorithm", PassphraseSecretArn: "passphraseSecretArn" }),
-  ),
-).annotate({
-  identifier: "SrtListenerDecryptionRequest",
-}) as any as S.Schema<SrtListenerDecryptionRequest>;
+export const SrtListenerDecryptionRequest =
+  SrtCallerDecryptionRequest as any as S.Schema<SrtListenerDecryptionRequest>;
 export interface SrtListenerSettingsRequest {
   Decryption?: SrtListenerDecryptionRequest;
   MinimumLatency?: number;
@@ -8282,7 +8134,7 @@ export const Smpte2110ReceiverGroupSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "Smpte2110ReceiverGroupSettings",
 }) as any as S.Schema<Smpte2110ReceiverGroupSettings>;
 export type InputSdiSources = string[];
-export const InputSdiSources = /*@__PURE__*/ S.Array(S.String);
+export const InputSdiSources = __listOf__string as any as S.Schema<InputSdiSources>;
 export interface RouterDestinationSettings {
   AvailabilityZoneName?: string;
 }
@@ -8442,25 +8294,19 @@ export const InputSourceType = S.String;
 export interface MediaConnectFlow {
   FlowArn?: string;
 }
-export const MediaConnectFlow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FlowArn: S.optional(S.String) }).pipe(S.encodeKeys({ FlowArn: "flowArn" })),
-).annotate({ identifier: "MediaConnectFlow" }) as any as S.Schema<MediaConnectFlow>;
+export const MediaConnectFlow = MediaConnectFlowRequest as any as S.Schema<MediaConnectFlow>;
 export type __listOfMediaConnectFlow = MediaConnectFlow[];
-export const __listOfMediaConnectFlow = /*@__PURE__*/ S.Array(MediaConnectFlow);
+export const __listOfMediaConnectFlow =
+  __listOfMediaConnectFlowRequest as any as S.Schema<__listOfMediaConnectFlow>;
 export interface InputSource {
   PasswordParam?: string;
   Url?: string;
   Username?: string;
 }
-export const InputSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PasswordParam: S.optional(S.String),
-    Url: S.optional(S.String),
-    Username: S.optional(S.String),
-  }).pipe(S.encodeKeys({ PasswordParam: "passwordParam", Url: "url", Username: "username" })),
-).annotate({ identifier: "InputSource" }) as any as S.Schema<InputSource>;
+export const InputSource = InputSourceRequest as any as S.Schema<InputSource>;
 export type __listOfInputSource = InputSource[];
-export const __listOfInputSource = /*@__PURE__*/ S.Array(InputSource);
+export const __listOfInputSource =
+  __listOfInputSourceRequest as any as S.Schema<__listOfInputSource>;
 export type InputState =
   | "CREATING"
   | "DETACHED"
@@ -8509,11 +8355,7 @@ export interface SrtListenerDecryption {
   Algorithm?: Algorithm;
   PassphraseSecretArn?: string;
 }
-export const SrtListenerDecryption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Algorithm: S.optional(Algorithm), PassphraseSecretArn: S.optional(S.String) }).pipe(
-    S.encodeKeys({ Algorithm: "algorithm", PassphraseSecretArn: "passphraseSecretArn" }),
-  ),
-).annotate({ identifier: "SrtListenerDecryption" }) as any as S.Schema<SrtListenerDecryption>;
+export const SrtListenerDecryption = SrtCallerDecryption as any as S.Schema<SrtListenerDecryption>;
 export interface SrtListenerSettings {
   Decryption?: SrtListenerDecryption;
   MinimumLatency?: number;
@@ -8723,11 +8565,10 @@ export const InputSecurityGroupState = S.String;
 export interface InputWhitelistRule {
   Cidr?: string;
 }
-export const InputWhitelistRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Cidr: S.optional(S.String) }).pipe(S.encodeKeys({ Cidr: "cidr" })),
-).annotate({ identifier: "InputWhitelistRule" }) as any as S.Schema<InputWhitelistRule>;
+export const InputWhitelistRule = InputWhitelistRuleCidr as any as S.Schema<InputWhitelistRule>;
 export type __listOfInputWhitelistRule = InputWhitelistRule[];
-export const __listOfInputWhitelistRule = /*@__PURE__*/ S.Array(InputWhitelistRule);
+export const __listOfInputWhitelistRule =
+  __listOfInputWhitelistRuleCidr as any as S.Schema<__listOfInputWhitelistRule>;
 export interface InputSecurityGroup {
   Arn?: string;
   Id?: string;
@@ -9133,22 +8974,18 @@ export const CreateMultiplexProgramResponse = /*@__PURE__*/ S.suspend(() =>
 export interface IpPoolCreateRequest {
   Cidr?: string;
 }
-export const IpPoolCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Cidr: S.optional(S.String) }).pipe(S.encodeKeys({ Cidr: "cidr" })),
-).annotate({ identifier: "IpPoolCreateRequest" }) as any as S.Schema<IpPoolCreateRequest>;
+export const IpPoolCreateRequest = InputWhitelistRuleCidr as any as S.Schema<IpPoolCreateRequest>;
 export type __listOfIpPoolCreateRequest = IpPoolCreateRequest[];
-export const __listOfIpPoolCreateRequest = /*@__PURE__*/ S.Array(IpPoolCreateRequest);
+export const __listOfIpPoolCreateRequest =
+  __listOfInputWhitelistRuleCidr as any as S.Schema<__listOfIpPoolCreateRequest>;
 export interface RouteCreateRequest {
   Cidr?: string;
   Gateway?: string;
 }
-export const RouteCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Cidr: S.optional(S.String), Gateway: S.optional(S.String) }).pipe(
-    S.encodeKeys({ Cidr: "cidr", Gateway: "gateway" }),
-  ),
-).annotate({ identifier: "RouteCreateRequest" }) as any as S.Schema<RouteCreateRequest>;
+export const RouteCreateRequest = InputDestinationRoute as any as S.Schema<RouteCreateRequest>;
 export type __listOfRouteCreateRequest = RouteCreateRequest[];
-export const __listOfRouteCreateRequest = /*@__PURE__*/ S.Array(RouteCreateRequest);
+export const __listOfRouteCreateRequest =
+  __listOfInputDestinationRoute as any as S.Schema<__listOfRouteCreateRequest>;
 export interface CreateNetworkRequest {
   IpPools?: IpPoolCreateRequest[];
   Name?: string;
@@ -9178,22 +9015,16 @@ export const CreateNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 export interface IpPool {
   Cidr?: string;
 }
-export const IpPool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Cidr: S.optional(S.String) }).pipe(S.encodeKeys({ Cidr: "cidr" })),
-).annotate({ identifier: "IpPool" }) as any as S.Schema<IpPool>;
+export const IpPool = InputWhitelistRuleCidr as any as S.Schema<IpPool>;
 export type __listOfIpPool = IpPool[];
-export const __listOfIpPool = /*@__PURE__*/ S.Array(IpPool);
+export const __listOfIpPool = __listOfInputWhitelistRuleCidr as any as S.Schema<__listOfIpPool>;
 export interface Route {
   Cidr?: string;
   Gateway?: string;
 }
-export const Route = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Cidr: S.optional(S.String), Gateway: S.optional(S.String) }).pipe(
-    S.encodeKeys({ Cidr: "cidr", Gateway: "gateway" }),
-  ),
-).annotate({ identifier: "Route" }) as any as S.Schema<Route>;
+export const Route = InputDestinationRoute as any as S.Schema<Route>;
 export type __listOfRoute = Route[];
-export const __listOfRoute = /*@__PURE__*/ S.Array(Route);
+export const __listOfRoute = __listOfInputDestinationRoute as any as S.Schema<__listOfRoute>;
 export type NetworkState =
   | "CREATING"
   | "CREATE_FAILED"
@@ -9569,7 +9400,8 @@ export const CreateSdiSourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SdiSource: S.optional(SdiSource) }).pipe(S.encodeKeys({ SdiSource: "sdiSource" })),
 ).annotate({ identifier: "CreateSdiSourceResponse" }) as any as S.Schema<CreateSdiSourceResponse>;
 export type __listOf__stringPatternS = string[];
-export const __listOf__stringPatternS = /*@__PURE__*/ S.Array(S.String);
+export const __listOf__stringPatternS =
+  __listOf__string as any as S.Schema<__listOf__stringPatternS>;
 export type __stringMin1Max2048 = string;
 export interface CreateSignalMapRequest {
   CloudWatchAlarmTemplateGroupIdentifiers?: string[];
@@ -9607,7 +9439,8 @@ export const CreateSignalMapRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateSignalMapRequest" }) as any as S.Schema<CreateSignalMapRequest>;
 export type __stringPatternArnMedialiveSignalMap = string;
 export type __listOf__stringMin7Max11PatternAws097 = string[];
-export const __listOf__stringMin7Max11PatternAws097 = /*@__PURE__*/ S.Array(S.String);
+export const __listOf__stringMin7Max11PatternAws097 =
+  __listOf__string as any as S.Schema<__listOf__stringMin7Max11PatternAws097>;
 export interface MediaResourceNeighbor {
   Arn?: string;
   Name?: string;
@@ -9663,10 +9496,7 @@ export const SuccessfulMonitorDeployment = /*@__PURE__*/ S.suspend(() =>
   identifier: "SuccessfulMonitorDeployment",
 }) as any as S.Schema<SuccessfulMonitorDeployment>;
 export type MediaResourceMap = { [key: string]: MediaResource | undefined };
-export const MediaResourceMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ MediaResource.pipe(S.optional),
-);
+export const MediaResourceMap = FailedMediaResourceMap as any as S.Schema<MediaResourceMap>;
 export interface MonitorDeployment {
   DetailsUri?: string;
   ErrorMessage?: string;
@@ -9793,9 +9623,7 @@ export const CreateTagsRequest = /*@__PURE__*/ S.suspend(() =>
     ),
 ).annotate({ identifier: "CreateTagsRequest" }) as any as S.Schema<CreateTagsRequest>;
 export interface CreateTagsResponse {}
-export const CreateTagsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateTagsResponse",
-}) as any as S.Schema<CreateTagsResponse>;
+export const CreateTagsResponse = ClaimDeviceResponse as any as S.Schema<CreateTagsResponse>;
 export interface DeleteChannelRequest {
   ChannelId: string;
 }
@@ -10151,59 +9979,7 @@ export interface DeleteChannelResponse {
   ChannelSecurityGroups?: string[];
   InferenceSettings?: DescribeInferenceSettings;
 }
-export const DeleteChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CdiInputSpecification: S.optional(CdiInputSpecification),
-    ChannelClass: S.optional(ChannelClass),
-    Destinations: S.optional(__listOfOutputDestination),
-    EgressEndpoints: S.optional(__listOfChannelEgressEndpoint),
-    EncoderSettings: S.optional(EncoderSettings),
-    Id: S.optional(S.String),
-    InputAttachments: S.optional(__listOfInputAttachment),
-    InputSpecification: S.optional(InputSpecification),
-    LogLevel: S.optional(LogLevel),
-    Maintenance: S.optional(MaintenanceStatus),
-    Name: S.optional(S.String),
-    PipelineDetails: S.optional(__listOfPipelineDetail),
-    PipelinesRunningCount: S.optional(S.Number),
-    RoleArn: S.optional(S.String),
-    State: S.optional(ChannelState),
-    Tags: S.optional(Tags),
-    Vpc: S.optional(VpcOutputSettingsDescription),
-    AnywhereSettings: S.optional(DescribeAnywhereSettings),
-    ChannelEngineVersion: S.optional(ChannelEngineVersionResponse),
-    LinkedChannelSettings: S.optional(DescribeLinkedChannelSettings),
-    ChannelSecurityGroups: S.optional(__listOf__string),
-    InferenceSettings: S.optional(DescribeInferenceSettings),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      CdiInputSpecification: "cdiInputSpecification",
-      ChannelClass: "channelClass",
-      Destinations: "destinations",
-      EgressEndpoints: "egressEndpoints",
-      EncoderSettings: "encoderSettings",
-      Id: "id",
-      InputAttachments: "inputAttachments",
-      InputSpecification: "inputSpecification",
-      LogLevel: "logLevel",
-      Maintenance: "maintenance",
-      Name: "name",
-      PipelineDetails: "pipelineDetails",
-      PipelinesRunningCount: "pipelinesRunningCount",
-      RoleArn: "roleArn",
-      State: "state",
-      Tags: "tags",
-      Vpc: "vpc",
-      AnywhereSettings: "anywhereSettings",
-      ChannelEngineVersion: "channelEngineVersion",
-      LinkedChannelSettings: "linkedChannelSettings",
-      ChannelSecurityGroups: "channelSecurityGroups",
-      InferenceSettings: "inferenceSettings",
-    }),
-  ),
-).annotate({ identifier: "DeleteChannelResponse" }) as any as S.Schema<DeleteChannelResponse>;
+export const DeleteChannelResponse = Channel as any as S.Schema<DeleteChannelResponse>;
 export interface DeleteChannelPlacementGroupRequest {
   ChannelPlacementGroupId: string;
   ClusterId: string;
@@ -10237,29 +10013,8 @@ export interface DeleteChannelPlacementGroupResponse {
   Nodes?: string[];
   State?: ChannelPlacementGroupState;
 }
-export const DeleteChannelPlacementGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Channels: S.optional(__listOf__string),
-    ClusterId: S.optional(S.String),
-    Id: S.optional(S.String),
-    Name: S.optional(S.String),
-    Nodes: S.optional(__listOf__string),
-    State: S.optional(ChannelPlacementGroupState),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      Channels: "channels",
-      ClusterId: "clusterId",
-      Id: "id",
-      Name: "name",
-      Nodes: "nodes",
-      State: "state",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteChannelPlacementGroupResponse",
-}) as any as S.Schema<DeleteChannelPlacementGroupResponse>;
+export const DeleteChannelPlacementGroupResponse =
+  CreateChannelPlacementGroupResponse as any as S.Schema<DeleteChannelPlacementGroupResponse>;
 export interface DeleteCloudWatchAlarmTemplateRequest {
   Identifier: string;
 }
@@ -10278,11 +10033,8 @@ export const DeleteCloudWatchAlarmTemplateRequest = /*@__PURE__*/ S.suspend(() =
   identifier: "DeleteCloudWatchAlarmTemplateRequest",
 }) as any as S.Schema<DeleteCloudWatchAlarmTemplateRequest>;
 export interface DeleteCloudWatchAlarmTemplateResponse {}
-export const DeleteCloudWatchAlarmTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudWatchAlarmTemplateResponse",
-}) as any as S.Schema<DeleteCloudWatchAlarmTemplateResponse>;
+export const DeleteCloudWatchAlarmTemplateResponse =
+  AcceptInputDeviceTransferResponse as any as S.Schema<DeleteCloudWatchAlarmTemplateResponse>;
 export interface DeleteCloudWatchAlarmTemplateGroupRequest {
   Identifier: string;
 }
@@ -10301,11 +10053,8 @@ export const DeleteCloudWatchAlarmTemplateGroupRequest = /*@__PURE__*/ S.suspend
   identifier: "DeleteCloudWatchAlarmTemplateGroupRequest",
 }) as any as S.Schema<DeleteCloudWatchAlarmTemplateGroupRequest>;
 export interface DeleteCloudWatchAlarmTemplateGroupResponse {}
-export const DeleteCloudWatchAlarmTemplateGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudWatchAlarmTemplateGroupResponse",
-}) as any as S.Schema<DeleteCloudWatchAlarmTemplateGroupResponse>;
+export const DeleteCloudWatchAlarmTemplateGroupResponse =
+  AcceptInputDeviceTransferResponse as any as S.Schema<DeleteCloudWatchAlarmTemplateGroupResponse>;
 export interface DeleteClusterRequest {
   ClusterId: string;
 }
@@ -10331,29 +10080,8 @@ export interface DeleteClusterResponse {
   NetworkSettings?: ClusterNetworkSettings;
   State?: ClusterState;
 }
-export const DeleteClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    ChannelIds: S.optional(__listOf__string),
-    ClusterType: S.optional(ClusterType),
-    Id: S.optional(S.String),
-    InstanceRoleArn: S.optional(S.String),
-    Name: S.optional(S.String),
-    NetworkSettings: S.optional(ClusterNetworkSettings),
-    State: S.optional(ClusterState),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      ChannelIds: "channelIds",
-      ClusterType: "clusterType",
-      Id: "id",
-      InstanceRoleArn: "instanceRoleArn",
-      Name: "name",
-      NetworkSettings: "networkSettings",
-      State: "state",
-    }),
-  ),
-).annotate({ identifier: "DeleteClusterResponse" }) as any as S.Schema<DeleteClusterResponse>;
+export const DeleteClusterResponse =
+  CreateClusterResponse as any as S.Schema<DeleteClusterResponse>;
 export interface DeleteEventBridgeRuleTemplateRequest {
   Identifier: string;
 }
@@ -10372,11 +10100,8 @@ export const DeleteEventBridgeRuleTemplateRequest = /*@__PURE__*/ S.suspend(() =
   identifier: "DeleteEventBridgeRuleTemplateRequest",
 }) as any as S.Schema<DeleteEventBridgeRuleTemplateRequest>;
 export interface DeleteEventBridgeRuleTemplateResponse {}
-export const DeleteEventBridgeRuleTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteEventBridgeRuleTemplateResponse",
-}) as any as S.Schema<DeleteEventBridgeRuleTemplateResponse>;
+export const DeleteEventBridgeRuleTemplateResponse =
+  AcceptInputDeviceTransferResponse as any as S.Schema<DeleteEventBridgeRuleTemplateResponse>;
 export interface DeleteEventBridgeRuleTemplateGroupRequest {
   Identifier: string;
 }
@@ -10395,11 +10120,8 @@ export const DeleteEventBridgeRuleTemplateGroupRequest = /*@__PURE__*/ S.suspend
   identifier: "DeleteEventBridgeRuleTemplateGroupRequest",
 }) as any as S.Schema<DeleteEventBridgeRuleTemplateGroupRequest>;
 export interface DeleteEventBridgeRuleTemplateGroupResponse {}
-export const DeleteEventBridgeRuleTemplateGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteEventBridgeRuleTemplateGroupResponse",
-}) as any as S.Schema<DeleteEventBridgeRuleTemplateGroupResponse>;
+export const DeleteEventBridgeRuleTemplateGroupResponse =
+  AcceptInputDeviceTransferResponse as any as S.Schema<DeleteEventBridgeRuleTemplateGroupResponse>;
 export interface DeleteInputRequest {
   InputId: string;
 }
@@ -10416,9 +10138,7 @@ export const DeleteInputRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteInputRequest" }) as any as S.Schema<DeleteInputRequest>;
 export interface DeleteInputResponse {}
-export const DeleteInputResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteInputResponse",
-}) as any as S.Schema<DeleteInputResponse>;
+export const DeleteInputResponse = ClaimDeviceResponse as any as S.Schema<DeleteInputResponse>;
 export interface DeleteInputSecurityGroupRequest {
   InputSecurityGroupId: string;
 }
@@ -10437,11 +10157,8 @@ export const DeleteInputSecurityGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteInputSecurityGroupRequest",
 }) as any as S.Schema<DeleteInputSecurityGroupRequest>;
 export interface DeleteInputSecurityGroupResponse {}
-export const DeleteInputSecurityGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteInputSecurityGroupResponse",
-}) as any as S.Schema<DeleteInputSecurityGroupResponse>;
+export const DeleteInputSecurityGroupResponse =
+  AcceptInputDeviceTransferResponse as any as S.Schema<DeleteInputSecurityGroupResponse>;
 export interface DeleteMultiplexRequest {
   MultiplexId: string;
 }
@@ -10472,33 +10189,7 @@ export interface DeleteMultiplexResponse {
   State?: MultiplexState;
   Tags?: { [key: string]: string | undefined };
 }
-export const DeleteMultiplexResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    AvailabilityZones: S.optional(__listOf__string),
-    Destinations: S.optional(__listOfMultiplexOutputDestination),
-    Id: S.optional(S.String),
-    MultiplexSettings: S.optional(MultiplexSettings),
-    Name: S.optional(S.String),
-    PipelinesRunningCount: S.optional(S.Number),
-    ProgramCount: S.optional(S.Number),
-    State: S.optional(MultiplexState),
-    Tags: S.optional(Tags),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      AvailabilityZones: "availabilityZones",
-      Destinations: "destinations",
-      Id: "id",
-      MultiplexSettings: "multiplexSettings",
-      Name: "name",
-      PipelinesRunningCount: "pipelinesRunningCount",
-      ProgramCount: "programCount",
-      State: "state",
-      Tags: "tags",
-    }),
-  ),
-).annotate({ identifier: "DeleteMultiplexResponse" }) as any as S.Schema<DeleteMultiplexResponse>;
+export const DeleteMultiplexResponse = Multiplex as any as S.Schema<DeleteMultiplexResponse>;
 export interface DeleteMultiplexProgramRequest {
   MultiplexId: string;
   ProgramName: string;
@@ -10576,27 +10267,8 @@ export interface DeleteNetworkResponse {
   Routes?: Route[];
   State?: NetworkState;
 }
-export const DeleteNetworkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    AssociatedClusterIds: S.optional(__listOf__string),
-    Id: S.optional(S.String),
-    IpPools: S.optional(__listOfIpPool),
-    Name: S.optional(S.String),
-    Routes: S.optional(__listOfRoute),
-    State: S.optional(NetworkState),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      AssociatedClusterIds: "associatedClusterIds",
-      Id: "id",
-      IpPools: "ipPools",
-      Name: "name",
-      Routes: "routes",
-      State: "state",
-    }),
-  ),
-).annotate({ identifier: "DeleteNetworkResponse" }) as any as S.Schema<DeleteNetworkResponse>;
+export const DeleteNetworkResponse =
+  CreateNetworkResponse as any as S.Schema<DeleteNetworkResponse>;
 export interface DeleteNodeRequest {
   ClusterId: string;
   NodeId: string;
@@ -10629,35 +10301,7 @@ export interface DeleteNodeResponse {
   State?: NodeState;
   SdiSourceMappings?: SdiSourceMapping[];
 }
-export const DeleteNodeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    ChannelPlacementGroups: S.optional(__listOf__string),
-    ClusterId: S.optional(S.String),
-    ConnectionState: S.optional(NodeConnectionState),
-    Id: S.optional(S.String),
-    InstanceArn: S.optional(S.String),
-    Name: S.optional(S.String),
-    NodeInterfaceMappings: S.optional(__listOfNodeInterfaceMapping),
-    Role: S.optional(NodeRole),
-    State: S.optional(NodeState),
-    SdiSourceMappings: S.optional(SdiSourceMappings),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      ChannelPlacementGroups: "channelPlacementGroups",
-      ClusterId: "clusterId",
-      ConnectionState: "connectionState",
-      Id: "id",
-      InstanceArn: "instanceArn",
-      Name: "name",
-      NodeInterfaceMappings: "nodeInterfaceMappings",
-      Role: "role",
-      State: "state",
-      SdiSourceMappings: "sdiSourceMappings",
-    }),
-  ),
-).annotate({ identifier: "DeleteNodeResponse" }) as any as S.Schema<DeleteNodeResponse>;
+export const DeleteNodeResponse = CreateNodeResponse as any as S.Schema<DeleteNodeResponse>;
 export interface DeleteReservationRequest {
   ReservationId: string;
 }
@@ -10844,9 +10488,8 @@ export const DeleteScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteScheduleRequest" }) as any as S.Schema<DeleteScheduleRequest>;
 export interface DeleteScheduleResponse {}
-export const DeleteScheduleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteScheduleResponse",
-}) as any as S.Schema<DeleteScheduleResponse>;
+export const DeleteScheduleResponse =
+  ClaimDeviceResponse as any as S.Schema<DeleteScheduleResponse>;
 export interface DeleteSdiSourceRequest {
   SdiSourceId: string;
 }
@@ -10865,9 +10508,8 @@ export const DeleteSdiSourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSdiSourceResponse {
   SdiSource?: SdiSource;
 }
-export const DeleteSdiSourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SdiSource: S.optional(SdiSource) }).pipe(S.encodeKeys({ SdiSource: "sdiSource" })),
-).annotate({ identifier: "DeleteSdiSourceResponse" }) as any as S.Schema<DeleteSdiSourceResponse>;
+export const DeleteSdiSourceResponse =
+  CreateSdiSourceResponse as any as S.Schema<DeleteSdiSourceResponse>;
 export interface DeleteSignalMapRequest {
   Identifier: string;
 }
@@ -10884,9 +10526,8 @@ export const DeleteSignalMapRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteSignalMapRequest" }) as any as S.Schema<DeleteSignalMapRequest>;
 export interface DeleteSignalMapResponse {}
-export const DeleteSignalMapResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSignalMapResponse",
-}) as any as S.Schema<DeleteSignalMapResponse>;
+export const DeleteSignalMapResponse =
+  ClaimDeviceResponse as any as S.Schema<DeleteSignalMapResponse>;
 export interface DeleteTagsRequest {
   ResourceArn: string;
   TagKeys?: string[];
@@ -10907,9 +10548,7 @@ export const DeleteTagsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteTagsRequest" }) as any as S.Schema<DeleteTagsRequest>;
 export interface DeleteTagsResponse {}
-export const DeleteTagsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTagsResponse",
-}) as any as S.Schema<DeleteTagsResponse>;
+export const DeleteTagsResponse = ClaimDeviceResponse as any as S.Schema<DeleteTagsResponse>;
 export interface DescribeAccountConfigurationRequest {}
 export const DescribeAccountConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -11296,59 +10935,7 @@ export interface DescribeChannelResponse {
   ChannelSecurityGroups?: string[];
   InferenceSettings?: DescribeInferenceSettings;
 }
-export const DescribeChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CdiInputSpecification: S.optional(CdiInputSpecification),
-    ChannelClass: S.optional(ChannelClass),
-    Destinations: S.optional(__listOfOutputDestination),
-    EgressEndpoints: S.optional(__listOfChannelEgressEndpoint),
-    EncoderSettings: S.optional(EncoderSettings),
-    Id: S.optional(S.String),
-    InputAttachments: S.optional(__listOfInputAttachment),
-    InputSpecification: S.optional(InputSpecification),
-    LogLevel: S.optional(LogLevel),
-    Maintenance: S.optional(MaintenanceStatus),
-    Name: S.optional(S.String),
-    PipelineDetails: S.optional(__listOfPipelineDetail),
-    PipelinesRunningCount: S.optional(S.Number),
-    RoleArn: S.optional(S.String),
-    State: S.optional(ChannelState),
-    Tags: S.optional(Tags),
-    Vpc: S.optional(VpcOutputSettingsDescription),
-    AnywhereSettings: S.optional(DescribeAnywhereSettings),
-    ChannelEngineVersion: S.optional(ChannelEngineVersionResponse),
-    LinkedChannelSettings: S.optional(DescribeLinkedChannelSettings),
-    ChannelSecurityGroups: S.optional(__listOf__string),
-    InferenceSettings: S.optional(DescribeInferenceSettings),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      CdiInputSpecification: "cdiInputSpecification",
-      ChannelClass: "channelClass",
-      Destinations: "destinations",
-      EgressEndpoints: "egressEndpoints",
-      EncoderSettings: "encoderSettings",
-      Id: "id",
-      InputAttachments: "inputAttachments",
-      InputSpecification: "inputSpecification",
-      LogLevel: "logLevel",
-      Maintenance: "maintenance",
-      Name: "name",
-      PipelineDetails: "pipelineDetails",
-      PipelinesRunningCount: "pipelinesRunningCount",
-      RoleArn: "roleArn",
-      State: "state",
-      Tags: "tags",
-      Vpc: "vpc",
-      AnywhereSettings: "anywhereSettings",
-      ChannelEngineVersion: "channelEngineVersion",
-      LinkedChannelSettings: "linkedChannelSettings",
-      ChannelSecurityGroups: "channelSecurityGroups",
-      InferenceSettings: "inferenceSettings",
-    }),
-  ),
-).annotate({ identifier: "DescribeChannelResponse" }) as any as S.Schema<DescribeChannelResponse>;
+export const DescribeChannelResponse = Channel as any as S.Schema<DescribeChannelResponse>;
 export interface DescribeChannelPlacementGroupRequest {
   ChannelPlacementGroupId: string;
   ClusterId: string;
@@ -11382,29 +10969,8 @@ export interface DescribeChannelPlacementGroupResponse {
   Nodes?: string[];
   State?: ChannelPlacementGroupState;
 }
-export const DescribeChannelPlacementGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Channels: S.optional(__listOf__string),
-    ClusterId: S.optional(S.String),
-    Id: S.optional(S.String),
-    Name: S.optional(S.String),
-    Nodes: S.optional(__listOf__string),
-    State: S.optional(ChannelPlacementGroupState),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      Channels: "channels",
-      ClusterId: "clusterId",
-      Id: "id",
-      Name: "name",
-      Nodes: "nodes",
-      State: "state",
-    }),
-  ),
-).annotate({
-  identifier: "DescribeChannelPlacementGroupResponse",
-}) as any as S.Schema<DescribeChannelPlacementGroupResponse>;
+export const DescribeChannelPlacementGroupResponse =
+  CreateChannelPlacementGroupResponse as any as S.Schema<DescribeChannelPlacementGroupResponse>;
 export interface DescribeClusterRequest {
   ClusterId: string;
 }
@@ -11430,29 +10996,8 @@ export interface DescribeClusterResponse {
   NetworkSettings?: ClusterNetworkSettings;
   State?: ClusterState;
 }
-export const DescribeClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    ChannelIds: S.optional(__listOf__string),
-    ClusterType: S.optional(ClusterType),
-    Id: S.optional(S.String),
-    InstanceRoleArn: S.optional(S.String),
-    Name: S.optional(S.String),
-    NetworkSettings: S.optional(ClusterNetworkSettings),
-    State: S.optional(ClusterState),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      ChannelIds: "channelIds",
-      ClusterType: "clusterType",
-      Id: "id",
-      InstanceRoleArn: "instanceRoleArn",
-      Name: "name",
-      NetworkSettings: "networkSettings",
-      State: "state",
-    }),
-  ),
-).annotate({ identifier: "DescribeClusterResponse" }) as any as S.Schema<DescribeClusterResponse>;
+export const DescribeClusterResponse =
+  CreateClusterResponse as any as S.Schema<DescribeClusterResponse>;
 export interface DescribeInputRequest {
   InputId: string;
 }
@@ -11489,57 +11034,7 @@ export interface DescribeInputResponse {
   SdiSources?: string[];
   RouterSettings?: RouterInputSettings;
 }
-export const DescribeInputResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    AttachedChannels: S.optional(__listOf__string),
-    Destinations: S.optional(__listOfInputDestination),
-    Id: S.optional(S.String),
-    InputClass: S.optional(InputClass),
-    InputDevices: S.optional(__listOfInputDeviceSettings),
-    InputPartnerIds: S.optional(__listOf__string),
-    InputSourceType: S.optional(InputSourceType),
-    MediaConnectFlows: S.optional(__listOfMediaConnectFlow),
-    Name: S.optional(S.String),
-    RoleArn: S.optional(S.String),
-    SecurityGroups: S.optional(__listOf__string),
-    Sources: S.optional(__listOfInputSource),
-    State: S.optional(InputState),
-    Tags: S.optional(Tags),
-    Type: S.optional(InputType),
-    SrtSettings: S.optional(SrtSettings),
-    InputNetworkLocation: S.optional(InputNetworkLocation),
-    MulticastSettings: S.optional(MulticastSettings),
-    Smpte2110ReceiverGroupSettings: S.optional(Smpte2110ReceiverGroupSettings),
-    SdiSources: S.optional(InputSdiSources),
-    RouterSettings: S.optional(RouterInputSettings),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      AttachedChannels: "attachedChannels",
-      Destinations: "destinations",
-      Id: "id",
-      InputClass: "inputClass",
-      InputDevices: "inputDevices",
-      InputPartnerIds: "inputPartnerIds",
-      InputSourceType: "inputSourceType",
-      MediaConnectFlows: "mediaConnectFlows",
-      Name: "name",
-      RoleArn: "roleArn",
-      SecurityGroups: "securityGroups",
-      Sources: "sources",
-      State: "state",
-      Tags: "tags",
-      Type: "type",
-      SrtSettings: "srtSettings",
-      InputNetworkLocation: "inputNetworkLocation",
-      MulticastSettings: "multicastSettings",
-      Smpte2110ReceiverGroupSettings: "smpte2110ReceiverGroupSettings",
-      SdiSources: "sdiSources",
-      RouterSettings: "routerSettings",
-    }),
-  ),
-).annotate({ identifier: "DescribeInputResponse" }) as any as S.Schema<DescribeInputResponse>;
+export const DescribeInputResponse = Input as any as S.Schema<DescribeInputResponse>;
 export interface DescribeInputDeviceRequest {
   InputDeviceId: string;
 }
@@ -12004,25 +11499,8 @@ export interface DescribeMultiplexProgramResponse {
   PipelineDetails?: MultiplexProgramPipelineDetail[];
   ProgramName?: string;
 }
-export const DescribeMultiplexProgramResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ChannelId: S.optional(S.String),
-    MultiplexProgramSettings: S.optional(MultiplexProgramSettings),
-    PacketIdentifiersMap: S.optional(MultiplexProgramPacketIdentifiersMap),
-    PipelineDetails: S.optional(__listOfMultiplexProgramPipelineDetail),
-    ProgramName: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      ChannelId: "channelId",
-      MultiplexProgramSettings: "multiplexProgramSettings",
-      PacketIdentifiersMap: "packetIdentifiersMap",
-      PipelineDetails: "pipelineDetails",
-      ProgramName: "programName",
-    }),
-  ),
-).annotate({
-  identifier: "DescribeMultiplexProgramResponse",
-}) as any as S.Schema<DescribeMultiplexProgramResponse>;
+export const DescribeMultiplexProgramResponse =
+  DeleteMultiplexProgramResponse as any as S.Schema<DescribeMultiplexProgramResponse>;
 export interface DescribeNetworkRequest {
   NetworkId: string;
 }
@@ -12047,27 +11525,8 @@ export interface DescribeNetworkResponse {
   Routes?: Route[];
   State?: NetworkState;
 }
-export const DescribeNetworkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    AssociatedClusterIds: S.optional(__listOf__string),
-    Id: S.optional(S.String),
-    IpPools: S.optional(__listOfIpPool),
-    Name: S.optional(S.String),
-    Routes: S.optional(__listOfRoute),
-    State: S.optional(NetworkState),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      AssociatedClusterIds: "associatedClusterIds",
-      Id: "id",
-      IpPools: "ipPools",
-      Name: "name",
-      Routes: "routes",
-      State: "state",
-    }),
-  ),
-).annotate({ identifier: "DescribeNetworkResponse" }) as any as S.Schema<DescribeNetworkResponse>;
+export const DescribeNetworkResponse =
+  CreateNetworkResponse as any as S.Schema<DescribeNetworkResponse>;
 export interface DescribeNodeRequest {
   ClusterId: string;
   NodeId: string;
@@ -12100,35 +11559,7 @@ export interface DescribeNodeResponse {
   State?: NodeState;
   SdiSourceMappings?: SdiSourceMapping[];
 }
-export const DescribeNodeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    ChannelPlacementGroups: S.optional(__listOf__string),
-    ClusterId: S.optional(S.String),
-    ConnectionState: S.optional(NodeConnectionState),
-    Id: S.optional(S.String),
-    InstanceArn: S.optional(S.String),
-    Name: S.optional(S.String),
-    NodeInterfaceMappings: S.optional(__listOfNodeInterfaceMapping),
-    Role: S.optional(NodeRole),
-    State: S.optional(NodeState),
-    SdiSourceMappings: S.optional(SdiSourceMappings),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      ChannelPlacementGroups: "channelPlacementGroups",
-      ClusterId: "clusterId",
-      ConnectionState: "connectionState",
-      Id: "id",
-      InstanceArn: "instanceArn",
-      Name: "name",
-      NodeInterfaceMappings: "nodeInterfaceMappings",
-      Role: "role",
-      State: "state",
-      SdiSourceMappings: "sdiSourceMappings",
-    }),
-  ),
-).annotate({ identifier: "DescribeNodeResponse" }) as any as S.Schema<DescribeNodeResponse>;
+export const DescribeNodeResponse = CreateNodeResponse as any as S.Schema<DescribeNodeResponse>;
 export interface DescribeOfferingRequest {
   OfferingId: string;
 }
@@ -12224,53 +11655,8 @@ export interface DescribeReservationResponse {
   Tags?: { [key: string]: string | undefined };
   UsagePrice?: number;
 }
-export const DescribeReservationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Count: S.optional(S.Number),
-    CurrencyCode: S.optional(S.String),
-    Duration: S.optional(S.Number),
-    DurationUnits: S.optional(OfferingDurationUnits),
-    End: S.optional(S.String),
-    FixedPrice: S.optional(S.Number),
-    Name: S.optional(S.String),
-    OfferingDescription: S.optional(S.String),
-    OfferingId: S.optional(S.String),
-    OfferingType: S.optional(OfferingType),
-    Region: S.optional(S.String),
-    RenewalSettings: S.optional(RenewalSettings),
-    ReservationId: S.optional(S.String),
-    ResourceSpecification: S.optional(ReservationResourceSpecification),
-    Start: S.optional(S.String),
-    State: S.optional(ReservationState),
-    Tags: S.optional(Tags),
-    UsagePrice: S.optional(S.Number),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      Count: "count",
-      CurrencyCode: "currencyCode",
-      Duration: "duration",
-      DurationUnits: "durationUnits",
-      End: "end",
-      FixedPrice: "fixedPrice",
-      Name: "name",
-      OfferingDescription: "offeringDescription",
-      OfferingId: "offeringId",
-      OfferingType: "offeringType",
-      Region: "region",
-      RenewalSettings: "renewalSettings",
-      ReservationId: "reservationId",
-      ResourceSpecification: "resourceSpecification",
-      Start: "start",
-      State: "state",
-      Tags: "tags",
-      UsagePrice: "usagePrice",
-    }),
-  ),
-).annotate({
-  identifier: "DescribeReservationResponse",
-}) as any as S.Schema<DescribeReservationResponse>;
+export const DescribeReservationResponse =
+  DeleteReservationResponse as any as S.Schema<DescribeReservationResponse>;
 export type MaxResults = number;
 export interface DescribeScheduleRequest {
   ChannelId: string;
@@ -12488,49 +11874,8 @@ export interface GetCloudWatchAlarmTemplateResponse {
   Threshold?: number;
   TreatMissingData?: CloudWatchAlarmTemplateTreatMissingData;
 }
-export const GetCloudWatchAlarmTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    ComparisonOperator: S.optional(CloudWatchAlarmTemplateComparisonOperator),
-    CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    DatapointsToAlarm: S.optional(S.Number),
-    Description: S.optional(S.String),
-    EvaluationPeriods: S.optional(S.Number),
-    GroupId: S.optional(S.String),
-    Id: S.optional(S.String),
-    MetricName: S.optional(S.String),
-    ModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Name: S.optional(S.String),
-    Period: S.optional(S.Number),
-    Statistic: S.optional(CloudWatchAlarmTemplateStatistic),
-    Tags: S.optional(TagMap),
-    TargetResourceType: S.optional(CloudWatchAlarmTemplateTargetResourceType),
-    Threshold: S.optional(S.Number),
-    TreatMissingData: S.optional(CloudWatchAlarmTemplateTreatMissingData),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      ComparisonOperator: "comparisonOperator",
-      CreatedAt: "createdAt",
-      DatapointsToAlarm: "datapointsToAlarm",
-      Description: "description",
-      EvaluationPeriods: "evaluationPeriods",
-      GroupId: "groupId",
-      Id: "id",
-      MetricName: "metricName",
-      ModifiedAt: "modifiedAt",
-      Name: "name",
-      Period: "period",
-      Statistic: "statistic",
-      Tags: "tags",
-      TargetResourceType: "targetResourceType",
-      Threshold: "threshold",
-      TreatMissingData: "treatMissingData",
-    }),
-  ),
-).annotate({
-  identifier: "GetCloudWatchAlarmTemplateResponse",
-}) as any as S.Schema<GetCloudWatchAlarmTemplateResponse>;
+export const GetCloudWatchAlarmTemplateResponse =
+  CreateCloudWatchAlarmTemplateResponse as any as S.Schema<GetCloudWatchAlarmTemplateResponse>;
 export interface GetCloudWatchAlarmTemplateGroupRequest {
   Identifier: string;
 }
@@ -12557,29 +11902,8 @@ export interface GetCloudWatchAlarmTemplateGroupResponse {
   Name?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const GetCloudWatchAlarmTemplateGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Description: S.optional(S.String),
-    Id: S.optional(S.String),
-    ModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Name: S.optional(S.String),
-    Tags: S.optional(TagMap),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      CreatedAt: "createdAt",
-      Description: "description",
-      Id: "id",
-      ModifiedAt: "modifiedAt",
-      Name: "name",
-      Tags: "tags",
-    }),
-  ),
-).annotate({
-  identifier: "GetCloudWatchAlarmTemplateGroupResponse",
-}) as any as S.Schema<GetCloudWatchAlarmTemplateGroupResponse>;
+export const GetCloudWatchAlarmTemplateGroupResponse =
+  CreateCloudWatchAlarmTemplateGroupResponse as any as S.Schema<GetCloudWatchAlarmTemplateGroupResponse>;
 export interface GetEventBridgeRuleTemplateRequest {
   Identifier: string;
 }
@@ -12609,35 +11933,8 @@ export interface GetEventBridgeRuleTemplateResponse {
   Name?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const GetEventBridgeRuleTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Description: S.optional(S.String),
-    EventTargets: S.optional(__listOfEventBridgeRuleTemplateTarget),
-    EventType: S.optional(EventBridgeRuleTemplateEventType),
-    GroupId: S.optional(S.String),
-    Id: S.optional(S.String),
-    ModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Name: S.optional(S.String),
-    Tags: S.optional(TagMap),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      CreatedAt: "createdAt",
-      Description: "description",
-      EventTargets: "eventTargets",
-      EventType: "eventType",
-      GroupId: "groupId",
-      Id: "id",
-      ModifiedAt: "modifiedAt",
-      Name: "name",
-      Tags: "tags",
-    }),
-  ),
-).annotate({
-  identifier: "GetEventBridgeRuleTemplateResponse",
-}) as any as S.Schema<GetEventBridgeRuleTemplateResponse>;
+export const GetEventBridgeRuleTemplateResponse =
+  CreateEventBridgeRuleTemplateResponse as any as S.Schema<GetEventBridgeRuleTemplateResponse>;
 export interface GetEventBridgeRuleTemplateGroupRequest {
   Identifier: string;
 }
@@ -12664,29 +11961,8 @@ export interface GetEventBridgeRuleTemplateGroupResponse {
   Name?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const GetEventBridgeRuleTemplateGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Description: S.optional(S.String),
-    Id: S.optional(S.String),
-    ModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Name: S.optional(S.String),
-    Tags: S.optional(TagMap),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      CreatedAt: "createdAt",
-      Description: "description",
-      Id: "id",
-      ModifiedAt: "modifiedAt",
-      Name: "name",
-      Tags: "tags",
-    }),
-  ),
-).annotate({
-  identifier: "GetEventBridgeRuleTemplateGroupResponse",
-}) as any as S.Schema<GetEventBridgeRuleTemplateGroupResponse>;
+export const GetEventBridgeRuleTemplateGroupResponse =
+  CreateCloudWatchAlarmTemplateGroupResponse as any as S.Schema<GetEventBridgeRuleTemplateGroupResponse>;
 export interface GetSignalMapRequest {
   Identifier: string;
 }
@@ -12739,49 +12015,8 @@ export interface GetSignalMapResponse {
   Status?: SignalMapStatus;
   Tags?: { [key: string]: string | undefined };
 }
-export const GetSignalMapResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CloudWatchAlarmTemplateGroupIds: S.optional(__listOf__stringMin7Max11PatternAws097),
-    CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Description: S.optional(S.String),
-    DiscoveryEntryPointArn: S.optional(S.String),
-    ErrorMessage: S.optional(S.String),
-    EventBridgeRuleTemplateGroupIds: S.optional(__listOf__stringMin7Max11PatternAws097),
-    FailedMediaResourceMap: S.optional(FailedMediaResourceMap),
-    Id: S.optional(S.String),
-    LastDiscoveredAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    LastSuccessfulMonitorDeployment: S.optional(SuccessfulMonitorDeployment),
-    MediaResourceMap: S.optional(MediaResourceMap),
-    ModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    MonitorChangesPendingDeployment: S.optional(S.Boolean),
-    MonitorDeployment: S.optional(MonitorDeployment),
-    Name: S.optional(S.String),
-    Status: S.optional(SignalMapStatus),
-    Tags: S.optional(TagMap),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      CloudWatchAlarmTemplateGroupIds: "cloudWatchAlarmTemplateGroupIds",
-      CreatedAt: "createdAt",
-      Description: "description",
-      DiscoveryEntryPointArn: "discoveryEntryPointArn",
-      ErrorMessage: "errorMessage",
-      EventBridgeRuleTemplateGroupIds: "eventBridgeRuleTemplateGroupIds",
-      FailedMediaResourceMap: "failedMediaResourceMap",
-      Id: "id",
-      LastDiscoveredAt: "lastDiscoveredAt",
-      LastSuccessfulMonitorDeployment: "lastSuccessfulMonitorDeployment",
-      MediaResourceMap: "mediaResourceMap",
-      ModifiedAt: "modifiedAt",
-      MonitorChangesPendingDeployment: "monitorChangesPendingDeployment",
-      MonitorDeployment: "monitorDeployment",
-      Name: "name",
-      Status: "status",
-      Tags: "tags",
-    }),
-  ),
-).annotate({ identifier: "GetSignalMapResponse" }) as any as S.Schema<GetSignalMapResponse>;
+export const GetSignalMapResponse =
+  CreateSignalMapResponse as any as S.Schema<GetSignalMapResponse>;
 export interface ListAlertsRequest {
   ChannelId: string;
   MaxResults?: number;
@@ -12881,29 +12116,8 @@ export interface DescribeChannelPlacementGroupSummary {
   Nodes?: string[];
   State?: ChannelPlacementGroupState;
 }
-export const DescribeChannelPlacementGroupSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Channels: S.optional(__listOf__string),
-    ClusterId: S.optional(S.String),
-    Id: S.optional(S.String),
-    Name: S.optional(S.String),
-    Nodes: S.optional(__listOf__string),
-    State: S.optional(ChannelPlacementGroupState),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      Channels: "channels",
-      ClusterId: "clusterId",
-      Id: "id",
-      Name: "name",
-      Nodes: "nodes",
-      State: "state",
-    }),
-  ),
-).annotate({
-  identifier: "DescribeChannelPlacementGroupSummary",
-}) as any as S.Schema<DescribeChannelPlacementGroupSummary>;
+export const DescribeChannelPlacementGroupSummary =
+  CreateChannelPlacementGroupResponse as any as S.Schema<DescribeChannelPlacementGroupSummary>;
 export type __listOfDescribeChannelPlacementGroupSummary = DescribeChannelPlacementGroupSummary[];
 export const __listOfDescribeChannelPlacementGroupSummary = /*@__PURE__*/ S.Array(
   DescribeChannelPlacementGroupSummary,
@@ -13226,49 +12440,8 @@ export interface CloudWatchAlarmTemplateSummary {
   Threshold?: number;
   TreatMissingData?: CloudWatchAlarmTemplateTreatMissingData;
 }
-export const CloudWatchAlarmTemplateSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    ComparisonOperator: S.optional(CloudWatchAlarmTemplateComparisonOperator),
-    CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    DatapointsToAlarm: S.optional(S.Number),
-    Description: S.optional(S.String),
-    EvaluationPeriods: S.optional(S.Number),
-    GroupId: S.optional(S.String),
-    Id: S.optional(S.String),
-    MetricName: S.optional(S.String),
-    ModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Name: S.optional(S.String),
-    Period: S.optional(S.Number),
-    Statistic: S.optional(CloudWatchAlarmTemplateStatistic),
-    Tags: S.optional(TagMap),
-    TargetResourceType: S.optional(CloudWatchAlarmTemplateTargetResourceType),
-    Threshold: S.optional(S.Number),
-    TreatMissingData: S.optional(CloudWatchAlarmTemplateTreatMissingData),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      ComparisonOperator: "comparisonOperator",
-      CreatedAt: "createdAt",
-      DatapointsToAlarm: "datapointsToAlarm",
-      Description: "description",
-      EvaluationPeriods: "evaluationPeriods",
-      GroupId: "groupId",
-      Id: "id",
-      MetricName: "metricName",
-      ModifiedAt: "modifiedAt",
-      Name: "name",
-      Period: "period",
-      Statistic: "statistic",
-      Tags: "tags",
-      TargetResourceType: "targetResourceType",
-      Threshold: "threshold",
-      TreatMissingData: "treatMissingData",
-    }),
-  ),
-).annotate({
-  identifier: "CloudWatchAlarmTemplateSummary",
-}) as any as S.Schema<CloudWatchAlarmTemplateSummary>;
+export const CloudWatchAlarmTemplateSummary =
+  CreateCloudWatchAlarmTemplateResponse as any as S.Schema<CloudWatchAlarmTemplateSummary>;
 export type __listOfCloudWatchAlarmTemplateSummary = CloudWatchAlarmTemplateSummary[];
 export const __listOfCloudWatchAlarmTemplateSummary = /*@__PURE__*/ S.Array(
   CloudWatchAlarmTemplateSummary,
@@ -13393,29 +12566,8 @@ export interface DescribeClusterSummary {
   NetworkSettings?: ClusterNetworkSettings;
   State?: ClusterState;
 }
-export const DescribeClusterSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    ChannelIds: S.optional(__listOf__string),
-    ClusterType: S.optional(ClusterType),
-    Id: S.optional(S.String),
-    InstanceRoleArn: S.optional(S.String),
-    Name: S.optional(S.String),
-    NetworkSettings: S.optional(ClusterNetworkSettings),
-    State: S.optional(ClusterState),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      ChannelIds: "channelIds",
-      ClusterType: "clusterType",
-      Id: "id",
-      InstanceRoleArn: "instanceRoleArn",
-      Name: "name",
-      NetworkSettings: "networkSettings",
-      State: "state",
-    }),
-  ),
-).annotate({ identifier: "DescribeClusterSummary" }) as any as S.Schema<DescribeClusterSummary>;
+export const DescribeClusterSummary =
+  CreateClusterResponse as any as S.Schema<DescribeClusterSummary>;
 export type __listOfDescribeClusterSummary = DescribeClusterSummary[];
 export const __listOfDescribeClusterSummary = /*@__PURE__*/ S.Array(DescribeClusterSummary);
 export interface ListClustersResponse {
@@ -13461,35 +12613,11 @@ export interface EventBridgeRuleTemplateGroupSummary {
   Tags?: { [key: string]: string | undefined };
   TemplateCount?: number;
 }
-export const EventBridgeRuleTemplateGroupSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Description: S.optional(S.String),
-    Id: S.optional(S.String),
-    ModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Name: S.optional(S.String),
-    Tags: S.optional(TagMap),
-    TemplateCount: S.optional(S.Number),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      CreatedAt: "createdAt",
-      Description: "description",
-      Id: "id",
-      ModifiedAt: "modifiedAt",
-      Name: "name",
-      Tags: "tags",
-      TemplateCount: "templateCount",
-    }),
-  ),
-).annotate({
-  identifier: "EventBridgeRuleTemplateGroupSummary",
-}) as any as S.Schema<EventBridgeRuleTemplateGroupSummary>;
+export const EventBridgeRuleTemplateGroupSummary =
+  CloudWatchAlarmTemplateGroupSummary as any as S.Schema<EventBridgeRuleTemplateGroupSummary>;
 export type __listOfEventBridgeRuleTemplateGroupSummary = EventBridgeRuleTemplateGroupSummary[];
-export const __listOfEventBridgeRuleTemplateGroupSummary = /*@__PURE__*/ S.Array(
-  EventBridgeRuleTemplateGroupSummary,
-);
+export const __listOfEventBridgeRuleTemplateGroupSummary =
+  __listOfCloudWatchAlarmTemplateGroupSummary as any as S.Schema<__listOfEventBridgeRuleTemplateGroupSummary>;
 export interface ListEventBridgeRuleTemplateGroupsResponse {
   EventBridgeRuleTemplateGroups?: (EventBridgeRuleTemplateGroupSummary & {
     Arn: __stringPatternArnMedialiveEventbridgeRuleTemplateGroup;
@@ -14017,27 +13145,8 @@ export interface DescribeNetworkSummary {
   Routes?: Route[];
   State?: NetworkState;
 }
-export const DescribeNetworkSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    AssociatedClusterIds: S.optional(__listOf__string),
-    Id: S.optional(S.String),
-    IpPools: S.optional(__listOfIpPool),
-    Name: S.optional(S.String),
-    Routes: S.optional(__listOfRoute),
-    State: S.optional(NetworkState),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      AssociatedClusterIds: "associatedClusterIds",
-      Id: "id",
-      IpPools: "ipPools",
-      Name: "name",
-      Routes: "routes",
-      State: "state",
-    }),
-  ),
-).annotate({ identifier: "DescribeNetworkSummary" }) as any as S.Schema<DescribeNetworkSummary>;
+export const DescribeNetworkSummary =
+  CreateNetworkResponse as any as S.Schema<DescribeNetworkSummary>;
 export type __listOfDescribeNetworkSummary = DescribeNetworkSummary[];
 export const __listOfDescribeNetworkSummary = /*@__PURE__*/ S.Array(DescribeNetworkSummary);
 export interface ListNetworksResponse {
@@ -14171,35 +13280,7 @@ export interface Offering {
   ResourceSpecification?: ReservationResourceSpecification;
   UsagePrice?: number;
 }
-export const Offering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CurrencyCode: S.optional(S.String),
-    Duration: S.optional(S.Number),
-    DurationUnits: S.optional(OfferingDurationUnits),
-    FixedPrice: S.optional(S.Number),
-    OfferingDescription: S.optional(S.String),
-    OfferingId: S.optional(S.String),
-    OfferingType: S.optional(OfferingType),
-    Region: S.optional(S.String),
-    ResourceSpecification: S.optional(ReservationResourceSpecification),
-    UsagePrice: S.optional(S.Number),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      CurrencyCode: "currencyCode",
-      Duration: "duration",
-      DurationUnits: "durationUnits",
-      FixedPrice: "fixedPrice",
-      OfferingDescription: "offeringDescription",
-      OfferingId: "offeringId",
-      OfferingType: "offeringType",
-      Region: "region",
-      ResourceSpecification: "resourceSpecification",
-      UsagePrice: "usagePrice",
-    }),
-  ),
-).annotate({ identifier: "Offering" }) as any as S.Schema<Offering>;
+export const Offering = DescribeOfferingResponse as any as S.Schema<Offering>;
 export type __listOfOffering = Offering[];
 export const __listOfOffering = /*@__PURE__*/ S.Array(Offering);
 export interface ListOfferingsResponse {
@@ -14335,27 +13416,7 @@ export interface SdiSourceSummary {
   State?: SdiSourceState;
   Type?: SdiSourceType;
 }
-export const SdiSourceSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Id: S.optional(S.String),
-    Inputs: S.optional(__listOf__string),
-    Mode: S.optional(SdiSourceMode),
-    Name: S.optional(S.String),
-    State: S.optional(SdiSourceState),
-    Type: S.optional(SdiSourceType),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      Id: "id",
-      Inputs: "inputs",
-      Mode: "mode",
-      Name: "name",
-      State: "state",
-      Type: "type",
-    }),
-  ),
-).annotate({ identifier: "SdiSourceSummary" }) as any as S.Schema<SdiSourceSummary>;
+export const SdiSourceSummary = SdiSource as any as S.Schema<SdiSourceSummary>;
 export type __listOfSdiSourceSummary = SdiSourceSummary[];
 export const __listOfSdiSourceSummary = /*@__PURE__*/ S.Array(SdiSourceSummary);
 export interface ListSdiSourcesResponse {
@@ -14546,9 +13607,8 @@ export const RebootInputDeviceRequest = /*@__PURE__*/ S.suspend(() =>
     ),
 ).annotate({ identifier: "RebootInputDeviceRequest" }) as any as S.Schema<RebootInputDeviceRequest>;
 export interface RebootInputDeviceResponse {}
-export const RebootInputDeviceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RebootInputDeviceResponse",
-}) as any as S.Schema<RebootInputDeviceResponse>;
+export const RebootInputDeviceResponse =
+  ClaimDeviceResponse as any as S.Schema<RebootInputDeviceResponse>;
 export interface RejectInputDeviceTransferRequest {
   InputDeviceId: string;
 }
@@ -14567,11 +13627,8 @@ export const RejectInputDeviceTransferRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RejectInputDeviceTransferRequest",
 }) as any as S.Schema<RejectInputDeviceTransferRequest>;
 export interface RejectInputDeviceTransferResponse {}
-export const RejectInputDeviceTransferResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RejectInputDeviceTransferResponse",
-}) as any as S.Schema<RejectInputDeviceTransferResponse>;
+export const RejectInputDeviceTransferResponse =
+  AcceptInputDeviceTransferResponse as any as S.Schema<RejectInputDeviceTransferResponse>;
 export type ChannelPipelineIdToRestart = "PIPELINE_0" | "PIPELINE_1" | (string & {});
 export const ChannelPipelineIdToRestart = S.String;
 
@@ -15353,59 +14410,7 @@ export interface StartChannelResponse {
   ChannelSecurityGroups?: string[];
   InferenceSettings?: DescribeInferenceSettings;
 }
-export const StartChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CdiInputSpecification: S.optional(CdiInputSpecification),
-    ChannelClass: S.optional(ChannelClass),
-    Destinations: S.optional(__listOfOutputDestination),
-    EgressEndpoints: S.optional(__listOfChannelEgressEndpoint),
-    EncoderSettings: S.optional(EncoderSettings),
-    Id: S.optional(S.String),
-    InputAttachments: S.optional(__listOfInputAttachment),
-    InputSpecification: S.optional(InputSpecification),
-    LogLevel: S.optional(LogLevel),
-    Maintenance: S.optional(MaintenanceStatus),
-    Name: S.optional(S.String),
-    PipelineDetails: S.optional(__listOfPipelineDetail),
-    PipelinesRunningCount: S.optional(S.Number),
-    RoleArn: S.optional(S.String),
-    State: S.optional(ChannelState),
-    Tags: S.optional(Tags),
-    Vpc: S.optional(VpcOutputSettingsDescription),
-    AnywhereSettings: S.optional(DescribeAnywhereSettings),
-    ChannelEngineVersion: S.optional(ChannelEngineVersionResponse),
-    LinkedChannelSettings: S.optional(DescribeLinkedChannelSettings),
-    ChannelSecurityGroups: S.optional(__listOf__string),
-    InferenceSettings: S.optional(DescribeInferenceSettings),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      CdiInputSpecification: "cdiInputSpecification",
-      ChannelClass: "channelClass",
-      Destinations: "destinations",
-      EgressEndpoints: "egressEndpoints",
-      EncoderSettings: "encoderSettings",
-      Id: "id",
-      InputAttachments: "inputAttachments",
-      InputSpecification: "inputSpecification",
-      LogLevel: "logLevel",
-      Maintenance: "maintenance",
-      Name: "name",
-      PipelineDetails: "pipelineDetails",
-      PipelinesRunningCount: "pipelinesRunningCount",
-      RoleArn: "roleArn",
-      State: "state",
-      Tags: "tags",
-      Vpc: "vpc",
-      AnywhereSettings: "anywhereSettings",
-      ChannelEngineVersion: "channelEngineVersion",
-      LinkedChannelSettings: "linkedChannelSettings",
-      ChannelSecurityGroups: "channelSecurityGroups",
-      InferenceSettings: "inferenceSettings",
-    }),
-  ),
-).annotate({ identifier: "StartChannelResponse" }) as any as S.Schema<StartChannelResponse>;
+export const StartChannelResponse = Channel as any as S.Schema<StartChannelResponse>;
 export interface StartDeleteMonitorDeploymentRequest {
   Identifier: string;
 }
@@ -15521,9 +14526,8 @@ export const StartInputDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StartInputDeviceRequest" }) as any as S.Schema<StartInputDeviceRequest>;
 export interface StartInputDeviceResponse {}
-export const StartInputDeviceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartInputDeviceResponse",
-}) as any as S.Schema<StartInputDeviceResponse>;
+export const StartInputDeviceResponse =
+  ClaimDeviceResponse as any as S.Schema<StartInputDeviceResponse>;
 export interface StartInputDeviceMaintenanceWindowRequest {
   InputDeviceId: string;
 }
@@ -15545,11 +14549,8 @@ export const StartInputDeviceMaintenanceWindowRequest = /*@__PURE__*/ S.suspend(
   identifier: "StartInputDeviceMaintenanceWindowRequest",
 }) as any as S.Schema<StartInputDeviceMaintenanceWindowRequest>;
 export interface StartInputDeviceMaintenanceWindowResponse {}
-export const StartInputDeviceMaintenanceWindowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StartInputDeviceMaintenanceWindowResponse",
-}) as any as S.Schema<StartInputDeviceMaintenanceWindowResponse>;
+export const StartInputDeviceMaintenanceWindowResponse =
+  AcceptInputDeviceTransferResponse as any as S.Schema<StartInputDeviceMaintenanceWindowResponse>;
 export interface StartMonitorDeploymentRequest {
   DryRun?: boolean;
   Identifier: string;
@@ -15607,51 +14608,8 @@ export interface StartMonitorDeploymentResponse {
   Status?: SignalMapStatus;
   Tags?: { [key: string]: string | undefined };
 }
-export const StartMonitorDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CloudWatchAlarmTemplateGroupIds: S.optional(__listOf__stringMin7Max11PatternAws097),
-    CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Description: S.optional(S.String),
-    DiscoveryEntryPointArn: S.optional(S.String),
-    ErrorMessage: S.optional(S.String),
-    EventBridgeRuleTemplateGroupIds: S.optional(__listOf__stringMin7Max11PatternAws097),
-    FailedMediaResourceMap: S.optional(FailedMediaResourceMap),
-    Id: S.optional(S.String),
-    LastDiscoveredAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    LastSuccessfulMonitorDeployment: S.optional(SuccessfulMonitorDeployment),
-    MediaResourceMap: S.optional(MediaResourceMap),
-    ModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    MonitorChangesPendingDeployment: S.optional(S.Boolean),
-    MonitorDeployment: S.optional(MonitorDeployment),
-    Name: S.optional(S.String),
-    Status: S.optional(SignalMapStatus),
-    Tags: S.optional(TagMap),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      CloudWatchAlarmTemplateGroupIds: "cloudWatchAlarmTemplateGroupIds",
-      CreatedAt: "createdAt",
-      Description: "description",
-      DiscoveryEntryPointArn: "discoveryEntryPointArn",
-      ErrorMessage: "errorMessage",
-      EventBridgeRuleTemplateGroupIds: "eventBridgeRuleTemplateGroupIds",
-      FailedMediaResourceMap: "failedMediaResourceMap",
-      Id: "id",
-      LastDiscoveredAt: "lastDiscoveredAt",
-      LastSuccessfulMonitorDeployment: "lastSuccessfulMonitorDeployment",
-      MediaResourceMap: "mediaResourceMap",
-      ModifiedAt: "modifiedAt",
-      MonitorChangesPendingDeployment: "monitorChangesPendingDeployment",
-      MonitorDeployment: "monitorDeployment",
-      Name: "name",
-      Status: "status",
-      Tags: "tags",
-    }),
-  ),
-).annotate({
-  identifier: "StartMonitorDeploymentResponse",
-}) as any as S.Schema<StartMonitorDeploymentResponse>;
+export const StartMonitorDeploymentResponse =
+  StartDeleteMonitorDeploymentResponse as any as S.Schema<StartMonitorDeploymentResponse>;
 export interface StartMultiplexRequest {
   MultiplexId: string;
 }
@@ -15682,33 +14640,7 @@ export interface StartMultiplexResponse {
   State?: MultiplexState;
   Tags?: { [key: string]: string | undefined };
 }
-export const StartMultiplexResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    AvailabilityZones: S.optional(__listOf__string),
-    Destinations: S.optional(__listOfMultiplexOutputDestination),
-    Id: S.optional(S.String),
-    MultiplexSettings: S.optional(MultiplexSettings),
-    Name: S.optional(S.String),
-    PipelinesRunningCount: S.optional(S.Number),
-    ProgramCount: S.optional(S.Number),
-    State: S.optional(MultiplexState),
-    Tags: S.optional(Tags),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      AvailabilityZones: "availabilityZones",
-      Destinations: "destinations",
-      Id: "id",
-      MultiplexSettings: "multiplexSettings",
-      Name: "name",
-      PipelinesRunningCount: "pipelinesRunningCount",
-      ProgramCount: "programCount",
-      State: "state",
-      Tags: "tags",
-    }),
-  ),
-).annotate({ identifier: "StartMultiplexResponse" }) as any as S.Schema<StartMultiplexResponse>;
+export const StartMultiplexResponse = Multiplex as any as S.Schema<StartMultiplexResponse>;
 export interface StartUpdateSignalMapRequest {
   CloudWatchAlarmTemplateGroupIdentifiers?: string[];
   Description?: string;
@@ -15788,51 +14720,8 @@ export interface StartUpdateSignalMapResponse {
   Status?: SignalMapStatus;
   Tags?: { [key: string]: string | undefined };
 }
-export const StartUpdateSignalMapResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CloudWatchAlarmTemplateGroupIds: S.optional(__listOf__stringMin7Max11PatternAws097),
-    CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Description: S.optional(S.String),
-    DiscoveryEntryPointArn: S.optional(S.String),
-    ErrorMessage: S.optional(S.String),
-    EventBridgeRuleTemplateGroupIds: S.optional(__listOf__stringMin7Max11PatternAws097),
-    FailedMediaResourceMap: S.optional(FailedMediaResourceMap),
-    Id: S.optional(S.String),
-    LastDiscoveredAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    LastSuccessfulMonitorDeployment: S.optional(SuccessfulMonitorDeployment),
-    MediaResourceMap: S.optional(MediaResourceMap),
-    ModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    MonitorChangesPendingDeployment: S.optional(S.Boolean),
-    MonitorDeployment: S.optional(MonitorDeployment),
-    Name: S.optional(S.String),
-    Status: S.optional(SignalMapStatus),
-    Tags: S.optional(TagMap),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      CloudWatchAlarmTemplateGroupIds: "cloudWatchAlarmTemplateGroupIds",
-      CreatedAt: "createdAt",
-      Description: "description",
-      DiscoveryEntryPointArn: "discoveryEntryPointArn",
-      ErrorMessage: "errorMessage",
-      EventBridgeRuleTemplateGroupIds: "eventBridgeRuleTemplateGroupIds",
-      FailedMediaResourceMap: "failedMediaResourceMap",
-      Id: "id",
-      LastDiscoveredAt: "lastDiscoveredAt",
-      LastSuccessfulMonitorDeployment: "lastSuccessfulMonitorDeployment",
-      MediaResourceMap: "mediaResourceMap",
-      ModifiedAt: "modifiedAt",
-      MonitorChangesPendingDeployment: "monitorChangesPendingDeployment",
-      MonitorDeployment: "monitorDeployment",
-      Name: "name",
-      Status: "status",
-      Tags: "tags",
-    }),
-  ),
-).annotate({
-  identifier: "StartUpdateSignalMapResponse",
-}) as any as S.Schema<StartUpdateSignalMapResponse>;
+export const StartUpdateSignalMapResponse =
+  StartDeleteMonitorDeploymentResponse as any as S.Schema<StartUpdateSignalMapResponse>;
 export interface StopChannelRequest {
   ChannelId: string;
 }
@@ -16188,59 +15077,7 @@ export interface StopChannelResponse {
   ChannelSecurityGroups?: string[];
   InferenceSettings?: DescribeInferenceSettings;
 }
-export const StopChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CdiInputSpecification: S.optional(CdiInputSpecification),
-    ChannelClass: S.optional(ChannelClass),
-    Destinations: S.optional(__listOfOutputDestination),
-    EgressEndpoints: S.optional(__listOfChannelEgressEndpoint),
-    EncoderSettings: S.optional(EncoderSettings),
-    Id: S.optional(S.String),
-    InputAttachments: S.optional(__listOfInputAttachment),
-    InputSpecification: S.optional(InputSpecification),
-    LogLevel: S.optional(LogLevel),
-    Maintenance: S.optional(MaintenanceStatus),
-    Name: S.optional(S.String),
-    PipelineDetails: S.optional(__listOfPipelineDetail),
-    PipelinesRunningCount: S.optional(S.Number),
-    RoleArn: S.optional(S.String),
-    State: S.optional(ChannelState),
-    Tags: S.optional(Tags),
-    Vpc: S.optional(VpcOutputSettingsDescription),
-    AnywhereSettings: S.optional(DescribeAnywhereSettings),
-    ChannelEngineVersion: S.optional(ChannelEngineVersionResponse),
-    LinkedChannelSettings: S.optional(DescribeLinkedChannelSettings),
-    ChannelSecurityGroups: S.optional(__listOf__string),
-    InferenceSettings: S.optional(DescribeInferenceSettings),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      CdiInputSpecification: "cdiInputSpecification",
-      ChannelClass: "channelClass",
-      Destinations: "destinations",
-      EgressEndpoints: "egressEndpoints",
-      EncoderSettings: "encoderSettings",
-      Id: "id",
-      InputAttachments: "inputAttachments",
-      InputSpecification: "inputSpecification",
-      LogLevel: "logLevel",
-      Maintenance: "maintenance",
-      Name: "name",
-      PipelineDetails: "pipelineDetails",
-      PipelinesRunningCount: "pipelinesRunningCount",
-      RoleArn: "roleArn",
-      State: "state",
-      Tags: "tags",
-      Vpc: "vpc",
-      AnywhereSettings: "anywhereSettings",
-      ChannelEngineVersion: "channelEngineVersion",
-      LinkedChannelSettings: "linkedChannelSettings",
-      ChannelSecurityGroups: "channelSecurityGroups",
-      InferenceSettings: "inferenceSettings",
-    }),
-  ),
-).annotate({ identifier: "StopChannelResponse" }) as any as S.Schema<StopChannelResponse>;
+export const StopChannelResponse = Channel as any as S.Schema<StopChannelResponse>;
 export interface StopInputDeviceRequest {
   InputDeviceId: string;
 }
@@ -16257,9 +15094,8 @@ export const StopInputDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopInputDeviceRequest" }) as any as S.Schema<StopInputDeviceRequest>;
 export interface StopInputDeviceResponse {}
-export const StopInputDeviceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopInputDeviceResponse",
-}) as any as S.Schema<StopInputDeviceResponse>;
+export const StopInputDeviceResponse =
+  ClaimDeviceResponse as any as S.Schema<StopInputDeviceResponse>;
 export interface StopMultiplexRequest {
   MultiplexId: string;
 }
@@ -16290,33 +15126,7 @@ export interface StopMultiplexResponse {
   State?: MultiplexState;
   Tags?: { [key: string]: string | undefined };
 }
-export const StopMultiplexResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    AvailabilityZones: S.optional(__listOf__string),
-    Destinations: S.optional(__listOfMultiplexOutputDestination),
-    Id: S.optional(S.String),
-    MultiplexSettings: S.optional(MultiplexSettings),
-    Name: S.optional(S.String),
-    PipelinesRunningCount: S.optional(S.Number),
-    ProgramCount: S.optional(S.Number),
-    State: S.optional(MultiplexState),
-    Tags: S.optional(Tags),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      AvailabilityZones: "availabilityZones",
-      Destinations: "destinations",
-      Id: "id",
-      MultiplexSettings: "multiplexSettings",
-      Name: "name",
-      PipelinesRunningCount: "pipelinesRunningCount",
-      ProgramCount: "programCount",
-      State: "state",
-      Tags: "tags",
-    }),
-  ),
-).annotate({ identifier: "StopMultiplexResponse" }) as any as S.Schema<StopMultiplexResponse>;
+export const StopMultiplexResponse = Multiplex as any as S.Schema<StopMultiplexResponse>;
 export interface TransferInputDeviceRequest {
   InputDeviceId: string;
   TargetCustomerId?: string;
@@ -16351,9 +15161,8 @@ export const TransferInputDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TransferInputDeviceRequest",
 }) as any as S.Schema<TransferInputDeviceRequest>;
 export interface TransferInputDeviceResponse {}
-export const TransferInputDeviceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TransferInputDeviceResponse",
-}) as any as S.Schema<TransferInputDeviceResponse>;
+export const TransferInputDeviceResponse =
+  ClaimDeviceResponse as any as S.Schema<TransferInputDeviceResponse>;
 export interface UpdateAccountConfigurationRequest {
   AccountConfiguration?: AccountConfiguration;
 }
@@ -16376,13 +15185,8 @@ export const UpdateAccountConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAccountConfigurationResponse {
   AccountConfiguration?: AccountConfiguration;
 }
-export const UpdateAccountConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AccountConfiguration: S.optional(AccountConfiguration) }).pipe(
-    S.encodeKeys({ AccountConfiguration: "accountConfiguration" }),
-  ),
-).annotate({
-  identifier: "UpdateAccountConfigurationResponse",
-}) as any as S.Schema<UpdateAccountConfigurationResponse>;
+export const UpdateAccountConfigurationResponse =
+  DescribeAccountConfigurationResponse as any as S.Schema<UpdateAccountConfigurationResponse>;
 export interface MaintenanceUpdateSettings {
   MaintenanceDay?: MaintenanceDay;
   MaintenanceScheduledDate?: string;
@@ -16802,9 +15606,8 @@ export interface UpdateChannelResponse {
     })[];
   };
 }
-export const UpdateChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Channel: S.optional(Channel) }).pipe(S.encodeKeys({ Channel: "channel" })),
-).annotate({ identifier: "UpdateChannelResponse" }) as any as S.Schema<UpdateChannelResponse>;
+export const UpdateChannelResponse =
+  CreateChannelResponse as any as S.Schema<UpdateChannelResponse>;
 export interface UpdateChannelClassRequest {
   ChannelClass?: ChannelClass;
   ChannelId: string;
@@ -17197,29 +16000,8 @@ export interface UpdateChannelPlacementGroupResponse {
   Nodes?: string[];
   State?: ChannelPlacementGroupState;
 }
-export const UpdateChannelPlacementGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Channels: S.optional(__listOf__string),
-    ClusterId: S.optional(S.String),
-    Id: S.optional(S.String),
-    Name: S.optional(S.String),
-    Nodes: S.optional(__listOf__string),
-    State: S.optional(ChannelPlacementGroupState),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      Channels: "channels",
-      ClusterId: "clusterId",
-      Id: "id",
-      Name: "name",
-      Nodes: "nodes",
-      State: "state",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateChannelPlacementGroupResponse",
-}) as any as S.Schema<UpdateChannelPlacementGroupResponse>;
+export const UpdateChannelPlacementGroupResponse =
+  CreateChannelPlacementGroupResponse as any as S.Schema<UpdateChannelPlacementGroupResponse>;
 export interface UpdateCloudWatchAlarmTemplateRequest {
   ComparisonOperator?: CloudWatchAlarmTemplateComparisonOperator;
   DatapointsToAlarm?: number;
@@ -17299,49 +16081,8 @@ export interface UpdateCloudWatchAlarmTemplateResponse {
   Threshold?: number;
   TreatMissingData?: CloudWatchAlarmTemplateTreatMissingData;
 }
-export const UpdateCloudWatchAlarmTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    ComparisonOperator: S.optional(CloudWatchAlarmTemplateComparisonOperator),
-    CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    DatapointsToAlarm: S.optional(S.Number),
-    Description: S.optional(S.String),
-    EvaluationPeriods: S.optional(S.Number),
-    GroupId: S.optional(S.String),
-    Id: S.optional(S.String),
-    MetricName: S.optional(S.String),
-    ModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Name: S.optional(S.String),
-    Period: S.optional(S.Number),
-    Statistic: S.optional(CloudWatchAlarmTemplateStatistic),
-    Tags: S.optional(TagMap),
-    TargetResourceType: S.optional(CloudWatchAlarmTemplateTargetResourceType),
-    Threshold: S.optional(S.Number),
-    TreatMissingData: S.optional(CloudWatchAlarmTemplateTreatMissingData),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      ComparisonOperator: "comparisonOperator",
-      CreatedAt: "createdAt",
-      DatapointsToAlarm: "datapointsToAlarm",
-      Description: "description",
-      EvaluationPeriods: "evaluationPeriods",
-      GroupId: "groupId",
-      Id: "id",
-      MetricName: "metricName",
-      ModifiedAt: "modifiedAt",
-      Name: "name",
-      Period: "period",
-      Statistic: "statistic",
-      Tags: "tags",
-      TargetResourceType: "targetResourceType",
-      Threshold: "threshold",
-      TreatMissingData: "treatMissingData",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateCloudWatchAlarmTemplateResponse",
-}) as any as S.Schema<UpdateCloudWatchAlarmTemplateResponse>;
+export const UpdateCloudWatchAlarmTemplateResponse =
+  CreateCloudWatchAlarmTemplateResponse as any as S.Schema<UpdateCloudWatchAlarmTemplateResponse>;
 export interface UpdateCloudWatchAlarmTemplateGroupRequest {
   Description?: string;
   Identifier: string;
@@ -17374,56 +16115,23 @@ export interface UpdateCloudWatchAlarmTemplateGroupResponse {
   Name?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const UpdateCloudWatchAlarmTemplateGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Description: S.optional(S.String),
-    Id: S.optional(S.String),
-    ModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Name: S.optional(S.String),
-    Tags: S.optional(TagMap),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      CreatedAt: "createdAt",
-      Description: "description",
-      Id: "id",
-      ModifiedAt: "modifiedAt",
-      Name: "name",
-      Tags: "tags",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateCloudWatchAlarmTemplateGroupResponse",
-}) as any as S.Schema<UpdateCloudWatchAlarmTemplateGroupResponse>;
+export const UpdateCloudWatchAlarmTemplateGroupResponse =
+  CreateCloudWatchAlarmTemplateGroupResponse as any as S.Schema<UpdateCloudWatchAlarmTemplateGroupResponse>;
 export interface InterfaceMappingUpdateRequest {
   LogicalInterfaceName?: string;
   NetworkId?: string;
 }
-export const InterfaceMappingUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LogicalInterfaceName: S.optional(S.String), NetworkId: S.optional(S.String) }).pipe(
-    S.encodeKeys({ LogicalInterfaceName: "logicalInterfaceName", NetworkId: "networkId" }),
-  ),
-).annotate({
-  identifier: "InterfaceMappingUpdateRequest",
-}) as any as S.Schema<InterfaceMappingUpdateRequest>;
+export const InterfaceMappingUpdateRequest =
+  InterfaceMappingCreateRequest as any as S.Schema<InterfaceMappingUpdateRequest>;
 export type __listOfInterfaceMappingUpdateRequest = InterfaceMappingUpdateRequest[];
-export const __listOfInterfaceMappingUpdateRequest = /*@__PURE__*/ S.Array(
-  InterfaceMappingUpdateRequest,
-);
+export const __listOfInterfaceMappingUpdateRequest =
+  __listOfInterfaceMappingCreateRequest as any as S.Schema<__listOfInterfaceMappingUpdateRequest>;
 export interface ClusterNetworkSettingsUpdateRequest {
   DefaultRoute?: string;
   InterfaceMappings?: InterfaceMappingUpdateRequest[];
 }
-export const ClusterNetworkSettingsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DefaultRoute: S.optional(S.String),
-    InterfaceMappings: S.optional(__listOfInterfaceMappingUpdateRequest),
-  }).pipe(S.encodeKeys({ DefaultRoute: "defaultRoute", InterfaceMappings: "interfaceMappings" })),
-).annotate({
-  identifier: "ClusterNetworkSettingsUpdateRequest",
-}) as any as S.Schema<ClusterNetworkSettingsUpdateRequest>;
+export const ClusterNetworkSettingsUpdateRequest =
+  ClusterNetworkSettingsCreateRequest as any as S.Schema<ClusterNetworkSettingsUpdateRequest>;
 export interface UpdateClusterRequest {
   ClusterId: string;
   Name?: string;
@@ -17528,35 +16236,8 @@ export interface UpdateEventBridgeRuleTemplateResponse {
   Name?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const UpdateEventBridgeRuleTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Description: S.optional(S.String),
-    EventTargets: S.optional(__listOfEventBridgeRuleTemplateTarget),
-    EventType: S.optional(EventBridgeRuleTemplateEventType),
-    GroupId: S.optional(S.String),
-    Id: S.optional(S.String),
-    ModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Name: S.optional(S.String),
-    Tags: S.optional(TagMap),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      CreatedAt: "createdAt",
-      Description: "description",
-      EventTargets: "eventTargets",
-      EventType: "eventType",
-      GroupId: "groupId",
-      Id: "id",
-      ModifiedAt: "modifiedAt",
-      Name: "name",
-      Tags: "tags",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateEventBridgeRuleTemplateResponse",
-}) as any as S.Schema<UpdateEventBridgeRuleTemplateResponse>;
+export const UpdateEventBridgeRuleTemplateResponse =
+  CreateEventBridgeRuleTemplateResponse as any as S.Schema<UpdateEventBridgeRuleTemplateResponse>;
 export interface UpdateEventBridgeRuleTemplateGroupRequest {
   Description?: string;
   Identifier: string;
@@ -17589,62 +16270,29 @@ export interface UpdateEventBridgeRuleTemplateGroupResponse {
   Name?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const UpdateEventBridgeRuleTemplateGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Description: S.optional(S.String),
-    Id: S.optional(S.String),
-    ModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Name: S.optional(S.String),
-    Tags: S.optional(TagMap),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      CreatedAt: "createdAt",
-      Description: "description",
-      Id: "id",
-      ModifiedAt: "modifiedAt",
-      Name: "name",
-      Tags: "tags",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateEventBridgeRuleTemplateGroupResponse",
-}) as any as S.Schema<UpdateEventBridgeRuleTemplateGroupResponse>;
+export const UpdateEventBridgeRuleTemplateGroupResponse =
+  CreateCloudWatchAlarmTemplateGroupResponse as any as S.Schema<UpdateEventBridgeRuleTemplateGroupResponse>;
 export interface InputDeviceRequest {
   Id?: string;
 }
-export const InputDeviceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String) }).pipe(S.encodeKeys({ Id: "id" })),
-).annotate({ identifier: "InputDeviceRequest" }) as any as S.Schema<InputDeviceRequest>;
+export const InputDeviceRequest = InputDeviceSettings as any as S.Schema<InputDeviceRequest>;
 export type __listOfInputDeviceRequest = InputDeviceRequest[];
-export const __listOfInputDeviceRequest = /*@__PURE__*/ S.Array(InputDeviceRequest);
+export const __listOfInputDeviceRequest =
+  __listOfInputDeviceSettings as any as S.Schema<__listOfInputDeviceRequest>;
 export interface MulticastSourceUpdateRequest {
   SourceIp?: string;
   Url?: string;
 }
-export const MulticastSourceUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SourceIp: S.optional(S.String), Url: S.optional(S.String) }).pipe(
-    S.encodeKeys({ SourceIp: "sourceIp", Url: "url" }),
-  ),
-).annotate({
-  identifier: "MulticastSourceUpdateRequest",
-}) as any as S.Schema<MulticastSourceUpdateRequest>;
+export const MulticastSourceUpdateRequest =
+  MulticastSourceCreateRequest as any as S.Schema<MulticastSourceUpdateRequest>;
 export type __listOfMulticastSourceUpdateRequest = MulticastSourceUpdateRequest[];
-export const __listOfMulticastSourceUpdateRequest = /*@__PURE__*/ S.Array(
-  MulticastSourceUpdateRequest,
-);
+export const __listOfMulticastSourceUpdateRequest =
+  __listOfMulticastSourceCreateRequest as any as S.Schema<__listOfMulticastSourceUpdateRequest>;
 export interface MulticastSettingsUpdateRequest {
   Sources?: MulticastSourceUpdateRequest[];
 }
-export const MulticastSettingsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Sources: S.optional(__listOfMulticastSourceUpdateRequest) }).pipe(
-    S.encodeKeys({ Sources: "sources" }),
-  ),
-).annotate({
-  identifier: "MulticastSettingsUpdateRequest",
-}) as any as S.Schema<MulticastSettingsUpdateRequest>;
+export const MulticastSettingsUpdateRequest =
+  MulticastSettingsCreateRequest as any as S.Schema<MulticastSettingsUpdateRequest>;
 export interface UpdateInputRequest {
   Destinations?: InputDestinationRequest[];
   InputDevices?: InputDeviceRequest[];
@@ -17706,32 +16354,15 @@ export interface UpdateInputResponse {
     MulticastSettings: MulticastSettings & { Sources: (MulticastSource & { Url: string })[] };
   };
 }
-export const UpdateInputResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Input: S.optional(Input) }).pipe(S.encodeKeys({ Input: "input" })),
-).annotate({ identifier: "UpdateInputResponse" }) as any as S.Schema<UpdateInputResponse>;
+export const UpdateInputResponse = CreateInputResponse as any as S.Schema<UpdateInputResponse>;
 export interface InputDeviceMediaConnectConfigurableSettings {
   FlowArn?: string;
   RoleArn?: string;
   SecretArn?: string;
   SourceName?: string;
 }
-export const InputDeviceMediaConnectConfigurableSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FlowArn: S.optional(S.String),
-    RoleArn: S.optional(S.String),
-    SecretArn: S.optional(S.String),
-    SourceName: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      FlowArn: "flowArn",
-      RoleArn: "roleArn",
-      SecretArn: "secretArn",
-      SourceName: "sourceName",
-    }),
-  ),
-).annotate({
-  identifier: "InputDeviceMediaConnectConfigurableSettings",
-}) as any as S.Schema<InputDeviceMediaConnectConfigurableSettings>;
+export const InputDeviceMediaConnectConfigurableSettings =
+  InputDeviceMediaConnectSettings as any as S.Schema<InputDeviceMediaConnectConfigurableSettings>;
 export type InputDeviceConfigurableAudioChannelPairProfile =
   | "DISABLED"
   | "VBR-AAC_HHE-16000"
@@ -17845,47 +16476,8 @@ export interface UpdateInputDeviceResponse {
   MedialiveInputArns?: string[];
   OutputType?: InputDeviceOutputType;
 }
-export const UpdateInputDeviceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    ConnectionState: S.optional(InputDeviceConnectionState),
-    DeviceSettingsSyncState: S.optional(DeviceSettingsSyncState),
-    DeviceUpdateStatus: S.optional(DeviceUpdateStatus),
-    HdDeviceSettings: S.optional(InputDeviceHdSettings),
-    Id: S.optional(S.String),
-    MacAddress: S.optional(S.String),
-    Name: S.optional(S.String),
-    NetworkSettings: S.optional(InputDeviceNetworkSettings),
-    SerialNumber: S.optional(S.String),
-    Type: S.optional(InputDeviceType),
-    UhdDeviceSettings: S.optional(InputDeviceUhdSettings),
-    Tags: S.optional(Tags),
-    AvailabilityZone: S.optional(S.String),
-    MedialiveInputArns: S.optional(__listOf__string),
-    OutputType: S.optional(InputDeviceOutputType),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      ConnectionState: "connectionState",
-      DeviceSettingsSyncState: "deviceSettingsSyncState",
-      DeviceUpdateStatus: "deviceUpdateStatus",
-      HdDeviceSettings: "hdDeviceSettings",
-      Id: "id",
-      MacAddress: "macAddress",
-      Name: "name",
-      NetworkSettings: "networkSettings",
-      SerialNumber: "serialNumber",
-      Type: "type",
-      UhdDeviceSettings: "uhdDeviceSettings",
-      Tags: "tags",
-      AvailabilityZone: "availabilityZone",
-      MedialiveInputArns: "medialiveInputArns",
-      OutputType: "outputType",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateInputDeviceResponse",
-}) as any as S.Schema<UpdateInputDeviceResponse>;
+export const UpdateInputDeviceResponse =
+  DescribeInputDeviceResponse as any as S.Schema<UpdateInputDeviceResponse>;
 export interface UpdateInputSecurityGroupRequest {
   InputSecurityGroupId: string;
   Tags?: { [key: string]: string | undefined };
@@ -17914,13 +16506,8 @@ export const UpdateInputSecurityGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateInputSecurityGroupResponse {
   SecurityGroup?: InputSecurityGroup;
 }
-export const UpdateInputSecurityGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SecurityGroup: S.optional(InputSecurityGroup) }).pipe(
-    S.encodeKeys({ SecurityGroup: "securityGroup" }),
-  ),
-).annotate({
-  identifier: "UpdateInputSecurityGroupResponse",
-}) as any as S.Schema<UpdateInputSecurityGroupResponse>;
+export const UpdateInputSecurityGroupResponse =
+  CreateInputSecurityGroupResponse as any as S.Schema<UpdateInputSecurityGroupResponse>;
 export type MultiplexPacketIdentifiersMapping = {
   [key: string]: MultiplexProgramPacketIdentifiersMap | undefined;
 };
@@ -17967,9 +16554,8 @@ export interface UpdateMultiplexResponse {
     };
   };
 }
-export const UpdateMultiplexResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Multiplex: S.optional(Multiplex) }).pipe(S.encodeKeys({ Multiplex: "multiplex" })),
-).annotate({ identifier: "UpdateMultiplexResponse" }) as any as S.Schema<UpdateMultiplexResponse>;
+export const UpdateMultiplexResponse =
+  CreateMultiplexResponse as any as S.Schema<UpdateMultiplexResponse>;
 export interface UpdateMultiplexProgramRequest {
   MultiplexId: string;
   MultiplexProgramSettings?: MultiplexProgramSettings;
@@ -18006,32 +16592,23 @@ export interface UpdateMultiplexProgramResponse {
     };
   };
 }
-export const UpdateMultiplexProgramResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MultiplexProgram: S.optional(MultiplexProgram) }).pipe(
-    S.encodeKeys({ MultiplexProgram: "multiplexProgram" }),
-  ),
-).annotate({
-  identifier: "UpdateMultiplexProgramResponse",
-}) as any as S.Schema<UpdateMultiplexProgramResponse>;
+export const UpdateMultiplexProgramResponse =
+  CreateMultiplexProgramResponse as any as S.Schema<UpdateMultiplexProgramResponse>;
 export interface IpPoolUpdateRequest {
   Cidr?: string;
 }
-export const IpPoolUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Cidr: S.optional(S.String) }).pipe(S.encodeKeys({ Cidr: "cidr" })),
-).annotate({ identifier: "IpPoolUpdateRequest" }) as any as S.Schema<IpPoolUpdateRequest>;
+export const IpPoolUpdateRequest = InputWhitelistRuleCidr as any as S.Schema<IpPoolUpdateRequest>;
 export type __listOfIpPoolUpdateRequest = IpPoolUpdateRequest[];
-export const __listOfIpPoolUpdateRequest = /*@__PURE__*/ S.Array(IpPoolUpdateRequest);
+export const __listOfIpPoolUpdateRequest =
+  __listOfInputWhitelistRuleCidr as any as S.Schema<__listOfIpPoolUpdateRequest>;
 export interface RouteUpdateRequest {
   Cidr?: string;
   Gateway?: string;
 }
-export const RouteUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Cidr: S.optional(S.String), Gateway: S.optional(S.String) }).pipe(
-    S.encodeKeys({ Cidr: "cidr", Gateway: "gateway" }),
-  ),
-).annotate({ identifier: "RouteUpdateRequest" }) as any as S.Schema<RouteUpdateRequest>;
+export const RouteUpdateRequest = InputDestinationRoute as any as S.Schema<RouteUpdateRequest>;
 export type __listOfRouteUpdateRequest = RouteUpdateRequest[];
-export const __listOfRouteUpdateRequest = /*@__PURE__*/ S.Array(RouteUpdateRequest);
+export const __listOfRouteUpdateRequest =
+  __listOfInputDestinationRoute as any as S.Schema<__listOfRouteUpdateRequest>;
 export interface UpdateNetworkRequest {
   IpPools?: IpPoolUpdateRequest[];
   Name?: string;
@@ -18066,27 +16643,8 @@ export interface UpdateNetworkResponse {
   Routes?: Route[];
   State?: NetworkState;
 }
-export const UpdateNetworkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    AssociatedClusterIds: S.optional(__listOf__string),
-    Id: S.optional(S.String),
-    IpPools: S.optional(__listOfIpPool),
-    Name: S.optional(S.String),
-    Routes: S.optional(__listOfRoute),
-    State: S.optional(NetworkState),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      AssociatedClusterIds: "associatedClusterIds",
-      Id: "id",
-      IpPools: "ipPools",
-      Name: "name",
-      Routes: "routes",
-      State: "state",
-    }),
-  ),
-).annotate({ identifier: "UpdateNetworkResponse" }) as any as S.Schema<UpdateNetworkResponse>;
+export const UpdateNetworkResponse =
+  CreateNetworkResponse as any as S.Schema<UpdateNetworkResponse>;
 export interface SdiSourceMappingUpdateRequest {
   CardNumber?: number;
   ChannelNumber?: number;
@@ -18149,35 +16707,7 @@ export interface UpdateNodeResponse {
   State?: NodeState;
   SdiSourceMappings?: SdiSourceMapping[];
 }
-export const UpdateNodeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    ChannelPlacementGroups: S.optional(__listOf__string),
-    ClusterId: S.optional(S.String),
-    ConnectionState: S.optional(NodeConnectionState),
-    Id: S.optional(S.String),
-    InstanceArn: S.optional(S.String),
-    Name: S.optional(S.String),
-    NodeInterfaceMappings: S.optional(__listOfNodeInterfaceMapping),
-    Role: S.optional(NodeRole),
-    State: S.optional(NodeState),
-    SdiSourceMappings: S.optional(SdiSourceMappings),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      ChannelPlacementGroups: "channelPlacementGroups",
-      ClusterId: "clusterId",
-      ConnectionState: "connectionState",
-      Id: "id",
-      InstanceArn: "instanceArn",
-      Name: "name",
-      NodeInterfaceMappings: "nodeInterfaceMappings",
-      Role: "role",
-      State: "state",
-      SdiSourceMappings: "sdiSourceMappings",
-    }),
-  ),
-).annotate({ identifier: "UpdateNodeResponse" }) as any as S.Schema<UpdateNodeResponse>;
+export const UpdateNodeResponse = CreateNodeResponse as any as S.Schema<UpdateNodeResponse>;
 export type UpdateNodeStateShape = "ACTIVE" | "DRAINING" | (string & {});
 export const UpdateNodeStateShape = S.String;
 
@@ -18217,35 +16747,8 @@ export interface UpdateNodeStateResponse {
   State?: NodeState;
   SdiSourceMappings?: SdiSourceMapping[];
 }
-export const UpdateNodeStateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    ChannelPlacementGroups: S.optional(__listOf__string),
-    ClusterId: S.optional(S.String),
-    ConnectionState: S.optional(NodeConnectionState),
-    Id: S.optional(S.String),
-    InstanceArn: S.optional(S.String),
-    Name: S.optional(S.String),
-    NodeInterfaceMappings: S.optional(__listOfNodeInterfaceMapping),
-    Role: S.optional(NodeRole),
-    State: S.optional(NodeState),
-    SdiSourceMappings: S.optional(SdiSourceMappings),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      ChannelPlacementGroups: "channelPlacementGroups",
-      ClusterId: "clusterId",
-      ConnectionState: "connectionState",
-      Id: "id",
-      InstanceArn: "instanceArn",
-      Name: "name",
-      NodeInterfaceMappings: "nodeInterfaceMappings",
-      Role: "role",
-      State: "state",
-      SdiSourceMappings: "sdiSourceMappings",
-    }),
-  ),
-).annotate({ identifier: "UpdateNodeStateResponse" }) as any as S.Schema<UpdateNodeStateResponse>;
+export const UpdateNodeStateResponse =
+  CreateNodeResponse as any as S.Schema<UpdateNodeStateResponse>;
 export interface UpdateReservationRequest {
   Name?: string;
   RenewalSettings?: RenewalSettings;
@@ -18307,9 +16810,8 @@ export const UpdateSdiSourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSdiSourceResponse {
   SdiSource?: SdiSource;
 }
-export const UpdateSdiSourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SdiSource: S.optional(SdiSource) }).pipe(S.encodeKeys({ SdiSource: "sdiSource" })),
-).annotate({ identifier: "UpdateSdiSourceResponse" }) as any as S.Schema<UpdateSdiSourceResponse>;
+export const UpdateSdiSourceResponse =
+  CreateSdiSourceResponse as any as S.Schema<UpdateSdiSourceResponse>;
 export interface ValidationError {
   ElementPath?: string;
   ErrorMessage?: string;

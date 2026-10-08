@@ -246,14 +246,7 @@ export interface GetSpritesResponse {
   CacheControl?: string;
   ETag?: string;
 }
-export const GetSpritesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Blob: S.optional(T.Blob).pipe(T.HttpPayload()),
-    ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-    CacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-    ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
-  }),
-).annotate({ identifier: "GetSpritesResponse" }) as any as S.Schema<GetSpritesResponse>;
+export const GetSpritesResponse = GetGlyphsResponse as any as S.Schema<GetSpritesResponse>;
 export type PositionListString = string | redacted.Redacted<string>;
 export type PositionString = string | redacted.Redacted<string>;
 export type CompactOverlay = string | redacted.Redacted<string>;
@@ -490,15 +483,7 @@ export interface GetTileResponse {
   ETag?: string;
   PricingBucket: string;
 }
-export const GetTileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Blob: S.optional(T.Blob).pipe(T.HttpPayload()),
-    ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-    CacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-    ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
-    PricingBucket: S.String.pipe(T.HttpHeader("x-amz-geo-pricing-bucket")),
-  }),
-).annotate({ identifier: "GetTileResponse" }) as any as S.Schema<GetTileResponse>;
+export const GetTileResponse = GetStaticMapResponse as any as S.Schema<GetTileResponse>;
 export type ValidationExceptionReason =
   | "UnknownOperation"
   | "Missing"

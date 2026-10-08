@@ -90,11 +90,8 @@ export const CreateDedicatedCephAclRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDedicatedCephAclRequest>;
 
 export type CreateDedicatedCephAclResponse = string;
-export const CreateDedicatedCephAclResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CreateDedicatedCephAclResponse",
-}) as any as S.Schema<CreateDedicatedCephAclResponse>;
+export const CreateDedicatedCephAclResponse =
+  ConfirmDedicatedCephTerminationResponse as any as S.Schema<CreateDedicatedCephAclResponse>;
 
 export interface CreateDedicatedCephChangeContactRequest {
   /** Service name */
@@ -148,11 +145,8 @@ export const CreateDedicatedCephPoolRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDedicatedCephPoolRequest>;
 
 export type CreateDedicatedCephPoolResponse = string;
-export const CreateDedicatedCephPoolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CreateDedicatedCephPoolResponse",
-}) as any as S.Schema<CreateDedicatedCephPoolResponse>;
+export const CreateDedicatedCephPoolResponse =
+  ConfirmDedicatedCephTerminationResponse as any as S.Schema<CreateDedicatedCephPoolResponse>;
 
 export interface CreateDedicatedCephPoolErasureRequest {
   /** Service name */
@@ -170,17 +164,13 @@ export const CreateDedicatedCephPoolErasureRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateDedicatedCephPoolErasureRequest>;
 
 export type CreateDedicatedCephPoolErasureResponse = string;
-export const CreateDedicatedCephPoolErasureResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CreateDedicatedCephPoolErasureResponse",
-}) as any as S.Schema<CreateDedicatedCephPoolErasureResponse>;
+export const CreateDedicatedCephPoolErasureResponse =
+  ConfirmDedicatedCephTerminationResponse as any as S.Schema<CreateDedicatedCephPoolErasureResponse>;
 
 /** List of IP networks */
 export type CreateDedicatedCephRadosGatewayAclRequestNetworksList = Array<string>;
-export const CreateDedicatedCephRadosGatewayAclRequestNetworksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDedicatedCephRadosGatewayAclRequestNetworksList>;
+export const CreateDedicatedCephRadosGatewayAclRequestNetworksList =
+  CreateDedicatedCephAclRequestAclListList as any as S.Schema<CreateDedicatedCephRadosGatewayAclRequestNetworksList>;
 
 export interface CreateDedicatedCephRadosGatewayAclRequest {
   /** Service name */
@@ -208,9 +198,8 @@ export const CreateDedicatedCephRadosGatewayAclRequest = /*@__PURE__*/ S.suspend
 
 /** List of IP networks */
 export type DedicatedCephRgwAclNetworksList = Array<string>;
-export const DedicatedCephRgwAclNetworksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DedicatedCephRgwAclNetworksList>;
+export const DedicatedCephRgwAclNetworksList =
+  CreateDedicatedCephAclRequestAclListList as any as S.Schema<DedicatedCephRgwAclNetworksList>;
 
 /** Rados Gateway IP ACL entries */
 export interface DedicatedCephRgwAcl {
@@ -239,11 +228,8 @@ export const CreateDedicatedCephUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDedicatedCephUserRequest>;
 
 export type CreateDedicatedCephUserResponse = string;
-export const CreateDedicatedCephUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CreateDedicatedCephUserResponse",
-}) as any as S.Schema<CreateDedicatedCephUserResponse>;
+export const CreateDedicatedCephUserResponse =
+  ConfirmDedicatedCephTerminationResponse as any as S.Schema<CreateDedicatedCephUserResponse>;
 
 /** List of permissions */
 export interface DedicatedCephUserPoolPermSetAllPermissions {
@@ -305,11 +291,8 @@ export const CreateDedicatedCephUserPoolRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDedicatedCephUserPoolRequest>;
 
 export type CreateDedicatedCephUserPoolResponse = string;
-export const CreateDedicatedCephUserPoolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CreateDedicatedCephUserPoolResponse",
-}) as any as S.Schema<CreateDedicatedCephUserPoolResponse>;
+export const CreateDedicatedCephUserPoolResponse =
+  ConfirmDedicatedCephTerminationResponse as any as S.Schema<CreateDedicatedCephUserPoolResponse>;
 
 export interface DeleteDedicatedCephAclRequest {
   /** Service name */
@@ -329,11 +312,8 @@ export const DeleteDedicatedCephAclRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDedicatedCephAclRequest>;
 
 export type DeleteDedicatedCephAclResponse = string;
-export const DeleteDedicatedCephAclResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteDedicatedCephAclResponse",
-}) as any as S.Schema<DeleteDedicatedCephAclResponse>;
+export const DeleteDedicatedCephAclResponse =
+  ConfirmDedicatedCephTerminationResponse as any as S.Schema<DeleteDedicatedCephAclResponse>;
 
 export interface DeleteDedicatedCephCephfRequest {
   /** Service name */
@@ -353,11 +333,8 @@ export const DeleteDedicatedCephCephfRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDedicatedCephCephfRequest>;
 
 export type DeleteDedicatedCephCephfResponse = string;
-export const DeleteDedicatedCephCephfResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteDedicatedCephCephfResponse",
-}) as any as S.Schema<DeleteDedicatedCephCephfResponse>;
+export const DeleteDedicatedCephCephfResponse =
+  ConfirmDedicatedCephTerminationResponse as any as S.Schema<DeleteDedicatedCephCephfResponse>;
 
 export interface DeleteDedicatedCephPoolRequest {
   /** Service name */
@@ -377,11 +354,8 @@ export const DeleteDedicatedCephPoolRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDedicatedCephPoolRequest>;
 
 export type DeleteDedicatedCephPoolResponse = string;
-export const DeleteDedicatedCephPoolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteDedicatedCephPoolResponse",
-}) as any as S.Schema<DeleteDedicatedCephPoolResponse>;
+export const DeleteDedicatedCephPoolResponse =
+  ConfirmDedicatedCephTerminationResponse as any as S.Schema<DeleteDedicatedCephPoolResponse>;
 
 export interface DeleteDedicatedCephUserRequest {
   /** Service name */
@@ -401,11 +375,8 @@ export const DeleteDedicatedCephUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDedicatedCephUserRequest>;
 
 export type DeleteDedicatedCephUserResponse = string;
-export const DeleteDedicatedCephUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteDedicatedCephUserResponse",
-}) as any as S.Schema<DeleteDedicatedCephUserResponse>;
+export const DeleteDedicatedCephUserResponse =
+  ConfirmDedicatedCephTerminationResponse as any as S.Schema<DeleteDedicatedCephUserResponse>;
 
 export interface DeleteDedicatedCephUserPoolRequest {
   /** Service name */
@@ -432,11 +403,8 @@ export const DeleteDedicatedCephUserPoolRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDedicatedCephUserPoolRequest>;
 
 export type DeleteDedicatedCephUserPoolResponse = string;
-export const DeleteDedicatedCephUserPoolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteDedicatedCephUserPoolResponse",
-}) as any as S.Schema<DeleteDedicatedCephUserPoolResponse>;
+export const DeleteDedicatedCephUserPoolResponse =
+  ConfirmDedicatedCephTerminationResponse as any as S.Schema<DeleteDedicatedCephUserPoolResponse>;
 
 export interface DisableDedicatedCephCephfRequest {
   /** Service name */
@@ -460,11 +428,8 @@ export const DisableDedicatedCephCephfRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisableDedicatedCephCephfRequest>;
 
 export type DisableDedicatedCephCephfResponse = string;
-export const DisableDedicatedCephCephfResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DisableDedicatedCephCephfResponse",
-}) as any as S.Schema<DisableDedicatedCephCephfResponse>;
+export const DisableDedicatedCephCephfResponse =
+  ConfirmDedicatedCephTerminationResponse as any as S.Schema<DisableDedicatedCephCephfResponse>;
 
 export interface EnableDedicatedCephCephfRequest {
   /** Service name */
@@ -488,11 +453,8 @@ export const EnableDedicatedCephCephfRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableDedicatedCephCephfRequest>;
 
 export type EnableDedicatedCephCephfResponse = string;
-export const EnableDedicatedCephCephfResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "EnableDedicatedCephCephfResponse",
-}) as any as S.Schema<EnableDedicatedCephCephfResponse>;
+export const EnableDedicatedCephCephfResponse =
+  ConfirmDedicatedCephTerminationResponse as any as S.Schema<EnableDedicatedCephCephfResponse>;
 
 export interface GetDedicatedCephRequest {
   /** Service name */
@@ -506,9 +468,8 @@ export const GetDedicatedCephRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of CEPH monitor IPs */
 export type DedicatedCephClusterGetResponseWithIAMCephMonsList = Array<string>;
-export const DedicatedCephClusterGetResponseWithIAMCephMonsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DedicatedCephClusterGetResponseWithIAMCephMonsList>;
+export const DedicatedCephClusterGetResponseWithIAMCephMonsList =
+  CreateDedicatedCephAclRequestAclListList as any as S.Schema<DedicatedCephClusterGetResponseWithIAMCephMonsList>;
 
 /** Tunables of cluster */
 export type DedicatedCephClusterGetResponseCrushTunablesEnum =
@@ -816,9 +777,8 @@ export const GetDedicatedCephServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-export const ServicesServicePossibleRenewPeriodList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
+export const ServicesServicePossibleRenewPeriodList =
+  CreateDedicatedCephChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
 
 /** Map a possible renew for a specific service */
 export interface ServiceRenewType {
@@ -1032,9 +992,8 @@ export const ListDedicatedCephRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDedicatedCephRequest" }) as any as S.Schema<ListDedicatedCephRequest>;
 
 export type ListDedicatedCephResponseBodyList = Array<string>;
-export const ListDedicatedCephResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDedicatedCephResponseBodyList>;
+export const ListDedicatedCephResponseBodyList =
+  CreateDedicatedCephAclRequestAclListList as any as S.Schema<ListDedicatedCephResponseBodyList>;
 
 export type ListDedicatedCephResponse = ListDedicatedCephResponseBodyList;
 export const ListDedicatedCephResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1247,9 +1206,8 @@ export const DedicatedCephUserPoolPermListResponse = DedicatedCephUserPoolPermSe
 
 export type ListDedicatedCephUserPoolResponseBodyList =
   Array<DedicatedCephUserPoolPermSetAllPermissions>;
-export const ListDedicatedCephUserPoolResponseBodyList = /*@__PURE__*/ S.Array(
-  DedicatedCephUserPoolPermSetAllPermissions,
-) as any as S.Schema<ListDedicatedCephUserPoolResponseBodyList>;
+export const ListDedicatedCephUserPoolResponseBodyList =
+  CreateDedicatedCephUserPoolRequestPermissionsList as any as S.Schema<ListDedicatedCephUserPoolResponseBodyList>;
 
 export type ListDedicatedCephUserPoolResponse = ListDedicatedCephUserPoolResponseBodyList;
 export const ListDedicatedCephUserPoolResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1313,17 +1271,13 @@ export const PutDedicatedCephPoolAllowDeletionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PutDedicatedCephPoolAllowDeletionRequest>;
 
 export type PutDedicatedCephPoolAllowDeletionResponse = string;
-export const PutDedicatedCephPoolAllowDeletionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "PutDedicatedCephPoolAllowDeletionResponse",
-}) as any as S.Schema<PutDedicatedCephPoolAllowDeletionResponse>;
+export const PutDedicatedCephPoolAllowDeletionResponse =
+  ConfirmDedicatedCephTerminationResponse as any as S.Schema<PutDedicatedCephPoolAllowDeletionResponse>;
 
 /** List of IP networks */
 export type PutDedicatedCephRadosGatewayAclRequestNetworksList = Array<string>;
-export const PutDedicatedCephRadosGatewayAclRequestNetworksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutDedicatedCephRadosGatewayAclRequestNetworksList>;
+export const PutDedicatedCephRadosGatewayAclRequestNetworksList =
+  CreateDedicatedCephAclRequestAclListList as any as S.Schema<PutDedicatedCephRadosGatewayAclRequestNetworksList>;
 
 export interface PutDedicatedCephRadosGatewayAclRequest {
   /** Service name */
@@ -1407,11 +1361,8 @@ export const PutDedicatedCephUserPoolRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutDedicatedCephUserPoolRequest>;
 
 export type PutDedicatedCephUserPoolResponse = string;
-export const PutDedicatedCephUserPoolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "PutDedicatedCephUserPoolResponse",
-}) as any as S.Schema<PutDedicatedCephUserPoolResponse>;
+export const PutDedicatedCephUserPoolResponse =
+  ConfirmDedicatedCephTerminationResponse as any as S.Schema<PutDedicatedCephUserPoolResponse>;
 
 export interface TerminateDedicatedCephRequest {
   /** Service name */
@@ -1426,11 +1377,8 @@ export const TerminateDedicatedCephRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminateDedicatedCephRequest>;
 
 export type TerminateDedicatedCephResponse = string;
-export const TerminateDedicatedCephResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "TerminateDedicatedCephResponse",
-}) as any as S.Schema<TerminateDedicatedCephResponse>;
+export const TerminateDedicatedCephResponse =
+  ConfirmDedicatedCephTerminationResponse as any as S.Schema<TerminateDedicatedCephResponse>;
 
 export type ConfirmDedicatedCephTerminationError = OvhOpError;
 /** Confirm service termination */

@@ -443,9 +443,8 @@ export type ListNamespaceBucketsResponseBodyItemRepoType = "bucket" | "container
 export const ListNamespaceBucketsResponseBodyItemRepoType = S.String;
 
 export type ListNamespaceBucketsResponseBodyItemAdminTagsList = Array<string>;
-export const ListNamespaceBucketsResponseBodyItemAdminTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListNamespaceBucketsResponseBodyItemAdminTagsList>;
+export const ListNamespaceBucketsResponseBodyItemAdminTagsList =
+  GetBucketDetailsResponseAdminTagsList as any as S.Schema<ListNamespaceBucketsResponseBodyItemAdminTagsList>;
 
 export type ListNamespaceBucketsResponseBodyItemDisabled = GetBucketDetailsResponseDisabled;
 export const ListNamespaceBucketsResponseBodyItemDisabled = GetBucketDetailsResponseDisabled;
@@ -536,9 +535,8 @@ export const ListNamespaceBucketsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListNamespaceBucketsResponse>;
 
 export type ListPathsInfoRequestPathsCase0List = Array<string>;
-export const ListPathsInfoRequestPathsCase0List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListPathsInfoRequestPathsCase0List>;
+export const ListPathsInfoRequestPathsCase0List =
+  GetBucketDetailsResponseAdminTagsList as any as S.Schema<ListPathsInfoRequestPathsCase0List>;
 
 export type ListPathsInfoRequestPaths = ListPathsInfoRequestPathsCase0List | string;
 export const ListPathsInfoRequestPaths = S.Unknown as any as S.Schema<ListPathsInfoRequestPaths>;
@@ -599,9 +597,8 @@ export const ListPathsInfoResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPathsInfoResponse" }) as any as S.Schema<ListPathsInfoResponse>;
 
 export type RegistryTokenRequestScopeCase1List = Array<string>;
-export const RegistryTokenRequestScopeCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RegistryTokenRequestScopeCase1List>;
+export const RegistryTokenRequestScopeCase1List =
+  GetBucketDetailsResponseAdminTagsList as any as S.Schema<RegistryTokenRequestScopeCase1List>;
 
 /** Docker Distribution scope(s), e.g. `repository:org/img:push,pull`. May be repeated. */
 export type RegistryTokenRequestScope = string | RegistryTokenRequestScopeCase1List;
@@ -761,13 +758,7 @@ export interface XetWriteTokenResponse {
   exp: number;
   accessToken: string | Redacted.Redacted<string>;
 }
-export const XetWriteTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    casUrl: S.String,
-    exp: S.Number,
-    accessToken: S.String.pipe(T.SensitiveValue({})),
-  }),
-).annotate({ identifier: "XetWriteTokenResponse" }) as any as S.Schema<XetWriteTokenResponse>;
+export const XetWriteTokenResponse = XetReadTokenResponse as any as S.Schema<XetWriteTokenResponse>;
 
 export type BatchFileOperationsError = UnprocessableEntity | HuggingFaceOpError;
 /** Batch file operations Accepts NDJSON (newline-delimited JSON) where each line is an addFile, copyFile, or deleteFile instruction. All add/copy operations must come before all delete operations. JSON-lines payload: ```json '{"type":"addFile","path":"...","xetHash":"...","mtime":...,"mtimeNanos":...,"contentType":"..."}' + '{"type":"copyFile","path":"...","xetHash":"...","sourceRepoType":"...","sourceRepoId":"...","mtime":...,"mtimeNanos":...,"contentType":"..."}' + '{"type":"deleteFile","path":"..."}' ``` */

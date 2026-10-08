@@ -358,10 +358,8 @@ export const CancelCreditRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CancelCreditResponseTagsMap = { [key: string]: string | undefined };
-export const CancelCreditResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CancelCreditResponseTagsMap>;
+export const CancelCreditResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<CancelCreditResponseTagsMap>;
 
 /** Status of the credit */
 export type CreditStatus =
@@ -683,10 +681,8 @@ export const CancelDiscountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CancelDiscountResponseTagsMap = { [key: string]: string | undefined };
-export const CancelDiscountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CancelDiscountResponseTagsMap>;
+export const CancelDiscountResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<CancelDiscountResponseTagsMap>;
 
 /** This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values. */
 export type DiscountEntityType = "Primary" | "Affiliate";
@@ -853,10 +849,8 @@ export const CancelMaccRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CancelMaccResponseTagsMap = { [key: string]: string | undefined };
-export const CancelMaccResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CancelMaccResponseTagsMap>;
+export const CancelMaccResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<CancelMaccResponseTagsMap>;
 
 /** Represents the current status of the MACC. */
 export type MaccStatus =
@@ -1054,10 +1048,8 @@ export const MaccModelProperties = /*@__PURE__*/ S.suspend(() =>
 export type CancelMaccResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const CancelMaccResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<CancelMaccResponseIdentityUserAssignedIdentitiesMap>;
+export const CancelMaccResponseIdentityUserAssignedIdentitiesMap =
+  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<CancelMaccResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CancelMaccResponseIdentity {
@@ -1069,16 +1061,8 @@ export interface CancelMaccResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CancelMaccResponseIdentityUserAssignedIdentitiesMap;
 }
-export const CancelMaccResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(CancelMaccResponseIdentityUserAssignedIdentitiesMap),
-  }),
-).annotate({
-  identifier: "CancelMaccResponseIdentity",
-}) as any as S.Schema<CancelMaccResponseIdentity>;
+export const CancelMaccResponseIdentity =
+  CancelCreditResponseIdentity as any as S.Schema<CancelMaccResponseIdentity>;
 
 export interface CancelMaccResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1128,10 +1112,8 @@ export const CancelMaccResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ConditionalCreditsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ConditionalCreditsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConditionalCreditsCreateOrUpdateRequestTagsMap>;
+export const ConditionalCreditsCreateOrUpdateRequestTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<ConditionalCreditsCreateOrUpdateRequestTagsMap>;
 
 /** Properties belonging to conditional credits. */
 export interface ConditionalCreditPropertiesInput {
@@ -1257,20 +1239,15 @@ export const ConditionalCreditsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type ConditionalCreditsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ConditionalCreditsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConditionalCreditsCreateOrUpdateResponseTagsMap>;
+export const ConditionalCreditsCreateOrUpdateResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<ConditionalCreditsCreateOrUpdateResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type ConditionalCreditsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
 export const ConditionalCreditsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-  ) as any as S.Schema<ConditionalCreditsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap>;
+  CancelConditionalCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<ConditionalCreditsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ConditionalCreditsCreateOrUpdateResponseIdentity {
@@ -1282,18 +1259,8 @@ export interface ConditionalCreditsCreateOrUpdateResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: ConditionalCreditsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap;
 }
-export const ConditionalCreditsCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      ConditionalCreditsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "ConditionalCreditsCreateOrUpdateResponseIdentity",
-}) as any as S.Schema<ConditionalCreditsCreateOrUpdateResponseIdentity>;
+export const ConditionalCreditsCreateOrUpdateResponseIdentity =
+  CancelConditionalCreditResponseIdentity as any as S.Schema<ConditionalCreditsCreateOrUpdateResponseIdentity>;
 
 export interface ConditionalCreditsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1323,38 +1290,18 @@ export interface ConditionalCreditsCreateOrUpdateResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const ConditionalCreditsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ConditionalCreditsCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ConditionalCreditProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(ConditionalCreditsCreateOrUpdateResponseIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({
-  identifier: "ConditionalCreditsCreateOrUpdateResponse",
-}) as any as S.Schema<ConditionalCreditsCreateOrUpdateResponse>;
+export const ConditionalCreditsCreateOrUpdateResponse =
+  CancelConditionalCreditResponse as any as S.Schema<ConditionalCreditsCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type CreateCreditRequestTagsMap = { [key: string]: string | undefined };
-export const CreateCreditRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateCreditRequestTagsMap>;
+export const CreateCreditRequestTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<CreateCreditRequestTagsMap>;
 
 /** Credit line-items/milestones/no-charge services breakdown */
 export type CreditPropertiesInputBreakdownList = Array<CreditBreakdownItem>;
-export const CreditPropertiesInputBreakdownList = /*@__PURE__*/ S.Array(
-  CreditBreakdownItem,
-) as any as S.Schema<CreditPropertiesInputBreakdownList>;
+export const CreditPropertiesInputBreakdownList =
+  CreditPropertiesBreakdownList as any as S.Schema<CreditPropertiesInputBreakdownList>;
 
 /** Properties of a credit */
 export interface CreditPropertiesInput {
@@ -1479,19 +1426,15 @@ export const CreateCreditRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateCreditResponseTagsMap = { [key: string]: string | undefined };
-export const CreateCreditResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateCreditResponseTagsMap>;
+export const CreateCreditResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<CreateCreditResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreateCreditResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const CreateCreditResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<CreateCreditResponseIdentityUserAssignedIdentitiesMap>;
+export const CreateCreditResponseIdentityUserAssignedIdentitiesMap =
+  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<CreateCreditResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreateCreditResponseIdentity {
@@ -1503,16 +1446,8 @@ export interface CreateCreditResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateCreditResponseIdentityUserAssignedIdentitiesMap;
 }
-export const CreateCreditResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(CreateCreditResponseIdentityUserAssignedIdentitiesMap),
-  }),
-).annotate({
-  identifier: "CreateCreditResponseIdentity",
-}) as any as S.Schema<CreateCreditResponseIdentity>;
+export const CreateCreditResponseIdentity =
+  CancelCreditResponseIdentity as any as S.Schema<CreateCreditResponseIdentity>;
 
 export interface CreateCreditResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1542,30 +1477,12 @@ export interface CreateCreditResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const CreateCreditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(CreateCreditResponseTagsMap),
-    location: S.String,
-    properties: S.optional(CreditProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(CreateCreditResponseIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({ identifier: "CreateCreditResponse" }) as any as S.Schema<CreateCreditResponse>;
+export const CreateCreditResponse = CancelCreditResponse as any as S.Schema<CreateCreditResponse>;
 
 /** Resource tags. */
 export type CreateDiscountRequestTagsMap = { [key: string]: string | undefined };
-export const CreateDiscountRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateDiscountRequestTagsMap>;
+export const CreateDiscountRequestTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<CreateDiscountRequestTagsMap>;
 
 /** Properties belonging to discounts. */
 export interface DiscountPropertiesInput {
@@ -1677,10 +1594,8 @@ export const CreateDiscountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateDiscountResponseTagsMap = { [key: string]: string | undefined };
-export const CreateDiscountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateDiscountResponseTagsMap>;
+export const CreateDiscountResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<CreateDiscountResponseTagsMap>;
 
 export interface CreateDiscountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1710,30 +1625,13 @@ export interface CreateDiscountResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const CreateDiscountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(CreateDiscountResponseTagsMap),
-    location: S.String,
-    properties: S.optional(DiscountProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(ManagedServiceIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({ identifier: "CreateDiscountResponse" }) as any as S.Schema<CreateDiscountResponse>;
+export const CreateDiscountResponse =
+  CancelDiscountResponse as any as S.Schema<CreateDiscountResponse>;
 
 /** Resource tags. */
 export type CreateFreeServiceRequestTagsMap = { [key: string]: string | undefined };
-export const CreateFreeServiceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateFreeServiceRequestTagsMap>;
+export const CreateFreeServiceRequestTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<CreateFreeServiceRequestTagsMap>;
 
 /** Status of the free services */
 export type FreeServicesStatus = "Unknown" | "Pending" | "Active" | "Canceled" | "Completed";
@@ -1774,10 +1672,8 @@ export const FreeServicesPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 export type CreateFreeServiceRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
-export const CreateFreeServiceRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
-) as any as S.Schema<CreateFreeServiceRequestIdentityUserAssignedIdentitiesMap>;
+export const CreateFreeServiceRequestIdentityUserAssignedIdentitiesMap =
+  CreateCreditRequestIdentityUserAssignedIdentitiesMap as any as S.Schema<CreateFreeServiceRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreateFreeServiceRequestIdentity {
@@ -1785,14 +1681,8 @@ export interface CreateFreeServiceRequestIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateFreeServiceRequestIdentityUserAssignedIdentitiesMap;
 }
-export const CreateFreeServiceRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(CreateFreeServiceRequestIdentityUserAssignedIdentitiesMap),
-  }),
-).annotate({
-  identifier: "CreateFreeServiceRequestIdentity",
-}) as any as S.Schema<CreateFreeServiceRequestIdentity>;
+export const CreateFreeServiceRequestIdentity =
+  CreateCreditRequestIdentity as any as S.Schema<CreateFreeServiceRequestIdentity>;
 
 export interface CreateFreeServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1843,10 +1733,8 @@ export const CreateFreeServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateFreeServiceResponseTagsMap = { [key: string]: string | undefined };
-export const CreateFreeServiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateFreeServiceResponseTagsMap>;
+export const CreateFreeServiceResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<CreateFreeServiceResponseTagsMap>;
 
 /** Properties of free services */
 export interface FreeServicesProperties {
@@ -1896,10 +1784,8 @@ export const FreeServicesProperties = /*@__PURE__*/ S.suspend(() =>
 export type CreateFreeServiceResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const CreateFreeServiceResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<CreateFreeServiceResponseIdentityUserAssignedIdentitiesMap>;
+export const CreateFreeServiceResponseIdentityUserAssignedIdentitiesMap =
+  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<CreateFreeServiceResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreateFreeServiceResponseIdentity {
@@ -1911,16 +1797,8 @@ export interface CreateFreeServiceResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateFreeServiceResponseIdentityUserAssignedIdentitiesMap;
 }
-export const CreateFreeServiceResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(CreateFreeServiceResponseIdentityUserAssignedIdentitiesMap),
-  }),
-).annotate({
-  identifier: "CreateFreeServiceResponseIdentity",
-}) as any as S.Schema<CreateFreeServiceResponseIdentity>;
+export const CreateFreeServiceResponseIdentity =
+  CancelCreditResponseIdentity as any as S.Schema<CreateFreeServiceResponseIdentity>;
 
 export interface CreateFreeServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1972,16 +1850,13 @@ export const CreateFreeServiceResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateMaccRequestTagsMap = { [key: string]: string | undefined };
-export const CreateMaccRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateMaccRequestTagsMap>;
+export const CreateMaccRequestTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<CreateMaccRequestTagsMap>;
 
 /** List of milestones associated with this MACC. */
 export type MaccModelPropertiesInputMilestonesList = Array<MaccMilestone>;
-export const MaccModelPropertiesInputMilestonesList = /*@__PURE__*/ S.Array(
-  MaccMilestone,
-) as any as S.Schema<MaccModelPropertiesInputMilestonesList>;
+export const MaccModelPropertiesInputMilestonesList =
+  MaccModelPropertiesMilestonesList as any as S.Schema<MaccModelPropertiesInputMilestonesList>;
 
 /** MACC properties */
 export interface MaccModelPropertiesInput {
@@ -2052,10 +1927,8 @@ export const MaccModelPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 export type CreateMaccRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
-export const CreateMaccRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
-) as any as S.Schema<CreateMaccRequestIdentityUserAssignedIdentitiesMap>;
+export const CreateMaccRequestIdentityUserAssignedIdentitiesMap =
+  CreateCreditRequestIdentityUserAssignedIdentitiesMap as any as S.Schema<CreateMaccRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreateMaccRequestIdentity {
@@ -2063,14 +1936,8 @@ export interface CreateMaccRequestIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateMaccRequestIdentityUserAssignedIdentitiesMap;
 }
-export const CreateMaccRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(CreateMaccRequestIdentityUserAssignedIdentitiesMap),
-  }),
-).annotate({
-  identifier: "CreateMaccRequestIdentity",
-}) as any as S.Schema<CreateMaccRequestIdentity>;
+export const CreateMaccRequestIdentity =
+  CreateCreditRequestIdentity as any as S.Schema<CreateMaccRequestIdentity>;
 
 export interface CreateMaccRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2121,19 +1988,15 @@ export const CreateMaccRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateMaccResponseTagsMap = { [key: string]: string | undefined };
-export const CreateMaccResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateMaccResponseTagsMap>;
+export const CreateMaccResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<CreateMaccResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreateMaccResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const CreateMaccResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<CreateMaccResponseIdentityUserAssignedIdentitiesMap>;
+export const CreateMaccResponseIdentityUserAssignedIdentitiesMap =
+  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<CreateMaccResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreateMaccResponseIdentity {
@@ -2145,16 +2008,8 @@ export interface CreateMaccResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateMaccResponseIdentityUserAssignedIdentitiesMap;
 }
-export const CreateMaccResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(CreateMaccResponseIdentityUserAssignedIdentitiesMap),
-  }),
-).annotate({
-  identifier: "CreateMaccResponseIdentity",
-}) as any as S.Schema<CreateMaccResponseIdentity>;
+export const CreateMaccResponseIdentity =
+  CancelCreditResponseIdentity as any as S.Schema<CreateMaccResponseIdentity>;
 
 export interface CreateMaccResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2184,23 +2039,7 @@ export interface CreateMaccResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const CreateMaccResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(CreateMaccResponseTagsMap),
-    location: S.String,
-    properties: S.optional(MaccModelProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(CreateMaccResponseIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({ identifier: "CreateMaccResponse" }) as any as S.Schema<CreateMaccResponse>;
+export const CreateMaccResponse = CancelMaccResponse as any as S.Schema<CreateMaccResponse>;
 
 export interface ResourceSku {
   name?: string;
@@ -2398,13 +2237,7 @@ export interface ReservationOrderAliasResponsePropertiesReservedResourceProperti
   instanceFlexibility?: InstanceFlexibility;
 }
 export const ReservationOrderAliasResponsePropertiesReservedResourceProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceFlexibility: S.optional(InstanceFlexibility),
-    }),
-  ).annotate({
-    identifier: "ReservationOrderAliasResponsePropertiesReservedResourceProperties",
-  }) as any as S.Schema<ReservationOrderAliasResponsePropertiesReservedResourceProperties>;
+  ReservationOrderAliasRequestPropertiesReservedResourceProperties as any as S.Schema<ReservationOrderAliasResponsePropertiesReservedResourceProperties>;
 
 /** Reservation properties */
 export interface ReservationOrderAliasResponseProperties {
@@ -2630,10 +2463,8 @@ export const CreateSavingsPlanOrderAliasResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateSourceRequestTagsMap = { [key: string]: string | undefined };
-export const CreateSourceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateSourceRequestTagsMap>;
+export const CreateSourceRequestTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<CreateSourceRequestTagsMap>;
 
 /** Properties of a credit source */
 export interface CreditSourcePropertiesInput {
@@ -2658,10 +2489,8 @@ export const CreditSourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 export type CreateSourceRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
-export const CreateSourceRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
-) as any as S.Schema<CreateSourceRequestIdentityUserAssignedIdentitiesMap>;
+export const CreateSourceRequestIdentityUserAssignedIdentitiesMap =
+  CreateCreditRequestIdentityUserAssignedIdentitiesMap as any as S.Schema<CreateSourceRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreateSourceRequestIdentity {
@@ -2669,14 +2498,8 @@ export interface CreateSourceRequestIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateSourceRequestIdentityUserAssignedIdentitiesMap;
 }
-export const CreateSourceRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(CreateSourceRequestIdentityUserAssignedIdentitiesMap),
-  }),
-).annotate({
-  identifier: "CreateSourceRequestIdentity",
-}) as any as S.Schema<CreateSourceRequestIdentity>;
+export const CreateSourceRequestIdentity =
+  CreateCreditRequestIdentity as any as S.Schema<CreateSourceRequestIdentity>;
 
 export interface CreateSourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2730,10 +2553,8 @@ export const CreateSourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateSourceResponseTagsMap = { [key: string]: string | undefined };
-export const CreateSourceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateSourceResponseTagsMap>;
+export const CreateSourceResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<CreateSourceResponseTagsMap>;
 
 /** Properties of a credit source */
 export interface CreditSourceProperties {
@@ -2759,10 +2580,8 @@ export const CreditSourceProperties = /*@__PURE__*/ S.suspend(() =>
 export type CreateSourceResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const CreateSourceResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<CreateSourceResponseIdentityUserAssignedIdentitiesMap>;
+export const CreateSourceResponseIdentityUserAssignedIdentitiesMap =
+  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<CreateSourceResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreateSourceResponseIdentity {
@@ -2774,16 +2593,8 @@ export interface CreateSourceResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateSourceResponseIdentityUserAssignedIdentitiesMap;
 }
-export const CreateSourceResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(CreateSourceResponseIdentityUserAssignedIdentitiesMap),
-  }),
-).annotate({
-  identifier: "CreateSourceResponseIdentity",
-}) as any as S.Schema<CreateSourceResponseIdentity>;
+export const CreateSourceResponseIdentity =
+  CancelCreditResponseIdentity as any as S.Schema<CreateSourceResponseIdentity>;
 
 export interface CreateSourceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2860,9 +2671,8 @@ export const CreditsChangeSponsorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreditsChangeSponsorRequest>;
 
 export interface CreditsChangeSponsorResponse {}
-export const CreditsChangeSponsorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreditsChangeSponsorResponse",
-}) as any as S.Schema<CreditsChangeSponsorResponse>;
+export const CreditsChangeSponsorResponse =
+  UserAssignedIdentityInput as any as S.Schema<CreditsChangeSponsorResponse>;
 
 export interface DeleteConditionalCreditRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2918,9 +2728,8 @@ export const DeleteCreditRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCreditRequest" }) as any as S.Schema<DeleteCreditRequest>;
 
 export interface DeleteCreditResponse {}
-export const DeleteCreditResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCreditResponse",
-}) as any as S.Schema<DeleteCreditResponse>;
+export const DeleteCreditResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteCreditResponse>;
 
 export interface DeleteDiscountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2946,9 +2755,8 @@ export const DeleteDiscountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDiscountRequest" }) as any as S.Schema<DeleteDiscountRequest>;
 
 export interface DeleteDiscountResponse {}
-export const DeleteDiscountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDiscountResponse",
-}) as any as S.Schema<DeleteDiscountResponse>;
+export const DeleteDiscountResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteDiscountResponse>;
 
 export interface DeleteFreeServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2974,9 +2782,8 @@ export const DeleteFreeServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFreeServiceRequest" }) as any as S.Schema<DeleteFreeServiceRequest>;
 
 export interface DeleteFreeServiceResponse {}
-export const DeleteFreeServiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFreeServiceResponse",
-}) as any as S.Schema<DeleteFreeServiceResponse>;
+export const DeleteFreeServiceResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteFreeServiceResponse>;
 
 export interface DeleteMaccRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3002,9 +2809,7 @@ export const DeleteMaccRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteMaccRequest" }) as any as S.Schema<DeleteMaccRequest>;
 
 export interface DeleteMaccResponse {}
-export const DeleteMaccResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMaccResponse",
-}) as any as S.Schema<DeleteMaccResponse>;
+export const DeleteMaccResponse = UserAssignedIdentityInput as any as S.Schema<DeleteMaccResponse>;
 
 export interface DeleteSourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3033,9 +2838,8 @@ export const DeleteSourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSourceRequest" }) as any as S.Schema<DeleteSourceRequest>;
 
 export interface DeleteSourceResponse {}
-export const DeleteSourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSourceResponse",
-}) as any as S.Schema<DeleteSourceResponse>;
+export const DeleteSourceResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteSourceResponse>;
 
 export interface GetBillingAccountCatalogGroupsOpsRequest {
   /** The name of the billing account. */
@@ -3098,9 +2902,8 @@ export const CatalogGroupPropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
 
 /** Optional disclaimers (legal or eligibility caveats) for the catalog group. Included only when caveats apply. */
 export type CatalogGroupPropertiesDisclaimersList = Array<string>;
-export const CatalogGroupPropertiesDisclaimersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CatalogGroupPropertiesDisclaimersList>;
+export const CatalogGroupPropertiesDisclaimersList =
+  CatalogGroupPropertiesKeywordsList as any as S.Schema<CatalogGroupPropertiesDisclaimersList>;
 
 /** Properties of a catalog group. */
 export interface CatalogGroupProperties {
@@ -3198,17 +3001,8 @@ export interface GetBillingProfileCatalogGroupsOpsResponse {
   /** The resource-specific properties for this resource. */
   properties?: CatalogGroupProperties;
 }
-export const GetBillingProfileCatalogGroupsOpsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CatalogGroupProperties),
-  }),
-).annotate({
-  identifier: "GetBillingProfileCatalogGroupsOpsResponse",
-}) as any as S.Schema<GetBillingProfileCatalogGroupsOpsResponse>;
+export const GetBillingProfileCatalogGroupsOpsResponse =
+  GetBillingAccountCatalogGroupsOpsResponse as any as S.Schema<GetBillingProfileCatalogGroupsOpsResponse>;
 
 export interface GetConditionalCreditRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3237,19 +3031,15 @@ export const GetConditionalCreditRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetConditionalCreditResponseTagsMap = { [key: string]: string | undefined };
-export const GetConditionalCreditResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetConditionalCreditResponseTagsMap>;
+export const GetConditionalCreditResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<GetConditionalCreditResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type GetConditionalCreditResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const GetConditionalCreditResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<GetConditionalCreditResponseIdentityUserAssignedIdentitiesMap>;
+export const GetConditionalCreditResponseIdentityUserAssignedIdentitiesMap =
+  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<GetConditionalCreditResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface GetConditionalCreditResponseIdentity {
@@ -3713,19 +3503,15 @@ export const GetCreditRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetCreditResponseTagsMap = { [key: string]: string | undefined };
-export const GetCreditResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetCreditResponseTagsMap>;
+export const GetCreditResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<GetCreditResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type GetCreditResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const GetCreditResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<GetCreditResponseIdentityUserAssignedIdentitiesMap>;
+export const GetCreditResponseIdentityUserAssignedIdentitiesMap =
+  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<GetCreditResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface GetCreditResponseIdentity {
@@ -3737,16 +3523,8 @@ export interface GetCreditResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: GetCreditResponseIdentityUserAssignedIdentitiesMap;
 }
-export const GetCreditResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(GetCreditResponseIdentityUserAssignedIdentitiesMap),
-  }),
-).annotate({
-  identifier: "GetCreditResponseIdentity",
-}) as any as S.Schema<GetCreditResponseIdentity>;
+export const GetCreditResponseIdentity =
+  CancelCreditResponseIdentity as any as S.Schema<GetCreditResponseIdentity>;
 
 export interface GetCreditResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3776,23 +3554,7 @@ export interface GetCreditResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const GetCreditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetCreditResponseTagsMap),
-    location: S.String,
-    properties: S.optional(CreditProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(GetCreditResponseIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({ identifier: "GetCreditResponse" }) as any as S.Schema<GetCreditResponse>;
+export const GetCreditResponse = CancelCreditResponse as any as S.Schema<GetCreditResponse>;
 
 export interface GetCreditTransactionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3834,17 +3596,8 @@ export interface GetCreditTransactionResponse {
   /** Transaction properties */
   properties?: TransactionProperties;
 }
-export const GetCreditTransactionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(TransactionProperties),
-  }),
-).annotate({
-  identifier: "GetCreditTransactionResponse",
-}) as any as S.Schema<GetCreditTransactionResponse>;
+export const GetCreditTransactionResponse =
+  GetConditionalCreditTransactionResponse as any as S.Schema<GetCreditTransactionResponse>;
 
 export interface GetDiscountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3871,10 +3624,8 @@ export const GetDiscountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetDiscountResponseTagsMap = { [key: string]: string | undefined };
-export const GetDiscountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDiscountResponseTagsMap>;
+export const GetDiscountResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<GetDiscountResponseTagsMap>;
 
 export interface GetDiscountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3904,23 +3655,7 @@ export interface GetDiscountResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const GetDiscountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetDiscountResponseTagsMap),
-    location: S.String,
-    properties: S.optional(DiscountProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(ManagedServiceIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({ identifier: "GetDiscountResponse" }) as any as S.Schema<GetDiscountResponse>;
+export const GetDiscountResponse = CancelDiscountResponse as any as S.Schema<GetDiscountResponse>;
 
 export interface GetFreeServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3947,19 +3682,15 @@ export const GetFreeServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetFreeServiceResponseTagsMap = { [key: string]: string | undefined };
-export const GetFreeServiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetFreeServiceResponseTagsMap>;
+export const GetFreeServiceResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<GetFreeServiceResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type GetFreeServiceResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const GetFreeServiceResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<GetFreeServiceResponseIdentityUserAssignedIdentitiesMap>;
+export const GetFreeServiceResponseIdentityUserAssignedIdentitiesMap =
+  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<GetFreeServiceResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface GetFreeServiceResponseIdentity {
@@ -3971,16 +3702,8 @@ export interface GetFreeServiceResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: GetFreeServiceResponseIdentityUserAssignedIdentitiesMap;
 }
-export const GetFreeServiceResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(GetFreeServiceResponseIdentityUserAssignedIdentitiesMap),
-  }),
-).annotate({
-  identifier: "GetFreeServiceResponseIdentity",
-}) as any as S.Schema<GetFreeServiceResponseIdentity>;
+export const GetFreeServiceResponseIdentity =
+  CancelCreditResponseIdentity as any as S.Schema<GetFreeServiceResponseIdentity>;
 
 export interface GetFreeServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4053,19 +3776,15 @@ export const GetMaccRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetMaccResponseTagsMap = { [key: string]: string | undefined };
-export const GetMaccResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetMaccResponseTagsMap>;
+export const GetMaccResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<GetMaccResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type GetMaccResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const GetMaccResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<GetMaccResponseIdentityUserAssignedIdentitiesMap>;
+export const GetMaccResponseIdentityUserAssignedIdentitiesMap =
+  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<GetMaccResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface GetMaccResponseIdentity {
@@ -4172,17 +3891,8 @@ export interface GetMaccTransactionResponse {
   /** Transaction properties */
   properties?: TransactionProperties;
 }
-export const GetMaccTransactionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(TransactionProperties),
-  }),
-).annotate({
-  identifier: "GetMaccTransactionResponse",
-}) as any as S.Schema<GetMaccTransactionResponse>;
+export const GetMaccTransactionResponse =
+  GetConditionalCreditTransactionResponse as any as S.Schema<GetMaccTransactionResponse>;
 
 export interface GetReservationOrderAliasRequest {
   /** Name of the reservation order alias */
@@ -4219,19 +3929,8 @@ export interface GetReservationOrderAliasResponse {
   /** The Azure Region where the reserved resource lives. */
   location?: string;
 }
-export const GetReservationOrderAliasResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReservationOrderAliasResponseProperties),
-    sku: ResourceSku,
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetReservationOrderAliasResponse",
-}) as any as S.Schema<GetReservationOrderAliasResponse>;
+export const GetReservationOrderAliasResponse =
+  CreateReservationOrderAliasResponse as any as S.Schema<GetReservationOrderAliasResponse>;
 
 export interface GetSavingsPlanRequest {
   /** Order ID of the savings plan */
@@ -4550,9 +4249,8 @@ export const BillingPlanInformation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BillingPlanInformation" }) as any as S.Schema<BillingPlanInformation>;
 
 export type SavingsPlanOrderModelPropertiesSavingsPlansList = Array<string>;
-export const SavingsPlanOrderModelPropertiesSavingsPlansList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SavingsPlanOrderModelPropertiesSavingsPlansList>;
+export const SavingsPlanOrderModelPropertiesSavingsPlansList =
+  CatalogGroupPropertiesKeywordsList as any as S.Schema<SavingsPlanOrderModelPropertiesSavingsPlansList>;
 
 /** Savings plan order properties */
 export interface SavingsPlanOrderModelProperties {
@@ -4663,19 +4361,8 @@ export interface GetSavingsPlanOrderAliasResponse {
   /** Resource provider kind */
   kind?: string;
 }
-export const GetSavingsPlanOrderAliasResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SavingsPlanOrderAliasProperties),
-    sku: ResourceSku,
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetSavingsPlanOrderAliasResponse",
-}) as any as S.Schema<GetSavingsPlanOrderAliasResponse>;
+export const GetSavingsPlanOrderAliasResponse =
+  CreateSavingsPlanOrderAliasResponse as any as S.Schema<GetSavingsPlanOrderAliasResponse>;
 
 export interface GetSourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4705,19 +4392,15 @@ export const GetSourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetSourceResponseTagsMap = { [key: string]: string | undefined };
-export const GetSourceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetSourceResponseTagsMap>;
+export const GetSourceResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<GetSourceResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type GetSourceResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const GetSourceResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<GetSourceResponseIdentityUserAssignedIdentitiesMap>;
+export const GetSourceResponseIdentityUserAssignedIdentitiesMap =
+  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<GetSourceResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface GetSourceResponseIdentity {
@@ -4729,16 +4412,8 @@ export interface GetSourceResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: GetSourceResponseIdentityUserAssignedIdentitiesMap;
 }
-export const GetSourceResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(GetSourceResponseIdentityUserAssignedIdentitiesMap),
-  }),
-).annotate({
-  identifier: "GetSourceResponseIdentity",
-}) as any as S.Schema<GetSourceResponseIdentity>;
+export const GetSourceResponseIdentity =
+  CancelCreditResponseIdentity as any as S.Schema<GetSourceResponseIdentity>;
 
 export interface GetSourceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4768,23 +4443,7 @@ export interface GetSourceResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const GetSourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetSourceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(CreditSourceProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(GetSourceResponseIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({ identifier: "GetSourceResponse" }) as any as S.Schema<GetSourceResponse>;
+export const GetSourceResponse = CreateSourceResponse as any as S.Schema<GetSourceResponse>;
 
 export interface GetSubscriptionCatalogGroupsOpsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4820,17 +4479,8 @@ export interface GetSubscriptionCatalogGroupsOpsResponse {
   /** The resource-specific properties for this resource. */
   properties?: CatalogGroupProperties;
 }
-export const GetSubscriptionCatalogGroupsOpsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CatalogGroupProperties),
-  }),
-).annotate({
-  identifier: "GetSubscriptionCatalogGroupsOpsResponse",
-}) as any as S.Schema<GetSubscriptionCatalogGroupsOpsResponse>;
+export const GetSubscriptionCatalogGroupsOpsResponse =
+  GetBillingAccountCatalogGroupsOpsResponse as any as S.Schema<GetSubscriptionCatalogGroupsOpsResponse>;
 
 export interface ListApplicableMaccsRequest {
   /** The billing account Id at which the benefits are listed. Accepted format is: {rootId:orgId}. */
@@ -5008,19 +4658,15 @@ export const ListConditionalCreditByResourceGroupRequest = /*@__PURE__*/ S.suspe
 
 /** Resource tags. */
 export type ConditionalCreditTagsMap = { [key: string]: string | undefined };
-export const ConditionalCreditTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConditionalCreditTagsMap>;
+export const ConditionalCreditTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<ConditionalCreditTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type ConditionalCreditIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const ConditionalCreditIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<ConditionalCreditIdentityUserAssignedIdentitiesMap>;
+export const ConditionalCreditIdentityUserAssignedIdentitiesMap =
+  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<ConditionalCreditIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ConditionalCreditIdentity {
@@ -5032,16 +4678,8 @@ export interface ConditionalCreditIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: ConditionalCreditIdentityUserAssignedIdentitiesMap;
 }
-export const ConditionalCreditIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(ConditionalCreditIdentityUserAssignedIdentitiesMap),
-  }),
-).annotate({
-  identifier: "ConditionalCreditIdentity",
-}) as any as S.Schema<ConditionalCreditIdentity>;
+export const ConditionalCreditIdentity =
+  CancelCreditResponseIdentity as any as S.Schema<ConditionalCreditIdentity>;
 
 /** Resource definition for Conditional Credits. */
 export interface ConditionalCredit {
@@ -5165,17 +4803,8 @@ export interface ConditionalCreditContributor {
   /** Conditional credit contributor properties */
   properties?: ContributorConditionalCreditProperties;
 }
-export const ConditionalCreditContributor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ContributorConditionalCreditProperties),
-  }),
-).annotate({
-  identifier: "ConditionalCreditContributor",
-}) as any as S.Schema<ConditionalCreditContributor>;
+export const ConditionalCreditContributor =
+  GetConditionalCreditContributorFromPrimaryResponse as any as S.Schema<ConditionalCreditContributor>;
 
 /** The ConditionalCreditContributor items on this page */
 export type ConditionalCreditContributorListValueList = Array<ConditionalCreditContributor>;
@@ -5281,17 +4910,8 @@ export interface ConditionalCreditTransaction {
   /** Transaction properties */
   properties?: TransactionProperties;
 }
-export const ConditionalCreditTransaction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(TransactionProperties),
-  }),
-).annotate({
-  identifier: "ConditionalCreditTransaction",
-}) as any as S.Schema<ConditionalCreditTransaction>;
+export const ConditionalCreditTransaction =
+  GetConditionalCreditTransactionResponse as any as S.Schema<ConditionalCreditTransaction>;
 
 /** The ConditionalCreditTransaction items on this page */
 export type ConditionalCreditTransactionsListValueList = Array<ConditionalCreditTransaction>;
@@ -5350,21 +4970,12 @@ export interface Contributor {
   /** MACC contributor properties */
   properties?: MaccModelProperties;
 }
-export const Contributor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(MaccModelProperties),
-  }),
-).annotate({ identifier: "Contributor" }) as any as S.Schema<Contributor>;
+export const Contributor = ApplicableMacc as any as S.Schema<Contributor>;
 
 /** The Contributor items on this page */
 export type ContributorListValueList = Array<Contributor>;
-export const ContributorListValueList = /*@__PURE__*/ S.Array(
-  Contributor,
-) as any as S.Schema<ContributorListValueList>;
+export const ContributorListValueList =
+  ApplicableMaccListValueList as any as S.Schema<ContributorListValueList>;
 
 /** Contributor list */
 export interface ContributorList {
@@ -5426,19 +5037,15 @@ export const ListCreditApplicableRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreditTagsMap = { [key: string]: string | undefined };
-export const CreditTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreditTagsMap>;
+export const CreditTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<CreditTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreditIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const CreditIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<CreditIdentityUserAssignedIdentitiesMap>;
+export const CreditIdentityUserAssignedIdentitiesMap =
+  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<CreditIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreditIdentity {
@@ -5450,14 +5057,7 @@ export interface CreditIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreditIdentityUserAssignedIdentitiesMap;
 }
-export const CreditIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(CreditIdentityUserAssignedIdentitiesMap),
-  }),
-).annotate({ identifier: "CreditIdentity" }) as any as S.Schema<CreditIdentity>;
+export const CreditIdentity = GetMaccResponseIdentity as any as S.Schema<CreditIdentity>;
 
 /** Credit resource definition */
 export interface Credit {
@@ -5598,9 +5198,8 @@ export const CreditTransaction = ConditionalCreditTransaction;
 
 /** The CreditTransaction items on this page */
 export type TransactionsListValueList = Array<ConditionalCreditTransaction>;
-export const TransactionsListValueList = /*@__PURE__*/ S.Array(
-  ConditionalCreditTransaction,
-) as any as S.Schema<TransactionsListValueList>;
+export const TransactionsListValueList =
+  ConditionalCreditTransactionsListValueList as any as S.Schema<TransactionsListValueList>;
 
 /** List of transactions */
 export interface TransactionsList {
@@ -5640,10 +5239,8 @@ export const ListDiscountsResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DiscountTagsMap = { [key: string]: string | undefined };
-export const DiscountTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DiscountTagsMap>;
+export const DiscountTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<DiscountTagsMap>;
 
 /** Resource definition for Discounts. */
 export interface Discount {
@@ -5674,23 +5271,7 @@ export interface Discount {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const Discount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(DiscountTagsMap),
-    location: S.String,
-    properties: S.optional(DiscountProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(ManagedServiceIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({ identifier: "Discount" }) as any as S.Schema<Discount>;
+export const Discount = CancelDiscountResponse as any as S.Schema<Discount>;
 
 /** The Discount items on this page */
 export type DiscountListValueList = Array<Discount>;
@@ -5774,19 +5355,15 @@ export const ListFreeServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type FreeServicesTagsMap = { [key: string]: string | undefined };
-export const FreeServicesTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FreeServicesTagsMap>;
+export const FreeServicesTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<FreeServicesTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type FreeServicesIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const FreeServicesIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<FreeServicesIdentityUserAssignedIdentitiesMap>;
+export const FreeServicesIdentityUserAssignedIdentitiesMap =
+  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<FreeServicesIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface FreeServicesIdentity {
@@ -5798,14 +5375,8 @@ export interface FreeServicesIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: FreeServicesIdentityUserAssignedIdentitiesMap;
 }
-export const FreeServicesIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(FreeServicesIdentityUserAssignedIdentitiesMap),
-  }),
-).annotate({ identifier: "FreeServicesIdentity" }) as any as S.Schema<FreeServicesIdentity>;
+export const FreeServicesIdentity =
+  GetMaccResponseIdentity as any as S.Schema<FreeServicesIdentity>;
 
 /** Free Services resource definition */
 export interface FreeServices {
@@ -5917,19 +5488,14 @@ export const ListMaccByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type MaccTagsMap = { [key: string]: string | undefined };
-export const MaccTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MaccTagsMap>;
+export const MaccTagsMap = CancelConditionalCreditResponseTagsMap as any as S.Schema<MaccTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type MaccIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const MaccIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<MaccIdentityUserAssignedIdentitiesMap>;
+export const MaccIdentityUserAssignedIdentitiesMap =
+  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<MaccIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface MaccIdentity {
@@ -5941,14 +5507,7 @@ export interface MaccIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: MaccIdentityUserAssignedIdentitiesMap;
 }
-export const MaccIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(MaccIdentityUserAssignedIdentitiesMap),
-  }),
-).annotate({ identifier: "MaccIdentity" }) as any as S.Schema<MaccIdentity>;
+export const MaccIdentity = GetMaccResponseIdentity as any as S.Schema<MaccIdentity>;
 
 /** Microsoft Azure Consumption Commitment. */
 export interface Macc {
@@ -5979,23 +5538,7 @@ export interface Macc {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const Macc = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(MaccTagsMap),
-    location: S.String,
-    properties: S.optional(MaccModelProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(MaccIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({ identifier: "Macc" }) as any as S.Schema<Macc>;
+export const Macc = GetMaccResponse as any as S.Schema<Macc>;
 
 /** The Macc items on this page */
 export type MaccListValueList = Array<Macc>;
@@ -6065,9 +5608,8 @@ export const MaccTransaction = ConditionalCreditTransaction;
 
 /** The MaccTransaction items on this page */
 export type MaccTransactionsListValueList = Array<ConditionalCreditTransaction>;
-export const MaccTransactionsListValueList = /*@__PURE__*/ S.Array(
-  ConditionalCreditTransaction,
-) as any as S.Schema<MaccTransactionsListValueList>;
+export const MaccTransactionsListValueList =
+  ConditionalCreditTransactionsListValueList as any as S.Schema<MaccTransactionsListValueList>;
 
 /** List of Macc transactions */
 export interface MaccTransactionsList {
@@ -6076,12 +5618,7 @@ export interface MaccTransactionsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const MaccTransactionsList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: MaccTransactionsListValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "MaccTransactionsList" }) as any as S.Schema<MaccTransactionsList>;
+export const MaccTransactionsList = TransactionsList as any as S.Schema<MaccTransactionsList>;
 
 export interface ListOperationsRequest {}
 export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -6197,16 +5734,7 @@ export interface SavingsPlanModel {
   /** Savings plan SKU */
   sku: ResourceSku;
 }
-export const SavingsPlanModel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SavingsPlanModelProperties),
-    sku: ResourceSku,
-  }),
-).annotate({ identifier: "SavingsPlanModel" }) as any as S.Schema<SavingsPlanModel>;
+export const SavingsPlanModel = GetSavingsPlanResponse as any as S.Schema<SavingsPlanModel>;
 
 /** The SavingsPlanModel items on this page */
 export type SavingsPlanModelListValueList = Array<SavingsPlanModel>;
@@ -6264,9 +5792,8 @@ export const ListSavingsPlanAllRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of savings plans. */
 export type SavingsPlanModelListResultValueList = Array<SavingsPlanModel>;
-export const SavingsPlanModelListResultValueList = /*@__PURE__*/ S.Array(
-  SavingsPlanModel,
-) as any as S.Schema<SavingsPlanModelListResultValueList>;
+export const SavingsPlanModelListResultValueList =
+  SavingsPlanModelListValueList as any as S.Schema<SavingsPlanModelListResultValueList>;
 
 /** The roll up count summary of savings plans in each state */
 export interface SavingsPlanSummaryCount {
@@ -6487,19 +6014,15 @@ export const ListSourceByCreditRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreditSourceTagsMap = { [key: string]: string | undefined };
-export const CreditSourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreditSourceTagsMap>;
+export const CreditSourceTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<CreditSourceTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreditSourceIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const CreditSourceIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<CreditSourceIdentityUserAssignedIdentitiesMap>;
+export const CreditSourceIdentityUserAssignedIdentitiesMap =
+  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<CreditSourceIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreditSourceIdentity {
@@ -6511,14 +6034,8 @@ export interface CreditSourceIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreditSourceIdentityUserAssignedIdentitiesMap;
 }
-export const CreditSourceIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(CreditSourceIdentityUserAssignedIdentitiesMap),
-  }),
-).annotate({ identifier: "CreditSourceIdentity" }) as any as S.Schema<CreditSourceIdentity>;
+export const CreditSourceIdentity =
+  GetMaccResponseIdentity as any as S.Schema<CreditSourceIdentity>;
 
 /** Credit source resource definition */
 export interface CreditSource {
@@ -6639,19 +6156,15 @@ export const MaccsChargeShortfallRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type MaccsChargeShortfallResponseTagsMap = { [key: string]: string | undefined };
-export const MaccsChargeShortfallResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MaccsChargeShortfallResponseTagsMap>;
+export const MaccsChargeShortfallResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<MaccsChargeShortfallResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type MaccsChargeShortfallResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const MaccsChargeShortfallResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<MaccsChargeShortfallResponseIdentityUserAssignedIdentitiesMap>;
+export const MaccsChargeShortfallResponseIdentityUserAssignedIdentitiesMap =
+  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<MaccsChargeShortfallResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface MaccsChargeShortfallResponseIdentity {
@@ -6663,18 +6176,8 @@ export interface MaccsChargeShortfallResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: MaccsChargeShortfallResponseIdentityUserAssignedIdentitiesMap;
 }
-export const MaccsChargeShortfallResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      MaccsChargeShortfallResponseIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "MaccsChargeShortfallResponseIdentity",
-}) as any as S.Schema<MaccsChargeShortfallResponseIdentity>;
+export const MaccsChargeShortfallResponseIdentity =
+  GetConditionalCreditResponseIdentity as any as S.Schema<MaccsChargeShortfallResponseIdentity>;
 
 export interface MaccsChargeShortfallResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6749,19 +6252,15 @@ export const MaccsWriteOffRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type MaccsWriteOffResponseTagsMap = { [key: string]: string | undefined };
-export const MaccsWriteOffResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MaccsWriteOffResponseTagsMap>;
+export const MaccsWriteOffResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<MaccsWriteOffResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type MaccsWriteOffResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const MaccsWriteOffResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<MaccsWriteOffResponseIdentityUserAssignedIdentitiesMap>;
+export const MaccsWriteOffResponseIdentityUserAssignedIdentitiesMap =
+  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<MaccsWriteOffResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface MaccsWriteOffResponseIdentity {
@@ -6773,16 +6272,8 @@ export interface MaccsWriteOffResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: MaccsWriteOffResponseIdentityUserAssignedIdentitiesMap;
 }
-export const MaccsWriteOffResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(MaccsWriteOffResponseIdentityUserAssignedIdentitiesMap),
-  }),
-).annotate({
-  identifier: "MaccsWriteOffResponseIdentity",
-}) as any as S.Schema<MaccsWriteOffResponseIdentity>;
+export const MaccsWriteOffResponseIdentity =
+  CancelCreditResponseIdentity as any as S.Schema<MaccsWriteOffResponseIdentity>;
 
 export interface MaccsWriteOffResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6812,23 +6303,7 @@ export interface MaccsWriteOffResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const MaccsWriteOffResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(MaccsWriteOffResponseTagsMap),
-    location: S.String,
-    properties: S.optional(MaccModelProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(MaccsWriteOffResponseIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({ identifier: "MaccsWriteOffResponse" }) as any as S.Schema<MaccsWriteOffResponse>;
+export const MaccsWriteOffResponse = CancelMaccResponse as any as S.Schema<MaccsWriteOffResponse>;
 
 export interface SavingsPlanOrderElevateRequest {
   /** Order ID of the savings plan */
@@ -7113,10 +6588,8 @@ export const ConditionalCreditPatchRequestPropertiesInput = /*@__PURE__*/ S.susp
 
 /** Resource tags. */
 export type UpdateConditionalCreditRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateConditionalCreditRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateConditionalCreditRequestTagsMap>;
+export const UpdateConditionalCreditRequestTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<UpdateConditionalCreditRequestTagsMap>;
 
 export interface UpdateConditionalCreditRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7151,20 +6624,15 @@ export const UpdateConditionalCreditRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateConditionalCreditResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateConditionalCreditResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateConditionalCreditResponseTagsMap>;
+export const UpdateConditionalCreditResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<UpdateConditionalCreditResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateConditionalCreditResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
 export const UpdateConditionalCreditResponseIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-  ) as any as S.Schema<UpdateConditionalCreditResponseIdentityUserAssignedIdentitiesMap>;
+  CancelConditionalCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<UpdateConditionalCreditResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdateConditionalCreditResponseIdentity {
@@ -7176,18 +6644,8 @@ export interface UpdateConditionalCreditResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateConditionalCreditResponseIdentityUserAssignedIdentitiesMap;
 }
-export const UpdateConditionalCreditResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      UpdateConditionalCreditResponseIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "UpdateConditionalCreditResponseIdentity",
-}) as any as S.Schema<UpdateConditionalCreditResponseIdentity>;
+export const UpdateConditionalCreditResponseIdentity =
+  CancelConditionalCreditResponseIdentity as any as S.Schema<UpdateConditionalCreditResponseIdentity>;
 
 export interface UpdateConditionalCreditResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7217,38 +6675,18 @@ export interface UpdateConditionalCreditResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const UpdateConditionalCreditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateConditionalCreditResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ConditionalCreditProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(UpdateConditionalCreditResponseIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({
-  identifier: "UpdateConditionalCreditResponse",
-}) as any as S.Schema<UpdateConditionalCreditResponse>;
+export const UpdateConditionalCreditResponse =
+  CancelConditionalCreditResponse as any as S.Schema<UpdateConditionalCreditResponse>;
 
 /** Resource tags */
 export type UpdateCreditRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateCreditRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCreditRequestTagsMap>;
+export const UpdateCreditRequestTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<UpdateCreditRequestTagsMap>;
 
 /** Credit line-items/milestones/no-charge services breakdown. Entire breakdown will be replaced in a PATCH operation. */
 export type CreditPatchPropertiesBreakdownList = Array<CreditBreakdownItem>;
-export const CreditPatchPropertiesBreakdownList = /*@__PURE__*/ S.Array(
-  CreditBreakdownItem,
-) as any as S.Schema<CreditPatchPropertiesBreakdownList>;
+export const CreditPatchPropertiesBreakdownList =
+  CreditPropertiesBreakdownList as any as S.Schema<CreditPatchPropertiesBreakdownList>;
 
 /** Credit patch properties */
 export interface CreditPatchProperties {
@@ -7298,19 +6736,15 @@ export const UpdateCreditRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateCreditResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateCreditResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCreditResponseTagsMap>;
+export const UpdateCreditResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<UpdateCreditResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateCreditResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const UpdateCreditResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<UpdateCreditResponseIdentityUserAssignedIdentitiesMap>;
+export const UpdateCreditResponseIdentityUserAssignedIdentitiesMap =
+  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<UpdateCreditResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdateCreditResponseIdentity {
@@ -7322,16 +6756,8 @@ export interface UpdateCreditResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateCreditResponseIdentityUserAssignedIdentitiesMap;
 }
-export const UpdateCreditResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UpdateCreditResponseIdentityUserAssignedIdentitiesMap),
-  }),
-).annotate({
-  identifier: "UpdateCreditResponseIdentity",
-}) as any as S.Schema<UpdateCreditResponseIdentity>;
+export const UpdateCreditResponseIdentity =
+  CancelCreditResponseIdentity as any as S.Schema<UpdateCreditResponseIdentity>;
 
 export interface UpdateCreditResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7361,23 +6787,7 @@ export interface UpdateCreditResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const UpdateCreditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateCreditResponseTagsMap),
-    location: S.String,
-    properties: S.optional(CreditProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(UpdateCreditResponseIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({ identifier: "UpdateCreditResponse" }) as any as S.Schema<UpdateCreditResponse>;
+export const UpdateCreditResponse = CancelCreditResponse as any as S.Schema<UpdateCreditResponse>;
 
 /** Discounts patch request properties */
 export interface DiscountPatchRequestProperties {
@@ -7397,10 +6807,8 @@ export const DiscountPatchRequestProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateDiscountRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateDiscountRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDiscountRequestTagsMap>;
+export const UpdateDiscountRequestTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<UpdateDiscountRequestTagsMap>;
 
 export interface UpdateDiscountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7433,10 +6841,8 @@ export const UpdateDiscountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateDiscountResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateDiscountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDiscountResponseTagsMap>;
+export const UpdateDiscountResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<UpdateDiscountResponseTagsMap>;
 
 export interface UpdateDiscountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7466,23 +6872,8 @@ export interface UpdateDiscountResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const UpdateDiscountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateDiscountResponseTagsMap),
-    location: S.String,
-    properties: S.optional(DiscountProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(ManagedServiceIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({ identifier: "UpdateDiscountResponse" }) as any as S.Schema<UpdateDiscountResponse>;
+export const UpdateDiscountResponse =
+  CancelDiscountResponse as any as S.Schema<UpdateDiscountResponse>;
 
 /** Free services patch request properties */
 export interface FreeServicesPatchRequestProperties {
@@ -7499,10 +6890,8 @@ export const FreeServicesPatchRequestProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateFreeServiceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateFreeServiceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateFreeServiceRequestTagsMap>;
+export const UpdateFreeServiceRequestTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<UpdateFreeServiceRequestTagsMap>;
 
 export interface UpdateFreeServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7535,19 +6924,15 @@ export const UpdateFreeServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateFreeServiceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateFreeServiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateFreeServiceResponseTagsMap>;
+export const UpdateFreeServiceResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<UpdateFreeServiceResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateFreeServiceResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const UpdateFreeServiceResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<UpdateFreeServiceResponseIdentityUserAssignedIdentitiesMap>;
+export const UpdateFreeServiceResponseIdentityUserAssignedIdentitiesMap =
+  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<UpdateFreeServiceResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdateFreeServiceResponseIdentity {
@@ -7559,16 +6944,8 @@ export interface UpdateFreeServiceResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateFreeServiceResponseIdentityUserAssignedIdentitiesMap;
 }
-export const UpdateFreeServiceResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UpdateFreeServiceResponseIdentityUserAssignedIdentitiesMap),
-  }),
-).annotate({
-  identifier: "UpdateFreeServiceResponseIdentity",
-}) as any as S.Schema<UpdateFreeServiceResponseIdentity>;
+export const UpdateFreeServiceResponseIdentity =
+  CancelCreditResponseIdentity as any as S.Schema<UpdateFreeServiceResponseIdentity>;
 
 export interface UpdateFreeServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7598,31 +6975,13 @@ export interface UpdateFreeServiceResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const UpdateFreeServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateFreeServiceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(FreeServicesProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(UpdateFreeServiceResponseIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({
-  identifier: "UpdateFreeServiceResponse",
-}) as any as S.Schema<UpdateFreeServiceResponse>;
+export const UpdateFreeServiceResponse =
+  CreateFreeServiceResponse as any as S.Schema<UpdateFreeServiceResponse>;
 
 /** List of milestones to update or add. */
 export type MaccPatchRequestPropertiesMilestonesList = Array<MaccMilestone>;
-export const MaccPatchRequestPropertiesMilestonesList = /*@__PURE__*/ S.Array(
-  MaccMilestone,
-) as any as S.Schema<MaccPatchRequestPropertiesMilestonesList>;
+export const MaccPatchRequestPropertiesMilestonesList =
+  MaccModelPropertiesMilestonesList as any as S.Schema<MaccPatchRequestPropertiesMilestonesList>;
 
 /** Macc patch request properties */
 export interface MaccPatchRequestProperties {
@@ -7666,10 +7025,8 @@ export const MaccPatchRequestProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateMaccRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateMaccRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateMaccRequestTagsMap>;
+export const UpdateMaccRequestTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<UpdateMaccRequestTagsMap>;
 
 export interface UpdateMaccRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7702,19 +7059,15 @@ export const UpdateMaccRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateMaccResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateMaccResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateMaccResponseTagsMap>;
+export const UpdateMaccResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<UpdateMaccResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateMaccResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const UpdateMaccResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<UpdateMaccResponseIdentityUserAssignedIdentitiesMap>;
+export const UpdateMaccResponseIdentityUserAssignedIdentitiesMap =
+  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<UpdateMaccResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdateMaccResponseIdentity {
@@ -7726,16 +7079,8 @@ export interface UpdateMaccResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateMaccResponseIdentityUserAssignedIdentitiesMap;
 }
-export const UpdateMaccResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UpdateMaccResponseIdentityUserAssignedIdentitiesMap),
-  }),
-).annotate({
-  identifier: "UpdateMaccResponseIdentity",
-}) as any as S.Schema<UpdateMaccResponseIdentity>;
+export const UpdateMaccResponseIdentity =
+  CancelCreditResponseIdentity as any as S.Schema<UpdateMaccResponseIdentity>;
 
 export interface UpdateMaccResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7765,23 +7110,7 @@ export interface UpdateMaccResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const UpdateMaccResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateMaccResponseTagsMap),
-    location: S.String,
-    properties: S.optional(MaccModelProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(UpdateMaccResponseIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({ identifier: "UpdateMaccResponse" }) as any as S.Schema<UpdateMaccResponse>;
+export const UpdateMaccResponse = CancelMaccResponse as any as S.Schema<UpdateMaccResponse>;
 
 export interface UpdateSavingsPlanRequest {
   /** Order ID of the savings plan */
@@ -7835,10 +7164,8 @@ export const UpdateSavingsPlanResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource Tags */
 export type UpdateSourceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateSourceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSourceRequestTagsMap>;
+export const UpdateSourceRequestTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<UpdateSourceRequestTagsMap>;
 
 export interface UpdateSourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7871,19 +7198,15 @@ export const UpdateSourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateSourceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateSourceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSourceResponseTagsMap>;
+export const UpdateSourceResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<UpdateSourceResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateSourceResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const UpdateSourceResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<UpdateSourceResponseIdentityUserAssignedIdentitiesMap>;
+export const UpdateSourceResponseIdentityUserAssignedIdentitiesMap =
+  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<UpdateSourceResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdateSourceResponseIdentity {
@@ -7895,16 +7218,8 @@ export interface UpdateSourceResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateSourceResponseIdentityUserAssignedIdentitiesMap;
 }
-export const UpdateSourceResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UpdateSourceResponseIdentityUserAssignedIdentitiesMap),
-  }),
-).annotate({
-  identifier: "UpdateSourceResponseIdentity",
-}) as any as S.Schema<UpdateSourceResponseIdentity>;
+export const UpdateSourceResponseIdentity =
+  CancelCreditResponseIdentity as any as S.Schema<UpdateSourceResponseIdentity>;
 
 export interface UpdateSourceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7934,23 +7249,7 @@ export interface UpdateSourceResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const UpdateSourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateSourceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(CreditSourceProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(UpdateSourceResponseIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({ identifier: "UpdateSourceResponse" }) as any as S.Schema<UpdateSourceResponse>;
+export const UpdateSourceResponse = CreateSourceResponse as any as S.Schema<UpdateSourceResponse>;
 
 /** Represents benefit model type for validation. Includes all resource types plus legacy singular-form values used by the validate API. */
 export type BenefitType =

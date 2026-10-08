@@ -200,11 +200,8 @@ export const DeleteLifecyclePolicyInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteLifecyclePolicyInput",
 }) as any as S.Schema<DeleteLifecyclePolicyInput>;
 export interface DeleteLifecyclePolicyOutput {}
-export const DeleteLifecyclePolicyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteLifecyclePolicyOutput",
-}) as any as S.Schema<DeleteLifecyclePolicyOutput>;
+export const DeleteLifecyclePolicyOutput =
+  DeleteContainerPolicyOutput as any as S.Schema<DeleteLifecyclePolicyOutput>;
 export interface DeleteMetricPolicyInput {
   ContainerName: string;
 }
@@ -264,10 +261,10 @@ export type AllowedMethods = MethodName[];
 export const AllowedMethods = /*@__PURE__*/ S.Array(MethodName);
 export type Header = string;
 export type AllowedHeaders = string[];
-export const AllowedHeaders = /*@__PURE__*/ S.Array(S.String);
+export const AllowedHeaders = AllowedOrigins as any as S.Schema<AllowedHeaders>;
 export type MaxAgeSeconds = number;
 export type ExposeHeaders = string[];
-export const ExposeHeaders = /*@__PURE__*/ S.Array(S.String);
+export const ExposeHeaders = AllowedOrigins as any as S.Schema<ExposeHeaders>;
 export interface CorsRule {
   AllowedOrigins: string[];
   AllowedMethods?: MethodName[];
@@ -391,9 +388,8 @@ export const PutContainerPolicyInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutContainerPolicyInput" }) as any as S.Schema<PutContainerPolicyInput>;
 export interface PutContainerPolicyOutput {}
-export const PutContainerPolicyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({ identifier: "PutContainerPolicyOutput" }) as any as S.Schema<PutContainerPolicyOutput>;
+export const PutContainerPolicyOutput =
+  DeleteMetricPolicyOutput as any as S.Schema<PutContainerPolicyOutput>;
 export interface PutCorsPolicyInput {
   ContainerName: string;
   CorsPolicy: CorsRule[];
@@ -404,9 +400,7 @@ export const PutCorsPolicyInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutCorsPolicyInput" }) as any as S.Schema<PutCorsPolicyInput>;
 export interface PutCorsPolicyOutput {}
-export const PutCorsPolicyOutput = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "PutCorsPolicyOutput",
-}) as any as S.Schema<PutCorsPolicyOutput>;
+export const PutCorsPolicyOutput = DeleteContainerOutput as any as S.Schema<PutCorsPolicyOutput>;
 export interface PutLifecyclePolicyInput {
   ContainerName: string;
   LifecyclePolicy: string;
@@ -417,9 +411,8 @@ export const PutLifecyclePolicyInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutLifecyclePolicyInput" }) as any as S.Schema<PutLifecyclePolicyInput>;
 export interface PutLifecyclePolicyOutput {}
-export const PutLifecyclePolicyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({ identifier: "PutLifecyclePolicyOutput" }) as any as S.Schema<PutLifecyclePolicyOutput>;
+export const PutLifecyclePolicyOutput =
+  DeleteMetricPolicyOutput as any as S.Schema<PutLifecyclePolicyOutput>;
 export interface PutMetricPolicyInput {
   ContainerName: string;
   MetricPolicy: MetricPolicy;
@@ -430,9 +423,8 @@ export const PutMetricPolicyInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutMetricPolicyInput" }) as any as S.Schema<PutMetricPolicyInput>;
 export interface PutMetricPolicyOutput {}
-export const PutMetricPolicyOutput = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "PutMetricPolicyOutput",
-}) as any as S.Schema<PutMetricPolicyOutput>;
+export const PutMetricPolicyOutput =
+  DeleteContainerOutput as any as S.Schema<PutMetricPolicyOutput>;
 export interface StartAccessLoggingInput {
   ContainerName: string;
 }
@@ -442,9 +434,8 @@ export const StartAccessLoggingInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StartAccessLoggingInput" }) as any as S.Schema<StartAccessLoggingInput>;
 export interface StartAccessLoggingOutput {}
-export const StartAccessLoggingOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({ identifier: "StartAccessLoggingOutput" }) as any as S.Schema<StartAccessLoggingOutput>;
+export const StartAccessLoggingOutput =
+  DeleteMetricPolicyOutput as any as S.Schema<StartAccessLoggingOutput>;
 export interface StopAccessLoggingInput {
   ContainerName: string;
 }
@@ -454,9 +445,8 @@ export const StopAccessLoggingInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopAccessLoggingInput" }) as any as S.Schema<StopAccessLoggingInput>;
 export interface StopAccessLoggingOutput {}
-export const StopAccessLoggingOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({ identifier: "StopAccessLoggingOutput" }) as any as S.Schema<StopAccessLoggingOutput>;
+export const StopAccessLoggingOutput =
+  DeleteMetricPolicyOutput as any as S.Schema<StopAccessLoggingOutput>;
 export interface TagResourceInput {
   Resource: string;
   Tags: Tag[];
@@ -467,11 +457,9 @@ export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-export const TagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "TagResourceOutput",
-}) as any as S.Schema<TagResourceOutput>;
+export const TagResourceOutput = DeleteContainerOutput as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = AllowedOrigins as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   Resource: string;
   TagKeys: string[];
@@ -482,9 +470,7 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UntagResourceOutput",
-}) as any as S.Schema<UntagResourceOutput>;
+export const UntagResourceOutput = DeleteContainerOutput as any as S.Schema<UntagResourceOutput>;
 export type ErrorMessage = string;
 export type CreateContainerError =
   | ContainerInUseException

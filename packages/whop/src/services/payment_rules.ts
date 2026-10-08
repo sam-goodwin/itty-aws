@@ -578,10 +578,8 @@ export const ReplacePaymentRuleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Custom string-to-string values for your integration. Maximum 50 keys, 40 characters per key, 500 characters per value. */
 export type UpdatePaymentRuleRequestMetadataMap = { [key: string]: string | undefined };
-export const UpdatePaymentRuleRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePaymentRuleRequestMetadataMap>;
+export const UpdatePaymentRuleRequestMetadataMap =
+  CreatePaymentRuleRequestMetadataMap as any as S.Schema<UpdatePaymentRuleRequestMetadataMap>;
 
 export interface UpdatePaymentRuleRequest {
   /** The payment rule ID. */

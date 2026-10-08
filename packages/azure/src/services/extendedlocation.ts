@@ -124,10 +124,8 @@ export const CustomLocationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type CustomLocationsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const CustomLocationsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CustomLocationsCreateOrUpdateResponseTagsMap>;
+export const CustomLocationsCreateOrUpdateResponseTagsMap =
+  CustomLocationsCreateOrUpdateRequestTagsMap as any as S.Schema<CustomLocationsCreateOrUpdateResponseTagsMap>;
 
 /** The identity type. */
 export type IdentityType = "SystemAssigned" | "None";
@@ -284,10 +282,8 @@ export const GetCustomLocationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetCustomLocationResponseTagsMap = { [key: string]: string | undefined };
-export const GetCustomLocationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetCustomLocationResponseTagsMap>;
+export const GetCustomLocationResponseTagsMap =
+  CustomLocationsCreateOrUpdateRequestTagsMap as any as S.Schema<GetCustomLocationResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type GetCustomLocationResponseSystemDataCreatedByType =
@@ -390,10 +386,8 @@ export const ListCustomLocationByResourceGroupRequest = /*@__PURE__*/ S.suspend(
 
 /** Resource tags. */
 export type CustomLocationTagsMap = { [key: string]: string | undefined };
-export const CustomLocationTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CustomLocationTagsMap>;
+export const CustomLocationTagsMap =
+  CustomLocationsCreateOrUpdateRequestTagsMap as any as S.Schema<CustomLocationTagsMap>;
 
 /** The type of identity that created the resource. */
 export type CustomLocationSystemDataCreatedByType =
@@ -747,10 +741,8 @@ export const CustomLocationOperationsList = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type UpdateCustomLocationRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateCustomLocationRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCustomLocationRequestTagsMap>;
+export const UpdateCustomLocationRequestTagsMap =
+  CustomLocationsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCustomLocationRequestTagsMap>;
 
 export interface UpdateCustomLocationRequest {
   /** The ID of the target subscription. */
@@ -788,10 +780,8 @@ export const UpdateCustomLocationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateCustomLocationResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateCustomLocationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCustomLocationResponseTagsMap>;
+export const UpdateCustomLocationResponseTagsMap =
+  CustomLocationsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCustomLocationResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type UpdateCustomLocationResponseSystemDataCreatedByType =

@@ -320,9 +320,7 @@ export interface MemoryMiBRequest {
   min: number;
   max?: number;
 }
-export const MemoryMiBRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ min: S.Number, max: S.optional(S.Number) }),
-).annotate({ identifier: "MemoryMiBRequest" }) as any as S.Schema<MemoryMiBRequest>;
+export const MemoryMiBRequest = VCpuCountRangeRequest as any as S.Schema<MemoryMiBRequest>;
 export type CpuManufacturer = "intel" | "amd" | "amazon-web-services" | (string & {});
 export const CpuManufacturer = S.String;
 
@@ -379,20 +377,14 @@ export interface TotalLocalStorageGBRequest {
   min?: number;
   max?: number;
 }
-export const TotalLocalStorageGBRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ min: S.optional(S.Number), max: S.optional(S.Number) }),
-).annotate({
-  identifier: "TotalLocalStorageGBRequest",
-}) as any as S.Schema<TotalLocalStorageGBRequest>;
+export const TotalLocalStorageGBRequest =
+  NetworkInterfaceCountRequest as any as S.Schema<TotalLocalStorageGBRequest>;
 export interface BaselineEbsBandwidthMbpsRequest {
   min?: number;
   max?: number;
 }
-export const BaselineEbsBandwidthMbpsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ min: S.optional(S.Number), max: S.optional(S.Number) }),
-).annotate({
-  identifier: "BaselineEbsBandwidthMbpsRequest",
-}) as any as S.Schema<BaselineEbsBandwidthMbpsRequest>;
+export const BaselineEbsBandwidthMbpsRequest =
+  NetworkInterfaceCountRequest as any as S.Schema<BaselineEbsBandwidthMbpsRequest>;
 export type AcceleratorType = "gpu" | "fpga" | "inference" | (string & {});
 export const AcceleratorType = S.String;
 
@@ -404,9 +396,8 @@ export interface AcceleratorCountRequest {
   min?: number;
   max?: number;
 }
-export const AcceleratorCountRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ min: S.optional(S.Number), max: S.optional(S.Number) }),
-).annotate({ identifier: "AcceleratorCountRequest" }) as any as S.Schema<AcceleratorCountRequest>;
+export const AcceleratorCountRequest =
+  MemoryGiBPerVCpuRequest as any as S.Schema<AcceleratorCountRequest>;
 export type AcceleratorManufacturer =
   | "amazon-web-services"
   | "amd"
@@ -444,25 +435,18 @@ export interface AcceleratorTotalMemoryMiBRequest {
   min?: number;
   max?: number;
 }
-export const AcceleratorTotalMemoryMiBRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ min: S.optional(S.Number), max: S.optional(S.Number) }),
-).annotate({
-  identifier: "AcceleratorTotalMemoryMiBRequest",
-}) as any as S.Schema<AcceleratorTotalMemoryMiBRequest>;
+export const AcceleratorTotalMemoryMiBRequest =
+  NetworkInterfaceCountRequest as any as S.Schema<AcceleratorTotalMemoryMiBRequest>;
 export interface NetworkBandwidthGbpsRequest {
   min?: number;
   max?: number;
 }
-export const NetworkBandwidthGbpsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ min: S.optional(S.Number), max: S.optional(S.Number) }),
-).annotate({
-  identifier: "NetworkBandwidthGbpsRequest",
-}) as any as S.Schema<NetworkBandwidthGbpsRequest>;
+export const NetworkBandwidthGbpsRequest =
+  NetworkInterfaceCountRequest as any as S.Schema<NetworkBandwidthGbpsRequest>;
 export type AllowedInstanceType = string;
 export type AllowedInstanceTypeSet = string[];
-export const AllowedInstanceTypeSet = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
-);
+export const AllowedInstanceTypeSet =
+  ExcludedInstanceTypeSet as any as S.Schema<AllowedInstanceTypeSet>;
 export interface InstanceRequirementsRequest {
   vCpuCount: VCpuCountRangeRequest;
   memoryMiB: MemoryMiBRequest;
@@ -839,7 +823,7 @@ export const KeyValuePair = /*@__PURE__*/ S.suspend(() =>
 export type Statistics = KeyValuePair[];
 export const Statistics = /*@__PURE__*/ S.Array(KeyValuePair);
 export type AttachmentDetails = KeyValuePair[];
-export const AttachmentDetails = /*@__PURE__*/ S.Array(KeyValuePair);
+export const AttachmentDetails = Statistics as any as S.Schema<AttachmentDetails>;
 export interface Attachment {
   id?: string;
   type?: string;
@@ -996,7 +980,7 @@ export const ExpressGatewayRepositoryCredentials = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExpressGatewayRepositoryCredentials",
 }) as any as S.Schema<ExpressGatewayRepositoryCredentials>;
 export type EnvironmentVariables = KeyValuePair[];
-export const EnvironmentVariables = /*@__PURE__*/ S.Array(KeyValuePair);
+export const EnvironmentVariables = Statistics as any as S.Schema<EnvironmentVariables>;
 export interface Secret {
   name: string;
   valueFrom: string;
@@ -1712,7 +1696,7 @@ export type VpcLatticeConfigurations = VpcLatticeConfiguration[];
 export const VpcLatticeConfigurations = /*@__PURE__*/ S.Array(VpcLatticeConfiguration);
 export type MetricName = string;
 export type MetricNamesList = string[];
-export const MetricNamesList = /*@__PURE__*/ S.Array(S.String);
+export const MetricNamesList = StringList as any as S.Schema<MetricNamesList>;
 export type MetricResolutionSeconds = number;
 export interface MetricConfiguration {
   metricNames: string[];
@@ -2190,11 +2174,8 @@ export const DeleteCapacityProviderRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteCapacityProviderResponse {
   capacityProvider?: CapacityProvider;
 }
-export const DeleteCapacityProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ capacityProvider: S.optional(CapacityProvider) }).pipe(ns),
-).annotate({
-  identifier: "DeleteCapacityProviderResponse",
-}) as any as S.Schema<DeleteCapacityProviderResponse>;
+export const DeleteCapacityProviderResponse =
+  CreateCapacityProviderResponse as any as S.Schema<DeleteCapacityProviderResponse>;
 export interface DeleteClusterRequest {
   cluster: string;
 }
@@ -2206,9 +2187,8 @@ export const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteClusterResponse {
   cluster?: Cluster;
 }
-export const DeleteClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cluster: S.optional(Cluster) }).pipe(ns),
-).annotate({ identifier: "DeleteClusterResponse" }) as any as S.Schema<DeleteClusterResponse>;
+export const DeleteClusterResponse =
+  CreateClusterResponse as any as S.Schema<DeleteClusterResponse>;
 export interface DeleteDaemonRequest {
   daemonArn: string;
 }
@@ -2264,11 +2244,8 @@ export const DeleteExpressGatewayServiceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteExpressGatewayServiceResponse {
   service?: ECSExpressGatewayService;
 }
-export const DeleteExpressGatewayServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ service: S.optional(ECSExpressGatewayService) }).pipe(ns),
-).annotate({
-  identifier: "DeleteExpressGatewayServiceResponse",
-}) as any as S.Schema<DeleteExpressGatewayServiceResponse>;
+export const DeleteExpressGatewayServiceResponse =
+  CreateExpressGatewayServiceResponse as any as S.Schema<DeleteExpressGatewayServiceResponse>;
 export interface DeleteServiceRequest {
   cluster?: string;
   service: string;
@@ -2282,9 +2259,8 @@ export const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteServiceResponse {
   service?: Service;
 }
-export const DeleteServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ service: S.optional(Service) }).pipe(ns),
-).annotate({ identifier: "DeleteServiceResponse" }) as any as S.Schema<DeleteServiceResponse>;
+export const DeleteServiceResponse =
+  CreateServiceResponse as any as S.Schema<DeleteServiceResponse>;
 export interface DeleteTaskDefinitionsRequest {
   taskDefinitions: string[];
 }
@@ -2457,10 +2433,7 @@ export const HostEntry = /*@__PURE__*/ S.suspend(() =>
 export type HostEntryList = HostEntry[];
 export const HostEntryList = /*@__PURE__*/ S.Array(HostEntry);
 export type DockerLabelsMap = { [key: string]: string | undefined };
-export const DockerLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const DockerLabelsMap = LogConfigurationOptionsMap as any as S.Schema<DockerLabelsMap>;
 export type UlimitName =
   | "core"
   | "cpu"
@@ -2531,10 +2504,8 @@ export type FirelensConfigurationType = "fluentd" | "fluentbit" | (string & {});
 export const FirelensConfigurationType = S.String;
 
 export type FirelensConfigurationOptionsMap = { [key: string]: string | undefined };
-export const FirelensConfigurationOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const FirelensConfigurationOptionsMap =
+  LogConfigurationOptionsMap as any as S.Schema<FirelensConfigurationOptionsMap>;
 export interface FirelensConfiguration {
   type: FirelensConfigurationType;
   options?: { [key: string]: string | undefined };
@@ -2763,7 +2734,7 @@ export type TaskDefinitionStatus = "ACTIVE" | "INACTIVE" | "DELETE_IN_PROGRESS" 
 export const TaskDefinitionStatus = S.String;
 
 export type RequiresAttributes = Attribute[];
-export const RequiresAttributes = /*@__PURE__*/ S.Array(Attribute);
+export const RequiresAttributes = Attributes as any as S.Schema<RequiresAttributes>;
 export type TaskDefinitionPlacementConstraintType = "memberOf" | (string & {});
 export const TaskDefinitionPlacementConstraintType = S.String;
 
@@ -2834,7 +2805,8 @@ export type ProxyConfigurationType = "APPMESH" | (string & {});
 export const ProxyConfigurationType = S.String;
 
 export type ProxyConfigurationProperties = KeyValuePair[];
-export const ProxyConfigurationProperties = /*@__PURE__*/ S.Array(KeyValuePair);
+export const ProxyConfigurationProperties =
+  Statistics as any as S.Schema<ProxyConfigurationProperties>;
 export interface ProxyConfiguration {
   type?: ProxyConfigurationType;
   containerName: string;
@@ -2956,9 +2928,8 @@ export const DeleteTaskSetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteTaskSetResponse {
   taskSet?: TaskSet;
 }
-export const DeleteTaskSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ taskSet: S.optional(TaskSet) }).pipe(ns),
-).annotate({ identifier: "DeleteTaskSetResponse" }) as any as S.Schema<DeleteTaskSetResponse>;
+export const DeleteTaskSetResponse =
+  CreateTaskSetResponse as any as S.Schema<DeleteTaskSetResponse>;
 export interface DeregisterContainerInstanceRequest {
   cluster?: string;
   containerInstance: string;
@@ -3694,11 +3665,8 @@ export const DescribeExpressGatewayServiceRequest = /*@__PURE__*/ S.suspend(() =
 export interface DescribeExpressGatewayServiceResponse {
   service?: ECSExpressGatewayService;
 }
-export const DescribeExpressGatewayServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ service: S.optional(ECSExpressGatewayService) }).pipe(ns),
-).annotate({
-  identifier: "DescribeExpressGatewayServiceResponse",
-}) as any as S.Schema<DescribeExpressGatewayServiceResponse>;
+export const DescribeExpressGatewayServiceResponse =
+  CreateExpressGatewayServiceResponse as any as S.Schema<DescribeExpressGatewayServiceResponse>;
 export interface DescribeServiceDeploymentsRequest {
   serviceDeploymentArns: string[];
 }
@@ -3906,15 +3874,9 @@ export interface ContainerImage {
   imageDigest?: string;
   image?: string;
 }
-export const ContainerImage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    containerName: S.optional(S.String),
-    imageDigest: S.optional(S.String),
-    image: S.optional(S.String),
-  }),
-).annotate({ identifier: "ContainerImage" }) as any as S.Schema<ContainerImage>;
+export const ContainerImage = DaemonContainerImage as any as S.Schema<ContainerImage>;
 export type ContainerImages = ContainerImage[];
-export const ContainerImages = /*@__PURE__*/ S.Array(ContainerImage);
+export const ContainerImages = DaemonContainerImages as any as S.Schema<ContainerImages>;
 export interface ServiceRevisionLoadBalancer {
   targetGroupArn?: string;
   productionListenerRule?: string;
@@ -3930,11 +3892,8 @@ export interface ServiceRevisionVpcLatticeConfiguration {
   targetGroupArn?: string;
   productionListenerRule?: string;
 }
-export const ServiceRevisionVpcLatticeConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ targetGroupArn: S.optional(S.String), productionListenerRule: S.optional(S.String) }),
-).annotate({
-  identifier: "ServiceRevisionVpcLatticeConfiguration",
-}) as any as S.Schema<ServiceRevisionVpcLatticeConfiguration>;
+export const ServiceRevisionVpcLatticeConfiguration =
+  ServiceRevisionLoadBalancer as any as S.Schema<ServiceRevisionVpcLatticeConfiguration>;
 export type ServiceRevisionVpcLatticeConfigurations = ServiceRevisionVpcLatticeConfiguration[];
 export const ServiceRevisionVpcLatticeConfigurations = /*@__PURE__*/ S.Array(
   ServiceRevisionVpcLatticeConfiguration,
@@ -4016,28 +3975,14 @@ export interface ManagedListener {
   statusReason?: string;
   updatedAt: Date;
 }
-export const ManagedListener = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    status: ManagedResourceStatus,
-    statusReason: S.optional(S.String),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "ManagedListener" }) as any as S.Schema<ManagedListener>;
+export const ManagedListener = ManagedSecurityGroup as any as S.Schema<ManagedListener>;
 export interface ManagedListenerRule {
   arn?: string;
   status: ManagedResourceStatus;
   statusReason?: string;
   updatedAt: Date;
 }
-export const ManagedListenerRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    status: ManagedResourceStatus,
-    statusReason: S.optional(S.String),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "ManagedListenerRule" }) as any as S.Schema<ManagedListenerRule>;
+export const ManagedListenerRule = ManagedSecurityGroup as any as S.Schema<ManagedListenerRule>;
 export interface ManagedTargetGroup {
   arn?: string;
   status: ManagedResourceStatus;
@@ -4144,16 +4089,9 @@ export interface ManagedMetricAlarm {
   statusReason?: string;
   updatedAt: Date;
 }
-export const ManagedMetricAlarm = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    status: ManagedResourceStatus,
-    statusReason: S.optional(S.String),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "ManagedMetricAlarm" }) as any as S.Schema<ManagedMetricAlarm>;
+export const ManagedMetricAlarm = ManagedSecurityGroup as any as S.Schema<ManagedMetricAlarm>;
 export type ManagedMetricAlarms = ManagedMetricAlarm[];
-export const ManagedMetricAlarms = /*@__PURE__*/ S.Array(ManagedMetricAlarm);
+export const ManagedMetricAlarms = ManagedSecurityGroups as any as S.Schema<ManagedMetricAlarms>;
 export interface ManagedLogGroup {
   arn?: string;
   status: ManagedResourceStatus;
@@ -4391,9 +4329,9 @@ export const ManagedAgent = /*@__PURE__*/ S.suspend(() =>
 export type ManagedAgents = ManagedAgent[];
 export const ManagedAgents = /*@__PURE__*/ S.Array(ManagedAgent);
 export type GpuIds = string[];
-export const GpuIds = /*@__PURE__*/ S.Array(S.String);
+export const GpuIds = StringList as any as S.Schema<GpuIds>;
 export type NeuronDeviceIds = string[];
-export const NeuronDeviceIds = /*@__PURE__*/ S.Array(S.String);
+export const NeuronDeviceIds = StringList as any as S.Schema<NeuronDeviceIds>;
 export interface Container {
   containerArn?: string;
   taskArn?: string;
@@ -5249,11 +5187,8 @@ export const PutAccountSettingRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutAccountSettingResponse {
   setting?: Setting;
 }
-export const PutAccountSettingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ setting: S.optional(Setting) }).pipe(ns),
-).annotate({
-  identifier: "PutAccountSettingResponse",
-}) as any as S.Schema<PutAccountSettingResponse>;
+export const PutAccountSettingResponse =
+  DeleteAccountSettingResponse as any as S.Schema<PutAccountSettingResponse>;
 export interface PutAccountSettingDefaultRequest {
   name: SettingName;
   value: string;
@@ -5268,11 +5203,8 @@ export const PutAccountSettingDefaultRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutAccountSettingDefaultResponse {
   setting?: Setting;
 }
-export const PutAccountSettingDefaultResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ setting: S.optional(Setting) }).pipe(ns),
-).annotate({
-  identifier: "PutAccountSettingDefaultResponse",
-}) as any as S.Schema<PutAccountSettingDefaultResponse>;
+export const PutAccountSettingDefaultResponse =
+  DeleteAccountSettingResponse as any as S.Schema<PutAccountSettingDefaultResponse>;
 export interface PutAttributesRequest {
   cluster?: string;
   attributes: Attribute[];
@@ -5285,9 +5217,8 @@ export const PutAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutAttributesResponse {
   attributes?: Attribute[];
 }
-export const PutAttributesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attributes: S.optional(Attributes) }).pipe(ns),
-).annotate({ identifier: "PutAttributesResponse" }) as any as S.Schema<PutAttributesResponse>;
+export const PutAttributesResponse =
+  DeleteAttributesResponse as any as S.Schema<PutAttributesResponse>;
 export interface PutClusterCapacityProvidersRequest {
   cluster: string;
   capacityProviders: string[];
@@ -5351,11 +5282,8 @@ export const RegisterContainerInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RegisterContainerInstanceResponse {
   containerInstance?: ContainerInstance;
 }
-export const RegisterContainerInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ containerInstance: S.optional(ContainerInstance) }).pipe(ns),
-).annotate({
-  identifier: "RegisterContainerInstanceResponse",
-}) as any as S.Schema<RegisterContainerInstanceResponse>;
+export const RegisterContainerInstanceResponse =
+  DeregisterContainerInstanceResponse as any as S.Schema<RegisterContainerInstanceResponse>;
 export interface RegisterDaemonTaskDefinitionRequest {
   family: string;
   taskRoleArn?: string;
@@ -5387,11 +5315,8 @@ export const RegisterDaemonTaskDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RegisterDaemonTaskDefinitionResponse {
   daemonTaskDefinitionArn?: string;
 }
-export const RegisterDaemonTaskDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ daemonTaskDefinitionArn: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "RegisterDaemonTaskDefinitionResponse",
-}) as any as S.Schema<RegisterDaemonTaskDefinitionResponse>;
+export const RegisterDaemonTaskDefinitionResponse =
+  DeleteDaemonTaskDefinitionResponse as any as S.Schema<RegisterDaemonTaskDefinitionResponse>;
 export interface RegisterTaskDefinitionRequest {
   family: string;
   taskRoleArn?: string;
@@ -5440,11 +5365,8 @@ export interface RegisterTaskDefinitionResponse {
   taskDefinition?: TaskDefinition;
   tags?: Tag[];
 }
-export const RegisterTaskDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ taskDefinition: S.optional(TaskDefinition), tags: S.optional(Tags) }).pipe(ns),
-).annotate({
-  identifier: "RegisterTaskDefinitionResponse",
-}) as any as S.Schema<RegisterTaskDefinitionResponse>;
+export const RegisterTaskDefinitionResponse =
+  DescribeTaskDefinitionResponse as any as S.Schema<RegisterTaskDefinitionResponse>;
 export interface TaskManagedEBSVolumeTerminationPolicy {
   deleteOnTermination: boolean;
 }
@@ -5542,9 +5464,7 @@ export interface RunTaskResponse {
   tasks?: Task[];
   failures?: Failure[];
 }
-export const RunTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tasks: S.optional(Tasks), failures: S.optional(Failures) }).pipe(ns),
-).annotate({ identifier: "RunTaskResponse" }) as any as S.Schema<RunTaskResponse>;
+export const RunTaskResponse = DescribeTasksResponse as any as S.Schema<RunTaskResponse>;
 export interface StartTaskRequest {
   cluster?: string;
   containerInstances: string[];
@@ -5581,9 +5501,7 @@ export interface StartTaskResponse {
   tasks?: Task[];
   failures?: Failure[];
 }
-export const StartTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tasks: S.optional(Tasks), failures: S.optional(Failures) }).pipe(ns),
-).annotate({ identifier: "StartTaskResponse" }) as any as S.Schema<StartTaskResponse>;
+export const StartTaskResponse = DescribeTasksResponse as any as S.Schema<StartTaskResponse>;
 export type StopServiceDeploymentStopType = "ABORT" | "ROLLBACK" | (string & {});
 export const StopServiceDeploymentStopType = S.String;
 
@@ -5602,11 +5520,8 @@ export const StopServiceDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopServiceDeploymentResponse {
   serviceDeploymentArn?: string;
 }
-export const StopServiceDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serviceDeploymentArn: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "StopServiceDeploymentResponse",
-}) as any as S.Schema<StopServiceDeploymentResponse>;
+export const StopServiceDeploymentResponse =
+  ContinueServiceDeploymentResponse as any as S.Schema<StopServiceDeploymentResponse>;
 export interface StopTaskRequest {
   cluster?: string;
   task: string;
@@ -5678,11 +5593,8 @@ export const SubmitContainerStateChangeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SubmitContainerStateChangeResponse {
   acknowledgment?: string;
 }
-export const SubmitContainerStateChangeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ acknowledgment: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "SubmitContainerStateChangeResponse",
-}) as any as S.Schema<SubmitContainerStateChangeResponse>;
+export const SubmitContainerStateChangeResponse =
+  SubmitAttachmentStateChangesResponse as any as S.Schema<SubmitContainerStateChangeResponse>;
 export interface ContainerStateChange {
   containerName?: string;
   imageDigest?: string;
@@ -5752,11 +5664,8 @@ export const SubmitTaskStateChangeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SubmitTaskStateChangeResponse {
   acknowledgment?: string;
 }
-export const SubmitTaskStateChangeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ acknowledgment: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "SubmitTaskStateChangeResponse",
-}) as any as S.Schema<SubmitTaskStateChangeResponse>;
+export const SubmitTaskStateChangeResponse =
+  SubmitAttachmentStateChangesResponse as any as S.Schema<SubmitTaskStateChangeResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: Tag[];
@@ -5771,7 +5680,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pi
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = StringList as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -5782,9 +5691,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface AutoScalingGroupProviderUpdate {
   managedScaling?: ManagedScaling;
   managedTerminationProtection?: ManagedTerminationProtection;
@@ -5860,11 +5767,8 @@ export const UpdateCapacityProviderRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateCapacityProviderResponse {
   capacityProvider?: CapacityProvider;
 }
-export const UpdateCapacityProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ capacityProvider: S.optional(CapacityProvider) }).pipe(ns),
-).annotate({
-  identifier: "UpdateCapacityProviderResponse",
-}) as any as S.Schema<UpdateCapacityProviderResponse>;
+export const UpdateCapacityProviderResponse =
+  CreateCapacityProviderResponse as any as S.Schema<UpdateCapacityProviderResponse>;
 export interface UpdateClusterRequest {
   cluster: string;
   settings?: ClusterSetting[];
@@ -5882,9 +5786,8 @@ export const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateClusterResponse {
   cluster?: Cluster;
 }
-export const UpdateClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cluster: S.optional(Cluster) }).pipe(ns),
-).annotate({ identifier: "UpdateClusterResponse" }) as any as S.Schema<UpdateClusterResponse>;
+export const UpdateClusterResponse =
+  CreateClusterResponse as any as S.Schema<UpdateClusterResponse>;
 export interface UpdateClusterSettingsRequest {
   cluster: string;
   settings: ClusterSetting[];
@@ -5899,11 +5802,8 @@ export const UpdateClusterSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateClusterSettingsResponse {
   cluster?: Cluster;
 }
-export const UpdateClusterSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cluster: S.optional(Cluster) }).pipe(ns),
-).annotate({
-  identifier: "UpdateClusterSettingsResponse",
-}) as any as S.Schema<UpdateClusterSettingsResponse>;
+export const UpdateClusterSettingsResponse =
+  PutClusterCapacityProvidersResponse as any as S.Schema<UpdateClusterSettingsResponse>;
 export interface UpdateContainerAgentRequest {
   cluster?: string;
   containerInstance: string;
@@ -5918,11 +5818,8 @@ export const UpdateContainerAgentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateContainerAgentResponse {
   containerInstance?: ContainerInstance;
 }
-export const UpdateContainerAgentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ containerInstance: S.optional(ContainerInstance) }).pipe(ns),
-).annotate({
-  identifier: "UpdateContainerAgentResponse",
-}) as any as S.Schema<UpdateContainerAgentResponse>;
+export const UpdateContainerAgentResponse =
+  DeregisterContainerInstanceResponse as any as S.Schema<UpdateContainerAgentResponse>;
 export interface UpdateContainerInstancesStateRequest {
   cluster?: string;
   containerInstances: string[];
@@ -5941,14 +5838,8 @@ export interface UpdateContainerInstancesStateResponse {
   containerInstances?: ContainerInstance[];
   failures?: Failure[];
 }
-export const UpdateContainerInstancesStateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    containerInstances: S.optional(ContainerInstances),
-    failures: S.optional(Failures),
-  }).pipe(ns),
-).annotate({
-  identifier: "UpdateContainerInstancesStateResponse",
-}) as any as S.Schema<UpdateContainerInstancesStateResponse>;
+export const UpdateContainerInstancesStateResponse =
+  DescribeContainerInstancesResponse as any as S.Schema<UpdateContainerInstancesStateResponse>;
 export interface UpdateDaemonRequest {
   daemonArn: string;
   daemonTaskDefinitionArn: string;
@@ -5978,15 +5869,7 @@ export interface UpdateDaemonResponse {
   updatedAt?: Date;
   deploymentArn?: string;
 }
-export const UpdateDaemonResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    daemonArn: S.optional(S.String),
-    status: S.optional(DaemonStatus),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    deploymentArn: S.optional(S.String),
-  }).pipe(ns),
-).annotate({ identifier: "UpdateDaemonResponse" }) as any as S.Schema<UpdateDaemonResponse>;
+export const UpdateDaemonResponse = DeleteDaemonResponse as any as S.Schema<UpdateDaemonResponse>;
 export interface UpdateExpressGatewayServiceRequest {
   serviceArn: string;
   executionRoleArn?: string;
@@ -6102,9 +5985,8 @@ export const UpdateServiceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateServiceResponse {
   service?: Service;
 }
-export const UpdateServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ service: S.optional(Service) }).pipe(ns),
-).annotate({ identifier: "UpdateServiceResponse" }) as any as S.Schema<UpdateServiceResponse>;
+export const UpdateServiceResponse =
+  CreateServiceResponse as any as S.Schema<UpdateServiceResponse>;
 export interface UpdateServicePrimaryTaskSetRequest {
   cluster: string;
   service: string;
@@ -6145,11 +6027,8 @@ export interface UpdateTaskProtectionResponse {
   protectedTasks?: ProtectedTask[];
   failures?: Failure[];
 }
-export const UpdateTaskProtectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ protectedTasks: S.optional(ProtectedTasks), failures: S.optional(Failures) }).pipe(ns),
-).annotate({
-  identifier: "UpdateTaskProtectionResponse",
-}) as any as S.Schema<UpdateTaskProtectionResponse>;
+export const UpdateTaskProtectionResponse =
+  GetTaskProtectionResponse as any as S.Schema<UpdateTaskProtectionResponse>;
 export interface UpdateTaskSetRequest {
   cluster: string;
   service: string;
@@ -6164,11 +6043,10 @@ export const UpdateTaskSetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateTaskSetResponse {
   taskSet?: TaskSet;
 }
-export const UpdateTaskSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ taskSet: S.optional(TaskSet) }).pipe(ns),
-).annotate({ identifier: "UpdateTaskSetResponse" }) as any as S.Schema<UpdateTaskSetResponse>;
+export const UpdateTaskSetResponse =
+  CreateTaskSetResponse as any as S.Schema<UpdateTaskSetResponse>;
 export type ResourceIds = string[];
-export const ResourceIds = /*@__PURE__*/ S.Array(S.String);
+export const ResourceIds = StringList as any as S.Schema<ResourceIds>;
 export type ContinueServiceDeploymentError =
   | AccessDeniedException
   | ClientException

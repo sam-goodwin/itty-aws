@@ -1576,9 +1576,7 @@ export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = GoogleVmwareFileService as any as S.Schema<Empty>;
 
 export interface DeleteProjectsLocationsPrivateCloudsRequest {
   /** Optional. Time delay of the deletion specified in hours. The default value is `3`. Specifying a non-zero value for this field changes the value of `PrivateCloud.state` to `DELETED` and sets `expire_time` to the planned deletion time. Deletion can be cancelled before `expire_time` elapses using VmwareEngine.UndeletePrivateCloud. Specifying a value of `0` for this field instead begins the deletion process and ceases billing immediately. During the final deletion process, the value of `PrivateCloud.state` becomes `PURGING`. */
@@ -3925,14 +3923,8 @@ export interface ListPrivateConnectionPeeringRoutesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListPrivateConnectionPeeringRoutesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    peeringRoutes: S.optional(PeeringRouteList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPrivateConnectionPeeringRoutesResponse",
-}) as any as S.Schema<ListPrivateConnectionPeeringRoutesResponse>;
+export const ListPrivateConnectionPeeringRoutesResponse =
+  ListPeeringRoutesResponse as any as S.Schema<ListPrivateConnectionPeeringRoutesResponse>;
 
 export interface ListProjectsLocationsVmwareEngineNetworksRequest {
   /** Required. The resource name of the location to query for VMware Engine networks. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global` */
@@ -4489,13 +4481,8 @@ export interface ResetNsxCredentialsRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const ResetNsxCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResetNsxCredentialsRequest",
-}) as any as S.Schema<ResetNsxCredentialsRequest>;
+export const ResetNsxCredentialsRequest =
+  RepairManagementDnsZoneBindingRequest as any as S.Schema<ResetNsxCredentialsRequest>;
 
 export interface ResetNsxCredentialsProjectsLocationsPrivateCloudsRequest {
   /** Required. The resource name of the private cloud to reset credentials for. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud` */
@@ -4700,13 +4687,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsPrivateCloudsClustersRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -4757,13 +4739,8 @@ export interface UndeletePrivateCloudRequest {
   /** Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const UndeletePrivateCloudRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UndeletePrivateCloudRequest",
-}) as any as S.Schema<UndeletePrivateCloudRequest>;
+export const UndeletePrivateCloudRequest =
+  RepairManagementDnsZoneBindingRequest as any as S.Schema<UndeletePrivateCloudRequest>;
 
 export interface UndeleteProjectsLocationsPrivateCloudsRequest {
   /** Required. The resource name of the private cloud scheduled for deletion. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud` */

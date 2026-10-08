@@ -32,9 +32,8 @@ export const ConfirmPendingSsoLinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfirmPendingSsoLinkRequest>;
 
 export interface ConfirmPendingSsoLinkResponse {}
-export const ConfirmPendingSsoLinkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ConfirmPendingSsoLinkResponse",
-}) as any as S.Schema<ConfirmPendingSsoLinkResponse>;
+export const ConfirmPendingSsoLinkResponse =
+  AcceptPrivacyPoliciesResponse as any as S.Schema<ConfirmPendingSsoLinkResponse>;
 
 export interface DismissPendingSsoLinkRequest {
   id: string;
@@ -48,9 +47,8 @@ export const DismissPendingSsoLinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DismissPendingSsoLinkRequest>;
 
 export interface DismissPendingSsoLinkResponse {}
-export const DismissPendingSsoLinkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DismissPendingSsoLinkResponse",
-}) as any as S.Schema<DismissPendingSsoLinkResponse>;
+export const DismissPendingSsoLinkResponse =
+  AcceptPrivacyPoliciesResponse as any as S.Schema<DismissPendingSsoLinkResponse>;
 
 export interface GetAccountProvidersRequest {}
 export const GetAccountProvidersRequest = /*@__PURE__*/ S.suspend(() =>
@@ -191,9 +189,8 @@ export const LoginRecordRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LoginRecordRequest" }) as any as S.Schema<LoginRecordRequest>;
 
 export interface LoginRecordResponse {}
-export const LoginRecordResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "LoginRecordResponse",
-}) as any as S.Schema<LoginRecordResponse>;
+export const LoginRecordResponse =
+  AcceptPrivacyPoliciesResponse as any as S.Schema<LoginRecordResponse>;
 
 export type AcceptPrivacyPoliciesError = DaytonaOpError;
 /** Accept the current privacy policies */

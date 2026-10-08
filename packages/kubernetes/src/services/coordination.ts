@@ -59,10 +59,8 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE_
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
+export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
 
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
 export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
@@ -300,18 +298,8 @@ export interface IoK8sApiCoordinationV1beta1LeaseCandidateSpec {
   /** strategy is the strategy that coordinated leader election will use for picking the leader. If multiple candidates for the same Lease return different strategies, the strategy provided by the candidate with the latest BinaryVersion will be used. If there is still conflict, this is a user error and coordinated leader election will not operate the Lease until resolved. */
   strategy: string;
 }
-export const IoK8sApiCoordinationV1beta1LeaseCandidateSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    binaryVersion: S.String,
-    emulationVersion: S.optional(S.String),
-    leaseName: S.String,
-    pingTime: S.optional(S.String),
-    renewTime: S.optional(S.String),
-    strategy: S.String,
-  }),
-).annotate({
-  identifier: "IoK8sApiCoordinationV1beta1LeaseCandidateSpec",
-}) as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidateSpec>;
+export const IoK8sApiCoordinationV1beta1LeaseCandidateSpec =
+  IoK8sApiCoordinationV1alpha2LeaseCandidateSpec as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidateSpec>;
 
 export interface CreateCoordinationV1beta1NamespacedLeaseCandidateRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -367,16 +355,8 @@ export interface IoK8sApiCoordinationV1beta1LeaseCandidate {
   /** spec contains the specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec: IoK8sApiCoordinationV1beta1LeaseCandidateSpec;
 }
-export const IoK8sApiCoordinationV1beta1LeaseCandidate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiVersion: S.optional(S.String),
-    kind: S.optional(S.String),
-    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-    spec: IoK8sApiCoordinationV1beta1LeaseCandidateSpec,
-  }),
-).annotate({
-  identifier: "IoK8sApiCoordinationV1beta1LeaseCandidate",
-}) as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidate>;
+export const IoK8sApiCoordinationV1beta1LeaseCandidate =
+  IoK8sApiCoordinationV1alpha2LeaseCandidate as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidate>;
 
 /** LeaseSpec is a specification of a Lease. */
 export interface IoK8sApiCoordinationV1LeaseSpec {
@@ -1074,21 +1054,18 @@ export const GetCoordinationV1alpha2APIResourcesRequest = /*@__PURE__*/ S.suspen
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
 
 /** APIResource specifies the name of a resource and whether it is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResource {
@@ -1365,9 +1342,8 @@ export const ListCoordinationV1beta1LeaseCandidateForAllNamespacesRequest = /*@_
 /** items is a list of schema objects. */
 export type IoK8sApiCoordinationV1beta1LeaseCandidateListItemsList =
   Array<IoK8sApiCoordinationV1beta1LeaseCandidate>;
-export const IoK8sApiCoordinationV1beta1LeaseCandidateListItemsList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoordinationV1beta1LeaseCandidate,
-) as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidateListItemsList>;
+export const IoK8sApiCoordinationV1beta1LeaseCandidateListItemsList =
+  IoK8sApiCoordinationV1alpha2LeaseCandidateListItemsList as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidateListItemsList>;
 
 /** LeaseCandidateList is a list of Lease objects. */
 export interface IoK8sApiCoordinationV1beta1LeaseCandidateList {
@@ -1380,16 +1356,8 @@ export interface IoK8sApiCoordinationV1beta1LeaseCandidateList {
   /** Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiCoordinationV1beta1LeaseCandidateList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiVersion: S.optional(S.String),
-    items: IoK8sApiCoordinationV1beta1LeaseCandidateListItemsList,
-    kind: S.optional(S.String),
-    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
-  }),
-).annotate({
-  identifier: "IoK8sApiCoordinationV1beta1LeaseCandidateList",
-}) as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidateList>;
+export const IoK8sApiCoordinationV1beta1LeaseCandidateList =
+  IoK8sApiCoordinationV1alpha2LeaseCandidateList as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidateList>;
 
 export interface ListCoordinationV1beta1NamespacedLeaseCandidateRequest {
   /** object name and auth scope, such as for teams and projects */

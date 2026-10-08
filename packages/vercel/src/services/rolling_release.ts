@@ -524,9 +524,8 @@ export const CompleteRollingReleaseResponseRollingReleaseStagesItem =
 /** All stages configured for this rolling release */
 export type CompleteRollingReleaseResponseRollingReleaseStagesList =
   Array<ApproveRollingReleaseStageResponseRollingReleaseActiveStage>;
-export const CompleteRollingReleaseResponseRollingReleaseStagesList = /*@__PURE__*/ S.Array(
-  ApproveRollingReleaseStageResponseRollingReleaseActiveStage,
-) as any as S.Schema<CompleteRollingReleaseResponseRollingReleaseStagesList>;
+export const CompleteRollingReleaseResponseRollingReleaseStagesList =
+  ApproveRollingReleaseStageResponseRollingReleaseStagesList as any as S.Schema<CompleteRollingReleaseResponseRollingReleaseStagesList>;
 
 /** The current state of the rolling release */
 export type CompleteRollingReleaseResponseRollingReleaseState = "ABORTED" | "ACTIVE" | "COMPLETE";
@@ -804,9 +803,8 @@ export const GetRollingReleaseResponseRollingReleaseStagesItem =
 /** All stages configured for this rolling release */
 export type GetRollingReleaseResponseRollingReleaseStagesList =
   Array<ApproveRollingReleaseStageResponseRollingReleaseActiveStage>;
-export const GetRollingReleaseResponseRollingReleaseStagesList = /*@__PURE__*/ S.Array(
-  ApproveRollingReleaseStageResponseRollingReleaseActiveStage,
-) as any as S.Schema<GetRollingReleaseResponseRollingReleaseStagesList>;
+export const GetRollingReleaseResponseRollingReleaseStagesList =
+  ApproveRollingReleaseStageResponseRollingReleaseStagesList as any as S.Schema<GetRollingReleaseResponseRollingReleaseStagesList>;
 
 /** The current state of the rolling release */
 export type GetRollingReleaseResponseRollingReleaseState = "ABORTED" | "ACTIVE" | "COMPLETE";
@@ -1026,9 +1024,7 @@ export const GetRollingReleaseConfigResponseRollingReleaseGateAction = S.String;
 export type GetRollingReleaseConfigResponseRollingReleaseGateChecksItemExcludePathsList =
   Array<string>;
 export const GetRollingReleaseConfigResponseRollingReleaseGateChecksItemExcludePathsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRollingReleaseConfigResponseRollingReleaseGateChecksItemExcludePathsList>;
+  GetRollingReleaseBillingStatusResponseBodyCase2EnabledProjectsList as any as S.Schema<GetRollingReleaseConfigResponseRollingReleaseGateChecksItemExcludePathsList>;
 
 /** Response status codes to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
 export type GetRollingReleaseConfigResponseRollingReleaseGateChecksItemExcludeStatusCodesList =
@@ -1352,9 +1348,8 @@ export const StartRollingReleaseResponseRollingReleaseStagesItem =
 /** All stages configured for this rolling release */
 export type StartRollingReleaseResponseRollingReleaseStagesList =
   Array<ApproveRollingReleaseStageResponseRollingReleaseActiveStage>;
-export const StartRollingReleaseResponseRollingReleaseStagesList = /*@__PURE__*/ S.Array(
-  ApproveRollingReleaseStageResponseRollingReleaseActiveStage,
-) as any as S.Schema<StartRollingReleaseResponseRollingReleaseStagesList>;
+export const StartRollingReleaseResponseRollingReleaseStagesList =
+  ApproveRollingReleaseStageResponseRollingReleaseStagesList as any as S.Schema<StartRollingReleaseResponseRollingReleaseStagesList>;
 
 /** The current state of the rolling release */
 export type StartRollingReleaseResponseRollingReleaseState = "ABORTED" | "ACTIVE" | "COMPLETE";
@@ -1445,13 +1440,8 @@ export const UpdateRollingReleaseConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateRollingReleaseConfigResponseBodyCase0 {
   rollingRelease: unknown | null;
 }
-export const UpdateRollingReleaseConfigResponseBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rollingRelease: S.NullOr(S.Unknown),
-  }),
-).annotate({
-  identifier: "UpdateRollingReleaseConfigResponseBodyCase0",
-}) as any as S.Schema<UpdateRollingReleaseConfigResponseBodyCase0>;
+export const UpdateRollingReleaseConfigResponseBodyCase0 =
+  DeleteRollingReleaseConfigResponse as any as S.Schema<UpdateRollingReleaseConfigResponseBodyCase0>;
 
 /** A stage object configured for a rolling release once a new deployment is triggered the first stage will be read in the proxy for first time visitors, and if a RNG < targetPercentage then it will serve the new deployment. Upon approval the next stage will be read, etc. */
 export type UpdateRollingReleaseConfigResponseBodyCase1RollingReleaseStagesItem =

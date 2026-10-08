@@ -146,9 +146,7 @@ export const RenameVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RenameVolumeRequest" }) as any as S.Schema<RenameVolumeRequest>;
 
 export interface RenameVolumeResponse {}
-export const RenameVolumeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RenameVolumeResponse",
-}) as any as S.Schema<RenameVolumeResponse>;
+export const RenameVolumeResponse = DeleteVolumeResponse as any as S.Schema<RenameVolumeResponse>;
 
 export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
@@ -169,9 +167,8 @@ export const VolumeCopyFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeCopyFilesRequest" }) as any as S.Schema<VolumeCopyFilesRequest>;
 
 export interface VolumeCopyFilesResponse {}
-export const VolumeCopyFilesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "VolumeCopyFilesResponse",
-}) as any as S.Schema<VolumeCopyFilesResponse>;
+export const VolumeCopyFilesResponse =
+  DeleteVolumeResponse as any as S.Schema<VolumeCopyFilesResponse>;
 
 export interface VolumeCopyFiles2Request {
   volumeId?: string;
@@ -189,9 +186,8 @@ export const VolumeCopyFiles2Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeCopyFiles2Request" }) as any as S.Schema<VolumeCopyFiles2Request>;
 
 export interface VolumeCopyFiles2Response {}
-export const VolumeCopyFiles2Response = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "VolumeCopyFiles2Response",
-}) as any as S.Schema<VolumeCopyFiles2Response>;
+export const VolumeCopyFiles2Response =
+  DeleteVolumeResponse as any as S.Schema<VolumeCopyFiles2Response>;
 
 export interface VolumeGetByIdRequest {
   volumeId?: string;
@@ -352,9 +348,8 @@ export const VolumeHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeHeartbeatRequest" }) as any as S.Schema<VolumeHeartbeatRequest>;
 
 export interface VolumeHeartbeatResponse {}
-export const VolumeHeartbeatResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "VolumeHeartbeatResponse",
-}) as any as S.Schema<VolumeHeartbeatResponse>;
+export const VolumeHeartbeatResponse =
+  DeleteVolumeResponse as any as S.Schema<VolumeHeartbeatResponse>;
 
 export interface MountFile {
   filename?: string;
@@ -392,9 +387,8 @@ export const VolumePutFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumePutFilesRequest" }) as any as S.Schema<VolumePutFilesRequest>;
 
 export interface VolumePutFilesResponse {}
-export const VolumePutFilesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "VolumePutFilesResponse",
-}) as any as S.Schema<VolumePutFilesResponse>;
+export const VolumePutFilesResponse =
+  DeleteVolumeResponse as any as S.Schema<VolumePutFilesResponse>;
 
 export interface VolumePutFiles2RequestBlock {
   /** The SHA256 digest of the contents of this block, in raw (ie. 32 bytes) form for compactness. */
@@ -502,9 +496,7 @@ export const VolumeReloadRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeReloadRequest" }) as any as S.Schema<VolumeReloadRequest>;
 
 export interface VolumeReloadResponse {}
-export const VolumeReloadResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "VolumeReloadResponse",
-}) as any as S.Schema<VolumeReloadResponse>;
+export const VolumeReloadResponse = DeleteVolumeResponse as any as S.Schema<VolumeReloadResponse>;
 
 export interface VolumeRemoveFileRequest {
   volumeId?: string;
@@ -520,9 +512,8 @@ export const VolumeRemoveFileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeRemoveFileRequest" }) as any as S.Schema<VolumeRemoveFileRequest>;
 
 export interface VolumeRemoveFileResponse {}
-export const VolumeRemoveFileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "VolumeRemoveFileResponse",
-}) as any as S.Schema<VolumeRemoveFileResponse>;
+export const VolumeRemoveFileResponse =
+  DeleteVolumeResponse as any as S.Schema<VolumeRemoveFileResponse>;
 
 export interface VolumeRemoveFile2Request {
   volumeId?: string;
@@ -540,9 +531,8 @@ export const VolumeRemoveFile2Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeRemoveFile2Request" }) as any as S.Schema<VolumeRemoveFile2Request>;
 
 export interface VolumeRemoveFile2Response {}
-export const VolumeRemoveFile2Response = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "VolumeRemoveFile2Response",
-}) as any as S.Schema<VolumeRemoveFile2Response>;
+export const VolumeRemoveFile2Response =
+  DeleteVolumeResponse as any as S.Schema<VolumeRemoveFile2Response>;
 
 export type CommitVolumeError = ModalOpError;
 /** Volumes */

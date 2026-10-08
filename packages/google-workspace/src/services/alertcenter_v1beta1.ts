@@ -188,14 +188,8 @@ export interface BatchUndeleteAlertsResponse {
   /** The successful list of alert IDs. */
   successAlertIds?: StringList;
 }
-export const BatchUndeleteAlertsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failedAlertStatus: S.optional(StatusMap),
-    successAlertIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "BatchUndeleteAlertsResponse",
-}) as any as S.Schema<BatchUndeleteAlertsResponse>;
+export const BatchUndeleteAlertsResponse =
+  BatchDeleteAlertsResponse as any as S.Schema<BatchUndeleteAlertsResponse>;
 
 export type AlertFeedbackTypeEnum =
   | "ALERT_FEEDBACK_TYPE_UNSPECIFIED"

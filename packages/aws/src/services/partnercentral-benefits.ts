@@ -212,9 +212,8 @@ export const CancelBenefitApplicationInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CancelBenefitApplicationInput",
 }) as any as S.Schema<CancelBenefitApplicationInput>;
 export interface CancelBenefitApplicationOutput {}
-export const CancelBenefitApplicationOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CancelBenefitApplicationOutput",
-}) as any as S.Schema<CancelBenefitApplicationOutput>;
+export const CancelBenefitApplicationOutput =
+  AmendBenefitApplicationOutput as any as S.Schema<CancelBenefitApplicationOutput>;
 export type BenefitApplicationName = string;
 export type BenefitApplicationDescription = string;
 export type FulfillmentType = "CREDITS" | "CASH" | "ACCESS" | (string & {});
@@ -311,11 +310,8 @@ export interface CreateBenefitApplicationOutput {
   Arn?: string;
   Revision?: string;
 }
-export const CreateBenefitApplicationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String), Arn: S.optional(S.String), Revision: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateBenefitApplicationOutput",
-}) as any as S.Schema<CreateBenefitApplicationOutput>;
+export const CreateBenefitApplicationOutput =
+  AssociateBenefitApplicationResourceOutput as any as S.Schema<CreateBenefitApplicationOutput>;
 export interface DisassociateBenefitApplicationResourceInput {
   Catalog: string;
   BenefitApplicationIdentifier: string;
@@ -344,11 +340,8 @@ export interface DisassociateBenefitApplicationResourceOutput {
   Arn?: string;
   Revision?: string;
 }
-export const DisassociateBenefitApplicationResourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String), Arn: S.optional(S.String), Revision: S.optional(S.String) }),
-).annotate({
-  identifier: "DisassociateBenefitApplicationResourceOutput",
-}) as any as S.Schema<DisassociateBenefitApplicationResourceOutput>;
+export const DisassociateBenefitApplicationResourceOutput =
+  AssociateBenefitApplicationResourceOutput as any as S.Schema<DisassociateBenefitApplicationResourceOutput>;
 export interface GetBenefitInput {
   Catalog: string;
   Identifier: string;
@@ -360,7 +353,7 @@ export const GetBenefitInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetBenefitInput" }) as any as S.Schema<GetBenefitInput>;
 export type Program = string;
 export type Programs = string[];
-export const Programs = /*@__PURE__*/ S.Array(S.String);
+export const Programs = Arns as any as S.Schema<Programs>;
 export type BenefitStatus = "ACTIVE" | "INACTIVE" | (string & {});
 export const BenefitStatus = S.String;
 
@@ -407,7 +400,7 @@ export const BenefitAllocationStatus = S.String;
 
 export type BenefitId = string;
 export type BenefitIdentifiers = string[];
-export const BenefitIdentifiers = /*@__PURE__*/ S.Array(S.String);
+export const BenefitIdentifiers = Arns as any as S.Schema<BenefitIdentifiers>;
 export type CurrencyCode =
   | "AED"
   | "AMD"
@@ -679,7 +672,7 @@ export const BenefitApplicationStatus = S.String;
 export type BenefitApplicationStage = string;
 export type StatusReasonCode = string;
 export type StatusReasonCodes = string[];
-export const StatusReasonCodes = /*@__PURE__*/ S.Array(S.String);
+export const StatusReasonCodes = Arns as any as S.Schema<StatusReasonCodes>;
 export type FileType =
   | "application/msword"
   | "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
@@ -766,7 +759,8 @@ export const GetBenefitApplicationOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBenefitApplicationOutput",
 }) as any as S.Schema<GetBenefitApplicationOutput>;
 export type BenefitApplicationIdentifierList = string[];
-export const BenefitApplicationIdentifierList = /*@__PURE__*/ S.Array(S.String);
+export const BenefitApplicationIdentifierList =
+  Arns as any as S.Schema<BenefitApplicationIdentifierList>;
 export type BenefitAllocationStatusList = BenefitAllocationStatus[];
 export const BenefitAllocationStatusList = /*@__PURE__*/ S.Array(BenefitAllocationStatus);
 export interface ListBenefitAllocationsInput {
@@ -795,7 +789,7 @@ export const ListBenefitAllocationsInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBenefitAllocationsInput>;
 export type BenefitAllocationName = string;
 export type BenefitIds = string[];
-export const BenefitIds = /*@__PURE__*/ S.Array(S.String);
+export const BenefitIds = Arns as any as S.Schema<BenefitIds>;
 export interface BenefitAllocationSummary {
   Id?: string;
   Catalog?: string;
@@ -843,7 +837,7 @@ export const ListBenefitAllocationsOutput = /*@__PURE__*/ S.suspend(() =>
 export type Statuses = BenefitApplicationStatus[];
 export const Statuses = /*@__PURE__*/ S.Array(BenefitApplicationStatus);
 export type Stages = string[];
-export const Stages = /*@__PURE__*/ S.Array(S.String);
+export const Stages = Arns as any as S.Schema<Stages>;
 export type ResourceType = "OPPORTUNITY" | "BENEFIT_ALLOCATION" | (string & {});
 export const ResourceType = S.String;
 
@@ -1044,9 +1038,8 @@ export const RecallBenefitApplicationInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecallBenefitApplicationInput",
 }) as any as S.Schema<RecallBenefitApplicationInput>;
 export interface RecallBenefitApplicationOutput {}
-export const RecallBenefitApplicationOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RecallBenefitApplicationOutput",
-}) as any as S.Schema<RecallBenefitApplicationOutput>;
+export const RecallBenefitApplicationOutput =
+  AmendBenefitApplicationOutput as any as S.Schema<RecallBenefitApplicationOutput>;
 export interface SubmitBenefitApplicationInput {
   Catalog: string;
   Identifier: string;
@@ -1066,9 +1059,8 @@ export const SubmitBenefitApplicationInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubmitBenefitApplicationInput",
 }) as any as S.Schema<SubmitBenefitApplicationInput>;
 export interface SubmitBenefitApplicationOutput {}
-export const SubmitBenefitApplicationOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SubmitBenefitApplicationOutput",
-}) as any as S.Schema<SubmitBenefitApplicationOutput>;
+export const SubmitBenefitApplicationOutput =
+  AmendBenefitApplicationOutput as any as S.Schema<SubmitBenefitApplicationOutput>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: Tag[];
@@ -1079,11 +1071,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  AmendBenefitApplicationOutput as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = Arns as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -1094,9 +1085,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  AmendBenefitApplicationOutput as any as S.Schema<UntagResourceResponse>;
 export interface UpdateBenefitApplicationInput {
   Catalog: string;
   ClientToken: string;
@@ -1137,11 +1127,8 @@ export interface UpdateBenefitApplicationOutput {
   Arn?: string;
   Revision?: string;
 }
-export const UpdateBenefitApplicationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String), Arn: S.optional(S.String), Revision: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateBenefitApplicationOutput",
-}) as any as S.Schema<UpdateBenefitApplicationOutput>;
+export const UpdateBenefitApplicationOutput =
+  AssociateBenefitApplicationResourceOutput as any as S.Schema<UpdateBenefitApplicationOutput>;
 export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"

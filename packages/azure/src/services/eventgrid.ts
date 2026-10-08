@@ -404,10 +404,8 @@ export const AuthorizePartnerConfigurationPartnerResponseSystemData = /*@__PURE_
 export type AuthorizePartnerConfigurationPartnerResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const AuthorizePartnerConfigurationPartnerResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AuthorizePartnerConfigurationPartnerResponseTagsMap>;
+export const AuthorizePartnerConfigurationPartnerResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<AuthorizePartnerConfigurationPartnerResponseTagsMap>;
 
 export interface AuthorizePartnerConfigurationPartnerResponse {
   /** Fully qualified identifier of the resource. */
@@ -1003,10 +1001,8 @@ export const ClientPropertiesState = S.String;
 
 /** Attributes for the client. Supported values are int, bool, string, string[]. Example: "attributes": { "room": "345", "floor": 12, "deviceTypes": ["Fan", "Light"] } */
 export type ClientPropertiesAttributesMap = { [key: string]: unknown | undefined };
-export const ClientPropertiesAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ClientPropertiesAttributesMap>;
+export const ClientPropertiesAttributesMap =
+  ClientPropertiesInputAttributesMap as any as S.Schema<ClientPropertiesAttributesMap>;
 
 /** Provisioning state of the Client resource. */
 export type ClientPropertiesProvisioningState =
@@ -1140,10 +1136,8 @@ export const DeactivatePartnerTopicRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type DeactivatePartnerTopicResponseTagsMap = { [key: string]: string | undefined };
-export const DeactivatePartnerTopicResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DeactivatePartnerTopicResponseTagsMap>;
+export const DeactivatePartnerTopicResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<DeactivatePartnerTopicResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type DeactivatePartnerTopicResponseSystemDataCreatedByType =
@@ -1282,9 +1276,8 @@ export const DeleteChannelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteChannelRequest" }) as any as S.Schema<DeleteChannelRequest>;
 
 export interface DeleteChannelResponse {}
-export const DeleteChannelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteChannelResponse",
-}) as any as S.Schema<DeleteChannelResponse>;
+export const DeleteChannelResponse =
+  DeleteCaCertificateResponse as any as S.Schema<DeleteChannelResponse>;
 
 export interface DeleteClientRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1313,9 +1306,8 @@ export const DeleteClientRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteClientRequest" }) as any as S.Schema<DeleteClientRequest>;
 
 export interface DeleteClientResponse {}
-export const DeleteClientResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteClientResponse",
-}) as any as S.Schema<DeleteClientResponse>;
+export const DeleteClientResponse =
+  DeleteCaCertificateResponse as any as S.Schema<DeleteClientResponse>;
 
 export interface DeleteClientGroupRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1344,9 +1336,8 @@ export const DeleteClientGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteClientGroupRequest" }) as any as S.Schema<DeleteClientGroupRequest>;
 
 export interface DeleteClientGroupResponse {}
-export const DeleteClientGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteClientGroupResponse",
-}) as any as S.Schema<DeleteClientGroupResponse>;
+export const DeleteClientGroupResponse =
+  DeleteCaCertificateResponse as any as S.Schema<DeleteClientGroupResponse>;
 
 export interface DeleteDomainRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1372,9 +1363,8 @@ export const DeleteDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDomainRequest" }) as any as S.Schema<DeleteDomainRequest>;
 
 export interface DeleteDomainResponse {}
-export const DeleteDomainResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDomainResponse",
-}) as any as S.Schema<DeleteDomainResponse>;
+export const DeleteDomainResponse =
+  DeleteCaCertificateResponse as any as S.Schema<DeleteDomainResponse>;
 
 export interface DeleteDomainEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1438,9 +1428,8 @@ export const DeleteDomainTopicRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDomainTopicRequest" }) as any as S.Schema<DeleteDomainTopicRequest>;
 
 export interface DeleteDomainTopicResponse {}
-export const DeleteDomainTopicResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDomainTopicResponse",
-}) as any as S.Schema<DeleteDomainTopicResponse>;
+export const DeleteDomainTopicResponse =
+  DeleteCaCertificateResponse as any as S.Schema<DeleteDomainTopicResponse>;
 
 export interface DeleteDomainTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1474,11 +1463,8 @@ export const DeleteDomainTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteDomainTopicEventSubscriptionRequest>;
 
 export interface DeleteDomainTopicEventSubscriptionResponse {}
-export const DeleteDomainTopicEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDomainTopicEventSubscriptionResponse",
-}) as any as S.Schema<DeleteDomainTopicEventSubscriptionResponse>;
+export const DeleteDomainTopicEventSubscriptionResponse =
+  DeleteDomainEventSubscriptionResponse as any as S.Schema<DeleteDomainTopicEventSubscriptionResponse>;
 
 export interface DeleteEventSubscriptionRequest {
   /** The scope of the event subscription. The scope can be a subscription, or a resource group, or a top level resource belonging to a resource provider namespace, or an EventGrid topic. For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a resource group, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}' for a resource, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}' for an EventGrid topic. */
@@ -1531,9 +1517,8 @@ export const DeleteNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteNamespaceRequest" }) as any as S.Schema<DeleteNamespaceRequest>;
 
 export interface DeleteNamespaceResponse {}
-export const DeleteNamespaceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNamespaceResponse",
-}) as any as S.Schema<DeleteNamespaceResponse>;
+export const DeleteNamespaceResponse =
+  DeleteCaCertificateResponse as any as S.Schema<DeleteNamespaceResponse>;
 
 export interface DeleteNamespaceTopicRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1564,9 +1549,8 @@ export const DeleteNamespaceTopicRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteNamespaceTopicRequest>;
 
 export interface DeleteNamespaceTopicResponse {}
-export const DeleteNamespaceTopicResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNamespaceTopicResponse",
-}) as any as S.Schema<DeleteNamespaceTopicResponse>;
+export const DeleteNamespaceTopicResponse =
+  DeleteCaCertificateResponse as any as S.Schema<DeleteNamespaceTopicResponse>;
 
 export interface DeleteNamespaceTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1600,11 +1584,8 @@ export const DeleteNamespaceTopicEventSubscriptionRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DeleteNamespaceTopicEventSubscriptionRequest>;
 
 export interface DeleteNamespaceTopicEventSubscriptionResponse {}
-export const DeleteNamespaceTopicEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteNamespaceTopicEventSubscriptionResponse",
-}) as any as S.Schema<DeleteNamespaceTopicEventSubscriptionResponse>;
+export const DeleteNamespaceTopicEventSubscriptionResponse =
+  DeleteDomainEventSubscriptionResponse as any as S.Schema<DeleteNamespaceTopicEventSubscriptionResponse>;
 
 export interface DeletePartnerConfigurationRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1629,11 +1610,8 @@ export const DeletePartnerConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePartnerConfigurationRequest>;
 
 export interface DeletePartnerConfigurationResponse {}
-export const DeletePartnerConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePartnerConfigurationResponse",
-}) as any as S.Schema<DeletePartnerConfigurationResponse>;
+export const DeletePartnerConfigurationResponse =
+  DeleteDomainEventSubscriptionResponse as any as S.Schema<DeletePartnerConfigurationResponse>;
 
 export interface DeletePartnerNamespaceRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1661,9 +1639,8 @@ export const DeletePartnerNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePartnerNamespaceRequest>;
 
 export interface DeletePartnerNamespaceResponse {}
-export const DeletePartnerNamespaceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePartnerNamespaceResponse",
-}) as any as S.Schema<DeletePartnerNamespaceResponse>;
+export const DeletePartnerNamespaceResponse =
+  DeleteCaCertificateResponse as any as S.Schema<DeletePartnerNamespaceResponse>;
 
 export interface DeletePartnerRegistrationRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1691,11 +1668,8 @@ export const DeletePartnerRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePartnerRegistrationRequest>;
 
 export interface DeletePartnerRegistrationResponse {}
-export const DeletePartnerRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePartnerRegistrationResponse",
-}) as any as S.Schema<DeletePartnerRegistrationResponse>;
+export const DeletePartnerRegistrationResponse =
+  DeleteDomainEventSubscriptionResponse as any as S.Schema<DeletePartnerRegistrationResponse>;
 
 export interface DeletePartnerTopicRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1723,9 +1697,8 @@ export const DeletePartnerTopicRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePartnerTopicRequest>;
 
 export interface DeletePartnerTopicResponse {}
-export const DeletePartnerTopicResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePartnerTopicResponse",
-}) as any as S.Schema<DeletePartnerTopicResponse>;
+export const DeletePartnerTopicResponse =
+  DeleteCaCertificateResponse as any as S.Schema<DeletePartnerTopicResponse>;
 
 export interface DeletePartnerTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1756,11 +1729,8 @@ export const DeletePartnerTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeletePartnerTopicEventSubscriptionRequest>;
 
 export interface DeletePartnerTopicEventSubscriptionResponse {}
-export const DeletePartnerTopicEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePartnerTopicEventSubscriptionResponse",
-}) as any as S.Schema<DeletePartnerTopicEventSubscriptionResponse>;
+export const DeletePartnerTopicEventSubscriptionResponse =
+  DeleteDomainEventSubscriptionResponse as any as S.Schema<DeletePartnerTopicEventSubscriptionResponse>;
 
 export interface DeletePermissionBindingRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1791,9 +1761,8 @@ export const DeletePermissionBindingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePermissionBindingRequest>;
 
 export interface DeletePermissionBindingResponse {}
-export const DeletePermissionBindingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeletePermissionBindingResponse" },
-) as any as S.Schema<DeletePermissionBindingResponse>;
+export const DeletePermissionBindingResponse =
+  DeleteEventSubscriptionResponse as any as S.Schema<DeletePermissionBindingResponse>;
 
 export type DeletePrivateEndpointConnectionRequestParentType =
   | "topics"
@@ -1834,11 +1803,8 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePrivateEndpointConnectionResponse",
-}) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
+export const DeletePrivateEndpointConnectionResponse =
+  DeleteDomainEventSubscriptionResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
 
 export interface DeleteSystemTopicRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1864,9 +1830,8 @@ export const DeleteSystemTopicRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSystemTopicRequest" }) as any as S.Schema<DeleteSystemTopicRequest>;
 
 export interface DeleteSystemTopicResponse {}
-export const DeleteSystemTopicResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSystemTopicResponse",
-}) as any as S.Schema<DeleteSystemTopicResponse>;
+export const DeleteSystemTopicResponse =
+  DeleteCaCertificateResponse as any as S.Schema<DeleteSystemTopicResponse>;
 
 export interface DeleteSystemTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1897,11 +1862,8 @@ export const DeleteSystemTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteSystemTopicEventSubscriptionRequest>;
 
 export interface DeleteSystemTopicEventSubscriptionResponse {}
-export const DeleteSystemTopicEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSystemTopicEventSubscriptionResponse",
-}) as any as S.Schema<DeleteSystemTopicEventSubscriptionResponse>;
+export const DeleteSystemTopicEventSubscriptionResponse =
+  DeleteDomainEventSubscriptionResponse as any as S.Schema<DeleteSystemTopicEventSubscriptionResponse>;
 
 export interface DeleteTopicRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1927,9 +1889,8 @@ export const DeleteTopicRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTopicRequest" }) as any as S.Schema<DeleteTopicRequest>;
 
 export interface DeleteTopicResponse {}
-export const DeleteTopicResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTopicResponse",
-}) as any as S.Schema<DeleteTopicResponse>;
+export const DeleteTopicResponse =
+  DeleteCaCertificateResponse as any as S.Schema<DeleteTopicResponse>;
 
 export interface DeleteTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1960,11 +1921,8 @@ export const DeleteTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTopicEventSubscriptionRequest>;
 
 export interface DeleteTopicEventSubscriptionResponse {}
-export const DeleteTopicEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteTopicEventSubscriptionResponse",
-}) as any as S.Schema<DeleteTopicEventSubscriptionResponse>;
+export const DeleteTopicEventSubscriptionResponse =
+  DeleteDomainEventSubscriptionResponse as any as S.Schema<DeleteTopicEventSubscriptionResponse>;
 
 export interface DeleteTopicSpaceRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1993,9 +1951,8 @@ export const DeleteTopicSpaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTopicSpaceRequest" }) as any as S.Schema<DeleteTopicSpaceRequest>;
 
 export interface DeleteTopicSpaceResponse {}
-export const DeleteTopicSpaceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTopicSpaceResponse",
-}) as any as S.Schema<DeleteTopicSpaceResponse>;
+export const DeleteTopicSpaceResponse =
+  DeleteCaCertificateResponse as any as S.Schema<DeleteTopicSpaceResponse>;
 
 /** Type of the endpoint for the event subscription destination. */
 export type EventSubscriptionDestinationEndpointType =
@@ -2064,9 +2021,8 @@ export const DeliveryWithResourceIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of applicable event types that need to be part of the event subscription. If it is desired to subscribe to all default event types, set the IncludedEventTypes to null. */
 export type EventSubscriptionFilterIncludedEventTypesList = Array<string>;
-export const EventSubscriptionFilterIncludedEventTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EventSubscriptionFilterIncludedEventTypesList>;
+export const EventSubscriptionFilterIncludedEventTypesList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<EventSubscriptionFilterIncludedEventTypesList>;
 
 /** The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others. */
 export type AdvancedFilterOperatorType =
@@ -2145,9 +2101,8 @@ export const EventSubscriptionFilter = /*@__PURE__*/ S.suspend(() =>
 
 /** List of user defined labels. */
 export type EventSubscriptionPropertiesInputLabelsList = Array<string>;
-export const EventSubscriptionPropertiesInputLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EventSubscriptionPropertiesInputLabelsList>;
+export const EventSubscriptionPropertiesInputLabelsList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<EventSubscriptionPropertiesInputLabelsList>;
 
 /** The event delivery schema for the event subscription. */
 export type EventSubscriptionPropertiesInputEventDeliverySchema =
@@ -2285,9 +2240,8 @@ export const EventSubscriptionPropertiesProvisioningState = S.String;
 
 /** List of user defined labels. */
 export type EventSubscriptionPropertiesLabelsList = Array<string>;
-export const EventSubscriptionPropertiesLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EventSubscriptionPropertiesLabelsList>;
+export const EventSubscriptionPropertiesLabelsList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<EventSubscriptionPropertiesLabelsList>;
 
 /** The event delivery schema for the event subscription. */
 export type EventSubscriptionPropertiesEventDeliverySchema =
@@ -2414,10 +2368,8 @@ export const DomainEventSubscriptionsCreateOrUpdateResponse = /*@__PURE__*/ S.su
 
 /** Tags of the resource. */
 export type DomainsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const DomainsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DomainsCreateOrUpdateRequestTagsMap>;
+export const DomainsCreateOrUpdateRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<DomainsCreateOrUpdateRequestTagsMap>;
 
 /** Minimum TLS version of the publisher allowed to publish to this domain */
 export type DomainPropertiesInputMinimumTlsVersionAllowed = "1.0" | "1.1" | "1.2";
@@ -2556,10 +2508,8 @@ export const DomainsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type DomainsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const DomainsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DomainsCreateOrUpdateResponseTagsMap>;
+export const DomainsCreateOrUpdateResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<DomainsCreateOrUpdateResponseTagsMap>;
 
 /** PrivateEndpoint information. */
 export interface PrivateEndpoint {
@@ -2574,9 +2524,8 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** GroupIds from the private link service resource. */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
-export const PrivateEndpointConnectionPropertiesGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
+export const PrivateEndpointConnectionPropertiesGroupIdsList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
 
 /** Status of the connection. */
 export type ConnectionStateStatus = "Pending" | "Approved" | "Rejected" | "Disconnected";
@@ -2685,9 +2634,8 @@ export const DomainPropertiesPublicNetworkAccess = S.String;
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type DomainPropertiesInboundIpRulesList = Array<InboundIpRule>;
-export const DomainPropertiesInboundIpRulesList = /*@__PURE__*/ S.Array(
-  InboundIpRule,
-) as any as S.Schema<DomainPropertiesInboundIpRulesList>;
+export const DomainPropertiesInboundIpRulesList =
+  DomainPropertiesInputInboundIpRulesList as any as S.Schema<DomainPropertiesInboundIpRulesList>;
 
 /** Data Residency Boundary of the resource. */
 export type DomainPropertiesDataResidencyBoundary = "WithinGeopair" | "WithinRegion";
@@ -3570,10 +3518,8 @@ export const GetDomainRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type GetDomainResponseTagsMap = { [key: string]: string | undefined };
-export const GetDomainResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDomainResponseTagsMap>;
+export const GetDomainResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<GetDomainResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type GetDomainResponseSystemDataCreatedByType =
@@ -4353,16 +4299,13 @@ export const GetNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type GetNamespaceResponseTagsMap = { [key: string]: string | undefined };
-export const GetNamespaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetNamespaceResponseTagsMap>;
+export const GetNamespaceResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<GetNamespaceResponseTagsMap>;
 
 /** List of private endpoint connections. */
 export type NamespacePropertiesPrivateEndpointConnectionsList = Array<PrivateEndpointConnection>;
-export const NamespacePropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
-  PrivateEndpointConnection,
-) as any as S.Schema<NamespacePropertiesPrivateEndpointConnectionsList>;
+export const NamespacePropertiesPrivateEndpointConnectionsList =
+  DomainPropertiesPrivateEndpointConnectionsList as any as S.Schema<NamespacePropertiesPrivateEndpointConnectionsList>;
 
 /** Provisioning state of the namespace resource. */
 export type NamespacePropertiesProvisioningState =
@@ -4526,9 +4469,8 @@ export const RoutingIdentityInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** List of custom domain configurations for the namespace. */
 export type TopicSpacesConfigurationCustomDomainsList = Array<CustomDomainConfiguration>;
-export const TopicSpacesConfigurationCustomDomainsList = /*@__PURE__*/ S.Array(
-  CustomDomainConfiguration,
-) as any as S.Schema<TopicSpacesConfigurationCustomDomainsList>;
+export const TopicSpacesConfigurationCustomDomainsList =
+  TopicsConfigurationCustomDomainsList as any as S.Schema<TopicSpacesConfigurationCustomDomainsList>;
 
 /** Properties of the Topic Spaces Configuration. */
 export interface TopicSpacesConfiguration {
@@ -4568,9 +4510,8 @@ export const NamespacePropertiesPublicNetworkAccess = S.String;
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type NamespacePropertiesInboundIpRulesList = Array<InboundIpRule>;
-export const NamespacePropertiesInboundIpRulesList = /*@__PURE__*/ S.Array(
-  InboundIpRule,
-) as any as S.Schema<NamespacePropertiesInboundIpRulesList>;
+export const NamespacePropertiesInboundIpRulesList =
+  DomainPropertiesInputInboundIpRulesList as any as S.Schema<NamespacePropertiesInboundIpRulesList>;
 
 /** Minimum TLS version of the publisher allowed to publish to this namespace. Only TLS version 1.2 is supported. */
 export type NamespacePropertiesMinimumTlsVersionAllowed = "1.0" | "1.1" | "1.2";
@@ -4956,9 +4897,8 @@ export const SubscriptionPropertiesEventDeliverySchema = S.String;
 
 /** A list of applicable event types that need to be part of the event subscription. If it is desired to subscribe to all default event types, set the IncludedEventTypes to null. */
 export type FiltersConfigurationIncludedEventTypesList = Array<string>;
-export const FiltersConfigurationIncludedEventTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FiltersConfigurationIncludedEventTypesList>;
+export const FiltersConfigurationIncludedEventTypesList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<FiltersConfigurationIncludedEventTypesList>;
 
 /** The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others. */
 export type FilterOperatorType =
@@ -5184,11 +5124,7 @@ export interface SubscriptionFullUrl {
   /** The URL that represents the endpoint of the destination of an event subscription. */
   endpointUrl?: string;
 }
-export const SubscriptionFullUrl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpointUrl: S.optional(S.String),
-  }),
-).annotate({ identifier: "SubscriptionFullUrl" }) as any as S.Schema<SubscriptionFullUrl>;
+export const SubscriptionFullUrl = EventSubscriptionFullUrl as any as S.Schema<SubscriptionFullUrl>;
 
 export interface GetPartnerConfigurationRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -5258,10 +5194,8 @@ export const GetPartnerConfigurationResponseSystemData = /*@__PURE__*/ S.suspend
 
 /** Tags of the resource. */
 export type GetPartnerConfigurationResponseTagsMap = { [key: string]: string | undefined };
-export const GetPartnerConfigurationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPartnerConfigurationResponseTagsMap>;
+export const GetPartnerConfigurationResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<GetPartnerConfigurationResponseTagsMap>;
 
 export interface GetPartnerConfigurationResponse {
   /** Fully qualified identifier of the resource. */
@@ -5320,17 +5254,14 @@ export const GetPartnerNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type GetPartnerNamespaceResponseTagsMap = { [key: string]: string | undefined };
-export const GetPartnerNamespaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPartnerNamespaceResponseTagsMap>;
+export const GetPartnerNamespaceResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<GetPartnerNamespaceResponseTagsMap>;
 
 /** List of private endpoint connections. */
 export type PartnerNamespacePropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
-export const PartnerNamespacePropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
-  PrivateEndpointConnection,
-) as any as S.Schema<PartnerNamespacePropertiesPrivateEndpointConnectionsList>;
+export const PartnerNamespacePropertiesPrivateEndpointConnectionsList =
+  DomainPropertiesPrivateEndpointConnectionsList as any as S.Schema<PartnerNamespacePropertiesPrivateEndpointConnectionsList>;
 
 /** Provisioning state of the partner namespace. */
 export type PartnerNamespacePropertiesProvisioningState =
@@ -5352,9 +5283,8 @@ export const PartnerNamespacePropertiesPublicNetworkAccess = S.String;
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type PartnerNamespacePropertiesInboundIpRulesList = Array<InboundIpRule>;
-export const PartnerNamespacePropertiesInboundIpRulesList = /*@__PURE__*/ S.Array(
-  InboundIpRule,
-) as any as S.Schema<PartnerNamespacePropertiesInboundIpRulesList>;
+export const PartnerNamespacePropertiesInboundIpRulesList =
+  DomainPropertiesInputInboundIpRulesList as any as S.Schema<PartnerNamespacePropertiesInboundIpRulesList>;
 
 /** This determines if events published to this partner namespace should use the source attribute in the event payload or use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic. */
 export type PartnerNamespacePropertiesPartnerTopicRoutingMode =
@@ -5502,10 +5432,8 @@ export const GetPartnerRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type GetPartnerRegistrationResponseTagsMap = { [key: string]: string | undefined };
-export const GetPartnerRegistrationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPartnerRegistrationResponseTagsMap>;
+export const GetPartnerRegistrationResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<GetPartnerRegistrationResponseTagsMap>;
 
 /** Provisioning state of the partner registration. */
 export type PartnerRegistrationPropertiesProvisioningState =
@@ -5632,10 +5560,8 @@ export const GetPartnerTopicRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type GetPartnerTopicResponseTagsMap = { [key: string]: string | undefined };
-export const GetPartnerTopicResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPartnerTopicResponseTagsMap>;
+export const GetPartnerTopicResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<GetPartnerTopicResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type GetPartnerTopicResponseSystemDataCreatedByType =
@@ -6051,16 +5977,8 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Properties of the PrivateEndpointConnection. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "GetPrivateEndpointConnectionResponse",
-}) as any as S.Schema<GetPrivateEndpointConnectionResponse>;
+export const GetPrivateEndpointConnectionResponse =
+  PrivateEndpointConnection as any as S.Schema<GetPrivateEndpointConnectionResponse>;
 
 export interface GetPrivateLinkResourceRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -6094,14 +6012,12 @@ export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPrivateLinkResourceRequest>;
 
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+export const PrivateLinkResourcePropertiesRequiredMembersList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 export interface PrivateLinkResourceProperties {
   groupId?: string;
@@ -6165,10 +6081,8 @@ export const GetSystemTopicRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type GetSystemTopicResponseTagsMap = { [key: string]: string | undefined };
-export const GetSystemTopicResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetSystemTopicResponseTagsMap>;
+export const GetSystemTopicResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<GetSystemTopicResponseTagsMap>;
 
 /** Provisioning state of the system topic. */
 export type SystemTopicPropertiesProvisioningState =
@@ -6455,16 +6369,13 @@ export const GetTopicRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type GetTopicResponseTagsMap = { [key: string]: string | undefined };
-export const GetTopicResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetTopicResponseTagsMap>;
+export const GetTopicResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<GetTopicResponseTagsMap>;
 
 /** List of private endpoint connections. */
 export type TopicPropertiesPrivateEndpointConnectionsList = Array<PrivateEndpointConnection>;
-export const TopicPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
-  PrivateEndpointConnection,
-) as any as S.Schema<TopicPropertiesPrivateEndpointConnectionsList>;
+export const TopicPropertiesPrivateEndpointConnectionsList =
+  DomainPropertiesPrivateEndpointConnectionsList as any as S.Schema<TopicPropertiesPrivateEndpointConnectionsList>;
 
 /** Provisioning state of the topic. */
 export type TopicPropertiesProvisioningState =
@@ -6493,9 +6404,8 @@ export const TopicPropertiesPublicNetworkAccess = S.String;
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type TopicPropertiesInboundIpRulesList = Array<InboundIpRule>;
-export const TopicPropertiesInboundIpRulesList = /*@__PURE__*/ S.Array(
-  InboundIpRule,
-) as any as S.Schema<TopicPropertiesInboundIpRulesList>;
+export const TopicPropertiesInboundIpRulesList =
+  DomainPropertiesInputInboundIpRulesList as any as S.Schema<TopicPropertiesInboundIpRulesList>;
 
 /** Data Residency Boundary of the resource. */
 export type TopicPropertiesDataResidencyBoundary = "WithinGeopair" | "WithinRegion";
@@ -6800,9 +6710,8 @@ export const GetTopicSpaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The topic filters in the topic space. Example: "topicTemplates": [ "devices/foo/bar", "devices/topic1/+", "devices/${principal.name}/${principal.attributes.keyName}" ]. */
 export type TopicSpacePropertiesTopicTemplatesList = Array<string>;
-export const TopicSpacePropertiesTopicTemplatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TopicSpacePropertiesTopicTemplatesList>;
+export const TopicSpacePropertiesTopicTemplatesList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<TopicSpacePropertiesTopicTemplatesList>;
 
 /** Provisioning state of the TopicSpace resource. */
 export type TopicSpacePropertiesProvisioningState =
@@ -6931,9 +6840,8 @@ export const TopicTypePropertiesProvisioningState = S.String;
 
 /** List of locations supported by this topic type. */
 export type TopicTypePropertiesSupportedLocationsList = Array<string>;
-export const TopicTypePropertiesSupportedLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TopicTypePropertiesSupportedLocationsList>;
+export const TopicTypePropertiesSupportedLocationsList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<TopicTypePropertiesSupportedLocationsList>;
 
 export type TopicTypePropertiesSupportedScopesForSourceItem =
   | "Resource"
@@ -7643,10 +7551,7 @@ export const ListDomainByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type DomainTagsMap = { [key: string]: string | undefined };
-export const DomainTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DomainTagsMap>;
+export const DomainTagsMap = ActivatePartnerTopicResponseTagsMap as any as S.Schema<DomainTagsMap>;
 
 /** The type of identity that created the resource. */
 export type DomainSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
@@ -8405,10 +8310,8 @@ export const ListNamespaceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type NamespaceTagsMap = { [key: string]: string | undefined };
-export const NamespaceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamespaceTagsMap>;
+export const NamespaceTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<NamespaceTagsMap>;
 
 /** The type of identity that created the resource. */
 export type NamespaceSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
@@ -8842,12 +8745,8 @@ export interface TopicSharedAccessKeys {
   /** Shared access key2 for the topic. */
   key2?: string;
 }
-export const TopicSharedAccessKeys = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key1: S.optional(S.String),
-    key2: S.optional(S.String),
-  }),
-).annotate({ identifier: "TopicSharedAccessKeys" }) as any as S.Schema<TopicSharedAccessKeys>;
+export const TopicSharedAccessKeys =
+  DomainSharedAccessKeys as any as S.Schema<TopicSharedAccessKeys>;
 
 export interface ListOperationsRequest {}
 export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -8989,10 +8888,8 @@ export const PartnerConfigurationSystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type PartnerConfigurationTagsMap = { [key: string]: string | undefined };
-export const PartnerConfigurationTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PartnerConfigurationTagsMap>;
+export const PartnerConfigurationTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerConfigurationTagsMap>;
 
 /** Partner configuration information */
 export interface PartnerConfiguration {
@@ -9100,10 +8997,8 @@ export const ListPartnerNamespaceByResourceGroupRequest = /*@__PURE__*/ S.suspen
 
 /** Tags of the resource. */
 export type PartnerNamespaceTagsMap = { [key: string]: string | undefined };
-export const PartnerNamespaceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PartnerNamespaceTagsMap>;
+export const PartnerNamespaceTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerNamespaceTagsMap>;
 
 /** The type of identity that created the resource. */
 export type PartnerNamespaceSystemDataCreatedByType =
@@ -9257,14 +9152,8 @@ export interface PartnerNamespaceSharedAccessKeys {
   /** Shared access key2 for the partner namespace. */
   key2?: string;
 }
-export const PartnerNamespaceSharedAccessKeys = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key1: S.optional(S.String),
-    key2: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PartnerNamespaceSharedAccessKeys",
-}) as any as S.Schema<PartnerNamespaceSharedAccessKeys>;
+export const PartnerNamespaceSharedAccessKeys =
+  NamespaceSharedAccessKeys as any as S.Schema<PartnerNamespaceSharedAccessKeys>;
 
 export interface ListPartnerRegistrationByResourceGroupRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -9296,10 +9185,8 @@ export const ListPartnerRegistrationByResourceGroupRequest = /*@__PURE__*/ S.sus
 
 /** Tags of the resource. */
 export type PartnerRegistrationTagsMap = { [key: string]: string | undefined };
-export const PartnerRegistrationTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PartnerRegistrationTagsMap>;
+export const PartnerRegistrationTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerRegistrationTagsMap>;
 
 /** The type of identity that created the resource. */
 export type PartnerRegistrationSystemDataCreatedByType =
@@ -9451,10 +9338,8 @@ export const ListPartnerTopicByResourceGroupRequest = /*@__PURE__*/ S.suspend(()
 
 /** Tags of the resource. */
 export type PartnerTopicTagsMap = { [key: string]: string | undefined };
-export const PartnerTopicTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PartnerTopicTagsMap>;
+export const PartnerTopicTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerTopicTagsMap>;
 
 /** The type of identity that created the resource. */
 export type PartnerTopicSystemDataCreatedByType =
@@ -9769,9 +9654,8 @@ export const ListPrivateEndpointConnectionByResourceRequest = /*@__PURE__*/ S.su
 
 /** A collection of private endpoint connection resources. */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
-export const PrivateEndpointConnectionListResultValueList = /*@__PURE__*/ S.Array(
-  PrivateEndpointConnection,
-) as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
+export const PrivateEndpointConnectionListResultValueList =
+  DomainPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
 
 /** Result of the list of all private endpoint connections operation. */
 export interface PrivateEndpointConnectionListResult {
@@ -9875,10 +9759,8 @@ export const ListSystemTopicByResourceGroupRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Tags of the resource. */
 export type SystemTopicTagsMap = { [key: string]: string | undefined };
-export const SystemTopicTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SystemTopicTagsMap>;
+export const SystemTopicTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<SystemTopicTagsMap>;
 
 /** The type of identity that created the resource. */
 export type SystemTopicSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
@@ -10056,10 +9938,7 @@ export const ListTopicByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type TopicTagsMap = { [key: string]: string | undefined };
-export const TopicTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TopicTagsMap>;
+export const TopicTagsMap = ActivatePartnerTopicResponseTagsMap as any as S.Schema<TopicTagsMap>;
 
 /** The type of identity that created the resource. */
 export type TopicSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
@@ -10470,14 +10349,7 @@ export interface TopicTypeInfo {
   /** Properties of the topic type info */
   properties?: TopicTypeProperties;
 }
-export const TopicTypeInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(TopicTypeProperties),
-  }),
-).annotate({ identifier: "TopicTypeInfo" }) as any as S.Schema<TopicTypeInfo>;
+export const TopicTypeInfo = GetTopicTypeResponse as any as S.Schema<TopicTypeInfo>;
 
 /** A collection of topic types */
 export type TopicTypesListResultValueList = Array<TopicTypeInfo>;
@@ -10609,10 +10481,8 @@ export const VerifiedPartnersListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type NamespacesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const NamespacesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamespacesCreateOrUpdateRequestTagsMap>;
+export const NamespacesCreateOrUpdateRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<NamespacesCreateOrUpdateRequestTagsMap>;
 
 export interface PrivateEndpointConnectionInput {
   /** Properties of the PrivateEndpointConnection. */
@@ -10635,9 +10505,8 @@ export const NamespacePropertiesInputPrivateEndpointConnectionsList = /*@__PURE_
 
 /** List of custom domain configurations for the namespace. */
 export type TopicsConfigurationInputCustomDomainsList = Array<CustomDomainConfiguration>;
-export const TopicsConfigurationInputCustomDomainsList = /*@__PURE__*/ S.Array(
-  CustomDomainConfiguration,
-) as any as S.Schema<TopicsConfigurationInputCustomDomainsList>;
+export const TopicsConfigurationInputCustomDomainsList =
+  TopicsConfigurationCustomDomainsList as any as S.Schema<TopicsConfigurationInputCustomDomainsList>;
 
 /** Properties of the Topics Configuration. */
 export interface TopicsConfigurationInput {
@@ -10656,9 +10525,8 @@ export const TopicSpacesConfigurationInputState = S.String;
 
 /** List of custom domain configurations for the namespace. */
 export type TopicSpacesConfigurationInputCustomDomainsList = Array<CustomDomainConfiguration>;
-export const TopicSpacesConfigurationInputCustomDomainsList = /*@__PURE__*/ S.Array(
-  CustomDomainConfiguration,
-) as any as S.Schema<TopicSpacesConfigurationInputCustomDomainsList>;
+export const TopicSpacesConfigurationInputCustomDomainsList =
+  TopicsConfigurationCustomDomainsList as any as S.Schema<TopicSpacesConfigurationInputCustomDomainsList>;
 
 /** Properties of the Topic Spaces Configuration. */
 export interface TopicSpacesConfigurationInput {
@@ -10697,9 +10565,8 @@ export const NamespacePropertiesInputPublicNetworkAccess = S.String;
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type NamespacePropertiesInputInboundIpRulesList = Array<InboundIpRule>;
-export const NamespacePropertiesInputInboundIpRulesList = /*@__PURE__*/ S.Array(
-  InboundIpRule,
-) as any as S.Schema<NamespacePropertiesInputInboundIpRulesList>;
+export const NamespacePropertiesInputInboundIpRulesList =
+  DomainPropertiesInputInboundIpRulesList as any as S.Schema<NamespacePropertiesInputInboundIpRulesList>;
 
 /** Minimum TLS version of the publisher allowed to publish to this namespace. Only TLS version 1.2 is supported. */
 export type NamespacePropertiesInputMinimumTlsVersionAllowed = "1.0" | "1.1" | "1.2";
@@ -10776,10 +10643,8 @@ export const NamespacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type NamespacesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const NamespacesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamespacesCreateOrUpdateResponseTagsMap>;
+export const NamespacesCreateOrUpdateResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<NamespacesCreateOrUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type NamespacesCreateOrUpdateResponseSystemDataCreatedByType =
@@ -11128,10 +10993,8 @@ export const NamespaceTopicsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() 
 export type PartnerConfigurationsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const PartnerConfigurationsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PartnerConfigurationsCreateOrUpdateRequestTagsMap>;
+export const PartnerConfigurationsCreateOrUpdateRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerConfigurationsCreateOrUpdateRequestTagsMap>;
 
 export interface PartnerConfigurationsCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -11214,10 +11077,8 @@ export const PartnerConfigurationsCreateOrUpdateResponseSystemData = /*@__PURE__
 export type PartnerConfigurationsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const PartnerConfigurationsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PartnerConfigurationsCreateOrUpdateResponseTagsMap>;
+export const PartnerConfigurationsCreateOrUpdateResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerConfigurationsCreateOrUpdateResponseTagsMap>;
 
 export interface PartnerConfigurationsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
@@ -11333,10 +11194,8 @@ export const PartnerConfigurationsUnauthorizePartnerResponseSystemData = /*@__PU
 export type PartnerConfigurationsUnauthorizePartnerResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const PartnerConfigurationsUnauthorizePartnerResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PartnerConfigurationsUnauthorizePartnerResponseTagsMap>;
+export const PartnerConfigurationsUnauthorizePartnerResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerConfigurationsUnauthorizePartnerResponseTagsMap>;
 
 export interface PartnerConfigurationsUnauthorizePartnerResponse {
   /** Fully qualified identifier of the resource. */
@@ -11370,10 +11229,8 @@ export const PartnerConfigurationsUnauthorizePartnerResponse = /*@__PURE__*/ S.s
 
 /** Tags of the resource. */
 export type PartnerNamespacesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const PartnerNamespacesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PartnerNamespacesCreateOrUpdateRequestTagsMap>;
+export const PartnerNamespacesCreateOrUpdateRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerNamespacesCreateOrUpdateRequestTagsMap>;
 
 /** Minimum TLS version of the publisher allowed to publish to this partner namespace */
 export type PartnerNamespacePropertiesInputMinimumTlsVersionAllowed = "1.0" | "1.1" | "1.2";
@@ -11385,9 +11242,8 @@ export const PartnerNamespacePropertiesInputPublicNetworkAccess = S.String;
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type PartnerNamespacePropertiesInputInboundIpRulesList = Array<InboundIpRule>;
-export const PartnerNamespacePropertiesInputInboundIpRulesList = /*@__PURE__*/ S.Array(
-  InboundIpRule,
-) as any as S.Schema<PartnerNamespacePropertiesInputInboundIpRulesList>;
+export const PartnerNamespacePropertiesInputInboundIpRulesList =
+  DomainPropertiesInputInboundIpRulesList as any as S.Schema<PartnerNamespacePropertiesInputInboundIpRulesList>;
 
 /** This determines if events published to this partner namespace should use the source attribute in the event payload or use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic. */
 export type PartnerNamespacePropertiesInputPartnerTopicRoutingMode =
@@ -11461,10 +11317,8 @@ export const PartnerNamespacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(()
 
 /** Tags of the resource. */
 export type PartnerNamespacesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const PartnerNamespacesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PartnerNamespacesCreateOrUpdateResponseTagsMap>;
+export const PartnerNamespacesCreateOrUpdateResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerNamespacesCreateOrUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type PartnerNamespacesCreateOrUpdateResponseSystemDataCreatedByType =
@@ -11546,10 +11400,8 @@ export const PartnerNamespacesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend((
 export type PartnerRegistrationsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const PartnerRegistrationsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PartnerRegistrationsCreateOrUpdateRequestTagsMap>;
+export const PartnerRegistrationsCreateOrUpdateRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerRegistrationsCreateOrUpdateRequestTagsMap>;
 
 /** Properties of the partner registration. */
 export interface PartnerRegistrationPropertiesInput {
@@ -11602,10 +11454,8 @@ export const PartnerRegistrationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend
 export type PartnerRegistrationsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const PartnerRegistrationsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PartnerRegistrationsCreateOrUpdateResponseTagsMap>;
+export const PartnerRegistrationsCreateOrUpdateResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerRegistrationsCreateOrUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type PartnerRegistrationsCreateOrUpdateResponseSystemDataCreatedByType =
@@ -11790,10 +11640,8 @@ export const PartnerTopicEventSubscriptionsCreateOrUpdateResponse = /*@__PURE__*
 
 /** Tags of the resource. */
 export type PartnerTopicsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const PartnerTopicsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PartnerTopicsCreateOrUpdateRequestTagsMap>;
+export const PartnerTopicsCreateOrUpdateRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerTopicsCreateOrUpdateRequestTagsMap>;
 
 /** Activation state of the partner topic. */
 export type PartnerTopicPropertiesInputActivationState =
@@ -11872,10 +11720,8 @@ export const PartnerTopicsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type PartnerTopicsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const PartnerTopicsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PartnerTopicsCreateOrUpdateResponseTagsMap>;
+export const PartnerTopicsCreateOrUpdateResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerTopicsCreateOrUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type PartnerTopicsCreateOrUpdateResponseSystemDataCreatedByType =
@@ -12331,10 +12177,8 @@ export const SystemTopicEventSubscriptionsCreateOrUpdateResponse = /*@__PURE__*/
 
 /** Tags of the resource. */
 export type SystemTopicsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const SystemTopicsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SystemTopicsCreateOrUpdateRequestTagsMap>;
+export const SystemTopicsCreateOrUpdateRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<SystemTopicsCreateOrUpdateRequestTagsMap>;
 
 /** Properties of the System Topic. */
 export interface SystemTopicPropertiesInput {
@@ -12391,10 +12235,8 @@ export const SystemTopicsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type SystemTopicsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const SystemTopicsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SystemTopicsCreateOrUpdateResponseTagsMap>;
+export const SystemTopicsCreateOrUpdateResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<SystemTopicsCreateOrUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type SystemTopicsCreateOrUpdateResponseSystemDataCreatedByType =
@@ -12576,10 +12418,8 @@ export const TopicEventSubscriptionsCreateOrUpdateResponse = /*@__PURE__*/ S.sus
 
 /** Tags of the resource. */
 export type TopicsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const TopicsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TopicsCreateOrUpdateRequestTagsMap>;
+export const TopicsCreateOrUpdateRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<TopicsCreateOrUpdateRequestTagsMap>;
 
 /** Minimum TLS version of the publisher allowed to publish to this topic */
 export type TopicPropertiesInputMinimumTlsVersionAllowed = "1.0" | "1.1" | "1.2";
@@ -12598,9 +12438,8 @@ export const TopicPropertiesInputPublicNetworkAccess = S.String;
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type TopicPropertiesInputInboundIpRulesList = Array<InboundIpRule>;
-export const TopicPropertiesInputInboundIpRulesList = /*@__PURE__*/ S.Array(
-  InboundIpRule,
-) as any as S.Schema<TopicPropertiesInputInboundIpRulesList>;
+export const TopicPropertiesInputInboundIpRulesList =
+  DomainPropertiesInputInboundIpRulesList as any as S.Schema<TopicPropertiesInputInboundIpRulesList>;
 
 /** Data Residency Boundary of the resource. */
 export type TopicPropertiesInputDataResidencyBoundary = "WithinGeopair" | "WithinRegion";
@@ -12677,10 +12516,8 @@ export const TopicsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type TopicsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const TopicsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TopicsCreateOrUpdateResponseTagsMap>;
+export const TopicsCreateOrUpdateResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<TopicsCreateOrUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type TopicsCreateOrUpdateResponseSystemDataCreatedByType =
@@ -12761,9 +12598,8 @@ export const TopicsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The topic filters in the topic space. Example: "topicTemplates": [ "devices/foo/bar", "devices/topic1/+", "devices/${principal.name}/${principal.attributes.keyName}" ]. */
 export type TopicSpacePropertiesInputTopicTemplatesList = Array<string>;
-export const TopicSpacePropertiesInputTopicTemplatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TopicSpacePropertiesInputTopicTemplatesList>;
+export const TopicSpacePropertiesInputTopicTemplatesList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<TopicSpacePropertiesInputTopicTemplatesList>;
 
 /** The properties of topic space. */
 export interface TopicSpacePropertiesInput {
@@ -12936,16 +12772,13 @@ export const UpdateChannelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateChannelRequest" }) as any as S.Schema<UpdateChannelRequest>;
 
 export interface UpdateChannelResponse {}
-export const UpdateChannelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateChannelResponse",
-}) as any as S.Schema<UpdateChannelResponse>;
+export const UpdateChannelResponse =
+  DeleteCaCertificateResponse as any as S.Schema<UpdateChannelResponse>;
 
 /** Tags of the domains resource. */
 export type UpdateDomainRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateDomainRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDomainRequestTagsMap>;
+export const UpdateDomainRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdateDomainRequestTagsMap>;
 
 /** This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.DomainUpdateParameterProperties.InboundIpRules" /> */
 export type DomainUpdateParameterPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
@@ -12953,9 +12786,8 @@ export const DomainUpdateParameterPropertiesPublicNetworkAccess = S.String;
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type DomainUpdateParameterPropertiesInboundIpRulesList = Array<InboundIpRule>;
-export const DomainUpdateParameterPropertiesInboundIpRulesList = /*@__PURE__*/ S.Array(
-  InboundIpRule,
-) as any as S.Schema<DomainUpdateParameterPropertiesInboundIpRulesList>;
+export const DomainUpdateParameterPropertiesInboundIpRulesList =
+  DomainPropertiesInputInboundIpRulesList as any as S.Schema<DomainUpdateParameterPropertiesInboundIpRulesList>;
 
 /** Minimum TLS version of the publisher allowed to publish to this domain */
 export type DomainUpdateParameterPropertiesMinimumTlsVersionAllowed = "1.0" | "1.1" | "1.2";
@@ -13034,15 +12866,13 @@ export const UpdateDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateDomainRequest" }) as any as S.Schema<UpdateDomainRequest>;
 
 export interface UpdateDomainResponse {}
-export const UpdateDomainResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateDomainResponse",
-}) as any as S.Schema<UpdateDomainResponse>;
+export const UpdateDomainResponse =
+  DeleteCaCertificateResponse as any as S.Schema<UpdateDomainResponse>;
 
 /** List of user defined labels. */
 export type UpdateDomainEventSubscriptionRequestLabelsList = Array<string>;
-export const UpdateDomainEventSubscriptionRequestLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDomainEventSubscriptionRequestLabelsList>;
+export const UpdateDomainEventSubscriptionRequestLabelsList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<UpdateDomainEventSubscriptionRequestLabelsList>;
 
 /** The event delivery schema for the event subscription. */
 export type UpdateDomainEventSubscriptionRequestEventDeliverySchema =
@@ -13178,9 +13008,8 @@ export const UpdateDomainEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() 
 
 /** List of user defined labels. */
 export type UpdateDomainTopicEventSubscriptionRequestLabelsList = Array<string>;
-export const UpdateDomainTopicEventSubscriptionRequestLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDomainTopicEventSubscriptionRequestLabelsList>;
+export const UpdateDomainTopicEventSubscriptionRequestLabelsList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<UpdateDomainTopicEventSubscriptionRequestLabelsList>;
 
 /** The event delivery schema for the event subscription. */
 export type UpdateDomainTopicEventSubscriptionRequestEventDeliverySchema =
@@ -13321,9 +13150,8 @@ export const UpdateDomainTopicEventSubscriptionResponse = /*@__PURE__*/ S.suspen
 
 /** List of user defined labels. */
 export type UpdateEventSubscriptionRequestLabelsList = Array<string>;
-export const UpdateEventSubscriptionRequestLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateEventSubscriptionRequestLabelsList>;
+export const UpdateEventSubscriptionRequestLabelsList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<UpdateEventSubscriptionRequestLabelsList>;
 
 /** The event delivery schema for the event subscription. */
 export type UpdateEventSubscriptionRequestEventDeliverySchema =
@@ -13451,10 +13279,8 @@ export const UpdateEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the namespace resource. */
 export type UpdateNamespaceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateNamespaceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateNamespaceRequestTagsMap>;
+export const UpdateNamespaceRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdateNamespaceRequestTagsMap>;
 
 /** Indicate if Topic Spaces Configuration is enabled for the namespace. Default is Disabled. */
 export type UpdateTopicSpacesConfigurationInfoState = "Disabled" | "Enabled";
@@ -13462,9 +13288,8 @@ export const UpdateTopicSpacesConfigurationInfoState = S.String;
 
 /** Custom domain info for topic spaces configuration. */
 export type UpdateTopicSpacesConfigurationInfoCustomDomainsList = Array<CustomDomainConfiguration>;
-export const UpdateTopicSpacesConfigurationInfoCustomDomainsList = /*@__PURE__*/ S.Array(
-  CustomDomainConfiguration,
-) as any as S.Schema<UpdateTopicSpacesConfigurationInfoCustomDomainsList>;
+export const UpdateTopicSpacesConfigurationInfoCustomDomainsList =
+  TopicsConfigurationCustomDomainsList as any as S.Schema<UpdateTopicSpacesConfigurationInfoCustomDomainsList>;
 
 /** Properties of the topic spaces configuration info of a namespace. */
 export interface UpdateTopicSpacesConfigurationInfo {
@@ -13499,9 +13324,8 @@ export const UpdateTopicSpacesConfigurationInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Custom domain info for topics configuration. */
 export type UpdateTopicsConfigurationInfoCustomDomainsList = Array<CustomDomainConfiguration>;
-export const UpdateTopicsConfigurationInfoCustomDomainsList = /*@__PURE__*/ S.Array(
-  CustomDomainConfiguration,
-) as any as S.Schema<UpdateTopicsConfigurationInfoCustomDomainsList>;
+export const UpdateTopicsConfigurationInfoCustomDomainsList =
+  TopicsConfigurationCustomDomainsList as any as S.Schema<UpdateTopicsConfigurationInfoCustomDomainsList>;
 
 /** Properties of the topics configuration info of a namespace. */
 export interface UpdateTopicsConfigurationInfo {
@@ -13522,9 +13346,8 @@ export const NamespaceUpdateParameterPropertiesPublicNetworkAccess = S.String;
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type NamespaceUpdateParameterPropertiesInboundIpRulesList = Array<InboundIpRule>;
-export const NamespaceUpdateParameterPropertiesInboundIpRulesList = /*@__PURE__*/ S.Array(
-  InboundIpRule,
-) as any as S.Schema<NamespaceUpdateParameterPropertiesInboundIpRulesList>;
+export const NamespaceUpdateParameterPropertiesInboundIpRulesList =
+  DomainPropertiesInputInboundIpRulesList as any as S.Schema<NamespaceUpdateParameterPropertiesInboundIpRulesList>;
 
 /** Information of namespace update parameter properties. */
 export interface NamespaceUpdateParameterProperties {
@@ -13585,10 +13408,8 @@ export const UpdateNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type UpdateNamespaceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateNamespaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateNamespaceResponseTagsMap>;
+export const UpdateNamespaceResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdateNamespaceResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type UpdateNamespaceResponseSystemDataCreatedByType =
@@ -13911,10 +13732,8 @@ export const UpdateNamespaceTopicEventSubscriptionResponse = /*@__PURE__*/ S.sus
 
 /** Tags of the partner configuration resource. */
 export type UpdatePartnerConfigurationRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePartnerConfigurationRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePartnerConfigurationRequestTagsMap>;
+export const UpdatePartnerConfigurationRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdatePartnerConfigurationRequestTagsMap>;
 
 /** Information of partner configuration update parameter properties. */
 export interface PartnerConfigurationUpdateParameterProperties {
@@ -14003,10 +13822,8 @@ export const UpdatePartnerConfigurationResponseSystemData = /*@__PURE__*/ S.susp
 
 /** Tags of the resource. */
 export type UpdatePartnerConfigurationResponseTagsMap = { [key: string]: string | undefined };
-export const UpdatePartnerConfigurationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePartnerConfigurationResponseTagsMap>;
+export const UpdatePartnerConfigurationResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdatePartnerConfigurationResponseTagsMap>;
 
 export interface UpdatePartnerConfigurationResponse {
   /** Fully qualified identifier of the resource. */
@@ -14040,10 +13857,8 @@ export const UpdatePartnerConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the Partner Namespace. */
 export type UpdatePartnerNamespaceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePartnerNamespaceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePartnerNamespaceRequestTagsMap>;
+export const UpdatePartnerNamespaceRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdatePartnerNamespaceRequestTagsMap>;
 
 /** This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PartnerNamespaceUpdateParameterProperties.InboundIpRules" /> */
 export type PartnerNamespaceUpdateParameterPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
@@ -14051,9 +13866,8 @@ export const PartnerNamespaceUpdateParameterPropertiesPublicNetworkAccess = S.St
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type PartnerNamespaceUpdateParameterPropertiesInboundIpRulesList = Array<InboundIpRule>;
-export const PartnerNamespaceUpdateParameterPropertiesInboundIpRulesList = /*@__PURE__*/ S.Array(
-  InboundIpRule,
-) as any as S.Schema<PartnerNamespaceUpdateParameterPropertiesInboundIpRulesList>;
+export const PartnerNamespaceUpdateParameterPropertiesInboundIpRulesList =
+  DomainPropertiesInputInboundIpRulesList as any as S.Schema<PartnerNamespaceUpdateParameterPropertiesInboundIpRulesList>;
 
 /** Minimum TLS version of the publisher allowed to publish to this domain */
 export type PartnerNamespaceUpdateParameterPropertiesMinimumTlsVersionAllowed =
@@ -14122,16 +13936,13 @@ export const UpdatePartnerNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdatePartnerNamespaceRequest>;
 
 export interface UpdatePartnerNamespaceResponse {}
-export const UpdatePartnerNamespaceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdatePartnerNamespaceResponse",
-}) as any as S.Schema<UpdatePartnerNamespaceResponse>;
+export const UpdatePartnerNamespaceResponse =
+  DeleteCaCertificateResponse as any as S.Schema<UpdatePartnerNamespaceResponse>;
 
 /** Tags of the partner registration resource. */
 export type UpdatePartnerRegistrationRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePartnerRegistrationRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePartnerRegistrationRequestTagsMap>;
+export const UpdatePartnerRegistrationRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdatePartnerRegistrationRequestTagsMap>;
 
 export interface UpdatePartnerRegistrationRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -14162,18 +13973,13 @@ export const UpdatePartnerRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdatePartnerRegistrationRequest>;
 
 export interface UpdatePartnerRegistrationResponse {}
-export const UpdatePartnerRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdatePartnerRegistrationResponse",
-}) as any as S.Schema<UpdatePartnerRegistrationResponse>;
+export const UpdatePartnerRegistrationResponse =
+  DeleteDomainEventSubscriptionResponse as any as S.Schema<UpdatePartnerRegistrationResponse>;
 
 /** Tags of the Partner Topic resource. */
 export type UpdatePartnerTopicRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePartnerTopicRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePartnerTopicRequestTagsMap>;
+export const UpdatePartnerTopicRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdatePartnerTopicRequestTagsMap>;
 
 export interface UpdatePartnerTopicRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -14207,15 +14013,13 @@ export const UpdatePartnerTopicRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdatePartnerTopicRequest>;
 
 export interface UpdatePartnerTopicResponse {}
-export const UpdatePartnerTopicResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdatePartnerTopicResponse",
-}) as any as S.Schema<UpdatePartnerTopicResponse>;
+export const UpdatePartnerTopicResponse =
+  DeleteCaCertificateResponse as any as S.Schema<UpdatePartnerTopicResponse>;
 
 /** List of user defined labels. */
 export type UpdatePartnerTopicEventSubscriptionRequestLabelsList = Array<string>;
-export const UpdatePartnerTopicEventSubscriptionRequestLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdatePartnerTopicEventSubscriptionRequestLabelsList>;
+export const UpdatePartnerTopicEventSubscriptionRequestLabelsList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<UpdatePartnerTopicEventSubscriptionRequestLabelsList>;
 
 /** The event delivery schema for the event subscription. */
 export type UpdatePartnerTopicEventSubscriptionRequestEventDeliverySchema =
@@ -14402,23 +14206,13 @@ export interface UpdatePrivateEndpointConnectionResponse {
   /** Properties of the PrivateEndpointConnection. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const UpdatePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "UpdatePrivateEndpointConnectionResponse",
-}) as any as S.Schema<UpdatePrivateEndpointConnectionResponse>;
+export const UpdatePrivateEndpointConnectionResponse =
+  PrivateEndpointConnection as any as S.Schema<UpdatePrivateEndpointConnectionResponse>;
 
 /** Tags of the system topic. */
 export type UpdateSystemTopicRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateSystemTopicRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSystemTopicRequestTagsMap>;
+export const UpdateSystemTopicRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdateSystemTopicRequestTagsMap>;
 
 export interface UpdateSystemTopicRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -14451,10 +14245,8 @@ export const UpdateSystemTopicRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type UpdateSystemTopicResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateSystemTopicResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSystemTopicResponseTagsMap>;
+export const UpdateSystemTopicResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdateSystemTopicResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type UpdateSystemTopicResponseSystemDataCreatedByType =
@@ -14535,9 +14327,8 @@ export const UpdateSystemTopicResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of user defined labels. */
 export type UpdateSystemTopicEventSubscriptionRequestLabelsList = Array<string>;
-export const UpdateSystemTopicEventSubscriptionRequestLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSystemTopicEventSubscriptionRequestLabelsList>;
+export const UpdateSystemTopicEventSubscriptionRequestLabelsList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<UpdateSystemTopicEventSubscriptionRequestLabelsList>;
 
 /** The event delivery schema for the event subscription. */
 export type UpdateSystemTopicEventSubscriptionRequestEventDeliverySchema =
@@ -14675,10 +14466,8 @@ export const UpdateSystemTopicEventSubscriptionResponse = /*@__PURE__*/ S.suspen
 
 /** Tags of the Topic resource. */
 export type UpdateTopicRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateTopicRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateTopicRequestTagsMap>;
+export const UpdateTopicRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdateTopicRequestTagsMap>;
 
 /** This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicUpdateParameterProperties.InboundIpRules" /> */
 export type TopicUpdateParameterPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
@@ -14686,9 +14475,8 @@ export const TopicUpdateParameterPropertiesPublicNetworkAccess = S.String;
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type TopicUpdateParameterPropertiesInboundIpRulesList = Array<InboundIpRule>;
-export const TopicUpdateParameterPropertiesInboundIpRulesList = /*@__PURE__*/ S.Array(
-  InboundIpRule,
-) as any as S.Schema<TopicUpdateParameterPropertiesInboundIpRulesList>;
+export const TopicUpdateParameterPropertiesInboundIpRulesList =
+  DomainPropertiesInputInboundIpRulesList as any as S.Schema<TopicUpdateParameterPropertiesInboundIpRulesList>;
 
 /** Minimum TLS version of the publisher allowed to publish to this domain */
 export type TopicUpdateParameterPropertiesMinimumTlsVersionAllowed = "1.0" | "1.1" | "1.2";
@@ -14759,15 +14547,13 @@ export const UpdateTopicRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateTopicRequest" }) as any as S.Schema<UpdateTopicRequest>;
 
 export interface UpdateTopicResponse {}
-export const UpdateTopicResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateTopicResponse",
-}) as any as S.Schema<UpdateTopicResponse>;
+export const UpdateTopicResponse =
+  DeleteCaCertificateResponse as any as S.Schema<UpdateTopicResponse>;
 
 /** List of user defined labels. */
 export type UpdateTopicEventSubscriptionRequestLabelsList = Array<string>;
-export const UpdateTopicEventSubscriptionRequestLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateTopicEventSubscriptionRequestLabelsList>;
+export const UpdateTopicEventSubscriptionRequestLabelsList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<UpdateTopicEventSubscriptionRequestLabelsList>;
 
 /** The event delivery schema for the event subscription. */
 export type UpdateTopicEventSubscriptionRequestEventDeliverySchema =
@@ -14938,9 +14724,7 @@ export const CustomDomainOwnershipValidationResultCustomDomainsForTopicsConfigur
 export type CustomDomainOwnershipValidationResultCustomDomainsForTopicSpacesConfigurationList =
   Array<CustomDomainConfiguration>;
 export const CustomDomainOwnershipValidationResultCustomDomainsForTopicSpacesConfigurationList =
-  /*@__PURE__*/ S.Array(
-    CustomDomainConfiguration,
-  ) as any as S.Schema<CustomDomainOwnershipValidationResultCustomDomainsForTopicSpacesConfigurationList>;
+  CustomDomainOwnershipValidationResultCustomDomainsForTopicsConfigurationList as any as S.Schema<CustomDomainOwnershipValidationResultCustomDomainsForTopicSpacesConfigurationList>;
 
 /** Namespace custom domain ownership validation result. */
 export interface CustomDomainOwnershipValidationResult {

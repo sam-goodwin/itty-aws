@@ -104,9 +104,7 @@ export const ClosePlatformsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response definition for the account close rpc. */
 export interface CloseAccountResponse {}
-export const CloseAccountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CloseAccountResponse",
-}) as any as S.Schema<CloseAccountResponse>;
+export const CloseAccountResponse = CloseAccountRequest as any as S.Schema<CloseAccountResponse>;
 
 export type AccountStateEnum = "STATE_UNSPECIFIED" | "UNCHECKED" | "APPROVED" | "DISAPPROVED";
 export const AccountStateEnum = S.String;
@@ -337,9 +335,7 @@ export const DeletePlatformsAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CloseAccountRequest as any as S.Schema<Empty>;
 
 export interface GetPlatformsAccountsRequest {
   /** Required. Account to get information about. Format: platforms/{platform}/accounts/{account_id} */
@@ -511,9 +507,8 @@ export const RequestReviewPlatformsAccountsSitesRequest = /*@__PURE__*/ S.suspen
 
 /** Response definition for the site request review rpc. */
 export interface RequestSiteReviewResponse {}
-export const RequestSiteReviewResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RequestSiteReviewResponse",
-}) as any as S.Schema<RequestSiteReviewResponse>;
+export const RequestSiteReviewResponse =
+  CloseAccountRequest as any as S.Schema<RequestSiteReviewResponse>;
 
 export type ClosePlatformsAccountsError =
   | NotFound

@@ -251,9 +251,8 @@ export const GetFinancialReportResponseCurrenciesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetFinancialReportResponseCurrenciesList>;
 
 export type GetFinancialReportResponseFxExcludedCurrenciesList = Array<string>;
-export const GetFinancialReportResponseFxExcludedCurrenciesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetFinancialReportResponseFxExcludedCurrenciesList>;
+export const GetFinancialReportResponseFxExcludedCurrenciesList =
+  GetFinancialReportResponseCurrenciesList as any as S.Schema<GetFinancialReportResponseFxExcludedCurrenciesList>;
 
 export interface Money {
   /** The amount in major units, as an exact decimal string -- `"10.00"` is ten dollars. A string so no float rounds it in transit. */

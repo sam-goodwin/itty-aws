@@ -478,11 +478,8 @@ export const MarkAsCompletedCourseLessonRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MarkAsCompletedCourseLessonRequest>;
 
 export type MarkAsCompletedCourseLessonResponse = boolean;
-export const MarkAsCompletedCourseLessonResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "MarkAsCompletedCourseLessonResponse",
-}) as any as S.Schema<MarkAsCompletedCourseLessonResponse>;
+export const MarkAsCompletedCourseLessonResponse =
+  DeleteCourseLessonResponse as any as S.Schema<MarkAsCompletedCourseLessonResponse>;
 
 export interface StartCourseLessonRequest {
   /** The unique identifier of the lesson the user is starting (e.g., "les_XXXXX"). */
@@ -495,11 +492,8 @@ export const StartCourseLessonRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartCourseLessonRequest" }) as any as S.Schema<StartCourseLessonRequest>;
 
 export type StartCourseLessonResponse = boolean;
-export const StartCourseLessonResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "StartCourseLessonResponse",
-}) as any as S.Schema<StartCourseLessonResponse>;
+export const StartCourseLessonResponse =
+  DeleteCourseLessonResponse as any as S.Schema<StartCourseLessonResponse>;
 
 /** The IDs of the selected options (for multiple choice/select questions) */
 export type SubmitAssessmentCourseLessonRequestAnswersItemSelectedOptionIdsList = Array<string>;

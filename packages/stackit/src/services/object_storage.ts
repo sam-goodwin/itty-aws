@@ -301,12 +301,7 @@ export interface DeleteBucketResponse {
   /** Project ID */
   project: string;
 }
-export const DeleteBucketResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucket: S.String,
-    project: S.String,
-  }),
-).annotate({ identifier: "DeleteBucketResponse" }) as any as S.Schema<DeleteBucketResponse>;
+export const DeleteBucketResponse = CreateBucketResponse as any as S.Schema<DeleteBucketResponse>;
 
 export interface DeleteComplianceLockRequest {
   /** STACKIT project ID */
@@ -840,10 +835,8 @@ export const SetDefaultRetentionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Project labels */
 export type UpdateServiceRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateServiceRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateServiceRequestLabelsMap>;
+export const UpdateServiceRequestLabelsMap =
+  ProjectStatusLabelsMap as any as S.Schema<UpdateServiceRequestLabelsMap>;
 
 export interface UpdateServiceRequest {
   /** STACKIT project ID */

@@ -217,15 +217,13 @@ export const AccessPolicyAllowedEndpointsList = /*@__PURE__*/ S.Array(
 
 /** Provider API paths the connector may not call. Block rules are checked before allow rules. */
 export type AccessPolicyBlockedEndpointsList = Array<string>;
-export const AccessPolicyBlockedEndpointsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccessPolicyBlockedEndpointsList>;
+export const AccessPolicyBlockedEndpointsList =
+  AccessPolicyAllowedEndpointsList as any as S.Schema<AccessPolicyBlockedEndpointsList>;
 
 /** Labels the calling sprite must have. All listed labels are required. */
 export type AccessPolicySpriteLabelsList = Array<string>;
-export const AccessPolicySpriteLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccessPolicySpriteLabelsList>;
+export const AccessPolicySpriteLabelsList =
+  AccessPolicyAllowedEndpointsList as any as S.Schema<AccessPolicySpriteLabelsList>;
 
 /** Connector access policy */
 export interface AccessPolicy {
@@ -402,9 +400,8 @@ export const CreateSpriteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels assigned to the sprite. Omitted when empty. */
 export type SpriteResponseLabelsList = Array<string>;
-export const SpriteResponseLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SpriteResponseLabelsList>;
+export const SpriteResponseLabelsList =
+  AccessPolicyAllowedEndpointsList as any as S.Schema<SpriteResponseLabelsList>;
 
 /** Runtime status */
 export type SpriteResponseStatus = "cold" | "warm" | "running";
@@ -497,9 +494,8 @@ export const DeleteFileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFileRequest" }) as any as S.Schema<DeleteFileRequest>;
 
 export type DeleteResponseDeletedList = Array<string>;
-export const DeleteResponseDeletedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteResponseDeletedList>;
+export const DeleteResponseDeletedList =
+  AccessPolicyAllowedEndpointsList as any as S.Schema<DeleteResponseDeletedList>;
 
 export interface DeleteResponse {
   count: number;
@@ -524,9 +520,8 @@ export const DeleteOAuthConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOAuthConnectionRequest>;
 
 export interface DeleteOAuthConnectionResponse {}
-export const DeleteOAuthConnectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOAuthConnectionResponse",
-}) as any as S.Schema<DeleteOAuthConnectionResponse>;
+export const DeleteOAuthConnectionResponse =
+  CreateCheckpointResponse as any as S.Schema<DeleteOAuthConnectionResponse>;
 
 export interface DeletePrivilegesPolicyRequest {
   name: string;
@@ -540,9 +535,8 @@ export const DeletePrivilegesPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePrivilegesPolicyRequest>;
 
 export interface DeletePrivilegesPolicyResponse {}
-export const DeletePrivilegesPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePrivilegesPolicyResponse",
-}) as any as S.Schema<DeletePrivilegesPolicyResponse>;
+export const DeletePrivilegesPolicyResponse =
+  CreateCheckpointResponse as any as S.Schema<DeletePrivilegesPolicyResponse>;
 
 export interface DeleteResourcesPolicyRequest {
   name: string;
@@ -556,9 +550,8 @@ export const DeleteResourcesPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteResourcesPolicyRequest>;
 
 export interface DeleteResourcesPolicyResponse {}
-export const DeleteResourcesPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteResourcesPolicyResponse",
-}) as any as S.Schema<DeleteResourcesPolicyResponse>;
+export const DeleteResourcesPolicyResponse =
+  CreateCheckpointResponse as any as S.Schema<DeleteResourcesPolicyResponse>;
 
 export interface DeleteSpriteRequest {
   name: string;
@@ -570,9 +563,8 @@ export const DeleteSpriteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSpriteRequest" }) as any as S.Schema<DeleteSpriteRequest>;
 
 export interface DeleteSpriteResponse {}
-export const DeleteSpriteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSpriteResponse",
-}) as any as S.Schema<DeleteSpriteResponse>;
+export const DeleteSpriteResponse =
+  CreateCheckpointResponse as any as S.Schema<DeleteSpriteResponse>;
 
 export interface ExecCommandRequest {
   name: string;
@@ -608,9 +600,7 @@ export const ExecCommandRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExecCommandRequest" }) as any as S.Schema<ExecCommandRequest>;
 
 export interface ExecCommandResponse {}
-export const ExecCommandResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ExecCommandResponse",
-}) as any as S.Schema<ExecCommandResponse>;
+export const ExecCommandResponse = CreateCheckpointResponse as any as S.Schema<ExecCommandResponse>;
 
 export interface GetCheckpointRequest {
   name: string;
@@ -709,9 +699,8 @@ export const GetPrivilegesPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPrivilegesPolicyRequest>;
 
 export interface GetPrivilegesPolicyResponse {}
-export const GetPrivilegesPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetPrivilegesPolicyResponse",
-}) as any as S.Schema<GetPrivilegesPolicyResponse>;
+export const GetPrivilegesPolicyResponse =
+  CreateCheckpointResponse as any as S.Schema<GetPrivilegesPolicyResponse>;
 
 export interface GetResourcesPolicyRequest {
   name: string;
@@ -725,9 +714,8 @@ export const GetResourcesPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResourcesPolicyRequest>;
 
 export interface GetResourcesPolicyResponse {}
-export const GetResourcesPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetResourcesPolicyResponse",
-}) as any as S.Schema<GetResourcesPolicyResponse>;
+export const GetResourcesPolicyResponse =
+  CreateCheckpointResponse as any as S.Schema<GetResourcesPolicyResponse>;
 
 export interface GetServiceRequest {
   name: string;
@@ -742,15 +730,13 @@ export const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Command arguments */
 export type ServiceResponseArgsList = Array<string>;
-export const ServiceResponseArgsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServiceResponseArgsList>;
+export const ServiceResponseArgsList =
+  AccessPolicyAllowedEndpointsList as any as S.Schema<ServiceResponseArgsList>;
 
 /** Service dependencies */
 export type ServiceResponseNeedsList = Array<string>;
-export const ServiceResponseNeedsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServiceResponseNeedsList>;
+export const ServiceResponseNeedsList =
+  AccessPolicyAllowedEndpointsList as any as S.Schema<ServiceResponseNeedsList>;
 
 export interface ServiceState {
   /** Error message if failed */
@@ -819,9 +805,8 @@ export const GetServiceLogsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetServiceLogsRequest" }) as any as S.Schema<GetServiceLogsRequest>;
 
 export interface GetServiceLogsResponse {}
-export const GetServiceLogsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetServiceLogsResponse",
-}) as any as S.Schema<GetServiceLogsResponse>;
+export const GetServiceLogsResponse =
+  CreateCheckpointResponse as any as S.Schema<GetServiceLogsResponse>;
 
 export interface GetSpriteRequest {
   name: string;
@@ -850,9 +835,8 @@ export const KillExecSessionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KillExecSessionRequest" }) as any as S.Schema<KillExecSessionRequest>;
 
 export interface KillExecSessionResponse {}
-export const KillExecSessionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "KillExecSessionResponse",
-}) as any as S.Schema<KillExecSessionResponse>;
+export const KillExecSessionResponse =
+  CreateCheckpointResponse as any as S.Schema<KillExecSessionResponse>;
 
 export interface ListCheckpointsRequest {
   name: string;
@@ -937,9 +921,8 @@ export const ListExecSessionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListExecSessionsRequest" }) as any as S.Schema<ListExecSessionsRequest>;
 
 export interface ListExecSessionsResponse {}
-export const ListExecSessionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ListExecSessionsResponse",
-}) as any as S.Schema<ListExecSessionsResponse>;
+export const ListExecSessionsResponse =
+  CreateCheckpointResponse as any as S.Schema<ListExecSessionsResponse>;
 
 export interface ListOAuthConnectionsRequest {
   /** Optional provider filter. */
@@ -1097,15 +1080,13 @@ export const ProvisionOAuthConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Command arguments */
 export type PutServiceRequestArgsList = Array<string>;
-export const PutServiceRequestArgsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutServiceRequestArgsList>;
+export const PutServiceRequestArgsList =
+  AccessPolicyAllowedEndpointsList as any as S.Schema<PutServiceRequestArgsList>;
 
 /** Service dependencies (started first) */
 export type PutServiceRequestNeedsList = Array<string>;
-export const PutServiceRequestNeedsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutServiceRequestNeedsList>;
+export const PutServiceRequestNeedsList =
+  AccessPolicyAllowedEndpointsList as any as S.Schema<PutServiceRequestNeedsList>;
 
 export interface PutServiceRequest {
   name: string;
@@ -1155,9 +1136,7 @@ export const ReadFileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReadFileRequest" }) as any as S.Schema<ReadFileRequest>;
 
 export interface ReadFileResponse {}
-export const ReadFileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ReadFileResponse",
-}) as any as S.Schema<ReadFileResponse>;
+export const ReadFileResponse = CreateCheckpointResponse as any as S.Schema<ReadFileResponse>;
 
 export interface RenameFileRequest {
   name: string;
@@ -1180,12 +1159,7 @@ export interface RenameResponse {
   dest: string;
   source: string;
 }
-export const RenameResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dest: S.String,
-    source: S.String,
-  }),
-).annotate({ identifier: "RenameResponse" }) as any as S.Schema<RenameResponse>;
+export const RenameResponse = CopyResult as any as S.Schema<RenameResponse>;
 
 export interface RestartServiceRequest {
   name: string;
@@ -1204,9 +1178,8 @@ export const RestartServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestartServiceRequest" }) as any as S.Schema<RestartServiceRequest>;
 
 export interface RestartServiceResponse {}
-export const RestartServiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RestartServiceResponse",
-}) as any as S.Schema<RestartServiceResponse>;
+export const RestartServiceResponse =
+  CreateCheckpointResponse as any as S.Schema<RestartServiceResponse>;
 
 export interface RestoreCheckpointRequest {
   name: string;
@@ -1226,15 +1199,13 @@ export const RestoreCheckpointRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestoreCheckpointRequest" }) as any as S.Schema<RestoreCheckpointRequest>;
 
 export interface RestoreCheckpointResponse {}
-export const RestoreCheckpointResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RestoreCheckpointResponse",
-}) as any as S.Schema<RestoreCheckpointResponse>;
+export const RestoreCheckpointResponse =
+  CreateCheckpointResponse as any as S.Schema<RestoreCheckpointResponse>;
 
 /** List of network policy rules */
 export type SetNetworkPolicyRequestRulesList = Array<NetworkPolicyRule>;
-export const SetNetworkPolicyRequestRulesList = /*@__PURE__*/ S.Array(
-  NetworkPolicyRule,
-) as any as S.Schema<SetNetworkPolicyRequestRulesList>;
+export const SetNetworkPolicyRequestRulesList =
+  NetworkPolicyRequestRulesList as any as S.Schema<SetNetworkPolicyRequestRulesList>;
 
 export interface SetNetworkPolicyRequest {
   name: string;
@@ -1249,9 +1220,8 @@ export const SetNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SetNetworkPolicyRequest" }) as any as S.Schema<SetNetworkPolicyRequest>;
 
 export interface SetNetworkPolicyResponse {}
-export const SetNetworkPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SetNetworkPolicyResponse",
-}) as any as S.Schema<SetNetworkPolicyResponse>;
+export const SetNetworkPolicyResponse =
+  CreateCheckpointResponse as any as S.Schema<SetNetworkPolicyResponse>;
 
 export interface SetPrivilegesPolicyRequest {
   name: string;
@@ -1265,9 +1235,8 @@ export const SetPrivilegesPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetPrivilegesPolicyRequest>;
 
 export interface SetPrivilegesPolicyResponse {}
-export const SetPrivilegesPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SetPrivilegesPolicyResponse",
-}) as any as S.Schema<SetPrivilegesPolicyResponse>;
+export const SetPrivilegesPolicyResponse =
+  CreateCheckpointResponse as any as S.Schema<SetPrivilegesPolicyResponse>;
 
 export interface SetResourcesPolicyRequest {
   name: string;
@@ -1281,9 +1250,8 @@ export const SetResourcesPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetResourcesPolicyRequest>;
 
 export interface SetResourcesPolicyResponse {}
-export const SetResourcesPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SetResourcesPolicyResponse",
-}) as any as S.Schema<SetResourcesPolicyResponse>;
+export const SetResourcesPolicyResponse =
+  CreateCheckpointResponse as any as S.Schema<SetResourcesPolicyResponse>;
 
 export interface StartServiceRequest {
   name: string;
@@ -1302,9 +1270,8 @@ export const StartServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartServiceRequest" }) as any as S.Schema<StartServiceRequest>;
 
 export interface StartServiceResponse {}
-export const StartServiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartServiceResponse",
-}) as any as S.Schema<StartServiceResponse>;
+export const StartServiceResponse =
+  CreateCheckpointResponse as any as S.Schema<StartServiceResponse>;
 
 export interface StopServiceRequest {
   name: string;
@@ -1323,9 +1290,7 @@ export const StopServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopServiceRequest" }) as any as S.Schema<StopServiceRequest>;
 
 export interface StopServiceResponse {}
-export const StopServiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopServiceResponse",
-}) as any as S.Schema<StopServiceResponse>;
+export const StopServiceResponse = CreateCheckpointResponse as any as S.Schema<StopServiceResponse>;
 
 export interface UpdateOAuthConnectionRequest {
   id: string;

@@ -176,15 +176,13 @@ export const ImpactedServiceRegionImpactedSubscriptionsList = /*@__PURE__*/ S.Ar
 
 /** List tenant impacted by the service health event. */
 export type ImpactedServiceRegionImpactedTenantsList = Array<string>;
-export const ImpactedServiceRegionImpactedTenantsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImpactedServiceRegionImpactedTenantsList>;
+export const ImpactedServiceRegionImpactedTenantsList =
+  ImpactedServiceRegionImpactedSubscriptionsList as any as S.Schema<ImpactedServiceRegionImpactedTenantsList>;
 
 /** A list of metadata tags associated with the event. Possible values include: -Action Recommended: Action may be required by you to avoid possible disruptions or mitigate risks for your services. It is recommended to evaluate these actions and the potential impact on your services. - False Positive: After investigation, we've determined your service is healthy and service issues did not impact your services as originally communicated. - Preliminary PIR: For our largest, most impactful service issues a Preliminary Post Incident Review (PIR) is published generally within 72 hours of mitigation, to summarize what we have learned so far from the still-in-progress investigation. - Final PIR: For service issues, a Final Post Incident Review (PIR) may be published to provide additional details or learnings. Sometimes this requires us to complete an internal retrospective, generally within 14 days of mitigation. */
 export type UpdateEventTagsList = Array<string>;
-export const UpdateEventTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateEventTagsList>;
+export const UpdateEventTagsList =
+  ImpactedServiceRegionImpactedSubscriptionsList as any as S.Schema<UpdateEventTagsList>;
 
 /** Update for service health event. */
 export interface Update {
@@ -344,9 +342,8 @@ export const EventPropertiesAdditionalInformation = /*@__PURE__*/ S.suspend(() =
 
 /** A list of metadata tags associated with the event. Possible values include: -Action Recommended: Action may be required by you to avoid possible disruptions or mitigate risks for your services. It is recommended to evaluate these actions and the potential impact on your services. - False Positive: After investigation, we've determined your service is healthy and service issues did not impact your services as originally communicated. - Preliminary PIR: For our largest, most impactful service issues a Preliminary Post Incident Review (PIR) is published generally within 72 hours of mitigation, to summarize what we have learned so far from the still-in-progress investigation. - Final PIR: For service issues, a Final Post Incident Review (PIR) may be published to provide additional details or learnings. Sometimes this requires us to complete an internal retrospective, generally within 14 days of mitigation. */
 export type EventPropertiesEventTagsList = Array<string>;
-export const EventPropertiesEventTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EventPropertiesEventTagsList>;
+export const EventPropertiesEventTagsList =
+  ImpactedServiceRegionImpactedSubscriptionsList as any as S.Schema<EventPropertiesEventTagsList>;
 
 /** Properties of event. */
 export interface EventProperties {
@@ -563,17 +560,8 @@ export interface EventFetchDetailsByTenantIdAndTrackingIdResponse {
   /** Properties of event. */
   properties?: EventProperties;
 }
-export const EventFetchDetailsByTenantIdAndTrackingIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(EventProperties),
-  }),
-).annotate({
-  identifier: "EventFetchDetailsByTenantIdAndTrackingIdResponse",
-}) as any as S.Schema<EventFetchDetailsByTenantIdAndTrackingIdResponse>;
+export const EventFetchDetailsByTenantIdAndTrackingIdResponse =
+  EventFetchDetailsBySubscriptionIdAndTrackingIdResponse as any as S.Schema<EventFetchDetailsByTenantIdAndTrackingIdResponse>;
 
 export interface EventGetBySubscriptionIdAndTrackingIdRequest {
   /** The ID of the target subscription. */
@@ -615,17 +603,8 @@ export interface EventGetBySubscriptionIdAndTrackingIdResponse {
   /** Properties of event. */
   properties?: EventProperties;
 }
-export const EventGetBySubscriptionIdAndTrackingIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(EventProperties),
-  }),
-).annotate({
-  identifier: "EventGetBySubscriptionIdAndTrackingIdResponse",
-}) as any as S.Schema<EventGetBySubscriptionIdAndTrackingIdResponse>;
+export const EventGetBySubscriptionIdAndTrackingIdResponse =
+  EventFetchDetailsBySubscriptionIdAndTrackingIdResponse as any as S.Schema<EventGetBySubscriptionIdAndTrackingIdResponse>;
 
 export interface EventGetByTenantIdAndTrackingIdRequest {
   /** Event Id which uniquely identifies ServiceHealth event. */
@@ -664,17 +643,8 @@ export interface EventGetByTenantIdAndTrackingIdResponse {
   /** Properties of event. */
   properties?: EventProperties;
 }
-export const EventGetByTenantIdAndTrackingIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(EventProperties),
-  }),
-).annotate({
-  identifier: "EventGetByTenantIdAndTrackingIdResponse",
-}) as any as S.Schema<EventGetByTenantIdAndTrackingIdResponse>;
+export const EventGetByTenantIdAndTrackingIdResponse =
+  EventFetchDetailsBySubscriptionIdAndTrackingIdResponse as any as S.Schema<EventGetByTenantIdAndTrackingIdResponse>;
 
 export interface GetAvailabilityStatusByResourceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -947,17 +917,8 @@ export interface GetChildAvailabilityStatusByResourceResponse {
   /** Properties of availability state. */
   properties?: AvailabilityStatusProperties;
 }
-export const GetChildAvailabilityStatusByResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.optional(S.String),
-    properties: S.optional(AvailabilityStatusProperties),
-  }),
-).annotate({
-  identifier: "GetChildAvailabilityStatusByResourceResponse",
-}) as any as S.Schema<GetChildAvailabilityStatusByResourceResponse>;
+export const GetChildAvailabilityStatusByResourceResponse =
+  GetAvailabilityStatusByResourceResponse as any as S.Schema<GetChildAvailabilityStatusByResourceResponse>;
 
 export type GetEmergingIssueRequestIssueName = "default";
 export const GetEmergingIssueRequestIssueName = S.String;
@@ -1264,17 +1225,8 @@ export interface GetImpactedResourceByTenantIdResponse {
   /** Properties of impacted resource. */
   properties?: EventImpactedResourceProperties;
 }
-export const GetImpactedResourceByTenantIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(EventImpactedResourceProperties),
-  }),
-).annotate({
-  identifier: "GetImpactedResourceByTenantIdResponse",
-}) as any as S.Schema<GetImpactedResourceByTenantIdResponse>;
+export const GetImpactedResourceByTenantIdResponse =
+  GetImpactedResourceResponse as any as S.Schema<GetImpactedResourceByTenantIdResponse>;
 
 export interface GetMetadataEntityRequest {
   /** Name of metadata entity. */
@@ -1295,9 +1247,8 @@ export const GetMetadataEntityRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of keys on which this entity depends on. */
 export type MetadataEntityPropertiesDependsOnList = Array<string>;
-export const MetadataEntityPropertiesDependsOnList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetadataEntityPropertiesDependsOnList>;
+export const MetadataEntityPropertiesDependsOnList =
+  ImpactedServiceRegionImpactedSubscriptionsList as any as S.Schema<MetadataEntityPropertiesDependsOnList>;
 
 export type Scenario = "Alerts";
 export const Scenario = S.String;
@@ -1310,9 +1261,8 @@ export const MetadataEntityPropertiesApplicableScenariosList = /*@__PURE__*/ S.A
 
 /** The list of associated resource types. */
 export type MetadataSupportedValueDetailResourceTypesList = Array<string>;
-export const MetadataSupportedValueDetailResourceTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetadataSupportedValueDetailResourceTypesList>;
+export const MetadataSupportedValueDetailResourceTypesList =
+  ImpactedServiceRegionImpactedSubscriptionsList as any as S.Schema<MetadataSupportedValueDetailResourceTypesList>;
 
 /** The metadata supported value detail. */
 export interface MetadataSupportedValueDetail {
@@ -1683,15 +1633,8 @@ export interface EmergingIssuesGetResult {
   /** The emerging issue entity properties. */
   properties?: EmergingIssue;
 }
-export const EmergingIssuesGetResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(EmergingIssue),
-  }),
-).annotate({ identifier: "EmergingIssuesGetResult" }) as any as S.Schema<EmergingIssuesGetResult>;
+export const EmergingIssuesGetResult =
+  GetEmergingIssueResponse as any as S.Schema<EmergingIssuesGetResult>;
 
 /** The list of emerging issues. */
 export type EmergingIssueListResultValueList = Array<EmergingIssuesGetResult>;

@@ -558,9 +558,8 @@ export const BillingAccountPropertiesBillingRelationshipTypesList = /*@__PURE__*
 
 /** Qualifications for pricing on a billing account. Values may be Commercial, Education, Charity or Government. */
 export type BillingAccountPropertiesQualificationsList = Array<string>;
-export const BillingAccountPropertiesQualificationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BillingAccountPropertiesQualificationsList>;
+export const BillingAccountPropertiesQualificationsList =
+  RegistrationNumberTypeList as any as S.Schema<BillingAccountPropertiesQualificationsList>;
 
 /** The type of the tax identifier. */
 export type TaxIdentifierType =
@@ -680,10 +679,8 @@ export const BillingAccountProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type AddBillingAccountPaymentTermsResponseTagsMap = { [key: string]: string | undefined };
-export const AddBillingAccountPaymentTermsResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AddBillingAccountPaymentTermsResponseTagsMap>;
+export const AddBillingAccountPaymentTermsResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<AddBillingAccountPaymentTermsResponseTagsMap>;
 
 export interface AddBillingAccountPaymentTermsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -751,10 +748,8 @@ export const AssociatedTenantPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type AssociatedTenantsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const AssociatedTenantsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AssociatedTenantsCreateOrUpdateRequestTagsMap>;
+export const AssociatedTenantsCreateOrUpdateRequestTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<AssociatedTenantsCreateOrUpdateRequestTagsMap>;
 
 export interface AssociatedTenantsCreateOrUpdateRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -814,10 +809,8 @@ export const AssociatedTenantProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type AssociatedTenantsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const AssociatedTenantsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AssociatedTenantsCreateOrUpdateResponseTagsMap>;
+export const AssociatedTenantsCreateOrUpdateResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<AssociatedTenantsCreateOrUpdateResponseTagsMap>;
 
 export interface AssociatedTenantsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -980,22 +973,18 @@ export const InvoiceSectionWithCreateSubPermissionListResult = /*@__PURE__*/ S.s
 
 /** Information about the enabled azure plans. */
 export type BillingProfilePropertiesInputEnabledAzurePlansList = Array<AzurePlan>;
-export const BillingProfilePropertiesInputEnabledAzurePlansList = /*@__PURE__*/ S.Array(
-  AzurePlan,
-) as any as S.Schema<BillingProfilePropertiesInputEnabledAzurePlansList>;
+export const BillingProfilePropertiesInputEnabledAzurePlansList =
+  InvoiceSectionWithCreateSubPermissionEnabledAzurePlansList as any as S.Schema<BillingProfilePropertiesInputEnabledAzurePlansList>;
 
 /** The list of email addresses to receive invoices by email for the billing profile. */
 export type BillingProfilePropertiesInputInvoiceRecipientsList = Array<string>;
-export const BillingProfilePropertiesInputInvoiceRecipientsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BillingProfilePropertiesInputInvoiceRecipientsList>;
+export const BillingProfilePropertiesInputInvoiceRecipientsList =
+  RegistrationNumberTypeList as any as S.Schema<BillingProfilePropertiesInputInvoiceRecipientsList>;
 
 /** Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type BillingProfilePropertiesInputTagsMap = { [key: string]: string | undefined };
-export const BillingProfilePropertiesInputTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BillingProfilePropertiesInputTagsMap>;
+export const BillingProfilePropertiesInputTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<BillingProfilePropertiesInputTagsMap>;
 
 /** A billing profile. */
 export interface BillingProfilePropertiesInput {
@@ -1042,10 +1031,8 @@ export const BillingProfilePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type BillingProfilesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const BillingProfilesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BillingProfilesCreateOrUpdateRequestTagsMap>;
+export const BillingProfilesCreateOrUpdateRequestTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<BillingProfilesCreateOrUpdateRequestTagsMap>;
 
 export interface BillingProfilesCreateOrUpdateRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -1077,15 +1064,13 @@ export const BillingProfilesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Information about the enabled azure plans. */
 export type BillingProfilePropertiesEnabledAzurePlansList = Array<AzurePlan>;
-export const BillingProfilePropertiesEnabledAzurePlansList = /*@__PURE__*/ S.Array(
-  AzurePlan,
-) as any as S.Schema<BillingProfilePropertiesEnabledAzurePlansList>;
+export const BillingProfilePropertiesEnabledAzurePlansList =
+  InvoiceSectionWithCreateSubPermissionEnabledAzurePlansList as any as S.Schema<BillingProfilePropertiesEnabledAzurePlansList>;
 
 /** The list of email addresses to receive invoices by email for the billing profile. */
 export type BillingProfilePropertiesInvoiceRecipientsList = Array<string>;
-export const BillingProfilePropertiesInvoiceRecipientsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BillingProfilePropertiesInvoiceRecipientsList>;
+export const BillingProfilePropertiesInvoiceRecipientsList =
+  RegistrationNumberTypeList as any as S.Schema<BillingProfilePropertiesInvoiceRecipientsList>;
 
 /** The type of spending limit. */
 export type SpendingLimitType =
@@ -1150,16 +1135,13 @@ export const BillingProfilePropertiesSpendingLimitDetailsList = /*@__PURE__*/ S.
 
 /** Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type BillingProfilePropertiesTagsMap = { [key: string]: string | undefined };
-export const BillingProfilePropertiesTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BillingProfilePropertiesTagsMap>;
+export const BillingProfilePropertiesTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<BillingProfilePropertiesTagsMap>;
 
 /** Identifies the cloud environments that are associated with a billing profile. This is a system managed optional field and gets updated as the billing profile gets associated with accounts in various clouds. */
 export type BillingProfilePropertiesTargetCloudsList = Array<string>;
-export const BillingProfilePropertiesTargetCloudsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BillingProfilePropertiesTargetCloudsList>;
+export const BillingProfilePropertiesTargetCloudsList =
+  RegistrationNumberTypeList as any as S.Schema<BillingProfilePropertiesTargetCloudsList>;
 
 /** The properties of payment term. */
 export interface PaymentTerm {
@@ -1266,10 +1248,8 @@ export const BillingProfileProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type BillingProfilesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const BillingProfilesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BillingProfilesCreateOrUpdateResponseTagsMap>;
+export const BillingProfilesCreateOrUpdateResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<BillingProfilesCreateOrUpdateResponseTagsMap>;
 
 export interface BillingProfilesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1380,10 +1360,8 @@ export const DeleteBillingProfileEligibilityResult = /*@__PURE__*/ S.suspend(() 
 export type BillingRequestPropertiesInputAdditionalInformationMap = {
   [key: string]: string | undefined;
 };
-export const BillingRequestPropertiesInputAdditionalInformationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BillingRequestPropertiesInputAdditionalInformationMap>;
+export const BillingRequestPropertiesInputAdditionalInformationMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<BillingRequestPropertiesInputAdditionalInformationMap>;
 
 /** A principal who has interacted with a billing entity. */
 export interface Principal {
@@ -1470,10 +1448,8 @@ export const BillingRequestPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type BillingRequestsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const BillingRequestsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BillingRequestsCreateOrUpdateRequestTagsMap>;
+export const BillingRequestsCreateOrUpdateRequestTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<BillingRequestsCreateOrUpdateRequestTagsMap>;
 
 export interface BillingRequestsCreateOrUpdateRequest {
   /** The ID that uniquely identifies a billing request. */
@@ -1504,16 +1480,13 @@ export const BillingRequestsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =
 export type BillingRequestPropertiesAdditionalInformationMap = {
   [key: string]: string | undefined;
 };
-export const BillingRequestPropertiesAdditionalInformationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BillingRequestPropertiesAdditionalInformationMap>;
+export const BillingRequestPropertiesAdditionalInformationMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<BillingRequestPropertiesAdditionalInformationMap>;
 
 /** The recipients of the billing request. */
 export type BillingRequestPropertiesRecipientsList = Array<Principal>;
-export const BillingRequestPropertiesRecipientsList = /*@__PURE__*/ S.Array(
-  Principal,
-) as any as S.Schema<BillingRequestPropertiesRecipientsList>;
+export const BillingRequestPropertiesRecipientsList =
+  BillingRequestPropertiesInputRecipientsList as any as S.Schema<BillingRequestPropertiesRecipientsList>;
 
 /** A request submitted by a user to manage billing. Users with an owner role on the scope can approve or decline these requests. */
 export interface BillingRequestProperties {
@@ -1621,10 +1594,8 @@ export const BillingRequestProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type BillingRequestsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const BillingRequestsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BillingRequestsCreateOrUpdateResponseTagsMap>;
+export const BillingRequestsCreateOrUpdateResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<BillingRequestsCreateOrUpdateResponseTagsMap>;
 
 export interface BillingRequestsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1839,10 +1810,7 @@ export type BillingRoleAssignmentsCreateOrUpdateByBillingAccountResponseTagsMap 
   [key: string]: string | undefined;
 };
 export const BillingRoleAssignmentsCreateOrUpdateByBillingAccountResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<BillingRoleAssignmentsCreateOrUpdateByBillingAccountResponseTagsMap>;
+  BillingRoleAssignmentsCreateOrUpdateByBillingAccountRequestTagsMap as any as S.Schema<BillingRoleAssignmentsCreateOrUpdateByBillingAccountResponseTagsMap>;
 
 export interface BillingRoleAssignmentsCreateOrUpdateByBillingAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1877,10 +1845,7 @@ export type BillingRoleAssignmentsCreateOrUpdateByDepartmentRequestTagsMap = {
   [key: string]: string | undefined;
 };
 export const BillingRoleAssignmentsCreateOrUpdateByDepartmentRequestTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<BillingRoleAssignmentsCreateOrUpdateByDepartmentRequestTagsMap>;
+  BillingRoleAssignmentsCreateOrUpdateByBillingAccountRequestTagsMap as any as S.Schema<BillingRoleAssignmentsCreateOrUpdateByDepartmentRequestTagsMap>;
 
 export interface BillingRoleAssignmentsCreateOrUpdateByDepartmentRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -1918,10 +1883,7 @@ export type BillingRoleAssignmentsCreateOrUpdateByDepartmentResponseTagsMap = {
   [key: string]: string | undefined;
 };
 export const BillingRoleAssignmentsCreateOrUpdateByDepartmentResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<BillingRoleAssignmentsCreateOrUpdateByDepartmentResponseTagsMap>;
+  BillingRoleAssignmentsCreateOrUpdateByBillingAccountRequestTagsMap as any as S.Schema<BillingRoleAssignmentsCreateOrUpdateByDepartmentResponseTagsMap>;
 
 export interface BillingRoleAssignmentsCreateOrUpdateByDepartmentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1937,29 +1899,15 @@ export interface BillingRoleAssignmentsCreateOrUpdateByDepartmentResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: BillingRoleAssignmentsCreateOrUpdateByDepartmentResponseTagsMap;
 }
-export const BillingRoleAssignmentsCreateOrUpdateByDepartmentResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(BillingRoleAssignmentProperties),
-      tags: S.optional(BillingRoleAssignmentsCreateOrUpdateByDepartmentResponseTagsMap),
-    }),
-).annotate({
-  identifier: "BillingRoleAssignmentsCreateOrUpdateByDepartmentResponse",
-}) as any as S.Schema<BillingRoleAssignmentsCreateOrUpdateByDepartmentResponse>;
+export const BillingRoleAssignmentsCreateOrUpdateByDepartmentResponse =
+  BillingRoleAssignmentsCreateOrUpdateByBillingAccountResponse as any as S.Schema<BillingRoleAssignmentsCreateOrUpdateByDepartmentResponse>;
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountRequestTagsMap = {
   [key: string]: string | undefined;
 };
 export const BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountRequestTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountRequestTagsMap>;
+  BillingRoleAssignmentsCreateOrUpdateByBillingAccountRequestTagsMap as any as S.Schema<BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountRequestTagsMap>;
 
 export interface BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -1998,10 +1946,7 @@ export type BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountResponseTagsM
   [key: string]: string | undefined;
 };
 export const BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountResponseTagsMap>;
+  BillingRoleAssignmentsCreateOrUpdateByBillingAccountRequestTagsMap as any as S.Schema<BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountResponseTagsMap>;
 
 export interface BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2058,10 +2003,8 @@ export const BillingRoleAssignmentsResolveByBillingAccountRequest = /*@__PURE__*
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type BillingRoleAssignmentTagsMap = { [key: string]: string | undefined };
-export const BillingRoleAssignmentTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BillingRoleAssignmentTagsMap>;
+export const BillingRoleAssignmentTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<BillingRoleAssignmentTagsMap>;
 
 /** The properties of the billing role assignment. */
 export interface BillingRoleAssignment {
@@ -2284,10 +2227,8 @@ export const BillingSubscriptionAliasPropertiesInput = /*@__PURE__*/ S.suspend((
 export type BillingSubscriptionsAliasesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const BillingSubscriptionsAliasesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BillingSubscriptionsAliasesCreateOrUpdateRequestTagsMap>;
+export const BillingSubscriptionsAliasesCreateOrUpdateRequestTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<BillingSubscriptionsAliasesCreateOrUpdateRequestTagsMap>;
 
 export interface BillingSubscriptionsAliasesCreateOrUpdateRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -2321,10 +2262,8 @@ export const BillingSubscriptionsAliasesCreateOrUpdateRequest = /*@__PURE__*/ S.
 export type BillingSubscriptionAliasPropertiesBillingPoliciesMap = {
   [key: string]: string | undefined;
 };
-export const BillingSubscriptionAliasPropertiesBillingPoliciesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BillingSubscriptionAliasPropertiesBillingPoliciesMap>;
+export const BillingSubscriptionAliasPropertiesBillingPoliciesMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<BillingSubscriptionAliasPropertiesBillingPoliciesMap>;
 
 /** The current enrollment account status of the subscription. This field is available only for the Enterprise Agreement Type. */
 export type SubscriptionEnrollmentAccountStatus =
@@ -2461,9 +2400,8 @@ export const BillingSubscriptionOperationStatus = S.String;
 
 /** The suspension reason for a subscription. This field is not available for Enterprise Agreement billing accounts. */
 export type BillingSubscriptionAliasPropertiesSuspensionReasonsList = Array<string>;
-export const BillingSubscriptionAliasPropertiesSuspensionReasonsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BillingSubscriptionAliasPropertiesSuspensionReasonsList>;
+export const BillingSubscriptionAliasPropertiesSuspensionReasonsList =
+  RegistrationNumberTypeList as any as S.Schema<BillingSubscriptionAliasPropertiesSuspensionReasonsList>;
 
 /** The suspension reason for a subscription. This field is not available for Enterprise Agreement billing accounts. */
 export type SubscriptionStatusReason =
@@ -2652,10 +2590,8 @@ export const BillingSubscriptionAliasProperties = /*@__PURE__*/ S.suspend(() =>
 export type BillingSubscriptionsAliasesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const BillingSubscriptionsAliasesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BillingSubscriptionsAliasesCreateOrUpdateResponseTagsMap>;
+export const BillingSubscriptionsAliasesCreateOrUpdateResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<BillingSubscriptionsAliasesCreateOrUpdateResponseTagsMap>;
 
 export interface BillingSubscriptionsAliasesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2723,23 +2659,19 @@ export const BillingSubscriptionsSplitRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of billing policies associated with the subscription. */
 export type BillingSubscriptionPropertiesBillingPoliciesMap = { [key: string]: string | undefined };
-export const BillingSubscriptionPropertiesBillingPoliciesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BillingSubscriptionPropertiesBillingPoliciesMap>;
+export const BillingSubscriptionPropertiesBillingPoliciesMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<BillingSubscriptionPropertiesBillingPoliciesMap>;
 
 /** The suspension reason for a subscription. This field is not available for Enterprise Agreement billing accounts. */
 export type BillingSubscriptionPropertiesSuspensionReasonsList = Array<string>;
-export const BillingSubscriptionPropertiesSuspensionReasonsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BillingSubscriptionPropertiesSuspensionReasonsList>;
+export const BillingSubscriptionPropertiesSuspensionReasonsList =
+  RegistrationNumberTypeList as any as S.Schema<BillingSubscriptionPropertiesSuspensionReasonsList>;
 
 /** The suspension details for a subscription. This field is not available for Enterprise Agreement billing accounts. */
 export type BillingSubscriptionPropertiesSuspensionReasonDetailsList =
   Array<BillingSubscriptionStatusDetails>;
-export const BillingSubscriptionPropertiesSuspensionReasonDetailsList = /*@__PURE__*/ S.Array(
-  BillingSubscriptionStatusDetails,
-) as any as S.Schema<BillingSubscriptionPropertiesSuspensionReasonDetailsList>;
+export const BillingSubscriptionPropertiesSuspensionReasonDetailsList =
+  BillingSubscriptionAliasPropertiesSuspensionReasonDetailsList as any as S.Schema<BillingSubscriptionPropertiesSuspensionReasonDetailsList>;
 
 /** The billing properties of a subscription. */
 export interface BillingSubscriptionProperties {
@@ -2885,10 +2817,8 @@ export const BillingSubscriptionProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type BillingSubscriptionsSplitResponseTagsMap = { [key: string]: string | undefined };
-export const BillingSubscriptionsSplitResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BillingSubscriptionsSplitResponseTagsMap>;
+export const BillingSubscriptionsSplitResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<BillingSubscriptionsSplitResponseTagsMap>;
 
 export interface BillingSubscriptionsSplitResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3035,10 +2965,8 @@ export const CancelBillingAccountPaymentTermsRequest = /*@__PURE__*/ S.suspend((
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type CancelBillingAccountPaymentTermsResponseTagsMap = { [key: string]: string | undefined };
-export const CancelBillingAccountPaymentTermsResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CancelBillingAccountPaymentTermsResponseTagsMap>;
+export const CancelBillingAccountPaymentTermsResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<CancelBillingAccountPaymentTermsResponseTagsMap>;
 
 export interface CancelBillingAccountPaymentTermsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3054,18 +2982,8 @@ export interface CancelBillingAccountPaymentTermsResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: CancelBillingAccountPaymentTermsResponseTagsMap;
 }
-export const CancelBillingAccountPaymentTermsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BillingAccountProperties),
-    tags: S.optional(CancelBillingAccountPaymentTermsResponseTagsMap),
-  }),
-).annotate({
-  identifier: "CancelBillingAccountPaymentTermsResponse",
-}) as any as S.Schema<CancelBillingAccountPaymentTermsResponse>;
+export const CancelBillingAccountPaymentTermsResponse =
+  AddBillingAccountPaymentTermsResponse as any as S.Schema<CancelBillingAccountPaymentTermsResponse>;
 
 /** Cancellation reason. */
 export type CancellationReason = "Other" | "Compromise" | "Dispute";
@@ -3136,9 +3054,8 @@ export const CancelPartnerTransferRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Detailed transfer status. */
 export type PartnerTransferPropertiesDetailedTransferStatusList = Array<DetailedTransferStatus>;
-export const PartnerTransferPropertiesDetailedTransferStatusList = /*@__PURE__*/ S.Array(
-  DetailedTransferStatus,
-) as any as S.Schema<PartnerTransferPropertiesDetailedTransferStatusList>;
+export const PartnerTransferPropertiesDetailedTransferStatusList =
+  RecipientTransferPropertiesDetailedTransferStatusList as any as S.Schema<PartnerTransferPropertiesDetailedTransferStatusList>;
 
 /** Transfer Details. */
 export interface PartnerTransferProperties {
@@ -3179,10 +3096,8 @@ export const PartnerTransferProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type CancelPartnerTransferResponseTagsMap = { [key: string]: string | undefined };
-export const CancelPartnerTransferResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CancelPartnerTransferResponseTagsMap>;
+export const CancelPartnerTransferResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<CancelPartnerTransferResponseTagsMap>;
 
 export interface CancelPartnerTransferResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3239,9 +3154,8 @@ export const CancelTransferRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Detailed transfer status. */
 export type TransferPropertiesDetailedTransferStatusList = Array<DetailedTransferStatus>;
-export const TransferPropertiesDetailedTransferStatusList = /*@__PURE__*/ S.Array(
-  DetailedTransferStatus,
-) as any as S.Schema<TransferPropertiesDetailedTransferStatusList>;
+export const TransferPropertiesDetailedTransferStatusList =
+  RecipientTransferPropertiesDetailedTransferStatusList as any as S.Schema<TransferPropertiesDetailedTransferStatusList>;
 
 /** Transfer details */
 export interface TransferProperties {
@@ -3271,10 +3185,8 @@ export const TransferProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type CancelTransferResponseTagsMap = { [key: string]: string | undefined };
-export const CancelTransferResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CancelTransferResponseTagsMap>;
+export const CancelTransferResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<CancelTransferResponseTagsMap>;
 
 export interface CancelTransferResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3365,9 +3277,7 @@ export const CheckBillingPermissionsAccessByBillingAccountResponse = /*@__PURE__
 /** List of actions passed in the request body against which the permissions will be checked. */
 export type CheckBillingPermissionsAccessByBillingProfileRequestActionsList = Array<string>;
 export const CheckBillingPermissionsAccessByBillingProfileRequestActionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CheckBillingPermissionsAccessByBillingProfileRequestActionsList>;
+  CheckBillingPermissionsAccessByBillingAccountRequestActionsList as any as S.Schema<CheckBillingPermissionsAccessByBillingProfileRequestActionsList>;
 
 export interface CheckBillingPermissionsAccessByBillingProfileRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -3396,23 +3306,18 @@ export const CheckBillingPermissionsAccessByBillingProfileRequest = /*@__PURE__*
 
 export type CheckBillingPermissionsAccessByBillingProfileResponseBodyList =
   Array<CheckAccessResponse>;
-export const CheckBillingPermissionsAccessByBillingProfileResponseBodyList = /*@__PURE__*/ S.Array(
-  CheckAccessResponse,
-) as any as S.Schema<CheckBillingPermissionsAccessByBillingProfileResponseBodyList>;
+export const CheckBillingPermissionsAccessByBillingProfileResponseBodyList =
+  CheckBillingPermissionsAccessByBillingAccountResponseBodyList as any as S.Schema<CheckBillingPermissionsAccessByBillingProfileResponseBodyList>;
 
 export type CheckBillingPermissionsAccessByBillingProfileResponse =
   CheckBillingPermissionsAccessByBillingProfileResponseBodyList;
-export const CheckBillingPermissionsAccessByBillingProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  CheckBillingPermissionsAccessByBillingProfileResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CheckBillingPermissionsAccessByBillingProfileResponse",
-}) as any as S.Schema<CheckBillingPermissionsAccessByBillingProfileResponse>;
+export const CheckBillingPermissionsAccessByBillingProfileResponse =
+  CheckBillingPermissionsAccessByBillingAccountResponse as any as S.Schema<CheckBillingPermissionsAccessByBillingProfileResponse>;
 
 /** List of actions passed in the request body against which the permissions will be checked. */
 export type CheckBillingPermissionsAccessByCustomerRequestActionsList = Array<string>;
-export const CheckBillingPermissionsAccessByCustomerRequestActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CheckBillingPermissionsAccessByCustomerRequestActionsList>;
+export const CheckBillingPermissionsAccessByCustomerRequestActionsList =
+  RegistrationNumberTypeList as any as S.Schema<CheckBillingPermissionsAccessByCustomerRequestActionsList>;
 
 export interface CheckBillingPermissionsAccessByCustomerRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -3443,23 +3348,18 @@ export const CheckBillingPermissionsAccessByCustomerRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<CheckBillingPermissionsAccessByCustomerRequest>;
 
 export type CheckBillingPermissionsAccessByCustomerResponseBodyList = Array<CheckAccessResponse>;
-export const CheckBillingPermissionsAccessByCustomerResponseBodyList = /*@__PURE__*/ S.Array(
-  CheckAccessResponse,
-) as any as S.Schema<CheckBillingPermissionsAccessByCustomerResponseBodyList>;
+export const CheckBillingPermissionsAccessByCustomerResponseBodyList =
+  CheckBillingPermissionsAccessByBillingAccountResponseBodyList as any as S.Schema<CheckBillingPermissionsAccessByCustomerResponseBodyList>;
 
 export type CheckBillingPermissionsAccessByCustomerResponse =
   CheckBillingPermissionsAccessByCustomerResponseBodyList;
-export const CheckBillingPermissionsAccessByCustomerResponse = /*@__PURE__*/ S.suspend(() =>
-  CheckBillingPermissionsAccessByCustomerResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CheckBillingPermissionsAccessByCustomerResponse",
-}) as any as S.Schema<CheckBillingPermissionsAccessByCustomerResponse>;
+export const CheckBillingPermissionsAccessByCustomerResponse =
+  CheckBillingPermissionsAccessByBillingAccountResponse as any as S.Schema<CheckBillingPermissionsAccessByCustomerResponse>;
 
 /** List of actions passed in the request body against which the permissions will be checked. */
 export type CheckBillingPermissionsAccessByDepartmentRequestActionsList = Array<string>;
-export const CheckBillingPermissionsAccessByDepartmentRequestActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CheckBillingPermissionsAccessByDepartmentRequestActionsList>;
+export const CheckBillingPermissionsAccessByDepartmentRequestActionsList =
+  RegistrationNumberTypeList as any as S.Schema<CheckBillingPermissionsAccessByDepartmentRequestActionsList>;
 
 export interface CheckBillingPermissionsAccessByDepartmentRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -3487,24 +3387,18 @@ export const CheckBillingPermissionsAccessByDepartmentRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<CheckBillingPermissionsAccessByDepartmentRequest>;
 
 export type CheckBillingPermissionsAccessByDepartmentResponseBodyList = Array<CheckAccessResponse>;
-export const CheckBillingPermissionsAccessByDepartmentResponseBodyList = /*@__PURE__*/ S.Array(
-  CheckAccessResponse,
-) as any as S.Schema<CheckBillingPermissionsAccessByDepartmentResponseBodyList>;
+export const CheckBillingPermissionsAccessByDepartmentResponseBodyList =
+  CheckBillingPermissionsAccessByBillingAccountResponseBodyList as any as S.Schema<CheckBillingPermissionsAccessByDepartmentResponseBodyList>;
 
 export type CheckBillingPermissionsAccessByDepartmentResponse =
   CheckBillingPermissionsAccessByDepartmentResponseBodyList;
-export const CheckBillingPermissionsAccessByDepartmentResponse = /*@__PURE__*/ S.suspend(() =>
-  CheckBillingPermissionsAccessByDepartmentResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CheckBillingPermissionsAccessByDepartmentResponse",
-}) as any as S.Schema<CheckBillingPermissionsAccessByDepartmentResponse>;
+export const CheckBillingPermissionsAccessByDepartmentResponse =
+  CheckBillingPermissionsAccessByBillingAccountResponse as any as S.Schema<CheckBillingPermissionsAccessByDepartmentResponse>;
 
 /** List of actions passed in the request body against which the permissions will be checked. */
 export type CheckBillingPermissionsAccessByEnrollmentAccountRequestActionsList = Array<string>;
 export const CheckBillingPermissionsAccessByEnrollmentAccountRequestActionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CheckBillingPermissionsAccessByEnrollmentAccountRequestActionsList>;
+  CheckBillingPermissionsAccessByBillingAccountRequestActionsList as any as S.Schema<CheckBillingPermissionsAccessByEnrollmentAccountRequestActionsList>;
 
 export interface CheckBillingPermissionsAccessByEnrollmentAccountRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -3549,9 +3443,7 @@ export const CheckBillingPermissionsAccessByEnrollmentAccountResponse = /*@__PUR
 /** List of actions passed in the request body against which the permissions will be checked. */
 export type CheckBillingPermissionsAccessByInvoiceSectionRequestActionsList = Array<string>;
 export const CheckBillingPermissionsAccessByInvoiceSectionRequestActionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CheckBillingPermissionsAccessByInvoiceSectionRequestActionsList>;
+  CheckBillingPermissionsAccessByBillingAccountRequestActionsList as any as S.Schema<CheckBillingPermissionsAccessByInvoiceSectionRequestActionsList>;
 
 export interface CheckBillingPermissionsAccessByInvoiceSectionRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -3583,17 +3475,13 @@ export const CheckBillingPermissionsAccessByInvoiceSectionRequest = /*@__PURE__*
 
 export type CheckBillingPermissionsAccessByInvoiceSectionResponseBodyList =
   Array<CheckAccessResponse>;
-export const CheckBillingPermissionsAccessByInvoiceSectionResponseBodyList = /*@__PURE__*/ S.Array(
-  CheckAccessResponse,
-) as any as S.Schema<CheckBillingPermissionsAccessByInvoiceSectionResponseBodyList>;
+export const CheckBillingPermissionsAccessByInvoiceSectionResponseBodyList =
+  CheckBillingPermissionsAccessByBillingAccountResponseBodyList as any as S.Schema<CheckBillingPermissionsAccessByInvoiceSectionResponseBodyList>;
 
 export type CheckBillingPermissionsAccessByInvoiceSectionResponse =
   CheckBillingPermissionsAccessByInvoiceSectionResponseBodyList;
-export const CheckBillingPermissionsAccessByInvoiceSectionResponse = /*@__PURE__*/ S.suspend(() =>
-  CheckBillingPermissionsAccessByInvoiceSectionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CheckBillingPermissionsAccessByInvoiceSectionResponse",
-}) as any as S.Schema<CheckBillingPermissionsAccessByInvoiceSectionResponse>;
+export const CheckBillingPermissionsAccessByInvoiceSectionResponse =
+  CheckBillingPermissionsAccessByBillingAccountResponse as any as S.Schema<CheckBillingPermissionsAccessByInvoiceSectionResponse>;
 
 export interface ConfirmBillingAccountTransitionRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -3672,10 +3560,8 @@ export const CreateBillingRoleAssignmentByBillingAccountRequest = /*@__PURE__*/ 
 export type CreateBillingRoleAssignmentByBillingAccountResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const CreateBillingRoleAssignmentByBillingAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateBillingRoleAssignmentByBillingAccountResponseTagsMap>;
+export const CreateBillingRoleAssignmentByBillingAccountResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<CreateBillingRoleAssignmentByBillingAccountResponseTagsMap>;
 
 export interface CreateBillingRoleAssignmentByBillingAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3751,10 +3637,8 @@ export const CreateBillingRoleAssignmentByBillingProfileRequest = /*@__PURE__*/ 
 export type CreateBillingRoleAssignmentByBillingProfileResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const CreateBillingRoleAssignmentByBillingProfileResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateBillingRoleAssignmentByBillingProfileResponseTagsMap>;
+export const CreateBillingRoleAssignmentByBillingProfileResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<CreateBillingRoleAssignmentByBillingProfileResponseTagsMap>;
 
 export interface CreateBillingRoleAssignmentByBillingProfileResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3770,18 +3654,8 @@ export interface CreateBillingRoleAssignmentByBillingProfileResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: CreateBillingRoleAssignmentByBillingProfileResponseTagsMap;
 }
-export const CreateBillingRoleAssignmentByBillingProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BillingRoleAssignmentProperties),
-    tags: S.optional(CreateBillingRoleAssignmentByBillingProfileResponseTagsMap),
-  }),
-).annotate({
-  identifier: "CreateBillingRoleAssignmentByBillingProfileResponse",
-}) as any as S.Schema<CreateBillingRoleAssignmentByBillingProfileResponse>;
+export const CreateBillingRoleAssignmentByBillingProfileResponse =
+  CreateBillingRoleAssignmentByBillingAccountResponse as any as S.Schema<CreateBillingRoleAssignmentByBillingProfileResponse>;
 
 export interface CreateBillingRoleAssignmentByCustomerRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -3833,10 +3707,8 @@ export const CreateBillingRoleAssignmentByCustomerRequest = /*@__PURE__*/ S.susp
 export type CreateBillingRoleAssignmentByCustomerResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const CreateBillingRoleAssignmentByCustomerResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateBillingRoleAssignmentByCustomerResponseTagsMap>;
+export const CreateBillingRoleAssignmentByCustomerResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<CreateBillingRoleAssignmentByCustomerResponseTagsMap>;
 
 export interface CreateBillingRoleAssignmentByCustomerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3852,18 +3724,8 @@ export interface CreateBillingRoleAssignmentByCustomerResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: CreateBillingRoleAssignmentByCustomerResponseTagsMap;
 }
-export const CreateBillingRoleAssignmentByCustomerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BillingRoleAssignmentProperties),
-    tags: S.optional(CreateBillingRoleAssignmentByCustomerResponseTagsMap),
-  }),
-).annotate({
-  identifier: "CreateBillingRoleAssignmentByCustomerResponse",
-}) as any as S.Schema<CreateBillingRoleAssignmentByCustomerResponse>;
+export const CreateBillingRoleAssignmentByCustomerResponse =
+  CreateBillingRoleAssignmentByBillingAccountResponse as any as S.Schema<CreateBillingRoleAssignmentByCustomerResponse>;
 
 export interface CreateBillingRoleAssignmentByInvoiceSectionRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -3915,10 +3777,8 @@ export const CreateBillingRoleAssignmentByInvoiceSectionRequest = /*@__PURE__*/ 
 export type CreateBillingRoleAssignmentByInvoiceSectionResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const CreateBillingRoleAssignmentByInvoiceSectionResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateBillingRoleAssignmentByInvoiceSectionResponseTagsMap>;
+export const CreateBillingRoleAssignmentByInvoiceSectionResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<CreateBillingRoleAssignmentByInvoiceSectionResponseTagsMap>;
 
 export interface CreateBillingRoleAssignmentByInvoiceSectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3934,18 +3794,8 @@ export interface CreateBillingRoleAssignmentByInvoiceSectionResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: CreateBillingRoleAssignmentByInvoiceSectionResponseTagsMap;
 }
-export const CreateBillingRoleAssignmentByInvoiceSectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BillingRoleAssignmentProperties),
-    tags: S.optional(CreateBillingRoleAssignmentByInvoiceSectionResponseTagsMap),
-  }),
-).annotate({
-  identifier: "CreateBillingRoleAssignmentByInvoiceSectionResponse",
-}) as any as S.Schema<CreateBillingRoleAssignmentByInvoiceSectionResponse>;
+export const CreateBillingRoleAssignmentByInvoiceSectionResponse =
+  CreateBillingRoleAssignmentByBillingAccountResponse as any as S.Schema<CreateBillingRoleAssignmentByInvoiceSectionResponse>;
 
 export interface DeleteAssociatedTenantRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -3970,9 +3820,8 @@ export const DeleteAssociatedTenantRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAssociatedTenantRequest>;
 
 export interface DeleteAssociatedTenantResponse {}
-export const DeleteAssociatedTenantResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAssociatedTenantResponse",
-}) as any as S.Schema<DeleteAssociatedTenantResponse>;
+export const DeleteAssociatedTenantResponse =
+  SystemOverridesInput as any as S.Schema<DeleteAssociatedTenantResponse>;
 
 export interface DeleteBillingProfileRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -3997,9 +3846,8 @@ export const DeleteBillingProfileRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBillingProfileRequest>;
 
 export interface DeleteBillingProfileResponse {}
-export const DeleteBillingProfileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBillingProfileResponse",
-}) as any as S.Schema<DeleteBillingProfileResponse>;
+export const DeleteBillingProfileResponse =
+  SystemOverridesInput as any as S.Schema<DeleteBillingProfileResponse>;
 
 export interface DeleteBillingRoleAssignmentByBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -4024,11 +3872,8 @@ export const DeleteBillingRoleAssignmentByBillingAccountRequest = /*@__PURE__*/ 
 }) as any as S.Schema<DeleteBillingRoleAssignmentByBillingAccountRequest>;
 
 export interface DeleteBillingRoleAssignmentByBillingAccountResponse {}
-export const DeleteBillingRoleAssignmentByBillingAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteBillingRoleAssignmentByBillingAccountResponse",
-}) as any as S.Schema<DeleteBillingRoleAssignmentByBillingAccountResponse>;
+export const DeleteBillingRoleAssignmentByBillingAccountResponse =
+  CancelBillingSubscriptionResponse as any as S.Schema<DeleteBillingRoleAssignmentByBillingAccountResponse>;
 
 export interface DeleteBillingRoleAssignmentByBillingProfileRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -4056,11 +3901,8 @@ export const DeleteBillingRoleAssignmentByBillingProfileRequest = /*@__PURE__*/ 
 }) as any as S.Schema<DeleteBillingRoleAssignmentByBillingProfileRequest>;
 
 export interface DeleteBillingRoleAssignmentByBillingProfileResponse {}
-export const DeleteBillingRoleAssignmentByBillingProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteBillingRoleAssignmentByBillingProfileResponse",
-}) as any as S.Schema<DeleteBillingRoleAssignmentByBillingProfileResponse>;
+export const DeleteBillingRoleAssignmentByBillingProfileResponse =
+  CancelBillingSubscriptionResponse as any as S.Schema<DeleteBillingRoleAssignmentByBillingProfileResponse>;
 
 export interface DeleteBillingRoleAssignmentByCustomerRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -4091,11 +3933,8 @@ export const DeleteBillingRoleAssignmentByCustomerRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DeleteBillingRoleAssignmentByCustomerRequest>;
 
 export interface DeleteBillingRoleAssignmentByCustomerResponse {}
-export const DeleteBillingRoleAssignmentByCustomerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteBillingRoleAssignmentByCustomerResponse",
-}) as any as S.Schema<DeleteBillingRoleAssignmentByCustomerResponse>;
+export const DeleteBillingRoleAssignmentByCustomerResponse =
+  CancelBillingSubscriptionResponse as any as S.Schema<DeleteBillingRoleAssignmentByCustomerResponse>;
 
 export interface DeleteBillingRoleAssignmentByDepartmentRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -4123,11 +3962,8 @@ export const DeleteBillingRoleAssignmentByDepartmentRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteBillingRoleAssignmentByDepartmentRequest>;
 
 export interface DeleteBillingRoleAssignmentByDepartmentResponse {}
-export const DeleteBillingRoleAssignmentByDepartmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteBillingRoleAssignmentByDepartmentResponse",
-}) as any as S.Schema<DeleteBillingRoleAssignmentByDepartmentResponse>;
+export const DeleteBillingRoleAssignmentByDepartmentResponse =
+  CancelBillingSubscriptionResponse as any as S.Schema<DeleteBillingRoleAssignmentByDepartmentResponse>;
 
 export interface DeleteBillingRoleAssignmentByEnrollmentAccountRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -4155,11 +3991,8 @@ export const DeleteBillingRoleAssignmentByEnrollmentAccountRequest = /*@__PURE__
 }) as any as S.Schema<DeleteBillingRoleAssignmentByEnrollmentAccountRequest>;
 
 export interface DeleteBillingRoleAssignmentByEnrollmentAccountResponse {}
-export const DeleteBillingRoleAssignmentByEnrollmentAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteBillingRoleAssignmentByEnrollmentAccountResponse",
-}) as any as S.Schema<DeleteBillingRoleAssignmentByEnrollmentAccountResponse>;
+export const DeleteBillingRoleAssignmentByEnrollmentAccountResponse =
+  CancelBillingSubscriptionResponse as any as S.Schema<DeleteBillingRoleAssignmentByEnrollmentAccountResponse>;
 
 export interface DeleteBillingRoleAssignmentByInvoiceSectionRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -4190,11 +4023,8 @@ export const DeleteBillingRoleAssignmentByInvoiceSectionRequest = /*@__PURE__*/ 
 }) as any as S.Schema<DeleteBillingRoleAssignmentByInvoiceSectionRequest>;
 
 export interface DeleteBillingRoleAssignmentByInvoiceSectionResponse {}
-export const DeleteBillingRoleAssignmentByInvoiceSectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteBillingRoleAssignmentByInvoiceSectionResponse",
-}) as any as S.Schema<DeleteBillingRoleAssignmentByInvoiceSectionResponse>;
+export const DeleteBillingRoleAssignmentByInvoiceSectionResponse =
+  CancelBillingSubscriptionResponse as any as S.Schema<DeleteBillingRoleAssignmentByInvoiceSectionResponse>;
 
 export interface DeleteBillingSubscriptionRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -4219,11 +4049,8 @@ export const DeleteBillingSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBillingSubscriptionRequest>;
 
 export interface DeleteBillingSubscriptionResponse {}
-export const DeleteBillingSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteBillingSubscriptionResponse",
-}) as any as S.Schema<DeleteBillingSubscriptionResponse>;
+export const DeleteBillingSubscriptionResponse =
+  CancelBillingSubscriptionResponse as any as S.Schema<DeleteBillingSubscriptionResponse>;
 
 export interface DeleteInvoiceSectionRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -4251,9 +4078,8 @@ export const DeleteInvoiceSectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteInvoiceSectionRequest>;
 
 export interface DeleteInvoiceSectionResponse {}
-export const DeleteInvoiceSectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteInvoiceSectionResponse",
-}) as any as S.Schema<DeleteInvoiceSectionResponse>;
+export const DeleteInvoiceSectionResponse =
+  SystemOverridesInput as any as S.Schema<DeleteInvoiceSectionResponse>;
 
 export interface DeletePaymentMethodByUserRequest {
   /** The ID that uniquely identifies a payment method. */
@@ -4275,11 +4101,8 @@ export const DeletePaymentMethodByUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePaymentMethodByUserRequest>;
 
 export interface DeletePaymentMethodByUserResponse {}
-export const DeletePaymentMethodByUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePaymentMethodByUserResponse",
-}) as any as S.Schema<DeletePaymentMethodByUserResponse>;
+export const DeletePaymentMethodByUserResponse =
+  CancelBillingSubscriptionResponse as any as S.Schema<DeletePaymentMethodByUserResponse>;
 
 export interface DownloadInvoiceByBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -4388,9 +4211,8 @@ export const DownloadInvoiceDocumentsByBillingAccountRequest = /*@__PURE__*/ S.s
 
 export type DownloadInvoiceDocumentsByBillingSubscriptionRequestBodyList =
   Array<DocumentDownloadRequest>;
-export const DownloadInvoiceDocumentsByBillingSubscriptionRequestBodyList = /*@__PURE__*/ S.Array(
-  DocumentDownloadRequest,
-) as any as S.Schema<DownloadInvoiceDocumentsByBillingSubscriptionRequestBodyList>;
+export const DownloadInvoiceDocumentsByBillingSubscriptionRequestBodyList =
+  DownloadInvoiceDocumentsByBillingAccountRequestBodyList as any as S.Schema<DownloadInvoiceDocumentsByBillingSubscriptionRequestBodyList>;
 
 export interface DownloadInvoiceDocumentsByBillingSubscriptionRequest {
   /** The ID that uniquely identifies a billing subscription. */
@@ -4568,10 +4390,8 @@ export const AgreementProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type GetAgreementResponseTagsMap = { [key: string]: string | undefined };
-export const GetAgreementResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAgreementResponseTagsMap>;
+export const GetAgreementResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetAgreementResponseTagsMap>;
 
 export interface GetAgreementResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4622,10 +4442,8 @@ export const GetAssociatedTenantRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type GetAssociatedTenantResponseTagsMap = { [key: string]: string | undefined };
-export const GetAssociatedTenantResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAssociatedTenantResponseTagsMap>;
+export const GetAssociatedTenantResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetAssociatedTenantResponseTagsMap>;
 
 export interface GetAssociatedTenantResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4641,18 +4459,8 @@ export interface GetAssociatedTenantResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: GetAssociatedTenantResponseTagsMap;
 }
-export const GetAssociatedTenantResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AssociatedTenantProperties),
-    tags: S.optional(GetAssociatedTenantResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetAssociatedTenantResponse",
-}) as any as S.Schema<GetAssociatedTenantResponse>;
+export const GetAssociatedTenantResponse =
+  AssociatedTenantsCreateOrUpdateResponse as any as S.Schema<GetAssociatedTenantResponse>;
 
 export interface GetAvailableBalanceByBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -4743,10 +4551,8 @@ export const AvailableBalanceProperties = /*@__PURE__*/ S.suspend(() =>
 export type GetAvailableBalanceByBillingAccountResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetAvailableBalanceByBillingAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAvailableBalanceByBillingAccountResponseTagsMap>;
+export const GetAvailableBalanceByBillingAccountResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetAvailableBalanceByBillingAccountResponseTagsMap>;
 
 export interface GetAvailableBalanceByBillingAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4801,10 +4607,8 @@ export const GetAvailableBalanceByBillingProfileRequest = /*@__PURE__*/ S.suspen
 export type GetAvailableBalanceByBillingProfileResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetAvailableBalanceByBillingProfileResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAvailableBalanceByBillingProfileResponseTagsMap>;
+export const GetAvailableBalanceByBillingProfileResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetAvailableBalanceByBillingProfileResponseTagsMap>;
 
 export interface GetAvailableBalanceByBillingProfileResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4820,18 +4624,8 @@ export interface GetAvailableBalanceByBillingProfileResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: GetAvailableBalanceByBillingProfileResponseTagsMap;
 }
-export const GetAvailableBalanceByBillingProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AvailableBalanceProperties),
-    tags: S.optional(GetAvailableBalanceByBillingProfileResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetAvailableBalanceByBillingProfileResponse",
-}) as any as S.Schema<GetAvailableBalanceByBillingProfileResponse>;
+export const GetAvailableBalanceByBillingProfileResponse =
+  GetAvailableBalanceByBillingAccountResponse as any as S.Schema<GetAvailableBalanceByBillingProfileResponse>;
 
 export interface GetBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -4852,10 +4646,8 @@ export const GetBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type GetBillingAccountResponseTagsMap = { [key: string]: string | undefined };
-export const GetBillingAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBillingAccountResponseTagsMap>;
+export const GetBillingAccountResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetBillingAccountResponseTagsMap>;
 
 export interface GetBillingAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4871,18 +4663,8 @@ export interface GetBillingAccountResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: GetBillingAccountResponseTagsMap;
 }
-export const GetBillingAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BillingAccountProperties),
-    tags: S.optional(GetBillingAccountResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetBillingAccountResponse",
-}) as any as S.Schema<GetBillingAccountResponse>;
+export const GetBillingAccountResponse =
+  AddBillingAccountPaymentTermsResponse as any as S.Schema<GetBillingAccountResponse>;
 
 export interface GetBillingProfileRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -4906,10 +4688,8 @@ export const GetBillingProfileRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type GetBillingProfileResponseTagsMap = { [key: string]: string | undefined };
-export const GetBillingProfileResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBillingProfileResponseTagsMap>;
+export const GetBillingProfileResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetBillingProfileResponseTagsMap>;
 
 export interface GetBillingProfileResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4925,18 +4705,8 @@ export interface GetBillingProfileResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: GetBillingProfileResponseTagsMap;
 }
-export const GetBillingProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BillingProfileProperties),
-    tags: S.optional(GetBillingProfileResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetBillingProfileResponse",
-}) as any as S.Schema<GetBillingProfileResponse>;
+export const GetBillingProfileResponse =
+  BillingProfilesCreateOrUpdateResponse as any as S.Schema<GetBillingProfileResponse>;
 
 export interface GetBillingPropertyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5005,9 +4775,8 @@ export const InvoiceSectionStateReasonCode = S.String;
 /** The reason codes for the subscription status. */
 export type BillingPropertyPropertiesSubscriptionBillingStatusDetailsList =
   Array<BillingSubscriptionStatusDetails>;
-export const BillingPropertyPropertiesSubscriptionBillingStatusDetailsList = /*@__PURE__*/ S.Array(
-  BillingSubscriptionStatusDetails,
-) as any as S.Schema<BillingPropertyPropertiesSubscriptionBillingStatusDetailsList>;
+export const BillingPropertyPropertiesSubscriptionBillingStatusDetailsList =
+  BillingSubscriptionAliasPropertiesSuspensionReasonDetailsList as any as S.Schema<BillingPropertyPropertiesSubscriptionBillingStatusDetailsList>;
 
 /** The type of billing subscription. */
 export type SubscriptionBillingType = "None" | "Benefit" | "Free" | "Paid" | "PrePaid";
@@ -5175,10 +4944,8 @@ export const BillingPropertyProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type GetBillingPropertyResponseTagsMap = { [key: string]: string | undefined };
-export const GetBillingPropertyResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBillingPropertyResponseTagsMap>;
+export const GetBillingPropertyResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetBillingPropertyResponseTagsMap>;
 
 export interface GetBillingPropertyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5226,10 +4993,8 @@ export const GetBillingRequestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type GetBillingRequestResponseTagsMap = { [key: string]: string | undefined };
-export const GetBillingRequestResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBillingRequestResponseTagsMap>;
+export const GetBillingRequestResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetBillingRequestResponseTagsMap>;
 
 export interface GetBillingRequestResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5245,18 +5010,8 @@ export interface GetBillingRequestResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: GetBillingRequestResponseTagsMap;
 }
-export const GetBillingRequestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BillingRequestProperties),
-    tags: S.optional(GetBillingRequestResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetBillingRequestResponse",
-}) as any as S.Schema<GetBillingRequestResponse>;
+export const GetBillingRequestResponse =
+  BillingRequestsCreateOrUpdateResponse as any as S.Schema<GetBillingRequestResponse>;
 
 export interface GetBillingRoleAssignmentByBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -5284,10 +5039,8 @@ export const GetBillingRoleAssignmentByBillingAccountRequest = /*@__PURE__*/ S.s
 export type GetBillingRoleAssignmentByBillingAccountResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetBillingRoleAssignmentByBillingAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBillingRoleAssignmentByBillingAccountResponseTagsMap>;
+export const GetBillingRoleAssignmentByBillingAccountResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetBillingRoleAssignmentByBillingAccountResponseTagsMap>;
 
 export interface GetBillingRoleAssignmentByBillingAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5303,18 +5056,8 @@ export interface GetBillingRoleAssignmentByBillingAccountResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: GetBillingRoleAssignmentByBillingAccountResponseTagsMap;
 }
-export const GetBillingRoleAssignmentByBillingAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BillingRoleAssignmentProperties),
-    tags: S.optional(GetBillingRoleAssignmentByBillingAccountResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetBillingRoleAssignmentByBillingAccountResponse",
-}) as any as S.Schema<GetBillingRoleAssignmentByBillingAccountResponse>;
+export const GetBillingRoleAssignmentByBillingAccountResponse =
+  CreateBillingRoleAssignmentByBillingAccountResponse as any as S.Schema<GetBillingRoleAssignmentByBillingAccountResponse>;
 
 export interface GetBillingRoleAssignmentByBillingProfileRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -5345,10 +5088,8 @@ export const GetBillingRoleAssignmentByBillingProfileRequest = /*@__PURE__*/ S.s
 export type GetBillingRoleAssignmentByBillingProfileResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetBillingRoleAssignmentByBillingProfileResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBillingRoleAssignmentByBillingProfileResponseTagsMap>;
+export const GetBillingRoleAssignmentByBillingProfileResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetBillingRoleAssignmentByBillingProfileResponseTagsMap>;
 
 export interface GetBillingRoleAssignmentByBillingProfileResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5364,18 +5105,8 @@ export interface GetBillingRoleAssignmentByBillingProfileResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: GetBillingRoleAssignmentByBillingProfileResponseTagsMap;
 }
-export const GetBillingRoleAssignmentByBillingProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BillingRoleAssignmentProperties),
-    tags: S.optional(GetBillingRoleAssignmentByBillingProfileResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetBillingRoleAssignmentByBillingProfileResponse",
-}) as any as S.Schema<GetBillingRoleAssignmentByBillingProfileResponse>;
+export const GetBillingRoleAssignmentByBillingProfileResponse =
+  CreateBillingRoleAssignmentByBillingAccountResponse as any as S.Schema<GetBillingRoleAssignmentByBillingProfileResponse>;
 
 export interface GetBillingRoleAssignmentByCustomerRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -5409,10 +5140,8 @@ export const GetBillingRoleAssignmentByCustomerRequest = /*@__PURE__*/ S.suspend
 export type GetBillingRoleAssignmentByCustomerResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetBillingRoleAssignmentByCustomerResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBillingRoleAssignmentByCustomerResponseTagsMap>;
+export const GetBillingRoleAssignmentByCustomerResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetBillingRoleAssignmentByCustomerResponseTagsMap>;
 
 export interface GetBillingRoleAssignmentByCustomerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5428,18 +5157,8 @@ export interface GetBillingRoleAssignmentByCustomerResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: GetBillingRoleAssignmentByCustomerResponseTagsMap;
 }
-export const GetBillingRoleAssignmentByCustomerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BillingRoleAssignmentProperties),
-    tags: S.optional(GetBillingRoleAssignmentByCustomerResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetBillingRoleAssignmentByCustomerResponse",
-}) as any as S.Schema<GetBillingRoleAssignmentByCustomerResponse>;
+export const GetBillingRoleAssignmentByCustomerResponse =
+  CreateBillingRoleAssignmentByBillingAccountResponse as any as S.Schema<GetBillingRoleAssignmentByCustomerResponse>;
 
 export interface GetBillingRoleAssignmentByDepartmentRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -5470,10 +5189,8 @@ export const GetBillingRoleAssignmentByDepartmentRequest = /*@__PURE__*/ S.suspe
 export type GetBillingRoleAssignmentByDepartmentResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetBillingRoleAssignmentByDepartmentResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBillingRoleAssignmentByDepartmentResponseTagsMap>;
+export const GetBillingRoleAssignmentByDepartmentResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetBillingRoleAssignmentByDepartmentResponseTagsMap>;
 
 export interface GetBillingRoleAssignmentByDepartmentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5489,18 +5206,8 @@ export interface GetBillingRoleAssignmentByDepartmentResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: GetBillingRoleAssignmentByDepartmentResponseTagsMap;
 }
-export const GetBillingRoleAssignmentByDepartmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BillingRoleAssignmentProperties),
-    tags: S.optional(GetBillingRoleAssignmentByDepartmentResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetBillingRoleAssignmentByDepartmentResponse",
-}) as any as S.Schema<GetBillingRoleAssignmentByDepartmentResponse>;
+export const GetBillingRoleAssignmentByDepartmentResponse =
+  CreateBillingRoleAssignmentByBillingAccountResponse as any as S.Schema<GetBillingRoleAssignmentByDepartmentResponse>;
 
 export interface GetBillingRoleAssignmentByEnrollmentAccountRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -5531,10 +5238,8 @@ export const GetBillingRoleAssignmentByEnrollmentAccountRequest = /*@__PURE__*/ 
 export type GetBillingRoleAssignmentByEnrollmentAccountResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetBillingRoleAssignmentByEnrollmentAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBillingRoleAssignmentByEnrollmentAccountResponseTagsMap>;
+export const GetBillingRoleAssignmentByEnrollmentAccountResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetBillingRoleAssignmentByEnrollmentAccountResponseTagsMap>;
 
 export interface GetBillingRoleAssignmentByEnrollmentAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5550,18 +5255,8 @@ export interface GetBillingRoleAssignmentByEnrollmentAccountResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: GetBillingRoleAssignmentByEnrollmentAccountResponseTagsMap;
 }
-export const GetBillingRoleAssignmentByEnrollmentAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BillingRoleAssignmentProperties),
-    tags: S.optional(GetBillingRoleAssignmentByEnrollmentAccountResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetBillingRoleAssignmentByEnrollmentAccountResponse",
-}) as any as S.Schema<GetBillingRoleAssignmentByEnrollmentAccountResponse>;
+export const GetBillingRoleAssignmentByEnrollmentAccountResponse =
+  CreateBillingRoleAssignmentByBillingAccountResponse as any as S.Schema<GetBillingRoleAssignmentByEnrollmentAccountResponse>;
 
 export interface GetBillingRoleAssignmentByInvoiceSectionRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -5595,10 +5290,8 @@ export const GetBillingRoleAssignmentByInvoiceSectionRequest = /*@__PURE__*/ S.s
 export type GetBillingRoleAssignmentByInvoiceSectionResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetBillingRoleAssignmentByInvoiceSectionResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBillingRoleAssignmentByInvoiceSectionResponseTagsMap>;
+export const GetBillingRoleAssignmentByInvoiceSectionResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetBillingRoleAssignmentByInvoiceSectionResponseTagsMap>;
 
 export interface GetBillingRoleAssignmentByInvoiceSectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5614,18 +5307,8 @@ export interface GetBillingRoleAssignmentByInvoiceSectionResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: GetBillingRoleAssignmentByInvoiceSectionResponseTagsMap;
 }
-export const GetBillingRoleAssignmentByInvoiceSectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BillingRoleAssignmentProperties),
-    tags: S.optional(GetBillingRoleAssignmentByInvoiceSectionResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetBillingRoleAssignmentByInvoiceSectionResponse",
-}) as any as S.Schema<GetBillingRoleAssignmentByInvoiceSectionResponse>;
+export const GetBillingRoleAssignmentByInvoiceSectionResponse =
+  CreateBillingRoleAssignmentByBillingAccountResponse as any as S.Schema<GetBillingRoleAssignmentByInvoiceSectionResponse>;
 
 export interface GetBillingRoleDefinitionByBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -5651,15 +5334,13 @@ export const GetBillingRoleDefinitionByBillingAccountRequest = /*@__PURE__*/ S.s
 
 /** The set of actions that the caller is allowed to perform. */
 export type BillingPermissionActionsList = Array<string>;
-export const BillingPermissionActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BillingPermissionActionsList>;
+export const BillingPermissionActionsList =
+  RegistrationNumberTypeList as any as S.Schema<BillingPermissionActionsList>;
 
 /** The set of actions that the caller is not allowed to perform. */
 export type BillingPermissionNotActionsList = Array<string>;
-export const BillingPermissionNotActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BillingPermissionNotActionsList>;
+export const BillingPermissionNotActionsList =
+  RegistrationNumberTypeList as any as S.Schema<BillingPermissionNotActionsList>;
 
 /** The set of allowed action and not allowed actions a caller has on a resource. */
 export interface BillingPermission {
@@ -5704,10 +5385,8 @@ export const BillingRoleDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
 export type GetBillingRoleDefinitionByBillingAccountResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetBillingRoleDefinitionByBillingAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBillingRoleDefinitionByBillingAccountResponseTagsMap>;
+export const GetBillingRoleDefinitionByBillingAccountResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetBillingRoleDefinitionByBillingAccountResponseTagsMap>;
 
 export interface GetBillingRoleDefinitionByBillingAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5765,10 +5444,8 @@ export const GetBillingRoleDefinitionByBillingProfileRequest = /*@__PURE__*/ S.s
 export type GetBillingRoleDefinitionByBillingProfileResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetBillingRoleDefinitionByBillingProfileResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBillingRoleDefinitionByBillingProfileResponseTagsMap>;
+export const GetBillingRoleDefinitionByBillingProfileResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetBillingRoleDefinitionByBillingProfileResponseTagsMap>;
 
 export interface GetBillingRoleDefinitionByBillingProfileResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5784,18 +5461,8 @@ export interface GetBillingRoleDefinitionByBillingProfileResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: GetBillingRoleDefinitionByBillingProfileResponseTagsMap;
 }
-export const GetBillingRoleDefinitionByBillingProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BillingRoleDefinitionProperties),
-    tags: S.optional(GetBillingRoleDefinitionByBillingProfileResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetBillingRoleDefinitionByBillingProfileResponse",
-}) as any as S.Schema<GetBillingRoleDefinitionByBillingProfileResponse>;
+export const GetBillingRoleDefinitionByBillingProfileResponse =
+  GetBillingRoleDefinitionByBillingAccountResponse as any as S.Schema<GetBillingRoleDefinitionByBillingProfileResponse>;
 
 export interface GetBillingRoleDefinitionByCustomerRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -5829,10 +5496,8 @@ export const GetBillingRoleDefinitionByCustomerRequest = /*@__PURE__*/ S.suspend
 export type GetBillingRoleDefinitionByCustomerResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetBillingRoleDefinitionByCustomerResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBillingRoleDefinitionByCustomerResponseTagsMap>;
+export const GetBillingRoleDefinitionByCustomerResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetBillingRoleDefinitionByCustomerResponseTagsMap>;
 
 export interface GetBillingRoleDefinitionByCustomerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5848,18 +5513,8 @@ export interface GetBillingRoleDefinitionByCustomerResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: GetBillingRoleDefinitionByCustomerResponseTagsMap;
 }
-export const GetBillingRoleDefinitionByCustomerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BillingRoleDefinitionProperties),
-    tags: S.optional(GetBillingRoleDefinitionByCustomerResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetBillingRoleDefinitionByCustomerResponse",
-}) as any as S.Schema<GetBillingRoleDefinitionByCustomerResponse>;
+export const GetBillingRoleDefinitionByCustomerResponse =
+  GetBillingRoleDefinitionByBillingAccountResponse as any as S.Schema<GetBillingRoleDefinitionByCustomerResponse>;
 
 export interface GetBillingRoleDefinitionByDepartmentRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -5890,10 +5545,8 @@ export const GetBillingRoleDefinitionByDepartmentRequest = /*@__PURE__*/ S.suspe
 export type GetBillingRoleDefinitionByDepartmentResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetBillingRoleDefinitionByDepartmentResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBillingRoleDefinitionByDepartmentResponseTagsMap>;
+export const GetBillingRoleDefinitionByDepartmentResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetBillingRoleDefinitionByDepartmentResponseTagsMap>;
 
 export interface GetBillingRoleDefinitionByDepartmentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5909,18 +5562,8 @@ export interface GetBillingRoleDefinitionByDepartmentResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: GetBillingRoleDefinitionByDepartmentResponseTagsMap;
 }
-export const GetBillingRoleDefinitionByDepartmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BillingRoleDefinitionProperties),
-    tags: S.optional(GetBillingRoleDefinitionByDepartmentResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetBillingRoleDefinitionByDepartmentResponse",
-}) as any as S.Schema<GetBillingRoleDefinitionByDepartmentResponse>;
+export const GetBillingRoleDefinitionByDepartmentResponse =
+  GetBillingRoleDefinitionByBillingAccountResponse as any as S.Schema<GetBillingRoleDefinitionByDepartmentResponse>;
 
 export interface GetBillingRoleDefinitionByEnrollmentAccountRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -5951,10 +5594,8 @@ export const GetBillingRoleDefinitionByEnrollmentAccountRequest = /*@__PURE__*/ 
 export type GetBillingRoleDefinitionByEnrollmentAccountResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetBillingRoleDefinitionByEnrollmentAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBillingRoleDefinitionByEnrollmentAccountResponseTagsMap>;
+export const GetBillingRoleDefinitionByEnrollmentAccountResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetBillingRoleDefinitionByEnrollmentAccountResponseTagsMap>;
 
 export interface GetBillingRoleDefinitionByEnrollmentAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5970,18 +5611,8 @@ export interface GetBillingRoleDefinitionByEnrollmentAccountResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: GetBillingRoleDefinitionByEnrollmentAccountResponseTagsMap;
 }
-export const GetBillingRoleDefinitionByEnrollmentAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BillingRoleDefinitionProperties),
-    tags: S.optional(GetBillingRoleDefinitionByEnrollmentAccountResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetBillingRoleDefinitionByEnrollmentAccountResponse",
-}) as any as S.Schema<GetBillingRoleDefinitionByEnrollmentAccountResponse>;
+export const GetBillingRoleDefinitionByEnrollmentAccountResponse =
+  GetBillingRoleDefinitionByBillingAccountResponse as any as S.Schema<GetBillingRoleDefinitionByEnrollmentAccountResponse>;
 
 export interface GetBillingRoleDefinitionByInvoiceSectionRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -6015,10 +5646,8 @@ export const GetBillingRoleDefinitionByInvoiceSectionRequest = /*@__PURE__*/ S.s
 export type GetBillingRoleDefinitionByInvoiceSectionResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetBillingRoleDefinitionByInvoiceSectionResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBillingRoleDefinitionByInvoiceSectionResponseTagsMap>;
+export const GetBillingRoleDefinitionByInvoiceSectionResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetBillingRoleDefinitionByInvoiceSectionResponseTagsMap>;
 
 export interface GetBillingRoleDefinitionByInvoiceSectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6034,18 +5663,8 @@ export interface GetBillingRoleDefinitionByInvoiceSectionResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: GetBillingRoleDefinitionByInvoiceSectionResponseTagsMap;
 }
-export const GetBillingRoleDefinitionByInvoiceSectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BillingRoleDefinitionProperties),
-    tags: S.optional(GetBillingRoleDefinitionByInvoiceSectionResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetBillingRoleDefinitionByInvoiceSectionResponse",
-}) as any as S.Schema<GetBillingRoleDefinitionByInvoiceSectionResponse>;
+export const GetBillingRoleDefinitionByInvoiceSectionResponse =
+  GetBillingRoleDefinitionByBillingAccountResponse as any as S.Schema<GetBillingRoleDefinitionByInvoiceSectionResponse>;
 
 export interface GetBillingSubscriptionRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -6074,10 +5693,8 @@ export const GetBillingSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type GetBillingSubscriptionResponseTagsMap = { [key: string]: string | undefined };
-export const GetBillingSubscriptionResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBillingSubscriptionResponseTagsMap>;
+export const GetBillingSubscriptionResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetBillingSubscriptionResponseTagsMap>;
 
 export interface GetBillingSubscriptionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6093,18 +5710,8 @@ export interface GetBillingSubscriptionResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: GetBillingSubscriptionResponseTagsMap;
 }
-export const GetBillingSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BillingSubscriptionProperties),
-    tags: S.optional(GetBillingSubscriptionResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetBillingSubscriptionResponse",
-}) as any as S.Schema<GetBillingSubscriptionResponse>;
+export const GetBillingSubscriptionResponse =
+  BillingSubscriptionsSplitResponse as any as S.Schema<GetBillingSubscriptionResponse>;
 
 export interface GetBillingSubscriptionByBillingProfileRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -6138,10 +5745,8 @@ export const GetBillingSubscriptionByBillingProfileRequest = /*@__PURE__*/ S.sus
 export type GetBillingSubscriptionByBillingProfileResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetBillingSubscriptionByBillingProfileResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBillingSubscriptionByBillingProfileResponseTagsMap>;
+export const GetBillingSubscriptionByBillingProfileResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetBillingSubscriptionByBillingProfileResponseTagsMap>;
 
 export interface GetBillingSubscriptionByBillingProfileResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6157,18 +5762,8 @@ export interface GetBillingSubscriptionByBillingProfileResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: GetBillingSubscriptionByBillingProfileResponseTagsMap;
 }
-export const GetBillingSubscriptionByBillingProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BillingSubscriptionProperties),
-    tags: S.optional(GetBillingSubscriptionByBillingProfileResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetBillingSubscriptionByBillingProfileResponse",
-}) as any as S.Schema<GetBillingSubscriptionByBillingProfileResponse>;
+export const GetBillingSubscriptionByBillingProfileResponse =
+  BillingSubscriptionsSplitResponse as any as S.Schema<GetBillingSubscriptionByBillingProfileResponse>;
 
 export interface GetBillingSubscriptionsAliasRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -6194,10 +5789,8 @@ export const GetBillingSubscriptionsAliasRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type GetBillingSubscriptionsAliasResponseTagsMap = { [key: string]: string | undefined };
-export const GetBillingSubscriptionsAliasResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBillingSubscriptionsAliasResponseTagsMap>;
+export const GetBillingSubscriptionsAliasResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetBillingSubscriptionsAliasResponseTagsMap>;
 
 export interface GetBillingSubscriptionsAliasResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6213,18 +5806,8 @@ export interface GetBillingSubscriptionsAliasResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: GetBillingSubscriptionsAliasResponseTagsMap;
 }
-export const GetBillingSubscriptionsAliasResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BillingSubscriptionAliasProperties),
-    tags: S.optional(GetBillingSubscriptionsAliasResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetBillingSubscriptionsAliasResponse",
-}) as any as S.Schema<GetBillingSubscriptionsAliasResponse>;
+export const GetBillingSubscriptionsAliasResponse =
+  BillingSubscriptionsAliasesCreateOrUpdateResponse as any as S.Schema<GetBillingSubscriptionsAliasResponse>;
 
 export interface GetCustomerRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -6251,9 +5834,8 @@ export const GetCustomerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Azure plans enabled for the customer. */
 export type CustomerPropertiesEnabledAzurePlansList = Array<AzurePlan>;
-export const CustomerPropertiesEnabledAzurePlansList = /*@__PURE__*/ S.Array(
-  AzurePlan,
-) as any as S.Schema<CustomerPropertiesEnabledAzurePlansList>;
+export const CustomerPropertiesEnabledAzurePlansList =
+  InvoiceSectionWithCreateSubPermissionEnabledAzurePlansList as any as S.Schema<CustomerPropertiesEnabledAzurePlansList>;
 
 /** The list of resellers for which an Azure plan is enabled for the customer. */
 export type CustomerPropertiesResellersList = Array<Reseller>;
@@ -6263,10 +5845,8 @@ export const CustomerPropertiesResellersList = /*@__PURE__*/ S.Array(
 
 /** Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type CustomerPropertiesTagsMap = { [key: string]: string | undefined };
-export const CustomerPropertiesTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CustomerPropertiesTagsMap>;
+export const CustomerPropertiesTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<CustomerPropertiesTagsMap>;
 
 /** A partner's customer. */
 export interface CustomerProperties {
@@ -6302,10 +5882,8 @@ export const CustomerProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type GetCustomerResponseTagsMap = { [key: string]: string | undefined };
-export const GetCustomerResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetCustomerResponseTagsMap>;
+export const GetCustomerResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetCustomerResponseTagsMap>;
 
 export interface GetCustomerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6356,10 +5934,8 @@ export const GetCustomerByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type GetCustomerByBillingAccountResponseTagsMap = { [key: string]: string | undefined };
-export const GetCustomerByBillingAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetCustomerByBillingAccountResponseTagsMap>;
+export const GetCustomerByBillingAccountResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetCustomerByBillingAccountResponseTagsMap>;
 
 export interface GetCustomerByBillingAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6430,10 +6006,8 @@ export const DepartmentProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type GetDepartmentResponseTagsMap = { [key: string]: string | undefined };
-export const GetDepartmentResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDepartmentResponseTagsMap>;
+export const GetDepartmentResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetDepartmentResponseTagsMap>;
 
 export interface GetDepartmentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6524,10 +6098,8 @@ export const EnrollmentAccountProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type GetEnrollmentAccountResponseTagsMap = { [key: string]: string | undefined };
-export const GetEnrollmentAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetEnrollmentAccountResponseTagsMap>;
+export const GetEnrollmentAccountResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetEnrollmentAccountResponseTagsMap>;
 
 export interface GetEnrollmentAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6583,10 +6155,8 @@ export const GetEnrollmentAccountByDepartmentRequest = /*@__PURE__*/ S.suspend((
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type GetEnrollmentAccountByDepartmentResponseTagsMap = { [key: string]: string | undefined };
-export const GetEnrollmentAccountByDepartmentResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetEnrollmentAccountByDepartmentResponseTagsMap>;
+export const GetEnrollmentAccountByDepartmentResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetEnrollmentAccountByDepartmentResponseTagsMap>;
 
 export interface GetEnrollmentAccountByDepartmentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6602,18 +6172,8 @@ export interface GetEnrollmentAccountByDepartmentResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: GetEnrollmentAccountByDepartmentResponseTagsMap;
 }
-export const GetEnrollmentAccountByDepartmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(EnrollmentAccountProperties),
-    tags: S.optional(GetEnrollmentAccountByDepartmentResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetEnrollmentAccountByDepartmentResponse",
-}) as any as S.Schema<GetEnrollmentAccountByDepartmentResponse>;
+export const GetEnrollmentAccountByDepartmentResponse =
+  GetEnrollmentAccountResponse as any as S.Schema<GetEnrollmentAccountByDepartmentResponse>;
 
 export interface GetInvoiceRequest {
   /** The ID that uniquely identifies an invoice. */
@@ -6634,9 +6194,8 @@ export const GetInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The document numbers for the invoice document. */
 export type InvoiceDocumentDocumentNumbersList = Array<string>;
-export const InvoiceDocumentDocumentNumbersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InvoiceDocumentDocumentNumbersList>;
+export const InvoiceDocumentDocumentNumbersList =
+  RegistrationNumberTypeList as any as S.Schema<InvoiceDocumentDocumentNumbersList>;
 
 /** The type of the document. */
 export type InvoiceDocumentType =
@@ -6926,10 +6485,8 @@ export const InvoiceProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type GetInvoiceResponseTagsMap = { [key: string]: string | undefined };
-export const GetInvoiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetInvoiceResponseTagsMap>;
+export const GetInvoiceResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetInvoiceResponseTagsMap>;
 
 export interface GetInvoiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6980,10 +6537,8 @@ export const GetInvoiceByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type GetInvoiceByBillingAccountResponseTagsMap = { [key: string]: string | undefined };
-export const GetInvoiceByBillingAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetInvoiceByBillingAccountResponseTagsMap>;
+export const GetInvoiceByBillingAccountResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetInvoiceByBillingAccountResponseTagsMap>;
 
 export interface GetInvoiceByBillingAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7036,10 +6591,8 @@ export const GetInvoiceByBillingSubscriptionRequest = /*@__PURE__*/ S.suspend(()
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type GetInvoiceByBillingSubscriptionResponseTagsMap = { [key: string]: string | undefined };
-export const GetInvoiceByBillingSubscriptionResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetInvoiceByBillingSubscriptionResponseTagsMap>;
+export const GetInvoiceByBillingSubscriptionResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetInvoiceByBillingSubscriptionResponseTagsMap>;
 
 export interface GetInvoiceByBillingSubscriptionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7055,18 +6608,8 @@ export interface GetInvoiceByBillingSubscriptionResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: GetInvoiceByBillingSubscriptionResponseTagsMap;
 }
-export const GetInvoiceByBillingSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(InvoiceProperties),
-    tags: S.optional(GetInvoiceByBillingSubscriptionResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetInvoiceByBillingSubscriptionResponse",
-}) as any as S.Schema<GetInvoiceByBillingSubscriptionResponse>;
+export const GetInvoiceByBillingSubscriptionResponse =
+  GetInvoiceByBillingAccountResponse as any as S.Schema<GetInvoiceByBillingSubscriptionResponse>;
 
 export interface GetInvoiceSectionRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -7093,10 +6636,8 @@ export const GetInvoiceSectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type InvoiceSectionPropertiesTagsMap = { [key: string]: string | undefined };
-export const InvoiceSectionPropertiesTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<InvoiceSectionPropertiesTagsMap>;
+export const InvoiceSectionPropertiesTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<InvoiceSectionPropertiesTagsMap>;
 
 /** An invoice section. */
 export interface InvoiceSectionProperties {
@@ -7129,10 +6670,8 @@ export const InvoiceSectionProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type GetInvoiceSectionResponseTagsMap = { [key: string]: string | undefined };
-export const GetInvoiceSectionResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetInvoiceSectionResponseTagsMap>;
+export const GetInvoiceSectionResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetInvoiceSectionResponseTagsMap>;
 
 export interface GetInvoiceSectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7191,10 +6730,8 @@ export const GetPartnerTransferRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type GetPartnerTransferResponseTagsMap = { [key: string]: string | undefined };
-export const GetPartnerTransferResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPartnerTransferResponseTagsMap>;
+export const GetPartnerTransferResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetPartnerTransferResponseTagsMap>;
 
 export interface GetPartnerTransferResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7210,18 +6747,8 @@ export interface GetPartnerTransferResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: GetPartnerTransferResponseTagsMap;
 }
-export const GetPartnerTransferResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PartnerTransferProperties),
-    tags: S.optional(GetPartnerTransferResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetPartnerTransferResponse",
-}) as any as S.Schema<GetPartnerTransferResponse>;
+export const GetPartnerTransferResponse =
+  CancelPartnerTransferResponse as any as S.Schema<GetPartnerTransferResponse>;
 
 export interface GetPaymentMethodByBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -7306,10 +6833,8 @@ export const PaymentMethodProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type GetPaymentMethodByBillingAccountResponseTagsMap = { [key: string]: string | undefined };
-export const GetPaymentMethodByBillingAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPaymentMethodByBillingAccountResponseTagsMap>;
+export const GetPaymentMethodByBillingAccountResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetPaymentMethodByBillingAccountResponseTagsMap>;
 
 export interface GetPaymentMethodByBillingAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7365,9 +6890,8 @@ export const GetPaymentMethodByBillingProfileRequest = /*@__PURE__*/ S.suspend((
 
 /** The list of logos for the payment method. */
 export type PaymentMethodLinkPropertiesLogosList = Array<PaymentMethodLogo>;
-export const PaymentMethodLinkPropertiesLogosList = /*@__PURE__*/ S.Array(
-  PaymentMethodLogo,
-) as any as S.Schema<PaymentMethodLinkPropertiesLogosList>;
+export const PaymentMethodLinkPropertiesLogosList =
+  PaymentMethodPropertiesLogosList as any as S.Schema<PaymentMethodLinkPropertiesLogosList>;
 
 /** The properties of a payment method link. */
 export interface PaymentMethodLinkProperties {
@@ -7411,10 +6935,8 @@ export const PaymentMethodLinkProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type GetPaymentMethodByBillingProfileResponseTagsMap = { [key: string]: string | undefined };
-export const GetPaymentMethodByBillingProfileResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPaymentMethodByBillingProfileResponseTagsMap>;
+export const GetPaymentMethodByBillingProfileResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetPaymentMethodByBillingProfileResponseTagsMap>;
 
 export interface GetPaymentMethodByBillingProfileResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7464,10 +6986,8 @@ export const GetPaymentMethodByUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type GetPaymentMethodByUserResponseTagsMap = { [key: string]: string | undefined };
-export const GetPaymentMethodByUserResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPaymentMethodByUserResponseTagsMap>;
+export const GetPaymentMethodByUserResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetPaymentMethodByUserResponseTagsMap>;
 
 export interface GetPaymentMethodByUserResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7483,18 +7003,8 @@ export interface GetPaymentMethodByUserResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: GetPaymentMethodByUserResponseTagsMap;
 }
-export const GetPaymentMethodByUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PaymentMethodProperties),
-    tags: S.optional(GetPaymentMethodByUserResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetPaymentMethodByUserResponse",
-}) as any as S.Schema<GetPaymentMethodByUserResponse>;
+export const GetPaymentMethodByUserResponse =
+  GetPaymentMethodByBillingAccountResponse as any as S.Schema<GetPaymentMethodByUserResponse>;
 
 export interface GetPolicyByBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -7628,10 +7138,8 @@ export const BillingAccountPolicyProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type GetPolicyByBillingAccountResponseTagsMap = { [key: string]: string | undefined };
-export const GetPolicyByBillingAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPolicyByBillingAccountResponseTagsMap>;
+export const GetPolicyByBillingAccountResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetPolicyByBillingAccountResponseTagsMap>;
 
 export interface GetPolicyByBillingAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7692,9 +7200,8 @@ export const ViewChargesPolicy = S.String;
 
 /** List of all policies defined at the billing scope. */
 export type BillingProfilePolicyPropertiesPoliciesList = Array<PolicySummary>;
-export const BillingProfilePolicyPropertiesPoliciesList = /*@__PURE__*/ S.Array(
-  PolicySummary,
-) as any as S.Schema<BillingProfilePolicyPropertiesPoliciesList>;
+export const BillingProfilePolicyPropertiesPoliciesList =
+  BillingAccountPolicyPropertiesPoliciesList as any as S.Schema<BillingProfilePolicyPropertiesPoliciesList>;
 
 /** A policy at billing profile scope. */
 export interface BillingProfilePolicyProperties {
@@ -7732,10 +7239,8 @@ export const BillingProfilePolicyProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type GetPolicyByBillingProfileResponseTagsMap = { [key: string]: string | undefined };
-export const GetPolicyByBillingProfileResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPolicyByBillingProfileResponseTagsMap>;
+export const GetPolicyByBillingProfileResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetPolicyByBillingProfileResponseTagsMap>;
 
 export interface GetPolicyByBillingProfileResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7797,9 +7302,8 @@ export const GetPolicyByCustomerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of all policies defined at the billing scope. */
 export type CustomerPolicyPropertiesPoliciesList = Array<PolicySummary>;
-export const CustomerPolicyPropertiesPoliciesList = /*@__PURE__*/ S.Array(
-  PolicySummary,
-) as any as S.Schema<CustomerPolicyPropertiesPoliciesList>;
+export const CustomerPolicyPropertiesPoliciesList =
+  BillingAccountPolicyPropertiesPoliciesList as any as S.Schema<CustomerPolicyPropertiesPoliciesList>;
 
 /** A policy at customer scope. */
 export interface CustomerPolicyProperties {
@@ -7820,10 +7324,8 @@ export const CustomerPolicyProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type GetPolicyByCustomerResponseTagsMap = { [key: string]: string | undefined };
-export const GetPolicyByCustomerResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPolicyByCustomerResponseTagsMap>;
+export const GetPolicyByCustomerResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetPolicyByCustomerResponseTagsMap>;
 
 export interface GetPolicyByCustomerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7878,10 +7380,8 @@ export const GetPolicyByCustomerAtBillingAccountRequest = /*@__PURE__*/ S.suspen
 export type GetPolicyByCustomerAtBillingAccountResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetPolicyByCustomerAtBillingAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPolicyByCustomerAtBillingAccountResponseTagsMap>;
+export const GetPolicyByCustomerAtBillingAccountResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetPolicyByCustomerAtBillingAccountResponseTagsMap>;
 
 export interface GetPolicyByCustomerAtBillingAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7897,18 +7397,8 @@ export interface GetPolicyByCustomerAtBillingAccountResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: GetPolicyByCustomerAtBillingAccountResponseTagsMap;
 }
-export const GetPolicyByCustomerAtBillingAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CustomerPolicyProperties),
-    tags: S.optional(GetPolicyByCustomerAtBillingAccountResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetPolicyByCustomerAtBillingAccountResponse",
-}) as any as S.Schema<GetPolicyByCustomerAtBillingAccountResponse>;
+export const GetPolicyByCustomerAtBillingAccountResponse =
+  GetPolicyByCustomerResponse as any as S.Schema<GetPolicyByCustomerAtBillingAccountResponse>;
 
 export interface GetPolicyBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7931,9 +7421,8 @@ export const GetPolicyBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of all policies defined at the billing scope. */
 export type SubscriptionPolicyPropertiesPoliciesList = Array<PolicySummary>;
-export const SubscriptionPolicyPropertiesPoliciesList = /*@__PURE__*/ S.Array(
-  PolicySummary,
-) as any as S.Schema<SubscriptionPolicyPropertiesPoliciesList>;
+export const SubscriptionPolicyPropertiesPoliciesList =
+  BillingAccountPolicyPropertiesPoliciesList as any as S.Schema<SubscriptionPolicyPropertiesPoliciesList>;
 
 /** A policy at subscription scope. */
 export interface SubscriptionPolicyProperties {
@@ -7953,10 +7442,8 @@ export const SubscriptionPolicyProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type GetPolicyBySubscriptionResponseTagsMap = { [key: string]: string | undefined };
-export const GetPolicyBySubscriptionResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPolicyBySubscriptionResponseTagsMap>;
+export const GetPolicyBySubscriptionResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetPolicyBySubscriptionResponseTagsMap>;
 
 export interface GetPolicyBySubscriptionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8095,10 +7582,8 @@ export const ProductProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type GetProductResponseTagsMap = { [key: string]: string | undefined };
-export const GetProductResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetProductResponseTagsMap>;
+export const GetProductResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetProductResponseTagsMap>;
 
 export interface GetProductResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8146,10 +7631,8 @@ export const GetRecipientTransferRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type GetRecipientTransferResponseTagsMap = { [key: string]: string | undefined };
-export const GetRecipientTransferResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetRecipientTransferResponseTagsMap>;
+export const GetRecipientTransferResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetRecipientTransferResponseTagsMap>;
 
 export interface GetRecipientTransferResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8165,18 +7648,8 @@ export interface GetRecipientTransferResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: GetRecipientTransferResponseTagsMap;
 }
-export const GetRecipientTransferResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RecipientTransferProperties),
-    tags: S.optional(GetRecipientTransferResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetRecipientTransferResponse",
-}) as any as S.Schema<GetRecipientTransferResponse>;
+export const GetRecipientTransferResponse =
+  AcceptRecipientTransferResponse as any as S.Schema<GetRecipientTransferResponse>;
 
 export interface GetReservationByReservationOrderRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -8212,9 +7685,8 @@ export const InstanceFlexibility = S.String;
 
 /** The array of applied scopes of a reservation. Will be null if the reservation is in Shared scope */
 export type ReservationPropertyAppliedScopesList = Array<string>;
-export const ReservationPropertyAppliedScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReservationPropertyAppliedScopesList>;
+export const ReservationPropertyAppliedScopesList =
+  RegistrationNumberTypeList as any as S.Schema<ReservationPropertyAppliedScopesList>;
 
 /** The status of the reservation. */
 export type ReservationStatusCode =
@@ -8278,9 +7750,8 @@ export const ReservationBillingPlan = S.String;
 
 /** List of destination resource id that are created due to split. Format of the resource id is /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId} */
 export type ReservationSplitPropertiesSplitDestinationsList = Array<string>;
-export const ReservationSplitPropertiesSplitDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReservationSplitPropertiesSplitDestinationsList>;
+export const ReservationSplitPropertiesSplitDestinationsList =
+  RegistrationNumberTypeList as any as S.Schema<ReservationSplitPropertiesSplitDestinationsList>;
 
 /** Properties of reservation split */
 export interface ReservationSplitProperties {
@@ -8300,9 +7771,8 @@ export const ReservationSplitProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource ids of the source reservation's merged to form this reservation. Format of the resource id is /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId} */
 export type ReservationMergePropertiesMergeSourcesList = Array<string>;
-export const ReservationMergePropertiesMergeSourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReservationMergePropertiesMergeSourcesList>;
+export const ReservationMergePropertiesMergeSourcesList =
+  RegistrationNumberTypeList as any as S.Schema<ReservationMergePropertiesMergeSourcesList>;
 
 /** Properties of reservation merge */
 export interface ReservationMergeProperties {
@@ -8377,9 +7847,8 @@ export const AppliedScopeType = S.String;
 
 /** List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. */
 export type ReservationPurchaseRequestPropertiesAppliedScopesList = Array<string>;
-export const ReservationPurchaseRequestPropertiesAppliedScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReservationPurchaseRequestPropertiesAppliedScopesList>;
+export const ReservationPurchaseRequestPropertiesAppliedScopesList =
+  RegistrationNumberTypeList as any as S.Schema<ReservationPurchaseRequestPropertiesAppliedScopesList>;
 
 /** Properties specific to each reserved resource type. Not required if not applicable. */
 export interface ReservationPurchaseRequestPropertiesReservedResourceProperties {
@@ -8657,21 +8126,15 @@ export const ReservationProperty = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags for this reservation */
 export type GetReservationByReservationOrderResponseTagsMap = { [key: string]: string | undefined };
-export const GetReservationByReservationOrderResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetReservationByReservationOrderResponseTagsMap>;
+export const GetReservationByReservationOrderResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetReservationByReservationOrderResponseTagsMap>;
 
 /** The property of reservation sku object. */
 export interface ReservationSkuProperty {
   /** The name of the reservation sku. */
   name?: string;
 }
-export const ReservationSkuProperty = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "ReservationSkuProperty" }) as any as S.Schema<ReservationSkuProperty>;
+export const ReservationSkuProperty = SkuName as any as S.Schema<ReservationSkuProperty>;
 
 export interface GetReservationByReservationOrderResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8801,10 +8264,8 @@ export const ReservationOrderBillingPlanInformation = /*@__PURE__*/ S.suspend(()
 
 /** Tags for this reservation */
 export type ReservationTagsMap = { [key: string]: string | undefined };
-export const ReservationTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ReservationTagsMap>;
+export const ReservationTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<ReservationTagsMap>;
 
 /** The definition of the reservation. */
 export interface Reservation {
@@ -8913,10 +8374,8 @@ export const ReservationOrderProperty = /*@__PURE__*/ S.suspend(() =>
 export type GetReservationOrderByBillingAccountResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetReservationOrderByBillingAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetReservationOrderByBillingAccountResponseTagsMap>;
+export const GetReservationOrderByBillingAccountResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetReservationOrderByBillingAccountResponseTagsMap>;
 
 export interface GetReservationOrderByBillingAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8984,11 +8443,7 @@ export interface Sku {
   /** Name of the SKU to be applied */
   name?: string;
 }
-export const Sku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
+export const Sku = SkuName as any as S.Schema<Sku>;
 
 /** Represents the billing plan in ISO 8601 format. Required only for monthly purchases. */
 export type BillingPlan = "P1M";
@@ -9102,9 +8557,8 @@ export const UtilizationAggregates = ReservationUtilizationAggregates;
 
 /** The array of aggregates of a savings plan's utilization */
 export type UtilizationAggregatesList = Array<ReservationUtilizationAggregates>;
-export const UtilizationAggregatesList = /*@__PURE__*/ S.Array(
-  ReservationUtilizationAggregates,
-) as any as S.Schema<UtilizationAggregatesList>;
+export const UtilizationAggregatesList =
+  ReservationPropertyUtilizationAggregatesList as any as S.Schema<UtilizationAggregatesList>;
 
 /** Savings plan utilization */
 export interface Utilization {
@@ -9125,13 +8579,8 @@ export interface ExtendedStatusInfoProperties {
   /** The subscription that has failed credit line check. */
   subscriptionId?: string;
 }
-export const ExtendedStatusInfoProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExtendedStatusInfoProperties",
-}) as any as S.Schema<ExtendedStatusInfoProperties>;
+export const ExtendedStatusInfoProperties =
+  ExtendedStatusDefinitionProperties as any as S.Schema<ExtendedStatusInfoProperties>;
 
 /** Extended status information */
 export interface ExtendedStatusInfo {
@@ -9234,10 +8683,8 @@ export const SavingsPlanModelProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type GetSavingsPlanByBillingAccountResponseTagsMap = { [key: string]: string | undefined };
-export const GetSavingsPlanByBillingAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetSavingsPlanByBillingAccountResponseTagsMap>;
+export const GetSavingsPlanByBillingAccountResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetSavingsPlanByBillingAccountResponseTagsMap>;
 
 export interface GetSavingsPlanByBillingAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -9345,9 +8792,8 @@ export const BillingPlanInformation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BillingPlanInformation" }) as any as S.Schema<BillingPlanInformation>;
 
 export type SavingsPlanOrderModelPropertiesSavingsPlansList = Array<string>;
-export const SavingsPlanOrderModelPropertiesSavingsPlansList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SavingsPlanOrderModelPropertiesSavingsPlansList>;
+export const SavingsPlanOrderModelPropertiesSavingsPlansList =
+  RegistrationNumberTypeList as any as S.Schema<SavingsPlanOrderModelPropertiesSavingsPlansList>;
 
 /** Savings plan order properties */
 export interface SavingsPlanOrderModelProperties {
@@ -9404,10 +8850,8 @@ export const SavingsPlanOrderModelProperties = /*@__PURE__*/ S.suspend(() =>
 export type GetSavingsPlanOrderByBillingAccountResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetSavingsPlanOrderByBillingAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetSavingsPlanOrderByBillingAccountResponseTagsMap>;
+export const GetSavingsPlanOrderByBillingAccountResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetSavingsPlanOrderByBillingAccountResponseTagsMap>;
 
 export interface GetSavingsPlanOrderByBillingAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -9521,10 +8965,8 @@ export const GetTransferRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type GetTransferResponseTagsMap = { [key: string]: string | undefined };
-export const GetTransferResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetTransferResponseTagsMap>;
+export const GetTransferResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<GetTransferResponseTagsMap>;
 
 export interface GetTransferResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -9540,16 +8982,7 @@ export interface GetTransferResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: GetTransferResponseTagsMap;
 }
-export const GetTransferResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(TransferProperties),
-    tags: S.optional(GetTransferResponseTagsMap),
-  }),
-).annotate({ identifier: "GetTransferResponse" }) as any as S.Schema<GetTransferResponse>;
+export const GetTransferResponse = CancelTransferResponse as any as S.Schema<GetTransferResponse>;
 
 export interface InvoicesAmendRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -9572,16 +9005,12 @@ export const InvoicesAmendRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InvoicesAmendRequest" }) as any as S.Schema<InvoicesAmendRequest>;
 
 export interface InvoicesAmendResponse {}
-export const InvoicesAmendResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "InvoicesAmendResponse",
-}) as any as S.Schema<InvoicesAmendResponse>;
+export const InvoicesAmendResponse = SystemOverridesInput as any as S.Schema<InvoicesAmendResponse>;
 
 /** Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type InvoiceSectionPropertiesInputTagsMap = { [key: string]: string | undefined };
-export const InvoiceSectionPropertiesInputTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<InvoiceSectionPropertiesInputTagsMap>;
+export const InvoiceSectionPropertiesInputTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<InvoiceSectionPropertiesInputTagsMap>;
 
 /** An invoice section. */
 export interface InvoiceSectionPropertiesInput {
@@ -9610,10 +9039,8 @@ export const InvoiceSectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type InvoiceSectionsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const InvoiceSectionsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<InvoiceSectionsCreateOrUpdateRequestTagsMap>;
+export const InvoiceSectionsCreateOrUpdateRequestTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<InvoiceSectionsCreateOrUpdateRequestTagsMap>;
 
 export interface InvoiceSectionsCreateOrUpdateRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -9648,10 +9075,8 @@ export const InvoiceSectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type InvoiceSectionsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const InvoiceSectionsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<InvoiceSectionsCreateOrUpdateResponseTagsMap>;
+export const InvoiceSectionsCreateOrUpdateResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<InvoiceSectionsCreateOrUpdateResponseTagsMap>;
 
 export interface InvoiceSectionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -9667,18 +9092,8 @@ export interface InvoiceSectionsCreateOrUpdateResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: InvoiceSectionsCreateOrUpdateResponseTagsMap;
 }
-export const InvoiceSectionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(InvoiceSectionProperties),
-    tags: S.optional(InvoiceSectionsCreateOrUpdateResponseTagsMap),
-  }),
-).annotate({
-  identifier: "InvoiceSectionsCreateOrUpdateResponse",
-}) as any as S.Schema<InvoiceSectionsCreateOrUpdateResponse>;
+export const InvoiceSectionsCreateOrUpdateResponse =
+  GetInvoiceSectionResponse as any as S.Schema<InvoiceSectionsCreateOrUpdateResponse>;
 
 export interface InvoiceSectionsValidateDeleteEligibilityRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -9781,10 +9196,8 @@ export const ListAgreementByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type AgreementTagsMap = { [key: string]: string | undefined };
-export const AgreementTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AgreementTagsMap>;
+export const AgreementTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<AgreementTagsMap>;
 
 /** An agreement. */
 export interface Agreement {
@@ -9801,16 +9214,7 @@ export interface Agreement {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: AgreementTagsMap;
 }
-export const Agreement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AgreementProperties),
-    tags: S.optional(AgreementTagsMap),
-  }),
-).annotate({ identifier: "Agreement" }) as any as S.Schema<Agreement>;
+export const Agreement = GetAgreementResponse as any as S.Schema<Agreement>;
 
 /** The Agreement items on this page */
 export type AgreementListResultValueList = Array<Agreement>;
@@ -9874,10 +9278,8 @@ export const ListAssociatedTenantByBillingAccountRequest = /*@__PURE__*/ S.suspe
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type AssociatedTenantTagsMap = { [key: string]: string | undefined };
-export const AssociatedTenantTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AssociatedTenantTagsMap>;
+export const AssociatedTenantTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<AssociatedTenantTagsMap>;
 
 /** An associated tenant. */
 export interface AssociatedTenant {
@@ -9981,10 +9383,8 @@ export const ListBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type BillingAccountTagsMap = { [key: string]: string | undefined };
-export const BillingAccountTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BillingAccountTagsMap>;
+export const BillingAccountTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<BillingAccountTagsMap>;
 
 /** A billing account. */
 export interface BillingAccount {
@@ -10053,9 +9453,8 @@ export const ListBillingPermissionsByBillingAccountRequest = /*@__PURE__*/ S.sus
 
 /** The BillingPermission items on this page */
 export type BillingPermissionListResultValueList = Array<BillingPermission>;
-export const BillingPermissionListResultValueList = /*@__PURE__*/ S.Array(
-  BillingPermission,
-) as any as S.Schema<BillingPermissionListResultValueList>;
+export const BillingPermissionListResultValueList =
+  BillingRoleDefinitionPropertiesPermissionsList as any as S.Schema<BillingPermissionListResultValueList>;
 
 /** A container for a list of resources */
 export interface BillingPermissionListResult {
@@ -10253,10 +9652,8 @@ export const ListBillingProfileByBillingAccountRequest = /*@__PURE__*/ S.suspend
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type BillingProfileTagsMap = { [key: string]: string | undefined };
-export const BillingProfileTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BillingProfileTagsMap>;
+export const BillingProfileTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<BillingProfileTagsMap>;
 
 /** A billing profile. */
 export interface BillingProfile {
@@ -10343,10 +9740,8 @@ export const ListBillingRequestByBillingAccountRequest = /*@__PURE__*/ S.suspend
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type BillingRequestTagsMap = { [key: string]: string | undefined };
-export const BillingRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BillingRequestTagsMap>;
+export const BillingRequestTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<BillingRequestTagsMap>;
 
 /** A request submitted by a user to manage billing. Users with an owner role on the scope can approve or decline these requests. */
 export interface BillingRequest {
@@ -10746,10 +10141,8 @@ export const ListBillingRoleDefinitionByBillingAccountRequest = /*@__PURE__*/ S.
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type BillingRoleDefinitionTagsMap = { [key: string]: string | undefined };
-export const BillingRoleDefinitionTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BillingRoleDefinitionTagsMap>;
+export const BillingRoleDefinitionTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<BillingRoleDefinitionTagsMap>;
 
 /** The properties of a role definition. */
 export interface BillingRoleDefinition {
@@ -10966,10 +10359,8 @@ export const ListBillingSubscriptionByBillingAccountRequest = /*@__PURE__*/ S.su
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type BillingSubscriptionTagsMap = { [key: string]: string | undefined };
-export const BillingSubscriptionTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BillingSubscriptionTagsMap>;
+export const BillingSubscriptionTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<BillingSubscriptionTagsMap>;
 
 /** The billing properties of a subscription. */
 export interface BillingSubscription {
@@ -11295,10 +10686,8 @@ export const ListBillingSubscriptionsAliasByBillingAccountRequest = /*@__PURE__*
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type BillingSubscriptionAliasTagsMap = { [key: string]: string | undefined };
-export const BillingSubscriptionAliasTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BillingSubscriptionAliasTagsMap>;
+export const BillingSubscriptionAliasTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<BillingSubscriptionAliasTagsMap>;
 
 /** A billing subscription alias. */
 export interface BillingSubscriptionAlias {
@@ -11390,10 +10779,8 @@ export const ListCustomerByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type CustomerTagsMap = { [key: string]: string | undefined };
-export const CustomerTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CustomerTagsMap>;
+export const CustomerTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<CustomerTagsMap>;
 
 /** A partner's customer. */
 export interface Customer {
@@ -11410,16 +10797,7 @@ export interface Customer {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: CustomerTagsMap;
 }
-export const Customer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CustomerProperties),
-    tags: S.optional(CustomerTagsMap),
-  }),
-).annotate({ identifier: "Customer" }) as any as S.Schema<Customer>;
+export const Customer = GetCustomerResponse as any as S.Schema<Customer>;
 
 /** The Customer items on this page */
 export type CustomerListResultValueList = Array<Customer>;
@@ -11520,10 +10898,8 @@ export const ListDepartmentByBillingAccountRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type DepartmentTagsMap = { [key: string]: string | undefined };
-export const DepartmentTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DepartmentTagsMap>;
+export const DepartmentTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<DepartmentTagsMap>;
 
 /** Optional grouping of enrollment accounts to segment costs into logical groupings and set budgets. */
 export interface Department {
@@ -11540,16 +10916,7 @@ export interface Department {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: DepartmentTagsMap;
 }
-export const Department = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DepartmentProperties),
-    tags: S.optional(DepartmentTagsMap),
-  }),
-).annotate({ identifier: "Department" }) as any as S.Schema<Department>;
+export const Department = GetDepartmentResponse as any as S.Schema<Department>;
 
 /** The Department items on this page */
 export type DepartmentListResultValueList = Array<Department>;
@@ -11610,10 +10977,8 @@ export const ListEnrollmentAccountByBillingAccountRequest = /*@__PURE__*/ S.susp
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type EnrollmentAccountTagsMap = { [key: string]: string | undefined };
-export const EnrollmentAccountTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EnrollmentAccountTagsMap>;
+export const EnrollmentAccountTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<EnrollmentAccountTagsMap>;
 
 /** It is an organizational hierarchy within a billing account to administer and manage azure costs. */
 export interface EnrollmentAccount {
@@ -11748,10 +11113,8 @@ export const ListInvoiceByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type InvoiceTagsMap = { [key: string]: string | undefined };
-export const InvoiceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<InvoiceTagsMap>;
+export const InvoiceTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<InvoiceTagsMap>;
 
 /** An invoice. */
 export interface Invoice {
@@ -11768,16 +11131,7 @@ export interface Invoice {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: InvoiceTagsMap;
 }
-export const Invoice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(InvoiceProperties),
-    tags: S.optional(InvoiceTagsMap),
-  }),
-).annotate({ identifier: "Invoice" }) as any as S.Schema<Invoice>;
+export const Invoice = GetInvoiceResponse as any as S.Schema<Invoice>;
 
 /** The Invoice items on this page */
 export type InvoiceListResultValueList = Array<Invoice>;
@@ -11933,10 +11287,8 @@ export const ListInvoiceSectionByBillingProfileRequest = /*@__PURE__*/ S.suspend
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type InvoiceSectionTagsMap = { [key: string]: string | undefined };
-export const InvoiceSectionTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<InvoiceSectionTagsMap>;
+export const InvoiceSectionTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<InvoiceSectionTagsMap>;
 
 /** An invoice section. */
 export interface InvoiceSection {
@@ -12080,10 +11432,8 @@ export const ListPartnerTransfersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type PartnerTransferDetailsTagsMap = { [key: string]: string | undefined };
-export const PartnerTransferDetailsTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PartnerTransferDetailsTagsMap>;
+export const PartnerTransferDetailsTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<PartnerTransferDetailsTagsMap>;
 
 /** Details of the transfer. */
 export interface PartnerTransferDetails {
@@ -12154,10 +11504,8 @@ export const ListPaymentMethodByBillingAccountRequest = /*@__PURE__*/ S.suspend(
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type PaymentMethodTagsMap = { [key: string]: string | undefined };
-export const PaymentMethodTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PaymentMethodTagsMap>;
+export const PaymentMethodTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<PaymentMethodTagsMap>;
 
 /** A payment method. */
 export interface PaymentMethod {
@@ -12229,10 +11577,8 @@ export const ListPaymentMethodByBillingProfileRequest = /*@__PURE__*/ S.suspend(
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type PaymentMethodLinkTagsMap = { [key: string]: string | undefined };
-export const PaymentMethodLinkTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PaymentMethodLinkTagsMap>;
+export const PaymentMethodLinkTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<PaymentMethodLinkTagsMap>;
 
 /** A payment method link. */
 export interface PaymentMethodLink {
@@ -12335,10 +11681,8 @@ export const ListProductByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type ProductTagsMap = { [key: string]: string | undefined };
-export const ProductTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProductTagsMap>;
+export const ProductTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<ProductTagsMap>;
 
 /** A product. */
 export interface Product {
@@ -12355,16 +11699,7 @@ export interface Product {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: ProductTagsMap;
 }
-export const Product = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ProductProperties),
-    tags: S.optional(ProductTagsMap),
-  }),
-).annotate({ identifier: "Product" }) as any as S.Schema<Product>;
+export const Product = GetProductResponse as any as S.Schema<Product>;
 
 /** The Product items on this page */
 export type ProductListResultValueList = Array<Product>;
@@ -12525,10 +11860,8 @@ export const ListRecipientTransfersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type RecipientTransferDetailsTagsMap = { [key: string]: string | undefined };
-export const RecipientTransferDetailsTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RecipientTransferDetailsTagsMap>;
+export const RecipientTransferDetailsTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<RecipientTransferDetailsTagsMap>;
 
 /** Details of the transfer. */
 export interface RecipientTransferDetails {
@@ -12652,9 +11985,8 @@ export const ReservationSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of reservations. */
 export type ReservationsListResultValueList = Array<Reservation>;
-export const ReservationsListResultValueList = /*@__PURE__*/ S.Array(
-  Reservation,
-) as any as S.Schema<ReservationsListResultValueList>;
+export const ReservationsListResultValueList =
+  ReservationOrderPropertyReservationsList as any as S.Schema<ReservationsListResultValueList>;
 
 /** The list of reservations and summary of roll out count of reservations in each state. */
 export interface ReservationsListResult {
@@ -12737,9 +12069,8 @@ export const ListReservationByReservationOrderRequest = /*@__PURE__*/ S.suspend(
 
 /** The Reservation items on this page */
 export type ReservationListValueList = Array<Reservation>;
-export const ReservationListValueList = /*@__PURE__*/ S.Array(
-  Reservation,
-) as any as S.Schema<ReservationListValueList>;
+export const ReservationListValueList =
+  ReservationOrderPropertyReservationsList as any as S.Schema<ReservationListValueList>;
 
 /** List of `Reservations` */
 export interface ReservationList {
@@ -12785,10 +12116,8 @@ export const ListReservationOrderByBillingAccountRequest = /*@__PURE__*/ S.suspe
 
 /** Tags for this reservation */
 export type ReservationOrderTagsMap = { [key: string]: string | undefined };
-export const ReservationOrderTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ReservationOrderTagsMap>;
+export const ReservationOrderTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<ReservationOrderTagsMap>;
 
 /** Details of a reservation order being returned. */
 export interface ReservationOrder {
@@ -12877,10 +12206,8 @@ export const ListSavingsPlanByBillingAccountRequest = /*@__PURE__*/ S.suspend(()
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type SavingsPlanModelTagsMap = { [key: string]: string | undefined };
-export const SavingsPlanModelTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SavingsPlanModelTagsMap>;
+export const SavingsPlanModelTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<SavingsPlanModelTagsMap>;
 
 /** Savings plan */
 export interface SavingsPlanModel {
@@ -12994,9 +12321,8 @@ export const ListSavingsPlanBySavingsPlanOrderRequest = /*@__PURE__*/ S.suspend(
 
 /** The SavingsPlanModel items on this page */
 export type SavingsPlanModelListValueList = Array<SavingsPlanModel>;
-export const SavingsPlanModelListValueList = /*@__PURE__*/ S.Array(
-  SavingsPlanModel,
-) as any as S.Schema<SavingsPlanModelListValueList>;
+export const SavingsPlanModelListValueList =
+  ListSavingsPlanByBillingAccountResponseValueList as any as S.Schema<SavingsPlanModelListValueList>;
 
 /** List of savings plans */
 export interface SavingsPlanModelList {
@@ -13042,10 +12368,8 @@ export const ListSavingsPlanOrderByBillingAccountRequest = /*@__PURE__*/ S.suspe
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type SavingsPlanOrderModelTagsMap = { [key: string]: string | undefined };
-export const SavingsPlanOrderModelTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SavingsPlanOrderModelTagsMap>;
+export const SavingsPlanOrderModelTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<SavingsPlanOrderModelTagsMap>;
 
 /** Savings plan order */
 export interface SavingsPlanOrderModel {
@@ -13152,10 +12476,8 @@ export const ListTransactionByBillingProfileRequest = /*@__PURE__*/ S.suspend(()
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type TransactionTagsMap = { [key: string]: string | undefined };
-export const TransactionTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TransactionTagsMap>;
+export const TransactionTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<TransactionTagsMap>;
 
 /** The credit type of the transaction. Applies only to credited transactions. */
 export type CreditType =
@@ -13533,10 +12855,8 @@ export const ListTransfersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type TransferDetailsTagsMap = { [key: string]: string | undefined };
-export const TransferDetailsTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TransferDetailsTagsMap>;
+export const TransferDetailsTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<TransferDetailsTagsMap>;
 
 /** Details of the transfer. */
 export interface TransferDetails {
@@ -13553,16 +12873,7 @@ export interface TransferDetails {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: TransferDetailsTagsMap;
 }
-export const TransferDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(TransferProperties),
-    tags: S.optional(TransferDetailsTagsMap),
-  }),
-).annotate({ identifier: "TransferDetails" }) as any as S.Schema<TransferDetails>;
+export const TransferDetails = CancelTransferResponse as any as S.Schema<TransferDetails>;
 
 /** The TransferDetails items on this page */
 export type TransferDetailsListResultValueList = Array<TransferDetails>;
@@ -13616,10 +12927,8 @@ export const MergeBillingSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type MergeBillingSubscriptionResponseTagsMap = { [key: string]: string | undefined };
-export const MergeBillingSubscriptionResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MergeBillingSubscriptionResponseTagsMap>;
+export const MergeBillingSubscriptionResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<MergeBillingSubscriptionResponseTagsMap>;
 
 export interface MergeBillingSubscriptionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -13635,18 +12944,8 @@ export interface MergeBillingSubscriptionResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: MergeBillingSubscriptionResponseTagsMap;
 }
-export const MergeBillingSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BillingSubscriptionProperties),
-    tags: S.optional(MergeBillingSubscriptionResponseTagsMap),
-  }),
-).annotate({
-  identifier: "MergeBillingSubscriptionResponse",
-}) as any as S.Schema<MergeBillingSubscriptionResponse>;
+export const MergeBillingSubscriptionResponse =
+  BillingSubscriptionsSplitResponse as any as S.Schema<MergeBillingSubscriptionResponse>;
 
 export interface MoveBillingSubscriptionRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -13678,10 +12977,8 @@ export const MoveBillingSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type MoveBillingSubscriptionResponseTagsMap = { [key: string]: string | undefined };
-export const MoveBillingSubscriptionResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MoveBillingSubscriptionResponseTagsMap>;
+export const MoveBillingSubscriptionResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<MoveBillingSubscriptionResponseTagsMap>;
 
 export interface MoveBillingSubscriptionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -13697,18 +12994,8 @@ export interface MoveBillingSubscriptionResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: MoveBillingSubscriptionResponseTagsMap;
 }
-export const MoveBillingSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BillingSubscriptionProperties),
-    tags: S.optional(MoveBillingSubscriptionResponseTagsMap),
-  }),
-).annotate({
-  identifier: "MoveBillingSubscriptionResponse",
-}) as any as S.Schema<MoveBillingSubscriptionResponse>;
+export const MoveBillingSubscriptionResponse =
+  BillingSubscriptionsSplitResponse as any as S.Schema<MoveBillingSubscriptionResponse>;
 
 export interface MoveProductRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -13735,10 +13022,8 @@ export const MoveProductRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type MoveProductResponseTagsMap = { [key: string]: string | undefined };
-export const MoveProductResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MoveProductResponseTagsMap>;
+export const MoveProductResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<MoveProductResponseTagsMap>;
 
 export interface MoveProductResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -13754,16 +13039,7 @@ export interface MoveProductResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: MoveProductResponseTagsMap;
 }
-export const MoveProductResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ProductProperties),
-    tags: S.optional(MoveProductResponseTagsMap),
-  }),
-).annotate({ identifier: "MoveProductResponse" }) as any as S.Schema<MoveProductResponse>;
+export const MoveProductResponse = GetProductResponse as any as S.Schema<MoveProductResponse>;
 
 /** Request parameters to initiate transfer. */
 export interface PartnerInitiateTransferProperties {
@@ -13814,10 +13090,8 @@ export const PartnerTransfersInitiateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type PartnerTransfersInitiateResponseTagsMap = { [key: string]: string | undefined };
-export const PartnerTransfersInitiateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PartnerTransfersInitiateResponseTagsMap>;
+export const PartnerTransfersInitiateResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<PartnerTransfersInitiateResponseTagsMap>;
 
 export interface PartnerTransfersInitiateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -13833,27 +13107,15 @@ export interface PartnerTransfersInitiateResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: PartnerTransfersInitiateResponseTagsMap;
 }
-export const PartnerTransfersInitiateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PartnerTransferProperties),
-    tags: S.optional(PartnerTransfersInitiateResponseTagsMap),
-  }),
-).annotate({
-  identifier: "PartnerTransfersInitiateResponse",
-}) as any as S.Schema<PartnerTransfersInitiateResponse>;
+export const PartnerTransfersInitiateResponse =
+  CancelPartnerTransferResponse as any as S.Schema<PartnerTransfersInitiateResponse>;
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type PoliciesCreateOrUpdateByBillingAccountRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const PoliciesCreateOrUpdateByBillingAccountRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PoliciesCreateOrUpdateByBillingAccountRequestTagsMap>;
+export const PoliciesCreateOrUpdateByBillingAccountRequestTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<PoliciesCreateOrUpdateByBillingAccountRequestTagsMap>;
 
 export interface PoliciesCreateOrUpdateByBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -13884,10 +13146,8 @@ export const PoliciesCreateOrUpdateByBillingAccountRequest = /*@__PURE__*/ S.sus
 export type PoliciesCreateOrUpdateByBillingAccountResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const PoliciesCreateOrUpdateByBillingAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PoliciesCreateOrUpdateByBillingAccountResponseTagsMap>;
+export const PoliciesCreateOrUpdateByBillingAccountResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<PoliciesCreateOrUpdateByBillingAccountResponseTagsMap>;
 
 export interface PoliciesCreateOrUpdateByBillingAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -13903,27 +13163,15 @@ export interface PoliciesCreateOrUpdateByBillingAccountResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: PoliciesCreateOrUpdateByBillingAccountResponseTagsMap;
 }
-export const PoliciesCreateOrUpdateByBillingAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BillingAccountPolicyProperties),
-    tags: S.optional(PoliciesCreateOrUpdateByBillingAccountResponseTagsMap),
-  }),
-).annotate({
-  identifier: "PoliciesCreateOrUpdateByBillingAccountResponse",
-}) as any as S.Schema<PoliciesCreateOrUpdateByBillingAccountResponse>;
+export const PoliciesCreateOrUpdateByBillingAccountResponse =
+  GetPolicyByBillingAccountResponse as any as S.Schema<PoliciesCreateOrUpdateByBillingAccountResponse>;
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type PoliciesCreateOrUpdateByBillingProfileRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const PoliciesCreateOrUpdateByBillingProfileRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PoliciesCreateOrUpdateByBillingProfileRequestTagsMap>;
+export const PoliciesCreateOrUpdateByBillingProfileRequestTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<PoliciesCreateOrUpdateByBillingProfileRequestTagsMap>;
 
 export interface PoliciesCreateOrUpdateByBillingProfileRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -13957,10 +13205,8 @@ export const PoliciesCreateOrUpdateByBillingProfileRequest = /*@__PURE__*/ S.sus
 export type PoliciesCreateOrUpdateByBillingProfileResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const PoliciesCreateOrUpdateByBillingProfileResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PoliciesCreateOrUpdateByBillingProfileResponseTagsMap>;
+export const PoliciesCreateOrUpdateByBillingProfileResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<PoliciesCreateOrUpdateByBillingProfileResponseTagsMap>;
 
 export interface PoliciesCreateOrUpdateByBillingProfileResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -13976,25 +13222,13 @@ export interface PoliciesCreateOrUpdateByBillingProfileResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: PoliciesCreateOrUpdateByBillingProfileResponseTagsMap;
 }
-export const PoliciesCreateOrUpdateByBillingProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BillingProfilePolicyProperties),
-    tags: S.optional(PoliciesCreateOrUpdateByBillingProfileResponseTagsMap),
-  }),
-).annotate({
-  identifier: "PoliciesCreateOrUpdateByBillingProfileResponse",
-}) as any as S.Schema<PoliciesCreateOrUpdateByBillingProfileResponse>;
+export const PoliciesCreateOrUpdateByBillingProfileResponse =
+  GetPolicyByBillingProfileResponse as any as S.Schema<PoliciesCreateOrUpdateByBillingProfileResponse>;
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type PoliciesCreateOrUpdateByCustomerRequestTagsMap = { [key: string]: string | undefined };
-export const PoliciesCreateOrUpdateByCustomerRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PoliciesCreateOrUpdateByCustomerRequestTagsMap>;
+export const PoliciesCreateOrUpdateByCustomerRequestTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<PoliciesCreateOrUpdateByCustomerRequestTagsMap>;
 
 export interface PoliciesCreateOrUpdateByCustomerRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -14029,10 +13263,8 @@ export const PoliciesCreateOrUpdateByCustomerRequest = /*@__PURE__*/ S.suspend((
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type PoliciesCreateOrUpdateByCustomerResponseTagsMap = { [key: string]: string | undefined };
-export const PoliciesCreateOrUpdateByCustomerResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PoliciesCreateOrUpdateByCustomerResponseTagsMap>;
+export const PoliciesCreateOrUpdateByCustomerResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<PoliciesCreateOrUpdateByCustomerResponseTagsMap>;
 
 export interface PoliciesCreateOrUpdateByCustomerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -14048,28 +13280,15 @@ export interface PoliciesCreateOrUpdateByCustomerResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: PoliciesCreateOrUpdateByCustomerResponseTagsMap;
 }
-export const PoliciesCreateOrUpdateByCustomerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CustomerPolicyProperties),
-    tags: S.optional(PoliciesCreateOrUpdateByCustomerResponseTagsMap),
-  }),
-).annotate({
-  identifier: "PoliciesCreateOrUpdateByCustomerResponse",
-}) as any as S.Schema<PoliciesCreateOrUpdateByCustomerResponse>;
+export const PoliciesCreateOrUpdateByCustomerResponse =
+  GetPolicyByCustomerResponse as any as S.Schema<PoliciesCreateOrUpdateByCustomerResponse>;
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type PoliciesCreateOrUpdateByCustomerAtBillingAccountRequestTagsMap = {
   [key: string]: string | undefined;
 };
 export const PoliciesCreateOrUpdateByCustomerAtBillingAccountRequestTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PoliciesCreateOrUpdateByCustomerAtBillingAccountRequestTagsMap>;
+  BillingRoleAssignmentsCreateOrUpdateByBillingAccountRequestTagsMap as any as S.Schema<PoliciesCreateOrUpdateByCustomerAtBillingAccountRequestTagsMap>;
 
 export interface PoliciesCreateOrUpdateByCustomerAtBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -14104,10 +13323,7 @@ export type PoliciesCreateOrUpdateByCustomerAtBillingAccountResponseTagsMap = {
   [key: string]: string | undefined;
 };
 export const PoliciesCreateOrUpdateByCustomerAtBillingAccountResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PoliciesCreateOrUpdateByCustomerAtBillingAccountResponseTagsMap>;
+  BillingRoleAssignmentsCreateOrUpdateByBillingAccountRequestTagsMap as any as S.Schema<PoliciesCreateOrUpdateByCustomerAtBillingAccountResponseTagsMap>;
 
 export interface PoliciesCreateOrUpdateByCustomerAtBillingAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -14237,10 +13453,8 @@ export const RecipientTransfersDeclineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type RecipientTransfersDeclineResponseTagsMap = { [key: string]: string | undefined };
-export const RecipientTransfersDeclineResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RecipientTransfersDeclineResponseTagsMap>;
+export const RecipientTransfersDeclineResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<RecipientTransfersDeclineResponseTagsMap>;
 
 export interface RecipientTransfersDeclineResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -14256,18 +13470,8 @@ export interface RecipientTransfersDeclineResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: RecipientTransfersDeclineResponseTagsMap;
 }
-export const RecipientTransfersDeclineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RecipientTransferProperties),
-    tags: S.optional(RecipientTransfersDeclineResponseTagsMap),
-  }),
-).annotate({
-  identifier: "RecipientTransfersDeclineResponse",
-}) as any as S.Schema<RecipientTransfersDeclineResponse>;
+export const RecipientTransfersDeclineResponse =
+  AcceptRecipientTransferResponse as any as S.Schema<RecipientTransfersDeclineResponse>;
 
 /** Savings plan patch request */
 export interface SavingsPlanUpdateRequestProperties {
@@ -14434,10 +13638,8 @@ export const TransfersInitiateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type TransfersInitiateResponseTagsMap = { [key: string]: string | undefined };
-export const TransfersInitiateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TransfersInitiateResponseTagsMap>;
+export const TransfersInitiateResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<TransfersInitiateResponseTagsMap>;
 
 export interface TransfersInitiateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -14468,10 +13670,8 @@ export const TransfersInitiateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type UpdateBillingAccountRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateBillingAccountRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateBillingAccountRequestTagsMap>;
+export const UpdateBillingAccountRequestTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<UpdateBillingAccountRequestTagsMap>;
 
 /** The properties of an enrollment. */
 export interface EnrollmentDetailsInput {
@@ -14506,9 +13706,8 @@ export const RegistrationNumberInput = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of tax identifiers for the billing account. */
 export type BillingAccountPropertiesInputTaxIdsList = Array<TaxIdentifier>;
-export const BillingAccountPropertiesInputTaxIdsList = /*@__PURE__*/ S.Array(
-  TaxIdentifier,
-) as any as S.Schema<BillingAccountPropertiesInputTaxIdsList>;
+export const BillingAccountPropertiesInputTaxIdsList =
+  BillingAccountPropertiesTaxIdsList as any as S.Schema<BillingAccountPropertiesInputTaxIdsList>;
 
 /** A billing account. */
 export interface BillingAccountPropertiesInput {
@@ -14574,10 +13773,8 @@ export const UpdateBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type UpdateBillingAccountResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateBillingAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateBillingAccountResponseTagsMap>;
+export const UpdateBillingAccountResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<UpdateBillingAccountResponseTagsMap>;
 
 export interface UpdateBillingAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -14593,18 +13790,8 @@ export interface UpdateBillingAccountResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: UpdateBillingAccountResponseTagsMap;
 }
-export const UpdateBillingAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BillingAccountProperties),
-    tags: S.optional(UpdateBillingAccountResponseTagsMap),
-  }),
-).annotate({
-  identifier: "UpdateBillingAccountResponse",
-}) as any as S.Schema<UpdateBillingAccountResponse>;
+export const UpdateBillingAccountResponse =
+  AddBillingAccountPaymentTermsResponse as any as S.Schema<UpdateBillingAccountResponse>;
 
 /** A billing property. */
 export interface BillingPropertyPropertiesInput {
@@ -14627,10 +13814,8 @@ export const BillingPropertyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type UpdateBillingPropertyRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateBillingPropertyRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateBillingPropertyRequestTagsMap>;
+export const UpdateBillingPropertyRequestTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<UpdateBillingPropertyRequestTagsMap>;
 
 export interface UpdateBillingPropertyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -14659,10 +13844,8 @@ export const UpdateBillingPropertyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type UpdateBillingPropertyResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateBillingPropertyResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateBillingPropertyResponseTagsMap>;
+export const UpdateBillingPropertyResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<UpdateBillingPropertyResponseTagsMap>;
 
 export interface UpdateBillingPropertyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -14678,25 +13861,13 @@ export interface UpdateBillingPropertyResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: UpdateBillingPropertyResponseTagsMap;
 }
-export const UpdateBillingPropertyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BillingPropertyProperties),
-    tags: S.optional(UpdateBillingPropertyResponseTagsMap),
-  }),
-).annotate({
-  identifier: "UpdateBillingPropertyResponse",
-}) as any as S.Schema<UpdateBillingPropertyResponse>;
+export const UpdateBillingPropertyResponse =
+  GetBillingPropertyResponse as any as S.Schema<UpdateBillingPropertyResponse>;
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type UpdateBillingSubscriptionRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateBillingSubscriptionRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateBillingSubscriptionRequestTagsMap>;
+export const UpdateBillingSubscriptionRequestTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<UpdateBillingSubscriptionRequestTagsMap>;
 
 /** The billing properties of a subscription. */
 export type BillingSubscriptionPropertiesInput = BillingSubscriptionAliasPropertiesInput;
@@ -14732,10 +13903,8 @@ export const UpdateBillingSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type UpdateBillingSubscriptionResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateBillingSubscriptionResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateBillingSubscriptionResponseTagsMap>;
+export const UpdateBillingSubscriptionResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<UpdateBillingSubscriptionResponseTagsMap>;
 
 export interface UpdateBillingSubscriptionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -14751,25 +13920,13 @@ export interface UpdateBillingSubscriptionResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: UpdateBillingSubscriptionResponseTagsMap;
 }
-export const UpdateBillingSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BillingSubscriptionProperties),
-    tags: S.optional(UpdateBillingSubscriptionResponseTagsMap),
-  }),
-).annotate({
-  identifier: "UpdateBillingSubscriptionResponse",
-}) as any as S.Schema<UpdateBillingSubscriptionResponse>;
+export const UpdateBillingSubscriptionResponse =
+  BillingSubscriptionsSplitResponse as any as S.Schema<UpdateBillingSubscriptionResponse>;
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type UpdateProductRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateProductRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateProductRequestTagsMap>;
+export const UpdateProductRequestTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<UpdateProductRequestTagsMap>;
 
 /** The amount. */
 export type AmountInput = SystemOverridesInput;
@@ -14824,10 +13981,8 @@ export const UpdateProductRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type UpdateProductResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateProductResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateProductResponseTagsMap>;
+export const UpdateProductResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<UpdateProductResponseTagsMap>;
 
 export interface UpdateProductResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -14843,22 +13998,12 @@ export interface UpdateProductResponse {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: UpdateProductResponseTagsMap;
 }
-export const UpdateProductResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ProductProperties),
-    tags: S.optional(UpdateProductResponseTagsMap),
-  }),
-).annotate({ identifier: "UpdateProductResponse" }) as any as S.Schema<UpdateProductResponse>;
+export const UpdateProductResponse = GetProductResponse as any as S.Schema<UpdateProductResponse>;
 
 /** List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. */
 export type ReservationPurchaseRequestPropertiesInputAppliedScopesList = Array<string>;
-export const ReservationPurchaseRequestPropertiesInputAppliedScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReservationPurchaseRequestPropertiesInputAppliedScopesList>;
+export const ReservationPurchaseRequestPropertiesInputAppliedScopesList =
+  RegistrationNumberTypeList as any as S.Schema<ReservationPurchaseRequestPropertiesInputAppliedScopesList>;
 
 /** Properties of reservation purchase request */
 export interface ReservationPurchaseRequestPropertiesInput {
@@ -14967,10 +14112,8 @@ export const ReservationSkuPropertyInput = SystemOverridesInput;
 
 /** Tags for this reservation */
 export type UpdateReservationByBillingAccountRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateReservationByBillingAccountRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateReservationByBillingAccountRequestTagsMap>;
+export const UpdateReservationByBillingAccountRequestTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<UpdateReservationByBillingAccountRequestTagsMap>;
 
 export interface UpdateReservationByBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -15010,10 +14153,8 @@ export const UpdateReservationByBillingAccountRequest = /*@__PURE__*/ S.suspend(
 export type UpdateReservationByBillingAccountResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const UpdateReservationByBillingAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateReservationByBillingAccountResponseTagsMap>;
+export const UpdateReservationByBillingAccountResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<UpdateReservationByBillingAccountResponseTagsMap>;
 
 export interface UpdateReservationByBillingAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -15034,28 +14175,13 @@ export interface UpdateReservationByBillingAccountResponse {
   /** The sku information associated to this reservation */
   sku?: ReservationSkuProperty;
 }
-export const UpdateReservationByBillingAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReservationProperty),
-    location: S.optional(S.String),
-    etag: S.optional(S.Number),
-    tags: S.optional(UpdateReservationByBillingAccountResponseTagsMap),
-    sku: S.optional(ReservationSkuProperty),
-  }),
-).annotate({
-  identifier: "UpdateReservationByBillingAccountResponse",
-}) as any as S.Schema<UpdateReservationByBillingAccountResponse>;
+export const UpdateReservationByBillingAccountResponse =
+  GetReservationByReservationOrderResponse as any as S.Schema<UpdateReservationByBillingAccountResponse>;
 
 /** Tags for this reservation */
 export type UpdateSavingsPlanByBillingAccountRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateSavingsPlanByBillingAccountRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSavingsPlanByBillingAccountRequestTagsMap>;
+export const UpdateSavingsPlanByBillingAccountRequestTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<UpdateSavingsPlanByBillingAccountRequestTagsMap>;
 
 export interface UpdateSavingsPlanByBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -15095,10 +14221,8 @@ export const UpdateSavingsPlanByBillingAccountRequest = /*@__PURE__*/ S.suspend(
 export type UpdateSavingsPlanByBillingAccountResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const UpdateSavingsPlanByBillingAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSavingsPlanByBillingAccountResponseTagsMap>;
+export const UpdateSavingsPlanByBillingAccountResponseTagsMap =
+  AcceptRecipientTransferResponseTagsMap as any as S.Schema<UpdateSavingsPlanByBillingAccountResponseTagsMap>;
 
 export interface UpdateSavingsPlanByBillingAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -15116,19 +14240,8 @@ export interface UpdateSavingsPlanByBillingAccountResponse {
   /** Savings plan SKU */
   sku: Sku;
 }
-export const UpdateSavingsPlanByBillingAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SavingsPlanModelProperties),
-    tags: S.optional(UpdateSavingsPlanByBillingAccountResponseTagsMap),
-    sku: Sku,
-  }),
-).annotate({
-  identifier: "UpdateSavingsPlanByBillingAccountResponse",
-}) as any as S.Schema<UpdateSavingsPlanByBillingAccountResponse>;
+export const UpdateSavingsPlanByBillingAccountResponse =
+  GetSavingsPlanByBillingAccountResponse as any as S.Schema<UpdateSavingsPlanByBillingAccountResponse>;
 
 export interface ValidateAddressRequest {
   /** Address line 1. */
@@ -15219,9 +14332,8 @@ export const AddressValidationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddressValidationResponse>;
 
 export type ValidateBillingAccountPaymentTermsRequestBodyList = Array<PaymentTermInput>;
-export const ValidateBillingAccountPaymentTermsRequestBodyList = /*@__PURE__*/ S.Array(
-  PaymentTermInput,
-) as any as S.Schema<ValidateBillingAccountPaymentTermsRequestBodyList>;
+export const ValidateBillingAccountPaymentTermsRequestBodyList =
+  AddBillingAccountPaymentTermsRequestBodyList as any as S.Schema<ValidateBillingAccountPaymentTermsRequestBodyList>;
 
 export interface ValidateBillingAccountPaymentTermsRequest {
   /** The ID that uniquely identifies a billing account. */

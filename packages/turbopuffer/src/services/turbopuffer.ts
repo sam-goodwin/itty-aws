@@ -208,9 +208,8 @@ export const IncludeAttributes = S.Unknown as any as S.Schema<IncludeAttributes>
 
 /** List of attribute names to exclude from the response. All other attributes will be included in the response. */
 export type CreateNamespaceExplainQueryRequestExcludeAttributesList = Array<string>;
-export const CreateNamespaceExplainQueryRequestExcludeAttributesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateNamespaceExplainQueryRequestExcludeAttributesList>;
+export const CreateNamespaceExplainQueryRequestExcludeAttributesList =
+  IncludeAttributesCase1List as any as S.Schema<CreateNamespaceExplainQueryRequestExcludeAttributesList>;
 
 /** Aggregations to compute over all documents in the namespace that match the filters. */
 export type CreateNamespaceExplainQueryRequestAggregateByMap = {
@@ -231,16 +230,13 @@ export const CreateNamespaceExplainQueryRequestGroupByList = /*@__PURE__*/ S.Arr
 export type CreateNamespaceExplainQueryRequestComputeAttributesMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateNamespaceExplainQueryRequestComputeAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateNamespaceExplainQueryRequestComputeAttributesMap>;
+export const CreateNamespaceExplainQueryRequestComputeAttributesMap =
+  CreateNamespaceExplainQueryRequestAggregateByMap as any as S.Schema<CreateNamespaceExplainQueryRequestComputeAttributesMap>;
 
 /** The attributes to include in the limit key. */
 export type LimitPerAttributesList = Array<string>;
-export const LimitPerAttributesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LimitPerAttributesList>;
+export const LimitPerAttributesList =
+  IncludeAttributesCase1List as any as S.Schema<LimitPerAttributesList>;
 
 /** Limits the number of documents with the same value for a set of attributes (the "limit key") that can appear in the results. */
 export interface LimitPer {
@@ -339,31 +335,25 @@ export const CreateNamespaceQueryRequestConsistency = CreateNamespaceExplainQuer
 
 /** List of attribute names to exclude from the response. All other attributes will be included in the response. */
 export type CreateNamespaceQueryRequestExcludeAttributesList = Array<string>;
-export const CreateNamespaceQueryRequestExcludeAttributesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateNamespaceQueryRequestExcludeAttributesList>;
+export const CreateNamespaceQueryRequestExcludeAttributesList =
+  IncludeAttributesCase1List as any as S.Schema<CreateNamespaceQueryRequestExcludeAttributesList>;
 
 /** Aggregations to compute over all documents in the namespace that match the filters. */
 export type CreateNamespaceQueryRequestAggregateByMap = { [key: string]: unknown | undefined };
-export const CreateNamespaceQueryRequestAggregateByMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateNamespaceQueryRequestAggregateByMap>;
+export const CreateNamespaceQueryRequestAggregateByMap =
+  CreateNamespaceExplainQueryRequestAggregateByMap as any as S.Schema<CreateNamespaceQueryRequestAggregateByMap>;
 
 /** Groups documents by the specified attributes (the "group key") before computing aggregates. Aggregates are computed separately for each group. */
 export type CreateNamespaceQueryRequestGroupByList = Array<unknown>;
-export const CreateNamespaceQueryRequestGroupByList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateNamespaceQueryRequestGroupByList>;
+export const CreateNamespaceQueryRequestGroupByList =
+  CreateNamespaceExplainQueryRequestGroupByList as any as S.Schema<CreateNamespaceQueryRequestGroupByList>;
 
 /** Computes additional values on documents returned by a query. Each key is the name of the computed attribute; each value is an expression describing how to compute it. */
 export type CreateNamespaceQueryRequestComputeAttributesMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateNamespaceQueryRequestComputeAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateNamespaceQueryRequestComputeAttributesMap>;
+export const CreateNamespaceQueryRequestComputeAttributesMap =
+  CreateNamespaceExplainQueryRequestAggregateByMap as any as S.Schema<CreateNamespaceQueryRequestComputeAttributesMap>;
 
 export type CreateNamespaceQueryRequestLimit = number | Limit;
 export const CreateNamespaceQueryRequestLimit =
@@ -417,17 +407,13 @@ export const CreateNamespaceQueryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateNamespaceQueryRequest>;
 
 export type CreateNamespaceQueryResponseAggregationsMap = { [key: string]: unknown | undefined };
-export const CreateNamespaceQueryResponseAggregationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateNamespaceQueryResponseAggregationsMap>;
+export const CreateNamespaceQueryResponseAggregationsMap =
+  CreateNamespaceExplainQueryRequestAggregateByMap as any as S.Schema<CreateNamespaceQueryResponseAggregationsMap>;
 
 /** A single aggregation group. */
 export type AggregationGroup = { [key: string]: unknown | undefined };
-export const AggregationGroup = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AggregationGroup>;
+export const AggregationGroup =
+  CreateNamespaceExplainQueryRequestAggregateByMap as any as S.Schema<AggregationGroup>;
 
 export type CreateNamespaceQueryResponseAggregationGroupsList = Array<AggregationGroup>;
 export const CreateNamespaceQueryResponseAggregationGroupsList = /*@__PURE__*/ S.Array(
@@ -505,29 +491,23 @@ export const CreateNamespaceQueryRequestConsistency2 =
 
 /** List of attribute names to exclude from the response. All other attributes will be included in the response. */
 export type QueryExcludeAttributesList = Array<string>;
-export const QueryExcludeAttributesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<QueryExcludeAttributesList>;
+export const QueryExcludeAttributesList =
+  IncludeAttributesCase1List as any as S.Schema<QueryExcludeAttributesList>;
 
 /** Aggregations to compute over all documents in the namespace that match the filters. */
 export type QueryAggregateByMap = { [key: string]: unknown | undefined };
-export const QueryAggregateByMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<QueryAggregateByMap>;
+export const QueryAggregateByMap =
+  CreateNamespaceExplainQueryRequestAggregateByMap as any as S.Schema<QueryAggregateByMap>;
 
 /** Groups documents by the specified attributes (the "group key") before computing aggregates. Aggregates are computed separately for each group. */
 export type QueryGroupByList = Array<unknown>;
-export const QueryGroupByList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<QueryGroupByList>;
+export const QueryGroupByList =
+  CreateNamespaceExplainQueryRequestGroupByList as any as S.Schema<QueryGroupByList>;
 
 /** Computes additional values on documents returned by a query. Each key is the name of the computed attribute; each value is an expression describing how to compute it. */
 export type QueryComputeAttributesMap = { [key: string]: unknown | undefined };
-export const QueryComputeAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<QueryComputeAttributesMap>;
+export const QueryComputeAttributesMap =
+  CreateNamespaceExplainQueryRequestAggregateByMap as any as S.Schema<QueryComputeAttributesMap>;
 
 export type QueryLimit = number | Limit;
 export const QueryLimit = S.Unknown as any as S.Schema<QueryLimit>;
@@ -620,20 +600,16 @@ export const CreateNamespaceQueryRequest2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateNamespaceQueryRequest2>;
 
 export type SingleQueryResultAggregationsMap = { [key: string]: unknown | undefined };
-export const SingleQueryResultAggregationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SingleQueryResultAggregationsMap>;
+export const SingleQueryResultAggregationsMap =
+  CreateNamespaceExplainQueryRequestAggregateByMap as any as S.Schema<SingleQueryResultAggregationsMap>;
 
 export type SingleQueryResultAggregationGroupsList = Array<AggregationGroup>;
-export const SingleQueryResultAggregationGroupsList = /*@__PURE__*/ S.Array(
-  AggregationGroup,
-) as any as S.Schema<SingleQueryResultAggregationGroupsList>;
+export const SingleQueryResultAggregationGroupsList =
+  CreateNamespaceQueryResponseAggregationGroupsList as any as S.Schema<SingleQueryResultAggregationGroupsList>;
 
 export type SingleQueryResultRowsList = Array<Row>;
-export const SingleQueryResultRowsList = /*@__PURE__*/ S.Array(
-  Row,
-) as any as S.Schema<SingleQueryResultRowsList>;
+export const SingleQueryResultRowsList =
+  CreateNamespaceQueryResponseRowsList as any as S.Schema<SingleQueryResultRowsList>;
 
 export interface SingleQueryResult {
   aggregations?: SingleQueryResultAggregationsMap;
@@ -883,10 +859,8 @@ export const GetNamespaceMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The schema of the namespace. */
 export type NamespaceMetadataSchemaMap = { [key: string]: AttributeSchemaConfig | undefined };
-export const NamespaceMetadataSchemaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  AttributeSchemaConfig,
-) as any as S.Schema<NamespaceMetadataSchemaMap>;
+export const NamespaceMetadataSchemaMap =
+  CreateNamespaceSchemaResponseBodyMap as any as S.Schema<NamespaceMetadataSchemaMap>;
 
 export interface NamespaceMetadataIndexCase0 {
   status: unknown;
@@ -1036,15 +1010,13 @@ export const WriteResultUpsertedIdsList = /*@__PURE__*/ S.Array(
 
 /** The IDs of documents that were patched. Only included when `return_affected_ids` is true and at least one document was patched. */
 export type WriteResultPatchedIdsList = Array<Id>;
-export const WriteResultPatchedIdsList = /*@__PURE__*/ S.Array(
-  Id,
-) as any as S.Schema<WriteResultPatchedIdsList>;
+export const WriteResultPatchedIdsList =
+  WriteResultUpsertedIdsList as any as S.Schema<WriteResultPatchedIdsList>;
 
 /** The IDs of documents that were deleted. Only included when `return_affected_ids` is true and at least one document was deleted. */
 export type WriteResultDeletedIdsList = Array<Id>;
-export const WriteResultDeletedIdsList = /*@__PURE__*/ S.Array(
-  Id,
-) as any as S.Schema<WriteResultDeletedIdsList>;
+export const WriteResultDeletedIdsList =
+  WriteResultUpsertedIdsList as any as S.Schema<WriteResultDeletedIdsList>;
 
 /** The billing information for a write request. */
 export interface WriteBilling {
@@ -1214,17 +1186,12 @@ export const GetNamespaceSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetNamespaceSchemaResponseBodyMap = {
   [key: string]: AttributeSchemaConfig | undefined;
 };
-export const GetNamespaceSchemaResponseBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  AttributeSchemaConfig,
-) as any as S.Schema<GetNamespaceSchemaResponseBodyMap>;
+export const GetNamespaceSchemaResponseBodyMap =
+  CreateNamespaceSchemaResponseBodyMap as any as S.Schema<GetNamespaceSchemaResponseBodyMap>;
 
 export type GetNamespaceSchemaResponse = GetNamespaceSchemaResponseBodyMap;
-export const GetNamespaceSchemaResponse = /*@__PURE__*/ S.suspend(() =>
-  GetNamespaceSchemaResponseBodyMap.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetNamespaceSchemaResponse",
-}) as any as S.Schema<GetNamespaceSchemaResponse>;
+export const GetNamespaceSchemaResponse =
+  CreateNamespaceSchemaResponse as any as S.Schema<GetNamespaceSchemaResponse>;
 
 export interface ListNamespacesRequest {
   /** Retrieve the next page of results. */
@@ -1299,26 +1266,21 @@ export const Columns = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Columns" }) as any as S.Schema<Columns>;
 
 export type UpdateNamespaceRequestUpsertRowsList = Array<Row>;
-export const UpdateNamespaceRequestUpsertRowsList = /*@__PURE__*/ S.Array(
-  Row,
-) as any as S.Schema<UpdateNamespaceRequestUpsertRowsList>;
+export const UpdateNamespaceRequestUpsertRowsList =
+  CreateNamespaceQueryResponseRowsList as any as S.Schema<UpdateNamespaceRequestUpsertRowsList>;
 
 export type UpdateNamespaceRequestPatchRowsList = Array<Row>;
-export const UpdateNamespaceRequestPatchRowsList = /*@__PURE__*/ S.Array(
-  Row,
-) as any as S.Schema<UpdateNamespaceRequestPatchRowsList>;
+export const UpdateNamespaceRequestPatchRowsList =
+  CreateNamespaceQueryResponseRowsList as any as S.Schema<UpdateNamespaceRequestPatchRowsList>;
 
 export type UpdateNamespaceRequestDeletesList = Array<Id>;
-export const UpdateNamespaceRequestDeletesList = /*@__PURE__*/ S.Array(
-  Id,
-) as any as S.Schema<UpdateNamespaceRequestDeletesList>;
+export const UpdateNamespaceRequestDeletesList =
+  WriteResultUpsertedIdsList as any as S.Schema<UpdateNamespaceRequestDeletesList>;
 
 /** The schema of the attributes attached to the documents. */
 export type UpdateNamespaceRequestSchemaMap = { [key: string]: AttributeSchema | undefined };
-export const UpdateNamespaceRequestSchemaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  AttributeSchema,
-) as any as S.Schema<UpdateNamespaceRequestSchemaMap>;
+export const UpdateNamespaceRequestSchemaMap =
+  CreateNamespaceSchemaRequestBodyMap as any as S.Schema<UpdateNamespaceRequestSchemaMap>;
 
 export interface BranchFromNamespaceConfig {
   /** The namespace to create an instant, copy-on-write clone of. */
@@ -1355,10 +1317,8 @@ export type CopyFromNamespaceParams = string | CopyFromNamespaceConfig;
 export const CopyFromNamespaceParams = S.Unknown as any as S.Schema<CopyFromNamespaceParams>;
 
 export type PatchByFilterPatchMap = { [key: string]: unknown | undefined };
-export const PatchByFilterPatchMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PatchByFilterPatchMap>;
+export const PatchByFilterPatchMap =
+  CreateNamespaceExplainQueryRequestAggregateByMap as any as S.Schema<PatchByFilterPatchMap>;
 
 /** The patch and filter specifying which documents to patch. */
 export interface PatchByFilter {

@@ -108,15 +108,13 @@ export const CreateApiKeyRequestIpAllowlistList = /*@__PURE__*/ S.Array(
 
 /** Permission actions covered by this statement, for example `company:basic:read`. */
 export type CreateApiKeyRequestPermissionsStatementsItemActionsList = Array<string>;
-export const CreateApiKeyRequestPermissionsStatementsItemActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateApiKeyRequestPermissionsStatementsItemActionsList>;
+export const CreateApiKeyRequestPermissionsStatementsItemActionsList =
+  CreateApiKeyRequestIpAllowlistList as any as S.Schema<CreateApiKeyRequestPermissionsStatementsItemActionsList>;
 
 /** Resource identifiers the statement applies to, for example `biz_xxx` or `biz_xxx|pass_*`. Defaults to the key's owning resource when omitted. */
 export type CreateApiKeyRequestPermissionsStatementsItemResourcesList = Array<string>;
-export const CreateApiKeyRequestPermissionsStatementsItemResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateApiKeyRequestPermissionsStatementsItemResourcesList>;
+export const CreateApiKeyRequestPermissionsStatementsItemResourcesList =
+  CreateApiKeyRequestIpAllowlistList as any as S.Schema<CreateApiKeyRequestPermissionsStatementsItemResourcesList>;
 
 export interface CreateApiKeyRequestPermissionsStatementsItem {
   /** Permission actions covered by this statement, for example `company:basic:read`. */
@@ -296,9 +294,8 @@ export const ApiKeyGrantsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ApiKeyGrantsList>;
 
 export type ApiKeyIpAllowlistList = Array<string>;
-export const ApiKeyIpAllowlistList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiKeyIpAllowlistList>;
+export const ApiKeyIpAllowlistList =
+  CreateApiKeyRequestIpAllowlistList as any as S.Schema<ApiKeyIpAllowlistList>;
 
 /** System role the key inherits its permissions from, or `null` when it uses an explicit permissions policy. Only account API keys can use a system role. */
 export type ApiKeySystemRole = "owner" | "admin" | "moderator" | "sales_manager" | "advertiser";
@@ -599,21 +596,18 @@ export const UpdateApiKeyRequestApiVersionDate = S.String;
 
 /** IPv4/IPv6 CIDR ranges allowed to use this key, for example `["203.0.113.0/24"]`. Empty or `null` allows any IP. */
 export type UpdateApiKeyRequestIpAllowlistList = Array<string>;
-export const UpdateApiKeyRequestIpAllowlistList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateApiKeyRequestIpAllowlistList>;
+export const UpdateApiKeyRequestIpAllowlistList =
+  CreateApiKeyRequestIpAllowlistList as any as S.Schema<UpdateApiKeyRequestIpAllowlistList>;
 
 /** Permission actions covered by this statement, for example `company:basic:read`. */
 export type UpdateApiKeyRequestPermissionsStatementsItemActionsList = Array<string>;
-export const UpdateApiKeyRequestPermissionsStatementsItemActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateApiKeyRequestPermissionsStatementsItemActionsList>;
+export const UpdateApiKeyRequestPermissionsStatementsItemActionsList =
+  CreateApiKeyRequestIpAllowlistList as any as S.Schema<UpdateApiKeyRequestPermissionsStatementsItemActionsList>;
 
 /** Resource identifiers the statement applies to, for example `biz_xxx` or `biz_xxx|pass_*`. Defaults to the key's owning resource when omitted. */
 export type UpdateApiKeyRequestPermissionsStatementsItemResourcesList = Array<string>;
-export const UpdateApiKeyRequestPermissionsStatementsItemResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateApiKeyRequestPermissionsStatementsItemResourcesList>;
+export const UpdateApiKeyRequestPermissionsStatementsItemResourcesList =
+  CreateApiKeyRequestIpAllowlistList as any as S.Schema<UpdateApiKeyRequestPermissionsStatementsItemResourcesList>;
 
 export interface UpdateApiKeyRequestPermissionsStatementsItem {
   /** Permission actions covered by this statement, for example `company:basic:read`. */
@@ -623,22 +617,14 @@ export interface UpdateApiKeyRequestPermissionsStatementsItem {
   /** Resource identifiers the statement applies to, for example `biz_xxx` or `biz_xxx|pass_*`. Defaults to the key's owning resource when omitted. */
   resources?: UpdateApiKeyRequestPermissionsStatementsItemResourcesList;
 }
-export const UpdateApiKeyRequestPermissionsStatementsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actions: UpdateApiKeyRequestPermissionsStatementsItemActionsList,
-    grant: S.Boolean,
-    resources: S.optional(UpdateApiKeyRequestPermissionsStatementsItemResourcesList),
-  }),
-).annotate({
-  identifier: "UpdateApiKeyRequestPermissionsStatementsItem",
-}) as any as S.Schema<UpdateApiKeyRequestPermissionsStatementsItem>;
+export const UpdateApiKeyRequestPermissionsStatementsItem =
+  CreateApiKeyRequestPermissionsStatementsItem as any as S.Schema<UpdateApiKeyRequestPermissionsStatementsItem>;
 
 /** Explicit permission statements. Required unless `system_role` is set. */
 export type UpdateApiKeyRequestPermissionsStatementsList =
   Array<UpdateApiKeyRequestPermissionsStatementsItem>;
-export const UpdateApiKeyRequestPermissionsStatementsList = /*@__PURE__*/ S.Array(
-  UpdateApiKeyRequestPermissionsStatementsItem,
-) as any as S.Schema<UpdateApiKeyRequestPermissionsStatementsList>;
+export const UpdateApiKeyRequestPermissionsStatementsList =
+  CreateApiKeyRequestPermissionsStatementsList as any as S.Schema<UpdateApiKeyRequestPermissionsStatementsList>;
 
 /** A system role to inherit permissions from. Only Account API keys can use a system role. */
 export type UpdateApiKeyRequestPermissionsSystemRole =

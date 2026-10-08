@@ -228,7 +228,7 @@ export type SubnetIds = string[];
 export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
 export type SecurityGroupId = string;
 export type SecurityGroupIds = string[];
-export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroupIds = SubnetIds as any as S.Schema<SecurityGroupIds>;
 export type TlsCertificate = string;
 export interface VpcConfiguration {
   VpcId: string;
@@ -419,9 +419,7 @@ export const DeleteHostInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteHostInput" }) as any as S.Schema<DeleteHostInput>;
 export interface DeleteHostOutput {}
-export const DeleteHostOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteHostOutput",
-}) as any as S.Schema<DeleteHostOutput>;
+export const DeleteHostOutput = DeleteConnectionOutput as any as S.Schema<DeleteHostOutput>;
 export interface DeleteRepositoryLinkInput {
   RepositoryLinkId: string;
 }
@@ -433,9 +431,8 @@ export const DeleteRepositoryLinkInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRepositoryLinkInput",
 }) as any as S.Schema<DeleteRepositoryLinkInput>;
 export interface DeleteRepositoryLinkOutput {}
-export const DeleteRepositoryLinkOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRepositoryLinkOutput",
-}) as any as S.Schema<DeleteRepositoryLinkOutput>;
+export const DeleteRepositoryLinkOutput =
+  DeleteConnectionOutput as any as S.Schema<DeleteRepositoryLinkOutput>;
 export interface DeleteSyncConfigurationInput {
   SyncType: SyncConfigurationType;
   ResourceName: string;
@@ -448,9 +445,8 @@ export const DeleteSyncConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSyncConfigurationInput",
 }) as any as S.Schema<DeleteSyncConfigurationInput>;
 export interface DeleteSyncConfigurationOutput {}
-export const DeleteSyncConfigurationOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSyncConfigurationOutput",
-}) as any as S.Schema<DeleteSyncConfigurationOutput>;
+export const DeleteSyncConfigurationOutput =
+  DeleteConnectionOutput as any as S.Schema<DeleteSyncConfigurationOutput>;
 export interface GetConnectionInput {
   ConnectionArn: string;
 }
@@ -623,16 +619,10 @@ export interface ResourceSyncEvent {
   Time: Date;
   Type: string;
 }
-export const ResourceSyncEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Event: S.String,
-    ExternalId: S.optional(S.String),
-    Time: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    Type: S.String,
-  }),
-).annotate({ identifier: "ResourceSyncEvent" }) as any as S.Schema<ResourceSyncEvent>;
+export const ResourceSyncEvent = RepositorySyncEvent as any as S.Schema<ResourceSyncEvent>;
 export type ResourceSyncEventList = ResourceSyncEvent[];
-export const ResourceSyncEventList = /*@__PURE__*/ S.Array(ResourceSyncEvent);
+export const ResourceSyncEventList =
+  RepositorySyncEventList as any as S.Schema<ResourceSyncEventList>;
 export type ResourceSyncStatus =
   | "FAILED"
   | "INITIATED"
@@ -699,11 +689,9 @@ export interface SyncBlockerContext {
   Key: string;
   Value: string;
 }
-export const SyncBlockerContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.String, Value: S.String }),
-).annotate({ identifier: "SyncBlockerContext" }) as any as S.Schema<SyncBlockerContext>;
+export const SyncBlockerContext = Tag as any as S.Schema<SyncBlockerContext>;
 export type SyncBlockerContextList = SyncBlockerContext[];
-export const SyncBlockerContextList = /*@__PURE__*/ S.Array(SyncBlockerContext);
+export const SyncBlockerContextList = TagList as any as S.Schema<SyncBlockerContextList>;
 export type ResolvedReason = string;
 export interface SyncBlocker {
   Id: string;
@@ -763,11 +751,8 @@ export const GetSyncConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 export interface GetSyncConfigurationOutput {
   SyncConfiguration: SyncConfiguration;
 }
-export const GetSyncConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SyncConfiguration: SyncConfiguration }),
-).annotate({
-  identifier: "GetSyncConfigurationOutput",
-}) as any as S.Schema<GetSyncConfigurationOutput>;
+export const GetSyncConfigurationOutput =
+  CreateSyncConfigurationOutput as any as S.Schema<GetSyncConfigurationOutput>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface ListConnectionsInput {
@@ -942,11 +927,9 @@ export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-export const TagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceOutput",
-}) as any as S.Schema<TagResourceOutput>;
+export const TagResourceOutput = DeleteConnectionOutput as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = SubnetIds as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   ResourceArn: string;
   TagKeys: string[];
@@ -957,9 +940,7 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceOutput",
-}) as any as S.Schema<UntagResourceOutput>;
+export const UntagResourceOutput = DeleteConnectionOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateHostInput {
   HostArn: string;
   ProviderEndpoint?: string;
@@ -973,9 +954,7 @@ export const UpdateHostInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateHostInput" }) as any as S.Schema<UpdateHostInput>;
 export interface UpdateHostOutput {}
-export const UpdateHostOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateHostOutput",
-}) as any as S.Schema<UpdateHostOutput>;
+export const UpdateHostOutput = DeleteConnectionOutput as any as S.Schema<UpdateHostOutput>;
 export interface UpdateRepositoryLinkInput {
   ConnectionArn?: string;
   EncryptionKeyArn?: string;
@@ -993,11 +972,8 @@ export const UpdateRepositoryLinkInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateRepositoryLinkOutput {
   RepositoryLinkInfo: RepositoryLinkInfo;
 }
-export const UpdateRepositoryLinkOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RepositoryLinkInfo: RepositoryLinkInfo }),
-).annotate({
-  identifier: "UpdateRepositoryLinkOutput",
-}) as any as S.Schema<UpdateRepositoryLinkOutput>;
+export const UpdateRepositoryLinkOutput =
+  CreateRepositoryLinkOutput as any as S.Schema<UpdateRepositoryLinkOutput>;
 export interface UpdateSyncBlockerInput {
   Id: string;
   SyncType: SyncConfigurationType;
@@ -1053,11 +1029,8 @@ export const UpdateSyncConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSyncConfigurationOutput {
   SyncConfiguration: SyncConfiguration;
 }
-export const UpdateSyncConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SyncConfiguration: SyncConfiguration }),
-).annotate({
-  identifier: "UpdateSyncConfigurationOutput",
-}) as any as S.Schema<UpdateSyncConfigurationOutput>;
+export const UpdateSyncConfigurationOutput =
+  CreateSyncConfigurationOutput as any as S.Schema<UpdateSyncConfigurationOutput>;
 export type ErrorMessage = string;
 export type CreateConnectionError =
   | LimitExceededException

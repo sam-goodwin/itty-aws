@@ -124,14 +124,7 @@ export interface EndUserSolanaAccount {
   /** The date and time when the account's key was ejected (marked for deletion), in ISO 8601 format. Populated when the account has been ejected. The account record remains queryable after this timestamp is set; it reflects when ejection was requested, not when the key material is purged. */
   ejectedAt?: string | null;
 }
-export const EndUserSolanaAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address: S.String,
-    createdAt: S.String,
-    exportedAt: S.optional(S.NullOr(S.String)),
-    ejectedAt: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "EndUserSolanaAccount" }) as any as S.Schema<EndUserSolanaAccount>;
+export const EndUserSolanaAccount = EndUserEvmAccount as any as S.Schema<EndUserSolanaAccount>;
 
 export interface AddEndUserSolanaAccountResponse {
   solanaAccount: EndUserSolanaAccount;
@@ -682,9 +675,8 @@ export const PaymentSessionAuthorizationsList = /*@__PURE__*/ S.Array(
 
 /** The onchain transactions associated with this capture. */
 export type CaptureOnchainTransactionsList = Array<OnchainTransaction>;
-export const CaptureOnchainTransactionsList = /*@__PURE__*/ S.Array(
-  OnchainTransaction,
-) as any as S.Schema<CaptureOnchainTransactionsList>;
+export const CaptureOnchainTransactionsList =
+  AuthorizationOnchainTransactionsList as any as S.Schema<CaptureOnchainTransactionsList>;
 
 /** A collection of authorized funds. Multiple partial captures are allowed up to the authorized amount. Each capture settles funds to the merchant's target. */
 export interface Capture {
@@ -736,9 +728,8 @@ export const PaymentSessionCapturesList = /*@__PURE__*/ S.Array(
 
 /** The onchain transactions associated with this void. */
 export type VoidOnchainTransactionsList = Array<OnchainTransaction>;
-export const VoidOnchainTransactionsList = /*@__PURE__*/ S.Array(
-  OnchainTransaction,
-) as any as S.Schema<VoidOnchainTransactionsList>;
+export const VoidOnchainTransactionsList =
+  AuthorizationOnchainTransactionsList as any as S.Schema<VoidOnchainTransactionsList>;
 
 /** A release of uncaptured authorized funds back to the payer. Voids release all remaining capturable funds in a single operation, including after partial refunds as long as a capturableAmount remains. */
 export interface Void {
@@ -802,9 +793,8 @@ export const RefundSource = S.Unknown as any as S.Schema<RefundSource>;
 
 /** The onchain transactions associated with this refund. */
 export type RefundOnchainTransactionsList = Array<OnchainTransaction>;
-export const RefundOnchainTransactionsList = /*@__PURE__*/ S.Array(
-  OnchainTransaction,
-) as any as S.Schema<RefundOnchainTransactionsList>;
+export const RefundOnchainTransactionsList =
+  AuthorizationOnchainTransactionsList as any as S.Schema<RefundOnchainTransactionsList>;
 
 /** A return of previously captured funds to the payer. Multiple partial refunds are allowed up to the total captured amount. */
 export interface Refund {
@@ -1345,9 +1335,8 @@ export const IndividualInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The project IDs that this customer is associated with. */
 export type CreateCustomerRequestProjectIdsList = Array<string>;
-export const CreateCustomerRequestProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCustomerRequestProjectIdsList>;
+export const CreateCustomerRequestProjectIdsList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<CreateCustomerRequestProjectIdsList>;
 
 /** A single Terms of Service acceptance recorded for a Customer. Submit one entry per required document listed in `Customer.requirements.tos.tosVersions[]` (returned on `Get Customer`, `Create Customer`, and `Update Customer`). `language` records the single translation the Customer actually reviewed. When new required Terms of Service versions are published, only the new `versionId`s appear in `Customer.requirements.tos.tosVersions[]`; submit acceptances for only those new version(s). */
 export interface TosAcceptance {
@@ -1514,9 +1503,8 @@ export const RequirementImpactList = /*@__PURE__*/ S.Array(
 
 /** BCP 47 language tags this Terms of Service document can be viewed and accepted in. The list is non-empty (every published document carries at least one language). Append the chosen tag to `url` as `?lang=<tag>` to fetch the localized document, and submit the same tag as `language` on the corresponding `TosAcceptance` to record which translation the Customer reviewed. */
 export type TermsOfServiceLanguagesList = Array<string>;
-export const TermsOfServiceLanguagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TermsOfServiceLanguagesList>;
+export const TermsOfServiceLanguagesList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<TermsOfServiceLanguagesList>;
 
 /** Metadata for one Terms of Service document a Customer may need to accept. Each entry represents one logical document (identified by `versionId`) that may be published in multiple languages -- `languages` lists the BCP 47 language tags the document is available to view and accept in. An optional `deadline` records the end of a grace period: a future deadline is non-blocking `due`, an elapsed deadline is `past_due`, and no deadline means acceptance is required immediately with status `due`. `url` is the canonical, language-agnostic document URL; partners append `?lang=<tag>` (where `<tag>` is one of `languages`) to retrieve a specific translation, and omit the parameter to let the documentation site choose a default. This API does not serve Terms of Service body content; this schema describes metadata only. */
 export interface TermsOfService {
@@ -1602,15 +1590,13 @@ export const Individual = /*@__PURE__*/ S.suspend(() =>
 
 /** The project IDs that this customer is associated with. */
 export type CustomerProjectIdsList = Array<string>;
-export const CustomerProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomerProjectIdsList>;
+export const CustomerProjectIdsList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<CustomerProjectIdsList>;
 
 /** Terms of Service acceptances recorded for the customer. */
 export type CustomerTosAcceptancesList = Array<TosAcceptance>;
-export const CustomerTosAcceptancesList = /*@__PURE__*/ S.Array(
-  TosAcceptance,
-) as any as S.Schema<CustomerTosAcceptancesList>;
+export const CustomerTosAcceptancesList =
+  CreateCustomerRequestTosAcceptancesList as any as S.Schema<CustomerTosAcceptancesList>;
 
 /** A customer record returned on read (Get / Create / Update Customer). */
 export interface Customer {
@@ -2105,9 +2091,8 @@ export const CreateDisbursementRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The onchain transactions associated with this disbursement. */
 export type DisbursementOnchainTransactionsList = Array<OnchainTransaction>;
-export const DisbursementOnchainTransactionsList = /*@__PURE__*/ S.Array(
-  OnchainTransaction,
-) as any as S.Schema<DisbursementOnchainTransactionsList>;
+export const DisbursementOnchainTransactionsList =
+  AuthorizationOnchainTransactionsList as any as S.Schema<DisbursementOnchainTransactionsList>;
 
 /** A Disbursement represents a merchant-initiated payment of funds from a CDP account they own to a Coinbase account or onchain address. Used for standalone refunds, goodwill disbursements, rebates, and other merchant-driven payouts that are not tied to a specific payment session. Disbursements are asynchronous: the resource is returned in `pending` status and transitions to `succeeded` (with associated `onchainTransactions`) or `failed` (with `error`). */
 export interface Disbursement {
@@ -2386,9 +2371,8 @@ export const MFAMethods = /*@__PURE__*/ S.suspend(() =>
 
 /** **DEPRECATED**: Use `evmAccountObjects` instead for richer account information. The list of EVM account addresses associated with the end user. End users can have up to 10 EVM accounts. */
 export type EndUserEvmAccountsList = Array<string>;
-export const EndUserEvmAccountsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EndUserEvmAccountsList>;
+export const EndUserEvmAccountsList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<EndUserEvmAccountsList>;
 
 /** The list of EVM accounts associated with the end user. End users can have up to 10 EVM accounts. */
 export type EndUserEvmAccountObjectsList = Array<EndUserEvmAccount>;
@@ -2398,9 +2382,8 @@ export const EndUserEvmAccountObjectsList = /*@__PURE__*/ S.Array(
 
 /** **DEPRECATED**: Use `evmSmartAccountObjects` instead for richer account information including owner relationships. The list of EVM smart account addresses associated with the end user. Each EVM EOA can own one smart account. */
 export type EndUserEvmSmartAccountsList = Array<string>;
-export const EndUserEvmSmartAccountsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EndUserEvmSmartAccountsList>;
+export const EndUserEvmSmartAccountsList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<EndUserEvmSmartAccountsList>;
 
 /** The list of EVM smart accounts associated with the end user. Each EVM EOA can own one smart account. */
 export type EndUserEvmSmartAccountObjectsList = Array<EndUserEvmSmartAccount>;
@@ -2410,15 +2393,13 @@ export const EndUserEvmSmartAccountObjectsList = /*@__PURE__*/ S.Array(
 
 /** **DEPRECATED**: Use `solanaAccountObjects` instead for richer account information. The list of Solana account addresses associated with the end user. End users can have up to 10 Solana accounts. */
 export type EndUserSolanaAccountsList = Array<string>;
-export const EndUserSolanaAccountsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EndUserSolanaAccountsList>;
+export const EndUserSolanaAccountsList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<EndUserSolanaAccountsList>;
 
 /** The list of Solana accounts associated with the end user. End users can have up to 10 Solana accounts. */
 export type EndUserSolanaAccountObjectsList = Array<EndUserSolanaAccount>;
-export const EndUserSolanaAccountObjectsList = /*@__PURE__*/ S.Array(
-  EndUserSolanaAccount,
-) as any as S.Schema<EndUserSolanaAccountObjectsList>;
+export const EndUserSolanaAccountObjectsList =
+  EndUserEvmAccountObjectsList as any as S.Schema<EndUserSolanaAccountObjectsList>;
 
 /** Information about the end user. */
 export interface EndUser {
@@ -2471,9 +2452,8 @@ export const CreateEvmAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of policy IDs that apply to the account. This will include both the project-level policy and the account-level policy, if one exists. */
 export type EvmAccountPoliciesList = Array<string>;
-export const EvmAccountPoliciesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EvmAccountPoliciesList>;
+export const EvmAccountPoliciesList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<EvmAccountPoliciesList>;
 
 export interface EvmAccount {
   /** The 0x-prefixed, checksum EVM address. */
@@ -2575,19 +2555,13 @@ export interface CreateEvmEip7702DelegationWithEndUserAccountResponse {
   /** The unique identifier for the delegation operation. Use this to poll the operation status. */
   delegationOperationId: string;
 }
-export const CreateEvmEip7702DelegationWithEndUserAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    delegationOperationId: S.String,
-  }),
-).annotate({
-  identifier: "CreateEvmEip7702DelegationWithEndUserAccountResponse",
-}) as any as S.Schema<CreateEvmEip7702DelegationWithEndUserAccountResponse>;
+export const CreateEvmEip7702DelegationWithEndUserAccountResponse =
+  CreateEvmEip7702DelegationResponse as any as S.Schema<CreateEvmEip7702DelegationWithEndUserAccountResponse>;
 
 /** Today, only a single owner can be set for a Smart Account, but this is an array to allow setting multiple owners in the future. */
 export type CreateEvmSmartAccountRequestOwnersList = Array<string>;
-export const CreateEvmSmartAccountRequestOwnersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateEvmSmartAccountRequestOwnersList>;
+export const CreateEvmSmartAccountRequestOwnersList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<CreateEvmSmartAccountRequestOwnersList>;
 
 export interface CreateEvmSmartAccountRequest {
   /** Today, only a single owner can be set for a Smart Account, but this is an array to allow setting multiple owners in the future. */
@@ -2606,15 +2580,13 @@ export const CreateEvmSmartAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Today, only a single owner can be set for a Smart Account, but this is an array to allow having multiple owners in the future. The address is a 0x-prefixed, checksum address. */
 export type EvmSmartAccountOwnersList = Array<string>;
-export const EvmSmartAccountOwnersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EvmSmartAccountOwnersList>;
+export const EvmSmartAccountOwnersList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<EvmSmartAccountOwnersList>;
 
 /** The list of policy IDs that apply to the smart account. This will include both the project-level policy and the account-level policy, if one exists. */
 export type EvmSmartAccountPoliciesList = Array<string>;
-export const EvmSmartAccountPoliciesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EvmSmartAccountPoliciesList>;
+export const EvmSmartAccountPoliciesList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<EvmSmartAccountPoliciesList>;
 
 export interface EvmSmartAccount {
   /** The 0x-prefixed, checksum address of the Smart Account. */
@@ -3205,9 +3177,7 @@ export const OnrampSession = /*@__PURE__*/ S.suspend(() =>
 
 /** The fees associated with the quote. */
 export type OnrampQuoteFeesList = Array<OnrampOrderFee>;
-export const OnrampQuoteFeesList = /*@__PURE__*/ S.Array(
-  OnrampOrderFee,
-) as any as S.Schema<OnrampQuoteFeesList>;
+export const OnrampQuoteFeesList = OnrampOrderFeesList as any as S.Schema<OnrampQuoteFeesList>;
 
 /** Quote information with pricing details for the crypto purchase. */
 export interface OnrampQuote {
@@ -3346,9 +3316,8 @@ export const EvmAddressCriterionType = S.String;
 
 /** A list of 0x-prefixed EVM addresses that the transaction's `to` field should be compared to. There is a limit of 300 addresses per criterion. */
 export type EvmAddressCriterionAddressesList = Array<string>;
-export const EvmAddressCriterionAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EvmAddressCriterionAddressesList>;
+export const EvmAddressCriterionAddressesList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<EvmAddressCriterionAddressesList>;
 
 /** The operator to use for the comparison. The transaction's `to` field will be on the left-hand side of the operator, and the `addresses` field will be on the right-hand side. */
 export type EvmAddressCriterionOperator = "in" | "not in";
@@ -3417,9 +3386,8 @@ export const AbiFunctionInputsList = /*@__PURE__*/ S.Array(
 
 /** The values returned by this function. */
 export type AbiFunctionOutputsList = Array<AbiParameter>;
-export const AbiFunctionOutputsList = /*@__PURE__*/ S.Array(
-  AbiParameter,
-) as any as S.Schema<AbiFunctionOutputsList>;
+export const AbiFunctionOutputsList =
+  AbiFunctionInputsList as any as S.Schema<AbiFunctionOutputsList>;
 
 /** State mutability of a function in Solidity. */
 export type AbiStateMutability = "pure" | "view" | "nonpayable" | "payable";
@@ -3513,9 +3481,8 @@ export const EvmDataParameterConditionListOperator = S.String;
 
 /** Values to compare against the resolved `name` value. All values are encoded as strings. Refer to the table in the documentation for how values should be encoded, and which operators are supported for each type. */
 export type EvmDataParameterConditionListValuesList = Array<string>;
-export const EvmDataParameterConditionListValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EvmDataParameterConditionListValuesList>;
+export const EvmDataParameterConditionListValuesList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<EvmDataParameterConditionListValuesList>;
 
 export interface EvmDataParameterConditionList {
   /** The name of the parameter to check against a transaction's calldata. If name is unknown, or is not named, you may supply an array index, e.g., `0` for first parameter. */
@@ -3832,9 +3799,8 @@ export const SignEvmTypedDataFieldCriterionTypes = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of 0x-prefixed EVM addresses that the value located at the message's path should be compared to. There is a limit of 300 addresses per criterion. */
 export type EvmTypedAddressConditionAddressesList = Array<string>;
-export const EvmTypedAddressConditionAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EvmTypedAddressConditionAddressesList>;
+export const EvmTypedAddressConditionAddressesList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<EvmTypedAddressConditionAddressesList>;
 
 /** The operator to use for the comparison. The value located at the message's path will be on the left-hand side of the operator, and the `addresses` field will be on the right-hand side. */
 export type EvmTypedAddressConditionOperator = "in" | "not in";
@@ -3932,9 +3898,8 @@ export const SignEvmTypedDataVerifyingContractCriterionType = S.String;
 
 /** A list of 0x-prefixed EVM addresses that the domain's verifying contract should be compared to. There is a limit of 300 addresses per criterion. */
 export type SignEvmTypedDataVerifyingContractCriterionAddressesList = Array<string>;
-export const SignEvmTypedDataVerifyingContractCriterionAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SignEvmTypedDataVerifyingContractCriterionAddressesList>;
+export const SignEvmTypedDataVerifyingContractCriterionAddressesList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<SignEvmTypedDataVerifyingContractCriterionAddressesList>;
 
 /** The operator to use for the comparison. The domain's verifying contract will be on the left-hand side of the operator, and the `addresses` field will be on the right-hand side. */
 export type SignEvmTypedDataVerifyingContractCriterionOperator = "in" | "not in";
@@ -4000,9 +3965,8 @@ export const SolAddressCriterionType = S.String;
 
 /** The Solana addresses that are compared to the list of native transfer recipient addresses in the transaction's `accountKeys` (for legacy transactions) or `staticAccountKeys` (for V0 transactions) array. */
 export type SolAddressCriterionAddressesList = Array<string>;
-export const SolAddressCriterionAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SolAddressCriterionAddressesList>;
+export const SolAddressCriterionAddressesList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<SolAddressCriterionAddressesList>;
 
 /** The operator to use for the comparison. Each of the native transfer recipient addresses in the transaction's `accountKeys` (for legacy transactions) or `staticAccountKeys` (for V0 transactions) array will be on the left-hand side of the operator, and the `addresses` field will be on the right-hand side. */
 export type SolAddressCriterionOperator = "in" | "not in";
@@ -4056,9 +4020,8 @@ export const SplAddressCriterionType = S.String;
 
 /** The Solana addresses that are compared to the list of SPL token transfer recipient addresses in the transaction's `accountKeys` (for legacy transactions) or `staticAccountKeys` (for V0 transactions) array. */
 export type SplAddressCriterionAddressesList = Array<string>;
-export const SplAddressCriterionAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SplAddressCriterionAddressesList>;
+export const SplAddressCriterionAddressesList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<SplAddressCriterionAddressesList>;
 
 /** The operator to use for the comparison. Each of the SPL token transfer recipient addresses in the transaction's `accountKeys` (for legacy transactions) or `staticAccountKeys` (for V0 transactions) array will be on the left-hand side of the operator, and the `addresses` field will be on the right-hand side. */
 export type SplAddressCriterionOperator = "in" | "not in";
@@ -4112,9 +4075,8 @@ export const MintAddressCriterionType = S.String;
 
 /** The Solana addresses that are compared to the list of token mint addresses in the transaction's `accountKeys` (for legacy transactions) or `staticAccountKeys` (for V0 transactions) array. */
 export type MintAddressCriterionAddressesList = Array<string>;
-export const MintAddressCriterionAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MintAddressCriterionAddressesList>;
+export const MintAddressCriterionAddressesList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<MintAddressCriterionAddressesList>;
 
 /** The operator to use for the comparison. Each of the token mint addresses in the transaction's `accountKeys` (for legacy transactions) or `staticAccountKeys` (for V0 transactions) array will be on the left-hand side of the operator, and the `addresses` field will be on the right-hand side. */
 export type MintAddressCriterionOperator = "in" | "not in";
@@ -4300,9 +4262,8 @@ export const SolDataParameterConditionListOperator = S.String;
 
 /** The values to compare against. */
 export type SolDataParameterConditionListValuesList = Array<string>;
-export const SolDataParameterConditionListValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SolDataParameterConditionListValuesList>;
+export const SolDataParameterConditionListValuesList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<SolDataParameterConditionListValuesList>;
 
 /** A single parameter condition to apply against a specific instruction's parameters. */
 export interface SolDataParameterConditionList {
@@ -4376,9 +4337,8 @@ export const ProgramIdCriterionType = S.String;
 
 /** The Solana program IDs that are compared to the list of program IDs in the transaction's instructions. */
 export type ProgramIdCriterionProgramIdsList = Array<string>;
-export const ProgramIdCriterionProgramIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProgramIdCriterionProgramIdsList>;
+export const ProgramIdCriterionProgramIdsList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<ProgramIdCriterionProgramIdsList>;
 
 /** The operator to use for the comparison. Each of the program IDs in the transaction's instructions will be on the left-hand side of the operator, and the `programIds` field will be on the right-hand side. */
 export type ProgramIdCriterionOperator = "in" | "not in";
@@ -4744,9 +4704,8 @@ export const SignEndUserEvmMessageRuleOperation = S.String;
 
 /** A schema for specifying criteria for the signEndUserEvmMessage operation. */
 export type SignEndUserEvmMessageCriteria = Array<EvmMessageCriterion>;
-export const SignEndUserEvmMessageCriteria = /*@__PURE__*/ S.Array(
-  EvmMessageCriterion,
-) as any as S.Schema<SignEndUserEvmMessageCriteria>;
+export const SignEndUserEvmMessageCriteria =
+  SignEvmMessageCriteria as any as S.Schema<SignEndUserEvmMessageCriteria>;
 
 export interface SignEndUserEvmMessageRule {
   /** Whether matching the rule will cause the request to be rejected or accepted. */
@@ -4918,9 +4877,8 @@ export const SignEndUserSolMessageRuleOperation = S.String;
 
 /** A schema for specifying criteria for the signEndUserSolMessage operation. */
 export type SignEndUserSolMessageCriteria = Array<SolMessageCriterion>;
-export const SignEndUserSolMessageCriteria = /*@__PURE__*/ S.Array(
-  SolMessageCriterion,
-) as any as S.Schema<SignEndUserSolMessageCriteria>;
+export const SignEndUserSolMessageCriteria =
+  SignSolMessageCriteria as any as S.Schema<SignEndUserSolMessageCriteria>;
 
 export interface SignEndUserSolMessageRule {
   /** Whether matching the rule will cause the request to be rejected or accepted. */
@@ -5176,9 +5134,8 @@ export const CreateSolanaAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of policy IDs that apply to the account. This will include both the project-level policy and the account-level policy, if one exists. */
 export type SolanaAccountPoliciesList = Array<string>;
-export const SolanaAccountPoliciesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SolanaAccountPoliciesList>;
+export const SolanaAccountPoliciesList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<SolanaAccountPoliciesList>;
 
 export interface SolanaAccount {
   /** The base58 encoded Solana address. */
@@ -5192,15 +5149,7 @@ export interface SolanaAccount {
   /** The ISO 8601 UTC timestamp at which the account was last updated. */
   updatedAt?: string;
 }
-export const SolanaAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address: S.String,
-    name: S.optional(S.String),
-    policies: S.optional(SolanaAccountPoliciesList),
-    createdAt: S.optional(S.String),
-    updatedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "SolanaAccount" }) as any as S.Schema<SolanaAccount>;
+export const SolanaAccount = EvmAccount as any as S.Schema<SolanaAccount>;
 
 /** The network the spend permission is on. */
 export type SpendPermissionNetwork =
@@ -5325,13 +5274,7 @@ export interface DateOfBirth {
   /** Year of birth (four digits). */
   year?: string;
 }
-export const DateOfBirth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    day: S.optional(S.String),
-    month: S.optional(S.String),
-    year: S.optional(S.String),
-  }),
-).annotate({ identifier: "DateOfBirth" }) as any as S.Schema<DateOfBirth>;
+export const DateOfBirth = DateOfBirthLenient as any as S.Schema<DateOfBirth>;
 
 /** Originator (sender) party. */
 export interface TravelRuleOriginator {
@@ -5458,9 +5401,8 @@ export const AchDepositSource = /*@__PURE__*/ S.suspend(() =>
 
 /** The Originator to Beneficiary Information (OBI) lines from the Fedwire message. Up to 4 lines, each up to 35 characters. Free-form and may contain identifying information about the originator. Masked on webhook payloads. */
 export type FedwireDepositSourceOriginatorToBeneficiaryList = Array<string>;
-export const FedwireDepositSourceOriginatorToBeneficiaryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FedwireDepositSourceOriginatorToBeneficiaryList>;
+export const FedwireDepositSourceOriginatorToBeneficiaryList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<FedwireDepositSourceOriginatorToBeneficiaryList>;
 
 /** The originating Fedwire deposit details for the transfer source. Present when funds were deposited via Fedwire into a deposit destination. */
 export interface FedwireDepositSource {
@@ -5773,17 +5715,12 @@ export const WebhookTarget = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional subscription metadata. Up to 10 key/value pairs may be provided. Keys and values must each contain between 1 and 50 characters. */
 export type WebhookMetadata = { [key: string]: string | undefined };
-export const WebhookMetadata = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WebhookMetadata>;
+export const WebhookMetadata = WebhookTargetHeadersMap as any as S.Schema<WebhookMetadata>;
 
 /** String-valued filters supplied when creating or updating a webhook subscription. The subscription's `eventTypes` determine whether labels are required and which label keys are accepted. A subscription accepts at most 20 client-supplied labels. #### Label Behavior An event must match ALL labels to fire to your subscription `targetURL`. When multiple labels are supplied, the event must match ALL labels to fire to your subscription `targetURL`. */
 export type WebhookRequestLabels = { [key: string]: string | undefined };
-export const WebhookRequestLabels = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WebhookRequestLabels>;
+export const WebhookRequestLabels =
+  WebhookTargetHeadersMap as any as S.Schema<WebhookRequestLabels>;
 
 export interface CreateWebhookSubscriptionRequest {
   description?: string;
@@ -5810,9 +5747,8 @@ export const CreateWebhookSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Types of events to subscribe to. Event types follow a dot-separated format: service.resource.verb (e.g., "onchain.activity.detected", "wallet.activity.detected", "onramp.transaction.created", "acceptance.payment_session.authorization_succeeded"). */
 export type WebhookSubscriptionResponseEventTypesList = Array<EventType>;
-export const WebhookSubscriptionResponseEventTypesList = /*@__PURE__*/ S.Array(
-  EventType,
-) as any as S.Schema<WebhookSubscriptionResponseEventTypesList>;
+export const WebhookSubscriptionResponseEventTypesList =
+  CreateWebhookSubscriptionRequestEventTypesList as any as S.Schema<WebhookSubscriptionResponseEventTypesList>;
 
 /** Additional metadata for the subscription. */
 export interface WebhookSubscriptionResponseMetadata {
@@ -5829,10 +5765,8 @@ export const WebhookSubscriptionResponseMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Effective filters stored on the webhook subscription. The response includes client-supplied labels plus labels defaulted or injected by the server. * `onchain.activity.detected`, `wallet.activity.detected`, and `wallet.activity.multi` include `network`. It defaults to `base-mainnet` when omitted from the request. * `wallet.activity.multi` includes the requested comma-separated `wallet_addresses`. * `health.*` includes the requested `service`. * Project-scoped events include the authenticated `project`. * Entity-scoped events include the authenticated `entity`. * User-scoped events include the authenticated `user_uuid` and a `sandbox` value. */
 export type WebhookResponseLabels = { [key: string]: string | undefined };
-export const WebhookResponseLabels = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WebhookResponseLabels>;
+export const WebhookResponseLabels =
+  WebhookTargetHeadersMap as any as S.Schema<WebhookResponseLabels>;
 
 /** Response containing webhook subscription details. */
 export interface WebhookSubscriptionResponse {
@@ -5882,10 +5816,8 @@ export const CreateX402DiscoveryMcpRequestId =
 
 /** Optional parameters for the method. */
 export type CreateX402DiscoveryMcpRequestParamsMap = { [key: string]: unknown | undefined };
-export const CreateX402DiscoveryMcpRequestParamsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateX402DiscoveryMcpRequestParamsMap>;
+export const CreateX402DiscoveryMcpRequestParamsMap =
+  PaymasterContext as any as S.Schema<CreateX402DiscoveryMcpRequestParamsMap>;
 
 export interface CreateX402DiscoveryMcpRequest {
   /** JSON-RPC version, must be "2.0". */
@@ -5918,17 +5850,12 @@ export const X402McpResponseId = S.Unknown as any as S.Schema<X402McpResponseId>
 
 /** The result of the method call (present on success). */
 export type X402McpResponseResultMap = { [key: string]: unknown | undefined };
-export const X402McpResponseResultMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<X402McpResponseResultMap>;
+export const X402McpResponseResultMap =
+  PaymasterContext as any as S.Schema<X402McpResponseResultMap>;
 
 /** Additional error data. */
 export type X402McpErrorDataMap = { [key: string]: unknown | undefined };
-export const X402McpErrorDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<X402McpErrorDataMap>;
+export const X402McpErrorDataMap = PaymasterContext as any as S.Schema<X402McpErrorDataMap>;
 
 /** JSON-RPC 2.0 error object. */
 export interface X402McpError {
@@ -5992,9 +5919,7 @@ export const DeletePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePolicyRequest" }) as any as S.Schema<DeletePolicyRequest>;
 
 export interface DeletePolicyResponse {}
-export const DeletePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePolicyResponse",
-}) as any as S.Schema<DeletePolicyResponse>;
+export const DeletePolicyResponse = DeleteCustomerResponse as any as S.Schema<DeletePolicyResponse>;
 
 export interface DeleteWebhookSubscriptionRequest {
   /** Unique identifier for the webhook subscription. */
@@ -6102,13 +6027,8 @@ export interface ExportSolanaAccountResponse {
   /** The base64-encoded, encrypted private key of the Solana account which is a 32 byte raw private key. The private key is encrypted in transport using the exportEncryptionKey in the request. */
   encryptedPrivateKey: string;
 }
-export const ExportSolanaAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encryptedPrivateKey: S.String,
-  }),
-).annotate({
-  identifier: "ExportSolanaAccountResponse",
-}) as any as S.Schema<ExportSolanaAccountResponse>;
+export const ExportSolanaAccountResponse =
+  ExportEvmAccountByNameResponse as any as S.Schema<ExportSolanaAccountResponse>;
 
 export interface ExportSolanaAccountByNameRequest {
   /** The name of the Solana account. */
@@ -6129,13 +6049,8 @@ export interface ExportSolanaAccountByNameResponse {
   /** The base64-encoded, encrypted private key of the Solana account which is a 32 byte raw private key. The private key is encrypted in transport using the exportEncryptionKey in the request. */
   encryptedPrivateKey: string;
 }
-export const ExportSolanaAccountByNameResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encryptedPrivateKey: S.String,
-  }),
-).annotate({
-  identifier: "ExportSolanaAccountByNameResponse",
-}) as any as S.Schema<ExportSolanaAccountByNameResponse>;
+export const ExportSolanaAccountByNameResponse =
+  ExportEvmAccountByNameResponse as any as S.Schema<ExportSolanaAccountByNameResponse>;
 
 export interface GetBalanceByAssetRequest {
   /** The unique identifier of the account. */
@@ -6217,9 +6132,8 @@ export const GetCustomerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCustomerRequest" }) as any as S.Schema<GetCustomerRequest>;
 
 export type GetCustomerRequirementsRequestCapabilitiesList = Array<CapabilityName | (string & {})>;
-export const GetCustomerRequirementsRequestCapabilitiesList = /*@__PURE__*/ S.Array(
-  CapabilityName,
-) as any as S.Schema<GetCustomerRequirementsRequestCapabilitiesList>;
+export const GetCustomerRequirementsRequestCapabilitiesList =
+  RequirementImpactList as any as S.Schema<GetCustomerRequirementsRequestCapabilitiesList>;
 
 export interface GetCustomerRequirementsRequest {
   /** The type of the hypothetical customer. */
@@ -6274,13 +6188,8 @@ export interface GetDelegationForEndUserResponse {
   /** The date until which the delegation is valid. */
   expiresAt: string;
 }
-export const GetDelegationForEndUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expiresAt: S.String,
-  }),
-).annotate({
-  identifier: "GetDelegationForEndUserResponse",
-}) as any as S.Schema<GetDelegationForEndUserResponse>;
+export const GetDelegationForEndUserResponse =
+  CreateDelegationForEndUserAccountResponse as any as S.Schema<GetDelegationForEndUserResponse>;
 
 export interface GetDelegationForEndUserAccountRequest {
   /** The ID of the end user. */
@@ -6310,13 +6219,8 @@ export interface GetDelegationForEndUserAccountResponse {
   /** The date until which the delegation is valid. */
   expiresAt: string;
 }
-export const GetDelegationForEndUserAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expiresAt: S.String,
-  }),
-).annotate({
-  identifier: "GetDelegationForEndUserAccountResponse",
-}) as any as S.Schema<GetDelegationForEndUserAccountResponse>;
+export const GetDelegationForEndUserAccountResponse =
+  CreateDelegationForEndUserAccountResponse as any as S.Schema<GetDelegationForEndUserAccountResponse>;
 
 export interface GetDepositDestinationRequest {
   /** The ID of the deposit address to retrieve. */
@@ -6333,11 +6237,8 @@ export const GetDepositDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDepositDestinationRequest>;
 
 export type GetDepositDestinationResponse = DepositDestination;
-export const GetDepositDestinationResponse = /*@__PURE__*/ S.suspend(() =>
-  DepositDestination.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetDepositDestinationResponse",
-}) as any as S.Schema<GetDepositDestinationResponse>;
+export const GetDepositDestinationResponse =
+  CreateDepositDestinationResponse as any as S.Schema<GetDepositDestinationResponse>;
 
 export interface GetDisbursementRequest {
   /** The unique identifier of the disbursement. */
@@ -7337,9 +7238,8 @@ export const GetUserOperationWithEndUserAccountRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<GetUserOperationWithEndUserAccountRequest>;
 
 export type GetWalletAuthorizationOptionsRequestAddressesList = Array<string>;
-export const GetWalletAuthorizationOptionsRequestAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetWalletAuthorizationOptionsRequestAddressesList>;
+export const GetWalletAuthorizationOptionsRequestAddressesList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<GetWalletAuthorizationOptionsRequestAddressesList>;
 
 export interface GetWalletAuthorizationOptionsRequest {
   /** The unique identifier of the payment session. */
@@ -7659,10 +7559,8 @@ export const X402V2Network = S.String;
 
 /** The optional additional scheme-specific payment info. */
 export type X402V2PaymentRequirementsExtraMap = { [key: string]: unknown | undefined };
-export const X402V2PaymentRequirementsExtraMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<X402V2PaymentRequirementsExtraMap>;
+export const X402V2PaymentRequirementsExtraMap =
+  PaymasterContext as any as S.Schema<X402V2PaymentRequirementsExtraMap>;
 
 /** The x402 v2 payment requirements. Uses CAIP-2 network identifiers and supports `exact`, `upto`, and `batch-settlement` schemes. Carries only the payment fields (no resource metadata -- that is in the enclosing `x402V2PaymentPayload.resource`). */
 export interface X402V2PaymentRequirements {
@@ -7705,17 +7603,13 @@ export const X402V1Network = S.String;
 
 /** The optional JSON schema describing the resource output. */
 export type X402V1PaymentRequirementsOutputSchemaMap = { [key: string]: unknown | undefined };
-export const X402V1PaymentRequirementsOutputSchemaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<X402V1PaymentRequirementsOutputSchemaMap>;
+export const X402V1PaymentRequirementsOutputSchemaMap =
+  PaymasterContext as any as S.Schema<X402V1PaymentRequirementsOutputSchemaMap>;
 
 /** The optional additional scheme-specific payment info. */
 export type X402V1PaymentRequirementsExtraMap = { [key: string]: unknown | undefined };
-export const X402V1PaymentRequirementsExtraMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<X402V1PaymentRequirementsExtraMap>;
+export const X402V1PaymentRequirementsExtraMap =
+  PaymasterContext as any as S.Schema<X402V1PaymentRequirementsExtraMap>;
 
 /** The x402 v1 payment requirements. Uses human-readable network names, and carries resource metadata (`resource`, `description`, `mimeType`) alongside the payment fields. The only supported scheme is `exact`. */
 export interface X402V1PaymentRequirements {
@@ -7772,10 +7666,8 @@ export const X402DiscoveryResourceAcceptsList = /*@__PURE__*/ S.Array(
 
 /** Map of x402 protocol extensions supported by the resource, keyed by extension name. */
 export type X402DiscoveryResourceExtensionsMap = { [key: string]: unknown | undefined };
-export const X402DiscoveryResourceExtensionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<X402DiscoveryResourceExtensionsMap>;
+export const X402DiscoveryResourceExtensionsMap =
+  PaymasterContext as any as S.Schema<X402DiscoveryResourceExtensionsMap>;
 
 /** Quality metrics for a discovered x402 resource. */
 export interface X402ResourceQuality {
@@ -7796,15 +7688,13 @@ export const X402ResourceQuality = /*@__PURE__*/ S.suspend(() =>
 
 /** Low-cardinality string labels associated with the resource for client-side filtering and display. Values are free-form (no controlled vocabulary) and case-sensitive. Order is not significant and duplicates are not expected. */
 export type X402DiscoveryResourceTagsList = Array<string>;
-export const X402DiscoveryResourceTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<X402DiscoveryResourceTagsList>;
+export const X402DiscoveryResourceTagsList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<X402DiscoveryResourceTagsList>;
 
 /** Slugs of the curated x402 bundles this resource belongs to. A bundle is an ordered, named grouping of curated resources covering a common agent workflow. Present only for Coinbase-curated resources (`curated: true`); omitted when the resource is not curated or is not a member of any bundle. */
 export type X402DiscoveryResourceBundleSlugsList = Array<string>;
-export const X402DiscoveryResourceBundleSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<X402DiscoveryResourceBundleSlugsList>;
+export const X402DiscoveryResourceBundleSlugsList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<X402DiscoveryResourceBundleSlugsList>;
 
 /** A single discovered x402 resource. Its fields come from three sources: - **x402 protocol** -- negotiated from the resource's payment-required response: `resource`, `type`, `x402Version`, `accepts`, `extensions`. - **Provider-supplied** -- metadata published by the resource owner: `description`, `serviceName`, `tags`. - **Coinbase-derived** -- added during ingestion and curation: `iconUrl`, `quality`, `lastUpdated`, and (for Coinbase-curated endpoints only) `curated`, `skillUrl` (a Coinbase-authored SKILL.md), and `bundleSlugs`. */
 export interface X402DiscoveryResource {
@@ -8170,9 +8060,8 @@ export const ListCoinbaseAccountBalancesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of balances. */
 export type BalancesBalancesList = Array<Balance>;
-export const BalancesBalancesList = /*@__PURE__*/ S.Array(
-  Balance,
-) as any as S.Schema<BalancesBalancesList>;
+export const BalancesBalancesList =
+  ListBalancesResponseBalancesList as any as S.Schema<BalancesBalancesList>;
 
 /** A list of balances for an account. */
 export interface Balances {
@@ -8587,9 +8476,8 @@ export const ListEvmTokenBalancesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of EVM token balances. */
 export type ListEvmTokenBalancesResponseBalancesList = Array<TokenBalance>;
-export const ListEvmTokenBalancesResponseBalancesList = /*@__PURE__*/ S.Array(
-  TokenBalance,
-) as any as S.Schema<ListEvmTokenBalancesResponseBalancesList>;
+export const ListEvmTokenBalancesResponseBalancesList =
+  ListDataTokenBalancesResponseBalancesList as any as S.Schema<ListEvmTokenBalancesResponseBalancesList>;
 
 export interface ListEvmTokenBalancesResponse {
   /** The list of EVM token balances. */
@@ -8597,19 +8485,12 @@ export interface ListEvmTokenBalancesResponse {
   /** The token for the next page of items, if any. */
   nextPageToken?: string;
 }
-export const ListEvmTokenBalancesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    balances: ListEvmTokenBalancesResponseBalancesList,
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListEvmTokenBalancesResponse",
-}) as any as S.Schema<ListEvmTokenBalancesResponse>;
+export const ListEvmTokenBalancesResponse =
+  ListDataTokenBalancesResponse as any as S.Schema<ListEvmTokenBalancesResponse>;
 
 export type ListFoundationAccountsRequestOwnerList = Array<string>;
-export const ListFoundationAccountsRequestOwnerList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListFoundationAccountsRequestOwnerList>;
+export const ListFoundationAccountsRequestOwnerList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<ListFoundationAccountsRequestOwnerList>;
 
 export interface ListFoundationAccountsRequest {
   /** The number of resources to return per page. */
@@ -8715,9 +8596,8 @@ export const ListPaymentSessionAuthorizationsRequest = /*@__PURE__*/ S.suspend((
 
 /** The list of authorizations. */
 export type ListPaymentSessionAuthorizationsResponseAuthorizationsList = Array<Authorization>;
-export const ListPaymentSessionAuthorizationsResponseAuthorizationsList = /*@__PURE__*/ S.Array(
-  Authorization,
-) as any as S.Schema<ListPaymentSessionAuthorizationsResponseAuthorizationsList>;
+export const ListPaymentSessionAuthorizationsResponseAuthorizationsList =
+  PaymentSessionAuthorizationsList as any as S.Schema<ListPaymentSessionAuthorizationsResponseAuthorizationsList>;
 
 export interface ListPaymentSessionAuthorizationsResponse {
   /** The list of authorizations. */
@@ -8756,9 +8636,8 @@ export const ListPaymentSessionCapturesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of captures. */
 export type ListPaymentSessionCapturesResponseCapturesList = Array<Capture>;
-export const ListPaymentSessionCapturesResponseCapturesList = /*@__PURE__*/ S.Array(
-  Capture,
-) as any as S.Schema<ListPaymentSessionCapturesResponseCapturesList>;
+export const ListPaymentSessionCapturesResponseCapturesList =
+  PaymentSessionCapturesList as any as S.Schema<ListPaymentSessionCapturesResponseCapturesList>;
 
 export interface ListPaymentSessionCapturesResponse {
   /** The list of captures. */
@@ -8797,9 +8676,8 @@ export const ListPaymentSessionRefundsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of refunds. */
 export type ListPaymentSessionRefundsResponseRefundsList = Array<Refund>;
-export const ListPaymentSessionRefundsResponseRefundsList = /*@__PURE__*/ S.Array(
-  Refund,
-) as any as S.Schema<ListPaymentSessionRefundsResponseRefundsList>;
+export const ListPaymentSessionRefundsResponseRefundsList =
+  PaymentSessionRefundsList as any as S.Schema<ListPaymentSessionRefundsResponseRefundsList>;
 
 export interface ListPaymentSessionRefundsResponse {
   /** The list of refunds. */
@@ -8874,9 +8752,8 @@ export const ListPaymentSessionVoidsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of voids. */
 export type ListPaymentSessionVoidsResponseVoidsList = Array<Void>;
-export const ListPaymentSessionVoidsResponseVoidsList = /*@__PURE__*/ S.Array(
-  Void,
-) as any as S.Schema<ListPaymentSessionVoidsResponseVoidsList>;
+export const ListPaymentSessionVoidsResponseVoidsList =
+  PaymentSessionVoidsList as any as S.Schema<ListPaymentSessionVoidsResponseVoidsList>;
 
 export interface ListPaymentSessionVoidsResponse {
   /** The list of voids. */
@@ -8948,9 +8825,8 @@ export const ListSolanaAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Solana accounts. */
 export type ListSolanaAccountsResponseAccountsList = Array<SolanaAccount>;
-export const ListSolanaAccountsResponseAccountsList = /*@__PURE__*/ S.Array(
-  SolanaAccount,
-) as any as S.Schema<ListSolanaAccountsResponseAccountsList>;
+export const ListSolanaAccountsResponseAccountsList =
+  ListEvmAccountsResponseAccountsList as any as S.Schema<ListSolanaAccountsResponseAccountsList>;
 
 export interface ListSolanaAccountsResponse {
   /** The list of Solana accounts. */
@@ -9001,12 +8877,7 @@ export interface SolanaTokenAmount {
   /** 'decimals' is the exponential value N that satisfies the equation `amount * 10^-N = standard_denomination`. The standard denomination is the most commonly used denomination for the token. - For native SOL, `decimals` is 9 (1 SOL = 10^9 lamports). - For SPL tokens, `decimals` is defined in the token's mint configuration. */
   decimals: number;
 }
-export const SolanaTokenAmount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amount: S.String,
-    decimals: S.Number,
-  }),
-).annotate({ identifier: "SolanaTokenAmount" }) as any as S.Schema<SolanaTokenAmount>;
+export const SolanaTokenAmount = TokenAmount as any as S.Schema<SolanaTokenAmount>;
 
 /** General information about a Solana token. Includes the mint address, and other identifying information. */
 export interface SolanaToken {
@@ -9184,9 +9055,8 @@ export const ListTokensForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of token contract addresses that the account has received. */
 export type AccountTokenAddressesResponseTokenAddressesList = Array<string>;
-export const AccountTokenAddressesResponseTokenAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccountTokenAddressesResponseTokenAddressesList>;
+export const AccountTokenAddressesResponseTokenAddressesList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<AccountTokenAddressesResponseTokenAddressesList>;
 
 /** Response containing token addresses that an account has received. */
 export interface AccountTokenAddressesResponse {
@@ -9482,9 +9352,8 @@ export const ListX402DiscoveryMerchantRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of discovered x402 resources associated with the merchant's payTo address. This list is empty when no active resources are found. */
 export type X402DiscoveryMerchantResponseResourcesList = Array<X402DiscoveryResource>;
-export const X402DiscoveryMerchantResponseResourcesList = /*@__PURE__*/ S.Array(
-  X402DiscoveryResource,
-) as any as S.Schema<X402DiscoveryMerchantResponseResourcesList>;
+export const X402DiscoveryMerchantResponseResourcesList =
+  GetX402BundleResponseResourcesList as any as S.Schema<X402DiscoveryMerchantResponseResourcesList>;
 
 /** Pagination information for the response. */
 export interface X402DiscoveryMerchantResponsePagination {
@@ -9545,9 +9414,8 @@ export const ListX402DiscoveryResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of discovered x402 resources. */
 export type X402DiscoveryResourcesResponseItemsList = Array<X402DiscoveryResource>;
-export const X402DiscoveryResourcesResponseItemsList = /*@__PURE__*/ S.Array(
-  X402DiscoveryResource,
-) as any as S.Schema<X402DiscoveryResourcesResponseItemsList>;
+export const X402DiscoveryResourcesResponseItemsList =
+  GetX402BundleResponseResourcesList as any as S.Schema<X402DiscoveryResourcesResponseItemsList>;
 
 /** Pagination information for the response. */
 export interface X402DiscoveryResourcesResponsePagination {
@@ -9558,15 +9426,8 @@ export interface X402DiscoveryResourcesResponsePagination {
   /** The total number of discovered x402 resources. */
   total?: number;
 }
-export const X402DiscoveryResourcesResponsePagination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    limit: S.optional(S.Number),
-    offset: S.optional(S.Number),
-    total: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "X402DiscoveryResourcesResponsePagination",
-}) as any as S.Schema<X402DiscoveryResourcesResponsePagination>;
+export const X402DiscoveryResourcesResponsePagination =
+  X402DiscoveryMerchantResponsePagination as any as S.Schema<X402DiscoveryResourcesResponsePagination>;
 
 /** Response containing discovered x402 resources. */
 export interface X402DiscoveryResourcesResponse {
@@ -9610,9 +9471,8 @@ export const LookupEndUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of end users matching the lookup. */
 export type LookupEndUserResponseEndUsersList = Array<EndUser>;
-export const LookupEndUserResponseEndUsersList = /*@__PURE__*/ S.Array(
-  EndUser,
-) as any as S.Schema<LookupEndUserResponseEndUsersList>;
+export const LookupEndUserResponseEndUsersList =
+  ListEndUsersResponseEndUsersList as any as S.Schema<LookupEndUserResponseEndUsersList>;
 
 export interface LookupEndUserResponse {
   /** The list of end users matching the lookup. */
@@ -9626,9 +9486,8 @@ export const LookupEndUserResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of calls to make from the Smart Account. */
 export type PrepareAndSendUserOperationRequestCallsList = Array<EvmCall>;
-export const PrepareAndSendUserOperationRequestCallsList = /*@__PURE__*/ S.Array(
-  EvmCall,
-) as any as S.Schema<PrepareAndSendUserOperationRequestCallsList>;
+export const PrepareAndSendUserOperationRequestCallsList =
+  EvmUserOperationCallsList as any as S.Schema<PrepareAndSendUserOperationRequestCallsList>;
 
 export interface PrepareAndSendUserOperationRequest {
   /** The address of the EVM Smart Account to execute the user operation from. */
@@ -9660,9 +9519,8 @@ export const PrepareAndSendUserOperationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of calls to make from the Smart Account. */
 export type PrepareUserOperationRequestCallsList = Array<EvmCall>;
-export const PrepareUserOperationRequestCallsList = /*@__PURE__*/ S.Array(
-  EvmCall,
-) as any as S.Schema<PrepareUserOperationRequestCallsList>;
+export const PrepareUserOperationRequestCallsList =
+  EvmUserOperationCallsList as any as S.Schema<PrepareUserOperationRequestCallsList>;
 
 export interface PrepareUserOperationRequest {
   /** The address of the Smart Account to create the user operation on. */
@@ -9868,11 +9726,8 @@ export const RevokeDelegationForEndUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevokeDelegationForEndUserRequest>;
 
 export interface RevokeDelegationForEndUserResponse {}
-export const RevokeDelegationForEndUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RevokeDelegationForEndUserResponse",
-}) as any as S.Schema<RevokeDelegationForEndUserResponse>;
+export const RevokeDelegationForEndUserResponse =
+  DeleteWebhookSubscriptionResponse as any as S.Schema<RevokeDelegationForEndUserResponse>;
 
 export interface RevokeDelegationForEndUserAccountRequest {
   /** The ID of the end user. */
@@ -9902,11 +9757,8 @@ export const RevokeDelegationForEndUserAccountRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RevokeDelegationForEndUserAccountRequest>;
 
 export interface RevokeDelegationForEndUserAccountResponse {}
-export const RevokeDelegationForEndUserAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RevokeDelegationForEndUserAccountResponse",
-}) as any as S.Schema<RevokeDelegationForEndUserAccountResponse>;
+export const RevokeDelegationForEndUserAccountResponse =
+  DeleteWebhookSubscriptionResponse as any as S.Schema<RevokeDelegationForEndUserAccountResponse>;
 
 export interface RevokeSpendPermissionRequest {
   /** The address of the Smart account this spend permission is valid for. */
@@ -9960,10 +9812,8 @@ export const RunSQLQueryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Row data with column names as keys. */
 export type OnchainDataResultResultItemMap = { [key: string]: unknown | undefined };
-export const OnchainDataResultResultItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OnchainDataResultResultItemMap>;
+export const OnchainDataResultResultItemMap =
+  PaymasterContext as any as S.Schema<OnchainDataResultResultItemMap>;
 
 /** Query result as an array of objects representing rows. */
 export type OnchainDataResultResultList = Array<OnchainDataResultResultItemMap>;
@@ -10067,19 +9917,16 @@ export const OnchainDataResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OnchainDataResult" }) as any as S.Schema<OnchainDataResult>;
 
 export type SearchX402ResourcesRequestExtensionsList = Array<string>;
-export const SearchX402ResourcesRequestExtensionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchX402ResourcesRequestExtensionsList>;
+export const SearchX402ResourcesRequestExtensionsList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<SearchX402ResourcesRequestExtensionsList>;
 
 export type SearchX402ResourcesRequestTagsList = Array<string>;
-export const SearchX402ResourcesRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchX402ResourcesRequestTagsList>;
+export const SearchX402ResourcesRequestTagsList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<SearchX402ResourcesRequestTagsList>;
 
 export type SearchX402ResourcesRequestBundleSlugsList = Array<string>;
-export const SearchX402ResourcesRequestBundleSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchX402ResourcesRequestBundleSlugsList>;
+export const SearchX402ResourcesRequestBundleSlugsList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<SearchX402ResourcesRequestBundleSlugsList>;
 
 export interface SearchX402ResourcesRequest {
   /** Full-text or semantic search query to find matching resources. */
@@ -10128,9 +9975,8 @@ export const SearchX402ResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of x402 resources matching the search query and filters. */
 export type X402SearchResourcesResponseResourcesList = Array<X402DiscoveryResource>;
-export const X402SearchResourcesResponseResourcesList = /*@__PURE__*/ S.Array(
-  X402DiscoveryResource,
-) as any as S.Schema<X402SearchResourcesResponseResourcesList>;
+export const X402SearchResourcesResponseResourcesList =
+  GetX402BundleResponseResourcesList as any as S.Schema<X402SearchResourcesResponseResourcesList>;
 
 /** The search method used to retrieve the results (e.g., "text", "vector", "hybrid"). */
 export type X402SearchResourcesResponseSearchMethod = "text" | "vector" | "hybrid";
@@ -10333,13 +10179,8 @@ export interface SendEvmTransactionWithEndUserAccountResponse {
   /** The hash of the transaction, as a 0x-prefixed hex string. */
   transactionHash: string;
 }
-export const SendEvmTransactionWithEndUserAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    transactionHash: S.String,
-  }),
-).annotate({
-  identifier: "SendEvmTransactionWithEndUserAccountResponse",
-}) as any as S.Schema<SendEvmTransactionWithEndUserAccountResponse>;
+export const SendEvmTransactionWithEndUserAccountResponse =
+  SendEvmTransactionResponse as any as S.Schema<SendEvmTransactionWithEndUserAccountResponse>;
 
 /** The Solana network to send USDC on. */
 export type SendSolanaAssetWithEndUserAccountRequestNetwork = "solana" | "solana-devnet";
@@ -10394,13 +10235,8 @@ export interface SendSolanaAssetWithEndUserAccountResponse {
   /** The base58 encoded transaction signature. */
   transactionSignature: string;
 }
-export const SendSolanaAssetWithEndUserAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    transactionSignature: S.String,
-  }),
-).annotate({
-  identifier: "SendSolanaAssetWithEndUserAccountResponse",
-}) as any as S.Schema<SendSolanaAssetWithEndUserAccountResponse>;
+export const SendSolanaAssetWithEndUserAccountResponse =
+  RequestSolanaFaucetResponse as any as S.Schema<SendSolanaAssetWithEndUserAccountResponse>;
 
 /** The Solana network to send the transaction to. */
 export type SendSolanaTransactionRequestNetwork = "solana" | "solana-devnet";
@@ -10428,13 +10264,8 @@ export interface SendSolanaTransactionResponse {
   /** The base58 encoded transaction signature. */
   transactionSignature: string;
 }
-export const SendSolanaTransactionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    transactionSignature: S.String,
-  }),
-).annotate({
-  identifier: "SendSolanaTransactionResponse",
-}) as any as S.Schema<SendSolanaTransactionResponse>;
+export const SendSolanaTransactionResponse =
+  RequestSolanaFaucetResponse as any as S.Schema<SendSolanaTransactionResponse>;
 
 /** The Solana network to send the transaction to. */
 export type SendSolanaTransactionWithEndUserAccountRequestNetwork = "solana" | "solana-devnet";
@@ -10480,13 +10311,8 @@ export interface SendSolanaTransactionWithEndUserAccountResponse {
   /** The base58 encoded transaction signature. */
   transactionSignature: string;
 }
-export const SendSolanaTransactionWithEndUserAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    transactionSignature: S.String,
-  }),
-).annotate({
-  identifier: "SendSolanaTransactionWithEndUserAccountResponse",
-}) as any as S.Schema<SendSolanaTransactionWithEndUserAccountResponse>;
+export const SendSolanaTransactionWithEndUserAccountResponse =
+  RequestSolanaFaucetResponse as any as S.Schema<SendSolanaTransactionWithEndUserAccountResponse>;
 
 export interface SendUserOperationRequest {
   /** The address of the Smart Account to send the user operation from. */
@@ -10512,9 +10338,8 @@ export const SendUserOperationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of calls to make from the Smart Account. */
 export type SendUserOperationWithEndUserAccountRequestCallsList = Array<EvmCall>;
-export const SendUserOperationWithEndUserAccountRequestCallsList = /*@__PURE__*/ S.Array(
-  EvmCall,
-) as any as S.Schema<SendUserOperationWithEndUserAccountRequestCallsList>;
+export const SendUserOperationWithEndUserAccountRequestCallsList =
+  EvmUserOperationCallsList as any as S.Schema<SendUserOperationWithEndUserAccountRequestCallsList>;
 
 export interface SendUserOperationWithEndUserAccountRequest {
   /** The ID of the end user. */
@@ -10698,14 +10523,8 @@ export interface X402UptoEvmPermit2PayloadPermit2AuthorizationPermitted {
   /** The maximum amount the client authorizes to transfer in atomic units. */
   amount: string;
 }
-export const X402UptoEvmPermit2PayloadPermit2AuthorizationPermitted = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    token: S.String,
-    amount: S.String,
-  }),
-).annotate({
-  identifier: "X402UptoEvmPermit2PayloadPermit2AuthorizationPermitted",
-}) as any as S.Schema<X402UptoEvmPermit2PayloadPermit2AuthorizationPermitted>;
+export const X402UptoEvmPermit2PayloadPermit2AuthorizationPermitted =
+  X402ExactEvmPermit2PayloadPermit2AuthorizationPermitted as any as S.Schema<X402UptoEvmPermit2PayloadPermit2AuthorizationPermitted>;
 
 /** The witness data containing payment details. Includes a `facilitator` field to bind the authorization to a specific facilitator address. */
 export interface X402UptoEvmPermit2PayloadPermit2AuthorizationWitness {
@@ -10999,9 +10818,8 @@ export const X402BatchSettlementClaimPayloadType = S.String;
 
 /** The list of voucher claims to batch in a single on-chain `claim` call. */
 export type X402BatchSettlementClaimPayloadClaimsList = Array<X402BatchSettlementClaim>;
-export const X402BatchSettlementClaimPayloadClaimsList = /*@__PURE__*/ S.Array(
-  X402BatchSettlementClaim,
-) as any as S.Schema<X402BatchSettlementClaimPayloadClaimsList>;
+export const X402BatchSettlementClaimPayloadClaimsList =
+  X402BatchSettlementRefundPayloadClaimsList as any as S.Schema<X402BatchSettlementClaimPayloadClaimsList>;
 
 /** Server-to-facilitator request to batch on-chain claims of accumulated vouchers. `claimAuthorizerSignature` is optional; when absent the facilitator auto-signs with its receiver-authorizer key. */
 export interface X402BatchSettlementClaimPayload {
@@ -11084,10 +10902,8 @@ export const X402ResourceInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional protocol extensions. */
 export type X402V2PaymentPayloadExtensionsMap = { [key: string]: unknown | undefined };
-export const X402V2PaymentPayloadExtensionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<X402V2PaymentPayloadExtensionsMap>;
+export const X402V2PaymentPayloadExtensionsMap =
+  PaymasterContext as any as S.Schema<X402V2PaymentPayloadExtensionsMap>;
 
 /** The x402 v2 protocol payment payload. Uses CAIP-2 network identifiers. The `accepted` field carries the full payment requirements; `scheme` and `network` are not top-level fields (they are on the nested `accepted` object). */
 export interface X402V2PaymentPayload {
@@ -11380,10 +11196,8 @@ export const X402SettleErrorReason = S.String;
 
 /** Optional scheme-specific success metadata returned by the facilitator. */
 export type SettleX402PaymentResponseExtraMap = { [key: string]: unknown | undefined };
-export const SettleX402PaymentResponseExtraMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SettleX402PaymentResponseExtraMap>;
+export const SettleX402PaymentResponseExtraMap =
+  PaymasterContext as any as S.Schema<SettleX402PaymentResponseExtraMap>;
 
 export interface SettleX402PaymentResponse {
   /** Indicates whether the payment settlement is successful. */
@@ -11457,11 +11271,8 @@ export interface SignEvmMessageResponse {
   /** The signature of the message, as a 0x-prefixed hex string. */
   signature: string;
 }
-export const SignEvmMessageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    signature: S.String,
-  }),
-).annotate({ identifier: "SignEvmMessageResponse" }) as any as S.Schema<SignEvmMessageResponse>;
+export const SignEvmMessageResponse =
+  SignEvmHashResponse as any as S.Schema<SignEvmMessageResponse>;
 
 export interface SignEvmMessageWithEndUserAccountRequest {
   /** The ID of the end user. */
@@ -11568,13 +11379,8 @@ export interface SignEvmTransactionWithEndUserAccountResponse {
   /** The RLP-encoded signed transaction, as a 0x-prefixed hex string. */
   signedTransaction: string;
 }
-export const SignEvmTransactionWithEndUserAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    signedTransaction: S.String,
-  }),
-).annotate({
-  identifier: "SignEvmTransactionWithEndUserAccountResponse",
-}) as any as S.Schema<SignEvmTransactionWithEndUserAccountResponse>;
+export const SignEvmTransactionWithEndUserAccountResponse =
+  SignEvmTransactionResponse as any as S.Schema<SignEvmTransactionWithEndUserAccountResponse>;
 
 export interface SignEvmTypedDataRequest {
   /** The 0x-prefixed address of the EVM account. */
@@ -11600,11 +11406,8 @@ export interface SignEvmTypedDataResponse {
   /** The signature of the typed data, as a 0x-prefixed hex string. */
   signature: string;
 }
-export const SignEvmTypedDataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    signature: S.String,
-  }),
-).annotate({ identifier: "SignEvmTypedDataResponse" }) as any as S.Schema<SignEvmTypedDataResponse>;
+export const SignEvmTypedDataResponse =
+  SignEvmHashResponse as any as S.Schema<SignEvmTypedDataResponse>;
 
 export interface SignEvmTypedDataWithEndUserAccountRequest {
   /** The ID of the end user. */
@@ -11639,13 +11442,8 @@ export interface SignEvmTypedDataWithEndUserAccountResponse {
   /** The signature of the typed data, as a 0x-prefixed hex string. */
   signature: string;
 }
-export const SignEvmTypedDataWithEndUserAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    signature: S.String,
-  }),
-).annotate({
-  identifier: "SignEvmTypedDataWithEndUserAccountResponse",
-}) as any as S.Schema<SignEvmTypedDataWithEndUserAccountResponse>;
+export const SignEvmTypedDataWithEndUserAccountResponse =
+  SignEvmMessageWithEndUserAccountResponse as any as S.Schema<SignEvmTypedDataWithEndUserAccountResponse>;
 
 /** The encoding of the message. Use `utf8` to sign the literal UTF-8 bytes of the message, or `base64` to decode an RFC 4648 standard Base64 string before signing. Base64 input must use the standard `+` and `/` alphabet with `=` padding where required. If omitted, the message is interpreted as UTF-8. */
 export type SignSolanaMessageRequestEncoding = "utf8" | "base64";
@@ -11671,13 +11469,8 @@ export interface SignSolanaMessageResponse {
   /** The signature of the message, as a base58 encoded string. */
   signature: string;
 }
-export const SignSolanaMessageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    signature: S.String,
-  }),
-).annotate({
-  identifier: "SignSolanaMessageResponse",
-}) as any as S.Schema<SignSolanaMessageResponse>;
+export const SignSolanaMessageResponse =
+  SignEvmMessageWithEndUserAccountResponse as any as S.Schema<SignSolanaMessageResponse>;
 
 export interface SignSolanaMessageWithEndUserAccountRequest {
   /** The ID of the end user. */
@@ -11713,13 +11506,8 @@ export interface SignSolanaMessageWithEndUserAccountResponse {
   /** The signature of the message, as a base58 encoded string. */
   signature: string;
 }
-export const SignSolanaMessageWithEndUserAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    signature: S.String,
-  }),
-).annotate({
-  identifier: "SignSolanaMessageWithEndUserAccountResponse",
-}) as any as S.Schema<SignSolanaMessageWithEndUserAccountResponse>;
+export const SignSolanaMessageWithEndUserAccountResponse =
+  SignEvmMessageWithEndUserAccountResponse as any as S.Schema<SignSolanaMessageWithEndUserAccountResponse>;
 
 /** The Solana network the transaction targets. Required when using versioned transactions that reference address lookup tables, since resolving those tables requires querying a specific network. Optional otherwise. */
 export type SignSolanaTransactionRequestNetwork = "solana" | "solana-devnet";
@@ -11749,13 +11537,8 @@ export interface SignSolanaTransactionResponse {
   /** The base64 encoded signed transaction. */
   signedTransaction: string;
 }
-export const SignSolanaTransactionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    signedTransaction: S.String,
-  }),
-).annotate({
-  identifier: "SignSolanaTransactionResponse",
-}) as any as S.Schema<SignSolanaTransactionResponse>;
+export const SignSolanaTransactionResponse =
+  SignEvmTransactionResponse as any as S.Schema<SignSolanaTransactionResponse>;
 
 /** The Solana network the transaction targets. Required when using versioned transactions that reference address lookup tables, since resolving those tables requires querying a specific network. Optional otherwise. */
 export type SignSolanaTransactionWithEndUserAccountRequestNetwork = "solana" | "solana-devnet";
@@ -11798,26 +11581,18 @@ export interface SignSolanaTransactionWithEndUserAccountResponse {
   /** The base64 encoded signed transaction. */
   signedTransaction: string;
 }
-export const SignSolanaTransactionWithEndUserAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    signedTransaction: S.String,
-  }),
-).annotate({
-  identifier: "SignSolanaTransactionWithEndUserAccountResponse",
-}) as any as S.Schema<SignSolanaTransactionWithEndUserAccountResponse>;
+export const SignSolanaTransactionWithEndUserAccountResponse =
+  SignEvmTransactionResponse as any as S.Schema<SignSolanaTransactionWithEndUserAccountResponse>;
 
 /** The list of payment options the resource server accepts. At least one option must be present. */
 export type X402PaymentRequiredAcceptsList = Array<X402PaymentRequirements>;
-export const X402PaymentRequiredAcceptsList = /*@__PURE__*/ S.Array(
-  X402PaymentRequirements,
-) as any as S.Schema<X402PaymentRequiredAcceptsList>;
+export const X402PaymentRequiredAcceptsList =
+  X402DiscoveryResourceAcceptsList as any as S.Schema<X402PaymentRequiredAcceptsList>;
 
 /** Optional protocol extensions. Unknown keys are forwarded as-is into the signed payment payload. */
 export type X402PaymentRequiredExtensionsMap = { [key: string]: unknown | undefined };
-export const X402PaymentRequiredExtensionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<X402PaymentRequiredExtensionsMap>;
+export const X402PaymentRequiredExtensionsMap =
+  PaymasterContext as any as S.Schema<X402PaymentRequiredExtensionsMap>;
 
 /** The x402 protocol payment required response body, returned by a resource server when a request lacks valid payment. Contains the accepted payment options, optional resource metadata, and an optional error message from the resource server. */
 export interface X402PaymentRequired {
@@ -11975,9 +11750,8 @@ export const SubmitDepositTravelRuleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of field paths that are still required to complete travel rule compliance. Each entry is a dot-separated path (e.g., "originator.name", "originator.address.countryCode"). Empty when status is "completed". */
 export type DepositTravelRuleResponseMissingFieldsList = Array<string>;
-export const DepositTravelRuleResponseMissingFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DepositTravelRuleResponseMissingFieldsList>;
+export const DepositTravelRuleResponseMissingFieldsList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<DepositTravelRuleResponseMissingFieldsList>;
 
 /** Response from submitting travel rule information for a deposit transfer. */
 export interface DepositTravelRuleResponse {
@@ -12059,10 +11833,8 @@ export const X402SupportedPaymentKindNetwork = S.String;
 
 /** The optional additional scheme-specific payment info. Common scheme-specific fields: - `exact` on Solana: `feePayer` -- the base58-encoded Solana address that pays transaction fees. - `upto` on EVM: `name`, `version`, and `facilitatorAddress` -- the EVM address of the facilitator that the client must bind into the Permit2 witness when constructing the payment payload. - `batch-settlement` on EVM: `name`, `version`, `receiverAuthorizer` (the EVM address authorized to sign claim batches), `withdrawDelay` (channel non-cooperative withdraw delay in seconds, 900-2,592,000), and optionally `assetTransferMethod` (e.g., `"eip3009"`). */
 export type X402SupportedPaymentKindExtraMap = { [key: string]: unknown | undefined };
-export const X402SupportedPaymentKindExtraMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<X402SupportedPaymentKindExtraMap>;
+export const X402SupportedPaymentKindExtraMap =
+  PaymasterContext as any as S.Schema<X402SupportedPaymentKindExtraMap>;
 
 /** The supported payment kind for the x402 protocol. A kind is comprised of a scheme and a network, which together uniquely identify a way to move money on the x402 protocol. For more details, please see [x402 Schemes](https://github.com/coinbase/x402?tab=readme-ov-file#schemes). */
 export interface X402SupportedPaymentKind {
@@ -12091,14 +11863,12 @@ export const SupportedX402PaymentKindsResponseKindsList = /*@__PURE__*/ S.Array(
 
 /** The list of supported x402 extensions. */
 export type SupportedX402PaymentKindsResponseExtensionsList = Array<string>;
-export const SupportedX402PaymentKindsResponseExtensionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SupportedX402PaymentKindsResponseExtensionsList>;
+export const SupportedX402PaymentKindsResponseExtensionsList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<SupportedX402PaymentKindsResponseExtensionsList>;
 
 export type SupportedX402PaymentKindsResponseSignersValueList = Array<string>;
-export const SupportedX402PaymentKindsResponseSignersValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SupportedX402PaymentKindsResponseSignersValueList>;
+export const SupportedX402PaymentKindsResponseSignersValueList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<SupportedX402PaymentKindsResponseSignersValueList>;
 
 /** A map of CAIP-2 network or protocol family patterns to their supported signer addresses. */
 export type SupportedX402PaymentKindsResponseSignersMap = {
@@ -12129,21 +11899,18 @@ export const SupportedX402PaymentKindsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The project IDs that this customer is associated with. */
 export type UpdateCustomerByIdRequestProjectIdsList = Array<string>;
-export const UpdateCustomerByIdRequestProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCustomerByIdRequestProjectIdsList>;
+export const UpdateCustomerByIdRequestProjectIdsList =
+  EndUserEvmSmartAccountOwnerAddressesList as any as S.Schema<UpdateCustomerByIdRequestProjectIdsList>;
 
 /** Terms of Service acceptances to record on the customer. Submit one entry per required version surfaced inline on `requirements.tos.tosVersions[]` (returned by `Get Customer`, `Create Customer`, and `Update Customer` whenever a `tos` requirement is unsatisfied). The server rejects each acceptance whose `language` is not listed under `languages` on the matching required version with `errorType: "unsupported_tos_language"`. When new required Terms of Service versions are published, only the new `versionId`s appear in `requirements.tos.tosVersions[]`; submit acceptances for only those new version(s). Omit `tosAcceptances` on a partial update to leave previously recorded acceptances unchanged. Sending `tosAcceptances: []` is invalid (`errorType: "invalid_request"`) because it would clear all acceptances without replacing them; omit the field entirely when you are not updating Terms of Service acceptances. */
 export type UpdateCustomerByIdRequestTosAcceptancesList = Array<TosAcceptance>;
-export const UpdateCustomerByIdRequestTosAcceptancesList = /*@__PURE__*/ S.Array(
-  TosAcceptance,
-) as any as S.Schema<UpdateCustomerByIdRequestTosAcceptancesList>;
+export const UpdateCustomerByIdRequestTosAcceptancesList =
+  CreateCustomerRequestTosAcceptancesList as any as S.Schema<UpdateCustomerByIdRequestTosAcceptancesList>;
 
 /** Tax attestations to record on the customer. Submit one entry per required form surfaced inline on `requirements.taxAttestation.taxForms[]` (returned by `Get Customer`, `Create Customer`, and `Update Customer` whenever a `taxAttestation` requirement is unsatisfied). The required fields per entry depend on `form`; see `TaxAttestation`. This field is ingestion-only and is never returned on read. Omit `taxAttestations` on a partial update to leave previously recorded attestations unchanged. Sending `taxAttestations: []` is invalid (`errorType: "invalid_request"`) because it would clear all attestations without replacing them; omit the field entirely when you are not updating tax attestations. */
 export type UpdateCustomerByIdRequestTaxAttestationsList = Array<UsW9Attestation>;
-export const UpdateCustomerByIdRequestTaxAttestationsList = /*@__PURE__*/ S.Array(
-  UsW9Attestation,
-) as any as S.Schema<UpdateCustomerByIdRequestTaxAttestationsList>;
+export const UpdateCustomerByIdRequestTaxAttestationsList =
+  CreateCustomerRequestTaxAttestationsList as any as S.Schema<UpdateCustomerByIdRequestTaxAttestationsList>;
 
 export interface UpdateCustomerByIdRequest {
   /** The ID of the customer. */
@@ -12243,9 +12010,8 @@ export const UpdateSolanaAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Types of events to subscribe to. Event types follow a three-part dot-separated format: service.resource.verb (e.g., "onchain.activity.detected", "wallet.activity.detected", "onramp.transaction.created"). */
 export type UpdateWebhookSubscriptionRequestEventTypesList = Array<EventType | (string & {})>;
-export const UpdateWebhookSubscriptionRequestEventTypesList = /*@__PURE__*/ S.Array(
-  EventType,
-) as any as S.Schema<UpdateWebhookSubscriptionRequestEventTypesList>;
+export const UpdateWebhookSubscriptionRequestEventTypesList =
+  CreateWebhookSubscriptionRequestEventTypesList as any as S.Schema<UpdateWebhookSubscriptionRequestEventTypesList>;
 
 export interface UpdateWebhookSubscriptionRequest {
   /** Unique identifier for the webhook subscription. */
@@ -12348,10 +12114,8 @@ export const X402ValidateResponsePreflightList = /*@__PURE__*/ S.Array(
 
 /** The `extensions.bazaar` block from the endpoint's discovery metadata, or `null` if the bazaar extension was absent or the endpoint was not reachable. Lets sellers verify the discovery configuration their endpoint is advertising. */
 export type X402ValidateResponseBazaarExtensionMap = { [key: string]: unknown | undefined };
-export const X402ValidateResponseBazaarExtensionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<X402ValidateResponseBazaarExtensionMap>;
+export const X402ValidateResponseBazaarExtensionMap =
+  PaymasterContext as any as S.Schema<X402ValidateResponseBazaarExtensionMap>;
 
 /** The simulated facilitator outcome: `accepted` if the facilitator would index the resource, or `rejected` if it would reject it. */
 export type X402ValidateSimulationOutcome = "accepted" | "rejected";
@@ -12633,10 +12397,8 @@ export const X402VerifyInvalidReason = S.String;
 
 /** Optional scheme-specific verify metadata returned by the facilitator. */
 export type VerifyX402PaymentResponseExtraMap = { [key: string]: unknown | undefined };
-export const VerifyX402PaymentResponseExtraMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<VerifyX402PaymentResponseExtraMap>;
+export const VerifyX402PaymentResponseExtraMap =
+  PaymasterContext as any as S.Schema<VerifyX402PaymentResponseExtraMap>;
 
 export interface VerifyX402PaymentResponse {
   /** Indicates whether the payment is valid. */

@@ -367,16 +367,8 @@ export interface GetMarketplaceAgreementAgreementResponse {
   /** Represents the properties of the resource. */
   properties?: OldAgreementProperties;
 }
-export const GetMarketplaceAgreementAgreementResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(OldAgreementProperties),
-  }),
-).annotate({
-  identifier: "GetMarketplaceAgreementAgreementResponse",
-}) as any as S.Schema<GetMarketplaceAgreementAgreementResponse>;
+export const GetMarketplaceAgreementAgreementResponse =
+  CancelMarketplaceAgreementResponse as any as S.Schema<GetMarketplaceAgreementAgreementResponse>;
 
 export interface ListMarketplaceAgreementsRequest {
   /** The subscription ID that identifies an Azure subscription. */
@@ -536,16 +528,8 @@ export interface SignMarketplaceAgreementResponse {
   /** Represents the properties of the resource. */
   properties?: OldAgreementProperties;
 }
-export const SignMarketplaceAgreementResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(OldAgreementProperties),
-  }),
-).annotate({
-  identifier: "SignMarketplaceAgreementResponse",
-}) as any as S.Schema<SignMarketplaceAgreementResponse>;
+export const SignMarketplaceAgreementResponse =
+  CancelMarketplaceAgreementResponse as any as S.Schema<SignMarketplaceAgreementResponse>;
 
 export type CancelMarketplaceAgreementError = AzureOpError;
 /** Cancel marketplace terms. */

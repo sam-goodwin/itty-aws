@@ -132,11 +132,8 @@ export const ApproveAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ApproveAssignmentRequest" }) as any as S.Schema<ApproveAssignmentRequest>;
 export interface ApproveAssignmentResponse {}
-export const ApproveAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "ApproveAssignmentResponse",
-}) as any as S.Schema<ApproveAssignmentResponse>;
+export const ApproveAssignmentResponse =
+  AcceptQualificationRequestResponse as any as S.Schema<ApproveAssignmentResponse>;
 export type CustomerId = string;
 export interface AssociateQualificationWithWorkerRequest {
   QualificationTypeId: string;
@@ -155,11 +152,8 @@ export const AssociateQualificationWithWorkerRequest = /*@__PURE__*/ S.suspend((
   identifier: "AssociateQualificationWithWorkerRequest",
 }) as any as S.Schema<AssociateQualificationWithWorkerRequest>;
 export interface AssociateQualificationWithWorkerResponse {}
-export const AssociateQualificationWithWorkerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "AssociateQualificationWithWorkerResponse",
-}) as any as S.Schema<AssociateQualificationWithWorkerResponse>;
+export const AssociateQualificationWithWorkerResponse =
+  AcceptQualificationRequestResponse as any as S.Schema<AssociateQualificationWithWorkerResponse>;
 export type IdempotencyToken = string;
 export interface CreateAdditionalAssignmentsForHITRequest {
   HITId: string;
@@ -176,11 +170,8 @@ export const CreateAdditionalAssignmentsForHITRequest = /*@__PURE__*/ S.suspend(
   identifier: "CreateAdditionalAssignmentsForHITRequest",
 }) as any as S.Schema<CreateAdditionalAssignmentsForHITRequest>;
 export interface CreateAdditionalAssignmentsForHITResponse {}
-export const CreateAdditionalAssignmentsForHITResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "CreateAdditionalAssignmentsForHITResponse",
-}) as any as S.Schema<CreateAdditionalAssignmentsForHITResponse>;
+export const CreateAdditionalAssignmentsForHITResponse =
+  AcceptQualificationRequestResponse as any as S.Schema<CreateAdditionalAssignmentsForHITResponse>;
 export type CurrencyAmount = string;
 export type Comparator =
   | "LessThan"
@@ -528,11 +519,8 @@ export const CreateWorkerBlockRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CreateWorkerBlockRequest" }) as any as S.Schema<CreateWorkerBlockRequest>;
 export interface CreateWorkerBlockResponse {}
-export const CreateWorkerBlockResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "CreateWorkerBlockResponse",
-}) as any as S.Schema<CreateWorkerBlockResponse>;
+export const CreateWorkerBlockResponse =
+  AcceptQualificationRequestResponse as any as S.Schema<CreateWorkerBlockResponse>;
 export interface DeleteHITRequest {
   HITId: string;
 }
@@ -556,11 +544,8 @@ export const DeleteQualificationTypeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteQualificationTypeRequest",
 }) as any as S.Schema<DeleteQualificationTypeRequest>;
 export interface DeleteQualificationTypeResponse {}
-export const DeleteQualificationTypeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteQualificationTypeResponse",
-}) as any as S.Schema<DeleteQualificationTypeResponse>;
+export const DeleteQualificationTypeResponse =
+  AcceptQualificationRequestResponse as any as S.Schema<DeleteQualificationTypeResponse>;
 export interface DeleteWorkerBlockRequest {
   WorkerId: string;
   Reason?: string;
@@ -571,11 +556,8 @@ export const DeleteWorkerBlockRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteWorkerBlockRequest" }) as any as S.Schema<DeleteWorkerBlockRequest>;
 export interface DeleteWorkerBlockResponse {}
-export const DeleteWorkerBlockResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteWorkerBlockResponse",
-}) as any as S.Schema<DeleteWorkerBlockResponse>;
+export const DeleteWorkerBlockResponse =
+  AcceptQualificationRequestResponse as any as S.Schema<DeleteWorkerBlockResponse>;
 export interface DisassociateQualificationFromWorkerRequest {
   WorkerId: string;
   QualificationTypeId: string;
@@ -591,11 +573,8 @@ export const DisassociateQualificationFromWorkerRequest = /*@__PURE__*/ S.suspen
   identifier: "DisassociateQualificationFromWorkerRequest",
 }) as any as S.Schema<DisassociateQualificationFromWorkerRequest>;
 export interface DisassociateQualificationFromWorkerResponse {}
-export const DisassociateQualificationFromWorkerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DisassociateQualificationFromWorkerResponse",
-}) as any as S.Schema<DisassociateQualificationFromWorkerResponse>;
+export const DisassociateQualificationFromWorkerResponse =
+  AcceptQualificationRequestResponse as any as S.Schema<DisassociateQualificationFromWorkerResponse>;
 export interface GetAccountBalanceRequest {}
 export const GetAccountBalanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -685,9 +664,7 @@ export const GetHITRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetHITResponse {
   HIT?: HIT;
 }
-export const GetHITResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HIT: S.optional(HIT) }).pipe(ns),
-).annotate({ identifier: "GetHITResponse" }) as any as S.Schema<GetHITResponse>;
+export const GetHITResponse = CreateHITResponse as any as S.Schema<GetHITResponse>;
 export interface GetQualificationScoreRequest {
   QualificationTypeId: string;
   WorkerId: string;
@@ -741,11 +718,8 @@ export const GetQualificationTypeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetQualificationTypeResponse {
   QualificationType?: QualificationType;
 }
-export const GetQualificationTypeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ QualificationType: S.optional(QualificationType) }).pipe(ns),
-).annotate({
-  identifier: "GetQualificationTypeResponse",
-}) as any as S.Schema<GetQualificationTypeResponse>;
+export const GetQualificationTypeResponse =
+  CreateQualificationTypeResponse as any as S.Schema<GetQualificationTypeResponse>;
 export type PaginationToken = string;
 export type ResultSize = number;
 export type AssignmentStatusList = AssignmentStatus[];
@@ -985,15 +959,8 @@ export interface ListReviewableHITsResponse {
   NumResults?: number;
   HITs?: HIT[];
 }
-export const ListReviewableHITsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextToken: S.optional(S.String),
-    NumResults: S.optional(S.Number),
-    HITs: S.optional(HITList),
-  }).pipe(ns),
-).annotate({
-  identifier: "ListReviewableHITsResponse",
-}) as any as S.Schema<ListReviewableHITsResponse>;
+export const ListReviewableHITsResponse =
+  ListHITsForQualificationTypeResponse as any as S.Schema<ListReviewableHITsResponse>;
 export type ReviewPolicyLevel = "Assignment" | "HIT" | (string & {});
 export const ReviewPolicyLevel = S.String;
 
@@ -1159,7 +1126,7 @@ export const ListWorkersWithQualificationTypeResponse = /*@__PURE__*/ S.suspend(
   identifier: "ListWorkersWithQualificationTypeResponse",
 }) as any as S.Schema<ListWorkersWithQualificationTypeResponse>;
 export type CustomerIdList = string[];
-export const CustomerIdList = /*@__PURE__*/ S.Array(S.String);
+export const CustomerIdList = StringList as any as S.Schema<CustomerIdList>;
 export interface NotifyWorkersRequest {
   Subject: string;
   MessageText: string;
@@ -1220,11 +1187,8 @@ export const RejectQualificationRequestRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RejectQualificationRequestRequest",
 }) as any as S.Schema<RejectQualificationRequestRequest>;
 export interface RejectQualificationRequestResponse {}
-export const RejectQualificationRequestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "RejectQualificationRequestResponse",
-}) as any as S.Schema<RejectQualificationRequestResponse>;
+export const RejectQualificationRequestResponse =
+  AcceptQualificationRequestResponse as any as S.Schema<RejectQualificationRequestResponse>;
 export interface SendBonusRequest {
   WorkerId: string;
   BonusAmount: string;
@@ -1242,9 +1206,7 @@ export const SendBonusRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "SendBonusRequest" }) as any as S.Schema<SendBonusRequest>;
 export interface SendBonusResponse {}
-export const SendBonusResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "SendBonusResponse",
-}) as any as S.Schema<SendBonusResponse>;
+export const SendBonusResponse = DeleteHITResponse as any as S.Schema<SendBonusResponse>;
 export type NotificationTransport = "Email" | "SQS" | "SNS" | (string & {});
 export const NotificationTransport = S.String;
 
@@ -1294,11 +1256,8 @@ export const SendTestEventNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SendTestEventNotificationRequest",
 }) as any as S.Schema<SendTestEventNotificationRequest>;
 export interface SendTestEventNotificationResponse {}
-export const SendTestEventNotificationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "SendTestEventNotificationResponse",
-}) as any as S.Schema<SendTestEventNotificationResponse>;
+export const SendTestEventNotificationResponse =
+  AcceptQualificationRequestResponse as any as S.Schema<SendTestEventNotificationResponse>;
 export interface UpdateExpirationForHITRequest {
   HITId: string;
   ExpireAt: Date;
@@ -1311,11 +1270,8 @@ export const UpdateExpirationForHITRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateExpirationForHITRequest",
 }) as any as S.Schema<UpdateExpirationForHITRequest>;
 export interface UpdateExpirationForHITResponse {}
-export const UpdateExpirationForHITResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateExpirationForHITResponse",
-}) as any as S.Schema<UpdateExpirationForHITResponse>;
+export const UpdateExpirationForHITResponse =
+  AcceptQualificationRequestResponse as any as S.Schema<UpdateExpirationForHITResponse>;
 export interface UpdateHITReviewStatusRequest {
   HITId: string;
   Revert?: boolean;
@@ -1328,11 +1284,8 @@ export const UpdateHITReviewStatusRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateHITReviewStatusRequest",
 }) as any as S.Schema<UpdateHITReviewStatusRequest>;
 export interface UpdateHITReviewStatusResponse {}
-export const UpdateHITReviewStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateHITReviewStatusResponse",
-}) as any as S.Schema<UpdateHITReviewStatusResponse>;
+export const UpdateHITReviewStatusResponse =
+  AcceptQualificationRequestResponse as any as S.Schema<UpdateHITReviewStatusResponse>;
 export interface UpdateHITTypeOfHITRequest {
   HITId: string;
   HITTypeId: string;
@@ -1345,11 +1298,8 @@ export const UpdateHITTypeOfHITRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateHITTypeOfHITRequest",
 }) as any as S.Schema<UpdateHITTypeOfHITRequest>;
 export interface UpdateHITTypeOfHITResponse {}
-export const UpdateHITTypeOfHITResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateHITTypeOfHITResponse",
-}) as any as S.Schema<UpdateHITTypeOfHITResponse>;
+export const UpdateHITTypeOfHITResponse =
+  AcceptQualificationRequestResponse as any as S.Schema<UpdateHITTypeOfHITResponse>;
 export interface UpdateNotificationSettingsRequest {
   HITTypeId: string;
   Notification?: NotificationSpecification;
@@ -1365,11 +1315,8 @@ export const UpdateNotificationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateNotificationSettingsRequest",
 }) as any as S.Schema<UpdateNotificationSettingsRequest>;
 export interface UpdateNotificationSettingsResponse {}
-export const UpdateNotificationSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateNotificationSettingsResponse",
-}) as any as S.Schema<UpdateNotificationSettingsResponse>;
+export const UpdateNotificationSettingsResponse =
+  AcceptQualificationRequestResponse as any as S.Schema<UpdateNotificationSettingsResponse>;
 export interface UpdateQualificationTypeRequest {
   QualificationTypeId: string;
   Description?: string;
@@ -1399,11 +1346,8 @@ export const UpdateQualificationTypeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateQualificationTypeResponse {
   QualificationType?: QualificationType;
 }
-export const UpdateQualificationTypeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ QualificationType: S.optional(QualificationType) }).pipe(ns),
-).annotate({
-  identifier: "UpdateQualificationTypeResponse",
-}) as any as S.Schema<UpdateQualificationTypeResponse>;
+export const UpdateQualificationTypeResponse =
+  CreateQualificationTypeResponse as any as S.Schema<UpdateQualificationTypeResponse>;
 export type ExceptionMessage = string;
 export type TurkErrorCode = string;
 export type AcceptQualificationRequestError = RequestError | ServiceFault | CommonErrors;

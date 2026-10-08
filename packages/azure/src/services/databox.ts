@@ -215,21 +215,18 @@ export const TransferFilterDetailsDataAccountType = S.String;
 
 /** Prefix list of the Azure blobs to be transferred. */
 export type BlobFilterDetailsBlobPrefixListList = Array<string>;
-export const BlobFilterDetailsBlobPrefixListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BlobFilterDetailsBlobPrefixListList>;
+export const BlobFilterDetailsBlobPrefixListList =
+  ContactDetailsEmailListList as any as S.Schema<BlobFilterDetailsBlobPrefixListList>;
 
 /** List of full path of the blobs to be transferred. */
 export type BlobFilterDetailsBlobPathListList = Array<string>;
-export const BlobFilterDetailsBlobPathListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BlobFilterDetailsBlobPathListList>;
+export const BlobFilterDetailsBlobPathListList =
+  ContactDetailsEmailListList as any as S.Schema<BlobFilterDetailsBlobPathListList>;
 
 /** List of blob containers to be transferred. */
 export type BlobFilterDetailsContainerListList = Array<string>;
-export const BlobFilterDetailsContainerListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BlobFilterDetailsContainerListList>;
+export const BlobFilterDetailsContainerListList =
+  ContactDetailsEmailListList as any as S.Schema<BlobFilterDetailsContainerListList>;
 
 /** Filter details to transfer Azure Blobs */
 export interface BlobFilterDetails {
@@ -250,21 +247,18 @@ export const BlobFilterDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Prefix list of the Azure files to be transferred. */
 export type AzureFileFilterDetailsFilePrefixListList = Array<string>;
-export const AzureFileFilterDetailsFilePrefixListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AzureFileFilterDetailsFilePrefixListList>;
+export const AzureFileFilterDetailsFilePrefixListList =
+  ContactDetailsEmailListList as any as S.Schema<AzureFileFilterDetailsFilePrefixListList>;
 
 /** List of full path of the files to be transferred. */
 export type AzureFileFilterDetailsFilePathListList = Array<string>;
-export const AzureFileFilterDetailsFilePathListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AzureFileFilterDetailsFilePathListList>;
+export const AzureFileFilterDetailsFilePathListList =
+  ContactDetailsEmailListList as any as S.Schema<AzureFileFilterDetailsFilePathListList>;
 
 /** List of file shares to be transferred. */
 export type AzureFileFilterDetailsFileShareListList = Array<string>;
-export const AzureFileFilterDetailsFileShareListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AzureFileFilterDetailsFileShareListList>;
+export const AzureFileFilterDetailsFileShareListList =
+  ContactDetailsEmailListList as any as S.Schema<AzureFileFilterDetailsFileShareListList>;
 
 /** Filter details to transfer Azure files */
 export interface AzureFileFilterDetails {
@@ -424,9 +418,8 @@ export const ClassDiscriminator = S.String;
 
 /** Preferred data center region. */
 export type PreferencesInputPreferredDataCenterRegionList = Array<string>;
-export const PreferencesInputPreferredDataCenterRegionList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PreferencesInputPreferredDataCenterRegionList>;
+export const PreferencesInputPreferredDataCenterRegionList =
+  ContactDetailsEmailListList as any as S.Schema<PreferencesInputPreferredDataCenterRegionList>;
 
 /** Transport Shipment Type supported for given region. */
 export type TransportShipmentTypes = "CustomerManaged" | "MicrosoftManaged";
@@ -797,10 +790,8 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateJobResponseTagsMap = { [key: string]: string | undefined };
-export const CreateJobResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateJobResponseTagsMap>;
+export const CreateJobResponseTagsMap =
+  CreateJobRequestTagsMap as any as S.Schema<CreateJobResponseTagsMap>;
 
 /** The Editable status for Reverse Shipping Address and Contact Info */
 export type ReverseShippingDetailsEditStatus = "Enabled" | "Disabled" | "NotSupported";
@@ -1000,21 +991,18 @@ export const PackageShippingDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of the data to be imported into azure. */
 export type JobDetailsDataImportDetailsList = Array<DataImportDetails>;
-export const JobDetailsDataImportDetailsList = /*@__PURE__*/ S.Array(
-  DataImportDetails,
-) as any as S.Schema<JobDetailsDataImportDetailsList>;
+export const JobDetailsDataImportDetailsList =
+  JobDetailsInputDataImportDetailsList as any as S.Schema<JobDetailsDataImportDetailsList>;
 
 /** Details of the data to be exported from azure. */
 export type JobDetailsDataExportDetailsList = Array<DataExportDetails>;
-export const JobDetailsDataExportDetailsList = /*@__PURE__*/ S.Array(
-  DataExportDetails,
-) as any as S.Schema<JobDetailsDataExportDetailsList>;
+export const JobDetailsDataExportDetailsList =
+  JobDetailsInputDataExportDetailsList as any as S.Schema<JobDetailsDataExportDetailsList>;
 
 /** Preferred data center region. */
 export type PreferencesPreferredDataCenterRegionList = Array<string>;
-export const PreferencesPreferredDataCenterRegionList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PreferencesPreferredDataCenterRegionList>;
+export const PreferencesPreferredDataCenterRegionList =
+  ContactDetailsEmailListList as any as S.Schema<PreferencesPreferredDataCenterRegionList>;
 
 /** Preferences related to the shipment logistics of the sku */
 export interface TransportPreferences {
@@ -1488,9 +1476,7 @@ export const DeleteJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteJobRequest" }) as any as S.Schema<DeleteJobRequest>;
 
 export interface DeleteJobResponse {}
-export const DeleteJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteJobResponse",
-}) as any as S.Schema<DeleteJobResponse>;
+export const DeleteJobResponse = CancelJobResponse as any as S.Schema<DeleteJobResponse>;
 
 export interface GetJobRequest {
   /** The ID of the target subscription. */
@@ -1520,10 +1506,8 @@ export const GetJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetJobResponseTagsMap = { [key: string]: string | undefined };
-export const GetJobResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetJobResponseTagsMap>;
+export const GetJobResponseTagsMap =
+  CreateJobRequestTagsMap as any as S.Schema<GetJobResponseTagsMap>;
 
 export interface GetJobResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1545,19 +1529,7 @@ export interface GetJobResponse {
   /** Msi identity of the resource */
   identity?: ResourceIdentity;
 }
-export const GetJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetJobResponseTagsMap),
-    location: S.String,
-    properties: JobProperties,
-    sku: Sku,
-    identity: S.optional(ResourceIdentity),
-  }),
-).annotate({ identifier: "GetJobResponse" }) as any as S.Schema<GetJobResponse>;
+export const GetJobResponse = CreateJobResponse as any as S.Schema<GetJobResponse>;
 
 export interface JobsBookShipmentPickUpRequest {
   /** The ID of the target subscription. */
@@ -1650,9 +1622,8 @@ export const JobsMarkDevicesShippedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobsMarkDevicesShippedRequest>;
 
 export interface JobsMarkDevicesShippedResponse {}
-export const JobsMarkDevicesShippedResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "JobsMarkDevicesShippedResponse",
-}) as any as S.Schema<JobsMarkDevicesShippedResponse>;
+export const JobsMarkDevicesShippedResponse =
+  CancelJobResponse as any as S.Schema<JobsMarkDevicesShippedResponse>;
 
 export interface ListJobByResourceGroupRequest {
   /** The ID of the target subscription. */
@@ -1681,10 +1652,7 @@ export const ListJobByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type JobResourceTagsMap = { [key: string]: string | undefined };
-export const JobResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<JobResourceTagsMap>;
+export const JobResourceTagsMap = CreateJobRequestTagsMap as any as S.Schema<JobResourceTagsMap>;
 
 /** Job Resource. */
 export interface JobResource {
@@ -1707,19 +1675,7 @@ export interface JobResource {
   /** Msi identity of the resource */
   identity?: ResourceIdentity;
 }
-export const JobResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(JobResourceTagsMap),
-    location: S.String,
-    properties: JobProperties,
-    sku: Sku,
-    identity: S.optional(ResourceIdentity),
-  }),
-).annotate({ identifier: "JobResource" }) as any as S.Schema<JobResource>;
+export const JobResource = CreateJobResponse as any as S.Schema<JobResource>;
 
 /** The JobResource items on this page */
 export type JobResourceListValueList = Array<JobResource>;
@@ -2035,9 +1991,8 @@ export const SkuPropertiesCostsList = /*@__PURE__*/ S.Array(
 
 /** Api versions that support this Sku. */
 export type SkuPropertiesApiVersionsList = Array<string>;
-export const SkuPropertiesApiVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuPropertiesApiVersionsList>;
+export const SkuPropertiesApiVersionsList =
+  ContactDetailsEmailListList as any as S.Schema<SkuPropertiesApiVersionsList>;
 
 /** Reason why the Sku is disabled. */
 export type SkuDisabledReason =
@@ -2051,9 +2006,8 @@ export const SkuDisabledReason = S.String;
 
 /** List of all the Countries in the SKU specific commerce boundary */
 export type SkuPropertiesCountriesWithinCommerceBoundaryList = Array<string>;
-export const SkuPropertiesCountriesWithinCommerceBoundaryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuPropertiesCountriesWithinCommerceBoundaryList>;
+export const SkuPropertiesCountriesWithinCommerceBoundaryList =
+  ContactDetailsEmailListList as any as S.Schema<SkuPropertiesCountriesWithinCommerceBoundaryList>;
 
 /** Properties of the sku. */
 export interface SkuProperties {
@@ -2165,9 +2119,7 @@ export const MitigateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MitigateRequest" }) as any as S.Schema<MitigateRequest>;
 
 export interface MitigateResponse {}
-export const MitigateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "MitigateResponse",
-}) as any as S.Schema<MitigateResponse>;
+export const MitigateResponse = CancelJobResponse as any as S.Schema<MitigateResponse>;
 
 /** Request body to get the availability for scheduling orders. */
 export interface ScheduleAvailabilityRequest {
@@ -2264,9 +2216,8 @@ export const ServiceRegionConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of dates available to schedule */
 export type ScheduleAvailabilityResponseAvailableDatesList = Array<string>;
-export const ScheduleAvailabilityResponseAvailableDatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScheduleAvailabilityResponseAvailableDatesList>;
+export const ScheduleAvailabilityResponseAvailableDatesList =
+  ContactDetailsEmailListList as any as S.Schema<ScheduleAvailabilityResponseAvailableDatesList>;
 
 /** Schedule availability for given sku in a region. */
 export interface ScheduleAvailabilityResponse {
@@ -2459,10 +2410,8 @@ export const UpdateJobPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). */
 export type UpdateJobRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateJobRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateJobRequestTagsMap>;
+export const UpdateJobRequestTagsMap =
+  CreateJobRequestTagsMap as any as S.Schema<UpdateJobRequestTagsMap>;
 
 export interface UpdateJobRequest {
   /** The ID of the target subscription. */
@@ -2498,10 +2447,8 @@ export const UpdateJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateJobResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateJobResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateJobResponseTagsMap>;
+export const UpdateJobResponseTagsMap =
+  CreateJobRequestTagsMap as any as S.Schema<UpdateJobResponseTagsMap>;
 
 export interface UpdateJobResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2523,19 +2470,7 @@ export interface UpdateJobResponse {
   /** Msi identity of the resource */
   identity?: ResourceIdentity;
 }
-export const UpdateJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateJobResponseTagsMap),
-    location: S.String,
-    properties: JobProperties,
-    sku: Sku,
-    identity: S.optional(ResourceIdentity),
-  }),
-).annotate({ identifier: "UpdateJobResponse" }) as any as S.Schema<UpdateJobResponse>;
+export const UpdateJobResponse = CreateJobResponse as any as S.Schema<UpdateJobResponse>;
 
 /** Identify the nature of validation. */
 export type ValidateServiceInputsRequestValidationCategory = "JobCreationValidation";

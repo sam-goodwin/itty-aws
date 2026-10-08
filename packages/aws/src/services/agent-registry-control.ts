@@ -104,17 +104,17 @@ export type AllowedAudienceList = string[];
 export const AllowedAudienceList = /*@__PURE__*/ S.Array(S.String);
 export type AllowedClient = string;
 export type AllowedClientsList = string[];
-export const AllowedClientsList = /*@__PURE__*/ S.Array(S.String);
+export const AllowedClientsList = AllowedAudienceList as any as S.Schema<AllowedClientsList>;
 export type AllowedScopeType = string;
 export type AllowedScopesType = string[];
-export const AllowedScopesType = /*@__PURE__*/ S.Array(S.String);
+export const AllowedScopesType = AllowedAudienceList as any as S.Schema<AllowedScopesType>;
 export type InboundTokenClaimNameType = string;
 export type InboundTokenClaimValueType = "STRING" | "STRING_ARRAY" | (string & {});
 export const InboundTokenClaimValueType = S.String;
 
 export type MatchValueString = string;
 export type MatchValueStringList = string[];
-export const MatchValueStringList = /*@__PURE__*/ S.Array(S.String);
+export const MatchValueStringList = AllowedAudienceList as any as S.Schema<MatchValueStringList>;
 export type ClaimMatchValueType =
   | { matchValueString: string; matchValueStringList?: never }
   | { matchValueString?: never; matchValueStringList: string[] };
@@ -158,13 +158,13 @@ export const SelfManagedLatticeResource = /*@__PURE__*/ S.Union([
 export type VpcIdentifier = string;
 export type SubnetId = string;
 export type SubnetIds = string[];
-export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
+export const SubnetIds = AllowedAudienceList as any as S.Schema<SubnetIds>;
 export type EndpointIpAddressType = "IPV4" | "IPV6" | (string & {});
 export const EndpointIpAddressType = S.String;
 
 export type SecurityGroupIdentifier = string;
 export type SecurityGroupIds = string[];
-export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroupIds = AllowedAudienceList as any as S.Schema<SecurityGroupIds>;
 export type TagKey = string;
 export type TagValue = string;
 export type TagsMap = { [key: string]: string | undefined };
@@ -351,7 +351,7 @@ export type RegistryRecordOAuthGrantType = "CLIENT_CREDENTIALS" | (string & {});
 export const RegistryRecordOAuthGrantType = S.String;
 
 export type ScopeList = string[];
-export const ScopeList = /*@__PURE__*/ S.Array(S.String);
+export const ScopeList = AllowedAudienceList as any as S.Schema<ScopeList>;
 export type CustomParameterMap = { [key: string]: string | undefined };
 export const CustomParameterMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -464,13 +464,8 @@ export interface AgentSkillsMdDescriptor {
   dataSchemaVersion?: string;
   source?: DescriptorSource;
 }
-export const AgentSkillsMdDescriptor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(SensitiveString),
-    dataSchemaVersion: S.optional(S.String),
-    source: S.optional(DescriptorSource),
-  }),
-).annotate({ identifier: "AgentSkillsMdDescriptor" }) as any as S.Schema<AgentSkillsMdDescriptor>;
+export const AgentSkillsMdDescriptor =
+  A2aAgentCardDescriptor as any as S.Schema<AgentSkillsMdDescriptor>;
 export interface AgentSkillsAdditionalData {
   skillMd?: AgentSkillsMdDescriptor;
 }
@@ -508,9 +503,7 @@ export const HttpDescriptor = /*@__PURE__*/ S.suspend(() =>
 export interface AgUiDescriptor {
   source?: DescriptorSource;
 }
-export const AgUiDescriptor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ source: S.optional(DescriptorSource) }),
-).annotate({ identifier: "AgUiDescriptor" }) as any as S.Schema<AgUiDescriptor>;
+export const AgUiDescriptor = HttpDescriptor as any as S.Schema<AgUiDescriptor>;
 export interface Descriptors {
   mcpServer?: McpServerDescriptor;
   a2aAgentCard?: A2aAgentCardDescriptor;
@@ -865,7 +858,7 @@ export const RegistryFilterName = S.String;
 
 export type FilterValue = string;
 export type FilterValues = string[];
-export const FilterValues = /*@__PURE__*/ S.Array(S.String);
+export const FilterValues = AllowedAudienceList as any as S.Schema<FilterValues>;
 export interface RegistryFilter {
   name: RegistryFilterName;
   values: string[];
@@ -1032,10 +1025,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export type ResourceTagsMap = { [key: string]: string | undefined };
-export const ResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ResourceTagsMap = CustomParameterMap as any as S.Schema<ResourceTagsMap>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
@@ -1096,11 +1086,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteRegistryRecordResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = AllowedAudienceList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -1114,9 +1103,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteRegistryRecordResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdatedDescription {
   optionalValue?: string | redacted.Redacted<string>;
 }
@@ -1207,23 +1195,8 @@ export interface UpdateRegistryResponse {
   createdAt: Date;
   updatedAt: Date;
 }
-export const UpdateRegistryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(SensitiveString),
-    registryId: S.String,
-    registryArn: S.String,
-    discoveryConfiguration: S.optional(DiscoveryConfiguration),
-    encryptionConfiguration: S.optional(EncryptionConfiguration),
-    approvalConfiguration: S.optional(ApprovalConfiguration),
-    customMetadataSchemaConfiguration: S.optional(CustomMetadataSchemaConfiguration),
-    status: RegistryStatus,
-    statusReason: S.optional(S.String),
-    autoDetection: S.optional(AutoDetection),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({ identifier: "UpdateRegistryResponse" }) as any as S.Schema<UpdateRegistryResponse>;
+export const UpdateRegistryResponse =
+  GetRegistryResponse as any as S.Schema<UpdateRegistryResponse>;
 export interface UpdatedDisplayName {
   optionalValue?: string;
 }
@@ -1233,15 +1206,12 @@ export const UpdatedDisplayName = /*@__PURE__*/ S.suspend(() =>
 export interface UpdatedDescriptorData {
   optionalValue?: string | redacted.Redacted<string>;
 }
-export const UpdatedDescriptorData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ optionalValue: S.optional(SensitiveString) }),
-).annotate({ identifier: "UpdatedDescriptorData" }) as any as S.Schema<UpdatedDescriptorData>;
+export const UpdatedDescriptorData = UpdatedDescription as any as S.Schema<UpdatedDescriptorData>;
 export interface UpdatedDataSchemaVersion {
   optionalValue?: string;
 }
-export const UpdatedDataSchemaVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ optionalValue: S.optional(S.String) }),
-).annotate({ identifier: "UpdatedDataSchemaVersion" }) as any as S.Schema<UpdatedDataSchemaVersion>;
+export const UpdatedDataSchemaVersion =
+  UpdatedDisplayName as any as S.Schema<UpdatedDataSchemaVersion>;
 export interface UpdatedDescriptorSource {
   optionalValue?: DescriptorSource;
 }
@@ -1335,23 +1305,13 @@ export interface UpdatedAgentSkillsMdDescriptorFields {
   dataSchemaVersion?: UpdatedDataSchemaVersion;
   source?: UpdatedDescriptorSource;
 }
-export const UpdatedAgentSkillsMdDescriptorFields = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(UpdatedDescriptorData),
-    dataSchemaVersion: S.optional(UpdatedDataSchemaVersion),
-    source: S.optional(UpdatedDescriptorSource),
-  }),
-).annotate({
-  identifier: "UpdatedAgentSkillsMdDescriptorFields",
-}) as any as S.Schema<UpdatedAgentSkillsMdDescriptorFields>;
+export const UpdatedAgentSkillsMdDescriptorFields =
+  UpdatedA2aAgentCardDescriptorFields as any as S.Schema<UpdatedAgentSkillsMdDescriptorFields>;
 export interface UpdatedAgentSkillsMdDescriptor {
   optionalValue?: UpdatedAgentSkillsMdDescriptorFields;
 }
-export const UpdatedAgentSkillsMdDescriptor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ optionalValue: S.optional(UpdatedAgentSkillsMdDescriptorFields) }),
-).annotate({
-  identifier: "UpdatedAgentSkillsMdDescriptor",
-}) as any as S.Schema<UpdatedAgentSkillsMdDescriptor>;
+export const UpdatedAgentSkillsMdDescriptor =
+  UpdatedA2aAgentCardDescriptor as any as S.Schema<UpdatedAgentSkillsMdDescriptor>;
 export interface UpdatedAgentSkillsAdditionalDataFields {
   skillMd?: UpdatedAgentSkillsMdDescriptor;
 }
@@ -1421,17 +1381,13 @@ export const UpdatedHttpDescriptor = /*@__PURE__*/ S.suspend(() =>
 export interface UpdatedAgUiDescriptorFields {
   source?: UpdatedDescriptorSource;
 }
-export const UpdatedAgUiDescriptorFields = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ source: S.optional(UpdatedDescriptorSource) }),
-).annotate({
-  identifier: "UpdatedAgUiDescriptorFields",
-}) as any as S.Schema<UpdatedAgUiDescriptorFields>;
+export const UpdatedAgUiDescriptorFields =
+  UpdatedHttpDescriptorFields as any as S.Schema<UpdatedAgUiDescriptorFields>;
 export interface UpdatedAgUiDescriptor {
   optionalValue?: UpdatedAgUiDescriptorFields;
 }
-export const UpdatedAgUiDescriptor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ optionalValue: S.optional(UpdatedAgUiDescriptorFields) }),
-).annotate({ identifier: "UpdatedAgUiDescriptor" }) as any as S.Schema<UpdatedAgUiDescriptor>;
+export const UpdatedAgUiDescriptor =
+  UpdatedHttpDescriptor as any as S.Schema<UpdatedAgUiDescriptor>;
 export interface UpdatedDescriptorsFields {
   mcpServer?: UpdatedMcpServerDescriptor;
   a2aAgentCard?: UpdatedA2aAgentCardDescriptor;
@@ -1521,30 +1477,8 @@ export interface UpdateRegistryRecordResponse {
   customMetadata?: any;
   customMetadataSchemaComplianceStatus?: CustomMetadataSchemaComplianceStatus;
 }
-export const UpdateRegistryRecordResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    registryArn: S.String,
-    recordArn: S.String,
-    recordId: S.String,
-    name: S.String,
-    displayName: S.optional(S.String),
-    description: S.optional(SensitiveString),
-    recordType: RecordType,
-    descriptors: S.optional(Descriptors),
-    recordVersion: S.optional(S.String),
-    status: RegistryRecordStatus,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    statusReason: S.optional(S.String),
-    provenance: S.optional(ProvenanceList),
-    createdByAutoDetection: S.optional(S.Boolean),
-    createdBy: S.optional(S.String),
-    customMetadata: S.optional(S.Any),
-    customMetadataSchemaComplianceStatus: S.optional(CustomMetadataSchemaComplianceStatus),
-  }),
-).annotate({
-  identifier: "UpdateRegistryRecordResponse",
-}) as any as S.Schema<UpdateRegistryRecordResponse>;
+export const UpdateRegistryRecordResponse =
+  GetRegistryRecordResponse as any as S.Schema<UpdateRegistryRecordResponse>;
 export interface UpdateRegistryRecordStatusRequest {
   registryId: string;
   recordId: string;

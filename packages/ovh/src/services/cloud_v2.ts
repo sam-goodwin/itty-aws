@@ -322,13 +322,8 @@ export interface PublicCloudInstanceBackupInstanceRef {
   /** Instance unique identifier */
   id: string;
 }
-export const PublicCloudInstanceBackupInstanceRef = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "PublicCloudInstanceBackupInstanceRef",
-}) as any as S.Schema<PublicCloudInstanceBackupInstanceRef>;
+export const PublicCloudInstanceBackupInstanceRef =
+  PublicCloudInstanceAutobackupInstanceRef as any as S.Schema<PublicCloudInstanceBackupInstanceRef>;
 
 /** Target specification for an instance backup */
 export interface PublicCloudInstanceBackupTargetSpec {
@@ -418,9 +413,8 @@ export const PublicCloudInstanceBackupCurrentState = /*@__PURE__*/ S.suspend(() 
 
 /** Ongoing asynchronous tasks related to the backup */
 export type PublicCloudInstanceBackupCurrentTasksList = Array<CommonCurrentTask>;
-export const PublicCloudInstanceBackupCurrentTasksList = /*@__PURE__*/ S.Array(
-  CommonCurrentTask,
-) as any as S.Schema<PublicCloudInstanceBackupCurrentTasksList>;
+export const PublicCloudInstanceBackupCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudInstanceBackupCurrentTasksList>;
 
 /** A Public Cloud instance backup (Glance image created from an instance) */
 export interface PublicCloudInstanceBackup {
@@ -461,39 +455,24 @@ export interface PublicCloudInstanceInstanceFlavorRef {
   /** Flavor identifier */
   id: string;
 }
-export const PublicCloudInstanceInstanceFlavorRef = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "PublicCloudInstanceInstanceFlavorRef",
-}) as any as S.Schema<PublicCloudInstanceInstanceFlavorRef>;
+export const PublicCloudInstanceInstanceFlavorRef =
+  PublicCloudInstanceAutobackupInstanceRef as any as S.Schema<PublicCloudInstanceInstanceFlavorRef>;
 
 /** Reference to an instance group */
 export interface PublicCloudInstanceInstanceGroupRef {
   /** Instance group identifier */
   id: string;
 }
-export const PublicCloudInstanceInstanceGroupRef = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "PublicCloudInstanceInstanceGroupRef",
-}) as any as S.Schema<PublicCloudInstanceInstanceGroupRef>;
+export const PublicCloudInstanceInstanceGroupRef =
+  PublicCloudInstanceAutobackupInstanceRef as any as S.Schema<PublicCloudInstanceInstanceGroupRef>;
 
 /** Reference to an image for instance target spec */
 export interface PublicCloudInstanceInstanceImageRef {
   /** Image identifier */
   id: string;
 }
-export const PublicCloudInstanceInstanceImageRef = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "PublicCloudInstanceInstanceImageRef",
-}) as any as S.Schema<PublicCloudInstanceInstanceImageRef>;
+export const PublicCloudInstanceInstanceImageRef =
+  PublicCloudInstanceAutobackupInstanceRef as any as S.Schema<PublicCloudInstanceInstanceImageRef>;
 
 /** Instance location */
 export type PublicCloudInstanceInstanceLocation = PublicCloudCommonLocation;
@@ -537,13 +516,8 @@ export interface PublicCloudSecurityGroupSecurityGroupRef {
   /** Security group identifier */
   id: string;
 }
-export const PublicCloudSecurityGroupSecurityGroupRef = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "PublicCloudSecurityGroupSecurityGroupRef",
-}) as any as S.Schema<PublicCloudSecurityGroupSecurityGroupRef>;
+export const PublicCloudSecurityGroupSecurityGroupRef =
+  PublicCloudInstanceAutobackupInstanceRef as any as S.Schema<PublicCloudSecurityGroupSecurityGroupRef>;
 
 /** Security group references to apply to all instance ports */
 export type PublicCloudInstanceInstanceTargetSpecSecurityGroupsList =
@@ -557,20 +531,14 @@ export interface PublicCloudInstanceInstanceVolumeRef {
   /** Volume identifier */
   id: string;
 }
-export const PublicCloudInstanceInstanceVolumeRef = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "PublicCloudInstanceInstanceVolumeRef",
-}) as any as S.Schema<PublicCloudInstanceInstanceVolumeRef>;
+export const PublicCloudInstanceInstanceVolumeRef =
+  PublicCloudInstanceAutobackupInstanceRef as any as S.Schema<PublicCloudInstanceInstanceVolumeRef>;
 
 /** Volume references */
 export type PublicCloudInstanceInstanceTargetSpecVolumesList =
   Array<PublicCloudInstanceInstanceVolumeRef>;
-export const PublicCloudInstanceInstanceTargetSpecVolumesList = /*@__PURE__*/ S.Array(
-  PublicCloudInstanceInstanceVolumeRef,
-) as any as S.Schema<PublicCloudInstanceInstanceTargetSpecVolumesList>;
+export const PublicCloudInstanceInstanceTargetSpecVolumesList =
+  PublicCloudInstanceInstanceTargetSpecSecurityGroupsList as any as S.Schema<PublicCloudInstanceInstanceTargetSpecVolumesList>;
 
 /** Target specification for an instance */
 export interface PublicCloudInstanceInstanceTargetSpec {
@@ -746,9 +714,8 @@ export const PublicCloudInstanceInstanceCurrentStateNetworksList = /*@__PURE__*/
 /** Security group references attached to the instance */
 export type PublicCloudInstanceInstanceCurrentStateSecurityGroupsList =
   Array<PublicCloudSecurityGroupSecurityGroupRef>;
-export const PublicCloudInstanceInstanceCurrentStateSecurityGroupsList = /*@__PURE__*/ S.Array(
-  PublicCloudSecurityGroupSecurityGroupRef,
-) as any as S.Schema<PublicCloudInstanceInstanceCurrentStateSecurityGroupsList>;
+export const PublicCloudInstanceInstanceCurrentStateSecurityGroupsList =
+  PublicCloudInstanceInstanceTargetSpecSecurityGroupsList as any as S.Schema<PublicCloudInstanceInstanceCurrentStateSecurityGroupsList>;
 
 /** Volume attached to the instance */
 export interface PublicCloudInstanceInstanceVolume {
@@ -830,9 +797,8 @@ export const PublicCloudInstanceInstanceCurrentState = /*@__PURE__*/ S.suspend((
 
 /** Ongoing asynchronous tasks related to the instance */
 export type PublicCloudInstanceInstanceCurrentTasksList = Array<CommonCurrentTask>;
-export const PublicCloudInstanceInstanceCurrentTasksList = /*@__PURE__*/ S.Array(
-  CommonCurrentTask,
-) as any as S.Schema<PublicCloudInstanceInstanceCurrentTasksList>;
+export const PublicCloudInstanceInstanceCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudInstanceInstanceCurrentTasksList>;
 
 /** A Public Cloud compute instance */
 export interface PublicCloudInstanceInstance {
@@ -1069,9 +1035,8 @@ export const PublicCloudInstanceGroupInstanceGroupCurrentState = /*@__PURE__*/ S
 
 /** Ongoing asynchronous tasks related to the instance group */
 export type PublicCloudInstanceGroupInstanceGroupCurrentTasksList = Array<CommonCurrentTask>;
-export const PublicCloudInstanceGroupInstanceGroupCurrentTasksList = /*@__PURE__*/ S.Array(
-  CommonCurrentTask,
-) as any as S.Schema<PublicCloudInstanceGroupInstanceGroupCurrentTasksList>;
+export const PublicCloudInstanceGroupInstanceGroupCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudInstanceGroupInstanceGroupCurrentTasksList>;
 
 /** A Public Cloud instance group (server group with placement policy) */
 export interface PublicCloudInstanceGroupInstanceGroup {
@@ -1149,13 +1114,8 @@ export interface PublicCloudFloatingIpFloatingIPNetwork {
   /** Network ID */
   id?: string;
 }
-export const PublicCloudFloatingIpFloatingIPNetwork = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PublicCloudFloatingIpFloatingIPNetwork",
-}) as any as S.Schema<PublicCloudFloatingIpFloatingIPNetwork>;
+export const PublicCloudFloatingIpFloatingIPNetwork =
+  PublicCloudInstanceGroupInstanceGroupMemberRef as any as S.Schema<PublicCloudFloatingIpFloatingIPNetwork>;
 
 /** OpenStack floating IP status */
 export type PublicCloudFloatingIpFloatingIPStatusEnum = "ACTIVE" | "DOWN" | "ERROR";
@@ -1188,9 +1148,8 @@ export const PublicCloudFloatingIpFloatingIPCurrentState = /*@__PURE__*/ S.suspe
 
 /** Ongoing asynchronous tasks related to the floating IP */
 export type PublicCloudFloatingIpFloatingIPCurrentTasksList = Array<CommonCurrentTask>;
-export const PublicCloudFloatingIpFloatingIPCurrentTasksList = /*@__PURE__*/ S.Array(
-  CommonCurrentTask,
-) as any as S.Schema<PublicCloudFloatingIpFloatingIPCurrentTasksList>;
+export const PublicCloudFloatingIpFloatingIPCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudFloatingIpFloatingIPCurrentTasksList>;
 
 /** A Public Cloud floating IP */
 export interface PublicCloudFloatingIpFloatingIP {
@@ -1255,19 +1214,13 @@ export interface PublicCloudGatewayGatewaySubnet {
   /** Subnet ID */
   id: string;
 }
-export const PublicCloudGatewayGatewaySubnet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "PublicCloudGatewayGatewaySubnet",
-}) as any as S.Schema<PublicCloudGatewayGatewaySubnet>;
+export const PublicCloudGatewayGatewaySubnet =
+  PublicCloudInstanceAutobackupInstanceRef as any as S.Schema<PublicCloudGatewayGatewaySubnet>;
 
 /** Subnets to attach as router interfaces */
 export type PublicCloudGatewayGatewayTargetSpecSubnetsList = Array<PublicCloudGatewayGatewaySubnet>;
-export const PublicCloudGatewayGatewayTargetSpecSubnetsList = /*@__PURE__*/ S.Array(
-  PublicCloudGatewayGatewaySubnet,
-) as any as S.Schema<PublicCloudGatewayGatewayTargetSpecSubnetsList>;
+export const PublicCloudGatewayGatewayTargetSpecSubnetsList =
+  PublicCloudInstanceInstanceTargetSpecSecurityGroupsList as any as S.Schema<PublicCloudGatewayGatewayTargetSpecSubnetsList>;
 
 /** Desired specification for a gateway */
 export interface PublicCloudGatewayGatewayTargetSpec {
@@ -1316,9 +1269,8 @@ export const PublicCloudGatewayGatewayStatusEnum = S.String;
 /** Currently attached subnets */
 export type PublicCloudGatewayGatewayCurrentStateSubnetsList =
   Array<PublicCloudGatewayGatewaySubnet>;
-export const PublicCloudGatewayGatewayCurrentStateSubnetsList = /*@__PURE__*/ S.Array(
-  PublicCloudGatewayGatewaySubnet,
-) as any as S.Schema<PublicCloudGatewayGatewayCurrentStateSubnetsList>;
+export const PublicCloudGatewayGatewayCurrentStateSubnetsList =
+  PublicCloudInstanceInstanceTargetSpecSecurityGroupsList as any as S.Schema<PublicCloudGatewayGatewayCurrentStateSubnetsList>;
 
 /** Current state of a gateway from OpenStack */
 export interface PublicCloudGatewayGatewayCurrentState {
@@ -1353,9 +1305,8 @@ export const PublicCloudGatewayGatewayCurrentState = /*@__PURE__*/ S.suspend(() 
 
 /** Ongoing asynchronous tasks related to the gateway */
 export type PublicCloudGatewayGatewayCurrentTasksList = Array<CommonCurrentTask>;
-export const PublicCloudGatewayGatewayCurrentTasksList = /*@__PURE__*/ S.Array(
-  CommonCurrentTask,
-) as any as S.Schema<PublicCloudGatewayGatewayCurrentTasksList>;
+export const PublicCloudGatewayGatewayCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudGatewayGatewayCurrentTasksList>;
 
 /** A Public Cloud gateway (OpenStack router) */
 export interface PublicCloudGatewayGateway {
@@ -1396,13 +1347,8 @@ export interface PublicCloudKeyManagerContainerSecretRefSecret {
   /** Unique identifier of the referenced secret */
   id: string;
 }
-export const PublicCloudKeyManagerContainerSecretRefSecret = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "PublicCloudKeyManagerContainerSecretRefSecret",
-}) as any as S.Schema<PublicCloudKeyManagerContainerSecretRefSecret>;
+export const PublicCloudKeyManagerContainerSecretRefSecret =
+  PublicCloudInstanceAutobackupInstanceRef as any as S.Schema<PublicCloudKeyManagerContainerSecretRefSecret>;
 
 /** A secret reference within a key manager container */
 export interface PublicCloudKeyManagerContainerSecretRef {
@@ -1477,9 +1423,8 @@ export const CreatePublicCloudProjectKeyManagerContainerRequest = /*@__PURE__*/ 
 /** Current secret references in the container */
 export type PublicCloudKeyManagerContainerCurrentStateSecretRefsList =
   Array<PublicCloudKeyManagerContainerSecretRef>;
-export const PublicCloudKeyManagerContainerCurrentStateSecretRefsList = /*@__PURE__*/ S.Array(
-  PublicCloudKeyManagerContainerSecretRef,
-) as any as S.Schema<PublicCloudKeyManagerContainerCurrentStateSecretRefsList>;
+export const PublicCloudKeyManagerContainerCurrentStateSecretRefsList =
+  PublicCloudKeyManagerContainerTargetSpecSecretRefsList as any as S.Schema<PublicCloudKeyManagerContainerCurrentStateSecretRefsList>;
 
 /** Status of a Key Manager container in OpenStack */
 export type PublicCloudKeyManagerContainerStatusEnum = "ACTIVE" | "ERROR";
@@ -1515,9 +1460,8 @@ export const PublicCloudKeyManagerContainerCurrentState = /*@__PURE__*/ S.suspen
 
 /** Ongoing asynchronous tasks related to the container */
 export type PublicCloudKeyManagerContainerCurrentTasksList = Array<CommonCurrentTask>;
-export const PublicCloudKeyManagerContainerCurrentTasksList = /*@__PURE__*/ S.Array(
-  CommonCurrentTask,
-) as any as S.Schema<PublicCloudKeyManagerContainerCurrentTasksList>;
+export const PublicCloudKeyManagerContainerCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudKeyManagerContainerCurrentTasksList>;
 
 /** A Public Cloud key manager container */
 export interface PublicCloudKeyManagerContainer {
@@ -1722,10 +1666,8 @@ export const CreatePublicCloudProjectKeyManagerSecretRequest = /*@__PURE__*/ S.s
 export type PublicCloudKeyManagerSecretCurrentStateMetadataMap = {
   [key: string]: string | undefined;
 };
-export const PublicCloudKeyManagerSecretCurrentStateMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PublicCloudKeyManagerSecretCurrentStateMetadataMap>;
+export const PublicCloudKeyManagerSecretCurrentStateMetadataMap =
+  PublicCloudKeyManagerSecretTargetSpecMetadataMap as any as S.Schema<PublicCloudKeyManagerSecretCurrentStateMetadataMap>;
 
 /** Status of a Key Manager secret in OpenStack */
 export type PublicCloudKeyManagerSecretStatusEnum = "ACTIVE" | "ERROR";
@@ -1776,9 +1718,8 @@ export const PublicCloudKeyManagerSecretCurrentState = /*@__PURE__*/ S.suspend((
 
 /** Ongoing asynchronous tasks related to the secret */
 export type PublicCloudKeyManagerSecretCurrentTasksList = Array<CommonCurrentTask>;
-export const PublicCloudKeyManagerSecretCurrentTasksList = /*@__PURE__*/ S.Array(
-  CommonCurrentTask,
-) as any as S.Schema<PublicCloudKeyManagerSecretCurrentTasksList>;
+export const PublicCloudKeyManagerSecretCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudKeyManagerSecretCurrentTasksList>;
 
 /** A Public Cloud Key Manager secret */
 export interface PublicCloudKeyManagerSecret {
@@ -1855,16 +1796,8 @@ export interface PublicCloudKeyManagerSecretConsumer {
   /** OpenStack service type of the consumer */
   service?: PublicCloudKeyManagerConsumerServiceEnum;
 }
-export const PublicCloudKeyManagerSecretConsumer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    resourceId: S.optional(S.String),
-    resourceType: S.optional(PublicCloudKeyManagerConsumerResourceTypeEnum),
-    service: S.optional(PublicCloudKeyManagerConsumerServiceEnum),
-  }),
-).annotate({
-  identifier: "PublicCloudKeyManagerSecretConsumer",
-}) as any as S.Schema<PublicCloudKeyManagerSecretConsumer>;
+export const PublicCloudKeyManagerSecretConsumer =
+  PublicCloudKeyManagerContainerConsumer as any as S.Schema<PublicCloudKeyManagerSecretConsumer>;
 
 export interface CreatePublicCloudProjectKeyManagerSecretPayloadRequest {
   /** Project ID */
@@ -1922,26 +1855,16 @@ export interface PublicCloudLoadbalancerLoadbalancerNetworkRef {
   /** Network identifier */
   id: string;
 }
-export const PublicCloudLoadbalancerLoadbalancerNetworkRef = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "PublicCloudLoadbalancerLoadbalancerNetworkRef",
-}) as any as S.Schema<PublicCloudLoadbalancerLoadbalancerNetworkRef>;
+export const PublicCloudLoadbalancerLoadbalancerNetworkRef =
+  PublicCloudInstanceAutobackupInstanceRef as any as S.Schema<PublicCloudLoadbalancerLoadbalancerNetworkRef>;
 
 /** Reference to a subnet */
 export interface PublicCloudLoadbalancerLoadbalancerSubnetRef {
   /** Subnet identifier */
   id: string;
 }
-export const PublicCloudLoadbalancerLoadbalancerSubnetRef = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "PublicCloudLoadbalancerLoadbalancerSubnetRef",
-}) as any as S.Schema<PublicCloudLoadbalancerLoadbalancerSubnetRef>;
+export const PublicCloudLoadbalancerLoadbalancerSubnetRef =
+  PublicCloudInstanceAutobackupInstanceRef as any as S.Schema<PublicCloudLoadbalancerLoadbalancerSubnetRef>;
 
 /** Desired specification for a load balancer */
 export interface PublicCloudLoadbalancerLoadbalancerTargetSpec {
@@ -2047,9 +1970,8 @@ export const PublicCloudLoadbalancerLoadbalancerCurrentState = /*@__PURE__*/ S.s
 
 /** Ongoing asynchronous tasks related to the load balancer */
 export type PublicCloudLoadbalancerLoadbalancerCurrentTasksList = Array<CommonCurrentTask>;
-export const PublicCloudLoadbalancerLoadbalancerCurrentTasksList = /*@__PURE__*/ S.Array(
-  CommonCurrentTask,
-) as any as S.Schema<PublicCloudLoadbalancerLoadbalancerCurrentTasksList>;
+export const PublicCloudLoadbalancerLoadbalancerCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudLoadbalancerLoadbalancerCurrentTasksList>;
 
 /** A Public Cloud load balancer */
 export interface PublicCloudLoadbalancerLoadbalancer {
@@ -2096,13 +2018,8 @@ export interface PublicCloudLoadbalancerListenerDefaultPoolRef {
   /** Identifier of the default pool for this listener */
   id: string;
 }
-export const PublicCloudLoadbalancerListenerDefaultPoolRef = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "PublicCloudLoadbalancerListenerDefaultPoolRef",
-}) as any as S.Schema<PublicCloudLoadbalancerListenerDefaultPoolRef>;
+export const PublicCloudLoadbalancerListenerDefaultPoolRef =
+  PublicCloudInstanceAutobackupInstanceRef as any as S.Schema<PublicCloudLoadbalancerListenerDefaultPoolRef>;
 
 /** Headers that the load balancer inserts into requests before forwarding to backend members */
 export interface PublicCloudLoadbalancerListenerInsertHeaders {
@@ -2144,15 +2061,13 @@ export const PublicCloudLoadbalancerListenerProtocolEnum = S.String;
 
 /** References to TLS certificate containers for SNI (for TERMINATED_HTTPS) */
 export type PublicCloudLoadbalancerListenerTargetSpecSniContainerRefsList = Array<string>;
-export const PublicCloudLoadbalancerListenerTargetSpecSniContainerRefsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PublicCloudLoadbalancerListenerTargetSpecSniContainerRefsList>;
+export const PublicCloudLoadbalancerListenerTargetSpecSniContainerRefsList =
+  PublicCloudLoadbalancerListenerTargetSpecAllowedCidrsList as any as S.Schema<PublicCloudLoadbalancerListenerTargetSpecSniContainerRefsList>;
 
 /** List of TLS protocol versions allowed (e.g. TLSv1.2, TLSv1.3) */
 export type PublicCloudLoadbalancerListenerTargetSpecTlsVersionsList = Array<string>;
-export const PublicCloudLoadbalancerListenerTargetSpecTlsVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PublicCloudLoadbalancerListenerTargetSpecTlsVersionsList>;
+export const PublicCloudLoadbalancerListenerTargetSpecTlsVersionsList =
+  PublicCloudLoadbalancerListenerTargetSpecAllowedCidrsList as any as S.Schema<PublicCloudLoadbalancerListenerTargetSpecTlsVersionsList>;
 
 /** Desired specification for creating a load balancer listener */
 export interface PublicCloudLoadbalancerListenerTargetSpec {
@@ -2237,22 +2152,16 @@ export const CreatePublicCloudProjectLoadbalancerListenerRequest = /*@__PURE__*/
 
 /** CIDR blocks allowed to connect to this listener */
 export type PublicCloudLoadbalancerListenerCurrentStateAllowedCidrsList = Array<string>;
-export const PublicCloudLoadbalancerListenerCurrentStateAllowedCidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PublicCloudLoadbalancerListenerCurrentStateAllowedCidrsList>;
+export const PublicCloudLoadbalancerListenerCurrentStateAllowedCidrsList =
+  PublicCloudLoadbalancerListenerTargetSpecAllowedCidrsList as any as S.Schema<PublicCloudLoadbalancerListenerCurrentStateAllowedCidrsList>;
 
 /** Default pool details for a listener in current state */
 export interface PublicCloudLoadbalancerListenerDefaultPoolDetail {
   /** Identifier of the default pool for this listener */
   id?: string;
 }
-export const PublicCloudLoadbalancerListenerDefaultPoolDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PublicCloudLoadbalancerListenerDefaultPoolDetail",
-}) as any as S.Schema<PublicCloudLoadbalancerListenerDefaultPoolDetail>;
+export const PublicCloudLoadbalancerListenerDefaultPoolDetail =
+  PublicCloudInstanceGroupInstanceGroupMemberRef as any as S.Schema<PublicCloudLoadbalancerListenerDefaultPoolDetail>;
 
 /** References to TLS certificate containers for SNI */
 export type PublicCloudLoadbalancerListenerCurrentStateSniContainerRefsList = Array<string>;
@@ -2263,9 +2172,8 @@ export const PublicCloudLoadbalancerListenerCurrentStateSniContainerRefsList =
 
 /** List of TLS protocol versions allowed */
 export type PublicCloudLoadbalancerListenerCurrentStateTlsVersionsList = Array<string>;
-export const PublicCloudLoadbalancerListenerCurrentStateTlsVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PublicCloudLoadbalancerListenerCurrentStateTlsVersionsList>;
+export const PublicCloudLoadbalancerListenerCurrentStateTlsVersionsList =
+  PublicCloudLoadbalancerListenerTargetSpecAllowedCidrsList as any as S.Schema<PublicCloudLoadbalancerListenerCurrentStateTlsVersionsList>;
 
 /** Current state of a load balancer listener from OpenStack */
 export interface PublicCloudLoadbalancerListenerCurrentState {
@@ -2332,9 +2240,8 @@ export const PublicCloudLoadbalancerListenerCurrentState = /*@__PURE__*/ S.suspe
 
 /** Ongoing asynchronous tasks related to the listener */
 export type PublicCloudLoadbalancerListenerCurrentTasksList = Array<CommonCurrentTask>;
-export const PublicCloudLoadbalancerListenerCurrentTasksList = /*@__PURE__*/ S.Array(
-  CommonCurrentTask,
-) as any as S.Schema<PublicCloudLoadbalancerListenerCurrentTasksList>;
+export const PublicCloudLoadbalancerListenerCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudLoadbalancerListenerCurrentTasksList>;
 
 /** A Public Cloud load balancer listener */
 export interface PublicCloudLoadbalancerListener {
@@ -2383,13 +2290,8 @@ export interface PublicCloudLoadbalancerL7PolicyRedirectPoolRef {
   /** Identifier of the pool to redirect traffic to */
   id: string;
 }
-export const PublicCloudLoadbalancerL7PolicyRedirectPoolRef = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "PublicCloudLoadbalancerL7PolicyRedirectPoolRef",
-}) as any as S.Schema<PublicCloudLoadbalancerL7PolicyRedirectPoolRef>;
+export const PublicCloudLoadbalancerL7PolicyRedirectPoolRef =
+  PublicCloudInstanceAutobackupInstanceRef as any as S.Schema<PublicCloudLoadbalancerL7PolicyRedirectPoolRef>;
 
 /** Comparison method for an L7 rule */
 export type PublicCloudLoadbalancerL7RuleCompareTypeEnum =
@@ -2511,13 +2413,8 @@ export interface PublicCloudLoadbalancerL7PolicyRedirectPoolDetail {
   /** Identifier of the pool traffic is redirected to */
   id?: string;
 }
-export const PublicCloudLoadbalancerL7PolicyRedirectPoolDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PublicCloudLoadbalancerL7PolicyRedirectPoolDetail",
-}) as any as S.Schema<PublicCloudLoadbalancerL7PolicyRedirectPoolDetail>;
+export const PublicCloudLoadbalancerL7PolicyRedirectPoolDetail =
+  PublicCloudInstanceGroupInstanceGroupMemberRef as any as S.Schema<PublicCloudLoadbalancerL7PolicyRedirectPoolDetail>;
 
 /** Current state of an L7 rule from OpenStack */
 export interface PublicCloudLoadbalancerL7RuleState {
@@ -2609,9 +2506,8 @@ export const PublicCloudLoadbalancerL7PolicyCurrentState = /*@__PURE__*/ S.suspe
 
 /** Ongoing asynchronous tasks related to the L7 policy */
 export type PublicCloudLoadbalancerL7PolicyCurrentTasksList = Array<CommonCurrentTask>;
-export const PublicCloudLoadbalancerL7PolicyCurrentTasksList = /*@__PURE__*/ S.Array(
-  CommonCurrentTask,
-) as any as S.Schema<PublicCloudLoadbalancerL7PolicyCurrentTasksList>;
+export const PublicCloudLoadbalancerL7PolicyCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudLoadbalancerL7PolicyCurrentTasksList>;
 
 /** A Public Cloud load balancer L7 policy */
 export interface PublicCloudLoadbalancerL7Policy {
@@ -2896,9 +2792,8 @@ export const PublicCloudLoadbalancerPoolCurrentState = /*@__PURE__*/ S.suspend((
 
 /** Ongoing asynchronous tasks related to the pool */
 export type PublicCloudLoadbalancerPoolCurrentTasksList = Array<CommonCurrentTask>;
-export const PublicCloudLoadbalancerPoolCurrentTasksList = /*@__PURE__*/ S.Array(
-  CommonCurrentTask,
-) as any as S.Schema<PublicCloudLoadbalancerPoolCurrentTasksList>;
+export const PublicCloudLoadbalancerPoolCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudLoadbalancerPoolCurrentTasksList>;
 
 /** A Public Cloud load balancer pool */
 export interface PublicCloudLoadbalancerPool {
@@ -3047,9 +2942,8 @@ export const PublicCloudLoadbalancerMemberCurrentState = /*@__PURE__*/ S.suspend
 
 /** Ongoing asynchronous tasks related to the member */
 export type PublicCloudLoadbalancerMemberCurrentTasksList = Array<CommonCurrentTask>;
-export const PublicCloudLoadbalancerMemberCurrentTasksList = /*@__PURE__*/ S.Array(
-  CommonCurrentTask,
-) as any as S.Schema<PublicCloudLoadbalancerMemberCurrentTasksList>;
+export const PublicCloudLoadbalancerMemberCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudLoadbalancerMemberCurrentTasksList>;
 
 /** A Public Cloud load balancer pool member */
 export interface PublicCloudLoadbalancerMember {
@@ -3146,9 +3040,8 @@ export const PublicCloudNetworkNetworkCurrentState = /*@__PURE__*/ S.suspend(() 
 
 /** Ongoing asynchronous tasks related to the network */
 export type PublicCloudNetworkNetworkCurrentTasksList = Array<CommonCurrentTask>;
-export const PublicCloudNetworkNetworkCurrentTasksList = /*@__PURE__*/ S.Array(
-  CommonCurrentTask,
-) as any as S.Schema<PublicCloudNetworkNetworkCurrentTasksList>;
+export const PublicCloudNetworkNetworkCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudNetworkNetworkCurrentTasksList>;
 
 /** A Public Cloud network */
 export interface PublicCloudNetworkNetwork {
@@ -3209,9 +3102,8 @@ export const PublicCloudNetworkSubnetTargetSpecAllocationPoolsList = /*@__PURE__
 
 /** DNS nameservers for the subnet */
 export type PublicCloudNetworkSubnetTargetSpecDnsNameserversList = Array<string>;
-export const PublicCloudNetworkSubnetTargetSpecDnsNameserversList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PublicCloudNetworkSubnetTargetSpecDnsNameserversList>;
+export const PublicCloudNetworkSubnetTargetSpecDnsNameserversList =
+  PublicCloudLoadbalancerListenerTargetSpecAllowedCidrsList as any as S.Schema<PublicCloudNetworkSubnetTargetSpecDnsNameserversList>;
 
 /** Desired specification for a subnet */
 export interface PublicCloudNetworkSubnetTargetSpec {
@@ -3274,15 +3166,13 @@ export const CreatePublicCloudProjectNetworkSubnetRequest = /*@__PURE__*/ S.susp
 /** Allocation pools */
 export type PublicCloudNetworkSubnetCurrentStateAllocationPoolsList =
   Array<PublicCloudNetworkSubnetAllocationPool>;
-export const PublicCloudNetworkSubnetCurrentStateAllocationPoolsList = /*@__PURE__*/ S.Array(
-  PublicCloudNetworkSubnetAllocationPool,
-) as any as S.Schema<PublicCloudNetworkSubnetCurrentStateAllocationPoolsList>;
+export const PublicCloudNetworkSubnetCurrentStateAllocationPoolsList =
+  PublicCloudNetworkSubnetTargetSpecAllocationPoolsList as any as S.Schema<PublicCloudNetworkSubnetCurrentStateAllocationPoolsList>;
 
 /** DNS nameservers */
 export type PublicCloudNetworkSubnetCurrentStateDnsNameserversList = Array<string>;
-export const PublicCloudNetworkSubnetCurrentStateDnsNameserversList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PublicCloudNetworkSubnetCurrentStateDnsNameserversList>;
+export const PublicCloudNetworkSubnetCurrentStateDnsNameserversList =
+  PublicCloudLoadbalancerListenerTargetSpecAllowedCidrsList as any as S.Schema<PublicCloudNetworkSubnetCurrentStateDnsNameserversList>;
 
 /** Static host route for devices in a subnet */
 export interface PublicCloudNetworkSubnetHostRoute {
@@ -3346,9 +3236,8 @@ export const PublicCloudNetworkSubnetCurrentState = /*@__PURE__*/ S.suspend(() =
 
 /** Ongoing asynchronous tasks related to the subnet */
 export type PublicCloudNetworkSubnetCurrentTasksList = Array<CommonCurrentTask>;
-export const PublicCloudNetworkSubnetCurrentTasksList = /*@__PURE__*/ S.Array(
-  CommonCurrentTask,
-) as any as S.Schema<PublicCloudNetworkSubnetCurrentTasksList>;
+export const PublicCloudNetworkSubnetCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudNetworkSubnetCurrentTasksList>;
 
 /** A Public Cloud subnet */
 export interface PublicCloudNetworkSubnet {
@@ -3475,9 +3364,8 @@ export const PublicCloudPublicIpFloatingIPCurrentState = /*@__PURE__*/ S.suspend
 
 /** Ongoing asynchronous tasks related to the floating IP */
 export type PublicCloudPublicIpFloatingIPCurrentTasksList = Array<CommonCurrentTask>;
-export const PublicCloudPublicIpFloatingIPCurrentTasksList = /*@__PURE__*/ S.Array(
-  CommonCurrentTask,
-) as any as S.Schema<PublicCloudPublicIpFloatingIPCurrentTasksList>;
+export const PublicCloudPublicIpFloatingIPCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudPublicIpFloatingIPCurrentTasksList>;
 
 /** A Public Cloud floating public IP (keyed by IP address) */
 export interface PublicCloudPublicIpFloatingIP {
@@ -3579,9 +3467,8 @@ export const PublicCloudRancherRancherCurrentStateIpRestrictionsList = /*@__PURE
 
 /** Specifies the CIDR ranges for egress IP addresses used by Rancher. Ensure these ranges are allowed in any IP restrictions for services that Rancher will access. */
 export type PublicCloudRancherNetworkingEgressCidrBlocksList = Array<string>;
-export const PublicCloudRancherNetworkingEgressCidrBlocksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PublicCloudRancherNetworkingEgressCidrBlocksList>;
+export const PublicCloudRancherNetworkingEgressCidrBlocksList =
+  PublicCloudLoadbalancerListenerTargetSpecAllowedCidrsList as any as S.Schema<PublicCloudRancherNetworkingEgressCidrBlocksList>;
 
 /** Networking properties of a managed Rancher service */
 export interface PublicCloudRancherNetworking {
@@ -3656,16 +3543,14 @@ export const PublicCloudRancherRancherCurrentState = /*@__PURE__*/ S.suspend(() 
 
 /** Asynchronous operations ongoing on the managed Rancher service */
 export type PublicCloudRancherRancherCurrentTasksList = Array<CommonCurrentTask>;
-export const PublicCloudRancherRancherCurrentTasksList = /*@__PURE__*/ S.Array(
-  CommonCurrentTask,
-) as any as S.Schema<PublicCloudRancherRancherCurrentTasksList>;
+export const PublicCloudRancherRancherCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudRancherRancherCurrentTasksList>;
 
 /** List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed */
 export type PublicCloudRancherRancherTargetSpecIpRestrictionsList =
   Array<PublicCloudRancherIpRestriction>;
-export const PublicCloudRancherRancherTargetSpecIpRestrictionsList = /*@__PURE__*/ S.Array(
-  PublicCloudRancherIpRestriction,
-) as any as S.Schema<PublicCloudRancherRancherTargetSpecIpRestrictionsList>;
+export const PublicCloudRancherRancherTargetSpecIpRestrictionsList =
+  PublicCloudRancherRancherCurrentStateIpRestrictionsList as any as S.Schema<PublicCloudRancherRancherTargetSpecIpRestrictionsList>;
 
 /** Target specification of the managed Rancher service */
 export interface PublicCloudRancherRancherTargetSpec {
@@ -3949,9 +3834,8 @@ export const PublicCloudSecurityGroupSecurityGroupCurrentState = /*@__PURE__*/ S
 
 /** Ongoing asynchronous tasks related to the security group */
 export type PublicCloudSecurityGroupSecurityGroupCurrentTasksList = Array<CommonCurrentTask>;
-export const PublicCloudSecurityGroupSecurityGroupCurrentTasksList = /*@__PURE__*/ S.Array(
-  CommonCurrentTask,
-) as any as S.Schema<PublicCloudSecurityGroupSecurityGroupCurrentTasksList>;
+export const PublicCloudSecurityGroupSecurityGroupCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudSecurityGroupSecurityGroupCurrentTasksList>;
 
 /** A Public Cloud security group */
 export interface PublicCloudSecurityGroupSecurityGroup {
@@ -4095,9 +3979,8 @@ export const PublicCloudBlockStorageBackupCurrentState = /*@__PURE__*/ S.suspend
 
 /** Ongoing asynchronous tasks related to the backup */
 export type PublicCloudBlockStorageBackupCurrentTasksList = Array<CommonCurrentTask>;
-export const PublicCloudBlockStorageBackupCurrentTasksList = /*@__PURE__*/ S.Array(
-  CommonCurrentTask,
-) as any as S.Schema<PublicCloudBlockStorageBackupCurrentTasksList>;
+export const PublicCloudBlockStorageBackupCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudBlockStorageBackupCurrentTasksList>;
 
 /** A Public Cloud block storage backup */
 export interface PublicCloudBlockStorageBackup {
@@ -4144,16 +4027,8 @@ export interface PublicCloudBlockStorageSnapshotTargetSpec {
   /** ID of the volume to snapshot */
   volumeId: string;
 }
-export const PublicCloudBlockStorageSnapshotTargetSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.NullOr(S.String)),
-    location: PublicCloudCommonLocation,
-    name: S.String,
-    volumeId: S.String,
-  }),
-).annotate({
-  identifier: "PublicCloudBlockStorageSnapshotTargetSpec",
-}) as any as S.Schema<PublicCloudBlockStorageSnapshotTargetSpec>;
+export const PublicCloudBlockStorageSnapshotTargetSpec =
+  PublicCloudBlockStorageBackupTargetSpec as any as S.Schema<PublicCloudBlockStorageSnapshotTargetSpec>;
 
 export interface CreatePublicCloudProjectStorageBlockSnapshotRequest {
   /** Project ID */
@@ -4189,23 +4064,13 @@ export interface PublicCloudBlockStorageSnapshotCurrentState {
   /** ID of the volume this snapshot was created from */
   volumeId?: string;
 }
-export const PublicCloudBlockStorageSnapshotCurrentState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.NullOr(S.String)),
-    location: S.optional(PublicCloudCommonLocation),
-    name: S.optional(S.String),
-    size: S.optional(S.Number),
-    volumeId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PublicCloudBlockStorageSnapshotCurrentState",
-}) as any as S.Schema<PublicCloudBlockStorageSnapshotCurrentState>;
+export const PublicCloudBlockStorageSnapshotCurrentState =
+  PublicCloudBlockStorageBackupCurrentState as any as S.Schema<PublicCloudBlockStorageSnapshotCurrentState>;
 
 /** Ongoing asynchronous tasks related to the snapshot */
 export type PublicCloudBlockStorageSnapshotCurrentTasksList = Array<CommonCurrentTask>;
-export const PublicCloudBlockStorageSnapshotCurrentTasksList = /*@__PURE__*/ S.Array(
-  CommonCurrentTask,
-) as any as S.Schema<PublicCloudBlockStorageSnapshotCurrentTasksList>;
+export const PublicCloudBlockStorageSnapshotCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudBlockStorageSnapshotCurrentTasksList>;
 
 /** A Public Cloud block storage volume snapshot */
 export interface PublicCloudBlockStorageSnapshot {
@@ -4226,20 +4091,8 @@ export interface PublicCloudBlockStorageSnapshot {
   /** Last update date of the snapshot */
   updatedAt?: string;
 }
-export const PublicCloudBlockStorageSnapshot = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checksum: S.optional(S.String),
-    createdAt: S.optional(S.String),
-    currentState: S.optional(S.NullOr(PublicCloudBlockStorageSnapshotCurrentState)),
-    currentTasks: S.optional(S.NullOr(PublicCloudBlockStorageSnapshotCurrentTasksList)),
-    id: S.optional(S.String),
-    resourceStatus: S.optional(CommonResourceStatusEnum),
-    targetSpec: S.optional(PublicCloudBlockStorageSnapshotTargetSpec),
-    updatedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PublicCloudBlockStorageSnapshot",
-}) as any as S.Schema<PublicCloudBlockStorageSnapshot>;
+export const PublicCloudBlockStorageSnapshot =
+  PublicCloudBlockStorageBackup as any as S.Schema<PublicCloudBlockStorageSnapshot>;
 
 /** Optional source to create a block storage volume from (backup, snapshot, or image). Only one source may be specified. */
 export interface PublicCloudBlockStorageBlockCreateFrom {
@@ -4335,20 +4188,14 @@ export interface PublicCloudBlockStorageBlockAttachedInstance {
   /** Instance unique identifier */
   id?: string;
 }
-export const PublicCloudBlockStorageBlockAttachedInstance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PublicCloudBlockStorageBlockAttachedInstance",
-}) as any as S.Schema<PublicCloudBlockStorageBlockAttachedInstance>;
+export const PublicCloudBlockStorageBlockAttachedInstance =
+  PublicCloudInstanceGroupInstanceGroupMemberRef as any as S.Schema<PublicCloudBlockStorageBlockAttachedInstance>;
 
 /** Instances currently attached to this volume */
 export type PublicCloudBlockStorageBlockCurrentStateAttachedInstancesList =
   Array<PublicCloudBlockStorageBlockAttachedInstance>;
-export const PublicCloudBlockStorageBlockCurrentStateAttachedInstancesList = /*@__PURE__*/ S.Array(
-  PublicCloudBlockStorageBlockAttachedInstance,
-) as any as S.Schema<PublicCloudBlockStorageBlockCurrentStateAttachedInstancesList>;
+export const PublicCloudBlockStorageBlockCurrentStateAttachedInstancesList =
+  PublicCloudInstanceGroupInstanceGroupCurrentStateMembersList as any as S.Schema<PublicCloudBlockStorageBlockCurrentStateAttachedInstancesList>;
 
 /** Possible statuses for a block storage volume */
 export type PublicCloudBlockStorageVolumeStatusEnum =
@@ -4412,9 +4259,8 @@ export const PublicCloudBlockStorageBlockCurrentState = /*@__PURE__*/ S.suspend(
 
 /** Ongoing asynchronous tasks related to the volume */
 export type PublicCloudBlockStorageBlockCurrentTasksList = Array<CommonCurrentTask>;
-export const PublicCloudBlockStorageBlockCurrentTasksList = /*@__PURE__*/ S.Array(
-  CommonCurrentTask,
-) as any as S.Schema<PublicCloudBlockStorageBlockCurrentTasksList>;
+export const PublicCloudBlockStorageBlockCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudBlockStorageBlockCurrentTasksList>;
 
 /** A Public Cloud block storage volume */
 export interface PublicCloudBlockStorageBlock {
@@ -4528,14 +4374,8 @@ export interface PublicCloudStorageFileFileStorageSnapshotTargetSpecShare {
   /** ID of the parent file storage share */
   id: string;
 }
-export const PublicCloudStorageFileFileStorageSnapshotTargetSpecShare = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "PublicCloudStorageFileFileStorageSnapshotTargetSpecShare",
-}) as any as S.Schema<PublicCloudStorageFileFileStorageSnapshotTargetSpecShare>;
+export const PublicCloudStorageFileFileStorageSnapshotTargetSpecShare =
+  PublicCloudStorageFileFileStorageNetworkTargetSpecNetwork as any as S.Schema<PublicCloudStorageFileFileStorageSnapshotTargetSpecShare>;
 
 /** Target specification for a file storage snapshot */
 export interface PublicCloudStorageFileFileStorageSnapshotTargetSpec {
@@ -4618,9 +4458,8 @@ export const PublicCloudStorageFileFileStorageSnapshotCurrentState = /*@__PURE__
 
 /** Ongoing asynchronous tasks related to the snapshot */
 export type PublicCloudStorageFileFileStorageSnapshotCurrentTasksList = Array<CommonCurrentTask>;
-export const PublicCloudStorageFileFileStorageSnapshotCurrentTasksList = /*@__PURE__*/ S.Array(
-  CommonCurrentTask,
-) as any as S.Schema<PublicCloudStorageFileFileStorageSnapshotCurrentTasksList>;
+export const PublicCloudStorageFileFileStorageSnapshotCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudStorageFileFileStorageSnapshotCurrentTasksList>;
 
 /** A snapshot of a Public Cloud file storage (NFS share) */
 export interface PublicCloudStorageFileFileStorageSnapshot {
@@ -4710,10 +4549,8 @@ export const PublicCloudStorageObjectBucketObjectLockConfigInput = /*@__PURE__*/
 export type PublicCloudStorageObjectBucketTargetSpecInputTagsMap = {
   [key: string]: string | undefined;
 };
-export const PublicCloudStorageObjectBucketTargetSpecInputTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PublicCloudStorageObjectBucketTargetSpecInputTagsMap>;
+export const PublicCloudStorageObjectBucketTargetSpecInputTagsMap =
+  PublicCloudKeyManagerSecretTargetSpecMetadataMap as any as S.Schema<PublicCloudStorageObjectBucketTargetSpecInputTagsMap>;
 
 /** Versioning status for an S3 bucket */
 export type PublicCloudStorageObjectBucketVersioningStatusEnum =
@@ -4810,10 +4647,8 @@ export const PublicCloudStorageObjectBucketObjectLockConfig = /*@__PURE__*/ S.su
 export type PublicCloudStorageObjectBucketCurrentStateTagsMap = {
   [key: string]: string | undefined;
 };
-export const PublicCloudStorageObjectBucketCurrentStateTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PublicCloudStorageObjectBucketCurrentStateTagsMap>;
+export const PublicCloudStorageObjectBucketCurrentStateTagsMap =
+  PublicCloudKeyManagerSecretTargetSpecMetadataMap as any as S.Schema<PublicCloudStorageObjectBucketCurrentStateTagsMap>;
 
 /** Current observed state of an S3 bucket from the S3 backend */
 export interface PublicCloudStorageObjectBucketCurrentState {
@@ -4845,16 +4680,13 @@ export const PublicCloudStorageObjectBucketCurrentState = /*@__PURE__*/ S.suspen
 
 /** Ongoing asynchronous tasks related to the bucket */
 export type PublicCloudStorageObjectBucketCurrentTasksList = Array<CommonCurrentTask>;
-export const PublicCloudStorageObjectBucketCurrentTasksList = /*@__PURE__*/ S.Array(
-  CommonCurrentTask,
-) as any as S.Schema<PublicCloudStorageObjectBucketCurrentTasksList>;
+export const PublicCloudStorageObjectBucketCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudStorageObjectBucketCurrentTasksList>;
 
 /** Metadata tags for the bucket */
 export type PublicCloudStorageObjectBucketTargetSpecTagsMap = { [key: string]: string | undefined };
-export const PublicCloudStorageObjectBucketTargetSpecTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PublicCloudStorageObjectBucketTargetSpecTagsMap>;
+export const PublicCloudStorageObjectBucketTargetSpecTagsMap =
+  PublicCloudKeyManagerSecretTargetSpecMetadataMap as any as S.Schema<PublicCloudStorageObjectBucketTargetSpecTagsMap>;
 
 /** Target specification for an S3 bucket */
 export interface PublicCloudStorageObjectBucketTargetSpec {
@@ -5352,9 +5184,8 @@ export const PublicCloudPublicIpExtNetIPCurrentState = /*@__PURE__*/ S.suspend((
 
 /** Ongoing asynchronous tasks related to the Ext-Net IP */
 export type PublicCloudPublicIpExtNetIPCurrentTasksList = Array<CommonCurrentTask>;
-export const PublicCloudPublicIpExtNetIPCurrentTasksList = /*@__PURE__*/ S.Array(
-  CommonCurrentTask,
-) as any as S.Schema<PublicCloudPublicIpExtNetIPCurrentTasksList>;
+export const PublicCloudPublicIpExtNetIPCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudPublicIpExtNetIPCurrentTasksList>;
 
 /** A Public Cloud Ext-Net public IP (keyed by IP address) */
 export interface PublicCloudPublicIpExtNetIP {
@@ -5690,9 +5521,8 @@ export const PublicCloudStorageFileFileStorageCurrentState = /*@__PURE__*/ S.sus
 
 /** Ongoing asynchronous tasks related to the file storage */
 export type PublicCloudStorageFileFileStorageCurrentTasksList = Array<CommonCurrentTask>;
-export const PublicCloudStorageFileFileStorageCurrentTasksList = /*@__PURE__*/ S.Array(
-  CommonCurrentTask,
-) as any as S.Schema<PublicCloudStorageFileFileStorageCurrentTasksList>;
+export const PublicCloudStorageFileFileStorageCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudStorageFileFileStorageCurrentTasksList>;
 
 /** Input for an access rule controlling which IP addresses can access a file storage */
 export interface PublicCloudStorageFileFileStorageAccessRuleInput {
@@ -5722,13 +5552,8 @@ export interface PublicCloudStorageFileFileStorageTargetSpecShareNetwork {
   /** Share network ID */
   id: string;
 }
-export const PublicCloudStorageFileFileStorageTargetSpecShareNetwork = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "PublicCloudStorageFileFileStorageTargetSpecShareNetwork",
-}) as any as S.Schema<PublicCloudStorageFileFileStorageTargetSpecShareNetwork>;
+export const PublicCloudStorageFileFileStorageTargetSpecShareNetwork =
+  PublicCloudInstanceAutobackupInstanceRef as any as S.Schema<PublicCloudStorageFileFileStorageTargetSpecShareNetwork>;
 
 /** Target specification for a file storage */
 export interface PublicCloudStorageFileFileStorageTargetSpec {
@@ -5874,9 +5699,8 @@ export const PublicCloudProjectProjectCurrentState = /*@__PURE__*/ S.suspend(() 
 
 /** Asynchronous operations ongoing on the cloud project */
 export type PublicCloudProjectProjectAsyncWithIAMCurrentTasksList = Array<CommonCurrentTask>;
-export const PublicCloudProjectProjectAsyncWithIAMCurrentTasksList = /*@__PURE__*/ S.Array(
-  CommonCurrentTask,
-) as any as S.Schema<PublicCloudProjectProjectAsyncWithIAMCurrentTasksList>;
+export const PublicCloudProjectProjectAsyncWithIAMCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudProjectProjectAsyncWithIAMCurrentTasksList>;
 
 /** Resource state */
 export type IamResourceMetadataStateEnum = "EXPIRED" | "IN_CREATION" | "OK" | "SUSPENDED";
@@ -5884,10 +5708,8 @@ export const IamResourceMetadataStateEnum = S.String;
 
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
-export const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IamResourceMetadataTagsMap>;
+export const IamResourceMetadataTagsMap =
+  PublicCloudKeyManagerSecretTargetSpecMetadataMap as any as S.Schema<IamResourceMetadataTagsMap>;
 
 /** IAM resource metadata embedded in services models */
 export interface IamResourceMetadata {
@@ -6433,9 +6255,8 @@ export const PublicCloudPublicIpAdditionalIPCurrentState = /*@__PURE__*/ S.suspe
 
 /** Ongoing asynchronous tasks related to the additional IP */
 export type PublicCloudPublicIpAdditionalIPCurrentTasksList = Array<CommonCurrentTask>;
-export const PublicCloudPublicIpAdditionalIPCurrentTasksList = /*@__PURE__*/ S.Array(
-  CommonCurrentTask,
-) as any as S.Schema<PublicCloudPublicIpAdditionalIPCurrentTasksList>;
+export const PublicCloudPublicIpAdditionalIPCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudPublicIpAdditionalIPCurrentTasksList>;
 
 /** A Public Cloud additional public IP (keyed by IP address) */
 export interface PublicCloudPublicIpAdditionalIP {
@@ -7003,9 +6824,8 @@ export const PublicCloudQuotaQuotaCurrentState = /*@__PURE__*/ S.suspend(() =>
 
 /** Ongoing asynchronous tasks related to the quota */
 export type PublicCloudQuotaQuotaCurrentTasksList = Array<CommonCurrentTask>;
-export const PublicCloudQuotaQuotaCurrentTasksList = /*@__PURE__*/ S.Array(
-  CommonCurrentTask,
-) as any as S.Schema<PublicCloudQuotaQuotaCurrentTasksList>;
+export const PublicCloudQuotaQuotaCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudQuotaQuotaCurrentTasksList>;
 
 /** Target specification for the project quota in a single region */
 export interface PublicCloudQuotaQuotaRegionTargetSpec {
@@ -7125,9 +6945,8 @@ export const GetPublicCloudProjectRancherTaskRequest = /*@__PURE__*/ S.suspend((
 
 /** Errors that occured on the task */
 export type CommonTaskErrorsList = Array<CommonTaskError>;
-export const CommonTaskErrorsList = /*@__PURE__*/ S.Array(
-  CommonTaskError,
-) as any as S.Schema<CommonTaskErrorsList>;
+export const CommonTaskErrorsList =
+  CommonCurrentTaskErrorsList as any as S.Schema<CommonTaskErrorsList>;
 
 /** TaskStatusEnum */
 export type CommonTaskStatusEnum =
@@ -7376,15 +7195,13 @@ export const GetPublicCloudProjectReferenceRegionRequest = /*@__PURE__*/ S.suspe
 
 /** Availability zones in this region */
 export type PublicCloudReferenceRegionAvailabilityZonesList = Array<string>;
-export const PublicCloudReferenceRegionAvailabilityZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PublicCloudReferenceRegionAvailabilityZonesList>;
+export const PublicCloudReferenceRegionAvailabilityZonesList =
+  PublicCloudLoadbalancerListenerTargetSpecAllowedCidrsList as any as S.Schema<PublicCloudReferenceRegionAvailabilityZonesList>;
 
 /** Available OpenStack services */
 export type PublicCloudReferenceRegionServicesList = Array<string>;
-export const PublicCloudReferenceRegionServicesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PublicCloudReferenceRegionServicesList>;
+export const PublicCloudReferenceRegionServicesList =
+  PublicCloudLoadbalancerListenerTargetSpecAllowedCidrsList as any as S.Schema<PublicCloudReferenceRegionServicesList>;
 
 /** Possible statuses for a cloud region */
 export type PublicCloudReferenceRegionStatusEnum = "DISABLED" | "ENABLED" | "MAINTENANCE";
@@ -8731,17 +8548,13 @@ export const ListPublicCloudProjectRancherEventRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListPublicCloudProjectRancherEventRequest>;
 
 export type ListPublicCloudProjectRancherEventResponseBodyList = Array<CommonEvent>;
-export const ListPublicCloudProjectRancherEventResponseBodyList = /*@__PURE__*/ S.Array(
-  CommonEvent,
-) as any as S.Schema<ListPublicCloudProjectRancherEventResponseBodyList>;
+export const ListPublicCloudProjectRancherEventResponseBodyList =
+  ListPublicCloudProjectComputeInstanceEventsResponseBodyList as any as S.Schema<ListPublicCloudProjectRancherEventResponseBodyList>;
 
 export type ListPublicCloudProjectRancherEventResponse =
   ListPublicCloudProjectRancherEventResponseBodyList;
-export const ListPublicCloudProjectRancherEventResponse = /*@__PURE__*/ S.suspend(() =>
-  ListPublicCloudProjectRancherEventResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListPublicCloudProjectRancherEventResponse",
-}) as any as S.Schema<ListPublicCloudProjectRancherEventResponse>;
+export const ListPublicCloudProjectRancherEventResponse =
+  ListPublicCloudProjectComputeInstanceEventsResponse as any as S.Schema<ListPublicCloudProjectRancherEventResponse>;
 
 export interface ListPublicCloudProjectRancherTaskRequest {
   /** Project ID */
@@ -9164,17 +8977,13 @@ export const ListPublicCloudProjectStorageBlockSnapshotRequest = /*@__PURE__*/ S
 
 export type ListPublicCloudProjectStorageBlockSnapshotResponseBodyList =
   Array<PublicCloudBlockStorageSnapshot>;
-export const ListPublicCloudProjectStorageBlockSnapshotResponseBodyList = /*@__PURE__*/ S.Array(
-  PublicCloudBlockStorageSnapshot,
-) as any as S.Schema<ListPublicCloudProjectStorageBlockSnapshotResponseBodyList>;
+export const ListPublicCloudProjectStorageBlockSnapshotResponseBodyList =
+  ListPublicCloudProjectStorageBlockBackupResponseBodyList as any as S.Schema<ListPublicCloudProjectStorageBlockSnapshotResponseBodyList>;
 
 export type ListPublicCloudProjectStorageBlockSnapshotResponse =
   ListPublicCloudProjectStorageBlockSnapshotResponseBodyList;
-export const ListPublicCloudProjectStorageBlockSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
-  ListPublicCloudProjectStorageBlockSnapshotResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListPublicCloudProjectStorageBlockSnapshotResponse",
-}) as any as S.Schema<ListPublicCloudProjectStorageBlockSnapshotResponse>;
+export const ListPublicCloudProjectStorageBlockSnapshotResponse =
+  ListPublicCloudProjectStorageBlockBackupResponse as any as S.Schema<ListPublicCloudProjectStorageBlockSnapshotResponse>;
 
 export interface ListPublicCloudProjectStorageBlockVolumeRequest {
   /** Project ID */
@@ -9418,10 +9227,8 @@ export const PublicCloudStorageObjectLifecycleRuleExpiration = /*@__PURE__*/ S.s
 export type PublicCloudStorageObjectLifecycleRuleFilterTagsMap = {
   [key: string]: string | undefined;
 };
-export const PublicCloudStorageObjectLifecycleRuleFilterTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PublicCloudStorageObjectLifecycleRuleFilterTagsMap>;
+export const PublicCloudStorageObjectLifecycleRuleFilterTagsMap =
+  PublicCloudKeyManagerSecretTargetSpecMetadataMap as any as S.Schema<PublicCloudStorageObjectLifecycleRuleFilterTagsMap>;
 
 /** Filter criteria to select which objects a lifecycle rule applies to */
 export interface PublicCloudStorageObjectLifecycleRuleFilter {
@@ -9638,10 +9445,8 @@ export const PublicCloudStorageObjectReplicationRuleDestination = /*@__PURE__*/ 
 export type PublicCloudStorageObjectReplicationRuleFilterTagsMap = {
   [key: string]: string | undefined;
 };
-export const PublicCloudStorageObjectReplicationRuleFilterTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PublicCloudStorageObjectReplicationRuleFilterTagsMap>;
+export const PublicCloudStorageObjectReplicationRuleFilterTagsMap =
+  PublicCloudKeyManagerSecretTargetSpecMetadataMap as any as S.Schema<PublicCloudStorageObjectReplicationRuleFilterTagsMap>;
 
 /** Filter criteria to select which objects a replication rule applies to */
 export interface PublicCloudStorageObjectReplicationRuleFilter {
@@ -9710,23 +9515,20 @@ export const PublicCloudStorageObjectReplicationRulesResponse = /*@__PURE__*/ S.
 /** Network references */
 export type PublicCloudInstanceInstanceUpdateTargetSpecNetworksList =
   Array<PublicCloudInstanceInstanceNetworkRef>;
-export const PublicCloudInstanceInstanceUpdateTargetSpecNetworksList = /*@__PURE__*/ S.Array(
-  PublicCloudInstanceInstanceNetworkRef,
-) as any as S.Schema<PublicCloudInstanceInstanceUpdateTargetSpecNetworksList>;
+export const PublicCloudInstanceInstanceUpdateTargetSpecNetworksList =
+  PublicCloudInstanceInstanceTargetSpecNetworksList as any as S.Schema<PublicCloudInstanceInstanceUpdateTargetSpecNetworksList>;
 
 /** Security group references to apply to all instance ports */
 export type PublicCloudInstanceInstanceUpdateTargetSpecSecurityGroupsList =
   Array<PublicCloudSecurityGroupSecurityGroupRef>;
-export const PublicCloudInstanceInstanceUpdateTargetSpecSecurityGroupsList = /*@__PURE__*/ S.Array(
-  PublicCloudSecurityGroupSecurityGroupRef,
-) as any as S.Schema<PublicCloudInstanceInstanceUpdateTargetSpecSecurityGroupsList>;
+export const PublicCloudInstanceInstanceUpdateTargetSpecSecurityGroupsList =
+  PublicCloudInstanceInstanceTargetSpecSecurityGroupsList as any as S.Schema<PublicCloudInstanceInstanceUpdateTargetSpecSecurityGroupsList>;
 
 /** Volume references */
 export type PublicCloudInstanceInstanceUpdateTargetSpecVolumesList =
   Array<PublicCloudInstanceInstanceVolumeRef>;
-export const PublicCloudInstanceInstanceUpdateTargetSpecVolumesList = /*@__PURE__*/ S.Array(
-  PublicCloudInstanceInstanceVolumeRef,
-) as any as S.Schema<PublicCloudInstanceInstanceUpdateTargetSpecVolumesList>;
+export const PublicCloudInstanceInstanceUpdateTargetSpecVolumesList =
+  PublicCloudInstanceInstanceTargetSpecSecurityGroupsList as any as S.Schema<PublicCloudInstanceInstanceUpdateTargetSpecVolumesList>;
 
 /** Target specification for updating an instance (location cannot be changed after creation) */
 export interface PublicCloudInstanceInstanceUpdateTargetSpec {
@@ -9831,9 +9633,8 @@ export const PutPublicCloudProjectFloatingIpRequest = /*@__PURE__*/ S.suspend(()
 /** Subnets to attach as router interfaces */
 export type PublicCloudGatewayGatewayUpdateTargetSpecSubnetsList =
   Array<PublicCloudGatewayGatewaySubnet>;
-export const PublicCloudGatewayGatewayUpdateTargetSpecSubnetsList = /*@__PURE__*/ S.Array(
-  PublicCloudGatewayGatewaySubnet,
-) as any as S.Schema<PublicCloudGatewayGatewayUpdateTargetSpecSubnetsList>;
+export const PublicCloudGatewayGatewayUpdateTargetSpecSubnetsList =
+  PublicCloudInstanceInstanceTargetSpecSecurityGroupsList as any as S.Schema<PublicCloudGatewayGatewayUpdateTargetSpecSubnetsList>;
 
 /** Desired specification for updating a gateway (mutable fields only) */
 export interface PublicCloudGatewayGatewayUpdateTargetSpec {
@@ -9887,9 +9688,8 @@ export const PutPublicCloudProjectGatewayRequest = /*@__PURE__*/ S.suspend(() =>
 /** Desired list of secret references. Replaces all existing references. */
 export type PublicCloudKeyManagerContainerUpdateTargetSpecSecretRefsList =
   Array<PublicCloudKeyManagerContainerSecretRef>;
-export const PublicCloudKeyManagerContainerUpdateTargetSpecSecretRefsList = /*@__PURE__*/ S.Array(
-  PublicCloudKeyManagerContainerSecretRef,
-) as any as S.Schema<PublicCloudKeyManagerContainerUpdateTargetSpecSecretRefsList>;
+export const PublicCloudKeyManagerContainerUpdateTargetSpecSecretRefsList =
+  PublicCloudKeyManagerContainerTargetSpecSecretRefsList as any as S.Schema<PublicCloudKeyManagerContainerUpdateTargetSpecSecretRefsList>;
 
 /** Target specification for updating a Key Manager container (only secretRefs are mutable) */
 export interface PublicCloudKeyManagerContainerUpdateTargetSpec {
@@ -9935,10 +9735,8 @@ export const PutPublicCloudProjectKeyManagerContainerRequest = /*@__PURE__*/ S.s
 export type PublicCloudKeyManagerSecretUpdateTargetSpecMetadataMap = {
   [key: string]: string | undefined;
 };
-export const PublicCloudKeyManagerSecretUpdateTargetSpecMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PublicCloudKeyManagerSecretUpdateTargetSpecMetadataMap>;
+export const PublicCloudKeyManagerSecretUpdateTargetSpecMetadataMap =
+  PublicCloudKeyManagerSecretTargetSpecMetadataMap as any as S.Schema<PublicCloudKeyManagerSecretUpdateTargetSpecMetadataMap>;
 
 /** Target specification for updating a Key Manager secret (only metadata is mutable) */
 export interface PublicCloudKeyManagerSecretUpdateTargetSpec {
@@ -10025,22 +9823,18 @@ export const PutPublicCloudProjectLoadbalancerRequest = /*@__PURE__*/ S.suspend(
 
 /** CIDR blocks allowed to connect to this listener */
 export type PublicCloudLoadbalancerListenerPutTargetSpecAllowedCidrsList = Array<string>;
-export const PublicCloudLoadbalancerListenerPutTargetSpecAllowedCidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PublicCloudLoadbalancerListenerPutTargetSpecAllowedCidrsList>;
+export const PublicCloudLoadbalancerListenerPutTargetSpecAllowedCidrsList =
+  PublicCloudLoadbalancerListenerTargetSpecAllowedCidrsList as any as S.Schema<PublicCloudLoadbalancerListenerPutTargetSpecAllowedCidrsList>;
 
 /** References to TLS certificate containers for SNI (for TERMINATED_HTTPS) */
 export type PublicCloudLoadbalancerListenerPutTargetSpecSniContainerRefsList = Array<string>;
 export const PublicCloudLoadbalancerListenerPutTargetSpecSniContainerRefsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PublicCloudLoadbalancerListenerPutTargetSpecSniContainerRefsList>;
+  PublicCloudLoadbalancerListenerCurrentStateSniContainerRefsList as any as S.Schema<PublicCloudLoadbalancerListenerPutTargetSpecSniContainerRefsList>;
 
 /** List of TLS protocol versions allowed (e.g. TLSv1.2, TLSv1.3) */
 export type PublicCloudLoadbalancerListenerPutTargetSpecTlsVersionsList = Array<string>;
-export const PublicCloudLoadbalancerListenerPutTargetSpecTlsVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PublicCloudLoadbalancerListenerPutTargetSpecTlsVersionsList>;
+export const PublicCloudLoadbalancerListenerPutTargetSpecTlsVersionsList =
+  PublicCloudLoadbalancerListenerTargetSpecAllowedCidrsList as any as S.Schema<PublicCloudLoadbalancerListenerPutTargetSpecTlsVersionsList>;
 
 /** Desired specification for updating a load balancer listener (excludes immutable fields) */
 export interface PublicCloudLoadbalancerListenerPutTargetSpec {
@@ -10128,9 +9922,8 @@ export const PutPublicCloudProjectLoadbalancerListenerRequest = /*@__PURE__*/ S.
 /** L7 rules that determine when this policy matches */
 export type PublicCloudLoadbalancerL7PolicyUpdateTargetSpecRulesList =
   Array<PublicCloudLoadbalancerL7RuleSpec>;
-export const PublicCloudLoadbalancerL7PolicyUpdateTargetSpecRulesList = /*@__PURE__*/ S.Array(
-  PublicCloudLoadbalancerL7RuleSpec,
-) as any as S.Schema<PublicCloudLoadbalancerL7PolicyUpdateTargetSpecRulesList>;
+export const PublicCloudLoadbalancerL7PolicyUpdateTargetSpecRulesList =
+  PublicCloudLoadbalancerL7PolicyTargetSpecRulesList as any as S.Schema<PublicCloudLoadbalancerL7PolicyUpdateTargetSpecRulesList>;
 
 /** Updatable specification for an L7 policy (all fields are mutable) */
 export interface PublicCloudLoadbalancerL7PolicyUpdateTargetSpec {
@@ -10153,21 +9946,8 @@ export interface PublicCloudLoadbalancerL7PolicyUpdateTargetSpec {
   /** L7 rules that determine when this policy matches */
   rules?: PublicCloudLoadbalancerL7PolicyUpdateTargetSpecRulesList | null;
 }
-export const PublicCloudLoadbalancerL7PolicyUpdateTargetSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: PublicCloudLoadbalancerL7PolicyActionEnum,
-    description: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    position: S.optional(S.NullOr(S.Number)),
-    redirectHttpCode: S.optional(S.NullOr(S.Number)),
-    redirectPool: S.optional(S.NullOr(PublicCloudLoadbalancerL7PolicyRedirectPoolRef)),
-    redirectPrefix: S.optional(S.NullOr(S.String)),
-    redirectUrl: S.optional(S.NullOr(S.String)),
-    rules: S.optional(S.NullOr(PublicCloudLoadbalancerL7PolicyUpdateTargetSpecRulesList)),
-  }),
-).annotate({
-  identifier: "PublicCloudLoadbalancerL7PolicyUpdateTargetSpec",
-}) as any as S.Schema<PublicCloudLoadbalancerL7PolicyUpdateTargetSpec>;
+export const PublicCloudLoadbalancerL7PolicyUpdateTargetSpec =
+  PublicCloudLoadbalancerL7PolicyTargetSpec as any as S.Schema<PublicCloudLoadbalancerL7PolicyUpdateTargetSpec>;
 
 export interface PutPublicCloudProjectLoadbalancerListenerL7policyRequest {
   /** Project ID */
@@ -10396,15 +10176,13 @@ export const PutPublicCloudProjectNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 /** IP address allocation pools */
 export type PublicCloudNetworkSubnetPutTargetSpecAllocationPoolsList =
   Array<PublicCloudNetworkSubnetAllocationPool>;
-export const PublicCloudNetworkSubnetPutTargetSpecAllocationPoolsList = /*@__PURE__*/ S.Array(
-  PublicCloudNetworkSubnetAllocationPool,
-) as any as S.Schema<PublicCloudNetworkSubnetPutTargetSpecAllocationPoolsList>;
+export const PublicCloudNetworkSubnetPutTargetSpecAllocationPoolsList =
+  PublicCloudNetworkSubnetTargetSpecAllocationPoolsList as any as S.Schema<PublicCloudNetworkSubnetPutTargetSpecAllocationPoolsList>;
 
 /** DNS nameservers for the subnet */
 export type PublicCloudNetworkSubnetPutTargetSpecDnsNameserversList = Array<string>;
-export const PublicCloudNetworkSubnetPutTargetSpecDnsNameserversList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PublicCloudNetworkSubnetPutTargetSpecDnsNameserversList>;
+export const PublicCloudNetworkSubnetPutTargetSpecDnsNameserversList =
+  PublicCloudLoadbalancerListenerTargetSpecAllowedCidrsList as any as S.Schema<PublicCloudNetworkSubnetPutTargetSpecDnsNameserversList>;
 
 /** Desired specification for updating a subnet (excludes immutable fields) */
 export interface PublicCloudNetworkSubnetPutTargetSpec {
@@ -10500,9 +10278,8 @@ export const PutPublicCloudProjectPublicIpFloatingRequest = /*@__PURE__*/ S.susp
 /** Target quota profile per region. Regions omitted are left unchanged. */
 export type PublicCloudQuotaQuotaUpdateTargetSpecRegionsList =
   Array<PublicCloudQuotaQuotaRegionTargetSpec>;
-export const PublicCloudQuotaQuotaUpdateTargetSpecRegionsList = /*@__PURE__*/ S.Array(
-  PublicCloudQuotaQuotaRegionTargetSpec,
-) as any as S.Schema<PublicCloudQuotaQuotaUpdateTargetSpecRegionsList>;
+export const PublicCloudQuotaQuotaUpdateTargetSpecRegionsList =
+  PublicCloudQuotaQuotaTargetSpecRegionsList as any as S.Schema<PublicCloudQuotaQuotaUpdateTargetSpecRegionsList>;
 
 /** Update specification for the project quota */
 export interface PublicCloudQuotaQuotaUpdateTargetSpec {
@@ -10565,9 +10342,8 @@ export const PutPublicCloudProjectRancherRequest = /*@__PURE__*/ S.suspend(() =>
 /** Desired firewall rules */
 export type PublicCloudSecurityGroupSecurityGroupUpdateTargetSpecRulesList =
   Array<PublicCloudSecurityGroupSecurityGroupTargetRule>;
-export const PublicCloudSecurityGroupSecurityGroupUpdateTargetSpecRulesList = /*@__PURE__*/ S.Array(
-  PublicCloudSecurityGroupSecurityGroupTargetRule,
-) as any as S.Schema<PublicCloudSecurityGroupSecurityGroupUpdateTargetSpecRulesList>;
+export const PublicCloudSecurityGroupSecurityGroupUpdateTargetSpecRulesList =
+  PublicCloudSecurityGroupSecurityGroupTargetSpecRulesList as any as S.Schema<PublicCloudSecurityGroupSecurityGroupUpdateTargetSpecRulesList>;
 
 /** Desired specification for updating a security group (mutable fields only) */
 export interface PublicCloudSecurityGroupSecurityGroupUpdateTargetSpec {
@@ -10854,10 +10630,8 @@ export const PutPublicCloudProjectStorageFileSnapshotRequest = /*@__PURE__*/ S.s
 export type PublicCloudStorageObjectBucketUpdateTargetSpecInputTagsMap = {
   [key: string]: string | undefined;
 };
-export const PublicCloudStorageObjectBucketUpdateTargetSpecInputTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PublicCloudStorageObjectBucketUpdateTargetSpecInputTagsMap>;
+export const PublicCloudStorageObjectBucketUpdateTargetSpecInputTagsMap =
+  PublicCloudKeyManagerSecretTargetSpecMetadataMap as any as S.Schema<PublicCloudStorageObjectBucketUpdateTargetSpecInputTagsMap>;
 
 /** Target specification for updating an S3 bucket (mutable fields only) */
 export interface PublicCloudStorageObjectBucketUpdateTargetSpecInput {

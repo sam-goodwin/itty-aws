@@ -650,14 +650,7 @@ export interface YumRepository {
   /** The display name of the repository. */
   displayName?: string;
 }
-export const YumRepository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    baseUrl: S.optional(S.String),
-    gpgKeys: S.optional(StringList),
-    id: S.optional(S.String),
-    displayName: S.optional(S.String),
-  }),
-).annotate({ identifier: "YumRepository" }) as any as S.Schema<YumRepository>;
+export const YumRepository = ZypperRepository as any as S.Schema<YumRepository>;
 
 /** Represents a Goo package repository. These is added to a repo file that is stored at C:/ProgramData/GooGet/repos/google_osconfig.repo. */
 export interface GooRepository {
@@ -1265,9 +1258,7 @@ export const DeleteProjectsGuestPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelPatchJobRequest as any as S.Schema<Empty>;
 
 export interface DeleteProjectsPatchDeploymentsRequest {
   /** Required. The resource name of the patch deployment in the form `projects/*\/patchDeployments/*`. */

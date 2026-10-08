@@ -107,9 +107,8 @@ export const CreateOriginCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateOriginCaCertificateRequest>;
 
 export type CreateResponseHostnamesList = Array<string>;
-export const CreateResponseHostnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResponseHostnamesList>;
+export const CreateResponseHostnamesList =
+  CreateRequestHostnamesList as any as S.Schema<CreateResponseHostnamesList>;
 
 export type CreateResponseRequestType = "origin-rsa" | "origin-ecc" | "keyless-certificate";
 export const CreateResponseRequestType = S.String;
@@ -196,9 +195,8 @@ export const GetOriginCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOriginCaCertificateRequest>;
 
 export type GetResponseHostnamesList = Array<string>;
-export const GetResponseHostnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseHostnamesList>;
+export const GetResponseHostnamesList =
+  CreateRequestHostnamesList as any as S.Schema<GetResponseHostnamesList>;
 
 export type GetResponseRequestType = "origin-rsa" | "origin-ecc" | "keyless-certificate";
 export const GetResponseRequestType = S.String;
@@ -267,9 +265,8 @@ export const ListOriginCaCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOriginCaCertificatesRequest>;
 
 export type ListResultItemHostnamesList = Array<string>;
-export const ListResultItemHostnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemHostnamesList>;
+export const ListResultItemHostnamesList =
+  CreateRequestHostnamesList as any as S.Schema<ListResultItemHostnamesList>;
 
 export type ListResultItemRequestType = "origin-rsa" | "origin-ecc" | "keyless-certificate";
 export const ListResultItemRequestType = S.String;

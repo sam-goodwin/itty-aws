@@ -135,15 +135,8 @@ export interface CheckNamespaceAccessResponse {
   user: CheckEndpointAccessResponseUser;
   resourceGroupId?: string;
 }
-export const CheckNamespaceAccessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namespace: CheckEndpointAccessResponseNamespace,
-    user: CheckEndpointAccessResponseUser,
-    resourceGroupId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CheckNamespaceAccessResponse",
-}) as any as S.Schema<CheckNamespaceAccessResponse>;
+export const CheckNamespaceAccessResponse =
+  CheckEndpointAccessResponse as any as S.Schema<CheckNamespaceAccessResponse>;
 
 export type CheckEndpointAccessError = HuggingFaceOpError;
 /** Check access Check if the user has access to the inference endpoint */

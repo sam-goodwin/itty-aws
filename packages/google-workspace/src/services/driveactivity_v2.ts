@@ -336,12 +336,7 @@ export interface DriveReference {
   /** The resource name of the shared drive. The format is `COLLECTION_ID/DRIVE_ID`. Clients should not assume a specific collection ID for this resource name. */
   name?: string;
 }
-export const DriveReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "DriveReference" }) as any as S.Schema<DriveReference>;
+export const DriveReference = TeamDriveReference as any as S.Schema<DriveReference>;
 
 /** A lightweight reference to the target of activity. */
 export interface TargetReference {
@@ -437,22 +432,14 @@ export interface Integer {
   /** Integer value. */
   value?: string;
 }
-export const Integer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Integer" }) as any as S.Schema<Integer>;
+export const Integer = SingleUser as any as S.Schema<Integer>;
 
 /** Wrapper for Date Field value. */
 export interface Driveactivity_Date {
   /** Date value. */
   value?: string;
 }
-export const Driveactivity_Date = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Driveactivity_Date" }) as any as S.Schema<Driveactivity_Date>;
+export const Driveactivity_Date = SingleUser as any as S.Schema<Driveactivity_Date>;
 
 export type SingleUserList = Array<SingleUser>;
 export const SingleUserList = /*@__PURE__*/ S.Array(SingleUser) as any as S.Schema<SingleUserList>;
@@ -473,25 +460,17 @@ export interface Text {
   /** Value of Text Field. */
   value?: string;
 }
-export const Text = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Text" }) as any as S.Schema<Text>;
+export const Text = SingleUser as any as S.Schema<Text>;
 
 export type TextList_ = Array<Text>;
-export const TextList_ = /*@__PURE__*/ S.Array(Text) as any as S.Schema<TextList_>;
+export const TextList_ = SingleUserList as any as S.Schema<TextList_>;
 
 /** Wrapper for Text List Field value. */
 export interface TextList {
   /** Text values. */
   values?: TextList_;
 }
-export const TextList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(TextList_),
-  }),
-).annotate({ identifier: "TextList" }) as any as S.Schema<TextList>;
+export const TextList = UserList as any as S.Schema<TextList>;
 
 /** Contains a value of a Field. */
 export interface FieldValue {

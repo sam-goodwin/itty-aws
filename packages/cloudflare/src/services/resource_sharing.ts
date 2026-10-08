@@ -486,9 +486,8 @@ export type RecipientsDeleteResponseResourcesItem = RecipientsCreateResponseReso
 export const RecipientsDeleteResponseResourcesItem = RecipientsCreateResponseResourcesItem;
 
 export type RecipientsDeleteResponseResourcesList = Array<RecipientsCreateResponseResourcesItem>;
-export const RecipientsDeleteResponseResourcesList = /*@__PURE__*/ S.Array(
-  RecipientsCreateResponseResourcesItem,
-) as any as S.Schema<RecipientsDeleteResponseResourcesList>;
+export const RecipientsDeleteResponseResourcesList =
+  RecipientsCreateResponseResourcesList as any as S.Schema<RecipientsDeleteResponseResourcesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteRecipientResponse {
@@ -765,9 +764,8 @@ export type RecipientsGetResponseResourcesItem = RecipientsCreateResponseResourc
 export const RecipientsGetResponseResourcesItem = RecipientsCreateResponseResourcesItem;
 
 export type RecipientsGetResponseResourcesList = Array<RecipientsCreateResponseResourcesItem>;
-export const RecipientsGetResponseResourcesList = /*@__PURE__*/ S.Array(
-  RecipientsCreateResponseResourcesItem,
-) as any as S.Schema<RecipientsGetResponseResourcesList>;
+export const RecipientsGetResponseResourcesList =
+  RecipientsCreateResponseResourcesList as any as S.Schema<RecipientsGetResponseResourcesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRecipientResponse {
@@ -1051,9 +1049,8 @@ export type RecipientsListResultItemResourcesItem = RecipientsCreateResponseReso
 export const RecipientsListResultItemResourcesItem = RecipientsCreateResponseResourcesItem;
 
 export type RecipientsListResultItemResourcesList = Array<RecipientsCreateResponseResourcesItem>;
-export const RecipientsListResultItemResourcesList = /*@__PURE__*/ S.Array(
-  RecipientsCreateResponseResourcesItem,
-) as any as S.Schema<RecipientsListResultItemResourcesList>;
+export const RecipientsListResultItemResourcesList =
+  RecipientsCreateResponseResourcesList as any as S.Schema<RecipientsListResultItemResourcesList>;
 
 export interface RecipientsListResultItem {
   /** Share Recipient identifier tag. */

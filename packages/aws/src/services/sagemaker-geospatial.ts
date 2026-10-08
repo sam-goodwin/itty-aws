@@ -178,9 +178,8 @@ export const DeleteVectorEnrichmentJobInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteVectorEnrichmentJobInput",
 }) as any as S.Schema<DeleteVectorEnrichmentJobInput>;
 export interface DeleteVectorEnrichmentJobOutput {}
-export const DeleteVectorEnrichmentJobOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteVectorEnrichmentJobOutput" },
-) as any as S.Schema<DeleteVectorEnrichmentJobOutput>;
+export const DeleteVectorEnrichmentJobOutput =
+  DeleteEarthObservationJobOutput as any as S.Schema<DeleteVectorEnrichmentJobOutput>;
 export type ExecutionRoleArn = string;
 export type S3Uri = string;
 export type KmsKey = string;
@@ -379,23 +378,17 @@ export interface ViewOffNadirInput {
   LowerBound: number;
   UpperBound: number;
 }
-export const ViewOffNadirInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LowerBound: S.Number, UpperBound: S.Number }),
-).annotate({ identifier: "ViewOffNadirInput" }) as any as S.Schema<ViewOffNadirInput>;
+export const ViewOffNadirInput = EoCloudCoverInput as any as S.Schema<ViewOffNadirInput>;
 export interface ViewSunAzimuthInput {
   LowerBound: number;
   UpperBound: number;
 }
-export const ViewSunAzimuthInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LowerBound: S.Number, UpperBound: S.Number }),
-).annotate({ identifier: "ViewSunAzimuthInput" }) as any as S.Schema<ViewSunAzimuthInput>;
+export const ViewSunAzimuthInput = EoCloudCoverInput as any as S.Schema<ViewSunAzimuthInput>;
 export interface ViewSunElevationInput {
   LowerBound: number;
   UpperBound: number;
 }
-export const ViewSunElevationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LowerBound: S.Number, UpperBound: S.Number }),
-).annotate({ identifier: "ViewSunElevationInput" }) as any as S.Schema<ViewSunElevationInput>;
+export const ViewSunElevationInput = EoCloudCoverInput as any as S.Schema<ViewSunElevationInput>;
 export type ComparisonOperator = string;
 export interface PlatformInput {
   Value: string;
@@ -575,7 +568,8 @@ export const ResamplingConfigInput = /*@__PURE__*/ S.suspend(() =>
 export type GroupBy = string;
 export type TemporalStatistics = string;
 export type TemporalStatisticsListInput = string[];
-export const TemporalStatisticsListInput = /*@__PURE__*/ S.Array(S.String);
+export const TemporalStatisticsListInput =
+  StringListInput as any as S.Schema<TemporalStatisticsListInput>;
 export interface TemporalStatisticsConfigInput {
   GroupBy?: string;
   Statistics: string[];
@@ -605,7 +599,8 @@ export const CloudRemovalConfigInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CloudRemovalConfigInput" }) as any as S.Schema<CloudRemovalConfigInput>;
 export type ZonalStatistics = string;
 export type ZonalStatisticsListInput = string[];
-export const ZonalStatisticsListInput = /*@__PURE__*/ S.Array(S.String);
+export const ZonalStatisticsListInput =
+  StringListInput as any as S.Schema<ZonalStatisticsListInput>;
 export interface ZonalStatisticsConfigInput {
   ZoneS3Path: string;
   Statistics: string[];
@@ -881,7 +876,7 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
 export type FilterList = Filter[];
 export const FilterList = /*@__PURE__*/ S.Array(Filter);
 export type ImageSourceBandList = string[];
-export const ImageSourceBandList = /*@__PURE__*/ S.Array(S.String);
+export const ImageSourceBandList = StringListInput as any as S.Schema<ImageSourceBandList>;
 export interface GetRasterDataCollectionOutput {
   Name: string;
   Arn: string;
@@ -1019,11 +1014,8 @@ export interface VectorEnrichmentJobExportErrorDetails {
   Type?: string;
   Message?: string;
 }
-export const VectorEnrichmentJobExportErrorDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Type: S.optional(S.String), Message: S.optional(S.String) }),
-).annotate({
-  identifier: "VectorEnrichmentJobExportErrorDetails",
-}) as any as S.Schema<VectorEnrichmentJobExportErrorDetails>;
+export const VectorEnrichmentJobExportErrorDetails =
+  EarthObservationJobErrorDetails as any as S.Schema<VectorEnrichmentJobExportErrorDetails>;
 export interface GetVectorEnrichmentJobOutput {
   Arn: string;
   Type: string;
@@ -1524,9 +1516,8 @@ export const StopEarthObservationJobInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopEarthObservationJobInput",
 }) as any as S.Schema<StopEarthObservationJobInput>;
 export interface StopEarthObservationJobOutput {}
-export const StopEarthObservationJobOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopEarthObservationJobOutput",
-}) as any as S.Schema<StopEarthObservationJobOutput>;
+export const StopEarthObservationJobOutput =
+  CloudMaskingConfigInput as any as S.Schema<StopEarthObservationJobOutput>;
 export interface StopVectorEnrichmentJobInput {
   Arn: string;
 }
@@ -1545,9 +1536,8 @@ export const StopVectorEnrichmentJobInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopVectorEnrichmentJobInput",
 }) as any as S.Schema<StopVectorEnrichmentJobInput>;
 export interface StopVectorEnrichmentJobOutput {}
-export const StopVectorEnrichmentJobOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopVectorEnrichmentJobOutput",
-}) as any as S.Schema<StopVectorEnrichmentJobOutput>;
+export const StopVectorEnrichmentJobOutput =
+  CloudMaskingConfigInput as any as S.Schema<StopVectorEnrichmentJobOutput>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
@@ -1558,11 +1548,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = CloudMaskingConfigInput as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = StringListInput as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -1576,9 +1564,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  CloudMaskingConfigInput as any as S.Schema<UntagResourceResponse>;
 export type DeleteEarthObservationJobError =
   | AccessDeniedException
   | ConflictException

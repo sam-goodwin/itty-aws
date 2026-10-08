@@ -495,9 +495,8 @@ export const GetKernelRevisionResponseAuthorData =
   S.Unknown as any as S.Schema<GetKernelRevisionResponseAuthorData>;
 
 export type GetKernelRevisionResponseFilesList = Array<string>;
-export const GetKernelRevisionResponseFilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetKernelRevisionResponseFilesList>;
+export const GetKernelRevisionResponseFilesList =
+  GetKernelResponseFilesList as any as S.Schema<GetKernelRevisionResponseFilesList>;
 
 export type GetKernelRevisionResponseSupportedDriverFamiliesItem =
   | "cuda"
@@ -609,36 +608,32 @@ export const GetSecurityStatusResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSecurityStatusResponse>;
 
 export type ListKernelsRequestAuthorCase1List = Array<string>;
-export const ListKernelsRequestAuthorCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListKernelsRequestAuthorCase1List>;
+export const ListKernelsRequestAuthorCase1List =
+  GetKernelResponseFilesList as any as S.Schema<ListKernelsRequestAuthorCase1List>;
 
 /** Filter by author */
 export type ListKernelsRequestAuthor = string | ListKernelsRequestAuthorCase1List;
 export const ListKernelsRequestAuthor = S.Unknown as any as S.Schema<ListKernelsRequestAuthor>;
 
 export type ListKernelsRequestIdCase1List = Array<string>;
-export const ListKernelsRequestIdCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListKernelsRequestIdCase1List>;
+export const ListKernelsRequestIdCase1List =
+  GetKernelResponseFilesList as any as S.Schema<ListKernelsRequestIdCase1List>;
 
 /** Filter by ID */
 export type ListKernelsRequestId = string | ListKernelsRequestIdCase1List;
 export const ListKernelsRequestId = S.Unknown as any as S.Schema<ListKernelsRequestId>;
 
 export type ListKernelsRequestArxivIdsCase1List = Array<string>;
-export const ListKernelsRequestArxivIdsCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListKernelsRequestArxivIdsCase1List>;
+export const ListKernelsRequestArxivIdsCase1List =
+  GetKernelResponseFilesList as any as S.Schema<ListKernelsRequestArxivIdsCase1List>;
 
 /** Filter by Arxiv ID */
 export type ListKernelsRequestArxivIds = string | ListKernelsRequestArxivIdsCase1List;
 export const ListKernelsRequestArxivIds = S.Unknown as any as S.Schema<ListKernelsRequestArxivIds>;
 
 export type ListKernelsRequestFilterCase1List = Array<string>;
-export const ListKernelsRequestFilterCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListKernelsRequestFilterCase1List>;
+export const ListKernelsRequestFilterCase1List =
+  GetKernelResponseFilesList as any as S.Schema<ListKernelsRequestFilterCase1List>;
 
 /** Filter by tags */
 export type ListKernelsRequestFilter = string | ListKernelsRequestFilterCase1List;
@@ -759,15 +754,13 @@ export const ListKernelsResponseBodyItemGated =
 
 /** List of files in the kernel */
 export type ListKernelsResponseBodyItemFilesList = Array<string>;
-export const ListKernelsResponseBodyItemFilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListKernelsResponseBodyItemFilesList>;
+export const ListKernelsResponseBodyItemFilesList =
+  GetKernelResponseFilesList as any as S.Schema<ListKernelsResponseBodyItemFilesList>;
 
 /** Kernel tags */
 export type ListKernelsResponseBodyItemTagsList = Array<string>;
-export const ListKernelsResponseBodyItemTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListKernelsResponseBodyItemTagsList>;
+export const ListKernelsResponseBodyItemTagsList =
+  GetKernelResponseFilesList as any as S.Schema<ListKernelsResponseBodyItemTagsList>;
 
 export type ListKernelsResponseBodyItemBuildMetadataCompatibilityTorchItem =
   | "2.8"
@@ -1074,9 +1067,8 @@ export const ListLikersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListLikersRequest" }) as any as S.Schema<ListLikersRequest>;
 
 export interface ListLikersResponse {}
-export const ListLikersResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ListLikersResponse",
-}) as any as S.Schema<ListLikersResponse>;
+export const ListLikersResponse =
+  ApproveKernelAccessResponse as any as S.Schema<ListLikersResponse>;
 
 export type ApproveKernelAccessError = HuggingFaceOpError;
 /** Approve kernel access */

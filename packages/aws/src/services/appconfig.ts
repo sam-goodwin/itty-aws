@@ -811,11 +811,8 @@ export const DeleteDeploymentStrategyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDeploymentStrategyRequest",
 }) as any as S.Schema<DeleteDeploymentStrategyRequest>;
 export interface DeleteDeploymentStrategyResponse {}
-export const DeleteDeploymentStrategyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDeploymentStrategyResponse",
-}) as any as S.Schema<DeleteDeploymentStrategyResponse>;
+export const DeleteDeploymentStrategyResponse =
+  DeleteConfigurationProfileResponse as any as S.Schema<DeleteDeploymentStrategyResponse>;
 export interface DeleteEnvironmentRequest {
   EnvironmentId: string;
   ApplicationId: string;
@@ -843,9 +840,8 @@ export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteEnvironmentRequest" }) as any as S.Schema<DeleteEnvironmentRequest>;
 export interface DeleteEnvironmentResponse {}
-export const DeleteEnvironmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEnvironmentResponse",
-}) as any as S.Schema<DeleteEnvironmentResponse>;
+export const DeleteEnvironmentResponse =
+  DeleteApplicationResponse as any as S.Schema<DeleteEnvironmentResponse>;
 export type DeleteType = "ARCHIVE" | "DESTROY" | (string & {});
 export const DeleteType = S.String;
 
@@ -876,11 +872,8 @@ export const DeleteExperimentDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteExperimentDefinitionRequest",
 }) as any as S.Schema<DeleteExperimentDefinitionRequest>;
 export interface DeleteExperimentDefinitionResponse {}
-export const DeleteExperimentDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteExperimentDefinitionResponse",
-}) as any as S.Schema<DeleteExperimentDefinitionResponse>;
+export const DeleteExperimentDefinitionResponse =
+  DeleteConfigurationProfileResponse as any as S.Schema<DeleteExperimentDefinitionResponse>;
 export interface DeleteExtensionRequest {
   ExtensionIdentifier: string;
   VersionNumber?: number;
@@ -901,9 +894,8 @@ export const DeleteExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteExtensionRequest" }) as any as S.Schema<DeleteExtensionRequest>;
 export interface DeleteExtensionResponse {}
-export const DeleteExtensionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteExtensionResponse",
-}) as any as S.Schema<DeleteExtensionResponse>;
+export const DeleteExtensionResponse =
+  DeleteApplicationResponse as any as S.Schema<DeleteExtensionResponse>;
 export interface DeleteExtensionAssociationRequest {
   ExtensionAssociationId: string;
 }
@@ -922,11 +914,8 @@ export const DeleteExtensionAssociationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteExtensionAssociationRequest",
 }) as any as S.Schema<DeleteExtensionAssociationRequest>;
 export interface DeleteExtensionAssociationResponse {}
-export const DeleteExtensionAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteExtensionAssociationResponse",
-}) as any as S.Schema<DeleteExtensionAssociationResponse>;
+export const DeleteExtensionAssociationResponse =
+  DeleteConfigurationProfileResponse as any as S.Schema<DeleteExtensionAssociationResponse>;
 export interface DeleteHostedConfigurationVersionRequest {
   ApplicationId: string;
   ConfigurationProfileId: string;
@@ -954,11 +943,8 @@ export const DeleteHostedConfigurationVersionRequest = /*@__PURE__*/ S.suspend((
   identifier: "DeleteHostedConfigurationVersionRequest",
 }) as any as S.Schema<DeleteHostedConfigurationVersionRequest>;
 export interface DeleteHostedConfigurationVersionResponse {}
-export const DeleteHostedConfigurationVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteHostedConfigurationVersionResponse",
-}) as any as S.Schema<DeleteHostedConfigurationVersionResponse>;
+export const DeleteHostedConfigurationVersionResponse =
+  DeleteConfigurationProfileResponse as any as S.Schema<DeleteHostedConfigurationVersionResponse>;
 export interface GetAccountSettingsRequest {}
 export const GetAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -1327,10 +1313,7 @@ export const ExperimentRunStatus = S.String;
 export type NullablePercentage = number;
 export type EntityId = string;
 export type TreatmentOverrideMap = { [key: string]: string | undefined };
-export const TreatmentOverrideMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const TreatmentOverrideMap = ParameterValueMap as any as S.Schema<TreatmentOverrideMap>;
 export type TreatmentOverrides = { Inline: { [key: string]: string | undefined } };
 export const TreatmentOverrides = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ Inline: TreatmentOverrideMap }),
@@ -2027,10 +2010,7 @@ export const ResourceTags = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceTags" }) as any as S.Schema<ResourceTags>;
 export type DynamicParameterKey = string;
 export type DynamicParameterMap = { [key: string]: string | undefined };
-export const DynamicParameterMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const DynamicParameterMap = ParameterValueMap as any as S.Schema<DynamicParameterMap>;
 export interface StartDeploymentRequest {
   ApplicationId: string;
   EnvironmentId: string;
@@ -2177,11 +2157,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteApplicationResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = StringList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -2195,9 +2174,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteApplicationResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAccountSettingsRequest {
   DeletionProtection?: DeletionProtectionSettings;
   VendedMetrics?: VendedMetricsSettings;
@@ -2466,9 +2444,8 @@ export const ValidateConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ValidateConfigurationRequest",
 }) as any as S.Schema<ValidateConfigurationRequest>;
 export interface ValidateConfigurationResponse {}
-export const ValidateConfigurationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ValidateConfigurationResponse",
-}) as any as S.Schema<ValidateConfigurationResponse>;
+export const ValidateConfigurationResponse =
+  DeleteApplicationResponse as any as S.Schema<ValidateConfigurationResponse>;
 export type BadRequestReason = "InvalidConfiguration" | (string & {});
 export const BadRequestReason = S.String;
 

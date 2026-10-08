@@ -176,15 +176,7 @@ export interface ExtendedZone {
   /** The resource-specific properties for this resource. */
   properties?: ExtendedZoneProperties;
 }
-export const ExtendedZone = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ExtendedZoneProperties),
-  }),
-).annotate({ identifier: "ExtendedZone" }) as any as S.Schema<ExtendedZone>;
+export const ExtendedZone = GetExtendedZoneResponse as any as S.Schema<ExtendedZone>;
 
 /** The ExtendedZone items on this page */
 export type ExtendedZoneListResultValueList = Array<ExtendedZone>;
@@ -368,17 +360,8 @@ export interface UnregisterExtendedZoneResponse {
   /** The resource-specific properties for this resource. */
   properties?: ExtendedZoneProperties;
 }
-export const UnregisterExtendedZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ExtendedZoneProperties),
-  }),
-).annotate({
-  identifier: "UnregisterExtendedZoneResponse",
-}) as any as S.Schema<UnregisterExtendedZoneResponse>;
+export const UnregisterExtendedZoneResponse =
+  RegisterExtendedZoneResponse as any as S.Schema<UnregisterExtendedZoneResponse>;
 
 export type GetExtendedZoneError = AzureOpError;
 /** Gets an Azure Extended Zone for a subscription */

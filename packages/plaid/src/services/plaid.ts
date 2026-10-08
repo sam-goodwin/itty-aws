@@ -125,13 +125,7 @@ export interface AmountWithCurrency {
   /** The unofficial currency code associated with the amount. Always `null` if `iso_currency_code` is non-`null`. See the [currency code schema](https://plaid.com/docs/api/accounts#currency-code-schema) for a full listing of supported `unofficial_currency_code`s. */
   unofficial_currency_code?: string | null;
 }
-export const AmountWithCurrency = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amount: S.optional(S.NullOr(S.Number)),
-    iso_currency_code: S.optional(S.NullOr(S.String)),
-    unofficial_currency_code: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "AmountWithCurrency" }) as any as S.Schema<AmountWithCurrency>;
+export const AmountWithCurrency = MonthlyAverage as any as S.Schema<AmountWithCurrency>;
 
 /** Monthly summary of transactions within a specific time period, showing aggregated amounts. */
 export interface MonthlySummary {
@@ -197,9 +191,8 @@ export const GamblingIndicatorsTopMerchantsList = /*@__PURE__*/ S.Array(
 
 /** The monthly summaries of the transactions that fall into the `GAMBLING` category within the given time window, across all the accounts in the report. */
 export type GamblingIndicatorsMonthlySummariesList = Array<MonthlySummary | null>;
-export const GamblingIndicatorsMonthlySummariesList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(MonthlySummary),
-) as any as S.Schema<GamblingIndicatorsMonthlySummariesList>;
+export const GamblingIndicatorsMonthlySummariesList =
+  BankPenaltiesIndicatorsMonthlySummariesList as any as S.Schema<GamblingIndicatorsMonthlySummariesList>;
 
 /** Insights into gambling-related transactions, including frequency, amounts, and top merchants. */
 export interface GamblingIndicators {
@@ -237,21 +230,18 @@ export const GamblingIndicators = /*@__PURE__*/ S.suspend(() =>
 
 /** Detailed categories view of all the transactions that fall into the `LOAN_DISBURSEMENTS` credit category within the given time window, across all the accounts in the report. */
 export type LoanDisbursementsIndicatorsCategoryDetailsList = Array<CategoryExpenses | null>;
-export const LoanDisbursementsIndicatorsCategoryDetailsList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(CategoryExpenses),
-) as any as S.Schema<LoanDisbursementsIndicatorsCategoryDetailsList>;
+export const LoanDisbursementsIndicatorsCategoryDetailsList =
+  BankPenaltiesIndicatorsCategoryDetailsList as any as S.Schema<LoanDisbursementsIndicatorsCategoryDetailsList>;
 
 /** Up to 3 top service providers that the user had the most transactions for in the given time window, in descending order of total spend. If the user has not received money from any provider in the given time window, this list will be empty. */
 export type LoanDisbursementsIndicatorsTopProvidersList = Array<string>;
-export const LoanDisbursementsIndicatorsTopProvidersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LoanDisbursementsIndicatorsTopProvidersList>;
+export const LoanDisbursementsIndicatorsTopProvidersList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<LoanDisbursementsIndicatorsTopProvidersList>;
 
 /** The monthly summaries of the transactions that fall into the `LOAN_DISBURSEMENTS` category within the given time window, across all the accounts in the report. */
 export type LoanDisbursementsIndicatorsMonthlySummariesList = Array<MonthlySummary | null>;
-export const LoanDisbursementsIndicatorsMonthlySummariesList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(MonthlySummary),
-) as any as S.Schema<LoanDisbursementsIndicatorsMonthlySummariesList>;
+export const LoanDisbursementsIndicatorsMonthlySummariesList =
+  BankPenaltiesIndicatorsMonthlySummariesList as any as S.Schema<LoanDisbursementsIndicatorsMonthlySummariesList>;
 
 /** Insights into loan disbursement transactions received by the user, tracking incoming funds from loan providers. */
 export interface LoanDisbursementsIndicators {
@@ -294,21 +284,18 @@ export const LoanDisbursementsIndicators = /*@__PURE__*/ S.suspend(() =>
 
 /** Detailed categories view of all the transactions that fall into the `LOAN_PAYMENTS` credit category within the given time window, across all the accounts in the report. */
 export type LoanPaymentsIndicatorsCategoryDetailsList = Array<CategoryExpenses | null>;
-export const LoanPaymentsIndicatorsCategoryDetailsList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(CategoryExpenses),
-) as any as S.Schema<LoanPaymentsIndicatorsCategoryDetailsList>;
+export const LoanPaymentsIndicatorsCategoryDetailsList =
+  BankPenaltiesIndicatorsCategoryDetailsList as any as S.Schema<LoanPaymentsIndicatorsCategoryDetailsList>;
 
 /** Up to 3 top service providers that the user had the most transactions for in the given time window, in descending order of total spend. If the user has not spent money on any provider in the given time window, this list will be empty. */
 export type LoanPaymentsIndicatorsTopProvidersList = Array<string>;
-export const LoanPaymentsIndicatorsTopProvidersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LoanPaymentsIndicatorsTopProvidersList>;
+export const LoanPaymentsIndicatorsTopProvidersList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<LoanPaymentsIndicatorsTopProvidersList>;
 
 /** The monthly summaries of the transactions that fall into the `LOAN_PAYMENTS` credit category within the given time window, across all the accounts in the report. */
 export type LoanPaymentsIndicatorsMonthlySummariesList = Array<MonthlySummary | null>;
-export const LoanPaymentsIndicatorsMonthlySummariesList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(MonthlySummary),
-) as any as S.Schema<LoanPaymentsIndicatorsMonthlySummariesList>;
+export const LoanPaymentsIndicatorsMonthlySummariesList =
+  BankPenaltiesIndicatorsMonthlySummariesList as any as S.Schema<LoanPaymentsIndicatorsMonthlySummariesList>;
 
 /** Insights into loan payment transactions made by the user, tracking outgoing payments to loan providers. */
 export interface LoanPaymentsIndicators {
@@ -414,9 +401,8 @@ export const AmountWithCurrencyWithMonthlyAverage = AmountWithCurrency;
 
 /** The primary credit categories of the expenses within the given time window, across all the accounts in the report. The categories are sorted in descending order by the total value spent. See the [category taxonomy](https://plaid.com/documents/credit-category-taxonomy.csv) for a full listing of category IDs. */
 export type ExpenditureSummaryTopCategoriesList = Array<CategoryExpenses | null>;
-export const ExpenditureSummaryTopCategoriesList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(CategoryExpenses),
-) as any as S.Schema<ExpenditureSummaryTopCategoriesList>;
+export const ExpenditureSummaryTopCategoriesList =
+  BankPenaltiesIndicatorsCategoryDetailsList as any as S.Schema<ExpenditureSummaryTopCategoriesList>;
 
 /** Summary statistics for a specific expenditure category, including total amount, monthly average, and percentage of income. */
 export interface ExpenditureSummary {
@@ -448,9 +434,8 @@ export const ExpenditureSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** Up to 3 top categories of expenses in this group. */
 export type OutlierTransactionsInsightsTopCategoriesList = Array<CategoryExpenses | null>;
-export const OutlierTransactionsInsightsTopCategoriesList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(CategoryExpenses),
-) as any as S.Schema<OutlierTransactionsInsightsTopCategoriesList>;
+export const OutlierTransactionsInsightsTopCategoriesList =
+  BankPenaltiesIndicatorsCategoryDetailsList as any as S.Schema<OutlierTransactionsInsightsTopCategoriesList>;
 
 /** Insights into unusually large transactions that exceed typical spending patterns for the account. */
 export interface OutlierTransactionsInsights {
@@ -696,9 +681,8 @@ export const AccountAssetsVerificationStatus = S.String;
 
 /** A hierarchical array of the categories to which this transaction belongs. For a full list of categories, see [`/categories/get`](https://plaid.com/docs/api/products/transactions/#categoriesget). This field will only appear in an Asset Report with Insights. */
 export type AssetReportTransactionCategoryList = Array<string>;
-export const AssetReportTransactionCategoryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AssetReportTransactionCategoryList>;
+export const AssetReportTransactionCategoryList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<AssetReportTransactionCategoryList>;
 
 /** Information describing the intent of the transaction. Most relevant for credit use cases, but not limited to such use cases. See the [`taxonomy csv file`](https://plaid.com/documents/credit-category-taxonomy.csv) for a full list of credit categories. */
 export interface CreditCategory {
@@ -1423,15 +1407,13 @@ export const CauseCausesList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Sche
 
 /** A list of the account subtypes that were requested via the `account_filters` parameter in `/link/token/create`. Currently only populated for `NO_ACCOUNTS` errors from Items with `investments_auth` as an enabled product. */
 export type CauseRequiredAccountSubtypesList = Array<string>;
-export const CauseRequiredAccountSubtypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CauseRequiredAccountSubtypesList>;
+export const CauseRequiredAccountSubtypesList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<CauseRequiredAccountSubtypesList>;
 
 /** A list of the account subtypes that were extracted but did not match the requested subtypes via the `account_filters` parameter in `/link/token/create`. Currently only populated for `NO_ACCOUNTS` errors from Items with `investments_auth` as an enabled product. */
 export type CauseProvidedAccountSubtypesList = Array<string>;
-export const CauseProvidedAccountSubtypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CauseProvidedAccountSubtypesList>;
+export const CauseProvidedAccountSubtypesList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<CauseProvidedAccountSubtypesList>;
 
 /** An error object and associated `item_id` used to identify a specific Item and error when a batch operation operating on multiple Items has encountered an error in one of the Items. */
 export interface Cause {
@@ -1586,9 +1568,8 @@ export const AssetReportAuditCopyRemoveResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The accounts to exclude from the Asset Report, identified by `account_id`. */
 export type AssetReportFilterRequestAccountIdsToExcludeList = Array<string>;
-export const AssetReportFilterRequestAccountIdsToExcludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AssetReportFilterRequestAccountIdsToExcludeList>;
+export const AssetReportFilterRequestAccountIdsToExcludeList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<AssetReportFilterRequestAccountIdsToExcludeList>;
 
 export interface AssetReportFilterRequest {
   client_id?: string;
@@ -1943,13 +1924,8 @@ export const CancelTransferRecurringRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TransferRecurringCancelResponse {
   request_id: string;
 }
-export const TransferRecurringCancelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "TransferRecurringCancelResponse",
-}) as any as S.Schema<TransferRecurringCancelResponse>;
+export const TransferRecurringCancelResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<TransferRecurringCancelResponse>;
 
 export interface CancelTransferRefundRequest {
   client_id?: string;
@@ -1970,25 +1946,18 @@ export const CancelTransferRefundRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TransferRefundCancelResponse {
   request_id: string;
 }
-export const TransferRefundCancelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "TransferRefundCancelResponse",
-}) as any as S.Schema<TransferRefundCancelResponse>;
+export const TransferRefundCancelResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<TransferRefundCancelResponse>;
 
 /** An array of access tokens corresponding to the Items that will be included in the report. The `assets` product must have been initialized for the Items during Link; the Assets product cannot be added after initialization. */
 export type CreateAssetReportRequestAccessTokensList = Array<string>;
-export const CreateAssetReportRequestAccessTokensList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateAssetReportRequestAccessTokensList>;
+export const CreateAssetReportRequestAccessTokensList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<CreateAssetReportRequestAccessTokensList>;
 
 /** Additional information that can be included in the asset report. Possible values: `"investments"` */
 export type AssetReportCreateRequestOptionsProductsList = Array<string>;
-export const AssetReportCreateRequestOptionsProductsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AssetReportCreateRequestOptionsProductsList>;
+export const AssetReportCreateRequestOptionsProductsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<AssetReportCreateRequestOptionsProductsList>;
 
 /** Add-ons that should be included in the Asset Report. `investments`: The Investments add-on `fast_assets`: The Fast Assets add-on */
 export type AssetReportAddOns = "investments" | "fast_assets";
@@ -2055,21 +2024,13 @@ export interface AssetReportCreateResponse {
   asset_report_id: string;
   request_id: string;
 }
-export const AssetReportCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    asset_report_token: S.String,
-    asset_report_id: S.String,
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "AssetReportCreateResponse",
-}) as any as S.Schema<AssetReportCreateResponse>;
+export const AssetReportCreateResponse =
+  AssetReportFilterResponse as any as S.Schema<AssetReportCreateResponse>;
 
 /** The products to be enabled for the end customer. If empty or `null`, this field will default to the products enabled for the reseller at the time this endpoint is called. */
 export type CreateBetaPartnerCustomerV1RequestProductsList = Array<Products | (string & {})>;
-export const CreateBetaPartnerCustomerV1RequestProductsList = /*@__PURE__*/ S.Array(
-  Products,
-) as any as S.Schema<CreateBetaPartnerCustomerV1RequestProductsList>;
+export const CreateBetaPartnerCustomerV1RequestProductsList =
+  BetaIssuesV1IssueAffectedProductsList as any as S.Schema<CreateBetaPartnerCustomerV1RequestProductsList>;
 
 /** The technical contact for the end customer. Defaults to partner's technical contact if omitted. */
 export interface PartnerEndCustomerTechnicalContact {
@@ -2133,9 +2094,8 @@ export const PartnerEndCustomerAddress = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of URIs indicating the destination(s) where a user can be forwarded after completing the Link flow; used to support OAuth authentication flows when launching Link in the browser or another app. URIs should not contain any query parameters. When used in Production, URIs must use https. To modify redirect URIs for an end customer after creating them, go to the end customer's [API page](https://dashboard.plaid.com/team/api) in the Dashboard. */
 export type CreateBetaPartnerCustomerV1RequestRedirectUrisList = Array<string>;
-export const CreateBetaPartnerCustomerV1RequestRedirectUrisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateBetaPartnerCustomerV1RequestRedirectUrisList>;
+export const CreateBetaPartnerCustomerV1RequestRedirectUrisList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<CreateBetaPartnerCustomerV1RequestRedirectUrisList>;
 
 /** The bank addendum acceptance for the end customer. */
 export interface PartnerEndCustomerBankAddendumAcceptance {
@@ -2453,9 +2413,8 @@ export const BusinessVerificationStatusOverall = S.String;
 
 /** Alternative business names that were submitted as search inputs. */
 export type BusinessSearchTermsAlternativeNamesList = Array<string>;
-export const BusinessSearchTermsAlternativeNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BusinessSearchTermsAlternativeNamesList>;
+export const BusinessSearchTermsAlternativeNamesList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<BusinessSearchTermsAlternativeNamesList>;
 
 /** Physical address of a business. Used for response schemas. */
 export interface ResponseBusinessAddress {
@@ -2846,9 +2805,8 @@ export const BusinessVerificationCreateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies a list of products to generate when creating the report (in addition to the Base Report, which is always generated). These products will be made available before a success webhook is sent. Note that specifying `cra_partner_insights` in this field will trigger a billable event. Other products are not billed until the respective reports are retrieved via their product-specific `/get` endpoints. */
 export type CreateCraCheckReportRequestProductsList = Array<Products | (string & {})>;
-export const CreateCraCheckReportRequestProductsList = /*@__PURE__*/ S.Array(
-  Products,
-) as any as S.Schema<CreateCraCheckReportRequestProductsList>;
+export const CreateCraCheckReportRequestProductsList =
+  BetaIssuesV1IssueAffectedProductsList as any as S.Schema<CreateCraCheckReportRequestProductsList>;
 
 /** The types of GSE Reports supported by the Plaid API */
 export type GSEReportType = "VOA" | "EMPLOYMENT_REFRESH";
@@ -2995,9 +2953,8 @@ export const CraPartnerInsightsBureau = S.String;
 
 /** Reason codes associated with the score, in priority order. May contain up to 4 items. */
 export type CraPartnerInsightsBaseFicoScoreReasonCodesList = Array<string>;
-export const CraPartnerInsightsBaseFicoScoreReasonCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CraPartnerInsightsBaseFicoScoreReasonCodesList>;
+export const CraPartnerInsightsBaseFicoScoreReasonCodesList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<CraPartnerInsightsBaseFicoScoreReasonCodesList>;
 
 /** The version of the base FICO score model. */
 export type CraPartnerInsightsBaseFicoScoreVersion = "8" | "9" | "10" | "10T";
@@ -3132,15 +3089,13 @@ export const CraCheckReportCreateNetworkInsightsOptions = /*@__PURE__*/ S.suspen
 
 /** Includes income streams matching the specified categories. */
 export type IncomeInsightsFilterIncludedCategoriesList = Array<string>;
-export const IncomeInsightsFilterIncludedCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IncomeInsightsFilterIncludedCategoriesList>;
+export const IncomeInsightsFilterIncludedCategoriesList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<IncomeInsightsFilterIncludedCategoriesList>;
 
 /** Excludes income streams matching the specified categories. */
 export type IncomeInsightsFilterExcludedCategoriesList = Array<string>;
-export const IncomeInsightsFilterExcludedCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IncomeInsightsFilterExcludedCategoriesList>;
+export const IncomeInsightsFilterExcludedCategoriesList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<IncomeInsightsFilterExcludedCategoriesList>;
 
 /** Filters the returned income streams based on the specified income categories. If no filters are requested, streams from the following default set of categories are returned: - `EARNED_INCOME.*` (`EARNED_INCOME.SALARY`, `EARNED_INCOME.GIG_ECONOMY`, `EARNED_INCOME.SELF_EMPLOYED`) - `BENEFITS.DISABILITY` - `RETIREMENT.*` (`RETIREMENT.GOVERNMENT_DERIVED`, `RETIREMENT.PRIVATE_RETIREMENT`, `RETIREMENT.PLAN_DISTRIBUTION`) The final list of income categories is generated by adding the `included_categories`, then removing the `excluded_categories`. Priority is given to `excluded_categories` in the case of collisions. Filter patterns supported: - `*`: All categories - `PRIMARY.*`: All categories within the specified primary category - `PRIMARY.SECONDARY`: A specific income category For a list of income categories, see the [Income V2 Category Taxonomy](https://plaid.com/documents/income-v2-category-taxonomy.csv). */
 export interface IncomeInsightsFilter {
@@ -3321,13 +3276,8 @@ export interface CraReportCreateEmploymentRefreshOptions {
   /** The number of days of data to request for the Employment Refresh report. Maximum is 731. */
   days_requested: number;
 }
-export const CraReportCreateEmploymentRefreshOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    days_requested: S.Number,
-  }),
-).annotate({
-  identifier: "CraReportCreateEmploymentRefreshOptions",
-}) as any as S.Schema<CraReportCreateEmploymentRefreshOptions>;
+export const CraReportCreateEmploymentRefreshOptions =
+  CraCheckReportCreateEmploymentRefreshOptions as any as S.Schema<CraReportCreateEmploymentRefreshOptions>;
 
 /** Configures how the Home Lending product is generated. */
 export interface CraReportCreateHomeLendingOptions {
@@ -3641,9 +3591,8 @@ export const CraServicingSubscriptionCreateResponse = /*@__PURE__*/ S.suspend(()
 
 /** List of report token strings, with at most one token of each report type. Currently only Asset Report token is supported. */
 export type CreateCreditRelayRequestReportTokensList = Array<string>;
-export const CreateCreditRelayRequestReportTokensList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCreditRelayRequestReportTokensList>;
+export const CreateCreditRelayRequestReportTokensList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<CreateCreditRelayRequestReportTokensList>;
 
 export interface CreateCreditRelayRequest {
   client_id?: string;
@@ -4685,9 +4634,8 @@ export const RiskLevel = S.String;
 
 /** List of factors, when available, that contribute towards the risk level of the given risk check type. */
 export type RiskCheckFactors = Array<string>;
-export const RiskCheckFactors = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RiskCheckFactors>;
+export const RiskCheckFactors =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<RiskCheckFactors>;
 
 /** Result summary object specifying values for `email` attributes of risk check. */
 export interface RiskCheckEmail {
@@ -4731,9 +4679,8 @@ export const RiskCheckEmail = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of online services where this phone number has been detected to have accounts or other activity. */
 export type RiskCheckPhoneLinkedServicesList = Array<RiskCheckLinkedService>;
-export const RiskCheckPhoneLinkedServicesList = /*@__PURE__*/ S.Array(
-  RiskCheckLinkedService,
-) as any as S.Schema<RiskCheckPhoneLinkedServicesList>;
+export const RiskCheckPhoneLinkedServicesList =
+  RiskCheckEmailLinkedServicesList as any as S.Schema<RiskCheckPhoneLinkedServicesList>;
 
 /** Result summary object specifying values for `phone` attributes of risk check. */
 export interface RiskCheckPhone {
@@ -4994,10 +4941,8 @@ export const TrustIndex = /*@__PURE__*/ S.suspend(() =>
 
 /** Event fraud attributes as an arbitrary set of key-value pairs. The set of attributes returned varies by model. */
 export type FraudAttributes = { [key: string]: unknown | undefined };
-export const FraudAttributes = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FraudAttributes>;
+export const FraudAttributes =
+  PartnerEndCustomerProductStatuses as any as S.Schema<FraudAttributes>;
 
 /** Information about a Protect event including Trust Index score and fraud attributes. */
 export interface IDVProtectEvent {
@@ -5227,33 +5172,28 @@ export const LinkTokenCreateRequestUser = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Plaid product(s) that the linked Item must support. If launching Link in update mode, should be omitted (unless you are using update mode to add a credit product, such as Assets, Statements, Income, or Plaid Check Consumer Report, to an existing Item); at least one `product` is required otherwise. To maximize the number of institutions and accounts available, initialize Link with the minimal product set required for your use case, as the products specified will limit which institutions and account types will be available to your users in Link. Only institutions that support *all* requested products can be selected; if a user attempts to select an institution that does not support a listed product, a "Connectivity not supported" error message will appear in Link. For each specified product, the Item connected by the user must contain at least one compatible account. For details on compatible product / account type combinations, see [the account type/product support matrix](https://plaid.com/docs/api/accounts/#account-type--product-support-matrix). To add products without limiting the institution list or account types, use the [`optional_products`](https://plaid.com/docs/api/link/#link-token-create-request-optional-products) or [`required_if_supported_products`](https://plaid.com/docs/api/link/#link-token-create-request-required-if-supported-products) fields. Products can also be added to an Item by calling the product endpoint after obtaining an access token; this may require the product to be listed in the [`additional_consented_products`](https://plaid.com/docs/api/link/#link-token-create-request-additional-consented-products) array. For details, see [Choosing when to initialize products](https://plaid.com/docs/link/initializing-products/). `balance` is *not* a valid value, the Balance product does not require explicit initialization and will automatically be initialized when any other product is initialized. If launching Link with CRA products, `cra_base_report` is required and must be included in the `products` array. Note that, unless you have opted to disable Instant Match support, institutions that support Instant Match will also be shown in Link if `auth` is specified as a product, even though these institutions do not contain `auth` in their product array. In Production, you will be billed for each product that you specify when initializing Link. Note that a product cannot be removed from an Item once the Item has been initialized with that product. To stop billing on an Item for subscription-based products, such as Liabilities, Investments, and Transactions, remove the Item via `/item/remove`. */
 export type CreateLinkTokenRequestProductsList = Array<Products | (string & {})>;
-export const CreateLinkTokenRequestProductsList = /*@__PURE__*/ S.Array(
-  Products,
-) as any as S.Schema<CreateLinkTokenRequestProductsList>;
+export const CreateLinkTokenRequestProductsList =
+  BetaIssuesV1IssueAffectedProductsList as any as S.Schema<CreateLinkTokenRequestProductsList>;
 
 /** List of Plaid product(s) you wish to use only if the institution and account(s) selected by the user support the product. Institutions that do not support these products will still be shown in Link. The products will only be extracted and billed if the user selects an institution and account type that supports them. There should be no overlap between this array and the `products`, `optional_products`, or `additional_consented_products` arrays. The `products` array must have at least one product. For more details on using this feature, see [Required if Supported Products](https://plaid.com/docs/link/initializing-products/#required-if-supported-products). */
 export type CreateLinkTokenRequestRequiredIfSupportedProductsList = Array<Products | (string & {})>;
-export const CreateLinkTokenRequestRequiredIfSupportedProductsList = /*@__PURE__*/ S.Array(
-  Products,
-) as any as S.Schema<CreateLinkTokenRequestRequiredIfSupportedProductsList>;
+export const CreateLinkTokenRequestRequiredIfSupportedProductsList =
+  BetaIssuesV1IssueAffectedProductsList as any as S.Schema<CreateLinkTokenRequestRequiredIfSupportedProductsList>;
 
 /** List of Plaid product(s) that will enhance the consumer's use case, but that your app can function without. Plaid will attempt to fetch data for these products on a best-effort basis, and failure to support these products will not affect Item creation. There should be no overlap between this array and the `products`, `required_if_supported_products`, or `additional_consented_products` arrays. The `products` array must have at least one product. For more details on using this feature, see [Optional Products](https://plaid.com/docs/link/initializing-products/#optional-products). */
 export type CreateLinkTokenRequestOptionalProductsList = Array<Products | (string & {})>;
-export const CreateLinkTokenRequestOptionalProductsList = /*@__PURE__*/ S.Array(
-  Products,
-) as any as S.Schema<CreateLinkTokenRequestOptionalProductsList>;
+export const CreateLinkTokenRequestOptionalProductsList =
+  BetaIssuesV1IssueAffectedProductsList as any as S.Schema<CreateLinkTokenRequestOptionalProductsList>;
 
 /** List of additional Plaid product(s) you wish to collect consent for to support your use case. These products will not be billed until you start using them by calling the relevant endpoints. `balance` is *not* a valid value, the Balance product does not require explicit initialization and will automatically have consent collected. Institutions that do not support these products will still be shown in Link. There should be no overlap between this array and the `products` or `required_if_supported_products` arrays. If you include `signal` in `additional_consented_products`, you will need to call [`/signal/prepare`](https://plaid.com/docs/api/products/signal/#signalprepare) before calling `/signal/evaluate` for the first time on an Item in order to get the most accurate results. For more details, see [`/signal/prepare`](https://plaid.com/docs/api/products/signal/#signalprepare). */
 export type CreateLinkTokenRequestAdditionalConsentedProductsList = Array<Products | (string & {})>;
-export const CreateLinkTokenRequestAdditionalConsentedProductsList = /*@__PURE__*/ S.Array(
-  Products,
-) as any as S.Schema<CreateLinkTokenRequestAdditionalConsentedProductsList>;
+export const CreateLinkTokenRequestAdditionalConsentedProductsList =
+  BetaIssuesV1IssueAffectedProductsList as any as S.Schema<CreateLinkTokenRequestAdditionalConsentedProductsList>;
 
 /** A list of access tokens associated with the items to update in Link update mode for the Assets product. Using this instead of the `access_token` field allows the updating of multiple items at once. This feature is in closed beta, please contact your account manager for more info. */
 export type CreateLinkTokenRequestAccessTokensList = Array<string>;
-export const CreateLinkTokenRequestAccessTokensList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateLinkTokenRequestAccessTokensList>;
+export const CreateLinkTokenRequestAccessTokensList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<CreateLinkTokenRequestAccessTokensList>;
 
 /** Enum representing the desired appearance mode for Link, used to force light or dark modes or set Link to change depending on user system settings. Currently in closed beta. */
 export type LinkTokenCreateRequestAppearanceMode = "LIGHT" | "DARK" | "SYSTEM";
@@ -5560,13 +5500,8 @@ export interface LinkTokenCreateRequestEmploymentBankIncome {
   /** The number of days of data to request for the Bank Employment product. */
   days_requested: number;
 }
-export const LinkTokenCreateRequestEmploymentBankIncome = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    days_requested: S.Number,
-  }),
-).annotate({
-  identifier: "LinkTokenCreateRequestEmploymentBankIncome",
-}) as any as S.Schema<LinkTokenCreateRequestEmploymentBankIncome>;
+export const LinkTokenCreateRequestEmploymentBankIncome =
+  CraCheckReportCreateEmploymentRefreshOptions as any as S.Schema<LinkTokenCreateRequestEmploymentBankIncome>;
 
 /** Specifies options for initializing Link for use with the Employment product. This field is required if `employment` is included in the `products` array. */
 export interface LinkTokenCreateRequestEmployment {
@@ -5585,9 +5520,8 @@ export const LinkTokenCreateRequestEmployment = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of access tokens corresponding to Items that a user has previously connected with. Data from these institutions will be cross-referenced with document data received during the Document Income flow to help verify that the uploaded documents are accurate. If the `transactions` product was not initialized for these Items during Link, it will be initialized after this Link session. This field should only be used with the `payroll` income source type. */
 export type LinkTokenCreateRequestIncomeVerificationAccessTokensList = Array<string>;
-export const LinkTokenCreateRequestIncomeVerificationAccessTokensList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LinkTokenCreateRequestIncomeVerificationAccessTokensList>;
+export const LinkTokenCreateRequestIncomeVerificationAccessTokensList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<LinkTokenCreateRequestIncomeVerificationAccessTokensList>;
 
 /** The types of source income data that users should be able to share */
 export type IncomeVerificationSourceType = "bank" | "payroll";
@@ -5898,9 +5832,8 @@ export const LinkTokenCreateRequestCraOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** The Plaid Check products, versions, and options to generate for the report. */
 export type LinkTokenCreateRequestCraReportParameterProductsList = Array<CraReportProduct>;
-export const LinkTokenCreateRequestCraReportParameterProductsList = /*@__PURE__*/ S.Array(
-  CraReportProduct,
-) as any as S.Schema<LinkTokenCreateRequestCraReportParameterProductsList>;
+export const LinkTokenCreateRequestCraReportParameterProductsList =
+  CreateCraReportRequestProductsList as any as S.Schema<LinkTokenCreateRequestCraReportParameterProductsList>;
 
 /** Specifies the report parameters for Plaid Check products, mirroring the parameters accepted on `/cra/report/create`. */
 export interface LinkTokenCreateRequestCraReportParameter {
@@ -6000,9 +5933,8 @@ export const LinkTokenCreateRequestTransfer = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of `item_id`s associated with the user to be updated in update mode. If empty or `null`, this field will default to initializing update mode for the most recent unhealthy Item associated with the user. A `user_token` must also be provided to use this field. */
 export type LinkTokenCreateRequestUpdateItemIdsList = Array<string>;
-export const LinkTokenCreateRequestUpdateItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LinkTokenCreateRequestUpdateItemIdsList>;
+export const LinkTokenCreateRequestUpdateItemIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<LinkTokenCreateRequestUpdateItemIdsList>;
 
 /** Specifies options for initializing Link for [update mode](https://plaid.com/docs/link/update-mode). */
 export interface LinkTokenCreateRequestUpdate {
@@ -6130,17 +6062,13 @@ export interface LinkTokenCashflowReport {
   /** Number of days of transaction history to request in the Cashflow Report product. */
   days_requested?: number;
 }
-export const LinkTokenCashflowReport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    days_requested: S.optional(S.Number),
-  }),
-).annotate({ identifier: "LinkTokenCashflowReport" }) as any as S.Schema<LinkTokenCashflowReport>;
+export const LinkTokenCashflowReport =
+  LinkTokenTransactions as any as S.Schema<LinkTokenCashflowReport>;
 
 /** An array of `account_ids`. Currently can only contain one `account_id`. Must be populated if using Document Upload. */
 export type LinkTokenCreateIdentityAccountIdsList = Array<string>;
-export const LinkTokenCreateIdentityAccountIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LinkTokenCreateIdentityAccountIdsList>;
+export const LinkTokenCreateIdentityAccountIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<LinkTokenCreateIdentityAccountIdsList>;
 
 /** An array of parsing configurations. Valid parsing configurations are `ocr` and `risk_signals`. If parsing configurations are omitted, defaults to `ocr` */
 export type LinkTokenCreateIdentityParsingConfigsList = Array<
@@ -6316,9 +6244,8 @@ export const LinkTokenCreateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The products to be enabled for the end customer. If empty or `null`, this field will default to the products enabled for the reseller at the time this endpoint is called. */
 export type CreatePartnerCustomerRequestProductsList = Array<Products | (string & {})>;
-export const CreatePartnerCustomerRequestProductsList = /*@__PURE__*/ S.Array(
-  Products,
-) as any as S.Schema<CreatePartnerCustomerRequestProductsList>;
+export const CreatePartnerCustomerRequestProductsList =
+  BetaIssuesV1IssueAffectedProductsList as any as S.Schema<CreatePartnerCustomerRequestProductsList>;
 
 /** Assets under management for the given end customer. Required for end customers with monthly service commitments. */
 export interface PartnerEndCustomerAssetsUnderManagement {
@@ -6336,9 +6263,8 @@ export const PartnerEndCustomerAssetsUnderManagement = /*@__PURE__*/ S.suspend((
 
 /** A list of URIs indicating the destination(s) where a user can be forwarded after completing the Link flow; used to support OAuth authentication flows when launching Link in the browser or another app. URIs should not contain any query parameters. When used in Production, URIs must use https. To modify redirect URIs for an end customer after creating them, go to the end customer's [API page](https://dashboard.plaid.com/team/api) in the Dashboard. */
 export type CreatePartnerCustomerRequestRedirectUrisList = Array<string>;
-export const CreatePartnerCustomerRequestRedirectUrisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreatePartnerCustomerRequestRedirectUrisList>;
+export const CreatePartnerCustomerRequestRedirectUrisList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<CreatePartnerCustomerRequestRedirectUrisList>;
 
 export interface CreatePartnerCustomerRequest {
   client_id?: string;
@@ -6577,9 +6503,8 @@ export const PaymentInitiationConsentPayerNumbers = /*@__PURE__*/ S.suspend(() =
 
 /** An array of length 1-2 representing the street address where the recipient is located. Maximum of 70 characters. */
 export type PaymentInitiationAddressStreetList = Array<string>;
-export const PaymentInitiationAddressStreetList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaymentInitiationAddressStreetList>;
+export const PaymentInitiationAddressStreetList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<PaymentInitiationAddressStreetList>;
 
 /** The optional address of the payment recipient's bank account. Required by most institutions outside of the UK. */
 export interface PaymentInitiationAddress {
@@ -6603,15 +6528,13 @@ export const PaymentInitiationAddress = /*@__PURE__*/ S.suspend(() =>
 
 /** The payer's phone numbers in E.164 format: +{countrycode}{number} */
 export type PaymentInitiationConsentPayerDetailsPhoneNumbersList = Array<string>;
-export const PaymentInitiationConsentPayerDetailsPhoneNumbersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaymentInitiationConsentPayerDetailsPhoneNumbersList>;
+export const PaymentInitiationConsentPayerDetailsPhoneNumbersList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<PaymentInitiationConsentPayerDetailsPhoneNumbersList>;
 
 /** The payer's emails */
 export type PaymentInitiationConsentPayerDetailsEmailsList = Array<string>;
-export const PaymentInitiationConsentPayerDetailsEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaymentInitiationConsentPayerDetailsEmailsList>;
+export const PaymentInitiationConsentPayerDetailsEmailsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<PaymentInitiationConsentPayerDetailsEmailsList>;
 
 /** An object representing the payment consent payer details. Payer `name` and account `numbers` are required to lock the account to which the consent can be created. */
 export interface PaymentInitiationConsentPayerDetails {
@@ -7113,13 +7036,8 @@ export const CreateProtectCashAdvanceDecisionRequest = /*@__PURE__*/ S.suspend((
 export interface ProtectCashAdvanceDecisionCreateResponse {
   request_id: string;
 }
-export const ProtectCashAdvanceDecisionCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "ProtectCashAdvanceDecisionCreateResponse",
-}) as any as S.Schema<ProtectCashAdvanceDecisionCreateResponse>;
+export const ProtectCashAdvanceDecisionCreateResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<ProtectCashAdvanceDecisionCreateResponse>;
 
 /** The repayment status of a cash-advance. `REPAID` - The cash-advance has been fully repaid. `PARTIAL_PAYMENT` - A payment has been made on the cash-advance, but there is still an outstanding balance. `UNPAID` - The cash-advance is past its due date and has not been repaid; the user is delinquent. */
 export type CashAdvanceRepaymentStatus = "REPAID" | "PARTIAL_PAYMENT" | "UNPAID";
@@ -7171,13 +7089,8 @@ export const CreateProtectCashAdvanceRepaymentRequest = /*@__PURE__*/ S.suspend(
 export interface ProtectCashAdvanceRepaymentCreateResponse {
   request_id: string;
 }
-export const ProtectCashAdvanceRepaymentCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "ProtectCashAdvanceRepaymentCreateResponse",
-}) as any as S.Schema<ProtectCashAdvanceRepaymentCreateResponse>;
+export const ProtectCashAdvanceRepaymentCreateResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<ProtectCashAdvanceRepaymentCreateResponse>;
 
 /** The monetary amount associated with the incident. */
 export interface ProtectIncidentAmount {
@@ -7367,20 +7280,13 @@ export interface SandboxProcessorTokenCreateResponse {
   processor_token: string;
   request_id: string;
 }
-export const SandboxProcessorTokenCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    processor_token: S.String,
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "SandboxProcessorTokenCreateResponse",
-}) as any as S.Schema<SandboxProcessorTokenCreateResponse>;
+export const SandboxProcessorTokenCreateResponse =
+  ProcessorTokenCreateResponse as any as S.Schema<SandboxProcessorTokenCreateResponse>;
 
 /** The products to initially pull for the Item. May be any products that the specified `institution_id` supports. This array may not be empty. */
 export type CreateSandboxPublicTokenRequestInitialProductsList = Array<Products | (string & {})>;
-export const CreateSandboxPublicTokenRequestInitialProductsList = /*@__PURE__*/ S.Array(
-  Products,
-) as any as S.Schema<CreateSandboxPublicTokenRequestInitialProductsList>;
+export const CreateSandboxPublicTokenRequestInitialProductsList =
+  BetaIssuesV1IssueAffectedProductsList as any as S.Schema<CreateSandboxPublicTokenRequestInitialProductsList>;
 
 /** An optional set of parameters corresponding to transactions options. */
 export interface SandboxPublicTokenCreateRequestOptionsTransactions {
@@ -7408,14 +7314,8 @@ export interface SandboxPublicTokenCreateRequestOptionsStatements {
   /** The most recent date for which to fetch statements history. Dates should be formatted as YYYY-MM-DD. */
   end_date: string;
 }
-export const SandboxPublicTokenCreateRequestOptionsStatements = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    start_date: S.String,
-    end_date: S.String,
-  }),
-).annotate({
-  identifier: "SandboxPublicTokenCreateRequestOptionsStatements",
-}) as any as S.Schema<SandboxPublicTokenCreateRequestOptionsStatements>;
+export const SandboxPublicTokenCreateRequestOptionsStatements =
+  LinkTokenCreateRequestStatements as any as S.Schema<SandboxPublicTokenCreateRequestOptionsStatements>;
 
 /** The types of source income data that users will be permitted to share. Options include `bank` and `payroll`. Currently you can only specify one of these options. */
 export type SandboxPublicTokenCreateRequestOptionsIncomeVerificationIncomeSourceTypesList = Array<
@@ -7575,13 +7475,8 @@ export const CreateSandboxTransactionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SandboxTransactionsCreateResponse {
   request_id: string;
 }
-export const SandboxTransactionsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "SandboxTransactionsCreateResponse",
-}) as any as S.Schema<SandboxTransactionsCreateResponse>;
+export const SandboxTransactionsCreateResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<SandboxTransactionsCreateResponse>;
 
 export interface CreateSandboxTransferTestClockRequest {
   client_id?: string;
@@ -8072,13 +7967,7 @@ export interface TransferRefundFailure {
   /** A human-readable description of the reason for the failure or reversal. */
   description?: string;
 }
-export const TransferRefundFailure = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failure_code: S.optional(S.NullOr(S.String)),
-    ach_return_code: S.optional(S.NullOr(S.String)),
-    description: S.optional(S.String),
-  }),
-).annotate({ identifier: "TransferRefundFailure" }) as any as S.Schema<TransferRefundFailure>;
+export const TransferRefundFailure = TransferFailure as any as S.Schema<TransferRefundFailure>;
 
 /** Represents a refund within the Transfers API. */
 export interface TransferRefund {
@@ -8279,10 +8168,8 @@ export const TransferAuthorizationDevice = /*@__PURE__*/ S.suspend(() =>
 
 /** A free-form map of client-supplied risk-relevant context for this authorization. Plaid may use these attributes to inform future versions of our risk models. The following limitations apply: Keys must match the regular expression `^[A-Za-z0-9_.-]{1,40}$` Values must be strings (no nested objects, arrays, numbers, or booleans allowed; stringify non-string values client-side) Maximum of 50 key/value pairs Maximum value length of 500 characters Do not include personally identifiable information or other sensitive data. */
 export type TransferAuthorizationCustomAttributes = { [key: string]: string | undefined };
-export const TransferAuthorizationCustomAttributes = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TransferAuthorizationCustomAttributes>;
+export const TransferAuthorizationCustomAttributes =
+  TransferMetadata as any as S.Schema<TransferAuthorizationCustomAttributes>;
 
 /** Typed attributes of the end user that Plaid models directly in transfer authorization decisioning. Use `custom_attributes` for any other risk-relevant context. */
 export interface TransferAuthorizationUserAttributes {
@@ -8853,13 +8740,8 @@ export const CreateTransferPlatformOriginatorRequest = /*@__PURE__*/ S.suspend((
 export interface TransferPlatformOriginatorCreateResponse {
   request_id: string;
 }
-export const TransferPlatformOriginatorCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "TransferPlatformOriginatorCreateResponse",
-}) as any as S.Schema<TransferPlatformOriginatorCreateResponse>;
+export const TransferPlatformOriginatorCreateResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<TransferPlatformOriginatorCreateResponse>;
 
 /** The person's legal name */
 export type TransferPlatformPersonName = IdentityVerificationRequestUserName;
@@ -9095,9 +8977,8 @@ export const TransferRecurringStatus = S.String;
 
 /** The created transfer instances associated with this `recurring_transfer_id`. If the recurring transfer has been newly created, this array will be empty. */
 export type RecurringTransferNullableTransferIdsList = Array<string>;
-export const RecurringTransferNullableTransferIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RecurringTransferNullableTransferIdsList>;
+export const RecurringTransferNullableTransferIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<RecurringTransferNullableTransferIdsList>;
 
 /** Represents a recurring transfer within the Transfers API. */
 export interface RecurringTransferNullable {
@@ -9328,15 +9209,13 @@ export const ClientUserIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** The user's phone number, in E.164 format: +{countrycode}{number}. For example: "+14157452130". Phone numbers provided in other formats will be parsed on a best-effort basis. Phone number input is validated against valid number ranges; number strings that do not match a real-world phone numbering scheme may cause the request to fail, even in the Sandbox test environment. */
 export type ConsumerReportUserIdentityPhoneNumbersList = Array<string>;
-export const ConsumerReportUserIdentityPhoneNumbersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConsumerReportUserIdentityPhoneNumbersList>;
+export const ConsumerReportUserIdentityPhoneNumbersList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<ConsumerReportUserIdentityPhoneNumbersList>;
 
 /** The user's emails */
 export type ConsumerReportUserIdentityEmailsList = Array<string>;
-export const ConsumerReportUserIdentityEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConsumerReportUserIdentityEmailsList>;
+export const ConsumerReportUserIdentityEmailsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<ConsumerReportUserIdentityEmailsList>;
 
 /** This field is only used by integrations created before December 10, 2025. All other integrations must use the `identity` object instead. For more details, see [New User APIs](https://plaid.com/docs/api/users/user-apis). To create a Plaid Check Consumer Report for a user when using a `user_token`, this field must be present. If this field is not provided during user token creation, you can add it to the user later by calling `/user/update`. Once the field has been added to the user, you will be able to call `/link/token/create` with a non-empty `consumer_report_permissible_purpose` (which will automatically create a Plaid Check Consumer Report), or call `/cra/check_report/create` for that user. */
 export interface ConsumerReportUserIdentity {
@@ -9652,15 +9531,13 @@ export const WatchlistScreeningEntityCreateResponse = /*@__PURE__*/ S.suspend(()
 
 /** Hits to mark as a true positive after thorough manual review. These hits will never recur or be updated once confirmed. In most cases, confirmed hits indicate that the customer should be rejected. */
 export type CreateWatchlistScreeningEntityReviewRequestConfirmedHitsList = Array<string>;
-export const CreateWatchlistScreeningEntityReviewRequestConfirmedHitsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateWatchlistScreeningEntityReviewRequestConfirmedHitsList>;
+export const CreateWatchlistScreeningEntityReviewRequestConfirmedHitsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<CreateWatchlistScreeningEntityReviewRequestConfirmedHitsList>;
 
 /** Hits to mark as a false positive after thorough manual review. These hits will never recur or be updated once dismissed. */
 export type CreateWatchlistScreeningEntityReviewRequestDismissedHitsList = Array<string>;
-export const CreateWatchlistScreeningEntityReviewRequestDismissedHitsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateWatchlistScreeningEntityReviewRequestDismissedHitsList>;
+export const CreateWatchlistScreeningEntityReviewRequestDismissedHitsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<CreateWatchlistScreeningEntityReviewRequestDismissedHitsList>;
 
 export interface CreateWatchlistScreeningEntityReviewRequest {
   /** Hits to mark as a true positive after thorough manual review. These hits will never recur or be updated once confirmed. In most cases, confirmed hits indicate that the customer should be rejected. */
@@ -9687,15 +9564,13 @@ export const CreateWatchlistScreeningEntityReviewRequest = /*@__PURE__*/ S.suspe
 
 /** Hits marked as a true positive after thorough manual review. These hits will never recur or be updated once confirmed. In most cases, confirmed hits indicate that the customer should be rejected. */
 export type WatchlistScreeningEntityReviewCreateResponseConfirmedHitsList = Array<string>;
-export const WatchlistScreeningEntityReviewCreateResponseConfirmedHitsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WatchlistScreeningEntityReviewCreateResponseConfirmedHitsList>;
+export const WatchlistScreeningEntityReviewCreateResponseConfirmedHitsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<WatchlistScreeningEntityReviewCreateResponseConfirmedHitsList>;
 
 /** Hits marked as a false positive after thorough manual review. These hits will never recur or be updated once dismissed. */
 export type WatchlistScreeningEntityReviewCreateResponseDismissedHitsList = Array<string>;
-export const WatchlistScreeningEntityReviewCreateResponseDismissedHitsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WatchlistScreeningEntityReviewCreateResponseDismissedHitsList>;
+export const WatchlistScreeningEntityReviewCreateResponseDismissedHitsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<WatchlistScreeningEntityReviewCreateResponseDismissedHitsList>;
 
 /** A review submitted by a team member for an entity watchlist screening. A review can be either a comment on the current screening state, actions taken against hits attached to the watchlist screening, or both. */
 export interface WatchlistScreeningEntityReviewCreateResponse {
@@ -9815,9 +9690,7 @@ export const CreateWatchlistScreeningIndividualReviewRequestConfirmedHitsList =
 /** Hits to mark as a false positive after thorough manual review. These hits will never recur or be updated once dismissed. */
 export type CreateWatchlistScreeningIndividualReviewRequestDismissedHitsList = Array<string>;
 export const CreateWatchlistScreeningIndividualReviewRequestDismissedHitsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateWatchlistScreeningIndividualReviewRequestDismissedHitsList>;
+  CreateWatchlistScreeningIndividualReviewRequestConfirmedHitsList as any as S.Schema<CreateWatchlistScreeningIndividualReviewRequestDismissedHitsList>;
 
 export interface CreateWatchlistScreeningIndividualReviewRequest {
   /** Hits to mark as a true positive after thorough manual review. These hits will never recur or be updated once confirmed. In most cases, confirmed hits indicate that the customer should be rejected. */
@@ -9847,16 +9720,12 @@ export const CreateWatchlistScreeningIndividualReviewRequest = /*@__PURE__*/ S.s
 /** Hits marked as a true positive after thorough manual review. These hits will never recur or be updated once confirmed. In most cases, confirmed hits indicate that the customer should be rejected. */
 export type WatchlistScreeningIndividualReviewCreateResponseConfirmedHitsList = Array<string>;
 export const WatchlistScreeningIndividualReviewCreateResponseConfirmedHitsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<WatchlistScreeningIndividualReviewCreateResponseConfirmedHitsList>;
+  CreateWatchlistScreeningIndividualReviewRequestConfirmedHitsList as any as S.Schema<WatchlistScreeningIndividualReviewCreateResponseConfirmedHitsList>;
 
 /** Hits marked as a false positive after thorough manual review. These hits will never recur or be updated once dismissed. */
 export type WatchlistScreeningIndividualReviewCreateResponseDismissedHitsList = Array<string>;
 export const WatchlistScreeningIndividualReviewCreateResponseDismissedHitsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<WatchlistScreeningIndividualReviewCreateResponseDismissedHitsList>;
+  CreateWatchlistScreeningIndividualReviewRequestConfirmedHitsList as any as S.Schema<WatchlistScreeningIndividualReviewCreateResponseDismissedHitsList>;
 
 /** A review submitted by a team member for an individual watchlist screening. A review can be either a comment on the current screening state, actions taken against hits attached to the watchlist screening, or both. */
 export interface WatchlistScreeningIndividualReviewCreateResponse {
@@ -9884,9 +9753,8 @@ export const WatchlistScreeningIndividualReviewCreateResponse = /*@__PURE__*/ S.
 
 /** List of report tokens; can include at most one VOA/standard Asset Report tokens and one VOE Asset Report Token. */
 export type CreditAuditCopyTokenCreateRequestReportTokensList = Array<string>;
-export const CreditAuditCopyTokenCreateRequestReportTokensList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreditAuditCopyTokenCreateRequestReportTokensList>;
+export const CreditAuditCopyTokenCreateRequestReportTokensList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<CreditAuditCopyTokenCreateRequestReportTokensList>;
 
 export interface CreditAuditCopyTokenCreateRequest {
   client_id?: string;
@@ -9910,20 +9778,13 @@ export interface CreditAuditCopyTokenCreateResponse {
   audit_copy_token: string;
   request_id: string;
 }
-export const CreditAuditCopyTokenCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    audit_copy_token: S.String,
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "CreditAuditCopyTokenCreateResponse",
-}) as any as S.Schema<CreditAuditCopyTokenCreateResponse>;
+export const CreditAuditCopyTokenCreateResponse =
+  AssetReportAuditCopyCreateResponse as any as S.Schema<CreditAuditCopyTokenCreateResponse>;
 
 /** Array of tokens which the specified Audit Copy Token will be updated with. The types of token supported are asset report token and employment report token. There can be at most 1 of each token type in the array. */
 export type CreditAuditCopyTokenUpdateRequestReportTokensList = Array<string>;
-export const CreditAuditCopyTokenUpdateRequestReportTokensList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreditAuditCopyTokenUpdateRequestReportTokensList>;
+export const CreditAuditCopyTokenUpdateRequestReportTokensList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<CreditAuditCopyTokenUpdateRequestReportTokensList>;
 
 export interface CreditAuditCopyTokenUpdateRequest {
   client_id?: string;
@@ -9981,14 +9842,8 @@ export interface CreditAuditCopyTokenRemoveResponse {
   removed: boolean;
   request_id: string;
 }
-export const CreditAuditCopyTokenRemoveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    removed: S.Boolean,
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "CreditAuditCopyTokenRemoveResponse",
-}) as any as S.Schema<CreditAuditCopyTokenRemoveResponse>;
+export const CreditAuditCopyTokenRemoveResponse =
+  AssetReportAuditCopyRemoveResponse as any as S.Schema<CreditAuditCopyTokenRemoveResponse>;
 
 export interface DeleteCraServicingSubscriptionRequest {
   client_id?: string;
@@ -10010,14 +9865,8 @@ export interface CraServicingSubscriptionDeleteResponse {
   subscription_id: string;
   request_id: string;
 }
-export const CraServicingSubscriptionDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscription_id: S.String,
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "CraServicingSubscriptionDeleteResponse",
-}) as any as S.Schema<CraServicingSubscriptionDeleteResponse>;
+export const CraServicingSubscriptionDeleteResponse =
+  CraServicingSubscriptionCreateResponse as any as S.Schema<CraServicingSubscriptionDeleteResponse>;
 
 export interface DownloadStatementRequest {
   access_token: string | Redacted.Redacted<string>;
@@ -10041,9 +9890,8 @@ export const DownloadStatementResponse = /*@__PURE__*/ S.suspend(() => S.Struct(
 }) as any as S.Schema<DownloadStatementResponse>;
 
 export type EnableBetaPartnerCustomerV1RequestProductsList = Array<Products | (string & {})>;
-export const EnableBetaPartnerCustomerV1RequestProductsList = /*@__PURE__*/ S.Array(
-  Products,
-) as any as S.Schema<EnableBetaPartnerCustomerV1RequestProductsList>;
+export const EnableBetaPartnerCustomerV1RequestProductsList =
+  BetaIssuesV1IssueAffectedProductsList as any as S.Schema<EnableBetaPartnerCustomerV1RequestProductsList>;
 
 export interface EnableBetaPartnerCustomerV1Request {
   client_id?: string;
@@ -10171,15 +10019,13 @@ export const PlaidErrorCausesList = /*@__PURE__*/ S.Array(
 
 /** A list of the account subtypes that were requested via the `account_filters` parameter in `/link/token/create`. Currently only populated for `NO_ACCOUNTS` errors from Items with `investments_auth` as an enabled product. */
 export type PlaidErrorRequiredAccountSubtypesList = Array<string>;
-export const PlaidErrorRequiredAccountSubtypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PlaidErrorRequiredAccountSubtypesList>;
+export const PlaidErrorRequiredAccountSubtypesList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<PlaidErrorRequiredAccountSubtypesList>;
 
 /** A list of the account subtypes that were extracted but did not match the requested subtypes via the `account_filters` parameter in `/link/token/create`. Currently only populated for `NO_ACCOUNTS` errors from Items with `investments_auth` as an enabled product. */
 export type PlaidErrorProvidedAccountSubtypesList = Array<string>;
-export const PlaidErrorProvidedAccountSubtypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PlaidErrorProvidedAccountSubtypesList>;
+export const PlaidErrorProvidedAccountSubtypesList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<PlaidErrorProvidedAccountSubtypesList>;
 
 /** Errors are identified by `error_code` and categorized by `error_type`. Use these in preference to HTTP status codes to identify and handle specific errors. HTTP status codes are set and provide the broadest categorization of errors: 4xx codes are for developer- or user-related errors, and 5xx codes are for Plaid-related errors, and the status will be 2xx in non-error cases. An Item with a non-`null` error object will only be part of an API response when calling `/item/get` to view Item status. Otherwise, error fields will be `null` if no error has occurred; if an error has occurred, an error code will be returned instead. */
 export interface PlaidError {
@@ -10594,15 +10440,13 @@ export const FdxNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FdxNotificationsRequest" }) as any as S.Schema<FdxNotificationsRequest>;
 
 export interface FdxNotificationsResponse {}
-export const FdxNotificationsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "FdxNotificationsResponse",
-}) as any as S.Schema<FdxNotificationsResponse>;
+export const FdxNotificationsResponse =
+  DownloadStatementResponse as any as S.Schema<FdxNotificationsResponse>;
 
 /** An array of `account_ids` to retrieve for the Account. */
 export type AccountsGetRequestOptionsAccountIdsList = Array<string>;
-export const AccountsGetRequestOptionsAccountIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccountsGetRequestOptionsAccountIdsList>;
+export const AccountsGetRequestOptionsAccountIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<AccountsGetRequestOptionsAccountIdsList>;
 
 /** An optional object to filter `/accounts/get` results. */
 export interface AccountsGetRequestOptions {
@@ -10792,27 +10636,23 @@ export const ItemAuthMethod = S.String;
 
 /** A list of products available for the Item that have not yet been accessed. The contents of this array will be mutually exclusive with `billed_products`. */
 export type ItemAvailableProductsList = Array<Products>;
-export const ItemAvailableProductsList = /*@__PURE__*/ S.Array(
-  Products,
-) as any as S.Schema<ItemAvailableProductsList>;
+export const ItemAvailableProductsList =
+  BetaIssuesV1IssueAffectedProductsList as any as S.Schema<ItemAvailableProductsList>;
 
 /** A list of products that have been billed for the Item. The contents of this array will be mutually exclusive with `available_products`. Note - `billed_products` is populated in all environments but only requests in Production are billed. Also note that products that are billed on a pay-per-call basis rather than a pay-per-Item basis, such as `balance`, will not appear here. */
 export type ItemBilledProductsList = Array<Products>;
-export const ItemBilledProductsList = /*@__PURE__*/ S.Array(
-  Products,
-) as any as S.Schema<ItemBilledProductsList>;
+export const ItemBilledProductsList =
+  BetaIssuesV1IssueAffectedProductsList as any as S.Schema<ItemBilledProductsList>;
 
 /** A list of products added to the Item. In almost all cases, this will be the same as the `billed_products` field. For some products, it is possible for the product to be added to an Item but not yet billed (e.g. Assets, before `/asset_report/create` has been called, or Auth or Identity when added as Optional Products but before their endpoints have been called), in which case the product may appear in `products` but not in `billed_products`. */
 export type ItemProductsList = Array<Products>;
-export const ItemProductsList = /*@__PURE__*/ S.Array(
-  Products,
-) as any as S.Schema<ItemProductsList>;
+export const ItemProductsList =
+  BetaIssuesV1IssueAffectedProductsList as any as S.Schema<ItemProductsList>;
 
 /** A list of products that the user has consented to for the Item via [Data Transparency Messaging](https://plaid.com/docs/link/data-transparency-messaging-migration-guide). This will consist of all products where both of the following are true: the user has consented to the required data scopes for that product and you have Production access for that product. */
 export type ItemConsentedProductsList = Array<Products>;
-export const ItemConsentedProductsList = /*@__PURE__*/ S.Array(
-  Products,
-) as any as S.Schema<ItemConsentedProductsList>;
+export const ItemConsentedProductsList =
+  BetaIssuesV1IssueAffectedProductsList as any as S.Schema<ItemConsentedProductsList>;
 
 /** Indicates whether an Item requires user interaction to be updated, which can be the case for Items with some forms of two-factor authentication. `background` - Item can be updated in the background `user_present_required` - Item requires user interaction to be updated */
 export type ItemUpdateType = "background" | "user_present_required";
@@ -10880,9 +10720,8 @@ export const AccountsGetResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of `account_ids` to retrieve for the Item. The default value is `null`. Note: An error will be returned if a provided `account_id` is not associated with the Item. */
 export type AccountsBalanceGetRequestOptionsAccountIdsList = Array<string>;
-export const AccountsBalanceGetRequestOptionsAccountIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccountsBalanceGetRequestOptionsAccountIdsList>;
+export const AccountsBalanceGetRequestOptionsAccountIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<AccountsBalanceGetRequestOptionsAccountIdsList>;
 
 /** Optional parameters to `/accounts/balance/get`. */
 export interface AccountsBalanceGetRequestOptions {
@@ -10992,13 +10831,8 @@ export interface AssetReportGetRequestOptions {
   /** The maximum number of days of history to include in the Asset Report. */
   days_to_include?: number | null;
 }
-export const AssetReportGetRequestOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    days_to_include: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "AssetReportGetRequestOptions",
-}) as any as S.Schema<AssetReportGetRequestOptions>;
+export const AssetReportGetRequestOptions =
+  AssetReportPDFGetRequestOptions as any as S.Schema<AssetReportGetRequestOptions>;
 
 export interface GetAssetReportRequest {
   client_id?: string;
@@ -11040,15 +10874,13 @@ export const GetAssetReportPdfRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAssetReportPdfRequest" }) as any as S.Schema<GetAssetReportPdfRequest>;
 
 export interface GetAssetReportPdfResponse {}
-export const GetAssetReportPdfResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetAssetReportPdfResponse",
-}) as any as S.Schema<GetAssetReportPdfResponse>;
+export const GetAssetReportPdfResponse =
+  DownloadStatementResponse as any as S.Schema<GetAssetReportPdfResponse>;
 
 /** A list of `account_ids` to retrieve for the Item. Note: An error will be returned if a provided `account_id` is not associated with the Item. */
 export type AuthGetRequestOptionsAccountIdsList = Array<string>;
-export const AuthGetRequestOptionsAccountIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AuthGetRequestOptionsAccountIdsList>;
+export const AuthGetRequestOptionsAccountIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<AuthGetRequestOptionsAccountIdsList>;
 
 /** An optional object to filter `/auth/get` results. */
 export interface AuthGetRequestOptions {
@@ -11078,9 +10910,8 @@ export const GetAuthRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The `accounts` for which numbers are being retrieved. */
 export type AuthGetResponseAccountsList = Array<AccountBase>;
-export const AuthGetResponseAccountsList = /*@__PURE__*/ S.Array(
-  AccountBase,
-) as any as S.Schema<AuthGetResponseAccountsList>;
+export const AuthGetResponseAccountsList =
+  AccountsGetResponseAccountsList as any as S.Schema<AuthGetResponseAccountsList>;
 
 /** Identifying information for transferring money to or from a US account via ACH or wire transfer. */
 export interface NumbersACH {
@@ -11310,21 +11141,18 @@ export const GetBetaIssuesV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** The customer-visible effects of the issue. */
 export type GetBetaIssuesV1ResponseBehaviorsList = Array<BetaIssuesV1IssueBehavior>;
-export const GetBetaIssuesV1ResponseBehaviorsList = /*@__PURE__*/ S.Array(
-  BetaIssuesV1IssueBehavior,
-) as any as S.Schema<GetBetaIssuesV1ResponseBehaviorsList>;
+export const GetBetaIssuesV1ResponseBehaviorsList =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<GetBetaIssuesV1ResponseBehaviorsList>;
 
 /** The Plaid products affected by the issue. */
 export type GetBetaIssuesV1ResponseAffectedProductsList = Array<Products>;
-export const GetBetaIssuesV1ResponseAffectedProductsList = /*@__PURE__*/ S.Array(
-  Products,
-) as any as S.Schema<GetBetaIssuesV1ResponseAffectedProductsList>;
+export const GetBetaIssuesV1ResponseAffectedProductsList =
+  BetaIssuesV1IssueAffectedProductsList as any as S.Schema<GetBetaIssuesV1ResponseAffectedProductsList>;
 
 /** Resolution events recorded for the issue. */
 export type GetBetaIssuesV1ResponseResolutionLogList = Array<BetaIssuesV1IssueResolutionEvent>;
-export const GetBetaIssuesV1ResponseResolutionLogList = /*@__PURE__*/ S.Array(
-  BetaIssuesV1IssueResolutionEvent,
-) as any as S.Schema<GetBetaIssuesV1ResponseResolutionLogList>;
+export const GetBetaIssuesV1ResponseResolutionLogList =
+  BetaIssuesV1IssueResolutionLogList as any as S.Schema<GetBetaIssuesV1ResponseResolutionLogList>;
 
 export interface GetBetaIssuesV1Response {
   /** The customer-visible identifier of the issue. */
@@ -11463,43 +11291,21 @@ export interface BusinessVerificationGetResponse {
   request_id: string;
   shareable_url: string | null;
 }
-export const BusinessVerificationGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    client_user_id: S.String,
-    created_at: S.String,
-    completed_at: S.NullOr(S.String),
-    redacted_at: S.NullOr(S.String),
-    status: BusinessVerificationStatusOverall,
-    search_terms: BusinessSearchTerms,
-    kyb_check: S.NullOr(BusinessKYBCheck),
-    risk_check: S.NullOr(BusinessRiskCheck),
-    digital_presence_check: S.NullOr(BusinessDigitalPresenceCheck),
-    request_id: S.String,
-    shareable_url: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "BusinessVerificationGetResponse",
-}) as any as S.Schema<BusinessVerificationGetResponse>;
+export const BusinessVerificationGetResponse =
+  BusinessVerificationCreateResponse as any as S.Schema<BusinessVerificationGetResponse>;
 
 /** A list of `account_ids` to retrieve for the Item Note: An error will be returned if a provided `account_id` is not associated with the Item. */
 export type CashflowReportGetRequestOptionsAccountIdsList = Array<string>;
-export const CashflowReportGetRequestOptionsAccountIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CashflowReportGetRequestOptionsAccountIdsList>;
+export const CashflowReportGetRequestOptionsAccountIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<CashflowReportGetRequestOptionsAccountIdsList>;
 
 /** An optional object to be used with the request. If specified, `options` must not be `null`. */
 export interface CashflowReportGetRequestOptions {
   /** A list of `account_ids` to retrieve for the Item Note: An error will be returned if a provided `account_id` is not associated with the Item. */
   account_ids?: CashflowReportGetRequestOptionsAccountIdsList;
 }
-export const CashflowReportGetRequestOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account_ids: S.optional(CashflowReportGetRequestOptionsAccountIdsList),
-  }),
-).annotate({
-  identifier: "CashflowReportGetRequestOptions",
-}) as any as S.Schema<CashflowReportGetRequestOptions>;
+export const CashflowReportGetRequestOptions =
+  AccountsGetRequestOptions as any as S.Schema<CashflowReportGetRequestOptions>;
 
 export interface GetCashflowReportRequest {
   client_id?: string;
@@ -11542,9 +11348,8 @@ export const BusinessAccountVerificationStatus = S.String;
 
 /** Data returned by the financial institution about the account owner or owners. For business accounts, the name reported may be either the name of the individual or the name of the business, depending on the institution. Multiple owners on a single account will be represented in the same owner object, not in multiple owner objects within the array. */
 export type BusinessAccountOwnersList = Array<Owner>;
-export const BusinessAccountOwnersList = /*@__PURE__*/ S.Array(
-  Owner,
-) as any as S.Schema<BusinessAccountOwnersList>;
+export const BusinessAccountOwnersList =
+  AccountAssetsOwnersList as any as S.Schema<BusinessAccountOwnersList>;
 
 /** Business identity information about an account */
 export interface BusinessAccount {
@@ -11893,9 +11698,8 @@ export const GetCashflowReportInsightRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array containing the `accounts` associated with the Item for which transactions are being returned. Each transaction can be mapped to its corresponding account via the `account_id` field. */
 export type CashflowReportInsightsGetResponseAccountsList = Array<BusinessAccount>;
-export const CashflowReportInsightsGetResponseAccountsList = /*@__PURE__*/ S.Array(
-  BusinessAccount,
-) as any as S.Schema<CashflowReportInsightsGetResponseAccountsList>;
+export const CashflowReportInsightsGetResponseAccountsList =
+  CashflowReportGetResponseAccountsList as any as S.Schema<CashflowReportInsightsGetResponseAccountsList>;
 
 /** An object representing a balance held by an account in the past */
 export interface CashflowReportHistoricalBalance {
@@ -12089,22 +11893,16 @@ export const CashflowReportInsightsGetResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of `account_ids` to retrieve for the Item Note: An error will be returned if a provided `account_id` is not associated with the Item. */
 export type CashflowReportTransactionsGetRequestOptionsAccountIdsList = Array<string>;
-export const CashflowReportTransactionsGetRequestOptionsAccountIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CashflowReportTransactionsGetRequestOptionsAccountIdsList>;
+export const CashflowReportTransactionsGetRequestOptionsAccountIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<CashflowReportTransactionsGetRequestOptionsAccountIdsList>;
 
 /** An optional object to be used with the request. If specified, `options` must not be `null`. */
 export interface CashflowReportTransactionsGetRequestOptions {
   /** A list of `account_ids` to retrieve for the Item Note: An error will be returned if a provided `account_id` is not associated with the Item. */
   account_ids?: CashflowReportTransactionsGetRequestOptionsAccountIdsList;
 }
-export const CashflowReportTransactionsGetRequestOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account_ids: S.optional(CashflowReportTransactionsGetRequestOptionsAccountIdsList),
-  }),
-).annotate({
-  identifier: "CashflowReportTransactionsGetRequestOptions",
-}) as any as S.Schema<CashflowReportTransactionsGetRequestOptions>;
+export const CashflowReportTransactionsGetRequestOptions =
+  AccountsGetRequestOptions as any as S.Schema<CashflowReportTransactionsGetRequestOptions>;
 
 export interface GetCashflowReportTransactionRequest {
   client_id?: string;
@@ -12131,16 +11929,14 @@ export const GetCashflowReportTransactionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array containing the `accounts` associated with the Item for which transactions are being returned. Each transaction can be mapped to its corresponding account via the `account_id` field. */
 export type CashflowReportTransactionsGetResponseAccountsList = Array<BusinessAccount>;
-export const CashflowReportTransactionsGetResponseAccountsList = /*@__PURE__*/ S.Array(
-  BusinessAccount,
-) as any as S.Schema<CashflowReportTransactionsGetResponseAccountsList>;
+export const CashflowReportTransactionsGetResponseAccountsList =
+  CashflowReportGetResponseAccountsList as any as S.Schema<CashflowReportTransactionsGetResponseAccountsList>;
 
 /** An array containing transactions from the account. Transactions are returned in reverse chronological order, with the most recent at the beginning of the array. The maximum number of transactions returned is determined by the `count` parameter. */
 export type CashflowReportTransactionsGetResponseTransactionsList =
   Array<CashflowReportTransaction>;
-export const CashflowReportTransactionsGetResponseTransactionsList = /*@__PURE__*/ S.Array(
-  CashflowReportTransaction,
-) as any as S.Schema<CashflowReportTransactionsGetResponseTransactionsList>;
+export const CashflowReportTransactionsGetResponseTransactionsList =
+  CashflowReportGetResponseTransactionsList as any as S.Schema<CashflowReportTransactionsGetResponseTransactionsList>;
 
 /** CashflowReportTransactionsGetResponse defines the response schema for `/cashflow_report/transactions/get` */
 export interface CashflowReportTransactionsGetResponse {
@@ -12203,15 +11999,13 @@ export const ConsentEventInitiator = S.String;
 
 /** A list of strings containing the full list of use cases the end user has consented to for the Item. See the [full list](https://plaid.com/docs/link/data-transparency-messaging-migration-guide/#updating-link-customizations) of use cases. */
 export type ConsentEventConsentedUseCasesList = Array<string>;
-export const ConsentEventConsentedUseCasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConsentEventConsentedUseCasesList>;
+export const ConsentEventConsentedUseCasesList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<ConsentEventConsentedUseCasesList>;
 
 /** A list of strings containing the full list of data scopes the end user has consented to for the Item. These correspond to consented products; see the [full mapping](https://plaid.com/docs/link/data-transparency-messaging-migration-guide/#data-scopes-by-product) of data scopes and products. */
 export type ConsentEventConsentedDataScopesList = Array<string>;
-export const ConsentEventConsentedDataScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConsentEventConsentedDataScopesList>;
+export const ConsentEventConsentedDataScopesList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<ConsentEventConsentedDataScopesList>;
 
 /** A financial institution account. */
 export interface ConsentedAccount {
@@ -12313,15 +12107,13 @@ export const GetConsumerReportPdfRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetConsumerReportPdfRequest>;
 
 export interface GetConsumerReportPdfResponse {}
-export const GetConsumerReportPdfResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetConsumerReportPdfResponse",
-}) as any as S.Schema<GetConsumerReportPdfResponse>;
+export const GetConsumerReportPdfResponse =
+  DownloadStatementResponse as any as S.Schema<GetConsumerReportPdfResponse>;
 
 /** The Item IDs to include in the Base Report. If not provided, all Items associated with the user will be included. */
 export type GetCraCheckReportBaseReportRequestItemIdsList = Array<string>;
-export const GetCraCheckReportBaseReportRequestItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCraCheckReportBaseReportRequestItemIdsList>;
+export const GetCraCheckReportBaseReportRequestItemIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<GetCraCheckReportBaseReportRequestItemIdsList>;
 
 /** The tier of the user. */
 export type CraUserTier = "free" | "paid";
@@ -12480,9 +12272,8 @@ export const BaseReportTransactionType = S.String;
 
 /** A hierarchical array of the categories to which this transaction belongs. For a full list of categories, see [`/categories/get`](https://plaid.com/docs/api/products/transactions/#categoriesget). */
 export type BaseReportTransactionCategoryList = Array<string>;
-export const BaseReportTransactionCategoryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BaseReportTransactionCategoryList>;
+export const BaseReportTransactionCategoryList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<BaseReportTransactionCategoryList>;
 
 /** A transaction on the Base Report */
 export interface BaseReportTransaction {
@@ -12553,9 +12344,8 @@ export const BaseReportAccountTransactionsList = /*@__PURE__*/ S.Array(
 
 /** Data returned by the financial institution about the account owner or owners. For business accounts, the name reported may be either the name of the individual or the name of the business, depending on the institution. Multiple owners on a single account will be represented in the same `owner` object, not in multiple owner objects within the array. This array can also be empty if no owners are found. */
 export type BaseReportAccountOwnersList = Array<Owner>;
-export const BaseReportAccountOwnersList = /*@__PURE__*/ S.Array(
-  Owner,
-) as any as S.Schema<BaseReportAccountOwnersList>;
+export const BaseReportAccountOwnersList =
+  AccountAssetsOwnersList as any as S.Schema<BaseReportAccountOwnersList>;
 
 /** An object representing a balance held by an account in the past */
 export type BaseReportHistoricalBalance = HistoricalBalance;
@@ -12563,9 +12353,8 @@ export const BaseReportHistoricalBalance = HistoricalBalance;
 
 /** Calculated data about the historical balances on the account. Currently not supported by `brokerage` or `investment` accounts. */
 export type BaseReportAccountHistoricalBalancesList = Array<HistoricalBalance>;
-export const BaseReportAccountHistoricalBalancesList = /*@__PURE__*/ S.Array(
-  HistoricalBalance,
-) as any as S.Schema<BaseReportAccountHistoricalBalancesList>;
+export const BaseReportAccountHistoricalBalancesList =
+  AccountAssetsHistoricalBalancesList as any as S.Schema<BaseReportAccountHistoricalBalancesList>;
 
 /** Largest number of days between sequential transactions per calendar month */
 export interface BaseReportLongestGapInsights {
@@ -12645,16 +12434,14 @@ export const BaseReportAccountInsightsAverageInflowAmountsList = /*@__PURE__*/ S
 
 /** The number of outflows from the account. This array will be empty for non-depository accounts. */
 export type BaseReportAccountInsightsNumberOfOutflowsList = Array<BaseReportNumberFlowInsights>;
-export const BaseReportAccountInsightsNumberOfOutflowsList = /*@__PURE__*/ S.Array(
-  BaseReportNumberFlowInsights,
-) as any as S.Schema<BaseReportAccountInsightsNumberOfOutflowsList>;
+export const BaseReportAccountInsightsNumberOfOutflowsList =
+  BaseReportAccountInsightsNumberOfInflowsList as any as S.Schema<BaseReportAccountInsightsNumberOfOutflowsList>;
 
 /** Average amount of transactions out of the account in a time period. This array will be empty for non-depository accounts. This field only takes into account USD transactions from the account. */
 export type BaseReportAccountInsightsAverageOutflowAmountsList =
   Array<BaseReportAverageFlowInsights>;
-export const BaseReportAccountInsightsAverageOutflowAmountsList = /*@__PURE__*/ S.Array(
-  BaseReportAverageFlowInsights,
-) as any as S.Schema<BaseReportAccountInsightsAverageOutflowAmountsList>;
+export const BaseReportAccountInsightsAverageOutflowAmountsList =
+  BaseReportAccountInsightsAverageInflowAmountsList as any as S.Schema<BaseReportAccountInsightsAverageOutflowAmountsList>;
 
 /** Calculated insights derived from transaction-level data. This field has been deprecated in favor of [Base Report attributes aggregated across accounts](https://plaid.com/docs/api/products/check/#cra-check_report-base_report-get-response-report-attributes) and will be removed in a future release. */
 export interface BaseReportAccountInsights {
@@ -13118,14 +12905,8 @@ export interface CraBankIncomeAccountMetadata {
   /** The date of the most recent extracted transaction, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format ("yyyy-mm-dd"). */
   end_date: string | null;
 }
-export const CraBankIncomeAccountMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    start_date: S.NullOr(S.String),
-    end_date: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "CraBankIncomeAccountMetadata",
-}) as any as S.Schema<CraBankIncomeAccountMetadata>;
+export const CraBankIncomeAccountMetadata =
+  BaseReportAccountMetadata as any as S.Schema<CraBankIncomeAccountMetadata>;
 
 /** The account type. This will always be `depository`. */
 export type CreditBankIncomeAccountType = "depository";
@@ -13133,9 +12914,8 @@ export const CreditBankIncomeAccountType = S.String;
 
 /** Data returned by the financial institution about the account owner or owners. Identity information is optional, so field may return an empty array. */
 export type CraBankIncomeAccountOwnersList = Array<Owner>;
-export const CraBankIncomeAccountOwnersList = /*@__PURE__*/ S.Array(
-  Owner,
-) as any as S.Schema<CraBankIncomeAccountOwnersList>;
+export const CraBankIncomeAccountOwnersList =
+  AccountAssetsOwnersList as any as S.Schema<CraBankIncomeAccountOwnersList>;
 
 /** The Item's bank accounts that have the selected data. */
 export interface CraBankIncomeAccount {
@@ -13174,9 +12954,8 @@ export const CraBankIncomeItemAccountsList = /*@__PURE__*/ S.Array(
 
 /** This is a V1 (II1) field. For the V2 (II2) equivalent, use the `accounts` field. The Item's accounts that have bank income data. */
 export type CraBankIncomeItemBankIncomeAccountsList = Array<CraBankIncomeAccount>;
-export const CraBankIncomeItemBankIncomeAccountsList = /*@__PURE__*/ S.Array(
-  CraBankIncomeAccount,
-) as any as S.Schema<CraBankIncomeItemBankIncomeAccountsList>;
+export const CraBankIncomeItemBankIncomeAccountsList =
+  CraBankIncomeItemAccountsList as any as S.Schema<CraBankIncomeItemBankIncomeAccountsList>;
 
 /** The income category. `BANK_INTEREST`: Interest earned from a bank account. `BENEFIT_OTHER`: Government benefits other than retirement, unemployment, child support, or disability. Currently used only in the UK, to represent benefits such as Cost of Living Payments. `CASH`: Deprecated and used only for existing legacy implementations. Has been replaced by `CASH_DEPOSIT` and `TRANSFER_FROM_APPLICATION`. `CASH_DEPOSIT`: A cash or check deposit. `CHILD_SUPPORT`: Child support payments received. `GIG_ECONOMY`: Income earned as a gig economy worker, e.g. driving for Uber, Lyft, Postmates, DoorDash, etc. `LONG_TERM_DISABILITY`: Disability payments, including Social Security disability benefits. `OTHER`: Income that could not be categorized as any other income category. `MILITARY`: Veterans benefits. Income earned as salary for serving in the military (e.g. through DFAS) will be classified as `SALARY` rather than `MILITARY`. `RENTAL`: Income earned from a rental property. Income may be identified as rental when the payment is received through a rental platform, e.g. Airbnb; rent paid directly by the tenant to the property owner (e.g. via cash, check, or ACH) will typically not be classified as rental income. `RETIREMENT`: Payments from private retirement systems, pensions, and government retirement programs, including Social Security retirement benefits. `SALARY`: Payment from an employer to an earner or other form of permanent employment. `TAX_REFUND`: A tax refund. `TRANSFER_FROM_APPLICATION`: Deposits from a money transfer app, such as Venmo, Cash App, or Zelle. `UNEMPLOYMENT`: Unemployment benefits. In the UK, includes certain low-income benefits such as the Universal Credit. */
 export type CreditBankIncomeCategory =
@@ -13642,56 +13421,48 @@ export const CraIncomeInsightsIncomeStreamsList = /*@__PURE__*/ S.Array(
 /** Total amount of earnings across all the income sources in the end user's Items for the days requested by the client. This can contain multiple amounts, with each amount denominated in one unique currency. */
 export type CraBankIncomeSummaryTotalAmountsList =
   Array<CashflowReportMonthlySummaryStartingBalance>;
-export const CraBankIncomeSummaryTotalAmountsList = /*@__PURE__*/ S.Array(
-  CashflowReportMonthlySummaryStartingBalance,
-) as any as S.Schema<CraBankIncomeSummaryTotalAmountsList>;
+export const CraBankIncomeSummaryTotalAmountsList =
+  CraBankIncomeHistoricalSummaryTotalAmountsList as any as S.Schema<CraBankIncomeSummaryTotalAmountsList>;
 
 /** An estimate of the average gross monthly income based on the historical net amount and income category for the income source(s). The average monthly income is calculated based on the lifetime of the income stream, rather than the entire historical period included in the scope of the report. */
 export type CraBankIncomeSummaryHistoricalAverageMonthlyGrossIncomeList =
   Array<CashflowReportMonthlySummaryStartingBalance>;
-export const CraBankIncomeSummaryHistoricalAverageMonthlyGrossIncomeList = /*@__PURE__*/ S.Array(
-  CashflowReportMonthlySummaryStartingBalance,
-) as any as S.Schema<CraBankIncomeSummaryHistoricalAverageMonthlyGrossIncomeList>;
+export const CraBankIncomeSummaryHistoricalAverageMonthlyGrossIncomeList =
+  CraBankIncomeHistoricalSummaryTotalAmountsList as any as S.Schema<CraBankIncomeSummaryHistoricalAverageMonthlyGrossIncomeList>;
 
 /** The average monthly income amount estimated based on the historical data for the income source(s). The average monthly income is calculated based on the lifetime of the income stream, rather than the entire historical period included in the scope of the report. */
 export type CraBankIncomeSummaryHistoricalAverageMonthlyIncomeList =
   Array<CashflowReportMonthlySummaryStartingBalance>;
-export const CraBankIncomeSummaryHistoricalAverageMonthlyIncomeList = /*@__PURE__*/ S.Array(
-  CashflowReportMonthlySummaryStartingBalance,
-) as any as S.Schema<CraBankIncomeSummaryHistoricalAverageMonthlyIncomeList>;
+export const CraBankIncomeSummaryHistoricalAverageMonthlyIncomeList =
+  CraBankIncomeHistoricalSummaryTotalAmountsList as any as S.Schema<CraBankIncomeSummaryHistoricalAverageMonthlyIncomeList>;
 
 /** The predicted average monthly income amount for the income source(s). */
 export type CraBankIncomeSummaryForecastedAverageMonthlyIncomeList =
   Array<CashflowReportMonthlySummaryStartingBalance>;
-export const CraBankIncomeSummaryForecastedAverageMonthlyIncomeList = /*@__PURE__*/ S.Array(
-  CashflowReportMonthlySummaryStartingBalance,
-) as any as S.Schema<CraBankIncomeSummaryForecastedAverageMonthlyIncomeList>;
+export const CraBankIncomeSummaryForecastedAverageMonthlyIncomeList =
+  CraBankIncomeHistoricalSummaryTotalAmountsList as any as S.Schema<CraBankIncomeSummaryForecastedAverageMonthlyIncomeList>;
 
 /** An estimate of the annual gross income for the income source, calculated by multiplying the `historical_average_monthly_gross_income` by 12. */
 export type CraBankIncomeSummaryHistoricalAnnualGrossIncomeList =
   Array<CashflowReportMonthlySummaryStartingBalance>;
-export const CraBankIncomeSummaryHistoricalAnnualGrossIncomeList = /*@__PURE__*/ S.Array(
-  CashflowReportMonthlySummaryStartingBalance,
-) as any as S.Schema<CraBankIncomeSummaryHistoricalAnnualGrossIncomeList>;
+export const CraBankIncomeSummaryHistoricalAnnualGrossIncomeList =
+  CraBankIncomeHistoricalSummaryTotalAmountsList as any as S.Schema<CraBankIncomeSummaryHistoricalAnnualGrossIncomeList>;
 
 /** An estimate of the annual net income for the income source, calculated by multiplying the `historical_average_monthly_income` by 12. */
 export type CraBankIncomeSummaryHistoricalAnnualIncomeList =
   Array<CashflowReportMonthlySummaryStartingBalance>;
-export const CraBankIncomeSummaryHistoricalAnnualIncomeList = /*@__PURE__*/ S.Array(
-  CashflowReportMonthlySummaryStartingBalance,
-) as any as S.Schema<CraBankIncomeSummaryHistoricalAnnualIncomeList>;
+export const CraBankIncomeSummaryHistoricalAnnualIncomeList =
+  CraBankIncomeHistoricalSummaryTotalAmountsList as any as S.Schema<CraBankIncomeSummaryHistoricalAnnualIncomeList>;
 
 /** The predicted average annual income amount for the income source(s). */
 export type CraBankIncomeSummaryForecastedAnnualIncomeList =
   Array<CashflowReportMonthlySummaryStartingBalance>;
-export const CraBankIncomeSummaryForecastedAnnualIncomeList = /*@__PURE__*/ S.Array(
-  CashflowReportMonthlySummaryStartingBalance,
-) as any as S.Schema<CraBankIncomeSummaryForecastedAnnualIncomeList>;
+export const CraBankIncomeSummaryForecastedAnnualIncomeList =
+  CraBankIncomeHistoricalSummaryTotalAmountsList as any as S.Schema<CraBankIncomeSummaryForecastedAnnualIncomeList>;
 
 export type CraBankIncomeSummaryHistoricalSummaryList = Array<CraBankIncomeHistoricalSummary>;
-export const CraBankIncomeSummaryHistoricalSummaryList = /*@__PURE__*/ S.Array(
-  CraBankIncomeHistoricalSummary,
-) as any as S.Schema<CraBankIncomeSummaryHistoricalSummaryList>;
+export const CraBankIncomeSummaryHistoricalSummaryList =
+  CraBankIncomeSourceHistoricalSummaryList as any as S.Schema<CraBankIncomeSummaryHistoricalSummaryList>;
 
 /** This is a V1 (II1) schema. For the V2 (II2) equivalent, use `CraIncomeInsightsUserSummary`. Summary for income across all income sources and items (max history of 730 days). */
 export interface CraBankIncomeSummary {
@@ -13851,9 +13622,8 @@ export const CraIncomeInsights = /*@__PURE__*/ S.suspend(() =>
 
 /** If the Income Insights generation was successful but a subset of data could not be retrieved, this array will contain information about the errors causing information to be missing */
 export type CraCheckReportIncomeInsightsGetResponseWarningsList = Array<CheckReportWarning>;
-export const CraCheckReportIncomeInsightsGetResponseWarningsList = /*@__PURE__*/ S.Array(
-  CheckReportWarning,
-) as any as S.Schema<CraCheckReportIncomeInsightsGetResponseWarningsList>;
+export const CraCheckReportIncomeInsightsGetResponseWarningsList =
+  CraCheckReportCashflowInsightsGetResponseWarningsList as any as S.Schema<CraCheckReportIncomeInsightsGetResponseWarningsList>;
 
 /** CraCheckReportIncomeInsightsGetResponse defines the response schema for `/cra/check_report/income_insights/get`. */
 export interface CraCheckReportIncomeInsightsGetResponse {
@@ -13899,9 +13669,8 @@ export const GetCraCheckReportLendScoreRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The reasons for an individual having risk according to the LendScore. For a full list of possible reason codes and a mapping of reason codes to human-readable reasons, contact your Plaid account manager. Different LendScore versions will use different sets of reason codes. */
 export type LendScoreReasonCodesList = Array<string>;
-export const LendScoreReasonCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LendScoreReasonCodesList>;
+export const LendScoreReasonCodesList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<LendScoreReasonCodesList>;
 
 /** The results of the LendScore */
 export interface LendScore {
@@ -13938,9 +13707,8 @@ export const CraLendScoreReport = /*@__PURE__*/ S.suspend(() =>
 
 /** If the LendScore generation was successful but a subset of data could not be retrieved, this array will contain information about the errors causing information to be missing */
 export type CraCheckReportLendScoreGetResponseWarningsList = Array<CheckReportWarning>;
-export const CraCheckReportLendScoreGetResponseWarningsList = /*@__PURE__*/ S.Array(
-  CheckReportWarning,
-) as any as S.Schema<CraCheckReportLendScoreGetResponseWarningsList>;
+export const CraCheckReportLendScoreGetResponseWarningsList =
+  CraCheckReportCashflowInsightsGetResponseWarningsList as any as S.Schema<CraCheckReportLendScoreGetResponseWarningsList>;
 
 /** CraCheckReportLendScoreGetResponse defines the response schema for `/cra/check_report/lend_score/get`. */
 export interface CraCheckReportLendScoreGetResponse {
@@ -14028,9 +13796,8 @@ export const CraNetworkInsightsReport = /*@__PURE__*/ S.suspend(() =>
 
 /** If the Network Insights generation was successful but a subset of data could not be retrieved, this array will contain information about the errors causing information to be missing */
 export type CraCheckReportNetworkInsightsGetResponseWarningsList = Array<CheckReportWarning>;
-export const CraCheckReportNetworkInsightsGetResponseWarningsList = /*@__PURE__*/ S.Array(
-  CheckReportWarning,
-) as any as S.Schema<CraCheckReportNetworkInsightsGetResponseWarningsList>;
+export const CraCheckReportNetworkInsightsGetResponseWarningsList =
+  CraCheckReportCashflowInsightsGetResponseWarningsList as any as S.Schema<CraCheckReportNetworkInsightsGetResponseWarningsList>;
 
 /** CraCheckReportNetworkInsightsGetResponse defines the response schema for `/cra/check_report/network_insights/get`. */
 export interface CraCheckReportNetworkInsightsGetResponse {
@@ -14098,15 +13865,13 @@ export const GetCraCheckReportPartnerInsightRequest = /*@__PURE__*/ S.suspend(()
 
 /** Negative reason codes associated with the score (reasons the score moved downward), in priority order. May contain up to 4 items. */
 export type CraPartnerInsightsUltraFicoScoreNegativeReasonCodesList = Array<string>;
-export const CraPartnerInsightsUltraFicoScoreNegativeReasonCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CraPartnerInsightsUltraFicoScoreNegativeReasonCodesList>;
+export const CraPartnerInsightsUltraFicoScoreNegativeReasonCodesList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<CraPartnerInsightsUltraFicoScoreNegativeReasonCodesList>;
 
 /** Positive reason codes associated with the score (reasons the score moved upward), in priority order. May contain up to 4 items. */
 export type CraPartnerInsightsUltraFicoScorePositiveReasonCodesList = Array<string>;
-export const CraPartnerInsightsUltraFicoScorePositiveReasonCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CraPartnerInsightsUltraFicoScorePositiveReasonCodesList>;
+export const CraPartnerInsightsUltraFicoScorePositiveReasonCodesList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<CraPartnerInsightsUltraFicoScorePositiveReasonCodesList>;
 
 /** The calculated UltraFICO® score. */
 export interface CraPartnerInsightsUltraFicoScore {
@@ -14298,9 +14063,8 @@ export const PrismInsights = /*@__PURE__*/ S.suspend(() =>
 
 /** The reasons for an individual having risk according to the cash score. */
 export type PrismCashScoreReasonCodesList = Array<string>;
-export const PrismCashScoreReasonCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrismCashScoreReasonCodesList>;
+export const PrismCashScoreReasonCodesList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<PrismCashScoreReasonCodesList>;
 
 /** An object containing metadata about the provided transactions. */
 export interface PrismCashScoreMetadata {
@@ -14366,9 +14130,8 @@ export const PrismCashScore = /*@__PURE__*/ S.suspend(() =>
 
 /** The reasons for an individual having risk according to the CashScore® Extend score. */
 export type PrismExtendReasonCodesList = Array<string>;
-export const PrismExtendReasonCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrismExtendReasonCodesList>;
+export const PrismExtendReasonCodesList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<PrismExtendReasonCodesList>;
 
 /** The data from the CashScore® Extend product returned by Prism Data. */
 export interface PrismExtend {
@@ -14393,9 +14156,8 @@ export const PrismExtend = /*@__PURE__*/ S.suspend(() =>
 
 /** The reasons for an individual having risk according to the FirstDetect score. */
 export type PrismFirstDetectReasonCodesList = Array<string>;
-export const PrismFirstDetectReasonCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrismFirstDetectReasonCodesList>;
+export const PrismFirstDetectReasonCodesList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<PrismFirstDetectReasonCodesList>;
 
 /** The data from the FirstDetect product returned by Prism Data. */
 export interface PrismFirstDetect {
@@ -14410,22 +14172,12 @@ export interface PrismFirstDetect {
   metadata?: PrismCashScoreMetadata;
   error_reason?: string;
 }
-export const PrismFirstDetect = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.Number,
-    model_version: S.optional(S.String),
-    score: S.NullOr(S.Number),
-    reason_codes: S.optional(PrismFirstDetectReasonCodesList),
-    metadata: S.optional(PrismCashScoreMetadata),
-    error_reason: S.optional(S.String),
-  }),
-).annotate({ identifier: "PrismFirstDetect" }) as any as S.Schema<PrismFirstDetect>;
+export const PrismFirstDetect = PrismCashScore as any as S.Schema<PrismFirstDetect>;
 
 /** The reasons for an individual having risk according to the CashScore® Detect score. */
 export type PrismDetectReasonCodesList = Array<string>;
-export const PrismDetectReasonCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrismDetectReasonCodesList>;
+export const PrismDetectReasonCodesList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<PrismDetectReasonCodesList>;
 
 /** The data from the CashScore® Detect product returned by Prism Data. */
 export interface PrismDetect {
@@ -14438,15 +14190,7 @@ export interface PrismDetect {
   metadata?: PrismCashScoreMetadata;
   error_reason?: string;
 }
-export const PrismDetect = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    model_version: S.String,
-    score: S.NullOr(S.Number),
-    reason_codes: S.optional(PrismDetectReasonCodesList),
-    metadata: S.optional(PrismCashScoreMetadata),
-    error_reason: S.optional(S.String),
-  }),
-).annotate({ identifier: "PrismDetect" }) as any as S.Schema<PrismDetect>;
+export const PrismDetect = PrismExtend as any as S.Schema<PrismDetect>;
 
 /** The Prism Data insights for the user. */
 export interface CraPartnerInsightsPrism {
@@ -14475,9 +14219,8 @@ export const CraPartnerInsightsItemAccountMetadata = CraBankIncomeAccountMetadat
 
 /** Data returned by the financial institution about the account owner or owners. Identity information is optional, so field may return an empty array. */
 export type CraPartnerInsightsItemAccountOwnersList = Array<Owner>;
-export const CraPartnerInsightsItemAccountOwnersList = /*@__PURE__*/ S.Array(
-  Owner,
-) as any as S.Schema<CraPartnerInsightsItemAccountOwnersList>;
+export const CraPartnerInsightsItemAccountOwnersList =
+  AccountAssetsOwnersList as any as S.Schema<CraPartnerInsightsItemAccountOwnersList>;
 
 /** Account data corresponding to the Item from which Partner Insights were generated. */
 export interface CraPartnerInsightsItemAccount {
@@ -14568,9 +14311,8 @@ export const CraPartnerInsights = /*@__PURE__*/ S.suspend(() =>
 
 /** If the Partner Insights generation was successful but a subset of data could not be retrieved, this array will contain information about the errors causing information to be missing */
 export type CraCheckReportPartnerInsightsGetResponseWarningsList = Array<CheckReportWarning>;
-export const CraCheckReportPartnerInsightsGetResponseWarningsList = /*@__PURE__*/ S.Array(
-  CheckReportWarning,
-) as any as S.Schema<CraCheckReportPartnerInsightsGetResponseWarningsList>;
+export const CraCheckReportPartnerInsightsGetResponseWarningsList =
+  CraCheckReportCashflowInsightsGetResponseWarningsList as any as S.Schema<CraCheckReportPartnerInsightsGetResponseWarningsList>;
 
 /** CraCheckReportPartnerInsightsGetResponse defines the response schema for `/cra/check_report/partner_insights/get`. */
 export interface CraCheckReportPartnerInsightsGetResponse {
@@ -14622,17 +14364,15 @@ export const GetCraCheckReportPdfRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCraCheckReportPdfRequest>;
 
 export interface GetCraCheckReportPdfResponse {}
-export const GetCraCheckReportPdfResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCraCheckReportPdfResponse",
-}) as any as S.Schema<GetCraCheckReportPdfResponse>;
+export const GetCraCheckReportPdfResponse =
+  DownloadStatementResponse as any as S.Schema<GetCraCheckReportPdfResponse>;
 
 /** Specifies which types of home lending reports are expected in the response */
 export type GetCraCheckReportVerificationRequestReportsRequestedList = Array<
   CraCheckReportVerificationGetReportType | (string & {})
 >;
-export const GetCraCheckReportVerificationRequestReportsRequestedList = /*@__PURE__*/ S.Array(
-  CraCheckReportVerificationGetReportType,
-) as any as S.Schema<GetCraCheckReportVerificationRequestReportsRequestedList>;
+export const GetCraCheckReportVerificationRequestReportsRequestedList =
+  CraCheckReportHomeLendingReportOptionsReportsRequestedList as any as S.Schema<GetCraCheckReportVerificationRequestReportsRequestedList>;
 
 /** Deprecated. This field is no longer accepted for new clients (created on or after 2026-07-01). New clients should specify required products when creating the Consumer Report. Existing integrations may continue to pass `employment_refresh_options`. */
 export type CraCheckReportVerificationGetEmploymentRefreshOptions =
@@ -14727,15 +14467,13 @@ export const CraVoaReportAccountBalances = /*@__PURE__*/ S.suspend(() =>
 
 /** The information about previously submitted valid dispute statements by the consumer */
 export type CraVoaReportAccountConsumerDisputesList = Array<ConsumerDispute>;
-export const CraVoaReportAccountConsumerDisputesList = /*@__PURE__*/ S.Array(
-  ConsumerDispute,
-) as any as S.Schema<CraVoaReportAccountConsumerDisputesList>;
+export const CraVoaReportAccountConsumerDisputesList =
+  BaseReportAccountConsumerDisputesList as any as S.Schema<CraVoaReportAccountConsumerDisputesList>;
 
 /** Transaction history associated with the account. */
 export type CraVoaReportTransactionsInsightsAllTransactionsList = Array<BaseReportTransaction>;
-export const CraVoaReportTransactionsInsightsAllTransactionsList = /*@__PURE__*/ S.Array(
-  BaseReportTransaction,
-) as any as S.Schema<CraVoaReportTransactionsInsightsAllTransactionsList>;
+export const CraVoaReportTransactionsInsightsAllTransactionsList =
+  BaseReportAccountTransactionsList as any as S.Schema<CraVoaReportTransactionsInsightsAllTransactionsList>;
 
 /** Transaction data associated with the account. */
 export interface CraVoaReportTransactionsInsights {
@@ -14758,15 +14496,13 @@ export const CraVoaReportTransactionsInsights = /*@__PURE__*/ S.suspend(() =>
 
 /** Data returned by the financial institution about the account owner or owners. */
 export type CraVoaReportAccountOwnersList = Array<Owner>;
-export const CraVoaReportAccountOwnersList = /*@__PURE__*/ S.Array(
-  Owner,
-) as any as S.Schema<CraVoaReportAccountOwnersList>;
+export const CraVoaReportAccountOwnersList =
+  AccountAssetsOwnersList as any as S.Schema<CraVoaReportAccountOwnersList>;
 
 /** Per-lot acquisition data for this holding. This field is absent when lot-level data is not available for the holding -- either the institution does not provide it, or the report was generated before lot-level data was supported. Refresh the report if you expect lots. */
 export type BaseReportInvestmentHoldingTaxLotsList = Array<HoldingTaxLot>;
-export const BaseReportInvestmentHoldingTaxLotsList = /*@__PURE__*/ S.Array(
-  HoldingTaxLot,
-) as any as S.Schema<BaseReportInvestmentHoldingTaxLotsList>;
+export const BaseReportInvestmentHoldingTaxLotsList =
+  AssetReportInvestmentHoldingTaxLotsList as any as S.Schema<BaseReportInvestmentHoldingTaxLotsList>;
 
 /** A securities holding at an institution. */
 export interface BaseReportInvestmentHolding {
@@ -15243,9 +14979,8 @@ export const CraVerificationIncomeTransaction = CraIncomeTransaction;
 
 /** The transactions data for the income stream ordered by ascending date. */
 export type CraVerificationIncomeStreamTransactionsList = Array<CraIncomeTransaction>;
-export const CraVerificationIncomeStreamTransactionsList = /*@__PURE__*/ S.Array(
-  CraIncomeTransaction,
-) as any as S.Schema<CraVerificationIncomeStreamTransactionsList>;
+export const CraVerificationIncomeStreamTransactionsList =
+  CraIncomeStreamTransactionsList as any as S.Schema<CraVerificationIncomeStreamTransactionsList>;
 
 /** An income stream detected for the user. */
 export interface CraVerificationIncomeStream {
@@ -15395,9 +15130,8 @@ export const CraVerificationReport = /*@__PURE__*/ S.suspend(() =>
 
 /** If the home lending report generation was successful but a subset of data could not be retrieved, this array will contain information about the errors causing information to be missing. */
 export type CraCheckReportVerificationGetResponseWarningsList = Array<CheckReportWarning>;
-export const CraCheckReportVerificationGetResponseWarningsList = /*@__PURE__*/ S.Array(
-  CheckReportWarning,
-) as any as S.Schema<CraCheckReportVerificationGetResponseWarningsList>;
+export const CraCheckReportVerificationGetResponseWarningsList =
+  CraCheckReportCashflowInsightsGetResponseWarningsList as any as S.Schema<CraCheckReportVerificationGetResponseWarningsList>;
 
 /** CraCheckReportVerificationGetResponse defines the response schema for `/cra/check_report/verification/get`. */
 export interface CraCheckReportVerificationGetResponse {
@@ -15456,11 +15190,8 @@ export const GetCraCheckReportVerificationPdfRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<GetCraCheckReportVerificationPdfRequest>;
 
 export interface GetCraCheckReportVerificationPdfResponse {}
-export const GetCraCheckReportVerificationPdfResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetCraCheckReportVerificationPdfResponse",
-}) as any as S.Schema<GetCraCheckReportVerificationPdfResponse>;
+export const GetCraCheckReportVerificationPdfResponse =
+  AssetReportAuditCopyPdfGetResponse as any as S.Schema<GetCraCheckReportVerificationPdfResponse>;
 
 /** The product type for the credit profile report request. */
 export type CraCreditProfileReportType = "QUALIFY";
@@ -15502,9 +15233,8 @@ export const GetCraCreditProfileReportRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The reasons for an individual having risk according to the LendScore. For a full list of possible reason codes and a mapping of reason codes to human-readable reasons, contact your Plaid account manager. Different LendScore versions will use different sets of reason codes. */
 export type CraCreditProfileLendScoreReasonCodesList = Array<string>;
-export const CraCreditProfileLendScoreReasonCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CraCreditProfileLendScoreReasonCodesList>;
+export const CraCreditProfileLendScoreReasonCodesList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<CraCreditProfileLendScoreReasonCodesList>;
 
 /** An individual LendScore result within a credit profile report. */
 export interface CraCreditProfileLendScore {
@@ -15536,23 +15266,18 @@ export const CraCreditProfileReportLendScoresList = /*@__PURE__*/ S.Array(
 
 /** A map of cash flow attributes, where the key is a string, and the value is a string, float, int, or boolean. The specific list of attributes will depend on the cash flow attributes version used. For a full list of all ~2,000 attributes, contact your account manager. */
 export type CraCreditProfileCashflowAttributesSchema = { [key: string]: unknown | undefined };
-export const CraCreditProfileCashflowAttributesSchema = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CraCreditProfileCashflowAttributesSchema>;
+export const CraCreditProfileCashflowAttributesSchema =
+  PartnerEndCustomerProductStatuses as any as S.Schema<CraCreditProfileCashflowAttributesSchema>;
 
 /** A map of network attributes, where the key is a string, and the value is a float, int, or boolean. For a full list of attributes, contact your account manager. */
 export type CraCreditProfileNetworkInsightsSchema = { [key: string]: unknown | undefined };
-export const CraCreditProfileNetworkInsightsSchema = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CraCreditProfileNetworkInsightsSchema>;
+export const CraCreditProfileNetworkInsightsSchema =
+  PartnerEndCustomerProductStatuses as any as S.Schema<CraCreditProfileNetworkInsightsSchema>;
 
 /** The institution IDs associated with the report. */
 export type CraCreditProfileReportMetadataInstitutionIdsList = Array<string>;
-export const CraCreditProfileReportMetadataInstitutionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CraCreditProfileReportMetadataInstitutionIdsList>;
+export const CraCreditProfileReportMetadataInstitutionIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<CraCreditProfileReportMetadataInstitutionIdsList>;
 
 /** Metadata about the CRA Credit Profile Report. */
 export interface CraCreditProfileReportMetadata {
@@ -15624,9 +15349,8 @@ export const CraCreditProfileReport = /*@__PURE__*/ S.suspend(() =>
 
 /** If the report generation was successful but a subset of data could not be retrieved, this array will contain information about the errors causing information to be missing */
 export type CraCreditProfileReportGetResponseWarningsList = Array<CheckReportWarning>;
-export const CraCreditProfileReportGetResponseWarningsList = /*@__PURE__*/ S.Array(
-  CheckReportWarning,
-) as any as S.Schema<CraCreditProfileReportGetResponseWarningsList>;
+export const CraCreditProfileReportGetResponseWarningsList =
+  CraCheckReportCashflowInsightsGetResponseWarningsList as any as S.Schema<CraCreditProfileReportGetResponseWarningsList>;
 
 /** CraCreditProfileReportGetResponse defines the response schema for `/cra/credit_profile/report/get`. */
 export interface CraCreditProfileReportGetResponse {
@@ -15853,17 +15577,13 @@ export const CraReportGetQualifyResponseProductProduct = S.String;
 
 /** A map of product report metadata, where the key is a string and the value varies by product. For a full list of metadata fields per product, see the data dictionary. May be `null` if metadata was not available. */
 export type CraReportGetProductMetadata = { [key: string]: unknown | undefined };
-export const CraReportGetProductMetadata = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CraReportGetProductMetadata>;
+export const CraReportGetProductMetadata =
+  PartnerEndCustomerProductStatuses as any as S.Schema<CraReportGetProductMetadata>;
 
 /** A map of product attributes, where the key is a string and the value can be any JSON value. The specific list of attributes depends on the product and version. For a full list, see the data dictionary. May be `null` if attributes were not available. */
 export type CraReportGetProductAttributes = { [key: string]: unknown | undefined };
-export const CraReportGetProductAttributes = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CraReportGetProductAttributes>;
+export const CraReportGetProductAttributes =
+  PartnerEndCustomerProductStatuses as any as S.Schema<CraReportGetProductAttributes>;
 
 /** Product-level errors. Non-empty when this product failed to generate; empty on success. */
 export type CraReportGetQualifyResponseProductErrorsList = Array<PlaidError | null>;
@@ -15899,9 +15619,8 @@ export const CraReportGetIncomeInsightsResponseProductProduct = S.String;
 
 /** The institution IDs of the Items used to generate the report. */
 export type CraReportGetIncomeInsightsMetadataInstitutionIdsList = Array<string>;
-export const CraReportGetIncomeInsightsMetadataInstitutionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CraReportGetIncomeInsightsMetadataInstitutionIdsList>;
+export const CraReportGetIncomeInsightsMetadataInstitutionIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<CraReportGetIncomeInsightsMetadataInstitutionIdsList>;
 
 /** Income Insights report metadata returned by `/cra/report/get`. */
 export interface CraReportGetIncomeInsightsMetadata {
@@ -15993,9 +15712,8 @@ export const CraReportGetIncomeInsightsAttributes = /*@__PURE__*/ S.suspend(() =
 
 /** Product-level errors. Non-empty when this product failed to generate; empty on success. */
 export type CraReportGetIncomeInsightsResponseProductErrorsList = Array<PlaidError | null>;
-export const CraReportGetIncomeInsightsResponseProductErrorsList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(PlaidError),
-) as any as S.Schema<CraReportGetIncomeInsightsResponseProductErrorsList>;
+export const CraReportGetIncomeInsightsResponseProductErrorsList =
+  CraReportGetQualifyResponseProductErrorsList as any as S.Schema<CraReportGetIncomeInsightsResponseProductErrorsList>;
 
 /** Income Insights data returned by `/cra/report/get`. */
 export interface CraReportGetIncomeInsightsResponseProduct {
@@ -16025,9 +15743,8 @@ export const CraReportGetHomeLendingResponseProductProduct = S.String;
 
 /** The institution IDs of the Items used to generate the report. */
 export type CraReportGetProductBaseMetadataInstitutionIdsList = Array<string>;
-export const CraReportGetProductBaseMetadataInstitutionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CraReportGetProductBaseMetadataInstitutionIdsList>;
+export const CraReportGetProductBaseMetadataInstitutionIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<CraReportGetProductBaseMetadataInstitutionIdsList>;
 
 /** Fields common to every /cra/report/get product's metadata. */
 export interface CraReportGetProductBaseMetadata {
@@ -16058,9 +15775,8 @@ export const CraReportGetHomeLendingIncomeMetrics = CraVerificationIncomeMetrics
 /** Modeled income metrics, one entry per currency observed across the user's income streams. */
 export type CraReportGetHomeLendingAttributesIncomeMetricsList =
   Array<CraVerificationIncomeMetrics>;
-export const CraReportGetHomeLendingAttributesIncomeMetricsList = /*@__PURE__*/ S.Array(
-  CraVerificationIncomeMetrics,
-) as any as S.Schema<CraReportGetHomeLendingAttributesIncomeMetricsList>;
+export const CraReportGetHomeLendingAttributesIncomeMetricsList =
+  CraVerificationIncomeUserSummaryIncomeMetricsList as any as S.Schema<CraReportGetHomeLendingAttributesIncomeMetricsList>;
 
 /** Modeled current income for a single income category. */
 export interface CraReportGetHomeLendingCategoryIncome {
@@ -16159,9 +15875,8 @@ export const CraReportGetHomeLendingAttributes = /*@__PURE__*/ S.suspend(() =>
 
 /** Product-level errors. Non-empty when this product failed to generate; empty on success. */
 export type CraReportGetHomeLendingResponseProductErrorsList = Array<PlaidError | null>;
-export const CraReportGetHomeLendingResponseProductErrorsList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(PlaidError),
-) as any as S.Schema<CraReportGetHomeLendingResponseProductErrorsList>;
+export const CraReportGetHomeLendingResponseProductErrorsList =
+  CraReportGetQualifyResponseProductErrorsList as any as S.Schema<CraReportGetHomeLendingResponseProductErrorsList>;
 
 /** Home Lending data returned by `/cra/report/get`. */
 export interface CraReportGetHomeLendingResponseProduct {
@@ -16221,9 +15936,8 @@ export const CraReportGetReport = /*@__PURE__*/ S.suspend(() =>
 
 /** User or report-level errors that affected the overall report but do not map to a specific product failure. */
 export type CraReportGetResponseWarningsList = Array<CheckReportWarning>;
-export const CraReportGetResponseWarningsList = /*@__PURE__*/ S.Array(
-  CheckReportWarning,
-) as any as S.Schema<CraReportGetResponseWarningsList>;
+export const CraReportGetResponseWarningsList =
+  CraCheckReportCashflowInsightsGetResponseWarningsList as any as S.Schema<CraReportGetResponseWarningsList>;
 
 /** CraReportGetResponse defines the response schema for `/cra/report/get`. */
 export interface CraReportGetResponse {
@@ -16262,9 +15976,8 @@ export const GetCraServicingSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The products this subscription covers, each with the options it is configured with. */
 export type CraServicingSubscriptionProductsList = Array<CraSubscriptionProductConfig>;
-export const CraServicingSubscriptionProductsList = /*@__PURE__*/ S.Array(
-  CraSubscriptionProductConfig,
-) as any as S.Schema<CraServicingSubscriptionProductsList>;
+export const CraServicingSubscriptionProductsList =
+  CreateCraServicingSubscriptionRequestProductsList as any as S.Schema<CraServicingSubscriptionProductsList>;
 
 /** A single CRA servicing subscription. */
 export interface CraServicingSubscription {
@@ -17097,9 +16810,8 @@ export const CreditBankEmploymentItemBankEmploymentsList = /*@__PURE__*/ S.Array
 
 /** Data returned by the financial institution about the account owner or owners. Identity information is optional, so field may return an empty array. */
 export type CreditBankIncomeAccountOwnersList = Array<Owner>;
-export const CreditBankIncomeAccountOwnersList = /*@__PURE__*/ S.Array(
-  Owner,
-) as any as S.Schema<CreditBankIncomeAccountOwnersList>;
+export const CreditBankIncomeAccountOwnersList =
+  AccountAssetsOwnersList as any as S.Schema<CreditBankIncomeAccountOwnersList>;
 
 /** The Item's bank accounts that have the selected data. */
 export interface CreditBankIncomeAccount {
@@ -17304,16 +17016,14 @@ export const GetCreditBankIncomeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The Item's accounts that have Bank Income data. */
 export type CreditBankIncomeItemBankIncomeAccountsList = Array<CreditBankIncomeAccount>;
-export const CreditBankIncomeItemBankIncomeAccountsList = /*@__PURE__*/ S.Array(
-  CreditBankIncomeAccount,
-) as any as S.Schema<CreditBankIncomeItemBankIncomeAccountsList>;
+export const CreditBankIncomeItemBankIncomeAccountsList =
+  CreditBankEmploymentItemBankEmploymentAccountsList as any as S.Schema<CreditBankIncomeItemBankIncomeAccountsList>;
 
 /** Total amount of earnings for the income source(s) of the user for the month in the summary. This can contain multiple amounts, with each amount denominated in one unique currency. */
 export type CreditBankIncomeHistoricalSummaryTotalAmountsList =
   Array<CashflowReportMonthlySummaryStartingBalance>;
-export const CreditBankIncomeHistoricalSummaryTotalAmountsList = /*@__PURE__*/ S.Array(
-  CashflowReportMonthlySummaryStartingBalance,
-) as any as S.Schema<CreditBankIncomeHistoricalSummaryTotalAmountsList>;
+export const CreditBankIncomeHistoricalSummaryTotalAmountsList =
+  CraBankIncomeHistoricalSummaryTotalAmountsList as any as S.Schema<CreditBankIncomeHistoricalSummaryTotalAmountsList>;
 
 /** The transactions data for the end user's income source(s). */
 export interface CreditBankIncomeTransaction {
@@ -17466,14 +17176,12 @@ export const CreditBankIncomeItemsList = /*@__PURE__*/ S.Array(
 /** Total amount of earnings across all the income sources in the end user's Items for the days requested by the client. This can contain multiple amounts, with each amount denominated in one unique currency. */
 export type CreditBankIncomeSummaryTotalAmountsList =
   Array<CashflowReportMonthlySummaryStartingBalance>;
-export const CreditBankIncomeSummaryTotalAmountsList = /*@__PURE__*/ S.Array(
-  CashflowReportMonthlySummaryStartingBalance,
-) as any as S.Schema<CreditBankIncomeSummaryTotalAmountsList>;
+export const CreditBankIncomeSummaryTotalAmountsList =
+  CraBankIncomeHistoricalSummaryTotalAmountsList as any as S.Schema<CreditBankIncomeSummaryTotalAmountsList>;
 
 export type CreditBankIncomeSummaryHistoricalSummaryList = Array<CreditBankIncomeHistoricalSummary>;
-export const CreditBankIncomeSummaryHistoricalSummaryList = /*@__PURE__*/ S.Array(
-  CreditBankIncomeHistoricalSummary,
-) as any as S.Schema<CreditBankIncomeSummaryHistoricalSummaryList>;
+export const CreditBankIncomeSummaryHistoricalSummaryList =
+  CreditBankIncomeSourceHistoricalSummaryList as any as S.Schema<CreditBankIncomeSummaryHistoricalSummaryList>;
 
 /** Summary for bank income across all income sources and items (max history of 730 days). */
 export interface CreditBankIncomeSummary {
@@ -17594,15 +17302,13 @@ export const GetCreditBankIncomePdfRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCreditBankIncomePdfRequest>;
 
 export interface GetCreditBankIncomePdfResponse {}
-export const GetCreditBankIncomePdfResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCreditBankIncomePdfResponse",
-}) as any as S.Schema<GetCreditBankIncomePdfResponse>;
+export const GetCreditBankIncomePdfResponse =
+  DownloadStatementResponse as any as S.Schema<GetCreditBankIncomePdfResponse>;
 
 /** An array of `item_id`s whose bank statements information is returned. Each `item_id` should uniquely identify a bank statements uploaded item. If this field is not provided, all `item_id`s associated with the user will be returned in the response. */
 export type CreditBankStatementsUploadsGetRequestOptionsItemIdsList = Array<string>;
-export const CreditBankStatementsUploadsGetRequestOptionsItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreditBankStatementsUploadsGetRequestOptionsItemIdsList>;
+export const CreditBankStatementsUploadsGetRequestOptionsItemIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<CreditBankStatementsUploadsGetRequestOptionsItemIdsList>;
 
 /** An optional object for `/credit/bank_statements/uploads/get` request options. */
 export interface CreditBankStatementsUploadsGetRequestOptions {
@@ -18366,22 +18072,16 @@ export const CreditFreddieMacReportsGetResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of `item_id`s whose payroll information is returned. Each `item_id` should uniquely identify a payroll income item. If this field is not provided, all `item_id`s associated with the user will be returned in the response. */
 export type CreditPayrollIncomeGetRequestOptionsItemIdsList = Array<string>;
-export const CreditPayrollIncomeGetRequestOptionsItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreditPayrollIncomeGetRequestOptionsItemIdsList>;
+export const CreditPayrollIncomeGetRequestOptionsItemIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<CreditPayrollIncomeGetRequestOptionsItemIdsList>;
 
 /** An optional object for `/credit/payroll_income/get` request options. */
 export interface CreditPayrollIncomeGetRequestOptions {
   /** An array of `item_id`s whose payroll information is returned. Each `item_id` should uniquely identify a payroll income item. If this field is not provided, all `item_id`s associated with the user will be returned in the response. */
   item_ids?: CreditPayrollIncomeGetRequestOptionsItemIdsList;
 }
-export const CreditPayrollIncomeGetRequestOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    item_ids: S.optional(CreditPayrollIncomeGetRequestOptionsItemIdsList),
-  }),
-).annotate({
-  identifier: "CreditPayrollIncomeGetRequestOptions",
-}) as any as S.Schema<CreditPayrollIncomeGetRequestOptions>;
+export const CreditPayrollIncomeGetRequestOptions =
+  CreditBankStatementsUploadsGetRequestOptions as any as S.Schema<CreditPayrollIncomeGetRequestOptions>;
 
 export interface GetCreditPayrollIncomeRequest {
   client_id?: string;
@@ -19433,9 +19133,8 @@ export const MultiDocumentRiskSignalDocumentReferencesList = /*@__PURE__*/ S.Arr
 
 /** Array of attributes that indicate whether or not there is fraud risk with a set of documents */
 export type MultiDocumentRiskSignalRiskSignalsList = Array<DocumentRiskSignal | null>;
-export const MultiDocumentRiskSignalRiskSignalsList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(DocumentRiskSignal),
-) as any as S.Schema<MultiDocumentRiskSignalRiskSignalsList>;
+export const MultiDocumentRiskSignalRiskSignalsList =
+  SingleDocumentRiskSignalRiskSignalsList as any as S.Schema<MultiDocumentRiskSignalRiskSignalsList>;
 
 /** Object containing risk signals and relevant metadata for a set of uploaded documents */
 export interface MultiDocumentRiskSignal {
@@ -19558,9 +19257,8 @@ export const GetCreditRelayPdfRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCreditRelayPdfRequest" }) as any as S.Schema<GetCreditRelayPdfRequest>;
 
 export interface GetCreditRelayPdfResponse {}
-export const GetCreditRelayPdfResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCreditRelayPdfResponse",
-}) as any as S.Schema<GetCreditRelayPdfResponse>;
+export const GetCreditRelayPdfResponse =
+  DownloadStatementResponse as any as S.Schema<GetCreditRelayPdfResponse>;
 
 export interface GetCreditSessionRequest {
   client_id?: string;
@@ -19995,22 +19693,16 @@ export const FDXConsentRevocations = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of `account_ids` to retrieve for the Item. Note: An error will be returned if a provided `account_id` is not associated with the Item. */
 export type IdentityGetRequestOptionsAccountIdsList = Array<string>;
-export const IdentityGetRequestOptionsAccountIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IdentityGetRequestOptionsAccountIdsList>;
+export const IdentityGetRequestOptionsAccountIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<IdentityGetRequestOptionsAccountIdsList>;
 
 /** An optional object to filter `/identity/get` results. */
 export interface IdentityGetRequestOptions {
   /** A list of `account_ids` to retrieve for the Item. Note: An error will be returned if a provided `account_id` is not associated with the Item. */
   account_ids?: IdentityGetRequestOptionsAccountIdsList;
 }
-export const IdentityGetRequestOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account_ids: S.optional(IdentityGetRequestOptionsAccountIdsList),
-  }),
-).annotate({
-  identifier: "IdentityGetRequestOptions",
-}) as any as S.Schema<IdentityGetRequestOptions>;
+export const IdentityGetRequestOptions =
+  AccountsGetRequestOptions as any as S.Schema<IdentityGetRequestOptions>;
 
 export interface GetIdentityRequest {
   client_id?: string;
@@ -20044,9 +19736,8 @@ export const AccountIdentityVerificationStatus = S.String;
 
 /** Data returned by the financial institution about the account owner or owners. Only returned by Identity or Assets endpoints. For business accounts, the name reported may be either the name of the individual or the name of the business, depending on the institution. To determine whether the linked account is a business account, use the `holder_category` field on the account object. Multiple owners on a single account will be represented in the same `owner` object, not in multiple owner objects within the array. In API versions 2018-05-22 and earlier, the `owners` object is not returned, and instead identity information is returned in the top level `identity` object. For more details, see [Plaid API versioning](https://plaid.com/docs/api/versioning/#version-2019-05-29) */
 export type AccountIdentityOwnersList = Array<Owner>;
-export const AccountIdentityOwnersList = /*@__PURE__*/ S.Array(
-  Owner,
-) as any as S.Schema<AccountIdentityOwnersList>;
+export const AccountIdentityOwnersList =
+  AccountAssetsOwnersList as any as S.Schema<AccountIdentityOwnersList>;
 
 /** Identity information about an account */
 export interface AccountIdentity {
@@ -20116,22 +19807,16 @@ export const IdentityGetResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of `account_ids` to retrieve for the Item. Note: An error will be returned if a provided `account_id` is not associated with the Item. */
 export type IdentityDocumentsUploadsGetRequestOptionsAccountIdsList = Array<string>;
-export const IdentityDocumentsUploadsGetRequestOptionsAccountIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IdentityDocumentsUploadsGetRequestOptionsAccountIdsList>;
+export const IdentityDocumentsUploadsGetRequestOptionsAccountIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<IdentityDocumentsUploadsGetRequestOptionsAccountIdsList>;
 
 /** An optional object to filter `/identity/documents/uploads/get` results. */
 export interface IdentityDocumentsUploadsGetRequestOptions {
   /** A list of `account_ids` to retrieve for the Item. Note: An error will be returned if a provided `account_id` is not associated with the Item. */
   account_ids?: IdentityDocumentsUploadsGetRequestOptionsAccountIdsList;
 }
-export const IdentityDocumentsUploadsGetRequestOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account_ids: S.optional(IdentityDocumentsUploadsGetRequestOptionsAccountIdsList),
-  }),
-).annotate({
-  identifier: "IdentityDocumentsUploadsGetRequestOptions",
-}) as any as S.Schema<IdentityDocumentsUploadsGetRequestOptions>;
+export const IdentityDocumentsUploadsGetRequestOptions =
+  AccountsGetRequestOptions as any as S.Schema<IdentityDocumentsUploadsGetRequestOptions>;
 
 export interface GetIdentityDocumentsUploadRequest {
   client_id?: string;
@@ -20167,9 +19852,8 @@ export const AccountIdentityDocumentUploadVerificationStatus = S.String;
 
 /** Data returned by the financial institution about the account owner or owners. Only returned by Identity or Assets endpoints. For business accounts, the name reported may be either the name of the individual or the name of the business, depending on the institution. To determine whether the linked account is a business account, use the `holder_category` field on the account object. Multiple owners on a single account will be represented in the same `owner` object, not in multiple owner objects within the array. In API versions 2018-05-22 and earlier, the `owners` object is not returned, and instead identity information is returned in the top level `identity` object. For more details, see [Plaid API versioning](https://plaid.com/docs/api/versioning/#version-2019-05-29) */
 export type AccountIdentityDocumentUploadOwnersList = Array<Owner>;
-export const AccountIdentityDocumentUploadOwnersList = /*@__PURE__*/ S.Array(
-  Owner,
-) as any as S.Schema<AccountIdentityDocumentUploadOwnersList>;
+export const AccountIdentityDocumentUploadOwnersList =
+  AccountAssetsOwnersList as any as S.Schema<AccountIdentityDocumentUploadOwnersList>;
 
 /** Metadata pertaining to the document. */
 export interface IdentityDocumentUploadMetadata {
@@ -20386,51 +20070,23 @@ export interface IdentityVerificationGetResponse {
   latest_scored_protect_event?: IDVProtectEvent | null;
   request_id: string;
 }
-export const IdentityVerificationGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    client_user_id: S.String,
-    created_at: S.String,
-    completed_at: S.NullOr(S.String),
-    previous_attempt_id: S.NullOr(S.String),
-    shareable_url: S.NullOr(S.String),
-    template: IdentityVerificationTemplateReference,
-    user: IdentityVerificationUserData,
-    status: IdentityVerificationStatus,
-    steps: IdentityVerificationStepSummary,
-    documentary_verification: S.NullOr(DocumentaryVerification),
-    selfie_check: S.NullOr(SelfieCheck),
-    kyc_check: S.NullOr(KYCCheckDetails),
-    risk_check: S.NullOr(RiskCheckDetails),
-    verify_sms: S.NullOr(VerifySMSDetails),
-    watchlist_screening_id: S.NullOr(S.String),
-    beacon_user_id: S.NullOr(S.String),
-    user_id: S.NullOr(S.String),
-    redacted_at: S.NullOr(S.String),
-    latest_scored_protect_event: S.optional(S.NullOr(IDVProtectEvent)),
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "IdentityVerificationGetResponse",
-}) as any as S.Schema<IdentityVerificationGetResponse>;
+export const IdentityVerificationGetResponse =
+  IdentityVerificationCreateResponse as any as S.Schema<IdentityVerificationGetResponse>;
 
 /** Specify which country or countries to include institutions from, using the ISO-3166-1 alpha-2 country code standard. In API versions 2019-05-29 and earlier, the `country_codes` parameter is an optional parameter within the `options` object and will default to `[US]` if it is not supplied. */
 export type GetInstitutionRequestCountryCodesList = Array<CountryCode | (string & {})>;
-export const GetInstitutionRequestCountryCodesList = /*@__PURE__*/ S.Array(
-  CountryCode,
-) as any as S.Schema<GetInstitutionRequestCountryCodesList>;
+export const GetInstitutionRequestCountryCodesList =
+  CreateLinkTokenRequestCountryCodesList as any as S.Schema<GetInstitutionRequestCountryCodesList>;
 
 /** Filter the Institutions based on which products they support. Will only return institutions that support all listed products. When filtering based on `auth`, an institution must support Instant Auth to match the criterion. To filter for Signal Transaction Scores support, use `balance`. To filter for Transfer support, use `auth`. */
 export type InstitutionsGetRequestOptionsProductsList = Array<Products | (string & {})>;
-export const InstitutionsGetRequestOptionsProductsList = /*@__PURE__*/ S.Array(
-  Products,
-) as any as S.Schema<InstitutionsGetRequestOptionsProductsList>;
+export const InstitutionsGetRequestOptionsProductsList =
+  BetaIssuesV1IssueAffectedProductsList as any as S.Schema<InstitutionsGetRequestOptionsProductsList>;
 
 /** Specify an array of routing numbers to filter institutions. The response will only return institutions that match all of the routing numbers in the array. Routing number records used for this matching are generally comprehensive; however, failure to match a given routing number to an institution does not necessarily mean that the institution is unsupported by Plaid. Invalid routing numbers (numbers that are not 9 digits in length or do not have a valid checksum) will be filtered from the array before the response is processed. If all provided routing numbers are invalid, an `INVALID_REQUEST` error with the code of `INVALID_FIELD` will be returned. */
 export type InstitutionsGetRequestOptionsRoutingNumbersList = Array<string>;
-export const InstitutionsGetRequestOptionsRoutingNumbersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstitutionsGetRequestOptionsRoutingNumbersList>;
+export const InstitutionsGetRequestOptionsRoutingNumbersList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<InstitutionsGetRequestOptionsRoutingNumbersList>;
 
 /** An optional object to filter `/institutions/get` results. */
 export interface InstitutionsGetRequestOptions {
@@ -20484,27 +20140,23 @@ export const GetInstitutionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of the Plaid products supported by the institution. Note that only institutions that support Instant Auth will return `auth` in the product array; institutions that do not list `auth` may still support other Auth methods such as Instant Match or Automated Micro-deposit Verification. To identify institutions that support those methods, use the `auth_metadata` object. For more details, see [Full Auth coverage](https://plaid.com/docs/auth/coverage/). The `income_verification` product here indicates support for Bank Income. Note: For Signal Transaction Scores and Transfer, listed institutions may be incomplete or incorrect. Instead, use the following: `balance` support also indicates coverage of Signal Transaction Scores; `auth` support also indicates coverage of Transfer. */
 export type InstitutionProductsList = Array<Products>;
-export const InstitutionProductsList = /*@__PURE__*/ S.Array(
-  Products,
-) as any as S.Schema<InstitutionProductsList>;
+export const InstitutionProductsList =
+  BetaIssuesV1IssueAffectedProductsList as any as S.Schema<InstitutionProductsList>;
 
 /** A list of the country codes supported by the institution. */
 export type InstitutionCountryCodesList = Array<CountryCode>;
-export const InstitutionCountryCodesList = /*@__PURE__*/ S.Array(
-  CountryCode,
-) as any as S.Schema<InstitutionCountryCodesList>;
+export const InstitutionCountryCodesList =
+  CreateLinkTokenRequestCountryCodesList as any as S.Schema<InstitutionCountryCodesList>;
 
 /** A list of routing numbers known to be associated with the institution. This list is provided for the purpose of looking up institutions by routing number. It is generally comprehensive but is not guaranteed to be a complete list of routing numbers for an institution. */
 export type InstitutionRoutingNumbersList = Array<string>;
-export const InstitutionRoutingNumbersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstitutionRoutingNumbersList>;
+export const InstitutionRoutingNumbersList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<InstitutionRoutingNumbersList>;
 
 /** A partial list of DTC numbers associated with the institution. */
 export type InstitutionDtcNumbersList = Array<string>;
-export const InstitutionDtcNumbersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstitutionDtcNumbersList>;
+export const InstitutionDtcNumbersList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<InstitutionDtcNumbersList>;
 
 /** Whether Plaid supports creating new Items for the institution. `SUPPORTED`: Plaid supports new connections to the institution. Whether a given connection succeeds can still depend on your integration and account: some institutions require completing [OAuth registration](https://plaid.com/docs/link/oauth/#complete-the-registration-requirements) before they can be used, the institution may not support every product requested in `/link/token/create`, and your Plaid account must be in good standing. `NOT_SUPPORTED`: Plaid does not support new connections to the institution. Existing Items may continue to work. Attempting to create a new Item for the institution returns an `INSTITUTION_NO_LONGER_SUPPORTED` error. Institutions with this value are returned only by `/institutions/get_by_id`. */
 export type InstitutionConnectionAvailability = "SUPPORTED" | "NOT_SUPPORTED";
@@ -20641,10 +20293,8 @@ export const InstitutionStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** A mapping of currency to maximum payment amount (denominated in the smallest unit of currency) supported by the institution. Example: `{"GBP": "10000"}` */
 export type PaymentInitiationMaximumPaymentAmount = { [key: string]: string | undefined };
-export const PaymentInitiationMaximumPaymentAmount = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PaymentInitiationMaximumPaymentAmount>;
+export const PaymentInitiationMaximumPaymentAmount =
+  TransferMetadata as any as S.Schema<PaymentInitiationMaximumPaymentAmount>;
 
 /** A list of the valid standing order intervals supported by the institution. */
 export type PaymentInitiationStandingOrderMetadataValidStandingOrderIntervalsList =
@@ -20803,22 +20453,16 @@ export const InstitutionsGetResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of `account_id`s to retrieve for the Item. An error will be returned if a provided `account_id` is not associated with the Item. */
 export type InvestmentsAuthGetRequestOptionsAccountIdsList = Array<string>;
-export const InvestmentsAuthGetRequestOptionsAccountIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InvestmentsAuthGetRequestOptionsAccountIdsList>;
+export const InvestmentsAuthGetRequestOptionsAccountIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<InvestmentsAuthGetRequestOptionsAccountIdsList>;
 
 /** An optional object to filter `/investments/auth/get` results. */
 export interface InvestmentsAuthGetRequestOptions {
   /** An array of `account_id`s to retrieve for the Item. An error will be returned if a provided `account_id` is not associated with the Item. */
   account_ids?: InvestmentsAuthGetRequestOptionsAccountIdsList;
 }
-export const InvestmentsAuthGetRequestOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account_ids: S.optional(InvestmentsAuthGetRequestOptionsAccountIdsList),
-  }),
-).annotate({
-  identifier: "InvestmentsAuthGetRequestOptions",
-}) as any as S.Schema<InvestmentsAuthGetRequestOptions>;
+export const InvestmentsAuthGetRequestOptions =
+  AccountsGetRequestOptions as any as S.Schema<InvestmentsAuthGetRequestOptions>;
 
 export interface GetInvestmentsAuthRequest {
   client_id?: string;
@@ -20902,9 +20546,8 @@ export const InvestmentsAuthGetResponseAccountsList = /*@__PURE__*/ S.Array(
 
 /** Per-lot acquisition data for this holding. An empty array indicates the institution does not provide lot-level data. */
 export type HoldingTaxLotsList = Array<HoldingTaxLot>;
-export const HoldingTaxLotsList = /*@__PURE__*/ S.Array(
-  HoldingTaxLot,
-) as any as S.Schema<HoldingTaxLotsList>;
+export const HoldingTaxLotsList =
+  AssetReportInvestmentHoldingTaxLotsList as any as S.Schema<HoldingTaxLotsList>;
 
 /** A securities holding at an institution. */
 export interface Holding {
@@ -21101,9 +20744,8 @@ export const InvestmentsAuthGetResponseSecuritiesList = /*@__PURE__*/ S.Array(
 
 /** A list of names associated with the account by the financial institution. In the case of a joint account, Plaid will make a best effort to report the names of all account holders. If an Item contains multiple accounts with different owner names, some institutions will report all names associated with the Item in each account's `names` array. */
 export type InvestmentsAuthOwnerNamesList = Array<string>;
-export const InvestmentsAuthOwnerNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InvestmentsAuthOwnerNamesList>;
+export const InvestmentsAuthOwnerNamesList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<InvestmentsAuthOwnerNamesList>;
 
 /** Information on the ownership of an investment account */
 export interface InvestmentsAuthOwner {
@@ -21127,9 +20769,8 @@ export const InvestmentsAuthGetResponseOwnersList = /*@__PURE__*/ S.Array(
 
 /** Identifiers for the clearinghouses that are associated with the account in order of relevance. If this array is empty, call `/institutions/get_by_id` with the `item.institution_id` to get the DTC number. */
 export type NumbersACATSDtcNumbersList = Array<string>;
-export const NumbersACATSDtcNumbersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NumbersACATSDtcNumbersList>;
+export const NumbersACATSDtcNumbersList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<NumbersACATSDtcNumbersList>;
 
 /** Identifying information for transferring holdings to an investment account via ACATS. */
 export interface NumbersACATS {
@@ -21396,22 +21037,16 @@ export const InvestmentsAuthGetResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of `account_id`s to retrieve for the Item. An error will be returned if a provided `account_id` is not associated with the Item. */
 export type InvestmentHoldingsGetRequestOptionsAccountIdsList = Array<string>;
-export const InvestmentHoldingsGetRequestOptionsAccountIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InvestmentHoldingsGetRequestOptionsAccountIdsList>;
+export const InvestmentHoldingsGetRequestOptionsAccountIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<InvestmentHoldingsGetRequestOptionsAccountIdsList>;
 
 /** An optional object to filter `/investments/holdings/get` results. If provided, must not be `null`. */
 export interface InvestmentHoldingsGetRequestOptions {
   /** An array of `account_id`s to retrieve for the Item. An error will be returned if a provided `account_id` is not associated with the Item. */
   account_ids?: InvestmentHoldingsGetRequestOptionsAccountIdsList;
 }
-export const InvestmentHoldingsGetRequestOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account_ids: S.optional(InvestmentHoldingsGetRequestOptionsAccountIdsList),
-  }),
-).annotate({
-  identifier: "InvestmentHoldingsGetRequestOptions",
-}) as any as S.Schema<InvestmentHoldingsGetRequestOptions>;
+export const InvestmentHoldingsGetRequestOptions =
+  AccountsGetRequestOptions as any as S.Schema<InvestmentHoldingsGetRequestOptions>;
 
 export interface GetInvestmentsHoldingRequest {
   client_id?: string;
@@ -21432,21 +21067,18 @@ export const GetInvestmentsHoldingRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The accounts associated with the Item */
 export type InvestmentsHoldingsGetResponseAccountsList = Array<InvestmentAccount>;
-export const InvestmentsHoldingsGetResponseAccountsList = /*@__PURE__*/ S.Array(
-  InvestmentAccount,
-) as any as S.Schema<InvestmentsHoldingsGetResponseAccountsList>;
+export const InvestmentsHoldingsGetResponseAccountsList =
+  InvestmentsAuthGetResponseAccountsList as any as S.Schema<InvestmentsHoldingsGetResponseAccountsList>;
 
 /** The holdings belonging to investment accounts associated with the Item. Details of the securities in the holdings are provided in the `securities` field. */
 export type InvestmentsHoldingsGetResponseHoldingsList = Array<Holding>;
-export const InvestmentsHoldingsGetResponseHoldingsList = /*@__PURE__*/ S.Array(
-  Holding,
-) as any as S.Schema<InvestmentsHoldingsGetResponseHoldingsList>;
+export const InvestmentsHoldingsGetResponseHoldingsList =
+  InvestmentsAuthGetResponseHoldingsList as any as S.Schema<InvestmentsHoldingsGetResponseHoldingsList>;
 
 /** Objects describing the securities held in the accounts associated with the Item. */
 export type InvestmentsHoldingsGetResponseSecuritiesList = Array<Security>;
-export const InvestmentsHoldingsGetResponseSecuritiesList = /*@__PURE__*/ S.Array(
-  Security,
-) as any as S.Schema<InvestmentsHoldingsGetResponseSecuritiesList>;
+export const InvestmentsHoldingsGetResponseSecuritiesList =
+  InvestmentsAuthGetResponseSecuritiesList as any as S.Schema<InvestmentsHoldingsGetResponseSecuritiesList>;
 
 /** InvestmentsHoldingsGetResponse defines the response schema for `/investments/holdings/get` */
 export interface InvestmentsHoldingsGetResponse {
@@ -21476,9 +21108,8 @@ export const InvestmentsHoldingsGetResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of `account_ids` to retrieve for the Item. */
 export type InvestmentsTransactionsGetRequestOptionsAccountIdsList = Array<string>;
-export const InvestmentsTransactionsGetRequestOptionsAccountIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InvestmentsTransactionsGetRequestOptionsAccountIdsList>;
+export const InvestmentsTransactionsGetRequestOptionsAccountIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<InvestmentsTransactionsGetRequestOptionsAccountIdsList>;
 
 /** An optional object to filter `/investments/transactions/get` results. If provided, must be non-`null`. */
 export interface InvestmentsTransactionsGetRequestOptions {
@@ -21527,15 +21158,13 @@ export const GetInvestmentsTransactionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The accounts for which transaction history is being fetched. */
 export type InvestmentsTransactionsGetResponseAccountsList = Array<InvestmentAccount>;
-export const InvestmentsTransactionsGetResponseAccountsList = /*@__PURE__*/ S.Array(
-  InvestmentAccount,
-) as any as S.Schema<InvestmentsTransactionsGetResponseAccountsList>;
+export const InvestmentsTransactionsGetResponseAccountsList =
+  InvestmentsAuthGetResponseAccountsList as any as S.Schema<InvestmentsTransactionsGetResponseAccountsList>;
 
 /** All securities for which there is a corresponding transaction being fetched. */
 export type InvestmentsTransactionsGetResponseSecuritiesList = Array<Security>;
-export const InvestmentsTransactionsGetResponseSecuritiesList = /*@__PURE__*/ S.Array(
-  Security,
-) as any as S.Schema<InvestmentsTransactionsGetResponseSecuritiesList>;
+export const InvestmentsTransactionsGetResponseSecuritiesList =
+  InvestmentsAuthGetResponseSecuritiesList as any as S.Schema<InvestmentsTransactionsGetResponseSecuritiesList>;
 
 /** The transactions being fetched */
 export type InvestmentsTransactionsGetResponseInvestmentTransactionsList =
@@ -21589,15 +21218,13 @@ export const GetIssueRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of names of the financial institutions affected. */
 export type IssueInstitutionNamesList = Array<string>;
-export const IssueInstitutionNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IssueInstitutionNamesList>;
+export const IssueInstitutionNamesList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<IssueInstitutionNamesList>;
 
 /** A list of ids of the financial institutions affected. */
 export type IssueInstitutionIdsList = Array<string>;
-export const IssueInstitutionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IssueInstitutionIdsList>;
+export const IssueInstitutionIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<IssueInstitutionIdsList>;
 
 /** The current status of the issue. */
 export type IssuesStatus =
@@ -21664,27 +21291,23 @@ export const GetItemRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of products available for the Item that have not yet been accessed. The contents of this array will be mutually exclusive with `billed_products`. */
 export type ItemWithConsentFieldsAvailableProductsList = Array<Products>;
-export const ItemWithConsentFieldsAvailableProductsList = /*@__PURE__*/ S.Array(
-  Products,
-) as any as S.Schema<ItemWithConsentFieldsAvailableProductsList>;
+export const ItemWithConsentFieldsAvailableProductsList =
+  BetaIssuesV1IssueAffectedProductsList as any as S.Schema<ItemWithConsentFieldsAvailableProductsList>;
 
 /** A list of products that have been billed for the Item. The contents of this array will be mutually exclusive with `available_products`. Note - `billed_products` is populated in all environments but only requests in Production are billed. Also note that products that are billed on a pay-per-call basis rather than a pay-per-Item basis, such as `balance`, will not appear here. */
 export type ItemWithConsentFieldsBilledProductsList = Array<Products>;
-export const ItemWithConsentFieldsBilledProductsList = /*@__PURE__*/ S.Array(
-  Products,
-) as any as S.Schema<ItemWithConsentFieldsBilledProductsList>;
+export const ItemWithConsentFieldsBilledProductsList =
+  BetaIssuesV1IssueAffectedProductsList as any as S.Schema<ItemWithConsentFieldsBilledProductsList>;
 
 /** A list of products added to the Item. In almost all cases, this will be the same as the `billed_products` field. For some products, it is possible for the product to be added to an Item but not yet billed (e.g. Assets, before `/asset_report/create` has been called, or Auth or Identity when added as Optional Products but before their endpoints have been called), in which case the product may appear in `products` but not in `billed_products`. */
 export type ItemWithConsentFieldsProductsList = Array<Products>;
-export const ItemWithConsentFieldsProductsList = /*@__PURE__*/ S.Array(
-  Products,
-) as any as S.Schema<ItemWithConsentFieldsProductsList>;
+export const ItemWithConsentFieldsProductsList =
+  BetaIssuesV1IssueAffectedProductsList as any as S.Schema<ItemWithConsentFieldsProductsList>;
 
 /** A list of products that the user has consented to for the Item via [Data Transparency Messaging](https://plaid.com/docs/link/data-transparency-messaging-migration-guide). This will consist of all products where both of the following are true: the user has consented to the required data scopes for that product and you have Production access for that product. */
 export type ItemWithConsentFieldsConsentedProductsList = Array<Products>;
-export const ItemWithConsentFieldsConsentedProductsList = /*@__PURE__*/ S.Array(
-  Products,
-) as any as S.Schema<ItemWithConsentFieldsConsentedProductsList>;
+export const ItemWithConsentFieldsConsentedProductsList =
+  BetaIssuesV1IssueAffectedProductsList as any as S.Schema<ItemWithConsentFieldsConsentedProductsList>;
 
 /** Indicates whether an Item requires user interaction to be updated, which can be the case for Items with some forms of two-factor authentication. `background` - Item can be updated in the background `user_present_required` - Item requires user interaction to be updated */
 export type ItemWithConsentFieldsUpdateType = "background" | "user_present_required";
@@ -21692,9 +21315,8 @@ export const ItemWithConsentFieldsUpdateType = S.String;
 
 /** A list of use cases that the user has consented to for the Item via [Data Transparency Messaging](https://plaid.com/docs/link/data-transparency-messaging-migration-guide). You can see the full list of use cases or update the list of use cases to request at any time via the Link Customization section of the [Plaid Dashboard](https://dashboard.plaid.com/link/data-transparency-v5). */
 export type ItemWithConsentFieldsConsentedUseCasesList = Array<string>;
-export const ItemWithConsentFieldsConsentedUseCasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ItemWithConsentFieldsConsentedUseCasesList>;
+export const ItemWithConsentFieldsConsentedUseCasesList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<ItemWithConsentFieldsConsentedUseCasesList>;
 
 /** A data scope for the products that a user can consent to in [Data Transparency Messaging](https://plaid.com/docs/link/data-transparency-messaging-migration-guide) */
 export type ItemConsentedDataScope =
@@ -21796,12 +21418,8 @@ export interface ItemStatusTransactions {
   /** [ISO 8601](https://wikipedia.org/wiki/ISO_8601) timestamp of the last failed transactions update for the Item. The status will update each time Plaid fails an attempt to connect with the institution, regardless of whether any new data is available in the update. This field does not reflect transactions updates performed by non-Transactions products (e.g. Signal). */
   last_failed_update?: string | null;
 }
-export const ItemStatusTransactions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    last_successful_update: S.optional(S.NullOr(S.String)),
-    last_failed_update: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "ItemStatusTransactions" }) as any as S.Schema<ItemStatusTransactions>;
+export const ItemStatusTransactions =
+  ItemStatusInvestments as any as S.Schema<ItemStatusTransactions>;
 
 /** Information about the last webhook fired for the Item. */
 export interface ItemStatusLastWebhook {
@@ -21847,22 +21465,16 @@ export const ItemGetResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of accounts to retrieve for the Item. An error will be returned if a provided `account_id` is not associated with the Item */
 export type LiabilitiesGetRequestOptionsAccountIdsList = Array<string>;
-export const LiabilitiesGetRequestOptionsAccountIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LiabilitiesGetRequestOptionsAccountIdsList>;
+export const LiabilitiesGetRequestOptionsAccountIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<LiabilitiesGetRequestOptionsAccountIdsList>;
 
 /** An optional object to filter `/liabilities/get` results. If provided, `options` cannot be null. */
 export interface LiabilitiesGetRequestOptions {
   /** A list of accounts to retrieve for the Item. An error will be returned if a provided `account_id` is not associated with the Item */
   account_ids?: LiabilitiesGetRequestOptionsAccountIdsList;
 }
-export const LiabilitiesGetRequestOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account_ids: S.optional(LiabilitiesGetRequestOptionsAccountIdsList),
-  }),
-).annotate({
-  identifier: "LiabilitiesGetRequestOptions",
-}) as any as S.Schema<LiabilitiesGetRequestOptions>;
+export const LiabilitiesGetRequestOptions =
+  AccountsGetRequestOptions as any as S.Schema<LiabilitiesGetRequestOptions>;
 
 export interface GetLiabilityRequest {
   client_id?: string;
@@ -21881,9 +21493,8 @@ export const GetLiabilityRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of accounts associated with the Item */
 export type LiabilitiesGetResponseAccountsList = Array<AccountBase>;
-export const LiabilitiesGetResponseAccountsList = /*@__PURE__*/ S.Array(
-  AccountBase,
-) as any as S.Schema<LiabilitiesGetResponseAccountsList>;
+export const LiabilitiesGetResponseAccountsList =
+  AccountsGetResponseAccountsList as any as S.Schema<LiabilitiesGetResponseAccountsList>;
 
 /** The type of balance to which the APR applies. */
 export type APRAprType =
@@ -22075,9 +21686,8 @@ export const LiabilitiesObjectMortgageList = /*@__PURE__*/ S.Array(
 
 /** The dates on which loaned funds were disbursed or will be disbursed. These are often in the past. Dates are returned in an [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DD). */
 export type StudentLoanDisbursementDatesList = Array<string>;
-export const StudentLoanDisbursementDatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StudentLoanDisbursementDatesList>;
+export const StudentLoanDisbursementDatesList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<StudentLoanDisbursementDatesList>;
 
 /** The status type of the student loan */
 export type StudentLoanStatusType =
@@ -22176,15 +21786,7 @@ export interface ServicerAddressData {
   /** The ISO 3166-1 alpha-2 country code */
   country: string | null;
 }
-export const ServicerAddressData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    city: S.NullOr(S.String),
-    region: S.NullOr(S.String),
-    street: S.NullOr(S.String),
-    postal_code: S.NullOr(S.String),
-    country: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "ServicerAddressData" }) as any as S.Schema<ServicerAddressData>;
+export const ServicerAddressData = AddressData as any as S.Schema<ServicerAddressData>;
 
 /** Contains details about a student loan account */
 export interface StudentLoan {
@@ -22374,9 +21976,8 @@ export const LiabilitiesObjectLoanList = /*@__PURE__*/ S.Array(
 
 /** The various interest rates that apply to the account. */
 export type LineOfCreditLiabilityAprsList = Array<APR>;
-export const LineOfCreditLiabilityAprsList = /*@__PURE__*/ S.Array(
-  APR,
-) as any as S.Schema<LineOfCreditLiabilityAprsList>;
+export const LineOfCreditLiabilityAprsList =
+  CreditCardLiabilityAprsList as any as S.Schema<LineOfCreditLiabilityAprsList>;
 
 /** Contains details about a line of credit account. */
 export interface LineOfCreditLiability {
@@ -22593,14 +22194,8 @@ export interface LinkSessionExitMetadataInstitution {
   /** The Plaid institution identifier */
   institution_id?: string;
 }
-export const LinkSessionExitMetadataInstitution = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    institution_id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LinkSessionExitMetadataInstitution",
-}) as any as S.Schema<LinkSessionExitMetadataInstitution>;
+export const LinkSessionExitMetadataInstitution =
+  LinkSessionSuccessMetadataInstitution as any as S.Schema<LinkSessionExitMetadataInstitution>;
 
 /** The point at which the user exited the Link flow. One of the following values. */
 export interface LinkSessionExitMetadataStatus {
@@ -22756,9 +22351,8 @@ export const LinkTokenGetSessionsResponseEventsList = /*@__PURE__*/ S.Array(
 
 /** A list of accounts attached to the connected Item. If Account Select is enabled via the developer dashboard, `accounts` will only include selected accounts. */
 export type LinkSessionItemAddResultAccountsList = Array<LinkSessionSuccessMetadataAccount>;
-export const LinkSessionItemAddResultAccountsList = /*@__PURE__*/ S.Array(
-  LinkSessionSuccessMetadataAccount,
-) as any as S.Schema<LinkSessionItemAddResultAccountsList>;
+export const LinkSessionItemAddResultAccountsList =
+  LinkSessionSuccessMetadataAccountsList as any as S.Schema<LinkSessionItemAddResultAccountsList>;
 
 /** The details of an Item add in Link. */
 export interface LinkSessionItemAddResult {
@@ -22784,9 +22378,8 @@ export const LinkSessionResultsItemAddResultsList = /*@__PURE__*/ S.Array(
 
 /** A list of accounts attached to the connected Item. If Account Select is enabled via the developer dashboard, `accounts` will only include selected accounts. */
 export type LinkSessionCraItemAddResultAccountsList = Array<LinkSessionSuccessMetadataAccount>;
-export const LinkSessionCraItemAddResultAccountsList = /*@__PURE__*/ S.Array(
-  LinkSessionSuccessMetadataAccount,
-) as any as S.Schema<LinkSessionCraItemAddResultAccountsList>;
+export const LinkSessionCraItemAddResultAccountsList =
+  LinkSessionSuccessMetadataAccountsList as any as S.Schema<LinkSessionCraItemAddResultAccountsList>;
 
 /** The details of a Plaid Check Item add in Link. */
 export interface LinkSessionCraItemAddResult {
@@ -22814,9 +22407,8 @@ export const LinkSessionResultsCraItemAddResultsList = /*@__PURE__*/ S.Array(
 
 /** A list of accounts attached to the connected Item. If Account Select is enabled via the developer dashboard, `accounts` will only include selected accounts. */
 export type LinkSessionCraUpdateResultAccountsList = Array<LinkSessionSuccessMetadataAccount>;
-export const LinkSessionCraUpdateResultAccountsList = /*@__PURE__*/ S.Array(
-  LinkSessionSuccessMetadataAccount,
-) as any as S.Schema<LinkSessionCraUpdateResultAccountsList>;
+export const LinkSessionCraUpdateResultAccountsList =
+  LinkSessionSuccessMetadataAccountsList as any as S.Schema<LinkSessionCraUpdateResultAccountsList>;
 
 /** The details of a Plaid Check Item update via update mode in Link. */
 export interface LinkSessionCraUpdateResult {
@@ -22826,21 +22418,13 @@ export interface LinkSessionCraUpdateResult {
   accounts: LinkSessionCraUpdateResultAccountsList;
   institution: LinkSessionSuccessMetadataInstitution | null;
 }
-export const LinkSessionCraUpdateResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    item_id: S.String,
-    accounts: LinkSessionCraUpdateResultAccountsList,
-    institution: S.NullOr(LinkSessionSuccessMetadataInstitution),
-  }),
-).annotate({
-  identifier: "LinkSessionCraUpdateResult",
-}) as any as S.Schema<LinkSessionCraUpdateResult>;
+export const LinkSessionCraUpdateResult =
+  LinkSessionCraItemAddResult as any as S.Schema<LinkSessionCraUpdateResult>;
 
 /** The set of Plaid Check Item updates for the Link session. */
 export type LinkSessionResultsCraUpdateResultsList = Array<LinkSessionCraUpdateResult>;
-export const LinkSessionResultsCraUpdateResultsList = /*@__PURE__*/ S.Array(
-  LinkSessionCraUpdateResult,
-) as any as S.Schema<LinkSessionResultsCraUpdateResultsList>;
+export const LinkSessionResultsCraUpdateResultsList =
+  LinkSessionResultsCraItemAddResultsList as any as S.Schema<LinkSessionResultsCraUpdateResultsList>;
 
 /** The details of a bank income verification in Link. */
 export interface LinkSessionBankIncomeResult {
@@ -22967,15 +22551,13 @@ export const LinkTokenGetResponseLinkSessionsList = /*@__PURE__*/ S.Array(
 
 /** The `products` specified in the `/link/token/create` call. */
 export type LinkTokenGetMetadataResponseInitialProductsList = Array<Products>;
-export const LinkTokenGetMetadataResponseInitialProductsList = /*@__PURE__*/ S.Array(
-  Products,
-) as any as S.Schema<LinkTokenGetMetadataResponseInitialProductsList>;
+export const LinkTokenGetMetadataResponseInitialProductsList =
+  BetaIssuesV1IssueAffectedProductsList as any as S.Schema<LinkTokenGetMetadataResponseInitialProductsList>;
 
 /** The `country_codes` specified in the `/link/token/create` call. */
 export type LinkTokenGetMetadataResponseCountryCodesList = Array<CountryCode>;
-export const LinkTokenGetMetadataResponseCountryCodesList = /*@__PURE__*/ S.Array(
-  CountryCode,
-) as any as S.Schema<LinkTokenGetMetadataResponseCountryCodesList>;
+export const LinkTokenGetMetadataResponseCountryCodesList =
+  CreateLinkTokenRequestCountryCodesList as any as S.Schema<LinkTokenGetMetadataResponseCountryCodesList>;
 
 /** The `account_filters` specified in the original call to `/link/token/create`. */
 export interface AccountFiltersResponse {
@@ -23206,9 +22788,8 @@ export const PartnerEndCustomerOAuthInstitutionEnvironments = /*@__PURE__*/ S.su
 
 /** The errors encountered while registering the end customer's application with the institutions. */
 export type PartnerEndCustomerOAuthInstitutionErrorsList = Array<PlaidError | null>;
-export const PartnerEndCustomerOAuthInstitutionErrorsList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(PlaidError),
-) as any as S.Schema<PartnerEndCustomerOAuthInstitutionErrorsList>;
+export const PartnerEndCustomerOAuthInstitutionErrorsList =
+  CraReportGetQualifyResponseProductErrorsList as any as S.Schema<PartnerEndCustomerOAuthInstitutionErrorsList>;
 
 /** The OAuth registration information for an institution. */
 export interface PartnerEndCustomerOAuthInstitution {
@@ -23279,9 +22860,8 @@ export const GetPaymentInitiationConsentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Deprecated, use the 'type' field instead. */
 export type GetPaymentInitiationConsentResponseScopesList = Array<PaymentInitiationConsentScope>;
-export const GetPaymentInitiationConsentResponseScopesList = /*@__PURE__*/ S.Array(
-  PaymentInitiationConsentScope,
-) as any as S.Schema<GetPaymentInitiationConsentResponseScopesList>;
+export const GetPaymentInitiationConsentResponseScopesList =
+  CreatePaymentInitiationConsentRequestScopesList as any as S.Schema<GetPaymentInitiationConsentResponseScopesList>;
 
 /** Details about external payment refund */
 export interface ExternalPaymentRefundDetails {
@@ -23381,9 +22961,8 @@ export const SenderBACSNullable = PaymentInitiationOptionalRestrictionBacs;
 
 /** Refund IDs associated with the payment. */
 export type GetPaymentInitiationPaymentResponseRefundIdsList = Array<string>;
-export const GetPaymentInitiationPaymentResponseRefundIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetPaymentInitiationPaymentResponseRefundIdsList>;
+export const GetPaymentInitiationPaymentResponseRefundIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<GetPaymentInitiationPaymentResponseRefundIdsList>;
 
 /** The amount and currency of a payment */
 export interface PaymentAmountRefunded {
@@ -23391,12 +22970,7 @@ export interface PaymentAmountRefunded {
   /** The amount of the payment. Must contain at most two digits of precision e.g. `1.23`. */
   value: number;
 }
-export const PaymentAmountRefunded = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    currency: PaymentAmountCurrency,
-    value: S.Number,
-  }),
-).annotate({ identifier: "PaymentAmountRefunded" }) as any as S.Schema<PaymentAmountRefunded>;
+export const PaymentAmountRefunded = PaymentAmount as any as S.Schema<PaymentAmountRefunded>;
 
 export interface GetPaymentInitiationPaymentResponse {
   /** The ID of the payment. Like all Plaid identifiers, the `payment_id` is case sensitive. */
@@ -23680,28 +23254,24 @@ export const GetProcessorInvestmentsAuthRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The holdings belonging to the investment account. Details of the securities in the holdings are provided in the `securities` field. */
 export type ProcessorInvestmentsAuthGetResponseHoldingsList = Array<Holding>;
-export const ProcessorInvestmentsAuthGetResponseHoldingsList = /*@__PURE__*/ S.Array(
-  Holding,
-) as any as S.Schema<ProcessorInvestmentsAuthGetResponseHoldingsList>;
+export const ProcessorInvestmentsAuthGetResponseHoldingsList =
+  InvestmentsAuthGetResponseHoldingsList as any as S.Schema<ProcessorInvestmentsAuthGetResponseHoldingsList>;
 
 /** Objects describing the securities held in the account. */
 export type ProcessorInvestmentsAuthGetResponseSecuritiesList = Array<Security>;
-export const ProcessorInvestmentsAuthGetResponseSecuritiesList = /*@__PURE__*/ S.Array(
-  Security,
-) as any as S.Schema<ProcessorInvestmentsAuthGetResponseSecuritiesList>;
+export const ProcessorInvestmentsAuthGetResponseSecuritiesList =
+  InvestmentsAuthGetResponseSecuritiesList as any as S.Schema<ProcessorInvestmentsAuthGetResponseSecuritiesList>;
 
 /** Information about the account owners for the account. */
 export type ProcessorInvestmentsAuthGetResponseOwnersList = Array<InvestmentsAuthOwner>;
-export const ProcessorInvestmentsAuthGetResponseOwnersList = /*@__PURE__*/ S.Array(
-  InvestmentsAuthOwner,
-) as any as S.Schema<ProcessorInvestmentsAuthGetResponseOwnersList>;
+export const ProcessorInvestmentsAuthGetResponseOwnersList =
+  InvestmentsAuthGetResponseOwnersList as any as S.Schema<ProcessorInvestmentsAuthGetResponseOwnersList>;
 
 /** Additional information for accounts of 401k subtype. */
 export type ProcessorInvestmentsAuthGetResponseAccountDetails401kList =
   Array<InvestmentsAuthAccountDetails401k>;
-export const ProcessorInvestmentsAuthGetResponseAccountDetails401kList = /*@__PURE__*/ S.Array(
-  InvestmentsAuthAccountDetails401k,
-) as any as S.Schema<ProcessorInvestmentsAuthGetResponseAccountDetails401kList>;
+export const ProcessorInvestmentsAuthGetResponseAccountDetails401kList =
+  InvestmentsAuthGetResponseAccountDetails401kList as any as S.Schema<ProcessorInvestmentsAuthGetResponseAccountDetails401kList>;
 
 /** ProcessorInvestmentsAuthGetResponse defines the response schema for `/processor/investments/auth/get` */
 export interface ProcessorInvestmentsAuthGetResponse {
@@ -23753,15 +23323,13 @@ export const GetProcessorInvestmentsHoldingRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The holdings belonging to investment accounts associated with the Item. Details of the securities in the holdings are provided in the `securities` field. */
 export type ProcessorInvestmentsHoldingsGetResponseHoldingsList = Array<Holding>;
-export const ProcessorInvestmentsHoldingsGetResponseHoldingsList = /*@__PURE__*/ S.Array(
-  Holding,
-) as any as S.Schema<ProcessorInvestmentsHoldingsGetResponseHoldingsList>;
+export const ProcessorInvestmentsHoldingsGetResponseHoldingsList =
+  InvestmentsAuthGetResponseHoldingsList as any as S.Schema<ProcessorInvestmentsHoldingsGetResponseHoldingsList>;
 
 /** Objects describing the securities held in the account. */
 export type ProcessorInvestmentsHoldingsGetResponseSecuritiesList = Array<Security>;
-export const ProcessorInvestmentsHoldingsGetResponseSecuritiesList = /*@__PURE__*/ S.Array(
-  Security,
-) as any as S.Schema<ProcessorInvestmentsHoldingsGetResponseSecuritiesList>;
+export const ProcessorInvestmentsHoldingsGetResponseSecuritiesList =
+  InvestmentsAuthGetResponseSecuritiesList as any as S.Schema<ProcessorInvestmentsHoldingsGetResponseSecuritiesList>;
 
 /** ProcessorInvestmentsHoldingsGetResponse defines the response schema for `/processor/investments/holdings/get` */
 export interface ProcessorInvestmentsHoldingsGetResponse {
@@ -23813,15 +23381,12 @@ export const GetProcessorInvestmentsTransactionRequest = /*@__PURE__*/ S.suspend
 export type ProcessorInvestmentsTransactionsGetResponseInvestmentTransactionsList =
   Array<InvestmentTransaction>;
 export const ProcessorInvestmentsTransactionsGetResponseInvestmentTransactionsList =
-  /*@__PURE__*/ S.Array(
-    InvestmentTransaction,
-  ) as any as S.Schema<ProcessorInvestmentsTransactionsGetResponseInvestmentTransactionsList>;
+  InvestmentsAuth401kContributionDetailsLastContributionTransactionsList as any as S.Schema<ProcessorInvestmentsTransactionsGetResponseInvestmentTransactionsList>;
 
 /** All securities for which there is a corresponding transaction being fetched. */
 export type ProcessorInvestmentsTransactionsGetResponseSecuritiesList = Array<Security>;
-export const ProcessorInvestmentsTransactionsGetResponseSecuritiesList = /*@__PURE__*/ S.Array(
-  Security,
-) as any as S.Schema<ProcessorInvestmentsTransactionsGetResponseSecuritiesList>;
+export const ProcessorInvestmentsTransactionsGetResponseSecuritiesList =
+  InvestmentsAuthGetResponseSecuritiesList as any as S.Schema<ProcessorInvestmentsTransactionsGetResponseSecuritiesList>;
 
 /** ProcessorInvestmentsTransactionsGetResponse defines the response schema for `/processor/investments/transactions/get` */
 export interface ProcessorInvestmentsTransactionsGetResponse {
@@ -23897,9 +23462,8 @@ export const GetProcessorTokenPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of products the processor token should have access to. An empty list means that the processor has access to all available products, including future products. */
 export type ProcessorTokenPermissionsGetResponseProductsList = Array<Products>;
-export const ProcessorTokenPermissionsGetResponseProductsList = /*@__PURE__*/ S.Array(
-  Products,
-) as any as S.Schema<ProcessorTokenPermissionsGetResponseProductsList>;
+export const ProcessorTokenPermissionsGetResponseProductsList =
+  BetaIssuesV1IssueAffectedProductsList as any as S.Schema<ProcessorTokenPermissionsGetResponseProductsList>;
 
 /** ProcessorTokenPermissionsGetResponse defines the response schema for `/processor/token/permissions/get` */
 export interface ProcessorTokenPermissionsGetResponse {
@@ -23969,9 +23533,8 @@ export const GetProcessorTransactionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A hierarchical array of the categories to which this transaction belongs. For a full list of categories, see [`/categories/get`](https://plaid.com/docs/api/products/transactions/#categoriesget). All Transactions implementations are recommended to use the new `personal_finance_category` instead of `category`, as it provides greater accuracy and more meaningful categorization. If the `transactions` object was returned by an Assets endpoint such as `/asset_report/get` or `/asset_report/pdf/get`, this field will only appear in an Asset Report with Insights. */
 export type TransactionCategoryList = Array<string>;
-export const TransactionCategoryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TransactionCategoryList>;
+export const TransactionCategoryList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<TransactionCategoryList>;
 
 /** Please use the `payment_channel` field, `transaction_type` will be deprecated in the future. `digital:` transactions that took place online. `place:` transactions that were made at a physical location. `special:` transactions that relate to banks, e.g. fees or deposits. `unresolved:` transactions that do not fit into the other three types. */
 export type TransactionTransactionType = "digital" | "place" | "special" | "unresolved";
@@ -23983,9 +23546,8 @@ export const TransactionPaymentChannel = S.String;
 
 /** The counterparties present in the transaction. Counterparties, such as the merchant or the financial institution, are extracted by Plaid from the raw description. */
 export type TransactionCounterpartiesList = Array<TransactionCounterparty>;
-export const TransactionCounterpartiesList = /*@__PURE__*/ S.Array(
-  TransactionCounterparty,
-) as any as S.Schema<TransactionCounterpartiesList>;
+export const TransactionCounterpartiesList =
+  CashflowReportTransactionCounterpartiesList as any as S.Schema<TransactionCounterpartiesList>;
 
 /** Custom client fields */
 export interface ClientCustomization {
@@ -24159,9 +23721,8 @@ export const GetProcessorTransactionsRecurringRequest = /*@__PURE__*/ S.suspend(
 
 /** A hierarchical array of the categories to which this transaction belongs. See [Categories](https://plaid.com/docs/api/products/transactions/#categoriesget). All implementations are encouraged to use the new `personal_finance_category` instead of `category`. `personal_finance_category` provides more meaningful categorization and greater accuracy. */
 export type TransactionStreamCategoryList = Array<string>;
-export const TransactionStreamCategoryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TransactionStreamCategoryList>;
+export const TransactionStreamCategoryList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<TransactionStreamCategoryList>;
 
 /** Describes the frequency of the transaction stream. `WEEKLY`: Assigned to a transaction stream that occurs approximately every week. `BIWEEKLY`: Assigned to a transaction stream that occurs approximately every 2 weeks. `SEMI_MONTHLY`: Assigned to a transaction stream that occurs approximately twice per month. This frequency is typically seen for inflow transaction streams. `MONTHLY`: Assigned to a transaction stream that occurs approximately every month. `ANNUALLY`: Assigned to a transaction stream that occurs approximately every year. `UNKNOWN`: Assigned to a transaction stream that does not fit any of the pre-defined frequencies. */
 export type RecurringTransactionFrequency =
@@ -24175,9 +23736,8 @@ export const RecurringTransactionFrequency = S.String;
 
 /** An array of Plaid transaction IDs belonging to the stream, sorted by posted date. */
 export type TransactionStreamTransactionIdsList = Array<string>;
-export const TransactionStreamTransactionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TransactionStreamTransactionIdsList>;
+export const TransactionStreamTransactionIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<TransactionStreamTransactionIdsList>;
 
 /** Object with data pertaining to an amount on the transaction stream. */
 export interface TransactionStreamAmount {
@@ -24265,9 +23825,8 @@ export const ProcessorTransactionsRecurringGetResponseInflowStreamsList = /*@__P
 
 /** An array of expense transaction streams. */
 export type ProcessorTransactionsRecurringGetResponseOutflowStreamsList = Array<TransactionStream>;
-export const ProcessorTransactionsRecurringGetResponseOutflowStreamsList = /*@__PURE__*/ S.Array(
-  TransactionStream,
-) as any as S.Schema<ProcessorTransactionsRecurringGetResponseOutflowStreamsList>;
+export const ProcessorTransactionsRecurringGetResponseOutflowStreamsList =
+  ProcessorTransactionsRecurringGetResponseInflowStreamsList as any as S.Schema<ProcessorTransactionsRecurringGetResponseOutflowStreamsList>;
 
 /** ProcessorTransactionsRecurringGetResponse defines the response schema for `/processor/transactions/recurring/get` */
 export interface ProcessorTransactionsRecurringGetResponse {
@@ -24550,20 +24109,13 @@ export interface SandboxTransferTestClockGetResponse {
   test_clock: TransferTestClock;
   request_id: string;
 }
-export const SandboxTransferTestClockGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    test_clock: TransferTestClock,
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "SandboxTransferTestClockGetResponse",
-}) as any as S.Schema<SandboxTransferTestClockGetResponse>;
+export const SandboxTransferTestClockGetResponse =
+  SandboxTransferTestClockCreateResponse as any as S.Schema<SandboxTransferTestClockGetResponse>;
 
 /** A list of `account_ids` to retrieve for the Item Note: An error will be returned if a provided `account_id` is not associated with the Item. */
 export type TransactionsGetRequestOptionsAccountIdsList = Array<string>;
-export const TransactionsGetRequestOptionsAccountIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TransactionsGetRequestOptionsAccountIdsList>;
+export const TransactionsGetRequestOptionsAccountIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<TransactionsGetRequestOptionsAccountIdsList>;
 
 /** An optional object to be used with the request. If specified, `options` must not be `null`. */
 export interface TransactionsGetRequestOptions {
@@ -24624,15 +24176,13 @@ export const GetTransactionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array containing the `accounts` associated with the Item for which transactions are being returned. Each transaction can be mapped to its corresponding account via the `account_id` field. */
 export type TransactionsGetResponseAccountsList = Array<AccountBase>;
-export const TransactionsGetResponseAccountsList = /*@__PURE__*/ S.Array(
-  AccountBase,
-) as any as S.Schema<TransactionsGetResponseAccountsList>;
+export const TransactionsGetResponseAccountsList =
+  AccountsGetResponseAccountsList as any as S.Schema<TransactionsGetResponseAccountsList>;
 
 /** An array containing transactions from the account. Transactions are returned in reverse chronological order, with the most recent at the beginning of the array. The maximum number of transactions returned is determined by the `count` parameter. */
 export type TransactionsGetResponseTransactionsList = Array<Transaction>;
-export const TransactionsGetResponseTransactionsList = /*@__PURE__*/ S.Array(
-  Transaction,
-) as any as S.Schema<TransactionsGetResponseTransactionsList>;
+export const TransactionsGetResponseTransactionsList =
+  ProcessorTransactionsGetResponseTransactionsList as any as S.Schema<TransactionsGetResponseTransactionsList>;
 
 /** TransactionsGetResponse defines the response schema for `/transactions/get` */
 export interface TransactionsGetResponse {
@@ -24657,9 +24207,8 @@ export const TransactionsGetResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An optional list of `account_ids` to retrieve for the Item. Retrieves all active accounts on item if no `account_id`s are provided. Note: An error will be returned if a provided `account_id` is not associated with the Item. */
 export type GetTransactionsRecurringRequestAccountIdsList = Array<string>;
-export const GetTransactionsRecurringRequestAccountIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetTransactionsRecurringRequestAccountIdsList>;
+export const GetTransactionsRecurringRequestAccountIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<GetTransactionsRecurringRequestAccountIdsList>;
 
 export interface GetTransactionsRecurringRequest {
   client_id?: string;
@@ -24683,15 +24232,13 @@ export const GetTransactionsRecurringRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of inflow transaction streams. */
 export type TransactionsRecurringGetResponseInflowStreamsList = Array<TransactionStream>;
-export const TransactionsRecurringGetResponseInflowStreamsList = /*@__PURE__*/ S.Array(
-  TransactionStream,
-) as any as S.Schema<TransactionsRecurringGetResponseInflowStreamsList>;
+export const TransactionsRecurringGetResponseInflowStreamsList =
+  ProcessorTransactionsRecurringGetResponseInflowStreamsList as any as S.Schema<TransactionsRecurringGetResponseInflowStreamsList>;
 
 /** An array of expense transaction streams. */
 export type TransactionsRecurringGetResponseOutflowStreamsList = Array<TransactionStream>;
-export const TransactionsRecurringGetResponseOutflowStreamsList = /*@__PURE__*/ S.Array(
-  TransactionStream,
-) as any as S.Schema<TransactionsRecurringGetResponseOutflowStreamsList>;
+export const TransactionsRecurringGetResponseOutflowStreamsList =
+  ProcessorTransactionsRecurringGetResponseInflowStreamsList as any as S.Schema<TransactionsRecurringGetResponseOutflowStreamsList>;
 
 /** TransactionsRecurringGetResponse defines the response schema for `/transactions/recurring/get` */
 export interface TransactionsRecurringGetResponse {
@@ -24704,17 +24251,8 @@ export interface TransactionsRecurringGetResponse {
   personal_finance_category_version?: PersonalFinanceCategoryVersion;
   request_id: string;
 }
-export const TransactionsRecurringGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inflow_streams: TransactionsRecurringGetResponseInflowStreamsList,
-    outflow_streams: TransactionsRecurringGetResponseOutflowStreamsList,
-    updated_datetime: S.String,
-    personal_finance_category_version: S.optional(PersonalFinanceCategoryVersion),
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "TransactionsRecurringGetResponse",
-}) as any as S.Schema<TransactionsRecurringGetResponse>;
+export const TransactionsRecurringGetResponse =
+  ProcessorTransactionsRecurringGetResponse as any as S.Schema<TransactionsRecurringGetResponse>;
 
 export interface GetTransactionsUserInsightRequest {
   client_id?: string;
@@ -24881,9 +24419,8 @@ export const CounterpartyInsights = /*@__PURE__*/ S.suspend(() =>
 
 /** The most common counterparties associated with this category sorted by outflow. */
 export type CategoryInsightDetailsTopCounterpartiesList = Array<string>;
-export const CategoryInsightDetailsTopCounterpartiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CategoryInsightDetailsTopCounterpartiesList>;
+export const CategoryInsightDetailsTopCounterpartiesList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<CategoryInsightDetailsTopCounterpartiesList>;
 
 /** Insights object for categories. */
 export interface CategoryInsightDetails {
@@ -24916,9 +24453,8 @@ export const CategoryInsightsPrimaryCategoryInsightsList = /*@__PURE__*/ S.Array
 
 /** List of insights of top detailed personal finance categories ranked by outflow. */
 export type CategoryInsightsDetailedCategoryInsightsList = Array<CategoryInsightDetails>;
-export const CategoryInsightsDetailedCategoryInsightsList = /*@__PURE__*/ S.Array(
-  CategoryInsightDetails,
-) as any as S.Schema<CategoryInsightsDetailedCategoryInsightsList>;
+export const CategoryInsightsDetailedCategoryInsightsList =
+  CategoryInsightsPrimaryCategoryInsightsList as any as S.Schema<CategoryInsightsDetailedCategoryInsightsList>;
 
 /** Insights on a user's top personal finance categories. */
 export interface CategoryInsights {
@@ -24936,9 +24472,8 @@ export const CategoryInsights = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of Plaid transaction IDs belonging to the stream, sorted by posted date. */
 export type RecurringInsightsStreamTransactionIdsList = Array<string>;
-export const RecurringInsightsStreamTransactionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RecurringInsightsStreamTransactionIdsList>;
+export const RecurringInsightsStreamTransactionIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<RecurringInsightsStreamTransactionIdsList>;
 
 /** Insights object for recurring transactions streams. */
 export interface RecurringInsightsStream {
@@ -24997,9 +24532,8 @@ export const RecurringTransactionsInflowStreamsList = /*@__PURE__*/ S.Array(
 
 /** An array of outflow transaction streams (e.g., subscriptions, bills, loan payments). */
 export type RecurringTransactionsOutflowStreamsList = Array<RecurringInsightsStream>;
-export const RecurringTransactionsOutflowStreamsList = /*@__PURE__*/ S.Array(
-  RecurringInsightsStream,
-) as any as S.Schema<RecurringTransactionsOutflowStreamsList>;
+export const RecurringTransactionsOutflowStreamsList =
+  RecurringTransactionsInflowStreamsList as any as S.Schema<RecurringTransactionsOutflowStreamsList>;
 
 /** Insights object for recurring transactions for `/beta/transactions/user_insights/v1/get` endpoint */
 export interface RecurringTransactions {
@@ -25056,12 +24590,7 @@ export interface TransferGetResponse {
   transfer: Transfer;
   request_id: string;
 }
-export const TransferGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    transfer: Transfer,
-    request_id: S.String,
-  }),
-).annotate({ identifier: "TransferGetResponse" }) as any as S.Schema<TransferGetResponse>;
+export const TransferGetResponse = TransferCreateResponse as any as S.Schema<TransferGetResponse>;
 
 export interface GetTransferCapabilityRequest {
   client_id?: string;
@@ -25561,9 +25090,8 @@ export const GetTransferRecurringRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The created transfer instances associated with this `recurring_transfer_id`. If the recurring transfer has been newly created, this array will be empty. */
 export type RecurringTransferTransferIdsList = Array<string>;
-export const RecurringTransferTransferIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RecurringTransferTransferIdsList>;
+export const RecurringTransferTransferIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<RecurringTransferTransferIdsList>;
 
 /** Represents a recurring transfer within the Transfers API. */
 export interface RecurringTransfer {
@@ -25647,14 +25175,8 @@ export interface TransferRefundGetResponse {
   refund: TransferRefund;
   request_id: string;
 }
-export const TransferRefundGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    refund: TransferRefund,
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "TransferRefundGetResponse",
-}) as any as S.Schema<TransferRefundGetResponse>;
+export const TransferRefundGetResponse =
+  TransferRefundCreateResponse as any as S.Schema<TransferRefundGetResponse>;
 
 export interface GetTransferSweepRequest {
   client_id?: string;
@@ -26025,16 +25547,7 @@ export interface GetWalletResponse {
   status: WalletStatus;
   request_id: string;
 }
-export const GetWalletResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    wallet_id: S.String,
-    balance: WalletBalance,
-    numbers: WalletNumbers,
-    recipient_id: S.optional(S.String),
-    status: WalletStatus,
-    request_id: S.String,
-  }),
-).annotate({ identifier: "GetWalletResponse" }) as any as S.Schema<GetWalletResponse>;
+export const GetWalletResponse = CreateWalletResponse as any as S.Schema<GetWalletResponse>;
 
 export interface GetWalletTransactionRequest {
   client_id?: string;
@@ -26193,19 +25706,8 @@ export interface WatchlistScreeningEntityGetResponse {
   audit_trail: WatchlistScreeningAuditTrail;
   request_id: string;
 }
-export const WatchlistScreeningEntityGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    search_terms: EntityWatchlistScreeningSearchTerms,
-    assignee: S.NullOr(S.String),
-    status: WatchlistScreeningStatus,
-    client_user_id: S.NullOr(S.String),
-    audit_trail: WatchlistScreeningAuditTrail,
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "WatchlistScreeningEntityGetResponse",
-}) as any as S.Schema<WatchlistScreeningEntityGetResponse>;
+export const WatchlistScreeningEntityGetResponse =
+  WatchlistScreeningEntityCreateResponse as any as S.Schema<WatchlistScreeningEntityGetResponse>;
 
 export interface GetWatchlistScreeningEntityProgramRequest {
   entity_watchlist_program_id: string;
@@ -26307,19 +25809,8 @@ export interface WatchlistScreeningIndividualGetResponse {
   audit_trail: WatchlistScreeningAuditTrail;
   request_id: string;
 }
-export const WatchlistScreeningIndividualGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    search_terms: WatchlistScreeningSearchTerms,
-    assignee: S.NullOr(S.String),
-    status: WatchlistScreeningStatus,
-    client_user_id: S.NullOr(S.String),
-    audit_trail: WatchlistScreeningAuditTrail,
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "WatchlistScreeningIndividualGetResponse",
-}) as any as S.Schema<WatchlistScreeningIndividualGetResponse>;
+export const WatchlistScreeningIndividualGetResponse =
+  WatchlistScreeningIndividualCreateResponse as any as S.Schema<WatchlistScreeningIndividualGetResponse>;
 
 export interface GetWatchlistScreeningIndividualProgramRequest {
   watchlist_program_id: string;
@@ -26515,22 +26006,16 @@ export const IdentityMatchUser = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of `account_ids` to perform fuzzy match */
 export type IdentityMatchRequestOptionsAccountIdsList = Array<string>;
-export const IdentityMatchRequestOptionsAccountIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IdentityMatchRequestOptionsAccountIdsList>;
+export const IdentityMatchRequestOptionsAccountIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<IdentityMatchRequestOptionsAccountIdsList>;
 
 /** An optional object to filter `/identity/match` results */
 export interface IdentityMatchRequestOptions {
   /** An array of `account_ids` to perform fuzzy match */
   account_ids?: IdentityMatchRequestOptionsAccountIdsList;
 }
-export const IdentityMatchRequestOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account_ids: S.optional(IdentityMatchRequestOptionsAccountIdsList),
-  }),
-).annotate({
-  identifier: "IdentityMatchRequestOptions",
-}) as any as S.Schema<IdentityMatchRequestOptions>;
+export const IdentityMatchRequestOptions =
+  AccountsGetRequestOptions as any as S.Schema<IdentityMatchRequestOptions>;
 
 export interface IdentityMatchRequest {
   client_id?: string;
@@ -26600,11 +26085,8 @@ export interface EmailAddressMatchScore {
   /** Match score for normalized email. 100 is a perfect match, 99-70 is a partial match (matching the same email with different '+' extensions), anything below 70 is considered a mismatch. Typically, the match threshold should be set to a score of 70 or higher. If the email is missing from either the API or financial institution, this is null. */
   score: number | null;
 }
-export const EmailAddressMatchScore = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.NullOr(S.Number),
-  }),
-).annotate({ identifier: "EmailAddressMatchScore" }) as any as S.Schema<EmailAddressMatchScore>;
+export const EmailAddressMatchScore =
+  PhoneNumberMatchScore as any as S.Schema<EmailAddressMatchScore>;
 
 /** Score found by matching address provided by the API with the address on the account at the financial institution. The score can range from 0 to 100 where 100 is a perfect match and 0 is a no match. If the account contains multiple owners, the maximum match score is filled. */
 export interface AddressMatchScore {
@@ -26695,9 +26177,8 @@ export const IdentityMatchResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of product strings. Sent only by a Plaid-internal caller, the Data Partner Dashboard validation tool; external callers never need it. Not required for Permissions Manager callers, who authenticate with `user_auth.user_id`. */
 export type ImportItemRequestProductsList = Array<Products | (string & {})>;
-export const ImportItemRequestProductsList = /*@__PURE__*/ S.Array(
-  Products,
-) as any as S.Schema<ImportItemRequestProductsList>;
+export const ImportItemRequestProductsList =
+  BetaIssuesV1IssueAffectedProductsList as any as S.Schema<ImportItemRequestProductsList>;
 
 /** Object of user ID and auth token pair, permitting Plaid to aggregate a user's accounts */
 export interface ItemImportRequestUserAuth {
@@ -26760,9 +26241,8 @@ export const ItemImportResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Specify which country or countries to include institutions from, using the ISO-3166-1 alpha-2 country code standard. In API versions 2019-05-29 and earlier, the `country_codes` parameter is an optional parameter within the `options` object and will default to `[US]` if it is not supplied. */
 export type InstitutionsGetByIdRequestCountryCodesList = Array<CountryCode | (string & {})>;
-export const InstitutionsGetByIdRequestCountryCodesList = /*@__PURE__*/ S.Array(
-  CountryCode,
-) as any as S.Schema<InstitutionsGetByIdRequestCountryCodesList>;
+export const InstitutionsGetByIdRequestCountryCodesList =
+  CreateLinkTokenRequestCountryCodesList as any as S.Schema<InstitutionsGetByIdRequestCountryCodesList>;
 
 /** Specifies optional parameters for `/institutions/get_by_id`. If provided, must not be `null`. */
 export interface InstitutionsGetByIdRequestOptions {
@@ -27081,9 +26561,8 @@ export const ListBetaIssuesV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Critical and high-severity issues that are active or were resolved in the past 14 days. An empty list indicates that no matching issues were found. */
 export type BetaIssuesV1ListResponseIssuesList = Array<BetaIssuesV1Issue>;
-export const BetaIssuesV1ListResponseIssuesList = /*@__PURE__*/ S.Array(
-  BetaIssuesV1Issue,
-) as any as S.Schema<BetaIssuesV1ListResponseIssuesList>;
+export const BetaIssuesV1ListResponseIssuesList =
+  BetaIssuesV1MatchResponseIssuesList as any as S.Schema<BetaIssuesV1ListResponseIssuesList>;
 
 /** BetaIssuesV1ListResponse defines the response schema for `/beta/issues/v1/list`. */
 export interface BetaIssuesV1ListResponse {
@@ -27100,21 +26579,18 @@ export const BetaIssuesV1ListResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Filter by webhook type. Multiple values are OR'd. Combined with other filters using AND. Values are case-sensitive and match the webhook types Plaid sends (`SCREAMING_SNAKE`, for example `ITEM` or `AUTH`). */
 export type ListBetaWebhookEventsRequestWebhookTypesList = Array<string>;
-export const ListBetaWebhookEventsRequestWebhookTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListBetaWebhookEventsRequestWebhookTypesList>;
+export const ListBetaWebhookEventsRequestWebhookTypesList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<ListBetaWebhookEventsRequestWebhookTypesList>;
 
 /** Filter by webhook code. Multiple values are OR'd. Combined with other filters using AND. Values are case-sensitive and match the webhook codes Plaid sends (`SCREAMING_SNAKE`, for example `ERROR`). */
 export type ListBetaWebhookEventsRequestWebhookCodesList = Array<string>;
-export const ListBetaWebhookEventsRequestWebhookCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListBetaWebhookEventsRequestWebhookCodesList>;
+export const ListBetaWebhookEventsRequestWebhookCodesList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<ListBetaWebhookEventsRequestWebhookCodesList>;
 
 /** Filter to specific Items. Multiple values are OR'd. Combined with other filters using AND. Values are case-sensitive and match the Item IDs Plaid sends. */
 export type ListBetaWebhookEventsRequestItemIdsList = Array<string>;
-export const ListBetaWebhookEventsRequestItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListBetaWebhookEventsRequestItemIdsList>;
+export const ListBetaWebhookEventsRequestItemIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<ListBetaWebhookEventsRequestItemIdsList>;
 
 /** Latest delivery state for this webhook. `PENDING`: Plaid has not recorded a successful response and may still retry. Treat `PENDING` as unknown rather than undelivered: a delivery may have succeeded without the outcome being recorded. `DELIVERED`: the destination returned a 2xx response. `FAILED`: all delivery attempts were exhausted without a 2xx response. */
 export type WebhookEventDeliveryStatus = "PENDING" | "DELIVERED" | "FAILED";
@@ -27164,10 +26640,8 @@ export const ListBetaWebhookEventsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The JSON body Plaid sent to the webhook destination. */
 export type WebhookEventPayload = { [key: string]: unknown | undefined };
-export const WebhookEventPayload = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<WebhookEventPayload>;
+export const WebhookEventPayload =
+  PartnerEndCustomerProductStatuses as any as S.Schema<WebhookEventPayload>;
 
 /** A webhook event for your account. */
 export interface WebhookEvent {
@@ -27904,9 +27378,8 @@ export const ListPaymentInitiationPaymentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Refund IDs associated with the payment. */
 export type PaymentInitiationPaymentRefundIdsList = Array<string>;
-export const PaymentInitiationPaymentRefundIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaymentInitiationPaymentRefundIdsList>;
+export const PaymentInitiationPaymentRefundIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<PaymentInitiationPaymentRefundIdsList>;
 
 /** PaymentInitiationPayment defines a payment initiation payment */
 export interface PaymentInitiationPayment {
@@ -28957,9 +28430,8 @@ export const WalletTransactionType = S.String;
 
 /** A list of wallet transactions that this transaction is associated with, if any. */
 export type WalletTransactionRelatedTransactionsList = Array<WalletTransactionRelation>;
-export const WalletTransactionRelatedTransactionsList = /*@__PURE__*/ S.Array(
-  WalletTransactionRelation,
-) as any as S.Schema<WalletTransactionRelatedTransactionsList>;
+export const WalletTransactionRelatedTransactionsList =
+  GetWalletTransactionResponseRelatedTransactionsList as any as S.Schema<WalletTransactionRelatedTransactionsList>;
 
 /** The transaction details */
 export interface WalletTransaction {
@@ -29120,9 +28592,7 @@ export const ListWatchlistScreeningEntityHistoryRequest = /*@__PURE__*/ S.suspen
 export type WatchlistScreeningEntityHistoryListResponseEntityWatchlistScreeningsList =
   Array<EntityWatchlistScreening>;
 export const WatchlistScreeningEntityHistoryListResponseEntityWatchlistScreeningsList =
-  /*@__PURE__*/ S.Array(
-    EntityWatchlistScreening,
-  ) as any as S.Schema<WatchlistScreeningEntityHistoryListResponseEntityWatchlistScreeningsList>;
+  WatchlistScreeningEntityListResponseEntityWatchlistScreeningsList as any as S.Schema<WatchlistScreeningEntityHistoryListResponseEntityWatchlistScreeningsList>;
 
 /** Paginated list of entity watchlist screenings */
 export interface WatchlistScreeningEntityHistoryListResponse {
@@ -29165,9 +28635,8 @@ export const WatchlistScreeningHitStatus = S.String;
 
 /** Sub-program designations that may be attached to the watchlist entry by the issuing authority. For OFAC SDN entries these are the program codes published in the SDN list (for example `SDGT` for Specially Designated Global Terrorists, `SDNTK` for Specially Designated Narcotics Trafficking Kingpins, `IRAN`, `RUSSIA-EO14024`). New codes are added by sanctioning authorities without prior notice, so callers should treat unknown values as opaque strings rather than enum members. */
 export type EntityWatchlistScreeningHitSubProgramsList = Array<string>;
-export const EntityWatchlistScreeningHitSubProgramsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EntityWatchlistScreeningHitSubProgramsList>;
+export const EntityWatchlistScreeningHitSubProgramsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<EntityWatchlistScreeningHitSubProgramsList>;
 
 /** Analysis information describing why a screening hit matched the provided entity information */
 export interface EntityScreeningHitAnalysis {
@@ -29509,9 +28978,8 @@ export const ListWatchlistScreeningEntityProgramRequest = /*@__PURE__*/ S.suspen
 
 /** Watchlists enabled for the associated program */
 export type EntityWatchlistProgramListsEnabledList = Array<EntityWatchlistCode>;
-export const EntityWatchlistProgramListsEnabledList = /*@__PURE__*/ S.Array(
-  EntityWatchlistCode,
-) as any as S.Schema<EntityWatchlistProgramListsEnabledList>;
+export const EntityWatchlistProgramListsEnabledList =
+  WatchlistScreeningEntityProgramGetResponseListsEnabledList as any as S.Schema<EntityWatchlistProgramListsEnabledList>;
 
 /** A program that configures the active lists, search parameters, and other behavior for initial and ongoing screening of entities. */
 export interface EntityWatchlistProgram {
@@ -29584,15 +29052,13 @@ export const ListWatchlistScreeningEntityReviewRequest = /*@__PURE__*/ S.suspend
 
 /** Hits marked as a true positive after thorough manual review. These hits will never recur or be updated once confirmed. In most cases, confirmed hits indicate that the customer should be rejected. */
 export type EntityWatchlistScreeningReviewConfirmedHitsList = Array<string>;
-export const EntityWatchlistScreeningReviewConfirmedHitsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EntityWatchlistScreeningReviewConfirmedHitsList>;
+export const EntityWatchlistScreeningReviewConfirmedHitsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<EntityWatchlistScreeningReviewConfirmedHitsList>;
 
 /** Hits marked as a false positive after thorough manual review. These hits will never recur or be updated once dismissed. */
 export type EntityWatchlistScreeningReviewDismissedHitsList = Array<string>;
-export const EntityWatchlistScreeningReviewDismissedHitsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EntityWatchlistScreeningReviewDismissedHitsList>;
+export const EntityWatchlistScreeningReviewDismissedHitsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<EntityWatchlistScreeningReviewDismissedHitsList>;
 
 /** A review submitted by a team member for an entity watchlist screening. A review can be either a comment on the current screening state, actions taken against hits attached to the watchlist screening, or both. */
 export interface EntityWatchlistScreeningReview {
@@ -29735,9 +29201,7 @@ export const ListWatchlistScreeningIndividualHistoryRequest = /*@__PURE__*/ S.su
 export type WatchlistScreeningIndividualHistoryListResponseWatchlistScreeningsList =
   Array<WatchlistScreeningIndividual>;
 export const WatchlistScreeningIndividualHistoryListResponseWatchlistScreeningsList =
-  /*@__PURE__*/ S.Array(
-    WatchlistScreeningIndividual,
-  ) as any as S.Schema<WatchlistScreeningIndividualHistoryListResponseWatchlistScreeningsList>;
+  WatchlistScreeningIndividualListResponseWatchlistScreeningsList as any as S.Schema<WatchlistScreeningIndividualHistoryListResponseWatchlistScreeningsList>;
 
 /** Paginated list of individual watchlist screenings. */
 export interface WatchlistScreeningIndividualHistoryListResponse {
@@ -29746,15 +29210,8 @@ export interface WatchlistScreeningIndividualHistoryListResponse {
   next_cursor: string | null;
   request_id: string;
 }
-export const WatchlistScreeningIndividualHistoryListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    watchlist_screenings: WatchlistScreeningIndividualHistoryListResponseWatchlistScreeningsList,
-    next_cursor: S.NullOr(S.String),
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "WatchlistScreeningIndividualHistoryListResponse",
-}) as any as S.Schema<WatchlistScreeningIndividualHistoryListResponse>;
+export const WatchlistScreeningIndividualHistoryListResponse =
+  WatchlistScreeningIndividualListResponse as any as S.Schema<WatchlistScreeningIndividualHistoryListResponse>;
 
 export interface ListWatchlistScreeningIndividualHitRequest {
   secret?: string | Redacted.Redacted<string>;
@@ -29775,9 +29232,8 @@ export const ListWatchlistScreeningIndividualHitRequest = /*@__PURE__*/ S.suspen
 
 /** Sub-program designations that may be attached to the watchlist entry by the issuing authority. For OFAC SDN entries these are the program codes published in the SDN list (for example `SDGT` for Specially Designated Global Terrorists, `SDNTK` for Specially Designated Narcotics Trafficking Kingpins, `IRAN`, `RUSSIA-EO14024`). New codes are added by sanctioning authorities without prior notice, so callers should treat unknown values as opaque strings rather than enum members. */
 export type WatchlistScreeningHitSubProgramsList = Array<string>;
-export const WatchlistScreeningHitSubProgramsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WatchlistScreeningHitSubProgramsList>;
+export const WatchlistScreeningHitSubProgramsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<WatchlistScreeningHitSubProgramsList>;
 
 /** Analysis information describing why a screening hit matched the provided user information */
 export interface ScreeningHitAnalysis {
@@ -29883,9 +29339,8 @@ export const ScreeningHitDataDocumentsList = /*@__PURE__*/ S.Array(
 
 /** Locations associated with the watchlist hit */
 export type ScreeningHitDataLocationsList = Array<GenericScreeningHitLocationItems>;
-export const ScreeningHitDataLocationsList = /*@__PURE__*/ S.Array(
-  GenericScreeningHitLocationItems,
-) as any as S.Schema<ScreeningHitDataLocationsList>;
+export const ScreeningHitDataLocationsList =
+  EntityScreeningHitDataLocationsList as any as S.Schema<ScreeningHitDataLocationsList>;
 
 /** Name information for the associated individual watchlist hit */
 export interface IndividualScreeningHitNames {
@@ -30018,9 +29473,8 @@ export const ListWatchlistScreeningIndividualProgramRequest = /*@__PURE__*/ S.su
 
 /** Watchlists enabled for the associated program */
 export type IndividualWatchlistProgramListsEnabledList = Array<IndividualWatchlistCode>;
-export const IndividualWatchlistProgramListsEnabledList = /*@__PURE__*/ S.Array(
-  IndividualWatchlistCode,
-) as any as S.Schema<IndividualWatchlistProgramListsEnabledList>;
+export const IndividualWatchlistProgramListsEnabledList =
+  WatchlistScreeningIndividualProgramGetResponseListsEnabledList as any as S.Schema<IndividualWatchlistProgramListsEnabledList>;
 
 /** A program that configures the active lists, search parameters, and other behavior for initial and ongoing screening of individuals. */
 export interface IndividualWatchlistProgram {
@@ -30096,15 +29550,13 @@ export const ListWatchlistScreeningIndividualReviewRequest = /*@__PURE__*/ S.sus
 
 /** Hits marked as a true positive after thorough manual review. These hits will never recur or be updated once confirmed. In most cases, confirmed hits indicate that the customer should be rejected. */
 export type WatchlistScreeningReviewConfirmedHitsList = Array<string>;
-export const WatchlistScreeningReviewConfirmedHitsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WatchlistScreeningReviewConfirmedHitsList>;
+export const WatchlistScreeningReviewConfirmedHitsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<WatchlistScreeningReviewConfirmedHitsList>;
 
 /** Hits marked as a false positive after thorough manual review. These hits will never recur or be updated once dismissed. */
 export type WatchlistScreeningReviewDismissedHitsList = Array<string>;
-export const WatchlistScreeningReviewDismissedHitsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WatchlistScreeningReviewDismissedHitsList>;
+export const WatchlistScreeningReviewDismissedHitsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<WatchlistScreeningReviewDismissedHitsList>;
 
 /** A review submitted by a team member for an individual watchlist screening. A review can be either a comment on the current screening state, actions taken against hits attached to the watchlist screening, or both. */
 export interface WatchlistScreeningReview {
@@ -30275,12 +29727,7 @@ export interface PaymentAmountToRefund {
   /** The amount of the payment. Must contain at most two digits of precision e.g. `1.23`. */
   value: number;
 }
-export const PaymentAmountToRefund = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    currency: PaymentAmountCurrency,
-    value: S.Number,
-  }),
-).annotate({ identifier: "PaymentAmountToRefund" }) as any as S.Schema<PaymentAmountToRefund>;
+export const PaymentAmountToRefund = PaymentAmount as any as S.Schema<PaymentAmountToRefund>;
 
 export interface PaymentInitiationPaymentReverseRequest {
   client_id?: string;
@@ -30410,13 +29857,8 @@ export const ProcessorSignalDecisionReportRequest = /*@__PURE__*/ S.suspend(() =
 export interface ProcessorSignalDecisionReportResponse {
   request_id: string;
 }
-export const ProcessorSignalDecisionReportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "ProcessorSignalDecisionReportResponse",
-}) as any as S.Schema<ProcessorSignalDecisionReportResponse>;
+export const ProcessorSignalDecisionReportResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<ProcessorSignalDecisionReportResponse>;
 
 /** The user's legal name */
 export interface SignalPersonName {
@@ -30857,9 +30299,8 @@ export const Ruleset = /*@__PURE__*/ S.suspend(() =>
 
 /** If bank information was not available to be used in the Signal Transaction Scores model, this array contains warnings describing why bank data is missing. If you want to receive an API error instead of scores in the case of missing bank data, file a support ticket or contact your Plaid account manager. */
 export type ProcessorSignalEvaluateResponseWarningsList = Array<SignalWarning>;
-export const ProcessorSignalEvaluateResponseWarningsList = /*@__PURE__*/ S.Array(
-  SignalWarning,
-) as any as S.Schema<ProcessorSignalEvaluateResponseWarningsList>;
+export const ProcessorSignalEvaluateResponseWarningsList =
+  TransferAuthorizationPaymentRiskWarningsList as any as S.Schema<ProcessorSignalEvaluateResponseWarningsList>;
 
 /** ProcessorSignalEvaluateResponse defines the response schema for `/processor/signal/evaluate` */
 export interface ProcessorSignalEvaluateResponse {
@@ -30901,13 +30342,8 @@ export const ProcessorSignalPrepareRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ProcessorSignalPrepareResponse {
   request_id: string;
 }
-export const ProcessorSignalPrepareResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "ProcessorSignalPrepareResponse",
-}) as any as S.Schema<ProcessorSignalPrepareResponse>;
+export const ProcessorSignalPrepareResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<ProcessorSignalPrepareResponse>;
 
 export interface ProcessorSignalReturnReportRequest {
   client_id?: string;
@@ -30937,13 +30373,8 @@ export const ProcessorSignalReturnReportRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ProcessorSignalReturnReportResponse {
   request_id: string;
 }
-export const ProcessorSignalReturnReportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "ProcessorSignalReturnReportResponse",
-}) as any as S.Schema<ProcessorSignalReturnReportResponse>;
+export const ProcessorSignalReturnReportResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<ProcessorSignalReturnReportResponse>;
 
 /** Inputs for link session Trust Index models. */
 export interface ProtectLinkModelInputs {
@@ -31128,19 +30559,13 @@ export const RefreshCashflowReportRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CashflowReportRefreshResponse {
   request_id: string;
 }
-export const CashflowReportRefreshResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "CashflowReportRefreshResponse",
-}) as any as S.Schema<CashflowReportRefreshResponse>;
+export const CashflowReportRefreshResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<CashflowReportRefreshResponse>;
 
 /** An array of `item_id`s to be refreshed. Each `item_id` should uniquely identify a payroll income item. If this field is not provided, all `item_id`s associated with the user will be refreshed. */
 export type CreditPayrollIncomeRefreshRequestOptionsItemIdsList = Array<string>;
-export const CreditPayrollIncomeRefreshRequestOptionsItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreditPayrollIncomeRefreshRequestOptionsItemIdsList>;
+export const CreditPayrollIncomeRefreshRequestOptionsItemIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<CreditPayrollIncomeRefreshRequestOptionsItemIdsList>;
 
 /** An optional object for `/credit/payroll_income/refresh` request options. */
 export interface CreditPayrollIncomeRefreshRequestOptions {
@@ -31245,11 +30670,8 @@ export const RefreshIdentityRequest = /*@__PURE__*/ S.suspend(() =>
 export interface IdentityRefreshResponse {
   request_id: string;
 }
-export const IdentityRefreshResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({ identifier: "IdentityRefreshResponse" }) as any as S.Schema<IdentityRefreshResponse>;
+export const IdentityRefreshResponse =
+  TransferCancelResponse as any as S.Schema<IdentityRefreshResponse>;
 
 export interface RefreshInvestmentRequest {
   client_id?: string;
@@ -31268,13 +30690,8 @@ export const RefreshInvestmentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface InvestmentsRefreshResponse {
   request_id: string;
 }
-export const InvestmentsRefreshResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "InvestmentsRefreshResponse",
-}) as any as S.Schema<InvestmentsRefreshResponse>;
+export const InvestmentsRefreshResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<InvestmentsRefreshResponse>;
 
 export interface RefreshProcessorTransactionRequest {
   client_id?: string;
@@ -31295,13 +30712,8 @@ export const RefreshProcessorTransactionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ProcessorTransactionsRefreshResponse {
   request_id: string;
 }
-export const ProcessorTransactionsRefreshResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "ProcessorTransactionsRefreshResponse",
-}) as any as S.Schema<ProcessorTransactionsRefreshResponse>;
+export const ProcessorTransactionsRefreshResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<ProcessorTransactionsRefreshResponse>;
 
 export interface RefreshStatementRequest {
   access_token: string | Redacted.Redacted<string>;
@@ -31326,13 +30738,8 @@ export const RefreshStatementRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StatementsRefreshResponse {
   request_id: string;
 }
-export const StatementsRefreshResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "StatementsRefreshResponse",
-}) as any as S.Schema<StatementsRefreshResponse>;
+export const StatementsRefreshResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<StatementsRefreshResponse>;
 
 export interface RefreshTransactionRequest {
   client_id?: string;
@@ -31353,13 +30760,8 @@ export const RefreshTransactionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TransactionsRefreshResponse {
   request_id: string;
 }
-export const TransactionsRefreshResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "TransactionsRefreshResponse",
-}) as any as S.Schema<TransactionsRefreshResponse>;
+export const TransactionsRefreshResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<TransactionsRefreshResponse>;
 
 export interface RefreshUserFinancialDataRequest {
   /** A Plaid-generated ID that identifies the end user. */
@@ -31432,9 +30834,8 @@ export const RefreshUserTransactionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RefreshUserTransactionRequest>;
 
 export type UserTransactionsRefreshResponseResultsList = Array<RefreshResult>;
-export const UserTransactionsRefreshResponseResultsList = /*@__PURE__*/ S.Array(
-  RefreshResult,
-) as any as S.Schema<UserTransactionsRefreshResponseResultsList>;
+export const UserTransactionsRefreshResponseResultsList =
+  UserFinancialDataRefreshResponseResultsList as any as S.Schema<UserTransactionsRefreshResponseResultsList>;
 
 /** UserTransactionsRefreshResponse defines the response schema for `/user/transactions/refresh` */
 export interface UserTransactionsRefreshResponse {
@@ -31443,15 +30844,8 @@ export interface UserTransactionsRefreshResponse {
   user_id?: string;
   results?: UserTransactionsRefreshResponseResultsList;
 }
-export const UserTransactionsRefreshResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.optional(S.String),
-    user_id: S.optional(S.String),
-    results: S.optional(UserTransactionsRefreshResponseResultsList),
-  }),
-).annotate({
-  identifier: "UserTransactionsRefreshResponse",
-}) as any as S.Schema<UserTransactionsRefreshResponse>;
+export const UserTransactionsRefreshResponse =
+  UserFinancialDataRefreshResponse as any as S.Schema<UserTransactionsRefreshResponse>;
 
 /** The type of loan the user applied for. */
 export type CraLoanType =
@@ -31568,11 +30962,8 @@ export const RegisterCraLoanRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CraLoansRegisterResponse {
   request_id: string;
 }
-export const CraLoansRegisterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({ identifier: "CraLoansRegisterResponse" }) as any as S.Schema<CraLoansRegisterResponse>;
+export const CraLoansRegisterResponse =
+  TransferCancelResponse as any as S.Schema<CraLoansRegisterResponse>;
 
 /** The decision of the loan application. */
 export type CraLoanApplicationDecision = "APPROVED" | "DECLINED" | "OTHER";
@@ -31626,13 +31017,8 @@ export const RegisterCraLoansApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CraLoansApplicationsRegisterResponse {
   request_id: string;
 }
-export const CraLoansApplicationsRegisterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "CraLoansApplicationsRegisterResponse",
-}) as any as S.Schema<CraLoansApplicationsRegisterResponse>;
+export const CraLoansApplicationsRegisterResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<CraLoansApplicationsRegisterResponse>;
 
 export interface RemoveAssetReportRequest {
   client_id?: string;
@@ -31653,14 +31039,8 @@ export interface AssetReportRemoveResponse {
   removed: boolean;
   request_id: string;
 }
-export const AssetReportRemoveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    removed: S.Boolean,
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "AssetReportRemoveResponse",
-}) as any as S.Schema<AssetReportRemoveResponse>;
+export const AssetReportRemoveResponse =
+  AssetReportAuditCopyRemoveResponse as any as S.Schema<AssetReportRemoveResponse>;
 
 export interface RemoveCreditRelayRequest {
   client_id?: string;
@@ -31682,14 +31062,8 @@ export interface CreditRelayRemoveResponse {
   removed: boolean;
   request_id: string;
 }
-export const CreditRelayRemoveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    removed: S.Boolean,
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "CreditRelayRemoveResponse",
-}) as any as S.Schema<CreditRelayRemoveResponse>;
+export const CreditRelayRemoveResponse =
+  AssetReportAuditCopyRemoveResponse as any as S.Schema<CreditRelayRemoveResponse>;
 
 /** The reason for removing the Item `FRAUD_FIRST_PARTY`: The end user who owns the connected bank account committed fraud `FRAUD_FALSE_IDENTITY`: The end user created the connection using false identity information or stolen credentials `FRAUD_ABUSE`: The end user is abusing the client's service or platform through their connected account `FRAUD_OTHER`: Other fraud-related reasons involving the end user not covered by the specific fraud categories `CONNECTION_IS_NON_FUNCTIONAL`: The connection to the end user's financial institution is broken and cannot be restored `OTHER`: Any other reason for removing the connection not covered by the above categories */
 export type ItemRemoveReasonCode =
@@ -31723,11 +31097,7 @@ export const RemoveItemRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ItemRemoveResponse {
   request_id: string;
 }
-export const ItemRemoveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({ identifier: "ItemRemoveResponse" }) as any as S.Schema<ItemRemoveResponse>;
+export const ItemRemoveResponse = TransferCancelResponse as any as S.Schema<ItemRemoveResponse>;
 
 export interface RemovePartnerCustomerRequest {
   client_id?: string;
@@ -31749,13 +31119,8 @@ export const RemovePartnerCustomerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PartnerCustomerRemoveResponse {
   request_id?: string;
 }
-export const PartnerCustomerRemoveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PartnerCustomerRemoveResponse",
-}) as any as S.Schema<PartnerCustomerRemoveResponse>;
+export const PartnerCustomerRemoveResponse =
+  CraCheckReportCreateResponse as any as S.Schema<PartnerCustomerRemoveResponse>;
 
 export interface RemoveTransactionsRuleRequest {
   client_id?: string;
@@ -31780,13 +31145,8 @@ export const RemoveTransactionsRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TransactionsRulesRemoveResponse {
   request_id: string;
 }
-export const TransactionsRulesRemoveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "TransactionsRulesRemoveResponse",
-}) as any as S.Schema<TransactionsRulesRemoveResponse>;
+export const TransactionsRulesRemoveResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<TransactionsRulesRemoveResponse>;
 
 export interface RemoveUserRequest {
   client_id?: string;
@@ -31807,11 +31167,7 @@ export const RemoveUserRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UserRemoveResponse {
   request_id: string;
 }
-export const UserRemoveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({ identifier: "UserRemoveResponse" }) as any as S.Schema<UserRemoveResponse>;
+export const UserRemoveResponse = TransferCancelResponse as any as S.Schema<UserRemoveResponse>;
 
 export interface RemoveUserIdentityRequest {
   client_id?: string;
@@ -31832,19 +31188,13 @@ export const RemoveUserIdentityRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UserIdentityRemoveResponse {
   request_id: string;
 }
-export const UserIdentityRemoveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "UserIdentityRemoveResponse",
-}) as any as S.Schema<UserIdentityRemoveResponse>;
+export const UserIdentityRemoveResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<UserIdentityRemoveResponse>;
 
 /** An array of `item_id`s to be deleted. All Items for removal must be currently associated with the provided `user_id` or `user_token`. Otherwise, the entire operation will error and no Items will be deleted. */
 export type RemoveUserItemRequestItemIdsList = Array<string>;
-export const RemoveUserItemRequestItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveUserItemRequestItemIdsList>;
+export const RemoveUserItemRequestItemIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<RemoveUserItemRequestItemIdsList>;
 
 export interface RemoveUserItemRequest {
   client_id?: string;
@@ -31868,11 +31218,8 @@ export const RemoveUserItemRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UserItemsRemoveResponse {
   request_id: string;
 }
-export const UserItemsRemoveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({ identifier: "UserItemsRemoveResponse" }) as any as S.Schema<UserItemsRemoveResponse>;
+export const UserItemsRemoveResponse =
+  TransferCancelResponse as any as S.Schema<UserItemsRemoveResponse>;
 
 export interface RemoveUserThirdPartyTokenRequest {
   client_id?: string;
@@ -31895,14 +31242,8 @@ export interface UserThirdPartyTokenRemoveResponse {
   removed: boolean;
   request_id: string;
 }
-export const UserThirdPartyTokenRemoveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    removed: S.Boolean,
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "UserThirdPartyTokenRemoveResponse",
-}) as any as S.Schema<UserThirdPartyTokenRemoveResponse>;
+export const UserThirdPartyTokenRemoveResponse =
+  AssetReportAuditCopyRemoveResponse as any as S.Schema<UserThirdPartyTokenRemoveResponse>;
 
 /** An instruction specifying what steps the new Identity Verification attempt should require the user to complete: `reset` - Restart the user at the beginning of the session, regardless of whether they successfully completed part of their previous session. `incomplete` - Start the new session at the step that the user failed in the previous session, skipping steps that have already been successfully completed. `infer` - If the most recent Identity Verification attempt associated with the given `client_user_id` has a status of `failed` or `expired`, retry using the `incomplete` strategy. Otherwise, use the `reset` strategy. `custom` - Start the new session with a custom configuration, specified by the value of the `steps` field Note: The `incomplete` strategy cannot be applied if the session's failing step is `watchlist_screening` or `risk_check`. The `infer` strategy cannot be applied if the session's status is still `active` */
 export type Strategy = "reset" | "incomplete" | "infer" | "custom";
@@ -32002,33 +31343,8 @@ export interface IdentityVerificationRetryResponse {
   latest_scored_protect_event?: IDVProtectEvent | null;
   request_id: string;
 }
-export const IdentityVerificationRetryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    client_user_id: S.String,
-    created_at: S.String,
-    completed_at: S.NullOr(S.String),
-    previous_attempt_id: S.NullOr(S.String),
-    shareable_url: S.NullOr(S.String),
-    template: IdentityVerificationTemplateReference,
-    user: IdentityVerificationUserData,
-    status: IdentityVerificationStatus,
-    steps: IdentityVerificationStepSummary,
-    documentary_verification: S.NullOr(DocumentaryVerification),
-    selfie_check: S.NullOr(SelfieCheck),
-    kyc_check: S.NullOr(KYCCheckDetails),
-    risk_check: S.NullOr(RiskCheckDetails),
-    verify_sms: S.NullOr(VerifySMSDetails),
-    watchlist_screening_id: S.NullOr(S.String),
-    beacon_user_id: S.NullOr(S.String),
-    user_id: S.NullOr(S.String),
-    redacted_at: S.NullOr(S.String),
-    latest_scored_protect_event: S.optional(S.NullOr(IDVProtectEvent)),
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "IdentityVerificationRetryResponse",
-}) as any as S.Schema<IdentityVerificationRetryResponse>;
+export const IdentityVerificationRetryResponse =
+  IdentityVerificationCreateResponse as any as S.Schema<IdentityVerificationRetryResponse>;
 
 export interface RevokeFdxConsentRequest {
   /** Unique identifier of the consent grant. */
@@ -32051,9 +31367,8 @@ export const RevokeFdxConsentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RevokeFdxConsentRequest" }) as any as S.Schema<RevokeFdxConsentRequest>;
 
 export interface RevokeFdxConsentResponse {}
-export const RevokeFdxConsentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RevokeFdxConsentResponse",
-}) as any as S.Schema<RevokeFdxConsentResponse>;
+export const RevokeFdxConsentResponse =
+  DownloadStatementResponse as any as S.Schema<RevokeFdxConsentResponse>;
 
 export interface RevokeOauthRequest {
   token: string;
@@ -32074,11 +31389,7 @@ export const RevokeOauthRequest = /*@__PURE__*/ S.suspend(() =>
 export interface OAuthRevokeResponse {
   request_id: string;
 }
-export const OAuthRevokeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({ identifier: "OAuthRevokeResponse" }) as any as S.Schema<OAuthRevokeResponse>;
+export const OAuthRevokeResponse = TransferCancelResponse as any as S.Schema<OAuthRevokeResponse>;
 
 export interface RevokePaymentInitiationConsentRequest {
   client_id?: string;
@@ -32100,13 +31411,8 @@ export const RevokePaymentInitiationConsentRequest = /*@__PURE__*/ S.suspend(() 
 export interface PaymentInitiationConsentRevokeResponse {
   request_id?: string;
 }
-export const PaymentInitiationConsentRevokeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PaymentInitiationConsentRevokeResponse",
-}) as any as S.Schema<PaymentInitiationConsentRevokeResponse>;
+export const PaymentInitiationConsentRevokeResponse =
+  CraCheckReportCreateResponse as any as S.Schema<PaymentInitiationConsentRevokeResponse>;
 
 /** If set, skip report generation and instead fire a `CRA_REPORT_UPDATED` error webhook carrying this code. The accepted values depend on the `scope` of the subscription being simulated, since a simulation can only fire a webhook that scope would send in Production. A `CLIENT_USER` subscription accepts `USER_NOT_FOUND` and `PRODUCT_GENERATION_FAILED`; a `PLAID_NETWORK` subscription accepts `UNMATCH`, `DATA_UNAVAILABLE`, `NO_ELIGIBLE_ITEMS_ON_PROFILE`, and `PRODUCT_GENERATION_ERROR`. Supplying a code that does not match the subscription's scope returns an `INVALID_FIELD` error. */
 export type SandboxCraServicingSimulateErrorWebhookCode =
@@ -32251,13 +31557,8 @@ export const SandboxIncomeFireWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SandboxIncomeFireWebhookResponse {
   request_id: string;
 }
-export const SandboxIncomeFireWebhookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "SandboxIncomeFireWebhookResponse",
-}) as any as S.Schema<SandboxIncomeFireWebhookResponse>;
+export const SandboxIncomeFireWebhookResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<SandboxIncomeFireWebhookResponse>;
 
 export interface SandboxItemApplicationSeedRequest {
   client_id?: string;
@@ -32429,18 +31730,12 @@ export const SandboxItemSetVerificationStatusRequest = /*@__PURE__*/ S.suspend((
 export interface SandboxItemSetVerificationStatusResponse {
   request_id: string;
 }
-export const SandboxItemSetVerificationStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "SandboxItemSetVerificationStatusResponse",
-}) as any as S.Schema<SandboxItemSetVerificationStatusResponse>;
+export const SandboxItemSetVerificationStatusResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<SandboxItemSetVerificationStatusResponse>;
 
 export type SandboxOauthSelectAccountsRequestAccountsList = Array<string>;
-export const SandboxOauthSelectAccountsRequestAccountsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SandboxOauthSelectAccountsRequestAccountsList>;
+export const SandboxOauthSelectAccountsRequestAccountsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<SandboxOauthSelectAccountsRequestAccountsList>;
 
 export interface SandboxOauthSelectAccountsRequest {
   oauth_state_id: string;
@@ -32457,10 +31752,8 @@ export const SandboxOauthSelectAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines the response schema for `/sandbox/oauth/select_accounts` */
 export type SandboxOauthSelectAccountsResponse = { [key: string]: unknown | undefined };
-export const SandboxOauthSelectAccountsResponse = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SandboxOauthSelectAccountsResponse>;
+export const SandboxOauthSelectAccountsResponse =
+  PartnerEndCustomerProductStatuses as any as S.Schema<SandboxOauthSelectAccountsResponse>;
 
 export type SandboxOauthSelectAccountsResponse2 = SandboxOauthSelectAccountsResponse;
 export const SandboxOauthSelectAccountsResponse2 = /*@__PURE__*/ S.suspend(() =>
@@ -32527,13 +31820,8 @@ export const SandboxTransferFireWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SandboxTransferFireWebhookResponse {
   request_id: string;
 }
-export const SandboxTransferFireWebhookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "SandboxTransferFireWebhookResponse",
-}) as any as S.Schema<SandboxTransferFireWebhookResponse>;
+export const SandboxTransferFireWebhookResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<SandboxTransferFireWebhookResponse>;
 
 /** The asynchronous event to be simulated. May be: `posted`, `settled`, `failed`, or `returned`. An error will be returned if the event type is incompatible with the current ledger sweep status. Compatible status --> event type transitions include: `sweep.pending` --> `sweep.posted` `sweep.pending` --> `sweep.failed` `sweep.posted` --> `sweep.settled` `sweep.posted` --> `sweep.returned` `sweep.settled` --> `sweep.returned` */
 export type TransferLedgerSweepSimulateEventType =
@@ -32566,13 +31854,8 @@ export const SandboxTransferLedgerDepositSimulateRequest = /*@__PURE__*/ S.suspe
 export interface SandboxTransferLedgerDepositSimulateResponse {
   request_id: string;
 }
-export const SandboxTransferLedgerDepositSimulateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "SandboxTransferLedgerDepositSimulateResponse",
-}) as any as S.Schema<SandboxTransferLedgerDepositSimulateResponse>;
+export const SandboxTransferLedgerDepositSimulateResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<SandboxTransferLedgerDepositSimulateResponse>;
 
 export interface SandboxTransferLedgerSimulateAvailableRequest {
   client_id?: string;
@@ -32605,13 +31888,8 @@ export const SandboxTransferLedgerSimulateAvailableRequest = /*@__PURE__*/ S.sus
 export interface SandboxTransferLedgerSimulateAvailableResponse {
   request_id: string;
 }
-export const SandboxTransferLedgerSimulateAvailableResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "SandboxTransferLedgerSimulateAvailableResponse",
-}) as any as S.Schema<SandboxTransferLedgerSimulateAvailableResponse>;
+export const SandboxTransferLedgerSimulateAvailableResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<SandboxTransferLedgerSimulateAvailableResponse>;
 
 export interface SandboxTransferLedgerWithdrawSimulateRequest {
   client_id?: string;
@@ -32636,13 +31914,8 @@ export const SandboxTransferLedgerWithdrawSimulateRequest = /*@__PURE__*/ S.susp
 export interface SandboxTransferLedgerWithdrawSimulateResponse {
   request_id: string;
 }
-export const SandboxTransferLedgerWithdrawSimulateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "SandboxTransferLedgerWithdrawSimulateResponse",
-}) as any as S.Schema<SandboxTransferLedgerWithdrawSimulateResponse>;
+export const SandboxTransferLedgerWithdrawSimulateResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<SandboxTransferLedgerWithdrawSimulateResponse>;
 
 export interface SandboxTransferRefundSimulateRequest {
   client_id?: string;
@@ -32674,13 +31947,8 @@ export const SandboxTransferRefundSimulateRequest = /*@__PURE__*/ S.suspend(() =
 export interface SandboxTransferRefundSimulateResponse {
   request_id: string;
 }
-export const SandboxTransferRefundSimulateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "SandboxTransferRefundSimulateResponse",
-}) as any as S.Schema<SandboxTransferRefundSimulateResponse>;
+export const SandboxTransferRefundSimulateResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<SandboxTransferRefundSimulateResponse>;
 
 export interface SandboxTransferRepaymentSimulateRequest {
   client_id?: string;
@@ -32699,13 +31967,8 @@ export const SandboxTransferRepaymentSimulateRequest = /*@__PURE__*/ S.suspend((
 export interface SandboxTransferRepaymentSimulateResponse {
   request_id: string;
 }
-export const SandboxTransferRepaymentSimulateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "SandboxTransferRepaymentSimulateResponse",
-}) as any as S.Schema<SandboxTransferRepaymentSimulateResponse>;
+export const SandboxTransferRepaymentSimulateResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<SandboxTransferRepaymentSimulateResponse>;
 
 export interface SandboxTransferSimulateRequest {
   client_id?: string;
@@ -32737,13 +32000,8 @@ export const SandboxTransferSimulateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SandboxTransferSimulateResponse {
   request_id: string;
 }
-export const SandboxTransferSimulateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "SandboxTransferSimulateResponse",
-}) as any as S.Schema<SandboxTransferSimulateResponse>;
+export const SandboxTransferSimulateResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<SandboxTransferSimulateResponse>;
 
 export interface SandboxTransferSweepSimulateRequest {
   client_id?: string;
@@ -32803,13 +32061,8 @@ export const SandboxTransferTestClockAdvanceRequest = /*@__PURE__*/ S.suspend(()
 export interface SandboxTransferTestClockAdvanceResponse {
   request_id: string;
 }
-export const SandboxTransferTestClockAdvanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "SandboxTransferTestClockAdvanceResponse",
-}) as any as S.Schema<SandboxTransferTestClockAdvanceResponse>;
+export const SandboxTransferTestClockAdvanceResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<SandboxTransferTestClockAdvanceResponse>;
 
 /** The webhook types that can be fired by this test endpoint. */
 export type SandboxUserFireWebhookType = "CHECK_REPORT";
@@ -32853,20 +32106,13 @@ export interface SandboxUserFireWebhookResponse {
   webhook_fired: boolean;
   request_id: string;
 }
-export const SandboxUserFireWebhookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    webhook_fired: S.Boolean,
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "SandboxUserFireWebhookResponse",
-}) as any as S.Schema<SandboxUserFireWebhookResponse>;
+export const SandboxUserFireWebhookResponse =
+  SandboxItemFireWebhookResponse as any as S.Schema<SandboxUserFireWebhookResponse>;
 
 /** An array of `item_id`s associated with the User to be reset. If empty or `null`, this field will default to resetting all Items associated with the User. */
 export type SandboxUserResetLoginRequestItemIdsList = Array<string>;
-export const SandboxUserResetLoginRequestItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SandboxUserResetLoginRequestItemIdsList>;
+export const SandboxUserResetLoginRequestItemIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<SandboxUserResetLoginRequestItemIdsList>;
 
 export interface SandboxUserResetLoginRequest {
   client_id?: string;
@@ -32892,25 +32138,18 @@ export const SandboxUserResetLoginRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SandboxUserResetLoginResponse {
   request_id: string;
 }
-export const SandboxUserResetLoginResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "SandboxUserResetLoginResponse",
-}) as any as S.Schema<SandboxUserResetLoginResponse>;
+export const SandboxUserResetLoginResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<SandboxUserResetLoginResponse>;
 
 /** Filter the Institutions based on whether they support all products listed in `products`. Provide `null` to get institutions regardless of supported products. Note that when `auth` is specified as a product, if you are enabled for Instant Match or Automated Micro-deposits, institutions that support those products will be returned even if `auth` is not present in their product array. To search for Transfer support, use `auth`; to search for Signal Transaction Scores support, use `balance`. */
 export type SearchInstitutionRequestProductsList = Array<Products | (string & {})>;
-export const SearchInstitutionRequestProductsList = /*@__PURE__*/ S.Array(
-  Products,
-) as any as S.Schema<SearchInstitutionRequestProductsList>;
+export const SearchInstitutionRequestProductsList =
+  BetaIssuesV1IssueAffectedProductsList as any as S.Schema<SearchInstitutionRequestProductsList>;
 
 /** Specify which country or countries to include institutions from, using the ISO-3166-1 alpha-2 country code standard. In API versions 2019-05-29 and earlier, the `country_codes` parameter is an optional parameter within the `options` object and will default to `[US]` if it is not supplied. */
 export type SearchInstitutionRequestCountryCodesList = Array<CountryCode | (string & {})>;
-export const SearchInstitutionRequestCountryCodesList = /*@__PURE__*/ S.Array(
-  CountryCode,
-) as any as S.Schema<SearchInstitutionRequestCountryCodesList>;
+export const SearchInstitutionRequestCountryCodesList =
+  CreateLinkTokenRequestCountryCodesList as any as S.Schema<SearchInstitutionRequestCountryCodesList>;
 
 /** Additional options that will be used to filter institutions by various Payment Initiation configurations. */
 export interface InstitutionsSearchPaymentInitiationOptions {
@@ -32976,9 +32215,8 @@ export const SearchInstitutionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of institutions matching the search criteria */
 export type InstitutionsSearchResponseInstitutionsList = Array<Institution>;
-export const InstitutionsSearchResponseInstitutionsList = /*@__PURE__*/ S.Array(
-  Institution,
-) as any as S.Schema<InstitutionsSearchResponseInstitutionsList>;
+export const InstitutionsSearchResponseInstitutionsList =
+  InstitutionsGetResponseInstitutionsList as any as S.Schema<InstitutionsSearchResponseInstitutionsList>;
 
 /** InstitutionsSearchResponse defines the response schema for `/institutions/search` */
 export interface InstitutionsSearchResponse {
@@ -33076,19 +32314,13 @@ export const SendUserAccountSessionEventRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UserAccountSessionEventSendResponse {
   request_id: string;
 }
-export const UserAccountSessionEventSendResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "UserAccountSessionEventSendResponse",
-}) as any as S.Schema<UserAccountSessionEventSendResponse>;
+export const UserAccountSessionEventSendResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<UserAccountSessionEventSendResponse>;
 
 /** A list of products the processor token should have access to. An empty list will grant access to all products. */
 export type SetProcessorTokenPermissionsRequestProductsList = Array<Products | (string & {})>;
-export const SetProcessorTokenPermissionsRequestProductsList = /*@__PURE__*/ S.Array(
-  Products,
-) as any as S.Schema<SetProcessorTokenPermissionsRequestProductsList>;
+export const SetProcessorTokenPermissionsRequestProductsList =
+  BetaIssuesV1IssueAffectedProductsList as any as S.Schema<SetProcessorTokenPermissionsRequestProductsList>;
 
 export interface SetProcessorTokenPermissionsRequest {
   client_id?: string;
@@ -33112,13 +32344,8 @@ export const SetProcessorTokenPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ProcessorTokenPermissionsSetResponse {
   request_id: string;
 }
-export const ProcessorTokenPermissionsSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "ProcessorTokenPermissionsSetResponse",
-}) as any as S.Schema<ProcessorTokenPermissionsSetResponse>;
+export const ProcessorTokenPermissionsSetResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<ProcessorTokenPermissionsSetResponse>;
 
 export interface SignalDecisionReportRequest {
   client_id?: string;
@@ -33156,13 +32383,8 @@ export const SignalDecisionReportRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SignalDecisionReportResponse {
   request_id: string;
 }
-export const SignalDecisionReportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "SignalDecisionReportResponse",
-}) as any as S.Schema<SignalDecisionReportResponse>;
+export const SignalDecisionReportResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<SignalDecisionReportResponse>;
 
 export interface SignalEvaluateRequest {
   client_id?: string;
@@ -33224,9 +32446,8 @@ export const RiskProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** If bank information was not available to be used in the Signal Transaction Scores model, this array contains warnings describing why bank data is missing. If you want to receive an API error instead of results in the case of missing bank data, file a support ticket or contact your Plaid account manager. */
 export type SignalEvaluateResponseWarningsList = Array<SignalWarning>;
-export const SignalEvaluateResponseWarningsList = /*@__PURE__*/ S.Array(
-  SignalWarning,
-) as any as S.Schema<SignalEvaluateResponseWarningsList>;
+export const SignalEvaluateResponseWarningsList =
+  TransferAuthorizationPaymentRiskWarningsList as any as S.Schema<SignalEvaluateResponseWarningsList>;
 
 /** SignalEvaluateResponse defines the response schema for `/signal/evaluate` */
 export interface SignalEvaluateResponse {
@@ -33266,11 +32487,8 @@ export const SignalPrepareRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SignalPrepareResponse {
   request_id: string;
 }
-export const SignalPrepareResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({ identifier: "SignalPrepareResponse" }) as any as S.Schema<SignalPrepareResponse>;
+export const SignalPrepareResponse =
+  TransferCancelResponse as any as S.Schema<SignalPrepareResponse>;
 
 export interface SignalReturnReportRequest {
   client_id?: string;
@@ -33298,13 +32516,8 @@ export const SignalReturnReportRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SignalReturnReportResponse {
   request_id: string;
 }
-export const SignalReturnReportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "SignalReturnReportResponse",
-}) as any as S.Schema<SignalReturnReportResponse>;
+export const SignalReturnReportResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<SignalReturnReportResponse>;
 
 /** The payment method specified in the `default_payment_method` field directly impacts the timing recommendations provided by the API for submitting the debit entry to your processor or ODFI. If unspecified, defaults to `STANDARD_ACH`. `SAME_DAY_ACH`: Same Day ACH (as defined by Nacha). The API assumes the settlement will occur on the same business day if the `/signal/schedule` request is submitted by 6:00 PM UTC. Note: The actual cutoff time can vary depending on your payment processor or ODFI. Nacha has established three processing windows for Same Day ACH (Eastern Time): 10:30 AM, 2:45 PM, and 4:45 PM. `STANDARD_ACH`: Standard ACH (as defined by Nacha), typically settled one to three business days after submission. `MULTIPLE_PAYMENT_METHODS`: Indicates that there is no default debit rail or multiple payment methods are available, and the transaction could use any of them based on customer policy or availability. */
 export type SignalScheduleDefaultPaymentMethod =
@@ -33367,9 +32580,8 @@ export const SignalScheduleResponseRecommendationsList = /*@__PURE__*/ S.Array(
 
 /** If bank information was not available to be used in the Signal Transaction Scores model, this array contains warnings describing why bank data is missing. If you want to receive an API error instead of scores in the case of missing bank data, file a support ticket or contact your Plaid account manager. */
 export type SignalScheduleResponseWarningsList = Array<SignalWarning>;
-export const SignalScheduleResponseWarningsList = /*@__PURE__*/ S.Array(
-  SignalWarning,
-) as any as S.Schema<SignalScheduleResponseWarningsList>;
+export const SignalScheduleResponseWarningsList =
+  TransferAuthorizationPaymentRiskWarningsList as any as S.Schema<SignalScheduleResponseWarningsList>;
 
 /** SignalScheduleResponse defines the response schema for `/signal/schedule` */
 export interface SignalScheduleResponse {
@@ -33552,13 +32764,8 @@ export const SubmitTransferDiligenceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TransferDiligenceSubmitResponse {
   request_id: string;
 }
-export const TransferDiligenceSubmitResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "TransferDiligenceSubmitResponse",
-}) as any as S.Schema<TransferDiligenceSubmitResponse>;
+export const TransferDiligenceSubmitResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<TransferDiligenceSubmitResponse>;
 
 /** A single requirement submission */
 export interface TransferPlatformRequirementSubmission {
@@ -33610,13 +32817,8 @@ export const SubmitTransferPlatformRequirementRequest = /*@__PURE__*/ S.suspend(
 export interface TransferPlatformRequirementSubmitResponse {
   request_id: string;
 }
-export const TransferPlatformRequirementSubmitResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "TransferPlatformRequirementSubmitResponse",
-}) as any as S.Schema<TransferPlatformRequirementSubmitResponse>;
+export const TransferPlatformRequirementSubmitResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<TransferPlatformRequirementSubmitResponse>;
 
 export interface SubscribeBetaIssuesV1Request {
   client_id?: string;
@@ -33641,13 +32843,8 @@ export const SubscribeBetaIssuesV1Request = /*@__PURE__*/ S.suspend(() =>
 export interface BetaIssuesV1SubscribeResponse {
   request_id: string;
 }
-export const BetaIssuesV1SubscribeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "BetaIssuesV1SubscribeResponse",
-}) as any as S.Schema<BetaIssuesV1SubscribeResponse>;
+export const BetaIssuesV1SubscribeResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<BetaIssuesV1SubscribeResponse>;
 
 export interface SubscribeIssueRequest {
   client_id?: string;
@@ -33670,11 +32867,8 @@ export const SubscribeIssueRequest = /*@__PURE__*/ S.suspend(() =>
 export interface IssuesSubscribeResponse {
   request_id: string;
 }
-export const IssuesSubscribeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({ identifier: "IssuesSubscribeResponse" }) as any as S.Schema<IssuesSubscribeResponse>;
+export const IssuesSubscribeResponse =
+  TransferCancelResponse as any as S.Schema<IssuesSubscribeResponse>;
 
 export interface SyncBankTransferEventRequest {
   client_id?: string;
@@ -33696,23 +32890,16 @@ export const SyncBankTransferEventRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyncBankTransferEventRequest>;
 
 export type BankTransferEventSyncResponseBankTransferEventsList = Array<BankTransferEvent>;
-export const BankTransferEventSyncResponseBankTransferEventsList = /*@__PURE__*/ S.Array(
-  BankTransferEvent,
-) as any as S.Schema<BankTransferEventSyncResponseBankTransferEventsList>;
+export const BankTransferEventSyncResponseBankTransferEventsList =
+  BankTransferEventListResponseBankTransferEventsList as any as S.Schema<BankTransferEventSyncResponseBankTransferEventsList>;
 
 /** Defines the response schema for `/bank_transfer/event/sync` */
 export interface BankTransferEventSyncResponse {
   bank_transfer_events: BankTransferEventSyncResponseBankTransferEventsList;
   request_id: string;
 }
-export const BankTransferEventSyncResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bank_transfer_events: BankTransferEventSyncResponseBankTransferEventsList,
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "BankTransferEventSyncResponse",
-}) as any as S.Schema<BankTransferEventSyncResponse>;
+export const BankTransferEventSyncResponse =
+  BankTransferEventListResponse as any as S.Schema<BankTransferEventSyncResponse>;
 
 /** An optional object to be used with the request. If specified, `options` must not be `null`. */
 export interface TransactionsSyncRequestOptions {
@@ -33831,15 +33018,13 @@ export const AccountBaseNullable = /*@__PURE__*/ S.suspend(() =>
 
 /** Transactions that have been added to the Item since `cursor` ordered by ascending last modified time. */
 export type ProcessorTransactionsSyncResponseAddedList = Array<Transaction>;
-export const ProcessorTransactionsSyncResponseAddedList = /*@__PURE__*/ S.Array(
-  Transaction,
-) as any as S.Schema<ProcessorTransactionsSyncResponseAddedList>;
+export const ProcessorTransactionsSyncResponseAddedList =
+  ProcessorTransactionsGetResponseTransactionsList as any as S.Schema<ProcessorTransactionsSyncResponseAddedList>;
 
 /** Transactions that have been modified on the Item since `cursor` ordered by ascending last modified time. */
 export type ProcessorTransactionsSyncResponseModifiedList = Array<Transaction>;
-export const ProcessorTransactionsSyncResponseModifiedList = /*@__PURE__*/ S.Array(
-  Transaction,
-) as any as S.Schema<ProcessorTransactionsSyncResponseModifiedList>;
+export const ProcessorTransactionsSyncResponseModifiedList =
+  ProcessorTransactionsGetResponseTransactionsList as any as S.Schema<ProcessorTransactionsSyncResponseModifiedList>;
 
 /** A representation of a removed transaction */
 export interface RemovedTransaction {
@@ -33915,27 +33100,23 @@ export const SyncTransactionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of accounts at a financial institution associated with the transactions in this response. Only accounts that have associated transactions will be shown. For example, `investment`-type accounts will be omitted. */
 export type TransactionsSyncResponseAccountsList = Array<AccountBase>;
-export const TransactionsSyncResponseAccountsList = /*@__PURE__*/ S.Array(
-  AccountBase,
-) as any as S.Schema<TransactionsSyncResponseAccountsList>;
+export const TransactionsSyncResponseAccountsList =
+  AccountsGetResponseAccountsList as any as S.Schema<TransactionsSyncResponseAccountsList>;
 
 /** Transactions that have been added to the Item since `cursor` ordered by ascending last modified time. */
 export type TransactionsSyncResponseAddedList = Array<Transaction>;
-export const TransactionsSyncResponseAddedList = /*@__PURE__*/ S.Array(
-  Transaction,
-) as any as S.Schema<TransactionsSyncResponseAddedList>;
+export const TransactionsSyncResponseAddedList =
+  ProcessorTransactionsGetResponseTransactionsList as any as S.Schema<TransactionsSyncResponseAddedList>;
 
 /** Transactions that have been modified on the Item since `cursor` ordered by ascending last modified time. */
 export type TransactionsSyncResponseModifiedList = Array<Transaction>;
-export const TransactionsSyncResponseModifiedList = /*@__PURE__*/ S.Array(
-  Transaction,
-) as any as S.Schema<TransactionsSyncResponseModifiedList>;
+export const TransactionsSyncResponseModifiedList =
+  ProcessorTransactionsGetResponseTransactionsList as any as S.Schema<TransactionsSyncResponseModifiedList>;
 
 /** Transactions that have been removed from the Item since `cursor` ordered by ascending last modified time. */
 export type TransactionsSyncResponseRemovedList = Array<RemovedTransaction>;
-export const TransactionsSyncResponseRemovedList = /*@__PURE__*/ S.Array(
-  RemovedTransaction,
-) as any as S.Schema<TransactionsSyncResponseRemovedList>;
+export const TransactionsSyncResponseRemovedList =
+  ProcessorTransactionsSyncResponseRemovedList as any as S.Schema<TransactionsSyncResponseRemovedList>;
 
 /** TransactionsSyncResponse defines the response schema for `/transactions/sync` */
 export interface TransactionsSyncResponse {
@@ -34008,13 +33189,8 @@ export const TerminateItemProductRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ItemProductsTerminateResponse {
   request_id: string;
 }
-export const ItemProductsTerminateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "ItemProductsTerminateResponse",
-}) as any as S.Schema<ItemProductsTerminateResponse>;
+export const ItemProductsTerminateResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<ItemProductsTerminateResponse>;
 
 export interface TerminateUserProductRequest {
   client_id?: string;
@@ -34040,13 +33216,8 @@ export const TerminateUserProductRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UserProductsTerminateResponse {
   request_id: string;
 }
-export const UserProductsTerminateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "UserProductsTerminateResponse",
-}) as any as S.Schema<UserProductsTerminateResponse>;
+export const UserProductsTerminateResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<UserProductsTerminateResponse>;
 
 /** A client-provided transaction for Plaid to enhance. */
 export interface ClientProvidedRawTransaction {
@@ -34097,9 +33268,8 @@ export const TransactionsEnhanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A hierarchical array of the categories to which this transaction belongs. For a full list of categories, see [`/categories/get`](https://plaid.com/docs/api/products/transactions/#categoriesget). */
 export type EnhancementsCategoryList = Array<string>;
-export const EnhancementsCategoryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnhancementsCategoryList>;
+export const EnhancementsCategoryList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<EnhancementsCategoryList>;
 
 /** The counterparty, such as the merchant or financial institution, is extracted by Plaid from the raw description. */
 export interface Counterparty {
@@ -34339,15 +33509,13 @@ export const TransactionsEnrichRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The counterparties present in the transaction. Counterparties, such as the merchant or the financial institution, are extracted by Plaid from the raw description. */
 export type EnrichmentsCounterpartiesList = Array<Counterparty>;
-export const EnrichmentsCounterpartiesList = /*@__PURE__*/ S.Array(
-  Counterparty,
-) as any as S.Schema<EnrichmentsCounterpartiesList>;
+export const EnrichmentsCounterpartiesList =
+  EnhancementsCounterpartiesList as any as S.Schema<EnrichmentsCounterpartiesList>;
 
 /** A hierarchical array of the legacy categories to which this transaction belongs. For a full list of legacy categories, see [`/categories/get`](https://plaid.com/docs/api/products/transactions/#categoriesget). We recommend using the `personal_finance_category` for transaction categorization to obtain the best results. */
 export type EnrichmentsLegacyCategoryList = Array<string>;
-export const EnrichmentsLegacyCategoryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnrichmentsLegacyCategoryList>;
+export const EnrichmentsLegacyCategoryList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<EnrichmentsLegacyCategoryList>;
 
 /** A grouping of the Plaid produced transaction enrichment fields. */
 export interface Enrichments {
@@ -34473,9 +33641,8 @@ export const TransferEventSyncRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TransferEventSyncRequest" }) as any as S.Schema<TransferEventSyncRequest>;
 
 export type TransferEventSyncResponseTransferEventsList = Array<TransferEvent>;
-export const TransferEventSyncResponseTransferEventsList = /*@__PURE__*/ S.Array(
-  TransferEvent,
-) as any as S.Schema<TransferEventSyncResponseTransferEventsList>;
+export const TransferEventSyncResponseTransferEventsList =
+  TransferEventListResponseTransferEventsList as any as S.Schema<TransferEventSyncResponseTransferEventsList>;
 
 /** Defines the response schema for `/transfer/event/sync` */
 export interface TransferEventSyncResponse {
@@ -34484,15 +33651,8 @@ export interface TransferEventSyncResponse {
   has_more: boolean;
   request_id: string;
 }
-export const TransferEventSyncResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    transfer_events: TransferEventSyncResponseTransferEventsList,
-    has_more: S.Boolean,
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "TransferEventSyncResponse",
-}) as any as S.Schema<TransferEventSyncResponse>;
+export const TransferEventSyncResponse =
+  TransferEventListResponse as any as S.Schema<TransferEventSyncResponse>;
 
 /** The ACH networks used for the funds flow. For requests submitted as either `ach` or `same-day-ach` the cutoff for Same Day ACH is 3:00 PM Eastern Time and the cutoff for Standard ACH transfers is 8:30 PM Eastern Time. It is recommended to submit a request at least 15 minutes before the cutoff time in order to ensure that it will be processed before the cutoff. Any request that is indicated as `same-day-ach` and that misses the Same Day ACH cutoff, but is submitted in time for the Standard ACH cutoff, will be sent over Standard ACH rails and will not incur same-day charges. */
 export type TransferACHNetwork = "ach" | "same-day-ach";
@@ -34572,13 +33732,8 @@ export const TransferLedgerDistributeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TransferLedgerDistributeResponse {
   request_id: string;
 }
-export const TransferLedgerDistributeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "TransferLedgerDistributeResponse",
-}) as any as S.Schema<TransferLedgerDistributeResponse>;
+export const TransferLedgerDistributeResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<TransferLedgerDistributeResponse>;
 
 export interface TransferLedgerWithdrawRequest {
   client_id?: string;
@@ -34614,14 +33769,8 @@ export interface TransferLedgerWithdrawResponse {
   sweep: TransferSweep;
   request_id: string;
 }
-export const TransferLedgerWithdrawResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sweep: TransferSweep,
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "TransferLedgerWithdrawResponse",
-}) as any as S.Schema<TransferLedgerWithdrawResponse>;
+export const TransferLedgerWithdrawResponse =
+  TransferLedgerDepositResponse as any as S.Schema<TransferLedgerWithdrawResponse>;
 
 export interface TransferMigrateAccountRequest {
   client_id?: string;
@@ -34689,13 +33838,8 @@ export const TransferReturnRecoverRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TransferReturnRecoverResponse {
   request_id: string;
 }
-export const TransferReturnRecoverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "TransferReturnRecoverResponse",
-}) as any as S.Schema<TransferReturnRecoverResponse>;
+export const TransferReturnRecoverResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<TransferReturnRecoverResponse>;
 
 export interface UnlinkItemApplicationRequest {
   client_id?: string;
@@ -34718,13 +33862,8 @@ export const UnlinkItemApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ItemApplicationUnlinkResponse {
   request_id: string;
 }
-export const ItemApplicationUnlinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "ItemApplicationUnlinkResponse",
-}) as any as S.Schema<ItemApplicationUnlinkResponse>;
+export const ItemApplicationUnlinkResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<ItemApplicationUnlinkResponse>;
 
 /** Contains the status and date information of the loan when unregistering. */
 export type CraLoanClosedStatus = CraLoanOpenedStatus;
@@ -34766,13 +33905,8 @@ export const UnregisterCraLoanRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CraLoanUnregisterResponse {
   request_id: string;
 }
-export const CraLoanUnregisterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "CraLoanUnregisterResponse",
-}) as any as S.Schema<CraLoanUnregisterResponse>;
+export const CraLoanUnregisterResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<CraLoanUnregisterResponse>;
 
 export interface UnsubscribeBetaIssuesV1Request {
   client_id?: string;
@@ -34794,18 +33928,12 @@ export const UnsubscribeBetaIssuesV1Request = /*@__PURE__*/ S.suspend(() =>
 export interface BetaIssuesV1UnsubscribeResponse {
   request_id: string;
 }
-export const BetaIssuesV1UnsubscribeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "BetaIssuesV1UnsubscribeResponse",
-}) as any as S.Schema<BetaIssuesV1UnsubscribeResponse>;
+export const BetaIssuesV1UnsubscribeResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<BetaIssuesV1UnsubscribeResponse>;
 
 export type UpdateBetaPartnerCustomerV1RequestRedirectUrisList = Array<string>;
-export const UpdateBetaPartnerCustomerV1RequestRedirectUrisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateBetaPartnerCustomerV1RequestRedirectUrisList>;
+export const UpdateBetaPartnerCustomerV1RequestRedirectUrisList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<UpdateBetaPartnerCustomerV1RequestRedirectUrisList>;
 
 export interface UpdateBetaPartnerCustomerV1Request {
   client_id?: string;
@@ -34835,14 +33963,8 @@ export interface BetaPartnerCustomerV1UpdateResponse {
   end_customer?: BetaPartnerEndCustomer;
   request_id?: string;
 }
-export const BetaPartnerCustomerV1UpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    end_customer: S.optional(BetaPartnerEndCustomer),
-    request_id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BetaPartnerCustomerV1UpdateResponse",
-}) as any as S.Schema<BetaPartnerCustomerV1UpdateResponse>;
+export const BetaPartnerCustomerV1UpdateResponse =
+  BetaPartnerCustomerV1GetResponse as any as S.Schema<BetaPartnerCustomerV1UpdateResponse>;
 
 /** Contains the status and date of an update to the loan. */
 export type CraLoanStatusHistoryUpdate = CraLoanOpenedStatus;
@@ -34923,17 +34045,13 @@ export const UpdateCraLoanRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CraLoansUpdateResponse {
   request_id: string;
 }
-export const CraLoansUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({ identifier: "CraLoansUpdateResponse" }) as any as S.Schema<CraLoansUpdateResponse>;
+export const CraLoansUpdateResponse =
+  TransferCancelResponse as any as S.Schema<CraLoansUpdateResponse>;
 
 /** The products included in this subscription. If provided, this replaces the subscription's entire product list. */
 export type UpdateCraServicingSubscriptionRequestProductsList = Array<CraSubscriptionProductConfig>;
-export const UpdateCraServicingSubscriptionRequestProductsList = /*@__PURE__*/ S.Array(
-  CraSubscriptionProductConfig,
-) as any as S.Schema<UpdateCraServicingSubscriptionRequestProductsList>;
+export const UpdateCraServicingSubscriptionRequestProductsList =
+  CreateCraServicingSubscriptionRequestProductsList as any as S.Schema<UpdateCraServicingSubscriptionRequestProductsList>;
 
 /** The name of a field that can be reset back to its default value. */
 export type CraServicingSubscriptionUpdateRequestResettableField = "webhook";
@@ -34975,14 +34093,8 @@ export interface CraServicingSubscriptionUpdateResponse {
   subscription_id: string;
   request_id: string;
 }
-export const CraServicingSubscriptionUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscription_id: S.String,
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "CraServicingSubscriptionUpdateResponse",
-}) as any as S.Schema<CraServicingSubscriptionUpdateResponse>;
+export const CraServicingSubscriptionUpdateResponse =
+  CraServicingSubscriptionCreateResponse as any as S.Schema<CraServicingSubscriptionUpdateResponse>;
 
 export interface UpdateCreditBankIncomeWebhookRequest {
   client_id?: string;
@@ -35008,21 +34120,15 @@ export const UpdateCreditBankIncomeWebhookRequest = /*@__PURE__*/ S.suspend(() =
 export interface CreditBankIncomeWebhookUpdateResponse {
   request_id: string;
 }
-export const CreditBankIncomeWebhookUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "CreditBankIncomeWebhookUpdateResponse",
-}) as any as S.Schema<CreditBankIncomeWebhookUpdateResponse>;
+export const CreditBankIncomeWebhookUpdateResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<CreditBankIncomeWebhookUpdateResponse>;
 
 /** The types of analysis to enable for the document income verification session */
 export type UpdateCreditPayrollIncomeParsingConfigRequestParsingConfigList = Array<
   IncomeVerificationDocParsingConfig | (string & {})
 >;
-export const UpdateCreditPayrollIncomeParsingConfigRequestParsingConfigList = /*@__PURE__*/ S.Array(
-  IncomeVerificationDocParsingConfig,
-) as any as S.Schema<UpdateCreditPayrollIncomeParsingConfigRequestParsingConfigList>;
+export const UpdateCreditPayrollIncomeParsingConfigRequestParsingConfigList =
+  LinkTokenCreateIdentityParsingConfigsList as any as S.Schema<UpdateCreditPayrollIncomeParsingConfigRequestParsingConfigList>;
 
 export interface UpdateCreditPayrollIncomeParsingConfigRequest {
   client_id?: string;
@@ -35052,18 +34158,11 @@ export const UpdateCreditPayrollIncomeParsingConfigRequest = /*@__PURE__*/ S.sus
 export interface CreditPayrollIncomeParsingConfigUpdateResponse {
   request_id: string;
 }
-export const CreditPayrollIncomeParsingConfigUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "CreditPayrollIncomeParsingConfigUpdateResponse",
-}) as any as S.Schema<CreditPayrollIncomeParsingConfigUpdateResponse>;
+export const CreditPayrollIncomeParsingConfigUpdateResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<CreditPayrollIncomeParsingConfigUpdateResponse>;
 
 export type ScopesAccountsList = Array<AccountAccess>;
-export const ScopesAccountsList = /*@__PURE__*/ S.Array(
-  AccountAccess,
-) as any as S.Schema<ScopesAccountsList>;
+export const ScopesAccountsList = ScopesNullableAccountsList as any as S.Schema<ScopesAccountsList>;
 
 /** The scopes object */
 export interface Scopes {
@@ -35072,13 +34171,7 @@ export interface Scopes {
   /** Allow access to newly opened accounts as they are opened. If unset, defaults to `true`. */
   new_accounts?: boolean | null;
 }
-export const Scopes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    product_access: S.optional(ProductAccess),
-    accounts: S.optional(ScopesAccountsList),
-    new_accounts: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({ identifier: "Scopes" }) as any as S.Schema<Scopes>;
+export const Scopes = ScopesNullable as any as S.Schema<Scopes>;
 
 /** An indicator for when scopes are being updated. When scopes are updated via enrollment (i.e. OAuth), the partner must send `ENROLLMENT`. When scopes are updated in a post-enrollment view, the partner must send `PORTAL`. */
 export type ScopesContext = "ENROLLMENT" | "PORTAL";
@@ -35111,13 +34204,8 @@ export const UpdateItemApplicationScopeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ItemApplicationScopesUpdateResponse {
   request_id: string;
 }
-export const ItemApplicationScopesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "ItemApplicationScopesUpdateResponse",
-}) as any as S.Schema<ItemApplicationScopesUpdateResponse>;
+export const ItemApplicationScopesUpdateResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<ItemApplicationScopesUpdateResponse>;
 
 export interface UpdateItemWebhookRequest {
   client_id?: string;
@@ -35171,13 +34259,8 @@ export const UpdateProcessorTokenWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ProcessorTokenWebhookUpdateResponse {
   request_id: string;
 }
-export const ProcessorTokenWebhookUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "ProcessorTokenWebhookUpdateResponse",
-}) as any as S.Schema<ProcessorTokenWebhookUpdateResponse>;
+export const ProcessorTokenWebhookUpdateResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<ProcessorTokenWebhookUpdateResponse>;
 
 /** Webhook code for a Cash Flow Updates event. */
 export type CashFlowUpdatesEventWebhookCodes =
@@ -35219,13 +34302,8 @@ export const UpdateSandboxCraCashflowUpdateRequest = /*@__PURE__*/ S.suspend(() 
 export interface SandboxCraCashflowUpdatesUpdateResponse {
   request_id: string;
 }
-export const SandboxCraCashflowUpdatesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "SandboxCraCashflowUpdatesUpdateResponse",
-}) as any as S.Schema<SandboxCraCashflowUpdatesUpdateResponse>;
+export const SandboxCraCashflowUpdatesUpdateResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<SandboxCraCashflowUpdatesUpdateResponse>;
 
 export interface UpdateTransferOriginatorFundingAccountRequest {
   client_id?: string;
@@ -35251,13 +34329,8 @@ export const UpdateTransferOriginatorFundingAccountRequest = /*@__PURE__*/ S.sus
 export interface TransferOriginatorFundingAccountUpdateResponse {
   request_id: string;
 }
-export const TransferOriginatorFundingAccountUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "TransferOriginatorFundingAccountUpdateResponse",
-}) as any as S.Schema<TransferOriginatorFundingAccountUpdateResponse>;
+export const TransferOriginatorFundingAccountUpdateResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<TransferOriginatorFundingAccountUpdateResponse>;
 
 export interface UpdateUserRequest {
   client_id?: string;
@@ -35282,11 +34355,7 @@ export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UserUpdateResponse {
   request_id: string;
 }
-export const UserUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({ identifier: "UserUpdateResponse" }) as any as S.Schema<UserUpdateResponse>;
+export const UserUpdateResponse = TransferCancelResponse as any as S.Schema<UserUpdateResponse>;
 
 /** Search terms for editing an entity watchlist screening */
 export interface UpdateEntityScreeningRequestSearchTerms {
@@ -35359,19 +34428,8 @@ export interface WatchlistScreeningEntityUpdateResponse {
   audit_trail: WatchlistScreeningAuditTrail;
   request_id: string;
 }
-export const WatchlistScreeningEntityUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    search_terms: EntityWatchlistScreeningSearchTerms,
-    assignee: S.NullOr(S.String),
-    status: WatchlistScreeningStatus,
-    client_user_id: S.NullOr(S.String),
-    audit_trail: WatchlistScreeningAuditTrail,
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "WatchlistScreeningEntityUpdateResponse",
-}) as any as S.Schema<WatchlistScreeningEntityUpdateResponse>;
+export const WatchlistScreeningEntityUpdateResponse =
+  WatchlistScreeningEntityCreateResponse as any as S.Schema<WatchlistScreeningEntityUpdateResponse>;
 
 /** Search terms for editing an individual watchlist screening */
 export interface UpdateIndividualScreeningRequestSearchTerms {
@@ -35442,19 +34500,8 @@ export interface WatchlistScreeningIndividualUpdateResponse {
   audit_trail: WatchlistScreeningAuditTrail;
   request_id: string;
 }
-export const WatchlistScreeningIndividualUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    search_terms: WatchlistScreeningSearchTerms,
-    assignee: S.NullOr(S.String),
-    status: WatchlistScreeningStatus,
-    client_user_id: S.NullOr(S.String),
-    audit_trail: WatchlistScreeningAuditTrail,
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "WatchlistScreeningIndividualUpdateResponse",
-}) as any as S.Schema<WatchlistScreeningIndividualUpdateResponse>;
+export const WatchlistScreeningIndividualUpdateResponse =
+  WatchlistScreeningIndividualCreateResponse as any as S.Schema<WatchlistScreeningIndividualUpdateResponse>;
 
 /** The kind of feedback rows the file contains. */
 export type CashAdvanceFeedbackType = "DECISION" | "REPAYMENT";
@@ -35514,19 +34561,13 @@ export const UploadTransferDiligenceDocumentRequest = /*@__PURE__*/ S.suspend(()
 export interface TransferDiligenceDocumentUploadResponse {
   request_id: string;
 }
-export const TransferDiligenceDocumentUploadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "TransferDiligenceDocumentUploadResponse",
-}) as any as S.Schema<TransferDiligenceDocumentUploadResponse>;
+export const TransferDiligenceDocumentUploadResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<TransferDiligenceDocumentUploadResponse>;
 
 /** An array of `item_id`s to be associated with the `user_id`. */
 export type UserItemsAssociateRequestItemIdsList = Array<string>;
-export const UserItemsAssociateRequestItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserItemsAssociateRequestItemIdsList>;
+export const UserItemsAssociateRequestItemIdsList =
+  GamblingIndicatorsTopMerchantsList as any as S.Schema<UserItemsAssociateRequestItemIdsList>;
 
 export interface UserItemsAssociateRequest {
   client_id?: string;
@@ -35550,13 +34591,8 @@ export const UserItemsAssociateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UserItemsAssociateResponse {
   request_id: string;
 }
-export const UserItemsAssociateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "UserItemsAssociateResponse",
-}) as any as S.Schema<UserItemsAssociateResponse>;
+export const UserItemsAssociateResponse =
+  TransferAuthorizationCancelResponse as any as S.Schema<UserItemsAssociateResponse>;
 
 /** ACH numbers for verification via Database Auth */
 export interface AuthVerifyNumbersACH {

@@ -78,33 +78,28 @@ export const ContentAutopilotCitationGapEnginesList = /*@__PURE__*/ S.Array(
 
 /** Engines that never cited the site in the window. */
 export type ContentAutopilotCitationGapEnginesNotCitingList = Array<string>;
-export const ContentAutopilotCitationGapEnginesNotCitingList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotCitationGapEnginesNotCitingList>;
+export const ContentAutopilotCitationGapEnginesNotCitingList =
+  ContentAutopilotCitationGapEnginesList as any as S.Schema<ContentAutopilotCitationGapEnginesNotCitingList>;
 
 /** Other sites' pages the engines cited, most frequent first. */
 export type ContentAutopilotCitationGapCompetitorUrlsList = Array<string>;
-export const ContentAutopilotCitationGapCompetitorUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotCitationGapCompetitorUrlsList>;
+export const ContentAutopilotCitationGapCompetitorUrlsList =
+  ContentAutopilotCitationGapEnginesList as any as S.Schema<ContentAutopilotCitationGapCompetitorUrlsList>;
 
 /** Domains the engines cited instead, most frequent first. */
 export type ContentAutopilotCitationGapCompetitorDomainsList = Array<string>;
-export const ContentAutopilotCitationGapCompetitorDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotCitationGapCompetitorDomainsList>;
+export const ContentAutopilotCitationGapCompetitorDomainsList =
+  ContentAutopilotCitationGapEnginesList as any as S.Schema<ContentAutopilotCitationGapCompetitorDomainsList>;
 
 /** Web searches the engines ran while answering. */
 export type ContentAutopilotCitationGapEngineSearchQueriesList = Array<string>;
-export const ContentAutopilotCitationGapEngineSearchQueriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotCitationGapEngineSearchQueriesList>;
+export const ContentAutopilotCitationGapEngineSearchQueriesList =
+  ContentAutopilotCitationGapEnginesList as any as S.Schema<ContentAutopilotCitationGapEngineSearchQueriesList>;
 
 /** Site pages the engines cited when they did cite the site. */
 export type ContentAutopilotCitationGapOurCitedUrlsList = Array<string>;
-export const ContentAutopilotCitationGapOurCitedUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotCitationGapOurCitedUrlsList>;
+export const ContentAutopilotCitationGapOurCitedUrlsList =
+  ContentAutopilotCitationGapEnginesList as any as S.Schema<ContentAutopilotCitationGapOurCitedUrlsList>;
 
 export interface ContentAutopilotEngineAnswer {
   /** Answer engine that gave the answer. */

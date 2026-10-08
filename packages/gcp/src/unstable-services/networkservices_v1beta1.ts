@@ -90,9 +90,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export type StringMap = { [key: string]: string | undefined };
 export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
@@ -2558,17 +2556,12 @@ export interface TcpRouteRouteDestination {
   /** Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them. */
   weight?: number;
 }
-export const TcpRouteRouteDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.optional(S.String),
-    weight: S.optional(S.Number),
-  }),
-).annotate({ identifier: "TcpRouteRouteDestination" }) as any as S.Schema<TcpRouteRouteDestination>;
+export const TcpRouteRouteDestination =
+  GrpcRouteDestination as any as S.Schema<TcpRouteRouteDestination>;
 
 export type TcpRouteRouteDestinationList = Array<TcpRouteRouteDestination>;
-export const TcpRouteRouteDestinationList = /*@__PURE__*/ S.Array(
-  TcpRouteRouteDestination,
-) as any as S.Schema<TcpRouteRouteDestinationList>;
+export const TcpRouteRouteDestinationList =
+  GrpcRouteDestinationList as any as S.Schema<TcpRouteRouteDestinationList>;
 
 /** The specifications for routing traffic and applying associated policies. */
 export interface TcpRouteRouteAction {
@@ -2710,17 +2703,12 @@ export interface TlsRouteRouteDestination {
   /** Optional. Specifies the proportion of requests forwarded to the backend referenced by the service_name field. This is computed as: - weight/Sum(weights in destinations) Weights in all destinations does not need to sum up to 100. */
   weight?: number;
 }
-export const TlsRouteRouteDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.optional(S.String),
-    weight: S.optional(S.Number),
-  }),
-).annotate({ identifier: "TlsRouteRouteDestination" }) as any as S.Schema<TlsRouteRouteDestination>;
+export const TlsRouteRouteDestination =
+  GrpcRouteDestination as any as S.Schema<TlsRouteRouteDestination>;
 
 export type TlsRouteRouteDestinationList = Array<TlsRouteRouteDestination>;
-export const TlsRouteRouteDestinationList = /*@__PURE__*/ S.Array(
-  TlsRouteRouteDestination,
-) as any as S.Schema<TlsRouteRouteDestinationList>;
+export const TlsRouteRouteDestinationList =
+  GrpcRouteDestinationList as any as S.Schema<TlsRouteRouteDestinationList>;
 
 /** The specifications for routing traffic and applying associated policies. */
 export interface TlsRouteRouteAction {

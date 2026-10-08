@@ -282,11 +282,8 @@ export const AssociateSoftwareToImageBuilderRequest = /*@__PURE__*/ S.suspend(()
   identifier: "AssociateSoftwareToImageBuilderRequest",
 }) as any as S.Schema<AssociateSoftwareToImageBuilderRequest>;
 export interface AssociateSoftwareToImageBuilderResult {}
-export const AssociateSoftwareToImageBuilderResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssociateSoftwareToImageBuilderResult",
-}) as any as S.Schema<AssociateSoftwareToImageBuilderResult>;
+export const AssociateSoftwareToImageBuilderResult =
+  AssociateApplicationToEntitlementResult as any as S.Schema<AssociateSoftwareToImageBuilderResult>;
 export type Username = string | redacted.Redacted<string>;
 export type AuthenticationType = "API" | "SAML" | "USERPOOL" | "AWS_AD" | (string & {});
 export const AuthenticationType = S.String;
@@ -374,11 +371,8 @@ export interface BatchDisassociateUserStackResult {
     };
   })[];
 }
-export const BatchDisassociateUserStackResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ errors: S.optional(UserStackAssociationErrorList) }),
-).annotate({
-  identifier: "BatchDisassociateUserStackResult",
-}) as any as S.Schema<BatchDisassociateUserStackResult>;
+export const BatchDisassociateUserStackResult =
+  BatchAssociateUserStackResult as any as S.Schema<BatchDisassociateUserStackResult>;
 export type RegionName = string;
 export type Description = string;
 export interface CopyImageRequest {
@@ -518,9 +512,9 @@ export type AppBlockBuilderPlatformType = "WINDOWS_SERVER_2019" | (string & {});
 export const AppBlockBuilderPlatformType = S.String;
 
 export type SubnetIdList = string[];
-export const SubnetIdList = /*@__PURE__*/ S.Array(S.String);
+export const SubnetIdList = StringList as any as S.Schema<SubnetIdList>;
 export type SecurityGroupIdList = string[];
-export const SecurityGroupIdList = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroupIdList = StringList as any as S.Schema<SecurityGroupIdList>;
 export interface VpcConfig {
   SubnetIds?: string[];
   SecurityGroupIds?: string[];
@@ -759,7 +753,7 @@ export const CreateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "CreateApplicationRequest" }) as any as S.Schema<CreateApplicationRequest>;
 export type Metadata = { [key: string]: string | undefined };
-export const Metadata = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const Metadata = Tags as any as S.Schema<Metadata>;
 export interface Application {
   Name?: string;
   DisplayName?: string;
@@ -805,7 +799,8 @@ export const CreateApplicationResult = /*@__PURE__*/ S.suspend(() =>
 export type DirectoryName = string;
 export type OrganizationalUnitDistinguishedName = string;
 export type OrganizationalUnitDistinguishedNamesList = string[];
-export const OrganizationalUnitDistinguishedNamesList = /*@__PURE__*/ S.Array(S.String);
+export const OrganizationalUnitDistinguishedNamesList =
+  StringList as any as S.Schema<OrganizationalUnitDistinguishedNamesList>;
 export type AccountName = string | redacted.Redacted<string>;
 export type AccountPassword = string | redacted.Redacted<string>;
 export interface ServiceAccountCredentials {
@@ -1035,7 +1030,7 @@ export const StreamView = S.String;
 
 export type UsbDeviceFilterString = string;
 export type UsbDeviceFilterStrings = string[];
-export const UsbDeviceFilterStrings = /*@__PURE__*/ S.Array(S.String);
+export const UsbDeviceFilterStrings = StringList as any as S.Schema<UsbDeviceFilterStrings>;
 export interface VolumeConfig {
   VolumeSizeInGb?: number;
 }
@@ -1374,14 +1369,8 @@ export interface CreateImageBuilderStreamingURLResult {
   StreamingURL?: string;
   Expires?: Date;
 }
-export const CreateImageBuilderStreamingURLResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamingURL: S.optional(S.String),
-    Expires: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "CreateImageBuilderStreamingURLResult",
-}) as any as S.Schema<CreateImageBuilderStreamingURLResult>;
+export const CreateImageBuilderStreamingURLResult =
+  CreateAppBlockBuilderStreamingURLResult as any as S.Schema<CreateImageBuilderStreamingURLResult>;
 export type WorkspaceImageId = string;
 export type ImageImportDescription = string;
 export type ImageImportDisplayName = string;
@@ -1578,7 +1567,7 @@ export const StorageConnectorType = S.String;
 export type ResourceIdentifier = string;
 export type Domain = string;
 export type DomainList = string[];
-export const DomainList = /*@__PURE__*/ S.Array(S.String);
+export const DomainList = StringList as any as S.Schema<DomainList>;
 export interface StorageConnector {
   ConnectorType?: StorageConnectorType;
   ResourceIdentifier?: string;
@@ -1636,7 +1625,7 @@ export const ApplicationSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApplicationSettings" }) as any as S.Schema<ApplicationSettings>;
 export type EmbedHostDomain = string;
 export type EmbedHostDomains = string[];
-export const EmbedHostDomains = /*@__PURE__*/ S.Array(S.String);
+export const EmbedHostDomains = StringList as any as S.Schema<EmbedHostDomains>;
 export type PreferredProtocol = "TCP" | "UDP" | (string & {});
 export const PreferredProtocol = S.String;
 
@@ -1650,7 +1639,7 @@ export const StreamingExperienceSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StreamingExperienceSettings>;
 export type UrlPattern = string;
 export type UrlPatternList = string[];
-export const UrlPatternList = /*@__PURE__*/ S.Array(S.String);
+export const UrlPatternList = StringList as any as S.Schema<UrlPatternList>;
 export interface UrlRedirectionConfig {
   Enabled?: boolean;
   AllowedUrls?: string[];
@@ -1998,9 +1987,7 @@ export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "CreateUserRequest" }) as any as S.Schema<CreateUserRequest>;
 export interface CreateUserResult {}
-export const CreateUserResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateUserResult",
-}) as any as S.Schema<CreateUserResult>;
+export const CreateUserResult = AssociateFleetResult as any as S.Schema<CreateUserResult>;
 export interface DeleteAppBlockRequest {
   Name?: string;
 }
@@ -2010,9 +1997,7 @@ export const DeleteAppBlockRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteAppBlockRequest" }) as any as S.Schema<DeleteAppBlockRequest>;
 export interface DeleteAppBlockResult {}
-export const DeleteAppBlockResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAppBlockResult",
-}) as any as S.Schema<DeleteAppBlockResult>;
+export const DeleteAppBlockResult = AssociateFleetResult as any as S.Schema<DeleteAppBlockResult>;
 export interface DeleteAppBlockBuilderRequest {
   Name?: string;
 }
@@ -2024,9 +2009,8 @@ export const DeleteAppBlockBuilderRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAppBlockBuilderRequest",
 }) as any as S.Schema<DeleteAppBlockBuilderRequest>;
 export interface DeleteAppBlockBuilderResult {}
-export const DeleteAppBlockBuilderResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAppBlockBuilderResult",
-}) as any as S.Schema<DeleteAppBlockBuilderResult>;
+export const DeleteAppBlockBuilderResult =
+  AssociateFleetResult as any as S.Schema<DeleteAppBlockBuilderResult>;
 export interface DeleteApplicationRequest {
   Name?: string;
 }
@@ -2036,9 +2020,8 @@ export const DeleteApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteApplicationRequest" }) as any as S.Schema<DeleteApplicationRequest>;
 export interface DeleteApplicationResult {}
-export const DeleteApplicationResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteApplicationResult",
-}) as any as S.Schema<DeleteApplicationResult>;
+export const DeleteApplicationResult =
+  AssociateFleetResult as any as S.Schema<DeleteApplicationResult>;
 export interface DeleteDirectoryConfigRequest {
   DirectoryName?: string;
 }
@@ -2050,9 +2033,8 @@ export const DeleteDirectoryConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDirectoryConfigRequest",
 }) as any as S.Schema<DeleteDirectoryConfigRequest>;
 export interface DeleteDirectoryConfigResult {}
-export const DeleteDirectoryConfigResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDirectoryConfigResult",
-}) as any as S.Schema<DeleteDirectoryConfigResult>;
+export const DeleteDirectoryConfigResult =
+  AssociateFleetResult as any as S.Schema<DeleteDirectoryConfigResult>;
 export interface DeleteEntitlementRequest {
   Name?: string;
   StackName?: string;
@@ -2063,9 +2045,8 @@ export const DeleteEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteEntitlementRequest" }) as any as S.Schema<DeleteEntitlementRequest>;
 export interface DeleteEntitlementResult {}
-export const DeleteEntitlementResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEntitlementResult",
-}) as any as S.Schema<DeleteEntitlementResult>;
+export const DeleteEntitlementResult =
+  AssociateFleetResult as any as S.Schema<DeleteEntitlementResult>;
 export interface DeleteFleetRequest {
   Name?: string;
 }
@@ -2075,9 +2056,7 @@ export const DeleteFleetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteFleetRequest" }) as any as S.Schema<DeleteFleetRequest>;
 export interface DeleteFleetResult {}
-export const DeleteFleetResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFleetResult",
-}) as any as S.Schema<DeleteFleetResult>;
+export const DeleteFleetResult = AssociateFleetResult as any as S.Schema<DeleteFleetResult>;
 export interface DeleteImageRequest {
   Name?: string;
 }
@@ -2111,9 +2090,8 @@ export interface DeleteImageBuilderResult {
     AccessEndpoints: (AccessEndpoint & { EndpointType: AccessEndpointType })[];
   };
 }
-export const DeleteImageBuilderResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ImageBuilder: S.optional(ImageBuilder) }),
-).annotate({ identifier: "DeleteImageBuilderResult" }) as any as S.Schema<DeleteImageBuilderResult>;
+export const DeleteImageBuilderResult =
+  CreateImageBuilderResult as any as S.Schema<DeleteImageBuilderResult>;
 export type AwsAccountId = string;
 export interface DeleteImagePermissionsRequest {
   Name?: string;
@@ -2127,9 +2105,8 @@ export const DeleteImagePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteImagePermissionsRequest",
 }) as any as S.Schema<DeleteImagePermissionsRequest>;
 export interface DeleteImagePermissionsResult {}
-export const DeleteImagePermissionsResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteImagePermissionsResult",
-}) as any as S.Schema<DeleteImagePermissionsResult>;
+export const DeleteImagePermissionsResult =
+  AssociateFleetResult as any as S.Schema<DeleteImagePermissionsResult>;
 export interface DeleteStackRequest {
   Name?: string;
 }
@@ -2139,9 +2116,7 @@ export const DeleteStackRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteStackRequest" }) as any as S.Schema<DeleteStackRequest>;
 export interface DeleteStackResult {}
-export const DeleteStackResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteStackResult",
-}) as any as S.Schema<DeleteStackResult>;
+export const DeleteStackResult = AssociateFleetResult as any as S.Schema<DeleteStackResult>;
 export interface DeleteThemeForStackRequest {
   StackName?: string;
 }
@@ -2153,9 +2128,8 @@ export const DeleteThemeForStackRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteThemeForStackRequest",
 }) as any as S.Schema<DeleteThemeForStackRequest>;
 export interface DeleteThemeForStackResult {}
-export const DeleteThemeForStackResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteThemeForStackResult",
-}) as any as S.Schema<DeleteThemeForStackResult>;
+export const DeleteThemeForStackResult =
+  AssociateFleetResult as any as S.Schema<DeleteThemeForStackResult>;
 export interface DeleteUsageReportSubscriptionRequest {}
 export const DeleteUsageReportSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -2163,11 +2137,8 @@ export const DeleteUsageReportSubscriptionRequest = /*@__PURE__*/ S.suspend(() =
   identifier: "DeleteUsageReportSubscriptionRequest",
 }) as any as S.Schema<DeleteUsageReportSubscriptionRequest>;
 export interface DeleteUsageReportSubscriptionResult {}
-export const DeleteUsageReportSubscriptionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteUsageReportSubscriptionResult",
-}) as any as S.Schema<DeleteUsageReportSubscriptionResult>;
+export const DeleteUsageReportSubscriptionResult =
+  AssociateApplicationToEntitlementResult as any as S.Schema<DeleteUsageReportSubscriptionResult>;
 export interface DeleteUserRequest {
   UserName?: string | redacted.Redacted<string>;
   AuthenticationType?: AuthenticationType;
@@ -2179,9 +2150,7 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "DeleteUserRequest" }) as any as S.Schema<DeleteUserRequest>;
 export interface DeleteUserResult {}
-export const DeleteUserResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserResult",
-}) as any as S.Schema<DeleteUserResult>;
+export const DeleteUserResult = AssociateFleetResult as any as S.Schema<DeleteUserResult>;
 export interface DescribeAppBlockBuilderAppBlockAssociationsRequest {
   AppBlockArn?: string;
   AppBlockBuilderName?: string;
@@ -2251,7 +2220,7 @@ export const DescribeAppBlockBuildersResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeAppBlockBuildersResult",
 }) as any as S.Schema<DescribeAppBlockBuildersResult>;
 export type ArnList = string[];
-export const ArnList = /*@__PURE__*/ S.Array(S.String);
+export const ArnList = StringList as any as S.Schema<ArnList>;
 export interface DescribeAppBlocksRequest {
   Arns?: string[];
   NextToken?: string;
@@ -2402,7 +2371,7 @@ export const DescribeAppLicenseUsageResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeAppLicenseUsageResult",
 }) as any as S.Schema<DescribeAppLicenseUsageResult>;
 export type DirectoryNameList = string[];
-export const DirectoryNameList = /*@__PURE__*/ S.Array(S.String);
+export const DirectoryNameList = StringList as any as S.Schema<DirectoryNameList>;
 export interface DescribeDirectoryConfigsRequest {
   DirectoryNames?: string[];
   MaxResults?: number;
@@ -2521,7 +2490,7 @@ export const DescribeImageBuildersResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeImageBuildersResult>;
 export type MaxResults = number;
 export type AwsAccountIdList = string[];
-export const AwsAccountIdList = /*@__PURE__*/ S.Array(S.String);
+export const AwsAccountIdList = StringList as any as S.Schema<AwsAccountIdList>;
 export interface DescribeImagePermissionsRequest {
   Name?: string;
   MaxResults?: number;
@@ -2768,11 +2737,8 @@ export const DescribeThemeForStackRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeThemeForStackResult {
   Theme?: Theme;
 }
-export const DescribeThemeForStackResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Theme: S.optional(Theme) }),
-).annotate({
-  identifier: "DescribeThemeForStackResult",
-}) as any as S.Schema<DescribeThemeForStackResult>;
+export const DescribeThemeForStackResult =
+  CreateThemeForStackResult as any as S.Schema<DescribeThemeForStackResult>;
 export interface DescribeUsageReportSubscriptionsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -2923,9 +2889,7 @@ export const DisableUserRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "DisableUserRequest" }) as any as S.Schema<DisableUserRequest>;
 export interface DisableUserResult {}
-export const DisableUserResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisableUserResult",
-}) as any as S.Schema<DisableUserResult>;
+export const DisableUserResult = AssociateFleetResult as any as S.Schema<DisableUserResult>;
 export interface DisassociateAppBlockBuilderAppBlockRequest {
   AppBlockArn?: string;
   AppBlockBuilderName?: string;
@@ -2938,11 +2902,8 @@ export const DisassociateAppBlockBuilderAppBlockRequest = /*@__PURE__*/ S.suspen
   identifier: "DisassociateAppBlockBuilderAppBlockRequest",
 }) as any as S.Schema<DisassociateAppBlockBuilderAppBlockRequest>;
 export interface DisassociateAppBlockBuilderAppBlockResult {}
-export const DisassociateAppBlockBuilderAppBlockResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateAppBlockBuilderAppBlockResult",
-}) as any as S.Schema<DisassociateAppBlockBuilderAppBlockResult>;
+export const DisassociateAppBlockBuilderAppBlockResult =
+  AssociateApplicationToEntitlementResult as any as S.Schema<DisassociateAppBlockBuilderAppBlockResult>;
 export interface DisassociateApplicationFleetRequest {
   FleetName?: string;
   ApplicationArn?: string;
@@ -2955,11 +2916,8 @@ export const DisassociateApplicationFleetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisassociateApplicationFleetRequest",
 }) as any as S.Schema<DisassociateApplicationFleetRequest>;
 export interface DisassociateApplicationFleetResult {}
-export const DisassociateApplicationFleetResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateApplicationFleetResult",
-}) as any as S.Schema<DisassociateApplicationFleetResult>;
+export const DisassociateApplicationFleetResult =
+  AssociateApplicationToEntitlementResult as any as S.Schema<DisassociateApplicationFleetResult>;
 export interface DisassociateApplicationFromEntitlementRequest {
   StackName?: string;
   EntitlementName?: string;
@@ -2975,11 +2933,8 @@ export const DisassociateApplicationFromEntitlementRequest = /*@__PURE__*/ S.sus
   identifier: "DisassociateApplicationFromEntitlementRequest",
 }) as any as S.Schema<DisassociateApplicationFromEntitlementRequest>;
 export interface DisassociateApplicationFromEntitlementResult {}
-export const DisassociateApplicationFromEntitlementResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateApplicationFromEntitlementResult",
-}) as any as S.Schema<DisassociateApplicationFromEntitlementResult>;
+export const DisassociateApplicationFromEntitlementResult =
+  AssociateApplicationToEntitlementResult as any as S.Schema<DisassociateApplicationFromEntitlementResult>;
 export interface DisassociateFleetRequest {
   FleetName?: string;
   StackName?: string;
@@ -2990,9 +2945,8 @@ export const DisassociateFleetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DisassociateFleetRequest" }) as any as S.Schema<DisassociateFleetRequest>;
 export interface DisassociateFleetResult {}
-export const DisassociateFleetResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisassociateFleetResult",
-}) as any as S.Schema<DisassociateFleetResult>;
+export const DisassociateFleetResult =
+  AssociateFleetResult as any as S.Schema<DisassociateFleetResult>;
 export interface DisassociateSoftwareFromImageBuilderRequest {
   ImageBuilderName?: string;
   SoftwareNames?: string[];
@@ -3005,11 +2959,8 @@ export const DisassociateSoftwareFromImageBuilderRequest = /*@__PURE__*/ S.suspe
   identifier: "DisassociateSoftwareFromImageBuilderRequest",
 }) as any as S.Schema<DisassociateSoftwareFromImageBuilderRequest>;
 export interface DisassociateSoftwareFromImageBuilderResult {}
-export const DisassociateSoftwareFromImageBuilderResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateSoftwareFromImageBuilderResult",
-}) as any as S.Schema<DisassociateSoftwareFromImageBuilderResult>;
+export const DisassociateSoftwareFromImageBuilderResult =
+  AssociateApplicationToEntitlementResult as any as S.Schema<DisassociateSoftwareFromImageBuilderResult>;
 export interface DrainSessionInstanceRequest {
   SessionId?: string;
 }
@@ -3021,9 +2972,8 @@ export const DrainSessionInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DrainSessionInstanceRequest",
 }) as any as S.Schema<DrainSessionInstanceRequest>;
 export interface DrainSessionInstanceResult {}
-export const DrainSessionInstanceResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DrainSessionInstanceResult",
-}) as any as S.Schema<DrainSessionInstanceResult>;
+export const DrainSessionInstanceResult =
+  AssociateFleetResult as any as S.Schema<DrainSessionInstanceResult>;
 export interface EnableUserRequest {
   UserName?: string | redacted.Redacted<string>;
   AuthenticationType?: AuthenticationType;
@@ -3035,9 +2985,7 @@ export const EnableUserRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "EnableUserRequest" }) as any as S.Schema<EnableUserRequest>;
 export interface EnableUserResult {}
-export const EnableUserResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "EnableUserResult",
-}) as any as S.Schema<EnableUserResult>;
+export const EnableUserResult = AssociateFleetResult as any as S.Schema<EnableUserResult>;
 export interface ExpireSessionRequest {
   SessionId?: string;
 }
@@ -3047,9 +2995,7 @@ export const ExpireSessionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ExpireSessionRequest" }) as any as S.Schema<ExpireSessionRequest>;
 export interface ExpireSessionResult {}
-export const ExpireSessionResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ExpireSessionResult",
-}) as any as S.Schema<ExpireSessionResult>;
+export const ExpireSessionResult = AssociateFleetResult as any as S.Schema<ExpireSessionResult>;
 export interface GetExportImageTaskRequest {
   TaskId?: string;
 }
@@ -3106,11 +3052,8 @@ export interface ListAssociatedStacksResult {
   Names?: string[];
   NextToken?: string;
 }
-export const ListAssociatedStacksResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Names: S.optional(StringList), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListAssociatedStacksResult",
-}) as any as S.Schema<ListAssociatedStacksResult>;
+export const ListAssociatedStacksResult =
+  ListAssociatedFleetsResult as any as S.Schema<ListAssociatedStacksResult>;
 export interface ListEntitledApplicationsRequest {
   StackName?: string;
   EntitlementName?: string;
@@ -3150,7 +3093,7 @@ export const ListEntitledApplicationsResult = /*@__PURE__*/ S.suspend(() =>
 export type FilterName = string;
 export type FilterValue = string;
 export type FilterValues = string[];
-export const FilterValues = /*@__PURE__*/ S.Array(S.String);
+export const FilterValues = StringList as any as S.Schema<FilterValues>;
 export interface Filter {
   Name?: string;
   Values?: string[];
@@ -3229,11 +3172,8 @@ export interface StartAppBlockBuilderResult {
     AccessEndpoints: (AccessEndpoint & { EndpointType: AccessEndpointType })[];
   };
 }
-export const StartAppBlockBuilderResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AppBlockBuilder: S.optional(AppBlockBuilder) }),
-).annotate({
-  identifier: "StartAppBlockBuilderResult",
-}) as any as S.Schema<StartAppBlockBuilderResult>;
+export const StartAppBlockBuilderResult =
+  CreateAppBlockBuilderResult as any as S.Schema<StartAppBlockBuilderResult>;
 export interface StartFleetRequest {
   Name?: string;
 }
@@ -3243,9 +3183,7 @@ export const StartFleetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StartFleetRequest" }) as any as S.Schema<StartFleetRequest>;
 export interface StartFleetResult {}
-export const StartFleetResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartFleetResult",
-}) as any as S.Schema<StartFleetResult>;
+export const StartFleetResult = AssociateFleetResult as any as S.Schema<StartFleetResult>;
 export interface StartImageBuilderRequest {
   Name?: string;
   AppstreamAgentVersion?: string;
@@ -3261,9 +3199,8 @@ export interface StartImageBuilderResult {
     AccessEndpoints: (AccessEndpoint & { EndpointType: AccessEndpointType })[];
   };
 }
-export const StartImageBuilderResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ImageBuilder: S.optional(ImageBuilder) }),
-).annotate({ identifier: "StartImageBuilderResult" }) as any as S.Schema<StartImageBuilderResult>;
+export const StartImageBuilderResult =
+  CreateImageBuilderResult as any as S.Schema<StartImageBuilderResult>;
 export interface StartSoftwareDeploymentToImageBuilderRequest {
   ImageBuilderName?: string;
   RetryFailedDeployments?: boolean;
@@ -3277,11 +3214,8 @@ export const StartSoftwareDeploymentToImageBuilderRequest = /*@__PURE__*/ S.susp
   identifier: "StartSoftwareDeploymentToImageBuilderRequest",
 }) as any as S.Schema<StartSoftwareDeploymentToImageBuilderRequest>;
 export interface StartSoftwareDeploymentToImageBuilderResult {}
-export const StartSoftwareDeploymentToImageBuilderResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StartSoftwareDeploymentToImageBuilderResult",
-}) as any as S.Schema<StartSoftwareDeploymentToImageBuilderResult>;
+export const StartSoftwareDeploymentToImageBuilderResult =
+  AssociateApplicationToEntitlementResult as any as S.Schema<StartSoftwareDeploymentToImageBuilderResult>;
 export interface StopAppBlockBuilderRequest {
   Name?: string;
 }
@@ -3303,11 +3237,8 @@ export interface StopAppBlockBuilderResult {
     AccessEndpoints: (AccessEndpoint & { EndpointType: AccessEndpointType })[];
   };
 }
-export const StopAppBlockBuilderResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AppBlockBuilder: S.optional(AppBlockBuilder) }),
-).annotate({
-  identifier: "StopAppBlockBuilderResult",
-}) as any as S.Schema<StopAppBlockBuilderResult>;
+export const StopAppBlockBuilderResult =
+  CreateAppBlockBuilderResult as any as S.Schema<StopAppBlockBuilderResult>;
 export interface StopFleetRequest {
   Name?: string;
 }
@@ -3317,9 +3248,7 @@ export const StopFleetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopFleetRequest" }) as any as S.Schema<StopFleetRequest>;
 export interface StopFleetResult {}
-export const StopFleetResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopFleetResult",
-}) as any as S.Schema<StopFleetResult>;
+export const StopFleetResult = AssociateFleetResult as any as S.Schema<StopFleetResult>;
 export interface StopImageBuilderRequest {
   Name?: string;
 }
@@ -3334,9 +3263,8 @@ export interface StopImageBuilderResult {
     AccessEndpoints: (AccessEndpoint & { EndpointType: AccessEndpointType })[];
   };
 }
-export const StopImageBuilderResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ImageBuilder: S.optional(ImageBuilder) }),
-).annotate({ identifier: "StopImageBuilderResult" }) as any as S.Schema<StopImageBuilderResult>;
+export const StopImageBuilderResult =
+  CreateImageBuilderResult as any as S.Schema<StopImageBuilderResult>;
 export interface TagResourceRequest {
   ResourceArn?: string;
   Tags?: { [key: string]: string | undefined };
@@ -3347,11 +3275,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = AssociateFleetResult as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = StringList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn?: string;
   TagKeys?: string[];
@@ -3362,9 +3288,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = AssociateFleetResult as any as S.Schema<UntagResourceResponse>;
 export type AppBlockBuilderAttribute =
   | "IAM_ROLE_ARN"
   | "ACCESS_ENDPOINTS"
@@ -3415,11 +3339,8 @@ export interface UpdateAppBlockBuilderResult {
     AccessEndpoints: (AccessEndpoint & { EndpointType: AccessEndpointType })[];
   };
 }
-export const UpdateAppBlockBuilderResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AppBlockBuilder: S.optional(AppBlockBuilder) }),
-).annotate({
-  identifier: "UpdateAppBlockBuilderResult",
-}) as any as S.Schema<UpdateAppBlockBuilderResult>;
+export const UpdateAppBlockBuilderResult =
+  CreateAppBlockBuilderResult as any as S.Schema<UpdateAppBlockBuilderResult>;
 export type ApplicationAttribute = "LAUNCH_PARAMETERS" | "WORKING_DIRECTORY" | (string & {});
 export const ApplicationAttribute = S.String;
 
@@ -3452,9 +3373,8 @@ export const UpdateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateApplicationResult {
   Application?: Application & { IconS3Location: S3Location & { S3Bucket: S3Bucket } };
 }
-export const UpdateApplicationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Application: S.optional(Application) }),
-).annotate({ identifier: "UpdateApplicationResult" }) as any as S.Schema<UpdateApplicationResult>;
+export const UpdateApplicationResult =
+  CreateApplicationResult as any as S.Schema<UpdateApplicationResult>;
 export interface UpdateDirectoryConfigRequest {
   DirectoryName?: string;
   OrganizationalUnitDistinguishedNames?: string[];
@@ -3480,11 +3400,8 @@ export interface UpdateDirectoryConfigResult {
     };
   };
 }
-export const UpdateDirectoryConfigResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryConfig: S.optional(DirectoryConfig) }),
-).annotate({
-  identifier: "UpdateDirectoryConfigResult",
-}) as any as S.Schema<UpdateDirectoryConfigResult>;
+export const UpdateDirectoryConfigResult =
+  CreateDirectoryConfigResult as any as S.Schema<UpdateDirectoryConfigResult>;
 export interface UpdateEntitlementRequest {
   Name?: string;
   StackName?: string;
@@ -3509,9 +3426,8 @@ export interface UpdateEntitlementResult {
     Attributes: (EntitlementAttribute & { Name: string; Value: string })[];
   };
 }
-export const UpdateEntitlementResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Entitlement: S.optional(Entitlement) }),
-).annotate({ identifier: "UpdateEntitlementResult" }) as any as S.Schema<UpdateEntitlementResult>;
+export const UpdateEntitlementResult =
+  CreateEntitlementResult as any as S.Schema<UpdateEntitlementResult>;
 export type FleetAttribute =
   | "VPC_CONFIGURATION"
   | "VPC_CONFIGURATION_SECURITY_GROUP_IDS"
@@ -3590,9 +3506,7 @@ export interface UpdateFleetResult {
     SessionScriptS3Location: S3Location & { S3Bucket: S3Bucket };
   };
 }
-export const UpdateFleetResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Fleet: S.optional(Fleet) }),
-).annotate({ identifier: "UpdateFleetResult" }) as any as S.Schema<UpdateFleetResult>;
+export const UpdateFleetResult = CreateFleetResult as any as S.Schema<UpdateFleetResult>;
 export interface UpdateImagePermissionsRequest {
   Name?: string;
   SharedAccountId?: string;
@@ -3608,9 +3522,8 @@ export const UpdateImagePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateImagePermissionsRequest",
 }) as any as S.Schema<UpdateImagePermissionsRequest>;
 export interface UpdateImagePermissionsResult {}
-export const UpdateImagePermissionsResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateImagePermissionsResult",
-}) as any as S.Schema<UpdateImagePermissionsResult>;
+export const UpdateImagePermissionsResult =
+  AssociateFleetResult as any as S.Schema<UpdateImagePermissionsResult>;
 export type StackAttribute =
   | "STORAGE_CONNECTORS"
   | "STORAGE_CONNECTOR_HOMEFOLDERS"
@@ -3703,9 +3616,7 @@ export interface UpdateStackResult {
     };
   };
 }
-export const UpdateStackResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Stack: S.optional(Stack) }),
-).annotate({ identifier: "UpdateStackResult" }) as any as S.Schema<UpdateStackResult>;
+export const UpdateStackResult = CreateStackResult as any as S.Schema<UpdateStackResult>;
 export type ThemeAttribute = "FOOTER_LINKS" | (string & {});
 export const ThemeAttribute = S.String;
 
@@ -3738,11 +3649,8 @@ export const UpdateThemeForStackRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateThemeForStackResult {
   Theme?: Theme;
 }
-export const UpdateThemeForStackResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Theme: S.optional(Theme) }),
-).annotate({
-  identifier: "UpdateThemeForStackResult",
-}) as any as S.Schema<UpdateThemeForStackResult>;
+export const UpdateThemeForStackResult =
+  CreateThemeForStackResult as any as S.Schema<UpdateThemeForStackResult>;
 export type ErrorMessage = string;
 export type AssociateAppBlockBuilderAppBlockError =
   | ConcurrentModificationException

@@ -90,9 +90,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
@@ -2819,13 +2817,8 @@ export interface GenerateConnectionToolspecOverrideResponse {
   /** Toolspec overrides for the connection. */
   toolspecOverride?: ToolspecOverride;
 }
-export const GenerateConnectionToolspecOverrideResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    toolspecOverride: S.optional(ToolspecOverride),
-  }),
-).annotate({
-  identifier: "GenerateConnectionToolspecOverrideResponse",
-}) as any as S.Schema<GenerateConnectionToolspecOverrideResponse>;
+export const GenerateConnectionToolspecOverrideResponse =
+  FetchConnectionToolspecOverrideResponse as any as S.Schema<GenerateConnectionToolspecOverrideResponse>;
 
 export interface GetActionProjectsLocationsConnectionsConnectionSchemaMetadataRequest {
   /** Required. Resource name format: projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata */
@@ -3640,16 +3633,10 @@ export interface StandardEntity {
   /** Name of the standard entity. */
   name?: string;
 }
-export const StandardEntity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "StandardEntity" }) as any as S.Schema<StandardEntity>;
+export const StandardEntity = StandardAction as any as S.Schema<StandardEntity>;
 
 export type StandardEntityList = Array<StandardEntity>;
-export const StandardEntityList = /*@__PURE__*/ S.Array(
-  StandardEntity,
-) as any as S.Schema<StandardEntityList>;
+export const StandardEntityList = StandardActionList as any as S.Schema<StandardEntityList>;
 
 /** Supported runtime features of a connector version. */
 export interface SupportedRuntimeFeatures {
@@ -4736,9 +4723,7 @@ export const ListenEventProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.su
 
 /** Expected response for ListenEvent API. */
 export interface ListenEventResponse {}
-export const ListenEventResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ListenEventResponse",
-}) as any as S.Schema<ListenEventResponse>;
+export const ListenEventResponse = CancelOperationRequest as any as S.Schema<ListenEventResponse>;
 
 export type ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataViewEnum =
   | "VIEW_UNSPECIFIED"
@@ -5689,13 +5674,8 @@ export interface ModifyConnectionToolspecOverrideRequest {
   /** Required. Toolspec overrides to be modified. */
   toolspecOverride?: ToolspecOverride;
 }
-export const ModifyConnectionToolspecOverrideRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    toolspecOverride: S.optional(ToolspecOverride),
-  }),
-).annotate({
-  identifier: "ModifyConnectionToolspecOverrideRequest",
-}) as any as S.Schema<ModifyConnectionToolspecOverrideRequest>;
+export const ModifyConnectionToolspecOverrideRequest =
+  FetchConnectionToolspecOverrideResponse as any as S.Schema<ModifyConnectionToolspecOverrideRequest>;
 
 export interface ModifyToolspecOverrideProjectsLocationsConnectionsRequest {
   /** Required. Resource name format: projects/{project}/locations/{location}/connections/{connection} */
@@ -6155,13 +6135,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsProvidersRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */

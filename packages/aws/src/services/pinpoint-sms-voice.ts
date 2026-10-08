@@ -237,9 +237,8 @@ export const DeleteConfigurationSetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteConfigurationSetRequest",
 }) as any as S.Schema<DeleteConfigurationSetRequest>;
 export interface DeleteConfigurationSetResponse {}
-export const DeleteConfigurationSetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteConfigurationSetResponse",
-}) as any as S.Schema<DeleteConfigurationSetResponse>;
+export const DeleteConfigurationSetResponse =
+  CreateConfigurationSetResponse as any as S.Schema<DeleteConfigurationSetResponse>;
 export interface DeleteConfigurationSetEventDestinationRequest {
   ConfigurationSetName: string;
   EventDestinationName: string;
@@ -265,11 +264,8 @@ export const DeleteConfigurationSetEventDestinationRequest = /*@__PURE__*/ S.sus
   identifier: "DeleteConfigurationSetEventDestinationRequest",
 }) as any as S.Schema<DeleteConfigurationSetEventDestinationRequest>;
 export interface DeleteConfigurationSetEventDestinationResponse {}
-export const DeleteConfigurationSetEventDestinationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteConfigurationSetEventDestinationResponse",
-}) as any as S.Schema<DeleteConfigurationSetEventDestinationResponse>;
+export const DeleteConfigurationSetEventDestinationResponse =
+  CreateConfigurationSetEventDestinationResponse as any as S.Schema<DeleteConfigurationSetEventDestinationResponse>;
 export interface GetConfigurationSetEventDestinationsRequest {
   ConfigurationSetName: string;
 }
@@ -376,13 +372,7 @@ export interface SSMLMessageType {
   Text?: string;
   VoiceId?: string;
 }
-export const SSMLMessageType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    LanguageCode: S.optional(S.String),
-    Text: S.optional(S.String),
-    VoiceId: S.optional(S.String),
-  }),
-).annotate({ identifier: "SSMLMessageType" }) as any as S.Schema<SSMLMessageType>;
+export const SSMLMessageType = PlainTextMessageType as any as S.Schema<SSMLMessageType>;
 export interface VoiceMessageContent {
   CallInstructionsMessage?: CallInstructionsMessageType;
   PlainTextMessage?: PlainTextMessageType;
@@ -453,11 +443,8 @@ export const UpdateConfigurationSetEventDestinationRequest = /*@__PURE__*/ S.sus
   identifier: "UpdateConfigurationSetEventDestinationRequest",
 }) as any as S.Schema<UpdateConfigurationSetEventDestinationRequest>;
 export interface UpdateConfigurationSetEventDestinationResponse {}
-export const UpdateConfigurationSetEventDestinationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateConfigurationSetEventDestinationResponse",
-}) as any as S.Schema<UpdateConfigurationSetEventDestinationResponse>;
+export const UpdateConfigurationSetEventDestinationResponse =
+  CreateConfigurationSetEventDestinationResponse as any as S.Schema<UpdateConfigurationSetEventDestinationResponse>;
 export type CreateConfigurationSetError =
   | AlreadyExistsException
   | BadRequestException

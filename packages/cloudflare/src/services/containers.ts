@@ -384,11 +384,8 @@ export const CreateContainerApplicationRolloutRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateContainerApplicationRolloutRequest>;
 
 export type CreateContainerApplicationRolloutResponse = ContainerApplicationItem;
-export const CreateContainerApplicationRolloutResponse = /*@__PURE__*/ S.suspend(() =>
-  ContainerApplicationItem.pipe(T.EnvelopePayloadRoot()),
-).annotate({
-  identifier: "CreateContainerApplicationRolloutResponse",
-}) as any as S.Schema<CreateContainerApplicationRolloutResponse>;
+export const CreateContainerApplicationRolloutResponse =
+  CreateContainerApplicationResponse as any as S.Schema<CreateContainerApplicationRolloutResponse>;
 
 export interface CreateContainerRegistryCredentialsRequest {
   accountId: string;
@@ -478,11 +475,8 @@ export const CreateDurableObjectContainerApplicationRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<CreateDurableObjectContainerApplicationRequest>;
 
 export type CreateDurableObjectContainerApplicationResponse = ContainerApplicationItem;
-export const CreateDurableObjectContainerApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  ContainerApplicationItem.pipe(T.EnvelopePayloadRoot()),
-).annotate({
-  identifier: "CreateDurableObjectContainerApplicationResponse",
-}) as any as S.Schema<CreateDurableObjectContainerApplicationResponse>;
+export const CreateDurableObjectContainerApplicationResponse =
+  CreateContainerApplicationResponse as any as S.Schema<CreateDurableObjectContainerApplicationResponse>;
 
 export interface DeleteContainerApplicationRequest {
   accountId: string;
@@ -530,11 +524,8 @@ export const GetContainerApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetContainerApplicationRequest>;
 
 export type GetContainerApplicationResponse = ContainerApplicationItem;
-export const GetContainerApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  ContainerApplicationItem.pipe(T.EnvelopePayloadRoot()),
-).annotate({
-  identifier: "GetContainerApplicationResponse",
-}) as any as S.Schema<GetContainerApplicationResponse>;
+export const GetContainerApplicationResponse =
+  CreateContainerApplicationResponse as any as S.Schema<GetContainerApplicationResponse>;
 
 export interface GetContainerIdentityRequest {
   accountId: string;
@@ -548,11 +539,8 @@ export const GetContainerIdentityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetContainerIdentityRequest>;
 
 export type GetContainerIdentityResponse = unknown;
-export const GetContainerIdentityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
-).annotate({
-  identifier: "GetContainerIdentityResponse",
-}) as any as S.Schema<GetContainerIdentityResponse>;
+export const GetContainerIdentityResponse =
+  DeleteContainerApplicationResponse as any as S.Schema<GetContainerIdentityResponse>;
 
 export interface ListContainerApplicationsRequest {
   accountId: string;
@@ -659,11 +647,8 @@ export const UpdateContainerApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateContainerApplicationRequest>;
 
 export type UpdateContainerApplicationResponse = ContainerApplicationItem;
-export const UpdateContainerApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  ContainerApplicationItem.pipe(T.EnvelopePayloadRoot()),
-).annotate({
-  identifier: "UpdateContainerApplicationResponse",
-}) as any as S.Schema<UpdateContainerApplicationResponse>;
+export const UpdateContainerApplicationResponse =
+  CreateContainerApplicationResponse as any as S.Schema<UpdateContainerApplicationResponse>;
 
 export type CreateContainerApplicationError =
   | InvalidRoute

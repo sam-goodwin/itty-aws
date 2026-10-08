@@ -94,11 +94,7 @@ export interface CommentInReplyTo {
   /** The identified of the parent of this comment. */
   id?: string;
 }
-export const CommentInReplyTo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "CommentInReplyTo" }) as any as S.Schema<CommentInReplyTo>;
+export const CommentInReplyTo = CommentPost as any as S.Schema<CommentInReplyTo>;
 
 export type CommentStatusEnum = "LIVE" | "EMPTIED" | "PENDING" | "SPAM";
 export const CommentStatusEnum = S.String;
@@ -136,11 +132,7 @@ export interface CommentBlog {
   /** The identifier of the blog containing this comment. */
   id?: string;
 }
-export const CommentBlog = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "CommentBlog" }) as any as S.Schema<CommentBlog>;
+export const CommentBlog = CommentPost as any as S.Schema<CommentBlog>;
 
 export interface Comment {
   /** RFC 3339 date-time when this comment was published. */
@@ -227,9 +219,7 @@ export const DeletePagesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePagesRequest" }) as any as S.Schema<DeletePagesRequest>;
 
 export interface DeletePagesResponse {}
-export const DeletePagesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePagesResponse",
-}) as any as S.Schema<DeletePagesResponse>;
+export const DeletePagesResponse = DeleteCommentsResponse as any as S.Schema<DeletePagesResponse>;
 
 export interface DeletePostsRequest {
   blogId: string;
@@ -252,9 +242,7 @@ export const DeletePostsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePostsRequest" }) as any as S.Schema<DeletePostsRequest>;
 
 export interface DeletePostsResponse {}
-export const DeletePostsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePostsResponse",
-}) as any as S.Schema<DeletePostsResponse>;
+export const DeletePostsResponse = DeleteCommentsResponse as any as S.Schema<DeletePostsResponse>;
 
 export type GetBlogsViewEnum = "VIEW_TYPE_UNSPECIFIED" | "READER" | "AUTHOR" | "ADMIN";
 export const GetBlogsViewEnum = S.String;
@@ -284,11 +272,7 @@ export const PostReaderCommentsEnum = S.String;
 export interface PostImagesItem {
   url?: string;
 }
-export const PostImagesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-  }),
-).annotate({ identifier: "PostImagesItem" }) as any as S.Schema<PostImagesItem>;
+export const PostImagesItem = CommentAuthorImage as any as S.Schema<PostImagesItem>;
 
 export type PostImagesItemList = Array<PostImagesItem>;
 export const PostImagesItemList = /*@__PURE__*/ S.Array(
@@ -346,11 +330,7 @@ export interface PostBlog {
   /** The identifier of the Blog that contains this Post. */
   id?: string;
 }
-export const PostBlog = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "PostBlog" }) as any as S.Schema<PostBlog>;
+export const PostBlog = CommentPost as any as S.Schema<PostBlog>;
 
 export interface PostLocation {
   /** Location's latitude. */
@@ -689,11 +669,7 @@ export interface PageBlog {
   /** The identifier of the blog containing this page. */
   id?: string;
 }
-export const PageBlog = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "PageBlog" }) as any as S.Schema<PageBlog>;
+export const PageBlog = CommentPost as any as S.Schema<PageBlog>;
 
 export type PageStatusEnum = "LIVE" | "DRAFT" | "SOFT_TRASHED";
 export const PageStatusEnum = S.String;

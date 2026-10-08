@@ -257,10 +257,8 @@ export const CreateOrUpdateServiceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The serviceGroup tags. */
 export type CreateOrUpdateServiceGroupResponseTagsMap = { [key: string]: string | undefined };
-export const CreateOrUpdateServiceGroupResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateOrUpdateServiceGroupResponseTagsMap>;
+export const CreateOrUpdateServiceGroupResponseTagsMap =
+  CreateOrUpdateServiceGroupRequestTagsMap as any as S.Schema<CreateOrUpdateServiceGroupResponseTagsMap>;
 
 export interface CreateOrUpdateServiceGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -389,9 +387,8 @@ export const DeleteServiceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteServiceGroupRequest>;
 
 export interface DeleteServiceGroupResponse {}
-export const DeleteServiceGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteServiceGroupResponse",
-}) as any as S.Schema<DeleteServiceGroupResponse>;
+export const DeleteServiceGroupResponse =
+  DeleteManagementGroupResponse as any as S.Schema<DeleteServiceGroupResponse>;
 
 export interface GetHierarchySettingsRequest {
   /** Management Group ID. */
@@ -534,9 +531,8 @@ export const ManagementGroupDetailsManagementGroupAncestorsList = /*@__PURE__*/ 
 /** The ancestors of the management group displayed in reversed order, from immediate parent to the root. */
 export type ManagementGroupDetailsManagementGroupAncestorsChainList =
   Array<ManagementGroupPathElement>;
-export const ManagementGroupDetailsManagementGroupAncestorsChainList = /*@__PURE__*/ S.Array(
-  ManagementGroupPathElement,
-) as any as S.Schema<ManagementGroupDetailsManagementGroupAncestorsChainList>;
+export const ManagementGroupDetailsManagementGroupAncestorsChainList =
+  ManagementGroupDetailsPathList as any as S.Schema<ManagementGroupDetailsManagementGroupAncestorsChainList>;
 
 /** The details of a management group. */
 export interface ManagementGroupDetails {
@@ -769,17 +765,8 @@ export interface GetManagementGroupSubscriptionSubscriptionResponse {
   /** The generic properties of subscription under a management group. */
   properties?: SubscriptionUnderManagementGroupProperties;
 }
-export const GetManagementGroupSubscriptionSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SubscriptionUnderManagementGroupProperties),
-  }),
-).annotate({
-  identifier: "GetManagementGroupSubscriptionSubscriptionResponse",
-}) as any as S.Schema<GetManagementGroupSubscriptionSubscriptionResponse>;
+export const GetManagementGroupSubscriptionSubscriptionResponse =
+  CreateManagementGroupSubscriptionResponse as any as S.Schema<GetManagementGroupSubscriptionSubscriptionResponse>;
 
 export interface GetManagementGroupSubscriptionSubscriptionsUnderManagementGroupRequest {
   /** Management Group ID. */
@@ -817,17 +804,8 @@ export interface SubscriptionUnderManagementGroup {
   /** The generic properties of subscription under a management group. */
   properties?: SubscriptionUnderManagementGroupProperties;
 }
-export const SubscriptionUnderManagementGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SubscriptionUnderManagementGroupProperties),
-  }),
-).annotate({
-  identifier: "SubscriptionUnderManagementGroup",
-}) as any as S.Schema<SubscriptionUnderManagementGroup>;
+export const SubscriptionUnderManagementGroup =
+  CreateManagementGroupSubscriptionResponse as any as S.Schema<SubscriptionUnderManagementGroup>;
 
 /** The SubscriptionUnderManagementGroup items on this page */
 export type ListSubscriptionUnderManagementGroupValueList = Array<SubscriptionUnderManagementGroup>;
@@ -870,10 +848,8 @@ export const GetServiceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The serviceGroup tags. */
 export type GetServiceGroupResponseTagsMap = { [key: string]: string | undefined };
-export const GetServiceGroupResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetServiceGroupResponseTagsMap>;
+export const GetServiceGroupResponseTagsMap =
+  CreateOrUpdateServiceGroupRequestTagsMap as any as S.Schema<GetServiceGroupResponseTagsMap>;
 
 export interface GetServiceGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -953,17 +929,8 @@ export interface HierarchySettingsCreateOrUpdateResponse {
   /** The generic properties of hierarchy settings. */
   properties?: HierarchySettingsProperties;
 }
-export const HierarchySettingsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(HierarchySettingsProperties),
-  }),
-).annotate({
-  identifier: "HierarchySettingsCreateOrUpdateResponse",
-}) as any as S.Schema<HierarchySettingsCreateOrUpdateResponse>;
+export const HierarchySettingsCreateOrUpdateResponse =
+  GetHierarchySettingsResponse as any as S.Schema<HierarchySettingsCreateOrUpdateResponse>;
 
 export type ListEntitiesRequestSearch =
   | "AllowedParents"
@@ -1028,15 +995,13 @@ export const Permissions = S.String;
 
 /** The parent display name chain from the root group to the immediate parent */
 export type EntityInfoPropertiesParentDisplayNameChainList = Array<string>;
-export const EntityInfoPropertiesParentDisplayNameChainList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EntityInfoPropertiesParentDisplayNameChainList>;
+export const EntityInfoPropertiesParentDisplayNameChainList =
+  ManagementGroupDetailsManagementGroupAncestorsList as any as S.Schema<EntityInfoPropertiesParentDisplayNameChainList>;
 
 /** The parent name chain from the root group to the immediate parent */
 export type EntityInfoPropertiesParentNameChainList = Array<string>;
-export const EntityInfoPropertiesParentNameChainList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EntityInfoPropertiesParentNameChainList>;
+export const EntityInfoPropertiesParentNameChainList =
+  ManagementGroupDetailsManagementGroupAncestorsList as any as S.Schema<EntityInfoPropertiesParentNameChainList>;
 
 /** The generic properties of an entity. */
 export interface EntityInfoProperties {
@@ -1407,17 +1372,8 @@ export interface ManagementGroupsCreateOrUpdateResponse {
   /** The generic properties of a management group. */
   properties?: ManagementGroupProperties;
 }
-export const ManagementGroupsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ManagementGroupProperties),
-  }),
-).annotate({
-  identifier: "ManagementGroupsCreateOrUpdateResponse",
-}) as any as S.Schema<ManagementGroupsCreateOrUpdateResponse>;
+export const ManagementGroupsCreateOrUpdateResponse =
+  GetManagementGroupResponse as any as S.Schema<ManagementGroupsCreateOrUpdateResponse>;
 
 export interface StartTenantBackfillRequest {}
 export const StartTenantBackfillRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1507,17 +1463,8 @@ export interface UpdateHierarchySettingsResponse {
   /** The generic properties of hierarchy settings. */
   properties?: HierarchySettingsProperties;
 }
-export const UpdateHierarchySettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(HierarchySettingsProperties),
-  }),
-).annotate({
-  identifier: "UpdateHierarchySettingsResponse",
-}) as any as S.Schema<UpdateHierarchySettingsResponse>;
+export const UpdateHierarchySettingsResponse =
+  GetHierarchySettingsResponse as any as S.Schema<UpdateHierarchySettingsResponse>;
 
 export interface UpdateManagementGroupRequest {
   /** Management Group ID. */
@@ -1556,24 +1503,13 @@ export interface UpdateManagementGroupResponse {
   /** The generic properties of a management group. */
   properties?: ManagementGroupProperties;
 }
-export const UpdateManagementGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ManagementGroupProperties),
-  }),
-).annotate({
-  identifier: "UpdateManagementGroupResponse",
-}) as any as S.Schema<UpdateManagementGroupResponse>;
+export const UpdateManagementGroupResponse =
+  GetManagementGroupResponse as any as S.Schema<UpdateManagementGroupResponse>;
 
 /** The serviceGroup tags. */
 export type UpdateServiceGroupRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateServiceGroupRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateServiceGroupRequestTagsMap>;
+export const UpdateServiceGroupRequestTagsMap =
+  CreateOrUpdateServiceGroupRequestTagsMap as any as S.Schema<UpdateServiceGroupRequestTagsMap>;
 
 export interface UpdateServiceGroupRequest {
   /** ServiceGroup Name. */
@@ -1605,10 +1541,8 @@ export const UpdateServiceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The serviceGroup tags. */
 export type UpdateServiceGroupResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateServiceGroupResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateServiceGroupResponseTagsMap>;
+export const UpdateServiceGroupResponseTagsMap =
+  CreateOrUpdateServiceGroupRequestTagsMap as any as S.Schema<UpdateServiceGroupResponseTagsMap>;
 
 export interface UpdateServiceGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1626,19 +1560,8 @@ export interface UpdateServiceGroupResponse {
   /** The serviceGroup tags. */
   tags?: UpdateServiceGroupResponseTagsMap;
 }
-export const UpdateServiceGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ServiceGroupProperties),
-    kind: S.optional(S.String),
-    tags: S.optional(UpdateServiceGroupResponseTagsMap),
-  }),
-).annotate({
-  identifier: "UpdateServiceGroupResponse",
-}) as any as S.Schema<UpdateServiceGroupResponse>;
+export const UpdateServiceGroupResponse =
+  CreateOrUpdateServiceGroupResponse as any as S.Schema<UpdateServiceGroupResponse>;
 
 export type CheckNameAvailabilityError = AzureOpError;
 /** Checks if the specified management group name is valid and unique */

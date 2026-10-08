@@ -258,18 +258,8 @@ export interface CreateSubscriptionOutput {
   activatedAt?: Date;
   deactivatedAt?: Date;
 }
-export const CreateSubscriptionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    subscriptionId: S.String,
-    arn: S.String,
-    status: SubscriptionStatus,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastUpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    activatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    deactivatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "CreateSubscriptionOutput" }) as any as S.Schema<CreateSubscriptionOutput>;
+export const CreateSubscriptionOutput =
+  SubscriptionDescription as any as S.Schema<CreateSubscriptionOutput>;
 export interface DeactivateSubscriptionInput {
   domainId: string;
   subscriptionId: string;
@@ -297,11 +287,8 @@ export const DeactivateSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
 export interface DeactivateSubscriptionOutput {
   subscription?: SubscriptionDescription;
 }
-export const DeactivateSubscriptionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ subscription: S.optional(SubscriptionDescription) }),
-).annotate({
-  identifier: "DeactivateSubscriptionOutput",
-}) as any as S.Schema<DeactivateSubscriptionOutput>;
+export const DeactivateSubscriptionOutput =
+  ActivateSubscriptionOutput as any as S.Schema<DeactivateSubscriptionOutput>;
 export interface DeleteDomainInput {
   domainId: string;
 }
@@ -653,9 +640,7 @@ export const FHIRServer = /*@__PURE__*/ S.suspend(() =>
 export interface S3Source {
   uri: string;
 }
-export const S3Source = /*@__PURE__*/ S.suspend(() => S.Struct({ uri: S.String })).annotate({
-  identifier: "S3Source",
-}) as any as S.Schema<S3Source>;
+export const S3Source = InsightsOutput as any as S.Schema<S3Source>;
 export type S3Sources = S3Source[];
 export const S3Sources = /*@__PURE__*/ S.Array(S3Source);
 export interface InputDataConfig {
@@ -1133,9 +1118,7 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export type ActivateSubscriptionError =
   | AccessDeniedException
   | InternalServerException

@@ -914,11 +914,7 @@ export const PutKvInput = /*@__PURE__*/ S.suspend(() =>
 export interface PutKvOutput {
   result: OkResult;
 }
-export const PutKvOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: OkResult,
-  }),
-).annotate({ identifier: "PutKvOutput" }) as any as S.Schema<PutKvOutput>;
+export const PutKvOutput = DeleteKvOutput as any as S.Schema<PutKvOutput>;
 
 export type PutKvBase64Operation = "put-base64";
 export const PutKvBase64Operation = S.String;
@@ -979,11 +975,7 @@ export const PutKvBase64Input = /*@__PURE__*/ S.suspend(() =>
 export interface PutKvBase64Output {
   result: OkResult;
 }
-export const PutKvBase64Output = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: OkResult,
-  }),
-).annotate({ identifier: "PutKvBase64Output" }) as any as S.Schema<PutKvBase64Output>;
+export const PutKvBase64Output = DeleteKvOutput as any as S.Schema<PutKvBase64Output>;
 
 export type RedriveQueueOperation = "redrive";
 export const RedriveQueueOperation = S.String;
@@ -1091,11 +1083,7 @@ export const ResumeQueueInput = /*@__PURE__*/ S.suspend(() =>
 export interface ResumeQueueOutput {
   result: QueuePausedResult;
 }
-export const ResumeQueueOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: QueuePausedResult,
-  }),
-).annotate({ identifier: "ResumeQueueOutput" }) as any as S.Schema<ResumeQueueOutput>;
+export const ResumeQueueOutput = PauseQueueOutput as any as S.Schema<ResumeQueueOutput>;
 
 export type DeleteKvError =
   | PeerIncompatibleVersion

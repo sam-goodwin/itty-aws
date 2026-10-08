@@ -39,27 +39,23 @@ export const AddFeaturedResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of encoded user IDs */
 export type AddTriggersPermissionsRequestUserIdsList = Array<string>;
-export const AddTriggersPermissionsRequestUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddTriggersPermissionsRequestUserIdsList>;
+export const AddTriggersPermissionsRequestUserIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<AddTriggersPermissionsRequestUserIdsList>;
 
 /** List of encoded channel IDs */
 export type AddTriggersPermissionsRequestChannelIdsList = Array<string>;
-export const AddTriggersPermissionsRequestChannelIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddTriggersPermissionsRequestChannelIdsList>;
+export const AddTriggersPermissionsRequestChannelIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<AddTriggersPermissionsRequestChannelIdsList>;
 
 /** List of encoded workspace IDs */
 export type AddTriggersPermissionsRequestTeamIdsList = Array<string>;
-export const AddTriggersPermissionsRequestTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddTriggersPermissionsRequestTeamIdsList>;
+export const AddTriggersPermissionsRequestTeamIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<AddTriggersPermissionsRequestTeamIdsList>;
 
 /** List of encoded organization IDs */
 export type AddTriggersPermissionsRequestOrgIdsList = Array<string>;
-export const AddTriggersPermissionsRequestOrgIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddTriggersPermissionsRequestOrgIdsList>;
+export const AddTriggersPermissionsRequestOrgIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<AddTriggersPermissionsRequestOrgIdsList>;
 
 export interface AddTriggersPermissionsRequest {
   /** Encoded ID of the trigger */
@@ -99,9 +95,8 @@ export const AddTriggersPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Comma-separated array of channel IDs to list featured workflows for. */
 export type ListFeaturedRequestChannelIdsList = Array<string>;
-export const ListFeaturedRequestChannelIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListFeaturedRequestChannelIdsList>;
+export const ListFeaturedRequestChannelIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<ListFeaturedRequestChannelIdsList>;
 
 export interface ListFeaturedRequest {
   /** Comma-separated array of channel IDs to list featured workflows for. */
@@ -182,19 +177,13 @@ export interface ListTriggersPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const ListTriggersPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "ListTriggersPermissionsResponse",
-}) as any as S.Schema<ListTriggersPermissionsResponse>;
+export const ListTriggersPermissionsResponse =
+  AddTriggersPermissionsResponse as any as S.Schema<ListTriggersPermissionsResponse>;
 
 /** Comma-separated array of trigger IDs to remove; max 15 */
 export type RemoveFeaturedRequestTriggerIdsList = Array<string>;
-export const RemoveFeaturedRequestTriggerIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveFeaturedRequestTriggerIdsList>;
+export const RemoveFeaturedRequestTriggerIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<RemoveFeaturedRequestTriggerIdsList>;
 
 export interface RemoveFeaturedRequest {
   /** Channel to remove featured workflow from. */
@@ -213,35 +202,28 @@ export interface RemoveFeaturedResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const RemoveFeaturedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "RemoveFeaturedResponse" }) as any as S.Schema<RemoveFeaturedResponse>;
+export const RemoveFeaturedResponse =
+  AddFeaturedResponse as any as S.Schema<RemoveFeaturedResponse>;
 
 /** List of encoded user IDs */
 export type RemoveTriggersPermissionsRequestUserIdsList = Array<string>;
-export const RemoveTriggersPermissionsRequestUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveTriggersPermissionsRequestUserIdsList>;
+export const RemoveTriggersPermissionsRequestUserIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<RemoveTriggersPermissionsRequestUserIdsList>;
 
 /** List of encoded channel IDs */
 export type RemoveTriggersPermissionsRequestChannelIdsList = Array<string>;
-export const RemoveTriggersPermissionsRequestChannelIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveTriggersPermissionsRequestChannelIdsList>;
+export const RemoveTriggersPermissionsRequestChannelIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<RemoveTriggersPermissionsRequestChannelIdsList>;
 
 /** List of encoded workspace IDs */
 export type RemoveTriggersPermissionsRequestTeamIdsList = Array<string>;
-export const RemoveTriggersPermissionsRequestTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveTriggersPermissionsRequestTeamIdsList>;
+export const RemoveTriggersPermissionsRequestTeamIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<RemoveTriggersPermissionsRequestTeamIdsList>;
 
 /** List of encoded organization IDs */
 export type RemoveTriggersPermissionsRequestOrgIdsList = Array<string>;
-export const RemoveTriggersPermissionsRequestOrgIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveTriggersPermissionsRequestOrgIdsList>;
+export const RemoveTriggersPermissionsRequestOrgIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<RemoveTriggersPermissionsRequestOrgIdsList>;
 
 export interface RemoveTriggersPermissionsRequest {
   /** Encoded ID of the trigger */
@@ -275,26 +257,22 @@ export const RemoveTriggersPermissionsResponsePermissionType = S.String;
 
 /** A list of encoded user IDs. */
 export type RemoveTriggersPermissionsResponseUserIdsList = Array<string>;
-export const RemoveTriggersPermissionsResponseUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveTriggersPermissionsResponseUserIdsList>;
+export const RemoveTriggersPermissionsResponseUserIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<RemoveTriggersPermissionsResponseUserIdsList>;
 
 /** A list of encoded channel IDs. */
 export type RemoveTriggersPermissionsResponseChannelIdsList = Array<string>;
-export const RemoveTriggersPermissionsResponseChannelIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveTriggersPermissionsResponseChannelIdsList>;
+export const RemoveTriggersPermissionsResponseChannelIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<RemoveTriggersPermissionsResponseChannelIdsList>;
 
 /** Encoded workspace IDs. */
 export type RemoveTriggersPermissionsResponseTeamIdsList = Array<string>;
-export const RemoveTriggersPermissionsResponseTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveTriggersPermissionsResponseTeamIdsList>;
+export const RemoveTriggersPermissionsResponseTeamIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<RemoveTriggersPermissionsResponseTeamIdsList>;
 
 export type RemoveTriggersPermissionsResponseOrgIdsList = Array<string>;
-export const RemoveTriggersPermissionsResponseOrgIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveTriggersPermissionsResponseOrgIdsList>;
+export const RemoveTriggersPermissionsResponseOrgIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<RemoveTriggersPermissionsResponseOrgIdsList>;
 
 export interface RemoveTriggersPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -323,9 +301,8 @@ export const RemoveTriggersPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Comma-separated array of trigger IDs that will replace any existing featured workflows in the channel; max 15 */
 export type SetFeaturedRequestTriggerIdsList = Array<string>;
-export const SetFeaturedRequestTriggerIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetFeaturedRequestTriggerIdsList>;
+export const SetFeaturedRequestTriggerIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<SetFeaturedRequestTriggerIdsList>;
 
 export interface SetFeaturedRequest {
   /** Channel to set featured workflows in. */
@@ -344,11 +321,7 @@ export interface SetFeaturedResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const SetFeaturedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "SetFeaturedResponse" }) as any as S.Schema<SetFeaturedResponse>;
+export const SetFeaturedResponse = AddFeaturedResponse as any as S.Schema<SetFeaturedResponse>;
 
 /** The type of permission that defines who can run a trigger */
 export type SetTriggersPermissionsRequestPermissionType =
@@ -359,27 +332,23 @@ export const SetTriggersPermissionsRequestPermissionType = S.String;
 
 /** List of encoded user IDs */
 export type SetTriggersPermissionsRequestUserIdsList = Array<string>;
-export const SetTriggersPermissionsRequestUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetTriggersPermissionsRequestUserIdsList>;
+export const SetTriggersPermissionsRequestUserIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<SetTriggersPermissionsRequestUserIdsList>;
 
 /** List of encoded channel IDs */
 export type SetTriggersPermissionsRequestChannelIdsList = Array<string>;
-export const SetTriggersPermissionsRequestChannelIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetTriggersPermissionsRequestChannelIdsList>;
+export const SetTriggersPermissionsRequestChannelIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<SetTriggersPermissionsRequestChannelIdsList>;
 
 /** List of encoded workspace IDs */
 export type SetTriggersPermissionsRequestTeamIdsList = Array<string>;
-export const SetTriggersPermissionsRequestTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetTriggersPermissionsRequestTeamIdsList>;
+export const SetTriggersPermissionsRequestTeamIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<SetTriggersPermissionsRequestTeamIdsList>;
 
 /** List of encoded organization IDs */
 export type SetTriggersPermissionsRequestOrgIdsList = Array<string>;
-export const SetTriggersPermissionsRequestOrgIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetTriggersPermissionsRequestOrgIdsList>;
+export const SetTriggersPermissionsRequestOrgIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<SetTriggersPermissionsRequestOrgIdsList>;
 
 export interface SetTriggersPermissionsRequest {
   /** Encoded ID of the trigger */
@@ -412,13 +381,8 @@ export interface SetTriggersPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const SetTriggersPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "SetTriggersPermissionsResponse",
-}) as any as S.Schema<SetTriggersPermissionsResponse>;
+export const SetTriggersPermissionsResponse =
+  AddTriggersPermissionsResponse as any as S.Schema<SetTriggersPermissionsResponse>;
 
 export type AddFeaturedError = SlackOpError;
 /** Add featured workflows to a channel. Required scopes -- bot: `bookmarks:write`; user: `bookmarks:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `method_not_supported` -- Method not yet supported - `restricted_action` -- User does not have access to this method. - `error_modifying_workflows` -- Error modifying workflows See https://docs.slack.dev/reference/methods/workflows.featured.add */

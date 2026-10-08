@@ -82,12 +82,7 @@ export interface EditBookmarkResponse {
   ok: boolean;
   bookmark: unknown;
 }
-export const EditBookmarkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-    bookmark: S.Unknown,
-  }),
-).annotate({ identifier: "EditBookmarkResponse" }) as any as S.Schema<EditBookmarkResponse>;
+export const EditBookmarkResponse = AddBookmarkResponse as any as S.Schema<EditBookmarkResponse>;
 
 export interface ListBookmarksRequest {
   /** Channel to list bookmarks in. Required for public channels. */

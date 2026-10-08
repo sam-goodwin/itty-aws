@@ -157,15 +157,13 @@ export const CreateVariantAnalysisRequestRepositoriesList = /*@__PURE__*/ S.Arra
 
 /** List of repository lists to run the query against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required. */
 export type CreateVariantAnalysisRequestRepositoryListsList = Array<string>;
-export const CreateVariantAnalysisRequestRepositoryListsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateVariantAnalysisRequestRepositoryListsList>;
+export const CreateVariantAnalysisRequestRepositoryListsList =
+  CreateVariantAnalysisRequestRepositoriesList as any as S.Schema<CreateVariantAnalysisRequestRepositoryListsList>;
 
 /** List of organization or user names whose repositories the query should be run against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required. */
 export type CreateVariantAnalysisRequestRepositoryOwnersList = Array<string>;
-export const CreateVariantAnalysisRequestRepositoryOwnersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateVariantAnalysisRequestRepositoryOwnersList>;
+export const CreateVariantAnalysisRequestRepositoryOwnersList =
+  CreateVariantAnalysisRequestRepositoriesList as any as S.Schema<CreateVariantAnalysisRequestRepositoryOwnersList>;
 
 export interface CreateVariantAnalysisRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -765,9 +763,8 @@ export const CodeScanningAlertRuleSecuritySeverityLevel = S.String;
 
 /** A set of tags applicable for the rule. */
 export type CodeScanningAlertRuleTagsList = Array<string>;
-export const CodeScanningAlertRuleTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CodeScanningAlertRuleTagsList>;
+export const CodeScanningAlertRuleTagsList =
+  CreateVariantAnalysisRequestRepositoriesList as any as S.Schema<CodeScanningAlertRuleTagsList>;
 
 export interface CodeScanningAlertRule {
   /** A unique identifier for the rule used to detect the alert. */
@@ -975,14 +972,12 @@ export const NullableMilestone = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NullableMilestone" }) as any as S.Schema<NullableMilestone>;
 
 export type PullRequestSimpleAssigneesList = Array<SimpleUser>;
-export const PullRequestSimpleAssigneesList = /*@__PURE__*/ S.Array(
-  SimpleUser,
-) as any as S.Schema<PullRequestSimpleAssigneesList>;
+export const PullRequestSimpleAssigneesList =
+  CodeScanningAlertAssigneesList as any as S.Schema<PullRequestSimpleAssigneesList>;
 
 export type PullRequestSimpleRequestedReviewersList = Array<SimpleUser>;
-export const PullRequestSimpleRequestedReviewersList = /*@__PURE__*/ S.Array(
-  SimpleUser,
-) as any as S.Schema<PullRequestSimpleRequestedReviewersList>;
+export const PullRequestSimpleRequestedReviewersList =
+  CodeScanningAlertAssigneesList as any as S.Schema<PullRequestSimpleRequestedReviewersList>;
 
 export interface TeamPermissions {
   pull: boolean;
@@ -1155,9 +1150,8 @@ export const RepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepositoryPermissions" }) as any as S.Schema<RepositoryPermissions>;
 
 export type RepositoryTopicsList = Array<string>;
-export const RepositoryTopicsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepositoryTopicsList>;
+export const RepositoryTopicsList =
+  CreateVariantAnalysisRequestRepositoriesList as any as S.Schema<RepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type RepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
@@ -1945,9 +1939,8 @@ export const CodeScanningSarifsStatusProcessingStatus = S.String;
 
 /** Any errors that ocurred during processing of the delivery. */
 export type CodeScanningSarifsStatusErrorsList = Array<string>;
-export const CodeScanningSarifsStatusErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CodeScanningSarifsStatusErrorsList>;
+export const CodeScanningSarifsStatusErrorsList =
+  CreateVariantAnalysisRequestRepositoriesList as any as S.Schema<CodeScanningSarifsStatusErrorsList>;
 
 export interface CodeScanningSarifsStatus {
   /** `pending` files have not yet been processed, while `complete` means results from the SARIF have been stored. `failed` files have either not been processed at all, or could only be partially processed. */
@@ -2104,9 +2097,8 @@ export const CodeScanningAlertInstanceListMessage = /*@__PURE__*/ S.suspend(() =
 /** Classifications that have been applied to the file that triggered the alert. For example identifying it as documentation, or a generated file. */
 export type CodeScanningAlertInstanceListClassificationsList =
   Array<CodeScanningAlertClassification | null>;
-export const CodeScanningAlertInstanceListClassificationsList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(CodeScanningAlertClassification),
-) as any as S.Schema<CodeScanningAlertInstanceListClassificationsList>;
+export const CodeScanningAlertInstanceListClassificationsList =
+  CodeScanningAlertInstanceClassificationsList as any as S.Schema<CodeScanningAlertInstanceListClassificationsList>;
 
 export interface CodeScanningAlertInstanceList {
   ref?: string;
@@ -2228,9 +2220,8 @@ export const CodeScanningAlertRuleSummarySecuritySeverityLevel = S.String;
 
 /** A set of tags applicable for the rule. */
 export type CodeScanningAlertRuleSummaryTagsList = Array<string>;
-export const CodeScanningAlertRuleSummaryTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CodeScanningAlertRuleSummaryTagsList>;
+export const CodeScanningAlertRuleSummaryTagsList =
+  CreateVariantAnalysisRequestRepositoriesList as any as S.Schema<CodeScanningAlertRuleSummaryTagsList>;
 
 export interface CodeScanningAlertRuleSummary {
   /** A unique identifier for the rule used to detect the alert. */
@@ -2271,9 +2262,8 @@ export const CodeScanningAlertRuleSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CodeScanningAlertRuleSummary>;
 
 export type CodeScanningOrganizationAlertItemsAssigneesList = Array<SimpleUser>;
-export const CodeScanningOrganizationAlertItemsAssigneesList = /*@__PURE__*/ S.Array(
-  SimpleUser,
-) as any as S.Schema<CodeScanningOrganizationAlertItemsAssigneesList>;
+export const CodeScanningOrganizationAlertItemsAssigneesList =
+  CodeScanningAlertAssigneesList as any as S.Schema<CodeScanningOrganizationAlertItemsAssigneesList>;
 
 export interface CodeScanningOrganizationAlertItems {
   number: number;
@@ -2389,9 +2379,8 @@ export const ListAlertsForRepoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAlertsForRepoRequest" }) as any as S.Schema<ListAlertsForRepoRequest>;
 
 export type CodeScanningAlertItemsAssigneesList = Array<SimpleUser>;
-export const CodeScanningAlertItemsAssigneesList = /*@__PURE__*/ S.Array(
-  SimpleUser,
-) as any as S.Schema<CodeScanningAlertItemsAssigneesList>;
+export const CodeScanningAlertItemsAssigneesList =
+  CodeScanningAlertAssigneesList as any as S.Schema<CodeScanningAlertItemsAssigneesList>;
 
 export interface CodeScanningAlertItems {
   number: number;
@@ -2590,9 +2579,8 @@ export const CodeScanningAlertSetState = S.String;
 
 /** The list of users to assign to the code scanning alert. An empty array unassigns all previous assignees from the alert. */
 export type CodeScanningAlertAssignees = Array<string>;
-export const CodeScanningAlertAssignees = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CodeScanningAlertAssignees>;
+export const CodeScanningAlertAssignees =
+  CreateVariantAnalysisRequestRepositoriesList as any as S.Schema<CodeScanningAlertAssignees>;
 
 export interface UpdateAlertRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -2740,9 +2728,8 @@ export const UploadSarifRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UploadSarifRequest" }) as any as S.Schema<UploadSarifRequest>;
 
 export interface UploadSarifResponse {}
-export const UploadSarifResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UploadSarifResponse",
-}) as any as S.Schema<UploadSarifResponse>;
+export const UploadSarifResponse =
+  DeleteCodeqlDatabaseResponse as any as S.Schema<UploadSarifResponse>;
 
 export type CommitAutofixError =
   | BadRequest

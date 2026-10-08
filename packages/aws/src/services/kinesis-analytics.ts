@@ -192,16 +192,12 @@ export interface KinesisStreamsInput {
   ResourceARN: string;
   RoleARN: string;
 }
-export const KinesisStreamsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceARN: S.String, RoleARN: S.String }),
-).annotate({ identifier: "KinesisStreamsInput" }) as any as S.Schema<KinesisStreamsInput>;
+export const KinesisStreamsInput = InputLambdaProcessor as any as S.Schema<KinesisStreamsInput>;
 export interface KinesisFirehoseInput {
   ResourceARN: string;
   RoleARN: string;
 }
-export const KinesisFirehoseInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceARN: S.String, RoleARN: S.String }),
-).annotate({ identifier: "KinesisFirehoseInput" }) as any as S.Schema<KinesisFirehoseInput>;
+export const KinesisFirehoseInput = InputLambdaProcessor as any as S.Schema<KinesisFirehoseInput>;
 export type InputParallelismCount = number;
 export interface InputParallelism {
   Count?: number;
@@ -305,11 +301,8 @@ export const AddApplicationInputRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddApplicationInputRequest",
 }) as any as S.Schema<AddApplicationInputRequest>;
 export interface AddApplicationInputResponse {}
-export const AddApplicationInputResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "AddApplicationInputResponse",
-}) as any as S.Schema<AddApplicationInputResponse>;
+export const AddApplicationInputResponse =
+  AddApplicationCloudWatchLoggingOptionResponse as any as S.Schema<AddApplicationInputResponse>;
 export type Id = string;
 export interface AddApplicationInputProcessingConfigurationRequest {
   ApplicationName: string;
@@ -328,32 +321,23 @@ export const AddApplicationInputProcessingConfigurationRequest = /*@__PURE__*/ S
   identifier: "AddApplicationInputProcessingConfigurationRequest",
 }) as any as S.Schema<AddApplicationInputProcessingConfigurationRequest>;
 export interface AddApplicationInputProcessingConfigurationResponse {}
-export const AddApplicationInputProcessingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "AddApplicationInputProcessingConfigurationResponse",
-}) as any as S.Schema<AddApplicationInputProcessingConfigurationResponse>;
+export const AddApplicationInputProcessingConfigurationResponse =
+  AddApplicationCloudWatchLoggingOptionResponse as any as S.Schema<AddApplicationInputProcessingConfigurationResponse>;
 export interface KinesisStreamsOutput {
   ResourceARN: string;
   RoleARN: string;
 }
-export const KinesisStreamsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceARN: S.String, RoleARN: S.String }),
-).annotate({ identifier: "KinesisStreamsOutput" }) as any as S.Schema<KinesisStreamsOutput>;
+export const KinesisStreamsOutput = InputLambdaProcessor as any as S.Schema<KinesisStreamsOutput>;
 export interface KinesisFirehoseOutput {
   ResourceARN: string;
   RoleARN: string;
 }
-export const KinesisFirehoseOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceARN: S.String, RoleARN: S.String }),
-).annotate({ identifier: "KinesisFirehoseOutput" }) as any as S.Schema<KinesisFirehoseOutput>;
+export const KinesisFirehoseOutput = InputLambdaProcessor as any as S.Schema<KinesisFirehoseOutput>;
 export interface LambdaOutput {
   ResourceARN: string;
   RoleARN: string;
 }
-export const LambdaOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceARN: S.String, RoleARN: S.String }),
-).annotate({ identifier: "LambdaOutput" }) as any as S.Schema<LambdaOutput>;
+export const LambdaOutput = InputLambdaProcessor as any as S.Schema<LambdaOutput>;
 export interface DestinationSchema {
   RecordFormatType: RecordFormatType;
 }
@@ -391,11 +375,8 @@ export const AddApplicationOutputRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddApplicationOutputRequest",
 }) as any as S.Schema<AddApplicationOutputRequest>;
 export interface AddApplicationOutputResponse {}
-export const AddApplicationOutputResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "AddApplicationOutputResponse",
-}) as any as S.Schema<AddApplicationOutputResponse>;
+export const AddApplicationOutputResponse =
+  AddApplicationCloudWatchLoggingOptionResponse as any as S.Schema<AddApplicationOutputResponse>;
 export type InAppTableName = string;
 export type BucketARN = string;
 export type FileKey = string;
@@ -434,11 +415,8 @@ export const AddApplicationReferenceDataSourceRequest = /*@__PURE__*/ S.suspend(
   identifier: "AddApplicationReferenceDataSourceRequest",
 }) as any as S.Schema<AddApplicationReferenceDataSourceRequest>;
 export interface AddApplicationReferenceDataSourceResponse {}
-export const AddApplicationReferenceDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "AddApplicationReferenceDataSourceResponse",
-}) as any as S.Schema<AddApplicationReferenceDataSourceResponse>;
+export const AddApplicationReferenceDataSourceResponse =
+  AddApplicationCloudWatchLoggingOptionResponse as any as S.Schema<AddApplicationReferenceDataSourceResponse>;
 export type ApplicationDescription = string;
 export type Inputs = Input[];
 export const Inputs = /*@__PURE__*/ S.Array(Input);
@@ -519,11 +497,8 @@ export const DeleteApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "DeleteApplicationRequest" }) as any as S.Schema<DeleteApplicationRequest>;
 export interface DeleteApplicationResponse {}
-export const DeleteApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteApplicationResponse",
-}) as any as S.Schema<DeleteApplicationResponse>;
+export const DeleteApplicationResponse =
+  AddApplicationCloudWatchLoggingOptionResponse as any as S.Schema<DeleteApplicationResponse>;
 export interface DeleteApplicationCloudWatchLoggingOptionRequest {
   ApplicationName: string;
   CurrentApplicationVersionId: number;
@@ -539,11 +514,8 @@ export const DeleteApplicationCloudWatchLoggingOptionRequest = /*@__PURE__*/ S.s
   identifier: "DeleteApplicationCloudWatchLoggingOptionRequest",
 }) as any as S.Schema<DeleteApplicationCloudWatchLoggingOptionRequest>;
 export interface DeleteApplicationCloudWatchLoggingOptionResponse {}
-export const DeleteApplicationCloudWatchLoggingOptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteApplicationCloudWatchLoggingOptionResponse",
-}) as any as S.Schema<DeleteApplicationCloudWatchLoggingOptionResponse>;
+export const DeleteApplicationCloudWatchLoggingOptionResponse =
+  AddApplicationCloudWatchLoggingOptionResponse as any as S.Schema<DeleteApplicationCloudWatchLoggingOptionResponse>;
 export interface DeleteApplicationInputProcessingConfigurationRequest {
   ApplicationName: string;
   CurrentApplicationVersionId: number;
@@ -559,11 +531,8 @@ export const DeleteApplicationInputProcessingConfigurationRequest = /*@__PURE__*
   identifier: "DeleteApplicationInputProcessingConfigurationRequest",
 }) as any as S.Schema<DeleteApplicationInputProcessingConfigurationRequest>;
 export interface DeleteApplicationInputProcessingConfigurationResponse {}
-export const DeleteApplicationInputProcessingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteApplicationInputProcessingConfigurationResponse",
-}) as any as S.Schema<DeleteApplicationInputProcessingConfigurationResponse>;
+export const DeleteApplicationInputProcessingConfigurationResponse =
+  AddApplicationCloudWatchLoggingOptionResponse as any as S.Schema<DeleteApplicationInputProcessingConfigurationResponse>;
 export interface DeleteApplicationOutputRequest {
   ApplicationName: string;
   CurrentApplicationVersionId: number;
@@ -579,11 +548,8 @@ export const DeleteApplicationOutputRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteApplicationOutputRequest",
 }) as any as S.Schema<DeleteApplicationOutputRequest>;
 export interface DeleteApplicationOutputResponse {}
-export const DeleteApplicationOutputResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteApplicationOutputResponse",
-}) as any as S.Schema<DeleteApplicationOutputResponse>;
+export const DeleteApplicationOutputResponse =
+  AddApplicationCloudWatchLoggingOptionResponse as any as S.Schema<DeleteApplicationOutputResponse>;
 export interface DeleteApplicationReferenceDataSourceRequest {
   ApplicationName: string;
   CurrentApplicationVersionId: number;
@@ -599,11 +565,8 @@ export const DeleteApplicationReferenceDataSourceRequest = /*@__PURE__*/ S.suspe
   identifier: "DeleteApplicationReferenceDataSourceRequest",
 }) as any as S.Schema<DeleteApplicationReferenceDataSourceRequest>;
 export interface DeleteApplicationReferenceDataSourceResponse {}
-export const DeleteApplicationReferenceDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteApplicationReferenceDataSourceResponse",
-}) as any as S.Schema<DeleteApplicationReferenceDataSourceResponse>;
+export const DeleteApplicationReferenceDataSourceResponse =
+  AddApplicationCloudWatchLoggingOptionResponse as any as S.Schema<DeleteApplicationReferenceDataSourceResponse>;
 export interface DescribeApplicationRequest {
   ApplicationName: string;
 }
@@ -637,20 +600,14 @@ export interface KinesisStreamsInputDescription {
   ResourceARN?: string;
   RoleARN?: string;
 }
-export const KinesisStreamsInputDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceARN: S.optional(S.String), RoleARN: S.optional(S.String) }),
-).annotate({
-  identifier: "KinesisStreamsInputDescription",
-}) as any as S.Schema<KinesisStreamsInputDescription>;
+export const KinesisStreamsInputDescription =
+  InputLambdaProcessorDescription as any as S.Schema<KinesisStreamsInputDescription>;
 export interface KinesisFirehoseInputDescription {
   ResourceARN?: string;
   RoleARN?: string;
 }
-export const KinesisFirehoseInputDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceARN: S.optional(S.String), RoleARN: S.optional(S.String) }),
-).annotate({
-  identifier: "KinesisFirehoseInputDescription",
-}) as any as S.Schema<KinesisFirehoseInputDescription>;
+export const KinesisFirehoseInputDescription =
+  InputLambdaProcessorDescription as any as S.Schema<KinesisFirehoseInputDescription>;
 export type InputStartingPosition = "NOW" | "TRIM_HORIZON" | "LAST_STOPPED_POINT" | (string & {});
 export const InputStartingPosition = S.String;
 
@@ -692,20 +649,14 @@ export interface KinesisStreamsOutputDescription {
   ResourceARN?: string;
   RoleARN?: string;
 }
-export const KinesisStreamsOutputDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceARN: S.optional(S.String), RoleARN: S.optional(S.String) }),
-).annotate({
-  identifier: "KinesisStreamsOutputDescription",
-}) as any as S.Schema<KinesisStreamsOutputDescription>;
+export const KinesisStreamsOutputDescription =
+  InputLambdaProcessorDescription as any as S.Schema<KinesisStreamsOutputDescription>;
 export interface KinesisFirehoseOutputDescription {
   ResourceARN?: string;
   RoleARN?: string;
 }
-export const KinesisFirehoseOutputDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceARN: S.optional(S.String), RoleARN: S.optional(S.String) }),
-).annotate({
-  identifier: "KinesisFirehoseOutputDescription",
-}) as any as S.Schema<KinesisFirehoseOutputDescription>;
+export const KinesisFirehoseOutputDescription =
+  InputLambdaProcessorDescription as any as S.Schema<KinesisFirehoseOutputDescription>;
 export interface LambdaOutputDescription {
   ResourceARN?: string;
   RoleARN?: string;
@@ -847,15 +798,15 @@ export const DiscoverInputSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiscoverInputSchemaRequest>;
 export type ParsedInputRecordField = string;
 export type ParsedInputRecord = string[];
-export const ParsedInputRecord = /*@__PURE__*/ S.Array(S.String);
+export const ParsedInputRecord = InAppStreamNames as any as S.Schema<ParsedInputRecord>;
 export type ParsedInputRecords = string[][];
 export const ParsedInputRecords = /*@__PURE__*/ S.Array(ParsedInputRecord);
 export type ProcessedInputRecord = string;
 export type ProcessedInputRecords = string[];
-export const ProcessedInputRecords = /*@__PURE__*/ S.Array(S.String);
+export const ProcessedInputRecords = InAppStreamNames as any as S.Schema<ProcessedInputRecords>;
 export type RawInputRecord = string;
 export type RawInputRecords = string[];
-export const RawInputRecords = /*@__PURE__*/ S.Array(S.String);
+export const RawInputRecords = InAppStreamNames as any as S.Schema<RawInputRecords>;
 export interface DiscoverInputSchemaResponse {
   InputSchema?: SourceSchema;
   ParsedInputRecords?: string[][];
@@ -945,9 +896,8 @@ export const StopApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopApplicationRequest" }) as any as S.Schema<StopApplicationRequest>;
 export interface StopApplicationResponse {}
-export const StopApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({ identifier: "StopApplicationResponse" }) as any as S.Schema<StopApplicationResponse>;
+export const StopApplicationResponse =
+  StartApplicationResponse as any as S.Schema<StopApplicationResponse>;
 export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Tag[];
@@ -962,7 +912,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pi
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = InAppStreamNames as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
@@ -973,9 +923,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface InputLambdaProcessorUpdate {
   ResourceARNUpdate?: string;
   RoleARNUpdate?: string;
@@ -997,20 +945,14 @@ export interface KinesisStreamsInputUpdate {
   ResourceARNUpdate?: string;
   RoleARNUpdate?: string;
 }
-export const KinesisStreamsInputUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceARNUpdate: S.optional(S.String), RoleARNUpdate: S.optional(S.String) }),
-).annotate({
-  identifier: "KinesisStreamsInputUpdate",
-}) as any as S.Schema<KinesisStreamsInputUpdate>;
+export const KinesisStreamsInputUpdate =
+  InputLambdaProcessorUpdate as any as S.Schema<KinesisStreamsInputUpdate>;
 export interface KinesisFirehoseInputUpdate {
   ResourceARNUpdate?: string;
   RoleARNUpdate?: string;
 }
-export const KinesisFirehoseInputUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceARNUpdate: S.optional(S.String), RoleARNUpdate: S.optional(S.String) }),
-).annotate({
-  identifier: "KinesisFirehoseInputUpdate",
-}) as any as S.Schema<KinesisFirehoseInputUpdate>;
+export const KinesisFirehoseInputUpdate =
+  InputLambdaProcessorUpdate as any as S.Schema<KinesisFirehoseInputUpdate>;
 export interface InputSchemaUpdate {
   RecordFormatUpdate?: RecordFormat;
   RecordEncodingUpdate?: string;
@@ -1055,20 +997,14 @@ export interface KinesisStreamsOutputUpdate {
   ResourceARNUpdate?: string;
   RoleARNUpdate?: string;
 }
-export const KinesisStreamsOutputUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceARNUpdate: S.optional(S.String), RoleARNUpdate: S.optional(S.String) }),
-).annotate({
-  identifier: "KinesisStreamsOutputUpdate",
-}) as any as S.Schema<KinesisStreamsOutputUpdate>;
+export const KinesisStreamsOutputUpdate =
+  InputLambdaProcessorUpdate as any as S.Schema<KinesisStreamsOutputUpdate>;
 export interface KinesisFirehoseOutputUpdate {
   ResourceARNUpdate?: string;
   RoleARNUpdate?: string;
 }
-export const KinesisFirehoseOutputUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceARNUpdate: S.optional(S.String), RoleARNUpdate: S.optional(S.String) }),
-).annotate({
-  identifier: "KinesisFirehoseOutputUpdate",
-}) as any as S.Schema<KinesisFirehoseOutputUpdate>;
+export const KinesisFirehoseOutputUpdate =
+  InputLambdaProcessorUpdate as any as S.Schema<KinesisFirehoseOutputUpdate>;
 export interface LambdaOutputUpdate {
   ResourceARNUpdate?: string;
   RoleARNUpdate?: string;
@@ -1173,11 +1109,8 @@ export const UpdateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateApplicationRequest" }) as any as S.Schema<UpdateApplicationRequest>;
 export interface UpdateApplicationResponse {}
-export const UpdateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateApplicationResponse",
-}) as any as S.Schema<UpdateApplicationResponse>;
+export const UpdateApplicationResponse =
+  AddApplicationCloudWatchLoggingOptionResponse as any as S.Schema<UpdateApplicationResponse>;
 export type ErrorMessage = string;
 export type AddApplicationCloudWatchLoggingOptionError =
   | ConcurrentModificationException

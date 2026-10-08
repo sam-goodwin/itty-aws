@@ -89,11 +89,8 @@ export const AccountsRelationshipsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountsRelationshipsDestroyRequest>;
 
 export interface AccountsRelationshipsDestroyResponse {}
-export const AccountsRelationshipsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AccountsRelationshipsDestroyResponse",
-}) as any as S.Schema<AccountsRelationshipsDestroyResponse>;
+export const AccountsRelationshipsDestroyResponse =
+  AccountsNotebooksDestroyResponse as any as S.Schema<AccountsRelationshipsDestroyResponse>;
 
 /** Value to store, matching the definition's type: a number for number/currency/percent, a boolean for boolean, an ISO-8601 string for date/datetime, an HTTP or HTTPS URL for link properties, or text for text properties. Null clears the current value while preserving its history. */
 export type CreateAccountsCustomPropertyValueRequestValue = string | number | boolean;
@@ -400,9 +397,7 @@ export const CreateCustomerAnalyticsExternalAccountRequestPropertiesEmailDomains
 /** Individual email addresses pinned to this account, matched before the domain fallback. */
 export type CreateCustomerAnalyticsExternalAccountRequestPropertiesKnownEmailsList = Array<string>;
 export const CreateCustomerAnalyticsExternalAccountRequestPropertiesKnownEmailsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateCustomerAnalyticsExternalAccountRequestPropertiesKnownEmailsList>;
+  CreateCustomerAnalyticsExternalAccountRequestPropertiesEmailDomainsList as any as S.Schema<CreateCustomerAnalyticsExternalAccountRequestPropertiesKnownEmailsList>;
 
 /** Typed properties for a new account: website_domain, external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link), email_domains and known_emails. Unknown keys are rejected. Ignored when the account already exists. */
 export interface CreateCustomerAnalyticsExternalAccountRequestProperties {
@@ -463,10 +458,8 @@ export const CreateCustomerAnalyticsExternalAccountRequest = /*@__PURE__*/ S.sus
 
 /** Typed account properties: external-system ids. Role assignments live under `relationships`. */
 export type ExternalAccountPropertiesMap = { [key: string]: unknown | undefined };
-export const ExternalAccountPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ExternalAccountPropertiesMap>;
+export const ExternalAccountPropertiesMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<ExternalAccountPropertiesMap>;
 
 /** * `unmanaged` - Unmanaged * `assigned` - Assigned * `cleared` - Cleared * `blocked` - Blocked */
 export type OwnershipRoleStateEnum = "unmanaged" | "assigned" | "cleared" | "blocked";
@@ -602,10 +595,8 @@ export const ExternalAccountRelationshipsMap = /*@__PURE__*/ S.Record(
 
 /** Every team custom property definition keyed by name, with the account's active value or null. */
 export type ExternalAccountCustomPropertiesMap = { [key: string]: unknown | undefined };
-export const ExternalAccountCustomPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ExternalAccountCustomPropertiesMap>;
+export const ExternalAccountCustomPropertiesMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<ExternalAccountCustomPropertiesMap>;
 
 export interface ExternalAccount {
   /** Account UUID. */
@@ -646,9 +637,8 @@ export const ExternalAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** Names of the events to stream (matched exactly). Duplicates and blanks are dropped. */
 export type CreateEventStreamRequestEventNamesList = Array<string>;
-export const CreateEventStreamRequestEventNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateEventStreamRequestEventNamesList>;
+export const CreateEventStreamRequestEventNamesList =
+  ExternalAccountTagsList as any as S.Schema<CreateEventStreamRequestEventNamesList>;
 
 export interface CreateEventStreamRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -677,15 +667,13 @@ export const CreateEventStreamRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Names of the events to stream (matched exactly). Duplicates and blanks are dropped. */
 export type EventStreamEventNamesList = Array<string>;
-export const EventStreamEventNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EventStreamEventNamesList>;
+export const EventStreamEventNamesList =
+  ExternalAccountTagsList as any as S.Schema<EventStreamEventNamesList>;
 
 /** UUIDs of the member accounts whose users' events are streamed. Managed via the add_account/remove_account endpoints. */
 export type EventStreamAccountIdsList = Array<string>;
-export const EventStreamAccountIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EventStreamAccountIdsList>;
+export const EventStreamAccountIdsList =
+  ExternalAccountTagsList as any as S.Schema<EventStreamAccountIdsList>;
 
 /** The caller's event stream -- a live feed of selected accounts' events posted to a Slack channel of their choice. One stream per user per project. */
 export interface EventStream {
@@ -967,9 +955,8 @@ export const ListAccountNotesRequestAssignedToList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListAccountNotesRequestAssignedToList>;
 
 export type ListAccountNotesRequestCreatedByList = Array<number>;
-export const ListAccountNotesRequestCreatedByList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListAccountNotesRequestCreatedByList>;
+export const ListAccountNotesRequestCreatedByList =
+  ListAccountNotesRequestAssignedToList as any as S.Schema<ListAccountNotesRequestCreatedByList>;
 
 export interface ListAccountNotesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1202,9 +1189,8 @@ export const ListEventStreamsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Names of the events to stream (matched exactly). Duplicates and blanks are dropped. */
 export type UpdateEventStreamRequestEventNamesList = Array<string>;
-export const UpdateEventStreamRequestEventNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateEventStreamRequestEventNamesList>;
+export const UpdateEventStreamRequestEventNamesList =
+  ExternalAccountTagsList as any as S.Schema<UpdateEventStreamRequestEventNamesList>;
 
 export interface UpdateEventStreamRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1238,9 +1224,8 @@ export const UpdateEventStreamRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Names of the events to stream (matched exactly). Duplicates and blanks are dropped. */
 export type UpdateEventStreamsPartialRequestEventNamesList = Array<string>;
-export const UpdateEventStreamsPartialRequestEventNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateEventStreamsPartialRequestEventNamesList>;
+export const UpdateEventStreamsPartialRequestEventNamesList =
+  ExternalAccountTagsList as any as S.Schema<UpdateEventStreamsPartialRequestEventNamesList>;
 
 export interface UpdateEventStreamsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

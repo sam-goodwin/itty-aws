@@ -261,21 +261,18 @@ export const AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList = /*@__PU
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type AuthorizationsReauthorizeResponseLinksItemSchemaAnyOfList = Array<unknown>;
-export const AuthorizationsReauthorizeResponseLinksItemSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<AuthorizationsReauthorizeResponseLinksItemSchemaAnyOfList>;
+export const AuthorizationsReauthorizeResponseLinksItemSchemaAnyOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<AuthorizationsReauthorizeResponseLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type AuthorizationsReauthorizeResponseLinksItemSchemaOneOfList = Array<unknown>;
-export const AuthorizationsReauthorizeResponseLinksItemSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<AuthorizationsReauthorizeResponseLinksItemSchemaOneOfList>;
+export const AuthorizationsReauthorizeResponseLinksItemSchemaOneOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<AuthorizationsReauthorizeResponseLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type AuthorizationsReauthorizeResponseLinksItemSchemaLinksList = Array<unknown>;
-export const AuthorizationsReauthorizeResponseLinksItemSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<AuthorizationsReauthorizeResponseLinksItemSchemaLinksList>;
+export const AuthorizationsReauthorizeResponseLinksItemSchemaLinksList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<AuthorizationsReauthorizeResponseLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export interface AuthorizationsReauthorizeResponseLinksItemSchemaMedia {
@@ -354,23 +351,17 @@ export const AuthorizationsReauthorizeResponseLinksItemTargetSchemaAllOfList =
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type AuthorizationsReauthorizeResponseLinksItemTargetSchemaAnyOfList = Array<unknown>;
 export const AuthorizationsReauthorizeResponseLinksItemTargetSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AuthorizationsReauthorizeResponseLinksItemTargetSchemaAnyOfList>;
+  AuthorizationsReauthorizeResponseLinksItemTargetSchemaAllOfList as any as S.Schema<AuthorizationsReauthorizeResponseLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type AuthorizationsReauthorizeResponseLinksItemTargetSchemaOneOfList = Array<unknown>;
 export const AuthorizationsReauthorizeResponseLinksItemTargetSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AuthorizationsReauthorizeResponseLinksItemTargetSchemaOneOfList>;
+  AuthorizationsReauthorizeResponseLinksItemTargetSchemaAllOfList as any as S.Schema<AuthorizationsReauthorizeResponseLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type AuthorizationsReauthorizeResponseLinksItemTargetSchemaLinksList = Array<unknown>;
 export const AuthorizationsReauthorizeResponseLinksItemTargetSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AuthorizationsReauthorizeResponseLinksItemTargetSchemaLinksList>;
+  AuthorizationsReauthorizeResponseLinksItemTargetSchemaAllOfList as any as S.Schema<AuthorizationsReauthorizeResponseLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type AuthorizationsReauthorizeResponseLinksItemTargetSchemaMedia =
@@ -837,27 +828,23 @@ export const CaptureAuthorizationResponseLinksItemMethod = S.String;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CaptureAuthorizationResponseLinksItemSchemaAllOfList = Array<unknown>;
-export const CaptureAuthorizationResponseLinksItemSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CaptureAuthorizationResponseLinksItemSchemaAllOfList>;
+export const CaptureAuthorizationResponseLinksItemSchemaAllOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<CaptureAuthorizationResponseLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type CaptureAuthorizationResponseLinksItemSchemaAnyOfList = Array<unknown>;
-export const CaptureAuthorizationResponseLinksItemSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CaptureAuthorizationResponseLinksItemSchemaAnyOfList>;
+export const CaptureAuthorizationResponseLinksItemSchemaAnyOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<CaptureAuthorizationResponseLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type CaptureAuthorizationResponseLinksItemSchemaOneOfList = Array<unknown>;
-export const CaptureAuthorizationResponseLinksItemSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CaptureAuthorizationResponseLinksItemSchemaOneOfList>;
+export const CaptureAuthorizationResponseLinksItemSchemaOneOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<CaptureAuthorizationResponseLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type CaptureAuthorizationResponseLinksItemSchemaLinksList = Array<unknown>;
-export const CaptureAuthorizationResponseLinksItemSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CaptureAuthorizationResponseLinksItemSchemaLinksList>;
+export const CaptureAuthorizationResponseLinksItemSchemaLinksList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<CaptureAuthorizationResponseLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type CaptureAuthorizationResponseLinksItemSchemaMedia =
@@ -895,50 +882,28 @@ export interface CaptureAuthorizationResponseLinksItemSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const CaptureAuthorizationResponseLinksItemSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(CaptureAuthorizationResponseLinksItemSchemaAllOfList),
-    anyOf: S.optional(CaptureAuthorizationResponseLinksItemSchemaAnyOfList),
-    oneOf: S.optional(CaptureAuthorizationResponseLinksItemSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(CaptureAuthorizationResponseLinksItemSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(AuthorizationsReauthorizeResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CaptureAuthorizationResponseLinksItemSchema",
-}) as any as S.Schema<CaptureAuthorizationResponseLinksItemSchema>;
+export const CaptureAuthorizationResponseLinksItemSchema =
+  AuthorizationsReauthorizeResponseLinksItemSchema as any as S.Schema<CaptureAuthorizationResponseLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CaptureAuthorizationResponseLinksItemTargetSchemaAllOfList = Array<unknown>;
-export const CaptureAuthorizationResponseLinksItemTargetSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CaptureAuthorizationResponseLinksItemTargetSchemaAllOfList>;
+export const CaptureAuthorizationResponseLinksItemTargetSchemaAllOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<CaptureAuthorizationResponseLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type CaptureAuthorizationResponseLinksItemTargetSchemaAnyOfList = Array<unknown>;
-export const CaptureAuthorizationResponseLinksItemTargetSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CaptureAuthorizationResponseLinksItemTargetSchemaAnyOfList>;
+export const CaptureAuthorizationResponseLinksItemTargetSchemaAnyOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<CaptureAuthorizationResponseLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type CaptureAuthorizationResponseLinksItemTargetSchemaOneOfList = Array<unknown>;
-export const CaptureAuthorizationResponseLinksItemTargetSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CaptureAuthorizationResponseLinksItemTargetSchemaOneOfList>;
+export const CaptureAuthorizationResponseLinksItemTargetSchemaOneOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<CaptureAuthorizationResponseLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type CaptureAuthorizationResponseLinksItemTargetSchemaLinksList = Array<unknown>;
-export const CaptureAuthorizationResponseLinksItemTargetSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CaptureAuthorizationResponseLinksItemTargetSchemaLinksList>;
+export const CaptureAuthorizationResponseLinksItemTargetSchemaLinksList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<CaptureAuthorizationResponseLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type CaptureAuthorizationResponseLinksItemTargetSchemaMedia =
@@ -976,26 +941,8 @@ export interface CaptureAuthorizationResponseLinksItemTargetSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const CaptureAuthorizationResponseLinksItemTargetSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(CaptureAuthorizationResponseLinksItemTargetSchemaAllOfList),
-    anyOf: S.optional(CaptureAuthorizationResponseLinksItemTargetSchemaAnyOfList),
-    oneOf: S.optional(CaptureAuthorizationResponseLinksItemTargetSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(CaptureAuthorizationResponseLinksItemTargetSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(AuthorizationsReauthorizeResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CaptureAuthorizationResponseLinksItemTargetSchema",
-}) as any as S.Schema<CaptureAuthorizationResponseLinksItemTargetSchema>;
+export const CaptureAuthorizationResponseLinksItemTargetSchema =
+  AuthorizationsReauthorizeResponseLinksItemSchema as any as S.Schema<CaptureAuthorizationResponseLinksItemTargetSchema>;
 
 export interface CaptureAuthorizationResponseLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -1642,27 +1589,23 @@ export const LinkDescriptionMethod = S.String;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type LinkDescriptionSchemaAllOfList = Array<unknown>;
-export const LinkDescriptionSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<LinkDescriptionSchemaAllOfList>;
+export const LinkDescriptionSchemaAllOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<LinkDescriptionSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type LinkDescriptionSchemaAnyOfList = Array<unknown>;
-export const LinkDescriptionSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<LinkDescriptionSchemaAnyOfList>;
+export const LinkDescriptionSchemaAnyOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<LinkDescriptionSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type LinkDescriptionSchemaOneOfList = Array<unknown>;
-export const LinkDescriptionSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<LinkDescriptionSchemaOneOfList>;
+export const LinkDescriptionSchemaOneOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<LinkDescriptionSchemaOneOfList>;
 
 /** An array of links. */
 export type LinkDescriptionSchemaLinksList = Array<unknown>;
-export const LinkDescriptionSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<LinkDescriptionSchemaLinksList>;
+export const LinkDescriptionSchemaLinksList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<LinkDescriptionSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type LinkDescriptionSchemaMedia = AuthorizationsReauthorizeResponseLinksItemSchemaMedia;
@@ -1719,27 +1662,23 @@ export const LinkDescriptionSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type LinkDescriptionTargetSchemaAllOfList = Array<unknown>;
-export const LinkDescriptionTargetSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<LinkDescriptionTargetSchemaAllOfList>;
+export const LinkDescriptionTargetSchemaAllOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<LinkDescriptionTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type LinkDescriptionTargetSchemaAnyOfList = Array<unknown>;
-export const LinkDescriptionTargetSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<LinkDescriptionTargetSchemaAnyOfList>;
+export const LinkDescriptionTargetSchemaAnyOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<LinkDescriptionTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type LinkDescriptionTargetSchemaOneOfList = Array<unknown>;
-export const LinkDescriptionTargetSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<LinkDescriptionTargetSchemaOneOfList>;
+export const LinkDescriptionTargetSchemaOneOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<LinkDescriptionTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type LinkDescriptionTargetSchemaLinksList = Array<unknown>;
-export const LinkDescriptionTargetSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<LinkDescriptionTargetSchemaLinksList>;
+export const LinkDescriptionTargetSchemaLinksList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<LinkDescriptionTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type LinkDescriptionTargetSchemaMedia =
@@ -1777,26 +1716,8 @@ export interface LinkDescriptionTargetSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const LinkDescriptionTargetSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(LinkDescriptionTargetSchemaAllOfList),
-    anyOf: S.optional(LinkDescriptionTargetSchemaAnyOfList),
-    oneOf: S.optional(LinkDescriptionTargetSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(LinkDescriptionTargetSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(AuthorizationsReauthorizeResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LinkDescriptionTargetSchema",
-}) as any as S.Schema<LinkDescriptionTargetSchema>;
+export const LinkDescriptionTargetSchema =
+  AuthorizationsReauthorizeResponseLinksItemSchema as any as S.Schema<LinkDescriptionTargetSchema>;
 
 /** The request-related [HATEOAS link](/api/rest/responses/#hateoas-links) information. */
 export interface LinkDescription {
@@ -1969,27 +1890,23 @@ export const GetAuthorizationResponseLinksItemMethod = S.String;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type GetAuthorizationResponseLinksItemSchemaAllOfList = Array<unknown>;
-export const GetAuthorizationResponseLinksItemSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetAuthorizationResponseLinksItemSchemaAllOfList>;
+export const GetAuthorizationResponseLinksItemSchemaAllOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<GetAuthorizationResponseLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type GetAuthorizationResponseLinksItemSchemaAnyOfList = Array<unknown>;
-export const GetAuthorizationResponseLinksItemSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetAuthorizationResponseLinksItemSchemaAnyOfList>;
+export const GetAuthorizationResponseLinksItemSchemaAnyOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<GetAuthorizationResponseLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type GetAuthorizationResponseLinksItemSchemaOneOfList = Array<unknown>;
-export const GetAuthorizationResponseLinksItemSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetAuthorizationResponseLinksItemSchemaOneOfList>;
+export const GetAuthorizationResponseLinksItemSchemaOneOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<GetAuthorizationResponseLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type GetAuthorizationResponseLinksItemSchemaLinksList = Array<unknown>;
-export const GetAuthorizationResponseLinksItemSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetAuthorizationResponseLinksItemSchemaLinksList>;
+export const GetAuthorizationResponseLinksItemSchemaLinksList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<GetAuthorizationResponseLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type GetAuthorizationResponseLinksItemSchemaMedia =
@@ -2027,50 +1944,28 @@ export interface GetAuthorizationResponseLinksItemSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const GetAuthorizationResponseLinksItemSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(GetAuthorizationResponseLinksItemSchemaAllOfList),
-    anyOf: S.optional(GetAuthorizationResponseLinksItemSchemaAnyOfList),
-    oneOf: S.optional(GetAuthorizationResponseLinksItemSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(GetAuthorizationResponseLinksItemSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(AuthorizationsReauthorizeResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetAuthorizationResponseLinksItemSchema",
-}) as any as S.Schema<GetAuthorizationResponseLinksItemSchema>;
+export const GetAuthorizationResponseLinksItemSchema =
+  AuthorizationsReauthorizeResponseLinksItemSchema as any as S.Schema<GetAuthorizationResponseLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type GetAuthorizationResponseLinksItemTargetSchemaAllOfList = Array<unknown>;
-export const GetAuthorizationResponseLinksItemTargetSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetAuthorizationResponseLinksItemTargetSchemaAllOfList>;
+export const GetAuthorizationResponseLinksItemTargetSchemaAllOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<GetAuthorizationResponseLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type GetAuthorizationResponseLinksItemTargetSchemaAnyOfList = Array<unknown>;
-export const GetAuthorizationResponseLinksItemTargetSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetAuthorizationResponseLinksItemTargetSchemaAnyOfList>;
+export const GetAuthorizationResponseLinksItemTargetSchemaAnyOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<GetAuthorizationResponseLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type GetAuthorizationResponseLinksItemTargetSchemaOneOfList = Array<unknown>;
-export const GetAuthorizationResponseLinksItemTargetSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetAuthorizationResponseLinksItemTargetSchemaOneOfList>;
+export const GetAuthorizationResponseLinksItemTargetSchemaOneOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<GetAuthorizationResponseLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type GetAuthorizationResponseLinksItemTargetSchemaLinksList = Array<unknown>;
-export const GetAuthorizationResponseLinksItemTargetSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetAuthorizationResponseLinksItemTargetSchemaLinksList>;
+export const GetAuthorizationResponseLinksItemTargetSchemaLinksList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<GetAuthorizationResponseLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type GetAuthorizationResponseLinksItemTargetSchemaMedia =
@@ -2108,26 +2003,8 @@ export interface GetAuthorizationResponseLinksItemTargetSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const GetAuthorizationResponseLinksItemTargetSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(GetAuthorizationResponseLinksItemTargetSchemaAllOfList),
-    anyOf: S.optional(GetAuthorizationResponseLinksItemTargetSchemaAnyOfList),
-    oneOf: S.optional(GetAuthorizationResponseLinksItemTargetSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(GetAuthorizationResponseLinksItemTargetSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(AuthorizationsReauthorizeResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetAuthorizationResponseLinksItemTargetSchema",
-}) as any as S.Schema<GetAuthorizationResponseLinksItemTargetSchema>;
+export const GetAuthorizationResponseLinksItemTargetSchema =
+  AuthorizationsReauthorizeResponseLinksItemSchema as any as S.Schema<GetAuthorizationResponseLinksItemTargetSchema>;
 
 export interface GetAuthorizationResponseLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -2353,9 +2230,8 @@ export const GetCaptureResponseSellerReceivableBreakdownPlatformFeesItem =
 /** An array of platform or partner fees, commissions, or brokerage fees that associated with the captured payment. */
 export type GetCaptureResponseSellerReceivableBreakdownPlatformFeesList =
   Array<CaptureAuthorizationRequestPaymentInstructionPlatformFeesItem>;
-export const GetCaptureResponseSellerReceivableBreakdownPlatformFeesList = /*@__PURE__*/ S.Array(
-  CaptureAuthorizationRequestPaymentInstructionPlatformFeesItem,
-) as any as S.Schema<GetCaptureResponseSellerReceivableBreakdownPlatformFeesList>;
+export const GetCaptureResponseSellerReceivableBreakdownPlatformFeesList =
+  CaptureAuthorizationRequestPaymentInstructionPlatformFeesList as any as S.Schema<GetCaptureResponseSellerReceivableBreakdownPlatformFeesList>;
 
 export interface GetCaptureResponseSellerReceivableBreakdown {
   gross_amount: AuthorizationsReauthorizeRequestAmount;
@@ -2395,27 +2271,23 @@ export const GetCaptureResponseLinksItemMethod = S.String;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type GetCaptureResponseLinksItemSchemaAllOfList = Array<unknown>;
-export const GetCaptureResponseLinksItemSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetCaptureResponseLinksItemSchemaAllOfList>;
+export const GetCaptureResponseLinksItemSchemaAllOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<GetCaptureResponseLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type GetCaptureResponseLinksItemSchemaAnyOfList = Array<unknown>;
-export const GetCaptureResponseLinksItemSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetCaptureResponseLinksItemSchemaAnyOfList>;
+export const GetCaptureResponseLinksItemSchemaAnyOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<GetCaptureResponseLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type GetCaptureResponseLinksItemSchemaOneOfList = Array<unknown>;
-export const GetCaptureResponseLinksItemSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetCaptureResponseLinksItemSchemaOneOfList>;
+export const GetCaptureResponseLinksItemSchemaOneOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<GetCaptureResponseLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type GetCaptureResponseLinksItemSchemaLinksList = Array<unknown>;
-export const GetCaptureResponseLinksItemSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetCaptureResponseLinksItemSchemaLinksList>;
+export const GetCaptureResponseLinksItemSchemaLinksList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<GetCaptureResponseLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type GetCaptureResponseLinksItemSchemaMedia =
@@ -2453,50 +2325,28 @@ export interface GetCaptureResponseLinksItemSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const GetCaptureResponseLinksItemSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(GetCaptureResponseLinksItemSchemaAllOfList),
-    anyOf: S.optional(GetCaptureResponseLinksItemSchemaAnyOfList),
-    oneOf: S.optional(GetCaptureResponseLinksItemSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(GetCaptureResponseLinksItemSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(AuthorizationsReauthorizeResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetCaptureResponseLinksItemSchema",
-}) as any as S.Schema<GetCaptureResponseLinksItemSchema>;
+export const GetCaptureResponseLinksItemSchema =
+  AuthorizationsReauthorizeResponseLinksItemSchema as any as S.Schema<GetCaptureResponseLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type GetCaptureResponseLinksItemTargetSchemaAllOfList = Array<unknown>;
-export const GetCaptureResponseLinksItemTargetSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetCaptureResponseLinksItemTargetSchemaAllOfList>;
+export const GetCaptureResponseLinksItemTargetSchemaAllOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<GetCaptureResponseLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type GetCaptureResponseLinksItemTargetSchemaAnyOfList = Array<unknown>;
-export const GetCaptureResponseLinksItemTargetSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetCaptureResponseLinksItemTargetSchemaAnyOfList>;
+export const GetCaptureResponseLinksItemTargetSchemaAnyOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<GetCaptureResponseLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type GetCaptureResponseLinksItemTargetSchemaOneOfList = Array<unknown>;
-export const GetCaptureResponseLinksItemTargetSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetCaptureResponseLinksItemTargetSchemaOneOfList>;
+export const GetCaptureResponseLinksItemTargetSchemaOneOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<GetCaptureResponseLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type GetCaptureResponseLinksItemTargetSchemaLinksList = Array<unknown>;
-export const GetCaptureResponseLinksItemTargetSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetCaptureResponseLinksItemTargetSchemaLinksList>;
+export const GetCaptureResponseLinksItemTargetSchemaLinksList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<GetCaptureResponseLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type GetCaptureResponseLinksItemTargetSchemaMedia =
@@ -2534,26 +2384,8 @@ export interface GetCaptureResponseLinksItemTargetSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const GetCaptureResponseLinksItemTargetSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(GetCaptureResponseLinksItemTargetSchemaAllOfList),
-    anyOf: S.optional(GetCaptureResponseLinksItemTargetSchemaAnyOfList),
-    oneOf: S.optional(GetCaptureResponseLinksItemTargetSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(GetCaptureResponseLinksItemTargetSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(AuthorizationsReauthorizeResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetCaptureResponseLinksItemTargetSchema",
-}) as any as S.Schema<GetCaptureResponseLinksItemTargetSchema>;
+export const GetCaptureResponseLinksItemTargetSchema =
+  AuthorizationsReauthorizeResponseLinksItemSchema as any as S.Schema<GetCaptureResponseLinksItemTargetSchema>;
 
 export interface GetCaptureResponseLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -2975,9 +2807,8 @@ export const GetRefundResponseSellerPayableBreakdownPlatformFeesItem =
 /** An array of platform or partner fees, commissions, or brokerage fees for the refund. */
 export type GetRefundResponseSellerPayableBreakdownPlatformFeesList =
   Array<CaptureAuthorizationRequestPaymentInstructionPlatformFeesItem>;
-export const GetRefundResponseSellerPayableBreakdownPlatformFeesList = /*@__PURE__*/ S.Array(
-  CaptureAuthorizationRequestPaymentInstructionPlatformFeesItem,
-) as any as S.Schema<GetRefundResponseSellerPayableBreakdownPlatformFeesList>;
+export const GetRefundResponseSellerPayableBreakdownPlatformFeesList =
+  CaptureAuthorizationRequestPaymentInstructionPlatformFeesList as any as S.Schema<GetRefundResponseSellerPayableBreakdownPlatformFeesList>;
 
 export type GetRefundResponseSellerPayableBreakdownNetAmountBreakdownItemPayableAmount =
   AuthorizationsReauthorizeRequestAmount;
@@ -3067,27 +2898,23 @@ export const GetRefundResponseLinksItemMethod = S.String;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type GetRefundResponseLinksItemSchemaAllOfList = Array<unknown>;
-export const GetRefundResponseLinksItemSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetRefundResponseLinksItemSchemaAllOfList>;
+export const GetRefundResponseLinksItemSchemaAllOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<GetRefundResponseLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type GetRefundResponseLinksItemSchemaAnyOfList = Array<unknown>;
-export const GetRefundResponseLinksItemSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetRefundResponseLinksItemSchemaAnyOfList>;
+export const GetRefundResponseLinksItemSchemaAnyOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<GetRefundResponseLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type GetRefundResponseLinksItemSchemaOneOfList = Array<unknown>;
-export const GetRefundResponseLinksItemSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetRefundResponseLinksItemSchemaOneOfList>;
+export const GetRefundResponseLinksItemSchemaOneOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<GetRefundResponseLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type GetRefundResponseLinksItemSchemaLinksList = Array<unknown>;
-export const GetRefundResponseLinksItemSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetRefundResponseLinksItemSchemaLinksList>;
+export const GetRefundResponseLinksItemSchemaLinksList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<GetRefundResponseLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type GetRefundResponseLinksItemSchemaMedia =
@@ -3125,50 +2952,28 @@ export interface GetRefundResponseLinksItemSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const GetRefundResponseLinksItemSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(GetRefundResponseLinksItemSchemaAllOfList),
-    anyOf: S.optional(GetRefundResponseLinksItemSchemaAnyOfList),
-    oneOf: S.optional(GetRefundResponseLinksItemSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(GetRefundResponseLinksItemSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(AuthorizationsReauthorizeResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetRefundResponseLinksItemSchema",
-}) as any as S.Schema<GetRefundResponseLinksItemSchema>;
+export const GetRefundResponseLinksItemSchema =
+  AuthorizationsReauthorizeResponseLinksItemSchema as any as S.Schema<GetRefundResponseLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type GetRefundResponseLinksItemTargetSchemaAllOfList = Array<unknown>;
-export const GetRefundResponseLinksItemTargetSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetRefundResponseLinksItemTargetSchemaAllOfList>;
+export const GetRefundResponseLinksItemTargetSchemaAllOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<GetRefundResponseLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type GetRefundResponseLinksItemTargetSchemaAnyOfList = Array<unknown>;
-export const GetRefundResponseLinksItemTargetSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetRefundResponseLinksItemTargetSchemaAnyOfList>;
+export const GetRefundResponseLinksItemTargetSchemaAnyOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<GetRefundResponseLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type GetRefundResponseLinksItemTargetSchemaOneOfList = Array<unknown>;
-export const GetRefundResponseLinksItemTargetSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetRefundResponseLinksItemTargetSchemaOneOfList>;
+export const GetRefundResponseLinksItemTargetSchemaOneOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<GetRefundResponseLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type GetRefundResponseLinksItemTargetSchemaLinksList = Array<unknown>;
-export const GetRefundResponseLinksItemTargetSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetRefundResponseLinksItemTargetSchemaLinksList>;
+export const GetRefundResponseLinksItemTargetSchemaLinksList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<GetRefundResponseLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type GetRefundResponseLinksItemTargetSchemaMedia =
@@ -3206,26 +3011,8 @@ export interface GetRefundResponseLinksItemTargetSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const GetRefundResponseLinksItemTargetSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(GetRefundResponseLinksItemTargetSchemaAllOfList),
-    anyOf: S.optional(GetRefundResponseLinksItemTargetSchemaAnyOfList),
-    oneOf: S.optional(GetRefundResponseLinksItemTargetSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(GetRefundResponseLinksItemTargetSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(AuthorizationsReauthorizeResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetRefundResponseLinksItemTargetSchema",
-}) as any as S.Schema<GetRefundResponseLinksItemTargetSchema>;
+export const GetRefundResponseLinksItemTargetSchema =
+  AuthorizationsReauthorizeResponseLinksItemSchema as any as S.Schema<GetRefundResponseLinksItemTargetSchema>;
 
 export interface GetRefundResponseLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -3326,9 +3113,8 @@ export const RefundCaptureRequestPaymentInstructionPlatformFeesItem =
 /** Specifies the amount that the API caller will contribute to the refund being processed. The amount needs to be lower than platform_fees amount originally captured or the amount that is remaining if multiple refunds have been processed. This field is only applicable to merchants that have been enabled for PayPal Commerce Platform for Marketplaces and Platforms capability. Please speak to your account manager if you want to use this capability. */
 export type RefundCaptureRequestPaymentInstructionPlatformFeesList =
   Array<CaptureAuthorizationRequestPaymentInstructionPlatformFeesItem>;
-export const RefundCaptureRequestPaymentInstructionPlatformFeesList = /*@__PURE__*/ S.Array(
-  CaptureAuthorizationRequestPaymentInstructionPlatformFeesItem,
-) as any as S.Schema<RefundCaptureRequestPaymentInstructionPlatformFeesList>;
+export const RefundCaptureRequestPaymentInstructionPlatformFeesList =
+  CaptureAuthorizationRequestPaymentInstructionPlatformFeesList as any as S.Schema<RefundCaptureRequestPaymentInstructionPlatformFeesList>;
 
 export interface RefundCaptureRequestPaymentInstruction {
   /** Specifies the amount that the API caller will contribute to the refund being processed. The amount needs to be lower than platform_fees amount originally captured or the amount that is remaining if multiple refunds have been processed. This field is only applicable to merchants that have been enabled for PayPal Commerce Platform for Marketplaces and Platforms capability. Please speak to your account manager if you want to use this capability. */
@@ -3440,9 +3226,8 @@ export const RefundCaptureResponseSellerPayableBreakdownPlatformFeesItem =
 /** An array of platform or partner fees, commissions, or brokerage fees for the refund. */
 export type RefundCaptureResponseSellerPayableBreakdownPlatformFeesList =
   Array<CaptureAuthorizationRequestPaymentInstructionPlatformFeesItem>;
-export const RefundCaptureResponseSellerPayableBreakdownPlatformFeesList = /*@__PURE__*/ S.Array(
-  CaptureAuthorizationRequestPaymentInstructionPlatformFeesItem,
-) as any as S.Schema<RefundCaptureResponseSellerPayableBreakdownPlatformFeesList>;
+export const RefundCaptureResponseSellerPayableBreakdownPlatformFeesList =
+  CaptureAuthorizationRequestPaymentInstructionPlatformFeesList as any as S.Schema<RefundCaptureResponseSellerPayableBreakdownPlatformFeesList>;
 
 export type RefundCaptureResponseSellerPayableBreakdownNetAmountBreakdownItemPayableAmount =
   AuthorizationsReauthorizeRequestAmount;
@@ -3524,27 +3309,23 @@ export const RefundCaptureResponseLinksItemMethod = S.String;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type RefundCaptureResponseLinksItemSchemaAllOfList = Array<unknown>;
-export const RefundCaptureResponseLinksItemSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RefundCaptureResponseLinksItemSchemaAllOfList>;
+export const RefundCaptureResponseLinksItemSchemaAllOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<RefundCaptureResponseLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type RefundCaptureResponseLinksItemSchemaAnyOfList = Array<unknown>;
-export const RefundCaptureResponseLinksItemSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RefundCaptureResponseLinksItemSchemaAnyOfList>;
+export const RefundCaptureResponseLinksItemSchemaAnyOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<RefundCaptureResponseLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type RefundCaptureResponseLinksItemSchemaOneOfList = Array<unknown>;
-export const RefundCaptureResponseLinksItemSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RefundCaptureResponseLinksItemSchemaOneOfList>;
+export const RefundCaptureResponseLinksItemSchemaOneOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<RefundCaptureResponseLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type RefundCaptureResponseLinksItemSchemaLinksList = Array<unknown>;
-export const RefundCaptureResponseLinksItemSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RefundCaptureResponseLinksItemSchemaLinksList>;
+export const RefundCaptureResponseLinksItemSchemaLinksList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<RefundCaptureResponseLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type RefundCaptureResponseLinksItemSchemaMedia =
@@ -3582,50 +3363,28 @@ export interface RefundCaptureResponseLinksItemSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const RefundCaptureResponseLinksItemSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(RefundCaptureResponseLinksItemSchemaAllOfList),
-    anyOf: S.optional(RefundCaptureResponseLinksItemSchemaAnyOfList),
-    oneOf: S.optional(RefundCaptureResponseLinksItemSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(RefundCaptureResponseLinksItemSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(AuthorizationsReauthorizeResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RefundCaptureResponseLinksItemSchema",
-}) as any as S.Schema<RefundCaptureResponseLinksItemSchema>;
+export const RefundCaptureResponseLinksItemSchema =
+  AuthorizationsReauthorizeResponseLinksItemSchema as any as S.Schema<RefundCaptureResponseLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type RefundCaptureResponseLinksItemTargetSchemaAllOfList = Array<unknown>;
-export const RefundCaptureResponseLinksItemTargetSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RefundCaptureResponseLinksItemTargetSchemaAllOfList>;
+export const RefundCaptureResponseLinksItemTargetSchemaAllOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<RefundCaptureResponseLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type RefundCaptureResponseLinksItemTargetSchemaAnyOfList = Array<unknown>;
-export const RefundCaptureResponseLinksItemTargetSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RefundCaptureResponseLinksItemTargetSchemaAnyOfList>;
+export const RefundCaptureResponseLinksItemTargetSchemaAnyOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<RefundCaptureResponseLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type RefundCaptureResponseLinksItemTargetSchemaOneOfList = Array<unknown>;
-export const RefundCaptureResponseLinksItemTargetSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RefundCaptureResponseLinksItemTargetSchemaOneOfList>;
+export const RefundCaptureResponseLinksItemTargetSchemaOneOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<RefundCaptureResponseLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type RefundCaptureResponseLinksItemTargetSchemaLinksList = Array<unknown>;
-export const RefundCaptureResponseLinksItemTargetSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RefundCaptureResponseLinksItemTargetSchemaLinksList>;
+export const RefundCaptureResponseLinksItemTargetSchemaLinksList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<RefundCaptureResponseLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type RefundCaptureResponseLinksItemTargetSchemaMedia =
@@ -3663,26 +3422,8 @@ export interface RefundCaptureResponseLinksItemTargetSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const RefundCaptureResponseLinksItemTargetSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(RefundCaptureResponseLinksItemTargetSchemaAllOfList),
-    anyOf: S.optional(RefundCaptureResponseLinksItemTargetSchemaAnyOfList),
-    oneOf: S.optional(RefundCaptureResponseLinksItemTargetSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(RefundCaptureResponseLinksItemTargetSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(AuthorizationsReauthorizeResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RefundCaptureResponseLinksItemTargetSchema",
-}) as any as S.Schema<RefundCaptureResponseLinksItemTargetSchema>;
+export const RefundCaptureResponseLinksItemTargetSchema =
+  AuthorizationsReauthorizeResponseLinksItemSchema as any as S.Schema<RefundCaptureResponseLinksItemTargetSchema>;
 
 export interface RefundCaptureResponseLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -3867,27 +3608,23 @@ export const VoidAuthorizationResponseLinksItemMethod = S.String;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type VoidAuthorizationResponseLinksItemSchemaAllOfList = Array<unknown>;
-export const VoidAuthorizationResponseLinksItemSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VoidAuthorizationResponseLinksItemSchemaAllOfList>;
+export const VoidAuthorizationResponseLinksItemSchemaAllOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<VoidAuthorizationResponseLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type VoidAuthorizationResponseLinksItemSchemaAnyOfList = Array<unknown>;
-export const VoidAuthorizationResponseLinksItemSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VoidAuthorizationResponseLinksItemSchemaAnyOfList>;
+export const VoidAuthorizationResponseLinksItemSchemaAnyOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<VoidAuthorizationResponseLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type VoidAuthorizationResponseLinksItemSchemaOneOfList = Array<unknown>;
-export const VoidAuthorizationResponseLinksItemSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VoidAuthorizationResponseLinksItemSchemaOneOfList>;
+export const VoidAuthorizationResponseLinksItemSchemaOneOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<VoidAuthorizationResponseLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type VoidAuthorizationResponseLinksItemSchemaLinksList = Array<unknown>;
-export const VoidAuthorizationResponseLinksItemSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VoidAuthorizationResponseLinksItemSchemaLinksList>;
+export const VoidAuthorizationResponseLinksItemSchemaLinksList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<VoidAuthorizationResponseLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type VoidAuthorizationResponseLinksItemSchemaMedia =
@@ -3925,50 +3662,28 @@ export interface VoidAuthorizationResponseLinksItemSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const VoidAuthorizationResponseLinksItemSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(VoidAuthorizationResponseLinksItemSchemaAllOfList),
-    anyOf: S.optional(VoidAuthorizationResponseLinksItemSchemaAnyOfList),
-    oneOf: S.optional(VoidAuthorizationResponseLinksItemSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(VoidAuthorizationResponseLinksItemSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(AuthorizationsReauthorizeResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VoidAuthorizationResponseLinksItemSchema",
-}) as any as S.Schema<VoidAuthorizationResponseLinksItemSchema>;
+export const VoidAuthorizationResponseLinksItemSchema =
+  AuthorizationsReauthorizeResponseLinksItemSchema as any as S.Schema<VoidAuthorizationResponseLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type VoidAuthorizationResponseLinksItemTargetSchemaAllOfList = Array<unknown>;
-export const VoidAuthorizationResponseLinksItemTargetSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VoidAuthorizationResponseLinksItemTargetSchemaAllOfList>;
+export const VoidAuthorizationResponseLinksItemTargetSchemaAllOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<VoidAuthorizationResponseLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type VoidAuthorizationResponseLinksItemTargetSchemaAnyOfList = Array<unknown>;
-export const VoidAuthorizationResponseLinksItemTargetSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VoidAuthorizationResponseLinksItemTargetSchemaAnyOfList>;
+export const VoidAuthorizationResponseLinksItemTargetSchemaAnyOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<VoidAuthorizationResponseLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type VoidAuthorizationResponseLinksItemTargetSchemaOneOfList = Array<unknown>;
-export const VoidAuthorizationResponseLinksItemTargetSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VoidAuthorizationResponseLinksItemTargetSchemaOneOfList>;
+export const VoidAuthorizationResponseLinksItemTargetSchemaOneOfList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<VoidAuthorizationResponseLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type VoidAuthorizationResponseLinksItemTargetSchemaLinksList = Array<unknown>;
-export const VoidAuthorizationResponseLinksItemTargetSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VoidAuthorizationResponseLinksItemTargetSchemaLinksList>;
+export const VoidAuthorizationResponseLinksItemTargetSchemaLinksList =
+  AuthorizationsReauthorizeResponseLinksItemSchemaAllOfList as any as S.Schema<VoidAuthorizationResponseLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type VoidAuthorizationResponseLinksItemTargetSchemaMedia =
@@ -4006,26 +3721,8 @@ export interface VoidAuthorizationResponseLinksItemTargetSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const VoidAuthorizationResponseLinksItemTargetSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(VoidAuthorizationResponseLinksItemTargetSchemaAllOfList),
-    anyOf: S.optional(VoidAuthorizationResponseLinksItemTargetSchemaAnyOfList),
-    oneOf: S.optional(VoidAuthorizationResponseLinksItemTargetSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(VoidAuthorizationResponseLinksItemTargetSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(AuthorizationsReauthorizeResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VoidAuthorizationResponseLinksItemTargetSchema",
-}) as any as S.Schema<VoidAuthorizationResponseLinksItemTargetSchema>;
+export const VoidAuthorizationResponseLinksItemTargetSchema =
+  AuthorizationsReauthorizeResponseLinksItemSchema as any as S.Schema<VoidAuthorizationResponseLinksItemTargetSchema>;
 
 export interface VoidAuthorizationResponseLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */

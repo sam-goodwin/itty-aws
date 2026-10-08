@@ -126,11 +126,8 @@ export interface CompleteSuccessResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const CompleteSuccessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "CompleteSuccessResponse" }) as any as S.Schema<CompleteSuccessResponse>;
+export const CompleteSuccessResponse =
+  CompleteErrorResponse as any as S.Schema<CompleteSuccessResponse>;
 
 export interface ExportWorkflowsStepsResponseRequest {
   /** The workflow ID, starts with Wf* */
@@ -199,21 +196,18 @@ export const ListDistributionsPermissionsResponseUsersItem =
 
 export type ListDistributionsPermissionsResponseUsersList =
   Array<AddDistributionsPermissionsResponseUsersItem>;
-export const ListDistributionsPermissionsResponseUsersList = /*@__PURE__*/ S.Array(
-  AddDistributionsPermissionsResponseUsersItem,
-) as any as S.Schema<ListDistributionsPermissionsResponseUsersList>;
+export const ListDistributionsPermissionsResponseUsersList =
+  AddDistributionsPermissionsResponseUsersList as any as S.Schema<ListDistributionsPermissionsResponseUsersList>;
 
 /** List of team IDs allowed with named_entities permission. */
 export type ListDistributionsPermissionsResponseTeamIdsList = Array<string>;
-export const ListDistributionsPermissionsResponseTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDistributionsPermissionsResponseTeamIdsList>;
+export const ListDistributionsPermissionsResponseTeamIdsList =
+  AddDistributionsPermissionsRequestUserIdsList as any as S.Schema<ListDistributionsPermissionsResponseTeamIdsList>;
 
 /** List of org IDs allowed with named_entities permission. */
 export type ListDistributionsPermissionsResponseOrgIdsList = Array<string>;
-export const ListDistributionsPermissionsResponseOrgIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDistributionsPermissionsResponseOrgIdsList>;
+export const ListDistributionsPermissionsResponseOrgIdsList =
+  AddDistributionsPermissionsRequestUserIdsList as any as S.Schema<ListDistributionsPermissionsResponseOrgIdsList>;
 
 export interface ListDistributionsPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -279,9 +273,8 @@ export const ListWorkflowsStepsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of encoded user IDs */
 export type RemoveDistributionsPermissionsRequestUserIdsList = Array<string>;
-export const RemoveDistributionsPermissionsRequestUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveDistributionsPermissionsRequestUserIdsList>;
+export const RemoveDistributionsPermissionsRequestUserIdsList =
+  AddDistributionsPermissionsRequestUserIdsList as any as S.Schema<RemoveDistributionsPermissionsRequestUserIdsList>;
 
 export interface RemoveDistributionsPermissionsRequest {
   /** The encoded ID of the function */
@@ -320,9 +313,8 @@ export const RemoveDistributionsPermissionsResponseUsersItem =
 
 export type RemoveDistributionsPermissionsResponseUsersList =
   Array<AddDistributionsPermissionsResponseUsersItem>;
-export const RemoveDistributionsPermissionsResponseUsersList = /*@__PURE__*/ S.Array(
-  AddDistributionsPermissionsResponseUsersItem,
-) as any as S.Schema<RemoveDistributionsPermissionsResponseUsersList>;
+export const RemoveDistributionsPermissionsResponseUsersList =
+  AddDistributionsPermissionsResponseUsersList as any as S.Schema<RemoveDistributionsPermissionsResponseUsersList>;
 
 export interface RemoveDistributionsPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -350,21 +342,18 @@ export const SetDistributionsPermissionsRequestPermissionType = S.String;
 
 /** List of encoded user IDs */
 export type SetDistributionsPermissionsRequestUserIdsList = Array<string>;
-export const SetDistributionsPermissionsRequestUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetDistributionsPermissionsRequestUserIdsList>;
+export const SetDistributionsPermissionsRequestUserIdsList =
+  AddDistributionsPermissionsRequestUserIdsList as any as S.Schema<SetDistributionsPermissionsRequestUserIdsList>;
 
 /** List of team IDs to allow for named_entities permission */
 export type SetDistributionsPermissionsRequestTeamIdsList = Array<string>;
-export const SetDistributionsPermissionsRequestTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetDistributionsPermissionsRequestTeamIdsList>;
+export const SetDistributionsPermissionsRequestTeamIdsList =
+  AddDistributionsPermissionsRequestUserIdsList as any as S.Schema<SetDistributionsPermissionsRequestTeamIdsList>;
 
 /** List of org IDs to allow for named_entities permission */
 export type SetDistributionsPermissionsRequestOrgIdsList = Array<string>;
-export const SetDistributionsPermissionsRequestOrgIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetDistributionsPermissionsRequestOrgIdsList>;
+export const SetDistributionsPermissionsRequestOrgIdsList =
+  AddDistributionsPermissionsRequestUserIdsList as any as S.Schema<SetDistributionsPermissionsRequestOrgIdsList>;
 
 export interface SetDistributionsPermissionsRequest {
   /** The encoded ID of the function */
@@ -410,21 +399,18 @@ export const SetDistributionsPermissionsResponseUsersItem =
 
 export type SetDistributionsPermissionsResponseUsersList =
   Array<AddDistributionsPermissionsResponseUsersItem>;
-export const SetDistributionsPermissionsResponseUsersList = /*@__PURE__*/ S.Array(
-  AddDistributionsPermissionsResponseUsersItem,
-) as any as S.Schema<SetDistributionsPermissionsResponseUsersList>;
+export const SetDistributionsPermissionsResponseUsersList =
+  AddDistributionsPermissionsResponseUsersList as any as S.Schema<SetDistributionsPermissionsResponseUsersList>;
 
 /** List of team IDs allowed with named_entities permission. */
 export type SetDistributionsPermissionsResponseTeamIdsList = Array<string>;
-export const SetDistributionsPermissionsResponseTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetDistributionsPermissionsResponseTeamIdsList>;
+export const SetDistributionsPermissionsResponseTeamIdsList =
+  AddDistributionsPermissionsRequestUserIdsList as any as S.Schema<SetDistributionsPermissionsResponseTeamIdsList>;
 
 /** List of org IDs allowed with named_entities permission. */
 export type SetDistributionsPermissionsResponseOrgIdsList = Array<string>;
-export const SetDistributionsPermissionsResponseOrgIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetDistributionsPermissionsResponseOrgIdsList>;
+export const SetDistributionsPermissionsResponseOrgIdsList =
+  AddDistributionsPermissionsRequestUserIdsList as any as S.Schema<SetDistributionsPermissionsResponseOrgIdsList>;
 
 export interface SetDistributionsPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */

@@ -1042,14 +1042,8 @@ export interface ListScriptProcessesResponse {
   /** List of processes matching request parameters. */
   processes?: GoogleAppsScriptTypeProcessList;
 }
-export const ListScriptProcessesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    processes: S.optional(GoogleAppsScriptTypeProcessList),
-  }),
-).annotate({
-  identifier: "ListScriptProcessesResponse",
-}) as any as S.Schema<ListScriptProcessesResponse>;
+export const ListScriptProcessesResponse =
+  ListUserProcessesResponse as any as S.Schema<ListScriptProcessesResponse>;
 
 export type DocumentList = Array<unknown>;
 export const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;

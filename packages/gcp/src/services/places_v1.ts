@@ -933,20 +933,13 @@ export interface GoogleMapsPlacesV1PlaceSubDestination {
   /** The place id of the sub-destination. */
   id?: string;
 }
-export const GoogleMapsPlacesV1PlaceSubDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleMapsPlacesV1PlaceSubDestination",
-}) as any as S.Schema<GoogleMapsPlacesV1PlaceSubDestination>;
+export const GoogleMapsPlacesV1PlaceSubDestination =
+  GoogleMapsPlacesV1PlaceContainingPlace as any as S.Schema<GoogleMapsPlacesV1PlaceSubDestination>;
 
 export type GoogleMapsPlacesV1PlaceSubDestinationList =
   Array<GoogleMapsPlacesV1PlaceSubDestination>;
-export const GoogleMapsPlacesV1PlaceSubDestinationList = /*@__PURE__*/ S.Array(
-  GoogleMapsPlacesV1PlaceSubDestination,
-) as any as S.Schema<GoogleMapsPlacesV1PlaceSubDestinationList>;
+export const GoogleMapsPlacesV1PlaceSubDestinationList =
+  GoogleMapsPlacesV1PlaceContainingPlaceList as any as S.Schema<GoogleMapsPlacesV1PlaceSubDestinationList>;
 
 /** Represents an amount of money with its currency type. */
 export interface GoogleTypeMoney {

@@ -741,11 +741,7 @@ export interface ExpressConfig {
   /** Optional. Whether Express configuration is enabled for the cluster. */
   enabled?: boolean;
 }
-export const ExpressConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ExpressConfig" }) as any as S.Schema<ExpressConfig>;
+export const ExpressConfig = DataplexConfig as any as S.Schema<ExpressConfig>;
 
 /** The source CloudSQL backup resource. */
 export interface CloudSQLBackupRunSource {
@@ -2461,9 +2457,7 @@ export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Options for importing data in SQL format. */
 export interface SqlImportOptions {}
-export const SqlImportOptions = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SqlImportOptions",
-}) as any as S.Schema<SqlImportOptions>;
+export const SqlImportOptions = Empty as any as S.Schema<SqlImportOptions>;
 
 /** Options for importing data in CSV format. */
 export interface CsvImportOptions {

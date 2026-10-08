@@ -1491,13 +1491,8 @@ export interface ListCustomToolNamesResponse {
   /** List of custom tools. */
   toolNames?: ToolNameList;
 }
-export const ListCustomToolNamesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    toolNames: S.optional(ToolNameList),
-  }),
-).annotate({
-  identifier: "ListCustomToolNamesResponse",
-}) as any as S.Schema<ListCustomToolNamesResponse>;
+export const ListCustomToolNamesResponse =
+  GenerateCustomToolspecRequest as any as S.Schema<ListCustomToolNamesResponse>;
 
 export type ListProjectsLocationsConnectionsActionsViewEnum =
   | "ACTION_VIEW_UNSPECIFIED"

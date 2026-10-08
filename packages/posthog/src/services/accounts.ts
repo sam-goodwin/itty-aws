@@ -35,9 +35,8 @@ export const CreateAccountRequestPropertiesEmailDomainsList = /*@__PURE__*/ S.Ar
 
 /** Individual email addresses pinned to this account, matched before the domain fallback. */
 export type CreateAccountRequestPropertiesKnownEmailsList = Array<string>;
-export const CreateAccountRequestPropertiesKnownEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateAccountRequestPropertiesKnownEmailsList>;
+export const CreateAccountRequestPropertiesKnownEmailsList =
+  CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<CreateAccountRequestPropertiesKnownEmailsList>;
 
 /** Typed account properties: website_domain, external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link), and touchpoint matching lists: email_domains (the company's email domains) and known_emails (individual addresses pinned to the account). Defaults to an empty object. Unknown keys are rejected. User assignments live on account relationships, not here. */
 export interface CreateAccountRequestProperties {
@@ -76,9 +75,8 @@ export const CreateAccountRequestProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Tag names attached to the account. Pass a list to replace existing tags. */
 export type CreateAccountRequestTagsList = Array<string>;
-export const CreateAccountRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateAccountRequestTagsList>;
+export const CreateAccountRequestTagsList =
+  CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<CreateAccountRequestTagsList>;
 
 /** * `daily` - daily * `weekly` - weekly * `monthly` - monthly */
 export type SlackSummaryCadenceEnum = "daily" | "weekly" | "monthly";
@@ -114,15 +112,13 @@ export const CreateAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Email domains owned by this account's company, used to match inbound touchpoints to the account. */
 export type AccountPropertiesEmailDomainsList = Array<string>;
-export const AccountPropertiesEmailDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccountPropertiesEmailDomainsList>;
+export const AccountPropertiesEmailDomainsList =
+  CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<AccountPropertiesEmailDomainsList>;
 
 /** Individual email addresses pinned to this account, matched before the domain fallback. */
 export type AccountPropertiesKnownEmailsList = Array<string>;
-export const AccountPropertiesKnownEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccountPropertiesKnownEmailsList>;
+export const AccountPropertiesKnownEmailsList =
+  CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<AccountPropertiesKnownEmailsList>;
 
 /** Typed account properties: website_domain, external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link), and touchpoint matching lists: email_domains (the company's email domains) and known_emails (individual addresses pinned to the account). Defaults to an empty object. Unknown keys are rejected. User assignments live on account relationships, not here. */
 export interface AccountProperties {
@@ -163,9 +159,8 @@ export const AccountTagsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schem
 
 /** Short IDs of the internal notebooks linked to this account, used to persist investigations, call notes, and other free-form context. Empty list if no notebooks have been created for the account. */
 export type AccountNotebooksList = Array<string>;
-export const AccountNotebooksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccountNotebooksList>;
+export const AccountNotebooksList =
+  CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<AccountNotebooksList>;
 
 /** A Customer Analytics account -- a logical grouping used to assign customer-success ownership. */
 export interface Account {
@@ -402,9 +397,8 @@ export const AccountEmailThreadMessageToRecipientsList = /*@__PURE__*/ S.Array(
 
 /** Recipients from the email Cc header. */
 export type AccountEmailThreadMessageCcRecipientsList = Array<AccountEmailThreadAddress>;
-export const AccountEmailThreadMessageCcRecipientsList = /*@__PURE__*/ S.Array(
-  AccountEmailThreadAddress,
-) as any as S.Schema<AccountEmailThreadMessageCcRecipientsList>;
+export const AccountEmailThreadMessageCcRecipientsList =
+  AccountEmailThreadMessageToRecipientsList as any as S.Schema<AccountEmailThreadMessageCcRecipientsList>;
 
 /** * `inbound` - Inbound * `outbound` - Outbound */
 export type EmailThreadMessageDirectionEnum = "inbound" | "outbound";
@@ -727,9 +721,8 @@ export const PaginatedMeetingList = /*@__PURE__*/ S.suspend(() =>
 
 /** Up to 100 account IDs to read presence for. */
 export type ListAccountsPresenceRequestAccountIdsList = Array<string>;
-export const ListAccountsPresenceRequestAccountIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListAccountsPresenceRequestAccountIdsList>;
+export const ListAccountsPresenceRequestAccountIdsList =
+  CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<ListAccountsPresenceRequestAccountIdsList>;
 
 export interface ListAccountsPresenceRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -754,9 +747,8 @@ export const ListAccountsPresenceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** People viewing this account. */
 export type AccountPresenceViewersList = Array<AccountPresenceViewer>;
-export const AccountPresenceViewersList = /*@__PURE__*/ S.Array(
-  AccountPresenceViewer,
-) as any as S.Schema<AccountPresenceViewersList>;
+export const AccountPresenceViewersList =
+  CreateAccountsPresenceResponseBodyList as any as S.Schema<AccountPresenceViewersList>;
 
 export interface AccountPresence {
   /** Customer analytics account ID. */
@@ -1042,15 +1034,13 @@ export const ListAccountsSupportTicketsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Email domains owned by this account's company, used to match inbound touchpoints to the account. */
 export type UpdateAccountRequestPropertiesEmailDomainsList = Array<string>;
-export const UpdateAccountRequestPropertiesEmailDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAccountRequestPropertiesEmailDomainsList>;
+export const UpdateAccountRequestPropertiesEmailDomainsList =
+  CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<UpdateAccountRequestPropertiesEmailDomainsList>;
 
 /** Individual email addresses pinned to this account, matched before the domain fallback. */
 export type UpdateAccountRequestPropertiesKnownEmailsList = Array<string>;
-export const UpdateAccountRequestPropertiesKnownEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAccountRequestPropertiesKnownEmailsList>;
+export const UpdateAccountRequestPropertiesKnownEmailsList =
+  CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<UpdateAccountRequestPropertiesKnownEmailsList>;
 
 /** Typed account properties: website_domain, external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link), and touchpoint matching lists: email_domains (the company's email domains) and known_emails (individual addresses pinned to the account). Defaults to an empty object. Unknown keys are rejected. User assignments live on account relationships, not here. */
 export interface UpdateAccountRequestProperties {
@@ -1069,29 +1059,13 @@ export interface UpdateAccountRequestProperties {
   usage_dashboard_link?: string | null;
   metabase_link?: string | null;
 }
-export const UpdateAccountRequestProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    website_domain: S.optional(S.NullOr(S.String)),
-    email_domains: S.optional(UpdateAccountRequestPropertiesEmailDomainsList),
-    known_emails: S.optional(UpdateAccountRequestPropertiesKnownEmailsList),
-    stripe_customer_id: S.optional(S.NullOr(S.String)),
-    hubspot_deal_id: S.optional(S.NullOr(S.String)),
-    billing_id: S.optional(S.NullOr(S.String)),
-    sfdc_id: S.optional(S.NullOr(S.String)),
-    zendesk_id: S.optional(S.NullOr(S.String)),
-    slack_channel_id: S.optional(S.NullOr(S.String)),
-    usage_dashboard_link: S.optional(S.NullOr(S.String)),
-    metabase_link: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "UpdateAccountRequestProperties",
-}) as any as S.Schema<UpdateAccountRequestProperties>;
+export const UpdateAccountRequestProperties =
+  CreateAccountRequestProperties as any as S.Schema<UpdateAccountRequestProperties>;
 
 /** Tag names attached to the account. Pass a list to replace existing tags. */
 export type UpdateAccountRequestTagsList = Array<string>;
-export const UpdateAccountRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAccountRequestTagsList>;
+export const UpdateAccountRequestTagsList =
+  CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<UpdateAccountRequestTagsList>;
 
 export interface UpdateAccountRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1126,15 +1100,13 @@ export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Email domains owned by this account's company, used to match inbound touchpoints to the account. */
 export type UpdateAccountsPartialRequestPropertiesEmailDomainsList = Array<string>;
-export const UpdateAccountsPartialRequestPropertiesEmailDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAccountsPartialRequestPropertiesEmailDomainsList>;
+export const UpdateAccountsPartialRequestPropertiesEmailDomainsList =
+  CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<UpdateAccountsPartialRequestPropertiesEmailDomainsList>;
 
 /** Individual email addresses pinned to this account, matched before the domain fallback. */
 export type UpdateAccountsPartialRequestPropertiesKnownEmailsList = Array<string>;
-export const UpdateAccountsPartialRequestPropertiesKnownEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAccountsPartialRequestPropertiesKnownEmailsList>;
+export const UpdateAccountsPartialRequestPropertiesKnownEmailsList =
+  CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<UpdateAccountsPartialRequestPropertiesKnownEmailsList>;
 
 /** Typed account properties: website_domain, external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link), and touchpoint matching lists: email_domains (the company's email domains) and known_emails (individual addresses pinned to the account). Defaults to an empty object. Unknown keys are rejected. User assignments live on account relationships, not here. */
 export interface UpdateAccountsPartialRequestProperties {
@@ -1153,29 +1125,13 @@ export interface UpdateAccountsPartialRequestProperties {
   usage_dashboard_link?: string | null;
   metabase_link?: string | null;
 }
-export const UpdateAccountsPartialRequestProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    website_domain: S.optional(S.NullOr(S.String)),
-    email_domains: S.optional(UpdateAccountsPartialRequestPropertiesEmailDomainsList),
-    known_emails: S.optional(UpdateAccountsPartialRequestPropertiesKnownEmailsList),
-    stripe_customer_id: S.optional(S.NullOr(S.String)),
-    hubspot_deal_id: S.optional(S.NullOr(S.String)),
-    billing_id: S.optional(S.NullOr(S.String)),
-    sfdc_id: S.optional(S.NullOr(S.String)),
-    zendesk_id: S.optional(S.NullOr(S.String)),
-    slack_channel_id: S.optional(S.NullOr(S.String)),
-    usage_dashboard_link: S.optional(S.NullOr(S.String)),
-    metabase_link: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "UpdateAccountsPartialRequestProperties",
-}) as any as S.Schema<UpdateAccountsPartialRequestProperties>;
+export const UpdateAccountsPartialRequestProperties =
+  CreateAccountRequestProperties as any as S.Schema<UpdateAccountsPartialRequestProperties>;
 
 /** Tag names attached to the account. Pass a list to replace existing tags. */
 export type UpdateAccountsPartialRequestTagsList = Array<string>;
-export const UpdateAccountsPartialRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAccountsPartialRequestTagsList>;
+export const UpdateAccountsPartialRequestTagsList =
+  CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<UpdateAccountsPartialRequestTagsList>;
 
 export interface UpdateAccountsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

@@ -36,9 +36,7 @@ export const DeleteQueueRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteQueueRequest" }) as any as S.Schema<DeleteQueueRequest>;
 
 export interface DeleteQueueResponse {}
-export const DeleteQueueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteQueueResponse",
-}) as any as S.Schema<DeleteQueueResponse>;
+export const DeleteQueueResponse = ClearQueueResponse as any as S.Schema<DeleteQueueResponse>;
 
 export interface GetQueueRequest {
   queueId?: string;
@@ -170,9 +168,7 @@ export const PutQueueRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutQueueRequest" }) as any as S.Schema<PutQueueRequest>;
 
 export interface PutQueueResponse {}
-export const PutQueueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutQueueResponse",
-}) as any as S.Schema<PutQueueResponse>;
+export const PutQueueResponse = ClearQueueResponse as any as S.Schema<PutQueueResponse>;
 
 export interface QueueGetByIdRequest {
   queueId?: string;
@@ -221,12 +217,8 @@ export interface QueueGetOrCreateResponse {
   queueId?: string;
   metadata?: QueueMetadata;
 }
-export const QueueGetOrCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    queueId: S.optional(S.String),
-    metadata: S.optional(QueueMetadata),
-  }),
-).annotate({ identifier: "QueueGetOrCreateResponse" }) as any as S.Schema<QueueGetOrCreateResponse>;
+export const QueueGetOrCreateResponse =
+  QueueGetByIdResponse as any as S.Schema<QueueGetOrCreateResponse>;
 
 export interface QueueHeartbeatRequest {
   queueId?: string;
@@ -238,9 +230,7 @@ export const QueueHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueueHeartbeatRequest" }) as any as S.Schema<QueueHeartbeatRequest>;
 
 export interface QueueHeartbeatResponse {}
-export const QueueHeartbeatResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "QueueHeartbeatResponse",
-}) as any as S.Schema<QueueHeartbeatResponse>;
+export const QueueHeartbeatResponse = ClearQueueResponse as any as S.Schema<QueueHeartbeatResponse>;
 
 export interface QueueLenRequest {
   queueId?: string;

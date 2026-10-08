@@ -393,11 +393,8 @@ export const DeleteOrganizationTelemetryLinkRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteOrganizationTelemetryLinkRequest>;
 
 export interface DeleteOrganizationTelemetryLinkResponse {}
-export const DeleteOrganizationTelemetryLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationTelemetryLinkResponse",
-}) as any as S.Schema<DeleteOrganizationTelemetryLinkResponse>;
+export const DeleteOrganizationTelemetryLinkResponse =
+  DeleteFolderTelemetryLinkResponse as any as S.Schema<DeleteOrganizationTelemetryLinkResponse>;
 
 export type DeleteProjectTelemetryLinkRequestRegionId = "eu01" | "eu02";
 export const DeleteProjectTelemetryLinkRequestRegionId = S.String;
@@ -425,11 +422,8 @@ export const DeleteProjectTelemetryLinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProjectTelemetryLinkRequest>;
 
 export interface DeleteProjectTelemetryLinkResponse {}
-export const DeleteProjectTelemetryLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteProjectTelemetryLinkResponse",
-}) as any as S.Schema<DeleteProjectTelemetryLinkResponse>;
+export const DeleteProjectTelemetryLinkResponse =
+  DeleteFolderTelemetryLinkResponse as any as S.Schema<DeleteProjectTelemetryLinkResponse>;
 
 export type GetFolderBackflushJobRequestRegionId = "eu01" | "eu02";
 export const GetFolderBackflushJobRequestRegionId = S.String;

@@ -37,9 +37,8 @@ export const ListResultPublicIPIPsIpv4CidrsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListResultPublicIPIPsIpv4CidrsList>;
 
 export type ListResultPublicIPIPsIpv6CidrsList = Array<string>;
-export const ListResultPublicIPIPsIpv6CidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultPublicIPIPsIpv6CidrsList>;
+export const ListResultPublicIPIPsIpv6CidrsList =
+  ListResultPublicIPIPsIpv4CidrsList as any as S.Schema<ListResultPublicIPIPsIpv6CidrsList>;
 
 export interface ListResultPublicIPIPs {
   /** A digest of the IP data. Useful for determining if the data has changed. */
@@ -58,19 +57,16 @@ export const ListResultPublicIPIPs = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResultPublicIPIPs" }) as any as S.Schema<ListResultPublicIPIPs>;
 
 export type ListResultPublicIPIPsJDCloudIpv4CidrsList = Array<string>;
-export const ListResultPublicIPIPsJDCloudIpv4CidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultPublicIPIPsJDCloudIpv4CidrsList>;
+export const ListResultPublicIPIPsJDCloudIpv4CidrsList =
+  ListResultPublicIPIPsIpv4CidrsList as any as S.Schema<ListResultPublicIPIPsJDCloudIpv4CidrsList>;
 
 export type ListResultPublicIPIPsJDCloudIpv6CidrsList = Array<string>;
-export const ListResultPublicIPIPsJDCloudIpv6CidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultPublicIPIPsJDCloudIpv6CidrsList>;
+export const ListResultPublicIPIPsJDCloudIpv6CidrsList =
+  ListResultPublicIPIPsIpv4CidrsList as any as S.Schema<ListResultPublicIPIPsJDCloudIpv6CidrsList>;
 
 export type ListResultPublicIPIPsJDCloudJdcloudCidrsList = Array<string>;
-export const ListResultPublicIPIPsJDCloudJdcloudCidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultPublicIPIPsJDCloudJdcloudCidrsList>;
+export const ListResultPublicIPIPsJDCloudJdcloudCidrsList =
+  ListResultPublicIPIPsIpv4CidrsList as any as S.Schema<ListResultPublicIPIPsJDCloudJdcloudCidrsList>;
 
 export interface ListResultPublicIPIPsJDCloud {
   /** A digest of the IP data. Useful for determining if the data has changed. */

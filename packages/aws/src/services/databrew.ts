@@ -185,7 +185,7 @@ export const JsonOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JsonOptions" }) as any as S.Schema<JsonOptions>;
 export type SheetName = string;
 export type SheetNameList = string[];
-export const SheetNameList = /*@__PURE__*/ S.Array(S.String);
+export const SheetNameList = RecipeVersionList as any as S.Schema<SheetNameList>;
 export type SheetIndex = number;
 export type SheetIndexList = number[];
 export const SheetIndexList = /*@__PURE__*/ S.Array(S.Number);
@@ -373,7 +373,7 @@ export const PathOptions = /*@__PURE__*/ S.suspend(() =>
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const TagMap = ValuesMap as any as S.Schema<TagMap>;
 export interface CreateDatasetRequest {
   Name: string;
   Format?: InputFormat;
@@ -410,7 +410,7 @@ export type MaxCapacity = number;
 export type MaxRetries = number;
 export type Statistic = string;
 export type StatisticList = string[];
-export const StatisticList = /*@__PURE__*/ S.Array(S.String);
+export const StatisticList = RecipeVersionList as any as S.Schema<StatisticList>;
 export type ParameterName = string;
 export type ParameterValue = string;
 export type ParameterMap = { [key: string]: string | undefined };
@@ -462,7 +462,7 @@ export const ColumnStatisticsConfigurationList = /*@__PURE__*/ S.Array(
 );
 export type EntityType = string;
 export type EntityTypeList = string[];
-export const EntityTypeList = /*@__PURE__*/ S.Array(S.String);
+export const EntityTypeList = RecipeVersionList as any as S.Schema<EntityTypeList>;
 export interface AllowedStatistics {
   Statistics: string[];
 }
@@ -555,9 +555,8 @@ export const CreateProfileJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateProfileJobResponse {
   Name: string;
 }
-export const CreateProfileJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String }),
-).annotate({ identifier: "CreateProfileJobResponse" }) as any as S.Schema<CreateProfileJobResponse>;
+export const CreateProfileJobResponse =
+  CreateDatasetResponse as any as S.Schema<CreateProfileJobResponse>;
 export type ProjectName = string;
 export type SampleSize = number;
 export type SampleType = "FIRST_N" | "LAST_N" | "RANDOM" | (string & {});
@@ -591,9 +590,8 @@ export const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateProjectResponse {
   Name: string;
 }
-export const CreateProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String }),
-).annotate({ identifier: "CreateProjectResponse" }) as any as S.Schema<CreateProjectResponse>;
+export const CreateProjectResponse =
+  CreateDatasetResponse as any as S.Schema<CreateProjectResponse>;
 export type RecipeDescription = string;
 export type Operation = string;
 export interface RecipeAction {
@@ -641,9 +639,7 @@ export const CreateRecipeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateRecipeResponse {
   Name: string;
 }
-export const CreateRecipeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String }),
-).annotate({ identifier: "CreateRecipeResponse" }) as any as S.Schema<CreateRecipeResponse>;
+export const CreateRecipeResponse = CreateDatasetResponse as any as S.Schema<CreateRecipeResponse>;
 export type CompressionFormat =
   | "GZIP"
   | "LZ4"
@@ -670,7 +666,7 @@ export type OutputFormat =
 export const OutputFormat = S.String;
 
 export type ColumnNameList = string[];
-export const ColumnNameList = /*@__PURE__*/ S.Array(S.String);
+export const ColumnNameList = RecipeVersionList as any as S.Schema<ColumnNameList>;
 export type OverwriteOutput = boolean;
 export interface CsvOutputOptions {
   Delimiter?: string;
@@ -805,9 +801,8 @@ export const CreateRecipeJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateRecipeJobResponse {
   Name: string;
 }
-export const CreateRecipeJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String }),
-).annotate({ identifier: "CreateRecipeJobResponse" }) as any as S.Schema<CreateRecipeJobResponse>;
+export const CreateRecipeJobResponse =
+  CreateDatasetResponse as any as S.Schema<CreateRecipeJobResponse>;
 export type RulesetName = string;
 export type RulesetDescription = string;
 export type RuleName = string;
@@ -871,11 +866,10 @@ export const CreateRulesetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateRulesetResponse {
   Name: string;
 }
-export const CreateRulesetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String }),
-).annotate({ identifier: "CreateRulesetResponse" }) as any as S.Schema<CreateRulesetResponse>;
+export const CreateRulesetResponse =
+  CreateDatasetResponse as any as S.Schema<CreateRulesetResponse>;
 export type JobNameList = string[];
-export const JobNameList = /*@__PURE__*/ S.Array(S.String);
+export const JobNameList = RecipeVersionList as any as S.Schema<JobNameList>;
 export type CronExpression = string;
 export type ScheduleName = string;
 export interface CreateScheduleRequest {
@@ -895,9 +889,8 @@ export const CreateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateScheduleResponse {
   Name: string;
 }
-export const CreateScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String }),
-).annotate({ identifier: "CreateScheduleResponse" }) as any as S.Schema<CreateScheduleResponse>;
+export const CreateScheduleResponse =
+  CreateDatasetResponse as any as S.Schema<CreateScheduleResponse>;
 export interface DeleteDatasetRequest {
   Name: string;
 }
@@ -909,9 +902,8 @@ export const DeleteDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDatasetResponse {
   Name: string;
 }
-export const DeleteDatasetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String }),
-).annotate({ identifier: "DeleteDatasetResponse" }) as any as S.Schema<DeleteDatasetResponse>;
+export const DeleteDatasetResponse =
+  CreateDatasetResponse as any as S.Schema<DeleteDatasetResponse>;
 export interface DeleteJobRequest {
   Name: string;
 }
@@ -923,9 +915,7 @@ export const DeleteJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteJobResponse {
   Name: string;
 }
-export const DeleteJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String }),
-).annotate({ identifier: "DeleteJobResponse" }) as any as S.Schema<DeleteJobResponse>;
+export const DeleteJobResponse = CreateDatasetResponse as any as S.Schema<DeleteJobResponse>;
 export interface DeleteProjectRequest {
   Name: string;
 }
@@ -937,9 +927,8 @@ export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteProjectResponse {
   Name: string;
 }
-export const DeleteProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String }),
-).annotate({ identifier: "DeleteProjectResponse" }) as any as S.Schema<DeleteProjectResponse>;
+export const DeleteProjectResponse =
+  CreateDatasetResponse as any as S.Schema<DeleteProjectResponse>;
 export interface DeleteRecipeVersionRequest {
   Name: string;
   RecipeVersion: string;
@@ -981,9 +970,8 @@ export const DeleteRulesetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteRulesetResponse {
   Name: string;
 }
-export const DeleteRulesetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String }),
-).annotate({ identifier: "DeleteRulesetResponse" }) as any as S.Schema<DeleteRulesetResponse>;
+export const DeleteRulesetResponse =
+  CreateDatasetResponse as any as S.Schema<DeleteRulesetResponse>;
 export interface DeleteScheduleRequest {
   Name: string;
 }
@@ -995,9 +983,8 @@ export const DeleteScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteScheduleResponse {
   Name: string;
 }
-export const DeleteScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String }),
-).annotate({ identifier: "DeleteScheduleResponse" }) as any as S.Schema<DeleteScheduleResponse>;
+export const DeleteScheduleResponse =
+  CreateDatasetResponse as any as S.Schema<DeleteScheduleResponse>;
 export interface DescribeDatasetRequest {
   Name: string;
 }
@@ -1811,16 +1798,15 @@ export const PublishRecipeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PublishRecipeResponse {
   Name: string;
 }
-export const PublishRecipeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String }),
-).annotate({ identifier: "PublishRecipeResponse" }) as any as S.Schema<PublishRecipeResponse>;
+export const PublishRecipeResponse =
+  CreateDatasetResponse as any as S.Schema<PublishRecipeResponse>;
 export type Preview = boolean;
 export type StepIndex = number;
 export type ClientSessionId = string | redacted.Redacted<string>;
 export type StartColumnIndex = number;
 export type ColumnRange = number;
 export type HiddenColumnList = string[];
-export const HiddenColumnList = /*@__PURE__*/ S.Array(S.String);
+export const HiddenColumnList = RecipeVersionList as any as S.Schema<HiddenColumnList>;
 export type StartRowIndex = number;
 export type RowRange = number;
 export type AnalyticsMode = "ENABLE" | "DISABLE" | (string & {});
@@ -1956,9 +1942,7 @@ export const StopJobRunRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopJobRunResponse {
   RunId: string;
 }
-export const StopJobRunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RunId: S.String }),
-).annotate({ identifier: "StopJobRunResponse" }) as any as S.Schema<StopJobRunResponse>;
+export const StopJobRunResponse = StartJobRunResponse as any as S.Schema<StopJobRunResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
@@ -1973,7 +1957,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = RecipeVersionList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -1987,9 +1971,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDatasetRequest {
   Name: string;
   Format?: InputFormat;
@@ -2009,9 +1991,8 @@ export const UpdateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDatasetResponse {
   Name: string;
 }
-export const UpdateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String }),
-).annotate({ identifier: "UpdateDatasetResponse" }) as any as S.Schema<UpdateDatasetResponse>;
+export const UpdateDatasetResponse =
+  CreateDatasetResponse as any as S.Schema<UpdateDatasetResponse>;
 export interface UpdateProfileJobRequest {
   Configuration?: ProfileConfiguration;
   EncryptionKeyArn?: string;
@@ -2047,9 +2028,8 @@ export const UpdateProfileJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateProfileJobResponse {
   Name: string;
 }
-export const UpdateProfileJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String }),
-).annotate({ identifier: "UpdateProfileJobResponse" }) as any as S.Schema<UpdateProfileJobResponse>;
+export const UpdateProfileJobResponse =
+  CreateDatasetResponse as any as S.Schema<UpdateProfileJobResponse>;
 export interface UpdateProjectRequest {
   Sample?: Sample;
   RoleArn: string;
@@ -2087,9 +2067,7 @@ export const UpdateRecipeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateRecipeResponse {
   Name: string;
 }
-export const UpdateRecipeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String }),
-).annotate({ identifier: "UpdateRecipeResponse" }) as any as S.Schema<UpdateRecipeResponse>;
+export const UpdateRecipeResponse = CreateDatasetResponse as any as S.Schema<UpdateRecipeResponse>;
 export interface UpdateRecipeJobRequest {
   EncryptionKeyArn?: string;
   EncryptionMode?: EncryptionMode;
@@ -2123,9 +2101,8 @@ export const UpdateRecipeJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateRecipeJobResponse {
   Name: string;
 }
-export const UpdateRecipeJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String }),
-).annotate({ identifier: "UpdateRecipeJobResponse" }) as any as S.Schema<UpdateRecipeJobResponse>;
+export const UpdateRecipeJobResponse =
+  CreateDatasetResponse as any as S.Schema<UpdateRecipeJobResponse>;
 export interface UpdateRulesetRequest {
   Name: string;
   Description?: string;
@@ -2141,9 +2118,8 @@ export const UpdateRulesetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateRulesetResponse {
   Name: string;
 }
-export const UpdateRulesetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String }),
-).annotate({ identifier: "UpdateRulesetResponse" }) as any as S.Schema<UpdateRulesetResponse>;
+export const UpdateRulesetResponse =
+  CreateDatasetResponse as any as S.Schema<UpdateRulesetResponse>;
 export interface UpdateScheduleRequest {
   JobNames?: string[];
   CronExpression: string;
@@ -2159,9 +2135,8 @@ export const UpdateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateScheduleResponse {
   Name: string;
 }
-export const UpdateScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String }),
-).annotate({ identifier: "UpdateScheduleResponse" }) as any as S.Schema<UpdateScheduleResponse>;
+export const UpdateScheduleResponse =
+  CreateDatasetResponse as any as S.Schema<UpdateScheduleResponse>;
 export type Message = string;
 export type BatchDeleteRecipeVersionError =
   | ConflictException

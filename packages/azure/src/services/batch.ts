@@ -249,10 +249,8 @@ export const ApplicationProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type CreateApplicationRequestTagsMap = { [key: string]: string | undefined };
-export const CreateApplicationRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateApplicationRequestTagsMap>;
+export const CreateApplicationRequestTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<CreateApplicationRequestTagsMap>;
 
 export interface CreateApplicationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -288,10 +286,8 @@ export const CreateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type CreateApplicationResponseTagsMap = { [key: string]: string | undefined };
-export const CreateApplicationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateApplicationResponseTagsMap>;
+export const CreateApplicationResponseTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<CreateApplicationResponseTagsMap>;
 
 export interface CreateApplicationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -325,18 +321,13 @@ export const CreateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Properties of an application package */
 export interface ApplicationPackagePropertiesInput {}
-export const ApplicationPackagePropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ApplicationPackagePropertiesInput",
-}) as any as S.Schema<ApplicationPackagePropertiesInput>;
+export const ApplicationPackagePropertiesInput =
+  BatchAccountSynchronizeAutoStorageKeysResponse as any as S.Schema<ApplicationPackagePropertiesInput>;
 
 /** The tags of the resource. */
 export type CreateApplicationPackageRequestTagsMap = { [key: string]: string | undefined };
-export const CreateApplicationPackageRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateApplicationPackageRequestTagsMap>;
+export const CreateApplicationPackageRequestTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<CreateApplicationPackageRequestTagsMap>;
 
 export interface CreateApplicationPackageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -377,10 +368,8 @@ export const CreateApplicationPackageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type CreateApplicationPackageResponseTagsMap = { [key: string]: string | undefined };
-export const CreateApplicationPackageResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateApplicationPackageResponseTagsMap>;
+export const CreateApplicationPackageResponseTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<CreateApplicationPackageResponseTagsMap>;
 
 export interface CreateApplicationPackageResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -398,26 +387,13 @@ export interface CreateApplicationPackageResponse {
   /** The tags of the resource. */
   tags?: CreateApplicationPackageResponseTagsMap;
 }
-export const CreateApplicationPackageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ApplicationPackageProperties),
-    etag: S.optional(S.String),
-    tags: S.optional(CreateApplicationPackageResponseTagsMap),
-  }),
-).annotate({
-  identifier: "CreateApplicationPackageResponse",
-}) as any as S.Schema<CreateApplicationPackageResponse>;
+export const CreateApplicationPackageResponse =
+  ActivateApplicationPackageResponse as any as S.Schema<CreateApplicationPackageResponse>;
 
 /** The user-specified tags associated with the account. */
 export type CreateBatchAccountRequestTagsMap = { [key: string]: string | undefined };
-export const CreateBatchAccountRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateBatchAccountRequestTagsMap>;
+export const CreateBatchAccountRequestTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<CreateBatchAccountRequestTagsMap>;
 
 /** The authentication mode which the Batch service will use to manage the auto-storage account. */
 export type AutoStorageBasePropertiesAuthenticationMode =
@@ -684,10 +660,8 @@ export const CreateBatchAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateBatchAccountResponseTagsMap = { [key: string]: string | undefined };
-export const CreateBatchAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateBatchAccountResponseTagsMap>;
+export const CreateBatchAccountResponseTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<CreateBatchAccountResponseTagsMap>;
 
 /** The provisioned state of the resource */
 export type ProvisioningState =
@@ -784,10 +758,8 @@ export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type PrivateEndpointConnectionTagsMap = { [key: string]: string | undefined };
-export const PrivateEndpointConnectionTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PrivateEndpointConnectionTagsMap>;
+export const PrivateEndpointConnectionTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<PrivateEndpointConnectionTagsMap>;
 
 /** Contains information about a private link resource. */
 export interface PrivateEndpointConnection {
@@ -875,9 +847,8 @@ export const BatchAccountPropertiesDedicatedCoreQuotaPerVMFamilyList = /*@__PURE
 
 /** List of allowed authentication modes for the Batch account that can be used to authenticate with the data plane. This does not affect authentication with the control plane. */
 export type BatchAccountPropertiesAllowedAuthenticationModesList = Array<AuthenticationMode>;
-export const BatchAccountPropertiesAllowedAuthenticationModesList = /*@__PURE__*/ S.Array(
-  AuthenticationMode,
-) as any as S.Schema<BatchAccountPropertiesAllowedAuthenticationModesList>;
+export const BatchAccountPropertiesAllowedAuthenticationModesList =
+  BatchAccountCreatePropertiesAllowedAuthenticationModesList as any as S.Schema<BatchAccountPropertiesAllowedAuthenticationModesList>;
 
 /** Account specific properties. */
 export interface BatchAccountProperties {
@@ -1151,9 +1122,8 @@ export const ContainerType = S.String;
 
 /** This is the full image reference, as would be specified to "docker pull". An image will be sourced from the default Docker registry unless the image is fully qualified with an alternative registry. */
 export type ContainerConfigurationContainerImageNamesList = Array<string>;
-export const ContainerConfigurationContainerImageNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContainerConfigurationContainerImageNamesList>;
+export const ContainerConfigurationContainerImageNamesList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<ContainerConfigurationContainerImageNamesList>;
 
 /** A private container registry. */
 export interface ContainerRegistry {
@@ -1260,9 +1230,8 @@ export const NodePlacementConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of extension names after which this extension needs to be provisioned. */
 export type VMExtensionProvisionAfterExtensionsList = Array<string>;
-export const VMExtensionProvisionAfterExtensionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VMExtensionProvisionAfterExtensionsList>;
+export const VMExtensionProvisionAfterExtensionsList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<VMExtensionProvisionAfterExtensionsList>;
 
 /** The configuration for virtual machine extensions. */
 export interface VMExtension {
@@ -1558,9 +1527,8 @@ export const NetworkSecurityGroupRuleAccess = S.String;
 
 /** Valid values are '*' (for all ports 0 - 65535) or arrays of ports or port ranges (i.e. 100-200). The ports should in the range of 0 to 65535 and the port ranges or ports can't overlap. If any other values are provided the request fails with HTTP status code 400. Default value will be *. */
 export type NetworkSecurityGroupRuleSourcePortRangesList = Array<string>;
-export const NetworkSecurityGroupRuleSourcePortRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkSecurityGroupRuleSourcePortRangesList>;
+export const NetworkSecurityGroupRuleSourcePortRangesList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<NetworkSecurityGroupRuleSourcePortRangesList>;
 
 /** A network security group rule to apply to an inbound endpoint. */
 export interface NetworkSecurityGroupRule {
@@ -1639,9 +1607,8 @@ export const IPAddressProvisioningType = S.String;
 
 /** The number of IPs specified here limits the maximum size of the Pool - 100 dedicated nodes or 100 Spot/low-priority nodes can be allocated for each public IP. For example, a pool needing 250 dedicated VMs would need at least 3 public IPs specified. Each element of this collection is of the form: /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}. */
 export type PublicIPAddressConfigurationIpAddressIdsList = Array<string>;
-export const PublicIPAddressConfigurationIpAddressIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PublicIPAddressConfigurationIpAddressIdsList>;
+export const PublicIPAddressConfigurationIpAddressIdsList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PublicIPAddressConfigurationIpAddressIdsList>;
 
 /** The IP families used to specify IP versions available to the pool. */
 export type IPFamily = "IPv4" | "IPv6";
@@ -2273,10 +2240,8 @@ export const PoolIdentityType = S.String;
 export type BatchPoolIdentityInputUserAssignedIdentitiesMap = {
   [key: string]: ApplicationPackagePropertiesInput | undefined;
 };
-export const BatchPoolIdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ApplicationPackagePropertiesInput,
-) as any as S.Schema<BatchPoolIdentityInputUserAssignedIdentitiesMap>;
+export const BatchPoolIdentityInputUserAssignedIdentitiesMap =
+  BatchAccountIdentityInputUserAssignedIdentitiesMap as any as S.Schema<BatchPoolIdentityInputUserAssignedIdentitiesMap>;
 
 /** The identity of the Batch pool, if configured. If the pool identity is updated during update an existing pool, only the new vms which are created after the pool shrinks to 0 will have the updated identities */
 export interface BatchPoolIdentityInput {
@@ -2294,10 +2259,8 @@ export const BatchPoolIdentityInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type CreatePoolRequestTagsMap = { [key: string]: string | undefined };
-export const CreatePoolRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreatePoolRequestTagsMap>;
+export const CreatePoolRequestTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<CreatePoolRequestTagsMap>;
 
 export interface CreatePoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2384,21 +2347,18 @@ export const AutoScaleRun = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of user accounts to be created on each node in the pool. */
 export type PoolPropertiesUserAccountsList = Array<UserAccount>;
-export const PoolPropertiesUserAccountsList = /*@__PURE__*/ S.Array(
-  UserAccount,
-) as any as S.Schema<PoolPropertiesUserAccountsList>;
+export const PoolPropertiesUserAccountsList =
+  PoolPropertiesInputUserAccountsList as any as S.Schema<PoolPropertiesUserAccountsList>;
 
 /** The Batch service does not assign any meaning to metadata; it is solely for the use of user code. */
 export type PoolPropertiesMetadataList = Array<MetadataItem>;
-export const PoolPropertiesMetadataList = /*@__PURE__*/ S.Array(
-  MetadataItem,
-) as any as S.Schema<PoolPropertiesMetadataList>;
+export const PoolPropertiesMetadataList =
+  PoolPropertiesInputMetadataList as any as S.Schema<PoolPropertiesMetadataList>;
 
 /** Changes to application package references affect all new compute nodes joining the pool, but do not affect compute nodes that are already in the pool until they are rebooted or reimaged. There is a maximum of 10 application package references on any given pool. */
 export type PoolPropertiesApplicationPackagesList = Array<ApplicationPackageReference>;
-export const PoolPropertiesApplicationPackagesList = /*@__PURE__*/ S.Array(
-  ApplicationPackageReference,
-) as any as S.Schema<PoolPropertiesApplicationPackagesList>;
+export const PoolPropertiesApplicationPackagesList =
+  PoolPropertiesInputApplicationPackagesList as any as S.Schema<PoolPropertiesApplicationPackagesList>;
 
 /** Additional details about the error. */
 export type ResizeErrorDetailsList = Array<ResizeError>;
@@ -2457,9 +2417,8 @@ export const ResizeOperationStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** This supports Azure Files, NFS, CIFS/SMB, and Blobfuse. */
 export type PoolPropertiesMountConfigurationList = Array<MountConfiguration>;
-export const PoolPropertiesMountConfigurationList = /*@__PURE__*/ S.Array(
-  MountConfiguration,
-) as any as S.Schema<PoolPropertiesMountConfigurationList>;
+export const PoolPropertiesMountConfigurationList =
+  PoolPropertiesInputMountConfigurationList as any as S.Schema<PoolPropertiesMountConfigurationList>;
 
 /** Pool properties. */
 export interface PoolProperties {
@@ -2545,10 +2504,8 @@ export const PoolProperties = /*@__PURE__*/ S.suspend(() =>
 export type BatchPoolIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentities | undefined;
 };
-export const BatchPoolIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UserAssignedIdentities,
-) as any as S.Schema<BatchPoolIdentityUserAssignedIdentitiesMap>;
+export const BatchPoolIdentityUserAssignedIdentitiesMap =
+  BatchAccountIdentityUserAssignedIdentitiesMap as any as S.Schema<BatchPoolIdentityUserAssignedIdentitiesMap>;
 
 /** The identity of the Batch pool, if configured. If the pool identity is updated during update an existing pool, only the new vms which are created after the pool shrinks to 0 will have the updated identities */
 export interface BatchPoolIdentity {
@@ -2566,10 +2523,8 @@ export const BatchPoolIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type CreatePoolResponseTagsMap = { [key: string]: string | undefined };
-export const CreatePoolResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreatePoolResponseTagsMap>;
+export const CreatePoolResponseTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<CreatePoolResponseTagsMap>;
 
 export interface CreatePoolResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2665,11 +2620,8 @@ export const DeleteApplicationPackageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteApplicationPackageRequest>;
 
 export interface DeleteApplicationPackageResponse {}
-export const DeleteApplicationPackageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteApplicationPackageResponse",
-}) as any as S.Schema<DeleteApplicationPackageResponse>;
+export const DeleteApplicationPackageResponse =
+  BatchAccountSynchronizeAutoStorageKeysResponse as any as S.Schema<DeleteApplicationPackageResponse>;
 
 export interface DeleteBatchAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2697,9 +2649,8 @@ export const DeleteBatchAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBatchAccountRequest>;
 
 export interface DeleteBatchAccountResponse {}
-export const DeleteBatchAccountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBatchAccountResponse",
-}) as any as S.Schema<DeleteBatchAccountResponse>;
+export const DeleteBatchAccountResponse =
+  DeleteApplicationResponse as any as S.Schema<DeleteBatchAccountResponse>;
 
 export interface DeletePoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2728,9 +2679,7 @@ export const DeletePoolRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePoolRequest" }) as any as S.Schema<DeletePoolRequest>;
 
 export interface DeletePoolResponse {}
-export const DeletePoolResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePoolResponse",
-}) as any as S.Schema<DeletePoolResponse>;
+export const DeletePoolResponse = DeleteApplicationResponse as any as S.Schema<DeletePoolResponse>;
 
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2761,11 +2710,8 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePrivateEndpointConnectionResponse",
-}) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
+export const DeletePrivateEndpointConnectionResponse =
+  BatchAccountSynchronizeAutoStorageKeysResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
 
 export interface DisablePoolAutoScaleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2797,10 +2743,8 @@ export const DisablePoolAutoScaleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type DisablePoolAutoScaleResponseTagsMap = { [key: string]: string | undefined };
-export const DisablePoolAutoScaleResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DisablePoolAutoScaleResponseTagsMap>;
+export const DisablePoolAutoScaleResponseTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<DisablePoolAutoScaleResponseTagsMap>;
 
 export interface DisablePoolAutoScaleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2863,10 +2807,8 @@ export const GetApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type GetApplicationResponseTagsMap = { [key: string]: string | undefined };
-export const GetApplicationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetApplicationResponseTagsMap>;
+export const GetApplicationResponseTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<GetApplicationResponseTagsMap>;
 
 export interface GetApplicationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2929,10 +2871,8 @@ export const GetApplicationPackageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type GetApplicationPackageResponseTagsMap = { [key: string]: string | undefined };
-export const GetApplicationPackageResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetApplicationPackageResponseTagsMap>;
+export const GetApplicationPackageResponseTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<GetApplicationPackageResponseTagsMap>;
 
 export interface GetApplicationPackageResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2950,19 +2890,8 @@ export interface GetApplicationPackageResponse {
   /** The tags of the resource. */
   tags?: GetApplicationPackageResponseTagsMap;
 }
-export const GetApplicationPackageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ApplicationPackageProperties),
-    etag: S.optional(S.String),
-    tags: S.optional(GetApplicationPackageResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetApplicationPackageResponse",
-}) as any as S.Schema<GetApplicationPackageResponse>;
+export const GetApplicationPackageResponse =
+  ActivateApplicationPackageResponse as any as S.Schema<GetApplicationPackageResponse>;
 
 export interface GetBatchAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2989,10 +2918,8 @@ export const GetBatchAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetBatchAccountResponseTagsMap = { [key: string]: string | undefined };
-export const GetBatchAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBatchAccountResponseTagsMap>;
+export const GetBatchAccountResponseTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<GetBatchAccountResponseTagsMap>;
 
 export interface GetBatchAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3068,10 +2995,8 @@ export const DetectorResponseProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type GetBatchAccountDetectorResponseTagsMap = { [key: string]: string | undefined };
-export const GetBatchAccountDetectorResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBatchAccountDetectorResponseTagsMap>;
+export const GetBatchAccountDetectorResponseTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<GetBatchAccountDetectorResponseTagsMap>;
 
 export interface GetBatchAccountDetectorResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3229,9 +3154,8 @@ export const ProvisioningIssuePropertiesSeverity = S.String;
 
 /** Fully qualified resource IDs of suggested resources that can be associated to the network security perimeter (NSP) to remediate the issue. */
 export type ProvisioningIssuePropertiesSuggestedResourceIdsList = Array<string>;
-export const ProvisioningIssuePropertiesSuggestedResourceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProvisioningIssuePropertiesSuggestedResourceIdsList>;
+export const ProvisioningIssuePropertiesSuggestedResourceIdsList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<ProvisioningIssuePropertiesSuggestedResourceIdsList>;
 
 /** Direction of Access Rule */
 export type AccessRuleDirection = "Inbound" | "Outbound";
@@ -3239,9 +3163,8 @@ export const AccessRuleDirection = S.String;
 
 /** Address prefixes in the CIDR format for inbound rules */
 export type AccessRulePropertiesAddressPrefixesList = Array<string>;
-export const AccessRulePropertiesAddressPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccessRulePropertiesAddressPrefixesList>;
+export const AccessRulePropertiesAddressPrefixesList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<AccessRulePropertiesAddressPrefixesList>;
 
 /** Subscription identifiers */
 export interface AccessRulePropertiesSubscriptionsItem {
@@ -3287,21 +3210,18 @@ export const AccessRulePropertiesNetworkSecurityPerimetersList = /*@__PURE__*/ S
 
 /** Fully qualified domain names (FQDN) for outbound rules */
 export type AccessRulePropertiesFullyQualifiedDomainNamesList = Array<string>;
-export const AccessRulePropertiesFullyQualifiedDomainNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccessRulePropertiesFullyQualifiedDomainNamesList>;
+export const AccessRulePropertiesFullyQualifiedDomainNamesList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<AccessRulePropertiesFullyQualifiedDomainNamesList>;
 
 /** Email addresses for outbound rules */
 export type AccessRulePropertiesEmailAddressesList = Array<string>;
-export const AccessRulePropertiesEmailAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccessRulePropertiesEmailAddressesList>;
+export const AccessRulePropertiesEmailAddressesList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<AccessRulePropertiesEmailAddressesList>;
 
 /** Phone numbers for outbound rules */
 export type AccessRulePropertiesPhoneNumbersList = Array<string>;
-export const AccessRulePropertiesPhoneNumbersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccessRulePropertiesPhoneNumbersList>;
+export const AccessRulePropertiesPhoneNumbersList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<AccessRulePropertiesPhoneNumbersList>;
 
 /** Properties of Access Rule */
 export interface AccessRuleProperties {
@@ -3415,15 +3335,13 @@ export const ResourceAssociation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Access Rules */
 export type NetworkSecurityProfileAccessRulesList = Array<AccessRule>;
-export const NetworkSecurityProfileAccessRulesList = /*@__PURE__*/ S.Array(
-  AccessRule,
-) as any as S.Schema<NetworkSecurityProfileAccessRulesList>;
+export const NetworkSecurityProfileAccessRulesList =
+  ProvisioningIssuePropertiesSuggestedAccessRulesList as any as S.Schema<NetworkSecurityProfileAccessRulesList>;
 
 /** List of log categories that are enabled */
 export type NetworkSecurityProfileEnabledLogCategoriesList = Array<string>;
-export const NetworkSecurityProfileEnabledLogCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkSecurityProfileEnabledLogCategoriesList>;
+export const NetworkSecurityProfileEnabledLogCategoriesList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<NetworkSecurityProfileEnabledLogCategoriesList>;
 
 /** Network security perimeter configuration profile */
 export interface NetworkSecurityProfile {
@@ -3522,10 +3440,8 @@ export const GetPoolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type GetPoolResponseTagsMap = { [key: string]: string | undefined };
-export const GetPoolResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPoolResponseTagsMap>;
+export const GetPoolResponseTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<GetPoolResponseTagsMap>;
 
 export interface GetPoolResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3545,18 +3461,7 @@ export interface GetPoolResponse {
   /** The tags of the resource. */
   tags?: GetPoolResponseTagsMap;
 }
-export const GetPoolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PoolProperties),
-    identity: S.optional(BatchPoolIdentity),
-    etag: S.optional(S.String),
-    tags: S.optional(GetPoolResponseTagsMap),
-  }),
-).annotate({ identifier: "GetPoolResponse" }) as any as S.Schema<GetPoolResponse>;
+export const GetPoolResponse = CreatePoolResponse as any as S.Schema<GetPoolResponse>;
 
 export interface GetPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3588,10 +3493,8 @@ export const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type GetPrivateEndpointConnectionResponseTagsMap = { [key: string]: string | undefined };
-export const GetPrivateEndpointConnectionResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPrivateEndpointConnectionResponseTagsMap>;
+export const GetPrivateEndpointConnectionResponseTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<GetPrivateEndpointConnectionResponseTagsMap>;
 
 export interface GetPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3609,19 +3512,8 @@ export interface GetPrivateEndpointConnectionResponse {
   /** The tags of the resource. */
   tags?: GetPrivateEndpointConnectionResponseTagsMap;
 }
-export const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-    etag: S.optional(S.String),
-    tags: S.optional(GetPrivateEndpointConnectionResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetPrivateEndpointConnectionResponse",
-}) as any as S.Schema<GetPrivateEndpointConnectionResponse>;
+export const GetPrivateEndpointConnectionResponse =
+  PrivateEndpointConnection as any as S.Schema<GetPrivateEndpointConnectionResponse>;
 
 export interface GetPrivateLinkResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3653,15 +3545,13 @@ export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of required members that are used to establish the private link connection. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+export const PrivateLinkResourcePropertiesRequiredMembersList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The list of required zone names for the private DNS resource name */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Private link resource properties. */
 export interface PrivateLinkResourceProperties {
@@ -3684,10 +3574,8 @@ export const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type GetPrivateLinkResourceResponseTagsMap = { [key: string]: string | undefined };
-export const GetPrivateLinkResourceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPrivateLinkResourceResponseTagsMap>;
+export const GetPrivateLinkResourceResponseTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<GetPrivateLinkResourceResponseTagsMap>;
 
 export interface GetPrivateLinkResourceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3747,10 +3635,8 @@ export const ListApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type ApplicationTagsMap = { [key: string]: string | undefined };
-export const ApplicationTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ApplicationTagsMap>;
+export const ApplicationTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<ApplicationTagsMap>;
 
 /** Contains information about an application in a Batch account. */
 export interface Application {
@@ -3769,17 +3655,7 @@ export interface Application {
   /** The tags of the resource. */
   tags?: ApplicationTagsMap;
 }
-export const Application = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ApplicationProperties),
-    etag: S.optional(S.String),
-    tags: S.optional(ApplicationTagsMap),
-  }),
-).annotate({ identifier: "Application" }) as any as S.Schema<Application>;
+export const Application = GetApplicationResponse as any as S.Schema<Application>;
 
 /** The Application items on this page */
 export type ListApplicationsResultValueList = Array<Application>;
@@ -3834,10 +3710,8 @@ export const ListApplicationPackageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type ApplicationPackageTagsMap = { [key: string]: string | undefined };
-export const ApplicationPackageTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ApplicationPackageTagsMap>;
+export const ApplicationPackageTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<ApplicationPackageTagsMap>;
 
 /** An application package which represents a particular version of an application. */
 export interface ApplicationPackage {
@@ -3909,10 +3783,8 @@ export const ListBatchAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type BatchAccountTagsMap = { [key: string]: string | undefined };
-export const BatchAccountTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BatchAccountTagsMap>;
+export const BatchAccountTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<BatchAccountTagsMap>;
 
 /** Contains information about an Azure Batch account. */
 export interface BatchAccount {
@@ -3933,18 +3805,7 @@ export interface BatchAccount {
   /** The identity of the Batch account. */
   identity?: BatchAccountIdentity;
 }
-export const BatchAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(BatchAccountTagsMap),
-    location: S.String,
-    properties: S.optional(BatchAccountProperties),
-    identity: S.optional(BatchAccountIdentity),
-  }),
-).annotate({ identifier: "BatchAccount" }) as any as S.Schema<BatchAccount>;
+export const BatchAccount = GetBatchAccountResponse as any as S.Schema<BatchAccount>;
 
 /** The BatchAccount items on this page */
 export type BatchAccountListResultValueList = Array<BatchAccount>;
@@ -4015,10 +3876,8 @@ export const ListBatchAccountDetectorsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type DetectorResponseTagsMap = { [key: string]: string | undefined };
-export const DetectorResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DetectorResponseTagsMap>;
+export const DetectorResponseTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<DetectorResponseTagsMap>;
 
 /** Contains the information for a detector. */
 export interface DetectorResponse {
@@ -4445,10 +4304,8 @@ export const ListPoolByBatchAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type PoolTagsMap = { [key: string]: string | undefined };
-export const PoolTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PoolTagsMap>;
+export const PoolTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<PoolTagsMap>;
 
 /** Contains information about a pool. */
 export interface Pool {
@@ -4469,18 +4326,7 @@ export interface Pool {
   /** The tags of the resource. */
   tags?: PoolTagsMap;
 }
-export const Pool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PoolProperties),
-    identity: S.optional(BatchPoolIdentity),
-    etag: S.optional(S.String),
-    tags: S.optional(PoolTagsMap),
-  }),
-).annotate({ identifier: "Pool" }) as any as S.Schema<Pool>;
+export const Pool = CreatePoolResponse as any as S.Schema<Pool>;
 
 /** The Pool items on this page */
 export type ListPoolsResultValueList = Array<Pool>;
@@ -4532,9 +4378,8 @@ export const ListPrivateEndpointConnectionByBatchAccountRequest = /*@__PURE__*/ 
 
 /** The PrivateEndpointConnection items on this page */
 export type ListPrivateEndpointConnectionsResultValueList = Array<PrivateEndpointConnection>;
-export const ListPrivateEndpointConnectionsResultValueList = /*@__PURE__*/ S.Array(
-  PrivateEndpointConnection,
-) as any as S.Schema<ListPrivateEndpointConnectionsResultValueList>;
+export const ListPrivateEndpointConnectionsResultValueList =
+  BatchAccountPropertiesPrivateEndpointConnectionsList as any as S.Schema<ListPrivateEndpointConnectionsResultValueList>;
 
 /** Values returned by the List operation. */
 export interface ListPrivateEndpointConnectionsResult {
@@ -4582,10 +4427,8 @@ export const ListPrivateLinkResourceByBatchAccountRequest = /*@__PURE__*/ S.susp
 
 /** The tags of the resource. */
 export type PrivateLinkResourceTagsMap = { [key: string]: string | undefined };
-export const PrivateLinkResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PrivateLinkResourceTagsMap>;
+export const PrivateLinkResourceTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<PrivateLinkResourceTagsMap>;
 
 /** Contains information about a private link resource. */
 export interface PrivateLinkResource {
@@ -4667,11 +4510,8 @@ export const NetworkSecurityPerimeterReconcileConfigurationRequest = /*@__PURE__
 }) as any as S.Schema<NetworkSecurityPerimeterReconcileConfigurationRequest>;
 
 export interface NetworkSecurityPerimeterReconcileConfigurationResponse {}
-export const NetworkSecurityPerimeterReconcileConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "NetworkSecurityPerimeterReconcileConfigurationResponse",
-}) as any as S.Schema<NetworkSecurityPerimeterReconcileConfigurationResponse>;
+export const NetworkSecurityPerimeterReconcileConfigurationResponse =
+  BatchAccountSynchronizeAutoStorageKeysResponse as any as S.Schema<NetworkSecurityPerimeterReconcileConfigurationResponse>;
 
 export interface PoolStopResizeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4701,10 +4541,8 @@ export const PoolStopResizeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type PoolStopResizeResponseTagsMap = { [key: string]: string | undefined };
-export const PoolStopResizeResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PoolStopResizeResponseTagsMap>;
+export const PoolStopResizeResponseTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<PoolStopResizeResponseTagsMap>;
 
 export interface PoolStopResizeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4724,18 +4562,7 @@ export interface PoolStopResizeResponse {
   /** The tags of the resource. */
   tags?: PoolStopResizeResponseTagsMap;
 }
-export const PoolStopResizeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PoolProperties),
-    identity: S.optional(BatchPoolIdentity),
-    etag: S.optional(S.String),
-    tags: S.optional(PoolStopResizeResponseTagsMap),
-  }),
-).annotate({ identifier: "PoolStopResizeResponse" }) as any as S.Schema<PoolStopResizeResponse>;
+export const PoolStopResizeResponse = CreatePoolResponse as any as S.Schema<PoolStopResizeResponse>;
 
 /** The type of account key to regenerate. */
 export type AccountKeyType = "Primary" | "Secondary";
@@ -4771,10 +4598,8 @@ export const RegenerateBatchAccountKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type UpdateApplicationRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateApplicationRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateApplicationRequestTagsMap>;
+export const UpdateApplicationRequestTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<UpdateApplicationRequestTagsMap>;
 
 export interface UpdateApplicationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4810,10 +4635,8 @@ export const UpdateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type UpdateApplicationResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateApplicationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateApplicationResponseTagsMap>;
+export const UpdateApplicationResponseTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<UpdateApplicationResponseTagsMap>;
 
 export interface UpdateApplicationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4831,34 +4654,20 @@ export interface UpdateApplicationResponse {
   /** The tags of the resource. */
   tags?: UpdateApplicationResponseTagsMap;
 }
-export const UpdateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ApplicationProperties),
-    etag: S.optional(S.String),
-    tags: S.optional(UpdateApplicationResponseTagsMap),
-  }),
-).annotate({
-  identifier: "UpdateApplicationResponse",
-}) as any as S.Schema<UpdateApplicationResponse>;
+export const UpdateApplicationResponse =
+  CreateApplicationResponse as any as S.Schema<UpdateApplicationResponse>;
 
 /** The user-specified tags associated with the account. */
 export type UpdateBatchAccountRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateBatchAccountRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateBatchAccountRequestTagsMap>;
+export const UpdateBatchAccountRequestTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<UpdateBatchAccountRequestTagsMap>;
 
 /** List of allowed authentication modes for the Batch account that can be used to authenticate with the data plane. This does not affect authentication with the control plane. */
 export type BatchAccountUpdatePropertiesAllowedAuthenticationModesList = Array<
   AuthenticationMode | (string & {})
 >;
-export const BatchAccountUpdatePropertiesAllowedAuthenticationModesList = /*@__PURE__*/ S.Array(
-  AuthenticationMode,
-) as any as S.Schema<BatchAccountUpdatePropertiesAllowedAuthenticationModesList>;
+export const BatchAccountUpdatePropertiesAllowedAuthenticationModesList =
+  BatchAccountCreatePropertiesAllowedAuthenticationModesList as any as S.Schema<BatchAccountUpdatePropertiesAllowedAuthenticationModesList>;
 
 /** The network access type for operating on the resources in the Batch account. */
 export type BatchAccountUpdatePropertiesPublicNetworkAccess =
@@ -4930,10 +4739,8 @@ export const UpdateBatchAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateBatchAccountResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateBatchAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateBatchAccountResponseTagsMap>;
+export const UpdateBatchAccountResponseTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<UpdateBatchAccountResponseTagsMap>;
 
 export interface UpdateBatchAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4953,27 +4760,13 @@ export interface UpdateBatchAccountResponse {
   /** The identity of the Batch account. */
   identity?: BatchAccountIdentity;
 }
-export const UpdateBatchAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateBatchAccountResponseTagsMap),
-    location: S.String,
-    properties: S.optional(BatchAccountProperties),
-    identity: S.optional(BatchAccountIdentity),
-  }),
-).annotate({
-  identifier: "UpdateBatchAccountResponse",
-}) as any as S.Schema<UpdateBatchAccountResponse>;
+export const UpdateBatchAccountResponse =
+  CreateBatchAccountResponse as any as S.Schema<UpdateBatchAccountResponse>;
 
 /** The tags of the resource. */
 export type UpdatePoolRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePoolRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePoolRequestTagsMap>;
+export const UpdatePoolRequestTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<UpdatePoolRequestTagsMap>;
 
 export interface UpdatePoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5012,10 +4805,8 @@ export const UpdatePoolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type UpdatePoolResponseTagsMap = { [key: string]: string | undefined };
-export const UpdatePoolResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePoolResponseTagsMap>;
+export const UpdatePoolResponseTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<UpdatePoolResponseTagsMap>;
 
 export interface UpdatePoolResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5035,18 +4826,7 @@ export interface UpdatePoolResponse {
   /** The tags of the resource. */
   tags?: UpdatePoolResponseTagsMap;
 }
-export const UpdatePoolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PoolProperties),
-    identity: S.optional(BatchPoolIdentity),
-    etag: S.optional(S.String),
-    tags: S.optional(UpdatePoolResponseTagsMap),
-  }),
-).annotate({ identifier: "UpdatePoolResponse" }) as any as S.Schema<UpdatePoolResponse>;
+export const UpdatePoolResponse = CreatePoolResponse as any as S.Schema<UpdatePoolResponse>;
 
 /** The private link service connection state of the private endpoint connection */
 export interface PrivateLinkServiceConnectionStateInput {
@@ -5079,10 +4859,8 @@ export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(
 
 /** The tags of the resource. */
 export type UpdatePrivateEndpointConnectionRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePrivateEndpointConnectionRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePrivateEndpointConnectionRequestTagsMap>;
+export const UpdatePrivateEndpointConnectionRequestTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<UpdatePrivateEndpointConnectionRequestTagsMap>;
 
 export interface UpdatePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5120,10 +4898,8 @@ export const UpdatePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 
 /** The tags of the resource. */
 export type UpdatePrivateEndpointConnectionResponseTagsMap = { [key: string]: string | undefined };
-export const UpdatePrivateEndpointConnectionResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePrivateEndpointConnectionResponseTagsMap>;
+export const UpdatePrivateEndpointConnectionResponseTagsMap =
+  ActivateApplicationPackageResponseTagsMap as any as S.Schema<UpdatePrivateEndpointConnectionResponseTagsMap>;
 
 export interface UpdatePrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5141,19 +4917,8 @@ export interface UpdatePrivateEndpointConnectionResponse {
   /** The tags of the resource. */
   tags?: UpdatePrivateEndpointConnectionResponseTagsMap;
 }
-export const UpdatePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-    etag: S.optional(S.String),
-    tags: S.optional(UpdatePrivateEndpointConnectionResponseTagsMap),
-  }),
-).annotate({
-  identifier: "UpdatePrivateEndpointConnectionResponse",
-}) as any as S.Schema<UpdatePrivateEndpointConnectionResponse>;
+export const UpdatePrivateEndpointConnectionResponse =
+  PrivateEndpointConnection as any as S.Schema<UpdatePrivateEndpointConnectionResponse>;
 
 export type ActivateApplicationPackageError = AzureOpError;
 /** Activates the specified application package. This should be done after the `ApplicationPackage` was created and uploaded. This needs to be done before an `ApplicationPackage` can be used on Pools or Tasks. */

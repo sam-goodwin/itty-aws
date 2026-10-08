@@ -246,9 +246,8 @@ export const SessionTriggerConfigBasePayloadMap = /*@__PURE__*/ S.Record(
 
 /** Tags applied to every run this session triggers. */
 export type SessionTriggerConfigTagsList = Array<string>;
-export const SessionTriggerConfigTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SessionTriggerConfigTagsList>;
+export const SessionTriggerConfigTagsList =
+  RunTagsCase1List as any as S.Schema<SessionTriggerConfigTagsList>;
 
 /** Trigger options applied to every run a session schedules. `basePayload` is the wire payload merged into each run; the remaining fields map onto the standard trigger options. */
 export interface SessionTriggerConfig {
@@ -287,16 +286,12 @@ export const SessionTriggerConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags on the session row. */
 export type SessionObjectTagsList = Array<string>;
-export const SessionObjectTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SessionObjectTagsList>;
+export const SessionObjectTagsList = RunTagsCase1List as any as S.Schema<SessionObjectTagsList>;
 
 /** Arbitrary JSON metadata, or `null` if unset. */
 export type SessionObjectMetadataMap = { [key: string]: unknown | undefined };
-export const SessionObjectMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SessionObjectMetadataMap>;
+export const SessionObjectMetadataMap =
+  SessionTriggerConfigBasePayloadMap as any as S.Schema<SessionObjectMetadataMap>;
 
 /** A session row. */
 export interface SessionObject {
@@ -434,9 +429,8 @@ export type BulkActionFilterStatus = BulkActionFilterStatusCase0 | BulkActionFil
 export const BulkActionFilterStatus = S.Unknown as any as S.Schema<BulkActionFilterStatus>;
 
 export type BulkActionFilterTaskIdentifierCase1List = Array<string>;
-export const BulkActionFilterTaskIdentifierCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkActionFilterTaskIdentifierCase1List>;
+export const BulkActionFilterTaskIdentifierCase1List =
+  RunTagsCase1List as any as S.Schema<BulkActionFilterTaskIdentifierCase1List>;
 
 /** The identifier of the task that was run. */
 export type BulkActionFilterTaskIdentifier = string | BulkActionFilterTaskIdentifierCase1List;
@@ -444,9 +438,8 @@ export const BulkActionFilterTaskIdentifier =
   S.Unknown as any as S.Schema<BulkActionFilterTaskIdentifier>;
 
 export type BulkActionFilterVersionCase1List = Array<string>;
-export const BulkActionFilterVersionCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkActionFilterVersionCase1List>;
+export const BulkActionFilterVersionCase1List =
+  RunTagsCase1List as any as S.Schema<BulkActionFilterVersionCase1List>;
 
 /** The worker version that executed the run. */
 export type BulkActionFilterVersion = string | BulkActionFilterVersionCase1List;
@@ -461,9 +454,8 @@ export type BulkActionFilterTo = string | number;
 export const BulkActionFilterTo = S.Unknown as any as S.Schema<BulkActionFilterTo>;
 
 export type BulkActionFilterTagCase1List = Array<string>;
-export const BulkActionFilterTagCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkActionFilterTagCase1List>;
+export const BulkActionFilterTagCase1List =
+  RunTagsCase1List as any as S.Schema<BulkActionFilterTagCase1List>;
 
 /** Select runs with one or more tags. */
 export type BulkActionFilterTag = string | BulkActionFilterTagCase1List;
@@ -492,18 +484,16 @@ export type BulkActionFilterQueue = QueueTypeName | BulkActionFilterQueueCase1Li
 export const BulkActionFilterQueue = S.Unknown as any as S.Schema<BulkActionFilterQueue>;
 
 export type BulkActionFilterMachineCase1List = Array<string>;
-export const BulkActionFilterMachineCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkActionFilterMachineCase1List>;
+export const BulkActionFilterMachineCase1List =
+  RunTagsCase1List as any as S.Schema<BulkActionFilterMachineCase1List>;
 
 /** Select runs by machine preset. */
 export type BulkActionFilterMachine = string | BulkActionFilterMachineCase1List;
 export const BulkActionFilterMachine = S.Unknown as any as S.Schema<BulkActionFilterMachine>;
 
 export type BulkActionFilterRegionCase1List = Array<string>;
-export const BulkActionFilterRegionCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkActionFilterRegionCase1List>;
+export const BulkActionFilterRegionCase1List =
+  RunTagsCase1List as any as S.Schema<BulkActionFilterRegionCase1List>;
 
 /** Select runs by region. */
 export type BulkActionFilterRegion = string | BulkActionFilterRegionCase1List;
@@ -576,9 +566,8 @@ export type CreateBulkActionRequestBodyCase1Action = "cancel";
 export const CreateBulkActionRequestBodyCase1Action = S.String;
 
 export type CreateBulkActionRequestBodyCase1RunIdsList = Array<string>;
-export const CreateBulkActionRequestBodyCase1RunIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateBulkActionRequestBodyCase1RunIdsList>;
+export const CreateBulkActionRequestBodyCase1RunIdsList =
+  RunTagsCase1List as any as S.Schema<CreateBulkActionRequestBodyCase1RunIdsList>;
 
 export interface CreateBulkActionRequestBodyCase1 {
   action: CreateBulkActionRequestBodyCase1Action;
@@ -620,9 +609,8 @@ export type CreateBulkActionRequestBodyCase3Action = "replay";
 export const CreateBulkActionRequestBodyCase3Action = S.String;
 
 export type CreateBulkActionRequestBodyCase3RunIdsList = Array<string>;
-export const CreateBulkActionRequestBodyCase3RunIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateBulkActionRequestBodyCase3RunIdsList>;
+export const CreateBulkActionRequestBodyCase3RunIdsList =
+  RunTagsCase1List as any as S.Schema<CreateBulkActionRequestBodyCase3RunIdsList>;
 
 export interface CreateBulkActionRequestBodyCase3 {
   action: CreateBulkActionRequestBodyCase3Action;
@@ -719,16 +707,13 @@ export const CreateScheduleV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Up to 10 tags on the session row, for dashboard filtering. */
 export type CreateSessionV1RequestTagsList = Array<string>;
-export const CreateSessionV1RequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSessionV1RequestTagsList>;
+export const CreateSessionV1RequestTagsList =
+  RunTagsCase1List as any as S.Schema<CreateSessionV1RequestTagsList>;
 
 /** Arbitrary JSON metadata. */
 export type CreateSessionV1RequestMetadataMap = { [key: string]: unknown | undefined };
-export const CreateSessionV1RequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateSessionV1RequestMetadataMap>;
+export const CreateSessionV1RequestMetadataMap =
+  SessionTriggerConfigBasePayloadMap as any as S.Schema<CreateSessionV1RequestMetadataMap>;
 
 export interface CreateSessionV1Request {
   /** Free-form discriminator for the session, e.g. `chat.agent`. Not validated against an enum. */
@@ -759,16 +744,13 @@ export const CreateSessionV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags on the session row. */
 export type CreateSessionV1ResponseTagsList = Array<string>;
-export const CreateSessionV1ResponseTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSessionV1ResponseTagsList>;
+export const CreateSessionV1ResponseTagsList =
+  RunTagsCase1List as any as S.Schema<CreateSessionV1ResponseTagsList>;
 
 /** Arbitrary JSON metadata, or `null` if unset. */
 export type CreateSessionV1ResponseMetadataMap = { [key: string]: unknown | undefined };
-export const CreateSessionV1ResponseMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateSessionV1ResponseMetadataMap>;
+export const CreateSessionV1ResponseMetadataMap =
+  SessionTriggerConfigBasePayloadMap as any as S.Schema<CreateSessionV1ResponseMetadataMap>;
 
 export interface CreateSessionV1Response {
   /** The session's friendly ID, prefixed with `session_`. */
@@ -823,9 +805,8 @@ export const CreateSessionV1Response = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateSessionV1Response" }) as any as S.Schema<CreateSessionV1Response>;
 
 export type CreateWaitpointTokenV1RequestTagsCase1List = Array<string>;
-export const CreateWaitpointTokenV1RequestTagsCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateWaitpointTokenV1RequestTagsCase1List>;
+export const CreateWaitpointTokenV1RequestTagsCase1List =
+  RunTagsCase1List as any as S.Schema<CreateWaitpointTokenV1RequestTagsCase1List>;
 
 /** Tags to attach to the waitpoint. You can set up to 10 tags, each under 128 characters. We recommend namespacing tags with a prefix like `user:1234567` or `org_9876543`. */
 export type CreateWaitpointTokenV1RequestTags = string | CreateWaitpointTokenV1RequestTagsCase1List;
@@ -921,9 +902,8 @@ export const DeleteScheduleV1Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteScheduleV1Request" }) as any as S.Schema<DeleteScheduleV1Request>;
 
 export interface DeleteScheduleV1Response {}
-export const DeleteScheduleV1Response = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteScheduleV1Response",
-}) as any as S.Schema<DeleteScheduleV1Response>;
+export const DeleteScheduleV1Response =
+  CreateBulkActionV1Response as any as S.Schema<DeleteScheduleV1Response>;
 
 /** The scope of data to query - environment (default), project, or organization */
 export type ExecuteQueryV1RequestScope = "environment" | "project" | "organization";
@@ -1101,9 +1081,8 @@ export const GetBatchV1ResponseStatus = S.String;
 
 /** Array of run IDs in the batch. */
 export type GetBatchV1ResponseRunsList = Array<string>;
-export const GetBatchV1ResponseRunsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetBatchV1ResponseRunsList>;
+export const GetBatchV1ResponseRunsList =
+  RunTagsCase1List as any as S.Schema<GetBatchV1ResponseRunsList>;
 
 export interface GetBatchV1ResponseErrorsItem {
   /** The index of the failed item. */
@@ -1267,16 +1246,8 @@ export interface ConcurrencyLimitObjectTotal {
   /** When the override was applied */
   overriddenAt?: string | null;
 }
-export const ConcurrencyLimitObjectTotal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    current: S.optional(S.NullOr(S.Number)),
-    base: S.optional(S.NullOr(S.Number)),
-    override: S.optional(S.NullOr(S.Number)),
-    overriddenAt: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ConcurrencyLimitObjectTotal",
-}) as any as S.Schema<ConcurrencyLimitObjectTotal>;
+export const ConcurrencyLimitObjectTotal =
+  ConcurrencyLimitObjectPerKey as any as S.Schema<ConcurrencyLimitObjectTotal>;
 
 export interface ConcurrencyLimitObject {
   /** The limit's id, starting with `climit_` */
@@ -1418,9 +1389,8 @@ export const GetErrorV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** The most recent worker versions the error has occurred in (up to five) */
 export type ErrorObjectAffectedVersionsList = Array<string>;
-export const ErrorObjectAffectedVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ErrorObjectAffectedVersionsList>;
+export const ErrorObjectAffectedVersionsList =
+  RunTagsCase1List as any as S.Schema<ErrorObjectAffectedVersionsList>;
 
 export type ErrorObjectStatus = "unresolved" | "resolved" | "ignored";
 export const ErrorObjectStatus = S.String;
@@ -1567,9 +1537,8 @@ export const GetQuerySchemaV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Allowed values for enum-like columns */
 export type GetQuerySchemaV1ResponseTablesItemColumnsItemAllowedValuesList = Array<string>;
-export const GetQuerySchemaV1ResponseTablesItemColumnsItemAllowedValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetQuerySchemaV1ResponseTablesItemColumnsItemAllowedValuesList>;
+export const GetQuerySchemaV1ResponseTablesItemColumnsItemAllowedValuesList =
+  RunTagsCase1List as any as S.Schema<GetQuerySchemaV1ResponseTablesItemColumnsItemAllowedValuesList>;
 
 export interface GetQuerySchemaV1ResponseTablesItemColumnsItem {
   /** Column name */
@@ -1940,9 +1909,8 @@ export const SpanDetailedSummaryDataEventsItem = GetRunEventsV1ResponseEventsIte
 
 /** Span events (e.g. exceptions, cancellations) that occurred during this span. */
 export type SpanDetailedSummaryDataEventsList = Array<GetRunEventsV1ResponseEventsItemEventsItem>;
-export const SpanDetailedSummaryDataEventsList = /*@__PURE__*/ S.Array(
-  GetRunEventsV1ResponseEventsItemEventsItem,
-) as any as S.Schema<SpanDetailedSummaryDataEventsList>;
+export const SpanDetailedSummaryDataEventsList =
+  GetRunEventsV1ResponseEventsItemEventsList as any as S.Schema<SpanDetailedSummaryDataEventsList>;
 
 export interface SpanDetailedSummaryData {
   /** The span message. */
@@ -2058,9 +2026,8 @@ export const GetRunV1ResponseStatus = S.String;
 
 /** Tags can be attached to a run to make it easy to find runs (in the dashboard or using SDK functions like `runs.list`) */
 export type GetRunV1ResponseTagsList = Array<string>;
-export const GetRunV1ResponseTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetRunV1ResponseTagsList>;
+export const GetRunV1ResponseTagsList =
+  RunTagsCase1List as any as S.Schema<GetRunV1ResponseTagsList>;
 
 /** The name of the function that triggered the run */
 export type GetRunV1ResponseTriggerFunction =
@@ -2088,9 +2055,7 @@ export const CommonRunObjectStatus = S.String;
 
 /** Tags can be attached to a run to make it easy to find runs (in the dashboard or using SDK functions like `runs.list`) */
 export type CommonRunObjectTagsList = Array<string>;
-export const CommonRunObjectTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CommonRunObjectTagsList>;
+export const CommonRunObjectTagsList = RunTagsCase1List as any as S.Schema<CommonRunObjectTagsList>;
 
 /** The name of the function that triggered the run */
 export type CommonRunObjectTriggerFunction =
@@ -2398,9 +2363,8 @@ export const GetTimezonesV1Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTimezonesV1Request" }) as any as S.Schema<GetTimezonesV1Request>;
 
 export type GetTimezonesResultTimezonesList = Array<string>;
-export const GetTimezonesResultTimezonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetTimezonesResultTimezonesList>;
+export const GetTimezonesResultTimezonesList =
+  RunTagsCase1List as any as S.Schema<GetTimezonesResultTimezonesList>;
 
 export interface GetTimezonesResult {
   timezones?: GetTimezonesResultTimezonesList;
@@ -2429,9 +2393,8 @@ export const WaitpointTokenObjectStatus = S.String;
 
 /** Tags attached to the waitpoint. */
 export type WaitpointTokenObjectTagsList = Array<string>;
-export const WaitpointTokenObjectTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WaitpointTokenObjectTagsList>;
+export const WaitpointTokenObjectTagsList =
+  RunTagsCase1List as any as S.Schema<WaitpointTokenObjectTagsList>;
 
 export interface WaitpointTokenObject {
   /** The unique ID of the waitpoint token. */
@@ -2806,15 +2769,12 @@ export const ListErrorsV1RequestPage = /*@__PURE__*/ S.suspend(() =>
 
 /** The identifier of the task the error belongs to */
 export type ErrorsFilterTaskIdentifierList = Array<string>;
-export const ErrorsFilterTaskIdentifierList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ErrorsFilterTaskIdentifierList>;
+export const ErrorsFilterTaskIdentifierList =
+  RunTagsCase1List as any as S.Schema<ErrorsFilterTaskIdentifierList>;
 
 /** The worker version the error occurred in */
 export type ErrorsFilterVersionList = Array<string>;
-export const ErrorsFilterVersionList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ErrorsFilterVersionList>;
+export const ErrorsFilterVersionList = RunTagsCase1List as any as S.Schema<ErrorsFilterVersionList>;
 
 export type ErrorsFilterStatusItem = "unresolved" | "resolved" | "ignored";
 export const ErrorsFilterStatusItem = S.String;
@@ -2917,14 +2877,8 @@ export interface ListErrorsResultPagination {
   /** The error ID to start the previous page before. Pass it as `page[before]`. */
   previous?: string;
 }
-export const ListErrorsResultPagination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    next: S.optional(S.String),
-    previous: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListErrorsResultPagination",
-}) as any as S.Schema<ListErrorsResultPagination>;
+export const ListErrorsResultPagination =
+  ListBulkActionsResultPagination as any as S.Schema<ListErrorsResultPagination>;
 
 export interface ListErrorsResult {
   data?: ListErrorsResultDataList;
@@ -2986,15 +2940,8 @@ export interface ListProjectRunsV1RequestPage {
   /** The ID of the run to start the page before. This will set the direction of the pagination to backward. */
   before?: string;
 }
-export const ListProjectRunsV1RequestPage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    size: S.optional(S.Number),
-    after: S.optional(S.String),
-    before: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListProjectRunsV1RequestPage",
-}) as any as S.Schema<ListProjectRunsV1RequestPage>;
+export const ListProjectRunsV1RequestPage =
+  ListBulkActionsV1RequestPage as any as S.Schema<ListProjectRunsV1RequestPage>;
 
 export interface ListProjectRunsV1RequestFilterCreatedAt {
   /** The start date to filter the runs by */
@@ -3038,21 +2985,18 @@ export const ListProjectRunsV1RequestFilterStatusList = /*@__PURE__*/ S.Array(
 
 /** The identifier of the task that was run */
 export type ListProjectRunsV1RequestFilterTaskIdentifierList = Array<string>;
-export const ListProjectRunsV1RequestFilterTaskIdentifierList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListProjectRunsV1RequestFilterTaskIdentifierList>;
+export const ListProjectRunsV1RequestFilterTaskIdentifierList =
+  RunTagsCase1List as any as S.Schema<ListProjectRunsV1RequestFilterTaskIdentifierList>;
 
 /** The version of the worker that executed the run */
 export type ListProjectRunsV1RequestFilterVersionList = Array<string>;
-export const ListProjectRunsV1RequestFilterVersionList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListProjectRunsV1RequestFilterVersionList>;
+export const ListProjectRunsV1RequestFilterVersionList =
+  RunTagsCase1List as any as S.Schema<ListProjectRunsV1RequestFilterVersionList>;
 
 /** The tags that are attached to the run */
 export type ListProjectRunsV1RequestFilterTagList = Array<string>;
-export const ListProjectRunsV1RequestFilterTagList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListProjectRunsV1RequestFilterTagList>;
+export const ListProjectRunsV1RequestFilterTagList =
+  RunTagsCase1List as any as S.Schema<ListProjectRunsV1RequestFilterTagList>;
 
 /** The environment of the project */
 export type ListProjectRunsV1RequestFilterEnvItem = "dev" | "staging" | "prod";
@@ -3151,9 +3095,7 @@ export const ListRunItemEnv = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags can be attached to a run to make it easy to find runs (in the dashboard or using SDK functions like `runs.list`) */
 export type ListRunItemTagsList = Array<string>;
-export const ListRunItemTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListRunItemTagsList>;
+export const ListRunItemTagsList = RunTagsCase1List as any as S.Schema<ListRunItemTagsList>;
 
 export interface ListRunItem {
   /** The unique ID of the run, prefixed with `run_` */
@@ -3269,15 +3211,8 @@ export interface ListQueuesResultPagination {
   /** The total number of queues */
   count?: number;
 }
-export const ListQueuesResultPagination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    currentPage: S.optional(S.Number),
-    totalPages: S.optional(S.Number),
-    count: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ListQueuesResultPagination",
-}) as any as S.Schema<ListQueuesResultPagination>;
+export const ListQueuesResultPagination =
+  ListConcurrencyLimitsV1ResponsePagination as any as S.Schema<ListQueuesResultPagination>;
 
 export interface ListQueuesResult {
   /** An array of queue objects */
@@ -3319,21 +3254,17 @@ export const CommonRunsFilterStatusList = /*@__PURE__*/ S.Array(
 
 /** The identifier of the task that was run */
 export type CommonRunsFilterTaskIdentifierList = Array<string>;
-export const CommonRunsFilterTaskIdentifierList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CommonRunsFilterTaskIdentifierList>;
+export const CommonRunsFilterTaskIdentifierList =
+  RunTagsCase1List as any as S.Schema<CommonRunsFilterTaskIdentifierList>;
 
 /** The version of the worker that executed the run */
 export type CommonRunsFilterVersionList = Array<string>;
-export const CommonRunsFilterVersionList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CommonRunsFilterVersionList>;
+export const CommonRunsFilterVersionList =
+  RunTagsCase1List as any as S.Schema<CommonRunsFilterVersionList>;
 
 /** The tags that are attached to the run */
 export type CommonRunsFilterTagList = Array<string>;
-export const CommonRunsFilterTagList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CommonRunsFilterTagList>;
+export const CommonRunsFilterTagList = RunTagsCase1List as any as S.Schema<CommonRunsFilterTagList>;
 
 export interface CommonRunsFilter {
   createdAt?: ListProjectRunsV1RequestFilterCreatedAt;
@@ -3420,33 +3351,21 @@ export interface ListSessionsV1RequestPage {
   /** The ID of the session to start the page before. Sets the pagination direction to backward. */
   before?: string;
 }
-export const ListSessionsV1RequestPage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    size: S.optional(S.Number),
-    after: S.optional(S.String),
-    before: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListSessionsV1RequestPage",
-}) as any as S.Schema<ListSessionsV1RequestPage>;
+export const ListSessionsV1RequestPage =
+  ListBulkActionsV1RequestPage as any as S.Schema<ListSessionsV1RequestPage>;
 
 /** The session type(s) to filter by. */
 export type SessionsFilterTypeList = Array<string>;
-export const SessionsFilterTypeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SessionsFilterTypeList>;
+export const SessionsFilterTypeList = RunTagsCase1List as any as S.Schema<SessionsFilterTypeList>;
 
 /** The tags to filter by. */
 export type SessionsFilterTagsList = Array<string>;
-export const SessionsFilterTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SessionsFilterTagsList>;
+export const SessionsFilterTagsList = RunTagsCase1List as any as S.Schema<SessionsFilterTagsList>;
 
 /** The task identifier(s) to filter by. */
 export type SessionsFilterTaskIdentifierList = Array<string>;
-export const SessionsFilterTaskIdentifierList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SessionsFilterTaskIdentifierList>;
+export const SessionsFilterTaskIdentifierList =
+  RunTagsCase1List as any as S.Schema<SessionsFilterTaskIdentifierList>;
 
 export type SessionsFilterStatusItem = "ACTIVE" | "CLOSED" | "EXPIRED";
 export const SessionsFilterStatusItem = S.String;
@@ -3521,14 +3440,8 @@ export interface ListSessionsResultPagination {
   /** The session ID to start the previous page before. Pass it as the `page[before]` parameter on the next request. */
   previous?: string;
 }
-export const ListSessionsResultPagination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    next: S.optional(S.String),
-    previous: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListSessionsResultPagination",
-}) as any as S.Schema<ListSessionsResultPagination>;
+export const ListSessionsResultPagination =
+  ListBulkActionsResultPagination as any as S.Schema<ListSessionsResultPagination>;
 
 export interface ListSessionsResult {
   data?: ListSessionsResultDataList;
@@ -3787,11 +3700,7 @@ export interface RunReplayV1Response {
   /** The ID of the new run. */
   id?: string;
 }
-export const RunReplayV1Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "RunReplayV1Response" }) as any as S.Schema<RunReplayV1Response>;
+export const RunReplayV1Response = CancelRunV1Response as any as S.Schema<RunReplayV1Response>;
 
 export interface RunRescheduleV1Request {
   /** The ID of an run, starts with `run_`. The run ID will be returned when you trigger a run on a task. */
@@ -3823,9 +3732,8 @@ export const RunRescheduleV1ResponseStatus = S.String;
 
 /** Tags can be attached to a run to make it easy to find runs (in the dashboard or using SDK functions like `runs.list`) */
 export type RunRescheduleV1ResponseTagsList = Array<string>;
-export const RunRescheduleV1ResponseTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RunRescheduleV1ResponseTagsList>;
+export const RunRescheduleV1ResponseTagsList =
+  RunTagsCase1List as any as S.Schema<RunRescheduleV1ResponseTagsList>;
 
 /** The name of the function that triggered the run */
 export type RunRescheduleV1ResponseTriggerFunction =
@@ -3837,9 +3745,8 @@ export const RunRescheduleV1ResponseTriggerFunction = S.String;
 
 /** The immediate children of the run. Will be omitted if the run has no children */
 export type RunRescheduleV1ResponseRelatedRunsChildrenList = Array<CommonRunObject>;
-export const RunRescheduleV1ResponseRelatedRunsChildrenList = /*@__PURE__*/ S.Array(
-  CommonRunObject,
-) as any as S.Schema<RunRescheduleV1ResponseRelatedRunsChildrenList>;
+export const RunRescheduleV1ResponseRelatedRunsChildrenList =
+  GetRunV1ResponseRelatedRunsChildrenList as any as S.Schema<RunRescheduleV1ResponseRelatedRunsChildrenList>;
 
 export interface RunRescheduleV1ResponseRelatedRuns {
   /** The root run of the run hierarchy. Will be omitted if the run is the root run */
@@ -3849,15 +3756,8 @@ export interface RunRescheduleV1ResponseRelatedRuns {
   /** The immediate children of the run. Will be omitted if the run has no children */
   children?: RunRescheduleV1ResponseRelatedRunsChildrenList;
 }
-export const RunRescheduleV1ResponseRelatedRuns = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    root: S.optional(CommonRunObject),
-    parent: S.optional(CommonRunObject),
-    children: S.optional(RunRescheduleV1ResponseRelatedRunsChildrenList),
-  }),
-).annotate({
-  identifier: "RunRescheduleV1ResponseRelatedRuns",
-}) as any as S.Schema<RunRescheduleV1ResponseRelatedRuns>;
+export const RunRescheduleV1ResponseRelatedRuns =
+  GetRunV1ResponseRelatedRuns as any as S.Schema<RunRescheduleV1ResponseRelatedRuns>;
 
 export type RunRescheduleV1ResponseScheduleGeneratorType = "CRON";
 export const RunRescheduleV1ResponseScheduleGeneratorType = S.String;
@@ -4113,9 +4013,8 @@ export const TriggerBatchTaskByIdV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of run IDs that were triggered */
 export type BatchTriggerTaskResponseRunsList = Array<string>;
-export const BatchTriggerTaskResponseRunsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BatchTriggerTaskResponseRunsList>;
+export const BatchTriggerTaskResponseRunsList =
+  RunTagsCase1List as any as S.Schema<BatchTriggerTaskResponseRunsList>;
 
 export interface BatchTriggerTaskResponse {
   /** The ID of the batch that was triggered */
@@ -4266,11 +4165,7 @@ export interface TriggerTaskResponse {
   /** The ID of the run that was triggered. */
   id?: string;
 }
-export const TriggerTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "TriggerTaskResponse" }) as any as S.Schema<TriggerTaskResponse>;
+export const TriggerTaskResponse = CancelRunV1Response as any as S.Schema<TriggerTaskResponse>;
 
 export interface UnresolveErrorV1Request {
   /** The ID of an error group, starts with `error_`. */
@@ -4356,16 +4251,13 @@ export const UpdateScheduleV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Replaces the tags on the session row. */
 export type UpdateSessionV1RequestTagsList = Array<string>;
-export const UpdateSessionV1RequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSessionV1RequestTagsList>;
+export const UpdateSessionV1RequestTagsList =
+  RunTagsCase1List as any as S.Schema<UpdateSessionV1RequestTagsList>;
 
 /** Replaces the metadata. Pass `null` to clear it. */
 export type UpdateSessionV1RequestMetadataMap = { [key: string]: unknown | undefined };
-export const UpdateSessionV1RequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateSessionV1RequestMetadataMap>;
+export const UpdateSessionV1RequestMetadataMap =
+  SessionTriggerConfigBasePayloadMap as any as S.Schema<UpdateSessionV1RequestMetadataMap>;
 
 export interface UpdateSessionV1Request {
   /** The session's friendly ID (`session_...`) or your `externalId`. The server disambiguates by the `session_` prefix. */
@@ -4390,9 +4282,8 @@ export type UploadProjectEnvvarsV1RequestEnv = "dev" | "staging" | "prod";
 export const UploadProjectEnvvarsV1RequestEnv = S.String;
 
 export type UploadProjectEnvvarsV1RequestVariablesList = Array<EnvVar>;
-export const UploadProjectEnvvarsV1RequestVariablesList = /*@__PURE__*/ S.Array(
-  EnvVar,
-) as any as S.Schema<UploadProjectEnvvarsV1RequestVariablesList>;
+export const UploadProjectEnvvarsV1RequestVariablesList =
+  ListEnvironmentVariablesResponse as any as S.Schema<UploadProjectEnvvarsV1RequestVariablesList>;
 
 export interface UploadProjectEnvvarsV1Request {
   /** The external ref of the project. You can find this in the project settings. Starts with `proj_`. */

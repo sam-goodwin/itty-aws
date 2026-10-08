@@ -100,15 +100,13 @@ export const CreateAccessGroupResponseEntitlementsList = /*@__PURE__*/ S.Array(
 
 /** Permissions that the team has in the access group. */
 export type CreateAccessGroupResponseTeamPermissionsList = Array<string>;
-export const CreateAccessGroupResponseTeamPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateAccessGroupResponseTeamPermissionsList>;
+export const CreateAccessGroupResponseTeamPermissionsList =
+  CreateAccessGroupRequestMembersToAddList as any as S.Schema<CreateAccessGroupResponseTeamPermissionsList>;
 
 /** Roles that the team has in the access group. */
 export type CreateAccessGroupResponseTeamRolesList = Array<string>;
-export const CreateAccessGroupResponseTeamRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateAccessGroupResponseTeamRolesList>;
+export const CreateAccessGroupResponseTeamRolesList =
+  CreateAccessGroupRequestMembersToAddList as any as S.Schema<CreateAccessGroupResponseTeamRolesList>;
 
 export interface CreateAccessGroupResponse {
   /** ID of the access group. */
@@ -473,26 +471,21 @@ export const ListAccessGroupsResponseBodyCase1AccessGroupsItemEntitlementsList =
   ) as any as S.Schema<ListAccessGroupsResponseBodyCase1AccessGroupsItemEntitlementsList>;
 
 export type ListAccessGroupsResponseBodyCase1AccessGroupsItemMembersList = Array<string>;
-export const ListAccessGroupsResponseBodyCase1AccessGroupsItemMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListAccessGroupsResponseBodyCase1AccessGroupsItemMembersList>;
+export const ListAccessGroupsResponseBodyCase1AccessGroupsItemMembersList =
+  CreateAccessGroupRequestMembersToAddList as any as S.Schema<ListAccessGroupsResponseBodyCase1AccessGroupsItemMembersList>;
 
 export type ListAccessGroupsResponseBodyCase1AccessGroupsItemProjectsList = Array<string>;
-export const ListAccessGroupsResponseBodyCase1AccessGroupsItemProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListAccessGroupsResponseBodyCase1AccessGroupsItemProjectsList>;
+export const ListAccessGroupsResponseBodyCase1AccessGroupsItemProjectsList =
+  CreateAccessGroupRequestMembersToAddList as any as S.Schema<ListAccessGroupsResponseBodyCase1AccessGroupsItemProjectsList>;
 
 export type ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamPermissionsList = Array<string>;
 export const ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamPermissionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamPermissionsList>;
+  ListAccessGroupsResponseBodyCase1AccessGroupsItemEntitlementsList as any as S.Schema<ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamPermissionsList>;
 
 /** Roles that the team has in the access group. */
 export type ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamRolesList = Array<string>;
-export const ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamRolesList>;
+export const ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamRolesList =
+  CreateAccessGroupRequestMembersToAddList as any as S.Schema<ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamRolesList>;
 
 export interface ListAccessGroupsResponseBodyCase1AccessGroupsItem {
   /** ID of the access group. */
@@ -624,9 +617,8 @@ export const ReadAccessGroupResponseTeamPermissionsList = /*@__PURE__*/ S.Array(
 
 /** Roles that the team has in the access group. */
 export type ReadAccessGroupResponseTeamRolesList = Array<string>;
-export const ReadAccessGroupResponseTeamRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReadAccessGroupResponseTeamRolesList>;
+export const ReadAccessGroupResponseTeamRolesList =
+  CreateAccessGroupRequestMembersToAddList as any as S.Schema<ReadAccessGroupResponseTeamRolesList>;
 
 export interface ReadAccessGroupResponse {
   /** ID of the access group. */
@@ -747,15 +739,13 @@ export const UpdateAccessGroupRequestProjectsList = /*@__PURE__*/ S.Array(
 
 /** List of members to add to the access group. */
 export type UpdateAccessGroupRequestMembersToAddList = Array<string>;
-export const UpdateAccessGroupRequestMembersToAddList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAccessGroupRequestMembersToAddList>;
+export const UpdateAccessGroupRequestMembersToAddList =
+  CreateAccessGroupRequestMembersToAddList as any as S.Schema<UpdateAccessGroupRequestMembersToAddList>;
 
 /** List of members to remove from the access group. */
 export type UpdateAccessGroupRequestMembersToRemoveList = Array<string>;
-export const UpdateAccessGroupRequestMembersToRemoveList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAccessGroupRequestMembersToRemoveList>;
+export const UpdateAccessGroupRequestMembersToRemoveList =
+  CreateAccessGroupRequestMembersToAddList as any as S.Schema<UpdateAccessGroupRequestMembersToRemoveList>;
 
 export interface UpdateAccessGroupRequest {
   idOrName: string;
@@ -794,15 +784,13 @@ export const UpdateAccessGroupResponseEntitlementsList = /*@__PURE__*/ S.Array(
 
 /** Permissions that the team has in the access group. */
 export type UpdateAccessGroupResponseTeamPermissionsList = Array<string>;
-export const UpdateAccessGroupResponseTeamPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAccessGroupResponseTeamPermissionsList>;
+export const UpdateAccessGroupResponseTeamPermissionsList =
+  CreateAccessGroupRequestMembersToAddList as any as S.Schema<UpdateAccessGroupResponseTeamPermissionsList>;
 
 /** Roles that the team has in the access group. */
 export type UpdateAccessGroupResponseTeamRolesList = Array<string>;
-export const UpdateAccessGroupResponseTeamRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAccessGroupResponseTeamRolesList>;
+export const UpdateAccessGroupResponseTeamRolesList =
+  CreateAccessGroupRequestMembersToAddList as any as S.Schema<UpdateAccessGroupResponseTeamRolesList>;
 
 export interface UpdateAccessGroupResponse {
   /** ID of the access group. */

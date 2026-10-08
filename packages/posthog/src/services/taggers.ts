@@ -51,9 +51,8 @@ export const LLMTaggerConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional tag whitelist. Leave empty to allow any tag returned by the Hog code. */
 export type HogTaggerConfigTagsList = Array<TagDefinition>;
-export const HogTaggerConfigTagsList = /*@__PURE__*/ S.Array(
-  TagDefinition,
-) as any as S.Schema<HogTaggerConfigTagsList>;
+export const HogTaggerConfigTagsList =
+  LLMTaggerConfigTagsList as any as S.Schema<HogTaggerConfigTagsList>;
 
 export interface HogTaggerConfig {
   /** Hog source code to classify a generation into tags. */
@@ -165,9 +164,8 @@ export const CreateTaggerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Conditions that scope when the tagger runs */
 export type TaggerConditionsList = Array<TaggerCondition>;
-export const TaggerConditionsList = /*@__PURE__*/ S.Array(
-  TaggerCondition,
-) as any as S.Schema<TaggerConditionsList>;
+export const TaggerConditionsList =
+  CreateTaggerRequestConditionsList as any as S.Schema<TaggerConditionsList>;
 
 /** Nested serializer for model configuration. */
 export interface TaggerModelConfiguration {
@@ -189,10 +187,8 @@ export const TaggerModelConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaggerModelConfiguration" }) as any as S.Schema<TaggerModelConfiguration>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
+export const UserBasicHedgehogConfigMap =
+  TaggerConditionPropertiesItemMap as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
@@ -278,18 +274,12 @@ export interface TestHogTaggerTag {
   /** Optional description for the tag. */
   description?: string;
 }
-export const TestHogTaggerTag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(S.String),
-  }),
-).annotate({ identifier: "TestHogTaggerTag" }) as any as S.Schema<TestHogTaggerTag>;
+export const TestHogTaggerTag = TagDefinition as any as S.Schema<TestHogTaggerTag>;
 
 /** Optional tag whitelist. Returned tags outside this list are filtered out. */
 export type CreateTaggersTestHogRequestTagsList = Array<TestHogTaggerTag>;
-export const CreateTaggersTestHogRequestTagsList = /*@__PURE__*/ S.Array(
-  TestHogTaggerTag,
-) as any as S.Schema<CreateTaggersTestHogRequestTagsList>;
+export const CreateTaggersTestHogRequestTagsList =
+  LLMTaggerConfigTagsList as any as S.Schema<CreateTaggersTestHogRequestTagsList>;
 
 export interface CreateTaggersTestHogRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -381,9 +371,8 @@ export const GetTaggerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTaggerRequest" }) as any as S.Schema<GetTaggerRequest>;
 
 export type ListTaggersRequestIdInList = Array<string>;
-export const ListTaggersRequestIdInList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListTaggersRequestIdInList>;
+export const ListTaggersRequestIdInList =
+  TestHogTaggerResultItemTagsList as any as S.Schema<ListTaggersRequestIdInList>;
 
 export type ListTaggersRequestOrderByItem =
   | "-created_at"
@@ -467,9 +456,8 @@ export const TaggersDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})
 
 /** Conditions that scope when the tagger runs */
 export type UpdateTaggerRequestConditionsList = Array<TaggerCondition>;
-export const UpdateTaggerRequestConditionsList = /*@__PURE__*/ S.Array(
-  TaggerCondition,
-) as any as S.Schema<UpdateTaggerRequestConditionsList>;
+export const UpdateTaggerRequestConditionsList =
+  CreateTaggerRequestConditionsList as any as S.Schema<UpdateTaggerRequestConditionsList>;
 
 export interface UpdateTaggerRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -504,9 +492,8 @@ export const UpdateTaggerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Conditions that scope when the tagger runs */
 export type UpdateTaggersPartialRequestConditionsList = Array<TaggerCondition>;
-export const UpdateTaggersPartialRequestConditionsList = /*@__PURE__*/ S.Array(
-  TaggerCondition,
-) as any as S.Schema<UpdateTaggersPartialRequestConditionsList>;
+export const UpdateTaggersPartialRequestConditionsList =
+  CreateTaggerRequestConditionsList as any as S.Schema<UpdateTaggersPartialRequestConditionsList>;
 
 export interface UpdateTaggersPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

@@ -515,10 +515,8 @@ export const DeliveriesWebhookResponseDataItemRequestBodyMap = /*@__PURE__*/ S.R
 export type DeliveriesWebhookResponseDataItemResponseBodyMap = {
   [key: string]: unknown | undefined;
 };
-export const DeliveriesWebhookResponseDataItemResponseBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DeliveriesWebhookResponseDataItemResponseBodyMap>;
+export const DeliveriesWebhookResponseDataItemResponseBodyMap =
+  DeliveriesWebhookResponseDataItemRequestBodyMap as any as S.Schema<DeliveriesWebhookResponseDataItemResponseBodyMap>;
 
 /** A webhook log entry containing the request and response details */
 export interface DeliveriesWebhookResponseDataItem {

@@ -495,11 +495,8 @@ export const CreateRegistrationsFromBrandProfileInput = /*@__PURE__*/ S.suspend(
 export interface CreateRegistrationsFromBrandProfileOutput {
   results: JobResult[];
 }
-export const CreateRegistrationsFromBrandProfileOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ results: JobResults }),
-).annotate({
-  identifier: "CreateRegistrationsFromBrandProfileOutput",
-}) as any as S.Schema<CreateRegistrationsFromBrandProfileOutput>;
+export const CreateRegistrationsFromBrandProfileOutput =
+  CreateBrandProfileFromRegistrationOutput as any as S.Schema<CreateRegistrationsFromBrandProfileOutput>;
 export interface DeleteBrandProfileInput {
   brandProfileId: string;
 }
@@ -745,11 +742,8 @@ export const GetNotifyCodeConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 export interface GetNotifyCodeConfigurationOutput {
   notifyCodeConfiguration: NotifyCodeConfiguration;
 }
-export const GetNotifyCodeConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ notifyCodeConfiguration: NotifyCodeConfiguration }),
-).annotate({
-  identifier: "GetNotifyCodeConfigurationOutput",
-}) as any as S.Schema<GetNotifyCodeConfigurationOutput>;
+export const GetNotifyCodeConfigurationOutput =
+  CreateNotifyCodeConfigurationOutput as any as S.Schema<GetNotifyCodeConfigurationOutput>;
 export type NextToken = string;
 export type MaxResults = number;
 export interface ListBrandProfileAttributesInput {
@@ -830,17 +824,7 @@ export interface BrandProfileInfo {
   createdAt: Date;
   updatedAt: Date;
 }
-export const BrandProfileInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    brandProfileId: S.String,
-    brandProfileArn: S.String,
-    brandProfileName: S.String,
-    status: Status,
-    deletionProtectionEnabled: S.Boolean,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "BrandProfileInfo" }) as any as S.Schema<BrandProfileInfo>;
+export const BrandProfileInfo = GetBrandProfileOutput as any as S.Schema<BrandProfileInfo>;
 export type BrandProfileInfoList = BrandProfileInfo[];
 export const BrandProfileInfoList = /*@__PURE__*/ S.Array(BrandProfileInfo);
 export interface ListBrandProfilesOutput {
@@ -877,19 +861,7 @@ export interface JobSummary {
   errorMessage?: string;
   resources?: JobResource[];
 }
-export const JobSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobId: S.String,
-    status: JobStatus,
-    operationType: S.String,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    brandProfileId: S.optional(S.String),
-    errorCode: S.optional(S.String),
-    errorMessage: S.optional(S.String),
-    resources: S.optional(JobResourceList),
-  }),
-).annotate({ identifier: "JobSummary" }) as any as S.Schema<JobSummary>;
+export const JobSummary = Job as any as S.Schema<JobSummary>;
 export type JobSummaryList = JobSummary[];
 export const JobSummaryList = /*@__PURE__*/ S.Array(JobSummary);
 export interface ListJobsOutput {
@@ -1015,10 +987,7 @@ export type ConfigurationSetName = string;
 export type ContextKey = string | redacted.Redacted<string>;
 export type ContextValue = string | redacted.Redacted<string>;
 export type ContextMap = { [key: string]: string | redacted.Redacted<string> | undefined };
-export const ContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ SensitiveString.pipe(S.optional),
-);
+export const ContextMap = DestinationCountryParameters as any as S.Schema<ContextMap>;
 export type ReferenceId = string;
 export interface SendNotifyCodeVerificationInput {
   channel: NotifyChannel;
@@ -1080,7 +1049,7 @@ export const TagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).ann
   identifier: "TagResourceOutput",
 }) as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = RegistrationTypeList as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
@@ -1101,9 +1070,7 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceOutput",
-}) as any as S.Schema<UntagResourceOutput>;
+export const UntagResourceOutput = TagResourceOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateBrandProfileInput {
   brandProfileId: string;
   brandProfileName?: string;
@@ -1134,17 +1101,8 @@ export interface UpdateBrandProfileOutput {
   createdAt: Date;
   updatedAt: Date;
 }
-export const UpdateBrandProfileOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    brandProfileId: S.String,
-    brandProfileArn: S.String,
-    brandProfileName: S.String,
-    status: Status,
-    deletionProtectionEnabled: S.Boolean,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "UpdateBrandProfileOutput" }) as any as S.Schema<UpdateBrandProfileOutput>;
+export const UpdateBrandProfileOutput =
+  GetBrandProfileOutput as any as S.Schema<UpdateBrandProfileOutput>;
 export interface UpdateBrandProfileAttributeInput {
   brandProfileId: string;
   attributeName: string | redacted.Redacted<string>;
@@ -1239,45 +1197,27 @@ export const UpdateBrandProfileFromRegistrationInput = /*@__PURE__*/ S.suspend((
 export interface UpdateBrandProfileFromRegistrationOutput {
   results: JobResult[];
 }
-export const UpdateBrandProfileFromRegistrationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ results: JobResults }),
-).annotate({
-  identifier: "UpdateBrandProfileFromRegistrationOutput",
-}) as any as S.Schema<UpdateBrandProfileFromRegistrationOutput>;
+export const UpdateBrandProfileFromRegistrationOutput =
+  CreateBrandProfileFromRegistrationOutput as any as S.Schema<UpdateBrandProfileFromRegistrationOutput>;
 export interface UpdateCodeConfigurationParameters {
   codeType?: CodeType;
   codeLength?: number;
   validityPeriodMinutes?: number;
   maxAttempts?: number;
 }
-export const UpdateCodeConfigurationParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    codeType: S.optional(CodeType),
-    codeLength: S.optional(S.Number),
-    validityPeriodMinutes: S.optional(S.Number),
-    maxAttempts: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UpdateCodeConfigurationParameters",
-}) as any as S.Schema<UpdateCodeConfigurationParameters>;
+export const UpdateCodeConfigurationParameters =
+  CodeConfigurationParameters as any as S.Schema<UpdateCodeConfigurationParameters>;
 export type UpdateInlineTemplateBody = string | redacted.Redacted<string>;
 export type UpdateDestinationCountryParameters = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
-export const UpdateDestinationCountryParameters = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ SensitiveString.pipe(S.optional),
-);
+export const UpdateDestinationCountryParameters =
+  DestinationCountryParameters as any as S.Schema<UpdateDestinationCountryParameters>;
 export interface UpdateTextParameters {
   inlineTemplateBody?: string | redacted.Redacted<string>;
   destinationCountryParameters?: { [key: string]: string | redacted.Redacted<string> | undefined };
 }
-export const UpdateTextParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inlineTemplateBody: S.optional(SensitiveString),
-    destinationCountryParameters: S.optional(UpdateDestinationCountryParameters),
-  }),
-).annotate({ identifier: "UpdateTextParameters" }) as any as S.Schema<UpdateTextParameters>;
+export const UpdateTextParameters = TextParameters as any as S.Schema<UpdateTextParameters>;
 export type UpdateLanguageCode = string;
 export type UpdateVoiceId = string;
 export interface UpdateVoiceParameters {
@@ -1286,44 +1226,28 @@ export interface UpdateVoiceParameters {
   voiceId?: string;
   voiceMessageBodyTextType?: VoiceMessageBodyTextType;
 }
-export const UpdateVoiceParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inlineTemplateBody: S.optional(SensitiveString),
-    languageCode: S.optional(S.String),
-    voiceId: S.optional(S.String),
-    voiceMessageBodyTextType: S.optional(VoiceMessageBodyTextType),
-  }),
-).annotate({ identifier: "UpdateVoiceParameters" }) as any as S.Schema<UpdateVoiceParameters>;
+export const UpdateVoiceParameters = VoiceParameters as any as S.Schema<UpdateVoiceParameters>;
 export type UpdateNotifyTemplateId = string;
 export interface UpdateNotifyParameters {
   notifyTemplateId?: string;
   voiceId?: string;
 }
-export const UpdateNotifyParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ notifyTemplateId: S.optional(S.String), voiceId: S.optional(S.String) }),
-).annotate({ identifier: "UpdateNotifyParameters" }) as any as S.Schema<UpdateNotifyParameters>;
+export const UpdateNotifyParameters = NotifyParameters as any as S.Schema<UpdateNotifyParameters>;
 export type UpdateWhatsAppTemplateName = string;
 export interface UpdateWhatsAppParameters {
   whatsAppTemplateName?: string;
   languageCode?: string;
 }
-export const UpdateWhatsAppParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ whatsAppTemplateName: S.optional(S.String), languageCode: S.optional(S.String) }),
-).annotate({ identifier: "UpdateWhatsAppParameters" }) as any as S.Schema<UpdateWhatsAppParameters>;
+export const UpdateWhatsAppParameters =
+  WhatsAppParameters as any as S.Schema<UpdateWhatsAppParameters>;
 export interface UpdateChannelParameters {
   text?: UpdateTextParameters;
   voice?: UpdateVoiceParameters;
   notify?: UpdateNotifyParameters;
   whatsApp?: UpdateWhatsAppParameters;
 }
-export const UpdateChannelParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.optional(UpdateTextParameters),
-    voice: S.optional(UpdateVoiceParameters),
-    notify: S.optional(UpdateNotifyParameters),
-    whatsApp: S.optional(UpdateWhatsAppParameters),
-  }),
-).annotate({ identifier: "UpdateChannelParameters" }) as any as S.Schema<UpdateChannelParameters>;
+export const UpdateChannelParameters =
+  ChannelParameters as any as S.Schema<UpdateChannelParameters>;
 export interface UpdateNotifyCodeConfigurationInput {
   notifyCodeConfigurationId: string;
   notifyCodeConfigurationName?: string;
@@ -1354,13 +1278,10 @@ export const UpdateNotifyCodeConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateNotifyCodeConfigurationOutput {
   notifyCodeConfiguration: NotifyCodeConfiguration;
 }
-export const UpdateNotifyCodeConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ notifyCodeConfiguration: NotifyCodeConfiguration }),
-).annotate({
-  identifier: "UpdateNotifyCodeConfigurationOutput",
-}) as any as S.Schema<UpdateNotifyCodeConfigurationOutput>;
+export const UpdateNotifyCodeConfigurationOutput =
+  CreateNotifyCodeConfigurationOutput as any as S.Schema<UpdateNotifyCodeConfigurationOutput>;
 export type RegistrationIdList = string[];
-export const RegistrationIdList = /*@__PURE__*/ S.Array(S.String);
+export const RegistrationIdList = RegistrationTypeList as any as S.Schema<RegistrationIdList>;
 export interface UpdateRegistrationsFromBrandProfileInput {
   brandProfileId: string;
   registrationIds: string[];
@@ -1391,11 +1312,8 @@ export const UpdateRegistrationsFromBrandProfileInput = /*@__PURE__*/ S.suspend(
 export interface UpdateRegistrationsFromBrandProfileOutput {
   results: JobResult[];
 }
-export const UpdateRegistrationsFromBrandProfileOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ results: JobResults }),
-).annotate({
-  identifier: "UpdateRegistrationsFromBrandProfileOutput",
-}) as any as S.Schema<UpdateRegistrationsFromBrandProfileOutput>;
+export const UpdateRegistrationsFromBrandProfileOutput =
+  CreateBrandProfileFromRegistrationOutput as any as S.Schema<UpdateRegistrationsFromBrandProfileOutput>;
 export type VerificationCode = string | redacted.Redacted<string>;
 export interface ValidateNotifyCodeVerificationInput {
   destinationIdentity: string | redacted.Redacted<string>;

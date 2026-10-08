@@ -136,9 +136,8 @@ export const ListChatChannelRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of words that are automatically filtered from messages in this chat. Empty unless the caller has permission to moderate this chat. */
 export type ChatChannelListItemBannedWordsList = Array<string>;
-export const ChatChannelListItemBannedWordsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ChatChannelListItemBannedWordsList>;
+export const ChatChannelListItemBannedWordsList =
+  ChatChannelBannedWordsList as any as S.Schema<ChatChannelListItemBannedWordsList>;
 
 /** The experience this chat feed is attached to. */
 export type ChatChannelListItemExperience = ChatChannelExperience;
@@ -163,18 +162,7 @@ export interface ChatChannelListItem {
   /** The permission level controlling which users can add reactions in this chat. */
   who_can_react: WhoCanReactTypes;
 }
-export const ChatChannelListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ban_media: S.Boolean,
-    ban_urls: S.Boolean,
-    banned_words: ChatChannelListItemBannedWordsList,
-    experience: ChatChannelExperience,
-    id: S.String,
-    user_posts_cooldown_seconds: S.NullOr(S.Number),
-    who_can_post: WhoCanPostTypes,
-    who_can_react: WhoCanReactTypes,
-  }),
-).annotate({ identifier: "ChatChannelListItem" }) as any as S.Schema<ChatChannelListItem>;
+export const ChatChannelListItem = ChatChannel as any as S.Schema<ChatChannelListItem>;
 
 /** A list of nodes. */
 export type ListChatChannelResponseDataList = Array<ChatChannelListItem>;
@@ -217,9 +205,8 @@ export const ListChatChannelResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of words that are automatically blocked from messages in this chat channel. For example, ['spam', 'scam']. */
 export type UpdateChatChannelRequestBannedWordsList = Array<string>;
-export const UpdateChatChannelRequestBannedWordsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateChatChannelRequestBannedWordsList>;
+export const UpdateChatChannelRequestBannedWordsList =
+  ChatChannelBannedWordsList as any as S.Schema<UpdateChatChannelRequestBannedWordsList>;
 
 export interface UpdateChatChannelRequest {
   /** The unique identifier of the chat channel to update. Accepts either an experience ID (e.g. 'exp_xxxxx') or a chat channel ID. */

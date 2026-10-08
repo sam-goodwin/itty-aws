@@ -283,11 +283,8 @@ export const UpdateRoutingControlStatesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRoutingControlStatesRequest",
 }) as any as S.Schema<UpdateRoutingControlStatesRequest>;
 export interface UpdateRoutingControlStatesResponse {}
-export const UpdateRoutingControlStatesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateRoutingControlStatesResponse",
-}) as any as S.Schema<UpdateRoutingControlStatesResponse>;
+export const UpdateRoutingControlStatesResponse =
+  UpdateRoutingControlStateResponse as any as S.Schema<UpdateRoutingControlStatesResponse>;
 export type RetryAfterSeconds = number;
 export type ValidationExceptionReason =
   | "unknownOperation"

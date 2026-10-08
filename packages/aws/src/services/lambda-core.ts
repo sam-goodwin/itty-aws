@@ -137,7 +137,8 @@ export type NetworkConnectorSubnetIds = string[];
 export const NetworkConnectorSubnetIds = /*@__PURE__*/ S.Array(S.String);
 export type NetworkConnectorSecurityGroupId = string;
 export type NetworkConnectorSecurityGroupIds = string[];
-export const NetworkConnectorSecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export const NetworkConnectorSecurityGroupIds =
+  NetworkConnectorSubnetIds as any as S.Schema<NetworkConnectorSecurityGroupIds>;
 export type NetworkProtocol = "IPv4" | "DualStack" | (string & {});
 export const NetworkProtocol = S.String;
 
@@ -262,18 +263,8 @@ export interface DeleteNetworkConnectorResponse {
   OperatorRole?: string;
   State?: NetworkConnectorState;
 }
-export const DeleteNetworkConnectorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.String,
-    Name: S.String,
-    Id: S.String,
-    Configuration: S.optional(NetworkConnectorConfiguration),
-    OperatorRole: S.optional(S.String),
-    State: S.optional(NetworkConnectorState),
-  }),
-).annotate({
-  identifier: "DeleteNetworkConnectorResponse",
-}) as any as S.Schema<DeleteNetworkConnectorResponse>;
+export const DeleteNetworkConnectorResponse =
+  CreateNetworkConnectorResponse as any as S.Schema<DeleteNetworkConnectorResponse>;
 export interface GetNetworkConnectorRequest {
   Identifier: string;
 }

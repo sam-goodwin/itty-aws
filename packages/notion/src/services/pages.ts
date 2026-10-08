@@ -241,13 +241,8 @@ export interface RichTextItemRequestMentionCase3Database {
   /** The ID of the database in the mention. */
   id: string;
 }
-export const RichTextItemRequestMentionCase3Database = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "RichTextItemRequestMentionCase3Database",
-}) as any as S.Schema<RichTextItemRequestMentionCase3Database>;
+export const RichTextItemRequestMentionCase3Database =
+  RichTextItemRequestMentionCase2Page as any as S.Schema<RichTextItemRequestMentionCase3Database>;
 
 export interface RichTextItemRequestMentionCase3 {
   /** Always `database` */
@@ -420,9 +415,8 @@ export const CreatePageRequestPropertiesValueCase0 = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreatePageRequestPropertiesValueCase0>;
 
 export type CreatePageRequestPropertiesValueCase1RichTextList = Array<RichTextItemRequest>;
-export const CreatePageRequestPropertiesValueCase1RichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<CreatePageRequestPropertiesValueCase1RichTextList>;
+export const CreatePageRequestPropertiesValueCase1RichTextList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<CreatePageRequestPropertiesValueCase1RichTextList>;
 
 export interface CreatePageRequestPropertiesValueCase1 {
   rich_text: CreatePageRequestPropertiesValueCase1RichTextList;
@@ -658,13 +652,8 @@ export const CreatePageRequestPropertiesValueCase10 = /*@__PURE__*/ S.suspend(()
 export interface RelationItemPropertyValueResponse {
   id: string;
 }
-export const RelationItemPropertyValueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "RelationItemPropertyValueResponse",
-}) as any as S.Schema<RelationItemPropertyValueResponse>;
+export const RelationItemPropertyValueResponse =
+  RichTextItemRequestMentionCase2Page as any as S.Schema<RelationItemPropertyValueResponse>;
 
 export type CreatePageRequestPropertiesValueCase11RelationList =
   Array<RelationItemPropertyValueResponse>;
@@ -922,13 +911,8 @@ export interface FileUploadPageIconRequestFileUpload {
   /** ID of a FileUpload object that has the status `uploaded`. */
   id: string;
 }
-export const FileUploadPageIconRequestFileUpload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "FileUploadPageIconRequestFileUpload",
-}) as any as S.Schema<FileUploadPageIconRequestFileUpload>;
+export const FileUploadPageIconRequestFileUpload =
+  RichTextItemRequestMentionCase2Page as any as S.Schema<FileUploadPageIconRequestFileUpload>;
 
 export interface FileUploadPageIconRequest {
   /** Always `file_upload` */
@@ -961,13 +945,8 @@ export interface ExternalPageIconRequestExternal {
   /** The URL of the external file. */
   url: string;
 }
-export const ExternalPageIconRequestExternal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-  }),
-).annotate({
-  identifier: "ExternalPageIconRequestExternal",
-}) as any as S.Schema<ExternalPageIconRequestExternal>;
+export const ExternalPageIconRequestExternal =
+  RichTextItemRequestTextLink as any as S.Schema<ExternalPageIconRequestExternal>;
 
 export interface ExternalPageIconRequest {
   /** Always `external` */
@@ -989,14 +968,8 @@ export interface CustomEmojiPageIconRequest {
   type?: string;
   custom_emoji: RichTextItemRequestMentionCase5CustomEmoji;
 }
-export const CustomEmojiPageIconRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    custom_emoji: RichTextItemRequestMentionCase5CustomEmoji,
-  }),
-).annotate({
-  identifier: "CustomEmojiPageIconRequest",
-}) as any as S.Schema<CustomEmojiPageIconRequest>;
+export const CustomEmojiPageIconRequest =
+  RichTextItemRequestMentionCase5 as any as S.Schema<CustomEmojiPageIconRequest>;
 
 /** One of: `gray`, `lightgray`, `brown`, `yellow`, `orange`, `green`, `blue`, `purple`, `pink`, `red` */
 export type NoticonColor =
@@ -1057,14 +1030,8 @@ export interface FileUploadPageCoverRequest {
   /** The file upload for the cover. */
   file_upload: FileUploadPageIconRequestFileUpload;
 }
-export const FileUploadPageCoverRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    file_upload: FileUploadPageIconRequestFileUpload,
-  }),
-).annotate({
-  identifier: "FileUploadPageCoverRequest",
-}) as any as S.Schema<FileUploadPageCoverRequest>;
+export const FileUploadPageCoverRequest =
+  FileUploadPageIconRequest as any as S.Schema<FileUploadPageCoverRequest>;
 
 /** External URL for the cover. */
 export type ExternalPageCoverRequestExternal = ExternalPageIconRequestExternal;
@@ -1076,20 +1043,15 @@ export interface ExternalPageCoverRequest {
   /** External URL for the cover. */
   external: ExternalPageIconRequestExternal;
 }
-export const ExternalPageCoverRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    external: ExternalPageIconRequestExternal,
-  }),
-).annotate({ identifier: "ExternalPageCoverRequest" }) as any as S.Schema<ExternalPageCoverRequest>;
+export const ExternalPageCoverRequest =
+  ExternalPageIconRequest as any as S.Schema<ExternalPageCoverRequest>;
 
 export type PageCoverRequest = FileUploadPageCoverRequest | ExternalPageCoverRequest;
 export const PageCoverRequest = /*@__PURE__*/ S.Unknown as any as S.Schema<PageCoverRequest>;
 
 export type MediaContentWithUrlAndCaptionRequestCaptionList = Array<RichTextItemRequest>;
-export const MediaContentWithUrlAndCaptionRequestCaptionList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<MediaContentWithUrlAndCaptionRequestCaptionList>;
+export const MediaContentWithUrlAndCaptionRequestCaptionList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<MediaContentWithUrlAndCaptionRequestCaptionList>;
 
 export interface MediaContentWithUrlAndCaptionRequest {
   url: string;
@@ -1105,9 +1067,8 @@ export const MediaContentWithUrlAndCaptionRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<MediaContentWithUrlAndCaptionRequest>;
 
 export type EmbedFileUploadRequestCaptionList = Array<RichTextItemRequest>;
-export const EmbedFileUploadRequestCaptionList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<EmbedFileUploadRequestCaptionList>;
+export const EmbedFileUploadRequestCaptionList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<EmbedFileUploadRequestCaptionList>;
 
 export interface EmbedFileUploadRequest {
   file_upload: RelationItemPropertyValueResponse;
@@ -1155,9 +1116,8 @@ export const BlockObjectRequestCase1 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockObjectRequestCase1" }) as any as S.Schema<BlockObjectRequestCase1>;
 
 export type MediaContentWithFileAndCaptionRequestCase0CaptionList = Array<RichTextItemRequest>;
-export const MediaContentWithFileAndCaptionRequestCase0CaptionList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<MediaContentWithFileAndCaptionRequestCase0CaptionList>;
+export const MediaContentWithFileAndCaptionRequestCase0CaptionList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<MediaContentWithFileAndCaptionRequestCase0CaptionList>;
 
 export interface MediaContentWithFileAndCaptionRequestCase0 {
   external: ExternalFileRequest;
@@ -1175,9 +1135,8 @@ export const MediaContentWithFileAndCaptionRequestCase0 = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<MediaContentWithFileAndCaptionRequestCase0>;
 
 export type MediaContentWithFileAndCaptionRequestCase1CaptionList = Array<RichTextItemRequest>;
-export const MediaContentWithFileAndCaptionRequestCase1CaptionList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<MediaContentWithFileAndCaptionRequestCase1CaptionList>;
+export const MediaContentWithFileAndCaptionRequestCase1CaptionList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<MediaContentWithFileAndCaptionRequestCase1CaptionList>;
 
 export interface MediaContentWithFileAndCaptionRequestCase1 {
   file_upload: RelationItemPropertyValueResponse;
@@ -1240,9 +1199,8 @@ export const BlockObjectRequestCase4 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockObjectRequestCase4" }) as any as S.Schema<BlockObjectRequestCase4>;
 
 export type MediaContentWithFileNameAndCaptionRequestCase0CaptionList = Array<RichTextItemRequest>;
-export const MediaContentWithFileNameAndCaptionRequestCase0CaptionList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<MediaContentWithFileNameAndCaptionRequestCase0CaptionList>;
+export const MediaContentWithFileNameAndCaptionRequestCase0CaptionList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<MediaContentWithFileNameAndCaptionRequestCase0CaptionList>;
 
 export interface MediaContentWithFileNameAndCaptionRequestCase0 {
   external: ExternalFileRequest;
@@ -1262,9 +1220,8 @@ export const MediaContentWithFileNameAndCaptionRequestCase0 = /*@__PURE__*/ S.su
 }) as any as S.Schema<MediaContentWithFileNameAndCaptionRequestCase0>;
 
 export type MediaContentWithFileNameAndCaptionRequestCase1CaptionList = Array<RichTextItemRequest>;
-export const MediaContentWithFileNameAndCaptionRequestCase1CaptionList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<MediaContentWithFileNameAndCaptionRequestCase1CaptionList>;
+export const MediaContentWithFileNameAndCaptionRequestCase1CaptionList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<MediaContentWithFileNameAndCaptionRequestCase1CaptionList>;
 
 export interface MediaContentWithFileNameAndCaptionRequestCase1 {
   file_upload: RelationItemPropertyValueResponse;
@@ -1316,9 +1273,8 @@ export const BlockObjectRequestCase6 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockObjectRequestCase6" }) as any as S.Schema<BlockObjectRequestCase6>;
 
 export type BlockObjectRequestCase7CodeRichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestCase7CodeRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestCase7CodeRichTextList>;
+export const BlockObjectRequestCase7CodeRichTextList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<BlockObjectRequestCase7CodeRichTextList>;
 
 export type LanguageRequest =
   | "abap"
@@ -1414,9 +1370,8 @@ export type LanguageRequest =
 export const LanguageRequest = S.String;
 
 export type BlockObjectRequestCase7CodeCaptionList = Array<RichTextItemRequest>;
-export const BlockObjectRequestCase7CodeCaptionList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestCase7CodeCaptionList>;
+export const BlockObjectRequestCase7CodeCaptionList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<BlockObjectRequestCase7CodeCaptionList>;
 
 export interface BlockObjectRequestCase7Code {
   rich_text: BlockObjectRequestCase7CodeRichTextList;
@@ -1449,13 +1404,8 @@ export const BlockObjectRequestCase7 = /*@__PURE__*/ S.suspend(() =>
 export interface ContentWithExpressionRequest {
   expression: string;
 }
-export const ContentWithExpressionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expression: S.String,
-  }),
-).annotate({
-  identifier: "ContentWithExpressionRequest",
-}) as any as S.Schema<ContentWithExpressionRequest>;
+export const ContentWithExpressionRequest =
+  RichTextItemRequestEquation as any as S.Schema<ContentWithExpressionRequest>;
 
 export interface BlockObjectRequestCase8 {
   equation: ContentWithExpressionRequest;
@@ -1497,9 +1447,8 @@ export const BlockObjectRequestCase10 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockObjectRequestCase10" }) as any as S.Schema<BlockObjectRequestCase10>;
 
 export type ParagraphWithSingleLevelOfChildrenRequestRichTextList = Array<RichTextItemRequest>;
-export const ParagraphWithSingleLevelOfChildrenRequestRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<ParagraphWithSingleLevelOfChildrenRequestRichTextList>;
+export const ParagraphWithSingleLevelOfChildrenRequestRichTextList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<ParagraphWithSingleLevelOfChildrenRequestRichTextList>;
 
 export type BlockObjectRequestWithoutChildrenCase0Embed =
   | MediaContentWithUrlAndCaptionRequest
@@ -1541,29 +1490,20 @@ export type BlockObjectRequestWithoutChildrenCase6 = BlockObjectRequestCase6;
 export const BlockObjectRequestWithoutChildrenCase6 = BlockObjectRequestCase6;
 
 export type BlockObjectRequestWithoutChildrenCase7CodeRichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestWithoutChildrenCase7CodeRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestWithoutChildrenCase7CodeRichTextList>;
+export const BlockObjectRequestWithoutChildrenCase7CodeRichTextList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<BlockObjectRequestWithoutChildrenCase7CodeRichTextList>;
 
 export type BlockObjectRequestWithoutChildrenCase7CodeCaptionList = Array<RichTextItemRequest>;
-export const BlockObjectRequestWithoutChildrenCase7CodeCaptionList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestWithoutChildrenCase7CodeCaptionList>;
+export const BlockObjectRequestWithoutChildrenCase7CodeCaptionList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<BlockObjectRequestWithoutChildrenCase7CodeCaptionList>;
 
 export interface BlockObjectRequestWithoutChildrenCase7Code {
   rich_text: BlockObjectRequestWithoutChildrenCase7CodeRichTextList;
   language: LanguageRequest | (string & {});
   caption?: BlockObjectRequestWithoutChildrenCase7CodeCaptionList;
 }
-export const BlockObjectRequestWithoutChildrenCase7Code = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rich_text: BlockObjectRequestWithoutChildrenCase7CodeRichTextList,
-    language: LanguageRequest,
-    caption: S.optional(BlockObjectRequestWithoutChildrenCase7CodeCaptionList),
-  }),
-).annotate({
-  identifier: "BlockObjectRequestWithoutChildrenCase7Code",
-}) as any as S.Schema<BlockObjectRequestWithoutChildrenCase7Code>;
+export const BlockObjectRequestWithoutChildrenCase7Code =
+  BlockObjectRequestCase7Code as any as S.Schema<BlockObjectRequestWithoutChildrenCase7Code>;
 
 export interface BlockObjectRequestWithoutChildrenCase7 {
   code: BlockObjectRequestWithoutChildrenCase7Code;
@@ -1672,9 +1612,8 @@ export const BlockObjectRequestWithoutChildrenCase13 = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<BlockObjectRequestWithoutChildrenCase13>;
 
 export type ContentWithTableRowRequestCellsItemList = Array<RichTextItemRequest>;
-export const ContentWithTableRowRequestCellsItemList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<ContentWithTableRowRequestCellsItemList>;
+export const ContentWithTableRowRequestCellsItemList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<ContentWithTableRowRequestCellsItemList>;
 
 export type ContentWithTableRowRequestCellsList = Array<ContentWithTableRowRequestCellsItemList>;
 export const ContentWithTableRowRequestCellsList = /*@__PURE__*/ S.Array(
@@ -1708,9 +1647,8 @@ export const BlockObjectRequestWithoutChildrenCase14 = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<BlockObjectRequestWithoutChildrenCase14>;
 
 export type HeaderContentWithRichTextAndColorRequestRichTextList = Array<RichTextItemRequest>;
-export const HeaderContentWithRichTextAndColorRequestRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<HeaderContentWithRichTextAndColorRequestRichTextList>;
+export const HeaderContentWithRichTextAndColorRequestRichTextList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<HeaderContentWithRichTextAndColorRequestRichTextList>;
 
 export interface HeaderContentWithRichTextAndColorRequest {
   rich_text: HeaderContentWithRichTextAndColorRequestRichTextList;
@@ -1788,9 +1726,8 @@ export const BlockObjectRequestWithoutChildrenCase18 = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<BlockObjectRequestWithoutChildrenCase18>;
 
 export type ContentWithRichTextColorAndIconRequestRichTextList = Array<RichTextItemRequest>;
-export const ContentWithRichTextColorAndIconRequestRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<ContentWithRichTextColorAndIconRequestRichTextList>;
+export const ContentWithRichTextColorAndIconRequestRichTextList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<ContentWithRichTextColorAndIconRequestRichTextList>;
 
 export interface ContentWithRichTextColorAndIconRequest {
   rich_text: ContentWithRichTextColorAndIconRequestRichTextList;
@@ -1823,9 +1760,8 @@ export const BlockObjectRequestWithoutChildrenCase19 = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<BlockObjectRequestWithoutChildrenCase19>;
 
 export type ContentWithRichTextAndColorRequestRichTextList = Array<RichTextItemRequest>;
-export const ContentWithRichTextAndColorRequestRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<ContentWithRichTextAndColorRequestRichTextList>;
+export const ContentWithRichTextAndColorRequestRichTextList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<ContentWithRichTextAndColorRequestRichTextList>;
 
 export interface ContentWithRichTextAndColorRequest {
   rich_text: ContentWithRichTextAndColorRequestRichTextList;
@@ -1886,9 +1822,8 @@ export const BlockObjectRequestWithoutChildrenCase22 = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<BlockObjectRequestWithoutChildrenCase22>;
 
 export type BlockObjectRequestWithoutChildrenCase23ToDoRichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestWithoutChildrenCase23ToDoRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestWithoutChildrenCase23ToDoRichTextList>;
+export const BlockObjectRequestWithoutChildrenCase23ToDoRichTextList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<BlockObjectRequestWithoutChildrenCase23ToDoRichTextList>;
 
 export interface BlockObjectRequestWithoutChildrenCase23ToDo {
   rich_text: BlockObjectRequestWithoutChildrenCase23ToDoRichTextList;
@@ -1936,9 +1871,8 @@ export const BlockObjectRequestWithoutChildrenCase24 = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<BlockObjectRequestWithoutChildrenCase24>;
 
 export type ContentWithRichTextRequestRichTextList = Array<RichTextItemRequest>;
-export const ContentWithRichTextRequestRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<ContentWithRichTextRequestRichTextList>;
+export const ContentWithRichTextRequestRichTextList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<ContentWithRichTextRequestRichTextList>;
 
 export interface ContentWithRichTextRequest {
   rich_text: ContentWithRichTextRequestRichTextList;
@@ -1967,9 +1901,8 @@ export const BlockObjectRequestWithoutChildrenCase25 = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<BlockObjectRequestWithoutChildrenCase25>;
 
 export type BlockObjectRequestWithoutChildrenCase26CalloutRichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestWithoutChildrenCase26CalloutRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestWithoutChildrenCase26CalloutRichTextList>;
+export const BlockObjectRequestWithoutChildrenCase26CalloutRichTextList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<BlockObjectRequestWithoutChildrenCase26CalloutRichTextList>;
 
 export interface BlockObjectRequestWithoutChildrenCase26Callout {
   rich_text: BlockObjectRequestWithoutChildrenCase26CalloutRichTextList;
@@ -2271,9 +2204,7 @@ export const BlockObjectWithSingleLevelOfChildrenRequestCase7CodeRichTextList =
 export type BlockObjectWithSingleLevelOfChildrenRequestCase7CodeCaptionList =
   Array<RichTextItemRequest>;
 export const BlockObjectWithSingleLevelOfChildrenRequestCase7CodeCaptionList =
-  /*@__PURE__*/ S.Array(
-    RichTextItemRequest,
-  ) as any as S.Schema<BlockObjectWithSingleLevelOfChildrenRequestCase7CodeCaptionList>;
+  BlockObjectWithSingleLevelOfChildrenRequestCase7CodeRichTextList as any as S.Schema<BlockObjectWithSingleLevelOfChildrenRequestCase7CodeCaptionList>;
 
 export interface BlockObjectWithSingleLevelOfChildrenRequestCase7Code {
   rich_text: BlockObjectWithSingleLevelOfChildrenRequestCase7CodeRichTextList;
@@ -2402,15 +2333,13 @@ export const BlockObjectWithSingleLevelOfChildrenRequestCase14 =
   BlockObjectRequestWithoutChildrenCase14;
 
 export type HeaderContentWithSingleLevelOfChildrenRequestRichTextList = Array<RichTextItemRequest>;
-export const HeaderContentWithSingleLevelOfChildrenRequestRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<HeaderContentWithSingleLevelOfChildrenRequestRichTextList>;
+export const HeaderContentWithSingleLevelOfChildrenRequestRichTextList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<HeaderContentWithSingleLevelOfChildrenRequestRichTextList>;
 
 export type HeaderContentWithSingleLevelOfChildrenRequestChildrenList =
   Array<BlockObjectRequestWithoutChildren>;
-export const HeaderContentWithSingleLevelOfChildrenRequestChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectRequestWithoutChildren,
-) as any as S.Schema<HeaderContentWithSingleLevelOfChildrenRequestChildrenList>;
+export const HeaderContentWithSingleLevelOfChildrenRequestChildrenList =
+  ParagraphWithSingleLevelOfChildrenRequestChildrenList as any as S.Schema<HeaderContentWithSingleLevelOfChildrenRequestChildrenList>;
 
 export interface HeaderContentWithSingleLevelOfChildrenRequest {
   rich_text: HeaderContentWithSingleLevelOfChildrenRequestRichTextList;
@@ -2495,15 +2424,13 @@ export const BlockObjectWithSingleLevelOfChildrenRequestCase19 =
   TabItemRequestWithSingleLevelOfChildren;
 
 export type ContentWithSingleLevelOfChildrenRequestRichTextList = Array<RichTextItemRequest>;
-export const ContentWithSingleLevelOfChildrenRequestRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<ContentWithSingleLevelOfChildrenRequestRichTextList>;
+export const ContentWithSingleLevelOfChildrenRequestRichTextList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<ContentWithSingleLevelOfChildrenRequestRichTextList>;
 
 export type ContentWithSingleLevelOfChildrenRequestChildrenList =
   Array<BlockObjectRequestWithoutChildren>;
-export const ContentWithSingleLevelOfChildrenRequestChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectRequestWithoutChildren,
-) as any as S.Schema<ContentWithSingleLevelOfChildrenRequestChildrenList>;
+export const ContentWithSingleLevelOfChildrenRequestChildrenList =
+  ParagraphWithSingleLevelOfChildrenRequestChildrenList as any as S.Schema<ContentWithSingleLevelOfChildrenRequestChildrenList>;
 
 export interface ContentWithSingleLevelOfChildrenRequest {
   rich_text: ContentWithSingleLevelOfChildrenRequestRichTextList;
@@ -2571,9 +2498,7 @@ export const BlockObjectWithSingleLevelOfChildrenRequestCase23 = BlockObjectRequ
 export type BlockObjectWithSingleLevelOfChildrenRequestCase24ToDoRichTextList =
   Array<RichTextItemRequest>;
 export const BlockObjectWithSingleLevelOfChildrenRequestCase24ToDoRichTextList =
-  /*@__PURE__*/ S.Array(
-    RichTextItemRequest,
-  ) as any as S.Schema<BlockObjectWithSingleLevelOfChildrenRequestCase24ToDoRichTextList>;
+  BlockObjectWithSingleLevelOfChildrenRequestCase7CodeRichTextList as any as S.Schema<BlockObjectWithSingleLevelOfChildrenRequestCase24ToDoRichTextList>;
 
 export type BlockObjectWithSingleLevelOfChildrenRequestCase24ToDoChildrenList =
   Array<BlockObjectRequestWithoutChildren>;
@@ -2632,16 +2557,12 @@ export const BlockObjectWithSingleLevelOfChildrenRequestCase25 = /*@__PURE__*/ S
 export type BlockObjectWithSingleLevelOfChildrenRequestCase26TemplateRichTextList =
   Array<RichTextItemRequest>;
 export const BlockObjectWithSingleLevelOfChildrenRequestCase26TemplateRichTextList =
-  /*@__PURE__*/ S.Array(
-    RichTextItemRequest,
-  ) as any as S.Schema<BlockObjectWithSingleLevelOfChildrenRequestCase26TemplateRichTextList>;
+  BlockObjectWithSingleLevelOfChildrenRequestCase7CodeRichTextList as any as S.Schema<BlockObjectWithSingleLevelOfChildrenRequestCase26TemplateRichTextList>;
 
 export type BlockObjectWithSingleLevelOfChildrenRequestCase26TemplateChildrenList =
   Array<BlockObjectRequestWithoutChildren>;
 export const BlockObjectWithSingleLevelOfChildrenRequestCase26TemplateChildrenList =
-  /*@__PURE__*/ S.Array(
-    BlockObjectRequestWithoutChildren,
-  ) as any as S.Schema<BlockObjectWithSingleLevelOfChildrenRequestCase26TemplateChildrenList>;
+  BlockObjectWithSingleLevelOfChildrenRequestCase24ToDoChildrenList as any as S.Schema<BlockObjectWithSingleLevelOfChildrenRequestCase26TemplateChildrenList>;
 
 export interface BlockObjectWithSingleLevelOfChildrenRequestCase26Template {
   rich_text: BlockObjectWithSingleLevelOfChildrenRequestCase26TemplateRichTextList;
@@ -2675,16 +2596,12 @@ export const BlockObjectWithSingleLevelOfChildrenRequestCase26 = /*@__PURE__*/ S
 export type BlockObjectWithSingleLevelOfChildrenRequestCase27CalloutRichTextList =
   Array<RichTextItemRequest>;
 export const BlockObjectWithSingleLevelOfChildrenRequestCase27CalloutRichTextList =
-  /*@__PURE__*/ S.Array(
-    RichTextItemRequest,
-  ) as any as S.Schema<BlockObjectWithSingleLevelOfChildrenRequestCase27CalloutRichTextList>;
+  BlockObjectWithSingleLevelOfChildrenRequestCase7CodeRichTextList as any as S.Schema<BlockObjectWithSingleLevelOfChildrenRequestCase27CalloutRichTextList>;
 
 export type BlockObjectWithSingleLevelOfChildrenRequestCase27CalloutChildrenList =
   Array<BlockObjectRequestWithoutChildren>;
 export const BlockObjectWithSingleLevelOfChildrenRequestCase27CalloutChildrenList =
-  /*@__PURE__*/ S.Array(
-    BlockObjectRequestWithoutChildren,
-  ) as any as S.Schema<BlockObjectWithSingleLevelOfChildrenRequestCase27CalloutChildrenList>;
+  BlockObjectWithSingleLevelOfChildrenRequestCase24ToDoChildrenList as any as S.Schema<BlockObjectWithSingleLevelOfChildrenRequestCase27CalloutChildrenList>;
 
 export interface BlockObjectWithSingleLevelOfChildrenRequestCase27Callout {
   rich_text: BlockObjectWithSingleLevelOfChildrenRequestCase27CalloutRichTextList;
@@ -2727,9 +2644,7 @@ export const BlockObjectWithSingleLevelOfChildrenRequestCase28SyncedBlockSyncedF
 export type BlockObjectWithSingleLevelOfChildrenRequestCase28SyncedBlockChildrenList =
   Array<BlockObjectRequestWithoutChildren>;
 export const BlockObjectWithSingleLevelOfChildrenRequestCase28SyncedBlockChildrenList =
-  /*@__PURE__*/ S.Array(
-    BlockObjectRequestWithoutChildren,
-  ) as any as S.Schema<BlockObjectWithSingleLevelOfChildrenRequestCase28SyncedBlockChildrenList>;
+  BlockObjectWithSingleLevelOfChildrenRequestCase24ToDoChildrenList as any as S.Schema<BlockObjectWithSingleLevelOfChildrenRequestCase28SyncedBlockChildrenList>;
 
 export interface BlockObjectWithSingleLevelOfChildrenRequestCase28SyncedBlock {
   synced_from: BlockObjectRequestWithoutChildrenCase27SyncedBlockSyncedFrom | null;
@@ -2861,15 +2776,13 @@ export type BlockObjectRequestCase17 = ColumnBlockWithChildrenRequest;
 export const BlockObjectRequestCase17 = ColumnBlockWithChildrenRequest;
 
 export type BlockObjectRequestCase18Heading1RichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestCase18Heading1RichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestCase18Heading1RichTextList>;
+export const BlockObjectRequestCase18Heading1RichTextList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<BlockObjectRequestCase18Heading1RichTextList>;
 
 export type BlockObjectRequestCase18Heading1ChildrenList =
   Array<BlockObjectWithSingleLevelOfChildrenRequest>;
-export const BlockObjectRequestCase18Heading1ChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectWithSingleLevelOfChildrenRequest,
-) as any as S.Schema<BlockObjectRequestCase18Heading1ChildrenList>;
+export const BlockObjectRequestCase18Heading1ChildrenList =
+  ColumnWithChildrenRequestChildrenList as any as S.Schema<BlockObjectRequestCase18Heading1ChildrenList>;
 
 export interface BlockObjectRequestCase18Heading1 {
   rich_text: BlockObjectRequestCase18Heading1RichTextList;
@@ -2902,15 +2815,13 @@ export const BlockObjectRequestCase18 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockObjectRequestCase18" }) as any as S.Schema<BlockObjectRequestCase18>;
 
 export type BlockObjectRequestCase19Heading2RichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestCase19Heading2RichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestCase19Heading2RichTextList>;
+export const BlockObjectRequestCase19Heading2RichTextList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<BlockObjectRequestCase19Heading2RichTextList>;
 
 export type BlockObjectRequestCase19Heading2ChildrenList =
   Array<BlockObjectWithSingleLevelOfChildrenRequest>;
-export const BlockObjectRequestCase19Heading2ChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectWithSingleLevelOfChildrenRequest,
-) as any as S.Schema<BlockObjectRequestCase19Heading2ChildrenList>;
+export const BlockObjectRequestCase19Heading2ChildrenList =
+  ColumnWithChildrenRequestChildrenList as any as S.Schema<BlockObjectRequestCase19Heading2ChildrenList>;
 
 export interface BlockObjectRequestCase19Heading2 {
   rich_text: BlockObjectRequestCase19Heading2RichTextList;
@@ -2918,16 +2829,8 @@ export interface BlockObjectRequestCase19Heading2 {
   is_toggleable?: boolean;
   children?: BlockObjectRequestCase19Heading2ChildrenList;
 }
-export const BlockObjectRequestCase19Heading2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rich_text: BlockObjectRequestCase19Heading2RichTextList,
-    color: S.optional(ApiColor),
-    is_toggleable: S.optional(S.Boolean),
-    children: S.optional(BlockObjectRequestCase19Heading2ChildrenList),
-  }),
-).annotate({
-  identifier: "BlockObjectRequestCase19Heading2",
-}) as any as S.Schema<BlockObjectRequestCase19Heading2>;
+export const BlockObjectRequestCase19Heading2 =
+  BlockObjectRequestCase18Heading1 as any as S.Schema<BlockObjectRequestCase19Heading2>;
 
 export interface BlockObjectRequestCase19 {
   heading_2: BlockObjectRequestCase19Heading2;
@@ -2943,15 +2846,13 @@ export const BlockObjectRequestCase19 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockObjectRequestCase19" }) as any as S.Schema<BlockObjectRequestCase19>;
 
 export type BlockObjectRequestCase20Heading3RichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestCase20Heading3RichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestCase20Heading3RichTextList>;
+export const BlockObjectRequestCase20Heading3RichTextList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<BlockObjectRequestCase20Heading3RichTextList>;
 
 export type BlockObjectRequestCase20Heading3ChildrenList =
   Array<BlockObjectWithSingleLevelOfChildrenRequest>;
-export const BlockObjectRequestCase20Heading3ChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectWithSingleLevelOfChildrenRequest,
-) as any as S.Schema<BlockObjectRequestCase20Heading3ChildrenList>;
+export const BlockObjectRequestCase20Heading3ChildrenList =
+  ColumnWithChildrenRequestChildrenList as any as S.Schema<BlockObjectRequestCase20Heading3ChildrenList>;
 
 export interface BlockObjectRequestCase20Heading3 {
   rich_text: BlockObjectRequestCase20Heading3RichTextList;
@@ -2959,16 +2860,8 @@ export interface BlockObjectRequestCase20Heading3 {
   is_toggleable?: boolean;
   children?: BlockObjectRequestCase20Heading3ChildrenList;
 }
-export const BlockObjectRequestCase20Heading3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rich_text: BlockObjectRequestCase20Heading3RichTextList,
-    color: S.optional(ApiColor),
-    is_toggleable: S.optional(S.Boolean),
-    children: S.optional(BlockObjectRequestCase20Heading3ChildrenList),
-  }),
-).annotate({
-  identifier: "BlockObjectRequestCase20Heading3",
-}) as any as S.Schema<BlockObjectRequestCase20Heading3>;
+export const BlockObjectRequestCase20Heading3 =
+  BlockObjectRequestCase18Heading1 as any as S.Schema<BlockObjectRequestCase20Heading3>;
 
 export interface BlockObjectRequestCase20 {
   heading_3: BlockObjectRequestCase20Heading3;
@@ -2984,15 +2877,13 @@ export const BlockObjectRequestCase20 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockObjectRequestCase20" }) as any as S.Schema<BlockObjectRequestCase20>;
 
 export type BlockObjectRequestCase21Heading4RichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestCase21Heading4RichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestCase21Heading4RichTextList>;
+export const BlockObjectRequestCase21Heading4RichTextList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<BlockObjectRequestCase21Heading4RichTextList>;
 
 export type BlockObjectRequestCase21Heading4ChildrenList =
   Array<BlockObjectWithSingleLevelOfChildrenRequest>;
-export const BlockObjectRequestCase21Heading4ChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectWithSingleLevelOfChildrenRequest,
-) as any as S.Schema<BlockObjectRequestCase21Heading4ChildrenList>;
+export const BlockObjectRequestCase21Heading4ChildrenList =
+  ColumnWithChildrenRequestChildrenList as any as S.Schema<BlockObjectRequestCase21Heading4ChildrenList>;
 
 export interface BlockObjectRequestCase21Heading4 {
   rich_text: BlockObjectRequestCase21Heading4RichTextList;
@@ -3000,16 +2891,8 @@ export interface BlockObjectRequestCase21Heading4 {
   is_toggleable?: boolean;
   children?: BlockObjectRequestCase21Heading4ChildrenList;
 }
-export const BlockObjectRequestCase21Heading4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rich_text: BlockObjectRequestCase21Heading4RichTextList,
-    color: S.optional(ApiColor),
-    is_toggleable: S.optional(S.Boolean),
-    children: S.optional(BlockObjectRequestCase21Heading4ChildrenList),
-  }),
-).annotate({
-  identifier: "BlockObjectRequestCase21Heading4",
-}) as any as S.Schema<BlockObjectRequestCase21Heading4>;
+export const BlockObjectRequestCase21Heading4 =
+  BlockObjectRequestCase18Heading1 as any as S.Schema<BlockObjectRequestCase21Heading4>;
 
 export interface BlockObjectRequestCase21 {
   heading_4: BlockObjectRequestCase21Heading4;
@@ -3025,15 +2908,13 @@ export const BlockObjectRequestCase21 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockObjectRequestCase21" }) as any as S.Schema<BlockObjectRequestCase21>;
 
 export type BlockObjectRequestCase22ParagraphRichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestCase22ParagraphRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestCase22ParagraphRichTextList>;
+export const BlockObjectRequestCase22ParagraphRichTextList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<BlockObjectRequestCase22ParagraphRichTextList>;
 
 export type BlockObjectRequestCase22ParagraphChildrenList =
   Array<BlockObjectWithSingleLevelOfChildrenRequest>;
-export const BlockObjectRequestCase22ParagraphChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectWithSingleLevelOfChildrenRequest,
-) as any as S.Schema<BlockObjectRequestCase22ParagraphChildrenList>;
+export const BlockObjectRequestCase22ParagraphChildrenList =
+  ColumnWithChildrenRequestChildrenList as any as S.Schema<BlockObjectRequestCase22ParagraphChildrenList>;
 
 export interface BlockObjectRequestCase22Paragraph {
   rich_text: BlockObjectRequestCase22ParagraphRichTextList;
@@ -3066,15 +2947,13 @@ export const BlockObjectRequestCase22 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockObjectRequestCase22" }) as any as S.Schema<BlockObjectRequestCase22>;
 
 export type BlockObjectRequestCase23BulletedListItemRichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestCase23BulletedListItemRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestCase23BulletedListItemRichTextList>;
+export const BlockObjectRequestCase23BulletedListItemRichTextList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<BlockObjectRequestCase23BulletedListItemRichTextList>;
 
 export type BlockObjectRequestCase23BulletedListItemChildrenList =
   Array<BlockObjectWithSingleLevelOfChildrenRequest>;
-export const BlockObjectRequestCase23BulletedListItemChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectWithSingleLevelOfChildrenRequest,
-) as any as S.Schema<BlockObjectRequestCase23BulletedListItemChildrenList>;
+export const BlockObjectRequestCase23BulletedListItemChildrenList =
+  ColumnWithChildrenRequestChildrenList as any as S.Schema<BlockObjectRequestCase23BulletedListItemChildrenList>;
 
 export interface BlockObjectRequestCase23BulletedListItem {
   rich_text: BlockObjectRequestCase23BulletedListItemRichTextList;
@@ -3105,30 +2984,21 @@ export const BlockObjectRequestCase23 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockObjectRequestCase23" }) as any as S.Schema<BlockObjectRequestCase23>;
 
 export type BlockObjectRequestCase24NumberedListItemRichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestCase24NumberedListItemRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestCase24NumberedListItemRichTextList>;
+export const BlockObjectRequestCase24NumberedListItemRichTextList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<BlockObjectRequestCase24NumberedListItemRichTextList>;
 
 export type BlockObjectRequestCase24NumberedListItemChildrenList =
   Array<BlockObjectWithSingleLevelOfChildrenRequest>;
-export const BlockObjectRequestCase24NumberedListItemChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectWithSingleLevelOfChildrenRequest,
-) as any as S.Schema<BlockObjectRequestCase24NumberedListItemChildrenList>;
+export const BlockObjectRequestCase24NumberedListItemChildrenList =
+  ColumnWithChildrenRequestChildrenList as any as S.Schema<BlockObjectRequestCase24NumberedListItemChildrenList>;
 
 export interface BlockObjectRequestCase24NumberedListItem {
   rich_text: BlockObjectRequestCase24NumberedListItemRichTextList;
   color?: ApiColor | (string & {});
   children?: BlockObjectRequestCase24NumberedListItemChildrenList;
 }
-export const BlockObjectRequestCase24NumberedListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rich_text: BlockObjectRequestCase24NumberedListItemRichTextList,
-    color: S.optional(ApiColor),
-    children: S.optional(BlockObjectRequestCase24NumberedListItemChildrenList),
-  }),
-).annotate({
-  identifier: "BlockObjectRequestCase24NumberedListItem",
-}) as any as S.Schema<BlockObjectRequestCase24NumberedListItem>;
+export const BlockObjectRequestCase24NumberedListItem =
+  BlockObjectRequestCase23BulletedListItem as any as S.Schema<BlockObjectRequestCase24NumberedListItem>;
 
 export interface BlockObjectRequestCase24 {
   numbered_list_item: BlockObjectRequestCase24NumberedListItem;
@@ -3144,30 +3014,21 @@ export const BlockObjectRequestCase24 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockObjectRequestCase24" }) as any as S.Schema<BlockObjectRequestCase24>;
 
 export type BlockObjectRequestCase25QuoteRichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestCase25QuoteRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestCase25QuoteRichTextList>;
+export const BlockObjectRequestCase25QuoteRichTextList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<BlockObjectRequestCase25QuoteRichTextList>;
 
 export type BlockObjectRequestCase25QuoteChildrenList =
   Array<BlockObjectWithSingleLevelOfChildrenRequest>;
-export const BlockObjectRequestCase25QuoteChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectWithSingleLevelOfChildrenRequest,
-) as any as S.Schema<BlockObjectRequestCase25QuoteChildrenList>;
+export const BlockObjectRequestCase25QuoteChildrenList =
+  ColumnWithChildrenRequestChildrenList as any as S.Schema<BlockObjectRequestCase25QuoteChildrenList>;
 
 export interface BlockObjectRequestCase25Quote {
   rich_text: BlockObjectRequestCase25QuoteRichTextList;
   color?: ApiColor | (string & {});
   children?: BlockObjectRequestCase25QuoteChildrenList;
 }
-export const BlockObjectRequestCase25Quote = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rich_text: BlockObjectRequestCase25QuoteRichTextList,
-    color: S.optional(ApiColor),
-    children: S.optional(BlockObjectRequestCase25QuoteChildrenList),
-  }),
-).annotate({
-  identifier: "BlockObjectRequestCase25Quote",
-}) as any as S.Schema<BlockObjectRequestCase25Quote>;
+export const BlockObjectRequestCase25Quote =
+  BlockObjectRequestCase23BulletedListItem as any as S.Schema<BlockObjectRequestCase25Quote>;
 
 export interface BlockObjectRequestCase25 {
   quote: BlockObjectRequestCase25Quote;
@@ -3183,15 +3044,13 @@ export const BlockObjectRequestCase25 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockObjectRequestCase25" }) as any as S.Schema<BlockObjectRequestCase25>;
 
 export type BlockObjectRequestCase26ToDoRichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestCase26ToDoRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestCase26ToDoRichTextList>;
+export const BlockObjectRequestCase26ToDoRichTextList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<BlockObjectRequestCase26ToDoRichTextList>;
 
 export type BlockObjectRequestCase26ToDoChildrenList =
   Array<BlockObjectWithSingleLevelOfChildrenRequest>;
-export const BlockObjectRequestCase26ToDoChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectWithSingleLevelOfChildrenRequest,
-) as any as S.Schema<BlockObjectRequestCase26ToDoChildrenList>;
+export const BlockObjectRequestCase26ToDoChildrenList =
+  ColumnWithChildrenRequestChildrenList as any as S.Schema<BlockObjectRequestCase26ToDoChildrenList>;
 
 export interface BlockObjectRequestCase26ToDo {
   rich_text: BlockObjectRequestCase26ToDoRichTextList;
@@ -3224,30 +3083,21 @@ export const BlockObjectRequestCase26 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockObjectRequestCase26" }) as any as S.Schema<BlockObjectRequestCase26>;
 
 export type BlockObjectRequestCase27ToggleRichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestCase27ToggleRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestCase27ToggleRichTextList>;
+export const BlockObjectRequestCase27ToggleRichTextList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<BlockObjectRequestCase27ToggleRichTextList>;
 
 export type BlockObjectRequestCase27ToggleChildrenList =
   Array<BlockObjectWithSingleLevelOfChildrenRequest>;
-export const BlockObjectRequestCase27ToggleChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectWithSingleLevelOfChildrenRequest,
-) as any as S.Schema<BlockObjectRequestCase27ToggleChildrenList>;
+export const BlockObjectRequestCase27ToggleChildrenList =
+  ColumnWithChildrenRequestChildrenList as any as S.Schema<BlockObjectRequestCase27ToggleChildrenList>;
 
 export interface BlockObjectRequestCase27Toggle {
   rich_text: BlockObjectRequestCase27ToggleRichTextList;
   color?: ApiColor | (string & {});
   children?: BlockObjectRequestCase27ToggleChildrenList;
 }
-export const BlockObjectRequestCase27Toggle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rich_text: BlockObjectRequestCase27ToggleRichTextList,
-    color: S.optional(ApiColor),
-    children: S.optional(BlockObjectRequestCase27ToggleChildrenList),
-  }),
-).annotate({
-  identifier: "BlockObjectRequestCase27Toggle",
-}) as any as S.Schema<BlockObjectRequestCase27Toggle>;
+export const BlockObjectRequestCase27Toggle =
+  BlockObjectRequestCase23BulletedListItem as any as S.Schema<BlockObjectRequestCase27Toggle>;
 
 export interface BlockObjectRequestCase27 {
   toggle: BlockObjectRequestCase27Toggle;
@@ -3263,15 +3113,13 @@ export const BlockObjectRequestCase27 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockObjectRequestCase27" }) as any as S.Schema<BlockObjectRequestCase27>;
 
 export type BlockObjectRequestCase28TemplateRichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestCase28TemplateRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestCase28TemplateRichTextList>;
+export const BlockObjectRequestCase28TemplateRichTextList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<BlockObjectRequestCase28TemplateRichTextList>;
 
 export type BlockObjectRequestCase28TemplateChildrenList =
   Array<BlockObjectWithSingleLevelOfChildrenRequest>;
-export const BlockObjectRequestCase28TemplateChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectWithSingleLevelOfChildrenRequest,
-) as any as S.Schema<BlockObjectRequestCase28TemplateChildrenList>;
+export const BlockObjectRequestCase28TemplateChildrenList =
+  ColumnWithChildrenRequestChildrenList as any as S.Schema<BlockObjectRequestCase28TemplateChildrenList>;
 
 export interface BlockObjectRequestCase28Template {
   rich_text: BlockObjectRequestCase28TemplateRichTextList;
@@ -3300,15 +3148,13 @@ export const BlockObjectRequestCase28 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockObjectRequestCase28" }) as any as S.Schema<BlockObjectRequestCase28>;
 
 export type BlockObjectRequestCase29CalloutRichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestCase29CalloutRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestCase29CalloutRichTextList>;
+export const BlockObjectRequestCase29CalloutRichTextList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<BlockObjectRequestCase29CalloutRichTextList>;
 
 export type BlockObjectRequestCase29CalloutChildrenList =
   Array<BlockObjectWithSingleLevelOfChildrenRequest>;
-export const BlockObjectRequestCase29CalloutChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectWithSingleLevelOfChildrenRequest,
-) as any as S.Schema<BlockObjectRequestCase29CalloutChildrenList>;
+export const BlockObjectRequestCase29CalloutChildrenList =
+  ColumnWithChildrenRequestChildrenList as any as S.Schema<BlockObjectRequestCase29CalloutChildrenList>;
 
 export interface BlockObjectRequestCase29Callout {
   rich_text: BlockObjectRequestCase29CalloutRichTextList;
@@ -3347,9 +3193,8 @@ export const BlockObjectRequestCase30SyncedBlockSyncedFrom =
 
 export type BlockObjectRequestCase30SyncedBlockChildrenList =
   Array<BlockObjectWithSingleLevelOfChildrenRequest>;
-export const BlockObjectRequestCase30SyncedBlockChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectWithSingleLevelOfChildrenRequest,
-) as any as S.Schema<BlockObjectRequestCase30SyncedBlockChildrenList>;
+export const BlockObjectRequestCase30SyncedBlockChildrenList =
+  ColumnWithChildrenRequestChildrenList as any as S.Schema<BlockObjectRequestCase30SyncedBlockChildrenList>;
 
 export interface BlockObjectRequestCase30SyncedBlock {
   synced_from: BlockObjectRequestWithoutChildrenCase27SyncedBlockSyncedFrom | null;
@@ -3417,9 +3262,8 @@ export const CreatePageRequestContentList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreatePageRequestContentList>;
 
 export type CreatePageRequestChildrenList = Array<BlockObjectRequest>;
-export const CreatePageRequestChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectRequest,
-) as any as S.Schema<CreatePageRequestChildrenList>;
+export const CreatePageRequestChildrenList =
+  CreatePageRequestContentList as any as S.Schema<CreatePageRequestChildrenList>;
 
 export interface CreatePageRequestTemplateCase0 {
   type: string;
@@ -3693,13 +3537,8 @@ export interface InternalOrExternalFileWithNameResponseExternal {
   /** The URL of the external file or resource. */
   url: string;
 }
-export const InternalOrExternalFileWithNameResponseExternal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-  }),
-).annotate({
-  identifier: "InternalOrExternalFileWithNameResponseExternal",
-}) as any as S.Schema<InternalOrExternalFileWithNameResponseExternal>;
+export const InternalOrExternalFileWithNameResponseExternal =
+  RichTextItemRequestTextLink as any as S.Schema<InternalOrExternalFileWithNameResponseExternal>;
 
 export interface InternalOrExternalFileWithNameResponse {
   /** The name of the file. */
@@ -3815,14 +3654,8 @@ export interface BotInfoResponseOwnerCase1 {
   /** Details about the owner of the bot, when the `type` of the owner is `workspace`. This means the bot is for an internal integration. */
   workspace: boolean;
 }
-export const BotInfoResponseOwnerCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    workspace: S.Boolean,
-  }),
-).annotate({
-  identifier: "BotInfoResponseOwnerCase1",
-}) as any as S.Schema<BotInfoResponseOwnerCase1>;
+export const BotInfoResponseOwnerCase1 =
+  WorkspaceParentForBlockBasedObjectResponse as any as S.Schema<BotInfoResponseOwnerCase1>;
 
 /** Details about the owner of the bot. */
 export type BotInfoResponseOwner = BotInfoResponseOwnerCase0 | BotInfoResponseOwnerCase1;
@@ -4104,13 +3937,8 @@ export interface LinkPreviewMentionResponse {
   /** The URL of the link preview mention. */
   url: string;
 }
-export const LinkPreviewMentionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-  }),
-).annotate({
-  identifier: "LinkPreviewMentionResponse",
-}) as any as S.Schema<LinkPreviewMentionResponse>;
+export const LinkPreviewMentionResponse =
+  RichTextItemRequestTextLink as any as S.Schema<LinkPreviewMentionResponse>;
 
 export interface RichTextItemResponseMentionCase2 {
   /** Always `link_preview` */
@@ -4357,9 +4185,8 @@ export const PagePropertyValueWithIdResponseTitleList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PagePropertyValueWithIdResponseTitleList>;
 
 export type PagePropertyValueWithIdResponseRichTextList = Array<RichTextItemResponse>;
-export const PagePropertyValueWithIdResponseRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemResponse,
-) as any as S.Schema<PagePropertyValueWithIdResponseRichTextList>;
+export const PagePropertyValueWithIdResponseRichTextList =
+  PagePropertyValueWithIdResponseTitleList as any as S.Schema<PagePropertyValueWithIdResponseRichTextList>;
 
 export interface GroupObjectResponse {
   /** The ID of the group. */
@@ -4388,9 +4215,8 @@ export const PagePropertyValueWithIdResponsePeopleList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PagePropertyValueWithIdResponsePeopleList>;
 
 export type PagePropertyValueWithIdResponseRelationList = Array<RelationItemPropertyValueResponse>;
-export const PagePropertyValueWithIdResponseRelationList = /*@__PURE__*/ S.Array(
-  RelationItemPropertyValueResponse,
-) as any as S.Schema<PagePropertyValueWithIdResponseRelationList>;
+export const PagePropertyValueWithIdResponseRelationList =
+  CreatePageRequestPropertiesValueCase11RelationList as any as S.Schema<PagePropertyValueWithIdResponseRelationList>;
 
 export type RollupFunction =
   | "count"
@@ -4452,9 +4278,8 @@ export const SelectSimplePropertyValueResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type MultiSelectSimplePropertyValueResponseMultiSelectList =
   Array<PartialSelectPropertyValueResponse>;
-export const MultiSelectSimplePropertyValueResponseMultiSelectList = /*@__PURE__*/ S.Array(
-  PartialSelectPropertyValueResponse,
-) as any as S.Schema<MultiSelectSimplePropertyValueResponseMultiSelectList>;
+export const MultiSelectSimplePropertyValueResponseMultiSelectList =
+  PagePropertyValueWithIdResponseMultiSelectList as any as S.Schema<MultiSelectSimplePropertyValueResponseMultiSelectList>;
 
 export interface MultiSelectSimplePropertyValueResponse {
   /** Always `multi_select` */
@@ -4531,9 +4356,8 @@ export const CheckboxSimplePropertyValueResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type FilesSimplePropertyValueResponseFilesList =
   Array<InternalOrExternalFileWithNameResponse>;
-export const FilesSimplePropertyValueResponseFilesList = /*@__PURE__*/ S.Array(
-  InternalOrExternalFileWithNameResponse,
-) as any as S.Schema<FilesSimplePropertyValueResponseFilesList>;
+export const FilesSimplePropertyValueResponseFilesList =
+  PagePropertyValueWithIdResponseFilesList as any as S.Schema<FilesSimplePropertyValueResponseFilesList>;
 
 export interface FilesSimplePropertyValueResponse {
   /** Always `files` */
@@ -4699,9 +4523,8 @@ export const SimplePropertyValueResponse =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SimplePropertyValueResponse>;
 
 export type TitleArrayBasedPropertyValueResponseTitleList = Array<RichTextItemResponse>;
-export const TitleArrayBasedPropertyValueResponseTitleList = /*@__PURE__*/ S.Array(
-  RichTextItemResponse,
-) as any as S.Schema<TitleArrayBasedPropertyValueResponseTitleList>;
+export const TitleArrayBasedPropertyValueResponseTitleList =
+  PagePropertyValueWithIdResponseTitleList as any as S.Schema<TitleArrayBasedPropertyValueResponseTitleList>;
 
 export interface TitleArrayBasedPropertyValueResponse {
   /** Always `title` */
@@ -4718,9 +4541,8 @@ export const TitleArrayBasedPropertyValueResponse = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<TitleArrayBasedPropertyValueResponse>;
 
 export type RichTextArrayBasedPropertyValueResponseRichTextList = Array<RichTextItemResponse>;
-export const RichTextArrayBasedPropertyValueResponseRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemResponse,
-) as any as S.Schema<RichTextArrayBasedPropertyValueResponseRichTextList>;
+export const RichTextArrayBasedPropertyValueResponseRichTextList =
+  PagePropertyValueWithIdResponseTitleList as any as S.Schema<RichTextArrayBasedPropertyValueResponseRichTextList>;
 
 export interface RichTextArrayBasedPropertyValueResponse {
   /** Always `rich_text` */
@@ -4764,9 +4586,8 @@ export const PeopleArrayBasedPropertyValueResponse = /*@__PURE__*/ S.suspend(() 
 
 export type RelationArrayBasedPropertyValueResponseRelationList =
   Array<RelationItemPropertyValueResponse>;
-export const RelationArrayBasedPropertyValueResponseRelationList = /*@__PURE__*/ S.Array(
-  RelationItemPropertyValueResponse,
-) as any as S.Schema<RelationArrayBasedPropertyValueResponseRelationList>;
+export const RelationArrayBasedPropertyValueResponseRelationList =
+  CreatePageRequestPropertiesValueCase11RelationList as any as S.Schema<RelationArrayBasedPropertyValueResponseRelationList>;
 
 export interface RelationArrayBasedPropertyValueResponse {
   /** Always `relation` */
@@ -4944,14 +4765,8 @@ export interface CustomEmojiPageIconResponse {
   /** The custom emoji details for the icon. */
   custom_emoji: CustomEmojiResponse;
 }
-export const CustomEmojiPageIconResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    custom_emoji: CustomEmojiResponse,
-  }),
-).annotate({
-  identifier: "CustomEmojiPageIconResponse",
-}) as any as S.Schema<CustomEmojiPageIconResponse>;
+export const CustomEmojiPageIconResponse =
+  RichTextItemResponseMentionCase7 as any as S.Schema<CustomEmojiPageIconResponse>;
 
 export interface NoticonIconResponse {
   /** The name of the Notion icon (e.g. pizza, meeting, home). See the Notion icon picker for valid names. */
@@ -4993,12 +4808,7 @@ export interface FilePageCoverResponse {
   /** The file URL for the cover. */
   file: InternalFileResponse;
 }
-export const FilePageCoverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    file: InternalFileResponse,
-  }),
-).annotate({ identifier: "FilePageCoverResponse" }) as any as S.Schema<FilePageCoverResponse>;
+export const FilePageCoverResponse = FilePageIconResponse as any as S.Schema<FilePageCoverResponse>;
 
 /** The external URL for the cover. */
 export type ExternalPageCoverResponseExternal = InternalOrExternalFileWithNameResponseExternal;
@@ -5100,9 +4910,8 @@ export const CreatePageResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Supply a list of property IDs to filter properties in the response. Note that if a page doesn't have a property, it won't be included in the filtered response. */
 export type GetPageRequestFilterPropertiesList = Array<string>;
-export const GetPageRequestFilterPropertiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetPageRequestFilterPropertiesList>;
+export const GetPageRequestFilterPropertiesList =
+  CreatePageRequestFilterPropertiesList as any as S.Schema<GetPageRequestFilterPropertiesList>;
 
 export interface GetPageRequest {
   page_id: string;
@@ -5136,9 +4945,8 @@ export const GetPageMarkdownRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Block IDs that could not be loaded (appeared as <unknown> tags in the markdown). Pass these IDs back to this endpoint to fetch their content separately. */
 export type PageMarkdownResponseUnknownBlockIdsList = Array<string>;
-export const PageMarkdownResponseUnknownBlockIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PageMarkdownResponseUnknownBlockIdsList>;
+export const PageMarkdownResponseUnknownBlockIdsList =
+  CreatePageRequestFilterPropertiesList as any as S.Schema<PageMarkdownResponseUnknownBlockIdsList>;
 
 export interface PageMarkdownResponse {
   /** The type of object, always 'page_markdown'. */
@@ -5352,9 +5160,8 @@ export const CheckboxPropertyItemObjectResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type FilesPropertyItemObjectResponseFilesList =
   Array<InternalOrExternalFileWithNameResponse>;
-export const FilesPropertyItemObjectResponseFilesList = /*@__PURE__*/ S.Array(
-  InternalOrExternalFileWithNameResponse,
-) as any as S.Schema<FilesPropertyItemObjectResponseFilesList>;
+export const FilesPropertyItemObjectResponseFilesList =
+  PagePropertyValueWithIdResponseFilesList as any as S.Schema<FilesPropertyItemObjectResponseFilesList>;
 
 export interface FilesPropertyItemObjectResponse {
   type: string;
@@ -5457,66 +5264,36 @@ export interface StringFormulaPropertyResponse {
   type: string;
   string: string | null;
 }
-export const StringFormulaPropertyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    string: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "StringFormulaPropertyResponse",
-}) as any as S.Schema<StringFormulaPropertyResponse>;
+export const StringFormulaPropertyResponse =
+  StringFormulaPropertyValueResponse as any as S.Schema<StringFormulaPropertyResponse>;
 
 export interface DateFormulaPropertyResponse {
   type: string;
   date: DateResponse | null;
 }
-export const DateFormulaPropertyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    date: S.NullOr(DateResponse),
-  }),
-).annotate({
-  identifier: "DateFormulaPropertyResponse",
-}) as any as S.Schema<DateFormulaPropertyResponse>;
+export const DateFormulaPropertyResponse =
+  DateFormulaPropertyValueResponse as any as S.Schema<DateFormulaPropertyResponse>;
 
 export interface NumberFormulaPropertyResponse {
   type: string;
   number: number | null;
 }
-export const NumberFormulaPropertyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    number: S.NullOr(S.Number),
-  }),
-).annotate({
-  identifier: "NumberFormulaPropertyResponse",
-}) as any as S.Schema<NumberFormulaPropertyResponse>;
+export const NumberFormulaPropertyResponse =
+  NumberFormulaPropertyValueResponse as any as S.Schema<NumberFormulaPropertyResponse>;
 
 export interface BooleanFormulaPropertyResponse {
   type: string;
   boolean: boolean | null;
 }
-export const BooleanFormulaPropertyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    boolean: S.NullOr(S.Boolean),
-  }),
-).annotate({
-  identifier: "BooleanFormulaPropertyResponse",
-}) as any as S.Schema<BooleanFormulaPropertyResponse>;
+export const BooleanFormulaPropertyResponse =
+  BooleanFormulaPropertyValueResponse as any as S.Schema<BooleanFormulaPropertyResponse>;
 
 export interface UnsupportedFormulaPropertyResponse {
   type: string;
   unsupported: unknown;
 }
-export const UnsupportedFormulaPropertyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    unsupported: S.Unknown,
-  }),
-).annotate({
-  identifier: "UnsupportedFormulaPropertyResponse",
-}) as any as S.Schema<UnsupportedFormulaPropertyResponse>;
+export const UnsupportedFormulaPropertyResponse =
+  UnsupportedFormulaPropertyValueResponse as any as S.Schema<UnsupportedFormulaPropertyResponse>;
 
 export type FormulaPropertyResponse =
   | StringFormulaPropertyResponse
@@ -6016,14 +5793,8 @@ export interface MovePageRequestParentCase0 {
   /** Always `page_id` */
   type?: string;
 }
-export const MovePageRequestParentCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    page_id: S.String,
-    type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MovePageRequestParentCase0",
-}) as any as S.Schema<MovePageRequestParentCase0>;
+export const MovePageRequestParentCase0 =
+  CreatePageRequestParentCase0 as any as S.Schema<MovePageRequestParentCase0>;
 
 export interface MovePageRequestParentCase1 {
   /** The ID of the parent data source (collection), with or without dashes. For example, f336d0bc-b841-465b-8045-024475c079dd */
@@ -6031,14 +5802,8 @@ export interface MovePageRequestParentCase1 {
   /** Always `data_source_id` */
   type?: string;
 }
-export const MovePageRequestParentCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data_source_id: S.String,
-    type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MovePageRequestParentCase1",
-}) as any as S.Schema<MovePageRequestParentCase1>;
+export const MovePageRequestParentCase1 =
+  CreatePageRequestParentCase2 as any as S.Schema<MovePageRequestParentCase1>;
 
 /** The new parent of the page. */
 export type MovePageRequestParent = MovePageRequestParentCase0 | MovePageRequestParentCase1;
@@ -6067,45 +5832,30 @@ export const MovePageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MovePageResponse" }) as any as S.Schema<MovePageResponse>;
 
 export type UpdatePageRequestFilterPropertiesList = Array<string>;
-export const UpdatePageRequestFilterPropertiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdatePageRequestFilterPropertiesList>;
+export const UpdatePageRequestFilterPropertiesList =
+  CreatePageRequestFilterPropertiesList as any as S.Schema<UpdatePageRequestFilterPropertiesList>;
 
 export type UpdatePageRequestPropertiesValueCase0TitleList = Array<RichTextItemRequest>;
-export const UpdatePageRequestPropertiesValueCase0TitleList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<UpdatePageRequestPropertiesValueCase0TitleList>;
+export const UpdatePageRequestPropertiesValueCase0TitleList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<UpdatePageRequestPropertiesValueCase0TitleList>;
 
 export interface UpdatePageRequestPropertiesValueCase0 {
   title: UpdatePageRequestPropertiesValueCase0TitleList;
   type?: string;
 }
-export const UpdatePageRequestPropertiesValueCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: UpdatePageRequestPropertiesValueCase0TitleList,
-    type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdatePageRequestPropertiesValueCase0",
-}) as any as S.Schema<UpdatePageRequestPropertiesValueCase0>;
+export const UpdatePageRequestPropertiesValueCase0 =
+  CreatePageRequestPropertiesValueCase0 as any as S.Schema<UpdatePageRequestPropertiesValueCase0>;
 
 export type UpdatePageRequestPropertiesValueCase1RichTextList = Array<RichTextItemRequest>;
-export const UpdatePageRequestPropertiesValueCase1RichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<UpdatePageRequestPropertiesValueCase1RichTextList>;
+export const UpdatePageRequestPropertiesValueCase1RichTextList =
+  CreatePageRequestPropertiesValueCase0TitleList as any as S.Schema<UpdatePageRequestPropertiesValueCase1RichTextList>;
 
 export interface UpdatePageRequestPropertiesValueCase1 {
   rich_text: UpdatePageRequestPropertiesValueCase1RichTextList;
   type?: string;
 }
-export const UpdatePageRequestPropertiesValueCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rich_text: UpdatePageRequestPropertiesValueCase1RichTextList,
-    type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdatePageRequestPropertiesValueCase1",
-}) as any as S.Schema<UpdatePageRequestPropertiesValueCase1>;
+export const UpdatePageRequestPropertiesValueCase1 =
+  CreatePageRequestPropertiesValueCase1 as any as S.Schema<UpdatePageRequestPropertiesValueCase1>;
 
 export type UpdatePageRequestPropertiesValueCase2 = CreatePageRequestPropertiesValueCase2;
 export const UpdatePageRequestPropertiesValueCase2 = CreatePageRequestPropertiesValueCase2;
@@ -6216,22 +5966,15 @@ export const UpdatePageRequestPropertiesValueCase10 = CreatePageRequestPropertie
 
 export type UpdatePageRequestPropertiesValueCase11RelationList =
   Array<RelationItemPropertyValueResponse>;
-export const UpdatePageRequestPropertiesValueCase11RelationList = /*@__PURE__*/ S.Array(
-  RelationItemPropertyValueResponse,
-) as any as S.Schema<UpdatePageRequestPropertiesValueCase11RelationList>;
+export const UpdatePageRequestPropertiesValueCase11RelationList =
+  CreatePageRequestPropertiesValueCase11RelationList as any as S.Schema<UpdatePageRequestPropertiesValueCase11RelationList>;
 
 export interface UpdatePageRequestPropertiesValueCase11 {
   relation: UpdatePageRequestPropertiesValueCase11RelationList;
   type?: string;
 }
-export const UpdatePageRequestPropertiesValueCase11 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    relation: UpdatePageRequestPropertiesValueCase11RelationList,
-    type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdatePageRequestPropertiesValueCase11",
-}) as any as S.Schema<UpdatePageRequestPropertiesValueCase11>;
+export const UpdatePageRequestPropertiesValueCase11 =
+  CreatePageRequestPropertiesValueCase11 as any as S.Schema<UpdatePageRequestPropertiesValueCase11>;
 
 export type UpdatePageRequestPropertiesValueCase12FilesItem =
   | InternalOrExternalFileWithNameRequest
@@ -6406,25 +6149,15 @@ export interface UpdatePageMarkdownRequestInsertContentPositionCase0 {
   /** Insert the content at the start of the page. */
   type: string;
 }
-export const UpdatePageMarkdownRequestInsertContentPositionCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-  }),
-).annotate({
-  identifier: "UpdatePageMarkdownRequestInsertContentPositionCase0",
-}) as any as S.Schema<UpdatePageMarkdownRequestInsertContentPositionCase0>;
+export const UpdatePageMarkdownRequestInsertContentPositionCase0 =
+  CreatePageRequestTemplateCase0 as any as S.Schema<UpdatePageMarkdownRequestInsertContentPositionCase0>;
 
 export interface UpdatePageMarkdownRequestInsertContentPositionCase1 {
   /** Insert the content at the end of the page. */
   type: string;
 }
-export const UpdatePageMarkdownRequestInsertContentPositionCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-  }),
-).annotate({
-  identifier: "UpdatePageMarkdownRequestInsertContentPositionCase1",
-}) as any as S.Schema<UpdatePageMarkdownRequestInsertContentPositionCase1>;
+export const UpdatePageMarkdownRequestInsertContentPositionCase1 =
+  CreatePageRequestTemplateCase0 as any as S.Schema<UpdatePageMarkdownRequestInsertContentPositionCase1>;
 
 /** Explicit position for inserted content. Use {"type":"start"} to prepend or {"type":"end"} to append. Cannot be combined with after. */
 export type UpdatePageMarkdownRequestInsertContentPosition =

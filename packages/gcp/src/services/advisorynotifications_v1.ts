@@ -194,13 +194,8 @@ export interface GoogleCloudAdvisorynotificationsV1MessageBody {
   /** The text content of the message body. */
   text?: GoogleCloudAdvisorynotificationsV1Text;
 }
-export const GoogleCloudAdvisorynotificationsV1MessageBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.optional(GoogleCloudAdvisorynotificationsV1Text),
-  }),
-).annotate({
-  identifier: "GoogleCloudAdvisorynotificationsV1MessageBody",
-}) as any as S.Schema<GoogleCloudAdvisorynotificationsV1MessageBody>;
+export const GoogleCloudAdvisorynotificationsV1MessageBody =
+  GoogleCloudAdvisorynotificationsV1Subject as any as S.Schema<GoogleCloudAdvisorynotificationsV1MessageBody>;
 
 /** A message which contains notification details. */
 export interface GoogleCloudAdvisorynotificationsV1Message {

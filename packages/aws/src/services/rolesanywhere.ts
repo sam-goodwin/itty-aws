@@ -104,7 +104,7 @@ export type RoleArn = string;
 export type RoleArnList = string[];
 export const RoleArnList = /*@__PURE__*/ S.Array(S.String);
 export type ManagedPolicyList = string[];
-export const ManagedPolicyList = /*@__PURE__*/ S.Array(S.String);
+export const ManagedPolicyList = RoleArnList as any as S.Schema<ManagedPolicyList>;
 export type TagKey = string | redacted.Redacted<string>;
 export type TagValue = string | redacted.Redacted<string>;
 export interface Tag {
@@ -300,7 +300,7 @@ export const TrustAnchorDetailResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TrustAnchorDetailResponse",
 }) as any as S.Schema<TrustAnchorDetailResponse>;
 export type SpecifierList = string[];
-export const SpecifierList = /*@__PURE__*/ S.Array(S.String);
+export const SpecifierList = RoleArnList as any as S.Schema<SpecifierList>;
 export interface DeleteAttributeMappingRequest {
   profileId: string;
   certificateField: string;
@@ -596,11 +596,8 @@ export const PutAttributeMappingRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutAttributeMappingResponse {
   profile: ProfileDetail;
 }
-export const PutAttributeMappingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ profile: ProfileDetail }),
-).annotate({
-  identifier: "PutAttributeMappingResponse",
-}) as any as S.Schema<PutAttributeMappingResponse>;
+export const PutAttributeMappingResponse =
+  DeleteAttributeMappingResponse as any as S.Schema<PutAttributeMappingResponse>;
 export interface PutNotificationSettingsRequest {
   trustAnchorId: string;
   notificationSettings: NotificationSetting[];
@@ -622,11 +619,8 @@ export const PutNotificationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutNotificationSettingsResponse {
   trustAnchor: TrustAnchorDetail;
 }
-export const PutNotificationSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ trustAnchor: TrustAnchorDetail }),
-).annotate({
-  identifier: "PutNotificationSettingsResponse",
-}) as any as S.Schema<PutNotificationSettingsResponse>;
+export const PutNotificationSettingsResponse =
+  TrustAnchorDetailResponse as any as S.Schema<PutNotificationSettingsResponse>;
 export interface NotificationSettingKey {
   event: string;
   channel?: string;
@@ -657,11 +651,8 @@ export const ResetNotificationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ResetNotificationSettingsResponse {
   trustAnchor: TrustAnchorDetail;
 }
-export const ResetNotificationSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ trustAnchor: TrustAnchorDetail }),
-).annotate({
-  identifier: "ResetNotificationSettingsResponse",
-}) as any as S.Schema<ResetNotificationSettingsResponse>;
+export const ResetNotificationSettingsResponse =
+  TrustAnchorDetailResponse as any as S.Schema<ResetNotificationSettingsResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: Tag[];
@@ -687,9 +678,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateCrlRequest {
   crlId: string;
   name?: string;

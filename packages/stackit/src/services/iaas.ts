@@ -105,9 +105,8 @@ export const AddNicToServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddNicToServerRequest" }) as any as S.Schema<AddNicToServerRequest>;
 
 export interface AddNicToServerResponse {}
-export const AddNicToServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AddNicToServerResponse",
-}) as any as S.Schema<AddNicToServerResponse>;
+export const AddNicToServerResponse =
+  AddNetworkToServerResponse as any as S.Schema<AddNicToServerResponse>;
 
 export interface AddPublicIpToServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -138,9 +137,8 @@ export const AddPublicIpToServerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddPublicIpToServerRequest>;
 
 export interface AddPublicIpToServerResponse {}
-export const AddPublicIpToServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AddPublicIpToServerResponse",
-}) as any as S.Schema<AddPublicIpToServerResponse>;
+export const AddPublicIpToServerResponse =
+  AddNetworkToServerResponse as any as S.Schema<AddPublicIpToServerResponse>;
 
 export type DestinationCIDRv4Type = "cidrv4";
 export const DestinationCIDRv4Type = S.String;
@@ -540,9 +538,8 @@ export const CreateAffinityGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The servers that are part of the affinity group. */
 export type AffinityGroupMembersList = Array<string>;
-export const AffinityGroupMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AffinityGroupMembersList>;
+export const AffinityGroupMembersList =
+  ServiceAccountMailList as any as S.Schema<AffinityGroupMembersList>;
 
 /** Definition of an affinity group. */
 export interface AffinityGroup {
@@ -818,9 +815,8 @@ export const CreateIsolatedNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateIsolatedNetworkRequest>;
 
 export type NetworkIPv4PrefixesList = Array<string>;
-export const NetworkIPv4PrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkIPv4PrefixesList>;
+export const NetworkIPv4PrefixesList =
+  ServiceAccountMailList as any as S.Schema<NetworkIPv4PrefixesList>;
 
 /** Object that represents the IPv4 part of a network. */
 export interface NetworkIPv4 {
@@ -842,12 +838,11 @@ export const NetworkIPv4 = /*@__PURE__*/ S.suspend(() =>
 
 /** A list containing DNS Servers/Nameservers for IPv6. */
 export type NameserversIPv6 = Array<string>;
-export const NameserversIPv6 = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<NameserversIPv6>;
+export const NameserversIPv6 = NameserversIPv4 as any as S.Schema<NameserversIPv6>;
 
 export type NetworkIPv6PrefixesList = Array<string>;
-export const NetworkIPv6PrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkIPv6PrefixesList>;
+export const NetworkIPv6PrefixesList =
+  ServiceAccountMailList as any as S.Schema<NetworkIPv6PrefixesList>;
 
 /** Object that represents the IPv6 part of a network. */
 export interface NetworkIPv6 {
@@ -947,16 +942,8 @@ export interface CreateNetworkIPv6WithPrefix {
   prefix: string;
   vpcNetworkRangeId?: string;
 }
-export const CreateNetworkIPv6WithPrefix = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gateway: S.optional(S.NullOr(S.String)),
-    nameservers: S.optional(NameserversIPv6),
-    prefix: S.String,
-    vpcNetworkRangeId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateNetworkIPv6WithPrefix",
-}) as any as S.Schema<CreateNetworkIPv6WithPrefix>;
+export const CreateNetworkIPv6WithPrefix =
+  CreateNetworkIPv4WithPrefix as any as S.Schema<CreateNetworkIPv6WithPrefix>;
 
 /** The create request for an IPv6 network with a wanted prefix length. */
 export interface CreateNetworkIPv6WithPrefixLength {
@@ -964,15 +951,8 @@ export interface CreateNetworkIPv6WithPrefixLength {
   prefixLength: number;
   vpcNetworkRangeId?: string;
 }
-export const CreateNetworkIPv6WithPrefixLength = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nameservers: S.optional(NameserversIPv6),
-    prefixLength: S.Number,
-    vpcNetworkRangeId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateNetworkIPv6WithPrefixLength",
-}) as any as S.Schema<CreateNetworkIPv6WithPrefixLength>;
+export const CreateNetworkIPv6WithPrefixLength =
+  CreateNetworkIPv4WithPrefixLength as any as S.Schema<CreateNetworkIPv6WithPrefixLength>;
 
 /** The create request for an IPv6 network. */
 export type CreateNetworkIPv6 = CreateNetworkIPv6WithPrefix | CreateNetworkIPv6WithPrefixLength;
@@ -1134,9 +1114,8 @@ export const NetworkRangeListResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkRangeListResponse" }) as any as S.Schema<NetworkRangeListResponse>;
 
 export type RegionalAreaIPv4InputDefaultNameserversList = Array<string>;
-export const RegionalAreaIPv4InputDefaultNameserversList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RegionalAreaIPv4InputDefaultNameserversList>;
+export const RegionalAreaIPv4InputDefaultNameserversList =
+  ServiceAccountMailList as any as S.Schema<RegionalAreaIPv4InputDefaultNameserversList>;
 
 /** The regional IPv4 config of a network area. */
 export interface RegionalAreaIPv4Input {
@@ -1186,9 +1165,8 @@ export const CreateNetworkAreaRegionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateNetworkAreaRegionRequest>;
 
 export type RegionalAreaIPv4DefaultNameserversList = Array<string>;
-export const RegionalAreaIPv4DefaultNameserversList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RegionalAreaIPv4DefaultNameserversList>;
+export const RegionalAreaIPv4DefaultNameserversList =
+  ServiceAccountMailList as any as S.Schema<RegionalAreaIPv4DefaultNameserversList>;
 
 /** The regional IPv4 config of a network area. */
 export interface RegionalAreaIPv4 {
@@ -1251,13 +1229,11 @@ export const CreateNetworkAreaRouteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of IPs or CIDR notations. */
 export type AllowedAddresses = Array<string>;
-export const AllowedAddresses = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AllowedAddresses>;
+export const AllowedAddresses = ServiceAccountMailList as any as S.Schema<AllowedAddresses>;
 
 /** A list of UUIDs. */
 export type UUIDList = Array<string>;
-export const UUIDList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<UUIDList>;
+export const UUIDList = NameserversIPv4 as any as S.Schema<UUIDList>;
 
 export interface CreateNicRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -1660,7 +1636,7 @@ export const CreateServerRequestNetworking =
 
 /** A list of General Objects. */
 export type GenericNameList = Array<string>;
-export const GenericNameList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<GenericNameList>;
+export const GenericNameList = NameserversIPv4 as any as S.Schema<GenericNameList>;
 
 export interface CreateServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -2047,9 +2023,8 @@ export const DeallocateServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeallocateServerRequest" }) as any as S.Schema<DeallocateServerRequest>;
 
 export interface DeallocateServerResponse {}
-export const DeallocateServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeallocateServerResponse",
-}) as any as S.Schema<DeallocateServerResponse>;
+export const DeallocateServerResponse =
+  AddNetworkToServerResponse as any as S.Schema<DeallocateServerResponse>;
 
 export interface DeleteAffinityGroupRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -2077,9 +2052,8 @@ export const DeleteAffinityGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAffinityGroupRequest>;
 
 export interface DeleteAffinityGroupResponse {}
-export const DeleteAffinityGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAffinityGroupResponse",
-}) as any as S.Schema<DeleteAffinityGroupResponse>;
+export const DeleteAffinityGroupResponse =
+  AddNetworkToServerResponse as any as S.Schema<DeleteAffinityGroupResponse>;
 
 export interface DeleteBackupRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -2108,9 +2082,8 @@ export const DeleteBackupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBackupRequest" }) as any as S.Schema<DeleteBackupRequest>;
 
 export interface DeleteBackupResponse {}
-export const DeleteBackupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBackupResponse",
-}) as any as S.Schema<DeleteBackupResponse>;
+export const DeleteBackupResponse =
+  AddNetworkToServerResponse as any as S.Schema<DeleteBackupResponse>;
 
 export interface DeleteImageRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -2136,9 +2109,8 @@ export const DeleteImageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteImageRequest" }) as any as S.Schema<DeleteImageRequest>;
 
 export interface DeleteImageResponse {}
-export const DeleteImageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteImageResponse",
-}) as any as S.Schema<DeleteImageResponse>;
+export const DeleteImageResponse =
+  AddNetworkToServerResponse as any as S.Schema<DeleteImageResponse>;
 
 export interface DeleteImageShareRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -2164,9 +2136,8 @@ export const DeleteImageShareRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteImageShareRequest" }) as any as S.Schema<DeleteImageShareRequest>;
 
 export interface DeleteImageShareResponse {}
-export const DeleteImageShareResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteImageShareResponse",
-}) as any as S.Schema<DeleteImageShareResponse>;
+export const DeleteImageShareResponse =
+  AddNetworkToServerResponse as any as S.Schema<DeleteImageShareResponse>;
 
 export interface DeleteImageShareConsumerRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -2197,11 +2168,8 @@ export const DeleteImageShareConsumerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteImageShareConsumerRequest>;
 
 export interface DeleteImageShareConsumerResponse {}
-export const DeleteImageShareConsumerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteImageShareConsumerResponse",
-}) as any as S.Schema<DeleteImageShareConsumerResponse>;
+export const DeleteImageShareConsumerResponse =
+  AddSecurityGroupToServerResponse as any as S.Schema<DeleteImageShareConsumerResponse>;
 
 export interface DeleteKeyPairRequest {
   /** The name of an SSH keypair. */
@@ -2221,9 +2189,8 @@ export const DeleteKeyPairRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteKeyPairRequest" }) as any as S.Schema<DeleteKeyPairRequest>;
 
 export interface DeleteKeyPairResponse {}
-export const DeleteKeyPairResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteKeyPairResponse",
-}) as any as S.Schema<DeleteKeyPairResponse>;
+export const DeleteKeyPairResponse =
+  AddNetworkToServerResponse as any as S.Schema<DeleteKeyPairResponse>;
 
 export interface DeleteNetworkRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -2249,9 +2216,8 @@ export const DeleteNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteNetworkRequest" }) as any as S.Schema<DeleteNetworkRequest>;
 
 export interface DeleteNetworkResponse {}
-export const DeleteNetworkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNetworkResponse",
-}) as any as S.Schema<DeleteNetworkResponse>;
+export const DeleteNetworkResponse =
+  AddNetworkToServerResponse as any as S.Schema<DeleteNetworkResponse>;
 
 export interface DeleteNetworkAreaRequest {
   /** The identifier (ID) of a STACKIT Organization. */
@@ -2274,9 +2240,8 @@ export const DeleteNetworkAreaRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteNetworkAreaRequest" }) as any as S.Schema<DeleteNetworkAreaRequest>;
 
 export interface DeleteNetworkAreaResponse {}
-export const DeleteNetworkAreaResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNetworkAreaResponse",
-}) as any as S.Schema<DeleteNetworkAreaResponse>;
+export const DeleteNetworkAreaResponse =
+  AddNetworkToServerResponse as any as S.Schema<DeleteNetworkAreaResponse>;
 
 export interface DeleteNetworkAreaRangeRequest {
   /** The identifier (ID) of a STACKIT Organization. */
@@ -2307,9 +2272,8 @@ export const DeleteNetworkAreaRangeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteNetworkAreaRangeRequest>;
 
 export interface DeleteNetworkAreaRangeResponse {}
-export const DeleteNetworkAreaRangeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNetworkAreaRangeResponse",
-}) as any as S.Schema<DeleteNetworkAreaRangeResponse>;
+export const DeleteNetworkAreaRangeResponse =
+  AddNetworkToServerResponse as any as S.Schema<DeleteNetworkAreaRangeResponse>;
 
 export interface DeleteNetworkAreaRegionRequest {
   /** The identifier (ID) of a STACKIT Organization. */
@@ -2370,9 +2334,8 @@ export const DeleteNetworkAreaRouteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteNetworkAreaRouteRequest>;
 
 export interface DeleteNetworkAreaRouteResponse {}
-export const DeleteNetworkAreaRouteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNetworkAreaRouteResponse",
-}) as any as S.Schema<DeleteNetworkAreaRouteResponse>;
+export const DeleteNetworkAreaRouteResponse =
+  AddNetworkToServerResponse as any as S.Schema<DeleteNetworkAreaRouteResponse>;
 
 export interface DeleteNicRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -2401,9 +2364,7 @@ export const DeleteNicRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteNicRequest" }) as any as S.Schema<DeleteNicRequest>;
 
 export interface DeleteNicResponse {}
-export const DeleteNicResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNicResponse",
-}) as any as S.Schema<DeleteNicResponse>;
+export const DeleteNicResponse = AddNetworkToServerResponse as any as S.Schema<DeleteNicResponse>;
 
 export interface DeletePublicIPRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -2429,9 +2390,8 @@ export const DeletePublicIPRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePublicIPRequest" }) as any as S.Schema<DeletePublicIPRequest>;
 
 export interface DeletePublicIPResponse {}
-export const DeletePublicIPResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePublicIPResponse",
-}) as any as S.Schema<DeletePublicIPResponse>;
+export const DeletePublicIPResponse =
+  AddNetworkToServerResponse as any as S.Schema<DeletePublicIPResponse>;
 
 export interface DeleteRouteFromRoutingTableRequest {
   /** The identifier (ID) of a STACKIT Organization. */
@@ -2465,11 +2425,8 @@ export const DeleteRouteFromRoutingTableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRouteFromRoutingTableRequest>;
 
 export interface DeleteRouteFromRoutingTableResponse {}
-export const DeleteRouteFromRoutingTableResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteRouteFromRoutingTableResponse",
-}) as any as S.Schema<DeleteRouteFromRoutingTableResponse>;
+export const DeleteRouteFromRoutingTableResponse =
+  AddSecurityGroupToServerResponse as any as S.Schema<DeleteRouteFromRoutingTableResponse>;
 
 export interface DeleteRoutingTableFromAreaRequest {
   /** The identifier (ID) of a STACKIT Organization. */
@@ -2500,11 +2457,8 @@ export const DeleteRoutingTableFromAreaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRoutingTableFromAreaRequest>;
 
 export interface DeleteRoutingTableFromAreaResponse {}
-export const DeleteRoutingTableFromAreaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteRoutingTableFromAreaResponse",
-}) as any as S.Schema<DeleteRoutingTableFromAreaResponse>;
+export const DeleteRoutingTableFromAreaResponse =
+  AddSecurityGroupToServerResponse as any as S.Schema<DeleteRoutingTableFromAreaResponse>;
 
 export interface DeleteSecurityGroupRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -2532,9 +2486,8 @@ export const DeleteSecurityGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSecurityGroupRequest>;
 
 export interface DeleteSecurityGroupResponse {}
-export const DeleteSecurityGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSecurityGroupResponse",
-}) as any as S.Schema<DeleteSecurityGroupResponse>;
+export const DeleteSecurityGroupResponse =
+  AddNetworkToServerResponse as any as S.Schema<DeleteSecurityGroupResponse>;
 
 export interface DeleteSecurityGroupRuleRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -2565,9 +2518,8 @@ export const DeleteSecurityGroupRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSecurityGroupRuleRequest>;
 
 export interface DeleteSecurityGroupRuleResponse {}
-export const DeleteSecurityGroupRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteSecurityGroupRuleResponse" },
-) as any as S.Schema<DeleteSecurityGroupRuleResponse>;
+export const DeleteSecurityGroupRuleResponse =
+  DeleteNetworkAreaRegionResponse as any as S.Schema<DeleteSecurityGroupRuleResponse>;
 
 export interface DeleteServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -2593,9 +2545,8 @@ export const DeleteServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteServerRequest" }) as any as S.Schema<DeleteServerRequest>;
 
 export interface DeleteServerResponse {}
-export const DeleteServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteServerResponse",
-}) as any as S.Schema<DeleteServerResponse>;
+export const DeleteServerResponse =
+  AddNetworkToServerResponse as any as S.Schema<DeleteServerResponse>;
 
 export interface DeleteSnapshotRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -2621,9 +2572,8 @@ export const DeleteSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSnapshotRequest" }) as any as S.Schema<DeleteSnapshotRequest>;
 
 export interface DeleteSnapshotResponse {}
-export const DeleteSnapshotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSnapshotResponse",
-}) as any as S.Schema<DeleteSnapshotResponse>;
+export const DeleteSnapshotResponse =
+  AddNetworkToServerResponse as any as S.Schema<DeleteSnapshotResponse>;
 
 export interface DeleteVolumeRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -2652,9 +2602,8 @@ export const DeleteVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteVolumeRequest" }) as any as S.Schema<DeleteVolumeRequest>;
 
 export interface DeleteVolumeResponse {}
-export const DeleteVolumeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVolumeResponse",
-}) as any as S.Schema<DeleteVolumeResponse>;
+export const DeleteVolumeResponse =
+  AddNetworkToServerResponse as any as S.Schema<DeleteVolumeResponse>;
 
 export interface GetAffinityGroupRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -2832,9 +2781,8 @@ export const GetImageShareRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of all projects the Image is shared with. */
 export type ImageShareProjectsList = Array<string>;
-export const ImageShareProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImageShareProjectsList>;
+export const ImageShareProjectsList =
+  ServiceAccountMailList as any as S.Schema<ImageShareProjectsList>;
 
 /** Share details of an Image. For requests ParentOrganization and Projects are mutually exclusive. */
 export interface ImageShare {
@@ -3412,24 +3360,8 @@ export interface GetSecurityGroupRuleResponse {
   updatedAt?: string;
   protocol?: Protocol;
 }
-export const GetSecurityGroupRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.optional(S.String),
-    description: S.optional(S.String),
-    direction: S.String,
-    ethertype: S.optional(S.String),
-    icmpParameters: S.optional(ICMPParameters),
-    id: S.optional(S.String),
-    ipRange: S.optional(S.String),
-    portRange: S.optional(PortRange),
-    remoteSecurityGroupId: S.optional(S.String),
-    securityGroupId: S.optional(S.String),
-    updatedAt: S.optional(S.String),
-    protocol: S.optional(Protocol),
-  }),
-).annotate({
-  identifier: "GetSecurityGroupRuleResponse",
-}) as any as S.Schema<GetSecurityGroupRuleResponse>;
+export const GetSecurityGroupRuleResponse =
+  CreateSecurityGroupRuleResponse as any as S.Schema<GetSecurityGroupRuleResponse>;
 
 export interface GetServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -3749,21 +3681,14 @@ export const ListAvailabilityZonesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of availability zones. */
 export type AvailabilityZoneList = Array<string>;
-export const AvailabilityZoneList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AvailabilityZoneList>;
+export const AvailabilityZoneList = ServiceAccountMailList as any as S.Schema<AvailabilityZoneList>;
 
 /** Availability Zone list response. */
 export interface AvailabilityZoneListResponse {
   items: AvailabilityZoneList;
 }
-export const AvailabilityZoneListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: AvailabilityZoneList,
-  }),
-).annotate({
-  identifier: "AvailabilityZoneListResponse",
-}) as any as S.Schema<AvailabilityZoneListResponse>;
+export const AvailabilityZoneListResponse =
+  ServiceAccountMailListResponse as any as S.Schema<AvailabilityZoneListResponse>;
 
 export interface ListBackupsRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -3936,7 +3861,7 @@ export const ListNetworkAreaProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of STACKIT projects. */
 export type ProjectList = Array<string>;
-export const ProjectList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<ProjectList>;
+export const ProjectList = NameserversIPv4 as any as S.Schema<ProjectList>;
 
 /** Project list response. */
 export interface ProjectListResponse {
@@ -4723,12 +4648,8 @@ export interface UpdateNetworkIPv6Body {
   gateway?: string | null;
   nameservers?: NameserversIPv6;
 }
-export const UpdateNetworkIPv6Body = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gateway: S.optional(S.NullOr(S.String)),
-    nameservers: S.optional(NameserversIPv6),
-  }),
-).annotate({ identifier: "UpdateNetworkIPv6Body" }) as any as S.Schema<UpdateNetworkIPv6Body>;
+export const UpdateNetworkIPv6Body =
+  UpdateNetworkIPv4Body as any as S.Schema<UpdateNetworkIPv6Body>;
 
 export interface PartialUpdateNetworkRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -4772,9 +4693,8 @@ export const PartialUpdateNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PartialUpdateNetworkRequest>;
 
 export interface PartialUpdateNetworkResponse {}
-export const PartialUpdateNetworkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PartialUpdateNetworkResponse",
-}) as any as S.Schema<PartialUpdateNetworkResponse>;
+export const PartialUpdateNetworkResponse =
+  AddNetworkToServerResponse as any as S.Schema<PartialUpdateNetworkResponse>;
 
 export interface PartialUpdateNetworkAreaRequest {
   /** The identifier (ID) of a STACKIT Organization. */
@@ -4829,9 +4749,8 @@ export const RebootServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RebootServerRequest" }) as any as S.Schema<RebootServerRequest>;
 
 export interface RebootServerResponse {}
-export const RebootServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RebootServerResponse",
-}) as any as S.Schema<RebootServerResponse>;
+export const RebootServerResponse =
+  AddNetworkToServerResponse as any as S.Schema<RebootServerResponse>;
 
 export interface RemoveNetworkFromServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -4862,9 +4781,8 @@ export const RemoveNetworkFromServerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveNetworkFromServerRequest>;
 
 export interface RemoveNetworkFromServerResponse {}
-export const RemoveNetworkFromServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "RemoveNetworkFromServerResponse" },
-) as any as S.Schema<RemoveNetworkFromServerResponse>;
+export const RemoveNetworkFromServerResponse =
+  DeleteNetworkAreaRegionResponse as any as S.Schema<RemoveNetworkFromServerResponse>;
 
 export interface RemoveNicFromServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -4895,9 +4813,8 @@ export const RemoveNicFromServerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveNicFromServerRequest>;
 
 export interface RemoveNicFromServerResponse {}
-export const RemoveNicFromServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RemoveNicFromServerResponse",
-}) as any as S.Schema<RemoveNicFromServerResponse>;
+export const RemoveNicFromServerResponse =
+  AddNetworkToServerResponse as any as S.Schema<RemoveNicFromServerResponse>;
 
 export interface RemovePublicIpFromServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -4928,11 +4845,8 @@ export const RemovePublicIpFromServerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemovePublicIpFromServerRequest>;
 
 export interface RemovePublicIpFromServerResponse {}
-export const RemovePublicIpFromServerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemovePublicIpFromServerResponse",
-}) as any as S.Schema<RemovePublicIpFromServerResponse>;
+export const RemovePublicIpFromServerResponse =
+  AddSecurityGroupToServerResponse as any as S.Schema<RemovePublicIpFromServerResponse>;
 
 export interface RemoveSecurityGroupFromServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -4963,11 +4877,8 @@ export const RemoveSecurityGroupFromServerRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<RemoveSecurityGroupFromServerRequest>;
 
 export interface RemoveSecurityGroupFromServerResponse {}
-export const RemoveSecurityGroupFromServerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveSecurityGroupFromServerResponse",
-}) as any as S.Schema<RemoveSecurityGroupFromServerResponse>;
+export const RemoveSecurityGroupFromServerResponse =
+  AddSecurityGroupToServerResponse as any as S.Schema<RemoveSecurityGroupFromServerResponse>;
 
 export interface RemoveServiceAccountFromServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -5026,9 +4937,8 @@ export const RemoveVolumeFromServerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveVolumeFromServerRequest>;
 
 export interface RemoveVolumeFromServerResponse {}
-export const RemoveVolumeFromServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RemoveVolumeFromServerResponse",
-}) as any as S.Schema<RemoveVolumeFromServerResponse>;
+export const RemoveVolumeFromServerResponse =
+  AddNetworkToServerResponse as any as S.Schema<RemoveVolumeFromServerResponse>;
 
 export interface RescueServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -5056,9 +4966,8 @@ export const RescueServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RescueServerRequest" }) as any as S.Schema<RescueServerRequest>;
 
 export interface RescueServerResponse {}
-export const RescueServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RescueServerResponse",
-}) as any as S.Schema<RescueServerResponse>;
+export const RescueServerResponse =
+  AddNetworkToServerResponse as any as S.Schema<RescueServerResponse>;
 
 export interface ResizeServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -5086,9 +4995,8 @@ export const ResizeServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResizeServerRequest" }) as any as S.Schema<ResizeServerRequest>;
 
 export interface ResizeServerResponse {}
-export const ResizeServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResizeServerResponse",
-}) as any as S.Schema<ResizeServerResponse>;
+export const ResizeServerResponse =
+  AddNetworkToServerResponse as any as S.Schema<ResizeServerResponse>;
 
 export interface ResizeVolumeRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -5116,9 +5024,8 @@ export const ResizeVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResizeVolumeRequest" }) as any as S.Schema<ResizeVolumeRequest>;
 
 export interface ResizeVolumeResponse {}
-export const ResizeVolumeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResizeVolumeResponse",
-}) as any as S.Schema<ResizeVolumeResponse>;
+export const ResizeVolumeResponse =
+  AddNetworkToServerResponse as any as S.Schema<ResizeVolumeResponse>;
 
 export interface RestoreBackupRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -5144,15 +5051,13 @@ export const RestoreBackupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestoreBackupRequest" }) as any as S.Schema<RestoreBackupRequest>;
 
 export interface RestoreBackupResponse {}
-export const RestoreBackupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RestoreBackupResponse",
-}) as any as S.Schema<RestoreBackupResponse>;
+export const RestoreBackupResponse =
+  AddNetworkToServerResponse as any as S.Schema<RestoreBackupResponse>;
 
 /** List of all projects the Image is shared with. */
 export type SetImageShareRequestProjectsList = Array<string>;
-export const SetImageShareRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetImageShareRequestProjectsList>;
+export const SetImageShareRequestProjectsList =
+  ServiceAccountMailList as any as S.Schema<SetImageShareRequestProjectsList>;
 
 export interface SetImageShareRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -5207,9 +5112,8 @@ export const StartServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartServerRequest" }) as any as S.Schema<StartServerRequest>;
 
 export interface StartServerResponse {}
-export const StartServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartServerResponse",
-}) as any as S.Schema<StartServerResponse>;
+export const StartServerResponse =
+  AddNetworkToServerResponse as any as S.Schema<StartServerResponse>;
 
 export interface StopServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -5235,9 +5139,7 @@ export const StopServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopServerRequest" }) as any as S.Schema<StopServerRequest>;
 
 export interface StopServerResponse {}
-export const StopServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopServerResponse",
-}) as any as S.Schema<StopServerResponse>;
+export const StopServerResponse = AddNetworkToServerResponse as any as S.Schema<StopServerResponse>;
 
 export interface UnrescueServerRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -5263,9 +5165,8 @@ export const UnrescueServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnrescueServerRequest" }) as any as S.Schema<UnrescueServerRequest>;
 
 export interface UnrescueServerResponse {}
-export const UnrescueServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UnrescueServerResponse",
-}) as any as S.Schema<UnrescueServerResponse>;
+export const UnrescueServerResponse =
+  AddNetworkToServerResponse as any as S.Schema<UnrescueServerResponse>;
 
 export interface UpdateAttachedVolumeRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -5367,9 +5268,8 @@ export const UpdateImageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of all projects the Image is shared with. */
 export type UpdateImageShareRequestProjectsList = Array<string>;
-export const UpdateImageShareRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateImageShareRequestProjectsList>;
+export const UpdateImageShareRequestProjectsList =
+  ServiceAccountMailList as any as S.Schema<UpdateImageShareRequestProjectsList>;
 
 export interface UpdateImageShareRequest {
   /** The identifier (ID) of a STACKIT Project. */
@@ -5420,9 +5320,8 @@ export const UpdateKeyPairRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateKeyPairRequest" }) as any as S.Schema<UpdateKeyPairRequest>;
 
 export type UpdateRegionalAreaIPv4DefaultNameserversList = Array<string>;
-export const UpdateRegionalAreaIPv4DefaultNameserversList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRegionalAreaIPv4DefaultNameserversList>;
+export const UpdateRegionalAreaIPv4DefaultNameserversList =
+  ServiceAccountMailList as any as S.Schema<UpdateRegionalAreaIPv4DefaultNameserversList>;
 
 /** Object that represents the request body for a regional network area IPv4 configuration update. */
 export interface UpdateRegionalAreaIPv4 {

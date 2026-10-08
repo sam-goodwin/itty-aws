@@ -229,11 +229,8 @@ export const CreateStorageNetappShareShrinkRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateStorageNetappShareShrinkRequest>;
 
 export interface CreateStorageNetappShareShrinkResponse {}
-export const CreateStorageNetappShareShrinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateStorageNetappShareShrinkResponse",
-}) as any as S.Schema<CreateStorageNetappShareShrinkResponse>;
+export const CreateStorageNetappShareShrinkResponse =
+  CreateStorageNetappShareRevertResponse as any as S.Schema<CreateStorageNetappShareShrinkResponse>;
 
 export interface CreateStorageNetappShareSnapshotRequest {
   /** Service name */
@@ -337,33 +334,28 @@ export const CreateStorageNetappShareSnapshotHoldRequest = /*@__PURE__*/ S.suspe
 
 /** The days of the month the schedule runs (1 through 31). Empty for all. */
 export type StorageNetAppSnapshotPolicyScheduleDaysList = Array<number>;
-export const StorageNetAppSnapshotPolicyScheduleDaysList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<StorageNetAppSnapshotPolicyScheduleDaysList>;
+export const StorageNetAppSnapshotPolicyScheduleDaysList =
+  CreateStorageNetappChangeContactResponseBodyList as any as S.Schema<StorageNetAppSnapshotPolicyScheduleDaysList>;
 
 /** The hours of the day the schedule runs (0 through 23). Empty for all. */
 export type StorageNetAppSnapshotPolicyScheduleHoursList = Array<number>;
-export const StorageNetAppSnapshotPolicyScheduleHoursList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<StorageNetAppSnapshotPolicyScheduleHoursList>;
+export const StorageNetAppSnapshotPolicyScheduleHoursList =
+  CreateStorageNetappChangeContactResponseBodyList as any as S.Schema<StorageNetAppSnapshotPolicyScheduleHoursList>;
 
 /** The minutes the schedule runs (0 through 59). Required to have at least one value. */
 export type StorageNetAppSnapshotPolicyScheduleMinutesList = Array<number>;
-export const StorageNetAppSnapshotPolicyScheduleMinutesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<StorageNetAppSnapshotPolicyScheduleMinutesList>;
+export const StorageNetAppSnapshotPolicyScheduleMinutesList =
+  CreateStorageNetappChangeContactResponseBodyList as any as S.Schema<StorageNetAppSnapshotPolicyScheduleMinutesList>;
 
 /** The months of the year the schedule runs (1 through 12). Empty for all. */
 export type StorageNetAppSnapshotPolicyScheduleMonthsList = Array<number>;
-export const StorageNetAppSnapshotPolicyScheduleMonthsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<StorageNetAppSnapshotPolicyScheduleMonthsList>;
+export const StorageNetAppSnapshotPolicyScheduleMonthsList =
+  CreateStorageNetappChangeContactResponseBodyList as any as S.Schema<StorageNetAppSnapshotPolicyScheduleMonthsList>;
 
 /** The days of the week the schedule runs (0 through 6, where 0 is Sunday and 6 is Saturday). Empty for all. */
 export type StorageNetAppSnapshotPolicyScheduleWeekdaysList = Array<number>;
-export const StorageNetAppSnapshotPolicyScheduleWeekdaysList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<StorageNetAppSnapshotPolicyScheduleWeekdaysList>;
+export const StorageNetAppSnapshotPolicyScheduleWeekdaysList =
+  CreateStorageNetappChangeContactResponseBodyList as any as S.Schema<StorageNetAppSnapshotPolicyScheduleWeekdaysList>;
 
 /** A snapshot policy schedule */
 export interface StorageNetAppSnapshotPolicySchedule {
@@ -441,9 +433,8 @@ export const CreateStorageNetappSnapshotPolicyRequest = /*@__PURE__*/ S.suspend(
 
 /** Snapshot policy rules */
 export type StorageNetAppSnapshotPolicyRulesList = Array<StorageNetAppSnapshotPolicyRule>;
-export const StorageNetAppSnapshotPolicyRulesList = /*@__PURE__*/ S.Array(
-  StorageNetAppSnapshotPolicyRule,
-) as any as S.Schema<StorageNetAppSnapshotPolicyRulesList>;
+export const StorageNetAppSnapshotPolicyRulesList =
+  CreateStorageNetappSnapshotPolicyRequestRulesList as any as S.Schema<StorageNetAppSnapshotPolicyRulesList>;
 
 /** Snapshot policy status */
 export type StorageNetAppSnapshotPolicyStatusEnum =
@@ -503,11 +494,8 @@ export const DeleteStorageNetappShareRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteStorageNetappShareRequest>;
 
 export interface DeleteStorageNetappShareResponse {}
-export const DeleteStorageNetappShareResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteStorageNetappShareResponse",
-}) as any as S.Schema<DeleteStorageNetappShareResponse>;
+export const DeleteStorageNetappShareResponse =
+  CreateStorageNetappShareRevertResponse as any as S.Schema<DeleteStorageNetappShareResponse>;
 
 export interface DeleteStorageNetappShareAclRequest {
   /** Service name */
@@ -534,11 +522,8 @@ export const DeleteStorageNetappShareAclRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteStorageNetappShareAclRequest>;
 
 export interface DeleteStorageNetappShareAclResponse {}
-export const DeleteStorageNetappShareAclResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteStorageNetappShareAclResponse",
-}) as any as S.Schema<DeleteStorageNetappShareAclResponse>;
+export const DeleteStorageNetappShareAclResponse =
+  CreateStorageNetappShareRevertResponse as any as S.Schema<DeleteStorageNetappShareAclResponse>;
 
 export interface DeleteStorageNetappShareSnapshotRequest {
   /** Service name */
@@ -565,11 +550,8 @@ export const DeleteStorageNetappShareSnapshotRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteStorageNetappShareSnapshotRequest>;
 
 export interface DeleteStorageNetappShareSnapshotResponse {}
-export const DeleteStorageNetappShareSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteStorageNetappShareSnapshotResponse",
-}) as any as S.Schema<DeleteStorageNetappShareSnapshotResponse>;
+export const DeleteStorageNetappShareSnapshotResponse =
+  CreateStorageNetappShareRevertResponse as any as S.Schema<DeleteStorageNetappShareSnapshotResponse>;
 
 export interface DeleteStorageNetappSnapshotPolicyRequest {
   /** Service name */
@@ -593,11 +575,8 @@ export const DeleteStorageNetappSnapshotPolicyRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteStorageNetappSnapshotPolicyRequest>;
 
 export interface DeleteStorageNetappSnapshotPolicyResponse {}
-export const DeleteStorageNetappSnapshotPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteStorageNetappSnapshotPolicyResponse",
-}) as any as S.Schema<DeleteStorageNetappSnapshotPolicyResponse>;
+export const DeleteStorageNetappSnapshotPolicyResponse =
+  CreateStorageNetappShareRevertResponse as any as S.Schema<DeleteStorageNetappSnapshotPolicyResponse>;
 
 export interface ExtendStorageNetappShareRequest {
   /** Service name */
@@ -624,11 +603,8 @@ export const ExtendStorageNetappShareRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExtendStorageNetappShareRequest>;
 
 export interface ExtendStorageNetappShareResponse {}
-export const ExtendStorageNetappShareResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ExtendStorageNetappShareResponse",
-}) as any as S.Schema<ExtendStorageNetappShareResponse>;
+export const ExtendStorageNetappShareResponse =
+  CreateStorageNetappShareRevertResponse as any as S.Schema<ExtendStorageNetappShareResponse>;
 
 export interface GetStorageNetappRequest {
   /** Service name */
@@ -813,9 +789,8 @@ export const GetStorageNetappServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-export const ServicesServicePossibleRenewPeriodList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
+export const ServicesServicePossibleRenewPeriodList =
+  CreateStorageNetappChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
 
 /** Map a possible renew for a specific service */
 export interface ServiceRenewType {
@@ -1460,11 +1435,8 @@ export const PutStorageNetappServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutStorageNetappServiceInfosRequest>;
 
 export interface PutStorageNetappServiceInfosResponse {}
-export const PutStorageNetappServiceInfosResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutStorageNetappServiceInfosResponse",
-}) as any as S.Schema<PutStorageNetappServiceInfosResponse>;
+export const PutStorageNetappServiceInfosResponse =
+  CreateStorageNetappShareRevertResponse as any as S.Schema<PutStorageNetappServiceInfosResponse>;
 
 export interface PutStorageNetappShareRequest {
   /** Service name */
@@ -1544,11 +1516,8 @@ export const PutStorageNetappShareSnapshotPolicyRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<PutStorageNetappShareSnapshotPolicyRequest>;
 
 export interface PutStorageNetappShareSnapshotPolicyResponse {}
-export const PutStorageNetappShareSnapshotPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutStorageNetappShareSnapshotPolicyResponse",
-}) as any as S.Schema<PutStorageNetappShareSnapshotPolicyResponse>;
+export const PutStorageNetappShareSnapshotPolicyResponse =
+  CreateStorageNetappShareRevertResponse as any as S.Schema<PutStorageNetappShareSnapshotPolicyResponse>;
 
 export interface PutStorageNetappShareSnapshotReserveRequest {
   /** Service name */
@@ -1575,11 +1544,8 @@ export const PutStorageNetappShareSnapshotReserveRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<PutStorageNetappShareSnapshotReserveRequest>;
 
 export interface PutStorageNetappShareSnapshotReserveResponse {}
-export const PutStorageNetappShareSnapshotReserveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutStorageNetappShareSnapshotReserveResponse",
-}) as any as S.Schema<PutStorageNetappShareSnapshotReserveResponse>;
+export const PutStorageNetappShareSnapshotReserveResponse =
+  CreateStorageNetappShareRevertResponse as any as S.Schema<PutStorageNetappShareSnapshotReserveResponse>;
 
 export interface PutStorageNetappSnapshotPolicyRequest {
   /** Service name */
@@ -1609,11 +1575,8 @@ export const PutStorageNetappSnapshotPolicyRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<PutStorageNetappSnapshotPolicyRequest>;
 
 export interface PutStorageNetappSnapshotPolicyResponse {}
-export const PutStorageNetappSnapshotPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutStorageNetappSnapshotPolicyResponse",
-}) as any as S.Schema<PutStorageNetappSnapshotPolicyResponse>;
+export const PutStorageNetappSnapshotPolicyResponse =
+  CreateStorageNetappShareRevertResponse as any as S.Schema<PutStorageNetappSnapshotPolicyResponse>;
 
 export interface ShareStorageNetappRequest {
   /** Service name */
@@ -1658,11 +1621,8 @@ export const TerminateStorageNetappRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminateStorageNetappRequest>;
 
 export type TerminateStorageNetappResponse = string;
-export const TerminateStorageNetappResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "TerminateStorageNetappResponse",
-}) as any as S.Schema<TerminateStorageNetappResponse>;
+export const TerminateStorageNetappResponse =
+  ConfirmStorageNetappTerminationResponse as any as S.Schema<TerminateStorageNetappResponse>;
 
 export type ConfirmStorageNetappTerminationError = OvhOpError;
 /** Confirm service termination */

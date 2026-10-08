@@ -873,11 +873,8 @@ export const ConfirmPublicVirtualInterfaceRequest = /*@__PURE__*/ S.suspend(() =
 export interface ConfirmPublicVirtualInterfaceResponse {
   virtualInterfaceState?: VirtualInterfaceState;
 }
-export const ConfirmPublicVirtualInterfaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ virtualInterfaceState: S.optional(VirtualInterfaceState) }).pipe(ns),
-).annotate({
-  identifier: "ConfirmPublicVirtualInterfaceResponse",
-}) as any as S.Schema<ConfirmPublicVirtualInterfaceResponse>;
+export const ConfirmPublicVirtualInterfaceResponse =
+  ConfirmPrivateVirtualInterfaceResponse as any as S.Schema<ConfirmPublicVirtualInterfaceResponse>;
 export interface ConfirmTransitVirtualInterfaceRequest {
   virtualInterfaceId: string;
   directConnectGatewayId: string;
@@ -892,11 +889,8 @@ export const ConfirmTransitVirtualInterfaceRequest = /*@__PURE__*/ S.suspend(() 
 export interface ConfirmTransitVirtualInterfaceResponse {
   virtualInterfaceState?: VirtualInterfaceState;
 }
-export const ConfirmTransitVirtualInterfaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ virtualInterfaceState: S.optional(VirtualInterfaceState) }).pipe(ns),
-).annotate({
-  identifier: "ConfirmTransitVirtualInterfaceResponse",
-}) as any as S.Schema<ConfirmTransitVirtualInterfaceResponse>;
+export const ConfirmTransitVirtualInterfaceResponse =
+  ConfirmPrivateVirtualInterfaceResponse as any as S.Schema<ConfirmTransitVirtualInterfaceResponse>;
 export interface NewBGPPeer {
   asn?: number;
   asnLong?: number;
@@ -1036,13 +1030,8 @@ export const CreateDirectConnectGatewayAssociationRequest = /*@__PURE__*/ S.susp
 export interface CreateDirectConnectGatewayAssociationResult {
   directConnectGatewayAssociation?: DirectConnectGatewayAssociation;
 }
-export const CreateDirectConnectGatewayAssociationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ directConnectGatewayAssociation: S.optional(DirectConnectGatewayAssociation) }).pipe(
-    ns,
-  ),
-).annotate({
-  identifier: "CreateDirectConnectGatewayAssociationResult",
-}) as any as S.Schema<CreateDirectConnectGatewayAssociationResult>;
+export const CreateDirectConnectGatewayAssociationResult =
+  AcceptDirectConnectGatewayAssociationProposalResult as any as S.Schema<CreateDirectConnectGatewayAssociationResult>;
 export interface CreateDirectConnectGatewayAssociationProposalRequest {
   directConnectGatewayId: string;
   directConnectGatewayOwnerAccount: string;
@@ -1344,23 +1333,8 @@ export interface NewPublicVirtualInterface {
   tags?: Tag[];
   rateLimit?: string;
 }
-export const NewPublicVirtualInterface = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    virtualInterfaceName: S.String,
-    vlan: S.Number,
-    asn: S.optional(S.Number),
-    asnLong: S.optional(S.Number),
-    authKey: S.optional(S.String),
-    amazonAddress: S.optional(S.String),
-    customerAddress: S.optional(S.String),
-    addressFamily: S.optional(AddressFamily),
-    routeFilterPrefixes: S.optional(RouteFilterPrefixList),
-    tags: S.optional(TagList),
-    rateLimit: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NewPublicVirtualInterface",
-}) as any as S.Schema<NewPublicVirtualInterface>;
+export const NewPublicVirtualInterface =
+  NewPublicVirtualInterfaceAllocation as any as S.Schema<NewPublicVirtualInterface>;
 export interface CreatePublicVirtualInterfaceRequest {
   connectionId: string;
   newPublicVirtualInterface: NewPublicVirtualInterface;
@@ -1483,11 +1457,8 @@ export const CreateTransitVirtualInterfaceRequest = /*@__PURE__*/ S.suspend(() =
 export interface CreateTransitVirtualInterfaceResult {
   virtualInterface?: VirtualInterface;
 }
-export const CreateTransitVirtualInterfaceResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ virtualInterface: S.optional(VirtualInterface) }).pipe(ns),
-).annotate({
-  identifier: "CreateTransitVirtualInterfaceResult",
-}) as any as S.Schema<CreateTransitVirtualInterfaceResult>;
+export const CreateTransitVirtualInterfaceResult =
+  AllocateTransitVirtualInterfaceResult as any as S.Schema<CreateTransitVirtualInterfaceResult>;
 export interface DeleteBGPPeerRequest {
   virtualInterfaceId?: string;
   asn?: number;
@@ -1507,9 +1478,8 @@ export const DeleteBGPPeerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteBGPPeerResponse {
   virtualInterface?: VirtualInterface;
 }
-export const DeleteBGPPeerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ virtualInterface: S.optional(VirtualInterface) }).pipe(ns),
-).annotate({ identifier: "DeleteBGPPeerResponse" }) as any as S.Schema<DeleteBGPPeerResponse>;
+export const DeleteBGPPeerResponse =
+  CreateBGPPeerResponse as any as S.Schema<DeleteBGPPeerResponse>;
 export interface DeleteConnectionRequest {
   connectionId: string;
 }
@@ -1531,11 +1501,8 @@ export const DeleteDirectConnectGatewayRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDirectConnectGatewayResult {
   directConnectGateway?: DirectConnectGateway;
 }
-export const DeleteDirectConnectGatewayResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ directConnectGateway: S.optional(DirectConnectGateway) }).pipe(ns),
-).annotate({
-  identifier: "DeleteDirectConnectGatewayResult",
-}) as any as S.Schema<DeleteDirectConnectGatewayResult>;
+export const DeleteDirectConnectGatewayResult =
+  CreateDirectConnectGatewayResult as any as S.Schema<DeleteDirectConnectGatewayResult>;
 export interface DeleteDirectConnectGatewayAssociationRequest {
   associationId?: string;
   directConnectGatewayId?: string;
@@ -1553,13 +1520,8 @@ export const DeleteDirectConnectGatewayAssociationRequest = /*@__PURE__*/ S.susp
 export interface DeleteDirectConnectGatewayAssociationResult {
   directConnectGatewayAssociation?: DirectConnectGatewayAssociation;
 }
-export const DeleteDirectConnectGatewayAssociationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ directConnectGatewayAssociation: S.optional(DirectConnectGatewayAssociation) }).pipe(
-    ns,
-  ),
-).annotate({
-  identifier: "DeleteDirectConnectGatewayAssociationResult",
-}) as any as S.Schema<DeleteDirectConnectGatewayAssociationResult>;
+export const DeleteDirectConnectGatewayAssociationResult =
+  AcceptDirectConnectGatewayAssociationProposalResult as any as S.Schema<DeleteDirectConnectGatewayAssociationResult>;
 export interface DeleteDirectConnectGatewayAssociationProposalRequest {
   proposalId: string;
 }
@@ -1573,13 +1535,8 @@ export const DeleteDirectConnectGatewayAssociationProposalRequest = /*@__PURE__*
 export interface DeleteDirectConnectGatewayAssociationProposalResult {
   directConnectGatewayAssociationProposal?: DirectConnectGatewayAssociationProposal;
 }
-export const DeleteDirectConnectGatewayAssociationProposalResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    directConnectGatewayAssociationProposal: S.optional(DirectConnectGatewayAssociationProposal),
-  }).pipe(ns),
-).annotate({
-  identifier: "DeleteDirectConnectGatewayAssociationProposalResult",
-}) as any as S.Schema<DeleteDirectConnectGatewayAssociationProposalResult>;
+export const DeleteDirectConnectGatewayAssociationProposalResult =
+  CreateDirectConnectGatewayAssociationProposalResult as any as S.Schema<DeleteDirectConnectGatewayAssociationProposalResult>;
 export interface DeleteInterconnectRequest {
   interconnectId: string;
 }
@@ -1619,11 +1576,8 @@ export const DeleteResiliencyGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteResiliencyGroupResult {
   resiliencyGroup?: ResiliencyGroup;
 }
-export const DeleteResiliencyGroupResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resiliencyGroup: S.optional(ResiliencyGroup) }).pipe(ns),
-).annotate({
-  identifier: "DeleteResiliencyGroupResult",
-}) as any as S.Schema<DeleteResiliencyGroupResult>;
+export const DeleteResiliencyGroupResult =
+  CreateResiliencyGroupResult as any as S.Schema<DeleteResiliencyGroupResult>;
 export interface DeleteVirtualInterfaceRequest {
   virtualInterfaceId: string;
 }
@@ -1637,11 +1591,8 @@ export const DeleteVirtualInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteVirtualInterfaceResponse {
   virtualInterfaceState?: VirtualInterfaceState;
 }
-export const DeleteVirtualInterfaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ virtualInterfaceState: S.optional(VirtualInterfaceState) }).pipe(ns),
-).annotate({
-  identifier: "DeleteVirtualInterfaceResponse",
-}) as any as S.Schema<DeleteVirtualInterfaceResponse>;
+export const DeleteVirtualInterfaceResponse =
+  ConfirmPrivateVirtualInterfaceResponse as any as S.Schema<DeleteVirtualInterfaceResponse>;
 export type LoaContentType = "application/pdf" | (string & {});
 export const LoaContentType = S.String;
 
@@ -1939,11 +1890,8 @@ export const DescribeInterconnectLoaRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeInterconnectLoaResponse {
   loa?: Loa;
 }
-export const DescribeInterconnectLoaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ loa: S.optional(Loa) }).pipe(ns),
-).annotate({
-  identifier: "DescribeInterconnectLoaResponse",
-}) as any as S.Schema<DescribeInterconnectLoaResponse>;
+export const DescribeInterconnectLoaResponse =
+  DescribeConnectionLoaResponse as any as S.Schema<DescribeInterconnectLoaResponse>;
 export interface DescribeInterconnectsRequest {
   interconnectId?: string;
   maxResults?: number;
@@ -2009,13 +1957,14 @@ export const DescribeLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type LocationName = string;
 export type PortSpeed = string;
 export type AvailablePortSpeeds = string[];
-export const AvailablePortSpeeds = /*@__PURE__*/ S.Array(S.String);
+export const AvailablePortSpeeds = ConnectionIdentifierList as any as S.Schema<AvailablePortSpeeds>;
 export type ProviderList = string[];
-export const ProviderList = /*@__PURE__*/ S.Array(S.String);
+export const ProviderList = ConnectionIdentifierList as any as S.Schema<ProviderList>;
 export type AvailableMacSecPortSpeeds = string[];
-export const AvailableMacSecPortSpeeds = /*@__PURE__*/ S.Array(S.String);
+export const AvailableMacSecPortSpeeds =
+  ConnectionIdentifierList as any as S.Schema<AvailableMacSecPortSpeeds>;
 export type IncludedRegionList = string[];
-export const IncludedRegionList = /*@__PURE__*/ S.Array(S.String);
+export const IncludedRegionList = ConnectionIdentifierList as any as S.Schema<IncludedRegionList>;
 export interface AvailableBillingMode {
   billingMode?: BillingMode;
   availablePortSpeeds?: string[];
@@ -2111,7 +2060,7 @@ export const DescribeRouterConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeRouterConfigurationResponse>;
 export type ResourceArn = string;
 export type ResourceArnList = string[];
-export const ResourceArnList = /*@__PURE__*/ S.Array(S.String);
+export const ResourceArnList = ConnectionIdentifierList as any as S.Schema<ResourceArnList>;
 export interface DescribeTagsRequest {
   resourceArns: string[];
 }
@@ -2213,11 +2162,8 @@ export const DisassociateConnectionsFromResiliencyGroupRequest = /*@__PURE__*/ S
 export interface DisassociateConnectionsFromResiliencyGroupResult {
   resiliencyGroupAssociations?: ResiliencyGroupAssociation[];
 }
-export const DisassociateConnectionsFromResiliencyGroupResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resiliencyGroupAssociations: S.optional(ResiliencyGroupAssociationList) }).pipe(ns),
-).annotate({
-  identifier: "DisassociateConnectionsFromResiliencyGroupResult",
-}) as any as S.Schema<DisassociateConnectionsFromResiliencyGroupResult>;
+export const DisassociateConnectionsFromResiliencyGroupResult =
+  AssociateConnectionsToResiliencyGroupResult as any as S.Schema<DisassociateConnectionsFromResiliencyGroupResult>;
 export interface DisassociateMacSecKeyRequest {
   connectionId: string;
   secretARN: string;
@@ -2233,11 +2179,8 @@ export interface DisassociateMacSecKeyResponse {
   connectionId?: string;
   macSecKeys?: MacSecKey[];
 }
-export const DisassociateMacSecKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ connectionId: S.optional(S.String), macSecKeys: S.optional(MacSecKeyList) }).pipe(ns),
-).annotate({
-  identifier: "DisassociateMacSecKeyResponse",
-}) as any as S.Schema<DisassociateMacSecKeyResponse>;
+export const DisassociateMacSecKeyResponse =
+  AssociateMacSecKeyResponse as any as S.Schema<DisassociateMacSecKeyResponse>;
 export interface GetResiliencyGroupRequest {
   resiliencyGroupId: string;
 }
@@ -2327,12 +2270,13 @@ export const RouteDirection = S.String;
 
 export type RouteFilterCidrString = string;
 export type RouteFilterCidrStringList = string[];
-export const RouteFilterCidrStringList = /*@__PURE__*/ S.Array(S.String);
+export const RouteFilterCidrStringList =
+  ConnectionIdentifierList as any as S.Schema<RouteFilterCidrStringList>;
 export type AsPathList = number[];
 export const AsPathList = /*@__PURE__*/ S.Array(S.Number);
 export type CommunityEntry = string;
 export type CommunityList = string[];
-export const CommunityList = /*@__PURE__*/ S.Array(S.String);
+export const CommunityList = ConnectionIdentifierList as any as S.Schema<CommunityList>;
 export interface RouteFilters {
   routeDirection?: RouteDirection;
   addressFamily?: AddressFamily;
@@ -2417,7 +2361,7 @@ export const ListVirtualInterfaceRoutesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVirtualInterfaceRoutesResponse>;
 export type TestId = string;
 export type BGPPeerIdList = string[];
-export const BGPPeerIdList = /*@__PURE__*/ S.Array(S.String);
+export const BGPPeerIdList = ConnectionIdentifierList as any as S.Schema<BGPPeerIdList>;
 export type FailureTestHistoryStatus = string;
 export interface ListVirtualInterfaceTestHistoryRequest {
   testId?: string;
@@ -2515,11 +2459,8 @@ export const StopBgpFailoverTestRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopBgpFailoverTestResponse {
   virtualInterfaceTest?: VirtualInterfaceTestHistory;
 }
-export const StopBgpFailoverTestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ virtualInterfaceTest: S.optional(VirtualInterfaceTestHistory) }).pipe(ns),
-).annotate({
-  identifier: "StopBgpFailoverTestResponse",
-}) as any as S.Schema<StopBgpFailoverTestResponse>;
+export const StopBgpFailoverTestResponse =
+  StartBgpFailoverTestResponse as any as S.Schema<StopBgpFailoverTestResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: Tag[];
@@ -2534,7 +2475,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pi
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = ConnectionIdentifierList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -2545,9 +2486,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateConnectionRequest {
   connectionId: string;
   connectionName?: string;
@@ -2561,7 +2500,7 @@ export const UpdateConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateConnectionRequest" }) as any as S.Schema<UpdateConnectionRequest>;
 export type ConnectionIdList = string[];
-export const ConnectionIdList = /*@__PURE__*/ S.Array(S.String);
+export const ConnectionIdList = ConnectionIdentifierList as any as S.Schema<ConnectionIdList>;
 export interface UpdateConnectionsBillingModeRequest {
   connectionIds: string[];
   billingMode: RequestBillingMode;
@@ -2598,11 +2537,8 @@ export const UpdateDirectConnectGatewayRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDirectConnectGatewayResponse {
   directConnectGateway?: DirectConnectGateway;
 }
-export const UpdateDirectConnectGatewayResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ directConnectGateway: S.optional(DirectConnectGateway) }).pipe(ns),
-).annotate({
-  identifier: "UpdateDirectConnectGatewayResponse",
-}) as any as S.Schema<UpdateDirectConnectGatewayResponse>;
+export const UpdateDirectConnectGatewayResponse =
+  CreateDirectConnectGatewayResult as any as S.Schema<UpdateDirectConnectGatewayResponse>;
 export interface UpdateDirectConnectGatewayAssociationRequest {
   associationId?: string;
   addAllowedPrefixesToDirectConnectGateway?: RouteFilterPrefix[];
@@ -2620,13 +2556,8 @@ export const UpdateDirectConnectGatewayAssociationRequest = /*@__PURE__*/ S.susp
 export interface UpdateDirectConnectGatewayAssociationResult {
   directConnectGatewayAssociation?: DirectConnectGatewayAssociation;
 }
-export const UpdateDirectConnectGatewayAssociationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ directConnectGatewayAssociation: S.optional(DirectConnectGatewayAssociation) }).pipe(
-    ns,
-  ),
-).annotate({
-  identifier: "UpdateDirectConnectGatewayAssociationResult",
-}) as any as S.Schema<UpdateDirectConnectGatewayAssociationResult>;
+export const UpdateDirectConnectGatewayAssociationResult =
+  AcceptDirectConnectGatewayAssociationProposalResult as any as S.Schema<UpdateDirectConnectGatewayAssociationResult>;
 export interface UpdateLagRequest {
   lagId: string;
   lagName?: string;
@@ -2658,11 +2589,8 @@ export const UpdateResiliencyGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateResiliencyGroupResult {
   resiliencyGroup?: ResiliencyGroup;
 }
-export const UpdateResiliencyGroupResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resiliencyGroup: S.optional(ResiliencyGroup) }).pipe(ns),
-).annotate({
-  identifier: "UpdateResiliencyGroupResult",
-}) as any as S.Schema<UpdateResiliencyGroupResult>;
+export const UpdateResiliencyGroupResult =
+  CreateResiliencyGroupResult as any as S.Schema<UpdateResiliencyGroupResult>;
 export interface UpdateVirtualInterfaceAttributesRequest {
   virtualInterfaceId: string;
   mtu?: number;

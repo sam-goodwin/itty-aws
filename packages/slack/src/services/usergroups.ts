@@ -16,9 +16,8 @@ export const CreateUsergroupRequestChannelsList = /*@__PURE__*/ S.Array(
 
 /** A comma separated string of encoded channel IDs for which the User Group can custom add usergroup members too. */
 export type CreateUsergroupRequestAdditionalChannelsList = Array<string>;
-export const CreateUsergroupRequestAdditionalChannelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateUsergroupRequestAdditionalChannelsList>;
+export const CreateUsergroupRequestAdditionalChannelsList =
+  CreateUsergroupRequestChannelsList as any as S.Schema<CreateUsergroupRequestAdditionalChannelsList>;
 
 export interface CreateUsergroupRequest {
   /** A comma separated string of encoded channel IDs for which the User Group uses as a default. */
@@ -84,12 +83,8 @@ export interface DisableUsergroupResponse {
   ok: boolean;
   usergroup: unknown;
 }
-export const DisableUsergroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-    usergroup: S.Unknown,
-  }),
-).annotate({ identifier: "DisableUsergroupResponse" }) as any as S.Schema<DisableUsergroupResponse>;
+export const DisableUsergroupResponse =
+  CreateUsergroupResponse as any as S.Schema<DisableUsergroupResponse>;
 
 export interface EnableUsergroupRequest {
   /** Include the number of users in the User Group. */
@@ -112,12 +107,8 @@ export interface EnableUsergroupResponse {
   ok: boolean;
   usergroup: unknown;
 }
-export const EnableUsergroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-    usergroup: S.Unknown,
-  }),
-).annotate({ identifier: "EnableUsergroupResponse" }) as any as S.Schema<EnableUsergroupResponse>;
+export const EnableUsergroupResponse =
+  CreateUsergroupResponse as any as S.Schema<EnableUsergroupResponse>;
 
 export interface ListUsergroupsRequest {
   /** Include the number of users in each User Group. */
@@ -172,9 +163,8 @@ export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListUsersRequest" }) as any as S.Schema<ListUsersRequest>;
 
 export type ListUsersResponseUsersList = Array<unknown>;
-export const ListUsersResponseUsersList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ListUsersResponseUsersList>;
+export const ListUsersResponseUsersList =
+  ListUsergroupsResponseUsergroupsList as any as S.Schema<ListUsersResponseUsersList>;
 
 export interface ListUsersResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -190,15 +180,13 @@ export const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A comma separated string of encoded user IDs that represent the entire list of users for the user group. */
 export type UpdateUserRequestUsersList = Array<string>;
-export const UpdateUserRequestUsersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateUserRequestUsersList>;
+export const UpdateUserRequestUsersList =
+  CreateUsergroupRequestChannelsList as any as S.Schema<UpdateUserRequestUsersList>;
 
 /** A comma separated string of encoded channel IDs for which the User Group can custom add usergroup members too. */
 export type UpdateUserRequestAdditionalChannelsList = Array<string>;
-export const UpdateUserRequestAdditionalChannelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateUserRequestAdditionalChannelsList>;
+export const UpdateUserRequestAdditionalChannelsList =
+  CreateUsergroupRequestChannelsList as any as S.Schema<UpdateUserRequestAdditionalChannelsList>;
 
 export interface UpdateUserRequest {
   /** Include the number of users in the user group. */
@@ -230,24 +218,17 @@ export interface UpdateUserResponse {
   ok: boolean;
   usergroup: unknown;
 }
-export const UpdateUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-    usergroup: S.Unknown,
-  }),
-).annotate({ identifier: "UpdateUserResponse" }) as any as S.Schema<UpdateUserResponse>;
+export const UpdateUserResponse = CreateUsergroupResponse as any as S.Schema<UpdateUserResponse>;
 
 /** A comma separated string of encoded channel IDs for which the User Group uses as a default. */
 export type UpdateUsergroupRequestChannelsList = Array<string>;
-export const UpdateUsergroupRequestChannelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateUsergroupRequestChannelsList>;
+export const UpdateUsergroupRequestChannelsList =
+  CreateUsergroupRequestChannelsList as any as S.Schema<UpdateUsergroupRequestChannelsList>;
 
 /** A comma separated string of encoded channel IDs for which the User Group can custom add usergroup members too. */
 export type UpdateUsergroupRequestAdditionalChannelsList = Array<string>;
-export const UpdateUsergroupRequestAdditionalChannelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateUsergroupRequestAdditionalChannelsList>;
+export const UpdateUsergroupRequestAdditionalChannelsList =
+  CreateUsergroupRequestChannelsList as any as S.Schema<UpdateUsergroupRequestAdditionalChannelsList>;
 
 export interface UpdateUsergroupRequest {
   /** A comma separated string of encoded channel IDs for which the User Group uses as a default. */
@@ -285,9 +266,8 @@ export const UpdateUsergroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of user IDs who would exceed their channel limit */
 export type UpdateUsergroupResponseChannelLimitUserIdsList = Array<string>;
-export const UpdateUsergroupResponseChannelLimitUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateUsergroupResponseChannelLimitUserIdsList>;
+export const UpdateUsergroupResponseChannelLimitUserIdsList =
+  CreateUsergroupRequestChannelsList as any as S.Schema<UpdateUsergroupResponseChannelLimitUserIdsList>;
 
 export interface UpdateUsergroupResponse {
   /** Always `true` (a failed call raises a typed error instead). */

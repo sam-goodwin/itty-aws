@@ -163,9 +163,8 @@ export const CreateCertificatePackRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCertificatePackRequest>;
 
 export type CertificatePacksCreateResponseCertificatesItemHostsList = Array<string>;
-export const CertificatePacksCreateResponseCertificatesItemHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificatePacksCreateResponseCertificatesItemHostsList>;
+export const CertificatePacksCreateResponseCertificatesItemHostsList =
+  CertificatePacksCreateRequestHostsList as any as S.Schema<CertificatePacksCreateResponseCertificatesItemHostsList>;
 
 export type CertificatePacksCreateResponseCertificatesItemGeoRestrictionsLabel =
   | "us"
@@ -243,9 +242,8 @@ export const CertificatePacksCreateResponseCertificatesList = /*@__PURE__*/ S.Ar
 ) as any as S.Schema<CertificatePacksCreateResponseCertificatesList>;
 
 export type CertificatePacksCreateResponseHostsList = Array<string>;
-export const CertificatePacksCreateResponseHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificatePacksCreateResponseHostsList>;
+export const CertificatePacksCreateResponseHostsList =
+  CertificatePacksCreateRequestHostsList as any as S.Schema<CertificatePacksCreateResponseHostsList>;
 
 export type CertificatePacksCreateResponseStatus =
   | "initializing"
@@ -355,9 +353,8 @@ export type CertificatePacksCreateResponseValidationMethod = "txt" | "http" | "e
 export const CertificatePacksCreateResponseValidationMethod = S.String;
 
 export type CertificatePacksCreateResponseValidationRecordsItemEmailsList = Array<string>;
-export const CertificatePacksCreateResponseValidationRecordsItemEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificatePacksCreateResponseValidationRecordsItemEmailsList>;
+export const CertificatePacksCreateResponseValidationRecordsItemEmailsList =
+  CertificatePacksCreateRequestHostsList as any as S.Schema<CertificatePacksCreateResponseValidationRecordsItemEmailsList>;
 
 export interface CertificatePacksCreateResponseValidationRecordsItem {
   /** The CNAME record hostname for DCV delegation. */
@@ -603,9 +600,8 @@ export const GetCertificatePackRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCertificatePackRequest>;
 
 export type CertificatePacksGetResponseCertificatesItemHostsList = Array<string>;
-export const CertificatePacksGetResponseCertificatesItemHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificatePacksGetResponseCertificatesItemHostsList>;
+export const CertificatePacksGetResponseCertificatesItemHostsList =
+  CertificatePacksCreateRequestHostsList as any as S.Schema<CertificatePacksGetResponseCertificatesItemHostsList>;
 
 export type CertificatePacksGetResponseCertificatesItemGeoRestrictionsLabel =
   | "us"
@@ -681,9 +677,8 @@ export const CertificatePacksGetResponseCertificatesList = /*@__PURE__*/ S.Array
 ) as any as S.Schema<CertificatePacksGetResponseCertificatesList>;
 
 export type CertificatePacksGetResponseHostsList = Array<string>;
-export const CertificatePacksGetResponseHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificatePacksGetResponseHostsList>;
+export const CertificatePacksGetResponseHostsList =
+  CertificatePacksCreateRequestHostsList as any as S.Schema<CertificatePacksGetResponseHostsList>;
 
 export type CertificatePacksGetResponseStatus =
   | "initializing"
@@ -724,9 +719,8 @@ export type CertificatePacksGetResponseCertificateAuthority = "google" | "lets_e
 export const CertificatePacksGetResponseCertificateAuthority = S.String;
 
 export type CertificatePacksGetResponseDcvDelegationRecordsItemEmailsList = Array<string>;
-export const CertificatePacksGetResponseDcvDelegationRecordsItemEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificatePacksGetResponseDcvDelegationRecordsItemEmailsList>;
+export const CertificatePacksGetResponseDcvDelegationRecordsItemEmailsList =
+  CertificatePacksCreateRequestHostsList as any as S.Schema<CertificatePacksGetResponseDcvDelegationRecordsItemEmailsList>;
 
 export interface CertificatePacksGetResponseDcvDelegationRecordsItem {
   /** The CNAME record hostname for DCV delegation. */
@@ -746,26 +740,13 @@ export interface CertificatePacksGetResponseDcvDelegationRecordsItem {
   /** The TXT record that the certificate authority (CA) will check during domain validation. */
   txtValue?: string | null;
 }
-export const CertificatePacksGetResponseDcvDelegationRecordsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cname: S.optional(S.NullOr(S.String)),
-    cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
-    emails: S.optional(S.NullOr(CertificatePacksGetResponseDcvDelegationRecordsItemEmailsList)),
-    httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
-    httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
-    status: S.optional(S.NullOr(S.String)),
-    txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
-    txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
-  }),
-).annotate({
-  identifier: "CertificatePacksGetResponseDcvDelegationRecordsItem",
-}) as any as S.Schema<CertificatePacksGetResponseDcvDelegationRecordsItem>;
+export const CertificatePacksGetResponseDcvDelegationRecordsItem =
+  CertificatePacksCreateResponseValidationRecordsItem as any as S.Schema<CertificatePacksGetResponseDcvDelegationRecordsItem>;
 
 export type CertificatePacksGetResponseDcvDelegationRecordsList =
   Array<CertificatePacksGetResponseDcvDelegationRecordsItem>;
-export const CertificatePacksGetResponseDcvDelegationRecordsList = /*@__PURE__*/ S.Array(
-  CertificatePacksGetResponseDcvDelegationRecordsItem,
-) as any as S.Schema<CertificatePacksGetResponseDcvDelegationRecordsList>;
+export const CertificatePacksGetResponseDcvDelegationRecordsList =
+  CertificatePacksCreateResponseValidationRecordsList as any as S.Schema<CertificatePacksGetResponseDcvDelegationRecordsList>;
 
 export type CertificatePacksGetResponseValidationErrorsItem =
   CertificatePacksCreateResponseValidationErrorsItem;
@@ -774,17 +755,15 @@ export const CertificatePacksGetResponseValidationErrorsItem =
 
 export type CertificatePacksGetResponseValidationErrorsList =
   Array<CertificatePacksCreateResponseValidationErrorsItem>;
-export const CertificatePacksGetResponseValidationErrorsList = /*@__PURE__*/ S.Array(
-  CertificatePacksCreateResponseValidationErrorsItem,
-) as any as S.Schema<CertificatePacksGetResponseValidationErrorsList>;
+export const CertificatePacksGetResponseValidationErrorsList =
+  CertificatePacksCreateResponseValidationErrorsList as any as S.Schema<CertificatePacksGetResponseValidationErrorsList>;
 
 export type CertificatePacksGetResponseValidationMethod = "txt" | "http" | "email" | "cname";
 export const CertificatePacksGetResponseValidationMethod = S.String;
 
 export type CertificatePacksGetResponseValidationRecordsItemEmailsList = Array<string>;
-export const CertificatePacksGetResponseValidationRecordsItemEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificatePacksGetResponseValidationRecordsItemEmailsList>;
+export const CertificatePacksGetResponseValidationRecordsItemEmailsList =
+  CertificatePacksCreateRequestHostsList as any as S.Schema<CertificatePacksGetResponseValidationRecordsItemEmailsList>;
 
 export interface CertificatePacksGetResponseValidationRecordsItem {
   /** The CNAME record hostname for DCV delegation. */
@@ -804,26 +783,13 @@ export interface CertificatePacksGetResponseValidationRecordsItem {
   /** The TXT record that the certificate authority (CA) will check during domain validation. */
   txtValue?: string | null;
 }
-export const CertificatePacksGetResponseValidationRecordsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cname: S.optional(S.NullOr(S.String)),
-    cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
-    emails: S.optional(S.NullOr(CertificatePacksGetResponseValidationRecordsItemEmailsList)),
-    httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
-    httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
-    status: S.optional(S.NullOr(S.String)),
-    txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
-    txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
-  }),
-).annotate({
-  identifier: "CertificatePacksGetResponseValidationRecordsItem",
-}) as any as S.Schema<CertificatePacksGetResponseValidationRecordsItem>;
+export const CertificatePacksGetResponseValidationRecordsItem =
+  CertificatePacksCreateResponseValidationRecordsItem as any as S.Schema<CertificatePacksGetResponseValidationRecordsItem>;
 
 export type CertificatePacksGetResponseValidationRecordsList =
   Array<CertificatePacksGetResponseValidationRecordsItem>;
-export const CertificatePacksGetResponseValidationRecordsList = /*@__PURE__*/ S.Array(
-  CertificatePacksGetResponseValidationRecordsItem,
-) as any as S.Schema<CertificatePacksGetResponseValidationRecordsList>;
+export const CertificatePacksGetResponseValidationRecordsList =
+  CertificatePacksCreateResponseValidationRecordsList as any as S.Schema<CertificatePacksGetResponseValidationRecordsList>;
 
 export type CertificatePacksGetResponseValidityDays = 14 | 30 | 90 | 365;
 export const CertificatePacksGetResponseValidityDays = S.Number;
@@ -1153,9 +1119,8 @@ export const ListCertificatePacksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCertificatePacksRequest>;
 
 export type CertificatePacksListResultItemCertificatesItemHostsList = Array<string>;
-export const CertificatePacksListResultItemCertificatesItemHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificatePacksListResultItemCertificatesItemHostsList>;
+export const CertificatePacksListResultItemCertificatesItemHostsList =
+  CertificatePacksCreateRequestHostsList as any as S.Schema<CertificatePacksListResultItemCertificatesItemHostsList>;
 
 export type CertificatePacksListResultItemCertificatesItemGeoRestrictionsLabel =
   | "us"
@@ -1233,9 +1198,8 @@ export const CertificatePacksListResultItemCertificatesList = /*@__PURE__*/ S.Ar
 ) as any as S.Schema<CertificatePacksListResultItemCertificatesList>;
 
 export type CertificatePacksListResultItemHostsList = Array<string>;
-export const CertificatePacksListResultItemHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificatePacksListResultItemHostsList>;
+export const CertificatePacksListResultItemHostsList =
+  CertificatePacksCreateRequestHostsList as any as S.Schema<CertificatePacksListResultItemHostsList>;
 
 export type CertificatePacksListResultItemStatus =
   | "initializing"
@@ -1280,9 +1244,7 @@ export const CertificatePacksListResultItemCertificateAuthority = S.String;
 
 export type CertificatePacksListResultItemDcvDelegationRecordsItemEmailsList = Array<string>;
 export const CertificatePacksListResultItemDcvDelegationRecordsItemEmailsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CertificatePacksListResultItemDcvDelegationRecordsItemEmailsList>;
+  CertificatePacksCreateResponseDcvDelegationRecordsItemEmailsList as any as S.Schema<CertificatePacksListResultItemDcvDelegationRecordsItemEmailsList>;
 
 export interface CertificatePacksListResultItemDcvDelegationRecordsItem {
   /** The CNAME record hostname for DCV delegation. */
@@ -1302,26 +1264,13 @@ export interface CertificatePacksListResultItemDcvDelegationRecordsItem {
   /** The TXT record that the certificate authority (CA) will check during domain validation. */
   txtValue?: string | null;
 }
-export const CertificatePacksListResultItemDcvDelegationRecordsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cname: S.optional(S.NullOr(S.String)),
-    cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
-    emails: S.optional(S.NullOr(CertificatePacksListResultItemDcvDelegationRecordsItemEmailsList)),
-    httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
-    httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
-    status: S.optional(S.NullOr(S.String)),
-    txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
-    txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
-  }),
-).annotate({
-  identifier: "CertificatePacksListResultItemDcvDelegationRecordsItem",
-}) as any as S.Schema<CertificatePacksListResultItemDcvDelegationRecordsItem>;
+export const CertificatePacksListResultItemDcvDelegationRecordsItem =
+  CertificatePacksCreateResponseDcvDelegationRecordsItem as any as S.Schema<CertificatePacksListResultItemDcvDelegationRecordsItem>;
 
 export type CertificatePacksListResultItemDcvDelegationRecordsList =
   Array<CertificatePacksListResultItemDcvDelegationRecordsItem>;
-export const CertificatePacksListResultItemDcvDelegationRecordsList = /*@__PURE__*/ S.Array(
-  CertificatePacksListResultItemDcvDelegationRecordsItem,
-) as any as S.Schema<CertificatePacksListResultItemDcvDelegationRecordsList>;
+export const CertificatePacksListResultItemDcvDelegationRecordsList =
+  CertificatePacksCreateResponseDcvDelegationRecordsList as any as S.Schema<CertificatePacksListResultItemDcvDelegationRecordsList>;
 
 export type CertificatePacksListResultItemValidationErrorsItem =
   CertificatePacksCreateResponseValidationErrorsItem;
@@ -1330,17 +1279,15 @@ export const CertificatePacksListResultItemValidationErrorsItem =
 
 export type CertificatePacksListResultItemValidationErrorsList =
   Array<CertificatePacksCreateResponseValidationErrorsItem>;
-export const CertificatePacksListResultItemValidationErrorsList = /*@__PURE__*/ S.Array(
-  CertificatePacksCreateResponseValidationErrorsItem,
-) as any as S.Schema<CertificatePacksListResultItemValidationErrorsList>;
+export const CertificatePacksListResultItemValidationErrorsList =
+  CertificatePacksCreateResponseValidationErrorsList as any as S.Schema<CertificatePacksListResultItemValidationErrorsList>;
 
 export type CertificatePacksListResultItemValidationMethod = "txt" | "http" | "email";
 export const CertificatePacksListResultItemValidationMethod = S.String;
 
 export type CertificatePacksListResultItemValidationRecordsItemEmailsList = Array<string>;
-export const CertificatePacksListResultItemValidationRecordsItemEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificatePacksListResultItemValidationRecordsItemEmailsList>;
+export const CertificatePacksListResultItemValidationRecordsItemEmailsList =
+  CertificatePacksCreateRequestHostsList as any as S.Schema<CertificatePacksListResultItemValidationRecordsItemEmailsList>;
 
 export interface CertificatePacksListResultItemValidationRecordsItem {
   /** The CNAME record hostname for DCV delegation. */
@@ -1360,26 +1307,13 @@ export interface CertificatePacksListResultItemValidationRecordsItem {
   /** The TXT record that the certificate authority (CA) will check during domain validation. */
   txtValue?: string | null;
 }
-export const CertificatePacksListResultItemValidationRecordsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cname: S.optional(S.NullOr(S.String)),
-    cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
-    emails: S.optional(S.NullOr(CertificatePacksListResultItemValidationRecordsItemEmailsList)),
-    httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
-    httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
-    status: S.optional(S.NullOr(S.String)),
-    txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
-    txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
-  }),
-).annotate({
-  identifier: "CertificatePacksListResultItemValidationRecordsItem",
-}) as any as S.Schema<CertificatePacksListResultItemValidationRecordsItem>;
+export const CertificatePacksListResultItemValidationRecordsItem =
+  CertificatePacksCreateResponseValidationRecordsItem as any as S.Schema<CertificatePacksListResultItemValidationRecordsItem>;
 
 export type CertificatePacksListResultItemValidationRecordsList =
   Array<CertificatePacksListResultItemValidationRecordsItem>;
-export const CertificatePacksListResultItemValidationRecordsList = /*@__PURE__*/ S.Array(
-  CertificatePacksListResultItemValidationRecordsItem,
-) as any as S.Schema<CertificatePacksListResultItemValidationRecordsList>;
+export const CertificatePacksListResultItemValidationRecordsList =
+  CertificatePacksCreateResponseValidationRecordsList as any as S.Schema<CertificatePacksListResultItemValidationRecordsList>;
 
 export type CertificatePacksListResultItemValidityDays = 14 | 30 | 90 | 365;
 export const CertificatePacksListResultItemValidityDays = S.Number;
@@ -1546,15 +1480,8 @@ export interface PatchAutoOriginTlsKexResponse {
   /** Last time this setting was modified. */
   modifiedOn: string;
 }
-export const PatchAutoOriginTlsKexResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    enabled: S.Boolean,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PatchAutoOriginTlsKexResponse",
-}) as any as S.Schema<PatchAutoOriginTlsKexResponse>;
+export const PatchAutoOriginTlsKexResponse =
+  GetAutoOriginTlsKexResponse as any as S.Schema<PatchAutoOriginTlsKexResponse>;
 
 export interface PatchCertificatePackRequest {
   /** Identifier. */
@@ -1583,9 +1510,8 @@ export const PatchCertificatePackRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchCertificatePackRequest>;
 
 export type CertificatePacksEditResponseCertificatesItemHostsList = Array<string>;
-export const CertificatePacksEditResponseCertificatesItemHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificatePacksEditResponseCertificatesItemHostsList>;
+export const CertificatePacksEditResponseCertificatesItemHostsList =
+  CertificatePacksCreateRequestHostsList as any as S.Schema<CertificatePacksEditResponseCertificatesItemHostsList>;
 
 export type CertificatePacksEditResponseCertificatesItemGeoRestrictionsLabel =
   | "us"
@@ -1661,9 +1587,8 @@ export const CertificatePacksEditResponseCertificatesList = /*@__PURE__*/ S.Arra
 ) as any as S.Schema<CertificatePacksEditResponseCertificatesList>;
 
 export type CertificatePacksEditResponseHostsList = Array<string>;
-export const CertificatePacksEditResponseHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificatePacksEditResponseHostsList>;
+export const CertificatePacksEditResponseHostsList =
+  CertificatePacksCreateRequestHostsList as any as S.Schema<CertificatePacksEditResponseHostsList>;
 
 export type CertificatePacksEditResponseStatus =
   | "initializing"
@@ -1707,9 +1632,8 @@ export type CertificatePacksEditResponseCertificateAuthority =
 export const CertificatePacksEditResponseCertificateAuthority = S.String;
 
 export type CertificatePacksEditResponseDcvDelegationRecordsItemEmailsList = Array<string>;
-export const CertificatePacksEditResponseDcvDelegationRecordsItemEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificatePacksEditResponseDcvDelegationRecordsItemEmailsList>;
+export const CertificatePacksEditResponseDcvDelegationRecordsItemEmailsList =
+  CertificatePacksCreateRequestHostsList as any as S.Schema<CertificatePacksEditResponseDcvDelegationRecordsItemEmailsList>;
 
 export interface CertificatePacksEditResponseDcvDelegationRecordsItem {
   /** The CNAME record hostname for DCV delegation. */
@@ -1729,26 +1653,13 @@ export interface CertificatePacksEditResponseDcvDelegationRecordsItem {
   /** The TXT record that the certificate authority (CA) will check during domain validation. */
   txtValue?: string | null;
 }
-export const CertificatePacksEditResponseDcvDelegationRecordsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cname: S.optional(S.NullOr(S.String)),
-    cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
-    emails: S.optional(S.NullOr(CertificatePacksEditResponseDcvDelegationRecordsItemEmailsList)),
-    httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
-    httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
-    status: S.optional(S.NullOr(S.String)),
-    txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
-    txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
-  }),
-).annotate({
-  identifier: "CertificatePacksEditResponseDcvDelegationRecordsItem",
-}) as any as S.Schema<CertificatePacksEditResponseDcvDelegationRecordsItem>;
+export const CertificatePacksEditResponseDcvDelegationRecordsItem =
+  CertificatePacksCreateResponseValidationRecordsItem as any as S.Schema<CertificatePacksEditResponseDcvDelegationRecordsItem>;
 
 export type CertificatePacksEditResponseDcvDelegationRecordsList =
   Array<CertificatePacksEditResponseDcvDelegationRecordsItem>;
-export const CertificatePacksEditResponseDcvDelegationRecordsList = /*@__PURE__*/ S.Array(
-  CertificatePacksEditResponseDcvDelegationRecordsItem,
-) as any as S.Schema<CertificatePacksEditResponseDcvDelegationRecordsList>;
+export const CertificatePacksEditResponseDcvDelegationRecordsList =
+  CertificatePacksCreateResponseValidationRecordsList as any as S.Schema<CertificatePacksEditResponseDcvDelegationRecordsList>;
 
 export type CertificatePacksEditResponseValidationErrorsItem =
   CertificatePacksCreateResponseValidationErrorsItem;
@@ -1757,17 +1668,15 @@ export const CertificatePacksEditResponseValidationErrorsItem =
 
 export type CertificatePacksEditResponseValidationErrorsList =
   Array<CertificatePacksCreateResponseValidationErrorsItem>;
-export const CertificatePacksEditResponseValidationErrorsList = /*@__PURE__*/ S.Array(
-  CertificatePacksCreateResponseValidationErrorsItem,
-) as any as S.Schema<CertificatePacksEditResponseValidationErrorsList>;
+export const CertificatePacksEditResponseValidationErrorsList =
+  CertificatePacksCreateResponseValidationErrorsList as any as S.Schema<CertificatePacksEditResponseValidationErrorsList>;
 
 export type CertificatePacksEditResponseValidationMethod = "txt" | "http" | "email";
 export const CertificatePacksEditResponseValidationMethod = S.String;
 
 export type CertificatePacksEditResponseValidationRecordsItemEmailsList = Array<string>;
-export const CertificatePacksEditResponseValidationRecordsItemEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificatePacksEditResponseValidationRecordsItemEmailsList>;
+export const CertificatePacksEditResponseValidationRecordsItemEmailsList =
+  CertificatePacksCreateRequestHostsList as any as S.Schema<CertificatePacksEditResponseValidationRecordsItemEmailsList>;
 
 export interface CertificatePacksEditResponseValidationRecordsItem {
   /** The CNAME record hostname for DCV delegation. */
@@ -1787,26 +1696,13 @@ export interface CertificatePacksEditResponseValidationRecordsItem {
   /** The TXT record that the certificate authority (CA) will check during domain validation. */
   txtValue?: string | null;
 }
-export const CertificatePacksEditResponseValidationRecordsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cname: S.optional(S.NullOr(S.String)),
-    cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
-    emails: S.optional(S.NullOr(CertificatePacksEditResponseValidationRecordsItemEmailsList)),
-    httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
-    httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
-    status: S.optional(S.NullOr(S.String)),
-    txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
-    txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
-  }),
-).annotate({
-  identifier: "CertificatePacksEditResponseValidationRecordsItem",
-}) as any as S.Schema<CertificatePacksEditResponseValidationRecordsItem>;
+export const CertificatePacksEditResponseValidationRecordsItem =
+  CertificatePacksCreateResponseValidationRecordsItem as any as S.Schema<CertificatePacksEditResponseValidationRecordsItem>;
 
 export type CertificatePacksEditResponseValidationRecordsList =
   Array<CertificatePacksEditResponseValidationRecordsItem>;
-export const CertificatePacksEditResponseValidationRecordsList = /*@__PURE__*/ S.Array(
-  CertificatePacksEditResponseValidationRecordsItem,
-) as any as S.Schema<CertificatePacksEditResponseValidationRecordsList>;
+export const CertificatePacksEditResponseValidationRecordsList =
+  CertificatePacksCreateResponseValidationRecordsList as any as S.Schema<CertificatePacksEditResponseValidationRecordsList>;
 
 export type CertificatePacksEditResponseValidityDays = 14 | 30 | 90 | 365;
 export const CertificatePacksEditResponseValidityDays = S.Number;
@@ -1900,13 +1796,8 @@ export interface PatchUniversalSettingResponse {
   /** Disabling Universal SSL removes any currently active Universal SSL certificates for your zone from the edge and prevents any future Universal SSL certificates from being ordered. If there are no advanced certificates or custom certificates uploaded for the domain, visitors will be unable to access the domain over HTTPS. */
   enabled?: boolean | null;
 }
-export const PatchUniversalSettingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.NullOr(S.Boolean)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PatchUniversalSettingResponse",
-}) as any as S.Schema<PatchUniversalSettingResponse>;
+export const PatchUniversalSettingResponse =
+  GetUniversalSettingResponse as any as S.Schema<PatchUniversalSettingResponse>;
 
 export type VerificationEditRequestValidationMethod = "http" | "cname" | "txt" | "email";
 export const VerificationEditRequestValidationMethod = S.String;

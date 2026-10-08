@@ -50,9 +50,8 @@ export const GpuType = S.String;
 
 /** The context hashes used for the build */
 export type BuildInfoContextHashesList = Array<string>;
-export const BuildInfoContextHashesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BuildInfoContextHashesList>;
+export const BuildInfoContextHashesList =
+  SnapshotDtoEntrypointList as any as S.Schema<BuildInfoContextHashesList>;
 
 export interface BuildInfo {
   /** The Dockerfile content used for the build */
@@ -78,9 +77,8 @@ export const BuildInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** IDs of regions where the snapshot is available */
 export type SnapshotDtoRegionIdsList = Array<string>;
-export const SnapshotDtoRegionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SnapshotDtoRegionIdsList>;
+export const SnapshotDtoRegionIdsList =
+  SnapshotDtoEntrypointList as any as S.Schema<SnapshotDtoRegionIdsList>;
 
 /** The sandbox class of the snapshot */
 export type SnapshotDtoSandboxClass = "linux-vm" | "container" | "windows";
@@ -148,9 +146,8 @@ export const SnapshotDto = /*@__PURE__*/ S.suspend(() =>
 
 /** The entrypoint command for the snapshot */
 export type CreateSnapshotRequestEntrypointList = Array<string>;
-export const CreateSnapshotRequestEntrypointList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSnapshotRequestEntrypointList>;
+export const CreateSnapshotRequestEntrypointList =
+  SnapshotDtoEntrypointList as any as S.Schema<CreateSnapshotRequestEntrypointList>;
 
 /** Preferred GPU type for the resulting sandbox. */
 export type CreateSnapshotRequestGpuTypeList = Array<GpuType | (string & {})>;
@@ -160,9 +157,8 @@ export const CreateSnapshotRequestGpuTypeList = /*@__PURE__*/ S.Array(
 
 /** The context hashes used for the build */
 export type CreateBuildInfoContextHashesList = Array<string>;
-export const CreateBuildInfoContextHashesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateBuildInfoContextHashesList>;
+export const CreateBuildInfoContextHashesList =
+  SnapshotDtoEntrypointList as any as S.Schema<CreateBuildInfoContextHashesList>;
 
 export interface CreateBuildInfo {
   /** The Dockerfile content used for the build */
@@ -349,9 +345,8 @@ export const RemoveSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RemoveSnapshotRequest" }) as any as S.Schema<RemoveSnapshotRequest>;
 
 export interface RemoveSnapshotResponse {}
-export const RemoveSnapshotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RemoveSnapshotResponse",
-}) as any as S.Schema<RemoveSnapshotResponse>;
+export const RemoveSnapshotResponse =
+  DeactivateSnapshotResponse as any as S.Schema<RemoveSnapshotResponse>;
 
 export type ActivateSnapshotError = DaytonaOpError;
 /** Activate a snapshot */

@@ -1336,9 +1336,7 @@ export const PatchProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for SecretManagerService.RotateSecret. */
 export interface RotateSecretRequest {}
-export const RotateSecretRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RotateSecretRequest",
-}) as any as S.Schema<RotateSecretRequest>;
+export const RotateSecretRequest = Empty as any as S.Schema<RotateSecretRequest>;
 
 export interface RotateSecretProjectsLocationsSecretsRequest {
   /** Required. The resource name of the Secret to associate with the SecretVersion in the format `projects/*\/secrets/*` or `projects/*\/locations/*\/secrets/*`. */
@@ -1477,13 +1475,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsSecretsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */

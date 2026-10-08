@@ -48,14 +48,12 @@ export const AddRemoteResponseFileChannelsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AddRemoteResponseFileChannelsList>;
 
 export type AddRemoteResponseFileGroupsList = Array<string>;
-export const AddRemoteResponseFileGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddRemoteResponseFileGroupsList>;
+export const AddRemoteResponseFileGroupsList =
+  AddRemoteResponseFileChannelsList as any as S.Schema<AddRemoteResponseFileGroupsList>;
 
 export type AddRemoteResponseFileImsList = Array<string>;
-export const AddRemoteResponseFileImsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddRemoteResponseFileImsList>;
+export const AddRemoteResponseFileImsList =
+  AddRemoteResponseFileChannelsList as any as S.Schema<AddRemoteResponseFileImsList>;
 
 export interface AddRemoteResponseFile {
   id?: string;
@@ -161,10 +159,8 @@ export const CompleteUploadExternalRequestFilesList = /*@__PURE__*/ S.Array(
 export type CompleteUploadExternalRequestBlocksCase1ItemMap = {
   [key: string]: unknown | undefined;
 };
-export const CompleteUploadExternalRequestBlocksCase1ItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CompleteUploadExternalRequestBlocksCase1ItemMap>;
+export const CompleteUploadExternalRequestBlocksCase1ItemMap =
+  AddRemoteResponseFileSharesMap as any as S.Schema<CompleteUploadExternalRequestBlocksCase1ItemMap>;
 
 export type CompleteUploadExternalRequestBlocksCase1List =
   Array<CompleteUploadExternalRequestBlocksCase1ItemMap>;
@@ -296,11 +292,7 @@ export interface DeleteFileResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const DeleteFileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "DeleteFileResponse" }) as any as S.Schema<DeleteFileResponse>;
+export const DeleteFileResponse = DeleteCommentResponse as any as S.Schema<DeleteFileResponse>;
 
 export interface FilesInfoRequest {
   count?: number;
@@ -637,11 +629,7 @@ export interface RemoveRemoteResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const RemoveRemoteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "RemoveRemoteResponse" }) as any as S.Schema<RemoveRemoteResponse>;
+export const RemoveRemoteResponse = DeleteCommentResponse as any as S.Schema<RemoveRemoteResponse>;
 
 export interface RevokePublicURLRequest {
   /** File to revoke */
@@ -694,21 +682,16 @@ export type SharedPublicURLResponseFile = RevokePublicURLResponseFile;
 export const SharedPublicURLResponseFile = RevokePublicURLResponseFile;
 
 export type SharedPublicURLResponseCommentItemMap = { [key: string]: unknown | undefined };
-export const SharedPublicURLResponseCommentItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SharedPublicURLResponseCommentItemMap>;
+export const SharedPublicURLResponseCommentItemMap =
+  AddRemoteResponseFileSharesMap as any as S.Schema<SharedPublicURLResponseCommentItemMap>;
 
 export type SharedPublicURLResponseCommentList = Array<SharedPublicURLResponseCommentItemMap>;
-export const SharedPublicURLResponseCommentList = /*@__PURE__*/ S.Array(
-  SharedPublicURLResponseCommentItemMap,
-) as any as S.Schema<SharedPublicURLResponseCommentList>;
+export const SharedPublicURLResponseCommentList =
+  CompleteUploadExternalRequestBlocksCase1List as any as S.Schema<SharedPublicURLResponseCommentList>;
 
 export type SharedPublicURLResponsePagingMap = { [key: string]: unknown | undefined };
-export const SharedPublicURLResponsePagingMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SharedPublicURLResponsePagingMap>;
+export const SharedPublicURLResponsePagingMap =
+  AddRemoteResponseFileSharesMap as any as S.Schema<SharedPublicURLResponsePagingMap>;
 
 export interface SharedPublicURLResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -800,12 +783,7 @@ export interface UpdateRemoteResponse {
   ok: boolean;
   file?: ListRemoteResponseFilesItem;
 }
-export const UpdateRemoteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-    file: S.optional(ListRemoteResponseFilesItem),
-  }),
-).annotate({ identifier: "UpdateRemoteResponse" }) as any as S.Schema<UpdateRemoteResponse>;
+export const UpdateRemoteResponse = ShareRemoteResponse as any as S.Schema<UpdateRemoteResponse>;
 
 export interface UploadFileRequest {
   /** Comma-separated list of channel names or IDs where the file will be shared. */
@@ -848,12 +826,7 @@ export interface UploadFileResponse {
   ok: boolean;
   file: RevokePublicURLResponseFile;
 }
-export const UploadFileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-    file: RevokePublicURLResponseFile,
-  }),
-).annotate({ identifier: "UploadFileResponse" }) as any as S.Schema<UploadFileResponse>;
+export const UploadFileResponse = RevokePublicURLResponse as any as S.Schema<UploadFileResponse>;
 
 export type AddRemoteError = SlackOpError;
 /** Adds a file from a remote service Required scopes -- bot: `remote_files:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `bad_image` -- The uploaded image could not be processed - try passing a JPG or PNG - `bad_title` -- The title provided is too long. - `bot_user_required` -- bot user token is required - `invalid_external_id` -- The external_id provided is too long. - `too_large` -- The uploaded image had excessive dimensions See https://docs.slack.dev/reference/methods/files.remote.add */

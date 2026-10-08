@@ -246,11 +246,8 @@ export const AddCollaboratorForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddCollaboratorForUserRequest>;
 
 export type AddCollaboratorForUserResponse = CopilotSpaceCollaborator;
-export const AddCollaboratorForUserResponse = /*@__PURE__*/ S.suspend(() =>
-  CopilotSpaceCollaborator.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "AddCollaboratorForUserResponse",
-}) as any as S.Schema<AddCollaboratorForUserResponse>;
+export const AddCollaboratorForUserResponse =
+  AddCollaboratorForOrgResponse as any as S.Schema<AddCollaboratorForUserResponse>;
 
 /** The base role that determines default permissions for organization members. - `no_access`: No default access (default) - `reader`: Organization members can read the space - `writer`: Organization members can read and edit the space - `admin`: Organization members have full admin access to the space */
 export type CreateForOrgRequestBaseRole = "reader" | "writer" | "admin" | "no_access";
@@ -685,10 +682,8 @@ export const CopilotSpaceResourceResourceType = S.String;
 
 /** Resource-specific metadata. The keys and values depend on the resource type. */
 export type CopilotSpaceResourceMetadataMap = { [key: string]: unknown | undefined };
-export const CopilotSpaceResourceMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CopilotSpaceResourceMetadataMap>;
+export const CopilotSpaceResourceMetadataMap =
+  CreateResourceForOrgRequestMetadataMap as any as S.Schema<CopilotSpaceResourceMetadataMap>;
 
 /** A resource attached to a Copilot Space. */
 export interface CopilotSpaceResource {
@@ -727,10 +722,8 @@ export const CreateResourceForUserRequestResourceType = S.String;
 
 /** Resource-specific metadata. */
 export type CreateResourceForUserRequestMetadataMap = { [key: string]: unknown | undefined };
-export const CreateResourceForUserRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateResourceForUserRequestMetadataMap>;
+export const CreateResourceForUserRequestMetadataMap =
+  CreateResourceForOrgRequestMetadataMap as any as S.Schema<CreateResourceForUserRequestMetadataMap>;
 
 export interface CreateResourceForUserRequest {
   /** The handle for the GitHub user account. */
@@ -795,9 +788,7 @@ export const DeleteForUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteForUserRequest" }) as any as S.Schema<DeleteForUserRequest>;
 
 export interface DeleteForUserResponse {}
-export const DeleteForUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteForUserResponse",
-}) as any as S.Schema<DeleteForUserResponse>;
+export const DeleteForUserResponse = DeleteForOrgResponse as any as S.Schema<DeleteForUserResponse>;
 
 export interface DeleteResourceForOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -824,9 +815,8 @@ export const DeleteResourceForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteResourceForOrgRequest>;
 
 export interface DeleteResourceForOrgResponse {}
-export const DeleteResourceForOrgResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteResourceForOrgResponse",
-}) as any as S.Schema<DeleteResourceForOrgResponse>;
+export const DeleteResourceForOrgResponse =
+  DeleteForOrgResponse as any as S.Schema<DeleteResourceForOrgResponse>;
 
 export interface DeleteResourceForUserRequest {
   /** The handle for the GitHub user account. */
@@ -853,9 +843,8 @@ export const DeleteResourceForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteResourceForUserRequest>;
 
 export interface DeleteResourceForUserResponse {}
-export const DeleteResourceForUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteResourceForUserResponse",
-}) as any as S.Schema<DeleteResourceForUserResponse>;
+export const DeleteResourceForUserResponse =
+  DeleteForOrgResponse as any as S.Schema<DeleteResourceForUserResponse>;
 
 export interface GetForOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -993,21 +982,15 @@ export const ListCollaboratorsForUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of collaborators for this Copilot Space. */
 export type ListCollaboratorsForUserResponseCollaboratorsList = Array<CopilotSpaceCollaborator>;
-export const ListCollaboratorsForUserResponseCollaboratorsList = /*@__PURE__*/ S.Array(
-  CopilotSpaceCollaborator,
-) as any as S.Schema<ListCollaboratorsForUserResponseCollaboratorsList>;
+export const ListCollaboratorsForUserResponseCollaboratorsList =
+  ListCollaboratorsForOrgResponseCollaboratorsList as any as S.Schema<ListCollaboratorsForUserResponseCollaboratorsList>;
 
 export interface ListCollaboratorsForUserResponse {
   /** The list of collaborators for this Copilot Space. */
   collaborators: ListCollaboratorsForUserResponseCollaboratorsList;
 }
-export const ListCollaboratorsForUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    collaborators: ListCollaboratorsForUserResponseCollaboratorsList,
-  }),
-).annotate({
-  identifier: "ListCollaboratorsForUserResponse",
-}) as any as S.Schema<ListCollaboratorsForUserResponse>;
+export const ListCollaboratorsForUserResponse =
+  ListCollaboratorsForOrgResponse as any as S.Schema<ListCollaboratorsForUserResponse>;
 
 export interface ListForOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1065,19 +1048,14 @@ export const ListForUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Copilot Spaces on this page of results. */
 export type ListForUserResponseSpacesList = Array<CopilotSpace>;
-export const ListForUserResponseSpacesList = /*@__PURE__*/ S.Array(
-  CopilotSpace,
-) as any as S.Schema<ListForUserResponseSpacesList>;
+export const ListForUserResponseSpacesList =
+  ListForOrgResponseSpacesList as any as S.Schema<ListForUserResponseSpacesList>;
 
 export interface ListForUserResponse {
   /** The list of Copilot Spaces on this page of results. */
   spaces: ListForUserResponseSpacesList;
 }
-export const ListForUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    spaces: ListForUserResponseSpacesList,
-  }),
-).annotate({ identifier: "ListForUserResponse" }) as any as S.Schema<ListForUserResponse>;
+export const ListForUserResponse = ListForOrgResponse as any as S.Schema<ListForUserResponse>;
 
 export interface ListResourcesForOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1141,21 +1119,15 @@ export const ListResourcesForUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of resources attached to this Copilot Space. */
 export type ListResourcesForUserResponseResourcesList = Array<CopilotSpaceResource>;
-export const ListResourcesForUserResponseResourcesList = /*@__PURE__*/ S.Array(
-  CopilotSpaceResource,
-) as any as S.Schema<ListResourcesForUserResponseResourcesList>;
+export const ListResourcesForUserResponseResourcesList =
+  ListResourcesForOrgResponseResourcesList as any as S.Schema<ListResourcesForUserResponseResourcesList>;
 
 export interface ListResourcesForUserResponse {
   /** The list of resources attached to this Copilot Space. */
   resources: ListResourcesForUserResponseResourcesList;
 }
-export const ListResourcesForUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resources: ListResourcesForUserResponseResourcesList,
-  }),
-).annotate({
-  identifier: "ListResourcesForUserResponse",
-}) as any as S.Schema<ListResourcesForUserResponse>;
+export const ListResourcesForUserResponse =
+  ListResourcesForOrgResponse as any as S.Schema<ListResourcesForUserResponse>;
 
 export type RemoveCollaboratorForOrgRequestActorType = "User" | "Team";
 export const RemoveCollaboratorForOrgRequestActorType = S.String;
@@ -1225,11 +1197,8 @@ export const RemoveCollaboratorForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveCollaboratorForUserRequest>;
 
 export interface RemoveCollaboratorForUserResponse {}
-export const RemoveCollaboratorForUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveCollaboratorForUserResponse",
-}) as any as S.Schema<RemoveCollaboratorForUserResponse>;
+export const RemoveCollaboratorForUserResponse =
+  RemoveCollaboratorForOrgResponse as any as S.Schema<RemoveCollaboratorForUserResponse>;
 
 export type UpdateCollaboratorForOrgRequestActorType = "User" | "Team";
 export const UpdateCollaboratorForOrgRequestActorType = S.String;
@@ -1269,11 +1238,8 @@ export const UpdateCollaboratorForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateCollaboratorForOrgRequest>;
 
 export type UpdateCollaboratorForOrgResponse = CopilotSpaceCollaborator;
-export const UpdateCollaboratorForOrgResponse = /*@__PURE__*/ S.suspend(() =>
-  CopilotSpaceCollaborator.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UpdateCollaboratorForOrgResponse",
-}) as any as S.Schema<UpdateCollaboratorForOrgResponse>;
+export const UpdateCollaboratorForOrgResponse =
+  AddCollaboratorForOrgResponse as any as S.Schema<UpdateCollaboratorForOrgResponse>;
 
 export type UpdateCollaboratorForUserRequestActorType = "User" | "Team";
 export const UpdateCollaboratorForUserRequestActorType = S.String;
@@ -1313,11 +1279,8 @@ export const UpdateCollaboratorForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateCollaboratorForUserRequest>;
 
 export type UpdateCollaboratorForUserResponse = CopilotSpaceCollaborator;
-export const UpdateCollaboratorForUserResponse = /*@__PURE__*/ S.suspend(() =>
-  CopilotSpaceCollaborator.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UpdateCollaboratorForUserResponse",
-}) as any as S.Schema<UpdateCollaboratorForUserResponse>;
+export const UpdateCollaboratorForUserResponse =
+  AddCollaboratorForOrgResponse as any as S.Schema<UpdateCollaboratorForUserResponse>;
 
 /** The base role that determines default permissions for organization members. Changing this field requires admin permissions. - `no_access`: No default access (default) - `reader`: Organization members can read the space - `writer`: Organization members can read and edit the space - `admin`: Organization members have full admin access to the space */
 export type UpdateForOrgRequestBaseRole = "reader" | "writer" | "admin" | "no_access";
@@ -1465,10 +1428,8 @@ export const UpdateForUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Updated resource-specific metadata. */
 export type UpdateResourceForOrgRequestMetadataMap = { [key: string]: unknown | undefined };
-export const UpdateResourceForOrgRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateResourceForOrgRequestMetadataMap>;
+export const UpdateResourceForOrgRequestMetadataMap =
+  CreateResourceForOrgRequestMetadataMap as any as S.Schema<UpdateResourceForOrgRequestMetadataMap>;
 
 export interface UpdateResourceForOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1499,10 +1460,8 @@ export const UpdateResourceForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Updated resource-specific metadata. */
 export type UpdateResourceForUserRequestMetadataMap = { [key: string]: unknown | undefined };
-export const UpdateResourceForUserRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateResourceForUserRequestMetadataMap>;
+export const UpdateResourceForUserRequestMetadataMap =
+  CreateResourceForOrgRequestMetadataMap as any as S.Schema<UpdateResourceForUserRequestMetadataMap>;
 
 export interface UpdateResourceForUserRequest {
   /** The handle for the GitHub user account. */

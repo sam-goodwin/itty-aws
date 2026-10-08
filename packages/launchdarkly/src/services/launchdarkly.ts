@@ -94,9 +94,8 @@ export const AssociateRepositoriesAndProjectsRequest = /*@__PURE__*/ S.suspend((
 
 /** List of repository project associations */
 export type InsightsRepositoryProjectCollectionItemsList = Array<InsightsRepositoryProject>;
-export const InsightsRepositoryProjectCollectionItemsList = /*@__PURE__*/ S.Array(
-  InsightsRepositoryProject,
-) as any as S.Schema<InsightsRepositoryProjectCollectionItemsList>;
+export const InsightsRepositoryProjectCollectionItemsList =
+  AssociateRepositoriesAndProjectsRequestMappingsList as any as S.Schema<InsightsRepositoryProjectCollectionItemsList>;
 
 export interface Link {
   href?: string;
@@ -266,17 +265,13 @@ export const FeatureFlagTagsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type FeatureFlagLinksMap = { [key: string]: Link | undefined };
-export const FeatureFlagLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<FeatureFlagLinksMap>;
+export const FeatureFlagLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FeatureFlagLinksMap>;
 
 /** The location and content type of related resources */
 export type MemberSummaryLinksMap = { [key: string]: Link | undefined };
-export const MemberSummaryLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<MemberSummaryLinksMap>;
+export const MemberSummaryLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<MemberSummaryLinksMap>;
 
 export interface MemberSummary {
   /** The location and content type of related resources */
@@ -305,10 +300,8 @@ export const MemberSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type MaintainerTeamLinksMap = { [key: string]: Link | undefined };
-export const MaintainerTeamLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<MaintainerTeamLinksMap>;
+export const MaintainerTeamLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<MaintainerTeamLinksMap>;
 
 export interface MaintainerTeam {
   /** The key of the maintainer team */
@@ -328,9 +321,8 @@ export const MaintainerTeam = /*@__PURE__*/ S.suspend(() =>
 
 /** Deprecated, use <code>experiments</code> instead */
 export type FeatureFlagGoalIdsList = Array<string>;
-export const FeatureFlagGoalIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FeatureFlagGoalIdsList>;
+export const FeatureFlagGoalIdsList =
+  FeatureFlagTagsList as any as S.Schema<FeatureFlagGoalIdsList>;
 
 /** The kind of event the metric tracks */
 export type MetricListingRepKind = "pageview" | "click" | "custom" | "trace";
@@ -338,34 +330,28 @@ export const MetricListingRepKind = S.String;
 
 /** The location and content type of related resources */
 export type MetricListingRepLinksMap = { [key: string]: Link | undefined };
-export const MetricListingRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<MetricListingRepLinksMap>;
+export const MetricListingRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<MetricListingRepLinksMap>;
 
 /** Resource specifier strings */
 export type AccessDeniedReasonResourcesList = Array<string>;
-export const AccessDeniedReasonResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccessDeniedReasonResourcesList>;
+export const AccessDeniedReasonResourcesList =
+  FeatureFlagTagsList as any as S.Schema<AccessDeniedReasonResourcesList>;
 
 /** Targeted resources are the resources NOT in this list. The <code>resources</code> and <code>notActions</code> fields must be empty to use this field. */
 export type AccessDeniedReasonNotResourcesList = Array<string>;
-export const AccessDeniedReasonNotResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccessDeniedReasonNotResourcesList>;
+export const AccessDeniedReasonNotResourcesList =
+  FeatureFlagTagsList as any as S.Schema<AccessDeniedReasonNotResourcesList>;
 
 /** Actions to perform on a resource */
 export type AccessDeniedReasonActionsList = Array<string>;
-export const AccessDeniedReasonActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccessDeniedReasonActionsList>;
+export const AccessDeniedReasonActionsList =
+  FeatureFlagTagsList as any as S.Schema<AccessDeniedReasonActionsList>;
 
 /** Targeted actions are the actions NOT in this list. The <code>actions</code> and <code>notResources</code> fields must be empty to use this field. */
 export type AccessDeniedReasonNotActionsList = Array<string>;
-export const AccessDeniedReasonNotActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccessDeniedReasonNotActionsList>;
+export const AccessDeniedReasonNotActionsList =
+  FeatureFlagTagsList as any as S.Schema<AccessDeniedReasonNotActionsList>;
 
 /** Whether this statement should allow or deny actions on the resources. */
 export type AccessDeniedReasonEffect = "allow" | "deny";
@@ -413,27 +399,23 @@ export const AccessDeniedList = /*@__PURE__*/ S.Array(
 
 /** Resource specifier strings */
 export type AccessAllowedReasonResourcesList = Array<string>;
-export const AccessAllowedReasonResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccessAllowedReasonResourcesList>;
+export const AccessAllowedReasonResourcesList =
+  FeatureFlagTagsList as any as S.Schema<AccessAllowedReasonResourcesList>;
 
 /** Targeted resources are the resources NOT in this list. The <code>resources</code> and <code>notActions</code> fields must be empty to use this field. */
 export type AccessAllowedReasonNotResourcesList = Array<string>;
-export const AccessAllowedReasonNotResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccessAllowedReasonNotResourcesList>;
+export const AccessAllowedReasonNotResourcesList =
+  FeatureFlagTagsList as any as S.Schema<AccessAllowedReasonNotResourcesList>;
 
 /** Actions to perform on a resource */
 export type AccessAllowedReasonActionsList = Array<string>;
-export const AccessAllowedReasonActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccessAllowedReasonActionsList>;
+export const AccessAllowedReasonActionsList =
+  FeatureFlagTagsList as any as S.Schema<AccessAllowedReasonActionsList>;
 
 /** Targeted actions are the actions NOT in this list. The <code>actions</code> and <code>notResources</code> fields must be empty to use this field. */
 export type AccessAllowedReasonNotActionsList = Array<string>;
-export const AccessAllowedReasonNotActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccessAllowedReasonNotActionsList>;
+export const AccessAllowedReasonNotActionsList =
+  FeatureFlagTagsList as any as S.Schema<AccessAllowedReasonNotActionsList>;
 
 /** Whether this statement should allow or deny actions on the resources. */
 export type AccessAllowedReasonEffect = "allow" | "deny";
@@ -492,9 +474,8 @@ export const Access = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags for the metric */
 export type MetricListingRepTagsList = Array<string>;
-export const MetricListingRepTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricListingRepTagsList>;
+export const MetricListingRepTagsList =
+  FeatureFlagTagsList as any as S.Schema<MetricListingRepTagsList>;
 
 export interface Modification {
   date?: string;
@@ -511,15 +492,13 @@ export const MetricListingRepSuccessCriteria = S.String;
 
 /** Deprecated, use <code>analysisUnits</code> instead. */
 export type MetricListingRepRandomizationUnitsList = Array<string>;
-export const MetricListingRepRandomizationUnitsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricListingRepRandomizationUnitsList>;
+export const MetricListingRepRandomizationUnitsList =
+  FeatureFlagTagsList as any as S.Schema<MetricListingRepRandomizationUnitsList>;
 
 /** An array of analysis units allowed for this metric. */
 export type MetricListingRepAnalysisUnitsList = Array<string>;
-export const MetricListingRepAnalysisUnitsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricListingRepAnalysisUnitsList>;
+export const MetricListingRepAnalysisUnitsList =
+  FeatureFlagTagsList as any as S.Schema<MetricListingRepAnalysisUnitsList>;
 
 /** Filter type. One of [contextAttribute, eventProperty, group] */
 export type FilterType = "group" | "contextAttribute" | "eventProperty";
@@ -790,9 +769,8 @@ export const MetricListingRep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricListingRep" }) as any as S.Schema<MetricListingRep>;
 
 export type LegacyExperimentRepEnvironmentsList = Array<string>;
-export const LegacyExperimentRepEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LegacyExperimentRepEnvironmentsList>;
+export const LegacyExperimentRepEnvironmentsList =
+  FeatureFlagTagsList as any as S.Schema<LegacyExperimentRepEnvironmentsList>;
 
 export interface ExperimentEnabledPeriodRep {
   startDate?: number;
@@ -868,9 +846,8 @@ export const ExperimentInfoRep = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of values for the custom property data to associate with this flag. */
 export type CustomPropertyValueList = Array<string>;
-export const CustomPropertyValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomPropertyValueList>;
+export const CustomPropertyValueList =
+  FeatureFlagTagsList as any as S.Schema<CustomPropertyValueList>;
 
 export interface CustomProperty {
   /** The name of the custom property of this type. */
@@ -935,9 +912,7 @@ export const StaleFlagData = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of the keys for targets that will receive this variation because of individual targeting */
 export type TargetValuesList = Array<string>;
-export const TargetValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TargetValuesList>;
+export const TargetValuesList = FeatureFlagTagsList as any as S.Schema<TargetValuesList>;
 
 export interface Target {
   /** A list of the keys for targets that will receive this variation because of individual targeting */
@@ -963,9 +938,8 @@ export const FeatureFlagConfigTargetsList = /*@__PURE__*/ S.Array(
 
 /** An array of the individual targets that will receive a specific variation based on their key. Individual targets with context kinds other than 'user' are included here. */
 export type FeatureFlagConfigContextTargetsList = Array<Target>;
-export const FeatureFlagConfigContextTargetsList = /*@__PURE__*/ S.Array(
-  Target,
-) as any as S.Schema<FeatureFlagConfigContextTargetsList>;
+export const FeatureFlagConfigContextTargetsList =
+  FeatureFlagConfigTargetsList as any as S.Schema<FeatureFlagConfigContextTargetsList>;
 
 export interface WeightedVariation {
   variation: number;
@@ -1014,9 +988,7 @@ export const Rollout = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Rollout" }) as any as S.Schema<Rollout>;
 
 export type ClauseValuesList = Array<unknown>;
-export const ClauseValuesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ClauseValuesList>;
+export const ClauseValuesList = FilterValuesList as any as S.Schema<ClauseValuesList>;
 
 export interface Clause {
   _id?: string;
@@ -1150,9 +1122,8 @@ export const FlagSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlagSummary" }) as any as S.Schema<FlagSummary>;
 
 export type FlagConfigEvaluationContextKindsList = Array<string>;
-export const FlagConfigEvaluationContextKindsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlagConfigEvaluationContextKindsList>;
+export const FlagConfigEvaluationContextKindsList =
+  FeatureFlagTagsList as any as S.Schema<FlagConfigEvaluationContextKindsList>;
 
 export interface FlagConfigEvaluation {
   contextKinds?: FlagConfigEvaluationContextKindsList;
@@ -1379,27 +1350,23 @@ export const AnnouncementResponseStatus = S.String;
 
 /** Resource specifier strings */
 export type AnnouncementAccessDeniedReasonResourcesList = Array<string>;
-export const AnnouncementAccessDeniedReasonResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnnouncementAccessDeniedReasonResourcesList>;
+export const AnnouncementAccessDeniedReasonResourcesList =
+  FeatureFlagTagsList as any as S.Schema<AnnouncementAccessDeniedReasonResourcesList>;
 
 /** Targeted resources are the resources NOT in this list. The <code>resources</code> and <code>notActions</code> fields must be empty to use this field. */
 export type AnnouncementAccessDeniedReasonNotResourcesList = Array<string>;
-export const AnnouncementAccessDeniedReasonNotResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnnouncementAccessDeniedReasonNotResourcesList>;
+export const AnnouncementAccessDeniedReasonNotResourcesList =
+  FeatureFlagTagsList as any as S.Schema<AnnouncementAccessDeniedReasonNotResourcesList>;
 
 /** Actions to perform on a resource */
 export type AnnouncementAccessDeniedReasonActionsList = Array<string>;
-export const AnnouncementAccessDeniedReasonActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnnouncementAccessDeniedReasonActionsList>;
+export const AnnouncementAccessDeniedReasonActionsList =
+  FeatureFlagTagsList as any as S.Schema<AnnouncementAccessDeniedReasonActionsList>;
 
 /** Targeted actions are the actions NOT in this list. The <code>actions</code> and <code>notResources</code> fields must be empty to use this field. */
 export type AnnouncementAccessDeniedReasonNotActionsList = Array<string>;
-export const AnnouncementAccessDeniedReasonNotActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnnouncementAccessDeniedReasonNotActionsList>;
+export const AnnouncementAccessDeniedReasonNotActionsList =
+  FeatureFlagTagsList as any as S.Schema<AnnouncementAccessDeniedReasonNotActionsList>;
 
 /** Whether this statement should allow or deny actions on the resources. */
 export type AnnouncementAccessDeniedReasonEffect = "allow" | "deny";
@@ -1449,27 +1416,23 @@ export const AnnouncementAccessDeniedList = /*@__PURE__*/ S.Array(
 
 /** Resource specifier strings */
 export type AnnouncementAccessAllowedReasonResourcesList = Array<string>;
-export const AnnouncementAccessAllowedReasonResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnnouncementAccessAllowedReasonResourcesList>;
+export const AnnouncementAccessAllowedReasonResourcesList =
+  FeatureFlagTagsList as any as S.Schema<AnnouncementAccessAllowedReasonResourcesList>;
 
 /** Targeted resources are the resources NOT in this list. The <code>resources</code> and <code>notActions</code> fields must be empty to use this field. */
 export type AnnouncementAccessAllowedReasonNotResourcesList = Array<string>;
-export const AnnouncementAccessAllowedReasonNotResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnnouncementAccessAllowedReasonNotResourcesList>;
+export const AnnouncementAccessAllowedReasonNotResourcesList =
+  FeatureFlagTagsList as any as S.Schema<AnnouncementAccessAllowedReasonNotResourcesList>;
 
 /** Actions to perform on a resource */
 export type AnnouncementAccessAllowedReasonActionsList = Array<string>;
-export const AnnouncementAccessAllowedReasonActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnnouncementAccessAllowedReasonActionsList>;
+export const AnnouncementAccessAllowedReasonActionsList =
+  FeatureFlagTagsList as any as S.Schema<AnnouncementAccessAllowedReasonActionsList>;
 
 /** Targeted actions are the actions NOT in this list. The <code>actions</code> and <code>notResources</code> fields must be empty to use this field. */
 export type AnnouncementAccessAllowedReasonNotActionsList = Array<string>;
-export const AnnouncementAccessAllowedReasonNotActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnnouncementAccessAllowedReasonNotActionsList>;
+export const AnnouncementAccessAllowedReasonNotActionsList =
+  FeatureFlagTagsList as any as S.Schema<AnnouncementAccessAllowedReasonNotActionsList>;
 
 /** Whether this statement should allow or deny actions on the resources. */
 export type AnnouncementAccessAllowedReasonEffect = "allow" | "deny";
@@ -1581,31 +1544,23 @@ export const AnnouncementResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AnnouncementResponse" }) as any as S.Schema<AnnouncementResponse>;
 
 export type Instruction = { [key: string]: unknown | undefined };
-export const Instruction = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<Instruction>;
+export const Instruction = UrlMatcher as any as S.Schema<Instruction>;
 
 export type Instructions = Array<Instruction>;
-export const Instructions = /*@__PURE__*/ S.Array(Instruction) as any as S.Schema<Instructions>;
+export const Instructions = UrlMatchers as any as S.Schema<Instructions>;
 
 /** An array of member IDs. These members are notified to review the approval request. */
 export type CreateApprovalRequestRequestNotifyMemberIdsList = Array<string>;
-export const CreateApprovalRequestRequestNotifyMemberIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateApprovalRequestRequestNotifyMemberIdsList>;
+export const CreateApprovalRequestRequestNotifyMemberIdsList =
+  FeatureFlagTagsList as any as S.Schema<CreateApprovalRequestRequestNotifyMemberIdsList>;
 
 /** An array of team keys. The members of these teams are notified to review the approval request. */
 export type CreateApprovalRequestRequestNotifyTeamKeysList = Array<string>;
-export const CreateApprovalRequestRequestNotifyTeamKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateApprovalRequestRequestNotifyTeamKeysList>;
+export const CreateApprovalRequestRequestNotifyTeamKeysList =
+  FeatureFlagTagsList as any as S.Schema<CreateApprovalRequestRequestNotifyTeamKeysList>;
 
 export type FormVariableConfig = { [key: string]: unknown | undefined };
-export const FormVariableConfig = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FormVariableConfig>;
+export const FormVariableConfig = UrlMatcher as any as S.Schema<FormVariableConfig>;
 
 export interface CreateApprovalRequestRequest {
   /** String representation of the resource specifier */
@@ -1678,15 +1633,13 @@ export const ApprovalRequestResponseAllReviewsList = /*@__PURE__*/ S.Array(
 
 /** An array of member IDs. These members are notified to review the approval request. */
 export type ApprovalRequestResponseNotifyMemberIdsList = Array<string>;
-export const ApprovalRequestResponseNotifyMemberIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApprovalRequestResponseNotifyMemberIdsList>;
+export const ApprovalRequestResponseNotifyMemberIdsList =
+  FeatureFlagTagsList as any as S.Schema<ApprovalRequestResponseNotifyMemberIdsList>;
 
 /** An array of team keys, if teams were specified when the approval request was created. The members of these teams are listed in <code>notifyMemberIds</code>, resolved when the request was made. Team membership may have changed since then. */
 export type ApprovalRequestResponseNotifyTeamKeysList = Array<string>;
-export const ApprovalRequestResponseNotifyTeamKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApprovalRequestResponseNotifyTeamKeysList>;
+export const ApprovalRequestResponseNotifyTeamKeysList =
+  FeatureFlagTagsList as any as S.Schema<ApprovalRequestResponseNotifyTeamKeysList>;
 
 /** Current status of the approval request */
 export type ApprovalRequestResponseStatus = "pending" | "completed" | "failed" | "scheduled";
@@ -1713,10 +1666,8 @@ export const ApprovalRequestResponseConflictsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type ApprovalRequestResponseLinksMap = { [key: string]: unknown | undefined };
-export const ApprovalRequestResponseLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ApprovalRequestResponseLinksMap>;
+export const ApprovalRequestResponseLinksMap =
+  UrlMatcher as any as S.Schema<ApprovalRequestResponseLinksMap>;
 
 export interface IntegrationStatus {
   display: string;
@@ -1784,16 +1735,13 @@ export const CustomWorkflowMeta = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomWorkflowMeta" }) as any as S.Schema<CustomWorkflowMeta>;
 
 export type ApprovalSettingsServiceConfigMap = { [key: string]: unknown | undefined };
-export const ApprovalSettingsServiceConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ApprovalSettingsServiceConfigMap>;
+export const ApprovalSettingsServiceConfigMap =
+  UrlMatcher as any as S.Schema<ApprovalSettingsServiceConfigMap>;
 
 /** Require approval only on flags with the provided tags. Otherwise all flags will require approval. */
 export type ApprovalSettingsRequiredApprovalTagsList = Array<string>;
-export const ApprovalSettingsRequiredApprovalTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApprovalSettingsRequiredApprovalTagsList>;
+export const ApprovalSettingsRequiredApprovalTagsList =
+  FeatureFlagTagsList as any as S.Schema<ApprovalSettingsRequiredApprovalTagsList>;
 
 export interface ApprovalSettings {
   /** If approvals are required for this environment */
@@ -2011,15 +1959,13 @@ export const CreateBigSegmentImportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateBigSegmentImportRequest>;
 
 export interface CreateBigSegmentImportResponse {}
-export const CreateBigSegmentImportResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateBigSegmentImportResponse",
-}) as any as S.Schema<CreateBigSegmentImportResponse>;
+export const CreateBigSegmentImportResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<CreateBigSegmentImportResponse>;
 
 /** Tags to associate with the integration */
 export type CreateBigSegmentStoreIntegrationRequestTagsList = Array<string>;
-export const CreateBigSegmentStoreIntegrationRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateBigSegmentStoreIntegrationRequestTagsList>;
+export const CreateBigSegmentStoreIntegrationRequestTagsList =
+  FeatureFlagTagsList as any as S.Schema<CreateBigSegmentStoreIntegrationRequestTagsList>;
 
 export interface CreateBigSegmentStoreIntegrationRequest {
   /** The project key */
@@ -2080,9 +2026,8 @@ export const BigSegmentStoreIntegrationIntegrationKey = S.String;
 
 /** List of tags for this configuration */
 export type BigSegmentStoreIntegrationTagsList = Array<string>;
-export const BigSegmentStoreIntegrationTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BigSegmentStoreIntegrationTagsList>;
+export const BigSegmentStoreIntegrationTagsList =
+  FeatureFlagTagsList as any as S.Schema<BigSegmentStoreIntegrationTagsList>;
 
 export interface StoreIntegrationError {
   statusCode?: number;
@@ -2178,19 +2123,15 @@ export const CreateDeploymentEventRequestEventType = S.String;
 
 /** A JSON object containing metadata about the event */
 export type CreateDeploymentEventRequestEventMetadataMap = { [key: string]: unknown | undefined };
-export const CreateDeploymentEventRequestEventMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateDeploymentEventRequestEventMetadataMap>;
+export const CreateDeploymentEventRequestEventMetadataMap =
+  UrlMatcher as any as S.Schema<CreateDeploymentEventRequestEventMetadataMap>;
 
 /** A JSON object containing metadata about the deployment */
 export type CreateDeploymentEventRequestDeploymentMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateDeploymentEventRequestDeploymentMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateDeploymentEventRequestDeploymentMetadataMap>;
+export const CreateDeploymentEventRequestDeploymentMetadataMap =
+  UrlMatcher as any as S.Schema<CreateDeploymentEventRequestDeploymentMetadataMap>;
 
 export interface CreateDeploymentEventRequest {
   /** The project key */
@@ -2237,9 +2178,8 @@ export const CreateDeploymentEventRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDeploymentEventRequest>;
 
 export interface CreateDeploymentEventResponse {}
-export const CreateDeploymentEventResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateDeploymentEventResponse",
-}) as any as S.Schema<CreateDeploymentEventResponse>;
+export const CreateDeploymentEventResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<CreateDeploymentEventResponse>;
 
 export interface MetricInput {
   /** The metric key */
@@ -2330,9 +2270,8 @@ export const FlagsInput = /*@__PURE__*/ S.Record(
 
 /** The attributes that this iteration's results can be sliced by */
 export type IterationInputAttributesList = Array<string>;
-export const IterationInputAttributesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IterationInputAttributesList>;
+export const IterationInputAttributesList =
+  FeatureFlagTagsList as any as S.Schema<IterationInputAttributesList>;
 
 export interface IterationInput {
   /** The expected outcome of this experiment */
@@ -2376,9 +2315,8 @@ export const IterationInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags for the experiment */
 export type CreateExperimentRequestTagsList = Array<string>;
-export const CreateExperimentRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateExperimentRequestTagsList>;
+export const CreateExperimentRequestTagsList =
+  FeatureFlagTagsList as any as S.Schema<CreateExperimentRequestTagsList>;
 
 /** The results analysis approach. */
 export type CreateExperimentRequestMethodology = "bayesian" | "frequentist" | "export_only";
@@ -2500,16 +2438,12 @@ export const ExperimentDataSource = S.String;
 
 /** Tags for the experiment */
 export type ExperimentTagsList = Array<string>;
-export const ExperimentTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentTagsList>;
+export const ExperimentTagsList = FeatureFlagTagsList as any as S.Schema<ExperimentTagsList>;
 
 /** The location and content type of related resources */
 export type ExperimentLinksMap = { [key: string]: Link | undefined };
-export const ExperimentLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ExperimentLinksMap>;
+export const ExperimentLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ExperimentLinksMap>;
 
 /** The status of the iteration: <code>not_started</code>, <code>running</code>, <code>stopped</code> */
 export type IterationRepStatus = "not_started" | "running" | "stopped";
@@ -2517,16 +2451,13 @@ export const IterationRepStatus = S.String;
 
 /** An array of clauses used for individual targeting based on attributes */
 export type FlagRepTargetingRuleClausesList = Array<unknown>;
-export const FlagRepTargetingRuleClausesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<FlagRepTargetingRuleClausesList>;
+export const FlagRepTargetingRuleClausesList =
+  FilterValuesList as any as S.Schema<FlagRepTargetingRuleClausesList>;
 
 /** The location and content type of related resources */
 export type FlagRepLinksMap = { [key: string]: Link | undefined };
-export const FlagRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<FlagRepLinksMap>;
+export const FlagRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FlagRepLinksMap>;
 
 export interface FlagRep {
   /** The targeting rule */
@@ -2572,10 +2503,8 @@ export const DependentMetricOrMetricGroupRepKind = S.String;
 
 /** The location and content type of related resources */
 export type DependentMetricOrMetricGroupRepLinksMap = { [key: string]: Link | undefined };
-export const DependentMetricOrMetricGroupRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<DependentMetricOrMetricGroupRepLinksMap>;
+export const DependentMetricOrMetricGroupRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<DependentMetricOrMetricGroupRepLinksMap>;
 
 /** The kind of event the metric tracks */
 export type MetricInGroupRepKind = "pageview" | "click" | "custom" | "trace";
@@ -2591,22 +2520,18 @@ export const MetricInGroupRepAnalysisType = S.String;
 
 /** The location and content type of related resources */
 export type MetricInGroupRepLinksMap = { [key: string]: Link | undefined };
-export const MetricInGroupRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<MetricInGroupRepLinksMap>;
+export const MetricInGroupRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<MetricInGroupRepLinksMap>;
 
 /** Deprecated, use <code>analysisUnits</code> instead. */
 export type MetricInGroupRepRandomizationUnitsList = Array<string>;
-export const MetricInGroupRepRandomizationUnitsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricInGroupRepRandomizationUnitsList>;
+export const MetricInGroupRepRandomizationUnitsList =
+  FeatureFlagTagsList as any as S.Schema<MetricInGroupRepRandomizationUnitsList>;
 
 /** An array of analysis units allowed for this metric. */
 export type MetricInGroupRepAnalysisUnitsList = Array<string>;
-export const MetricInGroupRepAnalysisUnitsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricInGroupRepAnalysisUnitsList>;
+export const MetricInGroupRepAnalysisUnitsList =
+  FeatureFlagTagsList as any as S.Schema<MetricInGroupRepAnalysisUnitsList>;
 
 export interface MetricInGroupRep {
   /** The metric key */
@@ -2720,10 +2645,8 @@ export const MetricV2RepAnalysisType = S.String;
 
 /** The location and content type of related resources */
 export type MetricV2RepLinksMap = { [key: string]: Link | undefined };
-export const MetricV2RepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<MetricV2RepLinksMap>;
+export const MetricV2RepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<MetricV2RepLinksMap>;
 
 export interface MetricV2Rep {
   /** The metric key */
@@ -2768,16 +2691,13 @@ export const DependentMetricGroupRepWithMetricsKind = S.String;
 
 /** The location and content type of related resources */
 export type DependentMetricGroupRepWithMetricsLinksMap = { [key: string]: Link | undefined };
-export const DependentMetricGroupRepWithMetricsLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<DependentMetricGroupRepWithMetricsLinksMap>;
+export const DependentMetricGroupRepWithMetricsLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<DependentMetricGroupRepWithMetricsLinksMap>;
 
 /** The metrics in the metric group */
 export type DependentMetricGroupRepWithMetricsMetricsList = Array<MetricInGroupRep>;
-export const DependentMetricGroupRepWithMetricsMetricsList = /*@__PURE__*/ S.Array(
-  MetricInGroupRep,
-) as any as S.Schema<DependentMetricGroupRepWithMetricsMetricsList>;
+export const DependentMetricGroupRepWithMetricsMetricsList =
+  DependentMetricOrMetricGroupRepMetricsList as any as S.Schema<DependentMetricGroupRepWithMetricsMetricsList>;
 
 export interface DependentMetricGroupRepWithMetrics {
   /** A unique key to reference the metric group */
@@ -2805,9 +2725,8 @@ export const DependentMetricGroupRepWithMetrics = /*@__PURE__*/ S.suspend(() =>
 
 /** The available attribute filters for this iteration */
 export type IterationRepAttributesList = Array<string>;
-export const IterationRepAttributesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IterationRepAttributesList>;
+export const IterationRepAttributesList =
+  FeatureFlagTagsList as any as S.Schema<IterationRepAttributesList>;
 
 export interface ParameterRep {
   variationId?: string;
@@ -3023,9 +2942,8 @@ export const AnalysisConfigRep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AnalysisConfigRep" }) as any as S.Schema<AnalysisConfigRep>;
 
 export type MutableFieldsByStatusRepNotStartedValueList = Array<string>;
-export const MutableFieldsByStatusRepNotStartedValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MutableFieldsByStatusRepNotStartedValueList>;
+export const MutableFieldsByStatusRepNotStartedValueList =
+  FeatureFlagTagsList as any as S.Schema<MutableFieldsByStatusRepNotStartedValueList>;
 
 export type MutableFieldsByStatusRepNotStartedMap = {
   [key: string]: MutableFieldsByStatusRepNotStartedValueList | undefined;
@@ -3036,30 +2954,24 @@ export const MutableFieldsByStatusRepNotStartedMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MutableFieldsByStatusRepNotStartedMap>;
 
 export type MutableFieldsByStatusRepRunningValueList = Array<string>;
-export const MutableFieldsByStatusRepRunningValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MutableFieldsByStatusRepRunningValueList>;
+export const MutableFieldsByStatusRepRunningValueList =
+  FeatureFlagTagsList as any as S.Schema<MutableFieldsByStatusRepRunningValueList>;
 
 export type MutableFieldsByStatusRepRunningMap = {
   [key: string]: MutableFieldsByStatusRepRunningValueList | undefined;
 };
-export const MutableFieldsByStatusRepRunningMap = /*@__PURE__*/ S.Record(
-  S.String,
-  MutableFieldsByStatusRepRunningValueList,
-) as any as S.Schema<MutableFieldsByStatusRepRunningMap>;
+export const MutableFieldsByStatusRepRunningMap =
+  MutableFieldsByStatusRepNotStartedMap as any as S.Schema<MutableFieldsByStatusRepRunningMap>;
 
 export type MutableFieldsByStatusRepStoppedValueList = Array<string>;
-export const MutableFieldsByStatusRepStoppedValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MutableFieldsByStatusRepStoppedValueList>;
+export const MutableFieldsByStatusRepStoppedValueList =
+  FeatureFlagTagsList as any as S.Schema<MutableFieldsByStatusRepStoppedValueList>;
 
 export type MutableFieldsByStatusRepStoppedMap = {
   [key: string]: MutableFieldsByStatusRepStoppedValueList | undefined;
 };
-export const MutableFieldsByStatusRepStoppedMap = /*@__PURE__*/ S.Record(
-  S.String,
-  MutableFieldsByStatusRepStoppedValueList,
-) as any as S.Schema<MutableFieldsByStatusRepStoppedMap>;
+export const MutableFieldsByStatusRepStoppedMap =
+  MutableFieldsByStatusRepNotStartedMap as any as S.Schema<MutableFieldsByStatusRepStoppedMap>;
 
 export interface MutableFieldsByStatusRep {
   not_started?: MutableFieldsByStatusRepNotStartedMap;
@@ -3142,9 +3054,8 @@ export const Experiment = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags to associate with the configuration */
 export type CreateFlagImportConfigurationRequestTagsList = Array<string>;
-export const CreateFlagImportConfigurationRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateFlagImportConfigurationRequestTagsList>;
+export const CreateFlagImportConfigurationRequestTagsList =
+  FeatureFlagTagsList as any as S.Schema<CreateFlagImportConfigurationRequestTagsList>;
 
 export interface CreateFlagImportConfigurationRequest {
   /** The project key */
@@ -3197,9 +3108,8 @@ export const FlagImportIntegrationIntegrationKey = S.String;
 
 /** List of tags for this configuration */
 export type FlagImportIntegrationTagsList = Array<string>;
-export const FlagImportIntegrationTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlagImportIntegrationTagsList>;
+export const FlagImportIntegrationTagsList =
+  FeatureFlagTagsList as any as S.Schema<FlagImportIntegrationTagsList>;
 
 /** The current status of the import integrations related import job */
 export type FlagImportStatusStatus = "complete" | "importing" | "pending" | "failed" | "partial";
@@ -3329,10 +3239,8 @@ export const CreateFlagLinkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type FlagLinkRepLinksMap = { [key: string]: Link | undefined };
-export const FlagLinkRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<FlagLinkRepLinksMap>;
+export const FlagLinkRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FlagLinkRepLinksMap>;
 
 export interface TimestampRep {
   milliseconds?: number;
@@ -3351,16 +3259,12 @@ export const TimestampRep = /*@__PURE__*/ S.suspend(() =>
 
 /** The metadata required by this integration in order to create a flag link, if this is a flag link for an existing integration. Defined in the integration's <code>manifest.json</code> file under <code>flagLink</code>. */
 export type FlagLinkRepMetadataMap = { [key: string]: string | undefined };
-export const FlagLinkRepMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FlagLinkRepMetadataMap>;
+export const FlagLinkRepMetadataMap =
+  CreateFlagLinkRequestMetadataMap as any as S.Schema<FlagLinkRepMetadataMap>;
 
 export type FlagLinkMemberLinksMap = { [key: string]: Link | undefined };
-export const FlagLinkMemberLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<FlagLinkMemberLinksMap>;
+export const FlagLinkMemberLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FlagLinkMemberLinksMap>;
 
 export interface FlagLinkMember {
   _links: FlagLinkMemberLinksMap;
@@ -3419,9 +3323,8 @@ export const FlagLinkRep = /*@__PURE__*/ S.suspend(() =>
 
 /** The application keys to associate with the insight group. If not provided, the insight group will include data from all applications. */
 export type CreateInsightGroupRequestApplicationKeysList = Array<string>;
-export const CreateInsightGroupRequestApplicationKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateInsightGroupRequestApplicationKeysList>;
+export const CreateInsightGroupRequestApplicationKeysList =
+  FeatureFlagTagsList as any as S.Schema<CreateInsightGroupRequestApplicationKeysList>;
 
 export interface CreateInsightGroupRequest {
   /** The name of the insight group */
@@ -3451,16 +3354,12 @@ export const CreateInsightGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type EnvironmentLinksMap = { [key: string]: Link | undefined };
-export const EnvironmentLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<EnvironmentLinksMap>;
+export const EnvironmentLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<EnvironmentLinksMap>;
 
 /** A list of tags for this environment */
 export type EnvironmentTagsList = Array<string>;
-export const EnvironmentTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnvironmentTagsList>;
+export const EnvironmentTagsList = FeatureFlagTagsList as any as S.Schema<EnvironmentTagsList>;
 
 /** Details about the approval settings for other resources in this environment, organized by resource kind (for example, "aiconfig" and "segment") */
 export type EnvironmentResourceApprovalSettingsMap = {
@@ -3530,9 +3429,8 @@ export const Environment = /*@__PURE__*/ S.suspend(() =>
 
 /** The keys of the metrics that were aggregated to calculate this score */
 export type InsightsMetricScoreAggregateOfList = Array<string>;
-export const InsightsMetricScoreAggregateOfList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsMetricScoreAggregateOfList>;
+export const InsightsMetricScoreAggregateOfList =
+  FeatureFlagTagsList as any as S.Schema<InsightsMetricScoreAggregateOfList>;
 
 export interface InsightsMetricIndicatorRange {
   /** The minimum value for the indicator range */
@@ -3643,9 +3541,8 @@ export const InsightGroupCollectionScoreMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** The application keys */
 export type InsightGroupApplicationKeysList = Array<string>;
-export const InsightGroupApplicationKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightGroupApplicationKeysList>;
+export const InsightGroupApplicationKeysList =
+  FeatureFlagTagsList as any as S.Schema<InsightGroupApplicationKeysList>;
 
 export interface InsightGroup {
   /** Expanded details about the environment */
@@ -3683,23 +3580,19 @@ export const InsightGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags for the integration */
 export type CreateIntegrationConfigurationRequestTagsList = Array<string>;
-export const CreateIntegrationConfigurationRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateIntegrationConfigurationRequestTagsList>;
+export const CreateIntegrationConfigurationRequestTagsList =
+  FeatureFlagTagsList as any as S.Schema<CreateIntegrationConfigurationRequestTagsList>;
 
 /** The unique set of fields required to configure the integration. Refer to the <code>formVariables</code> field in the corresponding <code>manifest.json</code> at https://github.com/launchdarkly/integration-framework/tree/main/integrations for a full list of fields for the integration you wish to configure. */
 export type CreateIntegrationConfigurationRequestConfigValuesMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateIntegrationConfigurationRequestConfigValuesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateIntegrationConfigurationRequestConfigValuesMap>;
+export const CreateIntegrationConfigurationRequestConfigValuesMap =
+  UrlMatcher as any as S.Schema<CreateIntegrationConfigurationRequestConfigValuesMap>;
 
 export type FormVariableAllowedValuesList = Array<string>;
-export const FormVariableAllowedValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FormVariableAllowedValuesList>;
+export const FormVariableAllowedValuesList =
+  FeatureFlagTagsList as any as S.Schema<FormVariableAllowedValuesList>;
 
 export interface HeaderItems {
   name?: string;
@@ -3821,27 +3714,23 @@ export const ApprovalsCapabilityConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource specifier strings */
 export type StatementPostResourcesList = Array<string>;
-export const StatementPostResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StatementPostResourcesList>;
+export const StatementPostResourcesList =
+  FeatureFlagTagsList as any as S.Schema<StatementPostResourcesList>;
 
 /** Targeted resources are the resources NOT in this list. The <code>resources</code> field must be empty to use this field. */
 export type StatementPostNotResourcesList = Array<string>;
-export const StatementPostNotResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StatementPostNotResourcesList>;
+export const StatementPostNotResourcesList =
+  FeatureFlagTagsList as any as S.Schema<StatementPostNotResourcesList>;
 
 /** Actions to perform on a resource */
 export type StatementPostActionsList = Array<string>;
-export const StatementPostActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StatementPostActionsList>;
+export const StatementPostActionsList =
+  FeatureFlagTagsList as any as S.Schema<StatementPostActionsList>;
 
 /** Targeted actions are the actions NOT in this list. The <code>actions</code> field must be empty to use this field. */
 export type StatementPostNotActionsList = Array<string>;
-export const StatementPostNotActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StatementPostNotActionsList>;
+export const StatementPostNotActionsList =
+  FeatureFlagTagsList as any as S.Schema<StatementPostNotActionsList>;
 
 /** Whether this statement should allow or deny actions on the resources. */
 export type StatementPostEffect = "allow" | "deny";
@@ -3934,47 +3823,37 @@ export const CreateIntegrationConfigurationRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The location and content type of related resources */
 export type IntegrationConfigurationsRepLinksMap = { [key: string]: Link | undefined };
-export const IntegrationConfigurationsRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<IntegrationConfigurationsRepLinksMap>;
+export const IntegrationConfigurationsRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<IntegrationConfigurationsRepLinksMap>;
 
 /** An array of tags for this integration */
 export type IntegrationConfigurationsRepTagsList = Array<string>;
-export const IntegrationConfigurationsRepTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IntegrationConfigurationsRepTagsList>;
+export const IntegrationConfigurationsRepTagsList =
+  FeatureFlagTagsList as any as S.Schema<IntegrationConfigurationsRepTagsList>;
 
 /** Details on configuration for an integration of this type. Refer to the <code>formVariables</code> field in the corresponding <code>manifest.json</code> for a full list of fields for each integration. */
 export type IntegrationConfigurationsRepConfigValuesMap = { [key: string]: unknown | undefined };
-export const IntegrationConfigurationsRepConfigValuesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<IntegrationConfigurationsRepConfigValuesMap>;
+export const IntegrationConfigurationsRepConfigValuesMap =
+  UrlMatcher as any as S.Schema<IntegrationConfigurationsRepConfigValuesMap>;
 
 /** Resource specifier strings */
 export type StatementResourcesList = Array<string>;
-export const StatementResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StatementResourcesList>;
+export const StatementResourcesList =
+  FeatureFlagTagsList as any as S.Schema<StatementResourcesList>;
 
 /** Targeted resources are the resources NOT in this list. The <code>resources</code> and <code>notActions</code> fields must be empty to use this field. */
 export type StatementNotResourcesList = Array<string>;
-export const StatementNotResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StatementNotResourcesList>;
+export const StatementNotResourcesList =
+  FeatureFlagTagsList as any as S.Schema<StatementNotResourcesList>;
 
 /** Actions to perform on a resource */
 export type StatementActionsList = Array<string>;
-export const StatementActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StatementActionsList>;
+export const StatementActionsList = FeatureFlagTagsList as any as S.Schema<StatementActionsList>;
 
 /** Targeted actions are the actions NOT in this list. The <code>actions</code> and <code>notResources</code> fields must be empty to use this field. */
 export type StatementNotActionsList = Array<string>;
-export const StatementNotActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StatementNotActionsList>;
+export const StatementNotActionsList =
+  FeatureFlagTagsList as any as S.Schema<StatementNotActionsList>;
 
 /** Whether this statement should allow or deny actions on the resources. */
 export type StatementEffect = "allow" | "deny";
@@ -4035,9 +3914,8 @@ export const CapabilityConfigRep = /*@__PURE__*/ S.suspend(() =>
 
 /** SQL setup scripts (4 parts) for Redshift native Experimentation setup. Present on setup endpoint responses and, rehydrated from the persisted config, on active (finalized) Redshift native Experimentation configurations. */
 export type IntegrationConfigurationsRepRedshiftSetupScriptsList = Array<string>;
-export const IntegrationConfigurationsRepRedshiftSetupScriptsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IntegrationConfigurationsRepRedshiftSetupScriptsList>;
+export const IntegrationConfigurationsRepRedshiftSetupScriptsList =
+  FeatureFlagTagsList as any as S.Schema<IntegrationConfigurationsRepRedshiftSetupScriptsList>;
 
 export interface IntegrationConfigurationsRep {
   /** The location and content type of related resources */
@@ -4095,9 +3973,8 @@ export const IntegrationConfigurationsRep = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags to associate with the integration */
 export type CreateIntegrationDeliveryConfigurationRequestTagsList = Array<string>;
-export const CreateIntegrationDeliveryConfigurationRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateIntegrationDeliveryConfigurationRequestTagsList>;
+export const CreateIntegrationDeliveryConfigurationRequestTagsList =
+  FeatureFlagTagsList as any as S.Schema<CreateIntegrationDeliveryConfigurationRequestTagsList>;
 
 export interface CreateIntegrationDeliveryConfigurationRequest {
   /** The project key */
@@ -4140,9 +4017,8 @@ export const IntegrationDeliveryConfigurationLinks = BigSegmentStoreIntegrationL
 
 /** List of tags for this configuration */
 export type IntegrationDeliveryConfigurationTagsList = Array<string>;
-export const IntegrationDeliveryConfigurationTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IntegrationDeliveryConfigurationTagsList>;
+export const IntegrationDeliveryConfigurationTagsList =
+  FeatureFlagTagsList as any as S.Schema<IntegrationDeliveryConfigurationTagsList>;
 
 export interface IntegrationDeliveryConfiguration {
   /** The location and content type of related resources */
@@ -4309,26 +4185,20 @@ export const NewMemberFormRole = S.String;
 
 /** An array of the member's initial roles, if you are using custom roles or preset roles provided by LaunchDarkly */
 export type NewMemberFormCustomRolesList = Array<string>;
-export const NewMemberFormCustomRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NewMemberFormCustomRolesList>;
+export const NewMemberFormCustomRolesList =
+  FeatureFlagTagsList as any as S.Schema<NewMemberFormCustomRolesList>;
 
 /** An array of the member's teams */
 export type NewMemberFormTeamKeysList = Array<string>;
-export const NewMemberFormTeamKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NewMemberFormTeamKeysList>;
+export const NewMemberFormTeamKeysList =
+  FeatureFlagTagsList as any as S.Schema<NewMemberFormTeamKeysList>;
 
 export type RoleAttributeValues = Array<string>;
-export const RoleAttributeValues = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoleAttributeValues>;
+export const RoleAttributeValues = FeatureFlagTagsList as any as S.Schema<RoleAttributeValues>;
 
 export type RoleAttributeMap = { [key: string]: RoleAttributeValues | undefined };
-export const RoleAttributeMap = /*@__PURE__*/ S.Record(
-  S.String,
-  RoleAttributeValues,
-) as any as S.Schema<RoleAttributeMap>;
+export const RoleAttributeMap =
+  MutableFieldsByStatusRepNotStartedMap as any as S.Schema<RoleAttributeMap>;
 
 export interface NewMemberForm {
   /** The member's email */
@@ -4377,22 +4247,17 @@ export const CreateMemberRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type MemberLinksMap = { [key: string]: Link | undefined };
-export const MemberLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<MemberLinksMap>;
+export const MemberLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<MemberLinksMap>;
 
 /** The set of additional roles, besides the base role, assigned to the member */
 export type MemberCustomRolesList = Array<string>;
-export const MemberCustomRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MemberCustomRolesList>;
+export const MemberCustomRolesList = FeatureFlagTagsList as any as S.Schema<MemberCustomRolesList>;
 
 /** Default dashboards that the member has chosen to ignore */
 export type MemberExcludedDashboardsList = Array<string>;
-export const MemberExcludedDashboardsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MemberExcludedDashboardsList>;
+export const MemberExcludedDashboardsList =
+  FeatureFlagTagsList as any as S.Schema<MemberExcludedDashboardsList>;
 
 export interface LastSeenMetadata {
   /** The ID of the token used in the member's last session */
@@ -4406,15 +4271,12 @@ export const LastSeenMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of keys of the custom roles this team has access to */
 export type MemberTeamSummaryRepCustomRoleKeysList = Array<string>;
-export const MemberTeamSummaryRepCustomRoleKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MemberTeamSummaryRepCustomRoleKeysList>;
+export const MemberTeamSummaryRepCustomRoleKeysList =
+  FeatureFlagTagsList as any as S.Schema<MemberTeamSummaryRepCustomRoleKeysList>;
 
 export type MemberTeamSummaryRepLinksMap = { [key: string]: Link | undefined };
-export const MemberTeamSummaryRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<MemberTeamSummaryRepLinksMap>;
+export const MemberTeamSummaryRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<MemberTeamSummaryRepLinksMap>;
 
 export interface MemberTeamSummaryRep {
   /** A list of keys of the custom roles this team has access to */
@@ -4442,9 +4304,8 @@ export const MemberTeamsList = /*@__PURE__*/ S.Array(
 
 /** A list of actions to allow. A permission grant may have either an <code>actionSet</code> or a list of <code>actions</code> but not both at the same time. */
 export type MemberPermissionGrantSummaryRepActionsList = Array<string>;
-export const MemberPermissionGrantSummaryRepActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MemberPermissionGrantSummaryRepActionsList>;
+export const MemberPermissionGrantSummaryRepActionsList =
+  FeatureFlagTagsList as any as S.Schema<MemberPermissionGrantSummaryRepActionsList>;
 
 export interface MemberPermissionGrantSummaryRep {
   /** The name of the group of related actions to allow. A permission grant may have either an <code>actionSet</code> or a list of <code>actions</code> but not both at the same time. */
@@ -4472,9 +4333,8 @@ export const MemberPermissionGrantsList = /*@__PURE__*/ S.Array(
 
 /** A list of OAuth providers */
 export type MemberOauthProvidersList = Array<string>;
-export const MemberOauthProvidersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MemberOauthProvidersList>;
+export const MemberOauthProvidersList =
+  FeatureFlagTagsList as any as S.Schema<MemberOauthProvidersList>;
 
 export interface Member {
   /** The location and content type of related resources */
@@ -4559,10 +4419,8 @@ export const MembersItemsList = /*@__PURE__*/ S.Array(Member) as any as S.Schema
 
 /** The location and content type of related resources */
 export type MembersLinksMap = { [key: string]: Link | undefined };
-export const MembersLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<MembersLinksMap>;
+export const MembersLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<MembersLinksMap>;
 
 export interface Members {
   /** An array of members */
@@ -4582,9 +4440,8 @@ export const Members = /*@__PURE__*/ S.suspend(() =>
 
 /** List of team keys */
 export type CreateMemberTeamRequestTeamKeysList = Array<string>;
-export const CreateMemberTeamRequestTeamKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateMemberTeamRequestTeamKeysList>;
+export const CreateMemberTeamRequestTeamKeysList =
+  FeatureFlagTagsList as any as S.Schema<CreateMemberTeamRequestTeamKeysList>;
 
 export interface CreateMemberTeamRequest {
   /** The member ID */
@@ -4605,9 +4462,8 @@ export const CreateMetricGroupRequestKind = S.String;
 
 /** Tags for the metric group */
 export type CreateMetricGroupRequestTagsList = Array<string>;
-export const CreateMetricGroupRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateMetricGroupRequestTagsList>;
+export const CreateMetricGroupRequestTagsList =
+  FeatureFlagTagsList as any as S.Schema<CreateMetricGroupRequestTagsList>;
 
 export interface MetricInMetricGroupInput {
   /** The metric key */
@@ -4667,16 +4523,13 @@ export const MetricGroupRepKind = S.String;
 
 /** The location and content type of related resources */
 export type MetricGroupRepLinksMap = { [key: string]: Link | undefined };
-export const MetricGroupRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<MetricGroupRepLinksMap>;
+export const MetricGroupRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<MetricGroupRepLinksMap>;
 
 /** Tags for the metric group */
 export type MetricGroupRepTagsList = Array<string>;
-export const MetricGroupRepTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricGroupRepTagsList>;
+export const MetricGroupRepTagsList =
+  FeatureFlagTagsList as any as S.Schema<MetricGroupRepTagsList>;
 
 /** The type of the maintainer */
 export type MaintainerRepKind = "member" | "team";
@@ -4703,16 +4556,13 @@ export const MaintainerRep = /*@__PURE__*/ S.suspend(() =>
 
 /** An ordered list of the metrics in this metric group */
 export type MetricGroupRepMetricsList = Array<MetricInGroupRep>;
-export const MetricGroupRepMetricsList = /*@__PURE__*/ S.Array(
-  MetricInGroupRep,
-) as any as S.Schema<MetricGroupRepMetricsList>;
+export const MetricGroupRepMetricsList =
+  DependentMetricOrMetricGroupRepMetricsList as any as S.Schema<MetricGroupRepMetricsList>;
 
 /** The location and content type of related resources */
 export type DependentExperimentRepLinksMap = { [key: string]: Link | undefined };
-export const DependentExperimentRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<DependentExperimentRepLinksMap>;
+export const DependentExperimentRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<DependentExperimentRepLinksMap>;
 
 export interface DependentExperimentRep {
   /** The experiment key */
@@ -4825,10 +4675,8 @@ export const CreateOAuth2ClientRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type ClientLinksMap = { [key: string]: Link | undefined };
-export const ClientLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ClientLinksMap>;
+export const ClientLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ClientLinksMap>;
 
 export interface Client {
   /** The location and content type of related resources */
@@ -4878,15 +4726,13 @@ export const DefaultClientSideAvailabilityPost = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags for the project */
 export type CreateProjectRequestTagsList = Array<string>;
-export const CreateProjectRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateProjectRequestTagsList>;
+export const CreateProjectRequestTagsList =
+  FeatureFlagTagsList as any as S.Schema<CreateProjectRequestTagsList>;
 
 /** Tags to apply to the new environment */
 export type EnvironmentPostTagsList = Array<string>;
-export const EnvironmentPostTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnvironmentPostTagsList>;
+export const EnvironmentPostTagsList =
+  FeatureFlagTagsList as any as S.Schema<EnvironmentPostTagsList>;
 
 export interface SourceEnv {
   /** The key of the source environment to clone from */
@@ -4999,16 +4845,12 @@ export const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type ProjectRepLinksMap = { [key: string]: Link | undefined };
-export const ProjectRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ProjectRepLinksMap>;
+export const ProjectRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ProjectRepLinksMap>;
 
 /** A list of tags for the project */
 export type ProjectRepTagsList = Array<string>;
-export const ProjectRepTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectRepTagsList>;
+export const ProjectRepTagsList = FeatureFlagTagsList as any as S.Schema<ProjectRepTagsList>;
 
 /** A list of environments for the project */
 export type ProjectRepEnvironmentsList = Array<Environment>;
@@ -5082,16 +4924,12 @@ export const CreateReleaseForFlagRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type ReleaseLinksMap = { [key: string]: Link | undefined };
-export const ReleaseLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ReleaseLinksMap>;
+export const ReleaseLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ReleaseLinksMap>;
 
 export type TokenSummaryLinksMap = { [key: string]: Link | undefined };
-export const TokenSummaryLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<TokenSummaryLinksMap>;
+export const TokenSummaryLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<TokenSummaryLinksMap>;
 
 export interface TokenSummary {
   _links?: TokenSummaryLinksMap;
@@ -5128,17 +4966,13 @@ export const CompletedBy = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type ReleaseAudienceLinksMap = { [key: string]: Link | undefined };
-export const ReleaseAudienceLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ReleaseAudienceLinksMap>;
+export const ReleaseAudienceLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ReleaseAudienceLinksMap>;
 
 /** The location and content type of related resources */
 export type EnvironmentSummaryLinksMap = { [key: string]: Link | undefined };
-export const EnvironmentSummaryLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<EnvironmentSummaryLinksMap>;
+export const EnvironmentSummaryLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<EnvironmentSummaryLinksMap>;
 
 export interface EnvironmentSummary {
   /** The location and content type of related resources */
@@ -5161,15 +4995,13 @@ export const EnvironmentSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of member IDs. These members are notified to review the approval request. */
 export type AudienceConfigurationNotifyMemberIdsList = Array<string>;
-export const AudienceConfigurationNotifyMemberIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AudienceConfigurationNotifyMemberIdsList>;
+export const AudienceConfigurationNotifyMemberIdsList =
+  FeatureFlagTagsList as any as S.Schema<AudienceConfigurationNotifyMemberIdsList>;
 
 /** An array of team keys. The members of these teams are notified to review the approval request. */
 export type AudienceConfigurationNotifyTeamKeysList = Array<string>;
-export const AudienceConfigurationNotifyTeamKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AudienceConfigurationNotifyTeamKeysList>;
+export const AudienceConfigurationNotifyTeamKeysList =
+  FeatureFlagTagsList as any as S.Schema<AudienceConfigurationNotifyTeamKeysList>;
 
 export interface ReleaseGuardianConfiguration {
   /** The monitoring window in milliseconds */
@@ -5216,15 +5048,13 @@ export const AudienceConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of segment keys */
 export type ReleaseAudienceSegmentKeysList = Array<string>;
-export const ReleaseAudienceSegmentKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReleaseAudienceSegmentKeysList>;
+export const ReleaseAudienceSegmentKeysList =
+  FeatureFlagTagsList as any as S.Schema<ReleaseAudienceSegmentKeysList>;
 
 /** The rules IDs added or updated by this audience */
 export type ReleaseAudienceRuleIdsList = Array<string>;
-export const ReleaseAudienceRuleIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReleaseAudienceRuleIdsList>;
+export const ReleaseAudienceRuleIdsList =
+  FeatureFlagTagsList as any as S.Schema<ReleaseAudienceRuleIdsList>;
 
 export interface ReleaseAudience {
   /** The audience ID */
@@ -5342,16 +5172,13 @@ export const Release = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of tags for this subscription. */
 export type CreateSubscriptionRequestTagsList = Array<string>;
-export const CreateSubscriptionRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSubscriptionRequestTagsList>;
+export const CreateSubscriptionRequestTagsList =
+  FeatureFlagTagsList as any as S.Schema<CreateSubscriptionRequestTagsList>;
 
 /** The unique set of fields required to configure an audit log subscription integration of this type. Refer to the <code>formVariables</code> field in the corresponding <code>manifest.json</code> at https://github.com/launchdarkly/integration-framework/tree/main/integrations for a full list of fields for the integration you wish to configure. */
 export type CreateSubscriptionRequestConfigMap = { [key: string]: unknown | undefined };
-export const CreateSubscriptionRequestConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateSubscriptionRequestConfigMap>;
+export const CreateSubscriptionRequestConfigMap =
+  UrlMatcher as any as S.Schema<CreateSubscriptionRequestConfigMap>;
 
 export interface CreateSubscriptionRequest {
   /** The integration key */
@@ -5388,29 +5215,21 @@ export const CreateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type IntegrationLinksMap = { [key: string]: Link | undefined };
-export const IntegrationLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<IntegrationLinksMap>;
+export const IntegrationLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<IntegrationLinksMap>;
 
 /** Details on configuration for an integration of this type. Refer to the <code>formVariables</code> field in the corresponding <code>manifest.json</code> for a full list of fields for each integration. */
 export type IntegrationConfigMap = { [key: string]: unknown | undefined };
-export const IntegrationConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<IntegrationConfigMap>;
+export const IntegrationConfigMap = UrlMatcher as any as S.Schema<IntegrationConfigMap>;
 
 /** Represents a Custom role policy, defining a resource kinds filter the integration audit log subscription responds to. */
 export type IntegrationStatementsList = Array<Statement>;
-export const IntegrationStatementsList = /*@__PURE__*/ S.Array(
-  Statement,
-) as any as S.Schema<IntegrationStatementsList>;
+export const IntegrationStatementsList =
+  AuditLogEventsHookCapabilityConfigRepStatementsList as any as S.Schema<IntegrationStatementsList>;
 
 /** An array of tags for this integration */
 export type IntegrationTagsList = Array<string>;
-export const IntegrationTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IntegrationTagsList>;
+export const IntegrationTagsList = FeatureFlagTagsList as any as S.Schema<IntegrationTagsList>;
 
 export interface IntegrationStatusRep {
   statusCode?: number;
@@ -5494,15 +5313,13 @@ export const Integration = /*@__PURE__*/ S.suspend(() =>
 
 /** List of custom role keys the team will access */
 export type CreateTeamRequestCustomRoleKeysList = Array<string>;
-export const CreateTeamRequestCustomRoleKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateTeamRequestCustomRoleKeysList>;
+export const CreateTeamRequestCustomRoleKeysList =
+  FeatureFlagTagsList as any as S.Schema<CreateTeamRequestCustomRoleKeysList>;
 
 /** A list of member IDs who belong to the team */
 export type CreateTeamRequestMemberIDsList = Array<string>;
-export const CreateTeamRequestMemberIDsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateTeamRequestMemberIDsList>;
+export const CreateTeamRequestMemberIDsList =
+  FeatureFlagTagsList as any as S.Schema<CreateTeamRequestMemberIDsList>;
 
 /** A group of related actions to allow. Specify either <code>actionSet</code> or <code>actions</code>. Use <code>maintainTeam</code> to add team maintainers. */
 export type PermissionGrantInputActionSet = "maintainTeam";
@@ -5510,15 +5327,13 @@ export const PermissionGrantInputActionSet = S.String;
 
 /** A list of actions to allow. Specify either <code>actionSet</code> or <code>actions</code>. To learn more, read [Role actions](https://launchdarkly.com/docs/ld-docs/home/account/role-actions). */
 export type PermissionGrantInputActionsList = Array<string>;
-export const PermissionGrantInputActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PermissionGrantInputActionsList>;
+export const PermissionGrantInputActionsList =
+  FeatureFlagTagsList as any as S.Schema<PermissionGrantInputActionsList>;
 
 /** A list of member IDs who receive the permission grant. */
 export type PermissionGrantInputMemberIDsList = Array<string>;
-export const PermissionGrantInputMemberIDsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PermissionGrantInputMemberIDsList>;
+export const PermissionGrantInputMemberIDsList =
+  FeatureFlagTagsList as any as S.Schema<PermissionGrantInputMemberIDsList>;
 
 export interface PermissionGrantInput {
   /** A group of related actions to allow. Specify either <code>actionSet</code> or <code>actions</code>. Use <code>maintainTeam</code> to add team maintainers. */
@@ -5579,10 +5394,8 @@ export const TeamLinksMap = /*@__PURE__*/ S.Record(S.String, Link) as any as S.S
 
 /** The location and content type of related resources */
 export type ProjectSummaryLinksMap = { [key: string]: Link | undefined };
-export const ProjectSummaryLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ProjectSummaryLinksMap>;
+export const ProjectSummaryLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ProjectSummaryLinksMap>;
 
 export interface ProjectSummary {
   /** The ID of this project */
@@ -5648,10 +5461,8 @@ export const TeamCustomRolesItemsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type TeamCustomRolesLinksMap = { [key: string]: Link | undefined };
-export const TeamCustomRolesLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<TeamCustomRolesLinksMap>;
+export const TeamCustomRolesLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<TeamCustomRolesLinksMap>;
 
 export interface TeamCustomRoles {
   /** The number of custom roles assigned to this team */
@@ -5687,10 +5498,8 @@ export const TeamMaintainersItemsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type TeamMaintainersLinksMap = { [key: string]: Link | undefined };
-export const TeamMaintainersLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<TeamMaintainersLinksMap>;
+export const TeamMaintainersLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<TeamMaintainersLinksMap>;
 
 export interface TeamMaintainers {
   /** The number of maintainers of the team */
@@ -5815,15 +5624,13 @@ export const CreateTokenRequestRole = S.String;
 
 /** A list of custom role IDs to use as access limits for the access token */
 export type CreateTokenRequestCustomRoleIdsList = Array<string>;
-export const CreateTokenRequestCustomRoleIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateTokenRequestCustomRoleIdsList>;
+export const CreateTokenRequestCustomRoleIdsList =
+  FeatureFlagTagsList as any as S.Schema<CreateTokenRequestCustomRoleIdsList>;
 
 /** A JSON array of statements represented as JSON objects with three attributes: effect, resources, actions. May be used in place of a role. */
 export type CreateTokenRequestInlineRoleList = Array<StatementPost>;
-export const CreateTokenRequestInlineRoleList = /*@__PURE__*/ S.Array(
-  StatementPost,
-) as any as S.Schema<CreateTokenRequestInlineRoleList>;
+export const CreateTokenRequestInlineRoleList =
+  StatementPostList as any as S.Schema<CreateTokenRequestInlineRoleList>;
 
 export interface CreateTokenRequest {
   /** A human-friendly name for the access token */
@@ -5855,22 +5662,18 @@ export const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of custom role IDs to use as access limits for the access token */
 export type TokenCustomRoleIdsList = Array<string>;
-export const TokenCustomRoleIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TokenCustomRoleIdsList>;
+export const TokenCustomRoleIdsList =
+  FeatureFlagTagsList as any as S.Schema<TokenCustomRoleIdsList>;
 
 /** An array of policy statements, with three attributes: effect, resources, actions. May be used in place of a role. */
 export type TokenInlineRoleList = Array<Statement>;
-export const TokenInlineRoleList = /*@__PURE__*/ S.Array(
-  Statement,
-) as any as S.Schema<TokenInlineRoleList>;
+export const TokenInlineRoleList =
+  AuditLogEventsHookCapabilityConfigRepStatementsList as any as S.Schema<TokenInlineRoleList>;
 
 /** The location and content type of related resources */
 export type TokenLinksMap = { [key: string]: Link | undefined };
-export const TokenLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<TokenLinksMap>;
+export const TokenLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<TokenLinksMap>;
 
 export interface Token {
   /** The ID of the access token */
@@ -5975,10 +5778,8 @@ export const TriggerWorkflowRepStatus = S.String;
 
 /** The marshalled JSON request body for the incoming trigger webhook. If this is empty or contains invalid JSON, the timestamp is recorded but this field will be empty. */
 export type RecentTriggerBodyJsonBodyMap = { [key: string]: unknown | undefined };
-export const RecentTriggerBodyJsonBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<RecentTriggerBodyJsonBodyMap>;
+export const RecentTriggerBodyJsonBodyMap =
+  UrlMatcher as any as S.Schema<RecentTriggerBodyJsonBodyMap>;
 
 export interface RecentTriggerBody {
   /** Timestamp of the incoming trigger webhook */
@@ -6001,10 +5802,8 @@ export const TriggerWorkflowRepRecentTriggerBodiesList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type TriggerWorkflowRepLinksMap = { [key: string]: Link | undefined };
-export const TriggerWorkflowRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<TriggerWorkflowRepLinksMap>;
+export const TriggerWorkflowRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<TriggerWorkflowRepLinksMap>;
 
 export interface TriggerWorkflowRep {
   /** The ID of this flag trigger */
@@ -6060,9 +5859,8 @@ export const TriggerWorkflowRep = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags associated with this view */
 export type CreateViewRequestTagsList = Array<string>;
-export const CreateViewRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateViewRequestTagsList>;
+export const CreateViewRequestTagsList =
+  FeatureFlagTagsList as any as S.Schema<CreateViewRequestTagsList>;
 
 export interface CreateViewRequest {
   projectKey: string;
@@ -6093,27 +5891,23 @@ export const CreateViewRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource specifier strings */
 export type ViewsAccessDeniedReasonResourcesList = Array<string>;
-export const ViewsAccessDeniedReasonResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ViewsAccessDeniedReasonResourcesList>;
+export const ViewsAccessDeniedReasonResourcesList =
+  FeatureFlagTagsList as any as S.Schema<ViewsAccessDeniedReasonResourcesList>;
 
 /** Targeted resources are the resources NOT in this list. The <code>resources</code> and <code>notActions</code> fields must be empty to use this field. */
 export type ViewsAccessDeniedReasonNotResourcesList = Array<string>;
-export const ViewsAccessDeniedReasonNotResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ViewsAccessDeniedReasonNotResourcesList>;
+export const ViewsAccessDeniedReasonNotResourcesList =
+  FeatureFlagTagsList as any as S.Schema<ViewsAccessDeniedReasonNotResourcesList>;
 
 /** Actions to perform on a resource */
 export type ViewsAccessDeniedReasonActionsList = Array<string>;
-export const ViewsAccessDeniedReasonActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ViewsAccessDeniedReasonActionsList>;
+export const ViewsAccessDeniedReasonActionsList =
+  FeatureFlagTagsList as any as S.Schema<ViewsAccessDeniedReasonActionsList>;
 
 /** Targeted actions are the actions NOT in this list. The <code>actions</code> and <code>notResources</code> fields must be empty to use this field. */
 export type ViewsAccessDeniedReasonNotActionsList = Array<string>;
-export const ViewsAccessDeniedReasonNotActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ViewsAccessDeniedReasonNotActionsList>;
+export const ViewsAccessDeniedReasonNotActionsList =
+  FeatureFlagTagsList as any as S.Schema<ViewsAccessDeniedReasonNotActionsList>;
 
 /** Whether this statement should allow or deny actions on the resources. */
 export type ViewsAccessDeniedReasonEffect = "allow" | "deny";
@@ -6161,27 +5955,23 @@ export const ViewsAccessDeniedList = /*@__PURE__*/ S.Array(
 
 /** Resource specifier strings */
 export type ViewsAccessAllowedReasonResourcesList = Array<string>;
-export const ViewsAccessAllowedReasonResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ViewsAccessAllowedReasonResourcesList>;
+export const ViewsAccessAllowedReasonResourcesList =
+  FeatureFlagTagsList as any as S.Schema<ViewsAccessAllowedReasonResourcesList>;
 
 /** Targeted resources are the resources NOT in this list. The <code>resources</code> and <code>notActions</code> fields must be empty to use this field. */
 export type ViewsAccessAllowedReasonNotResourcesList = Array<string>;
-export const ViewsAccessAllowedReasonNotResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ViewsAccessAllowedReasonNotResourcesList>;
+export const ViewsAccessAllowedReasonNotResourcesList =
+  FeatureFlagTagsList as any as S.Schema<ViewsAccessAllowedReasonNotResourcesList>;
 
 /** Actions to perform on a resource */
 export type ViewsAccessAllowedReasonActionsList = Array<string>;
-export const ViewsAccessAllowedReasonActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ViewsAccessAllowedReasonActionsList>;
+export const ViewsAccessAllowedReasonActionsList =
+  FeatureFlagTagsList as any as S.Schema<ViewsAccessAllowedReasonActionsList>;
 
 /** Targeted actions are the actions NOT in this list. The <code>actions</code> and <code>notResources</code> fields must be empty to use this field. */
 export type ViewsAccessAllowedReasonNotActionsList = Array<string>;
-export const ViewsAccessAllowedReasonNotActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ViewsAccessAllowedReasonNotActionsList>;
+export const ViewsAccessAllowedReasonNotActionsList =
+  FeatureFlagTagsList as any as S.Schema<ViewsAccessAllowedReasonNotActionsList>;
 
 /** Whether this statement should allow or deny actions on the resources. */
 export type ViewsAccessAllowedReasonEffect = "allow" | "deny";
@@ -6436,9 +6226,7 @@ export const ResourceSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags for the flag */
 export type ExpandedFlagTagsList = Array<string>;
-export const ExpandedFlagTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExpandedFlagTagsList>;
+export const ExpandedFlagTagsList = FeatureFlagTagsList as any as S.Schema<ExpandedFlagTagsList>;
 
 /** The type of the maintainer */
 export type ExpandedFlagMaintainerKind = "member" | "team";
@@ -6449,10 +6237,8 @@ export const ViewsLink = Link;
 
 /** The location and content type of related resources */
 export type ViewsMemberSummaryLinksMap = { [key: string]: Link | undefined };
-export const ViewsMemberSummaryLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ViewsMemberSummaryLinksMap>;
+export const ViewsMemberSummaryLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ViewsMemberSummaryLinksMap>;
 
 export interface ViewsMemberSummary {
   /** The location and content type of related resources */
@@ -6468,28 +6254,16 @@ export interface ViewsMemberSummary {
   /** The member's email address */
   email: string;
 }
-export const ViewsMemberSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _links: ViewsMemberSummaryLinksMap,
-    _id: S.String,
-    firstName: S.optional(S.String),
-    lastName: S.optional(S.String),
-    role: S.String,
-    email: S.String,
-  }),
-).annotate({ identifier: "ViewsMemberSummary" }) as any as S.Schema<ViewsMemberSummary>;
+export const ViewsMemberSummary = MemberSummary as any as S.Schema<ViewsMemberSummary>;
 
 /** A list of keys of the custom roles this team has access to */
 export type ViewsMemberTeamSummaryRepCustomRoleKeysList = Array<string>;
-export const ViewsMemberTeamSummaryRepCustomRoleKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ViewsMemberTeamSummaryRepCustomRoleKeysList>;
+export const ViewsMemberTeamSummaryRepCustomRoleKeysList =
+  FeatureFlagTagsList as any as S.Schema<ViewsMemberTeamSummaryRepCustomRoleKeysList>;
 
 export type ViewsMemberTeamSummaryRepLinksMap = { [key: string]: Link | undefined };
-export const ViewsMemberTeamSummaryRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ViewsMemberTeamSummaryRepLinksMap>;
+export const ViewsMemberTeamSummaryRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ViewsMemberTeamSummaryRepLinksMap>;
 
 export interface ViewsMemberTeamSummaryRep {
   /** A list of keys of the custom roles this team has access to */
@@ -6586,9 +6360,8 @@ export const ExpandedLinkedFlags = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags for the segment */
 export type ExpandedSegmentTagsList = Array<string>;
-export const ExpandedSegmentTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExpandedSegmentTagsList>;
+export const ExpandedSegmentTagsList =
+  FeatureFlagTagsList as any as S.Schema<ExpandedSegmentTagsList>;
 
 /** Segment representation for Views API - contains only fields actually used by the Views service */
 export interface ExpandedSegment {
@@ -6719,9 +6492,8 @@ export const ExpandedLinkedMetrics = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags for the AI config */
 export type ExpandedAIConfigTagsList = Array<string>;
-export const ExpandedAIConfigTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExpandedAIConfigTagsList>;
+export const ExpandedAIConfigTagsList =
+  FeatureFlagTagsList as any as S.Schema<ExpandedAIConfigTagsList>;
 
 /** AI Config representation for Views API - contains only fields actually used by the Views service */
 export interface ExpandedAIConfig {
@@ -6774,9 +6546,8 @@ export const ExpandedLinkedAIConfigs = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExpandedLinkedAIConfigs" }) as any as S.Schema<ExpandedLinkedAIConfigs>;
 
 export type ExpandedLinkedResourcesFlagsItemsList = Array<ExpandedFlag>;
-export const ExpandedLinkedResourcesFlagsItemsList = /*@__PURE__*/ S.Array(
-  ExpandedFlag,
-) as any as S.Schema<ExpandedLinkedResourcesFlagsItemsList>;
+export const ExpandedLinkedResourcesFlagsItemsList =
+  ExpandedLinkedFlagsItemsList as any as S.Schema<ExpandedLinkedResourcesFlagsItemsList>;
 
 export interface ExpandedLinkedResourcesFlags {
   items: ExpandedLinkedResourcesFlagsItemsList;
@@ -6792,9 +6563,8 @@ export const ExpandedLinkedResourcesFlags = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExpandedLinkedResourcesFlags>;
 
 export type ExpandedLinkedResourcesSegmentsItemsList = Array<ExpandedSegment>;
-export const ExpandedLinkedResourcesSegmentsItemsList = /*@__PURE__*/ S.Array(
-  ExpandedSegment,
-) as any as S.Schema<ExpandedLinkedResourcesSegmentsItemsList>;
+export const ExpandedLinkedResourcesSegmentsItemsList =
+  ExpandedLinkedSegmentsItemsList as any as S.Schema<ExpandedLinkedResourcesSegmentsItemsList>;
 
 export interface ExpandedLinkedResourcesSegments {
   items: ExpandedLinkedResourcesSegmentsItemsList;
@@ -6911,9 +6681,8 @@ export const View = /*@__PURE__*/ S.suspend(() =>
 
 /** List of tags for this webhook */
 export type CreateWebhookRequestTagsList = Array<string>;
-export const CreateWebhookRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateWebhookRequestTagsList>;
+export const CreateWebhookRequestTagsList =
+  FeatureFlagTagsList as any as S.Schema<CreateWebhookRequestTagsList>;
 
 export interface CreateWebhookRequest {
   /** A human-readable name for your webhook */
@@ -6945,20 +6714,17 @@ export const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type WebhookLinksMap = { [key: string]: Link | undefined };
-export const WebhookLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<WebhookLinksMap>;
+export const WebhookLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<WebhookLinksMap>;
 
 /** Represents a Custom role policy, defining a resource kinds filter the webhook responds to. */
 export type WebhookStatementsList = Array<Statement>;
-export const WebhookStatementsList = /*@__PURE__*/ S.Array(
-  Statement,
-) as any as S.Schema<WebhookStatementsList>;
+export const WebhookStatementsList =
+  AuditLogEventsHookCapabilityConfigRepStatementsList as any as S.Schema<WebhookStatementsList>;
 
 /** List of tags for this webhook */
 export type WebhookTagsList = Array<string>;
-export const WebhookTagsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<WebhookTagsList>;
+export const WebhookTagsList = ViewTagsList as any as S.Schema<WebhookTagsList>;
 
 export interface Webhook {
   /** The location and content type of related resources */
@@ -6996,15 +6762,13 @@ export const Webhook = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of member IDs for the members to request approval from for this stage */
 export type ConditionInputNotifyMemberIdsList = Array<string>;
-export const ConditionInputNotifyMemberIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConditionInputNotifyMemberIdsList>;
+export const ConditionInputNotifyMemberIdsList =
+  FeatureFlagTagsList as any as S.Schema<ConditionInputNotifyMemberIdsList>;
 
 /** A list of team keys for the teams to request approval from for this stage */
 export type ConditionInputNotifyTeamKeysList = Array<string>;
-export const ConditionInputNotifyTeamKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConditionInputNotifyTeamKeysList>;
+export const ConditionInputNotifyTeamKeysList =
+  FeatureFlagTagsList as any as S.Schema<ConditionInputNotifyTeamKeysList>;
 
 export interface ConditionInput {
   /** Whether the scheduled execution of the workflow stage is relative or absolute. If relative, the <code>waitDuration</code> and <code>waitDurationUnit</code> specify when the execution occurs. If absolute, the <code>executionDate</code> specifies when the execution occurs. */
@@ -7109,10 +6873,8 @@ export const CreateWorkflowTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateWorkflowTemplateRequest>;
 
 export type WorkflowTemplateOutputLinksMap = { [key: string]: Link | undefined };
-export const WorkflowTemplateOutputLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<WorkflowTemplateOutputLinksMap>;
+export const WorkflowTemplateOutputLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<WorkflowTemplateOutputLinksMap>;
 
 export interface ExecutionOutput {
   /** The status of the execution of this workflow stage */
@@ -7128,9 +6890,8 @@ export const ExecutionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExecutionOutput" }) as any as S.Schema<ExecutionOutput>;
 
 export type ConditionOutputNotifyMemberIdsList = Array<string>;
-export const ConditionOutputNotifyMemberIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConditionOutputNotifyMemberIdsList>;
+export const ConditionOutputNotifyMemberIdsList =
+  FeatureFlagTagsList as any as S.Schema<ConditionOutputNotifyMemberIdsList>;
 
 export interface ReviewOutput {
   _id: string;
@@ -7282,9 +7043,8 @@ export const DeleteAdaptiveTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAdaptiveTriggerRequest>;
 
 export interface DeleteAdaptiveTriggerResponse {}
-export const DeleteAdaptiveTriggerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAdaptiveTriggerResponse",
-}) as any as S.Schema<DeleteAdaptiveTriggerResponse>;
+export const DeleteAdaptiveTriggerResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteAdaptiveTriggerResponse>;
 
 export interface DeleteAgentGraphRequest {
   projectKey: string;
@@ -7304,9 +7064,8 @@ export const DeleteAgentGraphRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAgentGraphRequest" }) as any as S.Schema<DeleteAgentGraphRequest>;
 
 export interface DeleteAgentGraphResponse {}
-export const DeleteAgentGraphResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAgentGraphResponse",
-}) as any as S.Schema<DeleteAgentGraphResponse>;
+export const DeleteAgentGraphResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteAgentGraphResponse>;
 
 export interface DeleteAgentOptimizationRequest {
   projectKey: string;
@@ -7378,9 +7137,8 @@ export const DeleteAgentSkillRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAgentSkillRequest" }) as any as S.Schema<DeleteAgentSkillRequest>;
 
 export interface DeleteAgentSkillResponse {}
-export const DeleteAgentSkillResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAgentSkillResponse",
-}) as any as S.Schema<DeleteAgentSkillResponse>;
+export const DeleteAgentSkillResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteAgentSkillResponse>;
 
 export interface DeleteAIConfigRequest {
   projectKey: string;
@@ -7400,9 +7158,8 @@ export const DeleteAIConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAIConfigRequest" }) as any as S.Schema<DeleteAIConfigRequest>;
 
 export interface DeleteAIConfigResponse {}
-export const DeleteAIConfigResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAIConfigResponse",
-}) as any as S.Schema<DeleteAIConfigResponse>;
+export const DeleteAIConfigResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteAIConfigResponse>;
 
 export interface DeleteAIConfigVariationRequest {
   projectKey: string;
@@ -7426,9 +7183,8 @@ export const DeleteAIConfigVariationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAIConfigVariationRequest>;
 
 export interface DeleteAIConfigVariationResponse {}
-export const DeleteAIConfigVariationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteAIConfigVariationResponse" },
-) as any as S.Schema<DeleteAIConfigVariationResponse>;
+export const DeleteAIConfigVariationResponse =
+  DeleteAgentOptimizationResponse as any as S.Schema<DeleteAIConfigVariationResponse>;
 
 export interface DeleteAIToolRequest {
   projectKey: string;
@@ -7448,9 +7204,8 @@ export const DeleteAIToolRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAIToolRequest" }) as any as S.Schema<DeleteAIToolRequest>;
 
 export interface DeleteAIToolResponse {}
-export const DeleteAIToolResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAIToolResponse",
-}) as any as S.Schema<DeleteAIToolResponse>;
+export const DeleteAIToolResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteAIToolResponse>;
 
 export interface DeleteAnnouncementPublicRequest {
   announcementId: string;
@@ -7464,11 +7219,8 @@ export const DeleteAnnouncementPublicRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAnnouncementPublicRequest>;
 
 export interface DeleteAnnouncementPublicResponse {}
-export const DeleteAnnouncementPublicResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAnnouncementPublicResponse",
-}) as any as S.Schema<DeleteAnnouncementPublicResponse>;
+export const DeleteAnnouncementPublicResponse =
+  DeleteAgentOptimizationRunResponse as any as S.Schema<DeleteAnnouncementPublicResponse>;
 
 export interface DeleteApplicationRequest {
   /** The application key */
@@ -7481,9 +7233,8 @@ export const DeleteApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteApplicationRequest" }) as any as S.Schema<DeleteApplicationRequest>;
 
 export interface DeleteApplicationResponse {}
-export const DeleteApplicationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteApplicationResponse",
-}) as any as S.Schema<DeleteApplicationResponse>;
+export const DeleteApplicationResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteApplicationResponse>;
 
 export interface DeleteApplicationVersionRequest {
   /** The application key */
@@ -7507,11 +7258,8 @@ export const DeleteApplicationVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteApplicationVersionRequest>;
 
 export interface DeleteApplicationVersionResponse {}
-export const DeleteApplicationVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteApplicationVersionResponse",
-}) as any as S.Schema<DeleteApplicationVersionResponse>;
+export const DeleteApplicationVersionResponse =
+  DeleteAgentOptimizationRunResponse as any as S.Schema<DeleteApplicationVersionResponse>;
 
 export interface DeleteApprovalRequestRequest {
   /** The approval request ID */
@@ -7526,9 +7274,8 @@ export const DeleteApprovalRequestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteApprovalRequestRequest>;
 
 export interface DeleteApprovalRequestResponse {}
-export const DeleteApprovalRequestResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteApprovalRequestResponse",
-}) as any as S.Schema<DeleteApprovalRequestResponse>;
+export const DeleteApprovalRequestResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteApprovalRequestResponse>;
 
 export interface DeleteApprovalRequestForFlagRequest {
   /** The project key */
@@ -7558,11 +7305,8 @@ export const DeleteApprovalRequestForFlagRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteApprovalRequestForFlagRequest>;
 
 export interface DeleteApprovalRequestForFlagResponse {}
-export const DeleteApprovalRequestForFlagResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteApprovalRequestForFlagResponse",
-}) as any as S.Schema<DeleteApprovalRequestForFlagResponse>;
+export const DeleteApprovalRequestForFlagResponse =
+  DeleteAgentOptimizationRunResponse as any as S.Schema<DeleteApprovalRequestForFlagResponse>;
 
 export interface DeleteBigSegmentStoreIntegrationRequest {
   /** The project key */
@@ -7592,16 +7336,12 @@ export const DeleteBigSegmentStoreIntegrationRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteBigSegmentStoreIntegrationRequest>;
 
 export interface DeleteBigSegmentStoreIntegrationResponse {}
-export const DeleteBigSegmentStoreIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteBigSegmentStoreIntegrationResponse",
-}) as any as S.Schema<DeleteBigSegmentStoreIntegrationResponse>;
+export const DeleteBigSegmentStoreIntegrationResponse =
+  DeleteAgentOptimizationRunResponse as any as S.Schema<DeleteBigSegmentStoreIntegrationResponse>;
 
 export type DeleteBranchesRequestBodyList = Array<string>;
-export const DeleteBranchesRequestBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteBranchesRequestBodyList>;
+export const DeleteBranchesRequestBodyList =
+  FeatureFlagTagsList as any as S.Schema<DeleteBranchesRequestBodyList>;
 
 export interface DeleteBranchesRequest {
   /** The repository name to delete branches for. */
@@ -7622,9 +7362,8 @@ export const DeleteBranchesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBranchesRequest" }) as any as S.Schema<DeleteBranchesRequest>;
 
 export interface DeleteBranchesResponse {}
-export const DeleteBranchesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBranchesResponse",
-}) as any as S.Schema<DeleteBranchesResponse>;
+export const DeleteBranchesResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteBranchesResponse>;
 
 export interface DeleteCustomRoleRequest {
   /** The custom role key */
@@ -7637,9 +7376,8 @@ export const DeleteCustomRoleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCustomRoleRequest" }) as any as S.Schema<DeleteCustomRoleRequest>;
 
 export interface DeleteCustomRoleResponse {}
-export const DeleteCustomRoleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCustomRoleResponse",
-}) as any as S.Schema<DeleteCustomRoleResponse>;
+export const DeleteCustomRoleResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteCustomRoleResponse>;
 
 export interface DeleteDestinationRequest {
   /** The project key */
@@ -7664,9 +7402,8 @@ export const DeleteDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDestinationRequest" }) as any as S.Schema<DeleteDestinationRequest>;
 
 export interface DeleteDestinationResponse {}
-export const DeleteDestinationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDestinationResponse",
-}) as any as S.Schema<DeleteDestinationResponse>;
+export const DeleteDestinationResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteDestinationResponse>;
 
 export interface DeleteEnvironmentRequest {
   /** The project key */
@@ -7688,9 +7425,8 @@ export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEnvironmentRequest" }) as any as S.Schema<DeleteEnvironmentRequest>;
 
 export interface DeleteEnvironmentResponse {}
-export const DeleteEnvironmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEnvironmentResponse",
-}) as any as S.Schema<DeleteEnvironmentResponse>;
+export const DeleteEnvironmentResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteEnvironmentResponse>;
 
 export interface DeleteFeatureFlagRequest {
   /** The project key */
@@ -7708,9 +7444,8 @@ export const DeleteFeatureFlagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFeatureFlagRequest" }) as any as S.Schema<DeleteFeatureFlagRequest>;
 
 export interface DeleteFeatureFlagResponse {}
-export const DeleteFeatureFlagResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFeatureFlagResponse",
-}) as any as S.Schema<DeleteFeatureFlagResponse>;
+export const DeleteFeatureFlagResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteFeatureFlagResponse>;
 
 export interface DeleteFlagConfigScheduledChangesRequest {
   /** The project key */
@@ -7740,11 +7475,8 @@ export const DeleteFlagConfigScheduledChangesRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteFlagConfigScheduledChangesRequest>;
 
 export interface DeleteFlagConfigScheduledChangesResponse {}
-export const DeleteFlagConfigScheduledChangesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteFlagConfigScheduledChangesResponse",
-}) as any as S.Schema<DeleteFlagConfigScheduledChangesResponse>;
+export const DeleteFlagConfigScheduledChangesResponse =
+  DeleteAgentOptimizationRunResponse as any as S.Schema<DeleteFlagConfigScheduledChangesResponse>;
 
 export interface DeleteFlagFollowerRequest {
   /** The project key */
@@ -7774,9 +7506,8 @@ export const DeleteFlagFollowerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFlagFollowerRequest>;
 
 export interface DeleteFlagFollowerResponse {}
-export const DeleteFlagFollowerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFlagFollowerResponse",
-}) as any as S.Schema<DeleteFlagFollowerResponse>;
+export const DeleteFlagFollowerResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteFlagFollowerResponse>;
 
 export interface DeleteFlagImportConfigurationRequest {
   /** The project key */
@@ -7803,11 +7534,8 @@ export const DeleteFlagImportConfigurationRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteFlagImportConfigurationRequest>;
 
 export interface DeleteFlagImportConfigurationResponse {}
-export const DeleteFlagImportConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteFlagImportConfigurationResponse",
-}) as any as S.Schema<DeleteFlagImportConfigurationResponse>;
+export const DeleteFlagImportConfigurationResponse =
+  DeleteAgentOptimizationRunResponse as any as S.Schema<DeleteFlagImportConfigurationResponse>;
 
 export interface DeleteFlagLinkRequest {
   /** The project key */
@@ -7832,9 +7560,8 @@ export const DeleteFlagLinkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFlagLinkRequest" }) as any as S.Schema<DeleteFlagLinkRequest>;
 
 export interface DeleteFlagLinkResponse {}
-export const DeleteFlagLinkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFlagLinkResponse",
-}) as any as S.Schema<DeleteFlagLinkResponse>;
+export const DeleteFlagLinkResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteFlagLinkResponse>;
 
 export interface DeleteInsightGroupRequest {
   /** The insight group key */
@@ -7855,9 +7582,8 @@ export const DeleteInsightGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteInsightGroupRequest>;
 
 export interface DeleteInsightGroupResponse {}
-export const DeleteInsightGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteInsightGroupResponse",
-}) as any as S.Schema<DeleteInsightGroupResponse>;
+export const DeleteInsightGroupResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteInsightGroupResponse>;
 
 export interface DeleteIntegrationConfigurationRequest {
   /** The ID of the integration configuration to be deleted */
@@ -7878,11 +7604,8 @@ export const DeleteIntegrationConfigurationRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteIntegrationConfigurationRequest>;
 
 export interface DeleteIntegrationConfigurationResponse {}
-export const DeleteIntegrationConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIntegrationConfigurationResponse",
-}) as any as S.Schema<DeleteIntegrationConfigurationResponse>;
+export const DeleteIntegrationConfigurationResponse =
+  DeleteAgentOptimizationRunResponse as any as S.Schema<DeleteIntegrationConfigurationResponse>;
 
 export interface DeleteIntegrationDeliveryConfigurationRequest {
   /** The project key */
@@ -7912,11 +7635,8 @@ export const DeleteIntegrationDeliveryConfigurationRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteIntegrationDeliveryConfigurationRequest>;
 
 export interface DeleteIntegrationDeliveryConfigurationResponse {}
-export const DeleteIntegrationDeliveryConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIntegrationDeliveryConfigurationResponse",
-}) as any as S.Schema<DeleteIntegrationDeliveryConfigurationResponse>;
+export const DeleteIntegrationDeliveryConfigurationResponse =
+  DeleteAgentOptimizationRunResponse as any as S.Schema<DeleteIntegrationDeliveryConfigurationResponse>;
 
 export interface DeleteIpAllowlistEntryRequest {
   /** Unique identifier for the allowlist entry */
@@ -7931,9 +7651,8 @@ export const DeleteIpAllowlistEntryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIpAllowlistEntryRequest>;
 
 export interface DeleteIpAllowlistEntryResponse {}
-export const DeleteIpAllowlistEntryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteIpAllowlistEntryResponse",
-}) as any as S.Schema<DeleteIpAllowlistEntryResponse>;
+export const DeleteIpAllowlistEntryResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteIpAllowlistEntryResponse>;
 
 export interface DeleteMemberRequest {
   /** The member ID */
@@ -7946,9 +7665,8 @@ export const DeleteMemberRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteMemberRequest" }) as any as S.Schema<DeleteMemberRequest>;
 
 export interface DeleteMemberResponse {}
-export const DeleteMemberResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMemberResponse",
-}) as any as S.Schema<DeleteMemberResponse>;
+export const DeleteMemberResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteMemberResponse>;
 
 export interface DeleteMetricRequest {
   /** The project key */
@@ -7964,9 +7682,8 @@ export const DeleteMetricRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteMetricRequest" }) as any as S.Schema<DeleteMetricRequest>;
 
 export interface DeleteMetricResponse {}
-export const DeleteMetricResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMetricResponse",
-}) as any as S.Schema<DeleteMetricResponse>;
+export const DeleteMetricResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteMetricResponse>;
 
 export interface DeleteMetricGroupRequest {
   /** The project key */
@@ -7988,9 +7705,8 @@ export const DeleteMetricGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteMetricGroupRequest" }) as any as S.Schema<DeleteMetricGroupRequest>;
 
 export interface DeleteMetricGroupResponse {}
-export const DeleteMetricGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMetricGroupResponse",
-}) as any as S.Schema<DeleteMetricGroupResponse>;
+export const DeleteMetricGroupResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteMetricGroupResponse>;
 
 export interface DeleteModelConfigRequest {
   projectKey: string;
@@ -8010,9 +7726,8 @@ export const DeleteModelConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteModelConfigRequest" }) as any as S.Schema<DeleteModelConfigRequest>;
 
 export interface DeleteModelConfigResponse {}
-export const DeleteModelConfigResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteModelConfigResponse",
-}) as any as S.Schema<DeleteModelConfigResponse>;
+export const DeleteModelConfigResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteModelConfigResponse>;
 
 export interface DeleteOAuthClientRequest {
   /** The client ID */
@@ -8025,9 +7740,8 @@ export const DeleteOAuthClientRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteOAuthClientRequest" }) as any as S.Schema<DeleteOAuthClientRequest>;
 
 export interface DeleteOAuthClientResponse {}
-export const DeleteOAuthClientResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOAuthClientResponse",
-}) as any as S.Schema<DeleteOAuthClientResponse>;
+export const DeleteOAuthClientResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteOAuthClientResponse>;
 
 export interface DeleteProjectRequest {
   /** The project key */
@@ -8040,9 +7754,8 @@ export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteProjectRequest" }) as any as S.Schema<DeleteProjectRequest>;
 
 export interface DeleteProjectResponse {}
-export const DeleteProjectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProjectResponse",
-}) as any as S.Schema<DeleteProjectResponse>;
+export const DeleteProjectResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteProjectResponse>;
 
 export interface DeletePromptSnippetRequest {
   projectKey: string;
@@ -8064,9 +7777,8 @@ export const DeletePromptSnippetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePromptSnippetRequest>;
 
 export interface DeletePromptSnippetResponse {}
-export const DeletePromptSnippetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePromptSnippetResponse",
-}) as any as S.Schema<DeletePromptSnippetResponse>;
+export const DeletePromptSnippetResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeletePromptSnippetResponse>;
 
 export interface DeleteRelayAutoConfigRequest {
   /** The relay auto config id */
@@ -8081,9 +7793,8 @@ export const DeleteRelayAutoConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRelayAutoConfigRequest>;
 
 export interface DeleteRelayAutoConfigResponse {}
-export const DeleteRelayAutoConfigResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRelayAutoConfigResponse",
-}) as any as S.Schema<DeleteRelayAutoConfigResponse>;
+export const DeleteRelayAutoConfigResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteRelayAutoConfigResponse>;
 
 export interface DeleteReleaseByFlagKeyRequest {
   /** The project key */
@@ -8103,9 +7814,8 @@ export const DeleteReleaseByFlagKeyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteReleaseByFlagKeyRequest>;
 
 export interface DeleteReleaseByFlagKeyResponse {}
-export const DeleteReleaseByFlagKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteReleaseByFlagKeyResponse",
-}) as any as S.Schema<DeleteReleaseByFlagKeyResponse>;
+export const DeleteReleaseByFlagKeyResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteReleaseByFlagKeyResponse>;
 
 export interface DeleteReleasePipelineRequest {
   /** The project key */
@@ -8129,9 +7839,8 @@ export const DeleteReleasePipelineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteReleasePipelineRequest>;
 
 export interface DeleteReleasePipelineResponse {}
-export const DeleteReleasePipelineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteReleasePipelineResponse",
-}) as any as S.Schema<DeleteReleasePipelineResponse>;
+export const DeleteReleasePipelineResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteReleasePipelineResponse>;
 
 export interface DeleteReleasePolicyRequest {
   /** The project key */
@@ -8155,9 +7864,8 @@ export const DeleteReleasePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteReleasePolicyRequest>;
 
 export interface DeleteReleasePolicyResponse {}
-export const DeleteReleasePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteReleasePolicyResponse",
-}) as any as S.Schema<DeleteReleasePolicyResponse>;
+export const DeleteReleasePolicyResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteReleasePolicyResponse>;
 
 export interface DeleteRepositoryRequest {
   /** The repository name */
@@ -8170,9 +7878,8 @@ export const DeleteRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRepositoryRequest" }) as any as S.Schema<DeleteRepositoryRequest>;
 
 export interface DeleteRepositoryResponse {}
-export const DeleteRepositoryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRepositoryResponse",
-}) as any as S.Schema<DeleteRepositoryResponse>;
+export const DeleteRepositoryResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteRepositoryResponse>;
 
 export interface DeleteRepositoryProjectRequest {
   /** The repository key */
@@ -8196,14 +7903,12 @@ export const DeleteRepositoryProjectRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRepositoryProjectRequest>;
 
 export interface DeleteRepositoryProjectResponse {}
-export const DeleteRepositoryProjectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteRepositoryProjectResponse" },
-) as any as S.Schema<DeleteRepositoryProjectResponse>;
+export const DeleteRepositoryProjectResponse =
+  DeleteAgentOptimizationResponse as any as S.Schema<DeleteRepositoryProjectResponse>;
 
 export type DeleteRestrictedModelsRequestKeysList = Array<string>;
-export const DeleteRestrictedModelsRequestKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteRestrictedModelsRequestKeysList>;
+export const DeleteRestrictedModelsRequestKeysList =
+  FeatureFlagTagsList as any as S.Schema<DeleteRestrictedModelsRequestKeysList>;
 
 export interface DeleteRestrictedModelsRequest {
   projectKey: string;
@@ -8225,9 +7930,8 @@ export const DeleteRestrictedModelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRestrictedModelsRequest>;
 
 export interface DeleteRestrictedModelsResponse {}
-export const DeleteRestrictedModelsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRestrictedModelsResponse",
-}) as any as S.Schema<DeleteRestrictedModelsResponse>;
+export const DeleteRestrictedModelsResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteRestrictedModelsResponse>;
 
 export interface DeleteSdkKeyByKeyRequest {
   projectKey: string;
@@ -8250,9 +7954,8 @@ export const DeleteSdkKeyByKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSdkKeyByKeyRequest" }) as any as S.Schema<DeleteSdkKeyByKeyRequest>;
 
 export interface DeleteSdkKeyByKeyResponse {}
-export const DeleteSdkKeyByKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSdkKeyByKeyResponse",
-}) as any as S.Schema<DeleteSdkKeyByKeyResponse>;
+export const DeleteSdkKeyByKeyResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteSdkKeyByKeyResponse>;
 
 export interface DeleteSegmentRequest {
   /** The project key */
@@ -8277,9 +7980,8 @@ export const DeleteSegmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSegmentRequest" }) as any as S.Schema<DeleteSegmentRequest>;
 
 export interface DeleteSegmentResponse {}
-export const DeleteSegmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSegmentResponse",
-}) as any as S.Schema<DeleteSegmentResponse>;
+export const DeleteSegmentResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteSegmentResponse>;
 
 export interface DeleteSubscriptionRequest {
   /** The integration key */
@@ -8299,9 +8001,8 @@ export const DeleteSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSubscriptionRequest>;
 
 export interface DeleteSubscriptionResponse {}
-export const DeleteSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSubscriptionResponse",
-}) as any as S.Schema<DeleteSubscriptionResponse>;
+export const DeleteSubscriptionResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteSubscriptionResponse>;
 
 export interface DeleteTeamRequest {
   /** The team key */
@@ -8314,9 +8015,8 @@ export const DeleteTeamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTeamRequest" }) as any as S.Schema<DeleteTeamRequest>;
 
 export interface DeleteTeamResponse {}
-export const DeleteTeamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTeamResponse",
-}) as any as S.Schema<DeleteTeamResponse>;
+export const DeleteTeamResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteTeamResponse>;
 
 export interface DeleteTokenRequest {
   /** The ID of the access token to update */
@@ -8329,9 +8029,8 @@ export const DeleteTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTokenRequest" }) as any as S.Schema<DeleteTokenRequest>;
 
 export interface DeleteTokenResponse {}
-export const DeleteTokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTokenResponse",
-}) as any as S.Schema<DeleteTokenResponse>;
+export const DeleteTokenResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteTokenResponse>;
 
 export interface DeleteTriggerWorkflowRequest {
   /** The project key */
@@ -8361,9 +8060,8 @@ export const DeleteTriggerWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTriggerWorkflowRequest>;
 
 export interface DeleteTriggerWorkflowResponse {}
-export const DeleteTriggerWorkflowResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTriggerWorkflowResponse",
-}) as any as S.Schema<DeleteTriggerWorkflowResponse>;
+export const DeleteTriggerWorkflowResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteTriggerWorkflowResponse>;
 
 export interface DeleteViewRequest {
   projectKey: string;
@@ -8379,9 +8077,8 @@ export const DeleteViewRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteViewRequest" }) as any as S.Schema<DeleteViewRequest>;
 
 export interface DeleteViewResponse {}
-export const DeleteViewResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteViewResponse",
-}) as any as S.Schema<DeleteViewResponse>;
+export const DeleteViewResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteViewResponse>;
 
 export interface DeleteWebhookRequest {
   /** The ID of the webhook to delete */
@@ -8394,9 +8091,8 @@ export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWebhookRequest" }) as any as S.Schema<DeleteWebhookRequest>;
 
 export interface DeleteWebhookResponse {}
-export const DeleteWebhookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWebhookResponse",
-}) as any as S.Schema<DeleteWebhookResponse>;
+export const DeleteWebhookResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteWebhookResponse>;
 
 export interface DeleteWorkflowRequest {
   /** The project key */
@@ -8424,9 +8120,8 @@ export const DeleteWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWorkflowRequest" }) as any as S.Schema<DeleteWorkflowRequest>;
 
 export interface DeleteWorkflowResponse {}
-export const DeleteWorkflowResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkflowResponse",
-}) as any as S.Schema<DeleteWorkflowResponse>;
+export const DeleteWorkflowResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteWorkflowResponse>;
 
 export interface DeleteWorkflowTemplateRequest {
   /** The template key */
@@ -8441,15 +8136,11 @@ export const DeleteWorkflowTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkflowTemplateRequest>;
 
 export interface DeleteWorkflowTemplateResponse {}
-export const DeleteWorkflowTemplateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkflowTemplateResponse",
-}) as any as S.Schema<DeleteWorkflowTemplateResponse>;
+export const DeleteWorkflowTemplateResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<DeleteWorkflowTemplateResponse>;
 
 export type ContextInstance = { [key: string]: unknown | undefined };
-export const ContextInstance = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ContextInstance>;
+export const ContextInstance = UrlMatcher as any as S.Schema<ContextInstance>;
 
 export interface EvaluateContextInstanceRequest {
   /** The project key */
@@ -8515,10 +8206,8 @@ export const ContextInstanceEvaluationReason = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type ContextInstanceEvaluationLinksMap = { [key: string]: Link | undefined };
-export const ContextInstanceEvaluationLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ContextInstanceEvaluationLinksMap>;
+export const ContextInstanceEvaluationLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ContextInstanceEvaluationLinksMap>;
 
 export interface ContextInstanceEvaluation {
   /** Name of the flag. */
@@ -8552,10 +8241,8 @@ export const ContextInstanceEvaluationsItemsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type ContextInstanceEvaluationsLinksMap = { [key: string]: Link | undefined };
-export const ContextInstanceEvaluationsLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ContextInstanceEvaluationsLinksMap>;
+export const ContextInstanceEvaluationsLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ContextInstanceEvaluationsLinksMap>;
 
 export interface ContextInstanceEvaluations {
   /** Details on the flag evaluations for this context instance */
@@ -8692,27 +8379,23 @@ export const GetAgentGraphRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource specifier strings */
 export type AiConfigsAccessDeniedReasonResourcesList = Array<string>;
-export const AiConfigsAccessDeniedReasonResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AiConfigsAccessDeniedReasonResourcesList>;
+export const AiConfigsAccessDeniedReasonResourcesList =
+  FeatureFlagTagsList as any as S.Schema<AiConfigsAccessDeniedReasonResourcesList>;
 
 /** Targeted resources are the resources NOT in this list. The <code>resources</code> and <code>notActions</code> fields must be empty to use this field. */
 export type AiConfigsAccessDeniedReasonNotResourcesList = Array<string>;
-export const AiConfigsAccessDeniedReasonNotResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AiConfigsAccessDeniedReasonNotResourcesList>;
+export const AiConfigsAccessDeniedReasonNotResourcesList =
+  FeatureFlagTagsList as any as S.Schema<AiConfigsAccessDeniedReasonNotResourcesList>;
 
 /** Actions to perform on a resource */
 export type AiConfigsAccessDeniedReasonActionsList = Array<string>;
-export const AiConfigsAccessDeniedReasonActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AiConfigsAccessDeniedReasonActionsList>;
+export const AiConfigsAccessDeniedReasonActionsList =
+  FeatureFlagTagsList as any as S.Schema<AiConfigsAccessDeniedReasonActionsList>;
 
 /** Targeted actions are the actions NOT in this list. The <code>actions</code> and <code>notResources</code> fields must be empty to use this field. */
 export type AiConfigsAccessDeniedReasonNotActionsList = Array<string>;
-export const AiConfigsAccessDeniedReasonNotActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AiConfigsAccessDeniedReasonNotActionsList>;
+export const AiConfigsAccessDeniedReasonNotActionsList =
+  FeatureFlagTagsList as any as S.Schema<AiConfigsAccessDeniedReasonNotActionsList>;
 
 /** Whether this statement should allow or deny actions on the resources. */
 export type AiConfigsAccessDeniedReasonEffect = "allow" | "deny";
@@ -8762,27 +8445,23 @@ export const AiConfigsAccessDeniedList = /*@__PURE__*/ S.Array(
 
 /** Resource specifier strings */
 export type AiConfigsAccessAllowedReasonResourcesList = Array<string>;
-export const AiConfigsAccessAllowedReasonResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AiConfigsAccessAllowedReasonResourcesList>;
+export const AiConfigsAccessAllowedReasonResourcesList =
+  FeatureFlagTagsList as any as S.Schema<AiConfigsAccessAllowedReasonResourcesList>;
 
 /** Targeted resources are the resources NOT in this list. The <code>resources</code> and <code>notActions</code> fields must be empty to use this field. */
 export type AiConfigsAccessAllowedReasonNotResourcesList = Array<string>;
-export const AiConfigsAccessAllowedReasonNotResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AiConfigsAccessAllowedReasonNotResourcesList>;
+export const AiConfigsAccessAllowedReasonNotResourcesList =
+  FeatureFlagTagsList as any as S.Schema<AiConfigsAccessAllowedReasonNotResourcesList>;
 
 /** Actions to perform on a resource */
 export type AiConfigsAccessAllowedReasonActionsList = Array<string>;
-export const AiConfigsAccessAllowedReasonActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AiConfigsAccessAllowedReasonActionsList>;
+export const AiConfigsAccessAllowedReasonActionsList =
+  FeatureFlagTagsList as any as S.Schema<AiConfigsAccessAllowedReasonActionsList>;
 
 /** Targeted actions are the actions NOT in this list. The <code>actions</code> and <code>notResources</code> fields must be empty to use this field. */
 export type AiConfigsAccessAllowedReasonNotActionsList = Array<string>;
-export const AiConfigsAccessAllowedReasonNotActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AiConfigsAccessAllowedReasonNotActionsList>;
+export const AiConfigsAccessAllowedReasonNotActionsList =
+  FeatureFlagTagsList as any as S.Schema<AiConfigsAccessAllowedReasonNotActionsList>;
 
 /** Whether this statement should allow or deny actions on the resources. */
 export type AiConfigsAccessAllowedReasonEffect = "allow" | "deny";
@@ -8953,20 +8632,16 @@ export const GetAgentOptimizationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAgentOptimizationRequest>;
 
 export type AgentOptimizationModelChoicesList = Array<string>;
-export const AgentOptimizationModelChoicesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AgentOptimizationModelChoicesList>;
+export const AgentOptimizationModelChoicesList =
+  FeatureFlagTagsList as any as S.Schema<AgentOptimizationModelChoicesList>;
 
 export type AgentOptimizationVariableChoicesItemMap = { [key: string]: unknown | undefined };
-export const AgentOptimizationVariableChoicesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AgentOptimizationVariableChoicesItemMap>;
+export const AgentOptimizationVariableChoicesItemMap =
+  UrlMatcher as any as S.Schema<AgentOptimizationVariableChoicesItemMap>;
 
 export type AgentOptimizationVariableChoicesList = Array<AgentOptimizationVariableChoicesItemMap>;
-export const AgentOptimizationVariableChoicesList = /*@__PURE__*/ S.Array(
-  AgentOptimizationVariableChoicesItemMap,
-) as any as S.Schema<AgentOptimizationVariableChoicesList>;
+export const AgentOptimizationVariableChoicesList =
+  CreateTriggerWorkflowRequestInstructionsList as any as S.Schema<AgentOptimizationVariableChoicesList>;
 
 export interface AgentOptimizationAcceptanceStatement {
   statement: string;
@@ -9003,14 +8678,12 @@ export const AgentOptimizationJudgesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AgentOptimizationJudgesList>;
 
 export type AgentOptimizationUserInputOptionsList = Array<string>;
-export const AgentOptimizationUserInputOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AgentOptimizationUserInputOptionsList>;
+export const AgentOptimizationUserInputOptionsList =
+  FeatureFlagTagsList as any as S.Schema<AgentOptimizationUserInputOptionsList>;
 
 export type AgentOptimizationGroundTruthResponsesList = Array<string>;
-export const AgentOptimizationGroundTruthResponsesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AgentOptimizationGroundTruthResponsesList>;
+export const AgentOptimizationGroundTruthResponsesList =
+  FeatureFlagTagsList as any as S.Schema<AgentOptimizationGroundTruthResponsesList>;
 
 export interface AgentOptimization {
   _access?: AiConfigsAccess;
@@ -9084,9 +8757,7 @@ export type AIConfigMaintainer = MaintainerMember | AiConfigsMaintainerTeam;
 export const AIConfigMaintainer = S.Unknown as any as S.Schema<AIConfigMaintainer>;
 
 export type AgentSkillTagsList = Array<string>;
-export const AgentSkillTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AgentSkillTagsList>;
+export const AgentSkillTagsList = FeatureFlagTagsList as any as S.Schema<AgentSkillTagsList>;
 
 export interface AgentSkill {
   key: string;
@@ -9137,9 +8808,7 @@ export type AIConfigMode = "agent" | "completion" | "judge";
 export const AIConfigMode = S.String;
 
 export type AIConfigTagsList = Array<string>;
-export const AIConfigTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AIConfigTagsList>;
+export const AIConfigTagsList = FeatureFlagTagsList as any as S.Schema<AIConfigTagsList>;
 
 export interface ParentLink {
   parent: CoreLink;
@@ -9168,17 +8837,13 @@ export const AIConfigVariationMessagesList = /*@__PURE__*/ S.Array(
 
 /** JSON Schema defining the structured output format for the variation. */
 export type AIConfigVariationOutputFormatMap = { [key: string]: unknown | undefined };
-export const AIConfigVariationOutputFormatMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AIConfigVariationOutputFormatMap>;
+export const AIConfigVariationOutputFormatMap =
+  UrlMatcher as any as S.Schema<AIConfigVariationOutputFormatMap>;
 
 /** Custom metadata and configuration for application-level use */
 export type VariationToolCustomParametersMap = { [key: string]: unknown | undefined };
-export const VariationToolCustomParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<VariationToolCustomParametersMap>;
+export const VariationToolCustomParametersMap =
+  UrlMatcher as any as S.Schema<VariationToolCustomParametersMap>;
 
 export interface VariationTool {
   /** The key of the tool to use. */
@@ -9249,9 +8914,8 @@ export const JudgeConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JudgeConfiguration" }) as any as S.Schema<JudgeConfiguration>;
 
 export type AIConfigVariationJudgingConfigKeysList = Array<string>;
-export const AIConfigVariationJudgingConfigKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AIConfigVariationJudgingConfigKeysList>;
+export const AIConfigVariationJudgingConfigKeysList =
+  FeatureFlagTagsList as any as S.Schema<AIConfigVariationJudgingConfigKeysList>;
 
 export interface AIConfigVariation {
   _links?: ParentLink;
@@ -9315,9 +8979,8 @@ export const AIConfigVariationsList = /*@__PURE__*/ S.Array(
 
 /** List of evaluation metric keys for this config */
 export type AIConfigEvaluationMetricKeysList = Array<string>;
-export const AIConfigEvaluationMetricKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AIConfigEvaluationMetricKeysList>;
+export const AIConfigEvaluationMetricKeysList =
+  FeatureFlagTagsList as any as S.Schema<AIConfigEvaluationMetricKeysList>;
 
 /** The type of the dependent resource */
 export type AIConfigDependencyType = "agent-graph";
@@ -9654,9 +9317,8 @@ export const AIConfigTargetingDefaults = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AIConfigTargetingDefaults>;
 
 export type AIConfigTargetingEnvironmentTargetValuesList = Array<string>;
-export const AIConfigTargetingEnvironmentTargetValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AIConfigTargetingEnvironmentTargetValuesList>;
+export const AIConfigTargetingEnvironmentTargetValuesList =
+  FeatureFlagTagsList as any as S.Schema<AIConfigTargetingEnvironmentTargetValuesList>;
 
 export interface AIConfigTargetingEnvironmentTarget {
   contextKind: string;
@@ -9751,9 +9413,8 @@ export const AIConfigTargetingEnvironmentFallthrough = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<AIConfigTargetingEnvironmentFallthrough>;
 
 export type AIConfigTargetingEnvironmentRuleClauseValuesList = Array<unknown>;
-export const AIConfigTargetingEnvironmentRuleClauseValuesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<AIConfigTargetingEnvironmentRuleClauseValuesList>;
+export const AIConfigTargetingEnvironmentRuleClauseValuesList =
+  FilterValuesList as any as S.Schema<AIConfigTargetingEnvironmentRuleClauseValuesList>;
 
 export interface AIConfigTargetingEnvironmentRuleClause {
   attribute: string;
@@ -9799,9 +9460,8 @@ export const AIConfigTargetingEnvironmentRulesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AIConfigTargetingEnvironmentRulesList>;
 
 export type AIConfigTargetingEnvironmentTargetsList = Array<AIConfigTargetingEnvironmentTarget>;
-export const AIConfigTargetingEnvironmentTargetsList = /*@__PURE__*/ S.Array(
-  AIConfigTargetingEnvironmentTarget,
-) as any as S.Schema<AIConfigTargetingEnvironmentTargetsList>;
+export const AIConfigTargetingEnvironmentTargetsList =
+  AIConfigTargetingEnvironmentContextTargetsList as any as S.Schema<AIConfigTargetingEnvironmentTargetsList>;
 
 export interface AIConfigTargetingEnvironment {
   contextTargets: AIConfigTargetingEnvironmentContextTargetsList;
@@ -9848,26 +9508,21 @@ export const AiConfigsMetricListingRepKind = S.String;
 
 /** The location and content type of related resources */
 export type AiConfigsMetricListingRepLinksMap = { [key: string]: Link | undefined };
-export const AiConfigsMetricListingRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<AiConfigsMetricListingRepLinksMap>;
+export const AiConfigsMetricListingRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<AiConfigsMetricListingRepLinksMap>;
 
 /** Tags for the metric */
 export type AiConfigsMetricListingRepTagsList = Array<string>;
-export const AiConfigsMetricListingRepTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AiConfigsMetricListingRepTagsList>;
+export const AiConfigsMetricListingRepTagsList =
+  FeatureFlagTagsList as any as S.Schema<AiConfigsMetricListingRepTagsList>;
 
 export type AiConfigsModification = Modification;
 export const AiConfigsModification = Modification;
 
 /** The location and content type of related resources */
 export type AiConfigsMemberSummaryLinksMap = { [key: string]: Link | undefined };
-export const AiConfigsMemberSummaryLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<AiConfigsMemberSummaryLinksMap>;
+export const AiConfigsMemberSummaryLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<AiConfigsMemberSummaryLinksMap>;
 
 export interface AiConfigsMemberSummary {
   /** The location and content type of related resources */
@@ -9883,16 +9538,7 @@ export interface AiConfigsMemberSummary {
   /** The member's email address */
   email: string;
 }
-export const AiConfigsMemberSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _links: AiConfigsMemberSummaryLinksMap,
-    _id: S.String,
-    firstName: S.optional(S.String),
-    lastName: S.optional(S.String),
-    role: S.String,
-    email: S.String,
-  }),
-).annotate({ identifier: "AiConfigsMemberSummary" }) as any as S.Schema<AiConfigsMemberSummary>;
+export const AiConfigsMemberSummary = MemberSummary as any as S.Schema<AiConfigsMemberSummary>;
 
 /** For custom and trace metrics, the success criteria */
 export type AiConfigsMetricListingRepSuccessCriteria = "HigherThanBaseline" | "LowerThanBaseline";
@@ -9900,15 +9546,13 @@ export const AiConfigsMetricListingRepSuccessCriteria = S.String;
 
 /** Deprecated, use <code>analysisUnits</code> instead. */
 export type AiConfigsMetricListingRepRandomizationUnitsList = Array<string>;
-export const AiConfigsMetricListingRepRandomizationUnitsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AiConfigsMetricListingRepRandomizationUnitsList>;
+export const AiConfigsMetricListingRepRandomizationUnitsList =
+  FeatureFlagTagsList as any as S.Schema<AiConfigsMetricListingRepRandomizationUnitsList>;
 
 /** An array of analysis units allowed for this metric. */
 export type AiConfigsMetricListingRepAnalysisUnitsList = Array<string>;
-export const AiConfigsMetricListingRepAnalysisUnitsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AiConfigsMetricListingRepAnalysisUnitsList>;
+export const AiConfigsMetricListingRepAnalysisUnitsList =
+  FeatureFlagTagsList as any as S.Schema<AiConfigsMetricListingRepAnalysisUnitsList>;
 
 /** Filter type. One of [contextAttribute, eventProperty, group] */
 export type AiConfigsFilterType = "group" | "contextAttribute" | "eventProperty";
@@ -9916,9 +9560,8 @@ export const AiConfigsFilterType = S.String;
 
 /** The context attribute / event property values or group member nodes */
 export type AiConfigsFilterValuesList = Array<unknown>;
-export const AiConfigsFilterValuesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<AiConfigsFilterValuesList>;
+export const AiConfigsFilterValuesList =
+  FilterValuesList as any as S.Schema<AiConfigsFilterValuesList>;
 
 export interface AiConfigsFilter {
   /** Filter type. One of [contextAttribute, eventProperty, group] */
@@ -9959,9 +9602,8 @@ export type AiConfigsMetricDataSourceRefRep = MetricDataSourceRefRep;
 export const AiConfigsMetricDataSourceRefRep = MetricDataSourceRefRep;
 
 export type AiConfigsMetricListingRepUrlsList = Array<UrlMatcher>;
-export const AiConfigsMetricListingRepUrlsList = /*@__PURE__*/ S.Array(
-  UrlMatcher,
-) as any as S.Schema<AiConfigsMetricListingRepUrlsList>;
+export const AiConfigsMetricListingRepUrlsList =
+  CreateTriggerWorkflowRequestInstructionsList as any as S.Schema<AiConfigsMetricListingRepUrlsList>;
 
 export interface AiConfigsMetricDenominatorRep {
   /** The warehouse event column for the denominator */
@@ -10151,41 +9793,30 @@ export const AiConfigsMetricListingRep = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AiConfigsMetricListingRep>;
 
 export type AiConfigsLegacyExperimentRepEnvironmentsList = Array<string>;
-export const AiConfigsLegacyExperimentRepEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AiConfigsLegacyExperimentRepEnvironmentsList>;
+export const AiConfigsLegacyExperimentRepEnvironmentsList =
+  FeatureFlagTagsList as any as S.Schema<AiConfigsLegacyExperimentRepEnvironmentsList>;
 
 export type AiConfigsExperimentEnabledPeriodRep = ExperimentEnabledPeriodRep;
 export const AiConfigsExperimentEnabledPeriodRep = ExperimentEnabledPeriodRep;
 
 export type AiConfigsExperimentEnvironmentSettingRepEnabledPeriodsList =
   Array<ExperimentEnabledPeriodRep>;
-export const AiConfigsExperimentEnvironmentSettingRepEnabledPeriodsList = /*@__PURE__*/ S.Array(
-  ExperimentEnabledPeriodRep,
-) as any as S.Schema<AiConfigsExperimentEnvironmentSettingRepEnabledPeriodsList>;
+export const AiConfigsExperimentEnvironmentSettingRepEnabledPeriodsList =
+  ExperimentEnvironmentSettingRepEnabledPeriodsList as any as S.Schema<AiConfigsExperimentEnvironmentSettingRepEnabledPeriodsList>;
 
 export interface AiConfigsExperimentEnvironmentSettingRep {
   startDate?: number;
   stopDate?: number;
   enabledPeriods?: AiConfigsExperimentEnvironmentSettingRepEnabledPeriodsList;
 }
-export const AiConfigsExperimentEnvironmentSettingRep = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startDate: S.optional(S.Number),
-    stopDate: S.optional(S.Number),
-    enabledPeriods: S.optional(AiConfigsExperimentEnvironmentSettingRepEnabledPeriodsList),
-  }),
-).annotate({
-  identifier: "AiConfigsExperimentEnvironmentSettingRep",
-}) as any as S.Schema<AiConfigsExperimentEnvironmentSettingRep>;
+export const AiConfigsExperimentEnvironmentSettingRep =
+  ExperimentEnvironmentSettingRep as any as S.Schema<AiConfigsExperimentEnvironmentSettingRep>;
 
 export type AiConfigsLegacyExperimentRepEnvironmentSettingsMap = {
   [key: string]: AiConfigsExperimentEnvironmentSettingRep | undefined;
 };
-export const AiConfigsLegacyExperimentRepEnvironmentSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  AiConfigsExperimentEnvironmentSettingRep,
-) as any as S.Schema<AiConfigsLegacyExperimentRepEnvironmentSettingsMap>;
+export const AiConfigsLegacyExperimentRepEnvironmentSettingsMap =
+  LegacyExperimentRepEnvironmentSettingsMap as any as S.Schema<AiConfigsLegacyExperimentRepEnvironmentSettingsMap>;
 
 export interface AiConfigsLegacyExperimentRep {
   metricKey?: string;
@@ -10223,9 +9854,8 @@ export const AiConfigsExperimentInfoRep = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AiConfigsExperimentInfoRep>;
 
 export type AIConfigTargetingTagsList = Array<string>;
-export const AIConfigTargetingTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AIConfigTargetingTagsList>;
+export const AIConfigTargetingTagsList =
+  FeatureFlagTagsList as any as S.Schema<AIConfigTargetingTagsList>;
 
 export type AIConfigTargetingVariationValue = boolean | unknown | number | string;
 export const AIConfigTargetingVariationValue =
@@ -10301,9 +9931,8 @@ export const GetAIConfigVariationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAIConfigVariationRequest>;
 
 export type AIConfigVariationsResponseItemsList = Array<AIConfigVariation>;
-export const AIConfigVariationsResponseItemsList = /*@__PURE__*/ S.Array(
-  AIConfigVariation,
-) as any as S.Schema<AIConfigVariationsResponseItemsList>;
+export const AIConfigVariationsResponseItemsList =
+  AIConfigVariationsList as any as S.Schema<AIConfigVariationsResponseItemsList>;
 
 export interface AIConfigVariationsResponse {
   items: AIConfigVariationsResponseItemsList;
@@ -10357,22 +9986,15 @@ export const GetAIRunsUsageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type SeriesListRepLinksMap = { [key: string]: unknown | undefined };
-export const SeriesListRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SeriesListRepLinksMap>;
+export const SeriesListRepLinksMap = UrlMatcher as any as S.Schema<SeriesListRepLinksMap>;
 
 export type SeriesMetadataRep = { [key: string]: unknown | undefined };
-export const SeriesMetadataRep = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SeriesMetadataRep>;
+export const SeriesMetadataRep = UrlMatcher as any as S.Schema<SeriesMetadataRep>;
 
 /** Metadata about each series */
 export type SeriesListRepMetadataList = Array<SeriesMetadataRep>;
-export const SeriesListRepMetadataList = /*@__PURE__*/ S.Array(
-  SeriesMetadataRep,
-) as any as S.Schema<SeriesListRepMetadataList>;
+export const SeriesListRepMetadataList =
+  CreateTriggerWorkflowRequestInstructionsList as any as S.Schema<SeriesListRepMetadataList>;
 
 export type SeriesTimeSliceRep = { [key: string]: number | undefined };
 export const SeriesTimeSliceRep = /*@__PURE__*/ S.Record(
@@ -10416,7 +10038,7 @@ export const GetAIToolRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAIToolRequest" }) as any as S.Schema<GetAIToolRequest>;
 
 export type AIToolTagsList = Array<string>;
-export const AIToolTagsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<AIToolTagsList>;
+export const AIToolTagsList = ViewTagsList as any as S.Schema<AIToolTagsList>;
 
 export interface AITool {
   key: string;
@@ -10520,10 +10142,8 @@ export const HoldoutsCollectionRepItemsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type HoldoutsCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const HoldoutsCollectionRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<HoldoutsCollectionRepLinksMap>;
+export const HoldoutsCollectionRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<HoldoutsCollectionRepLinksMap>;
 
 export interface HoldoutsCollectionRep {
   items?: HoldoutsCollectionRepItemsList;
@@ -10569,10 +10189,8 @@ export const IntegrationConfigurationCollectionRepItemsList = /*@__PURE__*/ S.Ar
 
 /** The location and content type of related resources */
 export type IntegrationConfigurationCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const IntegrationConfigurationCollectionRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<IntegrationConfigurationCollectionRepLinksMap>;
+export const IntegrationConfigurationCollectionRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<IntegrationConfigurationCollectionRepLinksMap>;
 
 export interface IntegrationConfigurationCollectionRep {
   /** An array of integration configurations */
@@ -10614,9 +10232,8 @@ export const GetAllReleasePipelinesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of segment keys */
 export type AudienceSegmentKeysList = Array<string>;
-export const AudienceSegmentKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AudienceSegmentKeysList>;
+export const AudienceSegmentKeysList =
+  FeatureFlagTagsList as any as S.Schema<AudienceSegmentKeysList>;
 
 export interface Audience {
   /** Details about the environment. When the environment has been deleted, this field is omitted. */
@@ -10667,9 +10284,8 @@ export const ReleasePipelinePhasesList = /*@__PURE__*/ S.Array(
 
 /** A list of the release pipeline's tags */
 export type ReleasePipelineTagsList = Array<string>;
-export const ReleasePipelineTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReleasePipelineTagsList>;
+export const ReleasePipelineTagsList =
+  FeatureFlagTagsList as any as S.Schema<ReleasePipelineTagsList>;
 
 export interface ReleasePipeline {
   /** Timestamp of when the release pipeline was created */
@@ -10761,10 +10377,8 @@ export const GetAllReleaseProgressionsForReleasePipelineRequest = /*@__PURE__*/ 
 
 /** The location and content type of related resources */
 export type ReleaseProgressionLinksMap = { [key: string]: Link | undefined };
-export const ReleaseProgressionLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ReleaseProgressionLinksMap>;
+export const ReleaseProgressionLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ReleaseProgressionLinksMap>;
 
 export interface ReleaseProgression {
   /** Timestamp of when the release was created */
@@ -10821,10 +10435,8 @@ export const ReleaseProgressionCollectionPhasesList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type ReleaseProgressionCollectionLinksMap = { [key: string]: Link | undefined };
-export const ReleaseProgressionCollectionLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ReleaseProgressionCollectionLinksMap>;
+export const ReleaseProgressionCollectionLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ReleaseProgressionCollectionLinksMap>;
 
 export interface ReleaseProgressionCollection {
   /** The number of active releases */
@@ -10860,10 +10472,8 @@ export const GetAllWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type WebhooksLinksMap = { [key: string]: Link | undefined };
-export const WebhooksLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<WebhooksLinksMap>;
+export const WebhooksLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<WebhooksLinksMap>;
 
 /** An array of webhooks */
 export type WebhooksItemsList = Array<Webhook>;
@@ -10940,10 +10550,8 @@ export const GetApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetApplicationRequest" }) as any as S.Schema<GetApplicationRequest>;
 
 export type FlagListingRepLinksMap = { [key: string]: Link | undefined };
-export const FlagListingRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<FlagListingRepLinksMap>;
+export const FlagListingRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FlagListingRepLinksMap>;
 
 export interface FlagListingRep {
   /** The flag name */
@@ -10970,10 +10578,8 @@ export const ApplicationFlagCollectionRepItemsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type ApplicationFlagCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const ApplicationFlagCollectionRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ApplicationFlagCollectionRepLinksMap>;
+export const ApplicationFlagCollectionRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ApplicationFlagCollectionRepLinksMap>;
 
 export interface ApplicationFlagCollectionRep {
   /** A list of the flags that have been evaluated by the application */
@@ -10995,10 +10601,8 @@ export const ApplicationFlagCollectionRep = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type ApplicationRepLinksMap = { [key: string]: Link | undefined };
-export const ApplicationRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ApplicationRepLinksMap>;
+export const ApplicationRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ApplicationRepLinksMap>;
 
 /** To distinguish the kind of application */
 export type ApplicationRepKind = "browser" | "mobile" | "server";
@@ -11081,10 +10685,8 @@ export const GetApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type ApplicationCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const ApplicationCollectionRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ApplicationCollectionRepLinksMap>;
+export const ApplicationCollectionRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ApplicationCollectionRepLinksMap>;
 
 /** A list of applications */
 export type ApplicationCollectionRepItemsList = Array<ApplicationRep>;
@@ -11136,17 +10738,13 @@ export const GetApplicationVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type ApplicationVersionsCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const ApplicationVersionsCollectionRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ApplicationVersionsCollectionRepLinksMap>;
+export const ApplicationVersionsCollectionRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ApplicationVersionsCollectionRepLinksMap>;
 
 /** The location and content type of related resources */
 export type ApplicationVersionRepLinksMap = { [key: string]: Link | undefined };
-export const ApplicationVersionRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ApplicationVersionRepLinksMap>;
+export const ApplicationVersionRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ApplicationVersionRepLinksMap>;
 
 export interface ApplicationVersionRep {
   /** Details on the allowed and denied actions for this application version */
@@ -11236,21 +10834,18 @@ export const FlagConfigApprovalRequestResponseReviewStatus = S.String;
 
 /** An array of individual reviews of this approval request */
 export type FlagConfigApprovalRequestResponseAllReviewsList = Array<ReviewResponse>;
-export const FlagConfigApprovalRequestResponseAllReviewsList = /*@__PURE__*/ S.Array(
-  ReviewResponse,
-) as any as S.Schema<FlagConfigApprovalRequestResponseAllReviewsList>;
+export const FlagConfigApprovalRequestResponseAllReviewsList =
+  ApprovalRequestResponseAllReviewsList as any as S.Schema<FlagConfigApprovalRequestResponseAllReviewsList>;
 
 /** An array of member IDs. These members are notified to review the approval request. */
 export type FlagConfigApprovalRequestResponseNotifyMemberIdsList = Array<string>;
-export const FlagConfigApprovalRequestResponseNotifyMemberIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlagConfigApprovalRequestResponseNotifyMemberIdsList>;
+export const FlagConfigApprovalRequestResponseNotifyMemberIdsList =
+  FeatureFlagTagsList as any as S.Schema<FlagConfigApprovalRequestResponseNotifyMemberIdsList>;
 
 /** An array of team keys, if teams were specified when the approval request was created. The members of these teams are listed in <code>notifyMemberIds</code>, resolved when the request was made. Team membership may have changed since then. */
 export type FlagConfigApprovalRequestResponseNotifyTeamKeysList = Array<string>;
-export const FlagConfigApprovalRequestResponseNotifyTeamKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlagConfigApprovalRequestResponseNotifyTeamKeysList>;
+export const FlagConfigApprovalRequestResponseNotifyTeamKeysList =
+  FeatureFlagTagsList as any as S.Schema<FlagConfigApprovalRequestResponseNotifyTeamKeysList>;
 
 /** Current status of the approval request */
 export type FlagConfigApprovalRequestResponseStatus =
@@ -11262,16 +10857,13 @@ export const FlagConfigApprovalRequestResponseStatus = S.String;
 
 /** Details on any conflicting approval requests */
 export type FlagConfigApprovalRequestResponseConflictsList = Array<Conflict2>;
-export const FlagConfigApprovalRequestResponseConflictsList = /*@__PURE__*/ S.Array(
-  Conflict2,
-) as any as S.Schema<FlagConfigApprovalRequestResponseConflictsList>;
+export const FlagConfigApprovalRequestResponseConflictsList =
+  ApprovalRequestResponseConflictsList as any as S.Schema<FlagConfigApprovalRequestResponseConflictsList>;
 
 /** The location and content type of related resources */
 export type FlagConfigApprovalRequestResponseLinksMap = { [key: string]: unknown | undefined };
-export const FlagConfigApprovalRequestResponseLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlagConfigApprovalRequestResponseLinksMap>;
+export const FlagConfigApprovalRequestResponseLinksMap =
+  UrlMatcher as any as S.Schema<FlagConfigApprovalRequestResponseLinksMap>;
 
 export interface FlagConfigApprovalRequestResponse {
   /** The ID of this approval request */
@@ -11369,21 +10961,18 @@ export const ExpandableApprovalRequestResponseReviewStatus = S.String;
 
 /** An array of individual reviews of this approval request */
 export type ExpandableApprovalRequestResponseAllReviewsList = Array<ReviewResponse>;
-export const ExpandableApprovalRequestResponseAllReviewsList = /*@__PURE__*/ S.Array(
-  ReviewResponse,
-) as any as S.Schema<ExpandableApprovalRequestResponseAllReviewsList>;
+export const ExpandableApprovalRequestResponseAllReviewsList =
+  ApprovalRequestResponseAllReviewsList as any as S.Schema<ExpandableApprovalRequestResponseAllReviewsList>;
 
 /** An array of member IDs. These members are notified to review the approval request. */
 export type ExpandableApprovalRequestResponseNotifyMemberIdsList = Array<string>;
-export const ExpandableApprovalRequestResponseNotifyMemberIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExpandableApprovalRequestResponseNotifyMemberIdsList>;
+export const ExpandableApprovalRequestResponseNotifyMemberIdsList =
+  FeatureFlagTagsList as any as S.Schema<ExpandableApprovalRequestResponseNotifyMemberIdsList>;
 
 /** An array of team keys, if teams were specified when the approval request was created. The members of these teams are listed in <code>notifyMemberIds</code>, resolved when the request was made. Team membership may have changed since then. */
 export type ExpandableApprovalRequestResponseNotifyTeamKeysList = Array<string>;
-export const ExpandableApprovalRequestResponseNotifyTeamKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExpandableApprovalRequestResponseNotifyTeamKeysList>;
+export const ExpandableApprovalRequestResponseNotifyTeamKeysList =
+  FeatureFlagTagsList as any as S.Schema<ExpandableApprovalRequestResponseNotifyTeamKeysList>;
 
 /** Current status of the approval request */
 export type ExpandableApprovalRequestResponseStatus =
@@ -11395,40 +10984,32 @@ export const ExpandableApprovalRequestResponseStatus = S.String;
 
 /** Details on any conflicting approval requests */
 export type ExpandableApprovalRequestResponseConflictsList = Array<Conflict2>;
-export const ExpandableApprovalRequestResponseConflictsList = /*@__PURE__*/ S.Array(
-  Conflict2,
-) as any as S.Schema<ExpandableApprovalRequestResponseConflictsList>;
+export const ExpandableApprovalRequestResponseConflictsList =
+  ApprovalRequestResponseConflictsList as any as S.Schema<ExpandableApprovalRequestResponseConflictsList>;
 
 /** The location and content type of related resources */
 export type ExpandableApprovalRequestResponseLinksMap = { [key: string]: unknown | undefined };
-export const ExpandableApprovalRequestResponseLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ExpandableApprovalRequestResponseLinksMap>;
+export const ExpandableApprovalRequestResponseLinksMap =
+  UrlMatcher as any as S.Schema<ExpandableApprovalRequestResponseLinksMap>;
 
 /** The location and content type of related resources */
 export type ProjectLinksMap = { [key: string]: Link | undefined };
-export const ProjectLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ProjectLinksMap>;
+export const ProjectLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ProjectLinksMap>;
 
 /** A list of tags for the project */
 export type ProjectTagsList = Array<string>;
-export const ProjectTagsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<ProjectTagsList>;
+export const ProjectTagsList = ViewTagsList as any as S.Schema<ProjectTagsList>;
 
 /** The location and content type of related resources */
 export type EnvironmentsLinksMap = { [key: string]: Link | undefined };
-export const EnvironmentsLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<EnvironmentsLinksMap>;
+export const EnvironmentsLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<EnvironmentsLinksMap>;
 
 /** An array of environments */
 export type EnvironmentsItemsList = Array<Environment>;
-export const EnvironmentsItemsList = /*@__PURE__*/ S.Array(
-  Environment,
-) as any as S.Schema<EnvironmentsItemsList>;
+export const EnvironmentsItemsList =
+  ProjectRepEnvironmentsList as any as S.Schema<EnvironmentsItemsList>;
 
 export interface Environments {
   /** The location and content type of related resources */
@@ -11485,9 +11066,8 @@ export const Project = /*@__PURE__*/ S.suspend(() =>
 
 /** List of environments the approval impacts */
 export type ExpandableApprovalRequestResponseEnvironmentsList = Array<Environment>;
-export const ExpandableApprovalRequestResponseEnvironmentsList = /*@__PURE__*/ S.Array(
-  Environment,
-) as any as S.Schema<ExpandableApprovalRequestResponseEnvironmentsList>;
+export const ExpandableApprovalRequestResponseEnvironmentsList =
+  ProjectRepEnvironmentsList as any as S.Schema<ExpandableApprovalRequestResponseEnvironmentsList>;
 
 /** Kind of feature flag */
 export type ExpandedFlagRepKind = "boolean" | "multivariate";
@@ -11495,22 +11075,18 @@ export const ExpandedFlagRepKind = S.String;
 
 /** An array of possible variations for the flag */
 export type ExpandedFlagRepVariationsList = Array<Variation>;
-export const ExpandedFlagRepVariationsList = /*@__PURE__*/ S.Array(
-  Variation,
-) as any as S.Schema<ExpandedFlagRepVariationsList>;
+export const ExpandedFlagRepVariationsList =
+  FeatureFlagVariationsList as any as S.Schema<ExpandedFlagRepVariationsList>;
 
 /** Tags for the feature flag */
 export type ExpandedFlagRepTagsList = Array<string>;
-export const ExpandedFlagRepTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExpandedFlagRepTagsList>;
+export const ExpandedFlagRepTagsList =
+  FeatureFlagTagsList as any as S.Schema<ExpandedFlagRepTagsList>;
 
 /** The location and content type of related resources */
 export type ExpandedFlagRepLinksMap = { [key: string]: Link | undefined };
-export const ExpandedFlagRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ExpandedFlagRepLinksMap>;
+export const ExpandedFlagRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ExpandedFlagRepLinksMap>;
 
 export interface ExpandedFlagRep {
   /** A human-friendly name for the feature flag */
@@ -11579,12 +11155,7 @@ export interface AIConfigRep {
   /** The name of the AI Config */
   name: string;
 }
-export const AIConfigRep = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    name: S.String,
-  }),
-).annotate({ identifier: "AIConfigRep" }) as any as S.Schema<AIConfigRep>;
+export const AIConfigRep = AiConfigsMaintainerTeam as any as S.Schema<AIConfigRep>;
 
 export interface ExpandedExperimentRep {
   /** The key of the experiment */
@@ -11603,26 +11174,21 @@ export const ExpandedExperimentRep = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags for the segment. Defaults to an empty array. */
 export type UserSegmentTagsList = Array<string>;
-export const UserSegmentTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserSegmentTagsList>;
+export const UserSegmentTagsList = FeatureFlagTagsList as any as S.Schema<UserSegmentTagsList>;
 
 /** An array of keys for included targets. Included individual targets are always segment members, regardless of segment rules. For list-based segments over 15,000 entries, also called big segments, this array is either empty or omitted. */
 export type UserSegmentIncludedList = Array<string>;
-export const UserSegmentIncludedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserSegmentIncludedList>;
+export const UserSegmentIncludedList =
+  FeatureFlagTagsList as any as S.Schema<UserSegmentIncludedList>;
 
 /** An array of keys for excluded targets. Segment rules bypass individual excluded targets, so they will never be included based on rules. Excluded targets may still be included explicitly. This value is omitted for list-based segments over 15,000 entries, also called big segments. */
 export type UserSegmentExcludedList = Array<string>;
-export const UserSegmentExcludedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserSegmentExcludedList>;
+export const UserSegmentExcludedList =
+  FeatureFlagTagsList as any as S.Schema<UserSegmentExcludedList>;
 
 export type SegmentTargetValuesList = Array<string>;
-export const SegmentTargetValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SegmentTargetValuesList>;
+export const SegmentTargetValuesList =
+  FeatureFlagTagsList as any as S.Schema<SegmentTargetValuesList>;
 
 export interface SegmentTarget {
   values?: SegmentTargetValuesList;
@@ -11641,16 +11207,13 @@ export const UserSegmentIncludedContextsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UserSegmentIncludedContextsList>;
 
 export type UserSegmentExcludedContextsList = Array<SegmentTarget>;
-export const UserSegmentExcludedContextsList = /*@__PURE__*/ S.Array(
-  SegmentTarget,
-) as any as S.Schema<UserSegmentExcludedContextsList>;
+export const UserSegmentExcludedContextsList =
+  UserSegmentIncludedContextsList as any as S.Schema<UserSegmentExcludedContextsList>;
 
 /** The location and content type of related resources */
 export type UserSegmentLinksMap = { [key: string]: Link | undefined };
-export const UserSegmentLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<UserSegmentLinksMap>;
+export const UserSegmentLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<UserSegmentLinksMap>;
 
 export type UserSegmentRuleClausesList = Array<Clause>;
 export const UserSegmentRuleClausesList = /*@__PURE__*/ S.Array(
@@ -11684,9 +11247,8 @@ export const UserSegmentRulesList = /*@__PURE__*/ S.Array(
 
 /** A list of flags targeting this segment. Only included when getting a single segment, using the <code>getSegment</code> endpoint. */
 export type UserSegmentFlagsList = Array<FlagListingRep>;
-export const UserSegmentFlagsList = /*@__PURE__*/ S.Array(
-  FlagListingRep,
-) as any as S.Schema<UserSegmentFlagsList>;
+export const UserSegmentFlagsList =
+  ApplicationFlagCollectionRepItemsList as any as S.Schema<UserSegmentFlagsList>;
 
 export interface SegmentMetadata {
   envId?: string;
@@ -11922,10 +11484,8 @@ export const ExpandableApprovalRequestsResponseItemsList = /*@__PURE__*/ S.Array
 
 /** The location and content type of related resources */
 export type ExpandableApprovalRequestsResponseLinksMap = { [key: string]: Link | undefined };
-export const ExpandableApprovalRequestsResponseLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ExpandableApprovalRequestsResponseLinksMap>;
+export const ExpandableApprovalRequestsResponseLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ExpandableApprovalRequestsResponseLinksMap>;
 
 export interface ExpandableApprovalRequestsResponse {
   /** An array of approval requests */
@@ -11973,16 +11533,13 @@ export const GetApprovalRequestSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Arbitrary service-specific configuration */
 export type ApprovalRequestSettingServiceConfigMap = { [key: string]: unknown | undefined };
-export const ApprovalRequestSettingServiceConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ApprovalRequestSettingServiceConfigMap>;
+export const ApprovalRequestSettingServiceConfigMap =
+  UrlMatcher as any as S.Schema<ApprovalRequestSettingServiceConfigMap>;
 
 /** Require approval only on flags with the provided tags. Otherwise all flags will require approval. */
 export type ApprovalRequestSettingRequiredApprovalTagsList = Array<string>;
-export const ApprovalRequestSettingRequiredApprovalTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApprovalRequestSettingRequiredApprovalTagsList>;
+export const ApprovalRequestSettingRequiredApprovalTagsList =
+  FeatureFlagTagsList as any as S.Schema<ApprovalRequestSettingRequiredApprovalTagsList>;
 
 /** Configuration that controls how changes to a resource are gated by approvals. */
 export interface ApprovalRequestSetting {
@@ -12092,10 +11649,8 @@ export const FlagConfigApprovalRequestsResponseItemsList = /*@__PURE__*/ S.Array
 
 /** The location and content type of related resources */
 export type FlagConfigApprovalRequestsResponseLinksMap = { [key: string]: Link | undefined };
-export const FlagConfigApprovalRequestsResponseLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<FlagConfigApprovalRequestsResponseLinksMap>;
+export const FlagConfigApprovalRequestsResponseLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FlagConfigApprovalRequestsResponseLinksMap>;
 
 export interface FlagConfigApprovalRequestsResponse {
   /** An array of approval requests */
@@ -12144,10 +11699,8 @@ export const GetAuditLogEntriesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type AuditLogEntryListingRepLinksMap = { [key: string]: Link | undefined };
-export const AuditLogEntryListingRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<AuditLogEntryListingRepLinksMap>;
+export const AuditLogEntryListingRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<AuditLogEntryListingRepLinksMap>;
 
 export interface ResourceAccess {
   action?: string;
@@ -12182,10 +11735,8 @@ export type RelatedAIConfig = RelatedFlag;
 export const RelatedAIConfig = RelatedFlag;
 
 export type SubjectDataRepLinksMap = { [key: string]: Link | undefined };
-export const SubjectDataRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<SubjectDataRepLinksMap>;
+export const SubjectDataRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<SubjectDataRepLinksMap>;
 
 export interface SubjectDataRep {
   _links?: SubjectDataRepLinksMap;
@@ -12203,10 +11754,8 @@ export const SubjectDataRep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubjectDataRep" }) as any as S.Schema<SubjectDataRep>;
 
 export type MemberDataRepLinksMap = { [key: string]: Link | undefined };
-export const MemberDataRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<MemberDataRepLinksMap>;
+export const MemberDataRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<MemberDataRepLinksMap>;
 
 export interface MemberDataRep {
   _links?: MemberDataRepLinksMap;
@@ -12230,10 +11779,8 @@ export const MemberDataRep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MemberDataRep" }) as any as S.Schema<MemberDataRep>;
 
 export type AuthorizedAppDataRepLinksMap = { [key: string]: Link | undefined };
-export const AuthorizedAppDataRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<AuthorizedAppDataRepLinksMap>;
+export const AuthorizedAppDataRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<AuthorizedAppDataRepLinksMap>;
 
 export interface AuthorizedAppDataRep {
   _links?: AuthorizedAppDataRepLinksMap;
@@ -12263,16 +11810,13 @@ export const AuthorizedAppDataRep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuthorizedAppDataRep" }) as any as S.Schema<AuthorizedAppDataRep>;
 
 export type TargetResourceRepLinksMap = { [key: string]: Link | undefined };
-export const TargetResourceRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<TargetResourceRepLinksMap>;
+export const TargetResourceRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<TargetResourceRepLinksMap>;
 
 /** The resource specifier */
 export type TargetResourceRepResourcesList = Array<string>;
-export const TargetResourceRepResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TargetResourceRepResourcesList>;
+export const TargetResourceRepResourcesList =
+  FeatureFlagTagsList as any as S.Schema<TargetResourceRepResourcesList>;
 
 export interface TargetResourceRep {
   _links?: TargetResourceRepLinksMap;
@@ -12290,10 +11834,8 @@ export const TargetResourceRep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TargetResourceRep" }) as any as S.Schema<TargetResourceRep>;
 
 export type ParentResourceRepLinksMap = { [key: string]: Link | undefined };
-export const ParentResourceRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ParentResourceRepLinksMap>;
+export const ParentResourceRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ParentResourceRepLinksMap>;
 
 export interface ParentResourceRep {
   _links?: ParentResourceRepLinksMap;
@@ -12387,10 +11929,8 @@ export const AuditLogEntryListingRepCollectionItemsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type AuditLogEntryListingRepCollectionLinksMap = { [key: string]: Link | undefined };
-export const AuditLogEntryListingRepCollectionLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<AuditLogEntryListingRepCollectionLinksMap>;
+export const AuditLogEntryListingRepCollectionLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<AuditLogEntryListingRepCollectionLinksMap>;
 
 export interface AuditLogEntryListingRepCollection {
   /** An array of audit log entries */
@@ -12419,21 +11959,17 @@ export const GetAuditLogEntryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type AuditLogEntryRepLinksMap = { [key: string]: Link | undefined };
-export const AuditLogEntryRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<AuditLogEntryRepLinksMap>;
+export const AuditLogEntryRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<AuditLogEntryRepLinksMap>;
 
 /** Details on the actions performed and resources acted on in this audit log entry */
 export type AuditLogEntryRepAccessesList = Array<ResourceAccess>;
-export const AuditLogEntryRepAccessesList = /*@__PURE__*/ S.Array(
-  ResourceAccess,
-) as any as S.Schema<AuditLogEntryRepAccessesList>;
+export const AuditLogEntryRepAccessesList =
+  AuditLogEntryListingRepAccessesList as any as S.Schema<AuditLogEntryRepAccessesList>;
 
 export type AuditLogEntryRepSubentriesList = Array<AuditLogEntryListingRep>;
-export const AuditLogEntryRepSubentriesList = /*@__PURE__*/ S.Array(
-  AuditLogEntryListingRep,
-) as any as S.Schema<AuditLogEntryRepSubentriesList>;
+export const AuditLogEntryRepSubentriesList =
+  AuditLogEntryListingRepCollectionItemsList as any as S.Schema<AuditLogEntryRepSubentriesList>;
 
 export interface AuditLogEntryRep {
   /** The location and content type of related resources */
@@ -12563,10 +12099,8 @@ export const InitiatorRep = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources, including the location of the exported file */
 export type ExportLinksMap = { [key: string]: Link | undefined };
-export const ExportLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ExportLinksMap>;
+export const ExportLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ExportLinksMap>;
 
 export interface Export {
   /** The export ID */
@@ -12655,10 +12189,8 @@ export const ImportFilesList = /*@__PURE__*/ S.Array(FileRep) as any as S.Schema
 
 /** The location and content type of related resources */
 export type ImportLinksMap = { [key: string]: Link | undefined };
-export const ImportLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ImportLinksMap>;
+export const ImportLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ImportLinksMap>;
 
 export interface Import {
   /** The import ID */
@@ -12785,9 +12317,7 @@ export const GetBranchRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of flag key aliases */
 export type HunkRepAliasesList = Array<string>;
-export const HunkRepAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HunkRepAliasesList>;
+export const HunkRepAliasesList = FeatureFlagTagsList as any as S.Schema<HunkRepAliasesList>;
 
 export interface HunkRep {
   /** Line number of beginning of code reference hunk */
@@ -12839,10 +12369,7 @@ export const BranchRepReferencesList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type BranchRepLinksMap = { [key: string]: unknown | undefined };
-export const BranchRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<BranchRepLinksMap>;
+export const BranchRepLinksMap = UrlMatcher as any as S.Schema<BranchRepLinksMap>;
 
 export interface BranchRep {
   /** The branch name */
@@ -12883,10 +12410,8 @@ export const GetBranchesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type BranchCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const BranchCollectionRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<BranchCollectionRepLinksMap>;
+export const BranchCollectionRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<BranchCollectionRepLinksMap>;
 
 /** An array of branches */
 export type BranchCollectionRepItemsList = Array<BranchRep>;
@@ -12913,9 +12438,8 @@ export const GetCallerIdentityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCallerIdentityRequest" }) as any as S.Schema<GetCallerIdentityRequest>;
 
 export type CallerIdentityRepScopesList = Array<string>;
-export const CallerIdentityRepScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CallerIdentityRepScopesList>;
+export const CallerIdentityRepScopesList =
+  FeatureFlagTagsList as any as S.Schema<CallerIdentityRepScopesList>;
 
 export interface CallerIdentityRep {
   accountId?: string;
@@ -13135,10 +12659,8 @@ export const GetContextInstanceSegmentsMembershipByEnvRequest = /*@__PURE__*/ S.
 
 /** The location and content type of related resources */
 export type ContextInstanceSegmentMembershipLinksMap = { [key: string]: Link | undefined };
-export const ContextInstanceSegmentMembershipLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ContextInstanceSegmentMembershipLinksMap>;
+export const ContextInstanceSegmentMembershipLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ContextInstanceSegmentMembershipLinksMap>;
 
 export interface ContextInstanceSegmentMembership {
   /** A human-friendly name for the segment */
@@ -13183,10 +12705,8 @@ export const ContextInstanceSegmentMembershipsItemsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type ContextInstanceSegmentMembershipsLinksMap = { [key: string]: Link | undefined };
-export const ContextInstanceSegmentMembershipsLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ContextInstanceSegmentMembershipsLinksMap>;
+export const ContextInstanceSegmentMembershipsLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ContextInstanceSegmentMembershipsLinksMap>;
 
 export interface ContextInstanceSegmentMemberships {
   items: ContextInstanceSegmentMembershipsItemsList;
@@ -13240,10 +12760,8 @@ export const ContextKindRepEnvironmentObservationsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type ContextKindRepLinksMap = { [key: string]: Link | undefined };
-export const ContextKindRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ContextKindRepLinksMap>;
+export const ContextKindRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ContextKindRepLinksMap>;
 
 export interface ContextKindRep {
   /** The context kind key */
@@ -13296,10 +12814,8 @@ export const ContextKindsCollectionRepItemsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type ContextKindsCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const ContextKindsCollectionRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ContextKindsCollectionRepLinksMap>;
+export const ContextKindsCollectionRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ContextKindsCollectionRepLinksMap>;
 
 export interface ContextKindsCollectionRep {
   /** An array of context kinds */
@@ -13358,17 +12874,13 @@ export const GetContextsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type ContextsLinksMap = { [key: string]: Link | undefined };
-export const ContextsLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ContextsLinksMap>;
+export const ContextsLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ContextsLinksMap>;
 
 /** The location and content type of related resources */
 export type ContextRecordLinksMap = { [key: string]: Link | undefined };
-export const ContextRecordLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ContextRecordLinksMap>;
+export const ContextRecordLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ContextRecordLinksMap>;
 
 export interface ContextRecord {
   /** Timestamp of the last time an evaluation occurred for this context */
@@ -13555,16 +13067,13 @@ export const GetCustomRoleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type CustomRoleLinksMap = { [key: string]: Link | undefined };
-export const CustomRoleLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<CustomRoleLinksMap>;
+export const CustomRoleLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<CustomRoleLinksMap>;
 
 /** An array of the policies that comprise this custom role */
 export type CustomRolePolicyList = Array<Statement>;
-export const CustomRolePolicyList = /*@__PURE__*/ S.Array(
-  Statement,
-) as any as S.Schema<CustomRolePolicyList>;
+export const CustomRolePolicyList =
+  AuditLogEventsHookCapabilityConfigRepStatementsList as any as S.Schema<CustomRolePolicyList>;
 
 export interface AssignedToRep {
   /** The number of individual members this role is assigned to */
@@ -13581,9 +13090,8 @@ export const AssignedToRep = /*@__PURE__*/ S.suspend(() =>
 
 /** If created from a preset, the read-only statements copied from the preset */
 export type CustomRolePresetStatementsList = Array<Statement>;
-export const CustomRolePresetStatementsList = /*@__PURE__*/ S.Array(
-  Statement,
-) as any as S.Schema<CustomRolePresetStatementsList>;
+export const CustomRolePresetStatementsList =
+  AuditLogEventsHookCapabilityConfigRepStatementsList as any as S.Schema<CustomRolePresetStatementsList>;
 
 export interface CustomRole {
   /** The ID of the custom role */
@@ -13643,10 +13151,8 @@ export const GetCustomRolesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type CustomRolesLinksMap = { [key: string]: Link | undefined };
-export const CustomRolesLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<CustomRolesLinksMap>;
+export const CustomRolesLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<CustomRolesLinksMap>;
 
 /** An array of custom roles */
 export type CustomRolesItemsList = Array<CustomRole>;
@@ -13716,16 +13222,13 @@ export const CustomWorkflowOutputConflictsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type CustomWorkflowOutputLinksMap = { [key: string]: Link | undefined };
-export const CustomWorkflowOutputLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<CustomWorkflowOutputLinksMap>;
+export const CustomWorkflowOutputLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<CustomWorkflowOutputLinksMap>;
 
 /** The stages that make up the workflow. Each stage contains conditions and actions. */
 export type CustomWorkflowOutputStagesList = Array<StageOutput>;
-export const CustomWorkflowOutputStagesList = /*@__PURE__*/ S.Array(
-  StageOutput,
-) as any as S.Schema<CustomWorkflowOutputStagesList>;
+export const CustomWorkflowOutputStagesList =
+  WorkflowTemplateOutputStagesList as any as S.Schema<CustomWorkflowOutputStagesList>;
 
 /** The operator to apply to the given attribute */
 export type RuleClauseOp =
@@ -13897,22 +13400,18 @@ export const GetDataExportEventsUsageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type DataExportSeriesListRepLinksMap = { [key: string]: unknown | undefined };
-export const DataExportSeriesListRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DataExportSeriesListRepLinksMap>;
+export const DataExportSeriesListRepLinksMap =
+  UrlMatcher as any as S.Schema<DataExportSeriesListRepLinksMap>;
 
 /** Metadata about each series */
 export type DataExportSeriesListRepMetadataList = Array<SeriesMetadataRep>;
-export const DataExportSeriesListRepMetadataList = /*@__PURE__*/ S.Array(
-  SeriesMetadataRep,
-) as any as S.Schema<DataExportSeriesListRepMetadataList>;
+export const DataExportSeriesListRepMetadataList =
+  CreateTriggerWorkflowRequestInstructionsList as any as S.Schema<DataExportSeriesListRepMetadataList>;
 
 /** An array of data points with timestamps. Each element of the array is an object with a 'time' field, whose value is the timestamp, and one or more key fields. If there are multiple key fields, they are labeled '0', '1', and so on, and are explained in the <code>metadata</code>. */
 export type DataExportSeriesListRepSeriesList = Array<SeriesTimeSliceRep>;
-export const DataExportSeriesListRepSeriesList = /*@__PURE__*/ S.Array(
-  SeriesTimeSliceRep,
-) as any as S.Schema<DataExportSeriesListRepSeriesList>;
+export const DataExportSeriesListRepSeriesList =
+  SeriesListRepSeriesList as any as S.Schema<DataExportSeriesListRepSeriesList>;
 
 export interface DataExportSeriesListRep {
   /** The location and content type of related resources */
@@ -13937,9 +13436,8 @@ export const DataExportSeriesListRep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataExportSeriesListRep" }) as any as S.Schema<DataExportSeriesListRep>;
 
 export type GetDataExportProjectRankingRequestProjectKeyList = Array<string>;
-export const GetDataExportProjectRankingRequestProjectKeyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDataExportProjectRankingRequestProjectKeyList>;
+export const GetDataExportProjectRankingRequestProjectKeyList =
+  FeatureFlagTagsList as any as S.Schema<GetDataExportProjectRankingRequestProjectKeyList>;
 
 export interface GetDataExportProjectRankingRequest {
   /** Inclusive UTC range start in Unix milliseconds. */
@@ -14103,10 +13601,8 @@ export const GetDependentFlagsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type DependentFlagEnvironmentLinksMap = { [key: string]: Link | undefined };
-export const DependentFlagEnvironmentLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<DependentFlagEnvironmentLinksMap>;
+export const DependentFlagEnvironmentLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<DependentFlagEnvironmentLinksMap>;
 
 export interface DependentFlagEnvironment {
   /** The environment name */
@@ -14159,10 +13655,8 @@ export const MultiEnvironmentDependentFlagsItemsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type MultiEnvironmentDependentFlagsLinksMap = { [key: string]: Link | undefined };
-export const MultiEnvironmentDependentFlagsLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<MultiEnvironmentDependentFlagsLinksMap>;
+export const MultiEnvironmentDependentFlagsLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<MultiEnvironmentDependentFlagsLinksMap>;
 
 export interface MultiEnvironmentDependentFlags {
   /** An array of dependent flags with their environment information */
@@ -14208,10 +13702,8 @@ export const GetDependentFlagsByEnvRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type DependentFlagLinksMap = { [key: string]: Link | undefined };
-export const DependentFlagLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<DependentFlagLinksMap>;
+export const DependentFlagLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<DependentFlagLinksMap>;
 
 export interface DependentFlag {
   /** The flag name */
@@ -14223,27 +13715,17 @@ export interface DependentFlag {
   /** A link to access the dependent flag in the LaunchDarkly UI. The href is an opaque URL; do not parse or rely on its structure. */
   _site: Link;
 }
-export const DependentFlag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    key: S.String,
-    _links: DependentFlagLinksMap,
-    _site: Link,
-  }),
-).annotate({ identifier: "DependentFlag" }) as any as S.Schema<DependentFlag>;
+export const DependentFlag = DependentFlagEnvironment as any as S.Schema<DependentFlag>;
 
 /** A list of dependent flags, which are flags that use the requested flag as a prerequisite */
 export type DependentFlagsByEnvironmentItemsList = Array<DependentFlag>;
-export const DependentFlagsByEnvironmentItemsList = /*@__PURE__*/ S.Array(
-  DependentFlag,
-) as any as S.Schema<DependentFlagsByEnvironmentItemsList>;
+export const DependentFlagsByEnvironmentItemsList =
+  MultiEnvironmentDependentFlagEnvironmentsList as any as S.Schema<DependentFlagsByEnvironmentItemsList>;
 
 /** The location and content type of related resources */
 export type DependentFlagsByEnvironmentLinksMap = { [key: string]: Link | undefined };
-export const DependentFlagsByEnvironmentLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<DependentFlagsByEnvironmentLinksMap>;
+export const DependentFlagsByEnvironmentLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<DependentFlagsByEnvironmentLinksMap>;
 
 export interface DependentFlagsByEnvironment {
   /** A list of dependent flags, which are flags that use the requested flag as a prerequisite */
@@ -14284,10 +13766,7 @@ export const GetDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The metadata associated with the deployment */
 export type DeploymentRepMetadataMap = { [key: string]: unknown | undefined };
-export const DeploymentRepMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DeploymentRepMetadataMap>;
+export const DeploymentRepMetadataMap = UrlMatcher as any as S.Schema<DeploymentRepMetadataMap>;
 
 /** A list of deployments */
 export type DeploymentCollectionRepItemsList = Array<DeploymentRep>;
@@ -14297,10 +13776,8 @@ export const DeploymentCollectionRepItemsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type DeploymentCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const DeploymentCollectionRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<DeploymentCollectionRepLinksMap>;
+export const DeploymentCollectionRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<DeploymentCollectionRepLinksMap>;
 
 export interface DeploymentCollectionRep {
   /** The total number of deployments */
@@ -14455,10 +13932,8 @@ export const PullRequestCollectionRepItemsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type PullRequestCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const PullRequestCollectionRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<PullRequestCollectionRepLinksMap>;
+export const PullRequestCollectionRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<PullRequestCollectionRepLinksMap>;
 
 export interface PullRequestCollectionRep {
   /** The total number of pull requests */
@@ -14608,10 +14083,8 @@ export const GetDeploymentFrequencyChartRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDeploymentFrequencyChartRequest>;
 
 export type InsightsChartMetadataCustomValues = { [key: string]: unknown | undefined };
-export const InsightsChartMetadataCustomValues = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<InsightsChartMetadataCustomValues>;
+export const InsightsChartMetadataCustomValues =
+  UrlMatcher as any as S.Schema<InsightsChartMetadataCustomValues>;
 
 export interface InsightsMetricTierDefinition {
   /** Metric indicator tier */
@@ -14735,10 +14208,8 @@ export const InsightsChartSeriesMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional values for the data point */
 export type InsightsChartSeriesDataPointValuesMap = { [key: string]: unknown | undefined };
-export const InsightsChartSeriesDataPointValuesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<InsightsChartSeriesDataPointValuesMap>;
+export const InsightsChartSeriesDataPointValuesMap =
+  UrlMatcher as any as S.Schema<InsightsChartSeriesDataPointValuesMap>;
 
 export interface InsightsChartSeriesDataPoint {
   /** X-axis value */
@@ -14860,10 +14331,8 @@ export const GetDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type DestinationLinksMap = { [key: string]: Link | undefined };
-export const DestinationLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<DestinationLinksMap>;
+export const DestinationLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<DestinationLinksMap>;
 
 /** The type of Data Export destination */
 export type DestinationKind =
@@ -14939,10 +14408,8 @@ export const GetDestinationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type DestinationsLinksMap = { [key: string]: Link | undefined };
-export const DestinationsLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<DestinationsLinksMap>;
+export const DestinationsLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<DestinationsLinksMap>;
 
 /** An array of Data Export destinations */
 export type DestinationsItemsList = Array<Destination>;
@@ -15193,10 +14660,8 @@ export const RandomizationSettingsRepRandomizationUnitsList = /*@__PURE__*/ S.Ar
 
 /** The location and content type of related resources */
 export type RandomizationSettingsRepLinksMap = { [key: string]: Link | undefined };
-export const RandomizationSettingsRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<RandomizationSettingsRepLinksMap>;
+export const RandomizationSettingsRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<RandomizationSettingsRepLinksMap>;
 
 export interface RandomizationSettingsRep {
   /** The project ID */
@@ -15262,10 +14727,8 @@ export const ExperimentCollectionRepItemsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type ExperimentCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const ExperimentCollectionRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ExperimentCollectionRepLinksMap>;
+export const ExperimentCollectionRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ExperimentCollectionRepLinksMap>;
 
 export interface ExperimentCollectionRep {
   /** An array of experiments */
@@ -15395,10 +14858,8 @@ export const ExpiringTargetGetResponseItemsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type ExpiringTargetGetResponseLinksMap = { [key: string]: Link | undefined };
-export const ExpiringTargetGetResponseLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ExpiringTargetGetResponseLinksMap>;
+export const ExpiringTargetGetResponseLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ExpiringTargetGetResponseLinksMap>;
 
 export interface ExpiringTargetGetResponse {
   /** A list of expiring targets */
@@ -15516,10 +14977,8 @@ export const ExpiringUserTargetGetResponseItemsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type ExpiringUserTargetGetResponseLinksMap = { [key: string]: Link | undefined };
-export const ExpiringUserTargetGetResponseLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ExpiringUserTargetGetResponseLinksMap>;
+export const ExpiringUserTargetGetResponseLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ExpiringUserTargetGetResponseLinksMap>;
 
 export interface ExpiringUserTargetGetResponse {
   /** An array of expiring user targets */
@@ -15587,10 +15046,8 @@ export const GetExtinctionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type ExtinctionCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const ExtinctionCollectionRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ExtinctionCollectionRepLinksMap>;
+export const ExtinctionCollectionRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ExtinctionCollectionRepLinksMap>;
 
 export interface Extinction {
   /** The identifier for the revision where flag became extinct. For example, a commit SHA. */
@@ -15708,10 +15165,8 @@ export const FeatureFlagsItemsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type FeatureFlagsLinksMap = { [key: string]: Link | undefined };
-export const FeatureFlagsLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<FeatureFlagsLinksMap>;
+export const FeatureFlagsLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FeatureFlagsLinksMap>;
 
 export interface FeatureFlags {
   /** An array of feature flags */
@@ -15761,10 +15216,8 @@ export const GetFeatureFlagScheduledChangeRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The location and content type of related resources */
 export type FeatureFlagScheduledChangeLinksMap = { [key: string]: Link | undefined };
-export const FeatureFlagScheduledChangeLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<FeatureFlagScheduledChangeLinksMap>;
+export const FeatureFlagScheduledChangeLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FeatureFlagScheduledChangeLinksMap>;
 
 export interface FeatureFlagScheduledChange {
   /** The ID of this scheduled change */
@@ -15831,10 +15284,8 @@ export type FlagStatusRepName = "new" | "inactive" | "active" | "launched";
 export const FlagStatusRepName = S.String;
 
 export type FlagStatusRepLinksMap = { [key: string]: Link | undefined };
-export const FlagStatusRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<FlagStatusRepLinksMap>;
+export const FlagStatusRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FlagStatusRepLinksMap>;
 
 export interface FlagStatusRep {
   /** Status of the flag */
@@ -15904,10 +15355,8 @@ export const FeatureFlagStatusAcrossEnvironmentsEnvironmentsMap = /*@__PURE__*/ 
 ) as any as S.Schema<FeatureFlagStatusAcrossEnvironmentsEnvironmentsMap>;
 
 export type FeatureFlagStatusAcrossEnvironmentsLinksMap = { [key: string]: Link | undefined };
-export const FeatureFlagStatusAcrossEnvironmentsLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<FeatureFlagStatusAcrossEnvironmentsLinksMap>;
+export const FeatureFlagStatusAcrossEnvironmentsLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FeatureFlagStatusAcrossEnvironmentsLinksMap>;
 
 export interface FeatureFlagStatusAcrossEnvironments {
   /** Flag status for environment. */
@@ -15948,10 +15397,8 @@ export const GetFeatureFlagStatusesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFeatureFlagStatusesRequest>;
 
 export type FeatureFlagStatusesLinksMap = { [key: string]: Link | undefined };
-export const FeatureFlagStatusesLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<FeatureFlagStatusesLinksMap>;
+export const FeatureFlagStatusesLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FeatureFlagStatusesLinksMap>;
 
 export type FeatureFlagStatusesItemsList = Array<FlagStatusRep>;
 export const FeatureFlagStatusesItemsList = /*@__PURE__*/ S.Array(
@@ -16001,10 +15448,8 @@ export const FeatureFlagScheduledChangesItemsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type FeatureFlagScheduledChangesLinksMap = { [key: string]: Link | undefined };
-export const FeatureFlagScheduledChangesLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<FeatureFlagScheduledChangesLinksMap>;
+export const FeatureFlagScheduledChangesLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FeatureFlagScheduledChangesLinksMap>;
 
 export interface FeatureFlagScheduledChanges {
   /** Array of scheduled changes */
@@ -16035,16 +15480,13 @@ export const GetFlagDefaultsByProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type FlagDefaultsRepLinksMap = { [key: string]: Link | undefined };
-export const FlagDefaultsRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<FlagDefaultsRepLinksMap>;
+export const FlagDefaultsRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FlagDefaultsRepLinksMap>;
 
 /** A list of default tags for each flag */
 export type FlagDefaultsRepTagsList = Array<string>;
-export const FlagDefaultsRepTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlagDefaultsRepTagsList>;
+export const FlagDefaultsRepTagsList =
+  FeatureFlagTagsList as any as S.Schema<FlagDefaultsRepTagsList>;
 
 export interface BooleanDefaults {
   /** The display name for the true variation, displayed in the LaunchDarkly user interface */
@@ -16163,9 +15605,8 @@ export const FlagEventMemberRep = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource actions */
 export type FlagEventRepActionsList = Array<string>;
-export const FlagEventRepActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlagEventRepActionsList>;
+export const FlagEventRepActionsList =
+  FeatureFlagTagsList as any as S.Schema<FlagEventRepActionsList>;
 
 /** The size of the flag event impact. Sizes are defined as: none (0%), small (0-20%), medium (20-80%), large (>80%) */
 export type FlagEventImpactRepSize = "none" | "small" | "medium" | "large";
@@ -16224,10 +15665,8 @@ export const FlagEventImpactRep = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type FlagEventExperimentIterationLinksMap = { [key: string]: Link | undefined };
-export const FlagEventExperimentIterationLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<FlagEventExperimentIterationLinksMap>;
+export const FlagEventExperimentIterationLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FlagEventExperimentIterationLinksMap>;
 
 export interface FlagEventExperimentIteration {
   /** The experiment iteration ID */
@@ -16255,10 +15694,8 @@ export const FlagEventExperimentIteration = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type FlagEventExperimentLinksMap = { [key: string]: Link | undefined };
-export const FlagEventExperimentLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<FlagEventExperimentLinksMap>;
+export const FlagEventExperimentLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FlagEventExperimentLinksMap>;
 
 export interface FlagEventExperiment {
   /** The experiment key */
@@ -16357,10 +15794,8 @@ export const FlagEventCollectionRepItemsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type FlagEventCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const FlagEventCollectionRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<FlagEventCollectionRepLinksMap>;
+export const FlagEventCollectionRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FlagEventCollectionRepLinksMap>;
 
 export interface FlagEventCollectionRep {
   /** The total number of flag events */
@@ -16402,17 +15837,13 @@ export const GetFlagFollowersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type FlagFollowersGetRepLinksMap = { [key: string]: Link | undefined };
-export const FlagFollowersGetRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<FlagFollowersGetRepLinksMap>;
+export const FlagFollowersGetRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FlagFollowersGetRepLinksMap>;
 
 /** The location and content type of related resources */
 export type FollowFlagMemberLinksMap = { [key: string]: Link | undefined };
-export const FollowFlagMemberLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<FollowFlagMemberLinksMap>;
+export const FollowFlagMemberLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FollowFlagMemberLinksMap>;
 
 export interface FollowFlagMember {
   /** The location and content type of related resources */
@@ -16428,22 +15859,12 @@ export interface FollowFlagMember {
   /** The member's email address */
   email: string;
 }
-export const FollowFlagMember = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _links: FollowFlagMemberLinksMap,
-    _id: S.String,
-    firstName: S.optional(S.String),
-    lastName: S.optional(S.String),
-    role: S.String,
-    email: S.String,
-  }),
-).annotate({ identifier: "FollowFlagMember" }) as any as S.Schema<FollowFlagMember>;
+export const FollowFlagMember = MemberSummary as any as S.Schema<FollowFlagMember>;
 
 /** An array of members who are following this flag */
 export type FlagFollowersGetRepItemsList = Array<FollowFlagMember>;
-export const FlagFollowersGetRepItemsList = /*@__PURE__*/ S.Array(
-  FollowFlagMember,
-) as any as S.Schema<FlagFollowersGetRepItemsList>;
+export const FlagFollowersGetRepItemsList =
+  TeamMaintainersItemsList as any as S.Schema<FlagFollowersGetRepItemsList>;
 
 export interface FlagFollowersGetRep {
   /** The location and content type of related resources */
@@ -16542,10 +15963,8 @@ export const FlagLinkCollectionRepItemsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type FlagLinkCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const FlagLinkCollectionRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<FlagLinkCollectionRepLinksMap>;
+export const FlagLinkCollectionRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FlagLinkCollectionRepLinksMap>;
 
 export interface FlagLinkCollectionRep {
   /** An array of flag links */
@@ -16603,16 +16022,13 @@ export const GetFollowersByProjEnvRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type FlagFollowersByProjEnvGetRepLinksMap = { [key: string]: Link | undefined };
-export const FlagFollowersByProjEnvGetRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<FlagFollowersByProjEnvGetRepLinksMap>;
+export const FlagFollowersByProjEnvGetRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FlagFollowersByProjEnvGetRepLinksMap>;
 
 /** A list of members who are following this flag */
 export type FollowersPerFlagFollowersList = Array<FollowFlagMember>;
-export const FollowersPerFlagFollowersList = /*@__PURE__*/ S.Array(
-  FollowFlagMember,
-) as any as S.Schema<FollowersPerFlagFollowersList>;
+export const FollowersPerFlagFollowersList =
+  TeamMaintainersItemsList as any as S.Schema<FollowersPerFlagFollowersList>;
 
 export interface FollowersPerFlag {
   /** The flag key */
@@ -16677,9 +16093,8 @@ export type HoldoutDetailRepStatus = "created" | "enabled" | "running" | "ended"
 export const HoldoutDetailRepStatus = S.String;
 
 export type HoldoutDetailRepRelatedExperimentsList = Array<Experiment>;
-export const HoldoutDetailRepRelatedExperimentsList = /*@__PURE__*/ S.Array(
-  Experiment,
-) as any as S.Schema<HoldoutDetailRepRelatedExperimentsList>;
+export const HoldoutDetailRepRelatedExperimentsList =
+  ExperimentCollectionRepItemsList as any as S.Schema<HoldoutDetailRepRelatedExperimentsList>;
 
 export interface HoldoutDetailRep {
   _id: string;
@@ -16734,9 +16149,8 @@ export type HoldoutRepStatus = "created" | "enabled" | "running" | "ended";
 export const HoldoutRepStatus = S.String;
 
 export type HoldoutRepExperimentsList = Array<RelatedExperimentRep>;
-export const HoldoutRepExperimentsList = /*@__PURE__*/ S.Array(
-  RelatedExperimentRep,
-) as any as S.Schema<HoldoutRepExperimentsList>;
+export const HoldoutRepExperimentsList =
+  SimpleHoldoutRepExperimentsList as any as S.Schema<HoldoutRepExperimentsList>;
 
 export interface HoldoutRep {
   _id: string;
@@ -16813,10 +16227,8 @@ export const InsightGroupCollectionItemsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type InsightGroupCollectionLinksMap = { [key: string]: Link | undefined };
-export const InsightGroupCollectionLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<InsightGroupCollectionLinksMap>;
+export const InsightGroupCollectionLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<InsightGroupCollectionLinksMap>;
 
 export interface InsightGroupsCountByIndicator {
   /** The number of insight groups with an excellent indicator */
@@ -16894,15 +16306,12 @@ export const GetInsightsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetInsightsRepositoriesRequest>;
 
 export type ProjectSummaryCollectionItemsList = Array<ProjectSummary>;
-export const ProjectSummaryCollectionItemsList = /*@__PURE__*/ S.Array(
-  ProjectSummary,
-) as any as S.Schema<ProjectSummaryCollectionItemsList>;
+export const ProjectSummaryCollectionItemsList =
+  TeamProjectsItemsList as any as S.Schema<ProjectSummaryCollectionItemsList>;
 
 export type ProjectSummaryCollectionLinksMap = { [key: string]: Link | undefined };
-export const ProjectSummaryCollectionLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ProjectSummaryCollectionLinksMap>;
+export const ProjectSummaryCollectionLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ProjectSummaryCollectionLinksMap>;
 
 export interface ProjectSummaryCollection {
   totalCount: number;
@@ -16952,10 +16361,8 @@ export const InsightsRepositoryCollectionItemsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type InsightsRepositoryCollectionLinksMap = { [key: string]: Link | undefined };
-export const InsightsRepositoryCollectionLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<InsightsRepositoryCollectionLinksMap>;
+export const InsightsRepositoryCollectionLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<InsightsRepositoryCollectionLinksMap>;
 
 export interface InsightsRepositoryCollection {
   /** Total number of repositories */
@@ -16995,10 +16402,8 @@ export const GetInsightsScoresRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type InsightScoresLinksMap = { [key: string]: Link | undefined };
-export const InsightScoresLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<InsightScoresLinksMap>;
+export const InsightScoresLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<InsightScoresLinksMap>;
 
 export interface InsightScores {
   /** The time period for the scores */
@@ -17170,15 +16575,12 @@ export const GetIpsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of IP addresses used by the LaunchDarkly service */
 export type IpListAddressesList = Array<string>;
-export const IpListAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpListAddressesList>;
+export const IpListAddressesList = FeatureFlagTagsList as any as S.Schema<IpListAddressesList>;
 
 /** A list of the IP addresses outgoing webhook notifications use */
 export type IpListOutboundAddressesList = Array<string>;
-export const IpListOutboundAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpListOutboundAddressesList>;
+export const IpListOutboundAddressesList =
+  FeatureFlagTagsList as any as S.Schema<IpListOutboundAddressesList>;
 
 export interface IpList {
   /** A list of IP addresses used by the LaunchDarkly service */
@@ -17214,10 +16616,8 @@ export const LayerCollectionRepItemsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type LayerCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const LayerCollectionRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<LayerCollectionRepLinksMap>;
+export const LayerCollectionRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<LayerCollectionRepLinksMap>;
 
 export interface LayerCollectionRep {
   /** The layers in the project */
@@ -17494,16 +16894,11 @@ export const GetMauSdksByTypeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type SdkListRepLinksMap = { [key: string]: unknown | undefined };
-export const SdkListRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SdkListRepLinksMap>;
+export const SdkListRepLinksMap = UrlMatcher as any as S.Schema<SdkListRepLinksMap>;
 
 /** The list of SDK names */
 export type SdkListRepSdksList = Array<string>;
-export const SdkListRepSdksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SdkListRepSdksList>;
+export const SdkListRepSdksList = FeatureFlagTagsList as any as S.Schema<SdkListRepSdksList>;
 
 export interface SdkListRep {
   /** The location and content type of related resources */
@@ -17615,16 +17010,12 @@ export const MetricRepKind = S.String;
 
 /** The location and content type of related resources */
 export type MetricRepLinksMap = { [key: string]: Link | undefined };
-export const MetricRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<MetricRepLinksMap>;
+export const MetricRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<MetricRepLinksMap>;
 
 /** Tags for the metric */
 export type MetricRepTagsList = Array<string>;
-export const MetricRepTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricRepTagsList>;
+export const MetricRepTagsList = FeatureFlagTagsList as any as S.Schema<MetricRepTagsList>;
 
 /** For custom and trace metrics, the success criteria */
 export type MetricRepSuccessCriteria = "HigherThanBaseline" | "LowerThanBaseline";
@@ -17632,15 +17023,13 @@ export const MetricRepSuccessCriteria = S.String;
 
 /** Deprecated, use <code>analysisUnits</code> instead. */
 export type MetricRepRandomizationUnitsList = Array<string>;
-export const MetricRepRandomizationUnitsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricRepRandomizationUnitsList>;
+export const MetricRepRandomizationUnitsList =
+  FeatureFlagTagsList as any as S.Schema<MetricRepRandomizationUnitsList>;
 
 /** An array of analysis units allowed for this metric. */
 export type MetricRepAnalysisUnitsList = Array<string>;
-export const MetricRepAnalysisUnitsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricRepAnalysisUnitsList>;
+export const MetricRepAnalysisUnitsList =
+  FeatureFlagTagsList as any as S.Schema<MetricRepAnalysisUnitsList>;
 
 /** The method by which multiple unit event values are aggregated */
 export type MetricRepUnitAggregationType = "average" | "sum" | "count_distinct";
@@ -17656,10 +17045,8 @@ export const DependentMetricGroupRepKind = S.String;
 
 /** The location and content type of related resources */
 export type DependentMetricGroupRepLinksMap = { [key: string]: Link | undefined };
-export const DependentMetricGroupRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<DependentMetricGroupRepLinksMap>;
+export const DependentMetricGroupRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<DependentMetricGroupRepLinksMap>;
 
 export interface DependentMetricGroupRep {
   /** A unique key to reference the metric group */
@@ -17688,10 +17075,8 @@ export const MetricRepMetricGroupsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type DependentReleasePhaseRepLinksMap = { [key: string]: Link | undefined };
-export const DependentReleasePhaseRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<DependentReleasePhaseRepLinksMap>;
+export const DependentReleasePhaseRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<DependentReleasePhaseRepLinksMap>;
 
 export interface DependentReleasePhaseRep {
   /** The guarded rollout release phase ID */
@@ -17729,9 +17114,8 @@ export const DependentReleasePhaseRep = /*@__PURE__*/ S.suspend(() =>
 
 /** Details on the flags attached to this metric */
 export type MetricRepAttachedFeaturesList = Array<FlagListingRep>;
-export const MetricRepAttachedFeaturesList = /*@__PURE__*/ S.Array(
-  FlagListingRep,
-) as any as S.Schema<MetricRepAttachedFeaturesList>;
+export const MetricRepAttachedFeaturesList =
+  ApplicationFlagCollectionRepItemsList as any as S.Schema<MetricRepAttachedFeaturesList>;
 
 export interface MetricRep {
   /** The number of experiments using this metric */
@@ -17951,10 +17335,8 @@ export const MetricGroupCollectionRepItemsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type MetricGroupCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const MetricGroupCollectionRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<MetricGroupCollectionRepLinksMap>;
+export const MetricGroupCollectionRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<MetricGroupCollectionRepLinksMap>;
 
 export interface MetricGroupCollectionRep {
   /** An array of metric groups */
@@ -18004,10 +17386,8 @@ export const MetricCollectionRepItemsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type MetricCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const MetricCollectionRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<MetricCollectionRepLinksMap>;
+export const MetricCollectionRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<MetricCollectionRepLinksMap>;
 
 export interface MetricCollectionRep {
   /** An array of metrics */
@@ -18045,9 +17425,7 @@ export const GetModelConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetModelConfigRequest" }) as any as S.Schema<GetModelConfigRequest>;
 
 export type ModelConfigTagsList = Array<string>;
-export const ModelConfigTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ModelConfigTagsList>;
+export const ModelConfigTagsList = FeatureFlagTagsList as any as S.Schema<ModelConfigTagsList>;
 
 export interface ModelConfig {
   _access?: AiConfigsAccess;
@@ -18120,10 +17498,8 @@ export const GetOAuthClientsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type ClientCollectionLinksMap = { [key: string]: Link | undefined };
-export const ClientCollectionLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ClientCollectionLinksMap>;
+export const ClientCollectionLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ClientCollectionLinksMap>;
 
 /** List of client objects */
 export type ClientCollectionItemsList = Array<Client>;
@@ -18270,9 +17646,8 @@ export const GetOpenapiSpecRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetOpenapiSpecRequest" }) as any as S.Schema<GetOpenapiSpecRequest>;
 
 export interface GetOpenapiSpecResponse {}
-export const GetOpenapiSpecResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetOpenapiSpecResponse",
-}) as any as S.Schema<GetOpenapiSpecResponse>;
+export const GetOpenapiSpecResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<GetOpenapiSpecResponse>;
 
 export interface GetProjectRequest {
   /** The project key. */
@@ -18311,10 +17686,8 @@ export const GetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A link to this resource. */
 export type ProjectsLinksMap = { [key: string]: Link | undefined };
-export const ProjectsLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ProjectsLinksMap>;
+export const ProjectsLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ProjectsLinksMap>;
 
 /** List of projects. */
 export type ProjectsItemsList = Array<Project>;
@@ -18373,10 +17746,8 @@ export const SdkKeyKind = S.String;
 
 /** The location and content type of related resources */
 export type SdkKeysEnvironmentSummaryLinksMap = { [key: string]: Link | undefined };
-export const SdkKeysEnvironmentSummaryLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<SdkKeysEnvironmentSummaryLinksMap>;
+export const SdkKeysEnvironmentSummaryLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<SdkKeysEnvironmentSummaryLinksMap>;
 
 export interface SdkKeysEnvironmentSummary {
   /** The location and content type of related resources */
@@ -18515,9 +17886,7 @@ export const GetPromptSnippetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetPromptSnippetRequest" }) as any as S.Schema<GetPromptSnippetRequest>;
 
 export type PromptSnippetTagsList = Array<string>;
-export const PromptSnippetTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PromptSnippetTagsList>;
+export const PromptSnippetTagsList = FeatureFlagTagsList as any as S.Schema<PromptSnippetTagsList>;
 
 export interface PromptSnippet {
   key: string;
@@ -18606,9 +17975,8 @@ export const GetRelayProxyConfigRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A description of what environments and projects the Relay Proxy should include or exclude */
 export type RelayAutoConfigRepPolicyList = Array<Statement>;
-export const RelayAutoConfigRepPolicyList = /*@__PURE__*/ S.Array(
-  Statement,
-) as any as S.Schema<RelayAutoConfigRepPolicyList>;
+export const RelayAutoConfigRepPolicyList =
+  AuditLogEventsHookCapabilityConfigRepStatementsList as any as S.Schema<RelayAutoConfigRepPolicyList>;
 
 export interface RelayAutoConfigRep {
   /** The ID of the Relay Proxy configuration */
@@ -18776,27 +18144,23 @@ export const GetReleasePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource specifier strings */
 export type ReleasePoliciesAccessDeniedReasonResourcesList = Array<string>;
-export const ReleasePoliciesAccessDeniedReasonResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReleasePoliciesAccessDeniedReasonResourcesList>;
+export const ReleasePoliciesAccessDeniedReasonResourcesList =
+  FeatureFlagTagsList as any as S.Schema<ReleasePoliciesAccessDeniedReasonResourcesList>;
 
 /** Targeted resources are the resources NOT in this list. The <code>resources</code> and <code>notActions</code> fields must be empty to use this field. */
 export type ReleasePoliciesAccessDeniedReasonNotResourcesList = Array<string>;
-export const ReleasePoliciesAccessDeniedReasonNotResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReleasePoliciesAccessDeniedReasonNotResourcesList>;
+export const ReleasePoliciesAccessDeniedReasonNotResourcesList =
+  FeatureFlagTagsList as any as S.Schema<ReleasePoliciesAccessDeniedReasonNotResourcesList>;
 
 /** Actions to perform on a resource */
 export type ReleasePoliciesAccessDeniedReasonActionsList = Array<string>;
-export const ReleasePoliciesAccessDeniedReasonActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReleasePoliciesAccessDeniedReasonActionsList>;
+export const ReleasePoliciesAccessDeniedReasonActionsList =
+  FeatureFlagTagsList as any as S.Schema<ReleasePoliciesAccessDeniedReasonActionsList>;
 
 /** Targeted actions are the actions NOT in this list. The <code>actions</code> and <code>notResources</code> fields must be empty to use this field. */
 export type ReleasePoliciesAccessDeniedReasonNotActionsList = Array<string>;
-export const ReleasePoliciesAccessDeniedReasonNotActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReleasePoliciesAccessDeniedReasonNotActionsList>;
+export const ReleasePoliciesAccessDeniedReasonNotActionsList =
+  FeatureFlagTagsList as any as S.Schema<ReleasePoliciesAccessDeniedReasonNotActionsList>;
 
 /** Whether this statement should allow or deny actions on the resources. */
 export type ReleasePoliciesAccessDeniedReasonEffect = "allow" | "deny";
@@ -18848,27 +18212,23 @@ export const ReleasePoliciesAccessDeniedList = /*@__PURE__*/ S.Array(
 
 /** Resource specifier strings */
 export type ReleasePoliciesAccessAllowedReasonResourcesList = Array<string>;
-export const ReleasePoliciesAccessAllowedReasonResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReleasePoliciesAccessAllowedReasonResourcesList>;
+export const ReleasePoliciesAccessAllowedReasonResourcesList =
+  FeatureFlagTagsList as any as S.Schema<ReleasePoliciesAccessAllowedReasonResourcesList>;
 
 /** Targeted resources are the resources NOT in this list. The <code>resources</code> and <code>notActions</code> fields must be empty to use this field. */
 export type ReleasePoliciesAccessAllowedReasonNotResourcesList = Array<string>;
-export const ReleasePoliciesAccessAllowedReasonNotResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReleasePoliciesAccessAllowedReasonNotResourcesList>;
+export const ReleasePoliciesAccessAllowedReasonNotResourcesList =
+  FeatureFlagTagsList as any as S.Schema<ReleasePoliciesAccessAllowedReasonNotResourcesList>;
 
 /** Actions to perform on a resource */
 export type ReleasePoliciesAccessAllowedReasonActionsList = Array<string>;
-export const ReleasePoliciesAccessAllowedReasonActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReleasePoliciesAccessAllowedReasonActionsList>;
+export const ReleasePoliciesAccessAllowedReasonActionsList =
+  FeatureFlagTagsList as any as S.Schema<ReleasePoliciesAccessAllowedReasonActionsList>;
 
 /** Targeted actions are the actions NOT in this list. The <code>actions</code> and <code>notResources</code> fields must be empty to use this field. */
 export type ReleasePoliciesAccessAllowedReasonNotActionsList = Array<string>;
-export const ReleasePoliciesAccessAllowedReasonNotActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReleasePoliciesAccessAllowedReasonNotActionsList>;
+export const ReleasePoliciesAccessAllowedReasonNotActionsList =
+  FeatureFlagTagsList as any as S.Schema<ReleasePoliciesAccessAllowedReasonNotActionsList>;
 
 /** Whether this statement should allow or deny actions on the resources. */
 export type ReleasePoliciesAccessAllowedReasonEffect = "allow" | "deny";
@@ -18931,15 +18291,13 @@ export const ReleasePoliciesAccess = /*@__PURE__*/ S.suspend(() =>
 
 /** List of environment keys this policy applies to */
 export type ReleasePolicyScopeEnvironmentKeysList = Array<string>;
-export const ReleasePolicyScopeEnvironmentKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReleasePolicyScopeEnvironmentKeysList>;
+export const ReleasePolicyScopeEnvironmentKeysList =
+  FeatureFlagTagsList as any as S.Schema<ReleasePolicyScopeEnvironmentKeysList>;
 
 /** List of flag tag keys this policy applies to */
 export type ReleasePolicyScopeFlagTagKeysList = Array<string>;
-export const ReleasePolicyScopeFlagTagKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReleasePolicyScopeFlagTagKeysList>;
+export const ReleasePolicyScopeFlagTagKeysList =
+  FeatureFlagTagsList as any as S.Schema<ReleasePolicyScopeFlagTagKeysList>;
 
 export interface ReleasePolicyScope {
   /** List of environment keys this policy applies to */
@@ -18960,15 +18318,13 @@ export const ReleaseMethod = S.String;
 
 /** List of metric keys */
 export type GuardedReleaseConfigMetricKeysList = Array<string>;
-export const GuardedReleaseConfigMetricKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GuardedReleaseConfigMetricKeysList>;
+export const GuardedReleaseConfigMetricKeysList =
+  FeatureFlagTagsList as any as S.Schema<GuardedReleaseConfigMetricKeysList>;
 
 /** List of metric group keys */
 export type GuardedReleaseConfigMetricGroupKeysList = Array<string>;
-export const GuardedReleaseConfigMetricGroupKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GuardedReleaseConfigMetricGroupKeysList>;
+export const GuardedReleaseConfigMetricGroupKeysList =
+  FeatureFlagTagsList as any as S.Schema<GuardedReleaseConfigMetricGroupKeysList>;
 
 export interface ReleasePolicyStage {
   allocation: number;
@@ -19015,9 +18371,8 @@ export const GuardedReleaseConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** List of stages */
 export type ProgressiveReleaseConfigStagesList = Array<ReleasePolicyStage>;
-export const ProgressiveReleaseConfigStagesList = /*@__PURE__*/ S.Array(
-  ReleasePolicyStage,
-) as any as S.Schema<ProgressiveReleaseConfigStagesList>;
+export const ProgressiveReleaseConfigStagesList =
+  GuardedReleaseConfigStagesList as any as S.Schema<ProgressiveReleaseConfigStagesList>;
 
 /** Configuration for progressive releases */
 export interface ProgressiveReleaseConfig {
@@ -19120,10 +18475,8 @@ export const GetRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRepositoriesRequest" }) as any as S.Schema<GetRepositoriesRequest>;
 
 export type RepositoryCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const RepositoryCollectionRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<RepositoryCollectionRepLinksMap>;
+export const RepositoryCollectionRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<RepositoryCollectionRepLinksMap>;
 
 /** The type of repository */
 export type RepositoryRepType = "bitbucket" | "custom" | "github" | "gitlab";
@@ -19131,15 +18484,11 @@ export const RepositoryRepType = S.String;
 
 /** An array of the repository's branches that have been scanned for code references */
 export type RepositoryRepBranchesList = Array<BranchRep>;
-export const RepositoryRepBranchesList = /*@__PURE__*/ S.Array(
-  BranchRep,
-) as any as S.Schema<RepositoryRepBranchesList>;
+export const RepositoryRepBranchesList =
+  BranchCollectionRepItemsList as any as S.Schema<RepositoryRepBranchesList>;
 
 export type RepositoryRepLinksMap = { [key: string]: unknown | undefined };
-export const RepositoryRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<RepositoryRepLinksMap>;
+export const RepositoryRepLinksMap = UrlMatcher as any as S.Schema<RepositoryRepLinksMap>;
 
 export interface RepositoryRep {
   /** The repository name */
@@ -19213,10 +18562,8 @@ export const GetRootRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRootRequest" }) as any as S.Schema<GetRootRequest>;
 
 export type RootResponseLinksMap = { [key: string]: Link | undefined };
-export const RootResponseLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<RootResponseLinksMap>;
+export const RootResponseLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<RootResponseLinksMap>;
 
 export interface RootResponse {
   links: RootResponseLinksMap;
@@ -19452,16 +18799,12 @@ export const GetSdkVersionsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSdkVersionsDetailsRequest>;
 
 export type GetSdkVersionsDetailsResponseBodyList = Array<SdkVersionDetailsRep>;
-export const GetSdkVersionsDetailsResponseBodyList = /*@__PURE__*/ S.Array(
-  SdkVersionDetailsRep,
-) as any as S.Schema<GetSdkVersionsDetailsResponseBodyList>;
+export const GetSdkVersionsDetailsResponseBodyList =
+  GetSdkAllVersionsResponseBodyList as any as S.Schema<GetSdkVersionsDetailsResponseBodyList>;
 
 export type GetSdkVersionsDetailsResponse = GetSdkVersionsDetailsResponseBodyList;
-export const GetSdkVersionsDetailsResponse = /*@__PURE__*/ S.suspend(() =>
-  GetSdkVersionsDetailsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetSdkVersionsDetailsResponse",
-}) as any as S.Schema<GetSdkVersionsDetailsResponse>;
+export const GetSdkVersionsDetailsResponse =
+  GetSdkAllVersionsResponse as any as S.Schema<GetSdkVersionsDetailsResponse>;
 
 export interface GetSegmentRequest {
   /** The project key */
@@ -19590,10 +18933,8 @@ export const UserSegmentsItemsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type UserSegmentsLinksMap = { [key: string]: Link | undefined };
-export const UserSegmentsLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<UserSegmentsLinksMap>;
+export const UserSegmentsLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<UserSegmentsLinksMap>;
 
 export interface UserSegments {
   /** An array of segments */
@@ -19661,34 +19002,26 @@ export const GetServiceConnectionsUsageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type SeriesListRepFloatLinksMap = { [key: string]: unknown | undefined };
-export const SeriesListRepFloatLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SeriesListRepFloatLinksMap>;
+export const SeriesListRepFloatLinksMap = UrlMatcher as any as S.Schema<SeriesListRepFloatLinksMap>;
 
 /** Metadata about each series */
 export type SeriesListRepFloatMetadataList = Array<SeriesMetadataRep>;
-export const SeriesListRepFloatMetadataList = /*@__PURE__*/ S.Array(
-  SeriesMetadataRep,
-) as any as S.Schema<SeriesListRepFloatMetadataList>;
+export const SeriesListRepFloatMetadataList =
+  CreateTriggerWorkflowRequestInstructionsList as any as S.Schema<SeriesListRepFloatMetadataList>;
 
 export type SeriesTimeSliceRepFloat = { [key: string]: number | undefined };
-export const SeriesTimeSliceRepFloat = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<SeriesTimeSliceRepFloat>;
+export const SeriesTimeSliceRepFloat =
+  SeriesTimeSliceRep as any as S.Schema<SeriesTimeSliceRepFloat>;
 
 /** An array of data points with timestamps. Each element of the array is an object with a 'time' field, whose value is the timestamp, and one or more key fields. If there are multiple key fields, they are labeled '0', '1', and so on, and are explained in the <code>metadata</code>. */
 export type SeriesListRepFloatSeriesList = Array<SeriesTimeSliceRepFloat>;
-export const SeriesListRepFloatSeriesList = /*@__PURE__*/ S.Array(
-  SeriesTimeSliceRepFloat,
-) as any as S.Schema<SeriesListRepFloatSeriesList>;
+export const SeriesListRepFloatSeriesList =
+  SeriesListRepSeriesList as any as S.Schema<SeriesListRepFloatSeriesList>;
 
 /** Cumulative projected usage by day for the full billing period, when available. Each element matches the structure of <code>series</code>: an object with a 'time' field and a '0' value field. The projected (non-actual) portion begins where the actual <code>series</code> ends. */
 export type SeriesListRepFloatProjectedSeriesList = Array<SeriesTimeSliceRepFloat>;
-export const SeriesListRepFloatProjectedSeriesList = /*@__PURE__*/ S.Array(
-  SeriesTimeSliceRepFloat,
-) as any as S.Schema<SeriesListRepFloatProjectedSeriesList>;
+export const SeriesListRepFloatProjectedSeriesList =
+  SeriesListRepSeriesList as any as S.Schema<SeriesListRepFloatProjectedSeriesList>;
 
 export interface SeriesListRepFloat {
   /** The location and content type of related resources */
@@ -19760,10 +19093,8 @@ export const StatisticRepType = S.String;
 
 /** The location and content type of related resources */
 export type StatisticRepLinksMap = { [key: string]: Link | undefined };
-export const StatisticRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<StatisticRepLinksMap>;
+export const StatisticRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<StatisticRepLinksMap>;
 
 export interface StatisticRep {
   /** The repository name */
@@ -19818,10 +19149,8 @@ export const StatisticCollectionRepFlagsMap = /*@__PURE__*/ S.Record(
 
 /** The location and content type of related resources */
 export type StatisticCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const StatisticCollectionRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<StatisticCollectionRepLinksMap>;
+export const StatisticCollectionRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<StatisticCollectionRepLinksMap>;
 
 export interface StatisticCollectionRep {
   /** A map of flag keys to a list of code reference statistics for each code repository in which the flag key appears */
@@ -19896,10 +19225,7 @@ export const GetStreamUsageSdkversionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type SdkVersionListRepLinksMap = { [key: string]: unknown | undefined };
-export const SdkVersionListRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SdkVersionListRepLinksMap>;
+export const SdkVersionListRepLinksMap = UrlMatcher as any as S.Schema<SdkVersionListRepLinksMap>;
 
 export interface SdkVersionRep {
   /** The SDK name, or "Unknown" */
@@ -19959,10 +19285,8 @@ export const GetSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSubscriptionsRequest" }) as any as S.Schema<GetSubscriptionsRequest>;
 
 export type IntegrationsLinksMap = { [key: string]: Link | undefined };
-export const IntegrationsLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<IntegrationsLinksMap>;
+export const IntegrationsLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<IntegrationsLinksMap>;
 
 export type IntegrationsItemsList = Array<Integration>;
 export const IntegrationsItemsList = /*@__PURE__*/ S.Array(
@@ -19983,9 +19307,8 @@ export const Integrations = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Integrations" }) as any as S.Schema<Integrations>;
 
 export type GetTagsRequestKindList = Array<string>;
-export const GetTagsRequestKindList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetTagsRequestKindList>;
+export const GetTagsRequestKindList =
+  FeatureFlagTagsList as any as S.Schema<GetTagsRequestKindList>;
 
 export interface GetTagsRequest {
   /** Fetch tags associated with the specified resource type. Options are `flag`, `project`, `environment`, `segment`, `metric`, `metric-data-source`, `aiconfig`, and `view`. Returns all types by default. */
@@ -20014,18 +19337,15 @@ export const GetTagsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of tags */
 export type TagsCollectionItemsList = Array<string>;
-export const TagsCollectionItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TagsCollectionItemsList>;
+export const TagsCollectionItemsList =
+  FeatureFlagTagsList as any as S.Schema<TagsCollectionItemsList>;
 
 export type TagsLink = Link;
 export const TagsLink = Link;
 
 export type TagsCollectionLinksMap = { [key: string]: Link | undefined };
-export const TagsCollectionLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<TagsCollectionLinksMap>;
+export const TagsCollectionLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<TagsCollectionLinksMap>;
 
 export interface TagsCollection {
   /** List of tags */
@@ -20117,10 +19437,8 @@ export const TeamsItemsList = /*@__PURE__*/ S.Array(Team) as any as S.Schema<Tea
 
 /** The location and content type of related resources */
 export type TeamsLinksMap = { [key: string]: Link | undefined };
-export const TeamsLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<TeamsLinksMap>;
+export const TeamsLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<TeamsLinksMap>;
 
 export interface Teams {
   /** An array of teams */
@@ -20169,10 +19487,8 @@ export type TokensItemsList = Array<Token>;
 export const TokensItemsList = /*@__PURE__*/ S.Array(Token) as any as S.Schema<TokensItemsList>;
 
 export type TokensLinksMap = { [key: string]: Link | undefined };
-export const TokensLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<TokensLinksMap>;
+export const TokensLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<TokensLinksMap>;
 
 export interface Tokens {
   /** An array of access tokens */
@@ -20248,10 +19564,8 @@ export const TriggerWorkflowCollectionRepItemsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type TriggerWorkflowCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const TriggerWorkflowCollectionRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<TriggerWorkflowCollectionRepLinksMap>;
+export const TriggerWorkflowCollectionRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<TriggerWorkflowCollectionRepLinksMap>;
 
 export interface TriggerWorkflowCollectionRep {
   /** An array of flag triggers */
@@ -20498,10 +19812,8 @@ export const CustomWorkflowsListingOutputItemsList = /*@__PURE__*/ S.Array(
 
 /** The location and content type of related resources */
 export type CustomWorkflowsListingOutputLinksMap = { [key: string]: Link | undefined };
-export const CustomWorkflowsListingOutputLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<CustomWorkflowsListingOutputLinksMap>;
+export const CustomWorkflowsListingOutputLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<CustomWorkflowsListingOutputLinksMap>;
 
 export interface CustomWorkflowsListingOutput {
   /** An array of workflows */
@@ -20557,9 +19869,8 @@ export const LinkResourceRequestResourceType = S.String;
 
 /** Keys of the resources (flags, segments) to link/unlink */
 export type ViewLinkRequestKeysKeysList = Array<string>;
-export const ViewLinkRequestKeysKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ViewLinkRequestKeysKeysList>;
+export const ViewLinkRequestKeysKeysList =
+  FeatureFlagTagsList as any as S.Schema<ViewLinkRequestKeysKeysList>;
 
 export interface ViewLinkRequestKeys {
   /** Keys of the resources (flags, segments) to link/unlink */
@@ -20838,40 +20149,28 @@ export type AgentOptimizationResultActivity =
 export const AgentOptimizationResultActivity = S.String;
 
 export type AgentOptimizationResultParametersMap = { [key: string]: unknown | undefined };
-export const AgentOptimizationResultParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AgentOptimizationResultParametersMap>;
+export const AgentOptimizationResultParametersMap =
+  UrlMatcher as any as S.Schema<AgentOptimizationResultParametersMap>;
 
 export type AgentOptimizationResultVariationMap = { [key: string]: unknown | undefined };
-export const AgentOptimizationResultVariationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AgentOptimizationResultVariationMap>;
+export const AgentOptimizationResultVariationMap =
+  UrlMatcher as any as S.Schema<AgentOptimizationResultVariationMap>;
 
 export type AgentOptimizationResultScoresMap = { [key: string]: unknown | undefined };
-export const AgentOptimizationResultScoresMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AgentOptimizationResultScoresMap>;
+export const AgentOptimizationResultScoresMap =
+  UrlMatcher as any as S.Schema<AgentOptimizationResultScoresMap>;
 
 export type AgentOptimizationResultGenerationTokensMap = { [key: string]: unknown | undefined };
-export const AgentOptimizationResultGenerationTokensMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AgentOptimizationResultGenerationTokensMap>;
+export const AgentOptimizationResultGenerationTokensMap =
+  UrlMatcher as any as S.Schema<AgentOptimizationResultGenerationTokensMap>;
 
 export type AgentOptimizationResultEvaluationTokensMap = { [key: string]: unknown | undefined };
-export const AgentOptimizationResultEvaluationTokensMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AgentOptimizationResultEvaluationTokensMap>;
+export const AgentOptimizationResultEvaluationTokensMap =
+  UrlMatcher as any as S.Schema<AgentOptimizationResultEvaluationTokensMap>;
 
 export type AgentOptimizationResultEvaluationLatenciesMap = { [key: string]: unknown | undefined };
-export const AgentOptimizationResultEvaluationLatenciesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AgentOptimizationResultEvaluationLatenciesMap>;
+export const AgentOptimizationResultEvaluationLatenciesMap =
+  UrlMatcher as any as S.Schema<AgentOptimizationResultEvaluationLatenciesMap>;
 
 export interface AgentOptimizationResult {
   _access?: AiConfigsAccess;
@@ -21436,9 +20735,8 @@ export const ListModelConfigVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListModelConfigVersionsRequest>;
 
 export type ModelConfigsItemsList = Array<ModelConfig>;
-export const ModelConfigsItemsList = /*@__PURE__*/ S.Array(
-  ModelConfig,
-) as any as S.Schema<ModelConfigsItemsList>;
+export const ModelConfigsItemsList =
+  ListModelConfigsResponseBodyList as any as S.Schema<ModelConfigsItemsList>;
 
 export interface ModelConfigs {
   _links?: PaginatedLinks;
@@ -21493,21 +20791,11 @@ export interface SnippetReference {
   /** The version of the snippet being referenced. */
   resourceVersion: number;
 }
-export const SnippetReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aiConfigKey: S.String,
-    aiConfigName: S.String,
-    variationId: S.String,
-    variationKey: S.String,
-    variationName: S.String,
-    resourceVersion: S.Number,
-  }),
-).annotate({ identifier: "SnippetReference" }) as any as S.Schema<SnippetReference>;
+export const SnippetReference = AgentSkillReference as any as S.Schema<SnippetReference>;
 
 export type SnippetReferencesItemsList = Array<SnippetReference>;
-export const SnippetReferencesItemsList = /*@__PURE__*/ S.Array(
-  SnippetReference,
-) as any as S.Schema<SnippetReferencesItemsList>;
+export const SnippetReferencesItemsList =
+  AgentSkillReferencesItemsList as any as S.Schema<SnippetReferencesItemsList>;
 
 export interface SnippetReferences {
   _links?: PaginatedLinks;
@@ -21519,15 +20807,7 @@ export interface SnippetReferences {
   /** The total number of references. */
   totalCount: number;
 }
-export const SnippetReferences = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _links: S.optional(PaginatedLinks),
-    resourceKey: S.String,
-    resourceType: S.String,
-    items: SnippetReferencesItemsList,
-    totalCount: S.Number,
-  }),
-).annotate({ identifier: "SnippetReferences" }) as any as S.Schema<SnippetReferences>;
+export const SnippetReferences = AgentSkillReferences as any as S.Schema<SnippetReferences>;
 
 export interface ListPromptSnippetsRequest {
   projectKey: string;
@@ -21625,9 +20905,8 @@ export const PatchAdaptiveTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The edges in the graph. If present, rootConfigKey must also be present. Replaces all existing edges. */
 export type PatchAgentGraphRequestEdgesList = Array<AgentGraphEdge>;
-export const PatchAgentGraphRequestEdgesList = /*@__PURE__*/ S.Array(
-  AgentGraphEdge,
-) as any as S.Schema<PatchAgentGraphRequestEdgesList>;
+export const PatchAgentGraphRequestEdgesList =
+  AgentGraphEdgesList as any as S.Schema<PatchAgentGraphRequestEdgesList>;
 
 export interface PatchAgentGraphRequest {
   projectKey: string;
@@ -21665,44 +20944,36 @@ export const PatchAgentGraphRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchAgentGraphRequest" }) as any as S.Schema<PatchAgentGraphRequest>;
 
 export type PatchAgentOptimizationRequestModelChoicesList = Array<string>;
-export const PatchAgentOptimizationRequestModelChoicesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PatchAgentOptimizationRequestModelChoicesList>;
+export const PatchAgentOptimizationRequestModelChoicesList =
+  FeatureFlagTagsList as any as S.Schema<PatchAgentOptimizationRequestModelChoicesList>;
 
 export type PatchAgentOptimizationRequestVariableChoicesItemMap = {
   [key: string]: unknown | undefined;
 };
-export const PatchAgentOptimizationRequestVariableChoicesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PatchAgentOptimizationRequestVariableChoicesItemMap>;
+export const PatchAgentOptimizationRequestVariableChoicesItemMap =
+  UrlMatcher as any as S.Schema<PatchAgentOptimizationRequestVariableChoicesItemMap>;
 
 export type PatchAgentOptimizationRequestVariableChoicesList =
   Array<PatchAgentOptimizationRequestVariableChoicesItemMap>;
-export const PatchAgentOptimizationRequestVariableChoicesList = /*@__PURE__*/ S.Array(
-  PatchAgentOptimizationRequestVariableChoicesItemMap,
-) as any as S.Schema<PatchAgentOptimizationRequestVariableChoicesList>;
+export const PatchAgentOptimizationRequestVariableChoicesList =
+  CreateTriggerWorkflowRequestInstructionsList as any as S.Schema<PatchAgentOptimizationRequestVariableChoicesList>;
 
 export type PatchAgentOptimizationRequestAcceptanceStatementsList =
   Array<AgentOptimizationAcceptanceStatement>;
-export const PatchAgentOptimizationRequestAcceptanceStatementsList = /*@__PURE__*/ S.Array(
-  AgentOptimizationAcceptanceStatement,
-) as any as S.Schema<PatchAgentOptimizationRequestAcceptanceStatementsList>;
+export const PatchAgentOptimizationRequestAcceptanceStatementsList =
+  AgentOptimizationAcceptanceStatementsList as any as S.Schema<PatchAgentOptimizationRequestAcceptanceStatementsList>;
 
 export type PatchAgentOptimizationRequestJudgesList = Array<AgentOptimizationJudge>;
-export const PatchAgentOptimizationRequestJudgesList = /*@__PURE__*/ S.Array(
-  AgentOptimizationJudge,
-) as any as S.Schema<PatchAgentOptimizationRequestJudgesList>;
+export const PatchAgentOptimizationRequestJudgesList =
+  AgentOptimizationJudgesList as any as S.Schema<PatchAgentOptimizationRequestJudgesList>;
 
 export type PatchAgentOptimizationRequestUserInputOptionsList = Array<string>;
-export const PatchAgentOptimizationRequestUserInputOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PatchAgentOptimizationRequestUserInputOptionsList>;
+export const PatchAgentOptimizationRequestUserInputOptionsList =
+  FeatureFlagTagsList as any as S.Schema<PatchAgentOptimizationRequestUserInputOptionsList>;
 
 export type PatchAgentOptimizationRequestGroundTruthResponsesList = Array<string>;
-export const PatchAgentOptimizationRequestGroundTruthResponsesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PatchAgentOptimizationRequestGroundTruthResponsesList>;
+export const PatchAgentOptimizationRequestGroundTruthResponsesList =
+  FeatureFlagTagsList as any as S.Schema<PatchAgentOptimizationRequestGroundTruthResponsesList>;
 
 export interface PatchAgentOptimizationRequest {
   projectKey: string;
@@ -21756,40 +21027,30 @@ export const PatchAgentOptimizationRequest = /*@__PURE__*/ S.suspend(() =>
 export type PatchAgentOptimizationResultRequestVariationMap = {
   [key: string]: unknown | undefined;
 };
-export const PatchAgentOptimizationResultRequestVariationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PatchAgentOptimizationResultRequestVariationMap>;
+export const PatchAgentOptimizationResultRequestVariationMap =
+  UrlMatcher as any as S.Schema<PatchAgentOptimizationResultRequestVariationMap>;
 
 export type PatchAgentOptimizationResultRequestScoresMap = { [key: string]: unknown | undefined };
-export const PatchAgentOptimizationResultRequestScoresMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PatchAgentOptimizationResultRequestScoresMap>;
+export const PatchAgentOptimizationResultRequestScoresMap =
+  UrlMatcher as any as S.Schema<PatchAgentOptimizationResultRequestScoresMap>;
 
 export type PatchAgentOptimizationResultRequestGenerationTokensMap = {
   [key: string]: unknown | undefined;
 };
-export const PatchAgentOptimizationResultRequestGenerationTokensMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PatchAgentOptimizationResultRequestGenerationTokensMap>;
+export const PatchAgentOptimizationResultRequestGenerationTokensMap =
+  UrlMatcher as any as S.Schema<PatchAgentOptimizationResultRequestGenerationTokensMap>;
 
 export type PatchAgentOptimizationResultRequestEvaluationTokensMap = {
   [key: string]: unknown | undefined;
 };
-export const PatchAgentOptimizationResultRequestEvaluationTokensMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PatchAgentOptimizationResultRequestEvaluationTokensMap>;
+export const PatchAgentOptimizationResultRequestEvaluationTokensMap =
+  UrlMatcher as any as S.Schema<PatchAgentOptimizationResultRequestEvaluationTokensMap>;
 
 export type PatchAgentOptimizationResultRequestEvaluationLatenciesMap = {
   [key: string]: unknown | undefined;
 };
-export const PatchAgentOptimizationResultRequestEvaluationLatenciesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PatchAgentOptimizationResultRequestEvaluationLatenciesMap>;
+export const PatchAgentOptimizationResultRequestEvaluationLatenciesMap =
+  UrlMatcher as any as S.Schema<PatchAgentOptimizationResultRequestEvaluationLatenciesMap>;
 
 export interface PatchAgentOptimizationResultRequest {
   projectKey: string;
@@ -21833,9 +21094,8 @@ export const PatchAgentOptimizationResultRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchAgentOptimizationResultRequest>;
 
 export type PatchAgentSkillRequestTagsList = Array<string>;
-export const PatchAgentSkillRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PatchAgentSkillRequestTagsList>;
+export const PatchAgentSkillRequestTagsList =
+  FeatureFlagTagsList as any as S.Schema<PatchAgentSkillRequestTagsList>;
 
 export interface PatchAgentSkillRequest {
   projectKey: string;
@@ -21868,9 +21128,8 @@ export const PatchAgentSkillRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchAgentSkillRequest" }) as any as S.Schema<PatchAgentSkillRequest>;
 
 export type PatchAIConfigRequestTagsList = Array<string>;
-export const PatchAIConfigRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PatchAIConfigRequestTagsList>;
+export const PatchAIConfigRequestTagsList =
+  FeatureFlagTagsList as any as S.Schema<PatchAIConfigRequestTagsList>;
 
 export interface PatchAIConfigRequest {
   projectKey: string;
@@ -21911,16 +21170,13 @@ export const PatchAIConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export type PatchAIConfigTargetingRequestInstructionsItemMap = {
   [key: string]: unknown | undefined;
 };
-export const PatchAIConfigTargetingRequestInstructionsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PatchAIConfigTargetingRequestInstructionsItemMap>;
+export const PatchAIConfigTargetingRequestInstructionsItemMap =
+  UrlMatcher as any as S.Schema<PatchAIConfigTargetingRequestInstructionsItemMap>;
 
 export type PatchAIConfigTargetingRequestInstructionsList =
   Array<PatchAIConfigTargetingRequestInstructionsItemMap>;
-export const PatchAIConfigTargetingRequestInstructionsList = /*@__PURE__*/ S.Array(
-  PatchAIConfigTargetingRequestInstructionsItemMap,
-) as any as S.Schema<PatchAIConfigTargetingRequestInstructionsList>;
+export const PatchAIConfigTargetingRequestInstructionsList =
+  CreateTriggerWorkflowRequestInstructionsList as any as S.Schema<PatchAIConfigTargetingRequestInstructionsList>;
 
 export interface PatchAIConfigTargetingRequest {
   projectKey: string;
@@ -21948,16 +21204,13 @@ export const PatchAIConfigTargetingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchAIConfigTargetingRequest>;
 
 export type PatchAIConfigVariationRequestMessagesList = Array<Message>;
-export const PatchAIConfigVariationRequestMessagesList = /*@__PURE__*/ S.Array(
-  Message,
-) as any as S.Schema<PatchAIConfigVariationRequestMessagesList>;
+export const PatchAIConfigVariationRequestMessagesList =
+  AIConfigVariationMessagesList as any as S.Schema<PatchAIConfigVariationRequestMessagesList>;
 
 /** JSON Schema defining the structured output format for the variation. */
 export type PatchAIConfigVariationRequestOutputFormatMap = { [key: string]: unknown | undefined };
-export const PatchAIConfigVariationRequestOutputFormatMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PatchAIConfigVariationRequestOutputFormatMap>;
+export const PatchAIConfigVariationRequestOutputFormatMap =
+  UrlMatcher as any as S.Schema<PatchAIConfigVariationRequestOutputFormatMap>;
 
 export interface VariationToolPost {
   /** The key of the tool to use. */
@@ -21965,24 +21218,17 @@ export interface VariationToolPost {
   /** The version of the tool. */
   version: number;
 }
-export const VariationToolPost = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    version: S.Number,
-  }),
-).annotate({ identifier: "VariationToolPost" }) as any as S.Schema<VariationToolPost>;
+export const VariationToolPost = VariationSkill as any as S.Schema<VariationToolPost>;
 
 /** List of tools to use for this variation. The latest version of the tool will be used. */
 export type PatchAIConfigVariationRequestToolsList = Array<VariationToolPost>;
-export const PatchAIConfigVariationRequestToolsList = /*@__PURE__*/ S.Array(
-  VariationToolPost,
-) as any as S.Schema<PatchAIConfigVariationRequestToolsList>;
+export const PatchAIConfigVariationRequestToolsList =
+  AIConfigVariationSkillsList as any as S.Schema<PatchAIConfigVariationRequestToolsList>;
 
 /** List of tool keys to use for this variation. The latest version of the tool will be used. */
 export type PatchAIConfigVariationRequestToolKeysList = Array<string>;
-export const PatchAIConfigVariationRequestToolKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PatchAIConfigVariationRequestToolKeysList>;
+export const PatchAIConfigVariationRequestToolKeysList =
+  FeatureFlagTagsList as any as S.Schema<PatchAIConfigVariationRequestToolKeysList>;
 
 export interface VariationSkillPost {
   /** The key of the agent skill to attach. */
@@ -21990,18 +21236,12 @@ export interface VariationSkillPost {
   /** The version of the skill to use. */
   version: number;
 }
-export const VariationSkillPost = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    version: S.Number,
-  }),
-).annotate({ identifier: "VariationSkillPost" }) as any as S.Schema<VariationSkillPost>;
+export const VariationSkillPost = VariationSkill as any as S.Schema<VariationSkillPost>;
 
 /** List of agent skills to attach to this variation. Replaces the current attachments. */
 export type PatchAIConfigVariationRequestSkillsList = Array<VariationSkillPost>;
-export const PatchAIConfigVariationRequestSkillsList = /*@__PURE__*/ S.Array(
-  VariationSkillPost,
-) as any as S.Schema<PatchAIConfigVariationRequestSkillsList>;
+export const PatchAIConfigVariationRequestSkillsList =
+  AIConfigVariationSkillsList as any as S.Schema<PatchAIConfigVariationRequestSkillsList>;
 
 export interface PatchAIConfigVariationRequest {
   projectKey: string;
@@ -22064,9 +21304,8 @@ export const PatchAIConfigVariationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchAIConfigVariationRequest>;
 
 export type PatchAIToolRequestTagsList = Array<string>;
-export const PatchAIToolRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PatchAIToolRequestTagsList>;
+export const PatchAIToolRequestTagsList =
+  FeatureFlagTagsList as any as S.Schema<PatchAIToolRequestTagsList>;
 
 export interface PatchAIToolRequest {
   projectKey: string;
@@ -22097,18 +21336,15 @@ export const PatchAIToolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Require approval only on flags with the provided tags. Otherwise all flags will require approval. */
 export type PatchApprovalRequestSettingsRequestRequiredApprovalTagsList = Array<string>;
-export const PatchApprovalRequestSettingsRequestRequiredApprovalTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PatchApprovalRequestSettingsRequestRequiredApprovalTagsList>;
+export const PatchApprovalRequestSettingsRequestRequiredApprovalTagsList =
+  FeatureFlagTagsList as any as S.Schema<PatchApprovalRequestSettingsRequestRequiredApprovalTagsList>;
 
 /** Arbitrary service-specific configuration */
 export type PatchApprovalRequestSettingsRequestServiceConfigMap = {
   [key: string]: unknown | undefined;
 };
-export const PatchApprovalRequestSettingsRequestServiceConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PatchApprovalRequestSettingsRequestServiceConfigMap>;
+export const PatchApprovalRequestSettingsRequestServiceConfigMap =
+  UrlMatcher as any as S.Schema<PatchApprovalRequestSettingsRequestServiceConfigMap>;
 
 export interface PatchApprovalRequestSettingsRequest {
   projectKey: string;
@@ -22162,11 +21398,8 @@ export const PatchApprovalRequestSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchApprovalRequestSettingsRequest>;
 
 export type PatchApprovalRequestSettingsResponse = ApprovalRequestSettings;
-export const PatchApprovalRequestSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  ApprovalRequestSettings.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "PatchApprovalRequestSettingsResponse",
-}) as any as S.Schema<PatchApprovalRequestSettingsResponse>;
+export const PatchApprovalRequestSettingsResponse =
+  GetApprovalRequestSettingsResponse as any as S.Schema<PatchApprovalRequestSettingsResponse>;
 
 export interface PatchOperation {
   /** The type of operation to perform */
@@ -22283,9 +21516,8 @@ export const PatchExperimentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The instructions to perform when updating */
 export type PatchExpiringTargetsRequestInstructionsList = Array<Instruction>;
-export const PatchExpiringTargetsRequestInstructionsList = /*@__PURE__*/ S.Array(
-  Instruction,
-) as any as S.Schema<PatchExpiringTargetsRequestInstructionsList>;
+export const PatchExpiringTargetsRequestInstructionsList =
+  CreateTriggerWorkflowRequestInstructionsList as any as S.Schema<PatchExpiringTargetsRequestInstructionsList>;
 
 export interface PatchExpiringTargetsRequest {
   /** The project key */
@@ -22319,16 +21551,13 @@ export const PatchExpiringTargetsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of the results from each instruction */
 export type ExpiringTargetPatchResponseItemsList = Array<ExpiringTarget>;
-export const ExpiringTargetPatchResponseItemsList = /*@__PURE__*/ S.Array(
-  ExpiringTarget,
-) as any as S.Schema<ExpiringTargetPatchResponseItemsList>;
+export const ExpiringTargetPatchResponseItemsList =
+  ExpiringTargetGetResponseItemsList as any as S.Schema<ExpiringTargetPatchResponseItemsList>;
 
 /** The location and content type of related resources */
 export type ExpiringTargetPatchResponseLinksMap = { [key: string]: Link | undefined };
-export const ExpiringTargetPatchResponseLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ExpiringTargetPatchResponseLinksMap>;
+export const ExpiringTargetPatchResponseLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ExpiringTargetPatchResponseLinksMap>;
 
 export interface ExpiringTargetError {
   /** The index of the PATCH instruction where the error occurred */
@@ -22448,9 +21677,8 @@ export const PatchExpiringTargetsForSegmentRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The instructions to perform when updating */
 export type PatchExpiringUserTargetsRequestInstructionsList = Array<Instruction>;
-export const PatchExpiringUserTargetsRequestInstructionsList = /*@__PURE__*/ S.Array(
-  Instruction,
-) as any as S.Schema<PatchExpiringUserTargetsRequestInstructionsList>;
+export const PatchExpiringUserTargetsRequestInstructionsList =
+  CreateTriggerWorkflowRequestInstructionsList as any as S.Schema<PatchExpiringUserTargetsRequestInstructionsList>;
 
 export interface PatchExpiringUserTargetsRequest {
   /** The project key */
@@ -22484,22 +21712,18 @@ export const PatchExpiringUserTargetsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of expiring user targets */
 export type ExpiringUserTargetPatchResponseItemsList = Array<ExpiringUserTargetItem>;
-export const ExpiringUserTargetPatchResponseItemsList = /*@__PURE__*/ S.Array(
-  ExpiringUserTargetItem,
-) as any as S.Schema<ExpiringUserTargetPatchResponseItemsList>;
+export const ExpiringUserTargetPatchResponseItemsList =
+  ExpiringUserTargetGetResponseItemsList as any as S.Schema<ExpiringUserTargetPatchResponseItemsList>;
 
 /** The location and content type of related resources */
 export type ExpiringUserTargetPatchResponseLinksMap = { [key: string]: Link | undefined };
-export const ExpiringUserTargetPatchResponseLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<ExpiringUserTargetPatchResponseLinksMap>;
+export const ExpiringUserTargetPatchResponseLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ExpiringUserTargetPatchResponseLinksMap>;
 
 /** An array of error messages for the failed instructions */
 export type ExpiringUserTargetPatchResponseErrorsList = Array<ExpiringTargetError>;
-export const ExpiringUserTargetPatchResponseErrorsList = /*@__PURE__*/ S.Array(
-  ExpiringTargetError,
-) as any as S.Schema<ExpiringUserTargetPatchResponseErrorsList>;
+export const ExpiringUserTargetPatchResponseErrorsList =
+  ExpiringTargetPatchResponseErrorsList as any as S.Schema<ExpiringUserTargetPatchResponseErrorsList>;
 
 export interface ExpiringUserTargetPatchResponse {
   /** An array of expiring user targets */
@@ -22706,16 +21930,13 @@ export const PatchFlagDefaultsByProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type UpsertPayloadRepLinksMap = { [key: string]: Link | undefined };
-export const UpsertPayloadRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<UpsertPayloadRepLinksMap>;
+export const UpsertPayloadRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<UpsertPayloadRepLinksMap>;
 
 /** A list of default tags for each flag */
 export type UpsertPayloadRepTagsList = Array<string>;
-export const UpsertPayloadRepTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpsertPayloadRepTagsList>;
+export const UpsertPayloadRepTagsList =
+  FeatureFlagTagsList as any as S.Schema<UpsertPayloadRepTagsList>;
 
 export interface BooleanFlagDefaults {
   /** The display name for the true variation, displayed in the LaunchDarkly user interface */
@@ -22945,9 +22166,8 @@ export const PatchMetricGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchMetricGroupRequest" }) as any as S.Schema<PatchMetricGroupRequest>;
 
 export type PatchModelConfigRequestTagsList = Array<string>;
-export const PatchModelConfigRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PatchModelConfigRequestTagsList>;
+export const PatchModelConfigRequestTagsList =
+  FeatureFlagTagsList as any as S.Schema<PatchModelConfigRequestTagsList>;
 
 export interface PatchModelConfigRequest {
   projectKey: string;
@@ -23007,9 +22227,8 @@ export const PatchOAuthClientRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchOAuthClientRequest" }) as any as S.Schema<PatchOAuthClientRequest>;
 
 export type PatchPromptSnippetRequestTagsList = Array<string>;
-export const PatchPromptSnippetRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PatchPromptSnippetRequestTagsList>;
+export const PatchPromptSnippetRequestTagsList =
+  FeatureFlagTagsList as any as S.Schema<PatchPromptSnippetRequestTagsList>;
 
 export interface PatchPromptSnippetRequest {
   projectKey: string;
@@ -23125,9 +22344,8 @@ export const PatchSdkKeyByKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The instructions to perform when updating. This should be an array with objects that look like <code>{"kind": "trigger_action"}</code>. */
 export type PatchTriggerWorkflowRequestInstructionsList = Array<Instruction>;
-export const PatchTriggerWorkflowRequestInstructionsList = /*@__PURE__*/ S.Array(
-  Instruction,
-) as any as S.Schema<PatchTriggerWorkflowRequestInstructionsList>;
+export const PatchTriggerWorkflowRequestInstructionsList =
+  CreateTriggerWorkflowRequestInstructionsList as any as S.Schema<PatchTriggerWorkflowRequestInstructionsList>;
 
 export interface PatchTriggerWorkflowRequest {
   /** The project key */
@@ -23197,9 +22415,8 @@ export const AgentGraphEdgePost = AgentGraphEdge;
 
 /** The edges in the graph. If edges or rootConfigKey is present, both must be present. */
 export type PostAgentGraphRequestEdgesList = Array<AgentGraphEdge>;
-export const PostAgentGraphRequestEdgesList = /*@__PURE__*/ S.Array(
-  AgentGraphEdge,
-) as any as S.Schema<PostAgentGraphRequestEdgesList>;
+export const PostAgentGraphRequestEdgesList =
+  AgentGraphEdgesList as any as S.Schema<PostAgentGraphRequestEdgesList>;
 
 export interface PostAgentGraphRequest {
   projectKey: string;
@@ -23232,44 +22449,36 @@ export const PostAgentGraphRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostAgentGraphRequest" }) as any as S.Schema<PostAgentGraphRequest>;
 
 export type PostAgentOptimizationRequestModelChoicesList = Array<string>;
-export const PostAgentOptimizationRequestModelChoicesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostAgentOptimizationRequestModelChoicesList>;
+export const PostAgentOptimizationRequestModelChoicesList =
+  FeatureFlagTagsList as any as S.Schema<PostAgentOptimizationRequestModelChoicesList>;
 
 export type PostAgentOptimizationRequestVariableChoicesItemMap = {
   [key: string]: unknown | undefined;
 };
-export const PostAgentOptimizationRequestVariableChoicesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PostAgentOptimizationRequestVariableChoicesItemMap>;
+export const PostAgentOptimizationRequestVariableChoicesItemMap =
+  UrlMatcher as any as S.Schema<PostAgentOptimizationRequestVariableChoicesItemMap>;
 
 export type PostAgentOptimizationRequestVariableChoicesList =
   Array<PostAgentOptimizationRequestVariableChoicesItemMap>;
-export const PostAgentOptimizationRequestVariableChoicesList = /*@__PURE__*/ S.Array(
-  PostAgentOptimizationRequestVariableChoicesItemMap,
-) as any as S.Schema<PostAgentOptimizationRequestVariableChoicesList>;
+export const PostAgentOptimizationRequestVariableChoicesList =
+  CreateTriggerWorkflowRequestInstructionsList as any as S.Schema<PostAgentOptimizationRequestVariableChoicesList>;
 
 export type PostAgentOptimizationRequestAcceptanceStatementsList =
   Array<AgentOptimizationAcceptanceStatement>;
-export const PostAgentOptimizationRequestAcceptanceStatementsList = /*@__PURE__*/ S.Array(
-  AgentOptimizationAcceptanceStatement,
-) as any as S.Schema<PostAgentOptimizationRequestAcceptanceStatementsList>;
+export const PostAgentOptimizationRequestAcceptanceStatementsList =
+  AgentOptimizationAcceptanceStatementsList as any as S.Schema<PostAgentOptimizationRequestAcceptanceStatementsList>;
 
 export type PostAgentOptimizationRequestJudgesList = Array<AgentOptimizationJudge>;
-export const PostAgentOptimizationRequestJudgesList = /*@__PURE__*/ S.Array(
-  AgentOptimizationJudge,
-) as any as S.Schema<PostAgentOptimizationRequestJudgesList>;
+export const PostAgentOptimizationRequestJudgesList =
+  AgentOptimizationJudgesList as any as S.Schema<PostAgentOptimizationRequestJudgesList>;
 
 export type PostAgentOptimizationRequestUserInputOptionsList = Array<string>;
-export const PostAgentOptimizationRequestUserInputOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostAgentOptimizationRequestUserInputOptionsList>;
+export const PostAgentOptimizationRequestUserInputOptionsList =
+  FeatureFlagTagsList as any as S.Schema<PostAgentOptimizationRequestUserInputOptionsList>;
 
 export type PostAgentOptimizationRequestGroundTruthResponsesList = Array<string>;
-export const PostAgentOptimizationRequestGroundTruthResponsesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostAgentOptimizationRequestGroundTruthResponsesList>;
+export const PostAgentOptimizationRequestGroundTruthResponsesList =
+  FeatureFlagTagsList as any as S.Schema<PostAgentOptimizationRequestGroundTruthResponsesList>;
 
 export interface PostAgentOptimizationRequest {
   projectKey: string;
@@ -23321,10 +22530,8 @@ export const PostAgentOptimizationRequest = /*@__PURE__*/ S.suspend(() =>
 export type PostAgentOptimizationResultRequestParametersMap = {
   [key: string]: unknown | undefined;
 };
-export const PostAgentOptimizationResultRequestParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PostAgentOptimizationResultRequestParametersMap>;
+export const PostAgentOptimizationResultRequestParametersMap =
+  UrlMatcher as any as S.Schema<PostAgentOptimizationResultRequestParametersMap>;
 
 export interface PostAgentOptimizationResultRequest {
   projectKey: string;
@@ -23358,9 +22565,8 @@ export const PostAgentOptimizationResultRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostAgentOptimizationResultRequest>;
 
 export type PostAgentSkillRequestTagsList = Array<string>;
-export const PostAgentSkillRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostAgentSkillRequestTagsList>;
+export const PostAgentSkillRequestTagsList =
+  FeatureFlagTagsList as any as S.Schema<PostAgentSkillRequestTagsList>;
 
 export interface PostAgentSkillRequest {
   projectKey: string;
@@ -23392,44 +22598,36 @@ export type PostAIConfigRequestMode = "agent" | "completion" | "judge";
 export const PostAIConfigRequestMode = S.String;
 
 export type PostAIConfigRequestTagsList = Array<string>;
-export const PostAIConfigRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostAIConfigRequestTagsList>;
+export const PostAIConfigRequestTagsList =
+  FeatureFlagTagsList as any as S.Schema<PostAIConfigRequestTagsList>;
 
 export type PostAIConfigRequestViewKeysList = Array<string>;
-export const PostAIConfigRequestViewKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostAIConfigRequestViewKeysList>;
+export const PostAIConfigRequestViewKeysList =
+  FeatureFlagTagsList as any as S.Schema<PostAIConfigRequestViewKeysList>;
 
 export type AIConfigVariationPostMessagesList = Array<Message>;
-export const AIConfigVariationPostMessagesList = /*@__PURE__*/ S.Array(
-  Message,
-) as any as S.Schema<AIConfigVariationPostMessagesList>;
+export const AIConfigVariationPostMessagesList =
+  AIConfigVariationMessagesList as any as S.Schema<AIConfigVariationPostMessagesList>;
 
 /** JSON Schema defining the structured output format for the variation. */
 export type AIConfigVariationPostOutputFormatMap = { [key: string]: unknown | undefined };
-export const AIConfigVariationPostOutputFormatMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AIConfigVariationPostOutputFormatMap>;
+export const AIConfigVariationPostOutputFormatMap =
+  UrlMatcher as any as S.Schema<AIConfigVariationPostOutputFormatMap>;
 
 /** List of tools to use for this variation. The latest version of the tool will be used. */
 export type AIConfigVariationPostToolsList = Array<VariationToolPost>;
-export const AIConfigVariationPostToolsList = /*@__PURE__*/ S.Array(
-  VariationToolPost,
-) as any as S.Schema<AIConfigVariationPostToolsList>;
+export const AIConfigVariationPostToolsList =
+  AIConfigVariationSkillsList as any as S.Schema<AIConfigVariationPostToolsList>;
 
 /** List of tool keys to use for this variation. The latest version of the tool will be used. */
 export type AIConfigVariationPostToolKeysList = Array<string>;
-export const AIConfigVariationPostToolKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AIConfigVariationPostToolKeysList>;
+export const AIConfigVariationPostToolKeysList =
+  FeatureFlagTagsList as any as S.Schema<AIConfigVariationPostToolKeysList>;
 
 /** List of agent skills to attach to this variation. */
 export type AIConfigVariationPostSkillsList = Array<VariationSkillPost>;
-export const AIConfigVariationPostSkillsList = /*@__PURE__*/ S.Array(
-  VariationSkillPost,
-) as any as S.Schema<AIConfigVariationPostSkillsList>;
+export const AIConfigVariationPostSkillsList =
+  AIConfigVariationSkillsList as any as S.Schema<AIConfigVariationPostSkillsList>;
 
 export interface AIConfigVariationPost {
   /** Human-readable description of this variation */
@@ -23508,34 +22706,28 @@ export const PostAIConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostAIConfigRequest" }) as any as S.Schema<PostAIConfigRequest>;
 
 export type PostAIConfigVariationRequestMessagesList = Array<Message>;
-export const PostAIConfigVariationRequestMessagesList = /*@__PURE__*/ S.Array(
-  Message,
-) as any as S.Schema<PostAIConfigVariationRequestMessagesList>;
+export const PostAIConfigVariationRequestMessagesList =
+  AIConfigVariationMessagesList as any as S.Schema<PostAIConfigVariationRequestMessagesList>;
 
 /** JSON Schema defining the structured output format for the variation. */
 export type PostAIConfigVariationRequestOutputFormatMap = { [key: string]: unknown | undefined };
-export const PostAIConfigVariationRequestOutputFormatMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PostAIConfigVariationRequestOutputFormatMap>;
+export const PostAIConfigVariationRequestOutputFormatMap =
+  UrlMatcher as any as S.Schema<PostAIConfigVariationRequestOutputFormatMap>;
 
 /** List of tools to use for this variation. The latest version of the tool will be used. */
 export type PostAIConfigVariationRequestToolsList = Array<VariationToolPost>;
-export const PostAIConfigVariationRequestToolsList = /*@__PURE__*/ S.Array(
-  VariationToolPost,
-) as any as S.Schema<PostAIConfigVariationRequestToolsList>;
+export const PostAIConfigVariationRequestToolsList =
+  AIConfigVariationSkillsList as any as S.Schema<PostAIConfigVariationRequestToolsList>;
 
 /** List of tool keys to use for this variation. The latest version of the tool will be used. */
 export type PostAIConfigVariationRequestToolKeysList = Array<string>;
-export const PostAIConfigVariationRequestToolKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostAIConfigVariationRequestToolKeysList>;
+export const PostAIConfigVariationRequestToolKeysList =
+  FeatureFlagTagsList as any as S.Schema<PostAIConfigVariationRequestToolKeysList>;
 
 /** List of agent skills to attach to this variation. */
 export type PostAIConfigVariationRequestSkillsList = Array<VariationSkillPost>;
-export const PostAIConfigVariationRequestSkillsList = /*@__PURE__*/ S.Array(
-  VariationSkillPost,
-) as any as S.Schema<PostAIConfigVariationRequestSkillsList>;
+export const PostAIConfigVariationRequestSkillsList =
+  AIConfigVariationSkillsList as any as S.Schema<PostAIConfigVariationRequestSkillsList>;
 
 export interface PostAIConfigVariationRequest {
   projectKey: string;
@@ -23593,9 +22785,8 @@ export const PostAIConfigVariationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostAIConfigVariationRequest>;
 
 export type PostAIToolRequestTagsList = Array<string>;
-export const PostAIToolRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostAIToolRequestTagsList>;
+export const PostAIToolRequestTagsList =
+  FeatureFlagTagsList as any as S.Schema<PostAIToolRequestTagsList>;
 
 export interface PostAIToolRequest {
   projectKey: string;
@@ -23654,15 +22845,13 @@ export const PostApprovalRequestApplyForFlagRequest = /*@__PURE__*/ S.suspend(()
 
 /** An array of member IDs. These members are notified to review the approval request. */
 export type PostApprovalRequestForFlagRequestNotifyMemberIdsList = Array<string>;
-export const PostApprovalRequestForFlagRequestNotifyMemberIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostApprovalRequestForFlagRequestNotifyMemberIdsList>;
+export const PostApprovalRequestForFlagRequestNotifyMemberIdsList =
+  FeatureFlagTagsList as any as S.Schema<PostApprovalRequestForFlagRequestNotifyMemberIdsList>;
 
 /** An array of team keys. The members of these teams are notified to review the approval request. */
 export type PostApprovalRequestForFlagRequestNotifyTeamKeysList = Array<string>;
-export const PostApprovalRequestForFlagRequestNotifyTeamKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostApprovalRequestForFlagRequestNotifyTeamKeysList>;
+export const PostApprovalRequestForFlagRequestNotifyTeamKeysList =
+  FeatureFlagTagsList as any as S.Schema<PostApprovalRequestForFlagRequestNotifyTeamKeysList>;
 
 export interface PostApprovalRequestForFlagRequest {
   /** The project key */
@@ -23906,11 +23095,8 @@ export const PostDisableAdaptiveTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostDisableAdaptiveTriggerRequest>;
 
 export interface PostDisableAdaptiveTriggerResponse {}
-export const PostDisableAdaptiveTriggerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PostDisableAdaptiveTriggerResponse",
-}) as any as S.Schema<PostDisableAdaptiveTriggerResponse>;
+export const PostDisableAdaptiveTriggerResponse =
+  DeleteAgentOptimizationRunResponse as any as S.Schema<PostDisableAdaptiveTriggerResponse>;
 
 export interface PostEnableAdaptiveTriggerRequest {
   projectKey: string;
@@ -23934,17 +23120,13 @@ export const PostEnableAdaptiveTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostEnableAdaptiveTriggerRequest>;
 
 export interface PostEnableAdaptiveTriggerResponse {}
-export const PostEnableAdaptiveTriggerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PostEnableAdaptiveTriggerResponse",
-}) as any as S.Schema<PostEnableAdaptiveTriggerResponse>;
+export const PostEnableAdaptiveTriggerResponse =
+  DeleteAgentOptimizationRunResponse as any as S.Schema<PostEnableAdaptiveTriggerResponse>;
 
 /** Tags to apply to the new environment */
 export type PostEnvironmentRequestTagsList = Array<string>;
-export const PostEnvironmentRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostEnvironmentRequestTagsList>;
+export const PostEnvironmentRequestTagsList =
+  FeatureFlagTagsList as any as S.Schema<PostEnvironmentRequestTagsList>;
 
 export interface PostEnvironmentRequest {
   /** The project key */
@@ -23990,9 +23172,8 @@ export const PostEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostEnvironmentRequest" }) as any as S.Schema<PostEnvironmentRequest>;
 
 export type ExtinctionListPost = Array<Extinction>;
-export const ExtinctionListPost = /*@__PURE__*/ S.Array(
-  Extinction,
-) as any as S.Schema<ExtinctionListPost>;
+export const ExtinctionListPost =
+  ExtinctionCollectionRepItemsValueList as any as S.Schema<ExtinctionListPost>;
 
 export interface PostExtinctionRequest {
   /** The repository name */
@@ -24016,9 +23197,8 @@ export const PostExtinctionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostExtinctionRequest" }) as any as S.Schema<PostExtinctionRequest>;
 
 export interface PostExtinctionResponse {}
-export const PostExtinctionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PostExtinctionResponse",
-}) as any as S.Schema<PostExtinctionResponse>;
+export const PostExtinctionResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<PostExtinctionResponse>;
 
 export interface ClientSideAvailabilityPost {
   /** Whether to enable availability for client-side SDKs. Defaults to <code>false</code>. */
@@ -24026,26 +23206,18 @@ export interface ClientSideAvailabilityPost {
   /** Whether to enable availability for mobile SDKs. Defaults to <code>true</code>. */
   usingMobileKey: boolean;
 }
-export const ClientSideAvailabilityPost = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    usingEnvironmentId: S.Boolean,
-    usingMobileKey: S.Boolean,
-  }),
-).annotate({
-  identifier: "ClientSideAvailabilityPost",
-}) as any as S.Schema<ClientSideAvailabilityPost>;
+export const ClientSideAvailabilityPost =
+  DefaultClientSideAvailabilityPost as any as S.Schema<ClientSideAvailabilityPost>;
 
 /** An array of possible variations for the flag. The variation values must be unique. If omitted, two boolean variations of <code>true</code> and <code>false</code> will be used. */
 export type PostFeatureFlagRequestVariationsList = Array<Variation>;
-export const PostFeatureFlagRequestVariationsList = /*@__PURE__*/ S.Array(
-  Variation,
-) as any as S.Schema<PostFeatureFlagRequestVariationsList>;
+export const PostFeatureFlagRequestVariationsList =
+  FeatureFlagVariationsList as any as S.Schema<PostFeatureFlagRequestVariationsList>;
 
 /** Tags for the feature flag. Defaults to an empty array. */
 export type PostFeatureFlagRequestTagsList = Array<string>;
-export const PostFeatureFlagRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFeatureFlagRequestTagsList>;
+export const PostFeatureFlagRequestTagsList =
+  FeatureFlagTagsList as any as S.Schema<PostFeatureFlagRequestTagsList>;
 
 /** Purpose of the flag */
 export type PostFeatureFlagRequestPurpose = "migration" | "holdout";
@@ -24181,15 +23353,13 @@ export const PostFlagConfigScheduledChangesRequest = /*@__PURE__*/ S.suspend(() 
 
 /** An array of member IDs. These members are notified to review the approval request. */
 export type PostFlagCopyConfigApprovalRequestRequestNotifyMemberIdsList = Array<string>;
-export const PostFlagCopyConfigApprovalRequestRequestNotifyMemberIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFlagCopyConfigApprovalRequestRequestNotifyMemberIdsList>;
+export const PostFlagCopyConfigApprovalRequestRequestNotifyMemberIdsList =
+  FeatureFlagTagsList as any as S.Schema<PostFlagCopyConfigApprovalRequestRequestNotifyMemberIdsList>;
 
 /** An array of team keys. The members of these teams are notified to review the approval request. */
 export type PostFlagCopyConfigApprovalRequestRequestNotifyTeamKeysList = Array<string>;
-export const PostFlagCopyConfigApprovalRequestRequestNotifyTeamKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFlagCopyConfigApprovalRequestRequestNotifyTeamKeysList>;
+export const PostFlagCopyConfigApprovalRequestRequestNotifyTeamKeysList =
+  FeatureFlagTagsList as any as S.Schema<PostFlagCopyConfigApprovalRequestRequestNotifyTeamKeysList>;
 
 export interface SourceFlag {
   /** The environment key for the source environment */
@@ -24197,12 +23367,7 @@ export interface SourceFlag {
   /** The version of the source flag from which to copy */
   version?: number;
 }
-export const SourceFlag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    version: S.optional(S.Number),
-  }),
-).annotate({ identifier: "SourceFlag" }) as any as S.Schema<SourceFlag>;
+export const SourceFlag = CopiedFromEnv as any as S.Schema<SourceFlag>;
 
 export type PostFlagCopyConfigApprovalRequestRequestIncludedActionsItem =
   | "updateOn"
@@ -24343,9 +23508,8 @@ export const PostGenerateTrustPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The action of trust policy statement */
 export type TrustPolicyStatementActionList = Array<string>;
-export const TrustPolicyStatementActionList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TrustPolicyStatementActionList>;
+export const TrustPolicyStatementActionList =
+  FeatureFlagTagsList as any as S.Schema<TrustPolicyStatementActionList>;
 
 export interface TrustPolicyStatement {
   /** The effect of trust policy statement */
@@ -24501,9 +23665,8 @@ export const WarehouseDestinationSetupScriptRep = /*@__PURE__*/ S.suspend(() =>
 
 /** The attributes that the holdout iteration's results can be sliced by */
 export type PostHoldoutRequestAttributesList = Array<string>;
-export const PostHoldoutRequestAttributesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostHoldoutRequestAttributesList>;
+export const PostHoldoutRequestAttributesList =
+  FeatureFlagTagsList as any as S.Schema<PostHoldoutRequestAttributesList>;
 
 /** Details on the metrics for this experiment */
 export type PostHoldoutRequestMetricsList = Array<MetricInput>;
@@ -24594,21 +23757,18 @@ export const PostMetricRequestSuccessCriteria = S.String;
 
 /** Tags for the metric */
 export type PostMetricRequestTagsList = Array<string>;
-export const PostMetricRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostMetricRequestTagsList>;
+export const PostMetricRequestTagsList =
+  FeatureFlagTagsList as any as S.Schema<PostMetricRequestTagsList>;
 
 /** Deprecated, use <code>analysisUnits</code> instead. */
 export type PostMetricRequestRandomizationUnitsList = Array<string>;
-export const PostMetricRequestRandomizationUnitsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostMetricRequestRandomizationUnitsList>;
+export const PostMetricRequestRandomizationUnitsList =
+  FeatureFlagTagsList as any as S.Schema<PostMetricRequestRandomizationUnitsList>;
 
 /** An array of analysis units allowed for this metric. */
 export type PostMetricRequestAnalysisUnitsList = Array<string>;
-export const PostMetricRequestAnalysisUnitsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostMetricRequestAnalysisUnitsList>;
+export const PostMetricRequestAnalysisUnitsList =
+  FeatureFlagTagsList as any as S.Schema<PostMetricRequestAnalysisUnitsList>;
 
 /** The method by which multiple unit event values are aggregated */
 export type PostMetricRequestUnitAggregationType = "average" | "sum" | "count_distinct";
@@ -24616,9 +23776,7 @@ export const PostMetricRequestUnitAggregationType = S.String;
 
 /** The context attribute / event property values or group member nodes. Numeric values must not exceed 14 decimal places. */
 export type EventFilterValuesList = Array<unknown>;
-export const EventFilterValuesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<EventFilterValuesList>;
+export const EventFilterValuesList = FilterValuesList as any as S.Schema<EventFilterValuesList>;
 
 export interface EventFilter {
   /** Filter type. One of [contextAttribute, eventProperty, group] */
@@ -24817,9 +23975,8 @@ export const PostMigrationSafetyIssuesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of the IDs of the rules which are affected by this issue. <code>fallthrough</code> is a sentinel value for the default rule. */
 export type MigrationSafetyIssueRepAffectedRuleIdsList = Array<string>;
-export const MigrationSafetyIssueRepAffectedRuleIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MigrationSafetyIssueRepAffectedRuleIdsList>;
+export const MigrationSafetyIssueRepAffectedRuleIdsList =
+  FeatureFlagTagsList as any as S.Schema<MigrationSafetyIssueRepAffectedRuleIdsList>;
 
 export interface MigrationSafetyIssueRep {
   /** The ID of the rule which caused this issue */
@@ -24853,9 +24010,8 @@ export const PostMigrationSafetyIssuesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostMigrationSafetyIssuesResponse>;
 
 export type PostModelConfigRequestTagsList = Array<string>;
-export const PostModelConfigRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostModelConfigRequestTagsList>;
+export const PostModelConfigRequestTagsList =
+  FeatureFlagTagsList as any as S.Schema<PostModelConfigRequestTagsList>;
 
 export interface PostModelConfigRequest {
   projectKey: string;
@@ -24907,9 +24063,8 @@ export const PostModelConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostModelConfigRequest" }) as any as S.Schema<PostModelConfigRequest>;
 
 export type PostPromptSnippetRequestTagsList = Array<string>;
-export const PostPromptSnippetRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostPromptSnippetRequestTagsList>;
+export const PostPromptSnippetRequestTagsList =
+  FeatureFlagTagsList as any as S.Schema<PostPromptSnippetRequestTagsList>;
 
 export interface PostPromptSnippetRequest {
   projectKey: string;
@@ -24943,9 +24098,8 @@ export const PostPromptSnippetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A description of what environments and projects the Relay Proxy should include or exclude. To learn more, read [Write an inline policy](https://launchdarkly.com/docs/sdk/relay-proxy/automatic-configuration#write-an-inline-policy). */
 export type PostRelayAutoConfigRequestPolicyList = Array<Statement>;
-export const PostRelayAutoConfigRequestPolicyList = /*@__PURE__*/ S.Array(
-  Statement,
-) as any as S.Schema<PostRelayAutoConfigRequestPolicyList>;
+export const PostRelayAutoConfigRequestPolicyList =
+  AuditLogEventsHookCapabilityConfigRepStatementsList as any as S.Schema<PostRelayAutoConfigRequestPolicyList>;
 
 export interface PostRelayAutoConfigRequest {
   /** A human-friendly name for the Relay Proxy configuration */
@@ -24964,9 +24118,8 @@ export const PostRelayAutoConfigRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Segments targeted by this audience. */
 export type AudiencePostSegmentKeysList = Array<string>;
-export const AudiencePostSegmentKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AudiencePostSegmentKeysList>;
+export const AudiencePostSegmentKeysList =
+  FeatureFlagTagsList as any as S.Schema<AudiencePostSegmentKeysList>;
 
 export interface AudiencePost {
   /** A project-unique key for the environment. */
@@ -25017,9 +24170,8 @@ export const PostReleasePipelineRequestPhasesList = /*@__PURE__*/ S.Array(
 
 /** A list of tags for this release pipeline */
 export type PostReleasePipelineRequestTagsList = Array<string>;
-export const PostReleasePipelineRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostReleasePipelineRequestTagsList>;
+export const PostReleasePipelineRequestTagsList =
+  FeatureFlagTagsList as any as S.Schema<PostReleasePipelineRequestTagsList>;
 
 export interface PostReleasePipelineRequest {
   /** The project key */
@@ -25058,9 +24210,8 @@ export const PostReleasePipelineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered list of release policy keys */
 export type PostReleasePoliciesOrderRequestBodyList = Array<string>;
-export const PostReleasePoliciesOrderRequestBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostReleasePoliciesOrderRequestBodyList>;
+export const PostReleasePoliciesOrderRequestBodyList =
+  FeatureFlagTagsList as any as S.Schema<PostReleasePoliciesOrderRequestBodyList>;
 
 export interface PostReleasePoliciesOrderRequest {
   /** The project key */
@@ -25083,9 +24234,8 @@ export const PostReleasePoliciesOrderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostReleasePoliciesOrderRequest>;
 
 export type PostReleasePoliciesOrderResponseBodyList = Array<ReleasePolicy>;
-export const PostReleasePoliciesOrderResponseBodyList = /*@__PURE__*/ S.Array(
-  ReleasePolicy,
-) as any as S.Schema<PostReleasePoliciesOrderResponseBodyList>;
+export const PostReleasePoliciesOrderResponseBodyList =
+  ReleasePoliciesResponseItemsList as any as S.Schema<PostReleasePoliciesOrderResponseBodyList>;
 
 export type PostReleasePoliciesOrderResponse = PostReleasePoliciesOrderResponseBodyList;
 export const PostReleasePoliciesOrderResponse = /*@__PURE__*/ S.suspend(() =>
@@ -25150,9 +24300,8 @@ export const PostRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostRepositoryRequest" }) as any as S.Schema<PostRepositoryRequest>;
 
 export type PostRestrictedModelsRequestKeysList = Array<string>;
-export const PostRestrictedModelsRequestKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostRestrictedModelsRequestKeysList>;
+export const PostRestrictedModelsRequestKeysList =
+  FeatureFlagTagsList as any as S.Schema<PostRestrictedModelsRequestKeysList>;
 
 export interface PostRestrictedModelsRequest {
   projectKey: string;
@@ -25174,9 +24323,8 @@ export const PostRestrictedModelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostRestrictedModelsRequest>;
 
 export type RestrictedModelsResponseSuccessesList = Array<string>;
-export const RestrictedModelsResponseSuccessesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RestrictedModelsResponseSuccessesList>;
+export const RestrictedModelsResponseSuccessesList =
+  FeatureFlagTagsList as any as S.Schema<RestrictedModelsResponseSuccessesList>;
 
 export interface RestrictedModelError {
   key: string;
@@ -25213,9 +24361,8 @@ export const PostSdkKeyRequestKind = S.String;
 
 /** List of view keys to associate with the SDK key. */
 export type PostSdkKeyRequestViewKeysList = Array<string>;
-export const PostSdkKeyRequestViewKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostSdkKeyRequestViewKeysList>;
+export const PostSdkKeyRequestViewKeysList =
+  FeatureFlagTagsList as any as S.Schema<PostSdkKeyRequestViewKeysList>;
 
 export interface PostSdkKeyRequest {
   projectKey: string;
@@ -25253,9 +24400,8 @@ export const PostSdkKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of the workflow stages */
 export type PostWorkflowRequestStagesList = Array<StageInput>;
-export const PostWorkflowRequestStagesList = /*@__PURE__*/ S.Array(
-  StageInput,
-) as any as S.Schema<PostWorkflowRequestStagesList>;
+export const PostWorkflowRequestStagesList =
+  CreateWorkflowTemplateRequestStagesList as any as S.Schema<PostWorkflowRequestStagesList>;
 
 export interface PostWorkflowRequest {
   /** The project key */
@@ -25299,9 +24445,8 @@ export const PostWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of flag references found on the branch */
 export type PutBranchRequestReferencesList = Array<ReferenceRep>;
-export const PutBranchRequestReferencesList = /*@__PURE__*/ S.Array(
-  ReferenceRep,
-) as any as S.Schema<PutBranchRequestReferencesList>;
+export const PutBranchRequestReferencesList =
+  BranchRepReferencesList as any as S.Schema<PutBranchRequestReferencesList>;
 
 export interface PutBranchRequest {
   /** The repository name */
@@ -25341,9 +24486,8 @@ export const PutBranchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutBranchRequest" }) as any as S.Schema<PutBranchRequest>;
 
 export interface PutBranchResponse {}
-export const PutBranchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutBranchResponse",
-}) as any as S.Schema<PutBranchResponse>;
+export const PutBranchResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<PutBranchResponse>;
 
 export interface PutContextFlagSettingRequest {
   /** The project key */
@@ -25382,9 +24526,8 @@ export const PutContextFlagSettingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutContextFlagSettingRequest>;
 
 export interface PutContextFlagSettingResponse {}
-export const PutContextFlagSettingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutContextFlagSettingResponse",
-}) as any as S.Schema<PutContextFlagSettingResponse>;
+export const PutContextFlagSettingResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<PutContextFlagSettingResponse>;
 
 export interface PutContextKindRequest {
   /** The project key */
@@ -25418,10 +24561,8 @@ export const PutContextKindRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type UpsertResponseRepLinksMap = { [key: string]: Link | undefined };
-export const UpsertResponseRepLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Link,
-) as any as S.Schema<UpsertResponseRepLinksMap>;
+export const UpsertResponseRepLinksMap =
+  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<UpsertResponseRepLinksMap>;
 
 export interface UpsertResponseRep {
   /** The status of the create or update operation */
@@ -25481,9 +24622,8 @@ export const PutExperimentationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of default tags for each flag */
 export type PutFlagDefaultsByProjectRequestTagsList = Array<string>;
-export const PutFlagDefaultsByProjectRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutFlagDefaultsByProjectRequestTagsList>;
+export const PutFlagDefaultsByProjectRequestTagsList =
+  FeatureFlagTagsList as any as S.Schema<PutFlagDefaultsByProjectRequestTagsList>;
 
 export interface PutFlagDefaultsByProjectRequest {
   /** The project key */
@@ -25534,21 +24674,18 @@ export const PutFlagFollowerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutFlagFollowerRequest" }) as any as S.Schema<PutFlagFollowerRequest>;
 
 export interface PutFlagFollowerResponse {}
-export const PutFlagFollowerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutFlagFollowerResponse",
-}) as any as S.Schema<PutFlagFollowerResponse>;
+export const PutFlagFollowerResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<PutFlagFollowerResponse>;
 
 /** A logical grouping of one or more environments that share attributes for rolling out changes */
 export type PutReleasePipelineRequestPhasesList = Array<CreatePhaseInput>;
-export const PutReleasePipelineRequestPhasesList = /*@__PURE__*/ S.Array(
-  CreatePhaseInput,
-) as any as S.Schema<PutReleasePipelineRequestPhasesList>;
+export const PutReleasePipelineRequestPhasesList =
+  PostReleasePipelineRequestPhasesList as any as S.Schema<PutReleasePipelineRequestPhasesList>;
 
 /** A list of tags for this release pipeline */
 export type PutReleasePipelineRequestTagsList = Array<string>;
-export const PutReleasePipelineRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutReleasePipelineRequestTagsList>;
+export const PutReleasePipelineRequestTagsList =
+  FeatureFlagTagsList as any as S.Schema<PutReleasePipelineRequestTagsList>;
 
 export interface PutReleasePipelineRequest {
   /** The project key */
@@ -25615,9 +24752,8 @@ export const PutReleasePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The complete target list of view keys to associate with this SDK key. An empty array removes all views from the SDK key. */
 export type PutSdkKeyViewsRequestViewKeysList = Array<string>;
-export const PutSdkKeyViewsRequestViewKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutSdkKeyViewsRequestViewKeysList>;
+export const PutSdkKeyViewsRequestViewKeysList =
+  FeatureFlagTagsList as any as S.Schema<PutSdkKeyViewsRequestViewKeysList>;
 
 export interface PutSdkKeyViewsRequest {
   projectKey: string;
@@ -25646,9 +24782,8 @@ export const PutSdkKeyViewsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Summaries of views associated with the SDK key. */
 export type PutSdkKeyViewsResponseViewSummariesList = Array<ViewSummary>;
-export const PutSdkKeyViewsResponseViewSummariesList = /*@__PURE__*/ S.Array(
-  ViewSummary,
-) as any as S.Schema<PutSdkKeyViewsResponseViewSummariesList>;
+export const PutSdkKeyViewsResponseViewSummariesList =
+  SdkKeyListItemViewSummariesList as any as S.Schema<PutSdkKeyViewsResponseViewSummariesList>;
 
 export interface PutSdkKeyViewsResponse {
   _links?: ParentAndSelfLinks;
@@ -25812,9 +24947,8 @@ export const TriggerFlagImportJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TriggerFlagImportJobRequest>;
 
 export interface TriggerFlagImportJobResponse {}
-export const TriggerFlagImportJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TriggerFlagImportJobResponse",
-}) as any as S.Schema<TriggerFlagImportJobResponse>;
+export const TriggerFlagImportJobResponse =
+  CreateBigSegmentExportResponse as any as S.Schema<TriggerFlagImportJobResponse>;
 
 export type UnlinkResourceRequestResourceType = "flags" | "segments" | "aiConfigs";
 export const UnlinkResourceRequestResourceType = S.String;
@@ -25842,9 +24976,8 @@ export const UnlinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of resources that failed to unlink. */
 export type UnlinkResourceSuccessResponseFailedResourcesList = Array<FailedResourceLink>;
-export const UnlinkResourceSuccessResponseFailedResourcesList = /*@__PURE__*/ S.Array(
-  FailedResourceLink,
-) as any as S.Schema<UnlinkResourceSuccessResponseFailedResourcesList>;
+export const UnlinkResourceSuccessResponseFailedResourcesList =
+  LinkResourceSuccessResponseFailedResourcesList as any as S.Schema<UnlinkResourceSuccessResponseFailedResourcesList>;
 
 export interface UnlinkResourceSuccessResponse {
   /** The number of resources successfully unlinked. */
@@ -25939,14 +25072,12 @@ export const UpdateApprovalRequestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateApprovalRequestRequest>;
 
 export type SegmentUserListAddList = Array<string>;
-export const SegmentUserListAddList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SegmentUserListAddList>;
+export const SegmentUserListAddList =
+  FeatureFlagTagsList as any as S.Schema<SegmentUserListAddList>;
 
 export type SegmentUserListRemoveList = Array<string>;
-export const SegmentUserListRemoveList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SegmentUserListRemoveList>;
+export const SegmentUserListRemoveList =
+  FeatureFlagTagsList as any as S.Schema<SegmentUserListRemoveList>;
 
 export interface SegmentUserList {
   add?: SegmentUserListAddList;
@@ -25988,11 +25119,8 @@ export const UpdateBigSegmentContextTargetsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<UpdateBigSegmentContextTargetsRequest>;
 
 export interface UpdateBigSegmentContextTargetsResponse {}
-export const UpdateBigSegmentContextTargetsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateBigSegmentContextTargetsResponse",
-}) as any as S.Schema<UpdateBigSegmentContextTargetsResponse>;
+export const UpdateBigSegmentContextTargetsResponse =
+  DeleteAgentOptimizationRunResponse as any as S.Schema<UpdateBigSegmentContextTargetsResponse>;
 
 export interface UpdateBigSegmentTargetsRequest {
   /** The project key */
@@ -26023,9 +25151,8 @@ export const UpdateBigSegmentTargetsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateBigSegmentTargetsRequest>;
 
 export interface UpdateBigSegmentTargetsResponse {}
-export const UpdateBigSegmentTargetsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "UpdateBigSegmentTargetsResponse" },
-) as any as S.Schema<UpdateBigSegmentTargetsResponse>;
+export const UpdateBigSegmentTargetsResponse =
+  DeleteAgentOptimizationResponse as any as S.Schema<UpdateBigSegmentTargetsResponse>;
 
 export interface UpdateDeploymentRequest {
   /** The deployment ID */
@@ -26210,15 +25337,12 @@ export const UpdateMembersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of members IDs of the members who were successfully updated. */
 export type BulkEditMembersRepMembersList = Array<string>;
-export const BulkEditMembersRepMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkEditMembersRepMembersList>;
+export const BulkEditMembersRepMembersList =
+  FeatureFlagTagsList as any as S.Schema<BulkEditMembersRepMembersList>;
 
 export type BulkEditMembersRepErrorsItemMap = { [key: string]: string | undefined };
-export const BulkEditMembersRepErrorsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BulkEditMembersRepErrorsItemMap>;
+export const BulkEditMembersRepErrorsItemMap =
+  CreateFlagLinkRequestMetadataMap as any as S.Schema<BulkEditMembersRepErrorsItemMap>;
 
 /** A list of member IDs and errors for the members whose updates failed. */
 export type BulkEditMembersRepErrorsList = Array<BulkEditMembersRepErrorsItemMap>;
@@ -26262,15 +25386,13 @@ export const ReleaseGuardianConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of member IDs. These members are notified to review the approval request. */
 export type ReleaserAudienceConfigInputNotifyMemberIdsList = Array<string>;
-export const ReleaserAudienceConfigInputNotifyMemberIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReleaserAudienceConfigInputNotifyMemberIdsList>;
+export const ReleaserAudienceConfigInputNotifyMemberIdsList =
+  FeatureFlagTagsList as any as S.Schema<ReleaserAudienceConfigInputNotifyMemberIdsList>;
 
 /** An array of team keys. The members of these teams are notified to review the approval request. */
 export type ReleaserAudienceConfigInputNotifyTeamKeysList = Array<string>;
-export const ReleaserAudienceConfigInputNotifyTeamKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReleaserAudienceConfigInputNotifyTeamKeysList>;
+export const ReleaserAudienceConfigInputNotifyTeamKeysList =
+  FeatureFlagTagsList as any as S.Schema<ReleaserAudienceConfigInputNotifyTeamKeysList>;
 
 export interface ReleaserAudienceConfigInput {
   /** UUID of the audience. */
@@ -26341,9 +25463,8 @@ export const UpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags for the segment */
 export type UpdateSegmentRequestTagsList = Array<string>;
-export const UpdateSegmentRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSegmentRequestTagsList>;
+export const UpdateSegmentRequestTagsList =
+  FeatureFlagTagsList as any as S.Schema<UpdateSegmentRequestTagsList>;
 
 export interface UpdateSegmentRequest {
   /** The project key */
@@ -26464,27 +25585,22 @@ export const UpdateTeamsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of member IDs of the members who were added to the teams. */
 export type BulkEditTeamsRepMemberIDsList = Array<string>;
-export const BulkEditTeamsRepMemberIDsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkEditTeamsRepMemberIDsList>;
+export const BulkEditTeamsRepMemberIDsList =
+  FeatureFlagTagsList as any as S.Schema<BulkEditTeamsRepMemberIDsList>;
 
 /** A list of team keys of the teams that were successfully updated. */
 export type BulkEditTeamsRepTeamKeysList = Array<string>;
-export const BulkEditTeamsRepTeamKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkEditTeamsRepTeamKeysList>;
+export const BulkEditTeamsRepTeamKeysList =
+  FeatureFlagTagsList as any as S.Schema<BulkEditTeamsRepTeamKeysList>;
 
 export type BulkEditTeamsRepErrorsItemMap = { [key: string]: string | undefined };
-export const BulkEditTeamsRepErrorsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BulkEditTeamsRepErrorsItemMap>;
+export const BulkEditTeamsRepErrorsItemMap =
+  CreateFlagLinkRequestMetadataMap as any as S.Schema<BulkEditTeamsRepErrorsItemMap>;
 
 /** A list of team keys and errors for the teams whose updates failed. */
 export type BulkEditTeamsRepErrorsList = Array<BulkEditTeamsRepErrorsItemMap>;
-export const BulkEditTeamsRepErrorsList = /*@__PURE__*/ S.Array(
-  BulkEditTeamsRepErrorsItemMap,
-) as any as S.Schema<BulkEditTeamsRepErrorsList>;
+export const BulkEditTeamsRepErrorsList =
+  BulkEditMembersRepErrorsList as any as S.Schema<BulkEditTeamsRepErrorsList>;
 
 export interface BulkEditTeamsRep {
   /** A list of member IDs of the members who were added to the teams. */
@@ -26516,9 +25632,8 @@ export const UpdateTokenRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags associated with this view */
 export type UpdateViewRequestTagsList = Array<string>;
-export const UpdateViewRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateViewRequestTagsList>;
+export const UpdateViewRequestTagsList =
+  FeatureFlagTagsList as any as S.Schema<UpdateViewRequestTagsList>;
 
 export interface UpdateViewRequest {
   projectKey: string;

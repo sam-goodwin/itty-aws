@@ -120,11 +120,8 @@ export const BillingUsageExportDownloadRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingUsageExportDownloadRequest>;
 
 export interface BillingUsageExportDownloadResponse {}
-export const BillingUsageExportDownloadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "BillingUsageExportDownloadResponse",
-}) as any as S.Schema<BillingUsageExportDownloadResponse>;
+export const BillingUsageExportDownloadResponse =
+  BillingSpendExportDownloadResponse as any as S.Schema<BillingUsageExportDownloadResponse>;
 
 export interface CimdVerificationTokensDestroyRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -148,11 +145,8 @@ export const CimdVerificationTokensDestroyRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CimdVerificationTokensDestroyRequest>;
 
 export interface CimdVerificationTokensDestroyResponse {}
-export const CimdVerificationTokensDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CimdVerificationTokensDestroyResponse",
-}) as any as S.Schema<CimdVerificationTokensDestroyResponse>;
+export const CimdVerificationTokensDestroyResponse =
+  BillingSpendExportDownloadResponse as any as S.Schema<CimdVerificationTokensDestroyResponse>;
 
 export interface OrganizationMemberNoticeAction {
   /** Text on the button shown next to the notice. */
@@ -247,15 +241,12 @@ export const OrganizationTeamsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<OrganizationTeamsList>;
 
 export type OrganizationProjectsItemMap = { [key: string]: unknown | undefined };
-export const OrganizationProjectsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OrganizationProjectsItemMap>;
+export const OrganizationProjectsItemMap =
+  OrganizationTeamsItemMap as any as S.Schema<OrganizationProjectsItemMap>;
 
 export type OrganizationProjectsList = Array<OrganizationProjectsItemMap>;
-export const OrganizationProjectsList = /*@__PURE__*/ S.Array(
-  OrganizationProjectsItemMap,
-) as any as S.Schema<OrganizationProjectsList>;
+export const OrganizationProjectsList =
+  OrganizationTeamsList as any as S.Schema<OrganizationProjectsList>;
 
 export type OrganizationAvailableProductFeaturesList = Array<unknown>;
 export const OrganizationAvailableProductFeaturesList = /*@__PURE__*/ S.Array(
@@ -386,10 +377,8 @@ export const CreateCimdVerificationTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCimdVerificationTokenRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
+export const UserBasicHedgehogConfigMap =
+  OrganizationTeamsItemMap as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
@@ -533,9 +522,8 @@ export const CreateIdentityProviderConfigRequestOrganizationDomainIdsList = /*@_
 
 /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
 export type CreateIdentityProviderConfigRequestIdJagAllowedClientsList = Array<string>;
-export const CreateIdentityProviderConfigRequestIdJagAllowedClientsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateIdentityProviderConfigRequestIdJagAllowedClientsList>;
+export const CreateIdentityProviderConfigRequestIdJagAllowedClientsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<CreateIdentityProviderConfigRequestIdJagAllowedClientsList>;
 
 export interface CreateIdentityProviderConfigRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -611,15 +599,13 @@ export const IdentityProviderConfigOutputConfigScope =
 
 /** Organization domain IDs that this identity provider configuration applies to. */
 export type IdentityProviderConfigOutputOrganizationDomainIdsList = Array<string>;
-export const IdentityProviderConfigOutputOrganizationDomainIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IdentityProviderConfigOutputOrganizationDomainIdsList>;
+export const IdentityProviderConfigOutputOrganizationDomainIdsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<IdentityProviderConfigOutputOrganizationDomainIdsList>;
 
 /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
 export type IdentityProviderConfigOutputIdJagAllowedClientsList = Array<string>;
-export const IdentityProviderConfigOutputIdJagAllowedClientsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IdentityProviderConfigOutputIdJagAllowedClientsList>;
+export const IdentityProviderConfigOutputIdJagAllowedClientsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<IdentityProviderConfigOutputIdJagAllowedClientsList>;
 
 export interface IdentityProviderConfigOutput {
   id: string;
@@ -889,9 +875,8 @@ export const LegalDocumentDTO = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels applied to this project. Names are trimmed and lowercased, and sending this field replaces the project's existing tags. */
 export type CreateOrganizationsProjectRequestTagsList = Array<string>;
-export const CreateOrganizationsProjectRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationsProjectRequestTagsList>;
+export const CreateOrganizationsProjectRequestTagsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<CreateOrganizationsProjectRequestTagsList>;
 
 export type CreateOrganizationsProjectRequestAppUrlsList = Array<string | null>;
 export const CreateOrganizationsProjectRequestAppUrlsList = /*@__PURE__*/ S.Array(
@@ -1514,9 +1499,7 @@ export const CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigLi
 export type CreateOrganizationsProjectRequestSessionRecordingUrlBlocklistConfigList =
   Array<unknown>;
 export const CreateOrganizationsProjectRequestSessionRecordingUrlBlocklistConfigList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrganizationsProjectRequestSessionRecordingUrlBlocklistConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<CreateOrganizationsProjectRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList = Array<
   string | null
@@ -1535,15 +1518,13 @@ export type WeekStartDayEnum = 0 | 1;
 export const WeekStartDayEnum = S.Number;
 
 export type CreateOrganizationsProjectRequestLiveEventsColumnsList = Array<string>;
-export const CreateOrganizationsProjectRequestLiveEventsColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationsProjectRequestLiveEventsColumnsList>;
+export const CreateOrganizationsProjectRequestLiveEventsColumnsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<CreateOrganizationsProjectRequestLiveEventsColumnsList>;
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type CreateOrganizationsProjectRequestRecordingDomainsList = Array<string | null>;
-export const CreateOrganizationsProjectRequestRecordingDomainsList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(S.String),
-) as any as S.Schema<CreateOrganizationsProjectRequestRecordingDomainsList>;
+export const CreateOrganizationsProjectRequestRecordingDomainsList =
+  CreateOrganizationsProjectRequestAppUrlsList as any as S.Schema<CreateOrganizationsProjectRequestRecordingDomainsList>;
 
 /** * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type BusinessModelEnum = "b2b" | "b2c" | "other";
@@ -1558,10 +1539,8 @@ export const CreateOrganizationsProjectRequestBusinessModel =
 export type CreateOrganizationsProjectRequestConversationsSettingsMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateOrganizationsProjectRequestConversationsSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationsProjectRequestConversationsSettingsMap>;
+export const CreateOrganizationsProjectRequestConversationsSettingsMap =
+  OrganizationTeamsItemMap as any as S.Schema<CreateOrganizationsProjectRequestConversationsSettingsMap>;
 
 /** * `AED` - AED * `AFN` - AFN * `ALL` - ALL * `AMD` - AMD * `ANG` - ANG * `AOA` - AOA * `ARS` - ARS * `AUD` - AUD * `AWG` - AWG * `AZN` - AZN * `BAM` - BAM * `BBD` - BBD * `BDT` - BDT * `BGN` - BGN * `BHD` - BHD * `BIF` - BIF * `BMD` - BMD * `BND` - BND * `BOB` - BOB * `BRL` - BRL * `BSD` - BSD * `BTC` - BTC * `BTN` - BTN * `BWP` - BWP * `BYN` - BYN * `BZD` - BZD * `CAD` - CAD * `CDF` - CDF * `CHF` - CHF * `CLP` - CLP * `CNY` - CNY * `COP` - COP * `CRC` - CRC * `CVE` - CVE * `CZK` - CZK * `DJF` - DJF * `DKK` - DKK * `DOP` - DOP * `DZD` - DZD * `EGP` - EGP * `ERN` - ERN * `ETB` - ETB * `EUR` - EUR * `FJD` - FJD * `GBP` - GBP * `GEL` - GEL * `GHS` - GHS * `GIP` - GIP * `GMD` - GMD * `GNF` - GNF * `GTQ` - GTQ * `GYD` - GYD * `HKD` - HKD * `HNL` - HNL * `HRK` - HRK * `HTG` - HTG * `HUF` - HUF * `IDR` - IDR * `ILS` - ILS * `INR` - INR * `IQD` - IQD * `IRR` - IRR * `ISK` - ISK * `JMD` - JMD * `JOD` - JOD * `JPY` - JPY * `KES` - KES * `KGS` - KGS * `KHR` - KHR * `KMF` - KMF * `KRW` - KRW * `KWD` - KWD * `KYD` - KYD * `KZT` - KZT * `LAK` - LAK * `LBP` - LBP * `LKR` - LKR * `LRD` - LRD * `LTL` - LTL * `LVL` - LVL * `LSL` - LSL * `LYD` - LYD * `MAD` - MAD * `MDL` - MDL * `MGA` - MGA * `MKD` - MKD * `MMK` - MMK * `MNT` - MNT * `MOP` - MOP * `MRU` - MRU * `MTL` - MTL * `MUR` - MUR * `MVR` - MVR * `MWK` - MWK * `MXN` - MXN * `MYR` - MYR * `MZN` - MZN * `NAD` - NAD * `NGN` - NGN * `NIO` - NIO * `NOK` - NOK * `NPR` - NPR * `NZD` - NZD * `OMR` - OMR * `PAB` - PAB * `PEN` - PEN * `PGK` - PGK * `PHP` - PHP * `PKR` - PKR * `PLN` - PLN * `PYG` - PYG * `QAR` - QAR * `RON` - RON * `RSD` - RSD * `RUB` - RUB * `RWF` - RWF * `SAR` - SAR * `SBD` - SBD * `SCR` - SCR * `SDG` - SDG * `SEK` - SEK * `SGD` - SGD * `SRD` - SRD * `SSP` - SSP * `STN` - STN * `SYP` - SYP * `SZL` - SZL * `THB` - THB * `TJS` - TJS * `TMT` - TMT * `TND` - TND * `TOP` - TOP * `TRY` - TRY * `TTD` - TTD * `TWD` - TWD * `TZS` - TZS * `UAH` - UAH * `UGX` - UGX * `USD` - USD * `UYU` - UYU * `UZS` - UZS * `VES` - VES * `VND` - VND * `VUV` - VUV * `WST` - WST * `XAF` - XAF * `XCD` - XCD * `XOF` - XOF * `XPF` - XPF * `YER` - YER * `ZAR` - ZAR * `ZMW` - ZMW */
 export type BaseCurrencyEnum =
@@ -2017,9 +1996,8 @@ export const RevenueCurrencyPropertyConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevenueCurrencyPropertyConfig>;
 
 export type MarketingAnalyticsEventConversionGoalOrderByList = Array<string>;
-export const MarketingAnalyticsEventConversionGoalOrderByList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MarketingAnalyticsEventConversionGoalOrderByList>;
+export const MarketingAnalyticsEventConversionGoalOrderByList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<MarketingAnalyticsEventConversionGoalOrderByList>;
 
 export type PropertyOperator =
   | "exact"
@@ -2272,10 +2250,8 @@ export const MarketingAnalyticsEventConversionGoalPropertiesList = /*@__PURE__*/
 export type MarketingAnalyticsEventConversionGoalResponseMap = {
   [key: string]: unknown | undefined;
 };
-export const MarketingAnalyticsEventConversionGoalResponseMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MarketingAnalyticsEventConversionGoalResponseMap>;
+export const MarketingAnalyticsEventConversionGoalResponseMap =
+  OrganizationTeamsItemMap as any as S.Schema<MarketingAnalyticsEventConversionGoalResponseMap>;
 
 export type MarketingAnalyticsEventConversionGoalSchemaMapValue = string | unknown;
 export const MarketingAnalyticsEventConversionGoalSchemaMapValue =
@@ -2379,10 +2355,8 @@ export const MarketingAnalyticsActionConversionGoalPropertiesList = /*@__PURE__*
 export type MarketingAnalyticsActionConversionGoalResponseMap = {
   [key: string]: unknown | undefined;
 };
-export const MarketingAnalyticsActionConversionGoalResponseMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MarketingAnalyticsActionConversionGoalResponseMap>;
+export const MarketingAnalyticsActionConversionGoalResponseMap =
+  OrganizationTeamsItemMap as any as S.Schema<MarketingAnalyticsActionConversionGoalResponseMap>;
 
 export type MarketingAnalyticsActionConversionGoalSchemaMapValue = string | unknown;
 export const MarketingAnalyticsActionConversionGoalSchemaMapValue =
@@ -2480,10 +2454,8 @@ export const MarketingAnalyticsWarehouseConversionGoalPropertiesList = /*@__PURE
 export type MarketingAnalyticsWarehouseConversionGoalResponseMap = {
   [key: string]: unknown | undefined;
 };
-export const MarketingAnalyticsWarehouseConversionGoalResponseMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MarketingAnalyticsWarehouseConversionGoalResponseMap>;
+export const MarketingAnalyticsWarehouseConversionGoalResponseMap =
+  OrganizationTeamsItemMap as any as S.Schema<MarketingAnalyticsWarehouseConversionGoalResponseMap>;
 
 export type MarketingAnalyticsWarehouseConversionGoalSchemaMapValue = string | unknown;
 export const MarketingAnalyticsWarehouseConversionGoalSchemaMapValue =
@@ -2583,9 +2555,8 @@ export type AttributionModeEnum =
 export const AttributionModeEnum = S.String;
 
 export type MarketingAnalyticsCampaignNameMappingsValueValueList = Array<string>;
-export const MarketingAnalyticsCampaignNameMappingsValueValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MarketingAnalyticsCampaignNameMappingsValueValueList>;
+export const MarketingAnalyticsCampaignNameMappingsValueValueList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<MarketingAnalyticsCampaignNameMappingsValueValueList>;
 
 export type MarketingAnalyticsCampaignNameMappingsValueMap = {
   [key: string]: MarketingAnalyticsCampaignNameMappingsValueValueList | undefined;
@@ -2605,18 +2576,15 @@ export const MarketingAnalyticsCampaignNameMappings = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MarketingAnalyticsCampaignNameMappings>;
 
 export type MarketingAnalyticsCustomSourceMappingsValueList = Array<string>;
-export const MarketingAnalyticsCustomSourceMappingsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MarketingAnalyticsCustomSourceMappingsValueList>;
+export const MarketingAnalyticsCustomSourceMappingsValueList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<MarketingAnalyticsCustomSourceMappingsValueList>;
 
 /** Mapping of integration type to the custom UTM source values folded into it. */
 export type MarketingAnalyticsCustomSourceMappings = {
   [key: string]: MarketingAnalyticsCustomSourceMappingsValueList | undefined;
 };
-export const MarketingAnalyticsCustomSourceMappings = /*@__PURE__*/ S.Record(
-  S.String,
-  MarketingAnalyticsCustomSourceMappingsValueList,
-) as any as S.Schema<MarketingAnalyticsCustomSourceMappings>;
+export const MarketingAnalyticsCustomSourceMappings =
+  MarketingAnalyticsCampaignNameMappingsValueMap as any as S.Schema<MarketingAnalyticsCustomSourceMappings>;
 
 export type MatchField = "campaign_name" | "campaign_id";
 export const MatchField = S.String;
@@ -2965,63 +2933,50 @@ export const CreateOrganizationsProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels applied to this project. Names are trimmed and lowercased, and sending this field replaces the project's existing tags. */
 export type ProjectBackwardCompatTagsList = Array<string>;
-export const ProjectBackwardCompatTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectBackwardCompatTagsList>;
+export const ProjectBackwardCompatTagsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<ProjectBackwardCompatTagsList>;
 
 export type ProjectBackwardCompatGroupTypesItemMap = { [key: string]: unknown | undefined };
-export const ProjectBackwardCompatGroupTypesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectBackwardCompatGroupTypesItemMap>;
+export const ProjectBackwardCompatGroupTypesItemMap =
+  OrganizationTeamsItemMap as any as S.Schema<ProjectBackwardCompatGroupTypesItemMap>;
 
 export type ProjectBackwardCompatGroupTypesList = Array<ProjectBackwardCompatGroupTypesItemMap>;
-export const ProjectBackwardCompatGroupTypesList = /*@__PURE__*/ S.Array(
-  ProjectBackwardCompatGroupTypesItemMap,
-) as any as S.Schema<ProjectBackwardCompatGroupTypesList>;
+export const ProjectBackwardCompatGroupTypesList =
+  OrganizationTeamsList as any as S.Schema<ProjectBackwardCompatGroupTypesList>;
 
 export type ProjectBackwardCompatAppUrlsList = Array<string | null>;
-export const ProjectBackwardCompatAppUrlsList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(S.String),
-) as any as S.Schema<ProjectBackwardCompatAppUrlsList>;
+export const ProjectBackwardCompatAppUrlsList =
+  CreateOrganizationsProjectRequestAppUrlsList as any as S.Schema<ProjectBackwardCompatAppUrlsList>;
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type ProjectBackwardCompatPersonDisplayNamePropertiesList = Array<string>;
-export const ProjectBackwardCompatPersonDisplayNamePropertiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectBackwardCompatPersonDisplayNamePropertiesList>;
+export const ProjectBackwardCompatPersonDisplayNamePropertiesList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<ProjectBackwardCompatPersonDisplayNamePropertiesList>;
 
 export type ProjectBackwardCompatSessionRecordingUrlTriggerConfigList = Array<unknown>;
-export const ProjectBackwardCompatSessionRecordingUrlTriggerConfigList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ProjectBackwardCompatSessionRecordingUrlTriggerConfigList>;
+export const ProjectBackwardCompatSessionRecordingUrlTriggerConfigList =
+  OrganizationAvailableProductFeaturesList as any as S.Schema<ProjectBackwardCompatSessionRecordingUrlTriggerConfigList>;
 
 export type ProjectBackwardCompatSessionRecordingUrlBlocklistConfigList = Array<unknown>;
-export const ProjectBackwardCompatSessionRecordingUrlBlocklistConfigList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ProjectBackwardCompatSessionRecordingUrlBlocklistConfigList>;
+export const ProjectBackwardCompatSessionRecordingUrlBlocklistConfigList =
+  OrganizationAvailableProductFeaturesList as any as S.Schema<ProjectBackwardCompatSessionRecordingUrlBlocklistConfigList>;
 
 export type ProjectBackwardCompatSessionRecordingEventTriggerConfigList = Array<string | null>;
-export const ProjectBackwardCompatSessionRecordingEventTriggerConfigList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(S.String),
-) as any as S.Schema<ProjectBackwardCompatSessionRecordingEventTriggerConfigList>;
+export const ProjectBackwardCompatSessionRecordingEventTriggerConfigList =
+  CreateOrganizationsProjectRequestAppUrlsList as any as S.Schema<ProjectBackwardCompatSessionRecordingEventTriggerConfigList>;
 
 export type ProjectBackwardCompatLiveEventsColumnsList = Array<string>;
-export const ProjectBackwardCompatLiveEventsColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectBackwardCompatLiveEventsColumnsList>;
+export const ProjectBackwardCompatLiveEventsColumnsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<ProjectBackwardCompatLiveEventsColumnsList>;
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type ProjectBackwardCompatRecordingDomainsList = Array<string | null>;
-export const ProjectBackwardCompatRecordingDomainsList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(S.String),
-) as any as S.Schema<ProjectBackwardCompatRecordingDomainsList>;
+export const ProjectBackwardCompatRecordingDomainsList =
+  CreateOrganizationsProjectRequestAppUrlsList as any as S.Schema<ProjectBackwardCompatRecordingDomainsList>;
 
 export type ProjectBackwardCompatDefaultModifiersMap = { [key: string]: unknown | undefined };
-export const ProjectBackwardCompatDefaultModifiersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectBackwardCompatDefaultModifiersMap>;
+export const ProjectBackwardCompatDefaultModifiersMap =
+  OrganizationTeamsItemMap as any as S.Schema<ProjectBackwardCompatDefaultModifiersMap>;
 
 export interface ProjectBackwardCompatProductIntentsItem {
   product_type?: string;
@@ -3053,10 +3008,8 @@ export const ProjectBackwardCompatBusinessModel =
 
 /** Settings for Conversations. Must be a JSON object or null. */
 export type ProjectBackwardCompatConversationsSettingsMap = { [key: string]: unknown | undefined };
-export const ProjectBackwardCompatConversationsSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectBackwardCompatConversationsSettingsMap>;
+export const ProjectBackwardCompatConversationsSettingsMap =
+  OrganizationTeamsItemMap as any as S.Schema<ProjectBackwardCompatConversationsSettingsMap>;
 
 /** * `ingest_first_event` - ingest_first_event * `set_up_reverse_proxy` - set_up_reverse_proxy * `create_first_insight` - create_first_insight * `create_first_dashboard` - create_first_dashboard * `track_custom_events` - track_custom_events * `define_actions` - define_actions * `set_up_cohorts` - set_up_cohorts * `explore_trends_insight` - explore_trends_insight * `create_funnel` - create_funnel * `explore_retention_insight` - explore_retention_insight * `explore_paths_insight` - explore_paths_insight * `explore_stickiness_insight` - explore_stickiness_insight * `explore_lifecycle_insight` - explore_lifecycle_insight * `add_authorized_domain` - add_authorized_domain * `set_up_web_vitals` - set_up_web_vitals * `review_web_analytics_dashboard` - review_web_analytics_dashboard * `filter_web_analytics` - filter_web_analytics * `set_up_web_analytics_conversion_goals` - set_up_web_analytics_conversion_goals * `visit_web_vitals_dashboard` - visit_web_vitals_dashboard * `setup_session_recordings` - setup_session_recordings * `watch_session_recording` - watch_session_recording * `configure_recording_settings` - configure_recording_settings * `create_recording_playlist` - create_recording_playlist * `enable_console_logs` - enable_console_logs * `create_feature_flag` - create_feature_flag * `implement_flag_in_code` - implement_flag_in_code * `update_feature_flag_release_conditions` - update_feature_flag_release_conditions * `create_multivariate_flag` - create_multivariate_flag * `set_up_flag_payloads` - set_up_flag_payloads * `set_up_flag_evaluation_runtimes` - set_up_flag_evaluation_runtimes * `create_experiment` - create_experiment * `implement_experiment_variants` - implement_experiment_variants * `launch_experiment` - launch_experiment * `review_experiment_results` - review_experiment_results * `create_survey` - create_survey * `launch_survey` - launch_survey * `collect_survey_responses` - collect_survey_responses * `connect_source` - connect_source * `run_first_query` - run_first_query * `join_external_data` - join_external_data * `create_saved_view` - create_saved_view * `enable_error_tracking` - enable_error_tracking * `upload_source_maps` - upload_source_maps * `view_first_error` - view_first_error * `resolve_first_error` - resolve_first_error * `ingest_first_llm_event` - ingest_first_llm_event * `view_first_trace` - view_first_trace * `track_costs` - track_costs * `set_up_llm_evaluation` - set_up_llm_evaluation * `run_ai_playground` - run_ai_playground * `enable_log_capture` - enable_log_capture * `view_first_logs` - view_first_logs * `create_first_workflow` - create_first_workflow * `set_up_first_workflow_channel` - set_up_first_workflow_channel * `configure_workflow_trigger` - configure_workflow_trigger * `add_workflow_action` - add_workflow_action * `launch_workflow` - launch_workflow * `create_first_endpoint` - create_first_endpoint * `configure_endpoint` - configure_endpoint * `test_endpoint` - test_endpoint * `create_early_access_feature` - create_early_access_feature * `update_feature_stage` - update_feature_stage * `use_posthog_ai` - use_posthog_ai * `use_posthog_code` - use_posthog_code * `use_posthog_mcp` - use_posthog_mcp * `use_posthog_in_slack` - use_posthog_in_slack */
 export type AvailableSetupTaskIdsEnum =
@@ -3384,60 +3337,45 @@ export const ProjectBackwardCompat = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels applied to this project. Names are trimmed and lowercased, and sending this field replaces the project's existing tags. */
 export type CreateOrganizationsProjectsChangeOrganizationRequestTagsList = Array<string>;
-export const CreateOrganizationsProjectsChangeOrganizationRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationsProjectsChangeOrganizationRequestTagsList>;
+export const CreateOrganizationsProjectsChangeOrganizationRequestTagsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<CreateOrganizationsProjectsChangeOrganizationRequestTagsList>;
 
 export type CreateOrganizationsProjectsChangeOrganizationRequestAppUrlsList = Array<string | null>;
 export const CreateOrganizationsProjectsChangeOrganizationRequestAppUrlsList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<CreateOrganizationsProjectsChangeOrganizationRequestAppUrlsList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<CreateOrganizationsProjectsChangeOrganizationRequestAppUrlsList>;
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type CreateOrganizationsProjectsChangeOrganizationRequestPersonDisplayNamePropertiesList =
   Array<string>;
 export const CreateOrganizationsProjectsChangeOrganizationRequestPersonDisplayNamePropertiesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateOrganizationsProjectsChangeOrganizationRequestPersonDisplayNamePropertiesList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<CreateOrganizationsProjectsChangeOrganizationRequestPersonDisplayNamePropertiesList>;
 
 export type CreateOrganizationsProjectsChangeOrganizationRequestSessionRecordingUrlTriggerConfigList =
   Array<unknown>;
 export const CreateOrganizationsProjectsChangeOrganizationRequestSessionRecordingUrlTriggerConfigList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrganizationsProjectsChangeOrganizationRequestSessionRecordingUrlTriggerConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<CreateOrganizationsProjectsChangeOrganizationRequestSessionRecordingUrlTriggerConfigList>;
 
 export type CreateOrganizationsProjectsChangeOrganizationRequestSessionRecordingUrlBlocklistConfigList =
   Array<unknown>;
 export const CreateOrganizationsProjectsChangeOrganizationRequestSessionRecordingUrlBlocklistConfigList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrganizationsProjectsChangeOrganizationRequestSessionRecordingUrlBlocklistConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<CreateOrganizationsProjectsChangeOrganizationRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type CreateOrganizationsProjectsChangeOrganizationRequestSessionRecordingEventTriggerConfigList =
   Array<string | null>;
 export const CreateOrganizationsProjectsChangeOrganizationRequestSessionRecordingEventTriggerConfigList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<CreateOrganizationsProjectsChangeOrganizationRequestSessionRecordingEventTriggerConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<CreateOrganizationsProjectsChangeOrganizationRequestSessionRecordingEventTriggerConfigList>;
 
 export type CreateOrganizationsProjectsChangeOrganizationRequestLiveEventsColumnsList =
   Array<string>;
 export const CreateOrganizationsProjectsChangeOrganizationRequestLiveEventsColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateOrganizationsProjectsChangeOrganizationRequestLiveEventsColumnsList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<CreateOrganizationsProjectsChangeOrganizationRequestLiveEventsColumnsList>;
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type CreateOrganizationsProjectsChangeOrganizationRequestRecordingDomainsList = Array<
   string | null
 >;
 export const CreateOrganizationsProjectsChangeOrganizationRequestRecordingDomainsList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<CreateOrganizationsProjectsChangeOrganizationRequestRecordingDomainsList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<CreateOrganizationsProjectsChangeOrganizationRequestRecordingDomainsList>;
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type CreateOrganizationsProjectsChangeOrganizationRequestBusinessModel =
@@ -3672,62 +3610,46 @@ export const CreateOrganizationsProjectsChangeOrganizationRequest = /*@__PURE__*
 /** Labels applied to this project. Names are trimmed and lowercased, and sending this field replaces the project's existing tags. */
 export type CreateOrganizationsProjectsDefaultEvaluationContextRequestTagsList = Array<string>;
 export const CreateOrganizationsProjectsDefaultEvaluationContextRequestTagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequestTagsList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequestTagsList>;
 
 export type CreateOrganizationsProjectsDefaultEvaluationContextRequestAppUrlsList = Array<
   string | null
 >;
 export const CreateOrganizationsProjectsDefaultEvaluationContextRequestAppUrlsList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequestAppUrlsList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequestAppUrlsList>;
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type CreateOrganizationsProjectsDefaultEvaluationContextRequestPersonDisplayNamePropertiesList =
   Array<string>;
 export const CreateOrganizationsProjectsDefaultEvaluationContextRequestPersonDisplayNamePropertiesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequestPersonDisplayNamePropertiesList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequestPersonDisplayNamePropertiesList>;
 
 export type CreateOrganizationsProjectsDefaultEvaluationContextRequestSessionRecordingUrlTriggerConfigList =
   Array<unknown>;
 export const CreateOrganizationsProjectsDefaultEvaluationContextRequestSessionRecordingUrlTriggerConfigList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequestSessionRecordingUrlTriggerConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequestSessionRecordingUrlTriggerConfigList>;
 
 export type CreateOrganizationsProjectsDefaultEvaluationContextRequestSessionRecordingUrlBlocklistConfigList =
   Array<unknown>;
 export const CreateOrganizationsProjectsDefaultEvaluationContextRequestSessionRecordingUrlBlocklistConfigList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequestSessionRecordingUrlBlocklistConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type CreateOrganizationsProjectsDefaultEvaluationContextRequestSessionRecordingEventTriggerConfigList =
   Array<string | null>;
 export const CreateOrganizationsProjectsDefaultEvaluationContextRequestSessionRecordingEventTriggerConfigList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequestSessionRecordingEventTriggerConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequestSessionRecordingEventTriggerConfigList>;
 
 export type CreateOrganizationsProjectsDefaultEvaluationContextRequestLiveEventsColumnsList =
   Array<string>;
 export const CreateOrganizationsProjectsDefaultEvaluationContextRequestLiveEventsColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequestLiveEventsColumnsList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequestLiveEventsColumnsList>;
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type CreateOrganizationsProjectsDefaultEvaluationContextRequestRecordingDomainsList = Array<
   string | null
 >;
 export const CreateOrganizationsProjectsDefaultEvaluationContextRequestRecordingDomainsList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequestRecordingDomainsList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequestRecordingDomainsList>;
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type CreateOrganizationsProjectsDefaultEvaluationContextRequestBusinessModel =
@@ -3741,10 +3663,7 @@ export type CreateOrganizationsProjectsDefaultEvaluationContextRequestConversati
   [key: string]: unknown | undefined;
 };
 export const CreateOrganizationsProjectsDefaultEvaluationContextRequestConversationsSettingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequestConversationsSettingsMap>;
+  CreateOrganizationsProjectsChangeOrganizationRequestConversationsSettingsMap as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequestConversationsSettingsMap>;
 
 export interface CreateOrganizationsProjectsDefaultEvaluationContextRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -4046,16 +3965,11 @@ export const CreateRoleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateRoleRequest" }) as any as S.Schema<CreateRoleRequest>;
 
 export type RoleMembersItemMap = { [key: string]: unknown | undefined };
-export const RoleMembersItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<RoleMembersItemMap>;
+export const RoleMembersItemMap = OrganizationTeamsItemMap as any as S.Schema<RoleMembersItemMap>;
 
 /** Members assigned to this role */
 export type RoleMembersList = Array<RoleMembersItemMap>;
-export const RoleMembersList = /*@__PURE__*/ S.Array(
-  RoleMembersItemMap,
-) as any as S.Schema<RoleMembersList>;
+export const RoleMembersList = OrganizationTeamsList as any as S.Schema<RoleMembersList>;
 
 export interface Role {
   id?: string;
@@ -4249,9 +4163,7 @@ export const DomainsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DomainsDestroyRequest" }) as any as S.Schema<DomainsDestroyRequest>;
 
 export interface DomainsDestroyResponse {}
-export const DomainsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DomainsDestroyResponse",
-}) as any as S.Schema<DomainsDestroyResponse>;
+export const DomainsDestroyResponse = DestroyResponse as any as S.Schema<DomainsDestroyResponse>;
 
 export interface DomainsVerifyCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -4281,9 +4193,8 @@ export const DomainsVerifyCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DomainsVerifyCreateRequest>;
 
 export interface DomainsVerifyCreateResponse {}
-export const DomainsVerifyCreateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DomainsVerifyCreateResponse",
-}) as any as S.Schema<DomainsVerifyCreateResponse>;
+export const DomainsVerifyCreateResponse =
+  DestroyResponse as any as S.Schema<DomainsVerifyCreateResponse>;
 
 export interface GetRequest {
   /** A UUID string identifying this organization. */
@@ -4408,9 +4319,8 @@ export const ProductForecastTierForecastList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ProductForecastTierForecastList>;
 
 export type ForecastItemTierForecastList = Array<TierForecast>;
-export const ForecastItemTierForecastList = /*@__PURE__*/ S.Array(
-  TierForecast,
-) as any as S.Schema<ForecastItemTierForecastList>;
+export const ForecastItemTierForecastList =
+  ProductForecastTierForecastList as any as S.Schema<ForecastItemTierForecastList>;
 
 export interface ForecastItem {
   kind: CatalogKindEnum;
@@ -4509,11 +4419,8 @@ export const GetBillingInvoicesContentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBillingInvoicesContentRequest>;
 
 export interface GetBillingInvoicesContentResponse {}
-export const GetBillingInvoicesContentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetBillingInvoicesContentResponse",
-}) as any as S.Schema<GetBillingInvoicesContentResponse>;
+export const GetBillingInvoicesContentResponse =
+  BillingSpendExportDownloadResponse as any as S.Schema<GetBillingInvoicesContentResponse>;
 
 export interface GetBillingLimitRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -4603,14 +4510,12 @@ export const BillingProductTiersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BillingProductTiersList>;
 
 export type ProductPlanTiersList = Array<PriceTier>;
-export const ProductPlanTiersList = /*@__PURE__*/ S.Array(
-  PriceTier,
-) as any as S.Schema<ProductPlanTiersList>;
+export const ProductPlanTiersList =
+  BillingProductTiersList as any as S.Schema<ProductPlanTiersList>;
 
 export type ProductPlanFeaturesList = Array<ProductFeature>;
-export const ProductPlanFeaturesList = /*@__PURE__*/ S.Array(
-  ProductFeature,
-) as any as S.Schema<ProductPlanFeaturesList>;
+export const ProductPlanFeaturesList =
+  BillingFeaturesAvailableProductFeaturesList as any as S.Schema<ProductPlanFeaturesList>;
 
 export interface ProductPlan {
   product_key: string;
@@ -4694,19 +4599,16 @@ export const ProductTrialConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProductTrialConfig" }) as any as S.Schema<ProductTrialConfig>;
 
 export type BillingAddonTiersList = Array<PriceTier>;
-export const BillingAddonTiersList = /*@__PURE__*/ S.Array(
-  PriceTier,
-) as any as S.Schema<BillingAddonTiersList>;
+export const BillingAddonTiersList =
+  BillingProductTiersList as any as S.Schema<BillingAddonTiersList>;
 
 export type BillingAddonPlansList = Array<ProductPlan>;
-export const BillingAddonPlansList = /*@__PURE__*/ S.Array(
-  ProductPlan,
-) as any as S.Schema<BillingAddonPlansList>;
+export const BillingAddonPlansList =
+  BillingProductPlansList as any as S.Schema<BillingAddonPlansList>;
 
 export type BillingAddonFeaturesList = Array<ProductBaseFeature>;
-export const BillingAddonFeaturesList = /*@__PURE__*/ S.Array(
-  ProductBaseFeature,
-) as any as S.Schema<BillingAddonFeaturesList>;
+export const BillingAddonFeaturesList =
+  BillingProductFeaturesList as any as S.Schema<BillingAddonFeaturesList>;
 
 export interface BillingAddon {
   kind: CatalogKindEnum;
@@ -4886,9 +4788,8 @@ export const BillingProductsSummaryProductAddonsList = /*@__PURE__*/ S.Array(
 
 /** The add-ons of this product that carry the feature. Empty when only the product carries it. */
 export type BillingProductsSummaryFeatureAddonKeysList = Array<string>;
-export const BillingProductsSummaryFeatureAddonKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BillingProductsSummaryFeatureAddonKeysList>;
+export const BillingProductsSummaryFeatureAddonKeysList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<BillingProductsSummaryFeatureAddonKeysList>;
 
 export interface BillingProductsSummaryFeature {
   /** The feature key. */
@@ -4995,9 +4896,8 @@ export const ProductSpendTierSpendList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ProductSpendTierSpendList>;
 
 export type SpendItemTierSpendList = Array<TierSpend>;
-export const SpendItemTierSpendList = /*@__PURE__*/ S.Array(
-  TierSpend,
-) as any as S.Schema<SpendItemTierSpendList>;
+export const SpendItemTierSpendList =
+  ProductSpendTierSpendList as any as S.Schema<SpendItemTierSpendList>;
 
 export interface SpendItem {
   kind: CatalogKindEnum;
@@ -5116,9 +5016,8 @@ export const BillingTimeSeriesPointDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BillingTimeSeriesPointDataList>;
 
 export type BillingTimeSeriesPointDatesList = Array<string>;
-export const BillingTimeSeriesPointDatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BillingTimeSeriesPointDatesList>;
+export const BillingTimeSeriesPointDatesList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<BillingTimeSeriesPointDatesList>;
 
 /** * `type` - type * `team` - team * `multiple` - multiple */
 export type BreakdownTypeEnum = "type" | "team" | "multiple";
@@ -5415,9 +5314,8 @@ export const ProductUsageTierUsageList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ProductUsageTierUsageList>;
 
 export type UsageItemTierUsageList = Array<TierUsage>;
-export const UsageItemTierUsageList = /*@__PURE__*/ S.Array(
-  TierUsage,
-) as any as S.Schema<UsageItemTierUsageList>;
+export const UsageItemTierUsageList =
+  ProductUsageTierUsageList as any as S.Schema<UsageItemTierUsageList>;
 
 export interface UsageItem {
   kind: CatalogKindEnum;
@@ -6106,15 +6004,13 @@ export const GetOrganizationsProjectsAccessControlDefaultRequest = /*@__PURE__*/
 
 /** The project access levels, lowest first. */
 export type AccessControlDefaultsResponseAvailableProjectLevelsList = Array<string>;
-export const AccessControlDefaultsResponseAvailableProjectLevelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccessControlDefaultsResponseAvailableProjectLevelsList>;
+export const AccessControlDefaultsResponseAvailableProjectLevelsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<AccessControlDefaultsResponseAvailableProjectLevelsList>;
 
 /** The resource access levels, lowest first. */
 export type AccessControlDefaultsResponseAvailableResourceLevelsList = Array<string>;
-export const AccessControlDefaultsResponseAvailableResourceLevelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccessControlDefaultsResponseAvailableResourceLevelsList>;
+export const AccessControlDefaultsResponseAvailableResourceLevelsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<AccessControlDefaultsResponseAvailableResourceLevelsList>;
 
 export interface AccessControlResourceDefault {
   /** The stored default level for this resource type. Null when the PostHog default applies. */
@@ -6145,9 +6041,8 @@ export const AccessControlDefaultsResponseResourceAccessLevelsMap = /*@__PURE__*
 
 /** The levels an object rule on this resource type accepts, lowest first. */
 export type AccessControlObjectRuleResourceAvailableAccessLevelsList = Array<string>;
-export const AccessControlObjectRuleResourceAvailableAccessLevelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccessControlObjectRuleResourceAvailableAccessLevelsList>;
+export const AccessControlObjectRuleResourceAvailableAccessLevelsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<AccessControlObjectRuleResourceAvailableAccessLevelsList>;
 
 export interface AccessControlObjectRuleResource {
   /** A resource type that supports rules on single objects. * `action` - action * `access_control` - access_control * `account` - account * `activity_log` - activity_log * `alert` - alert * `annotation` - annotation * `approvals` - approvals * `autoresearch` - autoresearch * `batch_export` - batch_export * `batch_import` - batch_import * `batch_import_support` - batch_import_support * `billing` - billing * `business_knowledge` - business_knowledge * `canvas` - canvas * `cohort` - cohort * `comment` - comment * `conversation` - conversation * `customer_analytics` - customer_analytics * `customer_task` - customer_task * `customer_journey` - customer_journey * `customer_profile_config` - customer_profile_config * `data_catalog` - data_catalog * `data_catalog_approval` - data_catalog_approval * `data_deletion` - data_deletion * `dashboard` - dashboard * `event_filter` - event_filter * `dashboard_template` - dashboard_template * `dataset` - dataset * `early_access_feature` - early_access_feature * `endpoint` - endpoint * `engineering_analytics` - engineering_analytics * `error_tracking` - error_tracking * `evaluation` - evaluation * `element` - element * `event_definition` - event_definition * `experiment` - experiment * `experiment_holdout` - experiment_holdout * `experiment_saved_metric` - experiment_saved_metric * `export` - export * `external_data_schema` - external_data_schema * `external_data_source` - external_data_source * `feature_flag` - feature_flag * `file_system` - file_system * `file_system_shortcut` - file_system_shortcut * `group` - group * `health_issue` - health_issue * `heatmap` - heatmap * `hog_flow` - hog_flow * `hog_function` - hog_function * `ingestion_warning` - ingestion_warning * `insight` - insight * `insight_variable` - insight_variable * `integration` - integration * `legal_document` - legal_document * `link` - link * `live_debugger` - live_debugger * `llm_analytics` - llm_analytics * `ai_observability_clusters` - ai_observability_clusters * `llm_gateway` - llm_gateway * `llm_playground` - llm_playground * `llm_prompt` - llm_prompt * `llm_provider_key` - llm_provider_key * `llm_skill` - llm_skill * `logs` - logs * `loop` - loop * `marketing_analytics` - marketing_analytics * `mcp_analytics` - mcp_analytics * `mcp_registry` - mcp_registry * `metrics` - metrics * `notebook` - notebook * `offline_evaluation_ingestion` - offline_evaluation_ingestion * `organization` - organization * `organization_integration` - organization_integration * `organization_member` - organization_member * `person` - person * `plugin` - plugin * `product_enablement` - product_enablement * `product_tour` - product_tour * `project` - project * `property_definition` - property_definition * `query` - query * `query_performance` - query_performance * `replay_scanner` - replay_scanner * `review_hog` - review_hog * `revenue_analytics` - revenue_analytics * `session_recording` - session_recording * `session_recording_playlist` - session_recording_playlist * `sharing_configuration` - sharing_configuration * `signal_scout` - signal_scout * `stamphog` - stamphog * `streamlit_app` - streamlit_app * `subscription` - subscription * `support_ticket` - support_ticket * `survey` - survey * `tagger` - tagger * `ticket` - ticket * `task` - task * `today` - today * `toolbar` - toolbar * `tracing` - tracing * `field_note` - field_note * `uploaded_media` - uploaded_media * `usage_metric` - usage_metric * `user` - user * `user_interview` - user_interview * `vision_action` - vision_action * `vision_alert` - vision_alert * `visual_review` - visual_review * `warehouse_objects` - warehouse_objects * `warehouse_table` - warehouse_table * `warehouse_view` - warehouse_view * `web_analytics` - web_analytics * `webhook` - webhook * `wizard_session` - wizard_session * `wizard_run` - wizard_run */
@@ -6353,15 +6248,13 @@ export const GetOrganizationsProjectsAccessControlMemberRequest = /*@__PURE__*/ 
 
 /** The project access levels, lowest first. */
 export type AccessControlMembersResponseAvailableProjectLevelsList = Array<string>;
-export const AccessControlMembersResponseAvailableProjectLevelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccessControlMembersResponseAvailableProjectLevelsList>;
+export const AccessControlMembersResponseAvailableProjectLevelsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<AccessControlMembersResponseAvailableProjectLevelsList>;
 
 /** The resource access levels, lowest first. */
 export type AccessControlMembersResponseAvailableResourceLevelsList = Array<string>;
-export const AccessControlMembersResponseAvailableResourceLevelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccessControlMembersResponseAvailableResourceLevelsList>;
+export const AccessControlMembersResponseAvailableResourceLevelsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<AccessControlMembersResponseAvailableResourceLevelsList>;
 
 export interface AccessControlMemberUser {
   /** The user's UUID. */
@@ -6384,9 +6277,8 @@ export const AccessControlMemberUser = /*@__PURE__*/ S.suspend(() =>
 
 /** The roles the member is in. Use them as `role_id` on the role rule endpoints. */
 export type AccessControlMemberAccessRoleIdsList = Array<string>;
-export const AccessControlMemberAccessRoleIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccessControlMemberAccessRoleIdsList>;
+export const AccessControlMemberAccessRoleIdsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<AccessControlMemberAccessRoleIdsList>;
 
 /** A resolved access level with the rule that supplied it -- the wire form of `ResolvedAccess`. */
 export interface ResolvedAccess {
@@ -6574,22 +6466,18 @@ export const GetOrganizationsProjectsAccessControlRoleRequest = /*@__PURE__*/ S.
 
 /** The project access levels, lowest first. */
 export type AccessControlRolesResponseAvailableProjectLevelsList = Array<string>;
-export const AccessControlRolesResponseAvailableProjectLevelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccessControlRolesResponseAvailableProjectLevelsList>;
+export const AccessControlRolesResponseAvailableProjectLevelsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<AccessControlRolesResponseAvailableProjectLevelsList>;
 
 /** The resource access levels, lowest first. */
 export type AccessControlRolesResponseAvailableResourceLevelsList = Array<string>;
-export const AccessControlRolesResponseAvailableResourceLevelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccessControlRolesResponseAvailableResourceLevelsList>;
+export const AccessControlRolesResponseAvailableResourceLevelsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<AccessControlRolesResponseAvailableResourceLevelsList>;
 
 /** Access per resource type, keyed by resource name (for example `dashboard`, `feature_flag`). */
 export type AccessControlRoleAccessResourcesMap = { [key: string]: SubjectAccessEntry | undefined };
-export const AccessControlRoleAccessResourcesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  SubjectAccessEntry,
-) as any as S.Schema<AccessControlRoleAccessResourcesMap>;
+export const AccessControlRoleAccessResourcesMap =
+  AccessControlMemberAccessResourcesMap as any as S.Schema<AccessControlRoleAccessResourcesMap>;
 
 /** A role's resolved access to the project and to every resource type in it. */
 export interface AccessControlRoleAccess {
@@ -6815,21 +6703,18 @@ export const GetOrganizationsProjectsLogsConfigRequest = /*@__PURE__*/ S.suspend
 
 /** Log attribute keys whose values should match a person's distinct_id -- a log links to a person when any of these attributes equals one of their distinct IDs. Used by the person profile Logs tab and the `query-logs` MCP tool. Defaults to ['posthogDistinctId'] -- the convention documented at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js / posthog-react-native SDKs auto-attach. Add keys only if your pipeline emits the person identifier under different attributes. */
 export type TeamLogsConfigLogsDistinctIdAttributeKeysList = Array<string>;
-export const TeamLogsConfigLogsDistinctIdAttributeKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TeamLogsConfigLogsDistinctIdAttributeKeysList>;
+export const TeamLogsConfigLogsDistinctIdAttributeKeysList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<TeamLogsConfigLogsDistinctIdAttributeKeysList>;
 
 /** Ordered list of log attribute keys whose values hold the PostHog session ID. Detection checks keys in order, then falls back to common session ID attribute conventions; the first key with a value wins. Defaults to ['sessionId'] -- the convention documented at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js / posthog-react-native SDKs auto-attach. Add keys only if your pipeline emits the session ID under different attributes. */
 export type TeamLogsConfigLogsSessionIdAttributeKeysList = Array<string>;
-export const TeamLogsConfigLogsSessionIdAttributeKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TeamLogsConfigLogsSessionIdAttributeKeysList>;
+export const TeamLogsConfigLogsSessionIdAttributeKeysList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<TeamLogsConfigLogsSessionIdAttributeKeysList>;
 
 /** Ordered list of top-level JSON keys whose value is the message text that log patterns are derived from. Keys are matched literally at the top level of the log body; a dot in a key is part of the key name, not a path into nested objects. Selection checks keys in order; the first key whose value is a non-empty string wins. Defaults to ['message', 'msg', 'event']. An empty list turns message extraction off, so JSON log bodies group by their key set instead. The stored log body is never changed by this setting. */
 export type TeamLogsConfigLogsPatternMessageKeysList = Array<string>;
-export const TeamLogsConfigLogsPatternMessageKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TeamLogsConfigLogsPatternMessageKeysList>;
+export const TeamLogsConfigLogsPatternMessageKeysList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<TeamLogsConfigLogsPatternMessageKeysList>;
 
 export interface TeamLogsConfig {
   /** Legacy single-key alias -- always the first entry of `logs_distinct_id_attribute_keys`. Read-only; write the plural field instead. */
@@ -6894,15 +6779,13 @@ export const GetOrganizationsProjectsTracingConfigRequest = /*@__PURE__*/ S.susp
 
 /** Span or resource attribute keys whose values should match a person's distinct_id -- a span links to a person when any of these attributes holds one of their distinct IDs. Defaults to ['posthogDistinctId'], the key the posthog-js / posthog-react-native SDKs attach to the OTel signals they emit. Add keys only if your pipeline emits the person identifier under different attributes. */
 export type TeamTracingConfigTracingDistinctIdAttributeKeysList = Array<string>;
-export const TeamTracingConfigTracingDistinctIdAttributeKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TeamTracingConfigTracingDistinctIdAttributeKeysList>;
+export const TeamTracingConfigTracingDistinctIdAttributeKeysList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<TeamTracingConfigTracingDistinctIdAttributeKeysList>;
 
 /** Ordered list of span or resource attribute keys whose values hold the PostHog session ID. Detection checks keys in order, then falls back to common session ID attribute conventions; the first key with a value wins. Defaults to ['sessionId'], the key the posthog-js / posthog-react-native SDKs attach to the OTel signals they emit. Add keys only if your pipeline emits the session ID under different attributes. */
 export type TeamTracingConfigTracingSessionIdAttributeKeysList = Array<string>;
-export const TeamTracingConfigTracingSessionIdAttributeKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TeamTracingConfigTracingSessionIdAttributeKeysList>;
+export const TeamTracingConfigTracingSessionIdAttributeKeysList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<TeamTracingConfigTracingSessionIdAttributeKeysList>;
 
 export interface TeamTracingConfig {
   /** Span or resource attribute keys whose values should match a person's distinct_id -- a span links to a person when any of these attributes holds one of their distinct IDs. Defaults to ['posthogDistinctId'], the key the posthog-js / posthog-react-native SDKs attach to the OTel signals they emit. Add keys only if your pipeline emits the person identifier under different attributes. */
@@ -7179,9 +7062,8 @@ export const WelcomeResponsePopularDashboardsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<WelcomeResponsePopularDashboardsList>;
 
 export type WelcomeResponseProductsInUseList = Array<string>;
-export const WelcomeResponseProductsInUseList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WelcomeResponseProductsInUseList>;
+export const WelcomeResponseProductsInUseList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<WelcomeResponseProductsInUseList>;
 
 export interface WelcomeSuggestedStep {
   label?: string;
@@ -7250,11 +7132,8 @@ export const IdentityProviderConfigsDestroyRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<IdentityProviderConfigsDestroyRequest>;
 
 export interface IdentityProviderConfigsDestroyResponse {}
-export const IdentityProviderConfigsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "IdentityProviderConfigsDestroyResponse",
-}) as any as S.Schema<IdentityProviderConfigsDestroyResponse>;
+export const IdentityProviderConfigsDestroyResponse =
+  BillingSpendExportDownloadResponse as any as S.Schema<IdentityProviderConfigsDestroyResponse>;
 
 export interface InvitesBulkCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -7288,9 +7167,8 @@ export const InvitesBulkCreateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InvitesBulkCreateRequest" }) as any as S.Schema<InvitesBulkCreateRequest>;
 
 export interface InvitesBulkCreateResponse {}
-export const InvitesBulkCreateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "InvitesBulkCreateResponse",
-}) as any as S.Schema<InvitesBulkCreateResponse>;
+export const InvitesBulkCreateResponse =
+  DestroyResponse as any as S.Schema<InvitesBulkCreateResponse>;
 
 export interface InvitesDestroyRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -7312,9 +7190,7 @@ export const InvitesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InvitesDestroyRequest" }) as any as S.Schema<InvitesDestroyRequest>;
 
 export interface InvitesDestroyResponse {}
-export const InvitesDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "InvitesDestroyResponse",
-}) as any as S.Schema<InvitesDestroyResponse>;
+export const InvitesDestroyResponse = DestroyResponse as any as S.Schema<InvitesDestroyResponse>;
 
 export interface LegalDocumentsDestroyRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -7337,9 +7213,8 @@ export const LegalDocumentsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LegalDocumentsDestroyRequest>;
 
 export interface LegalDocumentsDestroyResponse {}
-export const LegalDocumentsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "LegalDocumentsDestroyResponse",
-}) as any as S.Schema<LegalDocumentsDestroyResponse>;
+export const LegalDocumentsDestroyResponse =
+  DestroyResponse as any as S.Schema<LegalDocumentsDestroyResponse>;
 
 export interface LegalDocumentsDownloadRetrieveRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -7362,11 +7237,8 @@ export const LegalDocumentsDownloadRetrieveRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<LegalDocumentsDownloadRetrieveRequest>;
 
 export interface LegalDocumentsDownloadRetrieveResponse {}
-export const LegalDocumentsDownloadRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "LegalDocumentsDownloadRetrieveResponse",
-}) as any as S.Schema<LegalDocumentsDownloadRetrieveResponse>;
+export const LegalDocumentsDownloadRetrieveResponse =
+  BillingSpendExportDownloadResponse as any as S.Schema<LegalDocumentsDownloadRetrieveResponse>;
 
 export interface ListRequest {
   /** Number of results to return per page. */
@@ -7875,9 +7747,8 @@ export const ListOauthApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOauthApplicationsRequest>;
 
 export type OrganizationOAuthApplicationRedirectUrisListList = Array<string>;
-export const OrganizationOAuthApplicationRedirectUrisListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrganizationOAuthApplicationRedirectUrisListList>;
+export const OrganizationOAuthApplicationRedirectUrisListList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<OrganizationOAuthApplicationRedirectUrisListList>;
 
 /** Serializer for organization-scoped OAuth applications (read-only). */
 export interface OrganizationOAuthApplication {
@@ -7961,9 +7832,8 @@ export const ListOrganizationsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels applied to this project. */
 export type ProjectBackwardCompatBasicTagsList = Array<string>;
-export const ProjectBackwardCompatBasicTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectBackwardCompatBasicTagsList>;
+export const ProjectBackwardCompatBasicTagsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<ProjectBackwardCompatBasicTagsList>;
 
 /** Like `ProjectBasicSerializer`, but also works as a drop-in replacement for `TeamBasicSerializer` by way of passthrough fields. This allows the meaning of `Team` to change from "project" to "environment" without breaking backward compatibility of the REST API. Do not use this in greenfield endpoints! */
 export interface ProjectBackwardCompatBasic {
@@ -8061,27 +7931,23 @@ export const RestrictionTypeEnum = S.String;
 
 /** Distinct IDs the restriction applies to. Empty means it is not filtered by distinct ID. */
 export type EventIngestionRestrictionDistinctIdsList = Array<string>;
-export const EventIngestionRestrictionDistinctIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EventIngestionRestrictionDistinctIdsList>;
+export const EventIngestionRestrictionDistinctIdsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<EventIngestionRestrictionDistinctIdsList>;
 
 /** Session IDs the restriction applies to. Empty means it is not filtered by session ID. */
 export type EventIngestionRestrictionSessionIdsList = Array<string>;
-export const EventIngestionRestrictionSessionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EventIngestionRestrictionSessionIdsList>;
+export const EventIngestionRestrictionSessionIdsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<EventIngestionRestrictionSessionIdsList>;
 
 /** Event names the restriction applies to. Empty means it is not filtered by event name. */
 export type EventIngestionRestrictionEventNamesList = Array<string>;
-export const EventIngestionRestrictionEventNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EventIngestionRestrictionEventNamesList>;
+export const EventIngestionRestrictionEventNamesList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<EventIngestionRestrictionEventNamesList>;
 
 /** Event UUIDs the restriction applies to. Empty means it is not filtered by event UUID. */
 export type EventIngestionRestrictionEventUuidsList = Array<string>;
-export const EventIngestionRestrictionEventUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EventIngestionRestrictionEventUuidsList>;
+export const EventIngestionRestrictionEventUuidsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<EventIngestionRestrictionEventUuidsList>;
 
 /** * `analytics` - Analytics * `session_recordings` - Session Recordings * `errortracking` - Errortracking * `clientwarnings` - Clientwarnings * `heatmaps` - Heatmaps * `ai` - Ai */
 export type IngestionPipelineEnum =
@@ -8291,69 +8157,51 @@ export const MembersDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MembersDestroyRequest" }) as any as S.Schema<MembersDestroyRequest>;
 
 export interface MembersDestroyResponse {}
-export const MembersDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "MembersDestroyResponse",
-}) as any as S.Schema<MembersDestroyResponse>;
+export const MembersDestroyResponse = DestroyResponse as any as S.Schema<MembersDestroyResponse>;
 
 /** Labels applied to this project. Names are trimmed and lowercased, and sending this field replaces the project's existing tags. */
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestTagsList = Array<string>;
 export const OrganizationsProjectsAddProductIntentPartialUpdateRequestTagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestTagsList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestTagsList>;
 
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestAppUrlsList = Array<
   string | null
 >;
 export const OrganizationsProjectsAddProductIntentPartialUpdateRequestAppUrlsList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestAppUrlsList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestAppUrlsList>;
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestPersonDisplayNamePropertiesList =
   Array<string>;
 export const OrganizationsProjectsAddProductIntentPartialUpdateRequestPersonDisplayNamePropertiesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestPersonDisplayNamePropertiesList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   Array<unknown>;
 export const OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   Array<unknown>;
 export const OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   Array<string | null>;
 export const OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingEventTriggerConfigList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestLiveEventsColumnsList =
   Array<string>;
 export const OrganizationsProjectsAddProductIntentPartialUpdateRequestLiveEventsColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestLiveEventsColumnsList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestLiveEventsColumnsList>;
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestRecordingDomainsList = Array<
   string | null
 >;
 export const OrganizationsProjectsAddProductIntentPartialUpdateRequestRecordingDomainsList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestRecordingDomainsList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestRecordingDomainsList>;
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestBusinessModel =
@@ -8367,10 +8215,7 @@ export type OrganizationsProjectsAddProductIntentPartialUpdateRequestConversatio
   [key: string]: unknown | undefined;
 };
 export const OrganizationsProjectsAddProductIntentPartialUpdateRequestConversationsSettingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestConversationsSettingsMap>;
+  CreateOrganizationsProjectsChangeOrganizationRequestConversationsSettingsMap as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestConversationsSettingsMap>;
 
 export interface OrganizationsProjectsAddProductIntentPartialUpdateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -8672,61 +8517,45 @@ export const OrganizationsProjectsDefaultEvaluationContextsDestroyResponse =
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestTagsList =
   Array<string>;
 export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestTagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestTagsList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestTagsList>;
 
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestAppUrlsList = Array<
   string | null
 >;
 export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestAppUrlsList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestAppUrlsList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestAppUrlsList>;
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestPersonDisplayNamePropertiesList =
   Array<string>;
 export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestPersonDisplayNamePropertiesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestPersonDisplayNamePropertiesList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   Array<unknown>;
 export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   Array<unknown>;
 export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   Array<string | null>;
 export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingEventTriggerConfigList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestLiveEventsColumnsList =
   Array<string>;
 export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestLiveEventsColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestLiveEventsColumnsList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestLiveEventsColumnsList>;
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestRecordingDomainsList =
   Array<string | null>;
 export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestRecordingDomainsList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestRecordingDomainsList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestRecordingDomainsList>;
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestBusinessModel =
@@ -8739,10 +8568,7 @@ export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestBus
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestConversationsSettingsMap =
   { [key: string]: unknown | undefined };
 export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestConversationsSettingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestConversationsSettingsMap>;
+  CreateOrganizationsProjectsChangeOrganizationRequestConversationsSettingsMap as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestConversationsSettingsMap>;
 
 export interface OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -8990,11 +8816,8 @@ export const OrganizationsProjectsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrganizationsProjectsDestroyRequest>;
 
 export interface OrganizationsProjectsDestroyResponse {}
-export const OrganizationsProjectsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "OrganizationsProjectsDestroyResponse",
-}) as any as S.Schema<OrganizationsProjectsDestroyResponse>;
+export const OrganizationsProjectsDestroyResponse =
+  BillingSpendExportDownloadResponse as any as S.Schema<OrganizationsProjectsDestroyResponse>;
 
 export interface OrganizationsProjectsEvaluationContextSuggestionsDestroyRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -9025,61 +8848,45 @@ export const OrganizationsProjectsEvaluationContextSuggestionsDestroyRequest =
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestTagsList =
   Array<string>;
 export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestTagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestTagsList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestTagsList>;
 
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestAppUrlsList = Array<
   string | null
 >;
 export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestAppUrlsList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestAppUrlsList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestAppUrlsList>;
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestPersonDisplayNamePropertiesList =
   Array<string>;
 export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestPersonDisplayNamePropertiesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestPersonDisplayNamePropertiesList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlTriggerConfigList =
   Array<unknown>;
 export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlTriggerConfigList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlTriggerConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlBlocklistConfigList =
   Array<unknown>;
 export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlBlocklistConfigList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlBlocklistConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingEventTriggerConfigList =
   Array<string | null>;
 export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingEventTriggerConfigList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingEventTriggerConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestLiveEventsColumnsList =
   Array<string>;
 export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestLiveEventsColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestLiveEventsColumnsList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestLiveEventsColumnsList>;
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestRecordingDomainsList =
   Array<string | null>;
 export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestRecordingDomainsList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestRecordingDomainsList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestRecordingDomainsList>;
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestBusinessModel =
@@ -9092,10 +8899,7 @@ export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestB
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestConversationsSettingsMap =
   { [key: string]: unknown | undefined };
 export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestConversationsSettingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestConversationsSettingsMap>;
+  CreateOrganizationsProjectsChangeOrganizationRequestConversationsSettingsMap as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestConversationsSettingsMap>;
 
 export interface OrganizationsProjectsGenerateConversationsPublicTokenCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -9323,59 +9127,45 @@ export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequest 
 
 /** Labels applied to this project. Names are trimmed and lowercased, and sending this field replaces the project's existing tags. */
 export type OrganizationsProjectsResetTokenPartialUpdateRequestTagsList = Array<string>;
-export const OrganizationsProjectsResetTokenPartialUpdateRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestTagsList>;
+export const OrganizationsProjectsResetTokenPartialUpdateRequestTagsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestTagsList>;
 
 export type OrganizationsProjectsResetTokenPartialUpdateRequestAppUrlsList = Array<string | null>;
-export const OrganizationsProjectsResetTokenPartialUpdateRequestAppUrlsList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(S.String),
-) as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestAppUrlsList>;
+export const OrganizationsProjectsResetTokenPartialUpdateRequestAppUrlsList =
+  CreateOrganizationsProjectRequestAppUrlsList as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestAppUrlsList>;
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsResetTokenPartialUpdateRequestPersonDisplayNamePropertiesList =
   Array<string>;
 export const OrganizationsProjectsResetTokenPartialUpdateRequestPersonDisplayNamePropertiesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestPersonDisplayNamePropertiesList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   Array<unknown>;
 export const OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   Array<unknown>;
 export const OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   Array<string | null>;
 export const OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsResetTokenPartialUpdateRequestLiveEventsColumnsList =
   Array<string>;
 export const OrganizationsProjectsResetTokenPartialUpdateRequestLiveEventsColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestLiveEventsColumnsList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestLiveEventsColumnsList>;
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsResetTokenPartialUpdateRequestRecordingDomainsList = Array<
   string | null
 >;
 export const OrganizationsProjectsResetTokenPartialUpdateRequestRecordingDomainsList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestRecordingDomainsList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestRecordingDomainsList>;
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsResetTokenPartialUpdateRequestBusinessModel =
@@ -9389,10 +9179,7 @@ export type OrganizationsProjectsResetTokenPartialUpdateRequestConversationsSett
   [key: string]: unknown | undefined;
 };
 export const OrganizationsProjectsResetTokenPartialUpdateRequestConversationsSettingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestConversationsSettingsMap>;
+  CreateOrganizationsProjectsChangeOrganizationRequestConversationsSettingsMap as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestConversationsSettingsMap>;
 
 export interface OrganizationsProjectsResetTokenPartialUpdateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -9632,62 +9419,46 @@ export const OrganizationsProjectsRotateHeatmapsScreenshotSecretPartialUpdateReq
 /** Labels applied to this project. Names are trimmed and lowercased, and sending this field replaces the project's existing tags. */
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestTagsList = Array<string>;
 export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestTagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestTagsList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestTagsList>;
 
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestAppUrlsList = Array<
   string | null
 >;
 export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestAppUrlsList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestAppUrlsList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestAppUrlsList>;
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestPersonDisplayNamePropertiesList =
   Array<string>;
 export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestPersonDisplayNamePropertiesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestPersonDisplayNamePropertiesList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   Array<unknown>;
 export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   Array<unknown>;
 export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   Array<string | null>;
 export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestLiveEventsColumnsList =
   Array<string>;
 export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestLiveEventsColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestLiveEventsColumnsList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestLiveEventsColumnsList>;
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestRecordingDomainsList = Array<
   string | null
 >;
 export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestRecordingDomainsList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestRecordingDomainsList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestRecordingDomainsList>;
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestBusinessModel =
@@ -9701,10 +9472,7 @@ export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestConversati
   [key: string]: unknown | undefined;
 };
 export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestConversationsSettingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestConversationsSettingsMap>;
+  CreateOrganizationsProjectsChangeOrganizationRequestConversationsSettingsMap as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestConversationsSettingsMap>;
 
 export interface OrganizationsProjectsRotateSecretTokenPartialUpdateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -9980,11 +9748,8 @@ export const RoleExternalReferencesDestroyRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<RoleExternalReferencesDestroyRequest>;
 
 export interface RoleExternalReferencesDestroyResponse {}
-export const RoleExternalReferencesDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RoleExternalReferencesDestroyResponse",
-}) as any as S.Schema<RoleExternalReferencesDestroyResponse>;
+export const RoleExternalReferencesDestroyResponse =
+  BillingSpendExportDownloadResponse as any as S.Schema<RoleExternalReferencesDestroyResponse>;
 
 export interface RolesDestroyRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -10006,9 +9771,7 @@ export const RolesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RolesDestroyRequest" }) as any as S.Schema<RolesDestroyRequest>;
 
 export interface RolesDestroyResponse {}
-export const RolesDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RolesDestroyResponse",
-}) as any as S.Schema<RolesDestroyResponse>;
+export const RolesDestroyResponse = DestroyResponse as any as S.Schema<RolesDestroyResponse>;
 
 export interface RolesRoleMembershipsDestroyRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -10034,11 +9797,8 @@ export const RolesRoleMembershipsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RolesRoleMembershipsDestroyRequest>;
 
 export interface RolesRoleMembershipsDestroyResponse {}
-export const RolesRoleMembershipsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RolesRoleMembershipsDestroyResponse",
-}) as any as S.Schema<RolesRoleMembershipsDestroyResponse>;
+export const RolesRoleMembershipsDestroyResponse =
+  BillingSpendExportDownloadResponse as any as S.Schema<RolesRoleMembershipsDestroyResponse>;
 
 export interface UpdateRequest {
   /** A UUID string identifying this organization. */
@@ -10172,15 +9932,13 @@ export const UpdateIdentityProviderConfigRequestConfigScope =
 
 /** Organization domain IDs that this identity provider configuration applies to. */
 export type UpdateIdentityProviderConfigRequestOrganizationDomainIdsList = Array<string>;
-export const UpdateIdentityProviderConfigRequestOrganizationDomainIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateIdentityProviderConfigRequestOrganizationDomainIdsList>;
+export const UpdateIdentityProviderConfigRequestOrganizationDomainIdsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<UpdateIdentityProviderConfigRequestOrganizationDomainIdsList>;
 
 /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
 export type UpdateIdentityProviderConfigRequestIdJagAllowedClientsList = Array<string>;
-export const UpdateIdentityProviderConfigRequestIdJagAllowedClientsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateIdentityProviderConfigRequestIdJagAllowedClientsList>;
+export const UpdateIdentityProviderConfigRequestIdJagAllowedClientsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<UpdateIdentityProviderConfigRequestIdJagAllowedClientsList>;
 
 export interface UpdateIdentityProviderConfigRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -10260,16 +10018,12 @@ export const UpdateIdentityProviderConfigsPartialRequestConfigScope =
 /** Organization domain IDs that this identity provider configuration applies to. */
 export type UpdateIdentityProviderConfigsPartialRequestOrganizationDomainIdsList = Array<string>;
 export const UpdateIdentityProviderConfigsPartialRequestOrganizationDomainIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateIdentityProviderConfigsPartialRequestOrganizationDomainIdsList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateIdentityProviderConfigsPartialRequestOrganizationDomainIdsList>;
 
 /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
 export type UpdateIdentityProviderConfigsPartialRequestIdJagAllowedClientsList = Array<string>;
 export const UpdateIdentityProviderConfigsPartialRequestIdJagAllowedClientsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateIdentityProviderConfigsPartialRequestIdJagAllowedClientsList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateIdentityProviderConfigsPartialRequestIdJagAllowedClientsList>;
 
 export interface UpdateIdentityProviderConfigsPartialRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -10429,53 +10183,41 @@ export const UpdateMembersPartialRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels applied to this project. Names are trimmed and lowercased, and sending this field replaces the project's existing tags. */
 export type UpdateOrganizationsProjectRequestTagsList = Array<string>;
-export const UpdateOrganizationsProjectRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationsProjectRequestTagsList>;
+export const UpdateOrganizationsProjectRequestTagsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<UpdateOrganizationsProjectRequestTagsList>;
 
 export type UpdateOrganizationsProjectRequestAppUrlsList = Array<string | null>;
-export const UpdateOrganizationsProjectRequestAppUrlsList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(S.String),
-) as any as S.Schema<UpdateOrganizationsProjectRequestAppUrlsList>;
+export const UpdateOrganizationsProjectRequestAppUrlsList =
+  CreateOrganizationsProjectRequestAppUrlsList as any as S.Schema<UpdateOrganizationsProjectRequestAppUrlsList>;
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type UpdateOrganizationsProjectRequestPersonDisplayNamePropertiesList = Array<string>;
 export const UpdateOrganizationsProjectRequestPersonDisplayNamePropertiesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationsProjectRequestPersonDisplayNamePropertiesList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectRequestPersonDisplayNamePropertiesList>;
 
 export type UpdateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList = Array<unknown>;
 export const UpdateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList>;
 
 export type UpdateOrganizationsProjectRequestSessionRecordingUrlBlocklistConfigList =
   Array<unknown>;
 export const UpdateOrganizationsProjectRequestSessionRecordingUrlBlocklistConfigList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationsProjectRequestSessionRecordingUrlBlocklistConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type UpdateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList = Array<
   string | null
 >;
 export const UpdateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<UpdateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList>;
 
 export type UpdateOrganizationsProjectRequestLiveEventsColumnsList = Array<string>;
-export const UpdateOrganizationsProjectRequestLiveEventsColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationsProjectRequestLiveEventsColumnsList>;
+export const UpdateOrganizationsProjectRequestLiveEventsColumnsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<UpdateOrganizationsProjectRequestLiveEventsColumnsList>;
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type UpdateOrganizationsProjectRequestRecordingDomainsList = Array<string | null>;
-export const UpdateOrganizationsProjectRequestRecordingDomainsList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(S.String),
-) as any as S.Schema<UpdateOrganizationsProjectRequestRecordingDomainsList>;
+export const UpdateOrganizationsProjectRequestRecordingDomainsList =
+  CreateOrganizationsProjectRequestAppUrlsList as any as S.Schema<UpdateOrganizationsProjectRequestRecordingDomainsList>;
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type UpdateOrganizationsProjectRequestBusinessModel = BusinessModelEnum | BlankEnum;
@@ -10486,10 +10228,8 @@ export const UpdateOrganizationsProjectRequestBusinessModel =
 export type UpdateOrganizationsProjectRequestConversationsSettingsMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateOrganizationsProjectRequestConversationsSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationsProjectRequestConversationsSettingsMap>;
+export const UpdateOrganizationsProjectRequestConversationsSettingsMap =
+  OrganizationTeamsItemMap as any as S.Schema<UpdateOrganizationsProjectRequestConversationsSettingsMap>;
 
 export interface UpdateOrganizationsProjectRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -10698,61 +10438,45 @@ export const UpdateOrganizationsProjectRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestTagsList =
   Array<string>;
 export const UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestTagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestTagsList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestTagsList>;
 
 export type UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestAppUrlsList = Array<
   string | null
 >;
 export const UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestAppUrlsList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestAppUrlsList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestAppUrlsList>;
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestPersonDisplayNamePropertiesList =
   Array<string>;
 export const UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestPersonDisplayNamePropertiesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestPersonDisplayNamePropertiesList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestPersonDisplayNamePropertiesList>;
 
 export type UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestSessionRecordingUrlTriggerConfigList =
   Array<unknown>;
 export const UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestSessionRecordingUrlTriggerConfigList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestSessionRecordingUrlTriggerConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestSessionRecordingUrlTriggerConfigList>;
 
 export type UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestSessionRecordingUrlBlocklistConfigList =
   Array<unknown>;
 export const UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestSessionRecordingUrlBlocklistConfigList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestSessionRecordingUrlBlocklistConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestSessionRecordingEventTriggerConfigList =
   Array<string | null>;
 export const UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestSessionRecordingEventTriggerConfigList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestSessionRecordingEventTriggerConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestSessionRecordingEventTriggerConfigList>;
 
 export type UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestLiveEventsColumnsList =
   Array<string>;
 export const UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestLiveEventsColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestLiveEventsColumnsList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestLiveEventsColumnsList>;
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestRecordingDomainsList =
   Array<string | null>;
 export const UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestRecordingDomainsList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestRecordingDomainsList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestRecordingDomainsList>;
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestBusinessModel =
@@ -10765,10 +10489,7 @@ export const UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestB
 export type UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestConversationsSettingsMap =
   { [key: string]: unknown | undefined };
 export const UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestConversationsSettingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestConversationsSettingsMap>;
+  CreateOrganizationsProjectsChangeOrganizationRequestConversationsSettingsMap as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestConversationsSettingsMap>;
 
 export interface UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -10997,62 +10718,46 @@ export const UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequest 
 /** Labels applied to this project. Names are trimmed and lowercased, and sending this field replaces the project's existing tags. */
 export type UpdateOrganizationsProjectsDefaultReleaseConditionRequestTagsList = Array<string>;
 export const UpdateOrganizationsProjectsDefaultReleaseConditionRequestTagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequestTagsList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequestTagsList>;
 
 export type UpdateOrganizationsProjectsDefaultReleaseConditionRequestAppUrlsList = Array<
   string | null
 >;
 export const UpdateOrganizationsProjectsDefaultReleaseConditionRequestAppUrlsList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequestAppUrlsList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequestAppUrlsList>;
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type UpdateOrganizationsProjectsDefaultReleaseConditionRequestPersonDisplayNamePropertiesList =
   Array<string>;
 export const UpdateOrganizationsProjectsDefaultReleaseConditionRequestPersonDisplayNamePropertiesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequestPersonDisplayNamePropertiesList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequestPersonDisplayNamePropertiesList>;
 
 export type UpdateOrganizationsProjectsDefaultReleaseConditionRequestSessionRecordingUrlTriggerConfigList =
   Array<unknown>;
 export const UpdateOrganizationsProjectsDefaultReleaseConditionRequestSessionRecordingUrlTriggerConfigList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequestSessionRecordingUrlTriggerConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequestSessionRecordingUrlTriggerConfigList>;
 
 export type UpdateOrganizationsProjectsDefaultReleaseConditionRequestSessionRecordingUrlBlocklistConfigList =
   Array<unknown>;
 export const UpdateOrganizationsProjectsDefaultReleaseConditionRequestSessionRecordingUrlBlocklistConfigList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequestSessionRecordingUrlBlocklistConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type UpdateOrganizationsProjectsDefaultReleaseConditionRequestSessionRecordingEventTriggerConfigList =
   Array<string | null>;
 export const UpdateOrganizationsProjectsDefaultReleaseConditionRequestSessionRecordingEventTriggerConfigList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequestSessionRecordingEventTriggerConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequestSessionRecordingEventTriggerConfigList>;
 
 export type UpdateOrganizationsProjectsDefaultReleaseConditionRequestLiveEventsColumnsList =
   Array<string>;
 export const UpdateOrganizationsProjectsDefaultReleaseConditionRequestLiveEventsColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequestLiveEventsColumnsList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequestLiveEventsColumnsList>;
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type UpdateOrganizationsProjectsDefaultReleaseConditionRequestRecordingDomainsList = Array<
   string | null
 >;
 export const UpdateOrganizationsProjectsDefaultReleaseConditionRequestRecordingDomainsList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequestRecordingDomainsList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequestRecordingDomainsList>;
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type UpdateOrganizationsProjectsDefaultReleaseConditionRequestBusinessModel =
@@ -11066,10 +10771,7 @@ export type UpdateOrganizationsProjectsDefaultReleaseConditionRequestConversatio
   [key: string]: unknown | undefined;
 };
 export const UpdateOrganizationsProjectsDefaultReleaseConditionRequestConversationsSettingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequestConversationsSettingsMap>;
+  CreateOrganizationsProjectsChangeOrganizationRequestConversationsSettingsMap as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequestConversationsSettingsMap>;
 
 export interface UpdateOrganizationsProjectsDefaultReleaseConditionRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -11290,62 +10992,46 @@ export const UpdateOrganizationsProjectsDefaultReleaseConditionRequest = /*@__PU
 /** Labels applied to this project. Names are trimmed and lowercased, and sending this field replaces the project's existing tags. */
 export type UpdateOrganizationsProjectsExperimentsConfigPartialRequestTagsList = Array<string>;
 export const UpdateOrganizationsProjectsExperimentsConfigPartialRequestTagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequestTagsList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequestTagsList>;
 
 export type UpdateOrganizationsProjectsExperimentsConfigPartialRequestAppUrlsList = Array<
   string | null
 >;
 export const UpdateOrganizationsProjectsExperimentsConfigPartialRequestAppUrlsList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequestAppUrlsList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequestAppUrlsList>;
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type UpdateOrganizationsProjectsExperimentsConfigPartialRequestPersonDisplayNamePropertiesList =
   Array<string>;
 export const UpdateOrganizationsProjectsExperimentsConfigPartialRequestPersonDisplayNamePropertiesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequestPersonDisplayNamePropertiesList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequestPersonDisplayNamePropertiesList>;
 
 export type UpdateOrganizationsProjectsExperimentsConfigPartialRequestSessionRecordingUrlTriggerConfigList =
   Array<unknown>;
 export const UpdateOrganizationsProjectsExperimentsConfigPartialRequestSessionRecordingUrlTriggerConfigList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequestSessionRecordingUrlTriggerConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequestSessionRecordingUrlTriggerConfigList>;
 
 export type UpdateOrganizationsProjectsExperimentsConfigPartialRequestSessionRecordingUrlBlocklistConfigList =
   Array<unknown>;
 export const UpdateOrganizationsProjectsExperimentsConfigPartialRequestSessionRecordingUrlBlocklistConfigList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequestSessionRecordingUrlBlocklistConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type UpdateOrganizationsProjectsExperimentsConfigPartialRequestSessionRecordingEventTriggerConfigList =
   Array<string | null>;
 export const UpdateOrganizationsProjectsExperimentsConfigPartialRequestSessionRecordingEventTriggerConfigList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequestSessionRecordingEventTriggerConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequestSessionRecordingEventTriggerConfigList>;
 
 export type UpdateOrganizationsProjectsExperimentsConfigPartialRequestLiveEventsColumnsList =
   Array<string>;
 export const UpdateOrganizationsProjectsExperimentsConfigPartialRequestLiveEventsColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequestLiveEventsColumnsList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequestLiveEventsColumnsList>;
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type UpdateOrganizationsProjectsExperimentsConfigPartialRequestRecordingDomainsList = Array<
   string | null
 >;
 export const UpdateOrganizationsProjectsExperimentsConfigPartialRequestRecordingDomainsList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequestRecordingDomainsList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequestRecordingDomainsList>;
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type UpdateOrganizationsProjectsExperimentsConfigPartialRequestBusinessModel =
@@ -11359,10 +11045,7 @@ export type UpdateOrganizationsProjectsExperimentsConfigPartialRequestConversati
   [key: string]: unknown | undefined;
 };
 export const UpdateOrganizationsProjectsExperimentsConfigPartialRequestConversationsSettingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequestConversationsSettingsMap>;
+  CreateOrganizationsProjectsChangeOrganizationRequestConversationsSettingsMap as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequestConversationsSettingsMap>;
 
 export interface UpdateOrganizationsProjectsExperimentsConfigPartialRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -11586,25 +11269,19 @@ export const UpdateOrganizationsProjectsExperimentsConfigPartialRequest = /*@__P
 export type UpdateOrganizationsProjectsLogsConfigPartialRequestLogsDistinctIdAttributeKeysList =
   Array<string>;
 export const UpdateOrganizationsProjectsLogsConfigPartialRequestLogsDistinctIdAttributeKeysList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationsProjectsLogsConfigPartialRequestLogsDistinctIdAttributeKeysList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectsLogsConfigPartialRequestLogsDistinctIdAttributeKeysList>;
 
 /** Ordered list of log attribute keys whose values hold the PostHog session ID. Detection checks keys in order, then falls back to common session ID attribute conventions; the first key with a value wins. Defaults to ['sessionId'] -- the convention documented at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js / posthog-react-native SDKs auto-attach. Add keys only if your pipeline emits the session ID under different attributes. */
 export type UpdateOrganizationsProjectsLogsConfigPartialRequestLogsSessionIdAttributeKeysList =
   Array<string>;
 export const UpdateOrganizationsProjectsLogsConfigPartialRequestLogsSessionIdAttributeKeysList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationsProjectsLogsConfigPartialRequestLogsSessionIdAttributeKeysList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectsLogsConfigPartialRequestLogsSessionIdAttributeKeysList>;
 
 /** Ordered list of top-level JSON keys whose value is the message text that log patterns are derived from. Keys are matched literally at the top level of the log body; a dot in a key is part of the key name, not a path into nested objects. Selection checks keys in order; the first key whose value is a non-empty string wins. Defaults to ['message', 'msg', 'event']. An empty list turns message extraction off, so JSON log bodies group by their key set instead. The stored log body is never changed by this setting. */
 export type UpdateOrganizationsProjectsLogsConfigPartialRequestLogsPatternMessageKeysList =
   Array<string>;
 export const UpdateOrganizationsProjectsLogsConfigPartialRequestLogsPatternMessageKeysList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationsProjectsLogsConfigPartialRequestLogsPatternMessageKeysList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectsLogsConfigPartialRequestLogsPatternMessageKeysList>;
 
 export interface UpdateOrganizationsProjectsLogsConfigPartialRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -11644,55 +11321,43 @@ export const UpdateOrganizationsProjectsLogsConfigPartialRequest = /*@__PURE__*/
 
 /** Labels applied to this project. Names are trimmed and lowercased, and sending this field replaces the project's existing tags. */
 export type UpdateOrganizationsProjectsPartialRequestTagsList = Array<string>;
-export const UpdateOrganizationsProjectsPartialRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationsProjectsPartialRequestTagsList>;
+export const UpdateOrganizationsProjectsPartialRequestTagsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<UpdateOrganizationsProjectsPartialRequestTagsList>;
 
 export type UpdateOrganizationsProjectsPartialRequestAppUrlsList = Array<string | null>;
-export const UpdateOrganizationsProjectsPartialRequestAppUrlsList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(S.String),
-) as any as S.Schema<UpdateOrganizationsProjectsPartialRequestAppUrlsList>;
+export const UpdateOrganizationsProjectsPartialRequestAppUrlsList =
+  CreateOrganizationsProjectRequestAppUrlsList as any as S.Schema<UpdateOrganizationsProjectsPartialRequestAppUrlsList>;
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type UpdateOrganizationsProjectsPartialRequestPersonDisplayNamePropertiesList =
   Array<string>;
 export const UpdateOrganizationsProjectsPartialRequestPersonDisplayNamePropertiesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationsProjectsPartialRequestPersonDisplayNamePropertiesList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectsPartialRequestPersonDisplayNamePropertiesList>;
 
 export type UpdateOrganizationsProjectsPartialRequestSessionRecordingUrlTriggerConfigList =
   Array<unknown>;
 export const UpdateOrganizationsProjectsPartialRequestSessionRecordingUrlTriggerConfigList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationsProjectsPartialRequestSessionRecordingUrlTriggerConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsPartialRequestSessionRecordingUrlTriggerConfigList>;
 
 export type UpdateOrganizationsProjectsPartialRequestSessionRecordingUrlBlocklistConfigList =
   Array<unknown>;
 export const UpdateOrganizationsProjectsPartialRequestSessionRecordingUrlBlocklistConfigList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationsProjectsPartialRequestSessionRecordingUrlBlocklistConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsPartialRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type UpdateOrganizationsProjectsPartialRequestSessionRecordingEventTriggerConfigList = Array<
   string | null
 >;
 export const UpdateOrganizationsProjectsPartialRequestSessionRecordingEventTriggerConfigList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<UpdateOrganizationsProjectsPartialRequestSessionRecordingEventTriggerConfigList>;
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsPartialRequestSessionRecordingEventTriggerConfigList>;
 
 export type UpdateOrganizationsProjectsPartialRequestLiveEventsColumnsList = Array<string>;
-export const UpdateOrganizationsProjectsPartialRequestLiveEventsColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationsProjectsPartialRequestLiveEventsColumnsList>;
+export const UpdateOrganizationsProjectsPartialRequestLiveEventsColumnsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<UpdateOrganizationsProjectsPartialRequestLiveEventsColumnsList>;
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type UpdateOrganizationsProjectsPartialRequestRecordingDomainsList = Array<string | null>;
-export const UpdateOrganizationsProjectsPartialRequestRecordingDomainsList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(S.String),
-) as any as S.Schema<UpdateOrganizationsProjectsPartialRequestRecordingDomainsList>;
+export const UpdateOrganizationsProjectsPartialRequestRecordingDomainsList =
+  CreateOrganizationsProjectRequestAppUrlsList as any as S.Schema<UpdateOrganizationsProjectsPartialRequestRecordingDomainsList>;
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type UpdateOrganizationsProjectsPartialRequestBusinessModel = BusinessModelEnum | BlankEnum;
@@ -11704,10 +11369,7 @@ export type UpdateOrganizationsProjectsPartialRequestConversationsSettingsMap = 
   [key: string]: unknown | undefined;
 };
 export const UpdateOrganizationsProjectsPartialRequestConversationsSettingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationsProjectsPartialRequestConversationsSettingsMap>;
+  CreateOrganizationsProjectsChangeOrganizationRequestConversationsSettingsMap as any as S.Schema<UpdateOrganizationsProjectsPartialRequestConversationsSettingsMap>;
 
 export interface UpdateOrganizationsProjectsPartialRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -11918,17 +11580,13 @@ export const UpdateOrganizationsProjectsPartialRequest = /*@__PURE__*/ S.suspend
 export type UpdateOrganizationsProjectsTracingConfigPartialRequestTracingDistinctIdAttributeKeysList =
   Array<string>;
 export const UpdateOrganizationsProjectsTracingConfigPartialRequestTracingDistinctIdAttributeKeysList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationsProjectsTracingConfigPartialRequestTracingDistinctIdAttributeKeysList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectsTracingConfigPartialRequestTracingDistinctIdAttributeKeysList>;
 
 /** Ordered list of span or resource attribute keys whose values hold the PostHog session ID. Detection checks keys in order, then falls back to common session ID attribute conventions; the first key with a value wins. Defaults to ['sessionId'], the key the posthog-js / posthog-react-native SDKs attach to the OTel signals they emit. Add keys only if your pipeline emits the session ID under different attributes. */
 export type UpdateOrganizationsProjectsTracingConfigPartialRequestTracingSessionIdAttributeKeysList =
   Array<string>;
 export const UpdateOrganizationsProjectsTracingConfigPartialRequestTracingSessionIdAttributeKeysList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationsProjectsTracingConfigPartialRequestTracingSessionIdAttributeKeysList>;
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectsTracingConfigPartialRequestTracingSessionIdAttributeKeysList>;
 
 export interface UpdateOrganizationsProjectsTracingConfigPartialRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */

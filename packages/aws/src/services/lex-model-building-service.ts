@@ -345,7 +345,7 @@ export const Slot = /*@__PURE__*/ S.suspend(() =>
 export type SlotList = Slot[];
 export const SlotList = /*@__PURE__*/ S.Array(Slot);
 export type IntentUtteranceList = string[];
-export const IntentUtteranceList = /*@__PURE__*/ S.Array(S.String);
+export const IntentUtteranceList = SlotUtteranceList as any as S.Schema<IntentUtteranceList>;
 export interface FollowUpPrompt {
   prompt: Prompt;
   rejectionStatement: Statement;
@@ -471,7 +471,7 @@ export const CreateSlotTypeVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSlotTypeVersionRequest>;
 export type Value = string;
 export type SynonymList = string[];
-export const SynonymList = /*@__PURE__*/ S.Array(S.String);
+export const SynonymList = SlotUtteranceList as any as S.Schema<SynonymList>;
 export interface EnumerationValue {
   value: string;
   synonyms?: string[];
@@ -562,9 +562,7 @@ export const DeleteBotAliasRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteBotAliasRequest" }) as any as S.Schema<DeleteBotAliasRequest>;
 export interface DeleteBotAliasResponse {}
-export const DeleteBotAliasResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBotAliasResponse",
-}) as any as S.Schema<DeleteBotAliasResponse>;
+export const DeleteBotAliasResponse = DeleteBotResponse as any as S.Schema<DeleteBotAliasResponse>;
 export type BotChannelName = string;
 export interface DeleteBotChannelAssociationRequest {
   name: string;
@@ -616,9 +614,8 @@ export const DeleteBotVersionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteBotVersionRequest" }) as any as S.Schema<DeleteBotVersionRequest>;
 export interface DeleteBotVersionResponse {}
-export const DeleteBotVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBotVersionResponse",
-}) as any as S.Schema<DeleteBotVersionResponse>;
+export const DeleteBotVersionResponse =
+  DeleteBotResponse as any as S.Schema<DeleteBotVersionResponse>;
 export interface DeleteIntentRequest {
   name: string;
 }
@@ -628,9 +625,7 @@ export const DeleteIntentRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteIntentRequest" }) as any as S.Schema<DeleteIntentRequest>;
 export interface DeleteIntentResponse {}
-export const DeleteIntentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteIntentResponse",
-}) as any as S.Schema<DeleteIntentResponse>;
+export const DeleteIntentResponse = DeleteBotResponse as any as S.Schema<DeleteIntentResponse>;
 export interface DeleteIntentVersionRequest {
   name: string;
   version: string;
@@ -653,9 +648,8 @@ export const DeleteIntentVersionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteIntentVersionRequest",
 }) as any as S.Schema<DeleteIntentVersionRequest>;
 export interface DeleteIntentVersionResponse {}
-export const DeleteIntentVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteIntentVersionResponse",
-}) as any as S.Schema<DeleteIntentVersionResponse>;
+export const DeleteIntentVersionResponse =
+  DeleteBotResponse as any as S.Schema<DeleteIntentVersionResponse>;
 export interface DeleteSlotTypeRequest {
   name: string;
 }
@@ -665,9 +659,7 @@ export const DeleteSlotTypeRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteSlotTypeRequest" }) as any as S.Schema<DeleteSlotTypeRequest>;
 export interface DeleteSlotTypeResponse {}
-export const DeleteSlotTypeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSlotTypeResponse",
-}) as any as S.Schema<DeleteSlotTypeResponse>;
+export const DeleteSlotTypeResponse = DeleteBotResponse as any as S.Schema<DeleteSlotTypeResponse>;
 export interface DeleteSlotTypeVersionRequest {
   name: string;
   version: string;
@@ -690,9 +682,8 @@ export const DeleteSlotTypeVersionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSlotTypeVersionRequest",
 }) as any as S.Schema<DeleteSlotTypeVersionRequest>;
 export interface DeleteSlotTypeVersionResponse {}
-export const DeleteSlotTypeVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSlotTypeVersionResponse",
-}) as any as S.Schema<DeleteSlotTypeVersionResponse>;
+export const DeleteSlotTypeVersionResponse =
+  DeleteBotResponse as any as S.Schema<DeleteSlotTypeVersionResponse>;
 export type UserId = string;
 export interface DeleteUtterancesRequest {
   botName: string;
@@ -714,9 +705,8 @@ export const DeleteUtterancesRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteUtterancesRequest" }) as any as S.Schema<DeleteUtterancesRequest>;
 export interface DeleteUtterancesResponse {}
-export const DeleteUtterancesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUtterancesResponse",
-}) as any as S.Schema<DeleteUtterancesResponse>;
+export const DeleteUtterancesResponse =
+  DeleteBotResponse as any as S.Schema<DeleteUtterancesResponse>;
 export interface GetBotRequest {
   name: string;
   versionOrAlias: string;
@@ -883,18 +873,7 @@ export interface BotAliasMetadata {
   checksum?: string;
   conversationLogs?: ConversationLogsResponse;
 }
-export const BotAliasMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    botVersion: S.optional(S.String),
-    botName: S.optional(S.String),
-    lastUpdatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    checksum: S.optional(S.String),
-    conversationLogs: S.optional(ConversationLogsResponse),
-  }),
-).annotate({ identifier: "BotAliasMetadata" }) as any as S.Schema<BotAliasMetadata>;
+export const BotAliasMetadata = GetBotAliasResponse as any as S.Schema<BotAliasMetadata>;
 export type BotAliasMetadataList = BotAliasMetadata[];
 export const BotAliasMetadataList = /*@__PURE__*/ S.Array(BotAliasMetadata);
 export interface GetBotAliasesResponse {
@@ -1087,9 +1066,7 @@ export interface GetBotVersionsResponse {
   bots?: BotMetadata[];
   nextToken?: string;
 }
-export const GetBotVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ bots: S.optional(BotMetadataList), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "GetBotVersionsResponse" }) as any as S.Schema<GetBotVersionsResponse>;
+export const GetBotVersionsResponse = GetBotsResponse as any as S.Schema<GetBotVersionsResponse>;
 export interface GetBuiltinIntentRequest {
   signature: string;
 }
@@ -1182,11 +1159,11 @@ export interface BuiltinSlotTypeMetadata {
   signature?: string;
   supportedLocales?: Locale[];
 }
-export const BuiltinSlotTypeMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ signature: S.optional(S.String), supportedLocales: S.optional(LocaleList) }),
-).annotate({ identifier: "BuiltinSlotTypeMetadata" }) as any as S.Schema<BuiltinSlotTypeMetadata>;
+export const BuiltinSlotTypeMetadata =
+  BuiltinIntentMetadata as any as S.Schema<BuiltinSlotTypeMetadata>;
 export type BuiltinSlotTypeMetadataList = BuiltinSlotTypeMetadata[];
-export const BuiltinSlotTypeMetadataList = /*@__PURE__*/ S.Array(BuiltinSlotTypeMetadata);
+export const BuiltinSlotTypeMetadataList =
+  BuiltinIntentMetadataList as any as S.Schema<BuiltinSlotTypeMetadataList>;
 export interface GetBuiltinSlotTypesResponse {
   slotTypes?: BuiltinSlotTypeMetadata[];
   nextToken?: string;
@@ -1255,7 +1232,7 @@ export type ImportStatus = "IN_PROGRESS" | "COMPLETE" | "FAILED" | (string & {})
 export const ImportStatus = S.String;
 
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = SlotUtteranceList as any as S.Schema<StringList>;
 export interface GetImportResponse {
   name?: string;
   resourceType?: ResourceType;
@@ -1426,10 +1403,11 @@ export const MigrationAlertType = S.String;
 export type MigrationAlertMessage = string;
 export type MigrationAlertDetail = string;
 export type MigrationAlertDetails = string[];
-export const MigrationAlertDetails = /*@__PURE__*/ S.Array(S.String);
+export const MigrationAlertDetails = SlotUtteranceList as any as S.Schema<MigrationAlertDetails>;
 export type MigrationAlertReferenceURL = string;
 export type MigrationAlertReferenceURLs = string[];
-export const MigrationAlertReferenceURLs = /*@__PURE__*/ S.Array(S.String);
+export const MigrationAlertReferenceURLs =
+  SlotUtteranceList as any as S.Schema<MigrationAlertReferenceURLs>;
 export interface MigrationAlert {
   type?: MigrationAlertType;
   message?: string;
@@ -1596,17 +1574,9 @@ export interface SlotTypeMetadata {
   createdDate?: Date;
   version?: string;
 }
-export const SlotTypeMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    lastUpdatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    version: S.optional(S.String),
-  }),
-).annotate({ identifier: "SlotTypeMetadata" }) as any as S.Schema<SlotTypeMetadata>;
+export const SlotTypeMetadata = IntentMetadata as any as S.Schema<SlotTypeMetadata>;
 export type SlotTypeMetadataList = SlotTypeMetadata[];
-export const SlotTypeMetadataList = /*@__PURE__*/ S.Array(SlotTypeMetadata);
+export const SlotTypeMetadataList = IntentMetadataList as any as S.Schema<SlotTypeMetadataList>;
 export interface GetSlotTypesResponse {
   slotTypes?: SlotTypeMetadata[];
   nextToken?: string;
@@ -1647,7 +1617,7 @@ export const GetSlotTypeVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSlotTypeVersionsResponse",
 }) as any as S.Schema<GetSlotTypeVersionsResponse>;
 export type BotVersions = string[];
-export const BotVersions = /*@__PURE__*/ S.Array(S.String);
+export const BotVersions = SlotUtteranceList as any as S.Schema<BotVersions>;
 export type StatusType = "Detected" | "Missed" | (string & {});
 export const StatusType = S.String;
 
@@ -2145,11 +2115,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteBotResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = SlotUtteranceList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -2163,9 +2131,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = DeleteBotResponse as any as S.Schema<UntagResourceResponse>;
 export type ReferenceType = "Intent" | "Bot" | "BotAlias" | "BotChannel" | (string & {});
 export const ReferenceType = S.String;
 

@@ -84,9 +84,8 @@ export const AddGalleryImageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddGalleryImageRequest" }) as any as S.Schema<AddGalleryImageRequest>;
 
 export interface AddGalleryImageResponse {}
-export const AddGalleryImageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AddGalleryImageResponse",
-}) as any as S.Schema<AddGalleryImageResponse>;
+export const AddGalleryImageResponse =
+  AddFilesToVersionResponse as any as S.Schema<AddGalleryImageResponse>;
 
 export interface AddTeamMemberRequest {
   /** The ID of the team */
@@ -101,9 +100,8 @@ export const AddTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddTeamMemberRequest" }) as any as S.Schema<AddTeamMemberRequest>;
 
 export interface AddTeamMemberResponse {}
-export const AddTeamMemberResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AddTeamMemberResponse",
-}) as any as S.Schema<AddTeamMemberResponse>;
+export const AddTeamMemberResponse =
+  AddFilesToVersionResponse as any as S.Schema<AddTeamMemberResponse>;
 
 export type ChangeProjectIconRequestExt =
   | "png"
@@ -131,9 +129,8 @@ export const ChangeProjectIconRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ChangeProjectIconRequest" }) as any as S.Schema<ChangeProjectIconRequest>;
 
 export interface ChangeProjectIconResponse {}
-export const ChangeProjectIconResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ChangeProjectIconResponse",
-}) as any as S.Schema<ChangeProjectIconResponse>;
+export const ChangeProjectIconResponse =
+  AddFilesToVersionResponse as any as S.Schema<ChangeProjectIconResponse>;
 
 export interface ChangeUserIconRequest {
   /** The ID or username of the user */
@@ -146,9 +143,8 @@ export const ChangeUserIconRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ChangeUserIconRequest" }) as any as S.Schema<ChangeUserIconRequest>;
 
 export interface ChangeUserIconResponse {}
-export const ChangeUserIconResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ChangeUserIconResponse",
-}) as any as S.Schema<ChangeUserIconResponse>;
+export const ChangeUserIconResponse =
+  AddFilesToVersionResponse as any as S.Schema<ChangeUserIconResponse>;
 
 export interface CheckProjectValidityRequest {
   /** The ID or slug of the project */
@@ -179,9 +175,8 @@ export const CreatableProjectCategoriesList = /*@__PURE__*/ S.Array(
 
 /** A list of additional categories that the project also has. These are supplementary to the featured categories, and does not include them again. */
 export type CreatableProjectAdditionalCategoriesList = Array<string>;
-export const CreatableProjectAdditionalCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreatableProjectAdditionalCategoriesList>;
+export const CreatableProjectAdditionalCategoriesList =
+  CreatableProjectCategoriesList as any as S.Schema<CreatableProjectAdditionalCategoriesList>;
 
 /** The status of the project */
 export type CreatableProjectStatus =
@@ -271,9 +266,8 @@ export const EditableVersionDependenciesList = /*@__PURE__*/ S.Array(
 
 /** A list of versions of Minecraft that this version supports */
 export type EditableVersionGameVersionsList = Array<string>;
-export const EditableVersionGameVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditableVersionGameVersionsList>;
+export const EditableVersionGameVersionsList =
+  CreatableProjectCategoriesList as any as S.Schema<EditableVersionGameVersionsList>;
 
 /** The release channel for this version */
 export type EditableVersionVersionType = "release" | "beta" | "alpha";
@@ -281,9 +275,8 @@ export const EditableVersionVersionType = S.String;
 
 /** The mod loaders that this version supports. In case of resource packs, use "minecraft" */
 export type EditableVersionLoadersList = Array<string>;
-export const EditableVersionLoadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditableVersionLoadersList>;
+export const EditableVersionLoadersList =
+  CreatableProjectCategoriesList as any as S.Schema<EditableVersionLoadersList>;
 
 export type EditableVersionStatus =
   | "listed"
@@ -299,9 +292,8 @@ export const EditableVersionRequestedStatus = S.String;
 
 /** The hash format and the hash of the new primary file */
 export type EditableVersionPrimaryFileList = Array<string>;
-export const EditableVersionPrimaryFileList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditableVersionPrimaryFileList>;
+export const EditableVersionPrimaryFileList =
+  CreatableProjectCategoriesList as any as S.Schema<EditableVersionPrimaryFileList>;
 
 export interface EditableFileType {
   /** The hash algorithm of the hash specified in the hash field */
@@ -516,15 +508,13 @@ export const ProjectProjectType = S.String;
 
 /** A list of the featured categories that the project has. */
 export type ProjectCategoriesList = Array<string>;
-export const ProjectCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectCategoriesList>;
+export const ProjectCategoriesList =
+  CreatableProjectCategoriesList as any as S.Schema<ProjectCategoriesList>;
 
 /** A list of additional categories that the project also has. These are supplementary to the featured categories, and does not include them again. */
 export type ProjectAdditionalCategoriesList = Array<string>;
-export const ProjectAdditionalCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectAdditionalCategoriesList>;
+export const ProjectAdditionalCategoriesList =
+  CreatableProjectCategoriesList as any as S.Schema<ProjectAdditionalCategoriesList>;
 
 /** The environment a project or version supports. For an explanation of each environment, see the blog post here: https://modrinth.com/news/article/new-environments/#new-system */
 export type EnvironmentEnum =
@@ -548,21 +538,18 @@ export const ProjectEnvironmentList = /*@__PURE__*/ S.Array(
 
 /** A list of all of the game versions supported by the project */
 export type ProjectGameVersionsList = Array<string>;
-export const ProjectGameVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectGameVersionsList>;
+export const ProjectGameVersionsList =
+  CreatableProjectCategoriesList as any as S.Schema<ProjectGameVersionsList>;
 
 /** A list of all of the loaders supported by the project. These vary based on project type. */
 export type ProjectLoadersList = Array<string>;
-export const ProjectLoadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectLoadersList>;
+export const ProjectLoadersList =
+  CreatableProjectCategoriesList as any as S.Schema<ProjectLoadersList>;
 
 /** A list of the version IDs of the project */
 export type ProjectVersionsList = Array<string>;
-export const ProjectVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectVersionsList>;
+export const ProjectVersionsList =
+  CreatableProjectCategoriesList as any as S.Schema<ProjectVersionsList>;
 
 /** The license of the project */
 export interface ProjectLicense {
@@ -621,9 +608,8 @@ export const ProjectRequestedStatus = S.String;
 
 /** A list of donation links for the project */
 export type ProjectDonationUrlsList = Array<ProjectDonationURL>;
-export const ProjectDonationUrlsList = /*@__PURE__*/ S.Array(
-  ProjectDonationURL,
-) as any as S.Schema<ProjectDonationUrlsList>;
+export const ProjectDonationUrlsList =
+  CreatableProjectDonationUrlsList as any as S.Schema<ProjectDonationUrlsList>;
 
 /** Deprecated - use `environment` instead. */
 export type ProjectClientSide = "required" | "optional" | "unsupported" | "unknown";
@@ -767,15 +753,13 @@ export const Project = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of specific versions of projects that this version depends on */
 export type CreatableVersionDependenciesList = Array<VersionDependency>;
-export const CreatableVersionDependenciesList = /*@__PURE__*/ S.Array(
-  VersionDependency,
-) as any as S.Schema<CreatableVersionDependenciesList>;
+export const CreatableVersionDependenciesList =
+  EditableVersionDependenciesList as any as S.Schema<CreatableVersionDependenciesList>;
 
 /** A list of versions of Minecraft that this version supports */
 export type CreatableVersionGameVersionsList = Array<string>;
-export const CreatableVersionGameVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreatableVersionGameVersionsList>;
+export const CreatableVersionGameVersionsList =
+  CreatableProjectCategoriesList as any as S.Schema<CreatableVersionGameVersionsList>;
 
 /** The release channel for this version */
 export type CreatableVersionVersionType = "release" | "beta" | "alpha";
@@ -783,9 +767,8 @@ export const CreatableVersionVersionType = S.String;
 
 /** The mod loaders that this version supports. In case of resource packs, use "minecraft" */
 export type CreatableVersionLoadersList = Array<string>;
-export const CreatableVersionLoadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreatableVersionLoadersList>;
+export const CreatableVersionLoadersList =
+  CreatableProjectCategoriesList as any as S.Schema<CreatableVersionLoadersList>;
 
 export type CreatableVersionStatus =
   | "listed"
@@ -801,9 +784,8 @@ export const CreatableVersionRequestedStatus = S.String;
 
 /** An array of the multipart field names of each file that goes with this version */
 export type CreatableVersionFilePartsList = Array<string>;
-export const CreatableVersionFilePartsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreatableVersionFilePartsList>;
+export const CreatableVersionFilePartsList =
+  CreatableProjectCategoriesList as any as S.Schema<CreatableVersionFilePartsList>;
 
 /** The environment a version supports. For an explanation of each environment, see the blog post here: https://modrinth.com/news/article/new-environments/#new-system */
 export type EnvironmentInputEnum =
@@ -897,15 +879,13 @@ export const CreateVersionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of specific versions of projects that this version depends on */
 export type CreateVersionResponseDependenciesList = Array<VersionDependency>;
-export const CreateVersionResponseDependenciesList = /*@__PURE__*/ S.Array(
-  VersionDependency,
-) as any as S.Schema<CreateVersionResponseDependenciesList>;
+export const CreateVersionResponseDependenciesList =
+  EditableVersionDependenciesList as any as S.Schema<CreateVersionResponseDependenciesList>;
 
 /** A list of versions of Minecraft that this version supports */
 export type CreateVersionResponseGameVersionsList = Array<string>;
-export const CreateVersionResponseGameVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateVersionResponseGameVersionsList>;
+export const CreateVersionResponseGameVersionsList =
+  CreatableProjectCategoriesList as any as S.Schema<CreateVersionResponseGameVersionsList>;
 
 /** The release channel for this version */
 export type CreateVersionResponseVersionType = "release" | "beta" | "alpha";
@@ -913,9 +893,8 @@ export const CreateVersionResponseVersionType = S.String;
 
 /** The mod loaders that this version supports. In case of resource packs, use "minecraft" */
 export type CreateVersionResponseLoadersList = Array<string>;
-export const CreateVersionResponseLoadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateVersionResponseLoadersList>;
+export const CreateVersionResponseLoadersList =
+  CreatableProjectCategoriesList as any as S.Schema<CreateVersionResponseLoadersList>;
 
 export type CreateVersionResponseStatus =
   | "listed"
@@ -1049,9 +1028,8 @@ export const DeleteFileFromHashRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFileFromHashRequest>;
 
 export interface DeleteFileFromHashResponse {}
-export const DeleteFileFromHashResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFileFromHashResponse",
-}) as any as S.Schema<DeleteFileFromHashResponse>;
+export const DeleteFileFromHashResponse =
+  AddFilesToVersionResponse as any as S.Schema<DeleteFileFromHashResponse>;
 
 export interface DeleteGalleryImageRequest {
   /** The ID or slug of the project */
@@ -1069,9 +1047,8 @@ export const DeleteGalleryImageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGalleryImageRequest>;
 
 export interface DeleteGalleryImageResponse {}
-export const DeleteGalleryImageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGalleryImageResponse",
-}) as any as S.Schema<DeleteGalleryImageResponse>;
+export const DeleteGalleryImageResponse =
+  AddFilesToVersionResponse as any as S.Schema<DeleteGalleryImageResponse>;
 
 export interface DeleteNotificationRequest {
   /** The ID of the notification */
@@ -1086,9 +1063,8 @@ export const DeleteNotificationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteNotificationRequest>;
 
 export interface DeleteNotificationResponse {}
-export const DeleteNotificationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNotificationResponse",
-}) as any as S.Schema<DeleteNotificationResponse>;
+export const DeleteNotificationResponse =
+  AddFilesToVersionResponse as any as S.Schema<DeleteNotificationResponse>;
 
 export interface DeleteNotificationsRequest {
   /** The IDs of the notifications */
@@ -1103,9 +1079,8 @@ export const DeleteNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteNotificationsRequest>;
 
 export interface DeleteNotificationsResponse {}
-export const DeleteNotificationsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNotificationsResponse",
-}) as any as S.Schema<DeleteNotificationsResponse>;
+export const DeleteNotificationsResponse =
+  AddFilesToVersionResponse as any as S.Schema<DeleteNotificationsResponse>;
 
 export interface DeleteProjectRequest {
   /** The ID or slug of the project */
@@ -1118,9 +1093,8 @@ export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteProjectRequest" }) as any as S.Schema<DeleteProjectRequest>;
 
 export interface DeleteProjectResponse {}
-export const DeleteProjectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProjectResponse",
-}) as any as S.Schema<DeleteProjectResponse>;
+export const DeleteProjectResponse =
+  AddFilesToVersionResponse as any as S.Schema<DeleteProjectResponse>;
 
 export interface DeleteProjectIconRequest {
   /** The ID or slug of the project */
@@ -1133,9 +1107,8 @@ export const DeleteProjectIconRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteProjectIconRequest" }) as any as S.Schema<DeleteProjectIconRequest>;
 
 export interface DeleteProjectIconResponse {}
-export const DeleteProjectIconResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProjectIconResponse",
-}) as any as S.Schema<DeleteProjectIconResponse>;
+export const DeleteProjectIconResponse =
+  AddFilesToVersionResponse as any as S.Schema<DeleteProjectIconResponse>;
 
 export interface DeleteTeamMemberRequest {
   /** The ID of the team */
@@ -1151,9 +1124,8 @@ export const DeleteTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTeamMemberRequest" }) as any as S.Schema<DeleteTeamMemberRequest>;
 
 export interface DeleteTeamMemberResponse {}
-export const DeleteTeamMemberResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTeamMemberResponse",
-}) as any as S.Schema<DeleteTeamMemberResponse>;
+export const DeleteTeamMemberResponse =
+  AddFilesToVersionResponse as any as S.Schema<DeleteTeamMemberResponse>;
 
 export interface DeleteThreadMessageRequest {
   /** The ID of the message */
@@ -1168,9 +1140,8 @@ export const DeleteThreadMessageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteThreadMessageRequest>;
 
 export interface DeleteThreadMessageResponse {}
-export const DeleteThreadMessageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteThreadMessageResponse",
-}) as any as S.Schema<DeleteThreadMessageResponse>;
+export const DeleteThreadMessageResponse =
+  AddFilesToVersionResponse as any as S.Schema<DeleteThreadMessageResponse>;
 
 export interface DeleteUserIconRequest {
   /** The ID or username of the user */
@@ -1183,9 +1154,8 @@ export const DeleteUserIconRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUserIconRequest" }) as any as S.Schema<DeleteUserIconRequest>;
 
 export interface DeleteUserIconResponse {}
-export const DeleteUserIconResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserIconResponse",
-}) as any as S.Schema<DeleteUserIconResponse>;
+export const DeleteUserIconResponse =
+  AddFilesToVersionResponse as any as S.Schema<DeleteUserIconResponse>;
 
 export interface DeleteVersionRequest {
   /** The ID of the version */
@@ -1198,9 +1168,8 @@ export const DeleteVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteVersionRequest" }) as any as S.Schema<DeleteVersionRequest>;
 
 export interface DeleteVersionResponse {}
-export const DeleteVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVersionResponse",
-}) as any as S.Schema<DeleteVersionResponse>;
+export const DeleteVersionResponse =
+  AddFilesToVersionResponse as any as S.Schema<DeleteVersionResponse>;
 
 export interface FollowProjectRequest {
   /** The ID or slug of the project */
@@ -1213,9 +1182,8 @@ export const FollowProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FollowProjectRequest" }) as any as S.Schema<FollowProjectRequest>;
 
 export interface FollowProjectResponse {}
-export const FollowProjectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "FollowProjectResponse",
-}) as any as S.Schema<FollowProjectResponse>;
+export const FollowProjectResponse =
+  AddFilesToVersionResponse as any as S.Schema<FollowProjectResponse>;
 
 export type ForgeUpdatesRequestNeoforge = "only" | "include";
 export const ForgeUpdatesRequestNeoforge = S.String;
@@ -1278,15 +1246,13 @@ export const ProjectDependencyListProjectsList = /*@__PURE__*/ S.Array(
 
 /** A list of specific versions of projects that this version depends on */
 export type VersionDependenciesList = Array<VersionDependency>;
-export const VersionDependenciesList = /*@__PURE__*/ S.Array(
-  VersionDependency,
-) as any as S.Schema<VersionDependenciesList>;
+export const VersionDependenciesList =
+  EditableVersionDependenciesList as any as S.Schema<VersionDependenciesList>;
 
 /** A list of versions of Minecraft that this version supports */
 export type VersionGameVersionsList = Array<string>;
-export const VersionGameVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VersionGameVersionsList>;
+export const VersionGameVersionsList =
+  CreatableProjectCategoriesList as any as S.Schema<VersionGameVersionsList>;
 
 /** The release channel for this version */
 export type VersionVersionType = "release" | "beta" | "alpha";
@@ -1294,9 +1260,8 @@ export const VersionVersionType = S.String;
 
 /** The mod loaders that this version supports. In case of resource packs, use "minecraft" */
 export type VersionLoadersList = Array<string>;
-export const VersionLoadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VersionLoadersList>;
+export const VersionLoadersList =
+  CreatableProjectCategoriesList as any as S.Schema<VersionLoadersList>;
 
 export type VersionStatus = "listed" | "archived" | "draft" | "unlisted" | "scheduled" | "unknown";
 export const VersionStatus = S.String;
@@ -1306,9 +1271,7 @@ export const VersionRequestedStatus = S.String;
 
 /** A list of files available for download for this version */
 export type VersionFilesList = Array<VersionFile>;
-export const VersionFilesList = /*@__PURE__*/ S.Array(
-  VersionFile,
-) as any as S.Schema<VersionFilesList>;
+export const VersionFilesList = CreateVersionResponseFilesList as any as S.Schema<VersionFilesList>;
 
 export interface Version {
   /** The name of this version */
@@ -1399,9 +1362,8 @@ export const GetFollowedProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFollowedProjectsRequest>;
 
 export type GetFollowedProjectsResponseBodyList = Array<Project>;
-export const GetFollowedProjectsResponseBodyList = /*@__PURE__*/ S.Array(
-  Project,
-) as any as S.Schema<GetFollowedProjectsResponseBodyList>;
+export const GetFollowedProjectsResponseBodyList =
+  ProjectDependencyListProjectsList as any as S.Schema<GetFollowedProjectsResponseBodyList>;
 
 export type GetFollowedProjectsResponse = GetFollowedProjectsResponseBodyList;
 export const GetFollowedProjectsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1414,14 +1376,12 @@ export type GetLatestVersionFromHashRequestAlgorithm = "sha1" | "sha512";
 export const GetLatestVersionFromHashRequestAlgorithm = S.String;
 
 export type GetLatestVersionFromHashRequestLoadersList = Array<string>;
-export const GetLatestVersionFromHashRequestLoadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetLatestVersionFromHashRequestLoadersList>;
+export const GetLatestVersionFromHashRequestLoadersList =
+  CreatableProjectCategoriesList as any as S.Schema<GetLatestVersionFromHashRequestLoadersList>;
 
 export type GetLatestVersionFromHashRequestGameVersionsList = Array<string>;
-export const GetLatestVersionFromHashRequestGameVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetLatestVersionFromHashRequestGameVersionsList>;
+export const GetLatestVersionFromHashRequestGameVersionsList =
+  CreatableProjectCategoriesList as any as S.Schema<GetLatestVersionFromHashRequestGameVersionsList>;
 
 export type GetLatestVersionFromHashRequestVersionTypesItem = "release" | "alpha" | "beta";
 export const GetLatestVersionFromHashRequestVersionTypesItem = S.String;
@@ -1456,15 +1416,13 @@ export const GetLatestVersionFromHashRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of specific versions of projects that this version depends on */
 export type GetLatestVersionFromHashResponseDependenciesList = Array<VersionDependency>;
-export const GetLatestVersionFromHashResponseDependenciesList = /*@__PURE__*/ S.Array(
-  VersionDependency,
-) as any as S.Schema<GetLatestVersionFromHashResponseDependenciesList>;
+export const GetLatestVersionFromHashResponseDependenciesList =
+  EditableVersionDependenciesList as any as S.Schema<GetLatestVersionFromHashResponseDependenciesList>;
 
 /** A list of versions of Minecraft that this version supports */
 export type GetLatestVersionFromHashResponseGameVersionsList = Array<string>;
-export const GetLatestVersionFromHashResponseGameVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetLatestVersionFromHashResponseGameVersionsList>;
+export const GetLatestVersionFromHashResponseGameVersionsList =
+  CreatableProjectCategoriesList as any as S.Schema<GetLatestVersionFromHashResponseGameVersionsList>;
 
 /** The release channel for this version */
 export type GetLatestVersionFromHashResponseVersionType = "release" | "beta" | "alpha";
@@ -1472,9 +1430,8 @@ export const GetLatestVersionFromHashResponseVersionType = S.String;
 
 /** The mod loaders that this version supports. In case of resource packs, use "minecraft" */
 export type GetLatestVersionFromHashResponseLoadersList = Array<string>;
-export const GetLatestVersionFromHashResponseLoadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetLatestVersionFromHashResponseLoadersList>;
+export const GetLatestVersionFromHashResponseLoadersList =
+  CreatableProjectCategoriesList as any as S.Schema<GetLatestVersionFromHashResponseLoadersList>;
 
 export type GetLatestVersionFromHashResponseStatus =
   | "listed"
@@ -1494,9 +1451,8 @@ export const GetLatestVersionFromHashResponseRequestedStatus = S.String;
 
 /** A list of files available for download for this version */
 export type GetLatestVersionFromHashResponseFilesList = Array<VersionFile>;
-export const GetLatestVersionFromHashResponseFilesList = /*@__PURE__*/ S.Array(
-  VersionFile,
-) as any as S.Schema<GetLatestVersionFromHashResponseFilesList>;
+export const GetLatestVersionFromHashResponseFilesList =
+  CreateVersionResponseFilesList as any as S.Schema<GetLatestVersionFromHashResponseFilesList>;
 
 export interface GetLatestVersionFromHashResponse {
   /** The name of this version */
@@ -1558,22 +1514,19 @@ export const GetLatestVersionFromHashResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetLatestVersionFromHashResponse>;
 
 export type GetLatestVersionsFromHashesRequestHashesList = Array<string>;
-export const GetLatestVersionsFromHashesRequestHashesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetLatestVersionsFromHashesRequestHashesList>;
+export const GetLatestVersionsFromHashesRequestHashesList =
+  CreatableProjectCategoriesList as any as S.Schema<GetLatestVersionsFromHashesRequestHashesList>;
 
 export type GetLatestVersionsFromHashesRequestAlgorithm = "sha1" | "sha512";
 export const GetLatestVersionsFromHashesRequestAlgorithm = S.String;
 
 export type GetLatestVersionsFromHashesRequestLoadersList = Array<string>;
-export const GetLatestVersionsFromHashesRequestLoadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetLatestVersionsFromHashesRequestLoadersList>;
+export const GetLatestVersionsFromHashesRequestLoadersList =
+  CreatableProjectCategoriesList as any as S.Schema<GetLatestVersionsFromHashesRequestLoadersList>;
 
 export type GetLatestVersionsFromHashesRequestGameVersionsList = Array<string>;
-export const GetLatestVersionsFromHashesRequestGameVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetLatestVersionsFromHashesRequestGameVersionsList>;
+export const GetLatestVersionsFromHashesRequestGameVersionsList =
+  CreatableProjectCategoriesList as any as S.Schema<GetLatestVersionsFromHashesRequestGameVersionsList>;
 
 export type GetLatestVersionsFromHashesRequestVersionTypesItem = "release" | "alpha" | "beta";
 export const GetLatestVersionsFromHashesRequestVersionTypesItem = S.String;
@@ -1638,9 +1591,8 @@ export const NotificationType = S.String;
 
 /** The HTTP code and path to request in order to perform this action. */
 export type NotificationActionActionRouteList = Array<string>;
-export const NotificationActionActionRouteList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotificationActionActionRouteList>;
+export const NotificationActionActionRouteList =
+  CreatableProjectCategoriesList as any as S.Schema<NotificationActionActionRouteList>;
 
 /** An action that can be performed on a notification */
 export interface NotificationAction {
@@ -1842,9 +1794,8 @@ export const GetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetProjectsRequest" }) as any as S.Schema<GetProjectsRequest>;
 
 export type GetProjectsResponseBodyList = Array<Project>;
-export const GetProjectsResponseBodyList = /*@__PURE__*/ S.Array(
-  Project,
-) as any as S.Schema<GetProjectsResponseBodyList>;
+export const GetProjectsResponseBodyList =
+  ProjectDependencyListProjectsList as any as S.Schema<GetProjectsResponseBodyList>;
 
 export type GetProjectsResponse = GetProjectsResponseBodyList;
 export const GetProjectsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1897,9 +1848,8 @@ export const UserRole = S.String;
 
 /** A list of authentication providers you have signed up for (only displayed if requesting your own account) */
 export type UserAuthProvidersList = Array<string>;
-export const UserAuthProvidersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserAuthProvidersList>;
+export const UserAuthProvidersList =
+  CreatableProjectCategoriesList as any as S.Schema<UserAuthProvidersList>;
 
 export interface User {
   /** The user's username */
@@ -2017,9 +1967,8 @@ export const GetProjectVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectVersionsRequest>;
 
 export type GetProjectVersionsResponseBodyList = Array<Version>;
-export const GetProjectVersionsResponseBodyList = /*@__PURE__*/ S.Array(
-  Version,
-) as any as S.Schema<GetProjectVersionsResponseBodyList>;
+export const GetProjectVersionsResponseBodyList =
+  ProjectDependencyListVersionsList as any as S.Schema<GetProjectVersionsResponseBodyList>;
 
 export type GetProjectVersionsResponse = GetProjectVersionsResponseBodyList;
 export const GetProjectVersionsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2087,14 +2036,11 @@ export const GetReportsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetReportsRequest" }) as any as S.Schema<GetReportsRequest>;
 
 export type GetReportsResponseBodyList = Array<Report>;
-export const GetReportsResponseBodyList = /*@__PURE__*/ S.Array(
-  Report,
-) as any as S.Schema<GetReportsResponseBodyList>;
+export const GetReportsResponseBodyList =
+  GetOpenReportsResponseBodyList as any as S.Schema<GetReportsResponseBodyList>;
 
 export type GetReportsResponse = GetReportsResponseBodyList;
-export const GetReportsResponse = /*@__PURE__*/ S.suspend(() =>
-  GetReportsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetReportsResponse" }) as any as S.Schema<GetReportsResponse>;
+export const GetReportsResponse = GetOpenReportsResponse as any as S.Schema<GetReportsResponse>;
 
 export interface GetTeamMembersRequest {
   /** The ID of the team */
@@ -2108,9 +2054,8 @@ export const GetTeamMembersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of team members */
 export type GetTeamMembersResponseBodyList = Array<TeamMember>;
-export const GetTeamMembersResponseBodyList = /*@__PURE__*/ S.Array(
-  TeamMember,
-) as any as S.Schema<GetTeamMembersResponseBodyList>;
+export const GetTeamMembersResponseBodyList =
+  GetProjectTeamMembersResponseBodyList as any as S.Schema<GetTeamMembersResponseBodyList>;
 
 export type GetTeamMembersResponse = GetTeamMembersResponseBodyList;
 export const GetTeamMembersResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2128,9 +2073,8 @@ export const GetTeamsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTeamsRequest" }) as any as S.Schema<GetTeamsRequest>;
 
 export type GetTeamsResponseBodyItemList = Array<TeamMember>;
-export const GetTeamsResponseBodyItemList = /*@__PURE__*/ S.Array(
-  TeamMember,
-) as any as S.Schema<GetTeamsResponseBodyItemList>;
+export const GetTeamsResponseBodyItemList =
+  GetProjectTeamMembersResponseBodyList as any as S.Schema<GetTeamsResponseBodyItemList>;
 
 export type GetTeamsResponseBodyList = Array<GetTeamsResponseBodyItemList>;
 export const GetTeamsResponseBodyList = /*@__PURE__*/ S.Array(
@@ -2297,9 +2241,8 @@ export const GetUserResponseRole = S.String;
 
 /** A list of authentication providers you have signed up for (only displayed if requesting your own account) */
 export type GetUserResponseAuthProvidersList = Array<string>;
-export const GetUserResponseAuthProvidersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetUserResponseAuthProvidersList>;
+export const GetUserResponseAuthProvidersList =
+  CreatableProjectCategoriesList as any as S.Schema<GetUserResponseAuthProvidersList>;
 
 export interface GetUserResponse {
   /** The user's username */
@@ -2363,9 +2306,8 @@ export const GetUserFromAuthResponseRole = S.String;
 
 /** A list of authentication providers you have signed up for (only displayed if requesting your own account) */
 export type GetUserFromAuthResponseAuthProvidersList = Array<string>;
-export const GetUserFromAuthResponseAuthProvidersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetUserFromAuthResponseAuthProvidersList>;
+export const GetUserFromAuthResponseAuthProvidersList =
+  CreatableProjectCategoriesList as any as S.Schema<GetUserFromAuthResponseAuthProvidersList>;
 
 export interface GetUserFromAuthResponse {
   /** The user's username */
@@ -2431,9 +2373,8 @@ export const GetUserNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUserNotificationsRequest>;
 
 export type GetUserNotificationsResponseBodyList = Array<Notification>;
-export const GetUserNotificationsResponseBodyList = /*@__PURE__*/ S.Array(
-  Notification,
-) as any as S.Schema<GetUserNotificationsResponseBodyList>;
+export const GetUserNotificationsResponseBodyList =
+  GetNotificationsResponseBodyList as any as S.Schema<GetUserNotificationsResponseBodyList>;
 
 export type GetUserNotificationsResponse = GetUserNotificationsResponseBodyList;
 export const GetUserNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2453,14 +2394,12 @@ export const GetUserProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUserProjectsRequest" }) as any as S.Schema<GetUserProjectsRequest>;
 
 export type GetUserProjectsResponseBodyList = Array<Project>;
-export const GetUserProjectsResponseBodyList = /*@__PURE__*/ S.Array(
-  Project,
-) as any as S.Schema<GetUserProjectsResponseBodyList>;
+export const GetUserProjectsResponseBodyList =
+  ProjectDependencyListProjectsList as any as S.Schema<GetUserProjectsResponseBodyList>;
 
 export type GetUserProjectsResponse = GetUserProjectsResponseBodyList;
-export const GetUserProjectsResponse = /*@__PURE__*/ S.suspend(() =>
-  GetUserProjectsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetUserProjectsResponse" }) as any as S.Schema<GetUserProjectsResponse>;
+export const GetUserProjectsResponse =
+  GetProjectsResponse as any as S.Schema<GetUserProjectsResponse>;
 
 export interface GetUsersRequest {
   /** The IDs of the users */
@@ -2494,15 +2433,13 @@ export const GetVersionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of specific versions of projects that this version depends on */
 export type GetVersionResponseDependenciesList = Array<VersionDependency>;
-export const GetVersionResponseDependenciesList = /*@__PURE__*/ S.Array(
-  VersionDependency,
-) as any as S.Schema<GetVersionResponseDependenciesList>;
+export const GetVersionResponseDependenciesList =
+  EditableVersionDependenciesList as any as S.Schema<GetVersionResponseDependenciesList>;
 
 /** A list of versions of Minecraft that this version supports */
 export type GetVersionResponseGameVersionsList = Array<string>;
-export const GetVersionResponseGameVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetVersionResponseGameVersionsList>;
+export const GetVersionResponseGameVersionsList =
+  CreatableProjectCategoriesList as any as S.Schema<GetVersionResponseGameVersionsList>;
 
 /** The release channel for this version */
 export type GetVersionResponseVersionType = "release" | "beta" | "alpha";
@@ -2510,9 +2447,8 @@ export const GetVersionResponseVersionType = S.String;
 
 /** The mod loaders that this version supports. In case of resource packs, use "minecraft" */
 export type GetVersionResponseLoadersList = Array<string>;
-export const GetVersionResponseLoadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetVersionResponseLoadersList>;
+export const GetVersionResponseLoadersList =
+  CreatableProjectCategoriesList as any as S.Schema<GetVersionResponseLoadersList>;
 
 export type GetVersionResponseStatus =
   | "listed"
@@ -2528,9 +2464,8 @@ export const GetVersionResponseRequestedStatus = S.String;
 
 /** A list of files available for download for this version */
 export type GetVersionResponseFilesList = Array<VersionFile>;
-export const GetVersionResponseFilesList = /*@__PURE__*/ S.Array(
-  VersionFile,
-) as any as S.Schema<GetVersionResponseFilesList>;
+export const GetVersionResponseFilesList =
+  CreateVersionResponseFilesList as any as S.Schema<GetVersionResponseFilesList>;
 
 export interface GetVersionResponse {
   /** The name of this version */
@@ -2606,15 +2541,13 @@ export const GetVersionFromIdOrNumberRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of specific versions of projects that this version depends on */
 export type GetVersionFromIdOrNumberResponseDependenciesList = Array<VersionDependency>;
-export const GetVersionFromIdOrNumberResponseDependenciesList = /*@__PURE__*/ S.Array(
-  VersionDependency,
-) as any as S.Schema<GetVersionFromIdOrNumberResponseDependenciesList>;
+export const GetVersionFromIdOrNumberResponseDependenciesList =
+  EditableVersionDependenciesList as any as S.Schema<GetVersionFromIdOrNumberResponseDependenciesList>;
 
 /** A list of versions of Minecraft that this version supports */
 export type GetVersionFromIdOrNumberResponseGameVersionsList = Array<string>;
-export const GetVersionFromIdOrNumberResponseGameVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetVersionFromIdOrNumberResponseGameVersionsList>;
+export const GetVersionFromIdOrNumberResponseGameVersionsList =
+  CreatableProjectCategoriesList as any as S.Schema<GetVersionFromIdOrNumberResponseGameVersionsList>;
 
 /** The release channel for this version */
 export type GetVersionFromIdOrNumberResponseVersionType = "release" | "beta" | "alpha";
@@ -2622,9 +2555,8 @@ export const GetVersionFromIdOrNumberResponseVersionType = S.String;
 
 /** The mod loaders that this version supports. In case of resource packs, use "minecraft" */
 export type GetVersionFromIdOrNumberResponseLoadersList = Array<string>;
-export const GetVersionFromIdOrNumberResponseLoadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetVersionFromIdOrNumberResponseLoadersList>;
+export const GetVersionFromIdOrNumberResponseLoadersList =
+  CreatableProjectCategoriesList as any as S.Schema<GetVersionFromIdOrNumberResponseLoadersList>;
 
 export type GetVersionFromIdOrNumberResponseStatus =
   | "listed"
@@ -2644,9 +2576,8 @@ export const GetVersionFromIdOrNumberResponseRequestedStatus = S.String;
 
 /** A list of files available for download for this version */
 export type GetVersionFromIdOrNumberResponseFilesList = Array<VersionFile>;
-export const GetVersionFromIdOrNumberResponseFilesList = /*@__PURE__*/ S.Array(
-  VersionFile,
-) as any as S.Schema<GetVersionFromIdOrNumberResponseFilesList>;
+export const GetVersionFromIdOrNumberResponseFilesList =
+  CreateVersionResponseFilesList as any as S.Schema<GetVersionFromIdOrNumberResponseFilesList>;
 
 export interface GetVersionFromIdOrNumberResponse {
   /** The name of this version */
@@ -2718,9 +2649,8 @@ export const GetVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetVersionsRequest" }) as any as S.Schema<GetVersionsRequest>;
 
 export type GetVersionsResponseBodyList = Array<Version>;
-export const GetVersionsResponseBodyList = /*@__PURE__*/ S.Array(
-  Version,
-) as any as S.Schema<GetVersionsResponseBodyList>;
+export const GetVersionsResponseBodyList =
+  ProjectDependencyListVersionsList as any as S.Schema<GetVersionsResponseBodyList>;
 
 export type GetVersionsResponse = GetVersionsResponseBodyList;
 export const GetVersionsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2738,9 +2668,7 @@ export const JoinTeamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JoinTeamRequest" }) as any as S.Schema<JoinTeamRequest>;
 
 export interface JoinTeamResponse {}
-export const JoinTeamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "JoinTeamResponse",
-}) as any as S.Schema<JoinTeamResponse>;
+export const JoinTeamResponse = AddFilesToVersionResponse as any as S.Schema<JoinTeamResponse>;
 
 export interface LicenseTextRequest {
   /** The license ID to get the text of */
@@ -2837,9 +2765,8 @@ export const ListLoaderRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The project types that this loader is applicable to */
 export type LoaderTagSupportedProjectTypesList = Array<string>;
-export const LoaderTagSupportedProjectTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LoaderTagSupportedProjectTypesList>;
+export const LoaderTagSupportedProjectTypesList =
+  CreatableProjectCategoriesList as any as S.Schema<LoaderTagSupportedProjectTypesList>;
 
 export interface LoaderTag {
   /** The SVG icon of a loader */
@@ -2873,9 +2800,8 @@ export const ListProjectTypeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProjectTypeRequest" }) as any as S.Schema<ListProjectTypeRequest>;
 
 export type ListProjectTypeResponseBodyList = Array<string>;
-export const ListProjectTypeResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListProjectTypeResponseBodyList>;
+export const ListProjectTypeResponseBodyList =
+  CreatableProjectCategoriesList as any as S.Schema<ListProjectTypeResponseBodyList>;
 
 export type ListProjectTypeResponse = ListProjectTypeResponseBodyList;
 export const ListProjectTypeResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2888,14 +2814,12 @@ export const ListReportTypeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListReportTypeRequest" }) as any as S.Schema<ListReportTypeRequest>;
 
 export type ListReportTypeResponseBodyList = Array<string>;
-export const ListReportTypeResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListReportTypeResponseBodyList>;
+export const ListReportTypeResponseBodyList =
+  CreatableProjectCategoriesList as any as S.Schema<ListReportTypeResponseBodyList>;
 
 export type ListReportTypeResponse = ListReportTypeResponseBodyList;
-export const ListReportTypeResponse = /*@__PURE__*/ S.suspend(() =>
-  ListReportTypeResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListReportTypeResponse" }) as any as S.Schema<ListReportTypeResponse>;
+export const ListReportTypeResponse =
+  ListProjectTypeResponse as any as S.Schema<ListReportTypeResponse>;
 
 export interface ListSideTypeRequest {}
 export const ListSideTypeRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2903,14 +2827,12 @@ export const ListSideTypeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSideTypeRequest" }) as any as S.Schema<ListSideTypeRequest>;
 
 export type ListSideTypeResponseBodyList = Array<string>;
-export const ListSideTypeResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListSideTypeResponseBodyList>;
+export const ListSideTypeResponseBodyList =
+  CreatableProjectCategoriesList as any as S.Schema<ListSideTypeResponseBodyList>;
 
 export type ListSideTypeResponse = ListSideTypeResponseBodyList;
-export const ListSideTypeResponse = /*@__PURE__*/ S.suspend(() =>
-  ListSideTypeResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListSideTypeResponse" }) as any as S.Schema<ListSideTypeResponse>;
+export const ListSideTypeResponse =
+  ListProjectTypeResponse as any as S.Schema<ListSideTypeResponse>;
 
 export interface ListVersionRequest {}
 export const ListVersionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2978,21 +2900,18 @@ export const ModifyGalleryImageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ModifyGalleryImageRequest>;
 
 export interface ModifyGalleryImageResponse {}
-export const ModifyGalleryImageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ModifyGalleryImageResponse",
-}) as any as S.Schema<ModifyGalleryImageResponse>;
+export const ModifyGalleryImageResponse =
+  AddFilesToVersionResponse as any as S.Schema<ModifyGalleryImageResponse>;
 
 /** A list of the featured categories that the project has. */
 export type ModifyProjectRequestCategoriesList = Array<string>;
-export const ModifyProjectRequestCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ModifyProjectRequestCategoriesList>;
+export const ModifyProjectRequestCategoriesList =
+  CreatableProjectCategoriesList as any as S.Schema<ModifyProjectRequestCategoriesList>;
 
 /** A list of additional categories that the project also has. These are supplementary to the featured categories, and does not include them again. */
 export type ModifyProjectRequestAdditionalCategoriesList = Array<string>;
-export const ModifyProjectRequestAdditionalCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ModifyProjectRequestAdditionalCategoriesList>;
+export const ModifyProjectRequestAdditionalCategoriesList =
+  CreatableProjectCategoriesList as any as S.Schema<ModifyProjectRequestAdditionalCategoriesList>;
 
 /** The status of the project */
 export type ModifyProjectRequestStatus =
@@ -3019,9 +2938,8 @@ export const ModifyProjectRequestRequestedStatus = S.String;
 
 /** A list of donation links for the project */
 export type ModifyProjectRequestDonationUrlsList = Array<ProjectDonationURL>;
-export const ModifyProjectRequestDonationUrlsList = /*@__PURE__*/ S.Array(
-  ProjectDonationURL,
-) as any as S.Schema<ModifyProjectRequestDonationUrlsList>;
+export const ModifyProjectRequestDonationUrlsList =
+  CreatableProjectDonationUrlsList as any as S.Schema<ModifyProjectRequestDonationUrlsList>;
 
 /** Deprecated - use `environment` instead. */
 export type ModifyProjectRequestClientSide = "required" | "optional" | "unsupported";
@@ -3099,9 +3017,8 @@ export const ModifyProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ModifyProjectRequest" }) as any as S.Schema<ModifyProjectRequest>;
 
 export interface ModifyProjectResponse {}
-export const ModifyProjectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ModifyProjectResponse",
-}) as any as S.Schema<ModifyProjectResponse>;
+export const ModifyProjectResponse =
+  AddFilesToVersionResponse as any as S.Schema<ModifyProjectResponse>;
 
 export interface ModifyReportRequest {
   /** The ID of the report */
@@ -3120,9 +3037,8 @@ export const ModifyReportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ModifyReportRequest" }) as any as S.Schema<ModifyReportRequest>;
 
 export interface ModifyReportResponse {}
-export const ModifyReportResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ModifyReportResponse",
-}) as any as S.Schema<ModifyReportResponse>;
+export const ModifyReportResponse =
+  AddFilesToVersionResponse as any as S.Schema<ModifyReportResponse>;
 
 export interface ModifyTeamMemberRequest {
   /** The ID of the team */
@@ -3149,9 +3065,8 @@ export const ModifyTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ModifyTeamMemberRequest" }) as any as S.Schema<ModifyTeamMemberRequest>;
 
 export interface ModifyTeamMemberResponse {}
-export const ModifyTeamMemberResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ModifyTeamMemberResponse",
-}) as any as S.Schema<ModifyTeamMemberResponse>;
+export const ModifyTeamMemberResponse =
+  AddFilesToVersionResponse as any as S.Schema<ModifyTeamMemberResponse>;
 
 export interface ModifyUserRequest {
   /** The ID or username of the user */
@@ -3178,21 +3093,17 @@ export const ModifyUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ModifyUserRequest" }) as any as S.Schema<ModifyUserRequest>;
 
 export interface ModifyUserResponse {}
-export const ModifyUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ModifyUserResponse",
-}) as any as S.Schema<ModifyUserResponse>;
+export const ModifyUserResponse = AddFilesToVersionResponse as any as S.Schema<ModifyUserResponse>;
 
 /** A list of specific versions of projects that this version depends on */
 export type ModifyVersionRequestDependenciesList = Array<VersionDependency>;
-export const ModifyVersionRequestDependenciesList = /*@__PURE__*/ S.Array(
-  VersionDependency,
-) as any as S.Schema<ModifyVersionRequestDependenciesList>;
+export const ModifyVersionRequestDependenciesList =
+  EditableVersionDependenciesList as any as S.Schema<ModifyVersionRequestDependenciesList>;
 
 /** A list of versions of Minecraft that this version supports */
 export type ModifyVersionRequestGameVersionsList = Array<string>;
-export const ModifyVersionRequestGameVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ModifyVersionRequestGameVersionsList>;
+export const ModifyVersionRequestGameVersionsList =
+  CreatableProjectCategoriesList as any as S.Schema<ModifyVersionRequestGameVersionsList>;
 
 /** The release channel for this version */
 export type ModifyVersionRequestVersionType = "release" | "beta" | "alpha";
@@ -3200,9 +3111,8 @@ export const ModifyVersionRequestVersionType = S.String;
 
 /** The mod loaders that this version supports. In case of resource packs, use "minecraft" */
 export type ModifyVersionRequestLoadersList = Array<string>;
-export const ModifyVersionRequestLoadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ModifyVersionRequestLoadersList>;
+export const ModifyVersionRequestLoadersList =
+  CreatableProjectCategoriesList as any as S.Schema<ModifyVersionRequestLoadersList>;
 
 export type ModifyVersionRequestStatus =
   | "listed"
@@ -3218,15 +3128,13 @@ export const ModifyVersionRequestRequestedStatus = S.String;
 
 /** The hash format and the hash of the new primary file */
 export type ModifyVersionRequestPrimaryFileList = Array<string>;
-export const ModifyVersionRequestPrimaryFileList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ModifyVersionRequestPrimaryFileList>;
+export const ModifyVersionRequestPrimaryFileList =
+  CreatableProjectCategoriesList as any as S.Schema<ModifyVersionRequestPrimaryFileList>;
 
 /** A list of file_types to edit */
 export type ModifyVersionRequestFileTypesList = Array<EditableFileType>;
-export const ModifyVersionRequestFileTypesList = /*@__PURE__*/ S.Array(
-  EditableFileType,
-) as any as S.Schema<ModifyVersionRequestFileTypesList>;
+export const ModifyVersionRequestFileTypesList =
+  EditableVersionFileTypesList as any as S.Schema<ModifyVersionRequestFileTypesList>;
 
 export interface ModifyVersionRequest {
   /** The ID of the version */
@@ -3273,9 +3181,8 @@ export const ModifyVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ModifyVersionRequest" }) as any as S.Schema<ModifyVersionRequest>;
 
 export interface ModifyVersionResponse {}
-export const ModifyVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ModifyVersionResponse",
-}) as any as S.Schema<ModifyVersionResponse>;
+export const ModifyVersionResponse =
+  AddFilesToVersionResponse as any as S.Schema<ModifyVersionResponse>;
 
 export interface RandomProjectsRequest {
   /** The number of random projects to return */
@@ -3288,14 +3195,12 @@ export const RandomProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RandomProjectsRequest" }) as any as S.Schema<RandomProjectsRequest>;
 
 export type RandomProjectsResponseBodyList = Array<Project>;
-export const RandomProjectsResponseBodyList = /*@__PURE__*/ S.Array(
-  Project,
-) as any as S.Schema<RandomProjectsResponseBodyList>;
+export const RandomProjectsResponseBodyList =
+  ProjectDependencyListProjectsList as any as S.Schema<RandomProjectsResponseBodyList>;
 
 export type RandomProjectsResponse = RandomProjectsResponseBodyList;
-export const RandomProjectsResponse = /*@__PURE__*/ S.suspend(() =>
-  RandomProjectsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "RandomProjectsResponse" }) as any as S.Schema<RandomProjectsResponse>;
+export const RandomProjectsResponse =
+  GetProjectsResponse as any as S.Schema<RandomProjectsResponse>;
 
 export interface ReadNotificationRequest {
   /** The ID of the notification */
@@ -3308,9 +3213,8 @@ export const ReadNotificationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReadNotificationRequest" }) as any as S.Schema<ReadNotificationRequest>;
 
 export interface ReadNotificationResponse {}
-export const ReadNotificationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ReadNotificationResponse",
-}) as any as S.Schema<ReadNotificationResponse>;
+export const ReadNotificationResponse =
+  AddFilesToVersionResponse as any as S.Schema<ReadNotificationResponse>;
 
 export interface ReadNotificationsRequest {
   /** The IDs of the notifications */
@@ -3323,9 +3227,8 @@ export const ReadNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReadNotificationsRequest" }) as any as S.Schema<ReadNotificationsRequest>;
 
 export interface ReadNotificationsResponse {}
-export const ReadNotificationsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ReadNotificationsResponse",
-}) as any as S.Schema<ReadNotificationsResponse>;
+export const ReadNotificationsResponse =
+  AddFilesToVersionResponse as any as S.Schema<ReadNotificationsResponse>;
 
 /** The requested status when scheduling the project for release */
 export type ScheduleProjectRequestRequestedStatus =
@@ -3352,9 +3255,8 @@ export const ScheduleProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScheduleProjectRequest" }) as any as S.Schema<ScheduleProjectRequest>;
 
 export interface ScheduleProjectResponse {}
-export const ScheduleProjectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ScheduleProjectResponse",
-}) as any as S.Schema<ScheduleProjectResponse>;
+export const ScheduleProjectResponse =
+  AddFilesToVersionResponse as any as S.Schema<ScheduleProjectResponse>;
 
 /** The requested status when scheduling the project for release */
 export type ScheduleVersionRequestRequestedStatus =
@@ -3381,9 +3283,8 @@ export const ScheduleVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScheduleVersionRequest" }) as any as S.Schema<ScheduleVersionRequest>;
 
 export interface ScheduleVersionResponse {}
-export const ScheduleVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ScheduleVersionResponse",
-}) as any as S.Schema<ScheduleVersionResponse>;
+export const ScheduleVersionResponse =
+  AddFilesToVersionResponse as any as S.Schema<ScheduleVersionResponse>;
 
 export type SearchProjectsRequestIndex =
   | "relevance"
@@ -3436,27 +3337,23 @@ export const ProjectResultAllProjectTypesList = /*@__PURE__*/ S.Array(
 
 /** A list of the featured categories that the project has. */
 export type ProjectResultCategoriesList = Array<string>;
-export const ProjectResultCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectResultCategoriesList>;
+export const ProjectResultCategoriesList =
+  CreatableProjectCategoriesList as any as S.Schema<ProjectResultCategoriesList>;
 
 /** A list of the featured categories that the project has. Equivalent to `categories` on the project itself. */
 export type ProjectResultDisplayCategoriesList = Array<string>;
-export const ProjectResultDisplayCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectResultDisplayCategoriesList>;
+export const ProjectResultDisplayCategoriesList =
+  CreatableProjectCategoriesList as any as S.Schema<ProjectResultDisplayCategoriesList>;
 
 /** A list of the minecraft versions supported by the project */
 export type ProjectResultVersionsList = Array<string>;
-export const ProjectResultVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectResultVersionsList>;
+export const ProjectResultVersionsList =
+  CreatableProjectCategoriesList as any as S.Schema<ProjectResultVersionsList>;
 
 /** All the environments that versions of this project support. Not in any particular order, we recommend using the environment information on a version instead. For an explanation of each environment, see the blog post here: https://modrinth.com/news/article/new-environments/#new-system */
 export type ProjectResultEnvironmentList = Array<EnvironmentEnum>;
-export const ProjectResultEnvironmentList = /*@__PURE__*/ S.Array(
-  EnvironmentEnum,
-) as any as S.Schema<ProjectResultEnvironmentList>;
+export const ProjectResultEnvironmentList =
+  ProjectEnvironmentList as any as S.Schema<ProjectResultEnvironmentList>;
 
 export type DisclosureTypeEnum =
   | "ai_content"
@@ -3484,9 +3381,8 @@ export const ProjectResultDisclosureTypesList = /*@__PURE__*/ S.Array(
 
 /** A list of images that have been uploaded to the project's gallery */
 export type ProjectResultGalleryList = Array<string>;
-export const ProjectResultGalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectResultGalleryList>;
+export const ProjectResultGalleryList =
+  CreatableProjectCategoriesList as any as S.Schema<ProjectResultGalleryList>;
 
 /** Deprecated - use `environment` instead. The client side support of the project */
 export type ProjectResultClientSide = "required" | "optional" | "unsupported" | "unknown";
@@ -3769,9 +3665,8 @@ export const TransferTeamOwnershipRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TransferTeamOwnershipRequest>;
 
 export interface TransferTeamOwnershipResponse {}
-export const TransferTeamOwnershipResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TransferTeamOwnershipResponse",
-}) as any as S.Schema<TransferTeamOwnershipResponse>;
+export const TransferTeamOwnershipResponse =
+  AddFilesToVersionResponse as any as S.Schema<TransferTeamOwnershipResponse>;
 
 export interface UnfollowProjectRequest {
   /** The ID or slug of the project */
@@ -3784,63 +3679,53 @@ export const UnfollowProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnfollowProjectRequest" }) as any as S.Schema<UnfollowProjectRequest>;
 
 export interface UnfollowProjectResponse {}
-export const UnfollowProjectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UnfollowProjectResponse",
-}) as any as S.Schema<UnfollowProjectResponse>;
+export const UnfollowProjectResponse =
+  AddFilesToVersionResponse as any as S.Schema<UnfollowProjectResponse>;
 
 /** Set all of the categories to the categories specified here */
 export type UpdateProjectsRequestCategoriesList = Array<string>;
-export const UpdateProjectsRequestCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectsRequestCategoriesList>;
+export const UpdateProjectsRequestCategoriesList =
+  CreatableProjectCategoriesList as any as S.Schema<UpdateProjectsRequestCategoriesList>;
 
 /** Add all of the categories specified here */
 export type UpdateProjectsRequestAddCategoriesList = Array<string>;
-export const UpdateProjectsRequestAddCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectsRequestAddCategoriesList>;
+export const UpdateProjectsRequestAddCategoriesList =
+  CreatableProjectCategoriesList as any as S.Schema<UpdateProjectsRequestAddCategoriesList>;
 
 /** Remove all of the categories specified here */
 export type UpdateProjectsRequestRemoveCategoriesList = Array<string>;
-export const UpdateProjectsRequestRemoveCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectsRequestRemoveCategoriesList>;
+export const UpdateProjectsRequestRemoveCategoriesList =
+  CreatableProjectCategoriesList as any as S.Schema<UpdateProjectsRequestRemoveCategoriesList>;
 
 /** Set all of the additional categories to the categories specified here */
 export type UpdateProjectsRequestAdditionalCategoriesList = Array<string>;
-export const UpdateProjectsRequestAdditionalCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectsRequestAdditionalCategoriesList>;
+export const UpdateProjectsRequestAdditionalCategoriesList =
+  CreatableProjectCategoriesList as any as S.Schema<UpdateProjectsRequestAdditionalCategoriesList>;
 
 /** Add all of the additional categories specified here */
 export type UpdateProjectsRequestAddAdditionalCategoriesList = Array<string>;
-export const UpdateProjectsRequestAddAdditionalCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectsRequestAddAdditionalCategoriesList>;
+export const UpdateProjectsRequestAddAdditionalCategoriesList =
+  CreatableProjectCategoriesList as any as S.Schema<UpdateProjectsRequestAddAdditionalCategoriesList>;
 
 /** Remove all of the additional categories specified here */
 export type UpdateProjectsRequestRemoveAdditionalCategoriesList = Array<string>;
-export const UpdateProjectsRequestRemoveAdditionalCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectsRequestRemoveAdditionalCategoriesList>;
+export const UpdateProjectsRequestRemoveAdditionalCategoriesList =
+  CreatableProjectCategoriesList as any as S.Schema<UpdateProjectsRequestRemoveAdditionalCategoriesList>;
 
 /** Set all of the donation links to the donation links specified here */
 export type UpdateProjectsRequestDonationUrlsList = Array<ProjectDonationURL>;
-export const UpdateProjectsRequestDonationUrlsList = /*@__PURE__*/ S.Array(
-  ProjectDonationURL,
-) as any as S.Schema<UpdateProjectsRequestDonationUrlsList>;
+export const UpdateProjectsRequestDonationUrlsList =
+  CreatableProjectDonationUrlsList as any as S.Schema<UpdateProjectsRequestDonationUrlsList>;
 
 /** Add all of the donation links specified here */
 export type UpdateProjectsRequestAddDonationUrlsList = Array<ProjectDonationURL>;
-export const UpdateProjectsRequestAddDonationUrlsList = /*@__PURE__*/ S.Array(
-  ProjectDonationURL,
-) as any as S.Schema<UpdateProjectsRequestAddDonationUrlsList>;
+export const UpdateProjectsRequestAddDonationUrlsList =
+  CreatableProjectDonationUrlsList as any as S.Schema<UpdateProjectsRequestAddDonationUrlsList>;
 
 /** Remove all of the donation links specified here */
 export type UpdateProjectsRequestRemoveDonationUrlsList = Array<ProjectDonationURL>;
-export const UpdateProjectsRequestRemoveDonationUrlsList = /*@__PURE__*/ S.Array(
-  ProjectDonationURL,
-) as any as S.Schema<UpdateProjectsRequestRemoveDonationUrlsList>;
+export const UpdateProjectsRequestRemoveDonationUrlsList =
+  CreatableProjectDonationUrlsList as any as S.Schema<UpdateProjectsRequestRemoveDonationUrlsList>;
 
 export interface UpdateProjectsRequest {
   /** The IDs and/or slugs of the projects */
@@ -3892,9 +3777,8 @@ export const UpdateProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateProjectsRequest" }) as any as S.Schema<UpdateProjectsRequest>;
 
 export interface UpdateProjectsResponse {}
-export const UpdateProjectsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateProjectsResponse",
-}) as any as S.Schema<UpdateProjectsResponse>;
+export const UpdateProjectsResponse =
+  AddFilesToVersionResponse as any as S.Schema<UpdateProjectsResponse>;
 
 export type VersionFromHashRequestAlgorithm = "sha1" | "sha512";
 export const VersionFromHashRequestAlgorithm = S.String;
@@ -3917,15 +3801,13 @@ export const VersionFromHashRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of specific versions of projects that this version depends on */
 export type VersionFromHashResponseDependenciesList = Array<VersionDependency>;
-export const VersionFromHashResponseDependenciesList = /*@__PURE__*/ S.Array(
-  VersionDependency,
-) as any as S.Schema<VersionFromHashResponseDependenciesList>;
+export const VersionFromHashResponseDependenciesList =
+  EditableVersionDependenciesList as any as S.Schema<VersionFromHashResponseDependenciesList>;
 
 /** A list of versions of Minecraft that this version supports */
 export type VersionFromHashResponseGameVersionsList = Array<string>;
-export const VersionFromHashResponseGameVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VersionFromHashResponseGameVersionsList>;
+export const VersionFromHashResponseGameVersionsList =
+  CreatableProjectCategoriesList as any as S.Schema<VersionFromHashResponseGameVersionsList>;
 
 /** The release channel for this version */
 export type VersionFromHashResponseVersionType = "release" | "beta" | "alpha";
@@ -3933,9 +3815,8 @@ export const VersionFromHashResponseVersionType = S.String;
 
 /** The mod loaders that this version supports. In case of resource packs, use "minecraft" */
 export type VersionFromHashResponseLoadersList = Array<string>;
-export const VersionFromHashResponseLoadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VersionFromHashResponseLoadersList>;
+export const VersionFromHashResponseLoadersList =
+  CreatableProjectCategoriesList as any as S.Schema<VersionFromHashResponseLoadersList>;
 
 export type VersionFromHashResponseStatus =
   | "listed"
@@ -3951,9 +3832,8 @@ export const VersionFromHashResponseRequestedStatus = S.String;
 
 /** A list of files available for download for this version */
 export type VersionFromHashResponseFilesList = Array<VersionFile>;
-export const VersionFromHashResponseFilesList = /*@__PURE__*/ S.Array(
-  VersionFile,
-) as any as S.Schema<VersionFromHashResponseFilesList>;
+export const VersionFromHashResponseFilesList =
+  CreateVersionResponseFilesList as any as S.Schema<VersionFromHashResponseFilesList>;
 
 export interface VersionFromHashResponse {
   /** The name of this version */
@@ -4013,9 +3893,8 @@ export const VersionFromHashResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VersionFromHashResponse" }) as any as S.Schema<VersionFromHashResponse>;
 
 export type VersionsFromHashesRequestHashesList = Array<string>;
-export const VersionsFromHashesRequestHashesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VersionsFromHashesRequestHashesList>;
+export const VersionsFromHashesRequestHashesList =
+  CreatableProjectCategoriesList as any as S.Schema<VersionsFromHashesRequestHashesList>;
 
 export type VersionsFromHashesRequestAlgorithm = "sha1" | "sha512";
 export const VersionsFromHashesRequestAlgorithm = S.String;
@@ -4034,11 +3913,8 @@ export const VersionsFromHashesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VersionsFromHashesRequest>;
 
 export type VersionsFromHashesResponse = HashVersionMap;
-export const VersionsFromHashesResponse = /*@__PURE__*/ S.suspend(() =>
-  HashVersionMap.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "VersionsFromHashesResponse",
-}) as any as S.Schema<VersionsFromHashesResponse>;
+export const VersionsFromHashesResponse =
+  GetLatestVersionsFromHashesResponse as any as S.Schema<VersionsFromHashesResponse>;
 
 export interface WithdrawPayoutRequest {
   /** The ID or username of the user */
@@ -4054,9 +3930,8 @@ export const WithdrawPayoutRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WithdrawPayoutRequest" }) as any as S.Schema<WithdrawPayoutRequest>;
 
 export interface WithdrawPayoutResponse {}
-export const WithdrawPayoutResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "WithdrawPayoutResponse",
-}) as any as S.Schema<WithdrawPayoutResponse>;
+export const WithdrawPayoutResponse =
+  AddFilesToVersionResponse as any as S.Schema<WithdrawPayoutResponse>;
 
 export type AddFilesToVersionError = NotFound | ModrinthOpError;
 /** Add files to version Project files are attached. `.mrpack` and `.jar` files are accepted. */

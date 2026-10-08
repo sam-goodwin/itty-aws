@@ -184,17 +184,7 @@ export interface SupportChannelListItem {
   /** The timestamp when the linked support ticket was marked as resolved. Null if unresolved or not a support chat. */
   resolved_at: string | null;
 }
-export const SupportChannelListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account_id: S.NullOr(S.String),
-    company_id: S.NullOr(S.String),
-    custom_name: S.NullOr(S.String),
-    customer_user: S.NullOr(SupportChannelCustomerUser),
-    id: S.String,
-    last_message_at: S.NullOr(S.String),
-    resolved_at: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "SupportChannelListItem" }) as any as S.Schema<SupportChannelListItem>;
+export const SupportChannelListItem = SupportChannel as any as S.Schema<SupportChannelListItem>;
 
 /** A list of nodes. */
 export type ListSupportChannelResponseDataList = Array<SupportChannelListItem>;

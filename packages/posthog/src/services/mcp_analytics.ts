@@ -742,9 +742,8 @@ export const ListMcpAnalyticsSessionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Distinct $mcp_tool_name values seen in the session. */
 export type MCPSessionToolsUsedList = Array<string>;
-export const MCPSessionToolsUsedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MCPSessionToolsUsedList>;
+export const MCPSessionToolsUsedList =
+  MCPIntentClusterSampleIntentsList as any as S.Schema<MCPSessionToolsUsedList>;
 
 export interface MCPSession {
   /** $mcp_session_id grouping all $mcp_tool_call events in the session. */
@@ -997,9 +996,8 @@ export const McpAnalyticsSessionsIntentDigestRequest = /*@__PURE__*/ S.suspend((
 
 /** The MCP tool names recorded alongside this theme's intents, sorted, taken from the corpus. */
 export type MCPIntentThemeToolsList = Array<string>;
-export const MCPIntentThemeToolsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MCPIntentThemeToolsList>;
+export const MCPIntentThemeToolsList =
+  MCPIntentClusterSampleIntentsList as any as S.Schema<MCPIntentThemeToolsList>;
 
 export interface MCPIntentTheme {
   /** Short sentence-case name for this group of intents. */

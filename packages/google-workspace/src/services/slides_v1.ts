@@ -1400,11 +1400,7 @@ export interface TableBorderFill {
   /** Solid fill. */
   solidFill?: SolidFill;
 }
-export const TableBorderFill = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    solidFill: S.optional(SolidFill),
-  }),
-).annotate({ identifier: "TableBorderFill" }) as any as S.Schema<TableBorderFill>;
+export const TableBorderFill = LineFill as any as S.Schema<TableBorderFill>;
 
 export type TableBorderPropertiesDashStyleEnum =
   | "DASH_STYLE_UNSPECIFIED"
@@ -2902,12 +2898,7 @@ export interface TableAnchor {
   /** The range of cells in the table to apply the anchor to. If omitted, all cells in the table will be used for the anchor. */
   tableRange?: TableRange;
 }
-export const TableAnchor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-    tableRange: S.optional(TableRange),
-  }),
-).annotate({ identifier: "TableAnchor" }) as any as S.Schema<TableAnchor>;
+export const TableAnchor = UnmergeTableCellsRequest as any as S.Schema<TableAnchor>;
 
 /** An anchor to a specific range of text within a Shape's text. [Developer Preview](https://developers.google.com/workspace/preview). To insert comments in speaker notes, use the ShapeTextAnchor with the speaker notes object ID. */
 export interface ShapeTextAnchor {
@@ -3052,11 +3043,7 @@ export interface RerouteLineRequest {
   /** The object ID of the line to reroute. Only a line with a category indicating it is a "connector" can be rerouted. The start and end connections of the line must be on different page elements. */
   objectId?: string;
 }
-export const RerouteLineRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({ identifier: "RerouteLineRequest" }) as any as S.Schema<RerouteLineRequest>;
+export const RerouteLineRequest = DeleteObjectRequest as any as S.Schema<RerouteLineRequest>;
 
 /** Merges cells in a Table. */
 export interface MergeTableCellsRequest {
@@ -3065,12 +3052,8 @@ export interface MergeTableCellsRequest {
   /** The table range specifying which cells of the table to merge. Any text in the cells being merged will be concatenated and stored in the upper-left ("head") cell of the range. If the range is non-rectangular (which can occur in some cases where the range covers cells that are already merged), a 400 bad request error is returned. */
   tableRange?: TableRange;
 }
-export const MergeTableCellsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-    tableRange: S.optional(TableRange),
-  }),
-).annotate({ identifier: "MergeTableCellsRequest" }) as any as S.Schema<MergeTableCellsRequest>;
+export const MergeTableCellsRequest =
+  UnmergeTableCellsRequest as any as S.Schema<MergeTableCellsRequest>;
 
 export type CreateShapeRequestShapeTypeEnum =
   | "TYPE_UNSPECIFIED"
@@ -3470,33 +3453,21 @@ export interface CreateImageResponse {
   /** The object ID of the created image. */
   objectId?: string;
 }
-export const CreateImageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateImageResponse" }) as any as S.Schema<CreateImageResponse>;
+export const CreateImageResponse = DeleteObjectRequest as any as S.Schema<CreateImageResponse>;
 
 /** The result of creating a slide. */
 export interface CreateSlideResponse {
   /** The object ID of the created slide. */
   objectId?: string;
 }
-export const CreateSlideResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateSlideResponse" }) as any as S.Schema<CreateSlideResponse>;
+export const CreateSlideResponse = DeleteObjectRequest as any as S.Schema<CreateSlideResponse>;
 
 /** The result of creating a shape. */
 export interface CreateShapeResponse {
   /** The object ID of the created shape. */
   objectId?: string;
 }
-export const CreateShapeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateShapeResponse" }) as any as S.Schema<CreateShapeResponse>;
+export const CreateShapeResponse = DeleteObjectRequest as any as S.Schema<CreateShapeResponse>;
 
 /** The result of creating a reply. [Developer Preview](https://developers.google.com/workspace/preview). */
 export interface AddCommentReplyResponse {
@@ -3514,11 +3485,7 @@ export interface GroupObjectsResponse {
   /** The object ID of the created group. */
   objectId?: string;
 }
-export const GroupObjectsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({ identifier: "GroupObjectsResponse" }) as any as S.Schema<GroupObjectsResponse>;
+export const GroupObjectsResponse = DeleteObjectRequest as any as S.Schema<GroupObjectsResponse>;
 
 /** The result of replacing shapes with a Google Sheets chart. */
 export interface ReplaceAllShapesWithSheetsChartResponse {
@@ -3538,57 +3505,37 @@ export interface CreateVideoResponse {
   /** The object ID of the created video. */
   objectId?: string;
 }
-export const CreateVideoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateVideoResponse" }) as any as S.Schema<CreateVideoResponse>;
+export const CreateVideoResponse = DeleteObjectRequest as any as S.Schema<CreateVideoResponse>;
 
 /** The result of creating a line. */
 export interface CreateLineResponse {
   /** The object ID of the created line. */
   objectId?: string;
 }
-export const CreateLineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateLineResponse" }) as any as S.Schema<CreateLineResponse>;
+export const CreateLineResponse = DeleteObjectRequest as any as S.Schema<CreateLineResponse>;
 
 /** The response of duplicating an object. */
 export interface DuplicateObjectResponse {
   /** The ID of the new duplicate object. */
   objectId?: string;
 }
-export const DuplicateObjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({ identifier: "DuplicateObjectResponse" }) as any as S.Schema<DuplicateObjectResponse>;
+export const DuplicateObjectResponse =
+  DeleteObjectRequest as any as S.Schema<DuplicateObjectResponse>;
 
 /** The result of creating an embedded Google Sheets chart. */
 export interface CreateSheetsChartResponse {
   /** The object ID of the created chart. */
   objectId?: string;
 }
-export const CreateSheetsChartResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateSheetsChartResponse",
-}) as any as S.Schema<CreateSheetsChartResponse>;
+export const CreateSheetsChartResponse =
+  RefreshSheetsChartRequest as any as S.Schema<CreateSheetsChartResponse>;
 
 /** The result of creating a table. */
 export interface CreateTableResponse {
   /** The object ID of the created table. */
   objectId?: string;
 }
-export const CreateTableResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateTableResponse" }) as any as S.Schema<CreateTableResponse>;
+export const CreateTableResponse = DeleteObjectRequest as any as S.Schema<CreateTableResponse>;
 
 /** The result of replacing text. */
 export interface ReplaceAllTextResponse {
@@ -3617,13 +3564,8 @@ export interface ReplaceAllShapesWithImageResponse {
   /** The number of shapes replaced with images. */
   occurrencesChanged?: number;
 }
-export const ReplaceAllShapesWithImageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    occurrencesChanged: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ReplaceAllShapesWithImageResponse",
-}) as any as S.Schema<ReplaceAllShapesWithImageResponse>;
+export const ReplaceAllShapesWithImageResponse =
+  ReplaceAllShapesWithSheetsChartResponse as any as S.Schema<ReplaceAllShapesWithImageResponse>;
 
 /** A single response from an update. */
 export interface Response {

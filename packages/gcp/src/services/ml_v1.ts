@@ -1098,26 +1098,14 @@ export interface GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValue
   values?: StringList;
 }
 export const GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      values: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec",
-  }) as any as S.Schema<GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec>;
+  GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec as any as S.Schema<GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec>;
 
 export interface GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec {
   /** Must be specified if type is `CATEGORICAL`. The list of possible categories. */
   values?: StringList;
 }
 export const GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      values: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec",
-  }) as any as S.Schema<GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec>;
+  GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec as any as S.Schema<GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec>;
 
 export interface GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec {
   /** Must be specified if type is `DISCRETE`. A list of feasible points. The list should be in strictly increasing order. For instance, this parameter might have possible settings of 1.5, 2.5, and 4.0. This list should not contain more than 1,000 values. */
@@ -1234,13 +1222,7 @@ export interface GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStopping
   useElapsedTime?: boolean;
 }
 export const GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      useElapsedTime: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig",
-  }) as any as S.Schema<GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig>;
+  GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig as any as S.Schema<GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig>;
 
 /** Configuration for Automated Early Stopping of Trials. If no implementation_config is set, automated early stopping will not be run. */
 export interface GoogleCloudMlV1__AutomatedStoppingConfig {
@@ -2331,13 +2313,8 @@ export interface GoogleCloudMlV1__ListTrialsResponse {
   /** The trials associated with the study. */
   trials?: GoogleCloudMlV1__TrialList;
 }
-export const GoogleCloudMlV1__ListTrialsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trials: S.optional(GoogleCloudMlV1__TrialList),
-  }),
-).annotate({
-  identifier: "GoogleCloudMlV1__ListTrialsResponse",
-}) as any as S.Schema<GoogleCloudMlV1__ListTrialsResponse>;
+export const GoogleCloudMlV1__ListTrialsResponse =
+  GoogleCloudMlV1__ListOptimalTrialsResponse as any as S.Schema<GoogleCloudMlV1__ListTrialsResponse>;
 
 export interface ListProjectsModelsRequest {
   /** Optional. A page token to request the next page of results. You get the token from the `next_page_token` field of the response from the previous call. */
@@ -2534,13 +2511,8 @@ export interface GoogleCloudMlV1__PredictRequest {
   /** Required. The prediction request body. Refer to the [request body details section](#request-body-details) for more information on how to structure your request. */
   httpBody?: GoogleApi__HttpBody;
 }
-export const GoogleCloudMlV1__PredictRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    httpBody: S.optional(GoogleApi__HttpBody),
-  }),
-).annotate({
-  identifier: "GoogleCloudMlV1__PredictRequest",
-}) as any as S.Schema<GoogleCloudMlV1__PredictRequest>;
+export const GoogleCloudMlV1__PredictRequest =
+  GoogleCloudMlV1__ExplainRequest as any as S.Schema<GoogleCloudMlV1__PredictRequest>;
 
 export interface PredictProjectsRequest {
   /** Required. The resource name of a model or a version. Authorization: requires the `predict` permission on the specified resource. */
@@ -2732,13 +2704,8 @@ export interface GoogleIamV1__TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const GoogleIamV1__TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GoogleIamV1__TestIamPermissionsResponse",
-}) as any as S.Schema<GoogleIamV1__TestIamPermissionsResponse>;
+export const GoogleIamV1__TestIamPermissionsResponse =
+  GoogleIamV1__TestIamPermissionsRequest as any as S.Schema<GoogleIamV1__TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsModelsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */

@@ -34,9 +34,8 @@ export const AccessBridgeSecurityRuleIpv4AddressesList = /*@__PURE__*/ S.Array(
 
 /** The set of IPv6 addresses permitted as the source or destination of the security rule. For as single address, utilize a /128 (CIDR notation). One or both Ipv4Addresses and Ipv6Addresses must be specified. Example formats: 2001:db8:abcd::1-2001:db8:abcd::ff or 2001:db8:abcd::1/64. */
 export type AccessBridgeSecurityRuleIpv6AddressesList = Array<string>;
-export const AccessBridgeSecurityRuleIpv6AddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccessBridgeSecurityRuleIpv6AddressesList>;
+export const AccessBridgeSecurityRuleIpv6AddressesList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<AccessBridgeSecurityRuleIpv6AddressesList>;
 
 /** AccessBridgeSecurityRule captures an individual access rule enforced by the bridge. */
 export interface AccessBridgeSecurityRule {
@@ -182,16 +181,13 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type AccessBridgesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const AccessBridgesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccessBridgesCreateOrUpdateResponseTagsMap>;
+export const AccessBridgesCreateOrUpdateResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<AccessBridgesCreateOrUpdateResponseTagsMap>;
 
 /** The list of security rules enforced by the access bridge. */
 export type AccessBridgePropertiesSecurityRulesList = Array<AccessBridgeSecurityRule>;
-export const AccessBridgePropertiesSecurityRulesList = /*@__PURE__*/ S.Array(
-  AccessBridgeSecurityRule,
-) as any as S.Schema<AccessBridgePropertiesSecurityRulesList>;
+export const AccessBridgePropertiesSecurityRulesList =
+  AccessBridgePropertiesInputSecurityRulesList as any as S.Schema<AccessBridgePropertiesSecurityRulesList>;
 
 /** The detailed status reported by the access bridge. */
 export type AccessBridgeDetailedStatus = "Running" | "Degraded" | "Failed";
@@ -309,10 +305,8 @@ export const AccessBridgesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type AgentPoolsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const AgentPoolsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AgentPoolsCreateOrUpdateRequestTagsMap>;
+export const AgentPoolsCreateOrUpdateRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<AgentPoolsCreateOrUpdateRequestTagsMap>;
 
 /** SshPublicKey represents the public key used to authenticate with a resource through SSH. */
 export interface SshPublicKey {
@@ -487,9 +481,8 @@ export const AttachedNetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of availability zones of the Network Cloud cluster used for the provisioning of nodes in this agent pool. If not specified, all availability zones will be used. */
 export type AgentPoolPropertiesInputAvailabilityZonesList = Array<string>;
-export const AgentPoolPropertiesInputAvailabilityZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AgentPoolPropertiesInputAvailabilityZonesList>;
+export const AgentPoolPropertiesInputAvailabilityZonesList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<AgentPoolPropertiesInputAvailabilityZonesList>;
 
 /** KubernetesLabel represents a single entry for a Kubernetes label or taint such as those used on a node or pod. */
 export interface KubernetesLabel {
@@ -517,9 +510,8 @@ export const AgentPoolMode = S.String;
 
 /** The taints applied to the nodes in this agent pool. */
 export type AgentPoolPropertiesInputTaintsList = Array<KubernetesLabel>;
-export const AgentPoolPropertiesInputTaintsList = /*@__PURE__*/ S.Array(
-  KubernetesLabel,
-) as any as S.Schema<AgentPoolPropertiesInputTaintsList>;
+export const AgentPoolPropertiesInputTaintsList =
+  AgentPoolPropertiesInputLabelsList as any as S.Schema<AgentPoolPropertiesInputTaintsList>;
 
 /** AgentPoolUpgradeSettings specifies the upgrade settings for an agent pool. */
 export interface AgentPoolUpgradeSettings {
@@ -618,28 +610,23 @@ export const AgentPoolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type AgentPoolsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const AgentPoolsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AgentPoolsCreateOrUpdateResponseTagsMap>;
+export const AgentPoolsCreateOrUpdateResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<AgentPoolsCreateOrUpdateResponseTagsMap>;
 
 /** The list of availability zones of the Network Cloud cluster used for the provisioning of nodes in this agent pool. If not specified, all availability zones will be used. */
 export type AgentPoolPropertiesAvailabilityZonesList = Array<string>;
-export const AgentPoolPropertiesAvailabilityZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AgentPoolPropertiesAvailabilityZonesList>;
+export const AgentPoolPropertiesAvailabilityZonesList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<AgentPoolPropertiesAvailabilityZonesList>;
 
 /** The labels applied to the nodes in this agent pool. */
 export type AgentPoolPropertiesLabelsList = Array<KubernetesLabel>;
-export const AgentPoolPropertiesLabelsList = /*@__PURE__*/ S.Array(
-  KubernetesLabel,
-) as any as S.Schema<AgentPoolPropertiesLabelsList>;
+export const AgentPoolPropertiesLabelsList =
+  AgentPoolPropertiesInputLabelsList as any as S.Schema<AgentPoolPropertiesLabelsList>;
 
 /** The taints applied to the nodes in this agent pool. */
 export type AgentPoolPropertiesTaintsList = Array<KubernetesLabel>;
-export const AgentPoolPropertiesTaintsList = /*@__PURE__*/ S.Array(
-  KubernetesLabel,
-) as any as S.Schema<AgentPoolPropertiesTaintsList>;
+export const AgentPoolPropertiesTaintsList =
+  AgentPoolPropertiesInputLabelsList as any as S.Schema<AgentPoolPropertiesTaintsList>;
 
 /** The current status of the agent pool. */
 export type AgentPoolDetailedStatus = "Available" | "Error" | "Provisioning";
@@ -788,16 +775,13 @@ export const AssignVirtualMachineRelayResponse = /*@__PURE__*/ S.suspend(() =>
 export type BareMetalMachineKeySetsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const BareMetalMachineKeySetsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BareMetalMachineKeySetsCreateOrUpdateRequestTagsMap>;
+export const BareMetalMachineKeySetsCreateOrUpdateRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<BareMetalMachineKeySetsCreateOrUpdateRequestTagsMap>;
 
 /** The list of IP addresses of jump hosts with management network access from which a login will be allowed for the users. */
 export type BareMetalMachineKeySetPropertiesInputJumpHostsAllowedList = Array<string>;
-export const BareMetalMachineKeySetPropertiesInputJumpHostsAllowedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BareMetalMachineKeySetPropertiesInputJumpHostsAllowedList>;
+export const BareMetalMachineKeySetPropertiesInputJumpHostsAllowedList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<BareMetalMachineKeySetPropertiesInputJumpHostsAllowedList>;
 
 /** The access level allowed for the users in this key set. */
 export type BareMetalMachineKeySetPrivilegeLevel = "Standard" | "Superuser" | "Other";
@@ -904,22 +888,18 @@ export const BareMetalMachineKeySetsCreateOrUpdateRequest = /*@__PURE__*/ S.susp
 export type BareMetalMachineKeySetsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const BareMetalMachineKeySetsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BareMetalMachineKeySetsCreateOrUpdateResponseTagsMap>;
+export const BareMetalMachineKeySetsCreateOrUpdateResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<BareMetalMachineKeySetsCreateOrUpdateResponseTagsMap>;
 
 /** The list of IP addresses of jump hosts with management network access from which a login will be allowed for the users. */
 export type BareMetalMachineKeySetPropertiesJumpHostsAllowedList = Array<string>;
-export const BareMetalMachineKeySetPropertiesJumpHostsAllowedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BareMetalMachineKeySetPropertiesJumpHostsAllowedList>;
+export const BareMetalMachineKeySetPropertiesJumpHostsAllowedList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<BareMetalMachineKeySetPropertiesJumpHostsAllowedList>;
 
 /** The unique list of permitted users. */
 export type BareMetalMachineKeySetPropertiesUserListList = Array<KeySetUser>;
-export const BareMetalMachineKeySetPropertiesUserListList = /*@__PURE__*/ S.Array(
-  KeySetUser,
-) as any as S.Schema<BareMetalMachineKeySetPropertiesUserListList>;
+export const BareMetalMachineKeySetPropertiesUserListList =
+  BareMetalMachineKeySetPropertiesInputUserListList as any as S.Schema<BareMetalMachineKeySetPropertiesUserListList>;
 
 /** The more detailed status of the key set. */
 export type BareMetalMachineKeySetDetailedStatus =
@@ -1049,10 +1029,8 @@ export const BareMetalMachineKeySetsCreateOrUpdateResponse = /*@__PURE__*/ S.sus
 
 /** Resource tags. */
 export type BareMetalMachinesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const BareMetalMachinesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BareMetalMachinesCreateOrUpdateRequestTagsMap>;
+export const BareMetalMachinesCreateOrUpdateRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<BareMetalMachinesCreateOrUpdateRequestTagsMap>;
 
 /** AdministrativeCredentials represents the admin credentials for the device requiring password-based authentication. */
 export interface AdministrativeCredentials {
@@ -1152,10 +1130,8 @@ export const BareMetalMachinesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type BareMetalMachinesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const BareMetalMachinesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BareMetalMachinesCreateOrUpdateResponseTagsMap>;
+export const BareMetalMachinesCreateOrUpdateResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<BareMetalMachinesCreateOrUpdateResponseTagsMap>;
 
 /** The status of the action. */
 export type ActionStateStatus = "Completed" | "InProgress" | "Failed";
@@ -1231,9 +1207,8 @@ export const BareMetalMachinePropertiesActionStatesList = /*@__PURE__*/ S.Array(
 
 /** The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network. */
 export type BareMetalMachinePropertiesAssociatedResourceIdsList = Array<string>;
-export const BareMetalMachinePropertiesAssociatedResourceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BareMetalMachinePropertiesAssociatedResourceIdsList>;
+export const BareMetalMachinePropertiesAssociatedResourceIdsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<BareMetalMachinePropertiesAssociatedResourceIdsList>;
 
 /** CertificateInfo represents the non-private information of an X.509 Certificate. */
 export interface CertificateInfo {
@@ -1371,15 +1346,13 @@ export const HardwareValidationStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Field Deprecated. These fields will be empty/omitted. The list of the resource IDs for the HybridAksClusters that have nodes hosted on this bare metal machine. */
 export type BareMetalMachinePropertiesHybridAksClustersAssociatedIdsList = Array<string>;
-export const BareMetalMachinePropertiesHybridAksClustersAssociatedIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BareMetalMachinePropertiesHybridAksClustersAssociatedIdsList>;
+export const BareMetalMachinePropertiesHybridAksClustersAssociatedIdsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<BareMetalMachinePropertiesHybridAksClustersAssociatedIdsList>;
 
 /** The list of roles that are assigned to the cluster node running on this machine. */
 export type BareMetalMachinePropertiesMachineRolesList = Array<string>;
-export const BareMetalMachinePropertiesMachineRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BareMetalMachinePropertiesMachineRolesList>;
+export const BareMetalMachinePropertiesMachineRolesList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<BareMetalMachinePropertiesMachineRolesList>;
 
 /** The log level for the monitoring configuration status of the bare metal machine. */
 export type BareMetalMachineMonitoringConfigurationStatusLogLevel = "Default" | "Nexus";
@@ -1419,9 +1392,8 @@ export const RuntimeProtectionAgentHealthStatus = S.String;
 
 /** The runtime protection agent health status issues, if present. */
 export type RuntimeProtectionStatusAgentHealthStatusIssuesList = Array<string>;
-export const RuntimeProtectionStatusAgentHealthStatusIssuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RuntimeProtectionStatusAgentHealthStatusIssuesList>;
+export const RuntimeProtectionStatusAgentHealthStatusIssuesList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<RuntimeProtectionStatusAgentHealthStatusIssuesList>;
 
 /** The runtime protection agent license status. */
 export type RuntimeProtectionAgentLicenseStatus = "Licensed" | "Unlicensed";
@@ -1529,9 +1501,8 @@ export const BareMetalMachinePropertiesSecretRotationStatusList = /*@__PURE__*/ 
 
 /** Field Deprecated. These fields will be empty/omitted. The list of the resource IDs for the VirtualMachines that are hosted on this bare metal machine. */
 export type BareMetalMachinePropertiesVirtualMachinesAssociatedIdsList = Array<string>;
-export const BareMetalMachinePropertiesVirtualMachinesAssociatedIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BareMetalMachinePropertiesVirtualMachinesAssociatedIdsList>;
+export const BareMetalMachinePropertiesVirtualMachinesAssociatedIdsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<BareMetalMachinePropertiesVirtualMachinesAssociatedIdsList>;
 
 /** The provisioning state of the bare metal machine. */
 export type BareMetalMachineProvisioningState =
@@ -1736,11 +1707,8 @@ export const BareMetalMachinesPowerOffRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BareMetalMachinesPowerOffRequest>;
 
 export interface BareMetalMachinesPowerOffResponse {}
-export const BareMetalMachinesPowerOffResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "BareMetalMachinesPowerOffResponse",
-}) as any as S.Schema<BareMetalMachinesPowerOffResponse>;
+export const BareMetalMachinesPowerOffResponse =
+  AssignVirtualMachineRelayResponse as any as S.Schema<BareMetalMachinesPowerOffResponse>;
 
 /** The safeguard mode to use for the reimage action, where None indicates to bypass safeguards and All indicates to utilize all safeguards. */
 export type BareMetalMachineReimageSafeguardMode = "All" | "None";
@@ -1775,17 +1743,13 @@ export const BareMetalMachinesReimageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BareMetalMachinesReimageRequest>;
 
 export interface BareMetalMachinesReimageResponse {}
-export const BareMetalMachinesReimageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "BareMetalMachinesReimageResponse",
-}) as any as S.Schema<BareMetalMachinesReimageResponse>;
+export const BareMetalMachinesReimageResponse =
+  AssignVirtualMachineRelayResponse as any as S.Schema<BareMetalMachinesReimageResponse>;
 
 /** The list of string arguments that will be passed to the script in order as separate arguments. */
 export type BareMetalMachineCommandSpecificationArgumentsList = Array<string>;
-export const BareMetalMachineCommandSpecificationArgumentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BareMetalMachineCommandSpecificationArgumentsList>;
+export const BareMetalMachineCommandSpecificationArgumentsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<BareMetalMachineCommandSpecificationArgumentsList>;
 
 /** BareMetalMachineCommandSpecification represents the command and optional arguments to exercise against the bare metal machine. */
 export interface BareMetalMachineCommandSpecification {
@@ -1842,18 +1806,13 @@ export const BareMetalMachinesRunReadCommandsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<BareMetalMachinesRunReadCommandsRequest>;
 
 export interface BareMetalMachinesRunReadCommandsResponse {}
-export const BareMetalMachinesRunReadCommandsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "BareMetalMachinesRunReadCommandsResponse",
-}) as any as S.Schema<BareMetalMachinesRunReadCommandsResponse>;
+export const BareMetalMachinesRunReadCommandsResponse =
+  AssignVirtualMachineRelayResponse as any as S.Schema<BareMetalMachinesRunReadCommandsResponse>;
 
 /** Resource tags. */
 export type BmcKeySetsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const BmcKeySetsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BmcKeySetsCreateOrUpdateRequestTagsMap>;
+export const BmcKeySetsCreateOrUpdateRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<BmcKeySetsCreateOrUpdateRequestTagsMap>;
 
 /** The access level allowed for the users in this key set. */
 export type BmcKeySetPrivilegeLevel = "ReadOnly" | "Administrator";
@@ -1861,9 +1820,8 @@ export const BmcKeySetPrivilegeLevel = S.String;
 
 /** The unique list of permitted users. */
 export type BmcKeySetPropertiesInputUserListList = Array<KeySetUser>;
-export const BmcKeySetPropertiesInputUserListList = /*@__PURE__*/ S.Array(
-  KeySetUser,
-) as any as S.Schema<BmcKeySetPropertiesInputUserListList>;
+export const BmcKeySetPropertiesInputUserListList =
+  BareMetalMachineKeySetPropertiesInputUserListList as any as S.Schema<BmcKeySetPropertiesInputUserListList>;
 
 /** BmcKeySetProperties represents the properties of baseboard management controller key set. */
 export interface BmcKeySetPropertiesInput {
@@ -1927,16 +1885,13 @@ export const BmcKeySetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type BmcKeySetsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const BmcKeySetsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BmcKeySetsCreateOrUpdateResponseTagsMap>;
+export const BmcKeySetsCreateOrUpdateResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<BmcKeySetsCreateOrUpdateResponseTagsMap>;
 
 /** The unique list of permitted users. */
 export type BmcKeySetPropertiesUserListList = Array<KeySetUser>;
-export const BmcKeySetPropertiesUserListList = /*@__PURE__*/ S.Array(
-  KeySetUser,
-) as any as S.Schema<BmcKeySetPropertiesUserListList>;
+export const BmcKeySetPropertiesUserListList =
+  BareMetalMachineKeySetPropertiesInputUserListList as any as S.Schema<BmcKeySetPropertiesUserListList>;
 
 /** The more detailed status of the key set. */
 export type BmcKeySetDetailedStatus = "AllActive" | "SomeInvalid" | "AllInvalid" | "Validating";
@@ -1944,9 +1899,8 @@ export const BmcKeySetDetailedStatus = S.String;
 
 /** The status evaluation of each user. */
 export type BmcKeySetPropertiesUserListStatusList = Array<KeySetUserStatus>;
-export const BmcKeySetPropertiesUserListStatusList = /*@__PURE__*/ S.Array(
-  KeySetUserStatus,
-) as any as S.Schema<BmcKeySetPropertiesUserListStatusList>;
+export const BmcKeySetPropertiesUserListStatusList =
+  BareMetalMachineKeySetPropertiesUserListStatusList as any as S.Schema<BmcKeySetPropertiesUserListStatusList>;
 
 /** The provisioning state of the baseboard management controller key set. */
 export type BmcKeySetProvisioningState =
@@ -2032,10 +1986,8 @@ export const BmcKeySetsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 export type CloudServicesNetworksCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const CloudServicesNetworksCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CloudServicesNetworksCreateOrUpdateRequestTagsMap>;
+export const CloudServicesNetworksCreateOrUpdateRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<CloudServicesNetworksCreateOrUpdateRequestTagsMap>;
 
 /** EndpointDependency represents the definition of an endpoint, including the domain and details. */
 export interface EndpointDependency {
@@ -2172,10 +2124,8 @@ export const CloudServicesNetworksCreateOrUpdateRequest = /*@__PURE__*/ S.suspen
 export type CloudServicesNetworksCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const CloudServicesNetworksCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CloudServicesNetworksCreateOrUpdateResponseTagsMap>;
+export const CloudServicesNetworksCreateOrUpdateResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<CloudServicesNetworksCreateOrUpdateResponseTagsMap>;
 
 /** The list of egress endpoints. This allows for connection from a Hybrid AKS cluster to the specified endpoint. */
 export type CloudServicesNetworkPropertiesAdditionalEgressEndpointsList = Array<EgressEndpoint>;
@@ -2189,9 +2139,8 @@ export const CloudServicesNetworkPropertiesEnableDefaultEgressEndpoints = S.Stri
 
 /** The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network. */
 export type CloudServicesNetworkPropertiesAssociatedResourceIdsList = Array<string>;
-export const CloudServicesNetworkPropertiesAssociatedResourceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudServicesNetworkPropertiesAssociatedResourceIdsList>;
+export const CloudServicesNetworkPropertiesAssociatedResourceIdsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<CloudServicesNetworkPropertiesAssociatedResourceIdsList>;
 
 /** The more detailed status of the cloud services network. */
 export type CloudServicesNetworkDetailedStatus = "Error" | "Available" | "Provisioning";
@@ -2199,9 +2148,8 @@ export const CloudServicesNetworkDetailedStatus = S.String;
 
 /** The full list of additional and default egress endpoints that are currently enabled. */
 export type CloudServicesNetworkPropertiesEnabledEgressEndpointsList = Array<EgressEndpoint>;
-export const CloudServicesNetworkPropertiesEnabledEgressEndpointsList = /*@__PURE__*/ S.Array(
-  EgressEndpoint,
-) as any as S.Schema<CloudServicesNetworkPropertiesEnabledEgressEndpointsList>;
+export const CloudServicesNetworkPropertiesEnabledEgressEndpointsList =
+  CloudServicesNetworkPropertiesAdditionalEgressEndpointsList as any as S.Schema<CloudServicesNetworkPropertiesEnabledEgressEndpointsList>;
 
 /** Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource IDs that are associated with this cloud services network. */
 export type CloudServicesNetworkPropertiesHybridAksClustersAssociatedIdsList = Array<string>;
@@ -2251,9 +2199,8 @@ export const CloudServicesNetworkStorageStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Field Deprecated. These fields will be empty/omitted. The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this cloud services network. */
 export type CloudServicesNetworkPropertiesVirtualMachinesAssociatedIdsList = Array<string>;
-export const CloudServicesNetworkPropertiesVirtualMachinesAssociatedIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudServicesNetworkPropertiesVirtualMachinesAssociatedIdsList>;
+export const CloudServicesNetworkPropertiesVirtualMachinesAssociatedIdsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<CloudServicesNetworkPropertiesVirtualMachinesAssociatedIdsList>;
 
 /** The provisioning state of the cloud services network. */
 export type CloudServicesNetworkProvisioningState =
@@ -2359,16 +2306,13 @@ export const CloudServicesNetworksCreateOrUpdateResponse = /*@__PURE__*/ S.suspe
 
 /** Resource tags. */
 export type ClusterManagersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ClusterManagersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ClusterManagersCreateOrUpdateRequestTagsMap>;
+export const ClusterManagersCreateOrUpdateRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<ClusterManagersCreateOrUpdateRequestTagsMap>;
 
 /** The Azure availability zones within the region that will be used to support the cluster manager resource. */
 export type ClusterManagerPropertiesInputAvailabilityZonesList = Array<string>;
-export const ClusterManagerPropertiesInputAvailabilityZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClusterManagerPropertiesInputAvailabilityZonesList>;
+export const ClusterManagerPropertiesInputAvailabilityZonesList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<ClusterManagerPropertiesInputAvailabilityZonesList>;
 
 /** ManagedResourceGroupConfiguration represents the configuration of the resource group managed by Azure. */
 export interface ManagedResourceGroupConfiguration {
@@ -2498,16 +2442,13 @@ export const ClusterManagersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type ClusterManagersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ClusterManagersCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ClusterManagersCreateOrUpdateResponseTagsMap>;
+export const ClusterManagersCreateOrUpdateResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<ClusterManagersCreateOrUpdateResponseTagsMap>;
 
 /** The Azure availability zones within the region that will be used to support the cluster manager resource. */
 export type ClusterManagerPropertiesAvailabilityZonesList = Array<string>;
-export const ClusterManagerPropertiesAvailabilityZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClusterManagerPropertiesAvailabilityZonesList>;
+export const ClusterManagerPropertiesAvailabilityZonesList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<ClusterManagerPropertiesAvailabilityZonesList>;
 
 /** ClusterAvailableVersion represents the cluster version that the cluster manager can be asked to create and manage. */
 export interface ClusterAvailableVersion {
@@ -2733,18 +2674,13 @@ export const ClustersContinueUpdateVersionRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ClustersContinueUpdateVersionRequest>;
 
 export interface ClustersContinueUpdateVersionResponse {}
-export const ClustersContinueUpdateVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ClustersContinueUpdateVersionResponse",
-}) as any as S.Schema<ClustersContinueUpdateVersionResponse>;
+export const ClustersContinueUpdateVersionResponse =
+  AssignVirtualMachineRelayResponse as any as S.Schema<ClustersContinueUpdateVersionResponse>;
 
 /** Resource tags. */
 export type ClustersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ClustersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ClustersCreateOrUpdateRequestTagsMap>;
+export const ClustersCreateOrUpdateRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<ClustersCreateOrUpdateRequestTagsMap>;
 
 /** BareMetalMachineConfigurationData represents configuration for the bare metal machine. */
 export interface BareMetalMachineConfigurationDataInput {
@@ -3154,10 +3090,7 @@ export type ClustersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
 export const ClustersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
-  ) as any as S.Schema<ClustersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap>;
+  ClusterManagersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap as any as S.Schema<ClustersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ClustersCreateOrUpdateRequestIdentity {
@@ -3165,16 +3098,8 @@ export interface ClustersCreateOrUpdateRequestIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: ClustersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap;
 }
-export const ClustersCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      ClustersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "ClustersCreateOrUpdateRequestIdentity",
-}) as any as S.Schema<ClustersCreateOrUpdateRequestIdentity>;
+export const ClustersCreateOrUpdateRequestIdentity =
+  ClusterManagersCreateOrUpdateRequestIdentity as any as S.Schema<ClustersCreateOrUpdateRequestIdentity>;
 
 export interface ClustersCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3221,10 +3146,8 @@ export const ClustersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ClustersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ClustersCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ClustersCreateOrUpdateResponseTagsMap>;
+export const ClustersCreateOrUpdateResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<ClustersCreateOrUpdateResponseTagsMap>;
 
 /** BareMetalMachineConfigurationData represents configuration for the bare metal machine. */
 export interface BareMetalMachineConfigurationData {
@@ -3270,9 +3193,8 @@ export const RackDefinitionBareMetalMachineConfigurationDataList = /*@__PURE__*/
 /** The list of storage appliance configuration data for this rack. */
 export type RackDefinitionStorageApplianceConfigurationDataList =
   Array<StorageApplianceConfigurationData>;
-export const RackDefinitionStorageApplianceConfigurationDataList = /*@__PURE__*/ S.Array(
-  StorageApplianceConfigurationData,
-) as any as S.Schema<RackDefinitionStorageApplianceConfigurationDataList>;
+export const RackDefinitionStorageApplianceConfigurationDataList =
+  RackDefinitionInputStorageApplianceConfigurationDataList as any as S.Schema<RackDefinitionStorageApplianceConfigurationDataList>;
 
 /** RackDefinition represents details regarding the rack. */
 export interface RackDefinition {
@@ -3315,9 +3237,8 @@ export const ClusterPropertiesComputeRackDefinitionsList = /*@__PURE__*/ S.Array
 
 /** The current state of any in progress or completed actions. The most recent known instance of each action type is shown. */
 export type ClusterPropertiesActionStatesList = Array<ActionState>;
-export const ClusterPropertiesActionStatesList = /*@__PURE__*/ S.Array(
-  ActionState,
-) as any as S.Schema<ClusterPropertiesActionStatesList>;
+export const ClusterPropertiesActionStatesList =
+  BareMetalMachinePropertiesActionStatesList as any as S.Schema<ClusterPropertiesActionStatesList>;
 
 /** The indicator of whether the control plane will be impacted during the upgrade. */
 export type ControlImpact = "True" | "False";
@@ -3416,15 +3337,13 @@ export const ClusterDetailedStatus = S.String;
 
 /** The list of credentials that are managed for the cluster and can be rotated on-demand. */
 export type ClusterPropertiesManagedCredentialsList = Array<string>;
-export const ClusterPropertiesManagedCredentialsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClusterPropertiesManagedCredentialsList>;
+export const ClusterPropertiesManagedCredentialsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<ClusterPropertiesManagedCredentialsList>;
 
 /** The list of workload resource IDs that are hosted within this cluster. */
 export type ClusterPropertiesWorkloadResourceIdsList = Array<string>;
-export const ClusterPropertiesWorkloadResourceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClusterPropertiesWorkloadResourceIdsList>;
+export const ClusterPropertiesWorkloadResourceIdsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<ClusterPropertiesWorkloadResourceIdsList>;
 
 /** The provisioning state of the cluster. */
 export type ClusterProvisioningState =
@@ -3548,10 +3467,7 @@ export type ClustersCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
 export const ClustersCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-  ) as any as S.Schema<ClustersCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap>;
+  ClusterManagersCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<ClustersCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ClustersCreateOrUpdateResponseIdentity {
@@ -3563,18 +3479,8 @@ export interface ClustersCreateOrUpdateResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: ClustersCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap;
 }
-export const ClustersCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      ClustersCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "ClustersCreateOrUpdateResponseIdentity",
-}) as any as S.Schema<ClustersCreateOrUpdateResponseIdentity>;
+export const ClustersCreateOrUpdateResponseIdentity =
+  ClusterManagersCreateOrUpdateResponseIdentity as any as S.Schema<ClustersCreateOrUpdateResponseIdentity>;
 
 export interface ClustersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3632,15 +3538,13 @@ export const ClustersInspectRequestAdditionalActionsList = /*@__PURE__*/ S.Array
 
 /** The list of bare metal machine names to include in the inspection. */
 export type FilterDevicesBareMetalMachineNamesList = Array<string>;
-export const FilterDevicesBareMetalMachineNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FilterDevicesBareMetalMachineNamesList>;
+export const FilterDevicesBareMetalMachineNamesList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<FilterDevicesBareMetalMachineNamesList>;
 
 /** The list of rack names to include in the inspection. */
 export type FilterDevicesRackNamesList = Array<string>;
-export const FilterDevicesRackNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FilterDevicesRackNamesList>;
+export const FilterDevicesRackNamesList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<FilterDevicesRackNamesList>;
 
 /** FilterDevices defines the filtered target of the inspection. */
 export interface FilterDevices {
@@ -3686,9 +3590,8 @@ export const ClustersInspectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClustersInspectRequest" }) as any as S.Schema<ClustersInspectRequest>;
 
 export interface ClustersInspectResponse {}
-export const ClustersInspectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ClustersInspectResponse",
-}) as any as S.Schema<ClustersInspectResponse>;
+export const ClustersInspectResponse =
+  UserAssignedIdentityInput as any as S.Schema<ClustersInspectResponse>;
 
 /** The choice of if the scan operation should run the scan. */
 export type ClustersScanRuntimeRequestScanActivity = "Scan" | "Skip";
@@ -3723,16 +3626,13 @@ export const ClustersScanRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClustersScanRuntimeRequest>;
 
 export interface ClustersScanRuntimeResponse {}
-export const ClustersScanRuntimeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ClustersScanRuntimeResponse",
-}) as any as S.Schema<ClustersScanRuntimeResponse>;
+export const ClustersScanRuntimeResponse =
+  UserAssignedIdentityInput as any as S.Schema<ClustersScanRuntimeResponse>;
 
 /** Resource tags. */
 export type ConsolesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ConsolesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConsolesCreateOrUpdateRequestTagsMap>;
+export const ConsolesCreateOrUpdateRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<ConsolesCreateOrUpdateRequestTagsMap>;
 
 /** The indicator of whether the console access is enabled. */
 export type ConsoleEnabled = "True" | "False";
@@ -3797,10 +3697,8 @@ export const ConsolesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ConsolesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ConsolesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConsolesCreateOrUpdateResponseTagsMap>;
+export const ConsolesCreateOrUpdateResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<ConsolesCreateOrUpdateResponseTagsMap>;
 
 /** The more detailed status of the console. */
 export type ConsoleDetailedStatus = "Ready" | "Error";
@@ -3916,9 +3814,8 @@ export const CordonBareMetalMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CordonBareMetalMachineRequest>;
 
 export interface CordonBareMetalMachineResponse {}
-export const CordonBareMetalMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CordonBareMetalMachineResponse",
-}) as any as S.Schema<CordonBareMetalMachineResponse>;
+export const CordonBareMetalMachineResponse =
+  UserAssignedIdentityInput as any as S.Schema<CordonBareMetalMachineResponse>;
 
 export type DeleteAccessBridgeRequestAccessBridgeName =
   | "Bastion"
@@ -3952,9 +3849,8 @@ export const DeleteAccessBridgeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAccessBridgeRequest>;
 
 export interface DeleteAccessBridgeResponse {}
-export const DeleteAccessBridgeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAccessBridgeResponse",
-}) as any as S.Schema<DeleteAccessBridgeResponse>;
+export const DeleteAccessBridgeResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteAccessBridgeResponse>;
 
 export interface DeleteAgentPoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3983,9 +3879,8 @@ export const DeleteAgentPoolRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAgentPoolRequest" }) as any as S.Schema<DeleteAgentPoolRequest>;
 
 export interface DeleteAgentPoolResponse {}
-export const DeleteAgentPoolResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAgentPoolResponse",
-}) as any as S.Schema<DeleteAgentPoolResponse>;
+export const DeleteAgentPoolResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteAgentPoolResponse>;
 
 export interface DeleteBareMetalMachineRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4013,9 +3908,8 @@ export const DeleteBareMetalMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBareMetalMachineRequest>;
 
 export interface DeleteBareMetalMachineResponse {}
-export const DeleteBareMetalMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBareMetalMachineResponse",
-}) as any as S.Schema<DeleteBareMetalMachineResponse>;
+export const DeleteBareMetalMachineResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteBareMetalMachineResponse>;
 
 export interface DeleteBareMetalMachineKeySetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4046,11 +3940,8 @@ export const DeleteBareMetalMachineKeySetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBareMetalMachineKeySetRequest>;
 
 export interface DeleteBareMetalMachineKeySetResponse {}
-export const DeleteBareMetalMachineKeySetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteBareMetalMachineKeySetResponse",
-}) as any as S.Schema<DeleteBareMetalMachineKeySetResponse>;
+export const DeleteBareMetalMachineKeySetResponse =
+  AssignVirtualMachineRelayResponse as any as S.Schema<DeleteBareMetalMachineKeySetResponse>;
 
 export interface DeleteBmcKeySetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4079,9 +3970,8 @@ export const DeleteBmcKeySetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBmcKeySetRequest" }) as any as S.Schema<DeleteBmcKeySetRequest>;
 
 export interface DeleteBmcKeySetResponse {}
-export const DeleteBmcKeySetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBmcKeySetResponse",
-}) as any as S.Schema<DeleteBmcKeySetResponse>;
+export const DeleteBmcKeySetResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteBmcKeySetResponse>;
 
 export interface DeleteCloudServicesNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4109,11 +3999,8 @@ export const DeleteCloudServicesNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCloudServicesNetworkRequest>;
 
 export interface DeleteCloudServicesNetworkResponse {}
-export const DeleteCloudServicesNetworkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudServicesNetworkResponse",
-}) as any as S.Schema<DeleteCloudServicesNetworkResponse>;
+export const DeleteCloudServicesNetworkResponse =
+  AssignVirtualMachineRelayResponse as any as S.Schema<DeleteCloudServicesNetworkResponse>;
 
 export interface DeleteClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4139,9 +4026,8 @@ export const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteClusterRequest" }) as any as S.Schema<DeleteClusterRequest>;
 
 export interface DeleteClusterResponse {}
-export const DeleteClusterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteClusterResponse",
-}) as any as S.Schema<DeleteClusterResponse>;
+export const DeleteClusterResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteClusterResponse>;
 
 export interface DeleteClusterManagerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4169,9 +4055,8 @@ export const DeleteClusterManagerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteClusterManagerRequest>;
 
 export interface DeleteClusterManagerResponse {}
-export const DeleteClusterManagerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteClusterManagerResponse",
-}) as any as S.Schema<DeleteClusterManagerResponse>;
+export const DeleteClusterManagerResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteClusterManagerResponse>;
 
 export interface DeleteConsoleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4200,9 +4085,8 @@ export const DeleteConsoleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteConsoleRequest" }) as any as S.Schema<DeleteConsoleRequest>;
 
 export interface DeleteConsoleResponse {}
-export const DeleteConsoleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteConsoleResponse",
-}) as any as S.Schema<DeleteConsoleResponse>;
+export const DeleteConsoleResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteConsoleResponse>;
 
 export interface DeleteKubernetesClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4263,11 +4147,8 @@ export const DeleteKubernetesClusterFeatureRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteKubernetesClusterFeatureRequest>;
 
 export interface DeleteKubernetesClusterFeatureResponse {}
-export const DeleteKubernetesClusterFeatureResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteKubernetesClusterFeatureResponse",
-}) as any as S.Schema<DeleteKubernetesClusterFeatureResponse>;
+export const DeleteKubernetesClusterFeatureResponse =
+  AssignVirtualMachineRelayResponse as any as S.Schema<DeleteKubernetesClusterFeatureResponse>;
 
 export interface DeleteKubernetesVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4295,9 +4176,8 @@ export const DeleteKubernetesVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteKubernetesVersionRequest>;
 
 export interface DeleteKubernetesVersionResponse {}
-export const DeleteKubernetesVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteKubernetesVersionResponse" },
-) as any as S.Schema<DeleteKubernetesVersionResponse>;
+export const DeleteKubernetesVersionResponse =
+  DeleteKubernetesClusterResponse as any as S.Schema<DeleteKubernetesVersionResponse>;
 
 export interface DeleteL2NetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4323,9 +4203,8 @@ export const DeleteL2NetworkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteL2NetworkRequest" }) as any as S.Schema<DeleteL2NetworkRequest>;
 
 export interface DeleteL2NetworkResponse {}
-export const DeleteL2NetworkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteL2NetworkResponse",
-}) as any as S.Schema<DeleteL2NetworkResponse>;
+export const DeleteL2NetworkResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteL2NetworkResponse>;
 
 export interface DeleteL3NetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4351,9 +4230,8 @@ export const DeleteL3NetworkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteL3NetworkRequest" }) as any as S.Schema<DeleteL3NetworkRequest>;
 
 export interface DeleteL3NetworkResponse {}
-export const DeleteL3NetworkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteL3NetworkResponse",
-}) as any as S.Schema<DeleteL3NetworkResponse>;
+export const DeleteL3NetworkResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteL3NetworkResponse>;
 
 export interface DeleteMetricsConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4384,11 +4262,8 @@ export const DeleteMetricsConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMetricsConfigurationRequest>;
 
 export interface DeleteMetricsConfigurationResponse {}
-export const DeleteMetricsConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMetricsConfigurationResponse",
-}) as any as S.Schema<DeleteMetricsConfigurationResponse>;
+export const DeleteMetricsConfigurationResponse =
+  AssignVirtualMachineRelayResponse as any as S.Schema<DeleteMetricsConfigurationResponse>;
 
 export interface DeleteRackRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4414,9 +4289,7 @@ export const DeleteRackRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRackRequest" }) as any as S.Schema<DeleteRackRequest>;
 
 export interface DeleteRackResponse {}
-export const DeleteRackResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRackResponse",
-}) as any as S.Schema<DeleteRackResponse>;
+export const DeleteRackResponse = UserAssignedIdentityInput as any as S.Schema<DeleteRackResponse>;
 
 export interface DeleteStorageApplianceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4444,9 +4317,8 @@ export const DeleteStorageApplianceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteStorageApplianceRequest>;
 
 export interface DeleteStorageApplianceResponse {}
-export const DeleteStorageApplianceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteStorageApplianceResponse",
-}) as any as S.Schema<DeleteStorageApplianceResponse>;
+export const DeleteStorageApplianceResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteStorageApplianceResponse>;
 
 export interface DeleteTrunkedNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4474,9 +4346,8 @@ export const DeleteTrunkedNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTrunkedNetworkRequest>;
 
 export interface DeleteTrunkedNetworkResponse {}
-export const DeleteTrunkedNetworkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTrunkedNetworkResponse",
-}) as any as S.Schema<DeleteTrunkedNetworkResponse>;
+export const DeleteTrunkedNetworkResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteTrunkedNetworkResponse>;
 
 export interface DeleteVirtualMachineRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4504,9 +4375,8 @@ export const DeleteVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVirtualMachineRequest>;
 
 export interface DeleteVirtualMachineResponse {}
-export const DeleteVirtualMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVirtualMachineResponse",
-}) as any as S.Schema<DeleteVirtualMachineResponse>;
+export const DeleteVirtualMachineResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteVirtualMachineResponse>;
 
 export interface DeleteVolumeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4532,15 +4402,13 @@ export const DeleteVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteVolumeRequest" }) as any as S.Schema<DeleteVolumeRequest>;
 
 export interface DeleteVolumeResponse {}
-export const DeleteVolumeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVolumeResponse",
-}) as any as S.Schema<DeleteVolumeResponse>;
+export const DeleteVolumeResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteVolumeResponse>;
 
 /** The names of bare metal machines in the cluster that should be skipped during environment validation. */
 export type DeployClusterRequestSkipValidationsForMachinesList = Array<string>;
-export const DeployClusterRequestSkipValidationsForMachinesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeployClusterRequestSkipValidationsForMachinesList>;
+export const DeployClusterRequestSkipValidationsForMachinesList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<DeployClusterRequestSkipValidationsForMachinesList>;
 
 export interface DeployClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4569,9 +4437,8 @@ export const DeployClusterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeployClusterRequest" }) as any as S.Schema<DeployClusterRequest>;
 
 export interface DeployClusterResponse {}
-export const DeployClusterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeployClusterResponse",
-}) as any as S.Schema<DeployClusterResponse>;
+export const DeployClusterResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeployClusterResponse>;
 
 export interface DisableStorageApplianceRemoteVendorManagementRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4599,18 +4466,13 @@ export const DisableStorageApplianceRemoteVendorManagementRequest = /*@__PURE__*
 }) as any as S.Schema<DisableStorageApplianceRemoteVendorManagementRequest>;
 
 export interface DisableStorageApplianceRemoteVendorManagementResponse {}
-export const DisableStorageApplianceRemoteVendorManagementResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisableStorageApplianceRemoteVendorManagementResponse",
-}) as any as S.Schema<DisableStorageApplianceRemoteVendorManagementResponse>;
+export const DisableStorageApplianceRemoteVendorManagementResponse =
+  AssignVirtualMachineRelayResponse as any as S.Schema<DisableStorageApplianceRemoteVendorManagementResponse>;
 
 /** Field Deprecated. This field is not used and will be rejected if provided. The list of IPv4 subnets (in CIDR format), IPv6 subnets (in CIDR format), or hostnames that the storage appliance needs accessible in order to turn on the remote vendor management. */
 export type EnableStorageApplianceRemoteVendorManagementRequestSupportEndpointsList = Array<string>;
 export const EnableStorageApplianceRemoteVendorManagementRequestSupportEndpointsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EnableStorageApplianceRemoteVendorManagementRequestSupportEndpointsList>;
+  CloudServicesNetworkPropertiesHybridAksClustersAssociatedIdsList as any as S.Schema<EnableStorageApplianceRemoteVendorManagementRequestSupportEndpointsList>;
 
 export interface EnableStorageApplianceRemoteVendorManagementRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4643,11 +4505,8 @@ export const EnableStorageApplianceRemoteVendorManagementRequest = /*@__PURE__*/
 }) as any as S.Schema<EnableStorageApplianceRemoteVendorManagementRequest>;
 
 export interface EnableStorageApplianceRemoteVendorManagementResponse {}
-export const EnableStorageApplianceRemoteVendorManagementResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "EnableStorageApplianceRemoteVendorManagementResponse",
-}) as any as S.Schema<EnableStorageApplianceRemoteVendorManagementResponse>;
+export const EnableStorageApplianceRemoteVendorManagementResponse =
+  AssignVirtualMachineRelayResponse as any as S.Schema<EnableStorageApplianceRemoteVendorManagementResponse>;
 
 export type GetAccessBridgeRequestAccessBridgeName =
   | "Bastion"
@@ -4680,10 +4539,8 @@ export const GetAccessBridgeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAccessBridgeResponseTagsMap = { [key: string]: string | undefined };
-export const GetAccessBridgeResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAccessBridgeResponseTagsMap>;
+export const GetAccessBridgeResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<GetAccessBridgeResponseTagsMap>;
 
 export interface GetAccessBridgeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4747,10 +4604,8 @@ export const GetAgentPoolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAgentPoolResponseTagsMap = { [key: string]: string | undefined };
-export const GetAgentPoolResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAgentPoolResponseTagsMap>;
+export const GetAgentPoolResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<GetAgentPoolResponseTagsMap>;
 
 export interface GetAgentPoolResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4813,10 +4668,8 @@ export const GetBareMetalMachineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetBareMetalMachineResponseTagsMap = { [key: string]: string | undefined };
-export const GetBareMetalMachineResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBareMetalMachineResponseTagsMap>;
+export const GetBareMetalMachineResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<GetBareMetalMachineResponseTagsMap>;
 
 export interface GetBareMetalMachineResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4838,21 +4691,8 @@ export interface GetBareMetalMachineResponse {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const GetBareMetalMachineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetBareMetalMachineResponseTagsMap),
-    location: S.String,
-    properties: BareMetalMachineProperties,
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({
-  identifier: "GetBareMetalMachineResponse",
-}) as any as S.Schema<GetBareMetalMachineResponse>;
+export const GetBareMetalMachineResponse =
+  BareMetalMachinesCreateOrUpdateResponse as any as S.Schema<GetBareMetalMachineResponse>;
 
 export interface GetBareMetalMachineKeySetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4884,10 +4724,8 @@ export const GetBareMetalMachineKeySetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetBareMetalMachineKeySetResponseTagsMap = { [key: string]: string | undefined };
-export const GetBareMetalMachineKeySetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBareMetalMachineKeySetResponseTagsMap>;
+export const GetBareMetalMachineKeySetResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<GetBareMetalMachineKeySetResponseTagsMap>;
 
 export interface GetBareMetalMachineKeySetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4909,21 +4747,8 @@ export interface GetBareMetalMachineKeySetResponse {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const GetBareMetalMachineKeySetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetBareMetalMachineKeySetResponseTagsMap),
-    location: S.String,
-    properties: BareMetalMachineKeySetProperties,
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({
-  identifier: "GetBareMetalMachineKeySetResponse",
-}) as any as S.Schema<GetBareMetalMachineKeySetResponse>;
+export const GetBareMetalMachineKeySetResponse =
+  BareMetalMachineKeySetsCreateOrUpdateResponse as any as S.Schema<GetBareMetalMachineKeySetResponse>;
 
 export interface GetBmcKeySetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4953,10 +4778,8 @@ export const GetBmcKeySetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetBmcKeySetResponseTagsMap = { [key: string]: string | undefined };
-export const GetBmcKeySetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBmcKeySetResponseTagsMap>;
+export const GetBmcKeySetResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<GetBmcKeySetResponseTagsMap>;
 
 export interface GetBmcKeySetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5019,10 +4842,8 @@ export const GetCloudServicesNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetCloudServicesNetworkResponseTagsMap = { [key: string]: string | undefined };
-export const GetCloudServicesNetworkResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetCloudServicesNetworkResponseTagsMap>;
+export const GetCloudServicesNetworkResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<GetCloudServicesNetworkResponseTagsMap>;
 
 export interface GetCloudServicesNetworkResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5044,21 +4865,8 @@ export interface GetCloudServicesNetworkResponse {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const GetCloudServicesNetworkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetCloudServicesNetworkResponseTagsMap),
-    location: S.String,
-    properties: S.optional(CloudServicesNetworkProperties),
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({
-  identifier: "GetCloudServicesNetworkResponse",
-}) as any as S.Schema<GetCloudServicesNetworkResponse>;
+export const GetCloudServicesNetworkResponse =
+  CloudServicesNetworksCreateOrUpdateResponse as any as S.Schema<GetCloudServicesNetworkResponse>;
 
 export interface GetClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5085,10 +4893,8 @@ export const GetClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetClusterResponseTagsMap = { [key: string]: string | undefined };
-export const GetClusterResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetClusterResponseTagsMap>;
+export const GetClusterResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<GetClusterResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type GetClusterResponseIdentityUserAssignedIdentitiesMap = {
@@ -5185,19 +4991,15 @@ export const GetClusterManagerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetClusterManagerResponseTagsMap = { [key: string]: string | undefined };
-export const GetClusterManagerResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetClusterManagerResponseTagsMap>;
+export const GetClusterManagerResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<GetClusterManagerResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type GetClusterManagerResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const GetClusterManagerResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<GetClusterManagerResponseIdentityUserAssignedIdentitiesMap>;
+export const GetClusterManagerResponseIdentityUserAssignedIdentitiesMap =
+  GetClusterResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<GetClusterManagerResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface GetClusterManagerResponseIdentity {
@@ -5209,16 +5011,8 @@ export interface GetClusterManagerResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: GetClusterManagerResponseIdentityUserAssignedIdentitiesMap;
 }
-export const GetClusterManagerResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(GetClusterManagerResponseIdentityUserAssignedIdentitiesMap),
-  }),
-).annotate({
-  identifier: "GetClusterManagerResponseIdentity",
-}) as any as S.Schema<GetClusterManagerResponseIdentity>;
+export const GetClusterManagerResponseIdentity =
+  GetClusterResponseIdentity as any as S.Schema<GetClusterManagerResponseIdentity>;
 
 export interface GetClusterManagerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5287,10 +5081,8 @@ export const GetConsoleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetConsoleResponseTagsMap = { [key: string]: string | undefined };
-export const GetConsoleResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetConsoleResponseTagsMap>;
+export const GetConsoleResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<GetConsoleResponseTagsMap>;
 
 export interface GetConsoleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5353,16 +5145,13 @@ export const GetKubernetesClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetKubernetesClusterResponseTagsMap = { [key: string]: string | undefined };
-export const GetKubernetesClusterResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetKubernetesClusterResponseTagsMap>;
+export const GetKubernetesClusterResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<GetKubernetesClusterResponseTagsMap>;
 
 /** The list of Azure Active Directory group object IDs that will have an administrative role on the Kubernetes cluster. */
 export type AadConfigurationAdminGroupObjectIdsList = Array<string>;
-export const AadConfigurationAdminGroupObjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AadConfigurationAdminGroupObjectIdsList>;
+export const AadConfigurationAdminGroupObjectIdsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<AadConfigurationAdminGroupObjectIdsList>;
 
 /** AadConfiguration represents the Azure Active Directory Integration properties. */
 export interface AadConfiguration {
@@ -5377,9 +5166,8 @@ export const AadConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of availability zones of the Network Cloud cluster to be used for the provisioning of nodes in the control plane. If not specified, all availability zones will be used. */
 export type ControlPlaneNodeConfigurationAvailabilityZonesList = Array<string>;
-export const ControlPlaneNodeConfigurationAvailabilityZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ControlPlaneNodeConfigurationAvailabilityZonesList>;
+export const ControlPlaneNodeConfigurationAvailabilityZonesList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<ControlPlaneNodeConfigurationAvailabilityZonesList>;
 
 /** ControlPlaneNodeConfiguration represents the selection of virtual machines and size of the control plane for a Kubernetes cluster. */
 export interface ControlPlaneNodeConfiguration {
@@ -5405,21 +5193,18 @@ export const ControlPlaneNodeConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of availability zones of the Network Cloud cluster used for the provisioning of nodes in this agent pool. If not specified, all availability zones will be used. */
 export type InitialAgentPoolConfigurationAvailabilityZonesList = Array<string>;
-export const InitialAgentPoolConfigurationAvailabilityZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InitialAgentPoolConfigurationAvailabilityZonesList>;
+export const InitialAgentPoolConfigurationAvailabilityZonesList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<InitialAgentPoolConfigurationAvailabilityZonesList>;
 
 /** The labels applied to the nodes in this agent pool. */
 export type InitialAgentPoolConfigurationLabelsList = Array<KubernetesLabel>;
-export const InitialAgentPoolConfigurationLabelsList = /*@__PURE__*/ S.Array(
-  KubernetesLabel,
-) as any as S.Schema<InitialAgentPoolConfigurationLabelsList>;
+export const InitialAgentPoolConfigurationLabelsList =
+  AgentPoolPropertiesInputLabelsList as any as S.Schema<InitialAgentPoolConfigurationLabelsList>;
 
 /** The taints applied to the nodes in this agent pool. */
 export type InitialAgentPoolConfigurationTaintsList = Array<KubernetesLabel>;
-export const InitialAgentPoolConfigurationTaintsList = /*@__PURE__*/ S.Array(
-  KubernetesLabel,
-) as any as S.Schema<InitialAgentPoolConfigurationTaintsList>;
+export const InitialAgentPoolConfigurationTaintsList =
+  AgentPoolPropertiesInputLabelsList as any as S.Schema<InitialAgentPoolConfigurationTaintsList>;
 
 /** InitialAgentPoolConfiguration specifies the configuration of a pool of virtual machines that are initially defined with a Kubernetes cluster. */
 export interface InitialAgentPoolConfiguration {
@@ -5477,21 +5262,18 @@ export const BgpAdvertisementAdvertiseToFabric = S.String;
 
 /** The names of the BGP communities to be associated with the announcement, utilizing a BGP community string in 1234:1234 format. */
 export type BgpAdvertisementCommunitiesList = Array<string>;
-export const BgpAdvertisementCommunitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BgpAdvertisementCommunitiesList>;
+export const BgpAdvertisementCommunitiesList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<BgpAdvertisementCommunitiesList>;
 
 /** The names of the IP address pools associated with this announcement. */
 export type BgpAdvertisementIpAddressPoolsList = Array<string>;
-export const BgpAdvertisementIpAddressPoolsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BgpAdvertisementIpAddressPoolsList>;
+export const BgpAdvertisementIpAddressPoolsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<BgpAdvertisementIpAddressPoolsList>;
 
 /** The names of the BGP peers to limit this advertisement to. If no values are specified, all BGP peers will receive this advertisement. */
 export type BgpAdvertisementPeersList = Array<string>;
-export const BgpAdvertisementPeersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BgpAdvertisementPeersList>;
+export const BgpAdvertisementPeersList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<BgpAdvertisementPeersList>;
 
 /** BgpAdvertisement represents the association of IP address pools to the communities and peers. */
 export interface BgpAdvertisement {
@@ -5579,9 +5361,8 @@ export const BgpServiceLoadBalancerConfigurationFabricPeeringEnabled = S.String;
 
 /** The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses. For a BGP service load balancer configuration, only CIDR format is supported and excludes /32 (IPv4) and /128 (IPv6) prefixes. */
 export type IpAddressPoolAddressesList = Array<string>;
-export const IpAddressPoolAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpAddressPoolAddressesList>;
+export const IpAddressPoolAddressesList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<IpAddressPoolAddressesList>;
 
 /** The indicator to determine if automatic allocation from the pool should occur. */
 export type IpAddressPoolAutoAssign = "True" | "False";
@@ -5641,9 +5422,8 @@ export const BgpServiceLoadBalancerConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of pools of IP addresses that can be allocated to load balancer services. */
 export type L2ServiceLoadBalancerConfigurationIpAddressPoolsList = Array<IpAddressPool>;
-export const L2ServiceLoadBalancerConfigurationIpAddressPoolsList = /*@__PURE__*/ S.Array(
-  IpAddressPool,
-) as any as S.Schema<L2ServiceLoadBalancerConfigurationIpAddressPoolsList>;
+export const L2ServiceLoadBalancerConfigurationIpAddressPoolsList =
+  BgpServiceLoadBalancerConfigurationIpAddressPoolsList as any as S.Schema<L2ServiceLoadBalancerConfigurationIpAddressPoolsList>;
 
 /** L2ServiceLoadBalancerConfiguration represents the configuration of a layer 2 service load balancer. */
 export interface L2ServiceLoadBalancerConfiguration {
@@ -5660,15 +5440,13 @@ export const L2ServiceLoadBalancerConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking. */
 export type NetworkConfigurationPodCidrsList = Array<string>;
-export const NetworkConfigurationPodCidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkConfigurationPodCidrsList>;
+export const NetworkConfigurationPodCidrsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<NetworkConfigurationPodCidrsList>;
 
 /** The CIDR notation IP ranges from which to assign service IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking. */
 export type NetworkConfigurationServiceCidrsList = Array<string>;
-export const NetworkConfigurationServiceCidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkConfigurationServiceCidrsList>;
+export const NetworkConfigurationServiceCidrsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<NetworkConfigurationServiceCidrsList>;
 
 /** NetworkConfiguration specifies the Kubernetes cluster network related configuration. */
 export interface NetworkConfiguration {
@@ -5704,9 +5482,8 @@ export const NetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The full list of network resource IDs that are attached to this cluster, including those attached only to specific agent pools. */
 export type KubernetesClusterPropertiesAttachedNetworkIdsList = Array<string>;
-export const KubernetesClusterPropertiesAttachedNetworkIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<KubernetesClusterPropertiesAttachedNetworkIdsList>;
+export const KubernetesClusterPropertiesAttachedNetworkIdsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<KubernetesClusterPropertiesAttachedNetworkIdsList>;
 
 /** The version lifecycle indicator. */
 export type AvailabilityLifecycle = "Preview" | "GenerallyAvailable";
@@ -5780,9 +5557,8 @@ export const KubernetesClusterNodeDetailedStatus = S.String;
 
 /** The list of labels on this node that have been assigned to the agent pool containing this node. */
 export type KubernetesClusterNodeLabelsList = Array<KubernetesLabel>;
-export const KubernetesClusterNodeLabelsList = /*@__PURE__*/ S.Array(
-  KubernetesLabel,
-) as any as S.Schema<KubernetesClusterNodeLabelsList>;
+export const KubernetesClusterNodeLabelsList =
+  AgentPoolPropertiesInputLabelsList as any as S.Schema<KubernetesClusterNodeLabelsList>;
 
 /** The indicator of whether this is the default gateway. Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified as True. */
 export type DefaultGateway = "True" | "False";
@@ -5837,9 +5613,8 @@ export const KubernetesNodeRole = S.String;
 
 /** The list of taints that have been assigned to the agent pool containing this node. */
 export type KubernetesClusterNodeTaintsList = Array<KubernetesLabel>;
-export const KubernetesClusterNodeTaintsList = /*@__PURE__*/ S.Array(
-  KubernetesLabel,
-) as any as S.Schema<KubernetesClusterNodeTaintsList>;
+export const KubernetesClusterNodeTaintsList =
+  AgentPoolPropertiesInputLabelsList as any as S.Schema<KubernetesClusterNodeTaintsList>;
 
 /** KubernetesClusterNode represents the details of a node in a Kubernetes cluster. */
 export interface KubernetesClusterNode {
@@ -6048,10 +5823,8 @@ export const GetKubernetesClusterFeatureRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetKubernetesClusterFeatureResponseTagsMap = { [key: string]: string | undefined };
-export const GetKubernetesClusterFeatureResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetKubernetesClusterFeatureResponseTagsMap>;
+export const GetKubernetesClusterFeatureResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<GetKubernetesClusterFeatureResponseTagsMap>;
 
 /** StringKeyValuePair represents a single entry in a mapping of keys to values. */
 export interface StringKeyValuePair {
@@ -6060,18 +5833,12 @@ export interface StringKeyValuePair {
   /** The value of the mapping key. */
   value: string;
 }
-export const StringKeyValuePair = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    value: S.String,
-  }),
-).annotate({ identifier: "StringKeyValuePair" }) as any as S.Schema<StringKeyValuePair>;
+export const StringKeyValuePair = KubernetesLabel as any as S.Schema<StringKeyValuePair>;
 
 /** The configured options for the feature. */
 export type KubernetesClusterFeaturePropertiesOptionsList = Array<StringKeyValuePair>;
-export const KubernetesClusterFeaturePropertiesOptionsList = /*@__PURE__*/ S.Array(
-  StringKeyValuePair,
-) as any as S.Schema<KubernetesClusterFeaturePropertiesOptionsList>;
+export const KubernetesClusterFeaturePropertiesOptionsList =
+  AgentPoolPropertiesInputLabelsList as any as S.Schema<KubernetesClusterFeaturePropertiesOptionsList>;
 
 /** The lifecycle indicator of the feature. */
 export type KubernetesClusterFeatureAvailabilityLifecycle = "Preview" | "GenerallyAvailable";
@@ -6186,10 +5953,8 @@ export const GetKubernetesVersionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetKubernetesVersionResponseTagsMap = { [key: string]: string | undefined };
-export const GetKubernetesVersionResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetKubernetesVersionResponseTagsMap>;
+export const GetKubernetesVersionResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<GetKubernetesVersionResponseTagsMap>;
 
 /** KubernetesVersionValue describes a specific Kubernetes version that can be deployed. */
 export interface KubernetesVersionValue {
@@ -6292,10 +6057,8 @@ export const GetL2NetworkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetL2NetworkResponseTagsMap = { [key: string]: string | undefined };
-export const GetL2NetworkResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetL2NetworkResponseTagsMap>;
+export const GetL2NetworkResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<GetL2NetworkResponseTagsMap>;
 
 /** Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS. */
 export type L2NetworkPropertiesHybridAksPluginType = "DPDK" | "SRIOV" | "OSDevice";
@@ -6303,9 +6066,8 @@ export const L2NetworkPropertiesHybridAksPluginType = S.String;
 
 /** The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network. */
 export type L2NetworkPropertiesAssociatedResourceIdsList = Array<string>;
-export const L2NetworkPropertiesAssociatedResourceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<L2NetworkPropertiesAssociatedResourceIdsList>;
+export const L2NetworkPropertiesAssociatedResourceIdsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<L2NetworkPropertiesAssociatedResourceIdsList>;
 
 /** The more detailed status of the L2 network. */
 export type L2NetworkDetailedStatus = "Error" | "Available" | "Provisioning";
@@ -6313,15 +6075,13 @@ export const L2NetworkDetailedStatus = S.String;
 
 /** Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource ID(s) that are associated with this L2 network. */
 export type L2NetworkPropertiesHybridAksClustersAssociatedIdsList = Array<string>;
-export const L2NetworkPropertiesHybridAksClustersAssociatedIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<L2NetworkPropertiesHybridAksClustersAssociatedIdsList>;
+export const L2NetworkPropertiesHybridAksClustersAssociatedIdsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<L2NetworkPropertiesHybridAksClustersAssociatedIdsList>;
 
 /** Field Deprecated. These fields will be empty/omitted. The list of virtual machine resource ID(s), excluding any Hybrid AKS virtual machines, that are currently using this L2 network. */
 export type L2NetworkPropertiesVirtualMachinesAssociatedIdsList = Array<string>;
-export const L2NetworkPropertiesVirtualMachinesAssociatedIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<L2NetworkPropertiesVirtualMachinesAssociatedIdsList>;
+export const L2NetworkPropertiesVirtualMachinesAssociatedIdsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<L2NetworkPropertiesVirtualMachinesAssociatedIdsList>;
 
 /** The provisioning state of the L2 network. */
 export type L2NetworkProvisioningState =
@@ -6431,10 +6191,8 @@ export const GetL3NetworkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetL3NetworkResponseTagsMap = { [key: string]: string | undefined };
-export const GetL3NetworkResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetL3NetworkResponseTagsMap>;
+export const GetL3NetworkResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<GetL3NetworkResponseTagsMap>;
 
 /** Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The indicator of whether or not to disable IPAM allocation on the network attachment definition injected into the Hybrid AKS Cluster. */
 export type L3NetworkPropertiesHybridAksIpamEnabled = "True" | "False";
@@ -6450,9 +6208,8 @@ export const L3NetworkPropertiesIpAllocationType = S.String;
 
 /** The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network. */
 export type L3NetworkPropertiesAssociatedResourceIdsList = Array<string>;
-export const L3NetworkPropertiesAssociatedResourceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<L3NetworkPropertiesAssociatedResourceIdsList>;
+export const L3NetworkPropertiesAssociatedResourceIdsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<L3NetworkPropertiesAssociatedResourceIdsList>;
 
 /** The more detailed status of the L3 network. */
 export type L3NetworkDetailedStatus = "Error" | "Available" | "Provisioning";
@@ -6460,15 +6217,13 @@ export const L3NetworkDetailedStatus = S.String;
 
 /** Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource IDs that are associated with this L3 network. */
 export type L3NetworkPropertiesHybridAksClustersAssociatedIdsList = Array<string>;
-export const L3NetworkPropertiesHybridAksClustersAssociatedIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<L3NetworkPropertiesHybridAksClustersAssociatedIdsList>;
+export const L3NetworkPropertiesHybridAksClustersAssociatedIdsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<L3NetworkPropertiesHybridAksClustersAssociatedIdsList>;
 
 /** Field Deprecated. These fields will be empty/omitted. The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this L3 network. */
 export type L3NetworkPropertiesVirtualMachinesAssociatedIdsList = Array<string>;
-export const L3NetworkPropertiesVirtualMachinesAssociatedIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<L3NetworkPropertiesVirtualMachinesAssociatedIdsList>;
+export const L3NetworkPropertiesVirtualMachinesAssociatedIdsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<L3NetworkPropertiesVirtualMachinesAssociatedIdsList>;
 
 /** The provisioning state of the L3 network. */
 export type L3NetworkProvisioningState =
@@ -6598,16 +6353,13 @@ export const GetMetricsConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetMetricsConfigurationResponseTagsMap = { [key: string]: string | undefined };
-export const GetMetricsConfigurationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetMetricsConfigurationResponseTagsMap>;
+export const GetMetricsConfigurationResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<GetMetricsConfigurationResponseTagsMap>;
 
 /** The list of metric names that have been chosen to be enabled in addition to the core set of enabled metrics. */
 export type ClusterMetricsConfigurationPropertiesEnabledMetricsList = Array<string>;
-export const ClusterMetricsConfigurationPropertiesEnabledMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClusterMetricsConfigurationPropertiesEnabledMetricsList>;
+export const ClusterMetricsConfigurationPropertiesEnabledMetricsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<ClusterMetricsConfigurationPropertiesEnabledMetricsList>;
 
 /** The more detailed status of the metrics configuration. */
 export type ClusterMetricsConfigurationDetailedStatus = "Processing" | "Applied" | "Error";
@@ -6615,9 +6367,8 @@ export const ClusterMetricsConfigurationDetailedStatus = S.String;
 
 /** The list of metrics that are available for the cluster but disabled at the moment. */
 export type ClusterMetricsConfigurationPropertiesDisabledMetricsList = Array<string>;
-export const ClusterMetricsConfigurationPropertiesDisabledMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClusterMetricsConfigurationPropertiesDisabledMetricsList>;
+export const ClusterMetricsConfigurationPropertiesDisabledMetricsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<ClusterMetricsConfigurationPropertiesDisabledMetricsList>;
 
 /** The provisioning state of the metrics configuration. */
 export type ClusterMetricsConfigurationProvisioningState =
@@ -6717,10 +6468,8 @@ export const GetRackRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetRackResponseTagsMap = { [key: string]: string | undefined };
-export const GetRackResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetRackResponseTagsMap>;
+export const GetRackResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<GetRackResponseTagsMap>;
 
 /** The more detailed status of the rack. */
 export type RackDetailedStatus = "Error" | "Available" | "Provisioning";
@@ -6958,9 +6707,8 @@ export const RackSkuPropertiesComputeMachinesList = /*@__PURE__*/ S.Array(
 
 /** The list of machine SKUs and associated rack slot for the control-plane dedicated machines in this rack model. */
 export type RackSkuPropertiesControllerMachinesList = Array<MachineSkuSlot>;
-export const RackSkuPropertiesControllerMachinesList = /*@__PURE__*/ S.Array(
-  MachineSkuSlot,
-) as any as S.Schema<RackSkuPropertiesControllerMachinesList>;
+export const RackSkuPropertiesControllerMachinesList =
+  RackSkuPropertiesComputeMachinesList as any as S.Schema<RackSkuPropertiesControllerMachinesList>;
 
 /** The provisioning state of the rack SKU resource. */
 export type RackSkuProvisioningState = "Canceled" | "Failed" | "Succeeded";
@@ -7008,9 +6756,8 @@ export const RackSkuPropertiesStorageAppliancesList = /*@__PURE__*/ S.Array(
 
 /** The list of supported SKUs if the rack is an aggregator. */
 export type RackSkuPropertiesSupportedRackSkuIdsList = Array<string>;
-export const RackSkuPropertiesSupportedRackSkuIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RackSkuPropertiesSupportedRackSkuIdsList>;
+export const RackSkuPropertiesSupportedRackSkuIdsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<RackSkuPropertiesSupportedRackSkuIdsList>;
 
 /** RackSkuProperties represents the properties of compute-related hardware for a rack. This supports both aggregator and compute racks. */
 export interface RackSkuProperties {
@@ -7096,10 +6843,8 @@ export const GetStorageApplianceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetStorageApplianceResponseTagsMap = { [key: string]: string | undefined };
-export const GetStorageApplianceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetStorageApplianceResponseTagsMap>;
+export const GetStorageApplianceResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<GetStorageApplianceResponseTagsMap>;
 
 /** The detailed status of the storage appliance. */
 export type StorageApplianceDetailedStatus = "Available" | "Degraded" | "Error" | "Provisioning";
@@ -7161,9 +6906,8 @@ export const RemoteVendorManagementStatus = S.String;
 
 /** The list of statuses that represent secret rotation activity. */
 export type StorageAppliancePropertiesSecretRotationStatusList = Array<SecretRotationStatus>;
-export const StorageAppliancePropertiesSecretRotationStatusList = /*@__PURE__*/ S.Array(
-  SecretRotationStatus,
-) as any as S.Schema<StorageAppliancePropertiesSecretRotationStatusList>;
+export const StorageAppliancePropertiesSecretRotationStatusList =
+  BareMetalMachinePropertiesSecretRotationStatusList as any as S.Schema<StorageAppliancePropertiesSecretRotationStatusList>;
 
 /** The provisioning state of the storage appliance. */
 export type StorageApplianceProvisioningState =
@@ -7308,10 +7052,8 @@ export const GetTrunkedNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetTrunkedNetworkResponseTagsMap = { [key: string]: string | undefined };
-export const GetTrunkedNetworkResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetTrunkedNetworkResponseTagsMap>;
+export const GetTrunkedNetworkResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<GetTrunkedNetworkResponseTagsMap>;
 
 /** Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS. */
 export type TrunkedNetworkPropertiesHybridAksPluginType = "DPDK" | "SRIOV" | "OSDevice";
@@ -7319,9 +7061,8 @@ export const TrunkedNetworkPropertiesHybridAksPluginType = S.String;
 
 /** The list of resource IDs representing the Network Fabric isolation domains. It can be any combination of l2IsolationDomain and l3IsolationDomain resources. */
 export type TrunkedNetworkPropertiesIsolationDomainIdsList = Array<string>;
-export const TrunkedNetworkPropertiesIsolationDomainIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TrunkedNetworkPropertiesIsolationDomainIdsList>;
+export const TrunkedNetworkPropertiesIsolationDomainIdsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<TrunkedNetworkPropertiesIsolationDomainIdsList>;
 
 /** The list of vlans that are selected from the isolation domains for trunking. */
 export type TrunkedNetworkPropertiesVlansList = Array<number>;
@@ -7331,9 +7072,8 @@ export const TrunkedNetworkPropertiesVlansList = /*@__PURE__*/ S.Array(
 
 /** The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network. */
 export type TrunkedNetworkPropertiesAssociatedResourceIdsList = Array<string>;
-export const TrunkedNetworkPropertiesAssociatedResourceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TrunkedNetworkPropertiesAssociatedResourceIdsList>;
+export const TrunkedNetworkPropertiesAssociatedResourceIdsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<TrunkedNetworkPropertiesAssociatedResourceIdsList>;
 
 /** The more detailed status of the trunked network. */
 export type TrunkedNetworkDetailedStatus = "Error" | "Available" | "Provisioning";
@@ -7341,15 +7081,13 @@ export const TrunkedNetworkDetailedStatus = S.String;
 
 /** Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource IDs that are associated with this trunked network. */
 export type TrunkedNetworkPropertiesHybridAksClustersAssociatedIdsList = Array<string>;
-export const TrunkedNetworkPropertiesHybridAksClustersAssociatedIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TrunkedNetworkPropertiesHybridAksClustersAssociatedIdsList>;
+export const TrunkedNetworkPropertiesHybridAksClustersAssociatedIdsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<TrunkedNetworkPropertiesHybridAksClustersAssociatedIdsList>;
 
 /** Field Deprecated. These fields will be empty/omitted. The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this trunked network. */
 export type TrunkedNetworkPropertiesVirtualMachinesAssociatedIdsList = Array<string>;
-export const TrunkedNetworkPropertiesVirtualMachinesAssociatedIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TrunkedNetworkPropertiesVirtualMachinesAssociatedIdsList>;
+export const TrunkedNetworkPropertiesVirtualMachinesAssociatedIdsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<TrunkedNetworkPropertiesVirtualMachinesAssociatedIdsList>;
 
 /** The provisioning state of the trunked network. */
 export type TrunkedNetworkProvisioningState =
@@ -7466,10 +7204,8 @@ export const GetVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetVirtualMachineResponseTagsMap = { [key: string]: string | undefined };
-export const GetVirtualMachineResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetVirtualMachineResponseTagsMap>;
+export const GetVirtualMachineResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<GetVirtualMachineResponseTagsMap>;
 
 /** Selects the boot method for the virtual machine. */
 export type VirtualMachinePropertiesBootMethod = "BIOS" | "UEFI";
@@ -7481,9 +7217,8 @@ export const VirtualMachinePropertiesIsolateEmulatorThread = S.String;
 
 /** The list of network attachments to the virtual machine. */
 export type VirtualMachinePropertiesNetworkAttachmentsList = Array<NetworkAttachment>;
-export const VirtualMachinePropertiesNetworkAttachmentsList = /*@__PURE__*/ S.Array(
-  NetworkAttachment,
-) as any as S.Schema<VirtualMachinePropertiesNetworkAttachmentsList>;
+export const VirtualMachinePropertiesNetworkAttachmentsList =
+  KubernetesClusterNodeNetworkAttachmentsList as any as S.Schema<VirtualMachinePropertiesNetworkAttachmentsList>;
 
 /** The specification of whether this hint supports affinity or anti-affinity with the referenced resources. */
 export type VirtualMachinePlacementHintType = "Affinity" | "AntiAffinity";
@@ -7527,9 +7262,8 @@ export const VirtualMachinePropertiesPlacementHintsList = /*@__PURE__*/ S.Array(
 
 /** The list of ssh public keys. Each key will be added to the virtual machine using the cloud-init ssh_authorized_keys mechanism for the adminUsername. */
 export type VirtualMachinePropertiesSshPublicKeysList = Array<SshPublicKey>;
-export const VirtualMachinePropertiesSshPublicKeysList = /*@__PURE__*/ S.Array(
-  SshPublicKey,
-) as any as S.Schema<VirtualMachinePropertiesSshPublicKeysList>;
+export const VirtualMachinePropertiesSshPublicKeysList =
+  AdministratorConfigurationSshPublicKeysList as any as S.Schema<VirtualMachinePropertiesSshPublicKeysList>;
 
 /** The strategy for creating the OS disk. */
 export type OsDiskCreateOption = "Ephemeral" | "Persistent";
@@ -7558,9 +7292,8 @@ export const OsDisk = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource IDs of volumes that are requested to be attached to the virtual machine. */
 export type StorageProfileVolumeAttachmentsList = Array<string>;
-export const StorageProfileVolumeAttachmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StorageProfileVolumeAttachmentsList>;
+export const StorageProfileVolumeAttachmentsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<StorageProfileVolumeAttachmentsList>;
 
 /** StorageProfile represents information about a disk. */
 export interface StorageProfile {
@@ -7621,9 +7354,8 @@ export const VirtualMachinePowerState = S.String;
 
 /** The resource IDs of volumes that are attached to the virtual machine. */
 export type VirtualMachinePropertiesVolumesList = Array<string>;
-export const VirtualMachinePropertiesVolumesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VirtualMachinePropertiesVolumesList>;
+export const VirtualMachinePropertiesVolumesList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<VirtualMachinePropertiesVolumesList>;
 
 /** The provisioning state of the virtual machine. */
 export type VirtualMachineProvisioningState =
@@ -7727,10 +7459,8 @@ export const VirtualMachineProperties = /*@__PURE__*/ S.suspend(() =>
 export type GetVirtualMachineResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const GetVirtualMachineResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<GetVirtualMachineResponseIdentityUserAssignedIdentitiesMap>;
+export const GetVirtualMachineResponseIdentityUserAssignedIdentitiesMap =
+  GetClusterResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<GetVirtualMachineResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface GetVirtualMachineResponseIdentity {
@@ -7742,16 +7472,8 @@ export interface GetVirtualMachineResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: GetVirtualMachineResponseIdentityUserAssignedIdentitiesMap;
 }
-export const GetVirtualMachineResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(GetVirtualMachineResponseIdentityUserAssignedIdentitiesMap),
-  }),
-).annotate({
-  identifier: "GetVirtualMachineResponseIdentity",
-}) as any as S.Schema<GetVirtualMachineResponseIdentity>;
+export const GetVirtualMachineResponseIdentity =
+  GetClusterResponseIdentity as any as S.Schema<GetVirtualMachineResponseIdentity>;
 
 export interface GetVirtualMachineResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7817,16 +7539,13 @@ export const GetVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetVolumeResponseTagsMap = { [key: string]: string | undefined };
-export const GetVolumeResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetVolumeResponseTagsMap>;
+export const GetVolumeResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<GetVolumeResponseTagsMap>;
 
 /** The list of resource IDs that attach the volume. It may include virtual machines and Hybrid AKS clusters. */
 export type VolumePropertiesAttachedToList = Array<string>;
-export const VolumePropertiesAttachedToList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VolumePropertiesAttachedToList>;
+export const VolumePropertiesAttachedToList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<VolumePropertiesAttachedToList>;
 
 /** The more detailed status of the volume. */
 export type VolumeDetailedStatus = "Active" | "Error" | "Provisioning";
@@ -7914,16 +7633,13 @@ export const GetVolumeResponse = /*@__PURE__*/ S.suspend(() =>
 export type KubernetesClusterFeaturesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const KubernetesClusterFeaturesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<KubernetesClusterFeaturesCreateOrUpdateRequestTagsMap>;
+export const KubernetesClusterFeaturesCreateOrUpdateRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<KubernetesClusterFeaturesCreateOrUpdateRequestTagsMap>;
 
 /** The configured options for the feature. */
 export type KubernetesClusterFeaturePropertiesInputOptionsList = Array<StringKeyValuePair>;
-export const KubernetesClusterFeaturePropertiesInputOptionsList = /*@__PURE__*/ S.Array(
-  StringKeyValuePair,
-) as any as S.Schema<KubernetesClusterFeaturePropertiesInputOptionsList>;
+export const KubernetesClusterFeaturePropertiesInputOptionsList =
+  AgentPoolPropertiesInputLabelsList as any as S.Schema<KubernetesClusterFeaturePropertiesInputOptionsList>;
 
 /** KubernetesClusterFeatureProperties represents the properties of a Kubernetes cluster feature. */
 export interface KubernetesClusterFeaturePropertiesInput {
@@ -7979,10 +7695,8 @@ export const KubernetesClusterFeaturesCreateOrUpdateRequest = /*@__PURE__*/ S.su
 export type KubernetesClusterFeaturesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const KubernetesClusterFeaturesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<KubernetesClusterFeaturesCreateOrUpdateResponseTagsMap>;
+export const KubernetesClusterFeaturesCreateOrUpdateResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<KubernetesClusterFeaturesCreateOrUpdateResponseTagsMap>;
 
 export interface KubernetesClusterFeaturesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8002,27 +7716,13 @@ export interface KubernetesClusterFeaturesCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const KubernetesClusterFeaturesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(KubernetesClusterFeaturesCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(KubernetesClusterFeatureProperties),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "KubernetesClusterFeaturesCreateOrUpdateResponse",
-}) as any as S.Schema<KubernetesClusterFeaturesCreateOrUpdateResponse>;
+export const KubernetesClusterFeaturesCreateOrUpdateResponse =
+  GetKubernetesClusterFeatureResponse as any as S.Schema<KubernetesClusterFeaturesCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type KubernetesClustersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const KubernetesClustersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<KubernetesClustersCreateOrUpdateRequestTagsMap>;
+export const KubernetesClustersCreateOrUpdateRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<KubernetesClustersCreateOrUpdateRequestTagsMap>;
 
 /** The agent pools that are created with this Kubernetes cluster for running critical system services and workloads. This data in this field is only used during creation, and the field will be empty following the creation of the Kubernetes Cluster. After creation, the management of agent pools is done using the agentPools sub-resource. */
 export type KubernetesClusterPropertiesInputInitialAgentPoolConfigurationsList =
@@ -8103,10 +7803,8 @@ export const KubernetesClustersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type KubernetesClustersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const KubernetesClustersCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<KubernetesClustersCreateOrUpdateResponseTagsMap>;
+export const KubernetesClustersCreateOrUpdateResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<KubernetesClustersCreateOrUpdateResponseTagsMap>;
 
 export interface KubernetesClustersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8128,28 +7826,13 @@ export interface KubernetesClustersCreateOrUpdateResponse {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const KubernetesClustersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(KubernetesClustersCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    properties: KubernetesClusterProperties,
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({
-  identifier: "KubernetesClustersCreateOrUpdateResponse",
-}) as any as S.Schema<KubernetesClustersCreateOrUpdateResponse>;
+export const KubernetesClustersCreateOrUpdateResponse =
+  GetKubernetesClusterResponse as any as S.Schema<KubernetesClustersCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type KubernetesVersionsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const KubernetesVersionsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<KubernetesVersionsCreateOrUpdateRequestTagsMap>;
+export const KubernetesVersionsCreateOrUpdateRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<KubernetesVersionsCreateOrUpdateRequestTagsMap>;
 
 /** KubernetesVersionProperties contains the read-only properties describing available versions. */
 export type KubernetesVersionPropertiesInput = UserAssignedIdentityInput;
@@ -8194,10 +7877,8 @@ export const KubernetesVersionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type KubernetesVersionsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const KubernetesVersionsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<KubernetesVersionsCreateOrUpdateResponseTagsMap>;
+export const KubernetesVersionsCreateOrUpdateResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<KubernetesVersionsCreateOrUpdateResponseTagsMap>;
 
 export interface KubernetesVersionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8219,28 +7900,13 @@ export interface KubernetesVersionsCreateOrUpdateResponse {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const KubernetesVersionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(KubernetesVersionsCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    properties: KubernetesVersionProperties,
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({
-  identifier: "KubernetesVersionsCreateOrUpdateResponse",
-}) as any as S.Schema<KubernetesVersionsCreateOrUpdateResponse>;
+export const KubernetesVersionsCreateOrUpdateResponse =
+  GetKubernetesVersionResponse as any as S.Schema<KubernetesVersionsCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type L2NetworksCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const L2NetworksCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<L2NetworksCreateOrUpdateRequestTagsMap>;
+export const L2NetworksCreateOrUpdateRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<L2NetworksCreateOrUpdateRequestTagsMap>;
 
 /** Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS. */
 export type L2NetworkPropertiesInputHybridAksPluginType = "DPDK" | "SRIOV" | "OSDevice";
@@ -8302,10 +7968,8 @@ export const L2NetworksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type L2NetworksCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const L2NetworksCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<L2NetworksCreateOrUpdateResponseTagsMap>;
+export const L2NetworksCreateOrUpdateResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<L2NetworksCreateOrUpdateResponseTagsMap>;
 
 export interface L2NetworksCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8345,10 +8009,8 @@ export const L2NetworksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type L3NetworksCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const L3NetworksCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<L3NetworksCreateOrUpdateRequestTagsMap>;
+export const L3NetworksCreateOrUpdateRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<L3NetworksCreateOrUpdateRequestTagsMap>;
 
 /** Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The indicator of whether or not to disable IPAM allocation on the network attachment definition injected into the Hybrid AKS Cluster. */
 export type L3NetworkPropertiesInputHybridAksIpamEnabled = "True" | "False";
@@ -8433,10 +8095,8 @@ export const L3NetworksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type L3NetworksCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const L3NetworksCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<L3NetworksCreateOrUpdateResponseTagsMap>;
+export const L3NetworksCreateOrUpdateResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<L3NetworksCreateOrUpdateResponseTagsMap>;
 
 export interface L3NetworksCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8504,10 +8164,8 @@ export const ListAccessBridgeByResourceGroupRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type AccessBridgeTagsMap = { [key: string]: string | undefined };
-export const AccessBridgeTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccessBridgeTagsMap>;
+export const AccessBridgeTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<AccessBridgeTagsMap>;
 
 /** AccessBridge represents a managed access bridge resource. */
 export interface AccessBridge {
@@ -8530,19 +8188,7 @@ export interface AccessBridge {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const AccessBridge = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(AccessBridgeTagsMap),
-    location: S.String,
-    properties: AccessBridgeProperties,
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({ identifier: "AccessBridge" }) as any as S.Schema<AccessBridge>;
+export const AccessBridge = GetAccessBridgeResponse as any as S.Schema<AccessBridge>;
 
 /** The AccessBridge items on this page */
 export type AccessBridgeListValueList = Array<AccessBridge>;
@@ -8622,10 +8268,8 @@ export const ListAgentPoolByKubernetesClusterRequest = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type AgentPoolTagsMap = { [key: string]: string | undefined };
-export const AgentPoolTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AgentPoolTagsMap>;
+export const AgentPoolTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<AgentPoolTagsMap>;
 
 /** AgentPool represents the agent pool of Kubernetes cluster. */
 export interface AgentPool {
@@ -8648,19 +8292,7 @@ export interface AgentPool {
   /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const AgentPool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(AgentPoolTagsMap),
-    location: S.String,
-    properties: AgentPoolProperties,
-    etag: S.optional(S.String),
-    extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
-  }),
-).annotate({ identifier: "AgentPool" }) as any as S.Schema<AgentPool>;
+export const AgentPool = GetAgentPoolResponse as any as S.Schema<AgentPool>;
 
 /** The AgentPool items on this page */
 export type AgentPoolListValueList = Array<AgentPool>;
@@ -8712,10 +8344,8 @@ export const ListBareMetalMachineByResourceGroupRequest = /*@__PURE__*/ S.suspen
 
 /** Resource tags. */
 export type BareMetalMachineTagsMap = { [key: string]: string | undefined };
-export const BareMetalMachineTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BareMetalMachineTagsMap>;
+export const BareMetalMachineTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<BareMetalMachineTagsMap>;
 
 /** BareMetalMachine represents the physical machine in the rack. */
 export interface BareMetalMachine {
@@ -8830,10 +8460,8 @@ export const ListBareMetalMachineKeySetByClusterRequest = /*@__PURE__*/ S.suspen
 
 /** Resource tags. */
 export type BareMetalMachineKeySetTagsMap = { [key: string]: string | undefined };
-export const BareMetalMachineKeySetTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BareMetalMachineKeySetTagsMap>;
+export const BareMetalMachineKeySetTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<BareMetalMachineKeySetTagsMap>;
 
 /** BareMetalMachineKeySet represents the bare metal machine key set. */
 export interface BareMetalMachineKeySet {
@@ -8925,10 +8553,8 @@ export const ListBmcKeySetByClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type BmcKeySetTagsMap = { [key: string]: string | undefined };
-export const BmcKeySetTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BmcKeySetTagsMap>;
+export const BmcKeySetTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<BmcKeySetTagsMap>;
 
 /** BmcKeySet represents the baseboard management controller key set. */
 export interface BmcKeySet {
@@ -8951,19 +8577,7 @@ export interface BmcKeySet {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const BmcKeySet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(BmcKeySetTagsMap),
-    location: S.String,
-    properties: BmcKeySetProperties,
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({ identifier: "BmcKeySet" }) as any as S.Schema<BmcKeySet>;
+export const BmcKeySet = GetBmcKeySetResponse as any as S.Schema<BmcKeySet>;
 
 /** The BmcKeySet items on this page */
 export type BmcKeySetListValueList = Array<BmcKeySet>;
@@ -9015,10 +8629,8 @@ export const ListCloudServicesNetworkByResourceGroupRequest = /*@__PURE__*/ S.su
 
 /** Resource tags. */
 export type CloudServicesNetworkTagsMap = { [key: string]: string | undefined };
-export const CloudServicesNetworkTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CloudServicesNetworkTagsMap>;
+export const CloudServicesNetworkTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<CloudServicesNetworkTagsMap>;
 
 /** Upon creation, the additional services that are provided by the platform will be allocated and represented in the status of this resource. All resources associated with this cloud services network will be part of the same layer 2 (L2) isolation domain. At least one service network must be created but may be reused across many virtual machines and/or Hybrid AKS clusters. */
 export interface CloudServicesNetwork {
@@ -9130,19 +8742,15 @@ export const ListClusterByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ClusterTagsMap = { [key: string]: string | undefined };
-export const ClusterTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ClusterTagsMap>;
+export const ClusterTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<ClusterTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type ClusterIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const ClusterIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<ClusterIdentityUserAssignedIdentitiesMap>;
+export const ClusterIdentityUserAssignedIdentitiesMap =
+  GetClusterResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<ClusterIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ClusterIdentity {
@@ -9279,19 +8887,15 @@ export const ListClusterManagerByResourceGroupRequest = /*@__PURE__*/ S.suspend(
 
 /** Resource tags. */
 export type ClusterManagerTagsMap = { [key: string]: string | undefined };
-export const ClusterManagerTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ClusterManagerTagsMap>;
+export const ClusterManagerTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<ClusterManagerTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type ClusterManagerIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const ClusterManagerIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<ClusterManagerIdentityUserAssignedIdentitiesMap>;
+export const ClusterManagerIdentityUserAssignedIdentitiesMap =
+  GetClusterResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<ClusterManagerIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ClusterManagerIdentity {
@@ -9303,14 +8907,7 @@ export interface ClusterManagerIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: ClusterManagerIdentityUserAssignedIdentitiesMap;
 }
-export const ClusterManagerIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(ClusterManagerIdentityUserAssignedIdentitiesMap),
-  }),
-).annotate({ identifier: "ClusterManagerIdentity" }) as any as S.Schema<ClusterManagerIdentity>;
+export const ClusterManagerIdentity = ClusterIdentity as any as S.Schema<ClusterManagerIdentity>;
 
 /** ClusterManager represents a control-plane to manage one or more on-premises clusters. */
 export interface ClusterManager {
@@ -9428,10 +9025,8 @@ export const ListConsoleByVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ConsoleTagsMap = { [key: string]: string | undefined };
-export const ConsoleTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConsoleTagsMap>;
+export const ConsoleTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<ConsoleTagsMap>;
 
 /** Console represents the console of an on-premises Network Cloud virtual machine. */
 export interface Console {
@@ -9454,19 +9049,7 @@ export interface Console {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const Console = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ConsoleTagsMap),
-    location: S.String,
-    properties: ConsoleProperties,
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({ identifier: "Console" }) as any as S.Schema<Console>;
+export const Console = GetConsoleResponse as any as S.Schema<Console>;
 
 /** The Console items on this page */
 export type ConsoleListValueList = Array<Console>;
@@ -9518,10 +9101,8 @@ export const ListKubernetesClusterByResourceGroupRequest = /*@__PURE__*/ S.suspe
 
 /** Resource tags. */
 export type KubernetesClusterTagsMap = { [key: string]: string | undefined };
-export const KubernetesClusterTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<KubernetesClusterTagsMap>;
+export const KubernetesClusterTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<KubernetesClusterTagsMap>;
 
 /** KubernetesCluster represents the Kubernetes cluster hosted on Network Cloud. */
 export interface KubernetesCluster {
@@ -9636,10 +9217,8 @@ export const ListKubernetesClusterFeatureByKubernetesClusterRequest = /*@__PURE_
 
 /** Resource tags. */
 export type KubernetesClusterFeatureTagsMap = { [key: string]: string | undefined };
-export const KubernetesClusterFeatureTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<KubernetesClusterFeatureTagsMap>;
+export const KubernetesClusterFeatureTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<KubernetesClusterFeatureTagsMap>;
 
 /** KubernetesClusterFeature represents the feature of a Kubernetes cluster. */
 export interface KubernetesClusterFeature {
@@ -9725,10 +9304,8 @@ export const ListKubernetesVersionByResourceGroupRequest = /*@__PURE__*/ S.suspe
 
 /** Resource tags. */
 export type KubernetesVersionTagsMap = { [key: string]: string | undefined };
-export const KubernetesVersionTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<KubernetesVersionTagsMap>;
+export const KubernetesVersionTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<KubernetesVersionTagsMap>;
 
 /** KubernetesVersion represents the available Kubernetes versions for a cluster. */
 export interface KubernetesVersion {
@@ -9840,10 +9417,8 @@ export const ListL2NetworkByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type L2NetworkTagsMap = { [key: string]: string | undefined };
-export const L2NetworkTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<L2NetworkTagsMap>;
+export const L2NetworkTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<L2NetworkTagsMap>;
 
 /** L2Network represents a network that utilizes a single isolation domain set up for layer-2 resources. */
 export interface L2Network {
@@ -9866,19 +9441,7 @@ export interface L2Network {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const L2Network = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(L2NetworkTagsMap),
-    location: S.String,
-    properties: L2NetworkProperties,
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({ identifier: "L2Network" }) as any as S.Schema<L2Network>;
+export const L2Network = GetL2NetworkResponse as any as S.Schema<L2Network>;
 
 /** The L2Network items on this page */
 export type L2NetworkListValueList = Array<L2Network>;
@@ -9955,10 +9518,8 @@ export const ListL3NetworkByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type L3NetworkTagsMap = { [key: string]: string | undefined };
-export const L3NetworkTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<L3NetworkTagsMap>;
+export const L3NetworkTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<L3NetworkTagsMap>;
 
 /** L3Network represents a network that utilizes a single isolation domain set up for layer-3 resources. */
 export interface L3Network {
@@ -9981,19 +9542,7 @@ export interface L3Network {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const L3Network = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(L3NetworkTagsMap),
-    location: S.String,
-    properties: L3NetworkProperties,
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({ identifier: "L3Network" }) as any as S.Schema<L3Network>;
+export const L3Network = GetL3NetworkResponse as any as S.Schema<L3Network>;
 
 /** The L3Network items on this page */
 export type L3NetworkListValueList = Array<L3Network>;
@@ -10073,10 +9622,8 @@ export const ListMetricsConfigurationByClusterRequest = /*@__PURE__*/ S.suspend(
 
 /** Resource tags. */
 export type ClusterMetricsConfigurationTagsMap = { [key: string]: string | undefined };
-export const ClusterMetricsConfigurationTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ClusterMetricsConfigurationTagsMap>;
+export const ClusterMetricsConfigurationTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<ClusterMetricsConfigurationTagsMap>;
 
 /** ClusterMetricsConfiguration represents the metrics configuration of an on-premises Network Cloud cluster. */
 export interface ClusterMetricsConfiguration {
@@ -10099,21 +9646,8 @@ export interface ClusterMetricsConfiguration {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const ClusterMetricsConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ClusterMetricsConfigurationTagsMap),
-    location: S.String,
-    properties: ClusterMetricsConfigurationProperties,
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({
-  identifier: "ClusterMetricsConfiguration",
-}) as any as S.Schema<ClusterMetricsConfiguration>;
+export const ClusterMetricsConfiguration =
+  GetMetricsConfigurationResponse as any as S.Schema<ClusterMetricsConfiguration>;
 
 /** The ClusterMetricsConfiguration items on this page */
 export type ClusterMetricsConfigurationListValueList = Array<ClusterMetricsConfiguration>;
@@ -10249,10 +9783,8 @@ export const ListRackByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type RackTagsMap = { [key: string]: string | undefined };
-export const RackTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RackTagsMap>;
+export const RackTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<RackTagsMap>;
 
 /** Rack represents the hardware of the rack and is dependent upon the cluster for lifecycle. */
 export interface Rack {
@@ -10275,19 +9807,7 @@ export interface Rack {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const Rack = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(RackTagsMap),
-    location: S.String,
-    properties: RackProperties,
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({ identifier: "Rack" }) as any as S.Schema<Rack>;
+export const Rack = GetRackResponse as any as S.Schema<Rack>;
 
 /** The Rack items on this page */
 export type RackListValueList = Array<Rack>;
@@ -10364,15 +9884,7 @@ export interface RackSku {
   /** The list of the resource properties. */
   properties: RackSkuProperties;
 }
-export const RackSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: RackSkuProperties,
-  }),
-).annotate({ identifier: "RackSku" }) as any as S.Schema<RackSku>;
+export const RackSku = GetRackSkusResponse as any as S.Schema<RackSku>;
 
 /** The RackSku items on this page */
 export type RackSkuListValueList = Array<RackSku>;
@@ -10424,10 +9936,8 @@ export const ListStorageApplianceByResourceGroupRequest = /*@__PURE__*/ S.suspen
 
 /** Resource tags. */
 export type StorageApplianceTagsMap = { [key: string]: string | undefined };
-export const StorageApplianceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StorageApplianceTagsMap>;
+export const StorageApplianceTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<StorageApplianceTagsMap>;
 
 /** StorageAppliance represents on-premises Network Cloud storage appliance. */
 export interface StorageAppliance {
@@ -10539,10 +10049,8 @@ export const ListTrunkedNetworkByResourceGroupRequest = /*@__PURE__*/ S.suspend(
 
 /** Resource tags. */
 export type TrunkedNetworkTagsMap = { [key: string]: string | undefined };
-export const TrunkedNetworkTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TrunkedNetworkTagsMap>;
+export const TrunkedNetworkTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<TrunkedNetworkTagsMap>;
 
 /** TrunkedNetwork represents a network that utilizes multiple isolation domains and specified VLANs to create a trunked network. */
 export interface TrunkedNetwork {
@@ -10654,19 +10162,15 @@ export const ListVirtualMachineByResourceGroupRequest = /*@__PURE__*/ S.suspend(
 
 /** Resource tags. */
 export type VirtualMachineTagsMap = { [key: string]: string | undefined };
-export const VirtualMachineTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VirtualMachineTagsMap>;
+export const VirtualMachineTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<VirtualMachineTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type VirtualMachineIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const VirtualMachineIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<VirtualMachineIdentityUserAssignedIdentitiesMap>;
+export const VirtualMachineIdentityUserAssignedIdentitiesMap =
+  GetClusterResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<VirtualMachineIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface VirtualMachineIdentity {
@@ -10678,14 +10182,7 @@ export interface VirtualMachineIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: VirtualMachineIdentityUserAssignedIdentitiesMap;
 }
-export const VirtualMachineIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(VirtualMachineIdentityUserAssignedIdentitiesMap),
-  }),
-).annotate({ identifier: "VirtualMachineIdentity" }) as any as S.Schema<VirtualMachineIdentity>;
+export const VirtualMachineIdentity = ClusterIdentity as any as S.Schema<VirtualMachineIdentity>;
 
 /** VirtualMachine represents the on-premises Network Cloud virtual machine. */
 export interface VirtualMachine {
@@ -10800,10 +10297,8 @@ export const ListVolumeByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type VolumeTagsMap = { [key: string]: string | undefined };
-export const VolumeTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VolumeTagsMap>;
+export const VolumeTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<VolumeTagsMap>;
 
 /** Volume represents storage made available for use by resources running on the cluster. */
 export interface Volume {
@@ -10826,19 +10321,7 @@ export interface Volume {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const Volume = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(VolumeTagsMap),
-    location: S.String,
-    properties: VolumeProperties,
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({ identifier: "Volume" }) as any as S.Schema<Volume>;
+export const Volume = GetVolumeResponse as any as S.Schema<Volume>;
 
 /** The Volume items on this page */
 export type VolumeListValueList = Array<Volume>;
@@ -10889,16 +10372,13 @@ export const ListVolumeBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 export type MetricsConfigurationsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const MetricsConfigurationsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MetricsConfigurationsCreateOrUpdateRequestTagsMap>;
+export const MetricsConfigurationsCreateOrUpdateRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<MetricsConfigurationsCreateOrUpdateRequestTagsMap>;
 
 /** The list of metric names that have been chosen to be enabled in addition to the core set of enabled metrics. */
 export type ClusterMetricsConfigurationPropertiesInputEnabledMetricsList = Array<string>;
-export const ClusterMetricsConfigurationPropertiesInputEnabledMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClusterMetricsConfigurationPropertiesInputEnabledMetricsList>;
+export const ClusterMetricsConfigurationPropertiesInputEnabledMetricsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<ClusterMetricsConfigurationPropertiesInputEnabledMetricsList>;
 
 /** ClusterMetricsConfigurationProperties represents the properties of metrics configuration for the cluster. */
 export interface ClusterMetricsConfigurationPropertiesInput {
@@ -10960,10 +10440,8 @@ export const MetricsConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspen
 export type MetricsConfigurationsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const MetricsConfigurationsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MetricsConfigurationsCreateOrUpdateResponseTagsMap>;
+export const MetricsConfigurationsCreateOrUpdateResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<MetricsConfigurationsCreateOrUpdateResponseTagsMap>;
 
 export interface MetricsConfigurationsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -10985,28 +10463,13 @@ export interface MetricsConfigurationsCreateOrUpdateResponse {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const MetricsConfigurationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(MetricsConfigurationsCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    properties: ClusterMetricsConfigurationProperties,
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({
-  identifier: "MetricsConfigurationsCreateOrUpdateResponse",
-}) as any as S.Schema<MetricsConfigurationsCreateOrUpdateResponse>;
+export const MetricsConfigurationsCreateOrUpdateResponse =
+  GetMetricsConfigurationResponse as any as S.Schema<MetricsConfigurationsCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type RacksCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const RacksCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RacksCreateOrUpdateRequestTagsMap>;
+export const RacksCreateOrUpdateRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<RacksCreateOrUpdateRequestTagsMap>;
 
 /** RackProperties represents the properties of the rack. */
 export interface RackPropertiesInput {
@@ -11067,10 +10530,8 @@ export const RacksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type RacksCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const RacksCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RacksCreateOrUpdateResponseTagsMap>;
+export const RacksCreateOrUpdateResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<RacksCreateOrUpdateResponseTagsMap>;
 
 export interface RacksCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -11163,9 +10624,8 @@ export const ReplaceBareMetalMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplaceBareMetalMachineRequest>;
 
 export interface ReplaceBareMetalMachineResponse {}
-export const ReplaceBareMetalMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "ReplaceBareMetalMachineResponse" },
-) as any as S.Schema<ReplaceBareMetalMachineResponse>;
+export const ReplaceBareMetalMachineResponse =
+  DeleteKubernetesClusterResponse as any as S.Schema<ReplaceBareMetalMachineResponse>;
 
 export interface RestartBareMetalMachineRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11193,9 +10653,8 @@ export const RestartBareMetalMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestartBareMetalMachineRequest>;
 
 export interface RestartBareMetalMachineResponse {}
-export const RestartBareMetalMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "RestartBareMetalMachineResponse" },
-) as any as S.Schema<RestartBareMetalMachineResponse>;
+export const RestartBareMetalMachineResponse =
+  DeleteKubernetesClusterResponse as any as S.Schema<RestartBareMetalMachineResponse>;
 
 export interface RestartKubernetesClusterNodeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11226,11 +10685,8 @@ export const RestartKubernetesClusterNodeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestartKubernetesClusterNodeRequest>;
 
 export interface RestartKubernetesClusterNodeResponse {}
-export const RestartKubernetesClusterNodeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RestartKubernetesClusterNodeResponse",
-}) as any as S.Schema<RestartKubernetesClusterNodeResponse>;
+export const RestartKubernetesClusterNodeResponse =
+  AssignVirtualMachineRelayResponse as any as S.Schema<RestartKubernetesClusterNodeResponse>;
 
 export interface RestartVirtualMachineRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11258,15 +10714,13 @@ export const RestartVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestartVirtualMachineRequest>;
 
 export interface RestartVirtualMachineResponse {}
-export const RestartVirtualMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RestartVirtualMachineResponse",
-}) as any as S.Schema<RestartVirtualMachineResponse>;
+export const RestartVirtualMachineResponse =
+  UserAssignedIdentityInput as any as S.Schema<RestartVirtualMachineResponse>;
 
 /** The list of credential names for the credentials to rotate. */
 export type RotateClusterCredentialRequestCredentialsList = Array<string>;
-export const RotateClusterCredentialRequestCredentialsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RotateClusterCredentialRequestCredentialsList>;
+export const RotateClusterCredentialRequestCredentialsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<RotateClusterCredentialRequestCredentialsList>;
 
 export interface RotateClusterCredentialRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11297,15 +10751,13 @@ export const RotateClusterCredentialRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RotateClusterCredentialRequest>;
 
 export interface RotateClusterCredentialResponse {}
-export const RotateClusterCredentialResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "RotateClusterCredentialResponse" },
-) as any as S.Schema<RotateClusterCredentialResponse>;
+export const RotateClusterCredentialResponse =
+  DeleteKubernetesClusterResponse as any as S.Schema<RotateClusterCredentialResponse>;
 
 /** The list of string arguments that will be passed to the script in order as separate arguments. */
 export type RunBareMetalMachineCommandRequestArgumentsList = Array<string>;
-export const RunBareMetalMachineCommandRequestArgumentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RunBareMetalMachineCommandRequestArgumentsList>;
+export const RunBareMetalMachineCommandRequestArgumentsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<RunBareMetalMachineCommandRequestArgumentsList>;
 
 export interface RunBareMetalMachineCommandRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11342,18 +10794,14 @@ export const RunBareMetalMachineCommandRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RunBareMetalMachineCommandRequest>;
 
 export interface RunBareMetalMachineCommandResponse {}
-export const RunBareMetalMachineCommandResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RunBareMetalMachineCommandResponse",
-}) as any as S.Schema<RunBareMetalMachineCommandResponse>;
+export const RunBareMetalMachineCommandResponse =
+  AssignVirtualMachineRelayResponse as any as S.Schema<RunBareMetalMachineCommandResponse>;
 
 /** The list of curated data extraction commands to be executed directly against the target machine. */
 export type RunBareMetalMachineDataExtractsRequestCommandsList =
   Array<BareMetalMachineCommandSpecification>;
-export const RunBareMetalMachineDataExtractsRequestCommandsList = /*@__PURE__*/ S.Array(
-  BareMetalMachineCommandSpecification,
-) as any as S.Schema<RunBareMetalMachineDataExtractsRequestCommandsList>;
+export const RunBareMetalMachineDataExtractsRequestCommandsList =
+  BareMetalMachinesRunReadCommandsRequestCommandsList as any as S.Schema<RunBareMetalMachineDataExtractsRequestCommandsList>;
 
 export interface RunBareMetalMachineDataExtractsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11387,18 +10835,14 @@ export const RunBareMetalMachineDataExtractsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<RunBareMetalMachineDataExtractsRequest>;
 
 export interface RunBareMetalMachineDataExtractsResponse {}
-export const RunBareMetalMachineDataExtractsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RunBareMetalMachineDataExtractsResponse",
-}) as any as S.Schema<RunBareMetalMachineDataExtractsResponse>;
+export const RunBareMetalMachineDataExtractsResponse =
+  AssignVirtualMachineRelayResponse as any as S.Schema<RunBareMetalMachineDataExtractsResponse>;
 
 /** The list of curated data extraction commands to be executed directly against the target machine. */
 export type RunBareMetalMachineDataExtractsRestrictedRequestCommandsList =
   Array<BareMetalMachineCommandSpecification>;
-export const RunBareMetalMachineDataExtractsRestrictedRequestCommandsList = /*@__PURE__*/ S.Array(
-  BareMetalMachineCommandSpecification,
-) as any as S.Schema<RunBareMetalMachineDataExtractsRestrictedRequestCommandsList>;
+export const RunBareMetalMachineDataExtractsRestrictedRequestCommandsList =
+  BareMetalMachinesRunReadCommandsRequestCommandsList as any as S.Schema<RunBareMetalMachineDataExtractsRestrictedRequestCommandsList>;
 
 export interface RunBareMetalMachineDataExtractsRestrictedRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11432,11 +10876,8 @@ export const RunBareMetalMachineDataExtractsRestrictedRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<RunBareMetalMachineDataExtractsRestrictedRequest>;
 
 export interface RunBareMetalMachineDataExtractsRestrictedResponse {}
-export const RunBareMetalMachineDataExtractsRestrictedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RunBareMetalMachineDataExtractsRestrictedResponse",
-}) as any as S.Schema<RunBareMetalMachineDataExtractsRestrictedResponse>;
+export const RunBareMetalMachineDataExtractsRestrictedResponse =
+  AssignVirtualMachineRelayResponse as any as S.Schema<RunBareMetalMachineDataExtractsRestrictedResponse>;
 
 export interface StartBareMetalMachineRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11464,9 +10905,8 @@ export const StartBareMetalMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartBareMetalMachineRequest>;
 
 export interface StartBareMetalMachineResponse {}
-export const StartBareMetalMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartBareMetalMachineResponse",
-}) as any as S.Schema<StartBareMetalMachineResponse>;
+export const StartBareMetalMachineResponse =
+  UserAssignedIdentityInput as any as S.Schema<StartBareMetalMachineResponse>;
 
 export interface StartVirtualMachineRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11494,16 +10934,13 @@ export const StartVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartVirtualMachineRequest>;
 
 export interface StartVirtualMachineResponse {}
-export const StartVirtualMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartVirtualMachineResponse",
-}) as any as S.Schema<StartVirtualMachineResponse>;
+export const StartVirtualMachineResponse =
+  UserAssignedIdentityInput as any as S.Schema<StartVirtualMachineResponse>;
 
 /** Resource tags. */
 export type StorageAppliancesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const StorageAppliancesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StorageAppliancesCreateOrUpdateRequestTagsMap>;
+export const StorageAppliancesCreateOrUpdateRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<StorageAppliancesCreateOrUpdateRequestTagsMap>;
 
 /** StorageApplianceProperties represents the properties of the storage appliance. */
 export interface StorageAppliancePropertiesInput {
@@ -11569,10 +11006,8 @@ export const StorageAppliancesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type StorageAppliancesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const StorageAppliancesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StorageAppliancesCreateOrUpdateResponseTagsMap>;
+export const StorageAppliancesCreateOrUpdateResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<StorageAppliancesCreateOrUpdateResponseTagsMap>;
 
 export interface StorageAppliancesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -11594,27 +11029,13 @@ export interface StorageAppliancesCreateOrUpdateResponse {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const StorageAppliancesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(StorageAppliancesCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    properties: StorageApplianceProperties,
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({
-  identifier: "StorageAppliancesCreateOrUpdateResponse",
-}) as any as S.Schema<StorageAppliancesCreateOrUpdateResponse>;
+export const StorageAppliancesCreateOrUpdateResponse =
+  GetStorageApplianceResponse as any as S.Schema<StorageAppliancesCreateOrUpdateResponse>;
 
 /** The list of strings that will be passed to the script in order as separate arguments. */
 export type StorageApplianceCommandSpecificationArgumentsList = Array<string>;
-export const StorageApplianceCommandSpecificationArgumentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StorageApplianceCommandSpecificationArgumentsList>;
+export const StorageApplianceCommandSpecificationArgumentsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<StorageApplianceCommandSpecificationArgumentsList>;
 
 /** StorageApplianceCommandSpecification represents the command and optional arguments to run. */
 export interface StorageApplianceCommandSpecification {
@@ -11623,21 +11044,14 @@ export interface StorageApplianceCommandSpecification {
   /** The command to execute. */
   command: string;
 }
-export const StorageApplianceCommandSpecification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arguments: S.optional(StorageApplianceCommandSpecificationArgumentsList),
-    command: S.String,
-  }),
-).annotate({
-  identifier: "StorageApplianceCommandSpecification",
-}) as any as S.Schema<StorageApplianceCommandSpecification>;
+export const StorageApplianceCommandSpecification =
+  BareMetalMachineCommandSpecification as any as S.Schema<StorageApplianceCommandSpecification>;
 
 /** The list of read-only commands to be executed directly against the target storage appliance. */
 export type StorageAppliancesRunReadCommandsRequestCommandsList =
   Array<StorageApplianceCommandSpecification>;
-export const StorageAppliancesRunReadCommandsRequestCommandsList = /*@__PURE__*/ S.Array(
-  StorageApplianceCommandSpecification,
-) as any as S.Schema<StorageAppliancesRunReadCommandsRequestCommandsList>;
+export const StorageAppliancesRunReadCommandsRequestCommandsList =
+  BareMetalMachinesRunReadCommandsRequestCommandsList as any as S.Schema<StorageAppliancesRunReadCommandsRequestCommandsList>;
 
 export interface StorageAppliancesRunReadCommandsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11671,18 +11085,13 @@ export const StorageAppliancesRunReadCommandsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<StorageAppliancesRunReadCommandsRequest>;
 
 export interface StorageAppliancesRunReadCommandsResponse {}
-export const StorageAppliancesRunReadCommandsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StorageAppliancesRunReadCommandsResponse",
-}) as any as S.Schema<StorageAppliancesRunReadCommandsResponse>;
+export const StorageAppliancesRunReadCommandsResponse =
+  AssignVirtualMachineRelayResponse as any as S.Schema<StorageAppliancesRunReadCommandsResponse>;
 
 /** Resource tags. */
 export type TrunkedNetworksCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const TrunkedNetworksCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TrunkedNetworksCreateOrUpdateRequestTagsMap>;
+export const TrunkedNetworksCreateOrUpdateRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<TrunkedNetworksCreateOrUpdateRequestTagsMap>;
 
 /** Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS. */
 export type TrunkedNetworkPropertiesInputHybridAksPluginType = "DPDK" | "SRIOV" | "OSDevice";
@@ -11690,15 +11099,13 @@ export const TrunkedNetworkPropertiesInputHybridAksPluginType = S.String;
 
 /** The list of resource IDs representing the Network Fabric isolation domains. It can be any combination of l2IsolationDomain and l3IsolationDomain resources. */
 export type TrunkedNetworkPropertiesInputIsolationDomainIdsList = Array<string>;
-export const TrunkedNetworkPropertiesInputIsolationDomainIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TrunkedNetworkPropertiesInputIsolationDomainIdsList>;
+export const TrunkedNetworkPropertiesInputIsolationDomainIdsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<TrunkedNetworkPropertiesInputIsolationDomainIdsList>;
 
 /** The list of vlans that are selected from the isolation domains for trunking. */
 export type TrunkedNetworkPropertiesInputVlansList = Array<number>;
-export const TrunkedNetworkPropertiesInputVlansList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TrunkedNetworkPropertiesInputVlansList>;
+export const TrunkedNetworkPropertiesInputVlansList =
+  TrunkedNetworkPropertiesVlansList as any as S.Schema<TrunkedNetworkPropertiesInputVlansList>;
 
 /** TrunkedNetworkProperties represents properties of the trunked network. */
 export interface TrunkedNetworkPropertiesInput {
@@ -11761,10 +11168,8 @@ export const TrunkedNetworksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type TrunkedNetworksCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const TrunkedNetworksCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TrunkedNetworksCreateOrUpdateResponseTagsMap>;
+export const TrunkedNetworksCreateOrUpdateResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<TrunkedNetworksCreateOrUpdateResponseTagsMap>;
 
 export interface TrunkedNetworksCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -11786,21 +11191,8 @@ export interface TrunkedNetworksCreateOrUpdateResponse {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const TrunkedNetworksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(TrunkedNetworksCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    properties: TrunkedNetworkProperties,
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({
-  identifier: "TrunkedNetworksCreateOrUpdateResponse",
-}) as any as S.Schema<TrunkedNetworksCreateOrUpdateResponse>;
+export const TrunkedNetworksCreateOrUpdateResponse =
+  GetTrunkedNetworkResponse as any as S.Schema<TrunkedNetworksCreateOrUpdateResponse>;
 
 export interface UncordonBareMetalMachineRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11828,11 +11220,8 @@ export const UncordonBareMetalMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UncordonBareMetalMachineRequest>;
 
 export interface UncordonBareMetalMachineResponse {}
-export const UncordonBareMetalMachineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UncordonBareMetalMachineResponse",
-}) as any as S.Schema<UncordonBareMetalMachineResponse>;
+export const UncordonBareMetalMachineResponse =
+  AssignVirtualMachineRelayResponse as any as S.Schema<UncordonBareMetalMachineResponse>;
 
 export type UpdateAccessBridgeRequestAccessBridgeName =
   | "Bastion"
@@ -11842,9 +11231,8 @@ export const UpdateAccessBridgeRequestAccessBridgeName = S.String;
 
 /** The list of security rules enforced by the access bridge. */
 export type AccessBridgePatchPropertiesSecurityRulesList = Array<AccessBridgeSecurityRule>;
-export const AccessBridgePatchPropertiesSecurityRulesList = /*@__PURE__*/ S.Array(
-  AccessBridgeSecurityRule,
-) as any as S.Schema<AccessBridgePatchPropertiesSecurityRulesList>;
+export const AccessBridgePatchPropertiesSecurityRulesList =
+  AccessBridgePropertiesInputSecurityRulesList as any as S.Schema<AccessBridgePatchPropertiesSecurityRulesList>;
 
 /** AccessBridgePatchProperties identifies the mutable properties for patch operations. */
 export interface AccessBridgePatchProperties {
@@ -11861,10 +11249,8 @@ export const AccessBridgePatchProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAccessBridgeRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAccessBridgeRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAccessBridgeRequestTagsMap>;
+export const UpdateAccessBridgeRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAccessBridgeRequestTagsMap>;
 
 export interface UpdateAccessBridgeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11899,10 +11285,8 @@ export const UpdateAccessBridgeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAccessBridgeResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAccessBridgeResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAccessBridgeResponseTagsMap>;
+export const UpdateAccessBridgeResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAccessBridgeResponseTagsMap>;
 
 export interface UpdateAccessBridgeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -11924,27 +11308,13 @@ export interface UpdateAccessBridgeResponse {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const UpdateAccessBridgeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateAccessBridgeResponseTagsMap),
-    location: S.String,
-    properties: AccessBridgeProperties,
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({
-  identifier: "UpdateAccessBridgeResponse",
-}) as any as S.Schema<UpdateAccessBridgeResponse>;
+export const UpdateAccessBridgeResponse =
+  AccessBridgesCreateOrUpdateResponse as any as S.Schema<UpdateAccessBridgeResponse>;
 
 /** SshPublicKey represents the public key used to authenticate with a resource through SSH. */
 export type NodePoolAdministratorConfigurationPatchSshPublicKeysList = Array<SshPublicKey>;
-export const NodePoolAdministratorConfigurationPatchSshPublicKeysList = /*@__PURE__*/ S.Array(
-  SshPublicKey,
-) as any as S.Schema<NodePoolAdministratorConfigurationPatchSshPublicKeysList>;
+export const NodePoolAdministratorConfigurationPatchSshPublicKeysList =
+  AdministratorConfigurationSshPublicKeysList as any as S.Schema<NodePoolAdministratorConfigurationPatchSshPublicKeysList>;
 
 /** NodePoolAdministratorConfigurationPatch represents the patching capabilities for the administrator configuration. */
 export interface NodePoolAdministratorConfigurationPatch {
@@ -11978,10 +11348,8 @@ export const AgentPoolPatchProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAgentPoolRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAgentPoolRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAgentPoolRequestTagsMap>;
+export const UpdateAgentPoolRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAgentPoolRequestTagsMap>;
 
 export interface UpdateAgentPoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -12017,10 +11385,8 @@ export const UpdateAgentPoolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAgentPoolResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAgentPoolResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAgentPoolResponseTagsMap>;
+export const UpdateAgentPoolResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAgentPoolResponseTagsMap>;
 
 export interface UpdateAgentPoolResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -12042,19 +11408,8 @@ export interface UpdateAgentPoolResponse {
   /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const UpdateAgentPoolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateAgentPoolResponseTagsMap),
-    location: S.String,
-    properties: AgentPoolProperties,
-    etag: S.optional(S.String),
-    extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
-  }),
-).annotate({ identifier: "UpdateAgentPoolResponse" }) as any as S.Schema<UpdateAgentPoolResponse>;
+export const UpdateAgentPoolResponse =
+  GetAgentPoolResponse as any as S.Schema<UpdateAgentPoolResponse>;
 
 /** BareMetalMachinePatchProperties represents the properties of the bare metal machine that can be patched. */
 export interface BareMetalMachinePatchProperties {
@@ -12071,10 +11426,8 @@ export const BareMetalMachinePatchProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateBareMetalMachineRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateBareMetalMachineRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateBareMetalMachineRequestTagsMap>;
+export const UpdateBareMetalMachineRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateBareMetalMachineRequestTagsMap>;
 
 export interface UpdateBareMetalMachineRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -12109,10 +11462,8 @@ export const UpdateBareMetalMachineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateBareMetalMachineResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateBareMetalMachineResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateBareMetalMachineResponseTagsMap>;
+export const UpdateBareMetalMachineResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateBareMetalMachineResponseTagsMap>;
 
 export interface UpdateBareMetalMachineResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -12134,33 +11485,18 @@ export interface UpdateBareMetalMachineResponse {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const UpdateBareMetalMachineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateBareMetalMachineResponseTagsMap),
-    location: S.String,
-    properties: BareMetalMachineProperties,
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({
-  identifier: "UpdateBareMetalMachineResponse",
-}) as any as S.Schema<UpdateBareMetalMachineResponse>;
+export const UpdateBareMetalMachineResponse =
+  BareMetalMachinesCreateOrUpdateResponse as any as S.Schema<UpdateBareMetalMachineResponse>;
 
 /** The list of IP addresses of jump hosts with management network access from which a login will be allowed for the users. */
 export type BareMetalMachineKeySetPatchPropertiesJumpHostsAllowedList = Array<string>;
-export const BareMetalMachineKeySetPatchPropertiesJumpHostsAllowedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BareMetalMachineKeySetPatchPropertiesJumpHostsAllowedList>;
+export const BareMetalMachineKeySetPatchPropertiesJumpHostsAllowedList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<BareMetalMachineKeySetPatchPropertiesJumpHostsAllowedList>;
 
 /** The unique list of permitted users. */
 export type BareMetalMachineKeySetPatchPropertiesUserListList = Array<KeySetUser>;
-export const BareMetalMachineKeySetPatchPropertiesUserListList = /*@__PURE__*/ S.Array(
-  KeySetUser,
-) as any as S.Schema<BareMetalMachineKeySetPatchPropertiesUserListList>;
+export const BareMetalMachineKeySetPatchPropertiesUserListList =
+  BareMetalMachineKeySetPropertiesInputUserListList as any as S.Schema<BareMetalMachineKeySetPatchPropertiesUserListList>;
 
 /** BareMetalMachineKeySetPatchProperties represents the properties of bare metal machine key set that can be patched. */
 export interface BareMetalMachineKeySetPatchProperties {
@@ -12183,10 +11519,8 @@ export const BareMetalMachineKeySetPatchProperties = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type UpdateBareMetalMachineKeySetRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateBareMetalMachineKeySetRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateBareMetalMachineKeySetRequestTagsMap>;
+export const UpdateBareMetalMachineKeySetRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateBareMetalMachineKeySetRequestTagsMap>;
 
 export interface UpdateBareMetalMachineKeySetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -12224,10 +11558,8 @@ export const UpdateBareMetalMachineKeySetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateBareMetalMachineKeySetResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateBareMetalMachineKeySetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateBareMetalMachineKeySetResponseTagsMap>;
+export const UpdateBareMetalMachineKeySetResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateBareMetalMachineKeySetResponseTagsMap>;
 
 export interface UpdateBareMetalMachineKeySetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -12249,27 +11581,13 @@ export interface UpdateBareMetalMachineKeySetResponse {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const UpdateBareMetalMachineKeySetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateBareMetalMachineKeySetResponseTagsMap),
-    location: S.String,
-    properties: BareMetalMachineKeySetProperties,
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({
-  identifier: "UpdateBareMetalMachineKeySetResponse",
-}) as any as S.Schema<UpdateBareMetalMachineKeySetResponse>;
+export const UpdateBareMetalMachineKeySetResponse =
+  BareMetalMachineKeySetsCreateOrUpdateResponse as any as S.Schema<UpdateBareMetalMachineKeySetResponse>;
 
 /** The unique list of permitted users. */
 export type BmcKeySetPatchPropertiesUserListList = Array<KeySetUser>;
-export const BmcKeySetPatchPropertiesUserListList = /*@__PURE__*/ S.Array(
-  KeySetUser,
-) as any as S.Schema<BmcKeySetPatchPropertiesUserListList>;
+export const BmcKeySetPatchPropertiesUserListList =
+  BareMetalMachineKeySetPropertiesInputUserListList as any as S.Schema<BmcKeySetPatchPropertiesUserListList>;
 
 /** BmcKeySetPatchProperties represents the properties of baseboard management controller key set that are patchable. */
 export interface BmcKeySetPatchProperties {
@@ -12287,10 +11605,8 @@ export const BmcKeySetPatchProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateBmcKeySetRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateBmcKeySetRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateBmcKeySetRequestTagsMap>;
+export const UpdateBmcKeySetRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateBmcKeySetRequestTagsMap>;
 
 export interface UpdateBmcKeySetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -12326,10 +11642,8 @@ export const UpdateBmcKeySetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateBmcKeySetResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateBmcKeySetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateBmcKeySetResponseTagsMap>;
+export const UpdateBmcKeySetResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateBmcKeySetResponseTagsMap>;
 
 export interface UpdateBmcKeySetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -12351,27 +11665,14 @@ export interface UpdateBmcKeySetResponse {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const UpdateBmcKeySetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateBmcKeySetResponseTagsMap),
-    location: S.String,
-    properties: BmcKeySetProperties,
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({ identifier: "UpdateBmcKeySetResponse" }) as any as S.Schema<UpdateBmcKeySetResponse>;
+export const UpdateBmcKeySetResponse =
+  GetBmcKeySetResponse as any as S.Schema<UpdateBmcKeySetResponse>;
 
 /** The list of egress endpoints. This allows for connection from a Hybrid AKS cluster to the specified endpoint. */
 export type CloudServicesNetworkPatchPropertiesAdditionalEgressEndpointsList =
   Array<EgressEndpoint>;
 export const CloudServicesNetworkPatchPropertiesAdditionalEgressEndpointsList =
-  /*@__PURE__*/ S.Array(
-    EgressEndpoint,
-  ) as any as S.Schema<CloudServicesNetworkPatchPropertiesAdditionalEgressEndpointsList>;
+  CloudServicesNetworkPropertiesInputAdditionalEgressEndpointsList as any as S.Schema<CloudServicesNetworkPatchPropertiesAdditionalEgressEndpointsList>;
 
 /** The indicator of whether the platform default endpoints are allowed for the egress traffic. */
 export type CloudServicesNetworkEnableDefaultEgressEndpoints = "True" | "False";
@@ -12419,10 +11720,8 @@ export const CloudServicesNetworkPatchProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateCloudServicesNetworkRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateCloudServicesNetworkRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCloudServicesNetworkRequestTagsMap>;
+export const UpdateCloudServicesNetworkRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCloudServicesNetworkRequestTagsMap>;
 
 export interface UpdateCloudServicesNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -12457,10 +11756,8 @@ export const UpdateCloudServicesNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateCloudServicesNetworkResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateCloudServicesNetworkResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCloudServicesNetworkResponseTagsMap>;
+export const UpdateCloudServicesNetworkResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCloudServicesNetworkResponseTagsMap>;
 
 export interface UpdateCloudServicesNetworkResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -12482,21 +11779,8 @@ export interface UpdateCloudServicesNetworkResponse {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const UpdateCloudServicesNetworkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateCloudServicesNetworkResponseTagsMap),
-    location: S.String,
-    properties: S.optional(CloudServicesNetworkProperties),
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({
-  identifier: "UpdateCloudServicesNetworkResponse",
-}) as any as S.Schema<UpdateCloudServicesNetworkResponse>;
+export const UpdateCloudServicesNetworkResponse =
+  CloudServicesNetworksCreateOrUpdateResponse as any as S.Schema<UpdateCloudServicesNetworkResponse>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateClusterRequestIdentityUserAssignedIdentitiesMap = {
@@ -12809,10 +12093,8 @@ export const ClusterPatchPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateClusterRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateClusterRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateClusterRequestTagsMap>;
+export const UpdateClusterRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateClusterRequestTagsMap>;
 
 export interface UpdateClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -12848,19 +12130,15 @@ export const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateClusterResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateClusterResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateClusterResponseTagsMap>;
+export const UpdateClusterResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateClusterResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateClusterResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const UpdateClusterResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<UpdateClusterResponseIdentityUserAssignedIdentitiesMap>;
+export const UpdateClusterResponseIdentityUserAssignedIdentitiesMap =
+  GetClusterResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<UpdateClusterResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdateClusterResponseIdentity {
@@ -12872,16 +12150,8 @@ export interface UpdateClusterResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateClusterResponseIdentityUserAssignedIdentitiesMap;
 }
-export const UpdateClusterResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UpdateClusterResponseIdentityUserAssignedIdentitiesMap),
-  }),
-).annotate({
-  identifier: "UpdateClusterResponseIdentity",
-}) as any as S.Schema<UpdateClusterResponseIdentity>;
+export const UpdateClusterResponseIdentity =
+  GetClusterResponseIdentity as any as S.Schema<UpdateClusterResponseIdentity>;
 
 export interface UpdateClusterResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -12907,30 +12177,14 @@ export interface UpdateClusterResponse {
   /** The type (kind) of the cluster. When specified, the value must exactly match the kind configured on the cluster manager that manages the cluster. If omitted, the service will default the value to the kind value of the cluster manager. */
   kind?: DeploymentType;
 }
-export const UpdateClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateClusterResponseTagsMap),
-    location: S.String,
-    properties: ClusterProperties,
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-    identity: S.optional(UpdateClusterResponseIdentity),
-    kind: S.optional(DeploymentType),
-  }),
-).annotate({ identifier: "UpdateClusterResponse" }) as any as S.Schema<UpdateClusterResponse>;
+export const UpdateClusterResponse = GetClusterResponse as any as S.Schema<UpdateClusterResponse>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateClusterManagerRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
-export const UpdateClusterManagerRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
-) as any as S.Schema<UpdateClusterManagerRequestIdentityUserAssignedIdentitiesMap>;
+export const UpdateClusterManagerRequestIdentityUserAssignedIdentitiesMap =
+  UpdateClusterRequestIdentityUserAssignedIdentitiesMap as any as S.Schema<UpdateClusterManagerRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdateClusterManagerRequestIdentity {
@@ -12951,10 +12205,8 @@ export const UpdateClusterManagerRequestIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateClusterManagerRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateClusterManagerRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateClusterManagerRequestTagsMap>;
+export const UpdateClusterManagerRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateClusterManagerRequestTagsMap>;
 
 export interface UpdateClusterManagerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -12989,19 +12241,15 @@ export const UpdateClusterManagerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateClusterManagerResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateClusterManagerResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateClusterManagerResponseTagsMap>;
+export const UpdateClusterManagerResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateClusterManagerResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateClusterManagerResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const UpdateClusterManagerResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<UpdateClusterManagerResponseIdentityUserAssignedIdentitiesMap>;
+export const UpdateClusterManagerResponseIdentityUserAssignedIdentitiesMap =
+  GetClusterResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<UpdateClusterManagerResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdateClusterManagerResponseIdentity {
@@ -13147,9 +12395,8 @@ export const UpdateClusterVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateClusterVersionRequest>;
 
 export interface UpdateClusterVersionResponse {}
-export const UpdateClusterVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateClusterVersionResponse",
-}) as any as S.Schema<UpdateClusterVersionResponse>;
+export const UpdateClusterVersionResponse =
+  UserAssignedIdentityInput as any as S.Schema<UpdateClusterVersionResponse>;
 
 /** SshPublicKeyPatch represents the public key used to authenticate with a resource through SSH. */
 export interface SshPublicKeyPatch {
@@ -13181,10 +12428,8 @@ export const ConsolePatchProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateConsoleRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateConsoleRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateConsoleRequestTagsMap>;
+export const UpdateConsoleRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateConsoleRequestTagsMap>;
 
 export interface UpdateConsoleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -13220,10 +12465,8 @@ export const UpdateConsoleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateConsoleResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateConsoleResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateConsoleResponseTagsMap>;
+export const UpdateConsoleResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateConsoleResponseTagsMap>;
 
 export interface UpdateConsoleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -13245,38 +12488,20 @@ export interface UpdateConsoleResponse {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const UpdateConsoleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateConsoleResponseTagsMap),
-    location: S.String,
-    properties: ConsoleProperties,
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({ identifier: "UpdateConsoleResponse" }) as any as S.Schema<UpdateConsoleResponse>;
+export const UpdateConsoleResponse = GetConsoleResponse as any as S.Schema<UpdateConsoleResponse>;
 
 /** SshPublicKey represents the public key used to authenticate with a resource through SSH. */
 export type AdministratorConfigurationPatchSshPublicKeysList = Array<SshPublicKey>;
-export const AdministratorConfigurationPatchSshPublicKeysList = /*@__PURE__*/ S.Array(
-  SshPublicKey,
-) as any as S.Schema<AdministratorConfigurationPatchSshPublicKeysList>;
+export const AdministratorConfigurationPatchSshPublicKeysList =
+  AdministratorConfigurationSshPublicKeysList as any as S.Schema<AdministratorConfigurationPatchSshPublicKeysList>;
 
 /** AdministratorConfigurationPatch represents the patching capabilities for the administrator configuration. */
 export interface AdministratorConfigurationPatch {
   /** SshPublicKey represents the public key used to authenticate with a resource through SSH. */
   sshPublicKeys?: AdministratorConfigurationPatchSshPublicKeysList;
 }
-export const AdministratorConfigurationPatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sshPublicKeys: S.optional(AdministratorConfigurationPatchSshPublicKeysList),
-  }),
-).annotate({
-  identifier: "AdministratorConfigurationPatch",
-}) as any as S.Schema<AdministratorConfigurationPatch>;
+export const AdministratorConfigurationPatch =
+  NodePoolAdministratorConfigurationPatch as any as S.Schema<AdministratorConfigurationPatch>;
 
 /** ControlPlaneNodePatchConfiguration represents the properties of the control plane that can be patched for this Kubernetes cluster. */
 export interface ControlPlaneNodePatchConfiguration {
@@ -13315,10 +12540,8 @@ export const KubernetesClusterPatchProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateKubernetesClusterRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateKubernetesClusterRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateKubernetesClusterRequestTagsMap>;
+export const UpdateKubernetesClusterRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateKubernetesClusterRequestTagsMap>;
 
 export interface UpdateKubernetesClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -13353,10 +12576,8 @@ export const UpdateKubernetesClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateKubernetesClusterResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateKubernetesClusterResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateKubernetesClusterResponseTagsMap>;
+export const UpdateKubernetesClusterResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateKubernetesClusterResponseTagsMap>;
 
 export interface UpdateKubernetesClusterResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -13378,47 +12599,26 @@ export interface UpdateKubernetesClusterResponse {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const UpdateKubernetesClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateKubernetesClusterResponseTagsMap),
-    location: S.String,
-    properties: KubernetesClusterProperties,
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({
-  identifier: "UpdateKubernetesClusterResponse",
-}) as any as S.Schema<UpdateKubernetesClusterResponse>;
+export const UpdateKubernetesClusterResponse =
+  GetKubernetesClusterResponse as any as S.Schema<UpdateKubernetesClusterResponse>;
 
 /** The configured options for the feature. */
 export type KubernetesClusterFeaturePatchPropertiesOptionsList = Array<StringKeyValuePair>;
-export const KubernetesClusterFeaturePatchPropertiesOptionsList = /*@__PURE__*/ S.Array(
-  StringKeyValuePair,
-) as any as S.Schema<KubernetesClusterFeaturePatchPropertiesOptionsList>;
+export const KubernetesClusterFeaturePatchPropertiesOptionsList =
+  AgentPoolPropertiesInputLabelsList as any as S.Schema<KubernetesClusterFeaturePatchPropertiesOptionsList>;
 
 /** KubernetesClusterFeaturePatchProperties represents the Kubernetes cluster feature properties for patching. */
 export interface KubernetesClusterFeaturePatchProperties {
   /** The configured options for the feature. */
   options?: KubernetesClusterFeaturePatchPropertiesOptionsList;
 }
-export const KubernetesClusterFeaturePatchProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    options: S.optional(KubernetesClusterFeaturePatchPropertiesOptionsList),
-  }),
-).annotate({
-  identifier: "KubernetesClusterFeaturePatchProperties",
-}) as any as S.Schema<KubernetesClusterFeaturePatchProperties>;
+export const KubernetesClusterFeaturePatchProperties =
+  KubernetesClusterFeaturePropertiesInput as any as S.Schema<KubernetesClusterFeaturePatchProperties>;
 
 /** Resource tags. */
 export type UpdateKubernetesClusterFeatureRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateKubernetesClusterFeatureRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateKubernetesClusterFeatureRequestTagsMap>;
+export const UpdateKubernetesClusterFeatureRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateKubernetesClusterFeatureRequestTagsMap>;
 
 export interface UpdateKubernetesClusterFeatureRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -13456,10 +12656,8 @@ export const UpdateKubernetesClusterFeatureRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type UpdateKubernetesClusterFeatureResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateKubernetesClusterFeatureResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateKubernetesClusterFeatureResponseTagsMap>;
+export const UpdateKubernetesClusterFeatureResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateKubernetesClusterFeatureResponseTagsMap>;
 
 export interface UpdateKubernetesClusterFeatureResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -13479,27 +12677,13 @@ export interface UpdateKubernetesClusterFeatureResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const UpdateKubernetesClusterFeatureResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateKubernetesClusterFeatureResponseTagsMap),
-    location: S.String,
-    properties: S.optional(KubernetesClusterFeatureProperties),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateKubernetesClusterFeatureResponse",
-}) as any as S.Schema<UpdateKubernetesClusterFeatureResponse>;
+export const UpdateKubernetesClusterFeatureResponse =
+  GetKubernetesClusterFeatureResponse as any as S.Schema<UpdateKubernetesClusterFeatureResponse>;
 
 /** Resource tags. */
 export type UpdateKubernetesVersionRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateKubernetesVersionRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateKubernetesVersionRequestTagsMap>;
+export const UpdateKubernetesVersionRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateKubernetesVersionRequestTagsMap>;
 
 export interface UpdateKubernetesVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -13531,10 +12715,8 @@ export const UpdateKubernetesVersionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateKubernetesVersionResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateKubernetesVersionResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateKubernetesVersionResponseTagsMap>;
+export const UpdateKubernetesVersionResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateKubernetesVersionResponseTagsMap>;
 
 export interface UpdateKubernetesVersionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -13556,28 +12738,13 @@ export interface UpdateKubernetesVersionResponse {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const UpdateKubernetesVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateKubernetesVersionResponseTagsMap),
-    location: S.String,
-    properties: KubernetesVersionProperties,
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({
-  identifier: "UpdateKubernetesVersionResponse",
-}) as any as S.Schema<UpdateKubernetesVersionResponse>;
+export const UpdateKubernetesVersionResponse =
+  GetKubernetesVersionResponse as any as S.Schema<UpdateKubernetesVersionResponse>;
 
 /** Resource tags. */
 export type UpdateL2NetworkRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateL2NetworkRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateL2NetworkRequestTagsMap>;
+export const UpdateL2NetworkRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateL2NetworkRequestTagsMap>;
 
 export interface UpdateL2NetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -13607,10 +12774,8 @@ export const UpdateL2NetworkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateL2NetworkResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateL2NetworkResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateL2NetworkResponseTagsMap>;
+export const UpdateL2NetworkResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateL2NetworkResponseTagsMap>;
 
 export interface UpdateL2NetworkResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -13632,26 +12797,13 @@ export interface UpdateL2NetworkResponse {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const UpdateL2NetworkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateL2NetworkResponseTagsMap),
-    location: S.String,
-    properties: L2NetworkProperties,
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({ identifier: "UpdateL2NetworkResponse" }) as any as S.Schema<UpdateL2NetworkResponse>;
+export const UpdateL2NetworkResponse =
+  GetL2NetworkResponse as any as S.Schema<UpdateL2NetworkResponse>;
 
 /** Resource tags. */
 export type UpdateL3NetworkRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateL3NetworkRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateL3NetworkRequestTagsMap>;
+export const UpdateL3NetworkRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateL3NetworkRequestTagsMap>;
 
 export interface UpdateL3NetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -13681,10 +12833,8 @@ export const UpdateL3NetworkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateL3NetworkResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateL3NetworkResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateL3NetworkResponseTagsMap>;
+export const UpdateL3NetworkResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateL3NetworkResponseTagsMap>;
 
 export interface UpdateL3NetworkResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -13706,25 +12856,13 @@ export interface UpdateL3NetworkResponse {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const UpdateL3NetworkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateL3NetworkResponseTagsMap),
-    location: S.String,
-    properties: L3NetworkProperties,
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({ identifier: "UpdateL3NetworkResponse" }) as any as S.Schema<UpdateL3NetworkResponse>;
+export const UpdateL3NetworkResponse =
+  GetL3NetworkResponse as any as S.Schema<UpdateL3NetworkResponse>;
 
 /** The list of metric names that have been chosen to be enabled in addition to the core set of enabled metrics. */
 export type ClusterMetricsConfigurationPatchPropertiesEnabledMetricsList = Array<string>;
-export const ClusterMetricsConfigurationPatchPropertiesEnabledMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClusterMetricsConfigurationPatchPropertiesEnabledMetricsList>;
+export const ClusterMetricsConfigurationPatchPropertiesEnabledMetricsList =
+  AccessBridgeSecurityRuleIpv4AddressesList as any as S.Schema<ClusterMetricsConfigurationPatchPropertiesEnabledMetricsList>;
 
 /** ClusterMetricsConfigurationPatchProperties represents the properties of metrics configuration for the cluster for patching. */
 export interface ClusterMetricsConfigurationPatchProperties {
@@ -13744,10 +12882,8 @@ export const ClusterMetricsConfigurationPatchProperties = /*@__PURE__*/ S.suspen
 
 /** Resource tags. */
 export type UpdateMetricsConfigurationRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateMetricsConfigurationRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateMetricsConfigurationRequestTagsMap>;
+export const UpdateMetricsConfigurationRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateMetricsConfigurationRequestTagsMap>;
 
 export interface UpdateMetricsConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -13785,10 +12921,8 @@ export const UpdateMetricsConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateMetricsConfigurationResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateMetricsConfigurationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateMetricsConfigurationResponseTagsMap>;
+export const UpdateMetricsConfigurationResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateMetricsConfigurationResponseTagsMap>;
 
 export interface UpdateMetricsConfigurationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -13810,21 +12944,8 @@ export interface UpdateMetricsConfigurationResponse {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const UpdateMetricsConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateMetricsConfigurationResponseTagsMap),
-    location: S.String,
-    properties: ClusterMetricsConfigurationProperties,
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({
-  identifier: "UpdateMetricsConfigurationResponse",
-}) as any as S.Schema<UpdateMetricsConfigurationResponse>;
+export const UpdateMetricsConfigurationResponse =
+  GetMetricsConfigurationResponse as any as S.Schema<UpdateMetricsConfigurationResponse>;
 
 /** RacksPatchProperties represents the properties of the rack during patching. */
 export interface RacksPatchProperties {
@@ -13842,10 +12963,8 @@ export const RacksPatchProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateRackRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateRackRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateRackRequestTagsMap>;
+export const UpdateRackRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateRackRequestTagsMap>;
 
 export interface UpdateRackRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -13878,10 +12997,8 @@ export const UpdateRackRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateRackResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateRackResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateRackResponseTagsMap>;
+export const UpdateRackResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateRackResponseTagsMap>;
 
 export interface UpdateRackResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -13903,19 +13020,7 @@ export interface UpdateRackResponse {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const UpdateRackResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateRackResponseTagsMap),
-    location: S.String,
-    properties: RackProperties,
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({ identifier: "UpdateRackResponse" }) as any as S.Schema<UpdateRackResponse>;
+export const UpdateRackResponse = GetRackResponse as any as S.Schema<UpdateRackResponse>;
 
 /** StorageAppliancePatchProperties represents the properties of the storage appliance that can be patched. */
 export interface StorageAppliancePatchProperties {
@@ -13932,10 +13037,8 @@ export const StorageAppliancePatchProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateStorageApplianceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateStorageApplianceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateStorageApplianceRequestTagsMap>;
+export const UpdateStorageApplianceRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateStorageApplianceRequestTagsMap>;
 
 export interface UpdateStorageApplianceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -13970,10 +13073,8 @@ export const UpdateStorageApplianceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateStorageApplianceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateStorageApplianceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateStorageApplianceResponseTagsMap>;
+export const UpdateStorageApplianceResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateStorageApplianceResponseTagsMap>;
 
 export interface UpdateStorageApplianceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -13995,28 +13096,13 @@ export interface UpdateStorageApplianceResponse {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const UpdateStorageApplianceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateStorageApplianceResponseTagsMap),
-    location: S.String,
-    properties: StorageApplianceProperties,
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({
-  identifier: "UpdateStorageApplianceResponse",
-}) as any as S.Schema<UpdateStorageApplianceResponse>;
+export const UpdateStorageApplianceResponse =
+  GetStorageApplianceResponse as any as S.Schema<UpdateStorageApplianceResponse>;
 
 /** Resource tags. */
 export type UpdateTrunkedNetworkRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateTrunkedNetworkRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateTrunkedNetworkRequestTagsMap>;
+export const UpdateTrunkedNetworkRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateTrunkedNetworkRequestTagsMap>;
 
 export interface UpdateTrunkedNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -14048,10 +13134,8 @@ export const UpdateTrunkedNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateTrunkedNetworkResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateTrunkedNetworkResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateTrunkedNetworkResponseTagsMap>;
+export const UpdateTrunkedNetworkResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateTrunkedNetworkResponseTagsMap>;
 
 export interface UpdateTrunkedNetworkResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -14073,30 +13157,15 @@ export interface UpdateTrunkedNetworkResponse {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const UpdateTrunkedNetworkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateTrunkedNetworkResponseTagsMap),
-    location: S.String,
-    properties: TrunkedNetworkProperties,
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({
-  identifier: "UpdateTrunkedNetworkResponse",
-}) as any as S.Schema<UpdateTrunkedNetworkResponse>;
+export const UpdateTrunkedNetworkResponse =
+  GetTrunkedNetworkResponse as any as S.Schema<UpdateTrunkedNetworkResponse>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateVirtualMachineRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
-export const UpdateVirtualMachineRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
-) as any as S.Schema<UpdateVirtualMachineRequestIdentityUserAssignedIdentitiesMap>;
+export const UpdateVirtualMachineRequestIdentityUserAssignedIdentitiesMap =
+  UpdateClusterRequestIdentityUserAssignedIdentitiesMap as any as S.Schema<UpdateVirtualMachineRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdateVirtualMachineRequestIdentity {
@@ -14104,16 +13173,8 @@ export interface UpdateVirtualMachineRequestIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateVirtualMachineRequestIdentityUserAssignedIdentitiesMap;
 }
-export const UpdateVirtualMachineRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      UpdateVirtualMachineRequestIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "UpdateVirtualMachineRequestIdentity",
-}) as any as S.Schema<UpdateVirtualMachineRequestIdentity>;
+export const UpdateVirtualMachineRequestIdentity =
+  UpdateClusterManagerRequestIdentity as any as S.Schema<UpdateVirtualMachineRequestIdentity>;
 
 /** ImageRepositoryCredentialsPatch represents the credentials used to login to the image repository for patch operations. */
 export interface ImageRepositoryCredentialsPatch {
@@ -14149,10 +13210,8 @@ export const VirtualMachinePatchProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateVirtualMachineRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateVirtualMachineRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateVirtualMachineRequestTagsMap>;
+export const UpdateVirtualMachineRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVirtualMachineRequestTagsMap>;
 
 export interface UpdateVirtualMachineRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -14190,19 +13249,15 @@ export const UpdateVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateVirtualMachineResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateVirtualMachineResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateVirtualMachineResponseTagsMap>;
+export const UpdateVirtualMachineResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVirtualMachineResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateVirtualMachineResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const UpdateVirtualMachineResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<UpdateVirtualMachineResponseIdentityUserAssignedIdentitiesMap>;
+export const UpdateVirtualMachineResponseIdentityUserAssignedIdentitiesMap =
+  GetClusterResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<UpdateVirtualMachineResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdateVirtualMachineResponseIdentity {
@@ -14214,18 +13269,8 @@ export interface UpdateVirtualMachineResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateVirtualMachineResponseIdentityUserAssignedIdentitiesMap;
 }
-export const UpdateVirtualMachineResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      UpdateVirtualMachineResponseIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "UpdateVirtualMachineResponseIdentity",
-}) as any as S.Schema<UpdateVirtualMachineResponseIdentity>;
+export const UpdateVirtualMachineResponseIdentity =
+  UpdateClusterManagerResponseIdentity as any as S.Schema<UpdateVirtualMachineResponseIdentity>;
 
 export interface UpdateVirtualMachineResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -14268,10 +13313,8 @@ export const UpdateVirtualMachineResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateVolumeRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateVolumeRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateVolumeRequestTagsMap>;
+export const UpdateVolumeRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVolumeRequestTagsMap>;
 
 export interface UpdateVolumeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -14301,10 +13344,8 @@ export const UpdateVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateVolumeResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateVolumeResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateVolumeResponseTagsMap>;
+export const UpdateVolumeResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVolumeResponseTagsMap>;
 
 export interface UpdateVolumeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -14326,26 +13367,12 @@ export interface UpdateVolumeResponse {
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const UpdateVolumeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateVolumeResponseTagsMap),
-    location: S.String,
-    properties: VolumeProperties,
-    etag: S.optional(S.String),
-    extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
-  }),
-).annotate({ identifier: "UpdateVolumeResponse" }) as any as S.Schema<UpdateVolumeResponse>;
+export const UpdateVolumeResponse = GetVolumeResponse as any as S.Schema<UpdateVolumeResponse>;
 
 /** Resource tags. */
 export type VirtualMachinesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const VirtualMachinesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VirtualMachinesCreateOrUpdateRequestTagsMap>;
+export const VirtualMachinesCreateOrUpdateRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<VirtualMachinesCreateOrUpdateRequestTagsMap>;
 
 /** Selects the boot method for the virtual machine. */
 export type VirtualMachinePropertiesInputBootMethod = "BIOS" | "UEFI";
@@ -14389,15 +13416,13 @@ export const VirtualMachinePropertiesInputNetworkAttachmentsList = /*@__PURE__*/
 
 /** The scheduling hints for the virtual machine. */
 export type VirtualMachinePropertiesInputPlacementHintsList = Array<VirtualMachinePlacementHint>;
-export const VirtualMachinePropertiesInputPlacementHintsList = /*@__PURE__*/ S.Array(
-  VirtualMachinePlacementHint,
-) as any as S.Schema<VirtualMachinePropertiesInputPlacementHintsList>;
+export const VirtualMachinePropertiesInputPlacementHintsList =
+  VirtualMachinePropertiesPlacementHintsList as any as S.Schema<VirtualMachinePropertiesInputPlacementHintsList>;
 
 /** The list of ssh public keys. Each key will be added to the virtual machine using the cloud-init ssh_authorized_keys mechanism for the adminUsername. */
 export type VirtualMachinePropertiesInputSshPublicKeysList = Array<SshPublicKey>;
-export const VirtualMachinePropertiesInputSshPublicKeysList = /*@__PURE__*/ S.Array(
-  SshPublicKey,
-) as any as S.Schema<VirtualMachinePropertiesInputSshPublicKeysList>;
+export const VirtualMachinePropertiesInputSshPublicKeysList =
+  AdministratorConfigurationSshPublicKeysList as any as S.Schema<VirtualMachinePropertiesInputSshPublicKeysList>;
 
 /** Field Deprecated, use virtualizationModel instead. The type of the virtio interface. */
 export type VirtualMachinePropertiesInputVirtioInterface = "Modern" | "Transitional";
@@ -14479,10 +13504,7 @@ export type VirtualMachinesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMa
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
 export const VirtualMachinesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
-  ) as any as S.Schema<VirtualMachinesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap>;
+  ClusterManagersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap as any as S.Schema<VirtualMachinesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface VirtualMachinesCreateOrUpdateRequestIdentity {
@@ -14490,16 +13512,8 @@ export interface VirtualMachinesCreateOrUpdateRequestIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: VirtualMachinesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap;
 }
-export const VirtualMachinesCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      VirtualMachinesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "VirtualMachinesCreateOrUpdateRequestIdentity",
-}) as any as S.Schema<VirtualMachinesCreateOrUpdateRequestIdentity>;
+export const VirtualMachinesCreateOrUpdateRequestIdentity =
+  ClusterManagersCreateOrUpdateRequestIdentity as any as S.Schema<VirtualMachinesCreateOrUpdateRequestIdentity>;
 
 export interface VirtualMachinesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -14543,20 +13557,15 @@ export const VirtualMachinesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type VirtualMachinesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const VirtualMachinesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VirtualMachinesCreateOrUpdateResponseTagsMap>;
+export const VirtualMachinesCreateOrUpdateResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<VirtualMachinesCreateOrUpdateResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type VirtualMachinesCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
 export const VirtualMachinesCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-  ) as any as S.Schema<VirtualMachinesCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap>;
+  ClusterManagersCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<VirtualMachinesCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface VirtualMachinesCreateOrUpdateResponseIdentity {
@@ -14568,18 +13577,8 @@ export interface VirtualMachinesCreateOrUpdateResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: VirtualMachinesCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap;
 }
-export const VirtualMachinesCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      VirtualMachinesCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "VirtualMachinesCreateOrUpdateResponseIdentity",
-}) as any as S.Schema<VirtualMachinesCreateOrUpdateResponseIdentity>;
+export const VirtualMachinesCreateOrUpdateResponseIdentity =
+  ClusterManagersCreateOrUpdateResponseIdentity as any as S.Schema<VirtualMachinesCreateOrUpdateResponseIdentity>;
 
 export interface VirtualMachinesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -14653,9 +13652,8 @@ export const VirtualMachinesPowerOffRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualMachinesPowerOffRequest>;
 
 export interface VirtualMachinesPowerOffResponse {}
-export const VirtualMachinesPowerOffResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "VirtualMachinesPowerOffResponse" },
-) as any as S.Schema<VirtualMachinesPowerOffResponse>;
+export const VirtualMachinesPowerOffResponse =
+  DeleteKubernetesClusterResponse as any as S.Schema<VirtualMachinesPowerOffResponse>;
 
 export interface VirtualMachinesReimageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -14683,16 +13681,13 @@ export const VirtualMachinesReimageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualMachinesReimageRequest>;
 
 export interface VirtualMachinesReimageResponse {}
-export const VirtualMachinesReimageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "VirtualMachinesReimageResponse",
-}) as any as S.Schema<VirtualMachinesReimageResponse>;
+export const VirtualMachinesReimageResponse =
+  UserAssignedIdentityInput as any as S.Schema<VirtualMachinesReimageResponse>;
 
 /** Resource tags. */
 export type VolumesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const VolumesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VolumesCreateOrUpdateRequestTagsMap>;
+export const VolumesCreateOrUpdateRequestTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<VolumesCreateOrUpdateRequestTagsMap>;
 
 /** VolumeProperties represents properties of the volume resource. */
 export interface VolumePropertiesInput {
@@ -14747,10 +13742,8 @@ export const VolumesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type VolumesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const VolumesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VolumesCreateOrUpdateResponseTagsMap>;
+export const VolumesCreateOrUpdateResponseTagsMap =
+  AccessBridgesCreateOrUpdateRequestTagsMap as any as S.Schema<VolumesCreateOrUpdateResponseTagsMap>;
 
 export interface VolumesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */

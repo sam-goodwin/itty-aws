@@ -1945,11 +1945,7 @@ export interface MoveProjectRequest {
   /** Required. The new parent to move the Project under. */
   destinationParent?: string;
 }
-export const MoveProjectRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destinationParent: S.optional(S.String),
-  }),
-).annotate({ identifier: "MoveProjectRequest" }) as any as S.Schema<MoveProjectRequest>;
+export const MoveProjectRequest = MoveFolderRequest as any as S.Schema<MoveProjectRequest>;
 
 export interface MoveProjectsRequest {
   /** Required. The name of the project to move. */
@@ -2213,12 +2209,7 @@ export interface SearchFoldersResponse {
   /** A possibly paginated folder search results. the specified parent resource. */
   folders?: FolderList;
 }
-export const SearchFoldersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    folders: S.optional(FolderList),
-  }),
-).annotate({ identifier: "SearchFoldersResponse" }) as any as S.Schema<SearchFoldersResponse>;
+export const SearchFoldersResponse = ListFoldersResponse as any as S.Schema<SearchFoldersResponse>;
 
 export interface SearchOrganizationsRequest {
   /** Optional. An optional query string used to filter the Organizations to return in the response. Query rules are case-insensitive. ``` | Field | Description | |------------------|--------------------------------------------| | directoryCustomerId, owner.directoryCustomerId | Filters by directory customer id. | | domain | Filters by domain. | ``` Organizations may be queried by `directoryCustomerId` or by `domain`, where the domain is a G Suite domain, for example: * Query `directorycustomerid:123456789` returns Organization resources with `owner.directory_customer_id` equal to `123456789`. * Query `domain:google.com` returns Organization resources corresponding to the domain `google.com`. */
@@ -2294,12 +2285,8 @@ export interface SearchProjectsResponse {
   /** Pagination token. If the result set is too large to fit in a single response, this token is returned. It encodes the position of the current result cursor. Feeding this value into a new list request with the `page_token` parameter gives the next page of the results. When `next_page_token` is not filled in, there is no next page and the list returned is the last page in the result set. Pagination tokens have a limited lifetime. */
   nextPageToken?: string;
 }
-export const SearchProjectsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projects: S.optional(ProjectList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({ identifier: "SearchProjectsResponse" }) as any as S.Schema<SearchProjectsResponse>;
+export const SearchProjectsResponse =
+  ListProjectsResponse as any as S.Schema<SearchProjectsResponse>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -2459,13 +2446,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsOrganizationsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2553,9 +2535,7 @@ export const TestIamPermissionsTagValuesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The UndeleteFolder request message. */
 export interface UndeleteFolderRequest {}
-export const UndeleteFolderRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UndeleteFolderRequest",
-}) as any as S.Schema<UndeleteFolderRequest>;
+export const UndeleteFolderRequest = Empty as any as S.Schema<UndeleteFolderRequest>;
 
 export interface UndeleteFoldersRequest {
   /** Required. The resource name of the folder to undelete. Must be of the form `folders/{folder_id}`. */

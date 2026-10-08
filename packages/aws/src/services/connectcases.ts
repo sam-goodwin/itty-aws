@@ -259,9 +259,7 @@ export interface HiddenCaseRule {
   defaultValue: boolean;
   conditions: BooleanCondition[];
 }
-export const HiddenCaseRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ defaultValue: S.Boolean, conditions: BooleanConditionList }),
-).annotate({ identifier: "HiddenCaseRule" }) as any as S.Schema<HiddenCaseRule>;
+export const HiddenCaseRule = RequiredCaseRule as any as S.Schema<HiddenCaseRule>;
 export type CaseRuleDetails =
   | { required: RequiredCaseRule; fieldOptions?: never; hidden?: never }
   | { required?: never; fieldOptions: FieldOptionsCaseRule; hidden?: never }
@@ -316,7 +314,8 @@ export const CaseRuleError = /*@__PURE__*/ S.suspend(() =>
 export type BatchGetCaseRuleErrorList = CaseRuleError[];
 export const BatchGetCaseRuleErrorList = /*@__PURE__*/ S.Array(CaseRuleError);
 export type BatchGetCaseRuleUnprocessedList = string[];
-export const BatchGetCaseRuleUnprocessedList = /*@__PURE__*/ S.Array(S.String);
+export const BatchGetCaseRuleUnprocessedList =
+  ParentChildFieldOptionValueList as any as S.Schema<BatchGetCaseRuleUnprocessedList>;
 export interface BatchGetCaseRuleResponse {
   caseRules: GetCaseRuleResponse[];
   errors: CaseRuleError[];
@@ -406,11 +405,10 @@ export interface FieldError {
   errorCode: string;
   message?: string;
 }
-export const FieldError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String, errorCode: S.String, message: S.optional(S.String) }),
-).annotate({ identifier: "FieldError" }) as any as S.Schema<FieldError>;
+export const FieldError = CaseRuleError as any as S.Schema<FieldError>;
 export type BatchGetFieldErrorList = FieldError[];
-export const BatchGetFieldErrorList = /*@__PURE__*/ S.Array(FieldError);
+export const BatchGetFieldErrorList =
+  BatchGetCaseRuleErrorList as any as S.Schema<BatchGetFieldErrorList>;
 export interface BatchGetFieldResponse {
   fields: GetFieldResponse[];
   errors: FieldError[];
@@ -473,9 +471,7 @@ export const BatchPutFieldOptionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchPutFieldOptionsResponse>;
 export type TemplateId = string;
 export interface EmptyFieldValue {}
-export const EmptyFieldValue = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "EmptyFieldValue",
-}) as any as S.Schema<EmptyFieldValue>;
+export const EmptyFieldValue = EmptyOperandValue as any as S.Schema<EmptyFieldValue>;
 export type FieldValueUnion =
   | {
       stringValue: string;
@@ -665,11 +661,9 @@ export type LayoutName = string;
 export interface FieldItem {
   id: string;
 }
-export const FieldItem = /*@__PURE__*/ S.suspend(() => S.Struct({ id: S.String })).annotate({
-  identifier: "FieldItem",
-}) as any as S.Schema<FieldItem>;
+export const FieldItem = FieldIdentifier as any as S.Schema<FieldItem>;
 export type FieldList = FieldItem[];
-export const FieldList = /*@__PURE__*/ S.Array(FieldItem);
+export const FieldList = BatchGetFieldIdentifierList as any as S.Schema<FieldList>;
 export interface FieldGroup {
   name?: string;
   fields: FieldItem[];
@@ -979,9 +973,7 @@ export const DeleteCaseRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteCaseRequest" }) as any as S.Schema<DeleteCaseRequest>;
 export interface DeleteCaseResponse {}
-export const DeleteCaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCaseResponse",
-}) as any as S.Schema<DeleteCaseResponse>;
+export const DeleteCaseResponse = EmptyOperandValue as any as S.Schema<DeleteCaseResponse>;
 export interface DeleteCaseRuleRequest {
   domainId: string;
   caseRuleId: string;
@@ -1002,9 +994,7 @@ export const DeleteCaseRuleRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteCaseRuleRequest" }) as any as S.Schema<DeleteCaseRuleRequest>;
 export interface DeleteCaseRuleResponse {}
-export const DeleteCaseRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCaseRuleResponse",
-}) as any as S.Schema<DeleteCaseRuleResponse>;
+export const DeleteCaseRuleResponse = EmptyOperandValue as any as S.Schema<DeleteCaseRuleResponse>;
 export interface DeleteDomainRequest {
   domainId: string;
 }
@@ -1014,9 +1004,7 @@ export const DeleteDomainRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteDomainRequest" }) as any as S.Schema<DeleteDomainRequest>;
 export interface DeleteDomainResponse {}
-export const DeleteDomainResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDomainResponse",
-}) as any as S.Schema<DeleteDomainResponse>;
+export const DeleteDomainResponse = EmptyOperandValue as any as S.Schema<DeleteDomainResponse>;
 export interface DeleteFieldRequest {
   domainId: string;
   fieldId: string;
@@ -1037,9 +1025,7 @@ export const DeleteFieldRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteFieldRequest" }) as any as S.Schema<DeleteFieldRequest>;
 export interface DeleteFieldResponse {}
-export const DeleteFieldResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFieldResponse",
-}) as any as S.Schema<DeleteFieldResponse>;
+export const DeleteFieldResponse = EmptyOperandValue as any as S.Schema<DeleteFieldResponse>;
 export interface DeleteLayoutRequest {
   domainId: string;
   layoutId: string;
@@ -1060,9 +1046,7 @@ export const DeleteLayoutRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteLayoutRequest" }) as any as S.Schema<DeleteLayoutRequest>;
 export interface DeleteLayoutResponse {}
-export const DeleteLayoutResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLayoutResponse",
-}) as any as S.Schema<DeleteLayoutResponse>;
+export const DeleteLayoutResponse = EmptyOperandValue as any as S.Schema<DeleteLayoutResponse>;
 export interface DeleteRelatedItemRequest {
   domainId: string;
   caseId: string;
@@ -1088,9 +1072,8 @@ export const DeleteRelatedItemRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteRelatedItemRequest" }) as any as S.Schema<DeleteRelatedItemRequest>;
 export interface DeleteRelatedItemResponse {}
-export const DeleteRelatedItemResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRelatedItemResponse",
-}) as any as S.Schema<DeleteRelatedItemResponse>;
+export const DeleteRelatedItemResponse =
+  EmptyOperandValue as any as S.Schema<DeleteRelatedItemResponse>;
 export interface DeleteTemplateRequest {
   domainId: string;
   templateId: string;
@@ -1111,11 +1094,10 @@ export const DeleteTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteTemplateRequest" }) as any as S.Schema<DeleteTemplateRequest>;
 export interface DeleteTemplateResponse {}
-export const DeleteTemplateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTemplateResponse",
-}) as any as S.Schema<DeleteTemplateResponse>;
+export const DeleteTemplateResponse = EmptyOperandValue as any as S.Schema<DeleteTemplateResponse>;
 export type FieldIdentifierList = FieldIdentifier[];
-export const FieldIdentifierList = /*@__PURE__*/ S.Array(FieldIdentifier);
+export const FieldIdentifierList =
+  BatchGetFieldIdentifierList as any as S.Schema<FieldIdentifierList>;
 export type NextToken = string;
 export interface GetCaseRequest {
   caseId: string;
@@ -1219,13 +1201,8 @@ export type AuditEventFieldValueUnion =
       emptyValue?: never;
       userArnValue: string;
     };
-export const AuditEventFieldValueUnion = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ stringValue: S.String }),
-  /*@__PURE__*/ S.Struct({ doubleValue: S.Number }),
-  /*@__PURE__*/ S.Struct({ booleanValue: S.Boolean }),
-  /*@__PURE__*/ S.Struct({ emptyValue: EmptyFieldValue }),
-  /*@__PURE__*/ S.Struct({ userArnValue: S.String }),
-]);
+export const AuditEventFieldValueUnion =
+  FieldValueUnion as any as S.Schema<AuditEventFieldValueUnion>;
 export interface AuditEventField {
   eventFieldId: string;
   oldValue?: AuditEventFieldValueUnion;
@@ -1573,7 +1550,7 @@ export const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDomainsResponse" }) as any as S.Schema<ListDomainsResponse>;
 export type Value = string;
 export type ValuesList = string[];
-export const ValuesList = /*@__PURE__*/ S.Array(S.String);
+export const ValuesList = ParentChildFieldOptionValueList as any as S.Schema<ValuesList>;
 export interface ListFieldOptionsRequest {
   domainId: string;
   fieldId: string;
@@ -1712,7 +1689,8 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
 export type TemplateStatusFilters = string[];
-export const TemplateStatusFilters = /*@__PURE__*/ S.Array(S.String);
+export const TemplateStatusFilters =
+  ParentChildFieldOptionValueList as any as S.Schema<TemplateStatusFilters>;
 export interface ListTemplatesRequest {
   domainId: string;
   maxResults?: number;
@@ -1790,7 +1768,7 @@ export const PutCaseEventConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutCaseEventConfigurationResponse>;
 export type Channel = string;
 export type ChannelList = string[];
-export const ChannelList = /*@__PURE__*/ S.Array(S.String);
+export const ChannelList = ParentChildFieldOptionValueList as any as S.Schema<ChannelList>;
 export interface ContactFilter {
   channel?: string[];
   contactArn?: string;
@@ -1799,9 +1777,7 @@ export const ContactFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ channel: S.optional(ChannelList), contactArn: S.optional(S.String) }),
 ).annotate({ identifier: "ContactFilter" }) as any as S.Schema<ContactFilter>;
 export interface CommentFilter {}
-export const CommentFilter = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CommentFilter",
-}) as any as S.Schema<CommentFilter>;
+export const CommentFilter = EmptyOperandValue as any as S.Schema<CommentFilter>;
 export interface FileFilter {
   fileArn?: string;
 }
@@ -2056,15 +2032,11 @@ export const SlaContent = /*@__PURE__*/ S.suspend(() =>
 export interface ConnectCaseContent {
   caseId: string;
 }
-export const ConnectCaseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ caseId: S.String }),
-).annotate({ identifier: "ConnectCaseContent" }) as any as S.Schema<ConnectCaseContent>;
+export const ConnectCaseContent = ConnectCaseInputContent as any as S.Schema<ConnectCaseContent>;
 export interface CustomContent {
   fields: FieldValue[];
 }
-export const CustomContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ fields: FieldValueList }),
-).annotate({ identifier: "CustomContent" }) as any as S.Schema<CustomContent>;
+export const CustomContent = CustomInputContent as any as S.Schema<CustomContent>;
 export type RelatedItemContent =
   | {
       contact: ContactContent;
@@ -2334,12 +2306,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = EmptyOperandValue as any as S.Schema<TagResourceResponse>;
 export type TagKey = string;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = ParentChildFieldOptionValueList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   arn: string;
   tagKeys: string[];
@@ -2351,9 +2321,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "DELETE", uri: "/tags/{arn}" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = EmptyOperandValue as any as S.Schema<UntagResourceResponse>;
 export interface UpdateCaseRequest {
   domainId: string;
   caseId: string;
@@ -2378,9 +2346,7 @@ export const UpdateCaseRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateCaseRequest" }) as any as S.Schema<UpdateCaseRequest>;
 export interface UpdateCaseResponse {}
-export const UpdateCaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateCaseResponse",
-}) as any as S.Schema<UpdateCaseResponse>;
+export const UpdateCaseResponse = EmptyOperandValue as any as S.Schema<UpdateCaseResponse>;
 export interface UpdateCaseRuleRequest {
   domainId: string;
   caseRuleId: string;
@@ -2407,9 +2373,7 @@ export const UpdateCaseRuleRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateCaseRuleRequest" }) as any as S.Schema<UpdateCaseRuleRequest>;
 export interface UpdateCaseRuleResponse {}
-export const UpdateCaseRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateCaseRuleResponse",
-}) as any as S.Schema<UpdateCaseRuleResponse>;
+export const UpdateCaseRuleResponse = EmptyOperandValue as any as S.Schema<UpdateCaseRuleResponse>;
 export interface UpdateFieldRequest {
   domainId: string;
   fieldId: string;
@@ -2436,9 +2400,7 @@ export const UpdateFieldRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateFieldRequest" }) as any as S.Schema<UpdateFieldRequest>;
 export interface UpdateFieldResponse {}
-export const UpdateFieldResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateFieldResponse",
-}) as any as S.Schema<UpdateFieldResponse>;
+export const UpdateFieldResponse = EmptyOperandValue as any as S.Schema<UpdateFieldResponse>;
 export interface UpdateLayoutRequest {
   domainId: string;
   layoutId: string;
@@ -2463,22 +2425,16 @@ export const UpdateLayoutRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateLayoutRequest" }) as any as S.Schema<UpdateLayoutRequest>;
 export interface UpdateLayoutResponse {}
-export const UpdateLayoutResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateLayoutResponse",
-}) as any as S.Schema<UpdateLayoutResponse>;
+export const UpdateLayoutResponse = EmptyOperandValue as any as S.Schema<UpdateLayoutResponse>;
 export interface CommentUpdateContent {
   body: string;
   contentType: string;
 }
-export const CommentUpdateContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ body: S.String, contentType: S.String }),
-).annotate({ identifier: "CommentUpdateContent" }) as any as S.Schema<CommentUpdateContent>;
+export const CommentUpdateContent = CommentContent as any as S.Schema<CommentUpdateContent>;
 export interface CustomUpdateContent {
   fields: FieldValue[];
 }
-export const CustomUpdateContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ fields: FieldValueList }),
-).annotate({ identifier: "CustomUpdateContent" }) as any as S.Schema<CustomUpdateContent>;
+export const CustomUpdateContent = CustomInputContent as any as S.Schema<CustomUpdateContent>;
 export type RelatedItemUpdateContent =
   | { comment: CommentUpdateContent; custom?: never }
   | { comment?: never; custom: CustomUpdateContent };
@@ -2572,9 +2528,7 @@ export const UpdateTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateTemplateRequest" }) as any as S.Schema<UpdateTemplateRequest>;
 export interface UpdateTemplateResponse {}
-export const UpdateTemplateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateTemplateResponse",
-}) as any as S.Schema<UpdateTemplateResponse>;
+export const UpdateTemplateResponse = EmptyOperandValue as any as S.Schema<UpdateTemplateResponse>;
 export type BatchGetCaseRuleError =
   | AccessDeniedException
   | InternalServerException

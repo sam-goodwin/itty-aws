@@ -707,14 +707,12 @@ export type OnRampsCreateRequestType = "OnrampTypeSingle" | "OnrampTypeHub";
 export const OnRampsCreateRequestType = S.String;
 
 export type OnRampsCreateRequestAttachedHubsList = Array<string>;
-export const OnRampsCreateRequestAttachedHubsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsCreateRequestAttachedHubsList>;
+export const OnRampsCreateRequestAttachedHubsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsCreateRequestAttachedHubsList>;
 
 export type OnRampsCreateRequestAttachedVpcsList = Array<string>;
-export const OnRampsCreateRequestAttachedVpcsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsCreateRequestAttachedVpcsList>;
+export const OnRampsCreateRequestAttachedVpcsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsCreateRequestAttachedVpcsList>;
 
 export interface CreateOnRampRequest {
   accountId: string;
@@ -770,14 +768,12 @@ export type OnRampsCreateResponseType = "OnrampTypeSingle" | "OnrampTypeHub";
 export const OnRampsCreateResponseType = S.String;
 
 export type OnRampsCreateResponseAttachedHubsList = Array<string>;
-export const OnRampsCreateResponseAttachedHubsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsCreateResponseAttachedHubsList>;
+export const OnRampsCreateResponseAttachedHubsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsCreateResponseAttachedHubsList>;
 
 export type OnRampsCreateResponseAttachedVpcsList = Array<string>;
-export const OnRampsCreateResponseAttachedVpcsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsCreateResponseAttachedVpcsList>;
+export const OnRampsCreateResponseAttachedVpcsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsCreateResponseAttachedVpcsList>;
 
 export interface OnRampsCreateResponsePlannedMonthlyCostEstimate {
   currency: string;
@@ -1017,9 +1013,8 @@ export const OnRampsCreateResponsePostApplyResourcesValueObservationsMap = /*@__
 ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueObservationsMap>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueProviderIdsList = Array<string>;
-export const OnRampsCreateResponsePostApplyResourcesValueProviderIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueProviderIdsList>;
+export const OnRampsCreateResponsePostApplyResourcesValueProviderIdsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueProviderIdsList>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueProviderNamesByIdMap = {
   [key: string]: string | undefined;
@@ -1815,10 +1810,8 @@ export const OnRampsCreateResponsePostApplyResourcesValueSectionsList = /*@__PUR
 export type OnRampsCreateResponsePostApplyResourcesValueStateMap = {
   [key: string]: unknown | undefined;
 };
-export const OnRampsCreateResponsePostApplyResourcesValueStateMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueStateMap>;
+export const OnRampsCreateResponsePostApplyResourcesValueStateMap =
+  OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueStateMap>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueTagsMap = {
   [key: string]: string | undefined;
@@ -1959,14 +1952,12 @@ export type OnRampsCreateResponseStatusPlanProgress = OnRampsCreateResponseStatu
 export const OnRampsCreateResponseStatusPlanProgress = OnRampsCreateResponseStatusApplyProgress;
 
 export type OnRampsCreateResponseStatusRoutesList = Array<string>;
-export const OnRampsCreateResponseStatusRoutesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsCreateResponseStatusRoutesList>;
+export const OnRampsCreateResponseStatusRoutesList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsCreateResponseStatusRoutesList>;
 
 export type OnRampsCreateResponseStatusTunnelsList = Array<string>;
-export const OnRampsCreateResponseStatusTunnelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsCreateResponseStatusTunnelsList>;
+export const OnRampsCreateResponseStatusTunnelsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsCreateResponseStatusTunnelsList>;
 
 export type OnRampsCreateResponseStatusLifecycleErrorsValueCode =
   | 1001
@@ -2190,10 +2181,8 @@ export type OnRampsCreateResponseVpcsByIdValueCloudType = "AWS" | "AZURE" | "GOO
 export const OnRampsCreateResponseVpcsByIdValueCloudType = S.String;
 
 export type OnRampsCreateResponseVpcsByIdValueConfigMap = { [key: string]: unknown | undefined };
-export const OnRampsCreateResponseVpcsByIdValueConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueConfigMap>;
+export const OnRampsCreateResponseVpcsByIdValueConfigMap =
+  OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsCreateResponseVpcsByIdValueConfigMap>;
 
 export type OnRampsCreateResponseVpcsByIdValueMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
@@ -2208,23 +2197,18 @@ export const OnRampsCreateResponseVpcsByIdValueObservationsValue =
 export type OnRampsCreateResponseVpcsByIdValueObservationsMap = {
   [key: string]: OnRampsCreateResponsePostApplyResourcesValueObservationsValue | undefined;
 };
-export const OnRampsCreateResponseVpcsByIdValueObservationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue,
-) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueObservationsMap>;
+export const OnRampsCreateResponseVpcsByIdValueObservationsMap =
+  OnRampsCreateResponsePostApplyResourcesValueObservationsMap as any as S.Schema<OnRampsCreateResponseVpcsByIdValueObservationsMap>;
 
 export type OnRampsCreateResponseVpcsByIdValueProviderIdsList = Array<string>;
-export const OnRampsCreateResponseVpcsByIdValueProviderIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueProviderIdsList>;
+export const OnRampsCreateResponseVpcsByIdValueProviderIdsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsCreateResponseVpcsByIdValueProviderIdsList>;
 
 export type OnRampsCreateResponseVpcsByIdValueProviderNamesByIdMap = {
   [key: string]: string | undefined;
 };
-export const OnRampsCreateResponseVpcsByIdValueProviderNamesByIdMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueProviderNamesByIdMap>;
+export const OnRampsCreateResponseVpcsByIdValueProviderNamesByIdMap =
+  OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<OnRampsCreateResponseVpcsByIdValueProviderNamesByIdMap>;
 
 export type OnRampsCreateResponseVpcsByIdValueResourceType =
   | "aws_customer_gateway"
@@ -2974,16 +2958,12 @@ export const OnRampsCreateResponseVpcsByIdValueSectionsList = /*@__PURE__*/ S.Ar
 ) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsList>;
 
 export type OnRampsCreateResponseVpcsByIdValueStateMap = { [key: string]: unknown | undefined };
-export const OnRampsCreateResponseVpcsByIdValueStateMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueStateMap>;
+export const OnRampsCreateResponseVpcsByIdValueStateMap =
+  OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsCreateResponseVpcsByIdValueStateMap>;
 
 export type OnRampsCreateResponseVpcsByIdValueTagsMap = { [key: string]: string | undefined };
-export const OnRampsCreateResponseVpcsByIdValueTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueTagsMap>;
+export const OnRampsCreateResponseVpcsByIdValueTagsMap =
+  OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<OnRampsCreateResponseVpcsByIdValueTagsMap>;
 
 export type OnRampsCreateResponseVpcsByIdValueManagedByItemClientType = "MAGIC_WAN_CLOUD_ONRAMP";
 export const OnRampsCreateResponseVpcsByIdValueManagedByItemClientType = S.String;
@@ -3077,9 +3057,8 @@ export const OnRampsCreateResponseVpcsByIdMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<OnRampsCreateResponseVpcsByIdMap>;
 
 export type OnRampsCreateResponseVpcsByIdUnavailableList = Array<string>;
-export const OnRampsCreateResponseVpcsByIdUnavailableList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsCreateResponseVpcsByIdUnavailableList>;
+export const OnRampsCreateResponseVpcsByIdUnavailableList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsCreateResponseVpcsByIdUnavailableList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateOnRampResponse {
@@ -3232,13 +3211,8 @@ export const DeleteCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteCloudIntegrationResponse {
   id: string;
 }
-export const DeleteCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteCloudIntegrationResponse",
-}) as any as S.Schema<DeleteCloudIntegrationResponse>;
+export const DeleteCloudIntegrationResponse =
+  DeleteCatalogSyncResponse as any as S.Schema<DeleteCloudIntegrationResponse>;
 
 export interface DeleteOnRampRequest {
   accountId: string;
@@ -3323,11 +3297,8 @@ export const DiscoverCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiscoverCloudIntegrationRequest>;
 
 export interface DiscoverCloudIntegrationResponse {}
-export const DiscoverCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DiscoverCloudIntegrationResponse",
-}) as any as S.Schema<DiscoverCloudIntegrationResponse>;
+export const DiscoverCloudIntegrationResponse =
+  DiscoverAllCloudIntegrationResponse as any as S.Schema<DiscoverCloudIntegrationResponse>;
 
 export interface ExportOnRampRequest {
   accountId: string;
@@ -3349,14 +3320,11 @@ export const ExportOnRampRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExportOnRampRequest" }) as any as S.Schema<ExportOnRampRequest>;
 
 export interface ExportOnRampResponse {}
-export const ExportOnRampResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "ExportOnRampResponse" }) as any as S.Schema<ExportOnRampResponse>;
+export const ExportOnRampResponse = ApplyOnRampResponse as any as S.Schema<ExportOnRampResponse>;
 
 export type ResourcesExportRequestResourceIdList = Array<string>;
-export const ResourcesExportRequestResourceIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourcesExportRequestResourceIdList>;
+export const ResourcesExportRequestResourceIdList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<ResourcesExportRequestResourceIdList>;
 
 export type ResourcesExportRequestResourceType =
   | "aws_customer_gateway"
@@ -3426,9 +3394,8 @@ export const ResourcesExportRequestResourceTypeList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ResourcesExportRequestResourceTypeList>;
 
 export type ResourcesExportRequestSearchList = Array<string>;
-export const ResourcesExportRequestSearchList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourcesExportRequestSearchList>;
+export const ResourcesExportRequestSearchList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<ResourcesExportRequestSearchList>;
 
 export interface ExportResourceRequest {
   accountId: string;
@@ -3467,9 +3434,8 @@ export const ExportResourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExportResourceRequest" }) as any as S.Schema<ExportResourceRequest>;
 
 export interface ExportResourceResponse {}
-export const ExportResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "ExportResourceResponse" }) as any as S.Schema<ExportResourceResponse>;
+export const ExportResourceResponse =
+  ApplyOnRampResponse as any as S.Schema<ExportResourceResponse>;
 
 export interface GetCatalogSyncRequest {
   accountId: string;
@@ -3795,9 +3761,8 @@ export type CloudIntegrationsGetResponseStatusLastDiscoveryStatusV2 =
 export const CloudIntegrationsGetResponseStatusLastDiscoveryStatusV2 = S.String;
 
 export type CloudIntegrationsGetResponseStatusRegionsList = Array<string>;
-export const CloudIntegrationsGetResponseStatusRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudIntegrationsGetResponseStatusRegionsList>;
+export const CloudIntegrationsGetResponseStatusRegionsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<CloudIntegrationsGetResponseStatusRegionsList>;
 
 export type CloudIntegrationsGetResponseStatusInUseByItemClientType = "MAGIC_WAN_CLOUD_ONRAMP";
 export const CloudIntegrationsGetResponseStatusInUseByItemClientType = S.String;
@@ -3960,14 +3925,12 @@ export type OnRampsGetResponseType = "OnrampTypeSingle" | "OnrampTypeHub";
 export const OnRampsGetResponseType = S.String;
 
 export type OnRampsGetResponseAttachedHubsList = Array<string>;
-export const OnRampsGetResponseAttachedHubsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsGetResponseAttachedHubsList>;
+export const OnRampsGetResponseAttachedHubsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsGetResponseAttachedHubsList>;
 
 export type OnRampsGetResponseAttachedVpcsList = Array<string>;
-export const OnRampsGetResponseAttachedVpcsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsGetResponseAttachedVpcsList>;
+export const OnRampsGetResponseAttachedVpcsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsGetResponseAttachedVpcsList>;
 
 export type OnRampsGetResponsePlannedMonthlyCostEstimate =
   OnRampsCreateResponsePlannedMonthlyCostEstimate;
@@ -3980,9 +3943,8 @@ export const OnRampsGetResponsePlannedResourcesItemDiff =
   OnRampsCreateResponsePlannedResourcesItemDiff;
 
 export type OnRampsGetResponsePlannedResourcesItemKeysRequireReplaceList = Array<string>;
-export const OnRampsGetResponsePlannedResourcesItemKeysRequireReplaceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsGetResponsePlannedResourcesItemKeysRequireReplaceList>;
+export const OnRampsGetResponsePlannedResourcesItemKeysRequireReplaceList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsGetResponsePlannedResourcesItemKeysRequireReplaceList>;
 
 export type OnRampsGetResponsePlannedResourcesItemMonthlyCostEstimateDiff =
   OnRampsCreateResponsePlannedMonthlyCostEstimate;
@@ -4132,10 +4094,8 @@ export const OnRampsGetResponsePostApplyResourcesValueCloudType = S.String;
 export type OnRampsGetResponsePostApplyResourcesValueConfigMap = {
   [key: string]: unknown | undefined;
 };
-export const OnRampsGetResponsePostApplyResourcesValueConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueConfigMap>;
+export const OnRampsGetResponsePostApplyResourcesValueConfigMap =
+  OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueConfigMap>;
 
 export type OnRampsGetResponsePostApplyResourcesValueMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
@@ -4150,23 +4110,18 @@ export const OnRampsGetResponsePostApplyResourcesValueObservationsValue =
 export type OnRampsGetResponsePostApplyResourcesValueObservationsMap = {
   [key: string]: OnRampsCreateResponsePostApplyResourcesValueObservationsValue | undefined;
 };
-export const OnRampsGetResponsePostApplyResourcesValueObservationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue,
-) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueObservationsMap>;
+export const OnRampsGetResponsePostApplyResourcesValueObservationsMap =
+  OnRampsCreateResponsePostApplyResourcesValueObservationsMap as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueObservationsMap>;
 
 export type OnRampsGetResponsePostApplyResourcesValueProviderIdsList = Array<string>;
-export const OnRampsGetResponsePostApplyResourcesValueProviderIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueProviderIdsList>;
+export const OnRampsGetResponsePostApplyResourcesValueProviderIdsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueProviderIdsList>;
 
 export type OnRampsGetResponsePostApplyResourcesValueProviderNamesByIdMap = {
   [key: string]: string | undefined;
 };
-export const OnRampsGetResponsePostApplyResourcesValueProviderNamesByIdMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueProviderNamesByIdMap>;
+export const OnRampsGetResponsePostApplyResourcesValueProviderNamesByIdMap =
+  OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueProviderNamesByIdMap>;
 
 export type OnRampsGetResponsePostApplyResourcesValueResourceType =
   | "aws_customer_gateway"
@@ -4922,18 +4877,14 @@ export const OnRampsGetResponsePostApplyResourcesValueSectionsList = /*@__PURE__
 export type OnRampsGetResponsePostApplyResourcesValueStateMap = {
   [key: string]: unknown | undefined;
 };
-export const OnRampsGetResponsePostApplyResourcesValueStateMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueStateMap>;
+export const OnRampsGetResponsePostApplyResourcesValueStateMap =
+  OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueStateMap>;
 
 export type OnRampsGetResponsePostApplyResourcesValueTagsMap = {
   [key: string]: string | undefined;
 };
-export const OnRampsGetResponsePostApplyResourcesValueTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueTagsMap>;
+export const OnRampsGetResponsePostApplyResourcesValueTagsMap =
+  OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueTagsMap>;
 
 export type OnRampsGetResponsePostApplyResourcesValueManagedByItemClientType =
   "MAGIC_WAN_CLOUD_ONRAMP";
@@ -5053,14 +5004,12 @@ export type OnRampsGetResponseStatusPlanProgress = OnRampsCreateResponseStatusAp
 export const OnRampsGetResponseStatusPlanProgress = OnRampsCreateResponseStatusApplyProgress;
 
 export type OnRampsGetResponseStatusRoutesList = Array<string>;
-export const OnRampsGetResponseStatusRoutesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsGetResponseStatusRoutesList>;
+export const OnRampsGetResponseStatusRoutesList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsGetResponseStatusRoutesList>;
 
 export type OnRampsGetResponseStatusTunnelsList = Array<string>;
-export const OnRampsGetResponseStatusTunnelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsGetResponseStatusTunnelsList>;
+export const OnRampsGetResponseStatusTunnelsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsGetResponseStatusTunnelsList>;
 
 export type OnRampsGetResponseStatusLifecycleErrorsValueCode =
   | 1001
@@ -5282,10 +5231,8 @@ export type OnRampsGetResponseVpcsByIdValueCloudType = "AWS" | "AZURE" | "GOOGLE
 export const OnRampsGetResponseVpcsByIdValueCloudType = S.String;
 
 export type OnRampsGetResponseVpcsByIdValueConfigMap = { [key: string]: unknown | undefined };
-export const OnRampsGetResponseVpcsByIdValueConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OnRampsGetResponseVpcsByIdValueConfigMap>;
+export const OnRampsGetResponseVpcsByIdValueConfigMap =
+  OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsGetResponseVpcsByIdValueConfigMap>;
 
 export type OnRampsGetResponseVpcsByIdValueMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
@@ -5300,23 +5247,18 @@ export const OnRampsGetResponseVpcsByIdValueObservationsValue =
 export type OnRampsGetResponseVpcsByIdValueObservationsMap = {
   [key: string]: OnRampsCreateResponsePostApplyResourcesValueObservationsValue | undefined;
 };
-export const OnRampsGetResponseVpcsByIdValueObservationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue,
-) as any as S.Schema<OnRampsGetResponseVpcsByIdValueObservationsMap>;
+export const OnRampsGetResponseVpcsByIdValueObservationsMap =
+  OnRampsCreateResponsePostApplyResourcesValueObservationsMap as any as S.Schema<OnRampsGetResponseVpcsByIdValueObservationsMap>;
 
 export type OnRampsGetResponseVpcsByIdValueProviderIdsList = Array<string>;
-export const OnRampsGetResponseVpcsByIdValueProviderIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsGetResponseVpcsByIdValueProviderIdsList>;
+export const OnRampsGetResponseVpcsByIdValueProviderIdsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsGetResponseVpcsByIdValueProviderIdsList>;
 
 export type OnRampsGetResponseVpcsByIdValueProviderNamesByIdMap = {
   [key: string]: string | undefined;
 };
-export const OnRampsGetResponseVpcsByIdValueProviderNamesByIdMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OnRampsGetResponseVpcsByIdValueProviderNamesByIdMap>;
+export const OnRampsGetResponseVpcsByIdValueProviderNamesByIdMap =
+  OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<OnRampsGetResponseVpcsByIdValueProviderNamesByIdMap>;
 
 export type OnRampsGetResponseVpcsByIdValueResourceType =
   | "aws_customer_gateway"
@@ -6062,16 +6004,12 @@ export const OnRampsGetResponseVpcsByIdValueSectionsList = /*@__PURE__*/ S.Array
 ) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsList>;
 
 export type OnRampsGetResponseVpcsByIdValueStateMap = { [key: string]: unknown | undefined };
-export const OnRampsGetResponseVpcsByIdValueStateMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OnRampsGetResponseVpcsByIdValueStateMap>;
+export const OnRampsGetResponseVpcsByIdValueStateMap =
+  OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsGetResponseVpcsByIdValueStateMap>;
 
 export type OnRampsGetResponseVpcsByIdValueTagsMap = { [key: string]: string | undefined };
-export const OnRampsGetResponseVpcsByIdValueTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OnRampsGetResponseVpcsByIdValueTagsMap>;
+export const OnRampsGetResponseVpcsByIdValueTagsMap =
+  OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<OnRampsGetResponseVpcsByIdValueTagsMap>;
 
 export type OnRampsGetResponseVpcsByIdValueManagedByItemClientType = "MAGIC_WAN_CLOUD_ONRAMP";
 export const OnRampsGetResponseVpcsByIdValueManagedByItemClientType = S.String;
@@ -6163,9 +6101,8 @@ export const OnRampsGetResponseVpcsByIdMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<OnRampsGetResponseVpcsByIdMap>;
 
 export type OnRampsGetResponseVpcsByIdUnavailableList = Array<string>;
-export const OnRampsGetResponseVpcsByIdUnavailableList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsGetResponseVpcsByIdUnavailableList>;
+export const OnRampsGetResponseVpcsByIdUnavailableList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsGetResponseVpcsByIdUnavailableList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetOnRampResponse {
@@ -6285,10 +6222,8 @@ export type ResourcesGetResponseCloudType = "AWS" | "AZURE" | "GOOGLE" | "CLOUDF
 export const ResourcesGetResponseCloudType = S.String;
 
 export type ResourcesGetResponseConfigMap = { [key: string]: unknown | undefined };
-export const ResourcesGetResponseConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ResourcesGetResponseConfigMap>;
+export const ResourcesGetResponseConfigMap =
+  OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<ResourcesGetResponseConfigMap>;
 
 export type ResourcesGetResponseMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
@@ -6303,21 +6238,16 @@ export const ResourcesGetResponseObservationsValue =
 export type ResourcesGetResponseObservationsMap = {
   [key: string]: OnRampsCreateResponsePostApplyResourcesValueObservationsValue | undefined;
 };
-export const ResourcesGetResponseObservationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue,
-) as any as S.Schema<ResourcesGetResponseObservationsMap>;
+export const ResourcesGetResponseObservationsMap =
+  OnRampsCreateResponsePostApplyResourcesValueObservationsMap as any as S.Schema<ResourcesGetResponseObservationsMap>;
 
 export type ResourcesGetResponseProviderIdsList = Array<string>;
-export const ResourcesGetResponseProviderIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourcesGetResponseProviderIdsList>;
+export const ResourcesGetResponseProviderIdsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<ResourcesGetResponseProviderIdsList>;
 
 export type ResourcesGetResponseProviderNamesByIdMap = { [key: string]: string | undefined };
-export const ResourcesGetResponseProviderNamesByIdMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ResourcesGetResponseProviderNamesByIdMap>;
+export const ResourcesGetResponseProviderNamesByIdMap =
+  OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<ResourcesGetResponseProviderNamesByIdMap>;
 
 export type ResourcesGetResponseResourceType =
   | "aws_customer_gateway"
@@ -7052,16 +6982,12 @@ export const ResourcesGetResponseSectionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ResourcesGetResponseSectionsList>;
 
 export type ResourcesGetResponseStateMap = { [key: string]: unknown | undefined };
-export const ResourcesGetResponseStateMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ResourcesGetResponseStateMap>;
+export const ResourcesGetResponseStateMap =
+  OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<ResourcesGetResponseStateMap>;
 
 export type ResourcesGetResponseTagsMap = { [key: string]: string | undefined };
-export const ResourcesGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ResourcesGetResponseTagsMap>;
+export const ResourcesGetResponseTagsMap =
+  OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<ResourcesGetResponseTagsMap>;
 
 export type ResourcesGetResponseManagedByItemClientType = "MAGIC_WAN_CLOUD_ONRAMP";
 export const ResourcesGetResponseManagedByItemClientType = S.String;
@@ -7646,9 +7572,8 @@ export type CloudIntegrationsListResultItemStatusLastDiscoveryStatusV2 =
 export const CloudIntegrationsListResultItemStatusLastDiscoveryStatusV2 = S.String;
 
 export type CloudIntegrationsListResultItemStatusRegionsList = Array<string>;
-export const CloudIntegrationsListResultItemStatusRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudIntegrationsListResultItemStatusRegionsList>;
+export const CloudIntegrationsListResultItemStatusRegionsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<CloudIntegrationsListResultItemStatusRegionsList>;
 
 export type CloudIntegrationsListResultItemStatusInUseByItemClientType = "MAGIC_WAN_CLOUD_ONRAMP";
 export const CloudIntegrationsListResultItemStatusInUseByItemClientType = S.String;
@@ -7818,9 +7743,8 @@ export const ListOnRampAddressSpacesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOnRampAddressSpacesRequest>;
 
 export type OnRampsAddressSpacesListResponsePrefixesList = Array<string>;
-export const OnRampsAddressSpacesListResponsePrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsAddressSpacesListResponsePrefixesList>;
+export const OnRampsAddressSpacesListResponsePrefixesList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsAddressSpacesListResponsePrefixesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListOnRampAddressSpacesResponse {
@@ -7861,14 +7785,12 @@ export type OnRampsListResultItemType = "OnrampTypeSingle" | "OnrampTypeHub";
 export const OnRampsListResultItemType = S.String;
 
 export type OnRampsListResultItemAttachedHubsList = Array<string>;
-export const OnRampsListResultItemAttachedHubsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsListResultItemAttachedHubsList>;
+export const OnRampsListResultItemAttachedHubsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsListResultItemAttachedHubsList>;
 
 export type OnRampsListResultItemAttachedVpcsList = Array<string>;
-export const OnRampsListResultItemAttachedVpcsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsListResultItemAttachedVpcsList>;
+export const OnRampsListResultItemAttachedVpcsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsListResultItemAttachedVpcsList>;
 
 export type OnRampsListResultItemPlannedMonthlyCostEstimate =
   OnRampsCreateResponsePlannedMonthlyCostEstimate;
@@ -7882,9 +7804,7 @@ export const OnRampsListResultItemPlannedResourcesItemDiff =
 
 export type OnRampsListResultItemPlannedResourcesItemKeysRequireReplaceList = Array<string>;
 export const OnRampsListResultItemPlannedResourcesItemKeysRequireReplaceList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OnRampsListResultItemPlannedResourcesItemKeysRequireReplaceList>;
+  OnRampsCreateResponsePlannedResourcesItemKeysRequireReplaceList as any as S.Schema<OnRampsListResultItemPlannedResourcesItemKeysRequireReplaceList>;
 
 export type OnRampsListResultItemPlannedResourcesItemMonthlyCostEstimateDiff =
   OnRampsCreateResponsePlannedMonthlyCostEstimate;
@@ -8037,10 +7957,8 @@ export const OnRampsListResultItemPostApplyResourcesValueCloudType = S.String;
 export type OnRampsListResultItemPostApplyResourcesValueConfigMap = {
   [key: string]: unknown | undefined;
 };
-export const OnRampsListResultItemPostApplyResourcesValueConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueConfigMap>;
+export const OnRampsListResultItemPostApplyResourcesValueConfigMap =
+  OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueConfigMap>;
 
 export type OnRampsListResultItemPostApplyResourcesValueMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
@@ -8055,24 +7973,18 @@ export const OnRampsListResultItemPostApplyResourcesValueObservationsValue =
 export type OnRampsListResultItemPostApplyResourcesValueObservationsMap = {
   [key: string]: OnRampsCreateResponsePostApplyResourcesValueObservationsValue | undefined;
 };
-export const OnRampsListResultItemPostApplyResourcesValueObservationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue,
-) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueObservationsMap>;
+export const OnRampsListResultItemPostApplyResourcesValueObservationsMap =
+  OnRampsCreateResponsePostApplyResourcesValueObservationsMap as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueObservationsMap>;
 
 export type OnRampsListResultItemPostApplyResourcesValueProviderIdsList = Array<string>;
-export const OnRampsListResultItemPostApplyResourcesValueProviderIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueProviderIdsList>;
+export const OnRampsListResultItemPostApplyResourcesValueProviderIdsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueProviderIdsList>;
 
 export type OnRampsListResultItemPostApplyResourcesValueProviderNamesByIdMap = {
   [key: string]: string | undefined;
 };
 export const OnRampsListResultItemPostApplyResourcesValueProviderNamesByIdMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueProviderNamesByIdMap>;
+  OnRampsCreateResponsePostApplyResourcesValueProviderNamesByIdMap as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueProviderNamesByIdMap>;
 
 export type OnRampsListResultItemPostApplyResourcesValueResourceType =
   | "aws_customer_gateway"
@@ -8829,18 +8741,14 @@ export const OnRampsListResultItemPostApplyResourcesValueSectionsList = /*@__PUR
 export type OnRampsListResultItemPostApplyResourcesValueStateMap = {
   [key: string]: unknown | undefined;
 };
-export const OnRampsListResultItemPostApplyResourcesValueStateMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueStateMap>;
+export const OnRampsListResultItemPostApplyResourcesValueStateMap =
+  OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueStateMap>;
 
 export type OnRampsListResultItemPostApplyResourcesValueTagsMap = {
   [key: string]: string | undefined;
 };
-export const OnRampsListResultItemPostApplyResourcesValueTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueTagsMap>;
+export const OnRampsListResultItemPostApplyResourcesValueTagsMap =
+  OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueTagsMap>;
 
 export type OnRampsListResultItemPostApplyResourcesValueManagedByItemClientType =
   "MAGIC_WAN_CLOUD_ONRAMP";
@@ -8963,14 +8871,12 @@ export type OnRampsListResultItemStatusPlanProgress = OnRampsCreateResponseStatu
 export const OnRampsListResultItemStatusPlanProgress = OnRampsCreateResponseStatusApplyProgress;
 
 export type OnRampsListResultItemStatusRoutesList = Array<string>;
-export const OnRampsListResultItemStatusRoutesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsListResultItemStatusRoutesList>;
+export const OnRampsListResultItemStatusRoutesList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsListResultItemStatusRoutesList>;
 
 export type OnRampsListResultItemStatusTunnelsList = Array<string>;
-export const OnRampsListResultItemStatusTunnelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsListResultItemStatusTunnelsList>;
+export const OnRampsListResultItemStatusTunnelsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsListResultItemStatusTunnelsList>;
 
 export type OnRampsListResultItemStatusLifecycleErrorsValueCode =
   | 1001
@@ -9194,10 +9100,8 @@ export type OnRampsListResultItemVpcsByIdValueCloudType = "AWS" | "AZURE" | "GOO
 export const OnRampsListResultItemVpcsByIdValueCloudType = S.String;
 
 export type OnRampsListResultItemVpcsByIdValueConfigMap = { [key: string]: unknown | undefined };
-export const OnRampsListResultItemVpcsByIdValueConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OnRampsListResultItemVpcsByIdValueConfigMap>;
+export const OnRampsListResultItemVpcsByIdValueConfigMap =
+  OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsListResultItemVpcsByIdValueConfigMap>;
 
 export type OnRampsListResultItemVpcsByIdValueMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
@@ -9212,23 +9116,18 @@ export const OnRampsListResultItemVpcsByIdValueObservationsValue =
 export type OnRampsListResultItemVpcsByIdValueObservationsMap = {
   [key: string]: OnRampsCreateResponsePostApplyResourcesValueObservationsValue | undefined;
 };
-export const OnRampsListResultItemVpcsByIdValueObservationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue,
-) as any as S.Schema<OnRampsListResultItemVpcsByIdValueObservationsMap>;
+export const OnRampsListResultItemVpcsByIdValueObservationsMap =
+  OnRampsCreateResponsePostApplyResourcesValueObservationsMap as any as S.Schema<OnRampsListResultItemVpcsByIdValueObservationsMap>;
 
 export type OnRampsListResultItemVpcsByIdValueProviderIdsList = Array<string>;
-export const OnRampsListResultItemVpcsByIdValueProviderIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsListResultItemVpcsByIdValueProviderIdsList>;
+export const OnRampsListResultItemVpcsByIdValueProviderIdsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsListResultItemVpcsByIdValueProviderIdsList>;
 
 export type OnRampsListResultItemVpcsByIdValueProviderNamesByIdMap = {
   [key: string]: string | undefined;
 };
-export const OnRampsListResultItemVpcsByIdValueProviderNamesByIdMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OnRampsListResultItemVpcsByIdValueProviderNamesByIdMap>;
+export const OnRampsListResultItemVpcsByIdValueProviderNamesByIdMap =
+  OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<OnRampsListResultItemVpcsByIdValueProviderNamesByIdMap>;
 
 export type OnRampsListResultItemVpcsByIdValueResourceType =
   | "aws_customer_gateway"
@@ -9978,16 +9877,12 @@ export const OnRampsListResultItemVpcsByIdValueSectionsList = /*@__PURE__*/ S.Ar
 ) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsList>;
 
 export type OnRampsListResultItemVpcsByIdValueStateMap = { [key: string]: unknown | undefined };
-export const OnRampsListResultItemVpcsByIdValueStateMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OnRampsListResultItemVpcsByIdValueStateMap>;
+export const OnRampsListResultItemVpcsByIdValueStateMap =
+  OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsListResultItemVpcsByIdValueStateMap>;
 
 export type OnRampsListResultItemVpcsByIdValueTagsMap = { [key: string]: string | undefined };
-export const OnRampsListResultItemVpcsByIdValueTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OnRampsListResultItemVpcsByIdValueTagsMap>;
+export const OnRampsListResultItemVpcsByIdValueTagsMap =
+  OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<OnRampsListResultItemVpcsByIdValueTagsMap>;
 
 export type OnRampsListResultItemVpcsByIdValueManagedByItemClientType = "MAGIC_WAN_CLOUD_ONRAMP";
 export const OnRampsListResultItemVpcsByIdValueManagedByItemClientType = S.String;
@@ -10081,9 +9976,8 @@ export const OnRampsListResultItemVpcsByIdMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<OnRampsListResultItemVpcsByIdMap>;
 
 export type OnRampsListResultItemVpcsByIdUnavailableList = Array<string>;
-export const OnRampsListResultItemVpcsByIdUnavailableList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsListResultItemVpcsByIdUnavailableList>;
+export const OnRampsListResultItemVpcsByIdUnavailableList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsListResultItemVpcsByIdUnavailableList>;
 
 export interface OnRampsListResultItem {
   id: string;
@@ -10196,9 +10090,8 @@ export const ListOnRampsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListOnRampsResponse" }) as any as S.Schema<ListOnRampsResponse>;
 
 export type ResourcesListRequestResourceIdList = Array<string>;
-export const ResourcesListRequestResourceIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourcesListRequestResourceIdList>;
+export const ResourcesListRequestResourceIdList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<ResourcesListRequestResourceIdList>;
 
 export type ResourcesListRequestResourceType =
   | "aws_customer_gateway"
@@ -10268,9 +10161,8 @@ export const ResourcesListRequestResourceTypeList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ResourcesListRequestResourceTypeList>;
 
 export type ResourcesListRequestSearchList = Array<string>;
-export const ResourcesListRequestSearchList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourcesListRequestSearchList>;
+export const ResourcesListRequestSearchList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<ResourcesListRequestSearchList>;
 
 export interface ListResourcesRequest {
   accountId: string;
@@ -10314,10 +10206,8 @@ export type ResourcesListResultItemCloudType = "AWS" | "AZURE" | "GOOGLE" | "CLO
 export const ResourcesListResultItemCloudType = S.String;
 
 export type ResourcesListResultItemConfigMap = { [key: string]: unknown | undefined };
-export const ResourcesListResultItemConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ResourcesListResultItemConfigMap>;
+export const ResourcesListResultItemConfigMap =
+  OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<ResourcesListResultItemConfigMap>;
 
 export type ResourcesListResultItemMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
@@ -10332,21 +10222,16 @@ export const ResourcesListResultItemObservationsValue =
 export type ResourcesListResultItemObservationsMap = {
   [key: string]: OnRampsCreateResponsePostApplyResourcesValueObservationsValue | undefined;
 };
-export const ResourcesListResultItemObservationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue,
-) as any as S.Schema<ResourcesListResultItemObservationsMap>;
+export const ResourcesListResultItemObservationsMap =
+  OnRampsCreateResponsePostApplyResourcesValueObservationsMap as any as S.Schema<ResourcesListResultItemObservationsMap>;
 
 export type ResourcesListResultItemProviderIdsList = Array<string>;
-export const ResourcesListResultItemProviderIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourcesListResultItemProviderIdsList>;
+export const ResourcesListResultItemProviderIdsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<ResourcesListResultItemProviderIdsList>;
 
 export type ResourcesListResultItemProviderNamesByIdMap = { [key: string]: string | undefined };
-export const ResourcesListResultItemProviderNamesByIdMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ResourcesListResultItemProviderNamesByIdMap>;
+export const ResourcesListResultItemProviderNamesByIdMap =
+  OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<ResourcesListResultItemProviderNamesByIdMap>;
 
 export type ResourcesListResultItemResourceType =
   | "aws_customer_gateway"
@@ -11082,16 +10967,12 @@ export const ResourcesListResultItemSectionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ResourcesListResultItemSectionsList>;
 
 export type ResourcesListResultItemStateMap = { [key: string]: unknown | undefined };
-export const ResourcesListResultItemStateMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ResourcesListResultItemStateMap>;
+export const ResourcesListResultItemStateMap =
+  OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<ResourcesListResultItemStateMap>;
 
 export type ResourcesListResultItemTagsMap = { [key: string]: string | undefined };
-export const ResourcesListResultItemTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ResourcesListResultItemTagsMap>;
+export const ResourcesListResultItemTagsMap =
+  OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<ResourcesListResultItemTagsMap>;
 
 export type ResourcesListResultItemManagedByItemClientType = "MAGIC_WAN_CLOUD_ONRAMP";
 export const ResourcesListResultItemManagedByItemClientType = S.String;
@@ -11537,9 +11418,8 @@ export type CloudIntegrationsEditResponseStatusLastDiscoveryStatusV2 =
 export const CloudIntegrationsEditResponseStatusLastDiscoveryStatusV2 = S.String;
 
 export type CloudIntegrationsEditResponseStatusRegionsList = Array<string>;
-export const CloudIntegrationsEditResponseStatusRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudIntegrationsEditResponseStatusRegionsList>;
+export const CloudIntegrationsEditResponseStatusRegionsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<CloudIntegrationsEditResponseStatusRegionsList>;
 
 export type CloudIntegrationsEditResponseStatusInUseByItemClientType = "MAGIC_WAN_CLOUD_ONRAMP";
 export const CloudIntegrationsEditResponseStatusInUseByItemClientType = S.String;
@@ -11671,14 +11551,12 @@ export const PatchCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchCloudIntegrationResponse>;
 
 export type OnRampsEditRequestAttachedHubsList = Array<string>;
-export const OnRampsEditRequestAttachedHubsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsEditRequestAttachedHubsList>;
+export const OnRampsEditRequestAttachedHubsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsEditRequestAttachedHubsList>;
 
 export type OnRampsEditRequestAttachedVpcsList = Array<string>;
-export const OnRampsEditRequestAttachedVpcsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsEditRequestAttachedVpcsList>;
+export const OnRampsEditRequestAttachedVpcsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsEditRequestAttachedVpcsList>;
 
 export interface PatchOnRampRequest {
   accountId: string;
@@ -11724,14 +11602,12 @@ export type OnRampsEditResponseType = "OnrampTypeSingle" | "OnrampTypeHub";
 export const OnRampsEditResponseType = S.String;
 
 export type OnRampsEditResponseAttachedHubsList = Array<string>;
-export const OnRampsEditResponseAttachedHubsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsEditResponseAttachedHubsList>;
+export const OnRampsEditResponseAttachedHubsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsEditResponseAttachedHubsList>;
 
 export type OnRampsEditResponseAttachedVpcsList = Array<string>;
-export const OnRampsEditResponseAttachedVpcsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsEditResponseAttachedVpcsList>;
+export const OnRampsEditResponseAttachedVpcsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsEditResponseAttachedVpcsList>;
 
 export type OnRampsEditResponsePlannedMonthlyCostEstimate =
   OnRampsCreateResponsePlannedMonthlyCostEstimate;
@@ -11744,9 +11620,8 @@ export const OnRampsEditResponsePlannedResourcesItemDiff =
   OnRampsCreateResponsePlannedResourcesItemDiff;
 
 export type OnRampsEditResponsePlannedResourcesItemKeysRequireReplaceList = Array<string>;
-export const OnRampsEditResponsePlannedResourcesItemKeysRequireReplaceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsEditResponsePlannedResourcesItemKeysRequireReplaceList>;
+export const OnRampsEditResponsePlannedResourcesItemKeysRequireReplaceList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsEditResponsePlannedResourcesItemKeysRequireReplaceList>;
 
 export type OnRampsEditResponsePlannedResourcesItemMonthlyCostEstimateDiff =
   OnRampsCreateResponsePlannedMonthlyCostEstimate;
@@ -11897,10 +11772,8 @@ export const OnRampsEditResponsePostApplyResourcesValueCloudType = S.String;
 export type OnRampsEditResponsePostApplyResourcesValueConfigMap = {
   [key: string]: unknown | undefined;
 };
-export const OnRampsEditResponsePostApplyResourcesValueConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueConfigMap>;
+export const OnRampsEditResponsePostApplyResourcesValueConfigMap =
+  OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueConfigMap>;
 
 export type OnRampsEditResponsePostApplyResourcesValueMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
@@ -11915,24 +11788,18 @@ export const OnRampsEditResponsePostApplyResourcesValueObservationsValue =
 export type OnRampsEditResponsePostApplyResourcesValueObservationsMap = {
   [key: string]: OnRampsCreateResponsePostApplyResourcesValueObservationsValue | undefined;
 };
-export const OnRampsEditResponsePostApplyResourcesValueObservationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue,
-) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueObservationsMap>;
+export const OnRampsEditResponsePostApplyResourcesValueObservationsMap =
+  OnRampsCreateResponsePostApplyResourcesValueObservationsMap as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueObservationsMap>;
 
 export type OnRampsEditResponsePostApplyResourcesValueProviderIdsList = Array<string>;
-export const OnRampsEditResponsePostApplyResourcesValueProviderIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueProviderIdsList>;
+export const OnRampsEditResponsePostApplyResourcesValueProviderIdsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueProviderIdsList>;
 
 export type OnRampsEditResponsePostApplyResourcesValueProviderNamesByIdMap = {
   [key: string]: string | undefined;
 };
 export const OnRampsEditResponsePostApplyResourcesValueProviderNamesByIdMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueProviderNamesByIdMap>;
+  OnRampsCreateResponsePostApplyResourcesValueProviderNamesByIdMap as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueProviderNamesByIdMap>;
 
 export type OnRampsEditResponsePostApplyResourcesValueResourceType =
   | "aws_customer_gateway"
@@ -12688,18 +12555,14 @@ export const OnRampsEditResponsePostApplyResourcesValueSectionsList = /*@__PURE_
 export type OnRampsEditResponsePostApplyResourcesValueStateMap = {
   [key: string]: unknown | undefined;
 };
-export const OnRampsEditResponsePostApplyResourcesValueStateMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueStateMap>;
+export const OnRampsEditResponsePostApplyResourcesValueStateMap =
+  OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueStateMap>;
 
 export type OnRampsEditResponsePostApplyResourcesValueTagsMap = {
   [key: string]: string | undefined;
 };
-export const OnRampsEditResponsePostApplyResourcesValueTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueTagsMap>;
+export const OnRampsEditResponsePostApplyResourcesValueTagsMap =
+  OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueTagsMap>;
 
 export type OnRampsEditResponsePostApplyResourcesValueManagedByItemClientType =
   "MAGIC_WAN_CLOUD_ONRAMP";
@@ -12819,14 +12682,12 @@ export type OnRampsEditResponseStatusPlanProgress = OnRampsCreateResponseStatusA
 export const OnRampsEditResponseStatusPlanProgress = OnRampsCreateResponseStatusApplyProgress;
 
 export type OnRampsEditResponseStatusRoutesList = Array<string>;
-export const OnRampsEditResponseStatusRoutesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsEditResponseStatusRoutesList>;
+export const OnRampsEditResponseStatusRoutesList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsEditResponseStatusRoutesList>;
 
 export type OnRampsEditResponseStatusTunnelsList = Array<string>;
-export const OnRampsEditResponseStatusTunnelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsEditResponseStatusTunnelsList>;
+export const OnRampsEditResponseStatusTunnelsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsEditResponseStatusTunnelsList>;
 
 export type OnRampsEditResponseStatusLifecycleErrorsValueCode =
   | 1001
@@ -13050,10 +12911,8 @@ export type OnRampsEditResponseVpcsByIdValueCloudType = "AWS" | "AZURE" | "GOOGL
 export const OnRampsEditResponseVpcsByIdValueCloudType = S.String;
 
 export type OnRampsEditResponseVpcsByIdValueConfigMap = { [key: string]: unknown | undefined };
-export const OnRampsEditResponseVpcsByIdValueConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OnRampsEditResponseVpcsByIdValueConfigMap>;
+export const OnRampsEditResponseVpcsByIdValueConfigMap =
+  OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsEditResponseVpcsByIdValueConfigMap>;
 
 export type OnRampsEditResponseVpcsByIdValueMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
@@ -13068,23 +12927,18 @@ export const OnRampsEditResponseVpcsByIdValueObservationsValue =
 export type OnRampsEditResponseVpcsByIdValueObservationsMap = {
   [key: string]: OnRampsCreateResponsePostApplyResourcesValueObservationsValue | undefined;
 };
-export const OnRampsEditResponseVpcsByIdValueObservationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue,
-) as any as S.Schema<OnRampsEditResponseVpcsByIdValueObservationsMap>;
+export const OnRampsEditResponseVpcsByIdValueObservationsMap =
+  OnRampsCreateResponsePostApplyResourcesValueObservationsMap as any as S.Schema<OnRampsEditResponseVpcsByIdValueObservationsMap>;
 
 export type OnRampsEditResponseVpcsByIdValueProviderIdsList = Array<string>;
-export const OnRampsEditResponseVpcsByIdValueProviderIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsEditResponseVpcsByIdValueProviderIdsList>;
+export const OnRampsEditResponseVpcsByIdValueProviderIdsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsEditResponseVpcsByIdValueProviderIdsList>;
 
 export type OnRampsEditResponseVpcsByIdValueProviderNamesByIdMap = {
   [key: string]: string | undefined;
 };
-export const OnRampsEditResponseVpcsByIdValueProviderNamesByIdMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OnRampsEditResponseVpcsByIdValueProviderNamesByIdMap>;
+export const OnRampsEditResponseVpcsByIdValueProviderNamesByIdMap =
+  OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<OnRampsEditResponseVpcsByIdValueProviderNamesByIdMap>;
 
 export type OnRampsEditResponseVpcsByIdValueResourceType =
   | "aws_customer_gateway"
@@ -13832,16 +13686,12 @@ export const OnRampsEditResponseVpcsByIdValueSectionsList = /*@__PURE__*/ S.Arra
 ) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsList>;
 
 export type OnRampsEditResponseVpcsByIdValueStateMap = { [key: string]: unknown | undefined };
-export const OnRampsEditResponseVpcsByIdValueStateMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OnRampsEditResponseVpcsByIdValueStateMap>;
+export const OnRampsEditResponseVpcsByIdValueStateMap =
+  OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsEditResponseVpcsByIdValueStateMap>;
 
 export type OnRampsEditResponseVpcsByIdValueTagsMap = { [key: string]: string | undefined };
-export const OnRampsEditResponseVpcsByIdValueTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OnRampsEditResponseVpcsByIdValueTagsMap>;
+export const OnRampsEditResponseVpcsByIdValueTagsMap =
+  OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<OnRampsEditResponseVpcsByIdValueTagsMap>;
 
 export type OnRampsEditResponseVpcsByIdValueManagedByItemClientType = "MAGIC_WAN_CLOUD_ONRAMP";
 export const OnRampsEditResponseVpcsByIdValueManagedByItemClientType = S.String;
@@ -13933,9 +13783,8 @@ export const OnRampsEditResponseVpcsByIdMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<OnRampsEditResponseVpcsByIdMap>;
 
 export type OnRampsEditResponseVpcsByIdUnavailableList = Array<string>;
-export const OnRampsEditResponseVpcsByIdUnavailableList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsEditResponseVpcsByIdUnavailableList>;
+export const OnRampsEditResponseVpcsByIdUnavailableList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsEditResponseVpcsByIdUnavailableList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchOnRampResponse {
@@ -14031,9 +13880,8 @@ export const PatchOnRampResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchOnRampResponse" }) as any as S.Schema<PatchOnRampResponse>;
 
 export type OnRampsAddressSpacesEditRequestPrefixesList = Array<string>;
-export const OnRampsAddressSpacesEditRequestPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsAddressSpacesEditRequestPrefixesList>;
+export const OnRampsAddressSpacesEditRequestPrefixesList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsAddressSpacesEditRequestPrefixesList>;
 
 export interface PatchOnRampAddressSpaceRequest {
   accountId: string;
@@ -14057,21 +13905,15 @@ export const PatchOnRampAddressSpaceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchOnRampAddressSpaceRequest>;
 
 export type OnRampsAddressSpacesEditResponsePrefixesList = Array<string>;
-export const OnRampsAddressSpacesEditResponsePrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsAddressSpacesEditResponsePrefixesList>;
+export const OnRampsAddressSpacesEditResponsePrefixesList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsAddressSpacesEditResponsePrefixesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchOnRampAddressSpaceResponse {
   prefixes: OnRampsAddressSpacesEditResponsePrefixesList;
 }
-export const PatchOnRampAddressSpaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prefixes: OnRampsAddressSpacesEditResponsePrefixesList,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PatchOnRampAddressSpaceResponse",
-}) as any as S.Schema<PatchOnRampAddressSpaceResponse>;
+export const PatchOnRampAddressSpaceResponse =
+  ListOnRampAddressSpacesResponse as any as S.Schema<PatchOnRampAddressSpaceResponse>;
 
 export interface PlanOnRampRequest {
   accountId: string;
@@ -14093,9 +13935,7 @@ export const PlanOnRampRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PlanOnRampRequest" }) as any as S.Schema<PlanOnRampRequest>;
 
 export interface PlanOnRampResponse {}
-export const PlanOnRampResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PlanOnRampResponse" }) as any as S.Schema<PlanOnRampResponse>;
+export const PlanOnRampResponse = ApplyOnRampResponse as any as S.Schema<PlanOnRampResponse>;
 
 export interface PolicyPreviewResourceRequest {
   accountId: string;
@@ -14126,9 +13966,8 @@ export const PolicyPreviewResourceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicyPreviewResourceResponse>;
 
 export type OnRampsAddressSpacesUpdateRequestPrefixesList = Array<string>;
-export const OnRampsAddressSpacesUpdateRequestPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsAddressSpacesUpdateRequestPrefixesList>;
+export const OnRampsAddressSpacesUpdateRequestPrefixesList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsAddressSpacesUpdateRequestPrefixesList>;
 
 export interface PutOnRampAddressSpaceRequest {
   accountId: string;
@@ -14152,21 +13991,15 @@ export const PutOnRampAddressSpaceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutOnRampAddressSpaceRequest>;
 
 export type OnRampsAddressSpacesUpdateResponsePrefixesList = Array<string>;
-export const OnRampsAddressSpacesUpdateResponsePrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsAddressSpacesUpdateResponsePrefixesList>;
+export const OnRampsAddressSpacesUpdateResponsePrefixesList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsAddressSpacesUpdateResponsePrefixesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutOnRampAddressSpaceResponse {
   prefixes: OnRampsAddressSpacesUpdateResponsePrefixesList;
 }
-export const PutOnRampAddressSpaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prefixes: OnRampsAddressSpacesUpdateResponsePrefixesList,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PutOnRampAddressSpaceResponse",
-}) as any as S.Schema<PutOnRampAddressSpaceResponse>;
+export const PutOnRampAddressSpaceResponse =
+  ListOnRampAddressSpacesResponse as any as S.Schema<PutOnRampAddressSpaceResponse>;
 
 export interface RefreshCatalogSyncRequest {
   accountId: string;
@@ -14190,11 +14023,8 @@ export const RefreshCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RefreshCatalogSyncRequest>;
 
 export type RefreshCatalogSyncResponse = string;
-export const RefreshCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "RefreshCatalogSyncResponse",
-}) as any as S.Schema<RefreshCatalogSyncResponse>;
+export const RefreshCatalogSyncResponse =
+  PolicyPreviewResourceResponse as any as S.Schema<RefreshCatalogSyncResponse>;
 
 export type CatalogSyncsUpdateRequestUpdateMode = "AUTO" | "MANUAL";
 export const CatalogSyncsUpdateRequestUpdateMode = S.String;
@@ -14547,9 +14377,8 @@ export type CloudIntegrationsUpdateResponseStatusLastDiscoveryStatusV2 =
 export const CloudIntegrationsUpdateResponseStatusLastDiscoveryStatusV2 = S.String;
 
 export type CloudIntegrationsUpdateResponseStatusRegionsList = Array<string>;
-export const CloudIntegrationsUpdateResponseStatusRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudIntegrationsUpdateResponseStatusRegionsList>;
+export const CloudIntegrationsUpdateResponseStatusRegionsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<CloudIntegrationsUpdateResponseStatusRegionsList>;
 
 export type CloudIntegrationsUpdateResponseStatusInUseByItemClientType = "MAGIC_WAN_CLOUD_ONRAMP";
 export const CloudIntegrationsUpdateResponseStatusInUseByItemClientType = S.String;
@@ -14681,14 +14510,12 @@ export const UpdateCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateCloudIntegrationResponse>;
 
 export type OnRampsUpdateRequestAttachedHubsList = Array<string>;
-export const OnRampsUpdateRequestAttachedHubsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsUpdateRequestAttachedHubsList>;
+export const OnRampsUpdateRequestAttachedHubsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsUpdateRequestAttachedHubsList>;
 
 export type OnRampsUpdateRequestAttachedVpcsList = Array<string>;
-export const OnRampsUpdateRequestAttachedVpcsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsUpdateRequestAttachedVpcsList>;
+export const OnRampsUpdateRequestAttachedVpcsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsUpdateRequestAttachedVpcsList>;
 
 export interface UpdateOnRampRequest {
   accountId: string;
@@ -14734,14 +14561,12 @@ export type OnRampsUpdateResponseType = "OnrampTypeSingle" | "OnrampTypeHub";
 export const OnRampsUpdateResponseType = S.String;
 
 export type OnRampsUpdateResponseAttachedHubsList = Array<string>;
-export const OnRampsUpdateResponseAttachedHubsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsUpdateResponseAttachedHubsList>;
+export const OnRampsUpdateResponseAttachedHubsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsUpdateResponseAttachedHubsList>;
 
 export type OnRampsUpdateResponseAttachedVpcsList = Array<string>;
-export const OnRampsUpdateResponseAttachedVpcsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsUpdateResponseAttachedVpcsList>;
+export const OnRampsUpdateResponseAttachedVpcsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsUpdateResponseAttachedVpcsList>;
 
 export type OnRampsUpdateResponsePlannedMonthlyCostEstimate =
   OnRampsCreateResponsePlannedMonthlyCostEstimate;
@@ -14755,9 +14580,7 @@ export const OnRampsUpdateResponsePlannedResourcesItemDiff =
 
 export type OnRampsUpdateResponsePlannedResourcesItemKeysRequireReplaceList = Array<string>;
 export const OnRampsUpdateResponsePlannedResourcesItemKeysRequireReplaceList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OnRampsUpdateResponsePlannedResourcesItemKeysRequireReplaceList>;
+  OnRampsCreateResponsePlannedResourcesItemKeysRequireReplaceList as any as S.Schema<OnRampsUpdateResponsePlannedResourcesItemKeysRequireReplaceList>;
 
 export type OnRampsUpdateResponsePlannedResourcesItemMonthlyCostEstimateDiff =
   OnRampsCreateResponsePlannedMonthlyCostEstimate;
@@ -14910,10 +14733,8 @@ export const OnRampsUpdateResponsePostApplyResourcesValueCloudType = S.String;
 export type OnRampsUpdateResponsePostApplyResourcesValueConfigMap = {
   [key: string]: unknown | undefined;
 };
-export const OnRampsUpdateResponsePostApplyResourcesValueConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueConfigMap>;
+export const OnRampsUpdateResponsePostApplyResourcesValueConfigMap =
+  OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueConfigMap>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
@@ -14928,24 +14749,18 @@ export const OnRampsUpdateResponsePostApplyResourcesValueObservationsValue =
 export type OnRampsUpdateResponsePostApplyResourcesValueObservationsMap = {
   [key: string]: OnRampsCreateResponsePostApplyResourcesValueObservationsValue | undefined;
 };
-export const OnRampsUpdateResponsePostApplyResourcesValueObservationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue,
-) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueObservationsMap>;
+export const OnRampsUpdateResponsePostApplyResourcesValueObservationsMap =
+  OnRampsCreateResponsePostApplyResourcesValueObservationsMap as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueObservationsMap>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueProviderIdsList = Array<string>;
-export const OnRampsUpdateResponsePostApplyResourcesValueProviderIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueProviderIdsList>;
+export const OnRampsUpdateResponsePostApplyResourcesValueProviderIdsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueProviderIdsList>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueProviderNamesByIdMap = {
   [key: string]: string | undefined;
 };
 export const OnRampsUpdateResponsePostApplyResourcesValueProviderNamesByIdMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueProviderNamesByIdMap>;
+  OnRampsCreateResponsePostApplyResourcesValueProviderNamesByIdMap as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueProviderNamesByIdMap>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueResourceType =
   | "aws_customer_gateway"
@@ -15702,18 +15517,14 @@ export const OnRampsUpdateResponsePostApplyResourcesValueSectionsList = /*@__PUR
 export type OnRampsUpdateResponsePostApplyResourcesValueStateMap = {
   [key: string]: unknown | undefined;
 };
-export const OnRampsUpdateResponsePostApplyResourcesValueStateMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueStateMap>;
+export const OnRampsUpdateResponsePostApplyResourcesValueStateMap =
+  OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueStateMap>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueTagsMap = {
   [key: string]: string | undefined;
 };
-export const OnRampsUpdateResponsePostApplyResourcesValueTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueTagsMap>;
+export const OnRampsUpdateResponsePostApplyResourcesValueTagsMap =
+  OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueTagsMap>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueManagedByItemClientType =
   "MAGIC_WAN_CLOUD_ONRAMP";
@@ -15836,14 +15647,12 @@ export type OnRampsUpdateResponseStatusPlanProgress = OnRampsCreateResponseStatu
 export const OnRampsUpdateResponseStatusPlanProgress = OnRampsCreateResponseStatusApplyProgress;
 
 export type OnRampsUpdateResponseStatusRoutesList = Array<string>;
-export const OnRampsUpdateResponseStatusRoutesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsUpdateResponseStatusRoutesList>;
+export const OnRampsUpdateResponseStatusRoutesList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsUpdateResponseStatusRoutesList>;
 
 export type OnRampsUpdateResponseStatusTunnelsList = Array<string>;
-export const OnRampsUpdateResponseStatusTunnelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsUpdateResponseStatusTunnelsList>;
+export const OnRampsUpdateResponseStatusTunnelsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsUpdateResponseStatusTunnelsList>;
 
 export type OnRampsUpdateResponseStatusLifecycleErrorsValueCode =
   | 1001
@@ -16067,10 +15876,8 @@ export type OnRampsUpdateResponseVpcsByIdValueCloudType = "AWS" | "AZURE" | "GOO
 export const OnRampsUpdateResponseVpcsByIdValueCloudType = S.String;
 
 export type OnRampsUpdateResponseVpcsByIdValueConfigMap = { [key: string]: unknown | undefined };
-export const OnRampsUpdateResponseVpcsByIdValueConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueConfigMap>;
+export const OnRampsUpdateResponseVpcsByIdValueConfigMap =
+  OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueConfigMap>;
 
 export type OnRampsUpdateResponseVpcsByIdValueMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
@@ -16085,23 +15892,18 @@ export const OnRampsUpdateResponseVpcsByIdValueObservationsValue =
 export type OnRampsUpdateResponseVpcsByIdValueObservationsMap = {
   [key: string]: OnRampsCreateResponsePostApplyResourcesValueObservationsValue | undefined;
 };
-export const OnRampsUpdateResponseVpcsByIdValueObservationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue,
-) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueObservationsMap>;
+export const OnRampsUpdateResponseVpcsByIdValueObservationsMap =
+  OnRampsCreateResponsePostApplyResourcesValueObservationsMap as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueObservationsMap>;
 
 export type OnRampsUpdateResponseVpcsByIdValueProviderIdsList = Array<string>;
-export const OnRampsUpdateResponseVpcsByIdValueProviderIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueProviderIdsList>;
+export const OnRampsUpdateResponseVpcsByIdValueProviderIdsList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueProviderIdsList>;
 
 export type OnRampsUpdateResponseVpcsByIdValueProviderNamesByIdMap = {
   [key: string]: string | undefined;
 };
-export const OnRampsUpdateResponseVpcsByIdValueProviderNamesByIdMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueProviderNamesByIdMap>;
+export const OnRampsUpdateResponseVpcsByIdValueProviderNamesByIdMap =
+  OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueProviderNamesByIdMap>;
 
 export type OnRampsUpdateResponseVpcsByIdValueResourceType =
   | "aws_customer_gateway"
@@ -16851,16 +16653,12 @@ export const OnRampsUpdateResponseVpcsByIdValueSectionsList = /*@__PURE__*/ S.Ar
 ) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsList>;
 
 export type OnRampsUpdateResponseVpcsByIdValueStateMap = { [key: string]: unknown | undefined };
-export const OnRampsUpdateResponseVpcsByIdValueStateMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueStateMap>;
+export const OnRampsUpdateResponseVpcsByIdValueStateMap =
+  OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueStateMap>;
 
 export type OnRampsUpdateResponseVpcsByIdValueTagsMap = { [key: string]: string | undefined };
-export const OnRampsUpdateResponseVpcsByIdValueTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueTagsMap>;
+export const OnRampsUpdateResponseVpcsByIdValueTagsMap =
+  OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueTagsMap>;
 
 export type OnRampsUpdateResponseVpcsByIdValueManagedByItemClientType = "MAGIC_WAN_CLOUD_ONRAMP";
 export const OnRampsUpdateResponseVpcsByIdValueManagedByItemClientType = S.String;
@@ -16954,9 +16752,8 @@ export const OnRampsUpdateResponseVpcsByIdMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<OnRampsUpdateResponseVpcsByIdMap>;
 
 export type OnRampsUpdateResponseVpcsByIdUnavailableList = Array<string>;
-export const OnRampsUpdateResponseVpcsByIdUnavailableList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsUpdateResponseVpcsByIdUnavailableList>;
+export const OnRampsUpdateResponseVpcsByIdUnavailableList =
+  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsUpdateResponseVpcsByIdUnavailableList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateOnRampResponse {

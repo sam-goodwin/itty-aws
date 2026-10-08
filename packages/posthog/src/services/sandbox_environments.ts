@@ -47,9 +47,8 @@ export const CreateSandboxRequestAllowedDomainsList = /*@__PURE__*/ S.Array(
 
 /** Repositories this environment applies to (format: org/repo). */
 export type CreateSandboxRequestRepositoriesList = Array<string>;
-export const CreateSandboxRequestRepositoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSandboxRequestRepositoriesList>;
+export const CreateSandboxRequestRepositoriesList =
+  CreateSandboxRequestAllowedDomainsList as any as S.Schema<CreateSandboxRequestRepositoriesList>;
 
 export interface CreateSandboxRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -88,25 +87,21 @@ export const CreateSandboxRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateSandboxRequest" }) as any as S.Schema<CreateSandboxRequest>;
 
 export type SandboxEnvironmentDTOAllowedDomainsList = Array<string>;
-export const SandboxEnvironmentDTOAllowedDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SandboxEnvironmentDTOAllowedDomainsList>;
+export const SandboxEnvironmentDTOAllowedDomainsList =
+  CreateSandboxRequestAllowedDomainsList as any as S.Schema<SandboxEnvironmentDTOAllowedDomainsList>;
 
 export type SandboxEnvironmentDTORepositoriesList = Array<string>;
-export const SandboxEnvironmentDTORepositoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SandboxEnvironmentDTORepositoriesList>;
+export const SandboxEnvironmentDTORepositoriesList =
+  CreateSandboxRequestAllowedDomainsList as any as S.Schema<SandboxEnvironmentDTORepositoriesList>;
 
 /** Names of the environment variables that are set, sorted. Values are write-only and never returned. */
 export type SandboxEnvironmentDTOEnvironmentVariableKeysList = Array<string>;
-export const SandboxEnvironmentDTOEnvironmentVariableKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SandboxEnvironmentDTOEnvironmentVariableKeysList>;
+export const SandboxEnvironmentDTOEnvironmentVariableKeysList =
+  CreateSandboxRequestAllowedDomainsList as any as S.Schema<SandboxEnvironmentDTOEnvironmentVariableKeysList>;
 
 export type SandboxEnvironmentDTOEffectiveDomainsList = Array<string>;
-export const SandboxEnvironmentDTOEffectiveDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SandboxEnvironmentDTOEffectiveDomainsList>;
+export const SandboxEnvironmentDTOEffectiveDomainsList =
+  CreateSandboxRequestAllowedDomainsList as any as S.Schema<SandboxEnvironmentDTOEffectiveDomainsList>;
 
 export type TaskUserBasicInfoHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const TaskUserBasicInfoHedgehogConfigMap = /*@__PURE__*/ S.Record(
@@ -267,15 +262,13 @@ export const SandboxDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})
 
 /** Allowed domains for custom network access. */
 export type UpdateSandboxPartialRequestAllowedDomainsList = Array<string>;
-export const UpdateSandboxPartialRequestAllowedDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSandboxPartialRequestAllowedDomainsList>;
+export const UpdateSandboxPartialRequestAllowedDomainsList =
+  CreateSandboxRequestAllowedDomainsList as any as S.Schema<UpdateSandboxPartialRequestAllowedDomainsList>;
 
 /** Repositories this environment applies to (format: org/repo). */
 export type UpdateSandboxPartialRequestRepositoriesList = Array<string>;
-export const UpdateSandboxPartialRequestRepositoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSandboxPartialRequestRepositoriesList>;
+export const UpdateSandboxPartialRequestRepositoriesList =
+  CreateSandboxRequestAllowedDomainsList as any as S.Schema<UpdateSandboxPartialRequestRepositoriesList>;
 
 export interface UpdateSandboxPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

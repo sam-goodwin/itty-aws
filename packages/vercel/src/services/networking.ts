@@ -84,14 +84,12 @@ export const CreateNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The IDs of the AWS Availability Zones in which the network exists, if specified during creation. */
 export type NetworkAwsAvailabilityZoneIdsList = Array<string>;
-export const NetworkAwsAvailabilityZoneIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkAwsAvailabilityZoneIdsList>;
+export const NetworkAwsAvailabilityZoneIdsList =
+  CreateNetworkRequestAwsAvailabilityZoneIdsList as any as S.Schema<NetworkAwsAvailabilityZoneIdsList>;
 
 export type NetworkEgressIpAddressesList = Array<string>;
-export const NetworkEgressIpAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkEgressIpAddressesList>;
+export const NetworkEgressIpAddressesList =
+  CreateNetworkRequestAwsAvailabilityZoneIdsList as any as S.Schema<NetworkEgressIpAddressesList>;
 
 /** Metadata about any AWS Route53 Hosted Zones associated with the Network. */
 export interface NetworkHostedZones {
@@ -109,9 +107,8 @@ export type NetworkPeeringConnections = NetworkHostedZones;
 export const NetworkPeeringConnections = NetworkHostedZones;
 
 export type NetworkProjectsIdsList = Array<string>;
-export const NetworkProjectsIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkProjectsIdsList>;
+export const NetworkProjectsIdsList =
+  CreateNetworkRequestAwsAvailabilityZoneIdsList as any as S.Schema<NetworkProjectsIdsList>;
 
 /** Metadata about any projects associated with the Network. */
 export interface NetworkProjects {
@@ -212,15 +209,13 @@ export const CreatePrivateLinkEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The regional DNS names assigned to the endpoint by AWS. Use these to reach the service when private DNS is not enabled. */
 export type PrivateLinkEndpointAwsDnsEntriesList = Array<string>;
-export const PrivateLinkEndpointAwsDnsEntriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkEndpointAwsDnsEntriesList>;
+export const PrivateLinkEndpointAwsDnsEntriesList =
+  CreateNetworkRequestAwsAvailabilityZoneIdsList as any as S.Schema<PrivateLinkEndpointAwsDnsEntriesList>;
 
 /** The private DNS names of the endpoint service, populated when private DNS is enabled for the endpoint. */
 export type PrivateLinkEndpointPrivateDnsNamesList = Array<string>;
-export const PrivateLinkEndpointPrivateDnsNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkEndpointPrivateDnsNamesList>;
+export const PrivateLinkEndpointPrivateDnsNamesList =
+  CreateNetworkRequestAwsAvailabilityZoneIdsList as any as S.Schema<PrivateLinkEndpointPrivateDnsNamesList>;
 
 /** The current state of the endpoint. - `creating`: the endpoint is being created. - `pending-acceptance`: waiting for the endpoint service owner to accept the connection. Only occurs for services that require manual acceptance. - `provisioning`: the connection was accepted and AWS is finishing setup. - `available`: the endpoint is fully provisioned and ready to use. - `rejected`: the endpoint service owner rejected the connection. - `failed`: the endpoint could not be provisioned. - `deleting`: the endpoint is being deleted. */
 export type PrivateLinkEndpointStatus =
@@ -492,9 +487,8 @@ export const UpdatePrivateLinkEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdatePrivateLinkEndpointRequest>;
 
 export type UpdateStaticIpsRequestRegionsList = Array<string>;
-export const UpdateStaticIpsRequestRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateStaticIpsRequestRegionsList>;
+export const UpdateStaticIpsRequestRegionsList =
+  CreateNetworkRequestAwsAvailabilityZoneIdsList as any as S.Schema<UpdateStaticIpsRequestRegionsList>;
 
 export interface UpdateStaticIpsRequest {
   /** The unique project identifier or the project name */
@@ -520,9 +514,8 @@ export const UpdateStaticIpsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateStaticIpsRequest" }) as any as S.Schema<UpdateStaticIpsRequest>;
 
 export type UpdateStaticIpsResponseBodyItemAwsSubnetIdsList = Array<string>;
-export const UpdateStaticIpsResponseBodyItemAwsSubnetIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateStaticIpsResponseBodyItemAwsSubnetIdsList>;
+export const UpdateStaticIpsResponseBodyItemAwsSubnetIdsList =
+  CreateNetworkRequestAwsAvailabilityZoneIdsList as any as S.Schema<UpdateStaticIpsResponseBodyItemAwsSubnetIdsList>;
 
 export interface UpdateStaticIpsResponseBodyItemAws {
   securityGroupId?: string;

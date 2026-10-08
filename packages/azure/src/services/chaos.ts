@@ -38,9 +38,8 @@ export const CancelExperimentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({
 
 /** Model that represents the Capability properties model. */
 export interface CapabilityPropertiesInput {}
-export const CapabilityPropertiesInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CapabilityPropertiesInput",
-}) as any as S.Schema<CapabilityPropertiesInput>;
+export const CapabilityPropertiesInput =
+  CancelExperimentResponse as any as S.Schema<CapabilityPropertiesInput>;
 
 export interface CapabilitiesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -199,9 +198,8 @@ export const DeleteCapabilityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCapabilityRequest" }) as any as S.Schema<DeleteCapabilityRequest>;
 
 export interface DeleteCapabilityResponse {}
-export const DeleteCapabilityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCapabilityResponse",
-}) as any as S.Schema<DeleteCapabilityResponse>;
+export const DeleteCapabilityResponse =
+  CancelExperimentResponse as any as S.Schema<DeleteCapabilityResponse>;
 
 export interface DeleteExperimentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -227,9 +225,8 @@ export const DeleteExperimentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteExperimentRequest" }) as any as S.Schema<DeleteExperimentRequest>;
 
 export interface DeleteExperimentResponse {}
-export const DeleteExperimentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteExperimentResponse",
-}) as any as S.Schema<DeleteExperimentResponse>;
+export const DeleteExperimentResponse =
+  CancelExperimentResponse as any as S.Schema<DeleteExperimentResponse>;
 
 export interface DeleteTargetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -264,9 +261,8 @@ export const DeleteTargetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTargetRequest" }) as any as S.Schema<DeleteTargetRequest>;
 
 export interface DeleteTargetResponse {}
-export const DeleteTargetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTargetResponse",
-}) as any as S.Schema<DeleteTargetResponse>;
+export const DeleteTargetResponse =
+  CancelExperimentResponse as any as S.Schema<DeleteTargetResponse>;
 
 /** Resource tags. */
 export type ExperimentsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -546,10 +542,8 @@ export const ExperimentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ExperimentsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ExperimentsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ExperimentsCreateOrUpdateResponseTagsMap>;
+export const ExperimentsCreateOrUpdateResponseTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<ExperimentsCreateOrUpdateResponseTagsMap>;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
@@ -604,15 +598,13 @@ export const ProvisioningState = S.String;
 
 /** List of steps. */
 export type ExperimentPropertiesStepsList = Array<ChaosExperimentStep>;
-export const ExperimentPropertiesStepsList = /*@__PURE__*/ S.Array(
-  ChaosExperimentStep,
-) as any as S.Schema<ExperimentPropertiesStepsList>;
+export const ExperimentPropertiesStepsList =
+  ExperimentPropertiesInputStepsList as any as S.Schema<ExperimentPropertiesStepsList>;
 
 /** List of selectors. */
 export type ExperimentPropertiesSelectorsList = Array<ChaosTargetSelector>;
-export const ExperimentPropertiesSelectorsList = /*@__PURE__*/ S.Array(
-  ChaosTargetSelector,
-) as any as S.Schema<ExperimentPropertiesSelectorsList>;
+export const ExperimentPropertiesSelectorsList =
+  ExperimentPropertiesInputSelectorsList as any as S.Schema<ExperimentPropertiesSelectorsList>;
 
 /** Model that represents the Experiment properties model. */
 export interface ExperimentProperties {
@@ -977,15 +969,13 @@ export const CapabilityTypePropertiesAzureRbacActionsList = /*@__PURE__*/ S.Arra
 
 /** Data plane actions necessary to execute capability type. */
 export type CapabilityTypePropertiesAzureRbacDataActionsList = Array<string>;
-export const CapabilityTypePropertiesAzureRbacDataActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CapabilityTypePropertiesAzureRbacDataActionsList>;
+export const CapabilityTypePropertiesAzureRbacDataActionsList =
+  CapabilityTypePropertiesAzureRbacActionsList as any as S.Schema<CapabilityTypePropertiesAzureRbacDataActionsList>;
 
 /** Required Azure Role Definition Ids to execute capability type. */
 export type CapabilityTypePropertiesRequiredAzureRoleDefinitionIdsList = Array<string>;
-export const CapabilityTypePropertiesRequiredAzureRoleDefinitionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CapabilityTypePropertiesRequiredAzureRoleDefinitionIdsList>;
+export const CapabilityTypePropertiesRequiredAzureRoleDefinitionIdsList =
+  CapabilityTypePropertiesAzureRbacActionsList as any as S.Schema<CapabilityTypePropertiesRequiredAzureRoleDefinitionIdsList>;
 
 /** Runtime properties of this Capability Type. */
 export interface CapabilityTypePropertiesRuntimeProperties {
@@ -1092,10 +1082,8 @@ export const GetExperimentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetExperimentResponseTagsMap = { [key: string]: string | undefined };
-export const GetExperimentResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetExperimentResponseTagsMap>;
+export const GetExperimentResponseTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetExperimentResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetExperimentResponseIdentity = ExperimentsCreateOrUpdateResponseIdentity;
@@ -1449,9 +1437,8 @@ export const GetTargetTypeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resource types this Target Type can extend. */
 export type TargetTypePropertiesResourceTypesList = Array<string>;
-export const TargetTypePropertiesResourceTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TargetTypePropertiesResourceTypesList>;
+export const TargetTypePropertiesResourceTypesList =
+  CapabilityTypePropertiesAzureRbacActionsList as any as S.Schema<TargetTypePropertiesResourceTypesList>;
 
 /** Model that represents the base Target Type properties model. */
 export interface TargetTypeProperties {
@@ -1543,15 +1530,7 @@ export interface Capability {
   /** The properties of a capability resource. */
   properties?: CapabilityProperties;
 }
-export const Capability = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CapabilityProperties),
-  }),
-).annotate({ identifier: "Capability" }) as any as S.Schema<Capability>;
+export const Capability = GetCapabilityResponse as any as S.Schema<Capability>;
 
 /** The Capability items on this page */
 export type CapabilityListResultValueList = Array<Capability>;
@@ -1669,10 +1648,8 @@ export const ListExperimentAllRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ExperimentTagsMap = { [key: string]: string | undefined };
-export const ExperimentTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ExperimentTagsMap>;
+export const ExperimentTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<ExperimentTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ExperimentIdentity = ExperimentsCreateOrUpdateResponseIdentity;
@@ -1697,18 +1674,7 @@ export interface Experiment {
   /** The properties of the experiment resource. */
   properties: ExperimentProperties;
 }
-export const Experiment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ExperimentTagsMap),
-    location: S.String,
-    identity: S.optional(ExperimentsCreateOrUpdateResponseIdentity),
-    properties: ExperimentProperties,
-  }),
-).annotate({ identifier: "Experiment" }) as any as S.Schema<Experiment>;
+export const Experiment = GetExperimentResponse as any as S.Schema<Experiment>;
 
 /** The Experiment items on this page */
 export type ExperimentListResultValueList = Array<Experiment>;
@@ -1942,10 +1908,8 @@ export const ListTargetsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The properties of the target resource. */
 export type TargetPropertiesMap = { [key: string]: unknown | undefined };
-export const TargetPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TargetPropertiesMap>;
+export const TargetPropertiesMap =
+  GetTargetResponsePropertiesMap as any as S.Schema<TargetPropertiesMap>;
 
 /** Model that represents a Target resource. */
 export interface Target {
@@ -1962,16 +1926,7 @@ export interface Target {
   /** Azure resource location. */
   location?: string;
 }
-export const Target = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: TargetPropertiesMap,
-    location: S.optional(S.String),
-  }),
-).annotate({ identifier: "Target" }) as any as S.Schema<Target>;
+export const Target = GetTargetResponse as any as S.Schema<Target>;
 
 /** The Target items on this page */
 export type TargetListResultValueList = Array<Target>;
@@ -2029,15 +1984,7 @@ export interface TargetType {
   /** The properties of the target type resource. */
   properties: TargetTypeProperties;
 }
-export const TargetType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: TargetTypeProperties,
-  }),
-).annotate({ identifier: "TargetType" }) as any as S.Schema<TargetType>;
+export const TargetType = GetTargetTypeResponse as any as S.Schema<TargetType>;
 
 /** The TargetType items on this page */
 export type TargetTypeListResultValueList = Array<TargetType>;
@@ -2083,16 +2030,13 @@ export const StartExperimentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartExperimentRequest" }) as any as S.Schema<StartExperimentRequest>;
 
 export interface StartExperimentResponse {}
-export const StartExperimentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartExperimentResponse",
-}) as any as S.Schema<StartExperimentResponse>;
+export const StartExperimentResponse =
+  CancelExperimentResponse as any as S.Schema<StartExperimentResponse>;
 
 /** The properties of the target resource. */
 export type TargetsCreateOrUpdateRequestPropertiesMap = { [key: string]: unknown | undefined };
-export const TargetsCreateOrUpdateRequestPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TargetsCreateOrUpdateRequestPropertiesMap>;
+export const TargetsCreateOrUpdateRequestPropertiesMap =
+  GetTargetResponsePropertiesMap as any as S.Schema<TargetsCreateOrUpdateRequestPropertiesMap>;
 
 export interface TargetsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2136,10 +2080,8 @@ export const TargetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The properties of the target resource. */
 export type TargetsCreateOrUpdateResponsePropertiesMap = { [key: string]: unknown | undefined };
-export const TargetsCreateOrUpdateResponsePropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TargetsCreateOrUpdateResponsePropertiesMap>;
+export const TargetsCreateOrUpdateResponsePropertiesMap =
+  GetTargetResponsePropertiesMap as any as S.Schema<TargetsCreateOrUpdateResponsePropertiesMap>;
 
 export interface TargetsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2170,10 +2112,8 @@ export const TargetsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateExperimentRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateExperimentRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateExperimentRequestTagsMap>;
+export const UpdateExperimentRequestTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateExperimentRequestTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateExperimentRequestIdentity = ExperimentsCreateOrUpdateRequestIdentity;
@@ -2210,10 +2150,8 @@ export const UpdateExperimentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateExperimentResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateExperimentResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateExperimentResponseTagsMap>;
+export const UpdateExperimentResponseTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateExperimentResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateExperimentResponseIdentity = ExperimentsCreateOrUpdateResponseIdentity;
@@ -2237,18 +2175,8 @@ export interface UpdateExperimentResponse {
   /** The properties of the experiment resource. */
   properties: ExperimentProperties;
 }
-export const UpdateExperimentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateExperimentResponseTagsMap),
-    location: S.String,
-    identity: S.optional(ExperimentsCreateOrUpdateResponseIdentity),
-    properties: ExperimentProperties,
-  }),
-).annotate({ identifier: "UpdateExperimentResponse" }) as any as S.Schema<UpdateExperimentResponse>;
+export const UpdateExperimentResponse =
+  GetExperimentResponse as any as S.Schema<UpdateExperimentResponse>;
 
 export type CancelExperimentError = AzureOpError;
 /** Cancel a running Experiment resource. */

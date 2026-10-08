@@ -373,23 +373,16 @@ export const RelaysGetResponseConfigUpstreamsUpstreamsItem =
 
 export type RelaysGetResponseConfigUpstreamsUpstreamsList =
   Array<RelaysCreateResponseConfigUpstreamsUpstreamsItem>;
-export const RelaysGetResponseConfigUpstreamsUpstreamsList = /*@__PURE__*/ S.Array(
-  RelaysCreateResponseConfigUpstreamsUpstreamsItem,
-) as any as S.Schema<RelaysGetResponseConfigUpstreamsUpstreamsList>;
+export const RelaysGetResponseConfigUpstreamsUpstreamsList =
+  RelaysCreateResponseConfigUpstreamsUpstreamsList as any as S.Schema<RelaysGetResponseConfigUpstreamsUpstreamsList>;
 
 export interface RelaysGetResponseConfigUpstreams {
   enabled?: boolean | null;
   /** Ordered list of upstream MOQT server publishers. Each entry is an object (not a bare string) so per-upstream configuration can be added in the future without another breaking change. */
   upstreams?: RelaysGetResponseConfigUpstreamsUpstreamsList | null;
 }
-export const RelaysGetResponseConfigUpstreams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    upstreams: S.optional(S.NullOr(RelaysGetResponseConfigUpstreamsUpstreamsList)),
-  }),
-).annotate({
-  identifier: "RelaysGetResponseConfigUpstreams",
-}) as any as S.Schema<RelaysGetResponseConfigUpstreams>;
+export const RelaysGetResponseConfigUpstreams =
+  RelaysCreateResponseConfigUpstreams as any as S.Schema<RelaysGetResponseConfigUpstreams>;
 
 export interface RelaysGetResponseConfig {
   /** Upstreams are external MOQT server publishers that a relay falls back to when it has no local publisher for a requested namespace/track. */
@@ -634,9 +627,8 @@ export const RelaysUpdateRequestConfigUpstreamsUpstreamsItem =
 
 export type RelaysUpdateRequestConfigUpstreamsUpstreamsList =
   Array<RelaysCreateResponseConfigUpstreamsUpstreamsItem>;
-export const RelaysUpdateRequestConfigUpstreamsUpstreamsList = /*@__PURE__*/ S.Array(
-  RelaysCreateResponseConfigUpstreamsUpstreamsItem,
-) as any as S.Schema<RelaysUpdateRequestConfigUpstreamsUpstreamsList>;
+export const RelaysUpdateRequestConfigUpstreamsUpstreamsList =
+  RelaysCreateResponseConfigUpstreamsUpstreamsList as any as S.Schema<RelaysUpdateRequestConfigUpstreamsUpstreamsList>;
 
 export interface RelaysUpdateRequestConfigUpstreams {
   enabled?: boolean;
@@ -689,35 +681,23 @@ export const RelaysUpdateResponseConfigUpstreamsUpstreamsItem =
 
 export type RelaysUpdateResponseConfigUpstreamsUpstreamsList =
   Array<RelaysCreateResponseConfigUpstreamsUpstreamsItem>;
-export const RelaysUpdateResponseConfigUpstreamsUpstreamsList = /*@__PURE__*/ S.Array(
-  RelaysCreateResponseConfigUpstreamsUpstreamsItem,
-) as any as S.Schema<RelaysUpdateResponseConfigUpstreamsUpstreamsList>;
+export const RelaysUpdateResponseConfigUpstreamsUpstreamsList =
+  RelaysCreateResponseConfigUpstreamsUpstreamsList as any as S.Schema<RelaysUpdateResponseConfigUpstreamsUpstreamsList>;
 
 export interface RelaysUpdateResponseConfigUpstreams {
   enabled?: boolean | null;
   /** Ordered list of upstream MOQT server publishers. Each entry is an object (not a bare string) so per-upstream configuration can be added in the future without another breaking change. */
   upstreams?: RelaysUpdateResponseConfigUpstreamsUpstreamsList | null;
 }
-export const RelaysUpdateResponseConfigUpstreams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    upstreams: S.optional(S.NullOr(RelaysUpdateResponseConfigUpstreamsUpstreamsList)),
-  }),
-).annotate({
-  identifier: "RelaysUpdateResponseConfigUpstreams",
-}) as any as S.Schema<RelaysUpdateResponseConfigUpstreams>;
+export const RelaysUpdateResponseConfigUpstreams =
+  RelaysCreateResponseConfigUpstreams as any as S.Schema<RelaysUpdateResponseConfigUpstreams>;
 
 export interface RelaysUpdateResponseConfig {
   /** Upstreams are external MOQT server publishers that a relay falls back to when it has no local publisher for a requested namespace/track. */
   upstreams?: RelaysUpdateResponseConfigUpstreams | null;
 }
-export const RelaysUpdateResponseConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    upstreams: S.optional(S.NullOr(RelaysUpdateResponseConfigUpstreams)),
-  }),
-).annotate({
-  identifier: "RelaysUpdateResponseConfig",
-}) as any as S.Schema<RelaysUpdateResponseConfig>;
+export const RelaysUpdateResponseConfig =
+  RelaysCreateResponseConfig as any as S.Schema<RelaysUpdateResponseConfig>;
 
 export type RelaysUpdateResponseStatus = "connected";
 export const RelaysUpdateResponseStatus = S.String;

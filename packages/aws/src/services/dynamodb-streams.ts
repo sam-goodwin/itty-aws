@@ -281,7 +281,8 @@ export type BinaryAttributeValue = Uint8Array;
 export type StringSetAttributeValue = string[];
 export const StringSetAttributeValue = /*@__PURE__*/ S.Array(S.String);
 export type NumberSetAttributeValue = string[];
-export const NumberSetAttributeValue = /*@__PURE__*/ S.Array(S.String);
+export const NumberSetAttributeValue =
+  StringSetAttributeValue as any as S.Schema<NumberSetAttributeValue>;
 export type BinarySetAttributeValue = Uint8Array[];
 export const BinarySetAttributeValue = /*@__PURE__*/ S.Array(T.Blob);
 export type MapAttributeValue = { [key: string]: AttributeValue | undefined };

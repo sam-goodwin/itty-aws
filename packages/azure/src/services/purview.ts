@@ -212,10 +212,8 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags on the azure resource. */
 export type AccountsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const AccountsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountsCreateOrUpdateResponseTagsMap>;
+export const AccountsCreateOrUpdateResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<AccountsCreateOrUpdateResponseTagsMap>;
 
 /** Gets the account status code. */
 export type AccountStatusAccountProvisioningState =
@@ -646,9 +644,8 @@ export const DeleteAccountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAccountRequest" }) as any as S.Schema<DeleteAccountRequest>;
 
 export interface DeleteAccountResponse {}
-export const DeleteAccountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAccountResponse",
-}) as any as S.Schema<DeleteAccountResponse>;
+export const DeleteAccountResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteAccountResponse>;
 
 export interface DeleteKafkaConfigurationRequest {
   /** The subscription identifier */
@@ -679,11 +676,8 @@ export const DeleteKafkaConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteKafkaConfigurationRequest>;
 
 export interface DeleteKafkaConfigurationResponse {}
-export const DeleteKafkaConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteKafkaConfigurationResponse",
-}) as any as S.Schema<DeleteKafkaConfigurationResponse>;
+export const DeleteKafkaConfigurationResponse =
+  AddAccountRootCollectionAdminResponse as any as S.Schema<DeleteKafkaConfigurationResponse>;
 
 export interface DeletePrivateEndpointConnectionRequest {
   /** The subscription identifier */
@@ -714,11 +708,8 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePrivateEndpointConnectionResponse",
-}) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
+export const DeletePrivateEndpointConnectionResponse =
+  AddAccountRootCollectionAdminResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
 
 export interface GetAccountRequest {
   /** The subscription identifier */
@@ -745,10 +736,8 @@ export const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags on the azure resource. */
 export type GetAccountResponseTagsMap = { [key: string]: string | undefined };
-export const GetAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAccountResponseTagsMap>;
+export const GetAccountResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<GetAccountResponseTagsMap>;
 
 export interface GetAccountResponse {
   /** Gets or sets the identifier. */
@@ -894,9 +883,8 @@ export const BatchFeatureStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Set of features */
 export type GetFeaturesSubscriptionRequestFeaturesList = Array<string>;
-export const GetFeaturesSubscriptionRequestFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetFeaturesSubscriptionRequestFeaturesList>;
+export const GetFeaturesSubscriptionRequestFeaturesList =
+  GetFeaturesAccountRequestFeaturesList as any as S.Schema<GetFeaturesSubscriptionRequestFeaturesList>;
 
 export interface GetFeaturesSubscriptionRequest {
   /** The subscription identifier */
@@ -1075,17 +1063,8 @@ export interface GetPrivateEndpointConnectionResponse {
   /** The connection identifier. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    type: S.optional(S.String),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "GetPrivateEndpointConnectionResponse",
-}) as any as S.Schema<GetPrivateEndpointConnectionResponse>;
+export const GetPrivateEndpointConnectionResponse =
+  PrivateEndpointConnection as any as S.Schema<GetPrivateEndpointConnectionResponse>;
 
 export interface GetPrivateLinkResourceByGroupIdRequest {
   /** The subscription identifier */
@@ -1117,15 +1096,13 @@ export const GetPrivateLinkResourceByGroupIdRequest = /*@__PURE__*/ S.suspend(()
 
 /** This translates to how many Private IPs should be created for each privately linkable resource. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+export const PrivateLinkResourcePropertiesRequiredMembersList =
+  GetFeaturesAccountRequestFeaturesList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The required zone names for private link resource. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  GetFeaturesAccountRequestFeaturesList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** A privately linkable resource properties. */
 export interface PrivateLinkResourceProperties {
@@ -1288,17 +1265,8 @@ export interface KafkaConfigurationsCreateOrUpdateResponse {
   /** Gets or sets the kafka configuration properties. */
   properties?: KafkaConfigurationProperties;
 }
-export const KafkaConfigurationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    type: S.optional(S.String),
-    properties: S.optional(KafkaConfigurationProperties),
-  }),
-).annotate({
-  identifier: "KafkaConfigurationsCreateOrUpdateResponse",
-}) as any as S.Schema<KafkaConfigurationsCreateOrUpdateResponse>;
+export const KafkaConfigurationsCreateOrUpdateResponse =
+  GetKafkaConfigurationResponse as any as S.Schema<KafkaConfigurationsCreateOrUpdateResponse>;
 
 export interface ListAccountByResourceGroupRequest {
   /** The subscription identifier */
@@ -1327,10 +1295,8 @@ export const ListAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags on the azure resource. */
 export type AccountTagsMap = { [key: string]: string | undefined };
-export const AccountTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsMap>;
+export const AccountTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<AccountTagsMap>;
 
 /** Account resource */
 export interface Account {
@@ -1353,19 +1319,7 @@ export interface Account {
   /** Gets or sets the Sku. */
   sku?: AccountSku;
 }
-export const Account = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    identity: S.optional(Identity),
-    location: S.optional(S.String),
-    name: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(AccountTagsMap),
-    type: S.optional(S.String),
-    properties: S.optional(AccountProperties),
-    sku: S.optional(AccountSku),
-  }),
-).annotate({ identifier: "Account" }) as any as S.Schema<Account>;
+export const Account = GetAccountResponse as any as S.Schema<Account>;
 
 /** Collection of items of type results. */
 export type AccountListValueList = Array<Account>;
@@ -1603,15 +1557,13 @@ export const OperationMetaMetricSpecificationDimensionsList = /*@__PURE__*/ S.Ar
 
 /** supported aggregation types */
 export type OperationMetaMetricSpecificationSupportedAggregationTypesList = Array<string>;
-export const OperationMetaMetricSpecificationSupportedAggregationTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OperationMetaMetricSpecificationSupportedAggregationTypesList>;
+export const OperationMetaMetricSpecificationSupportedAggregationTypesList =
+  GetFeaturesAccountRequestFeaturesList as any as S.Schema<OperationMetaMetricSpecificationSupportedAggregationTypesList>;
 
 /** supported time grain types */
 export type OperationMetaMetricSpecificationSupportedTimeGrainTypesList = Array<string>;
-export const OperationMetaMetricSpecificationSupportedTimeGrainTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OperationMetaMetricSpecificationSupportedTimeGrainTypesList>;
+export const OperationMetaMetricSpecificationSupportedTimeGrainTypesList =
+  GetFeaturesAccountRequestFeaturesList as any as S.Schema<OperationMetaMetricSpecificationSupportedTimeGrainTypesList>;
 
 /** metric specifications for the operation */
 export interface OperationMetaMetricSpecification {
@@ -1770,9 +1722,8 @@ export const ListPrivateEndpointConnectionByAccountRequest = /*@__PURE__*/ S.sus
 
 /** Collection of items of type results. */
 export type PrivateEndpointConnectionListValueList = Array<PrivateEndpointConnection>;
-export const PrivateEndpointConnectionListValueList = /*@__PURE__*/ S.Array(
-  PrivateEndpointConnection,
-) as any as S.Schema<PrivateEndpointConnectionListValueList>;
+export const PrivateEndpointConnectionListValueList =
+  AccountPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListValueList>;
 
 /** Paged list of private endpoint connections */
 export interface PrivateEndpointConnectionList {
@@ -1894,17 +1845,8 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** The connection identifier. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const PrivateEndpointConnectionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    type: S.optional(S.String),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionsCreateOrUpdateResponse",
-}) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
+export const PrivateEndpointConnectionsCreateOrUpdateResponse =
+  PrivateEndpointConnection as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
 
 export type RemoveDefaultAccountRequestScopeType = "Tenant" | "Subscription";
 export const RemoveDefaultAccountRequestScopeType = S.String;
@@ -1935,9 +1877,8 @@ export const RemoveDefaultAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveDefaultAccountRequest>;
 
 export interface RemoveDefaultAccountResponse {}
-export const RemoveDefaultAccountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RemoveDefaultAccountResponse",
-}) as any as S.Schema<RemoveDefaultAccountResponse>;
+export const RemoveDefaultAccountResponse =
+  UserAssignedIdentityInput as any as S.Schema<RemoveDefaultAccountResponse>;
 
 /** The scope where the default account is set. */
 export type SetDefaultAccountRequestScopeType = "Tenant" | "Subscription";
@@ -1977,10 +1918,8 @@ export const SetDefaultAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags on the azure resource. */
 export type UpdateAccountRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAccountRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAccountRequestTagsMap>;
+export const UpdateAccountRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAccountRequestTagsMap>;
 
 export interface UpdateAccountRequest {
   /** The subscription identifier */
@@ -2016,10 +1955,8 @@ export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags on the azure resource. */
 export type UpdateAccountResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAccountResponseTagsMap>;
+export const UpdateAccountResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAccountResponseTagsMap>;
 
 export interface UpdateAccountResponse {
   /** Gets or sets the identifier. */
@@ -2041,19 +1978,7 @@ export interface UpdateAccountResponse {
   /** Gets or sets the Sku. */
   sku?: AccountSku;
 }
-export const UpdateAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    identity: S.optional(Identity),
-    location: S.optional(S.String),
-    name: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateAccountResponseTagsMap),
-    type: S.optional(S.String),
-    properties: S.optional(AccountProperties),
-    sku: S.optional(AccountSku),
-  }),
-).annotate({ identifier: "UpdateAccountResponse" }) as any as S.Schema<UpdateAccountResponse>;
+export const UpdateAccountResponse = GetAccountResponse as any as S.Schema<UpdateAccountResponse>;
 
 export type AccountsCreateOrUpdateError = AzureOpError;
 /** Create or update an account resource Creates or updates an account */

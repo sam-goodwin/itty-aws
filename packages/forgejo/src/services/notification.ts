@@ -298,9 +298,8 @@ export const RepoTransfer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoTransfer" }) as any as S.Schema<RepoTransfer>;
 
 export type RepositoryTopicsList = Array<string>;
-export const RepositoryTopicsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepositoryTopicsList>;
+export const RepositoryTopicsList =
+  NotifyGetListRequestStatusTypesList as any as S.Schema<RepositoryTopicsList>;
 
 /** Repository represents a repository */
 export interface Repository {
@@ -500,9 +499,8 @@ export const NotifyGetListResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NotifyGetListResponse" }) as any as S.Schema<NotifyGetListResponse>;
 
 export type NotifyGetRepoListRequestStatusTypesList = Array<string>;
-export const NotifyGetRepoListRequestStatusTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotifyGetRepoListRequestStatusTypesList>;
+export const NotifyGetRepoListRequestStatusTypesList =
+  NotifyGetListRequestStatusTypesList as any as S.Schema<NotifyGetRepoListRequestStatusTypesList>;
 
 export type NotifyGetRepoListRequestSubjectTypeItem = "issue" | "pull" | "repository";
 export const NotifyGetRepoListRequestSubjectTypeItem = S.String;
@@ -549,9 +547,8 @@ export const NotifyGetRepoListRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NotifyGetRepoListRequest" }) as any as S.Schema<NotifyGetRepoListRequest>;
 
 export type NotifyGetRepoListResponseBodyList = Array<NotificationThread>;
-export const NotifyGetRepoListResponseBodyList = /*@__PURE__*/ S.Array(
-  NotificationThread,
-) as any as S.Schema<NotifyGetRepoListResponseBodyList>;
+export const NotifyGetRepoListResponseBodyList =
+  NotifyGetListResponseBodyList as any as S.Schema<NotifyGetRepoListResponseBodyList>;
 
 export type NotifyGetRepoListResponse = NotifyGetRepoListResponseBodyList;
 export const NotifyGetRepoListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -588,9 +585,8 @@ export const NotificationCount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NotificationCount" }) as any as S.Schema<NotificationCount>;
 
 export type NotifyReadListRequestStatusTypesList = Array<string>;
-export const NotifyReadListRequestStatusTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotifyReadListRequestStatusTypesList>;
+export const NotifyReadListRequestStatusTypesList =
+  NotifyGetListRequestStatusTypesList as any as S.Schema<NotifyReadListRequestStatusTypesList>;
 
 export interface NotifyReadListRequest {
   /** Describes the last point that notifications were checked. Anything updated since this time will not be updated. */
@@ -617,9 +613,8 @@ export const NotifyReadListResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})
 }) as any as S.Schema<NotifyReadListResponse>;
 
 export type NotifyReadRepoListRequestStatusTypesList = Array<string>;
-export const NotifyReadRepoListRequestStatusTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotifyReadRepoListRequestStatusTypesList>;
+export const NotifyReadRepoListRequestStatusTypesList =
+  NotifyGetListRequestStatusTypesList as any as S.Schema<NotifyReadRepoListRequestStatusTypesList>;
 
 export interface NotifyReadRepoListRequest {
   /** owner of the repo */
@@ -651,9 +646,8 @@ export const NotifyReadRepoListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotifyReadRepoListRequest>;
 
 export interface NotifyReadRepoListResponse {}
-export const NotifyReadRepoListResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "NotifyReadRepoListResponse",
-}) as any as S.Schema<NotifyReadRepoListResponse>;
+export const NotifyReadRepoListResponse =
+  NotifyReadListResponse as any as S.Schema<NotifyReadRepoListResponse>;
 
 export interface NotifyReadThreadRequest {
   /** id of notification thread */
@@ -669,9 +663,8 @@ export const NotifyReadThreadRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NotifyReadThreadRequest" }) as any as S.Schema<NotifyReadThreadRequest>;
 
 export interface NotifyReadThreadResponse {}
-export const NotifyReadThreadResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "NotifyReadThreadResponse",
-}) as any as S.Schema<NotifyReadThreadResponse>;
+export const NotifyReadThreadResponse =
+  NotifyReadListResponse as any as S.Schema<NotifyReadThreadResponse>;
 
 export type NotifyGetListError = ForgejoOpError;
 /** List users's notification threads */

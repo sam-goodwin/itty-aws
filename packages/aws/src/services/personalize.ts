@@ -242,15 +242,12 @@ export const CreateBatchInferenceJobResponse = /*@__PURE__*/ S.suspend(() =>
 export interface BatchSegmentJobInput {
   s3DataSource: S3DataConfig;
 }
-export const BatchSegmentJobInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ s3DataSource: S3DataConfig }),
-).annotate({ identifier: "BatchSegmentJobInput" }) as any as S.Schema<BatchSegmentJobInput>;
+export const BatchSegmentJobInput = BatchInferenceJobInput as any as S.Schema<BatchSegmentJobInput>;
 export interface BatchSegmentJobOutput {
   s3DataDestination: S3DataConfig;
 }
-export const BatchSegmentJobOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ s3DataDestination: S3DataConfig }),
-).annotate({ identifier: "BatchSegmentJobOutput" }) as any as S.Schema<BatchSegmentJobOutput>;
+export const BatchSegmentJobOutput =
+  BatchInferenceJobOutput as any as S.Schema<BatchSegmentJobOutput>;
 export interface CreateBatchSegmentJobRequest {
   jobName: string;
   solutionVersionArn: string;
@@ -381,9 +378,8 @@ export const IngestionMode = S.String;
 export interface DatasetExportJobOutput {
   s3DataDestination: S3DataConfig;
 }
-export const DatasetExportJobOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ s3DataDestination: S3DataConfig }),
-).annotate({ identifier: "DatasetExportJobOutput" }) as any as S.Schema<DatasetExportJobOutput>;
+export const DatasetExportJobOutput =
+  BatchInferenceJobOutput as any as S.Schema<DatasetExportJobOutput>;
 export interface CreateDatasetExportJobRequest {
   jobName: string;
   datasetArn: string;
@@ -570,10 +566,8 @@ export const ExcludedDatasetColumns = /*@__PURE__*/ S.Record(
   /*@__PURE__*/ ColumnNamesList.pipe(S.optional),
 );
 export type IncludedDatasetColumns = { [key: string]: string[] | undefined };
-export const IncludedDatasetColumns = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ ColumnNamesList.pipe(S.optional),
-);
+export const IncludedDatasetColumns =
+  ExcludedDatasetColumns as any as S.Schema<IncludedDatasetColumns>;
 export interface TrainingDataConfig {
   excludedDatasetColumns?: { [key: string]: string[] | undefined };
   includedDatasetColumns?: { [key: string]: string[] | undefined };
@@ -693,20 +687,14 @@ export interface ContinuousHyperParameterRange {
   minValue?: number;
   maxValue?: number;
 }
-export const ContinuousHyperParameterRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    minValue: S.optional(S.Number),
-    maxValue: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ContinuousHyperParameterRange",
-}) as any as S.Schema<ContinuousHyperParameterRange>;
+export const ContinuousHyperParameterRange =
+  IntegerHyperParameterRange as any as S.Schema<ContinuousHyperParameterRange>;
 export type ContinuousHyperParameterRanges = ContinuousHyperParameterRange[];
-export const ContinuousHyperParameterRanges = /*@__PURE__*/ S.Array(ContinuousHyperParameterRange);
+export const ContinuousHyperParameterRanges =
+  IntegerHyperParameterRanges as any as S.Schema<ContinuousHyperParameterRanges>;
 export type CategoricalValue = string;
 export type CategoricalValues = string[];
-export const CategoricalValues = /*@__PURE__*/ S.Array(S.String);
+export const CategoricalValues = ColumnNamesList as any as S.Schema<CategoricalValues>;
 export interface CategoricalHyperParameterRange {
   name?: string;
   values?: string[];
@@ -745,12 +733,10 @@ export const HPOConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HPOConfig" }) as any as S.Schema<HPOConfig>;
 export type FeatureTransformationParameters = { [key: string]: string | undefined };
-export const FeatureTransformationParameters = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const FeatureTransformationParameters =
+  HyperParameters as any as S.Schema<FeatureTransformationParameters>;
 export type ArnList = string[];
-export const ArnList = /*@__PURE__*/ S.Array(S.String);
+export const ArnList = ColumnNamesList as any as S.Schema<ArnList>;
 export interface AutoMLConfig {
   metricName?: string;
   recipeList?: string[];
@@ -905,9 +891,8 @@ export const DeleteDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteDatasetRequest" }) as any as S.Schema<DeleteDatasetRequest>;
 export interface DeleteDatasetResponse {}
-export const DeleteDatasetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDatasetResponse",
-}) as any as S.Schema<DeleteDatasetResponse>;
+export const DeleteDatasetResponse =
+  DeleteCampaignResponse as any as S.Schema<DeleteDatasetResponse>;
 export interface DeleteDatasetGroupRequest {
   datasetGroupArn: string;
 }
@@ -919,9 +904,8 @@ export const DeleteDatasetGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDatasetGroupRequest",
 }) as any as S.Schema<DeleteDatasetGroupRequest>;
 export interface DeleteDatasetGroupResponse {}
-export const DeleteDatasetGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDatasetGroupResponse",
-}) as any as S.Schema<DeleteDatasetGroupResponse>;
+export const DeleteDatasetGroupResponse =
+  DeleteCampaignResponse as any as S.Schema<DeleteDatasetGroupResponse>;
 export interface DeleteEventTrackerRequest {
   eventTrackerArn: string;
 }
@@ -933,9 +917,8 @@ export const DeleteEventTrackerRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteEventTrackerRequest",
 }) as any as S.Schema<DeleteEventTrackerRequest>;
 export interface DeleteEventTrackerResponse {}
-export const DeleteEventTrackerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEventTrackerResponse",
-}) as any as S.Schema<DeleteEventTrackerResponse>;
+export const DeleteEventTrackerResponse =
+  DeleteCampaignResponse as any as S.Schema<DeleteEventTrackerResponse>;
 export interface DeleteFilterRequest {
   filterArn: string;
 }
@@ -945,9 +928,7 @@ export const DeleteFilterRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteFilterRequest" }) as any as S.Schema<DeleteFilterRequest>;
 export interface DeleteFilterResponse {}
-export const DeleteFilterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFilterResponse",
-}) as any as S.Schema<DeleteFilterResponse>;
+export const DeleteFilterResponse = DeleteCampaignResponse as any as S.Schema<DeleteFilterResponse>;
 export interface DeleteMetricAttributionRequest {
   metricAttributionArn: string;
 }
@@ -971,9 +952,8 @@ export const DeleteRecommenderRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteRecommenderRequest" }) as any as S.Schema<DeleteRecommenderRequest>;
 export interface DeleteRecommenderResponse {}
-export const DeleteRecommenderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRecommenderResponse",
-}) as any as S.Schema<DeleteRecommenderResponse>;
+export const DeleteRecommenderResponse =
+  DeleteCampaignResponse as any as S.Schema<DeleteRecommenderResponse>;
 export interface DeleteSchemaRequest {
   schemaArn: string;
 }
@@ -983,9 +963,7 @@ export const DeleteSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteSchemaRequest" }) as any as S.Schema<DeleteSchemaRequest>;
 export interface DeleteSchemaResponse {}
-export const DeleteSchemaResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSchemaResponse",
-}) as any as S.Schema<DeleteSchemaResponse>;
+export const DeleteSchemaResponse = DeleteCampaignResponse as any as S.Schema<DeleteSchemaResponse>;
 export interface DeleteSolutionRequest {
   solutionArn: string;
 }
@@ -995,9 +973,8 @@ export const DeleteSolutionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteSolutionRequest" }) as any as S.Schema<DeleteSolutionRequest>;
 export interface DeleteSolutionResponse {}
-export const DeleteSolutionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSolutionResponse",
-}) as any as S.Schema<DeleteSolutionResponse>;
+export const DeleteSolutionResponse =
+  DeleteCampaignResponse as any as S.Schema<DeleteSolutionResponse>;
 export interface DescribeAlgorithmRequest {
   algorithmArn: string;
 }
@@ -1041,20 +1018,11 @@ export interface DefaultContinuousHyperParameterRange {
   maxValue?: number;
   isTunable?: boolean;
 }
-export const DefaultContinuousHyperParameterRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    minValue: S.optional(S.Number),
-    maxValue: S.optional(S.Number),
-    isTunable: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "DefaultContinuousHyperParameterRange",
-}) as any as S.Schema<DefaultContinuousHyperParameterRange>;
+export const DefaultContinuousHyperParameterRange =
+  DefaultIntegerHyperParameterRange as any as S.Schema<DefaultContinuousHyperParameterRange>;
 export type DefaultContinuousHyperParameterRanges = DefaultContinuousHyperParameterRange[];
-export const DefaultContinuousHyperParameterRanges = /*@__PURE__*/ S.Array(
-  DefaultContinuousHyperParameterRange,
-);
+export const DefaultContinuousHyperParameterRanges =
+  DefaultIntegerHyperParameterRanges as any as S.Schema<DefaultContinuousHyperParameterRanges>;
 export interface DefaultCategoricalHyperParameterRange {
   name?: string;
   values?: string[];
@@ -1088,10 +1056,7 @@ export const DefaultHyperParameterRanges = /*@__PURE__*/ S.suspend(() =>
   identifier: "DefaultHyperParameterRanges",
 }) as any as S.Schema<DefaultHyperParameterRanges>;
 export type ResourceConfig = { [key: string]: string | undefined };
-export const ResourceConfig = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ResourceConfig = HyperParameters as any as S.Schema<ResourceConfig>;
 export type TrainingInputMode = string;
 export interface Algorithm {
   name?: string;
@@ -1575,10 +1540,7 @@ export const DescribeFeatureTransformationRequest = /*@__PURE__*/ S.suspend(() =
   identifier: "DescribeFeatureTransformationRequest",
 }) as any as S.Schema<DescribeFeatureTransformationRequest>;
 export type FeaturizationParameters = { [key: string]: string | undefined };
-export const FeaturizationParameters = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const FeaturizationParameters = HyperParameters as any as S.Schema<FeaturizationParameters>;
 export interface FeatureTransformation {
   name?: string;
   featureTransformationArn?: string;
@@ -2735,9 +2697,8 @@ export const StopRecommenderRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopRecommenderResponse {
   recommenderArn?: string;
 }
-export const StopRecommenderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ recommenderArn: S.optional(S.String) }),
-).annotate({ identifier: "StopRecommenderResponse" }) as any as S.Schema<StopRecommenderResponse>;
+export const StopRecommenderResponse =
+  StartRecommenderResponse as any as S.Schema<StopRecommenderResponse>;
 export interface StopSolutionVersionCreationRequest {
   solutionVersionArn: string;
 }
@@ -2764,9 +2725,7 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteCampaignResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = (string | redacted.Redacted<string>)[];
 export const TagKeys = /*@__PURE__*/ S.Array(SensitiveString);
 export interface UntagResourceRequest {
@@ -2779,9 +2738,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteCampaignResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateCampaignRequest {
   campaignArn: string;
   solutionVersionArn?: string;
@@ -2799,9 +2757,8 @@ export const UpdateCampaignRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateCampaignResponse {
   campaignArn?: string;
 }
-export const UpdateCampaignResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ campaignArn: S.optional(S.String) }),
-).annotate({ identifier: "UpdateCampaignResponse" }) as any as S.Schema<UpdateCampaignResponse>;
+export const UpdateCampaignResponse =
+  CreateCampaignResponse as any as S.Schema<UpdateCampaignResponse>;
 export interface UpdateDatasetRequest {
   datasetArn: string;
   schemaArn: string;
@@ -2814,11 +2771,11 @@ export const UpdateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDatasetResponse {
   datasetArn?: string;
 }
-export const UpdateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ datasetArn: S.optional(S.String) }),
-).annotate({ identifier: "UpdateDatasetResponse" }) as any as S.Schema<UpdateDatasetResponse>;
+export const UpdateDatasetResponse =
+  CreateDatasetResponse as any as S.Schema<UpdateDatasetResponse>;
 export type MetricAttributesNamesList = string[];
-export const MetricAttributesNamesList = /*@__PURE__*/ S.Array(S.String);
+export const MetricAttributesNamesList =
+  ColumnNamesList as any as S.Schema<MetricAttributesNamesList>;
 export interface UpdateMetricAttributionRequest {
   addMetrics?: MetricAttribute[];
   removeMetrics?: string[];
@@ -2838,11 +2795,8 @@ export const UpdateMetricAttributionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateMetricAttributionResponse {
   metricAttributionArn?: string;
 }
-export const UpdateMetricAttributionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ metricAttributionArn: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateMetricAttributionResponse",
-}) as any as S.Schema<UpdateMetricAttributionResponse>;
+export const UpdateMetricAttributionResponse =
+  CreateMetricAttributionResponse as any as S.Schema<UpdateMetricAttributionResponse>;
 export interface UpdateRecommenderRequest {
   recommenderArn: string;
   recommenderConfig: RecommenderConfig;
@@ -2855,11 +2809,8 @@ export const UpdateRecommenderRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateRecommenderResponse {
   recommenderArn?: string;
 }
-export const UpdateRecommenderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ recommenderArn: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateRecommenderResponse",
-}) as any as S.Schema<UpdateRecommenderResponse>;
+export const UpdateRecommenderResponse =
+  CreateRecommenderResponse as any as S.Schema<UpdateRecommenderResponse>;
 export interface UpdateSolutionRequest {
   solutionArn: string;
   performAutoTraining?: boolean;
@@ -2877,9 +2828,8 @@ export const UpdateSolutionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSolutionResponse {
   solutionArn?: string;
 }
-export const UpdateSolutionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ solutionArn: S.optional(S.String) }),
-).annotate({ identifier: "UpdateSolutionResponse" }) as any as S.Schema<UpdateSolutionResponse>;
+export const UpdateSolutionResponse =
+  CreateSolutionResponse as any as S.Schema<UpdateSolutionResponse>;
 export type ErrorMessage = string;
 export type CreateBatchInferenceJobError =
   | InvalidInputException

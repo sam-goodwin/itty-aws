@@ -264,9 +264,8 @@ export const DeleteIdentitySourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteIdentitySourceRequest",
 }) as any as S.Schema<DeleteIdentitySourceRequest>;
 export interface DeleteIdentitySourceResponse {}
-export const DeleteIdentitySourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteIdentitySourceResponse",
-}) as any as S.Schema<DeleteIdentitySourceResponse>;
+export const DeleteIdentitySourceResponse =
+  CancelSessionResponse as any as S.Schema<DeleteIdentitySourceResponse>;
 export interface DeleteInactiveApprovalTeamVersionRequest {
   Arn: string;
   VersionId: string;
@@ -303,9 +302,8 @@ export const GetApprovalTeamRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetApprovalTeamRequest" }) as any as S.Schema<GetApprovalTeamRequest>;
 export type ApprovalStrategyResponse = { MofN: MofNApprovalStrategy };
-export const ApprovalStrategyResponse = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ MofN: MofNApprovalStrategy }),
-]);
+export const ApprovalStrategyResponse =
+  ApprovalStrategy as any as S.Schema<ApprovalStrategyResponse>;
 export type ParticipantId = string;
 export type IdentityStatus = "PENDING" | "ACCEPTED" | "REJECTED" | "INVALID" | (string & {});
 export const IdentityStatus = S.String;
@@ -602,10 +600,7 @@ export const GetSessionRequest = /*@__PURE__*/ S.suspend(() =>
 export type SessionKey = string | redacted.Redacted<string>;
 export type SessionValue = string | redacted.Redacted<string>;
 export type SessionMetadata = { [key: string]: string | redacted.Redacted<string> | undefined };
-export const SessionMetadata = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ SensitiveString.pipe(S.optional),
-);
+export const SessionMetadata = Tags as any as S.Schema<SessionMetadata>;
 export type SessionStatus =
   | "PENDING"
   | "CANCELLED"
@@ -792,17 +787,11 @@ export interface IamIdentityCenterForList {
   ApprovalPortalUrl?: string;
   Region?: string;
 }
-export const IamIdentityCenterForList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    InstanceArn: S.optional(S.String),
-    ApprovalPortalUrl: S.optional(S.String),
-    Region: S.optional(S.String),
-  }),
-).annotate({ identifier: "IamIdentityCenterForList" }) as any as S.Schema<IamIdentityCenterForList>;
+export const IamIdentityCenterForList =
+  IamIdentityCenterForGet as any as S.Schema<IamIdentityCenterForList>;
 export type IdentitySourceParametersForList = { IamIdentityCenter: IamIdentityCenterForList };
-export const IdentitySourceParametersForList = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ IamIdentityCenter: IamIdentityCenterForList }),
-]);
+export const IdentitySourceParametersForList =
+  IdentitySourceParametersForGet as any as S.Schema<IdentitySourceParametersForList>;
 export interface IdentitySourceForList {
   IdentitySourceType?: IdentitySourceType;
   IdentitySourceParameters?: IdentitySourceParametersForList;
@@ -1179,9 +1168,7 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = CancelSessionResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = (string | redacted.Redacted<string>)[];
 export const TagKeyList = /*@__PURE__*/ S.Array(SensitiveString);
 export interface UntagResourceRequest {
@@ -1194,9 +1181,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  CancelSessionResponse as any as S.Schema<UntagResourceResponse>;
 export type UpdateAction = "SYNCHRONIZE_MFA_DEVICES" | (string & {});
 export const UpdateAction = S.String;
 

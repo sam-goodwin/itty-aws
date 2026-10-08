@@ -40,15 +40,13 @@ export const AddAppsPermissionsRequestUserIdsList = /*@__PURE__*/ S.Array(
 
 /** List of encoded usergroup IDs */
 export type AddAppsPermissionsRequestUsergroupIdsList = Array<string>;
-export const AddAppsPermissionsRequestUsergroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddAppsPermissionsRequestUsergroupIdsList>;
+export const AddAppsPermissionsRequestUsergroupIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<AddAppsPermissionsRequestUsergroupIdsList>;
 
 /** List of encoded channel IDs to add to the channel restriction list. Interpretation depends on the app's `channel_restriction_mode`, which is configured via the `admin.apps.permissions.set` method. */
 export type AddAppsPermissionsRequestChannelIdsList = Array<string>;
-export const AddAppsPermissionsRequestChannelIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddAppsPermissionsRequestChannelIdsList>;
+export const AddAppsPermissionsRequestChannelIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<AddAppsPermissionsRequestChannelIdsList>;
 
 export interface AddAppsPermissionsRequest {
   /** Encoded ID of the app */
@@ -85,15 +83,13 @@ export const AddAppsPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of the entity IDs for which roles will be assigned. These can be Org IDs, Team IDs or Channel IDs */
 export type AddAssignmentsRequestEntityIdsList = Array<string>;
-export const AddAssignmentsRequestEntityIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddAssignmentsRequestEntityIdsList>;
+export const AddAssignmentsRequestEntityIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<AddAssignmentsRequestEntityIdsList>;
 
 /** List of IDs from the users to be added to the given role */
 export type AddAssignmentsRequestUserIdsList = Array<string>;
-export const AddAssignmentsRequestUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddAssignmentsRequestUserIdsList>;
+export const AddAssignmentsRequestUserIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<AddAssignmentsRequestUserIdsList>;
 
 export interface AddAssignmentsRequest {
   /** ID of the role to which users will be assigned */
@@ -126,9 +122,8 @@ export const AddAssignmentsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Comma separated string of channel IDs. */
 export type AddChannelsRequestChannelIdsList = Array<string>;
-export const AddChannelsRequestChannelIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddChannelsRequestChannelIdsList>;
+export const AddChannelsRequestChannelIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<AddChannelsRequestChannelIdsList>;
 
 export interface AddChannelsRequest {
   /** ID of the IDP group to add default channels for. */
@@ -148,9 +143,8 @@ export const AddChannelsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of channel IDs that are not valid for this action */
 export type AddChannelsResponseInvalidChannelsList = Array<string>;
-export const AddChannelsResponseInvalidChannelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddChannelsResponseInvalidChannelsList>;
+export const AddChannelsResponseInvalidChannelsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<AddChannelsResponseInvalidChannelsList>;
 
 export interface AddChannelsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -185,11 +179,7 @@ export interface AddEmojiResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const AddEmojiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "AddEmojiResponse" }) as any as S.Schema<AddEmojiResponse>;
+export const AddEmojiResponse = AddAliasResponse as any as S.Schema<AddEmojiResponse>;
 
 export interface AddGroupRequest {
   /** The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that are shared across an organization. */
@@ -212,17 +202,12 @@ export const AddGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface AddGroupResponse {
   ok: boolean;
 }
-export const AddGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "AddGroupResponse" }) as any as S.Schema<AddGroupResponse>;
+export const AddGroupResponse = AddAliasResponse as any as S.Schema<AddGroupResponse>;
 
 /** A comma separated list of encoded team (workspace) IDs. Each workspace *MUST* belong to the organization associated with the token. */
 export type AddTeamsRequestTeamIdsList = Array<string>;
-export const AddTeamsRequestTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddTeamsRequestTeamIdsList>;
+export const AddTeamsRequestTeamIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<AddTeamsRequestTeamIdsList>;
 
 export interface AddTeamsRequest {
   /** An encoded usergroup (IDP Group) ID. */
@@ -244,17 +229,12 @@ export interface AddTeamsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const AddTeamsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "AddTeamsResponse" }) as any as S.Schema<AddTeamsResponse>;
+export const AddTeamsResponse = AddAliasResponse as any as S.Schema<AddTeamsResponse>;
 
 /** The encoded user IDs to add to the usergroup, provided as a JSON array or a comma-separated string. */
 export type AddUsersRequestUsersList = Array<string>;
-export const AddUsersRequestUsersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddUsersRequestUsersList>;
+export const AddUsersRequestUsersList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<AddUsersRequestUsersList>;
 
 export interface AddUsersRequest {
   /** ID of the usergroup to add users to */
@@ -314,15 +294,13 @@ export const AddUsersResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of workflow IDs to edit; max 50 */
 export type AddWorkflowsCollaboratorRequestWorkflowIdsList = Array<string>;
-export const AddWorkflowsCollaboratorRequestWorkflowIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddWorkflowsCollaboratorRequestWorkflowIdsList>;
+export const AddWorkflowsCollaboratorRequestWorkflowIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<AddWorkflowsCollaboratorRequestWorkflowIdsList>;
 
 /** Array of collaborators (encoded user IDs) to add; max 50 */
 export type AddWorkflowsCollaboratorRequestCollaboratorIdsList = Array<string>;
-export const AddWorkflowsCollaboratorRequestCollaboratorIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddWorkflowsCollaboratorRequestCollaboratorIdsList>;
+export const AddWorkflowsCollaboratorRequestCollaboratorIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<AddWorkflowsCollaboratorRequestCollaboratorIdsList>;
 
 export interface AddWorkflowsCollaboratorRequest {
   /** Array of workflow IDs to edit; max 50 */
@@ -343,13 +321,8 @@ export interface AddWorkflowsCollaboratorResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const AddWorkflowsCollaboratorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "AddWorkflowsCollaboratorResponse",
-}) as any as S.Schema<AddWorkflowsCollaboratorResponse>;
+export const AddWorkflowsCollaboratorResponse =
+  AddAppsPermissionsResponse as any as S.Schema<AddWorkflowsCollaboratorResponse>;
 
 export interface AnalyticsMessagesActivityRequest {
   /** Channel ID for channel of the message activity to query. */
@@ -605,11 +578,7 @@ export interface ApproveAppResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const ApproveAppResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "ApproveAppResponse" }) as any as S.Schema<ApproveAppResponse>;
+export const ApproveAppResponse = AddAliasResponse as any as S.Schema<ApproveAppResponse>;
 
 export interface ApproveInviteRequestRequest {
   /** ID for the workspace where the invite request was made. */
@@ -630,13 +599,8 @@ export interface ApproveInviteRequestResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const ApproveInviteRequestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "ApproveInviteRequestResponse",
-}) as any as S.Schema<ApproveInviteRequestResponse>;
+export const ApproveInviteRequestResponse =
+  AddAppsPermissionsResponse as any as S.Schema<ApproveInviteRequestResponse>;
 
 export interface AppsRestrictRequest {
   /** The id of the app to restrict. */
@@ -661,11 +625,7 @@ export interface AppsRestrictResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const AppsRestrictResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "AppsRestrictResponse" }) as any as S.Schema<AppsRestrictResponse>;
+export const AppsRestrictResponse = AddAliasResponse as any as S.Schema<AppsRestrictResponse>;
 
 export interface ArchiveConversationRequest {
   /** The channel to archive. */
@@ -682,19 +642,13 @@ export const ArchiveConversationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ArchiveConversationResponse {
   ok: boolean;
 }
-export const ArchiveConversationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "ArchiveConversationResponse",
-}) as any as S.Schema<ArchiveConversationResponse>;
+export const ArchiveConversationResponse =
+  AddAppsPermissionsResponse as any as S.Schema<ArchiveConversationResponse>;
 
 /** Array of IDs to assign to the policy. */
 export type AssignEntitiesRequestEntityIdsList = Array<string>;
-export const AssignEntitiesRequestEntityIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AssignEntitiesRequestEntityIdsList>;
+export const AssignEntitiesRequestEntityIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<AssignEntitiesRequestEntityIdsList>;
 
 export interface AssignEntitiesRequest {
   /** The name of the authentication policy to assign the entities to. Currently, `email_password` is the only policy that may be used with this method. */
@@ -751,17 +705,12 @@ export interface AssignUserResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const AssignUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "AssignUserResponse" }) as any as S.Schema<AssignUserResponse>;
+export const AssignUserResponse = AddAliasResponse as any as S.Schema<AssignUserResponse>;
 
 /** An array of channel IDs to archive. No more than 100 items are allowed. */
 export type BulkArchiveRequestChannelIdsList = Array<string>;
-export const BulkArchiveRequestChannelIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkArchiveRequestChannelIdsList>;
+export const BulkArchiveRequestChannelIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<BulkArchiveRequestChannelIdsList>;
 
 export interface BulkArchiveRequest {
   /** An array of channel IDs to archive. No more than 100 items are allowed. */
@@ -782,9 +731,8 @@ export const BulkArchiveRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The reason the channel was not added */
 export type BulkArchiveResponseNotAddedItemErrorsList = Array<string>;
-export const BulkArchiveResponseNotAddedItemErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkArchiveResponseNotAddedItemErrorsList>;
+export const BulkArchiveResponseNotAddedItemErrorsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<BulkArchiveResponseNotAddedItemErrorsList>;
 
 export interface BulkArchiveResponseNotAddedItem {
   channel_id: string;
@@ -823,9 +771,8 @@ export const BulkArchiveResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of channel IDs. */
 export type BulkDeleteRequestChannelIdsList = Array<string>;
-export const BulkDeleteRequestChannelIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkDeleteRequestChannelIdsList>;
+export const BulkDeleteRequestChannelIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<BulkDeleteRequestChannelIdsList>;
 
 export interface BulkDeleteRequest {
   /** An array of channel IDs. */
@@ -846,29 +793,21 @@ export const BulkDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The reason the channel was not added */
 export type BulkDeleteResponseNotAddedItemErrorsList = Array<string>;
-export const BulkDeleteResponseNotAddedItemErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkDeleteResponseNotAddedItemErrorsList>;
+export const BulkDeleteResponseNotAddedItemErrorsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<BulkDeleteResponseNotAddedItemErrorsList>;
 
 export interface BulkDeleteResponseNotAddedItem {
   channel_id: string;
   /** The reason the channel was not added */
   errors: BulkDeleteResponseNotAddedItemErrorsList;
 }
-export const BulkDeleteResponseNotAddedItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    channel_id: S.String,
-    errors: BulkDeleteResponseNotAddedItemErrorsList,
-  }),
-).annotate({
-  identifier: "BulkDeleteResponseNotAddedItem",
-}) as any as S.Schema<BulkDeleteResponseNotAddedItem>;
+export const BulkDeleteResponseNotAddedItem =
+  BulkArchiveResponseNotAddedItem as any as S.Schema<BulkDeleteResponseNotAddedItem>;
 
 /** The channel ID and reason it could not be deleted. */
 export type BulkDeleteResponseNotAddedList = Array<BulkDeleteResponseNotAddedItem>;
-export const BulkDeleteResponseNotAddedList = /*@__PURE__*/ S.Array(
-  BulkDeleteResponseNotAddedItem,
-) as any as S.Schema<BulkDeleteResponseNotAddedList>;
+export const BulkDeleteResponseNotAddedList =
+  BulkArchiveResponseNotAddedList as any as S.Schema<BulkDeleteResponseNotAddedList>;
 
 export interface BulkDeleteResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -877,19 +816,12 @@ export interface BulkDeleteResponse {
   /** The channel ID and reason it could not be deleted. */
   not_added: BulkDeleteResponseNotAddedList;
 }
-export const BulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-    bulk_action_id: S.String,
-    not_added: BulkDeleteResponseNotAddedList,
-  }),
-).annotate({ identifier: "BulkDeleteResponse" }) as any as S.Schema<BulkDeleteResponse>;
+export const BulkDeleteResponse = BulkArchiveResponse as any as S.Schema<BulkDeleteResponse>;
 
 /** An array of channel IDs. */
 export type BulkMoveRequestChannelIdsList = Array<string>;
-export const BulkMoveRequestChannelIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkMoveRequestChannelIdsList>;
+export const BulkMoveRequestChannelIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<BulkMoveRequestChannelIdsList>;
 
 export interface BulkMoveRequest {
   /** Target team ID */
@@ -913,29 +845,21 @@ export const BulkMoveRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The reason the channel was not added */
 export type BulkMoveResponseNotAddedItemErrorsList = Array<string>;
-export const BulkMoveResponseNotAddedItemErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkMoveResponseNotAddedItemErrorsList>;
+export const BulkMoveResponseNotAddedItemErrorsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<BulkMoveResponseNotAddedItemErrorsList>;
 
 export interface BulkMoveResponseNotAddedItem {
   channel_id: string;
   /** The reason the channel was not added */
   errors: BulkMoveResponseNotAddedItemErrorsList;
 }
-export const BulkMoveResponseNotAddedItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    channel_id: S.String,
-    errors: BulkMoveResponseNotAddedItemErrorsList,
-  }),
-).annotate({
-  identifier: "BulkMoveResponseNotAddedItem",
-}) as any as S.Schema<BulkMoveResponseNotAddedItem>;
+export const BulkMoveResponseNotAddedItem =
+  BulkArchiveResponseNotAddedItem as any as S.Schema<BulkMoveResponseNotAddedItem>;
 
 /** The channel ID and reason it could not be moved. */
 export type BulkMoveResponseNotAddedList = Array<BulkMoveResponseNotAddedItem>;
-export const BulkMoveResponseNotAddedList = /*@__PURE__*/ S.Array(
-  BulkMoveResponseNotAddedItem,
-) as any as S.Schema<BulkMoveResponseNotAddedList>;
+export const BulkMoveResponseNotAddedList =
+  BulkArchiveResponseNotAddedList as any as S.Schema<BulkMoveResponseNotAddedList>;
 
 export interface BulkMoveResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -944,18 +868,11 @@ export interface BulkMoveResponse {
   /** The channel ID and reason it could not be moved. */
   not_added: BulkMoveResponseNotAddedList;
 }
-export const BulkMoveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-    bulk_action_id: S.String,
-    not_added: BulkMoveResponseNotAddedList,
-  }),
-).annotate({ identifier: "BulkMoveResponse" }) as any as S.Schema<BulkMoveResponse>;
+export const BulkMoveResponse = BulkArchiveResponse as any as S.Schema<BulkMoveResponse>;
 
 export type BulkSetExcludeFromSlackAiRequestChannelIdsList = Array<string>;
-export const BulkSetExcludeFromSlackAiRequestChannelIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkSetExcludeFromSlackAiRequestChannelIdsList>;
+export const BulkSetExcludeFromSlackAiRequestChannelIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<BulkSetExcludeFromSlackAiRequestChannelIdsList>;
 
 export interface BulkSetExcludeFromSlackAiRequest {
   /** An array of channel IDs to exclude from Slack AI. */
@@ -976,30 +893,22 @@ export const BulkSetExcludeFromSlackAiRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The reason the channel was not added */
 export type BulkSetExcludeFromSlackAiResponseNotAddedItemErrorsList = Array<string>;
-export const BulkSetExcludeFromSlackAiResponseNotAddedItemErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkSetExcludeFromSlackAiResponseNotAddedItemErrorsList>;
+export const BulkSetExcludeFromSlackAiResponseNotAddedItemErrorsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<BulkSetExcludeFromSlackAiResponseNotAddedItemErrorsList>;
 
 export interface BulkSetExcludeFromSlackAiResponseNotAddedItem {
   channel_id: string;
   /** The reason the channel was not added */
   errors: BulkSetExcludeFromSlackAiResponseNotAddedItemErrorsList;
 }
-export const BulkSetExcludeFromSlackAiResponseNotAddedItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    channel_id: S.String,
-    errors: BulkSetExcludeFromSlackAiResponseNotAddedItemErrorsList,
-  }),
-).annotate({
-  identifier: "BulkSetExcludeFromSlackAiResponseNotAddedItem",
-}) as any as S.Schema<BulkSetExcludeFromSlackAiResponseNotAddedItem>;
+export const BulkSetExcludeFromSlackAiResponseNotAddedItem =
+  BulkArchiveResponseNotAddedItem as any as S.Schema<BulkSetExcludeFromSlackAiResponseNotAddedItem>;
 
 /** The channel ID and reason it could not be excluded from Slack AI */
 export type BulkSetExcludeFromSlackAiResponseNotAddedList =
   Array<BulkSetExcludeFromSlackAiResponseNotAddedItem>;
-export const BulkSetExcludeFromSlackAiResponseNotAddedList = /*@__PURE__*/ S.Array(
-  BulkSetExcludeFromSlackAiResponseNotAddedItem,
-) as any as S.Schema<BulkSetExcludeFromSlackAiResponseNotAddedList>;
+export const BulkSetExcludeFromSlackAiResponseNotAddedList =
+  BulkArchiveResponseNotAddedList as any as S.Schema<BulkSetExcludeFromSlackAiResponseNotAddedList>;
 
 export interface BulkSetExcludeFromSlackAiResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -1020,9 +929,8 @@ export const BulkSetExcludeFromSlackAiResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of channel IDs on which to set the property. */
 export type BulkSetPropertiesRequestChannelIdsList = Array<string>;
-export const BulkSetPropertiesRequestChannelIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkSetPropertiesRequestChannelIdsList>;
+export const BulkSetPropertiesRequestChannelIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<BulkSetPropertiesRequestChannelIdsList>;
 
 export interface BulkSetPropertiesRequest {
   /** An array of channel IDs on which to set the property. */
@@ -1046,30 +954,22 @@ export const BulkSetPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The reasons the channel was not updated */
 export type BulkSetPropertiesResponseNotUpdatedItemErrorsList = Array<string>;
-export const BulkSetPropertiesResponseNotUpdatedItemErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkSetPropertiesResponseNotUpdatedItemErrorsList>;
+export const BulkSetPropertiesResponseNotUpdatedItemErrorsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<BulkSetPropertiesResponseNotUpdatedItemErrorsList>;
 
 export interface BulkSetPropertiesResponseNotUpdatedItem {
   channel_id: string;
   /** The reasons the channel was not updated */
   errors: BulkSetPropertiesResponseNotUpdatedItemErrorsList;
 }
-export const BulkSetPropertiesResponseNotUpdatedItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    channel_id: S.String,
-    errors: BulkSetPropertiesResponseNotUpdatedItemErrorsList,
-  }),
-).annotate({
-  identifier: "BulkSetPropertiesResponseNotUpdatedItem",
-}) as any as S.Schema<BulkSetPropertiesResponseNotUpdatedItem>;
+export const BulkSetPropertiesResponseNotUpdatedItem =
+  BulkArchiveResponseNotAddedItem as any as S.Schema<BulkSetPropertiesResponseNotUpdatedItem>;
 
 /** Channels that could not be updated, with reasons */
 export type BulkSetPropertiesResponseNotUpdatedList =
   Array<BulkSetPropertiesResponseNotUpdatedItem>;
-export const BulkSetPropertiesResponseNotUpdatedList = /*@__PURE__*/ S.Array(
-  BulkSetPropertiesResponseNotUpdatedItem,
-) as any as S.Schema<BulkSetPropertiesResponseNotUpdatedList>;
+export const BulkSetPropertiesResponseNotUpdatedList =
+  BulkArchiveResponseNotAddedList as any as S.Schema<BulkSetPropertiesResponseNotUpdatedList>;
 
 export interface BulkSetPropertiesResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -1108,13 +1008,8 @@ export interface CancelAppsRequestResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const CancelAppsRequestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "CancelAppsRequestResponse",
-}) as any as S.Schema<CancelAppsRequestResponse>;
+export const CancelAppsRequestResponse =
+  AddAppsPermissionsResponse as any as S.Schema<CancelAppsRequestResponse>;
 
 export interface ClearResolutionRequest {
   /** The id of the app whose resolution you want to clear/undo. */
@@ -1136,17 +1031,12 @@ export interface ClearResolutionResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const ClearResolutionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "ClearResolutionResponse" }) as any as S.Schema<ClearResolutionResponse>;
+export const ClearResolutionResponse = AddAliasResponse as any as S.Schema<ClearResolutionResponse>;
 
 /** The IDs of users you'd like to clear session settings for. */
 export type ClearSettingsRequestUserIdsList = Array<string>;
-export const ClearSettingsRequestUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClearSettingsRequestUserIdsList>;
+export const ClearSettingsRequestUserIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<ClearSettingsRequestUserIdsList>;
 
 export interface ClearSettingsRequest {
   /** The IDs of users you'd like to clear session settings for. */
@@ -1161,11 +1051,7 @@ export const ClearSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ClearSettingsResponse {
   ok: boolean;
 }
-export const ClearSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "ClearSettingsResponse" }) as any as S.Schema<ClearSettingsResponse>;
+export const ClearSettingsResponse = AddAliasResponse as any as S.Schema<ClearSettingsResponse>;
 
 export interface ConvertToPrivateRequest {
   /** The channel to convert to private. */
@@ -1183,11 +1069,8 @@ export const ConvertToPrivateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ConvertToPrivateResponse {
   ok: boolean;
 }
-export const ConvertToPrivateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "ConvertToPrivateResponse" }) as any as S.Schema<ConvertToPrivateResponse>;
+export const ConvertToPrivateResponse =
+  AddAliasResponse as any as S.Schema<ConvertToPrivateResponse>;
 
 export interface ConvertToPublicRequest {
   /** The channel to convert to public. */
@@ -1202,17 +1085,12 @@ export const ConvertToPublicRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ConvertToPublicResponse {
   ok: boolean;
 }
-export const ConvertToPublicResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "ConvertToPublicResponse" }) as any as S.Schema<ConvertToPublicResponse>;
+export const ConvertToPublicResponse = AddAliasResponse as any as S.Schema<ConvertToPublicResponse>;
 
 /** A list of [IDP Groups](https://slack.com/help/articles/115001435788-Connect-identity-provider-groups-to-your-Enterprise-organization) ids that the primary usergroup is to be barriered from. */
 export type CreateBarrierRequestBarrieredFromUsergroupIdsList = Array<string>;
-export const CreateBarrierRequestBarrieredFromUsergroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateBarrierRequestBarrieredFromUsergroupIdsList>;
+export const CreateBarrierRequestBarrieredFromUsergroupIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<CreateBarrierRequestBarrieredFromUsergroupIdsList>;
 
 export type CreateBarrierRequestRestrictedSubjectsItem = "im" | "mpim" | "call";
 export const CreateBarrierRequestRestrictedSubjectsItem = S.String;
@@ -1410,11 +1288,7 @@ export const DeleteBarrierRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteBarrierResponse {
   ok: boolean;
 }
-export const DeleteBarrierResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "DeleteBarrierResponse" }) as any as S.Schema<DeleteBarrierResponse>;
+export const DeleteBarrierResponse = AddAliasResponse as any as S.Schema<DeleteBarrierResponse>;
 
 export interface DeleteConversationRequest {
   /** The channel to delete. */
@@ -1431,19 +1305,13 @@ export const DeleteConversationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteConversationResponse {
   ok: boolean;
 }
-export const DeleteConversationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "DeleteConversationResponse",
-}) as any as S.Schema<DeleteConversationResponse>;
+export const DeleteConversationResponse =
+  AddAppsPermissionsResponse as any as S.Schema<DeleteConversationResponse>;
 
 /** Used for disconnecting a team from a shared channel. Only one team ID may be passed at a time. */
 export type DisconnectSharedRequestLeavingTeamIdsList = Array<string>;
-export const DisconnectSharedRequestLeavingTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DisconnectSharedRequestLeavingTeamIdsList>;
+export const DisconnectSharedRequestLeavingTeamIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<DisconnectSharedRequestLeavingTeamIdsList>;
 
 export interface DisconnectSharedRequest {
   /** The channel to be disconnected from some workspaces. */
@@ -1461,11 +1329,8 @@ export const DisconnectSharedRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DisconnectSharedResponse {
   ok: boolean;
 }
-export const DisconnectSharedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "DisconnectSharedResponse" }) as any as S.Schema<DisconnectSharedResponse>;
+export const DisconnectSharedResponse =
+  AddAliasResponse as any as S.Schema<DisconnectSharedResponse>;
 
 export interface ExportUsersUnsupportedVersionRequest {
   /** Unix timestamp of a date to start looking for user sessions. If not provided will start six months ago. */
@@ -1493,13 +1358,8 @@ export interface ExportUsersUnsupportedVersionResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const ExportUsersUnsupportedVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "ExportUsersUnsupportedVersionResponse",
-}) as any as S.Schema<ExportUsersUnsupportedVersionResponse>;
+export const ExportUsersUnsupportedVersionResponse =
+  AddAppsPermissionsResponse as any as S.Schema<ExportUsersUnsupportedVersionResponse>;
 
 export interface FetchUsergroupRequest {
   /** ID of the usergroup to fetch */
@@ -1537,15 +1397,13 @@ export const GetConversationPrefsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Comma separated string of user types */
 export type GetConversationPrefsResponsePrefsWhoCanPostTypeList = Array<string>;
-export const GetConversationPrefsResponsePrefsWhoCanPostTypeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetConversationPrefsResponsePrefsWhoCanPostTypeList>;
+export const GetConversationPrefsResponsePrefsWhoCanPostTypeList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<GetConversationPrefsResponsePrefsWhoCanPostTypeList>;
 
 /** Comma separated string of user IDs */
 export type GetConversationPrefsResponsePrefsWhoCanPostUserList = Array<string>;
-export const GetConversationPrefsResponsePrefsWhoCanPostUserList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetConversationPrefsResponsePrefsWhoCanPostUserList>;
+export const GetConversationPrefsResponsePrefsWhoCanPostUserList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<GetConversationPrefsResponsePrefsWhoCanPostUserList>;
 
 export interface GetConversationPrefsResponsePrefsWhoCanPost {
   /** Comma separated string of user types */
@@ -1564,15 +1422,13 @@ export const GetConversationPrefsResponsePrefsWhoCanPost = /*@__PURE__*/ S.suspe
 
 /** Comma separated string of user types */
 export type GetConversationPrefsResponsePrefsCanThreadTypeList = Array<string>;
-export const GetConversationPrefsResponsePrefsCanThreadTypeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetConversationPrefsResponsePrefsCanThreadTypeList>;
+export const GetConversationPrefsResponsePrefsCanThreadTypeList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<GetConversationPrefsResponsePrefsCanThreadTypeList>;
 
 /** Comma separated string of user IDs */
 export type GetConversationPrefsResponsePrefsCanThreadUserList = Array<string>;
-export const GetConversationPrefsResponsePrefsCanThreadUserList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetConversationPrefsResponsePrefsCanThreadUserList>;
+export const GetConversationPrefsResponsePrefsCanThreadUserList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<GetConversationPrefsResponsePrefsCanThreadUserList>;
 
 export interface GetConversationPrefsResponsePrefsCanThread {
   /** Comma separated string of user types */
@@ -1580,14 +1436,8 @@ export interface GetConversationPrefsResponsePrefsCanThread {
   /** Comma separated string of user IDs */
   user?: GetConversationPrefsResponsePrefsCanThreadUserList;
 }
-export const GetConversationPrefsResponsePrefsCanThread = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(GetConversationPrefsResponsePrefsCanThreadTypeList),
-    user: S.optional(GetConversationPrefsResponsePrefsCanThreadUserList),
-  }),
-).annotate({
-  identifier: "GetConversationPrefsResponsePrefsCanThread",
-}) as any as S.Schema<GetConversationPrefsResponsePrefsCanThread>;
+export const GetConversationPrefsResponsePrefsCanThread =
+  GetConversationPrefsResponsePrefsWhoCanPost as any as S.Schema<GetConversationPrefsResponsePrefsCanThread>;
 
 export interface GetConversationPrefsResponsePrefsMembershipLimit {
   /** Membership limit value */
@@ -1617,25 +1467,15 @@ export interface GetConversationPrefsResponsePrefsEnableAtChannel {
   /** Enable channel mentions in channel. */
   enabled?: boolean;
 }
-export const GetConversationPrefsResponsePrefsEnableAtChannel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GetConversationPrefsResponsePrefsEnableAtChannel",
-}) as any as S.Schema<GetConversationPrefsResponsePrefsEnableAtChannel>;
+export const GetConversationPrefsResponsePrefsEnableAtChannel =
+  GetConversationPrefsResponsePrefsCanHuddle as any as S.Schema<GetConversationPrefsResponsePrefsEnableAtChannel>;
 
 export interface GetConversationPrefsResponsePrefsEnableAtHere {
   /** Enable here mentions in channel. */
   enabled?: boolean;
 }
-export const GetConversationPrefsResponsePrefsEnableAtHere = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GetConversationPrefsResponsePrefsEnableAtHere",
-}) as any as S.Schema<GetConversationPrefsResponsePrefsEnableAtHere>;
+export const GetConversationPrefsResponsePrefsEnableAtHere =
+  GetConversationPrefsResponsePrefsCanHuddle as any as S.Schema<GetConversationPrefsResponsePrefsEnableAtHere>;
 
 export interface GetConversationPrefsResponsePrefs {
   who_can_post?: GetConversationPrefsResponsePrefsWhoCanPost;
@@ -1785,11 +1625,7 @@ export interface GetExpirationResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const GetExpirationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "GetExpirationResponse" }) as any as S.Schema<GetExpirationResponse>;
+export const GetExpirationResponse = AddAliasResponse as any as S.Schema<GetExpirationResponse>;
 
 export interface GetFileRequest {
   /** Date to retrieve the analytics data for, expressed as `YYYY-MM-DD` in UTC. Required unless `metadata_only` is set to true. */
@@ -1821,9 +1657,8 @@ export const GetItemRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** allow list of IPv4 addresses using cidr notation in the Enterprise organization configuration */
 export type GetItemResponseTrustedCidrList = Array<string>;
-export const GetItemResponseTrustedCidrList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetItemResponseTrustedCidrList>;
+export const GetItemResponseTrustedCidrList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<GetItemResponseTrustedCidrList>;
 
 /** allow list of Autonomous System Numbers (ASN) in the Enterprise organization configuration */
 export type GetItemResponseTrustedAsnsList = Array<number>;
@@ -1849,9 +1684,8 @@ export const GetItemResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The IDs of users you'd like to fetch session settings for. Note: if a user does not have any active sessions, they will not be returned in the response. */
 export type GetSettingsRequestUserIdsList = Array<string>;
-export const GetSettingsRequestUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSettingsRequestUserIdsList>;
+export const GetSettingsRequestUserIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<GetSettingsRequestUserIdsList>;
 
 export interface GetSettingsRequest {
   /** The IDs of users you'd like to fetch session settings for. Note: if a user does not have any active sessions, they will not be returned in the response. */
@@ -1887,9 +1721,8 @@ export const GetSettingsResponseSessionSettingsList = /*@__PURE__*/ S.Array(
 
 /** The IDs of users requested that do not have any user session settings applied. */
 export type GetSettingsResponseNoSettingsAppliedList = Array<string>;
-export const GetSettingsResponseNoSettingsAppliedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSettingsResponseNoSettingsAppliedList>;
+export const GetSettingsResponseNoSettingsAppliedList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<GetSettingsResponseNoSettingsAppliedList>;
 
 export interface GetSettingsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -1958,19 +1791,13 @@ export interface InvalidateUsersSessionResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const InvalidateUsersSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "InvalidateUsersSessionResponse",
-}) as any as S.Schema<InvalidateUsersSessionResponse>;
+export const InvalidateUsersSessionResponse =
+  AddAppsPermissionsResponse as any as S.Schema<InvalidateUsersSessionResponse>;
 
 /** The users to invite. */
 export type InviteConversationRequestUserIdsList = Array<string>;
-export const InviteConversationRequestUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InviteConversationRequestUserIdsList>;
+export const InviteConversationRequestUserIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<InviteConversationRequestUserIdsList>;
 
 export interface InviteConversationRequest {
   /** The users to invite. */
@@ -1990,13 +1817,8 @@ export const InviteConversationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface InviteConversationResponse {
   ok: boolean;
 }
-export const InviteConversationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "InviteConversationResponse",
-}) as any as S.Schema<InviteConversationResponse>;
+export const InviteConversationResponse =
+  AddAppsPermissionsResponse as any as S.Schema<InviteConversationResponse>;
 
 export interface InviteRequestsDenyRequest {
   /** ID for the workspace where the invite request was made. */
@@ -2017,13 +1839,8 @@ export interface InviteRequestsDenyResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const InviteRequestsDenyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "InviteRequestsDenyResponse",
-}) as any as S.Schema<InviteRequestsDenyResponse>;
+export const InviteRequestsDenyResponse =
+  AddAppsPermissionsResponse as any as S.Schema<InviteRequestsDenyResponse>;
 
 export interface InviteUserRequest {
   /** The ID (`T1234`) of the workspace. */
@@ -2065,11 +1882,7 @@ export const InviteUserRequest = /*@__PURE__*/ S.suspend(() =>
 export interface InviteUserResponse {
   ok: boolean;
 }
-export const InviteUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "InviteUserResponse" }) as any as S.Schema<InviteUserResponse>;
+export const InviteUserResponse = AddAliasResponse as any as S.Schema<InviteUserResponse>;
 
 export interface LinkObjectsRequest {
   /** Channel ID for Slack channel that will be linked to a Salesforce record. */
@@ -2091,11 +1904,7 @@ export interface LinkObjectsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const LinkObjectsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "LinkObjectsResponse" }) as any as S.Schema<LinkObjectsResponse>;
+export const LinkObjectsResponse = AddAliasResponse as any as S.Schema<LinkObjectsResponse>;
 
 /** The direction you want the data sorted by (always by timestamp) */
 export type ListAppsActivitiesRequestSortDirection = "asc" | "desc";
@@ -2205,9 +2014,8 @@ export const ListAppsApprovedRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAppsApprovedRequest" }) as any as S.Schema<ListAppsApprovedRequest>;
 
 export type ListAppsApprovedResponseApprovedAppsList = Array<unknown>;
-export const ListAppsApprovedResponseApprovedAppsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ListAppsApprovedResponseApprovedAppsList>;
+export const ListAppsApprovedResponseApprovedAppsList =
+  ListAppsActivitiesResponseActivitiesList as any as S.Schema<ListAppsApprovedResponseApprovedAppsList>;
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListAppsApprovedResponseResponseMetadata =
@@ -2313,9 +2121,8 @@ export const ListAppsMcpServersPermissionsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListAppsMcpServersPermissionsRequest>;
 
 export type ListAppsMcpServersPermissionsResponseServersList = Array<unknown>;
-export const ListAppsMcpServersPermissionsResponseServersList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ListAppsMcpServersPermissionsResponseServersList>;
+export const ListAppsMcpServersPermissionsResponseServersList =
+  ListAppsActivitiesResponseActivitiesList as any as S.Schema<ListAppsMcpServersPermissionsResponseServersList>;
 
 export interface ListAppsMcpServersPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -2347,13 +2154,8 @@ export interface ListAppsPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const ListAppsPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "ListAppsPermissionsResponse",
-}) as any as S.Schema<ListAppsPermissionsResponse>;
+export const ListAppsPermissionsResponse =
+  AddAppsPermissionsResponse as any as S.Schema<ListAppsPermissionsResponse>;
 
 export interface ListAppsRequestsRequest {
   /** The maximum number of items to return. Must be between 1 - 1000 both inclusive. */
@@ -2376,9 +2178,8 @@ export const ListAppsRequestsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAppsRequestsRequest" }) as any as S.Schema<ListAppsRequestsRequest>;
 
 export type ListAppsRequestsResponseAppRequestsList = Array<unknown>;
-export const ListAppsRequestsResponseAppRequestsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ListAppsRequestsResponseAppRequestsList>;
+export const ListAppsRequestsResponseAppRequestsList =
+  ListAppsActivitiesResponseActivitiesList as any as S.Schema<ListAppsRequestsResponseAppRequestsList>;
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListAppsRequestsResponseResponseMetadata =
@@ -2424,9 +2225,8 @@ export const ListAppsRestrictedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAppsRestrictedRequest>;
 
 export type ListAppsRestrictedResponseRestrictedAppsList = Array<unknown>;
-export const ListAppsRestrictedResponseRestrictedAppsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ListAppsRestrictedResponseRestrictedAppsList>;
+export const ListAppsRestrictedResponseRestrictedAppsList =
+  ListAppsActivitiesResponseActivitiesList as any as S.Schema<ListAppsRestrictedResponseRestrictedAppsList>;
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListAppsRestrictedResponseResponseMetadata =
@@ -2452,14 +2252,12 @@ export const ListAppsRestrictedResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAppsRestrictedResponse>;
 
 export type ListAssignmentsRequestRoleIdsList = Array<string>;
-export const ListAssignmentsRequestRoleIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListAssignmentsRequestRoleIdsList>;
+export const ListAssignmentsRequestRoleIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<ListAssignmentsRequestRoleIdsList>;
 
 export type ListAssignmentsRequestEntityIdsList = Array<string>;
-export const ListAssignmentsRequestEntityIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListAssignmentsRequestEntityIdsList>;
+export const ListAssignmentsRequestEntityIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<ListAssignmentsRequestEntityIdsList>;
 
 export interface ListAssignmentsRequest {
   /** Set `cursor` to `next_cursor` returned by the previous call to list items in the next page */
@@ -2548,9 +2346,8 @@ export const ListBarriersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListBarriersRequest" }) as any as S.Schema<ListBarriersRequest>;
 
 export type ListBarriersResponseBarriersList = Array<unknown>;
-export const ListBarriersResponseBarriersList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ListBarriersResponseBarriersList>;
+export const ListBarriersResponseBarriersList =
+  ListAppsActivitiesResponseActivitiesList as any as S.Schema<ListBarriersResponseBarriersList>;
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListBarriersResponseResponseMetadata =
@@ -2589,9 +2386,8 @@ export const ListChannelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListChannelsRequest" }) as any as S.Schema<ListChannelsRequest>;
 
 export type ListChannelsResponseChannelsList = Array<string>;
-export const ListChannelsResponseChannelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListChannelsResponseChannelsList>;
+export const ListChannelsResponseChannelsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<ListChannelsResponseChannelsList>;
 
 export interface ListChannelsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -2648,9 +2444,8 @@ export const ListEmojiResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Comma-separated array of app IDs to get functions for; max 50. */
 export type ListFunctionsRequestAppIdsList = Array<string>;
-export const ListFunctionsRequestAppIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListFunctionsRequestAppIdsList>;
+export const ListFunctionsRequestAppIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<ListFunctionsRequestAppIdsList>;
 
 export interface ListFunctionsRequest {
   /** The team context to retrieve functions from. */
@@ -2675,9 +2470,8 @@ export const ListFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListFunctionsRequest" }) as any as S.Schema<ListFunctionsRequest>;
 
 export type ListFunctionsResponseFunctionsList = Array<unknown>;
-export const ListFunctionsResponseFunctionsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ListFunctionsResponseFunctionsList>;
+export const ListFunctionsResponseFunctionsList =
+  ListAppsActivitiesResponseActivitiesList as any as S.Schema<ListFunctionsResponseFunctionsList>;
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListFunctionsResponseResponseMetadata =
@@ -2715,9 +2509,8 @@ export const ListGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListGroupsRequest" }) as any as S.Schema<ListGroupsRequest>;
 
 export type ListGroupsResponseGroupIdsList = Array<string>;
-export const ListGroupsResponseGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListGroupsResponseGroupIdsList>;
+export const ListGroupsResponseGroupIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<ListGroupsResponseGroupIdsList>;
 
 export interface ListGroupsResponse {
   ok: boolean;
@@ -2755,9 +2548,8 @@ export const ListInviteRequestsResponseResponseMetadata =
   AnalyticsMessagesActivityResponseResponseMetadata;
 
 export type ListInviteRequestsResponseInviteRequestsList = Array<unknown>;
-export const ListInviteRequestsResponseInviteRequestsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ListInviteRequestsResponseInviteRequestsList>;
+export const ListInviteRequestsResponseInviteRequestsList =
+  ListAppsActivitiesResponseActivitiesList as any as S.Schema<ListInviteRequestsResponseInviteRequestsList>;
 
 export interface ListInviteRequestsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -2801,9 +2593,8 @@ export const ListInviteRequestsApprovedResponseResponseMetadata =
   AnalyticsMessagesActivityResponseResponseMetadata;
 
 export type ListInviteRequestsApprovedResponseApprovedRequestsList = Array<unknown>;
-export const ListInviteRequestsApprovedResponseApprovedRequestsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ListInviteRequestsApprovedResponseApprovedRequestsList>;
+export const ListInviteRequestsApprovedResponseApprovedRequestsList =
+  ListAppsActivitiesResponseActivitiesList as any as S.Schema<ListInviteRequestsApprovedResponseApprovedRequestsList>;
 
 export interface ListInviteRequestsApprovedResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -2847,9 +2638,8 @@ export const ListInviteRequestsDeniedResponseResponseMetadata =
   AnalyticsMessagesActivityResponseResponseMetadata;
 
 export type ListInviteRequestsDeniedResponseDeniedRequestsList = Array<unknown>;
-export const ListInviteRequestsDeniedResponseDeniedRequestsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ListInviteRequestsDeniedResponseDeniedRequestsList>;
+export const ListInviteRequestsDeniedResponseDeniedRequestsList =
+  ListAppsActivitiesResponseActivitiesList as any as S.Schema<ListInviteRequestsDeniedResponseDeniedRequestsList>;
 
 export interface ListInviteRequestsDeniedResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -3039,9 +2829,8 @@ export const ListTeamsAdminsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTeamsAdminsRequest" }) as any as S.Schema<ListTeamsAdminsRequest>;
 
 export type ListTeamsAdminsResponseAdminIdsList = Array<string>;
-export const ListTeamsAdminsResponseAdminIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListTeamsAdminsResponseAdminIdsList>;
+export const ListTeamsAdminsResponseAdminIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<ListTeamsAdminsResponseAdminIdsList>;
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListTeamsAdminsResponseResponseMetadata =
@@ -3080,9 +2869,8 @@ export const ListTeamsOwnersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTeamsOwnersRequest" }) as any as S.Schema<ListTeamsOwnersRequest>;
 
 export type ListTeamsOwnersResponseOwnerIdsList = Array<string>;
-export const ListTeamsOwnersResponseOwnerIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListTeamsOwnersResponseOwnerIdsList>;
+export const ListTeamsOwnersResponseOwnerIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<ListTeamsOwnersResponseOwnerIdsList>;
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListTeamsOwnersResponseResponseMetadata =
@@ -3138,15 +2926,13 @@ export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Roles that a user has */
 export type ListUsersResponseUsersItemRolesList = Array<string>;
-export const ListUsersResponseUsersItemRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListUsersResponseUsersItemRolesList>;
+export const ListUsersResponseUsersItemRolesList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<ListUsersResponseUsersItemRolesList>;
 
 /** IDs of the workspaces that a user belongs to */
 export type ListUsersResponseUsersItemWorkspacesList = Array<string>;
-export const ListUsersResponseUsersItemWorkspacesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListUsersResponseUsersItemWorkspacesList>;
+export const ListUsersResponseUsersItemWorkspacesList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<ListUsersResponseUsersItemWorkspacesList>;
 
 export interface ListUsersResponseUsersItem {
   /** Encoded user ID */
@@ -3299,17 +3085,8 @@ export interface ListUsersSessionResponseActiveSessionsItemCreated {
   /** IP address used when session was created */
   ip?: string;
 }
-export const ListUsersSessionResponseActiveSessionsItemCreated = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    device_hardware: S.optional(S.String),
-    os: S.optional(S.String),
-    os_version: S.optional(S.String),
-    slack_client_version: S.optional(S.String),
-    ip: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListUsersSessionResponseActiveSessionsItemCreated",
-}) as any as S.Schema<ListUsersSessionResponseActiveSessionsItemCreated>;
+export const ListUsersSessionResponseActiveSessionsItemCreated =
+  ListUsersSessionResponseActiveSessionsItemRecent as any as S.Schema<ListUsersSessionResponseActiveSessionsItemCreated>;
 
 export interface ListUsersSessionResponseActiveSessionsItem {
   /** Encoded ID of the user */
@@ -3358,9 +3135,8 @@ export const ListUsersSessionResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of app IDs to get app configs for */
 export type LookupAppsConfigRequestAppIdsList = Array<string>;
-export const LookupAppsConfigRequestAppIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LookupAppsConfigRequestAppIdsList>;
+export const LookupAppsConfigRequestAppIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<LookupAppsConfigRequestAppIdsList>;
 
 export type LookupAppsConfigRequestRichLinkPreviewTypesItem =
   | "all_details"
@@ -3429,9 +3205,8 @@ export const LookupAppsConfigResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of team IDs to filter by */
 export type LookupConversationRequestTeamIdsList = Array<string>;
-export const LookupConversationRequestTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LookupConversationRequestTeamIdsList>;
+export const LookupConversationRequestTeamIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<LookupConversationRequestTeamIdsList>;
 
 export interface LookupConversationRequest {
   /** Array of team IDs to filter by */
@@ -3465,9 +3240,8 @@ export const LookupConversationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LookupConversationRequest>;
 
 export type LookupConversationResponseChannelIdsList = Array<string>;
-export const LookupConversationResponseChannelIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LookupConversationResponseChannelIdsList>;
+export const LookupConversationResponseChannelIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<LookupConversationResponseChannelIdsList>;
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type LookupConversationResponseResponseMetadata =
@@ -3494,9 +3268,8 @@ export const LookupConversationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of function IDs to get permissions for */
 export type LookupFunctionsPermissionsRequestFunctionIdsList = Array<string>;
-export const LookupFunctionsPermissionsRequestFunctionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LookupFunctionsPermissionsRequestFunctionIdsList>;
+export const LookupFunctionsPermissionsRequestFunctionIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<LookupFunctionsPermissionsRequestFunctionIdsList>;
 
 export interface LookupFunctionsPermissionsRequest {
   /** An array of function IDs to get permissions for */
@@ -3513,22 +3286,16 @@ export const LookupFunctionsPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 export type LookupFunctionsPermissionsResponsePermissionsMap = {
   [key: string]: unknown | undefined;
 };
-export const LookupFunctionsPermissionsResponsePermissionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LookupFunctionsPermissionsResponsePermissionsMap>;
+export const LookupFunctionsPermissionsResponsePermissionsMap =
+  ListEmojiResponseEmojiMap as any as S.Schema<LookupFunctionsPermissionsResponsePermissionsMap>;
 
 export type LookupFunctionsPermissionsResponseMetadataMap = { [key: string]: unknown | undefined };
-export const LookupFunctionsPermissionsResponseMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LookupFunctionsPermissionsResponseMetadataMap>;
+export const LookupFunctionsPermissionsResponseMetadataMap =
+  ListEmojiResponseEmojiMap as any as S.Schema<LookupFunctionsPermissionsResponseMetadataMap>;
 
 export type LookupFunctionsPermissionsResponseErrorsMap = { [key: string]: unknown | undefined };
-export const LookupFunctionsPermissionsResponseErrorsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LookupFunctionsPermissionsResponseErrorsMap>;
+export const LookupFunctionsPermissionsResponseErrorsMap =
+  ListEmojiResponseEmojiMap as any as S.Schema<LookupFunctionsPermissionsResponseErrorsMap>;
 
 export interface LookupFunctionsPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -3550,9 +3317,8 @@ export const LookupFunctionsPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of workflow IDs to look up permissions for */
 export type LookupWorkflowsPermissionsRequestWorkflowIdsList = Array<string>;
-export const LookupWorkflowsPermissionsRequestWorkflowIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LookupWorkflowsPermissionsRequestWorkflowIdsList>;
+export const LookupWorkflowsPermissionsRequestWorkflowIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<LookupWorkflowsPermissionsRequestWorkflowIdsList>;
 
 export interface LookupWorkflowsPermissionsRequest {
   /** An array of workflow IDs to look up permissions for */
@@ -3572,10 +3338,8 @@ export const LookupWorkflowsPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 export type LookupWorkflowsPermissionsResponsePermissionsMap = {
   [key: string]: unknown | undefined;
 };
-export const LookupWorkflowsPermissionsResponsePermissionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LookupWorkflowsPermissionsResponsePermissionsMap>;
+export const LookupWorkflowsPermissionsResponsePermissionsMap =
+  ListEmojiResponseEmojiMap as any as S.Schema<LookupWorkflowsPermissionsResponsePermissionsMap>;
 
 export interface LookupWorkflowsPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -3594,9 +3358,7 @@ export const LookupWorkflowsPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
 /** The trigger type IDs for which to get the permissions. */
 export type LookupWorkflowsTriggersTypesPermissionsRequestTriggerTypeIdsList = Array<string>;
 export const LookupWorkflowsTriggersTypesPermissionsRequestTriggerTypeIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<LookupWorkflowsTriggersTypesPermissionsRequestTriggerTypeIdsList>;
+  ListOriginalConnectedChannelInfoResponseChannelsItemInternalTeamIdsList as any as S.Schema<LookupWorkflowsTriggersTypesPermissionsRequestTriggerTypeIdsList>;
 
 export interface LookupWorkflowsTriggersTypesPermissionsRequest {
   /** The trigger type IDs for which to get the permissions. */
@@ -3619,18 +3381,14 @@ export const LookupWorkflowsTriggersTypesPermissionsRequest = /*@__PURE__*/ S.su
 export type LookupWorkflowsTriggersTypesPermissionsResponsePermissionsMap = {
   [key: string]: unknown | undefined;
 };
-export const LookupWorkflowsTriggersTypesPermissionsResponsePermissionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LookupWorkflowsTriggersTypesPermissionsResponsePermissionsMap>;
+export const LookupWorkflowsTriggersTypesPermissionsResponsePermissionsMap =
+  ListEmojiResponseEmojiMap as any as S.Schema<LookupWorkflowsTriggersTypesPermissionsResponsePermissionsMap>;
 
 export type LookupWorkflowsTriggersTypesPermissionsResponseMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const LookupWorkflowsTriggersTypesPermissionsResponseMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LookupWorkflowsTriggersTypesPermissionsResponseMetadataMap>;
+export const LookupWorkflowsTriggersTypesPermissionsResponseMetadataMap =
+  ListEmojiResponseEmojiMap as any as S.Schema<LookupWorkflowsTriggersTypesPermissionsResponseMetadataMap>;
 
 export interface LookupWorkflowsTriggersTypesPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -3650,21 +3408,18 @@ export const LookupWorkflowsTriggersTypesPermissionsResponse = /*@__PURE__*/ S.s
 
 /** List of user IDs whose named_entities access will be revoked */
 export type RemoveAppsPermissionsRequestUserIdsList = Array<string>;
-export const RemoveAppsPermissionsRequestUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveAppsPermissionsRequestUserIdsList>;
+export const RemoveAppsPermissionsRequestUserIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<RemoveAppsPermissionsRequestUserIdsList>;
 
 /** List of encoded usergroup IDs */
 export type RemoveAppsPermissionsRequestUsergroupIdsList = Array<string>;
-export const RemoveAppsPermissionsRequestUsergroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveAppsPermissionsRequestUsergroupIdsList>;
+export const RemoveAppsPermissionsRequestUsergroupIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<RemoveAppsPermissionsRequestUsergroupIdsList>;
 
 /** List of encoded channel IDs to remove from the channel restriction list. Interpretation depends on the app's `channel_restriction_mode`, which is configured via the `admin.apps.permissions.set` method. */
 export type RemoveAppsPermissionsRequestChannelIdsList = Array<string>;
-export const RemoveAppsPermissionsRequestChannelIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveAppsPermissionsRequestChannelIdsList>;
+export const RemoveAppsPermissionsRequestChannelIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<RemoveAppsPermissionsRequestChannelIdsList>;
 
 export interface RemoveAppsPermissionsRequest {
   /** Encoded ID of the app */
@@ -3691,25 +3446,18 @@ export interface RemoveAppsPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const RemoveAppsPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "RemoveAppsPermissionsResponse",
-}) as any as S.Schema<RemoveAppsPermissionsResponse>;
+export const RemoveAppsPermissionsResponse =
+  AddAppsPermissionsResponse as any as S.Schema<RemoveAppsPermissionsResponse>;
 
 /** List of the entity IDs for which roles will be revoked. These can be Org IDs, Team IDs or Channel IDs */
 export type RemoveAssignmentsRequestEntityIdsList = Array<string>;
-export const RemoveAssignmentsRequestEntityIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveAssignmentsRequestEntityIdsList>;
+export const RemoveAssignmentsRequestEntityIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<RemoveAssignmentsRequestEntityIdsList>;
 
 /** List of IDs of the users whose roles will be revoked */
 export type RemoveAssignmentsRequestUserIdsList = Array<string>;
-export const RemoveAssignmentsRequestUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveAssignmentsRequestUserIdsList>;
+export const RemoveAssignmentsRequestUserIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<RemoveAssignmentsRequestUserIdsList>;
 
 export interface RemoveAssignmentsRequest {
   /** ID of the role to which users will be assigned */
@@ -3744,9 +3492,8 @@ export const RemoveAssignmentsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Comma-separated string of channel IDs */
 export type RemoveChannelsRequestChannelIdsList = Array<string>;
-export const RemoveChannelsRequestChannelIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveChannelsRequestChannelIdsList>;
+export const RemoveChannelsRequestChannelIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<RemoveChannelsRequestChannelIdsList>;
 
 export interface RemoveChannelsRequest {
   /** ID of the IDP Group */
@@ -3763,9 +3510,8 @@ export const RemoveChannelsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of channel IDs that are not valid for this action */
 export type RemoveChannelsResponseInvalidChannelsList = Array<string>;
-export const RemoveChannelsResponseInvalidChannelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveChannelsResponseInvalidChannelsList>;
+export const RemoveChannelsResponseInvalidChannelsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<RemoveChannelsResponseInvalidChannelsList>;
 
 export interface RemoveChannelsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -3775,13 +3521,8 @@ export interface RemoveChannelsResponse {
   /** List of channel IDs that are not valid for this action */
   invalid_channels?: RemoveChannelsResponseInvalidChannelsList;
 }
-export const RemoveChannelsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-    error: S.optional(S.String),
-    invalid_channels: S.optional(RemoveChannelsResponseInvalidChannelsList),
-  }),
-).annotate({ identifier: "RemoveChannelsResponse" }) as any as S.Schema<RemoveChannelsResponse>;
+export const RemoveChannelsResponse =
+  AddChannelsResponse as any as S.Schema<RemoveChannelsResponse>;
 
 export interface RemoveCustomRetentionRequest {
   /** The conversation to set the retention policy for. */
@@ -3799,13 +3540,8 @@ export interface RemoveCustomRetentionResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const RemoveCustomRetentionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "RemoveCustomRetentionResponse",
-}) as any as S.Schema<RemoveCustomRetentionResponse>;
+export const RemoveCustomRetentionResponse =
+  AddAppsPermissionsResponse as any as S.Schema<RemoveCustomRetentionResponse>;
 
 export interface RemoveEmojiRequest {
   /** The name of the emoji to be removed. Colons (`:myemoji:`) around the value are not required, although they may be included. */
@@ -3821,17 +3557,12 @@ export interface RemoveEmojiResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const RemoveEmojiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "RemoveEmojiResponse" }) as any as S.Schema<RemoveEmojiResponse>;
+export const RemoveEmojiResponse = AddAliasResponse as any as S.Schema<RemoveEmojiResponse>;
 
 /** Encoded IDs of the entities you'd like to remove from the policy. */
 export type RemoveEntitiesRequestEntityIdsList = Array<string>;
-export const RemoveEntitiesRequestEntityIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveEntitiesRequestEntityIdsList>;
+export const RemoveEntitiesRequestEntityIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<RemoveEntitiesRequestEntityIdsList>;
 
 export interface RemoveEntitiesRequest {
   /** The name of the policy to remove entities from. Currently, `email_password` is the only policy that may be used with this method. */
@@ -3855,12 +3586,8 @@ export interface RemoveEntitiesResponse {
   /** Count of entities under the policy and provided filter conditions */
   entity_total_count: number;
 }
-export const RemoveEntitiesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-    entity_total_count: S.Number,
-  }),
-).annotate({ identifier: "RemoveEntitiesResponse" }) as any as S.Schema<RemoveEntitiesResponse>;
+export const RemoveEntitiesResponse =
+  AssignEntitiesResponse as any as S.Schema<RemoveEntitiesResponse>;
 
 export interface RemoveGroupRequest {
   /** The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that are shared across an organization. */
@@ -3883,17 +3610,12 @@ export const RemoveGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RemoveGroupResponse {
   ok: boolean;
 }
-export const RemoveGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "RemoveGroupResponse" }) as any as S.Schema<RemoveGroupResponse>;
+export const RemoveGroupResponse = AddAliasResponse as any as S.Schema<RemoveGroupResponse>;
 
 /** A comma separated list of encoded team (workspace) IDs. Each workspace *MUST* belong to the organization associated with the token. */
 export type RemoveTeamsRequestTeamIdsList = Array<string>;
-export const RemoveTeamsRequestTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveTeamsRequestTeamIdsList>;
+export const RemoveTeamsRequestTeamIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<RemoveTeamsRequestTeamIdsList>;
 
 export interface RemoveTeamsRequest {
   /** An encoded usergroup (IDP Group) ID. */
@@ -3912,11 +3634,7 @@ export interface RemoveTeamsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const RemoveTeamsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "RemoveTeamsResponse" }) as any as S.Schema<RemoveTeamsResponse>;
+export const RemoveTeamsResponse = AddAliasResponse as any as S.Schema<RemoveTeamsResponse>;
 
 export interface RemoveUserRequest {
   /** The ID (`T1234`) of the workspace. */
@@ -3935,17 +3653,12 @@ export interface RemoveUserResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const RemoveUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "RemoveUserResponse" }) as any as S.Schema<RemoveUserResponse>;
+export const RemoveUserResponse = AddAliasResponse as any as S.Schema<RemoveUserResponse>;
 
 /** The encoded user IDs to remove from the usergroup, provided as a JSON array or a comma-separated string. */
 export type RemoveUsersRequestUsersList = Array<string>;
-export const RemoveUsersRequestUsersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveUsersRequestUsersList>;
+export const RemoveUsersRequestUsersList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<RemoveUsersRequestUsersList>;
 
 export interface RemoveUsersRequest {
   /** ID of the usergroup to remove users from */
@@ -3964,23 +3677,17 @@ export interface RemoveUsersResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const RemoveUsersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "RemoveUsersResponse" }) as any as S.Schema<RemoveUsersResponse>;
+export const RemoveUsersResponse = AddAliasResponse as any as S.Schema<RemoveUsersResponse>;
 
 /** Array of workflow IDs to edit; max 50 */
 export type RemoveWorkflowsCollaboratorRequestWorkflowIdsList = Array<string>;
-export const RemoveWorkflowsCollaboratorRequestWorkflowIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveWorkflowsCollaboratorRequestWorkflowIdsList>;
+export const RemoveWorkflowsCollaboratorRequestWorkflowIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<RemoveWorkflowsCollaboratorRequestWorkflowIdsList>;
 
 /** Array of collaborators (encoded user IDs) to remove; max 50 */
 export type RemoveWorkflowsCollaboratorRequestCollaboratorIdsList = Array<string>;
-export const RemoveWorkflowsCollaboratorRequestCollaboratorIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveWorkflowsCollaboratorRequestCollaboratorIdsList>;
+export const RemoveWorkflowsCollaboratorRequestCollaboratorIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<RemoveWorkflowsCollaboratorRequestCollaboratorIdsList>;
 
 export interface RemoveWorkflowsCollaboratorRequest {
   /** Array of workflow IDs to edit; max 50 */
@@ -4001,13 +3708,8 @@ export interface RemoveWorkflowsCollaboratorResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const RemoveWorkflowsCollaboratorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "RemoveWorkflowsCollaboratorResponse",
-}) as any as S.Schema<RemoveWorkflowsCollaboratorResponse>;
+export const RemoveWorkflowsCollaboratorResponse =
+  AddAppsPermissionsResponse as any as S.Schema<RemoveWorkflowsCollaboratorResponse>;
 
 export interface RenameConversationRequest {
   /** The channel to rename. */
@@ -4026,13 +3728,8 @@ export const RenameConversationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RenameConversationResponse {
   ok: boolean;
 }
-export const RenameConversationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "RenameConversationResponse",
-}) as any as S.Schema<RenameConversationResponse>;
+export const RenameConversationResponse =
+  AddAppsPermissionsResponse as any as S.Schema<RenameConversationResponse>;
 
 export interface RenameEmojiRequest {
   /** The name of the emoji to be renamed. Colons (`:myemoji:`) around the value are not required, although they may be included. */
@@ -4051,17 +3748,12 @@ export interface RenameEmojiResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const RenameEmojiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "RenameEmojiResponse" }) as any as S.Schema<RenameEmojiResponse>;
+export const RenameEmojiResponse = AddAliasResponse as any as S.Schema<RenameEmojiResponse>;
 
 /** The list of up to 1,000 user IDs to wipe sessions for */
 export type ResetBulkRequestUserIdsList = Array<string>;
-export const ResetBulkRequestUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResetBulkRequestUserIdsList>;
+export const ResetBulkRequestUserIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<ResetBulkRequestUserIdsList>;
 
 export interface ResetBulkRequest {
   /** The list of up to 1,000 user IDs to wipe sessions for */
@@ -4083,11 +3775,7 @@ export interface ResetBulkResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const ResetBulkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "ResetBulkResponse" }) as any as S.Schema<ResetBulkResponse>;
+export const ResetBulkResponse = AddAliasResponse as any as S.Schema<ResetBulkResponse>;
 
 export interface ResetUsersSessionRequest {
   /** The ID of the user to wipe sessions for */
@@ -4109,31 +3797,23 @@ export interface ResetUsersSessionResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const ResetUsersSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "ResetUsersSessionResponse",
-}) as any as S.Schema<ResetUsersSessionResponse>;
+export const ResetUsersSessionResponse =
+  AddAppsPermissionsResponse as any as S.Schema<ResetUsersSessionResponse>;
 
 /** Comma separated string of team IDs, signifying the internal workspaces to search through. */
 export type SearchConversationRequestTeamIdsList = Array<string>;
-export const SearchConversationRequestTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchConversationRequestTeamIdsList>;
+export const SearchConversationRequestTeamIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SearchConversationRequestTeamIdsList>;
 
 /** Array of encoded team IDs, signifying the external orgs to search through. */
 export type SearchConversationRequestConnectedTeamIdsList = Array<string>;
-export const SearchConversationRequestConnectedTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchConversationRequestConnectedTeamIdsList>;
+export const SearchConversationRequestConnectedTeamIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SearchConversationRequestConnectedTeamIdsList>;
 
 /** The type of channel to include or exclude in the search. For example `private` will search private channels, while `private_exclude` will exclude them. For a full list of types, check the [Types section](#types). */
 export type SearchConversationRequestSearchChannelTypesList = Array<string>;
-export const SearchConversationRequestSearchChannelTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchConversationRequestSearchChannelTypesList>;
+export const SearchConversationRequestSearchChannelTypesList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SearchConversationRequestSearchChannelTypesList>;
 
 export interface SearchConversationRequest {
   /** Comma separated string of team IDs, signifying the internal workspaces to search through. */
@@ -4172,9 +3852,8 @@ export const SearchConversationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchConversationRequest>;
 
 export type SearchConversationResponseConversationsList = Array<string>;
-export const SearchConversationResponseConversationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchConversationResponseConversationsList>;
+export const SearchConversationResponseConversationsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SearchConversationResponseConversationsList>;
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type SearchConversationResponseResponseMetadata =
@@ -4210,9 +3889,8 @@ export const SearchConversationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Only include workflows where all of the provided user IDs are a manager/collaborator of that workflow */
 export type SearchWorkflowRequestCollaboratorIdsList = Array<string>;
-export const SearchWorkflowRequestCollaboratorIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchWorkflowRequestCollaboratorIdsList>;
+export const SearchWorkflowRequestCollaboratorIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SearchWorkflowRequestCollaboratorIdsList>;
 
 /** Source of workflow creation, either from code or workflow builder */
 export type SearchWorkflowRequestSource = "code" | "workflow_builder" | "sales_home" | "agent";
@@ -4232,9 +3910,8 @@ export const SearchWorkflowRequestPublishStatus = S.String;
 
 /** Only include workflows that use all of the provided step function ids */
 export type SearchWorkflowRequestStepFunctionIdsList = Array<string>;
-export const SearchWorkflowRequestStepFunctionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchWorkflowRequestStepFunctionIdsList>;
+export const SearchWorkflowRequestStepFunctionIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SearchWorkflowRequestStepFunctionIdsList>;
 
 export interface SearchWorkflowRequest {
   /** A search query to filter for workflow name or description */
@@ -4286,9 +3963,8 @@ export const SearchWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchWorkflowRequest" }) as any as S.Schema<SearchWorkflowRequest>;
 
 export type SearchWorkflowResponseWorkflowsList = Array<unknown>;
-export const SearchWorkflowResponseWorkflowsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<SearchWorkflowResponseWorkflowsList>;
+export const SearchWorkflowResponseWorkflowsList =
+  ListAppsActivitiesResponseActivitiesList as any as S.Schema<SearchWorkflowResponseWorkflowsList>;
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type SearchWorkflowResponseResponseMetadata =
@@ -4331,11 +4007,7 @@ export interface SetAdminResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const SetAdminResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "SetAdminResponse" }) as any as S.Schema<SetAdminResponse>;
+export const SetAdminResponse = AddAliasResponse as any as S.Schema<SetAdminResponse>;
 
 /** The workflow auth permission. Can be one of `builder_choice` or `end_user_only`. */
 export type SetAppsConfigRequestWorkflowAuthStrategy = "builder_choice" | "end_user_only";
@@ -4351,15 +4023,13 @@ export const SetAppsConfigRequestRichLinkPreviewType = S.String;
 
 /** List of URLs for allowed connector authorization */
 export type SetAppsConfigRequestDomainRestrictionsUrlsList = Array<string>;
-export const SetAppsConfigRequestDomainRestrictionsUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetAppsConfigRequestDomainRestrictionsUrlsList>;
+export const SetAppsConfigRequestDomainRestrictionsUrlsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SetAppsConfigRequestDomainRestrictionsUrlsList>;
 
 /** List of emails for allowed connector authorization */
 export type SetAppsConfigRequestDomainRestrictionsEmailsList = Array<string>;
-export const SetAppsConfigRequestDomainRestrictionsEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetAppsConfigRequestDomainRestrictionsEmailsList>;
+export const SetAppsConfigRequestDomainRestrictionsEmailsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SetAppsConfigRequestDomainRestrictionsEmailsList>;
 
 /** Domain restrictions for the app. Should be an object with two properties: `urls` and `emails`. Each is an array of strings, and each sets the allowed URLs and emails for connector authorization, respectively. */
 export interface SetAppsConfigRequestDomainRestrictions {
@@ -4400,11 +4070,7 @@ export interface SetAppsConfigResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const SetAppsConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "SetAppsConfigResponse" }) as any as S.Schema<SetAppsConfigResponse>;
+export const SetAppsConfigResponse = AddAliasResponse as any as S.Schema<SetAppsConfigResponse>;
 
 /** The type of permission that defines who can use this MCP server */
 export type SetAppsMcpServersPermissionsRequestPermissionType =
@@ -4416,15 +4082,13 @@ export const SetAppsMcpServersPermissionsRequestPermissionType = S.String;
 
 /** List of user IDs to set for named_entities or named_entities_exclude */
 export type SetAppsMcpServersPermissionsRequestUserIdsList = Array<string>;
-export const SetAppsMcpServersPermissionsRequestUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetAppsMcpServersPermissionsRequestUserIdsList>;
+export const SetAppsMcpServersPermissionsRequestUserIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SetAppsMcpServersPermissionsRequestUserIdsList>;
 
 /** List of encoded usergroup IDs */
 export type SetAppsMcpServersPermissionsRequestUsergroupIdsList = Array<string>;
-export const SetAppsMcpServersPermissionsRequestUsergroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetAppsMcpServersPermissionsRequestUsergroupIdsList>;
+export const SetAppsMcpServersPermissionsRequestUsergroupIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SetAppsMcpServersPermissionsRequestUsergroupIdsList>;
 
 export interface SetAppsMcpServersPermissionsRequest {
   /** Encoded ID of the app */
@@ -4454,13 +4118,8 @@ export interface SetAppsMcpServersPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const SetAppsMcpServersPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "SetAppsMcpServersPermissionsResponse",
-}) as any as S.Schema<SetAppsMcpServersPermissionsResponse>;
+export const SetAppsMcpServersPermissionsResponse =
+  AddAppsPermissionsResponse as any as S.Schema<SetAppsMcpServersPermissionsResponse>;
 
 /** The type of permission that defines who can access the app */
 export type SetAppsPermissionsRequestPermissionType = "everyone" | "named_entities" | "no_one";
@@ -4468,15 +4127,13 @@ export const SetAppsPermissionsRequestPermissionType = S.String;
 
 /** List of user IDs to allow for named_entities visibility */
 export type SetAppsPermissionsRequestUserIdsList = Array<string>;
-export const SetAppsPermissionsRequestUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetAppsPermissionsRequestUserIdsList>;
+export const SetAppsPermissionsRequestUserIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SetAppsPermissionsRequestUserIdsList>;
 
 /** List of encoded usergroup IDs */
 export type SetAppsPermissionsRequestUsergroupIdsList = Array<string>;
-export const SetAppsPermissionsRequestUsergroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetAppsPermissionsRequestUsergroupIdsList>;
+export const SetAppsPermissionsRequestUsergroupIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SetAppsPermissionsRequestUsergroupIdsList>;
 
 /** The mode that defines where the app can be used in channels */
 export type SetAppsPermissionsRequestChannelRestrictionMode =
@@ -4487,9 +4144,8 @@ export const SetAppsPermissionsRequestChannelRestrictionMode = S.String;
 
 /** List of encoded channel IDs for channel restrictions. Semantics depend on channel_restriction_mode: allowlist for specific_channels, exclusion list for all_channels_except */
 export type SetAppsPermissionsRequestChannelIdsList = Array<string>;
-export const SetAppsPermissionsRequestChannelIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetAppsPermissionsRequestChannelIdsList>;
+export const SetAppsPermissionsRequestChannelIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SetAppsPermissionsRequestChannelIdsList>;
 
 export interface SetAppsPermissionsRequest {
   /** Encoded ID of the app */
@@ -4522,13 +4178,8 @@ export interface SetAppsPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const SetAppsPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "SetAppsPermissionsResponse",
-}) as any as S.Schema<SetAppsPermissionsResponse>;
+export const SetAppsPermissionsResponse =
+  AddAppsPermissionsResponse as any as S.Schema<SetAppsPermissionsResponse>;
 
 export interface SetConversationPrefsRequest {
   /** The channel to set the prefs for */
@@ -4548,13 +4199,8 @@ export const SetConversationPrefsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SetConversationPrefsResponse {
   ok: boolean;
 }
-export const SetConversationPrefsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "SetConversationPrefsResponse",
-}) as any as S.Schema<SetConversationPrefsResponse>;
+export const SetConversationPrefsResponse =
+  AddAppsPermissionsResponse as any as S.Schema<SetConversationPrefsResponse>;
 
 export interface SetCustomRetentionRequest {
   /** The conversation to set the retention policy for. */
@@ -4575,18 +4221,12 @@ export interface SetCustomRetentionResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const SetCustomRetentionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "SetCustomRetentionResponse",
-}) as any as S.Schema<SetCustomRetentionResponse>;
+export const SetCustomRetentionResponse =
+  AddAppsPermissionsResponse as any as S.Schema<SetCustomRetentionResponse>;
 
 export type SetDefaultChannelsRequestChannelIdsList = Array<string>;
-export const SetDefaultChannelsRequestChannelIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetDefaultChannelsRequestChannelIdsList>;
+export const SetDefaultChannelsRequestChannelIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SetDefaultChannelsRequestChannelIdsList>;
 
 export interface SetDefaultChannelsRequest {
   /** ID for the workspace to set the default channel for. */
@@ -4607,13 +4247,8 @@ export interface SetDefaultChannelsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const SetDefaultChannelsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "SetDefaultChannelsResponse",
-}) as any as S.Schema<SetDefaultChannelsResponse>;
+export const SetDefaultChannelsResponse =
+  AddAppsPermissionsResponse as any as S.Schema<SetDefaultChannelsResponse>;
 
 export interface SetDescriptionRequest {
   /** ID for the workspace to set the description for. */
@@ -4631,11 +4266,7 @@ export const SetDescriptionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SetDescriptionResponse {
   ok: boolean;
 }
-export const SetDescriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "SetDescriptionResponse" }) as any as S.Schema<SetDescriptionResponse>;
+export const SetDescriptionResponse = AddAliasResponse as any as S.Schema<SetDescriptionResponse>;
 
 export interface SetDiscoverabilityRequest {
   /** The ID of the workspace to set discoverability on. */
@@ -4655,13 +4286,8 @@ export const SetDiscoverabilityRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SetDiscoverabilityResponse {
   ok: boolean;
 }
-export const SetDiscoverabilityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "SetDiscoverabilityResponse",
-}) as any as S.Schema<SetDiscoverabilityResponse>;
+export const SetDiscoverabilityResponse =
+  AddAppsPermissionsResponse as any as S.Schema<SetDiscoverabilityResponse>;
 
 export interface SetExpirationRequest {
   /** The ID (`T1234`) of the workspace. */
@@ -4682,11 +4308,7 @@ export const SetExpirationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SetExpirationResponse {
   ok: boolean;
 }
-export const SetExpirationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "SetExpirationResponse" }) as any as S.Schema<SetExpirationResponse>;
+export const SetExpirationResponse = AddAliasResponse as any as S.Schema<SetExpirationResponse>;
 
 /** The function visibility. */
 export type SetFunctionsPermissionsRequestVisibility =
@@ -4698,9 +4320,8 @@ export const SetFunctionsPermissionsRequestVisibility = S.String;
 
 /** List of user IDs to allow for `named_entities` visibility. */
 export type SetFunctionsPermissionsRequestUserIdsList = Array<string>;
-export const SetFunctionsPermissionsRequestUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetFunctionsPermissionsRequestUserIdsList>;
+export const SetFunctionsPermissionsRequestUserIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SetFunctionsPermissionsRequestUserIdsList>;
 
 export type SetFunctionsPermissionsRequestPermissionsItemVisibility =
   | "everyone"
@@ -4716,9 +4337,8 @@ export const SetFunctionsPermissionsRequestPermissionsItemPermissionType = S.Str
 
 /** List of user IDs to allow for `named_entities` visibility. */
 export type SetFunctionsPermissionsRequestPermissionsItemUserIdsList = Array<string>;
-export const SetFunctionsPermissionsRequestPermissionsItemUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetFunctionsPermissionsRequestPermissionsItemUserIdsList>;
+export const SetFunctionsPermissionsRequestPermissionsItemUserIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SetFunctionsPermissionsRequestPermissionsItemUserIdsList>;
 
 export interface SetFunctionsPermissionsRequestPermissionsItem {
   visibility: SetFunctionsPermissionsRequestPermissionsItemVisibility | (string & {});
@@ -4768,13 +4388,8 @@ export interface SetFunctionsPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const SetFunctionsPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "SetFunctionsPermissionsResponse",
-}) as any as S.Schema<SetFunctionsPermissionsResponse>;
+export const SetFunctionsPermissionsResponse =
+  AddAppsPermissionsResponse as any as S.Schema<SetFunctionsPermissionsResponse>;
 
 export interface SetIconRequest {
   /** Image URL for the icon */
@@ -4793,11 +4408,7 @@ export interface SetIconResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const SetIconResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "SetIconResponse" }) as any as S.Schema<SetIconResponse>;
+export const SetIconResponse = AddAliasResponse as any as S.Schema<SetIconResponse>;
 
 export interface SetNameRequest {
   /** ID for the workspace to set the name for. */
@@ -4815,11 +4426,7 @@ export const SetNameRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SetNameResponse {
   ok: boolean;
 }
-export const SetNameResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "SetNameResponse" }) as any as S.Schema<SetNameResponse>;
+export const SetNameResponse = AddAliasResponse as any as S.Schema<SetNameResponse>;
 
 export interface SetOwnerRequest {
   /** The ID of the workspace or organization. */
@@ -4838,11 +4445,7 @@ export interface SetOwnerResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const SetOwnerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "SetOwnerResponse" }) as any as S.Schema<SetOwnerResponse>;
+export const SetOwnerResponse = AddAliasResponse as any as S.Schema<SetOwnerResponse>;
 
 export interface SetRegularRequest {
   /** The ID of the workspace or organization. */
@@ -4861,17 +4464,12 @@ export interface SetRegularResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const SetRegularResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "SetRegularResponse" }) as any as S.Schema<SetRegularResponse>;
+export const SetRegularResponse = AddAliasResponse as any as S.Schema<SetRegularResponse>;
 
 /** The list of up to 1,000 user IDs to apply the session settings for */
 export type SetSettingsRequestUserIdsList = Array<string>;
-export const SetSettingsRequestUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetSettingsRequestUserIdsList>;
+export const SetSettingsRequestUserIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SetSettingsRequestUserIdsList>;
 
 export interface SetSettingsRequest {
   /** The list of up to 1,000 user IDs to apply the session settings for */
@@ -4892,17 +4490,12 @@ export const SetSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SetSettingsResponse {
   ok: boolean;
 }
-export const SetSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "SetSettingsResponse" }) as any as S.Schema<SetSettingsResponse>;
+export const SetSettingsResponse = AddAliasResponse as any as S.Schema<SetSettingsResponse>;
 
 /** A comma-separated list of workspaces to which the channel should be shared. Not required if the channel is being shared org-wide. */
 export type SetTeamsRequestTargetTeamIdsList = Array<string>;
-export const SetTeamsRequestTargetTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetTeamsRequestTargetTeamIdsList>;
+export const SetTeamsRequestTargetTeamIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SetTeamsRequestTargetTeamIdsList>;
 
 export interface SetTeamsRequest {
   /** The encoded `channel_id` to add or remove to workspaces. */
@@ -4944,9 +4537,8 @@ export const SetWorkflowsTriggersTypesPermissionsRequestVisibility = S.String;
 
 /** List of user IDs to allow for named_entities visibility */
 export type SetWorkflowsTriggersTypesPermissionsRequestUserIdsList = Array<string>;
-export const SetWorkflowsTriggersTypesPermissionsRequestUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetWorkflowsTriggersTypesPermissionsRequestUserIdsList>;
+export const SetWorkflowsTriggersTypesPermissionsRequestUserIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SetWorkflowsTriggersTypesPermissionsRequestUserIdsList>;
 
 /** Dict of permissions keyed by permission type ID. */
 export type SetWorkflowsTriggersTypesPermissionsRequestPermissionsPermissionsMap = {
@@ -4996,13 +4588,8 @@ export interface SetWorkflowsTriggersTypesPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const SetWorkflowsTriggersTypesPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "SetWorkflowsTriggersTypesPermissionsResponse",
-}) as any as S.Schema<SetWorkflowsTriggersTypesPermissionsResponse>;
+export const SetWorkflowsTriggersTypesPermissionsResponse =
+  AddAppsPermissionsResponse as any as S.Schema<SetWorkflowsTriggersTypesPermissionsResponse>;
 
 export interface TeamsSettingsInfoRequest {
   team_id: string;
@@ -5014,9 +4601,8 @@ export const TeamsSettingsInfoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TeamsSettingsInfoRequest" }) as any as S.Schema<TeamsSettingsInfoRequest>;
 
 export type TeamsSettingsInfoResponseTeamItemDefaultChannelsList = Array<unknown>;
-export const TeamsSettingsInfoResponseTeamItemDefaultChannelsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<TeamsSettingsInfoResponseTeamItemDefaultChannelsList>;
+export const TeamsSettingsInfoResponseTeamItemDefaultChannelsList =
+  ListAppsActivitiesResponseActivitiesList as any as S.Schema<TeamsSettingsInfoResponseTeamItemDefaultChannelsList>;
 
 export interface TeamsSettingsInfoResponseTeamItem {
   id?: string;
@@ -5076,13 +4662,8 @@ export const UnarchiveConversationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UnarchiveConversationResponse {
   ok: boolean;
 }
-export const UnarchiveConversationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "UnarchiveConversationResponse",
-}) as any as S.Schema<UnarchiveConversationResponse>;
+export const UnarchiveConversationResponse =
+  AddAppsPermissionsResponse as any as S.Schema<UnarchiveConversationResponse>;
 
 export interface UninstallAppRequest {
   /** The ID of the app to uninstall. */
@@ -5104,11 +4685,7 @@ export interface UninstallAppResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const UninstallAppResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "UninstallAppResponse" }) as any as S.Schema<UninstallAppResponse>;
+export const UninstallAppResponse = AddAliasResponse as any as S.Schema<UninstallAppResponse>;
 
 export interface UnlinkObjectsRequest {
   /** Channel ID for Slack channel that will be unlinked from the Salesforce record. */
@@ -5127,17 +4704,12 @@ export interface UnlinkObjectsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const UnlinkObjectsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "UnlinkObjectsResponse" }) as any as S.Schema<UnlinkObjectsResponse>;
+export const UnlinkObjectsResponse = AddAliasResponse as any as S.Schema<UnlinkObjectsResponse>;
 
 /** Array of workflow IDs to unpublish */
 export type UnpublishWorkflowRequestWorkflowIdsList = Array<string>;
-export const UnpublishWorkflowRequestWorkflowIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UnpublishWorkflowRequestWorkflowIdsList>;
+export const UnpublishWorkflowRequestWorkflowIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<UnpublishWorkflowRequestWorkflowIdsList>;
 
 export interface UnpublishWorkflowRequest {
   /** Array of workflow IDs to unpublish */
@@ -5153,19 +4725,13 @@ export interface UnpublishWorkflowResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const UnpublishWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "UnpublishWorkflowResponse",
-}) as any as S.Schema<UnpublishWorkflowResponse>;
+export const UnpublishWorkflowResponse =
+  AddAppsPermissionsResponse as any as S.Schema<UnpublishWorkflowResponse>;
 
 /** A list of [IDP Groups](https://slack.com/help/articles/115001435788-Connect-identity-provider-groups-to-your-Enterprise-organization) ids that the primary usergroup is to be barriered from. */
 export type UpdateBarrierRequestBarrieredFromUsergroupIdsList = Array<string>;
-export const UpdateBarrierRequestBarrieredFromUsergroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateBarrierRequestBarrieredFromUsergroupIdsList>;
+export const UpdateBarrierRequestBarrieredFromUsergroupIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<UpdateBarrierRequestBarrieredFromUsergroupIdsList>;
 
 export type UpdateBarrierRequestRestrictedSubjectsItem = "im" | "mpim" | "call";
 export const UpdateBarrierRequestRestrictedSubjectsItem = S.String;
@@ -5208,24 +4774,18 @@ export interface UpdateBarrierResponse {
   ok: boolean;
   barrier: unknown;
 }
-export const UpdateBarrierResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-    barrier: S.Unknown,
-  }),
-).annotate({ identifier: "UpdateBarrierResponse" }) as any as S.Schema<UpdateBarrierResponse>;
+export const UpdateBarrierResponse =
+  CreateBarrierResponse as any as S.Schema<UpdateBarrierResponse>;
 
 /** allow list of IPv4 addresses using cidr notation in the Enterprise organization configuration */
 export type UpdateItemRequestTrustedCidrList = Array<string>;
-export const UpdateItemRequestTrustedCidrList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateItemRequestTrustedCidrList>;
+export const UpdateItemRequestTrustedCidrList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<UpdateItemRequestTrustedCidrList>;
 
 /** allow list of Autonomous System Numbers (ASN) in the Enterprise organization configuration */
 export type UpdateItemRequestTrustedAsnsList = Array<number>;
-export const UpdateItemRequestTrustedAsnsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateItemRequestTrustedAsnsList>;
+export const UpdateItemRequestTrustedAsnsList =
+  GetItemResponseTrustedAsnsList as any as S.Schema<UpdateItemRequestTrustedAsnsList>;
 
 export interface UpdateItemRequest {
   /** allow list of IPv4 addresses using cidr notation in the Enterprise organization configuration */
@@ -5244,11 +4804,7 @@ export interface UpdateItemResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const UpdateItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "UpdateItemResponse" }) as any as S.Schema<UpdateItemResponse>;
+export const UpdateItemResponse = AddAliasResponse as any as S.Schema<UpdateItemResponse>;
 
 export interface UpdateUsergroupRequest {
   /** ID of the usergroup to update */
@@ -5274,9 +4830,8 @@ export const UpdateUsergroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of user IDs who would exceed their channel limit */
 export type UpdateUsergroupResponseChannelLimitUserIdsList = Array<string>;
-export const UpdateUsergroupResponseChannelLimitUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateUsergroupResponseChannelLimitUserIdsList>;
+export const UpdateUsergroupResponseChannelLimitUserIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<UpdateUsergroupResponseChannelLimitUserIdsList>;
 
 export interface UpdateUsergroupResponse {
   /** Always `true` (a failed call raises a typed error instead). */

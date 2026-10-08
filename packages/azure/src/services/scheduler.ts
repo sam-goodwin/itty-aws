@@ -65,9 +65,8 @@ export const DeleteJobCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteJobCollectionRequest>;
 
 export interface DeleteJobCollectionResponse {}
-export const DeleteJobCollectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteJobCollectionResponse",
-}) as any as S.Schema<DeleteJobCollectionResponse>;
+export const DeleteJobCollectionResponse =
+  DeleteJobResponse as any as S.Schema<DeleteJobCollectionResponse>;
 
 export interface DisableJobCollectionRequest {
   /** The subscription id. */
@@ -95,9 +94,8 @@ export const DisableJobCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisableJobCollectionRequest>;
 
 export interface DisableJobCollectionResponse {}
-export const DisableJobCollectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisableJobCollectionResponse",
-}) as any as S.Schema<DisableJobCollectionResponse>;
+export const DisableJobCollectionResponse =
+  DeleteJobResponse as any as S.Schema<DisableJobCollectionResponse>;
 
 export interface EnableJobCollectionRequest {
   /** The subscription id. */
@@ -125,9 +123,8 @@ export const EnableJobCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableJobCollectionRequest>;
 
 export interface EnableJobCollectionResponse {}
-export const EnableJobCollectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "EnableJobCollectionResponse",
-}) as any as S.Schema<EnableJobCollectionResponse>;
+export const EnableJobCollectionResponse =
+  DeleteJobResponse as any as S.Schema<EnableJobCollectionResponse>;
 
 export interface GetJobRequest {
   /** The subscription id. */
@@ -302,10 +299,8 @@ export const ServiceBusBrokeredMessageProperties = /*@__PURE__*/ S.suspend(() =>
 export type ServiceBusQueueMessageCustomMessagePropertiesMap = {
   [key: string]: string | undefined;
 };
-export const ServiceBusQueueMessageCustomMessagePropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServiceBusQueueMessageCustomMessagePropertiesMap>;
+export const ServiceBusQueueMessageCustomMessagePropertiesMap =
+  HttpRequestHeadersMap as any as S.Schema<ServiceBusQueueMessageCustomMessagePropertiesMap>;
 
 /** Gets or sets the transport type. */
 export type ServiceBusQueueMessageTransportType = "NotSpecified" | "NetMessaging" | "AMQP";
@@ -343,10 +338,8 @@ export const ServiceBusQueueMessage = /*@__PURE__*/ S.suspend(() =>
 export type ServiceBusTopicMessageCustomMessagePropertiesMap = {
   [key: string]: string | undefined;
 };
-export const ServiceBusTopicMessageCustomMessagePropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServiceBusTopicMessageCustomMessagePropertiesMap>;
+export const ServiceBusTopicMessageCustomMessagePropertiesMap =
+  HttpRequestHeadersMap as any as S.Schema<ServiceBusTopicMessageCustomMessagePropertiesMap>;
 
 /** Gets or sets the transport type. */
 export type ServiceBusTopicMessageTransportType = "NotSpecified" | "NetMessaging" | "AMQP";
@@ -492,15 +485,13 @@ export const JobRecurrenceScheduleHoursList = /*@__PURE__*/ S.Array(
 
 /** Gets or sets the minutes of the hour that the job should execute at. */
 export type JobRecurrenceScheduleMinutesList = Array<number>;
-export const JobRecurrenceScheduleMinutesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<JobRecurrenceScheduleMinutesList>;
+export const JobRecurrenceScheduleMinutesList =
+  JobRecurrenceScheduleHoursList as any as S.Schema<JobRecurrenceScheduleMinutesList>;
 
 /** Gets or sets the days of the month that the job should execute on. Must be between 1 and 31. */
 export type JobRecurrenceScheduleMonthDaysList = Array<number>;
-export const JobRecurrenceScheduleMonthDaysList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<JobRecurrenceScheduleMonthDaysList>;
+export const JobRecurrenceScheduleMonthDaysList =
+  JobRecurrenceScheduleHoursList as any as S.Schema<JobRecurrenceScheduleMonthDaysList>;
 
 /** Gets or sets the day. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
 export type JobRecurrenceScheduleMonthlyOccurrenceDay =
@@ -670,10 +661,8 @@ export const GetJobCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the tags. */
 export type JobCollectionDefinitionTagsMap = { [key: string]: string | undefined };
-export const JobCollectionDefinitionTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<JobCollectionDefinitionTagsMap>;
+export const JobCollectionDefinitionTagsMap =
+  HttpRequestHeadersMap as any as S.Schema<JobCollectionDefinitionTagsMap>;
 
 /** Gets or set the SKU. */
 export type SkuName = "Standard" | "Free" | "P10Premium" | "P20Premium";
@@ -769,10 +758,8 @@ export const JobCollectionDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the tags. */
 export type JobCollectionsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const JobCollectionsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<JobCollectionsCreateOrUpdateRequestTagsMap>;
+export const JobCollectionsCreateOrUpdateRequestTagsMap =
+  HttpRequestHeadersMap as any as S.Schema<JobCollectionsCreateOrUpdateRequestTagsMap>;
 
 export interface JobCollectionsCreateOrUpdateRequest {
   /** The subscription id. */
@@ -1117,10 +1104,8 @@ export const PatchJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the tags. */
 export type PatchJobCollectionRequestTagsMap = { [key: string]: string | undefined };
-export const PatchJobCollectionRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PatchJobCollectionRequestTagsMap>;
+export const PatchJobCollectionRequestTagsMap =
+  HttpRequestHeadersMap as any as S.Schema<PatchJobCollectionRequestTagsMap>;
 
 export interface PatchJobCollectionRequest {
   /** The subscription id. */
@@ -1186,9 +1171,7 @@ export const RunJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RunJobRequest" }) as any as S.Schema<RunJobRequest>;
 
 export interface RunJobResponse {}
-export const RunJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RunJobResponse",
-}) as any as S.Schema<RunJobResponse>;
+export const RunJobResponse = DeleteJobResponse as any as S.Schema<RunJobResponse>;
 
 export type DeleteJobError = AzureOpError;
 /** Deletes a job. */

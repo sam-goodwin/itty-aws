@@ -116,9 +116,8 @@ export const DeleteFhirServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFhirServiceRequest" }) as any as S.Schema<DeleteFhirServiceRequest>;
 
 export interface DeleteFhirServiceResponse {}
-export const DeleteFhirServiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFhirServiceResponse",
-}) as any as S.Schema<DeleteFhirServiceResponse>;
+export const DeleteFhirServiceResponse =
+  DeleteDicomServiceResponse as any as S.Schema<DeleteFhirServiceResponse>;
 
 export interface DeleteIotConnectorRequest {
   /** The ID of the target subscription. */
@@ -149,9 +148,8 @@ export const DeleteIotConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIotConnectorRequest>;
 
 export interface DeleteIotConnectorResponse {}
-export const DeleteIotConnectorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteIotConnectorResponse",
-}) as any as S.Schema<DeleteIotConnectorResponse>;
+export const DeleteIotConnectorResponse =
+  DeleteDicomServiceResponse as any as S.Schema<DeleteIotConnectorResponse>;
 
 export interface DeleteIotConnectorFhirDestinationRequest {
   /** The ID of the target subscription. */
@@ -220,11 +218,8 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePrivateEndpointConnectionResponse",
-}) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
+export const DeletePrivateEndpointConnectionResponse =
+  DeleteIotConnectorFhirDestinationResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
 
 export interface DeleteServiceRequest {
   /** The ID of the target subscription. */
@@ -250,9 +245,8 @@ export const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteServiceRequest" }) as any as S.Schema<DeleteServiceRequest>;
 
 export interface DeleteServiceResponse {}
-export const DeleteServiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteServiceResponse",
-}) as any as S.Schema<DeleteServiceResponse>;
+export const DeleteServiceResponse =
+  DeleteDicomServiceResponse as any as S.Schema<DeleteServiceResponse>;
 
 export interface DeleteWorkspaceRequest {
   /** The ID of the target subscription. */
@@ -278,9 +272,8 @@ export const DeleteWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWorkspaceRequest" }) as any as S.Schema<DeleteWorkspaceRequest>;
 
 export interface DeleteWorkspaceResponse {}
-export const DeleteWorkspaceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkspaceResponse",
-}) as any as S.Schema<DeleteWorkspaceResponse>;
+export const DeleteWorkspaceResponse =
+  DeleteDicomServiceResponse as any as S.Schema<DeleteWorkspaceResponse>;
 
 export interface DeleteWorkspacePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. */
@@ -311,11 +304,8 @@ export const DeleteWorkspacePrivateEndpointConnectionRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<DeleteWorkspacePrivateEndpointConnectionRequest>;
 
 export interface DeleteWorkspacePrivateEndpointConnectionResponse {}
-export const DeleteWorkspacePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkspacePrivateEndpointConnectionResponse",
-}) as any as S.Schema<DeleteWorkspacePrivateEndpointConnectionResponse>;
+export const DeleteWorkspacePrivateEndpointConnectionResponse =
+  DeleteIotConnectorFhirDestinationResponse as any as S.Schema<DeleteWorkspacePrivateEndpointConnectionResponse>;
 
 /** Resource tags. */
 export type DicomServicesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -334,9 +324,8 @@ export const DicomServicesCreateOrUpdateRequestIdentityType = S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UserAssignedIdentityInput",
-}) as any as S.Schema<UserAssignedIdentityInput>;
+export const UserAssignedIdentityInput =
+  DeleteDicomServiceResponse as any as S.Schema<UserAssignedIdentityInput>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = { [key: string]: UserAssignedIdentityInput | undefined };
@@ -372,15 +361,13 @@ export const CorsConfigurationOriginsList = /*@__PURE__*/ S.Array(
 
 /** The headers to be allowed via CORS. */
 export type CorsConfigurationHeadersList = Array<string>;
-export const CorsConfigurationHeadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CorsConfigurationHeadersList>;
+export const CorsConfigurationHeadersList =
+  CorsConfigurationOriginsList as any as S.Schema<CorsConfigurationHeadersList>;
 
 /** The methods to be allowed via CORS. */
 export type CorsConfigurationMethodsList = Array<string>;
-export const CorsConfigurationMethodsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CorsConfigurationMethodsList>;
+export const CorsConfigurationMethodsList =
+  CorsConfigurationOriginsList as any as S.Schema<CorsConfigurationMethodsList>;
 
 /** The settings for the CORS configuration of the service instance. */
 export interface CorsConfiguration {
@@ -513,10 +500,8 @@ export const DicomServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DicomServicesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const DicomServicesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DicomServicesCreateOrUpdateResponseTagsMap>;
+export const DicomServicesCreateOrUpdateResponseTagsMap =
+  DicomServicesCreateOrUpdateRequestTagsMap as any as S.Schema<DicomServicesCreateOrUpdateResponseTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type DicomServicesCreateOrUpdateResponseIdentityType =
@@ -587,9 +572,8 @@ export const ProvisioningState = S.String;
 
 /** The audiences for the service */
 export type DicomServiceAuthenticationConfigurationAudiencesList = Array<string>;
-export const DicomServiceAuthenticationConfigurationAudiencesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DicomServiceAuthenticationConfigurationAudiencesList>;
+export const DicomServiceAuthenticationConfigurationAudiencesList =
+  CorsConfigurationOriginsList as any as S.Schema<DicomServiceAuthenticationConfigurationAudiencesList>;
 
 /** Authentication configuration information */
 export interface DicomServiceAuthenticationConfiguration {
@@ -815,10 +799,8 @@ export const DicomServicesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type FhirServicesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const FhirServicesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FhirServicesCreateOrUpdateRequestTagsMap>;
+export const FhirServicesCreateOrUpdateRequestTagsMap =
+  DicomServicesCreateOrUpdateRequestTagsMap as any as S.Schema<FhirServicesCreateOrUpdateRequestTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type FhirServicesCreateOrUpdateRequestIdentityType =
@@ -849,9 +831,8 @@ export const FhirServicesCreateOrUpdateRequestKind = S.String;
 
 /** The list of the Azure container registry login servers. */
 export type FhirServiceAcrConfigurationLoginServersList = Array<string>;
-export const FhirServiceAcrConfigurationLoginServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FhirServiceAcrConfigurationLoginServersList>;
+export const FhirServiceAcrConfigurationLoginServersList =
+  CorsConfigurationOriginsList as any as S.Schema<FhirServiceAcrConfigurationLoginServersList>;
 
 /** An Open Container Initiative (OCI) artifact. */
 export interface ServiceOciArtifactEntry {
@@ -980,21 +961,18 @@ export const FhirServiceAuthenticationConfiguration = /*@__PURE__*/ S.suspend(()
 
 /** The origins to be allowed via CORS. */
 export type FhirServiceCorsConfigurationOriginsList = Array<string>;
-export const FhirServiceCorsConfigurationOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FhirServiceCorsConfigurationOriginsList>;
+export const FhirServiceCorsConfigurationOriginsList =
+  CorsConfigurationOriginsList as any as S.Schema<FhirServiceCorsConfigurationOriginsList>;
 
 /** The headers to be allowed via CORS. */
 export type FhirServiceCorsConfigurationHeadersList = Array<string>;
-export const FhirServiceCorsConfigurationHeadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FhirServiceCorsConfigurationHeadersList>;
+export const FhirServiceCorsConfigurationHeadersList =
+  CorsConfigurationOriginsList as any as S.Schema<FhirServiceCorsConfigurationHeadersList>;
 
 /** The methods to be allowed via CORS. */
 export type FhirServiceCorsConfigurationMethodsList = Array<string>;
-export const FhirServiceCorsConfigurationMethodsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FhirServiceCorsConfigurationMethodsList>;
+export const FhirServiceCorsConfigurationMethodsList =
+  CorsConfigurationOriginsList as any as S.Schema<FhirServiceCorsConfigurationMethodsList>;
 
 /** The settings for the CORS configuration of the service instance. */
 export interface FhirServiceCorsConfiguration {
@@ -1177,10 +1155,8 @@ export const FhirServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type FhirServicesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const FhirServicesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FhirServicesCreateOrUpdateResponseTagsMap>;
+export const FhirServicesCreateOrUpdateResponseTagsMap =
+  DicomServicesCreateOrUpdateRequestTagsMap as any as S.Schema<FhirServicesCreateOrUpdateResponseTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type FhirServicesCreateOrUpdateResponseIdentityType =
@@ -1224,9 +1200,8 @@ export const FhirServicePropertiesPrivateEndpointConnectionsItem =
 /** The list of private endpoint connections that are set up for this resource. */
 export type FhirServicePropertiesPrivateEndpointConnectionsList =
   Array<DicomServicePropertiesPrivateEndpointConnectionsItem>;
-export const FhirServicePropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
-  DicomServicePropertiesPrivateEndpointConnectionsItem,
-) as any as S.Schema<FhirServicePropertiesPrivateEndpointConnectionsList>;
+export const FhirServicePropertiesPrivateEndpointConnectionsList =
+  DicomServicePropertiesPrivateEndpointConnectionsList as any as S.Schema<FhirServicePropertiesPrivateEndpointConnectionsList>;
 
 /** Fhir Service properties. */
 export interface FhirServiceProperties {
@@ -1339,10 +1314,8 @@ export const GetDicomServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetDicomServiceResponseTagsMap = { [key: string]: string | undefined };
-export const GetDicomServiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDicomServiceResponseTagsMap>;
+export const GetDicomServiceResponseTagsMap =
+  DicomServicesCreateOrUpdateRequestTagsMap as any as S.Schema<GetDicomServiceResponseTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type GetDicomServiceResponseIdentityType =
@@ -1435,10 +1408,8 @@ export const GetFhirServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetFhirServiceResponseTagsMap = { [key: string]: string | undefined };
-export const GetFhirServiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetFhirServiceResponseTagsMap>;
+export const GetFhirServiceResponseTagsMap =
+  DicomServicesCreateOrUpdateRequestTagsMap as any as S.Schema<GetFhirServiceResponseTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type GetFhirServiceResponseIdentityType =
@@ -1538,10 +1509,8 @@ export const GetIotConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetIotConnectorResponseTagsMap = { [key: string]: string | undefined };
-export const GetIotConnectorResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetIotConnectorResponseTagsMap>;
+export const GetIotConnectorResponseTagsMap =
+  DicomServicesCreateOrUpdateRequestTagsMap as any as S.Schema<GetIotConnectorResponseTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type GetIotConnectorResponseIdentityType =
@@ -1930,15 +1899,13 @@ export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+export const PrivateLinkResourcePropertiesRequiredMembersList =
+  CorsConfigurationOriginsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  CorsConfigurationOriginsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
@@ -2056,10 +2023,8 @@ export const GetServiceResponseKind = S.String;
 
 /** The resource tags. */
 export type GetServiceResponseTagsMap = { [key: string]: string | undefined };
-export const GetServiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetServiceResponseTagsMap>;
+export const GetServiceResponseTagsMap =
+  DicomServicesCreateOrUpdateRequestTagsMap as any as S.Schema<GetServiceResponseTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type GetServiceResponseIdentityType = "SystemAssigned" | "None";
@@ -2141,21 +2106,18 @@ export const ServiceAuthenticationConfigurationInfo = /*@__PURE__*/ S.suspend(()
 
 /** The origins to be allowed via CORS. */
 export type ServiceCorsConfigurationInfoOriginsList = Array<string>;
-export const ServiceCorsConfigurationInfoOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServiceCorsConfigurationInfoOriginsList>;
+export const ServiceCorsConfigurationInfoOriginsList =
+  CorsConfigurationOriginsList as any as S.Schema<ServiceCorsConfigurationInfoOriginsList>;
 
 /** The headers to be allowed via CORS. */
 export type ServiceCorsConfigurationInfoHeadersList = Array<string>;
-export const ServiceCorsConfigurationInfoHeadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServiceCorsConfigurationInfoHeadersList>;
+export const ServiceCorsConfigurationInfoHeadersList =
+  CorsConfigurationOriginsList as any as S.Schema<ServiceCorsConfigurationInfoHeadersList>;
 
 /** The methods to be allowed via CORS. */
 export type ServiceCorsConfigurationInfoMethodsList = Array<string>;
-export const ServiceCorsConfigurationInfoMethodsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServiceCorsConfigurationInfoMethodsList>;
+export const ServiceCorsConfigurationInfoMethodsList =
+  CorsConfigurationOriginsList as any as S.Schema<ServiceCorsConfigurationInfoMethodsList>;
 
 /** The settings for the CORS configuration of the service instance. */
 export interface ServiceCorsConfigurationInfo {
@@ -2170,17 +2132,8 @@ export interface ServiceCorsConfigurationInfo {
   /** If credentials are allowed via CORS. */
   allowCredentials?: boolean;
 }
-export const ServiceCorsConfigurationInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origins: S.optional(ServiceCorsConfigurationInfoOriginsList),
-    headers: S.optional(ServiceCorsConfigurationInfoHeadersList),
-    methods: S.optional(ServiceCorsConfigurationInfoMethodsList),
-    maxAge: S.optional(S.Number),
-    allowCredentials: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ServiceCorsConfigurationInfo",
-}) as any as S.Schema<ServiceCorsConfigurationInfo>;
+export const ServiceCorsConfigurationInfo =
+  FhirServiceCorsConfiguration as any as S.Schema<ServiceCorsConfigurationInfo>;
 
 /** Export operation configuration information */
 export type ServiceExportConfigurationInfo = FhirServiceExportConfiguration;
@@ -2195,9 +2148,8 @@ export const ServicesPropertiesPrivateEndpointConnectionsItem =
 /** The list of private endpoint connections that are set up for this resource. */
 export type ServicesPropertiesPrivateEndpointConnectionsList =
   Array<DicomServicePropertiesPrivateEndpointConnectionsItem>;
-export const ServicesPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
-  DicomServicePropertiesPrivateEndpointConnectionsItem,
-) as any as S.Schema<ServicesPropertiesPrivateEndpointConnectionsList>;
+export const ServicesPropertiesPrivateEndpointConnectionsList =
+  DicomServicePropertiesPrivateEndpointConnectionsList as any as S.Schema<ServicesPropertiesPrivateEndpointConnectionsList>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type ServicesPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
@@ -2205,15 +2157,13 @@ export const ServicesPropertiesPublicNetworkAccess = S.String;
 
 /** The list of the ACR login servers. */
 export type ServiceAcrConfigurationInfoLoginServersList = Array<string>;
-export const ServiceAcrConfigurationInfoLoginServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServiceAcrConfigurationInfoLoginServersList>;
+export const ServiceAcrConfigurationInfoLoginServersList =
+  CorsConfigurationOriginsList as any as S.Schema<ServiceAcrConfigurationInfoLoginServersList>;
 
 /** The list of Open Container Initiative (OCI) artifacts. */
 export type ServiceAcrConfigurationInfoOciArtifactsList = Array<ServiceOciArtifactEntry>;
-export const ServiceAcrConfigurationInfoOciArtifactsList = /*@__PURE__*/ S.Array(
-  ServiceOciArtifactEntry,
-) as any as S.Schema<ServiceAcrConfigurationInfoOciArtifactsList>;
+export const ServiceAcrConfigurationInfoOciArtifactsList =
+  FhirServiceAcrConfigurationOciArtifactsList as any as S.Schema<ServiceAcrConfigurationInfoOciArtifactsList>;
 
 /** Azure container registry configuration information */
 export interface ServiceAcrConfigurationInfo {
@@ -2222,14 +2172,8 @@ export interface ServiceAcrConfigurationInfo {
   /** The list of Open Container Initiative (OCI) artifacts. */
   ociArtifacts?: ServiceAcrConfigurationInfoOciArtifactsList;
 }
-export const ServiceAcrConfigurationInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    loginServers: S.optional(ServiceAcrConfigurationInfoLoginServersList),
-    ociArtifacts: S.optional(ServiceAcrConfigurationInfoOciArtifactsList),
-  }),
-).annotate({
-  identifier: "ServiceAcrConfigurationInfo",
-}) as any as S.Schema<ServiceAcrConfigurationInfo>;
+export const ServiceAcrConfigurationInfo =
+  FhirServiceAcrConfiguration as any as S.Schema<ServiceAcrConfigurationInfo>;
 
 /** Import operation configuration information */
 export type ServiceImportConfigurationInfo = FhirServiceImportConfiguration;
@@ -2335,10 +2279,8 @@ export const GetWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetWorkspaceResponseTagsMap = { [key: string]: string | undefined };
-export const GetWorkspaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetWorkspaceResponseTagsMap>;
+export const GetWorkspaceResponseTagsMap =
+  DicomServicesCreateOrUpdateRequestTagsMap as any as S.Schema<GetWorkspaceResponseTagsMap>;
 
 /** The Private Endpoint Connection resource. */
 export type GetWorkspaceResponsePropertiesPrivateEndpointConnectionsItem =
@@ -2349,9 +2291,8 @@ export const GetWorkspaceResponsePropertiesPrivateEndpointConnectionsItem =
 /** The list of private endpoint connections that are set up for this resource. */
 export type GetWorkspaceResponsePropertiesPrivateEndpointConnectionsList =
   Array<DicomServicePropertiesPrivateEndpointConnectionsItem>;
-export const GetWorkspaceResponsePropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
-  DicomServicePropertiesPrivateEndpointConnectionsItem,
-) as any as S.Schema<GetWorkspaceResponsePropertiesPrivateEndpointConnectionsList>;
+export const GetWorkspaceResponsePropertiesPrivateEndpointConnectionsList =
+  DicomServicePropertiesPrivateEndpointConnectionsList as any as S.Schema<GetWorkspaceResponsePropertiesPrivateEndpointConnectionsList>;
 
 /** Workspaces resource specific properties. */
 export interface GetWorkspaceResponseProperties {
@@ -2676,26 +2617,13 @@ export interface IotConnectorFhirDestinationCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: SystemData;
 }
-export const IotConnectorFhirDestinationCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    etag: S.optional(S.String),
-    location: S.optional(S.String),
-    properties: IotFhirDestinationProperties,
-    systemData: S.optional(SystemData),
-  }),
-).annotate({
-  identifier: "IotConnectorFhirDestinationCreateOrUpdateResponse",
-}) as any as S.Schema<IotConnectorFhirDestinationCreateOrUpdateResponse>;
+export const IotConnectorFhirDestinationCreateOrUpdateResponse =
+  GetIotConnectorFhirDestinationResponse as any as S.Schema<IotConnectorFhirDestinationCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type IotConnectorsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const IotConnectorsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IotConnectorsCreateOrUpdateRequestTagsMap>;
+export const IotConnectorsCreateOrUpdateRequestTagsMap =
+  DicomServicesCreateOrUpdateRequestTagsMap as any as S.Schema<IotConnectorsCreateOrUpdateRequestTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type IotConnectorsCreateOrUpdateRequestIdentityType =
@@ -2781,10 +2709,8 @@ export const IotConnectorsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type IotConnectorsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const IotConnectorsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IotConnectorsCreateOrUpdateResponseTagsMap>;
+export const IotConnectorsCreateOrUpdateResponseTagsMap =
+  DicomServicesCreateOrUpdateRequestTagsMap as any as S.Schema<IotConnectorsCreateOrUpdateResponseTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type IotConnectorsCreateOrUpdateResponseIdentityType =
@@ -2878,10 +2804,8 @@ export const ListDicomServiceByWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DicomServiceTagsMap = { [key: string]: string | undefined };
-export const DicomServiceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DicomServiceTagsMap>;
+export const DicomServiceTagsMap =
+  DicomServicesCreateOrUpdateRequestTagsMap as any as S.Schema<DicomServiceTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type DicomServiceIdentityType =
@@ -3071,10 +2995,8 @@ export const ListFhirServiceByWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type FhirServiceTagsMap = { [key: string]: string | undefined };
-export const FhirServiceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FhirServiceTagsMap>;
+export const FhirServiceTagsMap =
+  DicomServicesCreateOrUpdateRequestTagsMap as any as S.Schema<FhirServiceTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type FhirServiceIdentityType =
@@ -3192,10 +3114,8 @@ export const ListIotConnectorByWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type IotConnectorTagsMap = { [key: string]: string | undefined };
-export const IotConnectorTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IotConnectorTagsMap>;
+export const IotConnectorTagsMap =
+  DicomServicesCreateOrUpdateRequestTagsMap as any as S.Schema<IotConnectorTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type IotConnectorIdentityType =
@@ -3340,15 +3260,13 @@ export const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
 
 /** Supported aggregation types */
 export type MetricSpecificationSupportedAggregationTypesList = Array<string>;
-export const MetricSpecificationSupportedAggregationTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricSpecificationSupportedAggregationTypesList>;
+export const MetricSpecificationSupportedAggregationTypesList =
+  CorsConfigurationOriginsList as any as S.Schema<MetricSpecificationSupportedAggregationTypesList>;
 
 /** Supported time grain types */
 export type MetricSpecificationSupportedTimeGrainTypesList = Array<string>;
-export const MetricSpecificationSupportedTimeGrainTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricSpecificationSupportedTimeGrainTypesList>;
+export const MetricSpecificationSupportedTimeGrainTypesList =
+  CorsConfigurationOriginsList as any as S.Schema<MetricSpecificationSupportedTimeGrainTypesList>;
 
 /** Specifications of the Dimension of metrics */
 export interface MetricDimension {
@@ -3764,10 +3682,8 @@ export const ServicesDescriptionKind = S.String;
 
 /** The resource tags. */
 export type ServicesDescriptionTagsMap = { [key: string]: string | undefined };
-export const ServicesDescriptionTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServicesDescriptionTagsMap>;
+export const ServicesDescriptionTagsMap =
+  DicomServicesCreateOrUpdateRequestTagsMap as any as S.Schema<ServicesDescriptionTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type ServicesDescriptionIdentityType = "SystemAssigned" | "None";
@@ -3893,10 +3809,8 @@ export const ListWorkspaceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WorkspaceTagsMap = { [key: string]: string | undefined };
-export const WorkspaceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WorkspaceTagsMap>;
+export const WorkspaceTagsMap =
+  DicomServicesCreateOrUpdateRequestTagsMap as any as S.Schema<WorkspaceTagsMap>;
 
 /** The Private Endpoint Connection resource. */
 export type WorkspacePropertiesPrivateEndpointConnectionsItem =
@@ -3907,9 +3821,8 @@ export const WorkspacePropertiesPrivateEndpointConnectionsItem =
 /** The list of private endpoint connections that are set up for this resource. */
 export type WorkspacePropertiesPrivateEndpointConnectionsList =
   Array<DicomServicePropertiesPrivateEndpointConnectionsItem>;
-export const WorkspacePropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
-  DicomServicePropertiesPrivateEndpointConnectionsItem,
-) as any as S.Schema<WorkspacePropertiesPrivateEndpointConnectionsList>;
+export const WorkspacePropertiesPrivateEndpointConnectionsList =
+  DicomServicePropertiesPrivateEndpointConnectionsList as any as S.Schema<WorkspacePropertiesPrivateEndpointConnectionsList>;
 
 /** Workspaces resource specific properties. */
 export interface WorkspaceProperties {
@@ -4181,10 +4094,8 @@ export const ServicesCreateOrUpdateRequestKind = S.String;
 
 /** The resource tags. */
 export type ServicesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ServicesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServicesCreateOrUpdateRequestTagsMap>;
+export const ServicesCreateOrUpdateRequestTagsMap =
+  DicomServicesCreateOrUpdateRequestTagsMap as any as S.Schema<ServicesCreateOrUpdateRequestTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type ServicesCreateOrUpdateRequestIdentityType = "SystemAssigned" | "None";
@@ -4311,10 +4222,8 @@ export const ServicesCreateOrUpdateResponseKind = S.String;
 
 /** The resource tags. */
 export type ServicesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ServicesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServicesCreateOrUpdateResponseTagsMap>;
+export const ServicesCreateOrUpdateResponseTagsMap =
+  DicomServicesCreateOrUpdateRequestTagsMap as any as S.Schema<ServicesCreateOrUpdateResponseTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type ServicesCreateOrUpdateResponseIdentityType = "SystemAssigned" | "None";
@@ -4380,10 +4289,8 @@ export const ServicesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateDicomServiceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateDicomServiceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDicomServiceRequestTagsMap>;
+export const UpdateDicomServiceRequestTagsMap =
+  DicomServicesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDicomServiceRequestTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type UpdateDicomServiceRequestIdentityType =
@@ -4444,10 +4351,8 @@ export const UpdateDicomServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateDicomServiceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateDicomServiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDicomServiceResponseTagsMap>;
+export const UpdateDicomServiceResponseTagsMap =
+  DicomServicesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDicomServiceResponseTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type UpdateDicomServiceResponseIdentityType =
@@ -4516,10 +4421,8 @@ export const UpdateDicomServiceResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateFhirServiceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateFhirServiceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateFhirServiceRequestTagsMap>;
+export const UpdateFhirServiceRequestTagsMap =
+  DicomServicesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateFhirServiceRequestTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type UpdateFhirServiceRequestIdentityType =
@@ -4578,10 +4481,8 @@ export const UpdateFhirServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateFhirServiceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateFhirServiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateFhirServiceResponseTagsMap>;
+export const UpdateFhirServiceResponseTagsMap =
+  DicomServicesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateFhirServiceResponseTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type UpdateFhirServiceResponseIdentityType =
@@ -4657,10 +4558,8 @@ export const UpdateFhirServiceResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateIotConnectorRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateIotConnectorRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateIotConnectorRequestTagsMap>;
+export const UpdateIotConnectorRequestTagsMap =
+  DicomServicesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateIotConnectorRequestTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type UpdateIotConnectorRequestIdentityType =
@@ -4721,10 +4620,8 @@ export const UpdateIotConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateIotConnectorResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateIotConnectorResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateIotConnectorResponseTagsMap>;
+export const UpdateIotConnectorResponseTagsMap =
+  DicomServicesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateIotConnectorResponseTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type UpdateIotConnectorResponseIdentityType =
@@ -4793,10 +4690,8 @@ export const UpdateIotConnectorResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Instance tags */
 export type UpdateServiceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateServiceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateServiceRequestTagsMap>;
+export const UpdateServiceRequestTagsMap =
+  DicomServicesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateServiceRequestTagsMap>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type ServicesPropertiesUpdateParametersPublicNetworkAccess = "Enabled" | "Disabled";
@@ -4850,10 +4745,8 @@ export const UpdateServiceResponseKind = S.String;
 
 /** The resource tags. */
 export type UpdateServiceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateServiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateServiceResponseTagsMap>;
+export const UpdateServiceResponseTagsMap =
+  DicomServicesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateServiceResponseTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type UpdateServiceResponseIdentityType = "SystemAssigned" | "None";
@@ -4917,10 +4810,8 @@ export const UpdateServiceResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateWorkspaceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateWorkspaceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWorkspaceRequestTagsMap>;
+export const UpdateWorkspaceRequestTagsMap =
+  DicomServicesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateWorkspaceRequestTagsMap>;
 
 export interface UpdateWorkspaceRequest {
   /** The ID of the target subscription. */
@@ -4950,10 +4841,8 @@ export const UpdateWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateWorkspaceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateWorkspaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWorkspaceResponseTagsMap>;
+export const UpdateWorkspaceResponseTagsMap =
+  DicomServicesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateWorkspaceResponseTagsMap>;
 
 /** The Private Endpoint Connection resource. */
 export type UpdateWorkspaceResponsePropertiesPrivateEndpointConnectionsItem =
@@ -5131,10 +5020,8 @@ export const WorkspacePrivateEndpointConnectionsCreateOrUpdateResponse = /*@__PU
 
 /** Resource tags. */
 export type WorkspacesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const WorkspacesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WorkspacesCreateOrUpdateRequestTagsMap>;
+export const WorkspacesCreateOrUpdateRequestTagsMap =
+  DicomServicesCreateOrUpdateRequestTagsMap as any as S.Schema<WorkspacesCreateOrUpdateRequestTagsMap>;
 
 /** Workspaces resource specific properties. */
 export type WorkspacesCreateOrUpdateRequestProperties = UserAssignedIdentityInput;
@@ -5179,10 +5066,8 @@ export const WorkspacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WorkspacesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const WorkspacesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WorkspacesCreateOrUpdateResponseTagsMap>;
+export const WorkspacesCreateOrUpdateResponseTagsMap =
+  DicomServicesCreateOrUpdateRequestTagsMap as any as S.Schema<WorkspacesCreateOrUpdateResponseTagsMap>;
 
 /** The Private Endpoint Connection resource. */
 export type WorkspacesCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsItem =
@@ -5194,9 +5079,7 @@ export const WorkspacesCreateOrUpdateResponsePropertiesPrivateEndpointConnection
 export type WorkspacesCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList =
   Array<DicomServicePropertiesPrivateEndpointConnectionsItem>;
 export const WorkspacesCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    DicomServicePropertiesPrivateEndpointConnectionsItem,
-  ) as any as S.Schema<WorkspacesCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList>;
+  UpdateWorkspaceResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<WorkspacesCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList>;
 
 /** Workspaces resource specific properties. */
 export interface WorkspacesCreateOrUpdateResponseProperties {
@@ -5207,17 +5090,8 @@ export interface WorkspacesCreateOrUpdateResponseProperties {
   /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
   publicNetworkAccess?: ResourcePublicNetworkAccess;
 }
-export const WorkspacesCreateOrUpdateResponseProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningState: S.optional(ProvisioningState),
-    privateEndpointConnections: S.optional(
-      WorkspacesCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList,
-    ),
-    publicNetworkAccess: S.optional(ResourcePublicNetworkAccess),
-  }),
-).annotate({
-  identifier: "WorkspacesCreateOrUpdateResponseProperties",
-}) as any as S.Schema<WorkspacesCreateOrUpdateResponseProperties>;
+export const WorkspacesCreateOrUpdateResponseProperties =
+  UpdateWorkspaceResponseProperties as any as S.Schema<WorkspacesCreateOrUpdateResponseProperties>;
 
 export interface WorkspacesCreateOrUpdateResponse {
   /** Resource tags. */

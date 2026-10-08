@@ -224,9 +224,8 @@ export const ConfigTemplateMetadataPropertiesInputLinkedHierarchiesList = /*@__P
 
 /** Hierarchy ARM Ids */
 export type ConfigTemplateMetadataPropertiesInputUnLinkedHierarchiesList = Array<HierarchyMetadata>;
-export const ConfigTemplateMetadataPropertiesInputUnLinkedHierarchiesList = /*@__PURE__*/ S.Array(
-  HierarchyMetadata,
-) as any as S.Schema<ConfigTemplateMetadataPropertiesInputUnLinkedHierarchiesList>;
+export const ConfigTemplateMetadataPropertiesInputUnLinkedHierarchiesList =
+  ConfigTemplateMetadataPropertiesInputLinkedHierarchiesList as any as S.Schema<ConfigTemplateMetadataPropertiesInputUnLinkedHierarchiesList>;
 
 /** ConfigTemplateMetadata Properties */
 export interface ConfigTemplateMetadataPropertiesInput {
@@ -314,15 +313,13 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Hierarchy ARM Ids */
 export type ConfigTemplateMetadataPropertiesLinkedHierarchiesList = Array<HierarchyMetadata>;
-export const ConfigTemplateMetadataPropertiesLinkedHierarchiesList = /*@__PURE__*/ S.Array(
-  HierarchyMetadata,
-) as any as S.Schema<ConfigTemplateMetadataPropertiesLinkedHierarchiesList>;
+export const ConfigTemplateMetadataPropertiesLinkedHierarchiesList =
+  ConfigTemplateMetadataPropertiesInputLinkedHierarchiesList as any as S.Schema<ConfigTemplateMetadataPropertiesLinkedHierarchiesList>;
 
 /** Hierarchy ARM Ids */
 export type ConfigTemplateMetadataPropertiesUnLinkedHierarchiesList = Array<HierarchyMetadata>;
-export const ConfigTemplateMetadataPropertiesUnLinkedHierarchiesList = /*@__PURE__*/ S.Array(
-  HierarchyMetadata,
-) as any as S.Schema<ConfigTemplateMetadataPropertiesUnLinkedHierarchiesList>;
+export const ConfigTemplateMetadataPropertiesUnLinkedHierarchiesList =
+  ConfigTemplateMetadataPropertiesInputLinkedHierarchiesList as any as S.Schema<ConfigTemplateMetadataPropertiesUnLinkedHierarchiesList>;
 
 /** Provisioning state of resource */
 export type ProvisioningState =
@@ -442,10 +439,8 @@ export const ConfigTemplatesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type ConfigTemplatesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ConfigTemplatesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConfigTemplatesCreateOrUpdateResponseTagsMap>;
+export const ConfigTemplatesCreateOrUpdateResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<ConfigTemplatesCreateOrUpdateResponseTagsMap>;
 
 /** Config Template Properties */
 export interface ConfigTemplateProperties {
@@ -502,9 +497,8 @@ export const ConfigTemplatesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() 
 
 /** Hierarchy Ids */
 export type ConfigTemplatesLinkToHierarchiesRequestHierarchyIdsList = Array<string>;
-export const ConfigTemplatesLinkToHierarchiesRequestHierarchyIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigTemplatesLinkToHierarchiesRequestHierarchyIdsList>;
+export const ConfigTemplatesLinkToHierarchiesRequestHierarchyIdsList =
+  HierarchyMetadataHierarchyIdsList as any as S.Schema<ConfigTemplatesLinkToHierarchiesRequestHierarchyIdsList>;
 
 export interface ConfigTemplatesLinkToHierarchiesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -541,17 +535,13 @@ export const ConfigTemplatesLinkToHierarchiesRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ConfigTemplatesLinkToHierarchiesRequest>;
 
 export interface ConfigTemplatesLinkToHierarchiesResponse {}
-export const ConfigTemplatesLinkToHierarchiesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ConfigTemplatesLinkToHierarchiesResponse",
-}) as any as S.Schema<ConfigTemplatesLinkToHierarchiesResponse>;
+export const ConfigTemplatesLinkToHierarchiesResponse =
+  BulkSolutionTemplateVersionReviewSolutionResponse as any as S.Schema<ConfigTemplatesLinkToHierarchiesResponse>;
 
 /** Hierarchy Ids */
 export type ConfigTemplatesUnLinkFromHierarchiesRequestHierarchyIdsList = Array<string>;
-export const ConfigTemplatesUnLinkFromHierarchiesRequestHierarchyIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigTemplatesUnLinkFromHierarchiesRequestHierarchyIdsList>;
+export const ConfigTemplatesUnLinkFromHierarchiesRequestHierarchyIdsList =
+  HierarchyMetadataHierarchyIdsList as any as S.Schema<ConfigTemplatesUnLinkFromHierarchiesRequestHierarchyIdsList>;
 
 export interface ConfigTemplatesUnLinkFromHierarchiesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -588,11 +578,8 @@ export const ConfigTemplatesUnLinkFromHierarchiesRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ConfigTemplatesUnLinkFromHierarchiesRequest>;
 
 export interface ConfigTemplatesUnLinkFromHierarchiesResponse {}
-export const ConfigTemplatesUnLinkFromHierarchiesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ConfigTemplatesUnLinkFromHierarchiesResponse",
-}) as any as S.Schema<ConfigTemplatesUnLinkFromHierarchiesResponse>;
+export const ConfigTemplatesUnLinkFromHierarchiesResponse =
+  BulkSolutionTemplateVersionReviewSolutionResponse as any as S.Schema<ConfigTemplatesUnLinkFromHierarchiesResponse>;
 
 /** Config Template Version Properties */
 export interface ConfigTemplateVersionPropertiesInput {
@@ -761,10 +748,8 @@ export const ConfigurationReferencesCreateOrUpdateResponse = /*@__PURE__*/ S.sus
 
 /** Resource tags. */
 export type ConfigurationsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ConfigurationsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConfigurationsCreateOrUpdateRequestTagsMap>;
+export const ConfigurationsCreateOrUpdateRequestTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<ConfigurationsCreateOrUpdateRequestTagsMap>;
 
 /** Configuration Properties */
 export interface ConfigurationPropertiesInput {}
@@ -808,10 +793,8 @@ export const ConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ConfigurationsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ConfigurationsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConfigurationsCreateOrUpdateResponseTagsMap>;
+export const ConfigurationsCreateOrUpdateResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<ConfigurationsCreateOrUpdateResponseTagsMap>;
 
 /** Configuration Properties */
 export interface ConfigurationProperties {
@@ -856,10 +839,8 @@ export const ConfigurationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type ContextsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ContextsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ContextsCreateOrUpdateRequestTagsMap>;
+export const ContextsCreateOrUpdateRequestTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<ContextsCreateOrUpdateRequestTagsMap>;
 
 /** Resource Type State */
 export type ResourceState = "active" | "inactive";
@@ -958,22 +939,18 @@ export const ContextsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ContextsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ContextsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ContextsCreateOrUpdateResponseTagsMap>;
+export const ContextsCreateOrUpdateResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<ContextsCreateOrUpdateResponseTagsMap>;
 
 /** List of Capabilities */
 export type ContextPropertiesCapabilitiesList = Array<Capability>;
-export const ContextPropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
-  Capability,
-) as any as S.Schema<ContextPropertiesCapabilitiesList>;
+export const ContextPropertiesCapabilitiesList =
+  ContextPropertiesInputCapabilitiesList as any as S.Schema<ContextPropertiesCapabilitiesList>;
 
 /** List of Hierarchies */
 export type ContextPropertiesHierarchiesList = Array<Hierarchy>;
-export const ContextPropertiesHierarchiesList = /*@__PURE__*/ S.Array(
-  Hierarchy,
-) as any as S.Schema<ContextPropertiesHierarchiesList>;
+export const ContextPropertiesHierarchiesList =
+  ContextPropertiesInputHierarchiesList as any as S.Schema<ContextPropertiesHierarchiesList>;
 
 /** Context Properties */
 export interface ContextProperties {
@@ -1090,18 +1067,8 @@ export interface CreateConfigTemplateVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const CreateConfigTemplateVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ConfigTemplateVersionProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateConfigTemplateVersionResponse",
-}) as any as S.Schema<CreateConfigTemplateVersionResponse>;
+export const CreateConfigTemplateVersionResponse =
+  ConfigTemplateVersionsCreateOrUpdateResponse as any as S.Schema<CreateConfigTemplateVersionResponse>;
 
 /** Schema Version Properties */
 export interface SchemaVersionPropertiesInput {
@@ -1285,10 +1252,8 @@ export const CreateSolutionTemplateVersionRequest = /*@__PURE__*/ S.suspend(() =
 export type SolutionTemplateVersionPropertiesSpecificationMap = {
   [key: string]: unknown | undefined;
 };
-export const SolutionTemplateVersionPropertiesSpecificationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SolutionTemplateVersionPropertiesSpecificationMap>;
+export const SolutionTemplateVersionPropertiesSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<SolutionTemplateVersionPropertiesSpecificationMap>;
 
 /** Internal state of resource */
 export type InternalState =
@@ -1376,9 +1341,8 @@ export const DeleteConfigTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteConfigTemplateRequest>;
 
 export interface DeleteConfigTemplateResponse {}
-export const DeleteConfigTemplateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteConfigTemplateResponse",
-}) as any as S.Schema<DeleteConfigTemplateResponse>;
+export const DeleteConfigTemplateResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteConfigTemplateResponse>;
 
 export interface DeleteConfigTemplateMetadatasRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1409,11 +1373,8 @@ export const DeleteConfigTemplateMetadatasRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteConfigTemplateMetadatasRequest>;
 
 export interface DeleteConfigTemplateMetadatasResponse {}
-export const DeleteConfigTemplateMetadatasResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteConfigTemplateMetadatasResponse",
-}) as any as S.Schema<DeleteConfigTemplateMetadatasResponse>;
+export const DeleteConfigTemplateMetadatasResponse =
+  BulkSolutionTemplateVersionReviewSolutionResponse as any as S.Schema<DeleteConfigTemplateMetadatasResponse>;
 
 export interface DeleteConfigTemplateVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1444,11 +1405,8 @@ export const DeleteConfigTemplateVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteConfigTemplateVersionRequest>;
 
 export interface DeleteConfigTemplateVersionResponse {}
-export const DeleteConfigTemplateVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteConfigTemplateVersionResponse",
-}) as any as S.Schema<DeleteConfigTemplateVersionResponse>;
+export const DeleteConfigTemplateVersionResponse =
+  BulkSolutionTemplateVersionReviewSolutionResponse as any as S.Schema<DeleteConfigTemplateVersionResponse>;
 
 export interface DeleteConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1476,9 +1434,8 @@ export const DeleteConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteConfigurationRequest>;
 
 export interface DeleteConfigurationResponse {}
-export const DeleteConfigurationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteConfigurationResponse",
-}) as any as S.Schema<DeleteConfigurationResponse>;
+export const DeleteConfigurationResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteConfigurationResponse>;
 
 export interface DeleteConfigurationReferenceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -1503,11 +1460,8 @@ export const DeleteConfigurationReferenceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteConfigurationReferenceRequest>;
 
 export interface DeleteConfigurationReferenceResponse {}
-export const DeleteConfigurationReferenceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteConfigurationReferenceResponse",
-}) as any as S.Schema<DeleteConfigurationReferenceResponse>;
+export const DeleteConfigurationReferenceResponse =
+  BulkSolutionTemplateVersionReviewSolutionResponse as any as S.Schema<DeleteConfigurationReferenceResponse>;
 
 export interface DeleteContextRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1533,9 +1487,8 @@ export const DeleteContextRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteContextRequest" }) as any as S.Schema<DeleteContextRequest>;
 
 export interface DeleteContextResponse {}
-export const DeleteContextResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteContextResponse",
-}) as any as S.Schema<DeleteContextResponse>;
+export const DeleteContextResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteContextResponse>;
 
 export interface DeleteDiagnosticRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1561,9 +1514,8 @@ export const DeleteDiagnosticRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDiagnosticRequest" }) as any as S.Schema<DeleteDiagnosticRequest>;
 
 export interface DeleteDiagnosticResponse {}
-export const DeleteDiagnosticResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDiagnosticResponse",
-}) as any as S.Schema<DeleteDiagnosticResponse>;
+export const DeleteDiagnosticResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteDiagnosticResponse>;
 
 export interface DeleteDisconnectedOperationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1591,11 +1543,8 @@ export const DeleteDisconnectedOperationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDisconnectedOperationRequest>;
 
 export interface DeleteDisconnectedOperationResponse {}
-export const DeleteDisconnectedOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDisconnectedOperationResponse",
-}) as any as S.Schema<DeleteDisconnectedOperationResponse>;
+export const DeleteDisconnectedOperationResponse =
+  BulkSolutionTemplateVersionReviewSolutionResponse as any as S.Schema<DeleteDisconnectedOperationResponse>;
 
 export interface DeleteDynamicConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1626,11 +1575,8 @@ export const DeleteDynamicConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDynamicConfigurationRequest>;
 
 export interface DeleteDynamicConfigurationResponse {}
-export const DeleteDynamicConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDynamicConfigurationResponse",
-}) as any as S.Schema<DeleteDynamicConfigurationResponse>;
+export const DeleteDynamicConfigurationResponse =
+  BulkSolutionTemplateVersionReviewSolutionResponse as any as S.Schema<DeleteDynamicConfigurationResponse>;
 
 export interface DeleteDynamicConfigurationVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1664,11 +1610,8 @@ export const DeleteDynamicConfigurationVersionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteDynamicConfigurationVersionRequest>;
 
 export interface DeleteDynamicConfigurationVersionResponse {}
-export const DeleteDynamicConfigurationVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDynamicConfigurationVersionResponse",
-}) as any as S.Schema<DeleteDynamicConfigurationVersionResponse>;
+export const DeleteDynamicConfigurationVersionResponse =
+  BulkSolutionTemplateVersionReviewSolutionResponse as any as S.Schema<DeleteDynamicConfigurationVersionResponse>;
 
 export interface DeleteDynamicSchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1699,9 +1642,8 @@ export const DeleteDynamicSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDynamicSchemaRequest>;
 
 export interface DeleteDynamicSchemaResponse {}
-export const DeleteDynamicSchemaResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDynamicSchemaResponse",
-}) as any as S.Schema<DeleteDynamicSchemaResponse>;
+export const DeleteDynamicSchemaResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteDynamicSchemaResponse>;
 
 export interface DeleteDynamicSchemaVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1735,11 +1677,8 @@ export const DeleteDynamicSchemaVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDynamicSchemaVersionRequest>;
 
 export interface DeleteDynamicSchemaVersionResponse {}
-export const DeleteDynamicSchemaVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDynamicSchemaVersionResponse",
-}) as any as S.Schema<DeleteDynamicSchemaVersionResponse>;
+export const DeleteDynamicSchemaVersionResponse =
+  BulkSolutionTemplateVersionReviewSolutionResponse as any as S.Schema<DeleteDynamicSchemaVersionResponse>;
 
 export interface DeleteExecutionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1774,9 +1713,8 @@ export const DeleteExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteExecutionRequest" }) as any as S.Schema<DeleteExecutionRequest>;
 
 export interface DeleteExecutionResponse {}
-export const DeleteExecutionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteExecutionResponse",
-}) as any as S.Schema<DeleteExecutionResponse>;
+export const DeleteExecutionResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteExecutionResponse>;
 
 export interface DeleteHardwareSettingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1807,9 +1745,8 @@ export const DeleteHardwareSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteHardwareSettingsRequest>;
 
 export interface DeleteHardwareSettingsResponse {}
-export const DeleteHardwareSettingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteHardwareSettingsResponse",
-}) as any as S.Schema<DeleteHardwareSettingsResponse>;
+export const DeleteHardwareSettingsResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteHardwareSettingsResponse>;
 
 export interface DeleteInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1841,9 +1778,8 @@ export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteInstanceRequest" }) as any as S.Schema<DeleteInstanceRequest>;
 
 export interface DeleteInstanceResponse {}
-export const DeleteInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteInstanceResponse",
-}) as any as S.Schema<DeleteInstanceResponse>;
+export const DeleteInstanceResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteInstanceResponse>;
 
 export interface DeleteSchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1869,9 +1805,8 @@ export const DeleteSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSchemaRequest" }) as any as S.Schema<DeleteSchemaRequest>;
 
 export interface DeleteSchemaResponse {}
-export const DeleteSchemaResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSchemaResponse",
-}) as any as S.Schema<DeleteSchemaResponse>;
+export const DeleteSchemaResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteSchemaResponse>;
 
 export interface DeleteSchemaReferenceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -1896,9 +1831,8 @@ export const DeleteSchemaReferenceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSchemaReferenceRequest>;
 
 export interface DeleteSchemaReferenceResponse {}
-export const DeleteSchemaReferenceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSchemaReferenceResponse",
-}) as any as S.Schema<DeleteSchemaReferenceResponse>;
+export const DeleteSchemaReferenceResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteSchemaReferenceResponse>;
 
 export interface DeleteSchemaVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1929,9 +1863,8 @@ export const DeleteSchemaVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSchemaVersionRequest>;
 
 export interface DeleteSchemaVersionResponse {}
-export const DeleteSchemaVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSchemaVersionResponse",
-}) as any as S.Schema<DeleteSchemaVersionResponse>;
+export const DeleteSchemaVersionResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteSchemaVersionResponse>;
 
 export interface DeleteSiteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1957,9 +1890,8 @@ export const DeleteSiteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSiteRequest" }) as any as S.Schema<DeleteSiteRequest>;
 
 export interface DeleteSiteResponse {}
-export const DeleteSiteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSiteResponse",
-}) as any as S.Schema<DeleteSiteResponse>;
+export const DeleteSiteResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteSiteResponse>;
 
 export interface DeleteSiteReferenceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1990,9 +1922,8 @@ export const DeleteSiteReferenceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSiteReferenceRequest>;
 
 export interface DeleteSiteReferenceResponse {}
-export const DeleteSiteReferenceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSiteReferenceResponse",
-}) as any as S.Schema<DeleteSiteReferenceResponse>;
+export const DeleteSiteReferenceResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteSiteReferenceResponse>;
 
 export interface DeleteSitesByServiceGroupRequest {
   /** The name of the service group */
@@ -2017,11 +1948,8 @@ export const DeleteSitesByServiceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSitesByServiceGroupRequest>;
 
 export interface DeleteSitesByServiceGroupResponse {}
-export const DeleteSitesByServiceGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSitesByServiceGroupResponse",
-}) as any as S.Schema<DeleteSitesByServiceGroupResponse>;
+export const DeleteSitesByServiceGroupResponse =
+  BulkSolutionTemplateVersionReviewSolutionResponse as any as S.Schema<DeleteSitesByServiceGroupResponse>;
 
 export interface DeleteSitesBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2046,11 +1974,8 @@ export const DeleteSitesBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSitesBySubscriptionRequest>;
 
 export interface DeleteSitesBySubscriptionResponse {}
-export const DeleteSitesBySubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSitesBySubscriptionResponse",
-}) as any as S.Schema<DeleteSitesBySubscriptionResponse>;
+export const DeleteSitesBySubscriptionResponse =
+  BulkSolutionTemplateVersionReviewSolutionResponse as any as S.Schema<DeleteSitesBySubscriptionResponse>;
 
 export interface DeleteSolutionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2079,9 +2004,8 @@ export const DeleteSolutionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSolutionRequest" }) as any as S.Schema<DeleteSolutionRequest>;
 
 export interface DeleteSolutionResponse {}
-export const DeleteSolutionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSolutionResponse",
-}) as any as S.Schema<DeleteSolutionResponse>;
+export const DeleteSolutionResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteSolutionResponse>;
 
 export interface DeleteSolutionTemplateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2109,9 +2033,8 @@ export const DeleteSolutionTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSolutionTemplateRequest>;
 
 export interface DeleteSolutionTemplateResponse {}
-export const DeleteSolutionTemplateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSolutionTemplateResponse",
-}) as any as S.Schema<DeleteSolutionTemplateResponse>;
+export const DeleteSolutionTemplateResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteSolutionTemplateResponse>;
 
 export interface DeleteSolutionTemplateVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2142,11 +2065,8 @@ export const DeleteSolutionTemplateVersionRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteSolutionTemplateVersionRequest>;
 
 export interface DeleteSolutionTemplateVersionResponse {}
-export const DeleteSolutionTemplateVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSolutionTemplateVersionResponse",
-}) as any as S.Schema<DeleteSolutionTemplateVersionResponse>;
+export const DeleteSolutionTemplateVersionResponse =
+  BulkSolutionTemplateVersionReviewSolutionResponse as any as S.Schema<DeleteSolutionTemplateVersionResponse>;
 
 export interface DeleteSolutionVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2180,9 +2100,8 @@ export const DeleteSolutionVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSolutionVersionRequest>;
 
 export interface DeleteSolutionVersionResponse {}
-export const DeleteSolutionVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSolutionVersionResponse",
-}) as any as S.Schema<DeleteSolutionVersionResponse>;
+export const DeleteSolutionVersionResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteSolutionVersionResponse>;
 
 export interface DeleteTargetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2211,9 +2130,8 @@ export const DeleteTargetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTargetRequest" }) as any as S.Schema<DeleteTargetRequest>;
 
 export interface DeleteTargetResponse {}
-export const DeleteTargetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTargetResponse",
-}) as any as S.Schema<DeleteTargetResponse>;
+export const DeleteTargetResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteTargetResponse>;
 
 export interface DeleteWorkflowRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2242,9 +2160,8 @@ export const DeleteWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWorkflowRequest" }) as any as S.Schema<DeleteWorkflowRequest>;
 
 export interface DeleteWorkflowResponse {}
-export const DeleteWorkflowResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkflowResponse",
-}) as any as S.Schema<DeleteWorkflowResponse>;
+export const DeleteWorkflowResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteWorkflowResponse>;
 
 export interface DeleteWorkflowVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2278,16 +2195,13 @@ export const DeleteWorkflowVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkflowVersionRequest>;
 
 export interface DeleteWorkflowVersionResponse {}
-export const DeleteWorkflowVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkflowVersionResponse",
-}) as any as S.Schema<DeleteWorkflowVersionResponse>;
+export const DeleteWorkflowVersionResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteWorkflowVersionResponse>;
 
 /** Resource tags. */
 export type DiagnosticsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const DiagnosticsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DiagnosticsCreateOrUpdateRequestTagsMap>;
+export const DiagnosticsCreateOrUpdateRequestTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<DiagnosticsCreateOrUpdateRequestTagsMap>;
 
 /** The properties of a Diagnostic resource. */
 export type DiagnosticPropertiesInput = ConfigurationPropertiesInput;
@@ -2352,10 +2266,8 @@ export const DiagnosticsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DiagnosticsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const DiagnosticsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DiagnosticsCreateOrUpdateResponseTagsMap>;
+export const DiagnosticsCreateOrUpdateResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<DiagnosticsCreateOrUpdateResponseTagsMap>;
 
 /** The properties of a Diagnostic resource. */
 export interface DiagnosticProperties {
@@ -2408,10 +2320,8 @@ export const DiagnosticsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 export type DisconnectedOperationsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const DisconnectedOperationsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DisconnectedOperationsCreateOrUpdateRequestTagsMap>;
+export const DisconnectedOperationsCreateOrUpdateRequestTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<DisconnectedOperationsCreateOrUpdateRequestTagsMap>;
 
 /** Connection Intent */
 export type ConnectionIntent = "Connected" | "Disconnected";
@@ -2543,10 +2453,8 @@ export const DisconnectedOperationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspe
 export type DisconnectedOperationsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const DisconnectedOperationsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DisconnectedOperationsCreateOrUpdateResponseTagsMap>;
+export const DisconnectedOperationsCreateOrUpdateResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<DisconnectedOperationsCreateOrUpdateResponseTagsMap>;
 
 /** Billing model */
 export type BillingModel = "Capacity";
@@ -3001,25 +2909,13 @@ export interface DynamicSchemaVersionsCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const DynamicSchemaVersionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SchemaVersionProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DynamicSchemaVersionsCreateOrUpdateResponse",
-}) as any as S.Schema<DynamicSchemaVersionsCreateOrUpdateResponse>;
+export const DynamicSchemaVersionsCreateOrUpdateResponse =
+  CreateSchemaVersionResponse as any as S.Schema<DynamicSchemaVersionsCreateOrUpdateResponse>;
 
 /** Execution specification */
 export type ExecutionPropertiesInputSpecificationMap = { [key: string]: unknown | undefined };
-export const ExecutionPropertiesInputSpecificationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ExecutionPropertiesInputSpecificationMap>;
+export const ExecutionPropertiesInputSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<ExecutionPropertiesInputSpecificationMap>;
 
 /** Execution Properties */
 export interface ExecutionPropertiesInput {
@@ -3077,10 +2973,8 @@ export const ExecutionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Execution specification */
 export type ExecutionPropertiesSpecificationMap = { [key: string]: unknown | undefined };
-export const ExecutionPropertiesSpecificationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ExecutionPropertiesSpecificationMap>;
+export const ExecutionPropertiesSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<ExecutionPropertiesSpecificationMap>;
 
 /** Instance State */
 export type ActiveState = "active" | "inactive";
@@ -3088,17 +2982,13 @@ export const ActiveState = S.String;
 
 /** The inputs of the StageHistory, Inputs holds a key-value map of user-defined parameters for the initial stage */
 export type StageStatusInputsMap = { [key: string]: unknown | undefined };
-export const StageStatusInputsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<StageStatusInputsMap>;
+export const StageStatusInputsMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<StageStatusInputsMap>;
 
 /** The outputs of the StageHistory, it is different as the different input stages. */
 export type StageStatusOutputsMap = { [key: string]: unknown | undefined };
-export const StageStatusOutputsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<StageStatusOutputsMap>;
+export const StageStatusOutputsMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<StageStatusOutputsMap>;
 
 /** Result of Stage execution */
 export interface StageStatus {
@@ -3307,10 +3197,8 @@ export const GetConfigTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetConfigTemplateResponseTagsMap = { [key: string]: string | undefined };
-export const GetConfigTemplateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetConfigTemplateResponseTagsMap>;
+export const GetConfigTemplateResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<GetConfigTemplateResponseTagsMap>;
 
 export interface GetConfigTemplateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3330,20 +3218,8 @@ export interface GetConfigTemplateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const GetConfigTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetConfigTemplateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ConfigTemplateProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetConfigTemplateResponse",
-}) as any as S.Schema<GetConfigTemplateResponse>;
+export const GetConfigTemplateResponse =
+  ConfigTemplatesCreateOrUpdateResponse as any as S.Schema<GetConfigTemplateResponse>;
 
 export interface GetConfigTemplateMetadatasRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3387,18 +3263,8 @@ export interface GetConfigTemplateMetadatasResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const GetConfigTemplateMetadatasResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ConfigTemplateMetadataProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetConfigTemplateMetadatasResponse",
-}) as any as S.Schema<GetConfigTemplateMetadatasResponse>;
+export const GetConfigTemplateMetadatasResponse =
+  ConfigTemplateMetadatasCreateOrUpdateResponse as any as S.Schema<GetConfigTemplateMetadatasResponse>;
 
 export interface GetConfigTemplateSchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3519,18 +3385,8 @@ export interface GetConfigTemplateVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const GetConfigTemplateVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ConfigTemplateVersionProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetConfigTemplateVersionResponse",
-}) as any as S.Schema<GetConfigTemplateVersionResponse>;
+export const GetConfigTemplateVersionResponse =
+  ConfigTemplateVersionsCreateOrUpdateResponse as any as S.Schema<GetConfigTemplateVersionResponse>;
 
 export interface GetConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3557,10 +3413,8 @@ export const GetConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetConfigurationResponseTagsMap = { [key: string]: string | undefined };
-export const GetConfigurationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetConfigurationResponseTagsMap>;
+export const GetConfigurationResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<GetConfigurationResponseTagsMap>;
 
 export interface GetConfigurationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3624,17 +3478,8 @@ export interface GetConfigurationReferenceResponse {
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationReferenceProperties;
 }
-export const GetConfigurationReferenceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ConfigurationReferenceProperties),
-  }),
-).annotate({
-  identifier: "GetConfigurationReferenceResponse",
-}) as any as S.Schema<GetConfigurationReferenceResponse>;
+export const GetConfigurationReferenceResponse =
+  ConfigurationReferencesCreateOrUpdateResponse as any as S.Schema<GetConfigurationReferenceResponse>;
 
 export interface GetContextRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3661,10 +3506,8 @@ export const GetContextRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetContextResponseTagsMap = { [key: string]: string | undefined };
-export const GetContextResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetContextResponseTagsMap>;
+export const GetContextResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<GetContextResponseTagsMap>;
 
 export interface GetContextResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3719,10 +3562,8 @@ export const GetDiagnosticRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetDiagnosticResponseTagsMap = { [key: string]: string | undefined };
-export const GetDiagnosticResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDiagnosticResponseTagsMap>;
+export const GetDiagnosticResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<GetDiagnosticResponseTagsMap>;
 
 export interface GetDiagnosticResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3785,10 +3626,8 @@ export const GetDisconnectedOperationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetDisconnectedOperationResponseTagsMap = { [key: string]: string | undefined };
-export const GetDisconnectedOperationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDisconnectedOperationResponseTagsMap>;
+export const GetDisconnectedOperationResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<GetDisconnectedOperationResponseTagsMap>;
 
 export interface GetDisconnectedOperationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3806,19 +3645,8 @@ export interface GetDisconnectedOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: DisconnectedOperationProperties;
 }
-export const GetDisconnectedOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetDisconnectedOperationResponseTagsMap),
-    location: S.String,
-    properties: S.optional(DisconnectedOperationProperties),
-  }),
-).annotate({
-  identifier: "GetDisconnectedOperationResponse",
-}) as any as S.Schema<GetDisconnectedOperationResponse>;
+export const GetDisconnectedOperationResponse =
+  DisconnectedOperationsCreateOrUpdateResponse as any as S.Schema<GetDisconnectedOperationResponse>;
 
 export interface GetDynamicConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3860,17 +3688,8 @@ export interface GetDynamicConfigurationResponse {
   /** The resource-specific properties for this resource. */
   properties?: DynamicConfigurationProperties;
 }
-export const GetDynamicConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DynamicConfigurationProperties),
-  }),
-).annotate({
-  identifier: "GetDynamicConfigurationResponse",
-}) as any as S.Schema<GetDynamicConfigurationResponse>;
+export const GetDynamicConfigurationResponse =
+  DynamicConfigurationsCreateOrUpdateResponse as any as S.Schema<GetDynamicConfigurationResponse>;
 
 export interface GetDynamicConfigurationVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3915,17 +3734,8 @@ export interface GetDynamicConfigurationVersionResponse {
   /** The resource-specific properties for this resource. */
   properties?: DynamicConfigurationVersionProperties;
 }
-export const GetDynamicConfigurationVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DynamicConfigurationVersionProperties),
-  }),
-).annotate({
-  identifier: "GetDynamicConfigurationVersionResponse",
-}) as any as S.Schema<GetDynamicConfigurationVersionResponse>;
+export const GetDynamicConfigurationVersionResponse =
+  DynamicConfigurationVersionsCreateOrUpdateResponse as any as S.Schema<GetDynamicConfigurationVersionResponse>;
 
 export interface GetDynamicSchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4023,18 +3833,8 @@ export interface GetDynamicSchemaVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const GetDynamicSchemaVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SchemaVersionProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDynamicSchemaVersionResponse",
-}) as any as S.Schema<GetDynamicSchemaVersionResponse>;
+export const GetDynamicSchemaVersionResponse =
+  CreateSchemaVersionResponse as any as S.Schema<GetDynamicSchemaVersionResponse>;
 
 export interface GetExecutionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4360,9 +4160,8 @@ export const ReleaseType = S.String;
 
 /** The versions that are compatible for this update package. */
 export type ImagePropertiesCompatibleVersionsList = Array<string>;
-export const ImagePropertiesCompatibleVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImagePropertiesCompatibleVersionsList>;
+export const ImagePropertiesCompatibleVersionsList =
+  HierarchyMetadataHierarchyIdsList as any as S.Schema<ImagePropertiesCompatibleVersionsList>;
 
 /** System Reboot */
 export type SystemReboot = "Required" | "NotRequired";
@@ -4665,10 +4464,8 @@ export const GetInstanceHistoryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** App components spec */
 export type SolutionVersionSnapshotSpecificationMap = { [key: string]: unknown | undefined };
-export const SolutionVersionSnapshotSpecificationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SolutionVersionSnapshotSpecificationMap>;
+export const SolutionVersionSnapshotSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<SolutionVersionSnapshotSpecificationMap>;
 
 /** Solution Version Snapshot */
 export interface SolutionVersionSnapshot {
@@ -4686,10 +4483,8 @@ export const SolutionVersionSnapshot = /*@__PURE__*/ S.suspend(() =>
 
 /** target spec */
 export type TargetSnapshotTargetSpecificationMap = { [key: string]: unknown | undefined };
-export const TargetSnapshotTargetSpecificationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TargetSnapshotTargetSpecificationMap>;
+export const TargetSnapshotTargetSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<TargetSnapshotTargetSpecificationMap>;
 
 /** Target Snapshot */
 export interface TargetSnapshot {
@@ -4882,9 +4677,8 @@ export const JobStepErrorDetailsDetailsList = /*@__PURE__*/ S.Array(
 
 /** The error additional info. */
 export type JobStepErrorDetailsAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const JobStepErrorDetailsAdditionalInfoList = /*@__PURE__*/ S.Array(
-  ErrorAdditionalInfo,
-) as any as S.Schema<JobStepErrorDetailsAdditionalInfoList>;
+export const JobStepErrorDetailsAdditionalInfoList =
+  ErrorDetailAdditionalInfoList as any as S.Schema<JobStepErrorDetailsAdditionalInfoList>;
 
 /** The error detail. */
 export interface JobStepErrorDetails {
@@ -4949,15 +4743,13 @@ export const JobPropertiesStepsList = /*@__PURE__*/ S.Array(
 
 /** The error details. */
 export type JobPropertiesErrorDetailsDetailsList = Array<ErrorDetail>;
-export const JobPropertiesErrorDetailsDetailsList = /*@__PURE__*/ S.Array(
-  ErrorDetail,
-) as any as S.Schema<JobPropertiesErrorDetailsDetailsList>;
+export const JobPropertiesErrorDetailsDetailsList =
+  JobStepErrorDetailsDetailsList as any as S.Schema<JobPropertiesErrorDetailsDetailsList>;
 
 /** The error additional info. */
 export type JobPropertiesErrorDetailsAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const JobPropertiesErrorDetailsAdditionalInfoList = /*@__PURE__*/ S.Array(
-  ErrorAdditionalInfo,
-) as any as S.Schema<JobPropertiesErrorDetailsAdditionalInfoList>;
+export const JobPropertiesErrorDetailsAdditionalInfoList =
+  ErrorDetailAdditionalInfoList as any as S.Schema<JobPropertiesErrorDetailsAdditionalInfoList>;
 
 /** The error detail. */
 export interface JobPropertiesErrorDetails {
@@ -5086,10 +4878,8 @@ export const GetSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetSchemaResponseTagsMap = { [key: string]: string | undefined };
-export const GetSchemaResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetSchemaResponseTagsMap>;
+export const GetSchemaResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<GetSchemaResponseTagsMap>;
 
 /** Schema Properties */
 export interface SchemaProperties {
@@ -5303,10 +5093,8 @@ export const SiteAddressProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Key-value pairs for labeling the site resource. */
 export type SitePropertiesLabelsMap = { [key: string]: string | undefined };
-export const SitePropertiesLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SitePropertiesLabelsMap>;
+export const SitePropertiesLabelsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<SitePropertiesLabelsMap>;
 
 /** Site properties */
 export interface SiteProperties {
@@ -5495,17 +5283,8 @@ export interface GetSitesBySubscriptionResponse {
   /** The resource-specific properties for this resource. */
   properties?: SiteProperties;
 }
-export const GetSitesBySubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteProperties),
-  }),
-).annotate({
-  identifier: "GetSitesBySubscriptionResponse",
-}) as any as S.Schema<GetSitesBySubscriptionResponse>;
+export const GetSitesBySubscriptionResponse =
+  GetSitesByServiceGroupResponse as any as S.Schema<GetSitesBySubscriptionResponse>;
 
 export interface GetSolutionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5854,16 +5633,13 @@ export const GetSolutionTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetSolutionTemplateResponseTagsMap = { [key: string]: string | undefined };
-export const GetSolutionTemplateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetSolutionTemplateResponseTagsMap>;
+export const GetSolutionTemplateResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<GetSolutionTemplateResponseTagsMap>;
 
 /** List of capabilities */
 export type SolutionTemplatePropertiesCapabilitiesList = Array<string>;
-export const SolutionTemplatePropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SolutionTemplatePropertiesCapabilitiesList>;
+export const SolutionTemplatePropertiesCapabilitiesList =
+  HierarchyMetadataHierarchyIdsList as any as S.Schema<SolutionTemplatePropertiesCapabilitiesList>;
 
 /** Solution Template Properties */
 export interface SolutionTemplateProperties {
@@ -5971,18 +5747,8 @@ export interface GetSolutionTemplateVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const GetSolutionTemplateVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SolutionTemplateVersionProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetSolutionTemplateVersionResponse",
-}) as any as S.Schema<GetSolutionTemplateVersionResponse>;
+export const GetSolutionTemplateVersionResponse =
+  CreateSolutionTemplateVersionResponse as any as S.Schema<GetSolutionTemplateVersionResponse>;
 
 export interface GetSolutionVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6017,10 +5783,8 @@ export const GetSolutionVersionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** App components spec */
 export type SolutionVersionPropertiesSpecificationMap = { [key: string]: unknown | undefined };
-export const SolutionVersionPropertiesSpecificationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SolutionVersionPropertiesSpecificationMap>;
+export const SolutionVersionPropertiesSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<SolutionVersionPropertiesSpecificationMap>;
 
 /** Solution Instance State */
 export type State =
@@ -6128,15 +5892,13 @@ export const SolutionVersionPropertiesSolutionDependenciesList = /*@__PURE__*/ S
 
 /** The error details. */
 export type SolutionVersionPropertiesErrorDetailsDetailsList = Array<ErrorDetail>;
-export const SolutionVersionPropertiesErrorDetailsDetailsList = /*@__PURE__*/ S.Array(
-  ErrorDetail,
-) as any as S.Schema<SolutionVersionPropertiesErrorDetailsDetailsList>;
+export const SolutionVersionPropertiesErrorDetailsDetailsList =
+  JobStepErrorDetailsDetailsList as any as S.Schema<SolutionVersionPropertiesErrorDetailsDetailsList>;
 
 /** The error additional info. */
 export type SolutionVersionPropertiesErrorDetailsAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const SolutionVersionPropertiesErrorDetailsAdditionalInfoList = /*@__PURE__*/ S.Array(
-  ErrorAdditionalInfo,
-) as any as S.Schema<SolutionVersionPropertiesErrorDetailsAdditionalInfoList>;
+export const SolutionVersionPropertiesErrorDetailsAdditionalInfoList =
+  ErrorDetailAdditionalInfoList as any as S.Schema<SolutionVersionPropertiesErrorDetailsAdditionalInfoList>;
 
 /** The error detail. */
 export interface SolutionVersionPropertiesErrorDetails {
@@ -6151,17 +5913,8 @@ export interface SolutionVersionPropertiesErrorDetails {
   /** The error additional info. */
   additionalInfo?: SolutionVersionPropertiesErrorDetailsAdditionalInfoList;
 }
-export const SolutionVersionPropertiesErrorDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-    target: S.optional(S.String),
-    details: S.optional(SolutionVersionPropertiesErrorDetailsDetailsList),
-    additionalInfo: S.optional(SolutionVersionPropertiesErrorDetailsAdditionalInfoList),
-  }),
-).annotate({
-  identifier: "SolutionVersionPropertiesErrorDetails",
-}) as any as S.Schema<SolutionVersionPropertiesErrorDetails>;
+export const SolutionVersionPropertiesErrorDetails =
+  JobPropertiesErrorDetails as any as S.Schema<SolutionVersionPropertiesErrorDetails>;
 
 /** Solution Version Properties */
 export interface SolutionVersionProperties {
@@ -6282,23 +6035,18 @@ export const GetTargetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetTargetResponseTagsMap = { [key: string]: string | undefined };
-export const GetTargetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetTargetResponseTagsMap>;
+export const GetTargetResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<GetTargetResponseTagsMap>;
 
 /** target spec */
 export type TargetPropertiesTargetSpecificationMap = { [key: string]: unknown | undefined };
-export const TargetPropertiesTargetSpecificationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TargetPropertiesTargetSpecificationMap>;
+export const TargetPropertiesTargetSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<TargetPropertiesTargetSpecificationMap>;
 
 /** List of capabilities */
 export type TargetPropertiesCapabilitiesList = Array<string>;
-export const TargetPropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TargetPropertiesCapabilitiesList>;
+export const TargetPropertiesCapabilitiesList =
+  HierarchyMetadataHierarchyIdsList as any as S.Schema<TargetPropertiesCapabilitiesList>;
 
 /** Target Properties */
 export interface TargetProperties {
@@ -6473,17 +6221,13 @@ export const GetWorkflowVersionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Stage specification */
 export type StageSpecSpecificationMap = { [key: string]: unknown | undefined };
-export const StageSpecSpecificationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<StageSpecSpecificationMap>;
+export const StageSpecSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<StageSpecSpecificationMap>;
 
 /** Task specification */
 export type TaskSpecSpecificationMap = { [key: string]: unknown | undefined };
-export const TaskSpecSpecificationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TaskSpecSpecificationMap>;
+export const TaskSpecSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<TaskSpecSpecificationMap>;
 
 /** Task Spec */
 export interface TaskSpec {
@@ -6568,10 +6312,8 @@ export const WorkflowVersionPropertiesStageSpecList = /*@__PURE__*/ S.Array(
 
 /** Execution specification */
 export type WorkflowVersionPropertiesSpecificationMap = { [key: string]: unknown | undefined };
-export const WorkflowVersionPropertiesSpecificationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<WorkflowVersionPropertiesSpecificationMap>;
+export const WorkflowVersionPropertiesSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<WorkflowVersionPropertiesSpecificationMap>;
 
 /** Workflow Version Properties */
 export interface WorkflowVersionProperties {
@@ -6714,17 +6456,8 @@ export interface HardwareSettingsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: HardwareSettingProperties;
 }
-export const HardwareSettingsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(HardwareSettingProperties),
-  }),
-).annotate({
-  identifier: "HardwareSettingsCreateOrUpdateResponse",
-}) as any as S.Schema<HardwareSettingsCreateOrUpdateResponse>;
+export const HardwareSettingsCreateOrUpdateResponse =
+  GetHardwareSettingsResponse as any as S.Schema<HardwareSettingsCreateOrUpdateResponse>;
 
 export interface ImagesListDownloadUriRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6756,9 +6489,8 @@ export const ImagesListDownloadUriRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The versions that are compatible for this update package. */
 export type ImageDownloadResultCompatibleVersionsList = Array<string>;
-export const ImageDownloadResultCompatibleVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImageDownloadResultCompatibleVersionsList>;
+export const ImageDownloadResultCompatibleVersionsList =
+  HierarchyMetadataHierarchyIdsList as any as S.Schema<ImageDownloadResultCompatibleVersionsList>;
 
 /** The image download properties */
 export interface ImageDownloadResult {
@@ -6830,9 +6562,8 @@ export const InstallTargetSolutionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstallTargetSolutionRequest>;
 
 export interface InstallTargetSolutionResponse {}
-export const InstallTargetSolutionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "InstallTargetSolutionResponse",
-}) as any as S.Schema<InstallTargetSolutionResponse>;
+export const InstallTargetSolutionResponse =
+  ConfigurationPropertiesInput as any as S.Schema<InstallTargetSolutionResponse>;
 
 /** Instance Properties */
 export interface InstancePropertiesInput {
@@ -6965,15 +6696,7 @@ export interface Artifact {
   /** The resource-specific properties for this resource. */
   properties?: ArtifactProperties;
 }
-export const Artifact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ArtifactProperties),
-  }),
-).annotate({ identifier: "Artifact" }) as any as S.Schema<Artifact>;
+export const Artifact = GetArtifactResponse as any as S.Schema<Artifact>;
 
 /** The Artifact items on this page */
 export type ArtifactListResultValueList = Array<Artifact>;
@@ -7019,10 +6742,8 @@ export const ListConfigTemplateByResourceGroupRequest = /*@__PURE__*/ S.suspend(
 
 /** Resource tags. */
 export type ConfigTemplateTagsMap = { [key: string]: string | undefined };
-export const ConfigTemplateTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConfigTemplateTagsMap>;
+export const ConfigTemplateTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<ConfigTemplateTagsMap>;
 
 /** Config Template Resource. Contains configuration expressions using the predefined expression language. */
 export interface ConfigTemplate {
@@ -7341,10 +7062,8 @@ export const ListConfigurationByResourceGroupRequest = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type ConfigurationTagsMap = { [key: string]: string | undefined };
-export const ConfigurationTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConfigurationTagsMap>;
+export const ConfigurationTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<ConfigurationTagsMap>;
 
 /** Configuration Resource */
 export interface Configuration {
@@ -7363,17 +7082,7 @@ export interface Configuration {
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationProperties;
 }
-export const Configuration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ConfigurationTagsMap),
-    location: S.String,
-    properties: S.optional(ConfigurationProperties),
-  }),
-).annotate({ identifier: "Configuration" }) as any as S.Schema<Configuration>;
+export const Configuration = GetConfigurationResponse as any as S.Schema<Configuration>;
 
 /** The Configuration items on this page */
 export type ConfigurationListResultValueList = Array<Configuration>;
@@ -7502,10 +7211,8 @@ export const ListContextByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ContextTagsMap = { [key: string]: string | undefined };
-export const ContextTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ContextTagsMap>;
+export const ContextTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<ContextTagsMap>;
 
 /** Context Resource */
 export interface Context {
@@ -7524,17 +7231,7 @@ export interface Context {
   /** The resource-specific properties for this resource. */
   properties?: ContextProperties;
 }
-export const Context = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ContextTagsMap),
-    location: S.String,
-    properties: S.optional(ContextProperties),
-  }),
-).annotate({ identifier: "Context" }) as any as S.Schema<Context>;
+export const Context = GetContextResponse as any as S.Schema<Context>;
 
 /** The Context items on this page */
 export type ContextListResultValueList = Array<Context>;
@@ -7599,10 +7296,8 @@ export const ListDiagnosticByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type DiagnosticTagsMap = { [key: string]: string | undefined };
-export const DiagnosticTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DiagnosticTagsMap>;
+export const DiagnosticTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<DiagnosticTagsMap>;
 
 /** A Diagnostic resource. */
 export interface Diagnostic {
@@ -7625,19 +7320,7 @@ export interface Diagnostic {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const Diagnostic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(DiagnosticTagsMap),
-    location: S.String,
-    properties: S.optional(DiagnosticProperties),
-    extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "Diagnostic" }) as any as S.Schema<Diagnostic>;
+export const Diagnostic = GetDiagnosticResponse as any as S.Schema<Diagnostic>;
 
 /** The Diagnostic items on this page */
 export type DiagnosticListResultValueList = Array<Diagnostic>;
@@ -7702,10 +7385,8 @@ export const ListDisconnectedOperationByResourceGroupRequest = /*@__PURE__*/ S.s
 
 /** Resource tags. */
 export type DisconnectedOperationTagsMap = { [key: string]: string | undefined };
-export const DisconnectedOperationTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DisconnectedOperationTagsMap>;
+export const DisconnectedOperationTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<DisconnectedOperationTagsMap>;
 
 /** Disconnected operation resource. */
 export interface DisconnectedOperation {
@@ -7951,17 +7632,8 @@ export interface DynamicConfigurationVersion {
   /** The resource-specific properties for this resource. */
   properties?: DynamicConfigurationVersionProperties;
 }
-export const DynamicConfigurationVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DynamicConfigurationVersionProperties),
-  }),
-).annotate({
-  identifier: "DynamicConfigurationVersion",
-}) as any as S.Schema<DynamicConfigurationVersion>;
+export const DynamicConfigurationVersion =
+  DynamicConfigurationVersionsCreateOrUpdateResponse as any as S.Schema<DynamicConfigurationVersion>;
 
 /** The DynamicConfigurationVersion items on this page */
 export type DynamicConfigurationVersionListResultValueList = Array<DynamicConfigurationVersion>;
@@ -8025,16 +7697,7 @@ export interface DynamicSchema {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const DynamicSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DynamicSchemaProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "DynamicSchema" }) as any as S.Schema<DynamicSchema>;
+export const DynamicSchema = GetDynamicSchemaResponse as any as S.Schema<DynamicSchema>;
 
 /** The DynamicSchema items on this page */
 export type DynamicSchemaListResultValueList = Array<DynamicSchema>;
@@ -8099,16 +7762,8 @@ export interface DynamicSchemaVersion {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const DynamicSchemaVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SchemaVersionProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "DynamicSchemaVersion" }) as any as S.Schema<DynamicSchemaVersion>;
+export const DynamicSchemaVersion =
+  GetSchemaVersionResponse as any as S.Schema<DynamicSchemaVersion>;
 
 /** The DynamicSchemaVersion items on this page */
 export type DynamicSchemaVersionListResultValueList = Array<DynamicSchemaVersion>;
@@ -8180,17 +7835,7 @@ export interface Execution {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const Execution = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ExecutionProperties),
-    extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "Execution" }) as any as S.Schema<Execution>;
+export const Execution = GetExecutionResponse as any as S.Schema<Execution>;
 
 /** The Execution items on this page */
 export type ExecutionListResultValueList = Array<Execution>;
@@ -8314,17 +7959,8 @@ export interface HierarchyConfigurationMetadata {
   /** The resource-specific properties for this resource. */
   properties?: HierarchyConfigurationMetadataProperties;
 }
-export const HierarchyConfigurationMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(HierarchyConfigurationMetadataProperties),
-  }),
-).annotate({
-  identifier: "HierarchyConfigurationMetadata",
-}) as any as S.Schema<HierarchyConfigurationMetadata>;
+export const HierarchyConfigurationMetadata =
+  GetHierarchyConfigurationMetadatasResponse as any as S.Schema<HierarchyConfigurationMetadata>;
 
 /** The HierarchyConfigurationMetadata items on this page */
 export type HierarchyConfigurationMetadataListResultValueList =
@@ -8385,17 +8021,8 @@ export interface HierarchyConfigurationMetadataVersion {
   /** The resource-specific properties for this resource. */
   properties?: HierarchyConfigurationMetadataVersionProperties;
 }
-export const HierarchyConfigurationMetadataVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(HierarchyConfigurationMetadataVersionProperties),
-  }),
-).annotate({
-  identifier: "HierarchyConfigurationMetadataVersion",
-}) as any as S.Schema<HierarchyConfigurationMetadataVersion>;
+export const HierarchyConfigurationMetadataVersion =
+  GetHierarchyConfigurationMetadataVersionResponse as any as S.Schema<HierarchyConfigurationMetadataVersion>;
 
 /** The HierarchyConfigurationMetadataVersion items on this page */
 export type HierarchyConfigurationMetadataVersionListResultValueList =
@@ -8467,15 +8094,7 @@ export interface Image {
   /** The resource-specific properties for this resource. */
   properties?: ImageProperties;
 }
-export const Image = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ImageProperties),
-  }),
-).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
+export const Image = GetImageResponse as any as S.Schema<Image>;
 
 /** The Image items on this page */
 export type ImageListResultValueList = Array<Image>;
@@ -8542,17 +8161,7 @@ export interface Instance {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const Instance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(InstanceProperties),
-    extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
+export const Instance = GetInstanceResponse as any as S.Schema<Instance>;
 
 /** The Instance items on this page */
 export type InstanceListResultValueList = Array<Instance>;
@@ -8688,16 +8297,7 @@ export interface Job {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const Job = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(JobProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "Job" }) as any as S.Schema<Job>;
+export const Job = GetJobResponse as any as S.Schema<Job>;
 
 /** The Job items on this page */
 export type JobListResultValueList = Array<Job>;
@@ -8825,10 +8425,8 @@ export const ListSchemaByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type SchemaTagsMap = { [key: string]: string | undefined };
-export const SchemaTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SchemaTagsMap>;
+export const SchemaTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<SchemaTagsMap>;
 
 /** Schema Resource */
 export interface Schema {
@@ -8999,9 +8597,8 @@ export const SchemaVersion = DynamicSchemaVersion;
 
 /** The SchemaVersion items on this page */
 export type SchemaVersionListResultValueList = Array<DynamicSchemaVersion>;
-export const SchemaVersionListResultValueList = /*@__PURE__*/ S.Array(
-  DynamicSchemaVersion,
-) as any as S.Schema<SchemaVersionListResultValueList>;
+export const SchemaVersionListResultValueList =
+  DynamicSchemaVersionListResultValueList as any as S.Schema<SchemaVersionListResultValueList>;
 
 /** The response of a SchemaVersion list operation. */
 export interface SchemaVersionListResult {
@@ -9052,15 +8649,7 @@ export interface Site {
   /** The resource-specific properties for this resource. */
   properties?: SiteProperties;
 }
-export const Site = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteProperties),
-  }),
-).annotate({ identifier: "Site" }) as any as S.Schema<Site>;
+export const Site = GetSiteResponse as any as S.Schema<Site>;
 
 /** The Site items on this page */
 export type SiteListResultValueList = Array<Site>;
@@ -9120,15 +8709,7 @@ export interface SiteReference {
   /** The resource-specific properties for this resource. */
   properties?: SiteReferenceProperties;
 }
-export const SiteReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteReferenceProperties),
-  }),
-).annotate({ identifier: "SiteReference" }) as any as S.Schema<SiteReference>;
+export const SiteReference = GetSiteReferenceResponse as any as S.Schema<SiteReference>;
 
 /** The SiteReference items on this page */
 export type SiteReferenceListResultValueList = Array<SiteReference>;
@@ -9230,17 +8811,7 @@ export interface Solution {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const Solution = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SolutionProperties),
-    extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "Solution" }) as any as S.Schema<Solution>;
+export const Solution = GetSolutionResponse as any as S.Schema<Solution>;
 
 /** The Solution items on this page */
 export type SolutionListResultValueList = Array<Solution>;
@@ -9491,10 +9062,8 @@ export const ListSolutionTemplateByResourceGroupRequest = /*@__PURE__*/ S.suspen
 
 /** Resource tags. */
 export type SolutionTemplateTagsMap = { [key: string]: string | undefined };
-export const SolutionTemplateTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SolutionTemplateTagsMap>;
+export const SolutionTemplateTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<SolutionTemplateTagsMap>;
 
 /** Solution Template Resource. Contains capabilities and operations for creating versions. */
 export interface SolutionTemplate {
@@ -9745,10 +9314,8 @@ export const ListTargetByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type TargetTagsMap = { [key: string]: string | undefined };
-export const TargetTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TargetTagsMap>;
+export const TargetTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<TargetTagsMap>;
 
 /** Target Resource. Represents a resource to be deployed on the edge. */
 export interface Target {
@@ -9771,19 +9338,7 @@ export interface Target {
   /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const Target = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(TargetTagsMap),
-    location: S.String,
-    properties: S.optional(TargetProperties),
-    eTag: S.optional(S.String),
-    extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
-  }),
-).annotate({ identifier: "Target" }) as any as S.Schema<Target>;
+export const Target = GetTargetResponse as any as S.Schema<Target>;
 
 /** The Target items on this page */
 export type TargetListResultValueList = Array<Target>;
@@ -9866,17 +9421,7 @@ export interface Workflow {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const Workflow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WorkflowProperties),
-    extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "Workflow" }) as any as S.Schema<Workflow>;
+export const Workflow = GetWorkflowResponse as any as S.Schema<Workflow>;
 
 /** The Workflow items on this page */
 export type WorkflowListResultValueList = Array<Workflow>;
@@ -10021,19 +9566,8 @@ export interface PublishTargetSolutionVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const PublishTargetSolutionVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SolutionVersionProperties),
-    extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PublishTargetSolutionVersionResponse",
-}) as any as S.Schema<PublishTargetSolutionVersionResponse>;
+export const PublishTargetSolutionVersionResponse =
+  GetSolutionVersionResponse as any as S.Schema<PublishTargetSolutionVersionResponse>;
 
 export interface RemoveConfigTemplateVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10131,11 +9665,8 @@ export const RemoveSolutionTemplateVersionRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<RemoveSolutionTemplateVersionRequest>;
 
 export interface RemoveSolutionTemplateVersionResponse {}
-export const RemoveSolutionTemplateVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveSolutionTemplateVersionResponse",
-}) as any as S.Schema<RemoveSolutionTemplateVersionResponse>;
+export const RemoveSolutionTemplateVersionResponse =
+  BulkSolutionTemplateVersionReviewSolutionResponse as any as S.Schema<RemoveSolutionTemplateVersionResponse>;
 
 export interface RemoveTargetRevisionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10169,16 +9700,14 @@ export const RemoveTargetRevisionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveTargetRevisionRequest>;
 
 export interface RemoveTargetRevisionResponse {}
-export const RemoveTargetRevisionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RemoveTargetRevisionResponse",
-}) as any as S.Schema<RemoveTargetRevisionResponse>;
+export const RemoveTargetRevisionResponse =
+  ConfigurationPropertiesInput as any as S.Schema<RemoveTargetRevisionResponse>;
 
 /** Solution Dependencies */
 export type ReviewTargetSolutionVersionRequestSolutionDependenciesList =
   Array<SolutionDependencyParameter>;
-export const ReviewTargetSolutionVersionRequestSolutionDependenciesList = /*@__PURE__*/ S.Array(
-  SolutionDependencyParameter,
-) as any as S.Schema<ReviewTargetSolutionVersionRequestSolutionDependenciesList>;
+export const ReviewTargetSolutionVersionRequestSolutionDependenciesList =
+  BulkReviewTargetDetailsSolutionDependenciesList as any as S.Schema<ReviewTargetSolutionVersionRequestSolutionDependenciesList>;
 
 export interface ReviewTargetSolutionVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10230,19 +9759,8 @@ export interface ReviewTargetSolutionVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const ReviewTargetSolutionVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SolutionVersionProperties),
-    extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReviewTargetSolutionVersionResponse",
-}) as any as S.Schema<ReviewTargetSolutionVersionResponse>;
+export const ReviewTargetSolutionVersionResponse =
+  GetSolutionVersionResponse as any as S.Schema<ReviewTargetSolutionVersionResponse>;
 
 /** Schema Reference Properties */
 export interface SchemaReferencePropertiesInput {
@@ -10296,25 +9814,13 @@ export interface SchemaReferencesCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const SchemaReferencesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SchemaReferenceProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SchemaReferencesCreateOrUpdateResponse",
-}) as any as S.Schema<SchemaReferencesCreateOrUpdateResponse>;
+export const SchemaReferencesCreateOrUpdateResponse =
+  GetSchemaReferenceResponse as any as S.Schema<SchemaReferencesCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type SchemasCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const SchemasCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SchemasCreateOrUpdateRequestTagsMap>;
+export const SchemasCreateOrUpdateRequestTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<SchemasCreateOrUpdateRequestTagsMap>;
 
 /** Schema Properties */
 export type SchemaPropertiesInput = ConfigurationPropertiesInput;
@@ -10356,10 +9862,8 @@ export const SchemasCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type SchemasCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const SchemasCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SchemasCreateOrUpdateResponseTagsMap>;
+export const SchemasCreateOrUpdateResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<SchemasCreateOrUpdateResponseTagsMap>;
 
 export interface SchemasCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -10439,18 +9943,8 @@ export interface SchemaVersionsCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const SchemaVersionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SchemaVersionProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SchemaVersionsCreateOrUpdateResponse",
-}) as any as S.Schema<SchemaVersionsCreateOrUpdateResponse>;
+export const SchemaVersionsCreateOrUpdateResponse =
+  CreateSchemaVersionResponse as any as S.Schema<SchemaVersionsCreateOrUpdateResponse>;
 
 /** Site Reference Properties */
 export interface SiteReferencePropertiesInput {
@@ -10522,10 +10016,8 @@ export const SiteReferencesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =
 
 /** Key-value pairs for labeling the site resource. */
 export type SitePropertiesInputLabelsMap = { [key: string]: string | undefined };
-export const SitePropertiesInputLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SitePropertiesInputLabelsMap>;
+export const SitePropertiesInputLabelsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<SitePropertiesInputLabelsMap>;
 
 /** Site properties */
 export interface SitePropertiesInput {
@@ -10584,17 +10076,8 @@ export interface SitesByServiceGroupCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: SiteProperties;
 }
-export const SitesByServiceGroupCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteProperties),
-  }),
-).annotate({
-  identifier: "SitesByServiceGroupCreateOrUpdateResponse",
-}) as any as S.Schema<SitesByServiceGroupCreateOrUpdateResponse>;
+export const SitesByServiceGroupCreateOrUpdateResponse =
+  GetSitesByServiceGroupResponse as any as S.Schema<SitesByServiceGroupCreateOrUpdateResponse>;
 
 export interface SitesBySubscriptionCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10633,17 +10116,8 @@ export interface SitesBySubscriptionCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: SiteProperties;
 }
-export const SitesBySubscriptionCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteProperties),
-  }),
-).annotate({
-  identifier: "SitesBySubscriptionCreateOrUpdateResponse",
-}) as any as S.Schema<SitesBySubscriptionCreateOrUpdateResponse>;
+export const SitesBySubscriptionCreateOrUpdateResponse =
+  GetSitesByServiceGroupResponse as any as S.Schema<SitesBySubscriptionCreateOrUpdateResponse>;
 
 export interface SitesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10685,17 +10159,8 @@ export interface SitesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: SiteProperties;
 }
-export const SitesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteProperties),
-  }),
-).annotate({
-  identifier: "SitesCreateOrUpdateResponse",
-}) as any as S.Schema<SitesCreateOrUpdateResponse>;
+export const SitesCreateOrUpdateResponse =
+  GetSitesByServiceGroupResponse as any as S.Schema<SitesCreateOrUpdateResponse>;
 
 /** Solution Properties */
 export type SolutionPropertiesInput = ConfigurationPropertiesInput;
@@ -10767,16 +10232,13 @@ export const SolutionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type SolutionTemplatesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const SolutionTemplatesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SolutionTemplatesCreateOrUpdateRequestTagsMap>;
+export const SolutionTemplatesCreateOrUpdateRequestTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<SolutionTemplatesCreateOrUpdateRequestTagsMap>;
 
 /** List of capabilities */
 export type SolutionTemplatePropertiesInputCapabilitiesList = Array<string>;
-export const SolutionTemplatePropertiesInputCapabilitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SolutionTemplatePropertiesInputCapabilitiesList>;
+export const SolutionTemplatePropertiesInputCapabilitiesList =
+  HierarchyMetadataHierarchyIdsList as any as S.Schema<SolutionTemplatePropertiesInputCapabilitiesList>;
 
 /** Solution Template Properties */
 export interface SolutionTemplatePropertiesInput {
@@ -10836,10 +10298,8 @@ export const SolutionTemplatesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type SolutionTemplatesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const SolutionTemplatesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SolutionTemplatesCreateOrUpdateResponseTagsMap>;
+export const SolutionTemplatesCreateOrUpdateResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<SolutionTemplatesCreateOrUpdateResponseTagsMap>;
 
 export interface SolutionTemplatesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -10859,20 +10319,8 @@ export interface SolutionTemplatesCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const SolutionTemplatesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SolutionTemplatesCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(SolutionTemplateProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SolutionTemplatesCreateOrUpdateResponse",
-}) as any as S.Schema<SolutionTemplatesCreateOrUpdateResponse>;
+export const SolutionTemplatesCreateOrUpdateResponse =
+  GetSolutionTemplateResponse as any as S.Schema<SolutionTemplatesCreateOrUpdateResponse>;
 
 /** Bulk deploy target details */
 export interface BulkDeployTargetDetails {
@@ -10924,17 +10372,13 @@ export const SolutionTemplateVersionsBulkDeploySolutionRequest = /*@__PURE__*/ S
 }) as any as S.Schema<SolutionTemplateVersionsBulkDeploySolutionRequest>;
 
 export interface SolutionTemplateVersionsBulkDeploySolutionResponse {}
-export const SolutionTemplateVersionsBulkDeploySolutionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SolutionTemplateVersionsBulkDeploySolutionResponse",
-}) as any as S.Schema<SolutionTemplateVersionsBulkDeploySolutionResponse>;
+export const SolutionTemplateVersionsBulkDeploySolutionResponse =
+  BulkSolutionTemplateVersionReviewSolutionResponse as any as S.Schema<SolutionTemplateVersionsBulkDeploySolutionResponse>;
 
 /** Solution dependencies */
 export type BulkPublishTargetDetailsSolutionDependenciesList = Array<SolutionDependencyParameter>;
-export const BulkPublishTargetDetailsSolutionDependenciesList = /*@__PURE__*/ S.Array(
-  SolutionDependencyParameter,
-) as any as S.Schema<BulkPublishTargetDetailsSolutionDependenciesList>;
+export const BulkPublishTargetDetailsSolutionDependenciesList =
+  BulkReviewTargetDetailsSolutionDependenciesList as any as S.Schema<BulkPublishTargetDetailsSolutionDependenciesList>;
 
 /** Bulk publish target details */
 export interface BulkPublishTargetDetails {
@@ -10970,9 +10414,7 @@ export const SolutionTemplateVersionsBulkPublishSolutionRequestTargetsList = /*@
 export type SolutionTemplateVersionsBulkPublishSolutionRequestSolutionDependenciesList =
   Array<SolutionDependencyParameter>;
 export const SolutionTemplateVersionsBulkPublishSolutionRequestSolutionDependenciesList =
-  /*@__PURE__*/ S.Array(
-    SolutionDependencyParameter,
-  ) as any as S.Schema<SolutionTemplateVersionsBulkPublishSolutionRequestSolutionDependenciesList>;
+  BulkSolutionTemplateVersionReviewSolutionRequestSolutionDependenciesList as any as S.Schema<SolutionTemplateVersionsBulkPublishSolutionRequestSolutionDependenciesList>;
 
 export interface SolutionTemplateVersionsBulkPublishSolutionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11017,11 +10459,8 @@ export const SolutionTemplateVersionsBulkPublishSolutionRequest = /*@__PURE__*/ 
 }) as any as S.Schema<SolutionTemplateVersionsBulkPublishSolutionRequest>;
 
 export interface SolutionTemplateVersionsBulkPublishSolutionResponse {}
-export const SolutionTemplateVersionsBulkPublishSolutionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SolutionTemplateVersionsBulkPublishSolutionResponse",
-}) as any as S.Schema<SolutionTemplateVersionsBulkPublishSolutionResponse>;
+export const SolutionTemplateVersionsBulkPublishSolutionResponse =
+  BulkSolutionTemplateVersionReviewSolutionResponse as any as S.Schema<SolutionTemplateVersionsBulkPublishSolutionResponse>;
 
 export interface SolutionTemplateVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11068,25 +10507,13 @@ export interface SolutionTemplateVersionsCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const SolutionTemplateVersionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SolutionTemplateVersionProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SolutionTemplateVersionsCreateOrUpdateResponse",
-}) as any as S.Schema<SolutionTemplateVersionsCreateOrUpdateResponse>;
+export const SolutionTemplateVersionsCreateOrUpdateResponse =
+  CreateSolutionTemplateVersionResponse as any as S.Schema<SolutionTemplateVersionsCreateOrUpdateResponse>;
 
 /** App components spec */
 export type SolutionVersionPropertiesInputSpecificationMap = { [key: string]: unknown | undefined };
-export const SolutionVersionPropertiesInputSpecificationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SolutionVersionPropertiesInputSpecificationMap>;
+export const SolutionVersionPropertiesInputSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<SolutionVersionPropertiesInputSpecificationMap>;
 
 /** The error detail. */
 export type SolutionVersionPropertiesInputErrorDetails = ConfigurationPropertiesInput;
@@ -11161,39 +10588,23 @@ export interface SolutionVersionsCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const SolutionVersionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SolutionVersionProperties),
-    extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SolutionVersionsCreateOrUpdateResponse",
-}) as any as S.Schema<SolutionVersionsCreateOrUpdateResponse>;
+export const SolutionVersionsCreateOrUpdateResponse =
+  GetSolutionVersionResponse as any as S.Schema<SolutionVersionsCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type TargetsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const TargetsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TargetsCreateOrUpdateRequestTagsMap>;
+export const TargetsCreateOrUpdateRequestTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<TargetsCreateOrUpdateRequestTagsMap>;
 
 /** target spec */
 export type TargetPropertiesInputTargetSpecificationMap = { [key: string]: unknown | undefined };
-export const TargetPropertiesInputTargetSpecificationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TargetPropertiesInputTargetSpecificationMap>;
+export const TargetPropertiesInputTargetSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<TargetPropertiesInputTargetSpecificationMap>;
 
 /** List of capabilities */
 export type TargetPropertiesInputCapabilitiesList = Array<string>;
-export const TargetPropertiesInputCapabilitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TargetPropertiesInputCapabilitiesList>;
+export const TargetPropertiesInputCapabilitiesList =
+  HierarchyMetadataHierarchyIdsList as any as S.Schema<TargetPropertiesInputCapabilitiesList>;
 
 /** Target Properties */
 export interface TargetPropertiesInput {
@@ -11266,10 +10677,8 @@ export const TargetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type TargetsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const TargetsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TargetsCreateOrUpdateResponseTagsMap>;
+export const TargetsCreateOrUpdateResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<TargetsCreateOrUpdateResponseTagsMap>;
 
 export interface TargetsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -11310,9 +10719,8 @@ export const TargetsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 /** Solution Dependencies */
 export type TargetsResolveConfigurationRequestSolutionDependenciesList =
   Array<SolutionDependencyParameter>;
-export const TargetsResolveConfigurationRequestSolutionDependenciesList = /*@__PURE__*/ S.Array(
-  SolutionDependencyParameter,
-) as any as S.Schema<TargetsResolveConfigurationRequestSolutionDependenciesList>;
+export const TargetsResolveConfigurationRequestSolutionDependenciesList =
+  BulkReviewTargetDetailsSolutionDependenciesList as any as S.Schema<TargetsResolveConfigurationRequestSolutionDependenciesList>;
 
 export interface TargetsResolveConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11403,19 +10811,8 @@ export interface TargetsUnstageSolutionVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const TargetsUnstageSolutionVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SolutionVersionProperties),
-    extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TargetsUnstageSolutionVersionResponse",
-}) as any as S.Schema<TargetsUnstageSolutionVersionResponse>;
+export const TargetsUnstageSolutionVersionResponse =
+  GetSolutionVersionResponse as any as S.Schema<TargetsUnstageSolutionVersionResponse>;
 
 export interface UninstallTargetSolutionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11455,10 +10852,8 @@ export const UninstallTargetSolutionResponse = /*@__PURE__*/ S.suspend(() => S.S
 
 /** Resource tags. */
 export type UpdateConfigTemplateRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateConfigTemplateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateConfigTemplateRequestTagsMap>;
+export const UpdateConfigTemplateRequestTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateConfigTemplateRequestTagsMap>;
 
 /** The updatable properties of the ConfigTemplate. */
 export interface ConfigTemplateUpdateProperties {
@@ -11506,10 +10901,8 @@ export const UpdateConfigTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateConfigTemplateResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateConfigTemplateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateConfigTemplateResponseTagsMap>;
+export const UpdateConfigTemplateResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateConfigTemplateResponseTagsMap>;
 
 export interface UpdateConfigTemplateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -11529,33 +10922,19 @@ export interface UpdateConfigTemplateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const UpdateConfigTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateConfigTemplateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ConfigTemplateProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateConfigTemplateResponse",
-}) as any as S.Schema<UpdateConfigTemplateResponse>;
+export const UpdateConfigTemplateResponse =
+  ConfigTemplatesCreateOrUpdateResponse as any as S.Schema<UpdateConfigTemplateResponse>;
 
 /** Hierarchy ARM Ids */
 export type ConfigTemplateMetadataUpdatePropertiesLinkedHierarchiesList = Array<HierarchyMetadata>;
-export const ConfigTemplateMetadataUpdatePropertiesLinkedHierarchiesList = /*@__PURE__*/ S.Array(
-  HierarchyMetadata,
-) as any as S.Schema<ConfigTemplateMetadataUpdatePropertiesLinkedHierarchiesList>;
+export const ConfigTemplateMetadataUpdatePropertiesLinkedHierarchiesList =
+  ConfigTemplateMetadataPropertiesInputLinkedHierarchiesList as any as S.Schema<ConfigTemplateMetadataUpdatePropertiesLinkedHierarchiesList>;
 
 /** Hierarchy ARM Ids */
 export type ConfigTemplateMetadataUpdatePropertiesUnLinkedHierarchiesList =
   Array<HierarchyMetadata>;
-export const ConfigTemplateMetadataUpdatePropertiesUnLinkedHierarchiesList = /*@__PURE__*/ S.Array(
-  HierarchyMetadata,
-) as any as S.Schema<ConfigTemplateMetadataUpdatePropertiesUnLinkedHierarchiesList>;
+export const ConfigTemplateMetadataUpdatePropertiesUnLinkedHierarchiesList =
+  ConfigTemplateMetadataPropertiesInputLinkedHierarchiesList as any as S.Schema<ConfigTemplateMetadataUpdatePropertiesUnLinkedHierarchiesList>;
 
 /** The updatable properties of the ConfigTemplateMetadata. */
 export interface ConfigTemplateMetadataUpdateProperties {
@@ -11566,15 +10945,8 @@ export interface ConfigTemplateMetadataUpdateProperties {
   /** Hierarchy ARM Ids */
   unLinkedHierarchies?: ConfigTemplateMetadataUpdatePropertiesUnLinkedHierarchiesList;
 }
-export const ConfigTemplateMetadataUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contextId: S.optional(S.String),
-    linkedHierarchies: S.optional(ConfigTemplateMetadataUpdatePropertiesLinkedHierarchiesList),
-    unLinkedHierarchies: S.optional(ConfigTemplateMetadataUpdatePropertiesUnLinkedHierarchiesList),
-  }),
-).annotate({
-  identifier: "ConfigTemplateMetadataUpdateProperties",
-}) as any as S.Schema<ConfigTemplateMetadataUpdateProperties>;
+export const ConfigTemplateMetadataUpdateProperties =
+  ConfigTemplateMetadataPropertiesInput as any as S.Schema<ConfigTemplateMetadataUpdateProperties>;
 
 export interface UpdateConfigTemplateMetadatasRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11621,18 +10993,8 @@ export interface UpdateConfigTemplateMetadatasResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const UpdateConfigTemplateMetadatasResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ConfigTemplateMetadataProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateConfigTemplateMetadatasResponse",
-}) as any as S.Schema<UpdateConfigTemplateMetadatasResponse>;
+export const UpdateConfigTemplateMetadatasResponse =
+  ConfigTemplateMetadatasCreateOrUpdateResponse as any as S.Schema<UpdateConfigTemplateMetadatasResponse>;
 
 /** Config Template Version Properties */
 export interface ConfigTemplateVersionPropertiesUpdate {
@@ -11692,25 +11054,13 @@ export interface UpdateConfigTemplateVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const UpdateConfigTemplateVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ConfigTemplateVersionProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateConfigTemplateVersionResponse",
-}) as any as S.Schema<UpdateConfigTemplateVersionResponse>;
+export const UpdateConfigTemplateVersionResponse =
+  ConfigTemplateVersionsCreateOrUpdateResponse as any as S.Schema<UpdateConfigTemplateVersionResponse>;
 
 /** Resource tags. */
 export type UpdateConfigurationRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateConfigurationRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateConfigurationRequestTagsMap>;
+export const UpdateConfigurationRequestTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateConfigurationRequestTagsMap>;
 
 export interface UpdateConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11745,10 +11095,8 @@ export const UpdateConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateConfigurationResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateConfigurationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateConfigurationResponseTagsMap>;
+export const UpdateConfigurationResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateConfigurationResponseTagsMap>;
 
 export interface UpdateConfigurationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -11766,19 +11114,8 @@ export interface UpdateConfigurationResponse {
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationProperties;
 }
-export const UpdateConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateConfigurationResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ConfigurationProperties),
-  }),
-).annotate({
-  identifier: "UpdateConfigurationResponse",
-}) as any as S.Schema<UpdateConfigurationResponse>;
+export const UpdateConfigurationResponse =
+  ConfigurationsCreateOrUpdateResponse as any as S.Schema<UpdateConfigurationResponse>;
 
 export interface UpdateConfigurationReferenceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -11817,36 +11154,23 @@ export interface UpdateConfigurationReferenceResponse {
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationReferenceProperties;
 }
-export const UpdateConfigurationReferenceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ConfigurationReferenceProperties),
-  }),
-).annotate({
-  identifier: "UpdateConfigurationReferenceResponse",
-}) as any as S.Schema<UpdateConfigurationReferenceResponse>;
+export const UpdateConfigurationReferenceResponse =
+  ConfigurationReferencesCreateOrUpdateResponse as any as S.Schema<UpdateConfigurationReferenceResponse>;
 
 /** Resource tags. */
 export type UpdateContextRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateContextRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateContextRequestTagsMap>;
+export const UpdateContextRequestTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateContextRequestTagsMap>;
 
 /** List of Capabilities */
 export type ContextUpdatePropertiesCapabilitiesList = Array<Capability>;
-export const ContextUpdatePropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
-  Capability,
-) as any as S.Schema<ContextUpdatePropertiesCapabilitiesList>;
+export const ContextUpdatePropertiesCapabilitiesList =
+  ContextPropertiesInputCapabilitiesList as any as S.Schema<ContextUpdatePropertiesCapabilitiesList>;
 
 /** List of Hierarchies */
 export type ContextUpdatePropertiesHierarchiesList = Array<Hierarchy>;
-export const ContextUpdatePropertiesHierarchiesList = /*@__PURE__*/ S.Array(
-  Hierarchy,
-) as any as S.Schema<ContextUpdatePropertiesHierarchiesList>;
+export const ContextUpdatePropertiesHierarchiesList =
+  ContextPropertiesInputHierarchiesList as any as S.Schema<ContextUpdatePropertiesHierarchiesList>;
 
 /** The updatable properties of the Context. */
 export interface ContextUpdateProperties {
@@ -11893,10 +11217,8 @@ export const UpdateContextRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateContextResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateContextResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateContextResponseTagsMap>;
+export const UpdateContextResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateContextResponseTagsMap>;
 
 export interface UpdateContextResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -11914,17 +11236,7 @@ export interface UpdateContextResponse {
   /** The resource-specific properties for this resource. */
   properties?: ContextProperties;
 }
-export const UpdateContextResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateContextResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ContextProperties),
-  }),
-).annotate({ identifier: "UpdateContextResponse" }) as any as S.Schema<UpdateContextResponse>;
+export const UpdateContextResponse = GetContextResponse as any as S.Schema<UpdateContextResponse>;
 
 /** The updatable properties of the Diagnostic. */
 export type DiagnosticUpdatePropertiesInput = ConfigurationPropertiesInput;
@@ -11932,10 +11244,8 @@ export const DiagnosticUpdatePropertiesInput = ConfigurationPropertiesInput;
 
 /** Resource tags. */
 export type UpdateDiagnosticRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateDiagnosticRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDiagnosticRequestTagsMap>;
+export const UpdateDiagnosticRequestTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDiagnosticRequestTagsMap>;
 
 export interface UpdateDiagnosticRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11968,10 +11278,8 @@ export const UpdateDiagnosticRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateDiagnosticResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateDiagnosticResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDiagnosticResponseTagsMap>;
+export const UpdateDiagnosticResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDiagnosticResponseTagsMap>;
 
 export interface UpdateDiagnosticResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -11993,26 +11301,13 @@ export interface UpdateDiagnosticResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const UpdateDiagnosticResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateDiagnosticResponseTagsMap),
-    location: S.String,
-    properties: S.optional(DiagnosticProperties),
-    extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateDiagnosticResponse" }) as any as S.Schema<UpdateDiagnosticResponse>;
+export const UpdateDiagnosticResponse =
+  GetDiagnosticResponse as any as S.Schema<UpdateDiagnosticResponse>;
 
 /** Resource tags. */
 export type UpdateDisconnectedOperationRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateDisconnectedOperationRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDisconnectedOperationRequestTagsMap>;
+export const UpdateDisconnectedOperationRequestTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDisconnectedOperationRequestTagsMap>;
 
 /** The billing period */
 export interface BillingPeriodUpdate {
@@ -12105,10 +11400,8 @@ export const UpdateDisconnectedOperationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateDisconnectedOperationResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateDisconnectedOperationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDisconnectedOperationResponseTagsMap>;
+export const UpdateDisconnectedOperationResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDisconnectedOperationResponseTagsMap>;
 
 export interface UpdateDisconnectedOperationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -12126,19 +11419,8 @@ export interface UpdateDisconnectedOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: DisconnectedOperationProperties;
 }
-export const UpdateDisconnectedOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateDisconnectedOperationResponseTagsMap),
-    location: S.String,
-    properties: S.optional(DisconnectedOperationProperties),
-  }),
-).annotate({
-  identifier: "UpdateDisconnectedOperationResponse",
-}) as any as S.Schema<UpdateDisconnectedOperationResponse>;
+export const UpdateDisconnectedOperationResponse =
+  DisconnectedOperationsCreateOrUpdateResponse as any as S.Schema<UpdateDisconnectedOperationResponse>;
 
 /** Dynamic Configuration Properties */
 export interface DynamicConfigurationPropertiesUpdate {
@@ -12196,17 +11478,8 @@ export interface UpdateDynamicConfigurationResponse {
   /** The resource-specific properties for this resource. */
   properties?: DynamicConfigurationProperties;
 }
-export const UpdateDynamicConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DynamicConfigurationProperties),
-  }),
-).annotate({
-  identifier: "UpdateDynamicConfigurationResponse",
-}) as any as S.Schema<UpdateDynamicConfigurationResponse>;
+export const UpdateDynamicConfigurationResponse =
+  DynamicConfigurationsCreateOrUpdateResponse as any as S.Schema<UpdateDynamicConfigurationResponse>;
 
 /** Dynamic Configuration Properties */
 export interface DynamicConfigurationVersionPropertiesUpdate {
@@ -12267,17 +11540,8 @@ export interface UpdateDynamicConfigurationVersionResponse {
   /** The resource-specific properties for this resource. */
   properties?: DynamicConfigurationVersionProperties;
 }
-export const UpdateDynamicConfigurationVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DynamicConfigurationVersionProperties),
-  }),
-).annotate({
-  identifier: "UpdateDynamicConfigurationVersionResponse",
-}) as any as S.Schema<UpdateDynamicConfigurationVersionResponse>;
+export const UpdateDynamicConfigurationVersionResponse =
+  DynamicConfigurationVersionsCreateOrUpdateResponse as any as S.Schema<UpdateDynamicConfigurationVersionResponse>;
 
 export interface UpdateDynamicSchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -12324,18 +11588,8 @@ export interface UpdateDynamicSchemaResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const UpdateDynamicSchemaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DynamicSchemaProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateDynamicSchemaResponse",
-}) as any as S.Schema<UpdateDynamicSchemaResponse>;
+export const UpdateDynamicSchemaResponse =
+  DynamicSchemasCreateOrUpdateResponse as any as S.Schema<UpdateDynamicSchemaResponse>;
 
 /** Schema Version Properties */
 export interface SchemaVersionPropertiesUpdate {
@@ -12398,25 +11652,13 @@ export interface UpdateDynamicSchemaVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const UpdateDynamicSchemaVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SchemaVersionProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateDynamicSchemaVersionResponse",
-}) as any as S.Schema<UpdateDynamicSchemaVersionResponse>;
+export const UpdateDynamicSchemaVersionResponse =
+  CreateSchemaVersionResponse as any as S.Schema<UpdateDynamicSchemaVersionResponse>;
 
 /** Execution specification */
 export type ExecutionPropertiesUpdateSpecificationMap = { [key: string]: unknown | undefined };
-export const ExecutionPropertiesUpdateSpecificationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ExecutionPropertiesUpdateSpecificationMap>;
+export const ExecutionPropertiesUpdateSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<ExecutionPropertiesUpdateSpecificationMap>;
 
 /** Execution Properties */
 export interface ExecutionPropertiesUpdate {
@@ -12485,17 +11727,8 @@ export interface UpdateExecutionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const UpdateExecutionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ExecutionProperties),
-    extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateExecutionResponse" }) as any as S.Schema<UpdateExecutionResponse>;
+export const UpdateExecutionResponse =
+  GetExecutionResponse as any as S.Schema<UpdateExecutionResponse>;
 
 /** Defines a ReconciliationPolicy */
 export interface ReconciliationPolicyPropertiesUpdate {
@@ -12584,17 +11817,8 @@ export interface UpdateInstanceResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const UpdateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(InstanceProperties),
-    extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateInstanceResponse" }) as any as S.Schema<UpdateInstanceResponse>;
+export const UpdateInstanceResponse =
+  GetInstanceResponse as any as S.Schema<UpdateInstanceResponse>;
 
 /** The updatable properties of the Schema. */
 export type SchemaUpdatePropertiesInput = ConfigurationPropertiesInput;
@@ -12602,10 +11826,8 @@ export const SchemaUpdatePropertiesInput = ConfigurationPropertiesInput;
 
 /** Resource tags. */
 export type UpdateSchemaRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateSchemaRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSchemaRequestTagsMap>;
+export const UpdateSchemaRequestTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateSchemaRequestTagsMap>;
 
 export interface UpdateSchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -12638,10 +11860,8 @@ export const UpdateSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateSchemaResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateSchemaResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSchemaResponseTagsMap>;
+export const UpdateSchemaResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateSchemaResponseTagsMap>;
 
 export interface UpdateSchemaResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -12661,18 +11881,7 @@ export interface UpdateSchemaResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const UpdateSchemaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateSchemaResponseTagsMap),
-    location: S.String,
-    properties: S.optional(SchemaProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateSchemaResponse" }) as any as S.Schema<UpdateSchemaResponse>;
+export const UpdateSchemaResponse = GetSchemaResponse as any as S.Schema<UpdateSchemaResponse>;
 
 /** Schema Reference Properties */
 export interface SchemaReferencePropertiesUpdate {
@@ -12726,18 +11935,8 @@ export interface UpdateSchemaReferenceResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const UpdateSchemaReferenceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SchemaReferenceProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateSchemaReferenceResponse",
-}) as any as S.Schema<UpdateSchemaReferenceResponse>;
+export const UpdateSchemaReferenceResponse =
+  GetSchemaReferenceResponse as any as S.Schema<UpdateSchemaReferenceResponse>;
 
 export interface UpdateSchemaVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -12784,25 +11983,13 @@ export interface UpdateSchemaVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const UpdateSchemaVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SchemaVersionProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateSchemaVersionResponse",
-}) as any as S.Schema<UpdateSchemaVersionResponse>;
+export const UpdateSchemaVersionResponse =
+  CreateSchemaVersionResponse as any as S.Schema<UpdateSchemaVersionResponse>;
 
 /** Key-value pairs for labeling the site resource. */
 export type SiteUpdatePropertiesLabelsMap = { [key: string]: string | undefined };
-export const SiteUpdatePropertiesLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SiteUpdatePropertiesLabelsMap>;
+export const SiteUpdatePropertiesLabelsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<SiteUpdatePropertiesLabelsMap>;
 
 /** The updatable properties of the Site. */
 export interface SiteUpdateProperties {
@@ -12815,14 +12002,7 @@ export interface SiteUpdateProperties {
   /** Key-value pairs for labeling the site resource. */
   labels?: SiteUpdatePropertiesLabelsMap;
 }
-export const SiteUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    description: S.optional(S.String),
-    siteAddress: S.optional(SiteAddressProperties),
-    labels: S.optional(SiteUpdatePropertiesLabelsMap),
-  }),
-).annotate({ identifier: "SiteUpdateProperties" }) as any as S.Schema<SiteUpdateProperties>;
+export const SiteUpdateProperties = SitePropertiesInput as any as S.Schema<SiteUpdateProperties>;
 
 export interface UpdateSiteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -12862,15 +12042,7 @@ export interface UpdateSiteResponse {
   /** The resource-specific properties for this resource. */
   properties?: SiteProperties;
 }
-export const UpdateSiteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteProperties),
-  }),
-).annotate({ identifier: "UpdateSiteResponse" }) as any as S.Schema<UpdateSiteResponse>;
+export const UpdateSiteResponse = GetSiteResponse as any as S.Schema<UpdateSiteResponse>;
 
 /** Site Reference Properties */
 export interface SiteReferencePropertiesUpdate {
@@ -12928,17 +12100,8 @@ export interface UpdateSiteReferenceResponse {
   /** The resource-specific properties for this resource. */
   properties?: SiteReferenceProperties;
 }
-export const UpdateSiteReferenceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteReferenceProperties),
-  }),
-).annotate({
-  identifier: "UpdateSiteReferenceResponse",
-}) as any as S.Schema<UpdateSiteReferenceResponse>;
+export const UpdateSiteReferenceResponse =
+  SiteReferencesCreateOrUpdateResponse as any as S.Schema<UpdateSiteReferenceResponse>;
 
 export interface UpdateSitesByServiceGroupRequest {
   /** The name of the service group */
@@ -12977,17 +12140,8 @@ export interface UpdateSitesByServiceGroupResponse {
   /** The resource-specific properties for this resource. */
   properties?: SiteProperties;
 }
-export const UpdateSitesByServiceGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteProperties),
-  }),
-).annotate({
-  identifier: "UpdateSitesByServiceGroupResponse",
-}) as any as S.Schema<UpdateSitesByServiceGroupResponse>;
+export const UpdateSitesByServiceGroupResponse =
+  GetSitesByServiceGroupResponse as any as S.Schema<UpdateSitesByServiceGroupResponse>;
 
 export interface UpdateSitesBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -13026,17 +12180,8 @@ export interface UpdateSitesBySubscriptionResponse {
   /** The resource-specific properties for this resource. */
   properties?: SiteProperties;
 }
-export const UpdateSitesBySubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteProperties),
-  }),
-).annotate({
-  identifier: "UpdateSitesBySubscriptionResponse",
-}) as any as S.Schema<UpdateSitesBySubscriptionResponse>;
+export const UpdateSitesBySubscriptionResponse =
+  GetSitesByServiceGroupResponse as any as S.Schema<UpdateSitesBySubscriptionResponse>;
 
 /** The updatable properties of the Solution. */
 export type SolutionUpdatePropertiesInput = ConfigurationPropertiesInput;
@@ -13087,30 +12232,18 @@ export interface UpdateSolutionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const UpdateSolutionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SolutionProperties),
-    extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateSolutionResponse" }) as any as S.Schema<UpdateSolutionResponse>;
+export const UpdateSolutionResponse =
+  GetSolutionResponse as any as S.Schema<UpdateSolutionResponse>;
 
 /** Resource tags. */
 export type UpdateSolutionTemplateRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateSolutionTemplateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSolutionTemplateRequestTagsMap>;
+export const UpdateSolutionTemplateRequestTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateSolutionTemplateRequestTagsMap>;
 
 /** List of capabilities */
 export type SolutionTemplateUpdatePropertiesCapabilitiesList = Array<string>;
-export const SolutionTemplateUpdatePropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SolutionTemplateUpdatePropertiesCapabilitiesList>;
+export const SolutionTemplateUpdatePropertiesCapabilitiesList =
+  HierarchyMetadataHierarchyIdsList as any as S.Schema<SolutionTemplateUpdatePropertiesCapabilitiesList>;
 
 /** The updatable properties of the SolutionTemplate. */
 export interface SolutionTemplateUpdateProperties {
@@ -13167,10 +12300,8 @@ export const UpdateSolutionTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateSolutionTemplateResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateSolutionTemplateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSolutionTemplateResponseTagsMap>;
+export const UpdateSolutionTemplateResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateSolutionTemplateResponseTagsMap>;
 
 export interface UpdateSolutionTemplateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -13190,29 +12321,15 @@ export interface UpdateSolutionTemplateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const UpdateSolutionTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateSolutionTemplateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(SolutionTemplateProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateSolutionTemplateResponse",
-}) as any as S.Schema<UpdateSolutionTemplateResponse>;
+export const UpdateSolutionTemplateResponse =
+  GetSolutionTemplateResponse as any as S.Schema<UpdateSolutionTemplateResponse>;
 
 /** App components spec */
 export type SolutionTemplateVersionPropertiesUpdateSpecificationMap = {
   [key: string]: unknown | undefined;
 };
-export const SolutionTemplateVersionPropertiesUpdateSpecificationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SolutionTemplateVersionPropertiesUpdateSpecificationMap>;
+export const SolutionTemplateVersionPropertiesUpdateSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<SolutionTemplateVersionPropertiesUpdateSpecificationMap>;
 
 /** Solution Template Version Properties */
 export interface SolutionTemplateVersionPropertiesUpdate {
@@ -13278,27 +12395,15 @@ export interface UpdateSolutionTemplateVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const UpdateSolutionTemplateVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SolutionTemplateVersionProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateSolutionTemplateVersionResponse",
-}) as any as S.Schema<UpdateSolutionTemplateVersionResponse>;
+export const UpdateSolutionTemplateVersionResponse =
+  CreateSolutionTemplateVersionResponse as any as S.Schema<UpdateSolutionTemplateVersionResponse>;
 
 /** App components spec */
 export type SolutionVersionPropertiesUpdateSpecificationMap = {
   [key: string]: unknown | undefined;
 };
-export const SolutionVersionPropertiesUpdateSpecificationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SolutionVersionPropertiesUpdateSpecificationMap>;
+export const SolutionVersionPropertiesUpdateSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<SolutionVersionPropertiesUpdateSpecificationMap>;
 
 /** Solution Version Properties */
 export interface SolutionVersionPropertiesUpdate {
@@ -13363,39 +12468,23 @@ export interface UpdateSolutionVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const UpdateSolutionVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SolutionVersionProperties),
-    extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateSolutionVersionResponse",
-}) as any as S.Schema<UpdateSolutionVersionResponse>;
+export const UpdateSolutionVersionResponse =
+  GetSolutionVersionResponse as any as S.Schema<UpdateSolutionVersionResponse>;
 
 /** Resource tags. */
 export type UpdateTargetRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateTargetRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateTargetRequestTagsMap>;
+export const UpdateTargetRequestTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateTargetRequestTagsMap>;
 
 /** target spec */
 export type TargetUpdatePropertiesTargetSpecificationMap = { [key: string]: unknown | undefined };
-export const TargetUpdatePropertiesTargetSpecificationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TargetUpdatePropertiesTargetSpecificationMap>;
+export const TargetUpdatePropertiesTargetSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<TargetUpdatePropertiesTargetSpecificationMap>;
 
 /** List of capabilities */
 export type TargetUpdatePropertiesCapabilitiesList = Array<string>;
-export const TargetUpdatePropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TargetUpdatePropertiesCapabilitiesList>;
+export const TargetUpdatePropertiesCapabilitiesList =
+  HierarchyMetadataHierarchyIdsList as any as S.Schema<TargetUpdatePropertiesCapabilitiesList>;
 
 /** The updatable properties of the Target. */
 export interface TargetUpdateProperties {
@@ -13460,10 +12549,8 @@ export const UpdateTargetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateTargetResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateTargetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateTargetResponseTagsMap>;
+export const UpdateTargetResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateTargetResponseTagsMap>;
 
 export interface UpdateTargetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -13485,19 +12572,7 @@ export interface UpdateTargetResponse {
   /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
-export const UpdateTargetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateTargetResponseTagsMap),
-    location: S.String,
-    properties: S.optional(TargetProperties),
-    eTag: S.optional(S.String),
-    extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
-  }),
-).annotate({ identifier: "UpdateTargetResponse" }) as any as S.Schema<UpdateTargetResponse>;
+export const UpdateTargetResponse = GetTargetResponse as any as S.Schema<UpdateTargetResponse>;
 
 /** The error detail. */
 export type UpdateTargetExternalValidationStatusRequestErrorDetails = ConfigurationPropertiesInput;
@@ -13560,19 +12635,8 @@ export interface UpdateTargetExternalValidationStatusResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const UpdateTargetExternalValidationStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SolutionVersionProperties),
-    extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateTargetExternalValidationStatusResponse",
-}) as any as S.Schema<UpdateTargetExternalValidationStatusResponse>;
+export const UpdateTargetExternalValidationStatusResponse =
+  GetSolutionVersionResponse as any as S.Schema<UpdateTargetExternalValidationStatusResponse>;
 
 /** Workflow Properties */
 export type WorkflowPropertiesInput = ConfigurationPropertiesInput;
@@ -13623,32 +12687,20 @@ export interface UpdateWorkflowResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const UpdateWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WorkflowProperties),
-    extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateWorkflowResponse" }) as any as S.Schema<UpdateWorkflowResponse>;
+export const UpdateWorkflowResponse =
+  GetWorkflowResponse as any as S.Schema<UpdateWorkflowResponse>;
 
 /** A list of stage specs */
 export type WorkflowVersionPropertiesUpdateStageSpecList = Array<StageSpec>;
-export const WorkflowVersionPropertiesUpdateStageSpecList = /*@__PURE__*/ S.Array(
-  StageSpec,
-) as any as S.Schema<WorkflowVersionPropertiesUpdateStageSpecList>;
+export const WorkflowVersionPropertiesUpdateStageSpecList =
+  WorkflowVersionPropertiesStageSpecList as any as S.Schema<WorkflowVersionPropertiesUpdateStageSpecList>;
 
 /** Execution specification */
 export type WorkflowVersionPropertiesUpdateSpecificationMap = {
   [key: string]: unknown | undefined;
 };
-export const WorkflowVersionPropertiesUpdateSpecificationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<WorkflowVersionPropertiesUpdateSpecificationMap>;
+export const WorkflowVersionPropertiesUpdateSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<WorkflowVersionPropertiesUpdateSpecificationMap>;
 
 /** Workflow Version Properties */
 export interface WorkflowVersionPropertiesUpdate {
@@ -13716,19 +12768,8 @@ export interface UpdateWorkflowVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const UpdateWorkflowVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WorkflowVersionProperties),
-    extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateWorkflowVersionResponse",
-}) as any as S.Schema<UpdateWorkflowVersionResponse>;
+export const UpdateWorkflowVersionResponse =
+  GetWorkflowVersionResponse as any as S.Schema<UpdateWorkflowVersionResponse>;
 
 export interface WorkflowsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -13796,16 +12837,13 @@ export const WorkflowsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of stage specs */
 export type WorkflowVersionPropertiesInputStageSpecList = Array<StageSpec>;
-export const WorkflowVersionPropertiesInputStageSpecList = /*@__PURE__*/ S.Array(
-  StageSpec,
-) as any as S.Schema<WorkflowVersionPropertiesInputStageSpecList>;
+export const WorkflowVersionPropertiesInputStageSpecList =
+  WorkflowVersionPropertiesStageSpecList as any as S.Schema<WorkflowVersionPropertiesInputStageSpecList>;
 
 /** Execution specification */
 export type WorkflowVersionPropertiesInputSpecificationMap = { [key: string]: unknown | undefined };
-export const WorkflowVersionPropertiesInputSpecificationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<WorkflowVersionPropertiesInputSpecificationMap>;
+export const WorkflowVersionPropertiesInputSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<WorkflowVersionPropertiesInputSpecificationMap>;
 
 /** Workflow Version Properties */
 export interface WorkflowVersionPropertiesInput {
@@ -13876,19 +12914,8 @@ export interface WorkflowVersionsCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const WorkflowVersionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WorkflowVersionProperties),
-    extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WorkflowVersionsCreateOrUpdateResponse",
-}) as any as S.Schema<WorkflowVersionsCreateOrUpdateResponse>;
+export const WorkflowVersionsCreateOrUpdateResponse =
+  GetWorkflowVersionResponse as any as S.Schema<WorkflowVersionsCreateOrUpdateResponse>;
 
 export type ArtifactsListDownloadUriError = AzureOpError;
 /** Get artifact download link. */

@@ -147,9 +147,8 @@ export const AddNetworkSubnetResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type AddNetworkSubnetResponseActionResourcesList =
   Array<AddNetworkRouteResponseActionResourcesItem>;
-export const AddNetworkSubnetResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddNetworkRouteResponseActionResourcesItem,
-) as any as S.Schema<AddNetworkSubnetResponseActionResourcesList>;
+export const AddNetworkSubnetResponseActionResourcesList =
+  AddNetworkRouteResponseActionResourcesList as any as S.Schema<AddNetworkSubnetResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type AddNetworkSubnetResponseActionError = AddNetworkRouteResponseActionError;
@@ -224,9 +223,8 @@ export const ChangeNetworkIpRangeResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type ChangeNetworkIpRangeResponseActionResourcesList =
   Array<AddNetworkRouteResponseActionResourcesItem>;
-export const ChangeNetworkIpRangeResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddNetworkRouteResponseActionResourcesItem,
-) as any as S.Schema<ChangeNetworkIpRangeResponseActionResourcesList>;
+export const ChangeNetworkIpRangeResponseActionResourcesList =
+  AddNetworkRouteResponseActionResourcesList as any as S.Schema<ChangeNetworkIpRangeResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeNetworkIpRangeResponseActionError = AddNetworkRouteResponseActionError;
@@ -303,9 +301,8 @@ export const ChangeNetworkProtectionResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type ChangeNetworkProtectionResponseActionResourcesList =
   Array<AddNetworkRouteResponseActionResourcesItem>;
-export const ChangeNetworkProtectionResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddNetworkRouteResponseActionResourcesItem,
-) as any as S.Schema<ChangeNetworkProtectionResponseActionResourcesList>;
+export const ChangeNetworkProtectionResponseActionResourcesList =
+  AddNetworkRouteResponseActionResourcesList as any as S.Schema<ChangeNetworkProtectionResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeNetworkProtectionResponseActionError = AddNetworkRouteResponseActionError;
@@ -385,9 +382,8 @@ export const DeleteNetworkRouteResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type DeleteNetworkRouteResponseActionResourcesList =
   Array<AddNetworkRouteResponseActionResourcesItem>;
-export const DeleteNetworkRouteResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddNetworkRouteResponseActionResourcesItem,
-) as any as S.Schema<DeleteNetworkRouteResponseActionResourcesList>;
+export const DeleteNetworkRouteResponseActionResourcesList =
+  AddNetworkRouteResponseActionResourcesList as any as S.Schema<DeleteNetworkRouteResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DeleteNetworkRouteResponseActionError = AddNetworkRouteResponseActionError;
@@ -464,9 +460,8 @@ export const DeleteNetworkSubnetResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type DeleteNetworkSubnetResponseActionResourcesList =
   Array<AddNetworkRouteResponseActionResourcesItem>;
-export const DeleteNetworkSubnetResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddNetworkRouteResponseActionResourcesItem,
-) as any as S.Schema<DeleteNetworkSubnetResponseActionResourcesList>;
+export const DeleteNetworkSubnetResponseActionResourcesList =
+  AddNetworkRouteResponseActionResourcesList as any as S.Schema<DeleteNetworkSubnetResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DeleteNetworkSubnetResponseActionError = AddNetworkRouteResponseActionError;
@@ -538,9 +533,8 @@ export const GetNetworksActionResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type GetNetworksActionResponseActionResourcesList =
   Array<AddNetworkRouteResponseActionResourcesItem>;
-export const GetNetworksActionResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddNetworkRouteResponseActionResourcesItem,
-) as any as S.Schema<GetNetworksActionResponseActionResourcesList>;
+export const GetNetworksActionResponseActionResourcesList =
+  AddNetworkRouteResponseActionResourcesList as any as S.Schema<GetNetworksActionResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type GetNetworksActionResponseActionError = AddNetworkRouteResponseActionError;
@@ -662,9 +656,8 @@ export const ListNetworkActionsResponseActionsItemResourcesItem =
 /** Resources the Action relates to. */
 export type ListNetworkActionsResponseActionsItemResourcesList =
   Array<AddNetworkRouteResponseActionResourcesItem>;
-export const ListNetworkActionsResponseActionsItemResourcesList = /*@__PURE__*/ S.Array(
-  AddNetworkRouteResponseActionResourcesItem,
-) as any as S.Schema<ListNetworkActionsResponseActionsItemResourcesList>;
+export const ListNetworkActionsResponseActionsItemResourcesList =
+  AddNetworkRouteResponseActionResourcesList as any as S.Schema<ListNetworkActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListNetworkActionsResponseActionsItemError = AddNetworkRouteResponseActionError;
@@ -838,9 +831,8 @@ export const ListNetworksActionsResponseActionsItemResourcesItem =
 /** Resources the Action relates to. */
 export type ListNetworksActionsResponseActionsItemResourcesList =
   Array<AddNetworkRouteResponseActionResourcesItem>;
-export const ListNetworksActionsResponseActionsItemResourcesList = /*@__PURE__*/ S.Array(
-  AddNetworkRouteResponseActionResourcesItem,
-) as any as S.Schema<ListNetworksActionsResponseActionsItemResourcesList>;
+export const ListNetworksActionsResponseActionsItemResourcesList =
+  AddNetworkRouteResponseActionResourcesList as any as S.Schema<ListNetworksActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListNetworksActionsResponseActionsItemError = AddNetworkRouteResponseActionError;

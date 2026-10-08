@@ -579,7 +579,7 @@ export const CreateMedicalVocabularyResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMedicalVocabularyResponse>;
 export type Phrase = string;
 export type Phrases = string[];
-export const Phrases = /*@__PURE__*/ S.Array(S.String);
+export const Phrases = StringTargetList as any as S.Schema<Phrases>;
 export interface CreateVocabularyRequest {
   VocabularyName: string;
   LanguageCode: LanguageCode;
@@ -628,7 +628,7 @@ export const CreateVocabularyResponse = /*@__PURE__*/ S.suspend(() =>
 export type VocabularyFilterName = string;
 export type Word = string;
 export type Words = string[];
-export const Words = /*@__PURE__*/ S.Array(S.String);
+export const Words = StringTargetList as any as S.Schema<Words>;
 export interface CreateVocabularyFilterRequest {
   VocabularyFilterName: string;
   LanguageCode: LanguageCode;
@@ -737,9 +737,8 @@ export const DeleteLanguageModelRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteLanguageModelRequest",
 }) as any as S.Schema<DeleteLanguageModelRequest>;
 export interface DeleteLanguageModelResponse {}
-export const DeleteLanguageModelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLanguageModelResponse",
-}) as any as S.Schema<DeleteLanguageModelResponse>;
+export const DeleteLanguageModelResponse =
+  DeleteCallAnalyticsJobResponse as any as S.Schema<DeleteLanguageModelResponse>;
 export type TranscriptionJobName = string;
 export interface DeleteMedicalScribeJobRequest {
   MedicalScribeJobName: string;
@@ -759,9 +758,8 @@ export const DeleteMedicalScribeJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteMedicalScribeJobRequest",
 }) as any as S.Schema<DeleteMedicalScribeJobRequest>;
 export interface DeleteMedicalScribeJobResponse {}
-export const DeleteMedicalScribeJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMedicalScribeJobResponse",
-}) as any as S.Schema<DeleteMedicalScribeJobResponse>;
+export const DeleteMedicalScribeJobResponse =
+  DeleteCallAnalyticsJobResponse as any as S.Schema<DeleteMedicalScribeJobResponse>;
 export interface DeleteMedicalTranscriptionJobRequest {
   MedicalTranscriptionJobName: string;
 }
@@ -782,11 +780,8 @@ export const DeleteMedicalTranscriptionJobRequest = /*@__PURE__*/ S.suspend(() =
   identifier: "DeleteMedicalTranscriptionJobRequest",
 }) as any as S.Schema<DeleteMedicalTranscriptionJobRequest>;
 export interface DeleteMedicalTranscriptionJobResponse {}
-export const DeleteMedicalTranscriptionJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMedicalTranscriptionJobResponse",
-}) as any as S.Schema<DeleteMedicalTranscriptionJobResponse>;
+export const DeleteMedicalTranscriptionJobResponse =
+  DeleteCallAnalyticsCategoryResponse as any as S.Schema<DeleteMedicalTranscriptionJobResponse>;
 export interface DeleteMedicalVocabularyRequest {
   VocabularyName: string;
 }
@@ -826,9 +821,8 @@ export const DeleteTranscriptionJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteTranscriptionJobRequest",
 }) as any as S.Schema<DeleteTranscriptionJobRequest>;
 export interface DeleteTranscriptionJobResponse {}
-export const DeleteTranscriptionJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTranscriptionJobResponse",
-}) as any as S.Schema<DeleteTranscriptionJobResponse>;
+export const DeleteTranscriptionJobResponse =
+  DeleteCallAnalyticsJobResponse as any as S.Schema<DeleteTranscriptionJobResponse>;
 export interface DeleteVocabularyRequest {
   VocabularyName: string;
 }
@@ -845,9 +839,8 @@ export const DeleteVocabularyRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteVocabularyRequest" }) as any as S.Schema<DeleteVocabularyRequest>;
 export interface DeleteVocabularyResponse {}
-export const DeleteVocabularyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVocabularyResponse",
-}) as any as S.Schema<DeleteVocabularyResponse>;
+export const DeleteVocabularyResponse =
+  DeleteCallAnalyticsJobResponse as any as S.Schema<DeleteVocabularyResponse>;
 export interface DeleteVocabularyFilterRequest {
   VocabularyFilterName: string;
 }
@@ -866,9 +859,8 @@ export const DeleteVocabularyFilterRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteVocabularyFilterRequest",
 }) as any as S.Schema<DeleteVocabularyFilterRequest>;
 export interface DeleteVocabularyFilterResponse {}
-export const DeleteVocabularyFilterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVocabularyFilterResponse",
-}) as any as S.Schema<DeleteVocabularyFilterResponse>;
+export const DeleteVocabularyFilterResponse =
+  DeleteCallAnalyticsJobResponse as any as S.Schema<DeleteVocabularyFilterResponse>;
 export interface DescribeLanguageModelRequest {
   ModelName: string;
 }
@@ -940,11 +932,8 @@ export const GetCallAnalyticsCategoryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetCallAnalyticsCategoryResponse {
   CategoryProperties?: CategoryProperties;
 }
-export const GetCallAnalyticsCategoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CategoryProperties: S.optional(CategoryProperties) }),
-).annotate({
-  identifier: "GetCallAnalyticsCategoryResponse",
-}) as any as S.Schema<GetCallAnalyticsCategoryResponse>;
+export const GetCallAnalyticsCategoryResponse =
+  CreateCallAnalyticsCategoryResponse as any as S.Schema<GetCallAnalyticsCategoryResponse>;
 export interface GetCallAnalyticsJobRequest {
   CallAnalyticsJobName: string;
 }
@@ -1546,7 +1535,7 @@ export const SubtitleFormat = S.String;
 export type SubtitleFormats = SubtitleFormat[];
 export const SubtitleFormats = /*@__PURE__*/ S.Array(SubtitleFormat);
 export type SubtitleFileUris = string[];
-export const SubtitleFileUris = /*@__PURE__*/ S.Array(S.String);
+export const SubtitleFileUris = StringTargetList as any as S.Schema<SubtitleFileUris>;
 export type SubtitleOutputStartIndex = number;
 export interface SubtitlesOutput {
   Formats?: SubtitleFormat[];
@@ -2190,11 +2179,8 @@ export const StartCallAnalyticsJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartCallAnalyticsJobResponse {
   CallAnalyticsJob?: CallAnalyticsJob;
 }
-export const StartCallAnalyticsJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CallAnalyticsJob: S.optional(CallAnalyticsJob) }),
-).annotate({
-  identifier: "StartCallAnalyticsJobResponse",
-}) as any as S.Schema<StartCallAnalyticsJobResponse>;
+export const StartCallAnalyticsJobResponse =
+  GetCallAnalyticsJobResponse as any as S.Schema<StartCallAnalyticsJobResponse>;
 export type OutputBucketName = string;
 export type Pronouns = "HE_HIM" | "SHE_HER" | "THEY_THEM" | (string & {});
 export const Pronouns = S.String;
@@ -2253,11 +2239,8 @@ export const StartMedicalScribeJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartMedicalScribeJobResponse {
   MedicalScribeJob?: MedicalScribeJob;
 }
-export const StartMedicalScribeJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MedicalScribeJob: S.optional(MedicalScribeJob) }),
-).annotate({
-  identifier: "StartMedicalScribeJobResponse",
-}) as any as S.Schema<StartMedicalScribeJobResponse>;
+export const StartMedicalScribeJobResponse =
+  GetMedicalScribeJobResponse as any as S.Schema<StartMedicalScribeJobResponse>;
 export type OutputKey = string;
 export interface StartMedicalTranscriptionJobRequest {
   MedicalTranscriptionJobName: string;
@@ -2307,11 +2290,8 @@ export const StartMedicalTranscriptionJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartMedicalTranscriptionJobResponse {
   MedicalTranscriptionJob?: MedicalTranscriptionJob;
 }
-export const StartMedicalTranscriptionJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MedicalTranscriptionJob: S.optional(MedicalTranscriptionJob) }),
-).annotate({
-  identifier: "StartMedicalTranscriptionJobResponse",
-}) as any as S.Schema<StartMedicalTranscriptionJobResponse>;
+export const StartMedicalTranscriptionJobResponse =
+  GetMedicalTranscriptionJobResponse as any as S.Schema<StartMedicalTranscriptionJobResponse>;
 export interface Subtitles {
   Formats?: SubtitleFormat[];
   OutputStartIndex?: number;
@@ -2379,11 +2359,8 @@ export const StartTranscriptionJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartTranscriptionJobResponse {
   TranscriptionJob?: TranscriptionJob;
 }
-export const StartTranscriptionJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TranscriptionJob: S.optional(TranscriptionJob) }),
-).annotate({
-  identifier: "StartTranscriptionJobResponse",
-}) as any as S.Schema<StartTranscriptionJobResponse>;
+export const StartTranscriptionJobResponse =
+  GetTranscriptionJobResponse as any as S.Schema<StartTranscriptionJobResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
@@ -2394,11 +2371,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteCallAnalyticsJobResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = StringTargetList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -2412,9 +2388,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteCallAnalyticsJobResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateCallAnalyticsCategoryRequest {
   CategoryName: string;
   Rules: Rule[];
@@ -2441,11 +2416,8 @@ export const UpdateCallAnalyticsCategoryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateCallAnalyticsCategoryResponse {
   CategoryProperties?: CategoryProperties;
 }
-export const UpdateCallAnalyticsCategoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CategoryProperties: S.optional(CategoryProperties) }),
-).annotate({
-  identifier: "UpdateCallAnalyticsCategoryResponse",
-}) as any as S.Schema<UpdateCallAnalyticsCategoryResponse>;
+export const UpdateCallAnalyticsCategoryResponse =
+  CreateCallAnalyticsCategoryResponse as any as S.Schema<UpdateCallAnalyticsCategoryResponse>;
 export interface UpdateLanguageModelRequest {
   ModelName: string;
   DataAccessRoleArn?: string;
@@ -2555,14 +2527,7 @@ export interface UpdateVocabularyResponse {
   LastModifiedTime?: Date;
   VocabularyState?: VocabularyState;
 }
-export const UpdateVocabularyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    VocabularyName: S.optional(S.String),
-    LanguageCode: S.optional(LanguageCode),
-    LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    VocabularyState: S.optional(VocabularyState),
-  }),
-).annotate({ identifier: "UpdateVocabularyResponse" }) as any as S.Schema<UpdateVocabularyResponse>;
+export const UpdateVocabularyResponse = VocabularyInfo as any as S.Schema<UpdateVocabularyResponse>;
 export interface UpdateVocabularyFilterRequest {
   VocabularyFilterName: string;
   Words?: string[];
@@ -2595,15 +2560,8 @@ export interface UpdateVocabularyFilterResponse {
   LanguageCode?: LanguageCode;
   LastModifiedTime?: Date;
 }
-export const UpdateVocabularyFilterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    VocabularyFilterName: S.optional(S.String),
-    LanguageCode: S.optional(LanguageCode),
-    LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "UpdateVocabularyFilterResponse",
-}) as any as S.Schema<UpdateVocabularyFilterResponse>;
+export const UpdateVocabularyFilterResponse =
+  CreateVocabularyFilterResponse as any as S.Schema<UpdateVocabularyFilterResponse>;
 export type CreateCallAnalyticsCategoryError =
   | BadRequestException
   | ConflictException

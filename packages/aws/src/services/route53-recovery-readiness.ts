@@ -446,9 +446,8 @@ export const DeleteReadinessCheckRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteReadinessCheckRequest",
 }) as any as S.Schema<DeleteReadinessCheckRequest>;
 export interface DeleteReadinessCheckResponse {}
-export const DeleteReadinessCheckResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteReadinessCheckResponse",
-}) as any as S.Schema<DeleteReadinessCheckResponse>;
+export const DeleteReadinessCheckResponse =
+  DeleteCellResponse as any as S.Schema<DeleteReadinessCheckResponse>;
 export interface DeleteRecoveryGroupRequest {
   RecoveryGroupName: string;
 }
@@ -467,9 +466,8 @@ export const DeleteRecoveryGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRecoveryGroupRequest",
 }) as any as S.Schema<DeleteRecoveryGroupRequest>;
 export interface DeleteRecoveryGroupResponse {}
-export const DeleteRecoveryGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRecoveryGroupResponse",
-}) as any as S.Schema<DeleteRecoveryGroupResponse>;
+export const DeleteRecoveryGroupResponse =
+  DeleteCellResponse as any as S.Schema<DeleteRecoveryGroupResponse>;
 export interface DeleteResourceSetRequest {
   ResourceSetName: string;
 }
@@ -486,9 +484,8 @@ export const DeleteResourceSetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteResourceSetRequest" }) as any as S.Schema<DeleteResourceSetRequest>;
 export interface DeleteResourceSetResponse {}
-export const DeleteResourceSetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteResourceSetResponse",
-}) as any as S.Schema<DeleteResourceSetResponse>;
+export const DeleteResourceSetResponse =
+  DeleteCellResponse as any as S.Schema<DeleteResourceSetResponse>;
 export type MaxResults = number;
 export interface GetArchitectureRecommendationsRequest {
   MaxResults?: number;
@@ -562,23 +559,7 @@ export interface GetCellResponse {
   ParentReadinessScopes?: string[];
   Tags?: { [key: string]: string | undefined };
 }
-export const GetCellResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CellArn: S.optional(S.String),
-    CellName: S.optional(S.String),
-    Cells: S.optional(__listOf__string),
-    ParentReadinessScopes: S.optional(__listOf__string),
-    Tags: S.optional(Tags),
-  }).pipe(
-    S.encodeKeys({
-      CellArn: "cellArn",
-      CellName: "cellName",
-      Cells: "cells",
-      ParentReadinessScopes: "parentReadinessScopes",
-      Tags: "tags",
-    }),
-  ),
-).annotate({ identifier: "GetCellResponse" }) as any as S.Schema<GetCellResponse>;
+export const GetCellResponse = CreateCellResponse as any as S.Schema<GetCellResponse>;
 export interface GetCellReadinessSummaryRequest {
   CellName: string;
   MaxResults?: number;
@@ -657,23 +638,8 @@ export interface GetReadinessCheckResponse {
   ResourceSet?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const GetReadinessCheckResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ReadinessCheckArn: S.optional(S.String),
-    ReadinessCheckName: S.optional(S.String),
-    ResourceSet: S.optional(S.String),
-    Tags: S.optional(Tags),
-  }).pipe(
-    S.encodeKeys({
-      ReadinessCheckArn: "readinessCheckArn",
-      ReadinessCheckName: "readinessCheckName",
-      ResourceSet: "resourceSet",
-      Tags: "tags",
-    }),
-  ),
-).annotate({
-  identifier: "GetReadinessCheckResponse",
-}) as any as S.Schema<GetReadinessCheckResponse>;
+export const GetReadinessCheckResponse =
+  CreateReadinessCheckResponse as any as S.Schema<GetReadinessCheckResponse>;
 export interface GetReadinessCheckResourceStatusRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -891,21 +857,8 @@ export interface GetRecoveryGroupReadinessSummaryResponse {
   Readiness?: Readiness;
   ReadinessChecks?: ReadinessCheckSummary[];
 }
-export const GetRecoveryGroupReadinessSummaryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextToken: S.optional(S.String),
-    Readiness: S.optional(Readiness),
-    ReadinessChecks: S.optional(__listOfReadinessCheckSummary),
-  }).pipe(
-    S.encodeKeys({
-      NextToken: "nextToken",
-      Readiness: "readiness",
-      ReadinessChecks: "readinessChecks",
-    }),
-  ),
-).annotate({
-  identifier: "GetRecoveryGroupReadinessSummaryResponse",
-}) as any as S.Schema<GetRecoveryGroupReadinessSummaryResponse>;
+export const GetRecoveryGroupReadinessSummaryResponse =
+  GetCellReadinessSummaryResponse as any as S.Schema<GetRecoveryGroupReadinessSummaryResponse>;
 export interface GetResourceSetRequest {
   ResourceSetName: string;
 }
@@ -962,23 +915,7 @@ export interface CellOutput {
   ParentReadinessScopes?: string[];
   Tags?: { [key: string]: string | undefined };
 }
-export const CellOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CellArn: S.optional(S.String),
-    CellName: S.optional(S.String),
-    Cells: S.optional(__listOf__string),
-    ParentReadinessScopes: S.optional(__listOf__string),
-    Tags: S.optional(Tags),
-  }).pipe(
-    S.encodeKeys({
-      CellArn: "cellArn",
-      CellName: "cellName",
-      Cells: "cells",
-      ParentReadinessScopes: "parentReadinessScopes",
-      Tags: "tags",
-    }),
-  ),
-).annotate({ identifier: "CellOutput" }) as any as S.Schema<CellOutput>;
+export const CellOutput = CreateCellResponse as any as S.Schema<CellOutput>;
 export type __listOfCellOutput = CellOutput[];
 export const __listOfCellOutput = /*@__PURE__*/ S.Array(CellOutput);
 export interface ListCellsResponse {
@@ -1017,7 +954,8 @@ export const ListCrossAccountAuthorizationsRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "ListCrossAccountAuthorizationsRequest",
 }) as any as S.Schema<ListCrossAccountAuthorizationsRequest>;
 export type __listOfCrossAccountAuthorization = string[];
-export const __listOfCrossAccountAuthorization = /*@__PURE__*/ S.Array(S.String);
+export const __listOfCrossAccountAuthorization =
+  __listOf__string as any as S.Schema<__listOfCrossAccountAuthorization>;
 export interface ListCrossAccountAuthorizationsResponse {
   CrossAccountAuthorizations?: string[];
   NextToken?: string;
@@ -1103,21 +1041,7 @@ export interface RecoveryGroupOutput {
   RecoveryGroupName?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const RecoveryGroupOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Cells: S.optional(__listOf__string),
-    RecoveryGroupArn: S.optional(S.String),
-    RecoveryGroupName: S.optional(S.String),
-    Tags: S.optional(Tags),
-  }).pipe(
-    S.encodeKeys({
-      Cells: "cells",
-      RecoveryGroupArn: "recoveryGroupArn",
-      RecoveryGroupName: "recoveryGroupName",
-      Tags: "tags",
-    }),
-  ),
-).annotate({ identifier: "RecoveryGroupOutput" }) as any as S.Schema<RecoveryGroupOutput>;
+export const RecoveryGroupOutput = GetRecoveryGroupResponse as any as S.Schema<RecoveryGroupOutput>;
 export type __listOfRecoveryGroupOutput = RecoveryGroupOutput[];
 export const __listOfRecoveryGroupOutput = /*@__PURE__*/ S.Array(RecoveryGroupOutput);
 export interface ListRecoveryGroupsResponse {
@@ -1153,23 +1077,7 @@ export interface ResourceSetOutput {
   Resources?: Resource[];
   Tags?: { [key: string]: string | undefined };
 }
-export const ResourceSetOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceSetArn: S.optional(S.String),
-    ResourceSetName: S.optional(S.String),
-    ResourceSetType: S.optional(S.String),
-    Resources: S.optional(__listOfResource),
-    Tags: S.optional(Tags),
-  }).pipe(
-    S.encodeKeys({
-      ResourceSetArn: "resourceSetArn",
-      ResourceSetName: "resourceSetName",
-      ResourceSetType: "resourceSetType",
-      Resources: "resources",
-      Tags: "tags",
-    }),
-  ),
-).annotate({ identifier: "ResourceSetOutput" }) as any as S.Schema<ResourceSetOutput>;
+export const ResourceSetOutput = GetResourceSetResponse as any as S.Schema<ResourceSetOutput>;
 export type __listOfResourceSetOutput = ResourceSetOutput[];
 export const __listOfResourceSetOutput = /*@__PURE__*/ S.Array(ResourceSetOutput);
 export interface ListResourceSetsResponse {
@@ -1263,9 +1171,7 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
     ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteCellResponse as any as S.Schema<TagResourceResponse>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys?: string[];
@@ -1279,9 +1185,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = DeleteCellResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateCellRequest {
   CellName: string;
   Cells?: string[];
@@ -1301,23 +1205,7 @@ export interface UpdateCellResponse {
   ParentReadinessScopes?: string[];
   Tags?: { [key: string]: string | undefined };
 }
-export const UpdateCellResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CellArn: S.optional(S.String),
-    CellName: S.optional(S.String),
-    Cells: S.optional(__listOf__string),
-    ParentReadinessScopes: S.optional(__listOf__string),
-    Tags: S.optional(Tags),
-  }).pipe(
-    S.encodeKeys({
-      CellArn: "cellArn",
-      CellName: "cellName",
-      Cells: "cells",
-      ParentReadinessScopes: "parentReadinessScopes",
-      Tags: "tags",
-    }),
-  ),
-).annotate({ identifier: "UpdateCellResponse" }) as any as S.Schema<UpdateCellResponse>;
+export const UpdateCellResponse = CreateCellResponse as any as S.Schema<UpdateCellResponse>;
 export interface UpdateReadinessCheckRequest {
   ReadinessCheckName: string;
   ResourceSetName?: string;
@@ -1347,23 +1235,8 @@ export interface UpdateReadinessCheckResponse {
   ResourceSet?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const UpdateReadinessCheckResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ReadinessCheckArn: S.optional(S.String),
-    ReadinessCheckName: S.optional(S.String),
-    ResourceSet: S.optional(S.String),
-    Tags: S.optional(Tags),
-  }).pipe(
-    S.encodeKeys({
-      ReadinessCheckArn: "readinessCheckArn",
-      ReadinessCheckName: "readinessCheckName",
-      ResourceSet: "resourceSet",
-      Tags: "tags",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateReadinessCheckResponse",
-}) as any as S.Schema<UpdateReadinessCheckResponse>;
+export const UpdateReadinessCheckResponse =
+  CreateReadinessCheckResponse as any as S.Schema<UpdateReadinessCheckResponse>;
 export interface UpdateRecoveryGroupRequest {
   Cells?: string[];
   RecoveryGroupName: string;
@@ -1393,23 +1266,8 @@ export interface UpdateRecoveryGroupResponse {
   RecoveryGroupName?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const UpdateRecoveryGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Cells: S.optional(__listOf__string),
-    RecoveryGroupArn: S.optional(S.String),
-    RecoveryGroupName: S.optional(S.String),
-    Tags: S.optional(Tags),
-  }).pipe(
-    S.encodeKeys({
-      Cells: "cells",
-      RecoveryGroupArn: "recoveryGroupArn",
-      RecoveryGroupName: "recoveryGroupName",
-      Tags: "tags",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateRecoveryGroupResponse",
-}) as any as S.Schema<UpdateRecoveryGroupResponse>;
+export const UpdateRecoveryGroupResponse =
+  CreateRecoveryGroupResponse as any as S.Schema<UpdateRecoveryGroupResponse>;
 export interface UpdateResourceSetRequest {
   ResourceSetName: string;
   ResourceSetType?: string;
@@ -1440,25 +1298,8 @@ export interface UpdateResourceSetResponse {
   Resources?: Resource[];
   Tags?: { [key: string]: string | undefined };
 }
-export const UpdateResourceSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceSetArn: S.optional(S.String),
-    ResourceSetName: S.optional(S.String),
-    ResourceSetType: S.optional(S.String),
-    Resources: S.optional(__listOfResource),
-    Tags: S.optional(Tags),
-  }).pipe(
-    S.encodeKeys({
-      ResourceSetArn: "resourceSetArn",
-      ResourceSetName: "resourceSetName",
-      ResourceSetType: "resourceSetType",
-      Resources: "resources",
-      Tags: "tags",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateResourceSetResponse",
-}) as any as S.Schema<UpdateResourceSetResponse>;
+export const UpdateResourceSetResponse =
+  CreateResourceSetResponse as any as S.Schema<UpdateResourceSetResponse>;
 export type CreateCellError =
   | AccessDeniedException
   | ConflictException

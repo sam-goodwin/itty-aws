@@ -682,11 +682,8 @@ export const DeleteDispatchNamespaceScriptRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteDispatchNamespaceScriptRequest>;
 
 export type DeleteDispatchNamespaceScriptResponse = unknown;
-export const DeleteDispatchNamespaceScriptResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteDispatchNamespaceScriptResponse",
-}) as any as S.Schema<DeleteDispatchNamespaceScriptResponse>;
+export const DeleteDispatchNamespaceScriptResponse =
+  DeleteDispatchNamespaceResponse as any as S.Schema<DeleteDispatchNamespaceScriptResponse>;
 
 export interface DeleteDispatchNamespaceScriptSecretRequest {
   /** Identifier. */
@@ -721,11 +718,8 @@ export const DeleteDispatchNamespaceScriptSecretRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteDispatchNamespaceScriptSecretRequest>;
 
 export type DeleteDispatchNamespaceScriptSecretResponse = unknown;
-export const DeleteDispatchNamespaceScriptSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteDispatchNamespaceScriptSecretResponse",
-}) as any as S.Schema<DeleteDispatchNamespaceScriptSecretResponse>;
+export const DeleteDispatchNamespaceScriptSecretResponse =
+  DeleteDispatchNamespaceResponse as any as S.Schema<DeleteDispatchNamespaceScriptSecretResponse>;
 
 export interface DeleteDispatchNamespaceScriptTagRequest {
   /** Identifier. */
@@ -816,20 +810,8 @@ export interface GetDispatchNamespaceResponse {
   /** Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted". */
   trustedWorkers?: boolean | null;
 }
-export const GetDispatchNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
-    namespaceName: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_name"))),
-    scriptCount: S.optional(S.NullOr(S.Number).pipe(T.Body("script_count"))),
-    trustedWorkers: S.optional(S.NullOr(S.Boolean).pipe(T.Body("trusted_workers"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetDispatchNamespaceResponse",
-}) as any as S.Schema<GetDispatchNamespaceResponse>;
+export const GetDispatchNamespaceResponse =
+  CreateDispatchNamespaceResponse as any as S.Schema<GetDispatchNamespaceResponse>;
 
 export interface GetDispatchNamespaceScriptRequest {
   /** Identifier. */
@@ -874,9 +856,7 @@ export const DispatchNamespacesScriptsGetResponseScriptCacheOptions = /*@__PURE_
 
 export type DispatchNamespacesScriptsGetResponseScriptCompatibilityFlagsList = Array<string>;
 export const DispatchNamespacesScriptsGetResponseScriptCompatibilityFlagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptCompatibilityFlagsList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptCompatibilityFlagsList>;
 
 export type DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerType = "worker";
 export const DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerType = S.String;
@@ -1130,9 +1110,7 @@ export const DispatchNamespacesScriptsGetResponseScriptHandlersList = /*@__PURE_
 
 export type DispatchNamespacesScriptsGetResponseScriptNamedHandlersItemHandlersList = Array<string>;
 export const DispatchNamespacesScriptsGetResponseScriptNamedHandlersItemHandlersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptNamedHandlersItemHandlersList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptNamedHandlersItemHandlersList>;
 
 export interface DispatchNamespacesScriptsGetResponseScriptNamedHandlersItem {
   /** The names of handlers exported as part of the named export. */
@@ -1174,9 +1152,7 @@ export const DispatchNamespacesScriptsGetResponseScriptObservabilityIssues =
 export type DispatchNamespacesScriptsGetResponseScriptObservabilityLogsDestinationsList =
   Array<string>;
 export const DispatchNamespacesScriptsGetResponseScriptObservabilityLogsDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptObservabilityLogsDestinationsList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptObservabilityLogsDestinationsList>;
 
 export interface DispatchNamespacesScriptsGetResponseScriptObservabilityLogs {
   /** Whether logs are enabled for the Worker. */
@@ -1208,9 +1184,7 @@ export const DispatchNamespacesScriptsGetResponseScriptObservabilityLogs = /*@__
 export type DispatchNamespacesScriptsGetResponseScriptObservabilityTracesDestinationsList =
   Array<string>;
 export const DispatchNamespacesScriptsGetResponseScriptObservabilityTracesDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptObservabilityTracesDestinationsList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptObservabilityTracesDestinationsList>;
 
 export type DispatchNamespacesScriptsGetResponseScriptObservabilityTracesPropagationPolicy =
   | "authenticated"
@@ -1588,9 +1562,8 @@ export type DispatchNamespacesScriptsGetResponseScriptPlacementStatus =
 export const DispatchNamespacesScriptsGetResponseScriptPlacementStatus = S.String;
 
 export type DispatchNamespacesScriptsGetResponseScriptTagsList = Array<string>;
-export const DispatchNamespacesScriptsGetResponseScriptTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptTagsList>;
+export const DispatchNamespacesScriptsGetResponseScriptTagsList =
+  DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptTagsList>;
 
 export interface DispatchNamespacesScriptsGetResponseScriptTailConsumersItem {
   /** Name of Worker that is to be the consumer. */
@@ -2441,16 +2414,12 @@ export const DispatchNamespacesScriptsBindingsGetResultItemSendEmailType = S.Str
 export type DispatchNamespacesScriptsBindingsGetResultItemSendEmailAllowedDestinationAddressesList =
   Array<string>;
 export const DispatchNamespacesScriptsBindingsGetResultItemSendEmailAllowedDestinationAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemSendEmailAllowedDestinationAddressesList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemSendEmailAllowedDestinationAddressesList>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemSendEmailAllowedSenderAddressesList =
   Array<string>;
 export const DispatchNamespacesScriptsBindingsGetResultItemSendEmailAllowedSenderAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemSendEmailAllowedSenderAddressesList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemSendEmailAllowedSenderAddressesList>;
 
 export interface DispatchNamespacesScriptsBindingsGetResultItemSendEmail {
   /** A JavaScript variable name for the binding. */
@@ -3369,9 +3338,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNam
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutboundParamsList =
   Array<DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsItem>;
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutboundParamsList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutboundParamsList>;
+  DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutboundParamsList>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutboundWorker =
   DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundWorker;
@@ -3794,16 +3761,12 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailTy
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailAllowedSenderAddressesList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailAllowedSenderAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailAllowedSenderAddressesList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailAllowedSenderAddressesList>;
 
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmail {
   /** A JavaScript variable name for the binding. */
@@ -4299,9 +4262,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseCacheOptions =
 
 export type DispatchNamespacesScriptsSettingsGetResponseCompatibilityFlagsList = Array<string>;
 export const DispatchNamespacesScriptsSettingsGetResponseCompatibilityFlagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseCompatibilityFlagsList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseCompatibilityFlagsList>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkerType = "worker";
 export const DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkerType = S.String;
@@ -4545,16 +4506,12 @@ export const DispatchNamespacesScriptsSettingsGetResponseExportsMap = /*@__PURE_
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationCreatedList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationCreatedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationCreatedList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationCreatedList>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationDeletedList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationDeletedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationDeletedList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationDeletedList>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItemScenario =
   | "code_class_not_in_exports"
@@ -4596,9 +4553,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationIn
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItemReferencingScriptsList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItemReferencingScriptsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItemReferencingScriptsList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItemReferencingScriptsList>;
 
 export interface DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItem {
   /** The class name the info entry is about. */
@@ -4639,9 +4594,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationIn
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRemovableEntriesList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRemovableEntriesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRemovableEntriesList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRemovableEntriesList>;
 
 export interface DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedItem {
   /** The original (source) class name. */
@@ -4724,9 +4677,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTr
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationUpdatedList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationUpdatedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationUpdatedList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationUpdatedList>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsItemScenario =
   | "code_class_not_in_exports"
@@ -4856,23 +4807,17 @@ export const DispatchNamespacesScriptsSettingsGetResponseLimits = /*@__PURE__*/ 
 export type DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationDeletedClassesList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationDeletedClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationDeletedClassesList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationDeletedClassesList>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationNewClassesList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationNewClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationNewClassesList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationNewClassesList>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList>;
 
 export interface DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem {
   from?: string | null;
@@ -4974,23 +4919,17 @@ export const DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMig
 export type DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem =
   DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem;
@@ -5000,9 +4939,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultip
 export type DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
   Array<DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem>;
 export const DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList>;
+  DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem =
   DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem;
@@ -5012,9 +4949,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultip
 export type DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
   Array<DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem>;
 export const DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList>;
+  DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList>;
 
 export interface DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItem {
   /** A list of classes to delete Durable Object namespaces from. */
@@ -5119,9 +5054,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseObservabilityIssues =
 export type DispatchNamespacesScriptsSettingsGetResponseObservabilityLogsDestinationsList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsGetResponseObservabilityLogsDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseObservabilityLogsDestinationsList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseObservabilityLogsDestinationsList>;
 
 export interface DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs {
   /** Whether logs are enabled for the Worker. */
@@ -5153,9 +5086,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs =
 export type DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesDestinationsList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesDestinationsList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesDestinationsList>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
@@ -5397,9 +5328,8 @@ export const DispatchNamespacesScriptsSettingsGetResponsePlacement = /*@__PURE__
 );
 
 export type DispatchNamespacesScriptsSettingsGetResponseTagsList = Array<string>;
-export const DispatchNamespacesScriptsSettingsGetResponseTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseTagsList>;
+export const DispatchNamespacesScriptsSettingsGetResponseTagsList =
+  DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseTagsList>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseTailConsumersItem =
   DispatchNamespacesScriptsGetResponseScriptTailConsumersItem;
@@ -5408,9 +5338,8 @@ export const DispatchNamespacesScriptsSettingsGetResponseTailConsumersItem =
 
 export type DispatchNamespacesScriptsSettingsGetResponseTailConsumersList =
   Array<DispatchNamespacesScriptsGetResponseScriptTailConsumersItem>;
-export const DispatchNamespacesScriptsSettingsGetResponseTailConsumersList = /*@__PURE__*/ S.Array(
-  DispatchNamespacesScriptsGetResponseScriptTailConsumersItem,
-) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseTailConsumersList>;
+export const DispatchNamespacesScriptsSettingsGetResponseTailConsumersList =
+  DispatchNamespacesScriptsGetResponseScriptTailConsumersList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseTailConsumersList>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseUsageModel =
   | "standard"
@@ -5728,9 +5657,8 @@ export const ListDispatchNamespaceScriptTagsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListDispatchNamespaceScriptTagsRequest>;
 
 export type DispatchNamespacesScriptsTagsListResultList = Array<string>;
-export const DispatchNamespacesScriptsTagsListResultList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DispatchNamespacesScriptsTagsListResultList>;
+export const DispatchNamespacesScriptsTagsListResultList =
+  DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsTagsListResultList>;
 
 export interface ListDispatchNamespaceScriptTagsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -5989,9 +5917,7 @@ export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDis
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespaceOutboundParamsList =
   Array<DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsItem>;
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespaceOutboundParamsList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespaceOutboundParamsList>;
+  DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespaceOutboundParamsList>;
 
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespaceOutboundWorker {
   /** Entrypoint to invoke on the outbound worker. */
@@ -6461,16 +6387,12 @@ export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSen
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSendEmailAllowedDestinationAddressesList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSendEmailAllowedDestinationAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSendEmailAllowedDestinationAddressesList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSendEmailAllowedDestinationAddressesList>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSendEmailAllowedSenderAddressesList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSendEmailAllowedSenderAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSendEmailAllowedSenderAddressesList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSendEmailAllowedSenderAddressesList>;
 
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSendEmail {
   /** A JavaScript variable name for the binding. */
@@ -7007,9 +6929,7 @@ export const DispatchNamespacesScriptsSettingsEditRequestSettingsCacheOptions =
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsCompatibilityFlagsList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsCompatibilityFlagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsCompatibilityFlagsList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsCompatibilityFlagsList>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkerType = "worker";
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkerType = S.String;
@@ -7258,16 +7178,12 @@ export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsMap =
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationCreatedList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationCreatedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationCreatedList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationCreatedList>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationDeletedList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationDeletedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationDeletedList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationDeletedList>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItemScenario =
   | "code_class_not_in_exports"
@@ -7309,9 +7225,7 @@ export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconcil
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItemReferencingScriptsList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItemReferencingScriptsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItemReferencingScriptsList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItemReferencingScriptsList>;
 
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItem {
   /** The class name the info entry is about. */
@@ -7355,9 +7269,7 @@ export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconcil
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationRemovableEntriesList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationRemovableEntriesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationRemovableEntriesList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationRemovableEntriesList>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationRenamedItem =
   DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedItem;
@@ -7367,9 +7279,7 @@ export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconcil
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationRenamedList =
   Array<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedItem>;
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationRenamedList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationRenamedList>;
+  DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationRenamedList>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferPendingItem =
   DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingItem;
@@ -7379,9 +7289,7 @@ export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconcil
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferPendingList =
   Array<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingItem>;
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferPendingList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferPendingList>;
+  DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferPendingList>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferredItemPhase =
   "committed";
@@ -7421,9 +7329,7 @@ export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconcil
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationUpdatedList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationUpdatedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationUpdatedList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationUpdatedList>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationWarningsItemScenario =
   | "code_class_not_in_exports"
@@ -7559,23 +7465,17 @@ export const DispatchNamespacesScriptsSettingsEditRequestSettingsLimits = /*@__P
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationDeletedClassesList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationDeletedClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationDeletedClassesList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationDeletedClassesList>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationNewClassesList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationNewClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationNewClassesList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationNewClassesList>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationNewSqliteClassesList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationNewSqliteClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationNewSqliteClassesList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationNewSqliteClassesList>;
 
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationRenamedClassesItem {
   from?: string;
@@ -7677,23 +7577,17 @@ export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingl
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem =
   DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationRenamedClassesItem;
@@ -7703,9 +7597,7 @@ export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorke
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
   Array<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationRenamedClassesItem>;
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationRenamedClassesItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList>;
+  DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationRenamedClassesList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem =
   DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationTransferredClassesItem;
@@ -7715,9 +7607,7 @@ export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorke
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
   Array<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationTransferredClassesItem>;
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationTransferredClassesItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList>;
+  DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationTransferredClassesList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList>;
 
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItem {
   /** A list of classes to delete Durable Object namespaces from. */
@@ -7829,9 +7719,7 @@ export const DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityIs
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityLogsDestinationsList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityLogsDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityLogsDestinationsList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityLogsDestinationsList>;
 
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityLogs {
   /** Whether logs are enabled for the Worker. */
@@ -7863,9 +7751,7 @@ export const DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityLo
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTracesDestinationsList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTracesDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTracesDestinationsList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTracesDestinationsList>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTracesPropagationPolicy =
   | "authenticated"
@@ -8094,9 +7980,8 @@ export const DispatchNamespacesScriptsSettingsEditRequestSettingsPlacement =
   );
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsTagsList = Array<string>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsTagsList>;
+export const DispatchNamespacesScriptsSettingsEditRequestSettingsTagsList =
+  DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsTagsList>;
 
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsTailConsumersItem {
   /** Name of Worker that is to be the consumer. */
@@ -8462,9 +8347,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNa
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutboundParamsList =
   Array<DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsItem>;
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutboundParamsList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutboundParamsList>;
+  DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutboundParamsList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutboundWorker =
   DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundWorker;
@@ -8891,16 +8774,12 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailT
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailAllowedDestinationAddressesList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailAllowedDestinationAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailAllowedDestinationAddressesList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailAllowedDestinationAddressesList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailAllowedSenderAddressesList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailAllowedSenderAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailAllowedSenderAddressesList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailAllowedSenderAddressesList>;
 
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmail {
   /** A JavaScript variable name for the binding. */
@@ -9398,9 +9277,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseCacheOptions =
 
 export type DispatchNamespacesScriptsSettingsEditResponseCompatibilityFlagsList = Array<string>;
 export const DispatchNamespacesScriptsSettingsEditResponseCompatibilityFlagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseCompatibilityFlagsList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseCompatibilityFlagsList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkerType = "worker";
 export const DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkerType = S.String;
@@ -9644,16 +9521,12 @@ export const DispatchNamespacesScriptsSettingsEditResponseExportsMap = /*@__PURE
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationCreatedList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationCreatedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationCreatedList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationCreatedList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationDeletedList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationDeletedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationDeletedList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationDeletedList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItemScenario =
   | "code_class_not_in_exports"
@@ -9695,9 +9568,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationI
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItemReferencingScriptsList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItemReferencingScriptsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItemReferencingScriptsList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItemReferencingScriptsList>;
 
 export interface DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItem {
   /** The class name the info entry is about. */
@@ -9738,9 +9609,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationI
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationRemovableEntriesList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationRemovableEntriesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationRemovableEntriesList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationRemovableEntriesList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationRenamedItem =
   DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedItem;
@@ -9750,9 +9619,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationR
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationRenamedList =
   Array<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedItem>;
 export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationRenamedList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationRenamedList>;
+  DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationRenamedList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferPendingItem =
   DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingItem;
@@ -9762,9 +9629,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationT
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferPendingList =
   Array<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingItem>;
 export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferPendingList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferPendingList>;
+  DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferPendingList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferredItemPhase =
   "committed";
@@ -9800,9 +9665,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationT
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationUpdatedList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationUpdatedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationUpdatedList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationUpdatedList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsItemScenario =
   | "code_class_not_in_exports"
@@ -9923,23 +9786,17 @@ export const DispatchNamespacesScriptsSettingsEditResponseLimits =
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationDeletedClassesList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationDeletedClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationDeletedClassesList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationDeletedClassesList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationNewClassesList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationNewClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationNewClassesList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationNewClassesList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationNewSqliteClassesList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationNewSqliteClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationNewSqliteClassesList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationNewSqliteClassesList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesItem =
   DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem;
@@ -9949,9 +9806,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMi
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesList =
   Array<DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem>;
 export const DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesList>;
+  DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesItem =
   DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem;
@@ -9961,9 +9816,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMi
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesList =
   Array<DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem>;
 export const DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesList>;
+  DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesList>;
 
 export interface DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigration {
   /** A list of classes to delete Durable Object namespaces from. */
@@ -9982,60 +9835,22 @@ export interface DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleSt
   transferredClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesList | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deletedClasses: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationDeletedClassesList,
-        ).pipe(T.Body("deleted_classes")),
-      ),
-      newClasses: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationNewClassesList,
-        ).pipe(T.Body("new_classes")),
-      ),
-      newSqliteClasses: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationNewSqliteClassesList,
-        ).pipe(T.Body("new_sqlite_classes")),
-      ),
-      newTag: S.optional(S.NullOr(S.String).pipe(T.Body("new_tag"))),
-      oldTag: S.optional(S.NullOr(S.String).pipe(T.Body("old_tag"))),
-      renamedClasses: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesList,
-        ).pipe(T.Body("renamed_classes")),
-      ),
-      transferredClasses: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesList,
-        ).pipe(T.Body("transferred_classes")),
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigration",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigration>;
+  DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigration as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigration>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem =
   DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem;
@@ -10045,9 +9860,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMulti
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
   Array<DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem>;
 export const DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList>;
+  DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem =
   DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem;
@@ -10057,9 +9870,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMulti
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
   Array<DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem>;
 export const DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList>;
+  DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList>;
 
 export interface DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItem {
   /** A list of classes to delete Durable Object namespaces from. */
@@ -10074,45 +9885,12 @@ export interface DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersM
   transferredClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deletedClasses: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList,
-        ).pipe(T.Body("deleted_classes")),
-      ),
-      newClasses: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList,
-        ).pipe(T.Body("new_classes")),
-      ),
-      newSqliteClasses: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList,
-        ).pipe(T.Body("new_sqlite_classes")),
-      ),
-      renamedClasses: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList,
-        ).pipe(T.Body("renamed_classes")),
-      ),
-      transferredClasses: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList,
-        ).pipe(T.Body("transferred_classes")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItem",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItem>;
+  DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItem as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItem>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsList =
   Array<DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItem>;
 export const DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsList>;
+  DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsList>;
 
 export interface DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrations {
   /** Tag to set as the latest migration tag. */
@@ -10123,20 +9901,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersM
   steps?: DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsList | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrations =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      newTag: S.optional(S.NullOr(S.String).pipe(T.Body("new_tag"))),
-      oldTag: S.optional(S.NullOr(S.String).pipe(T.Body("old_tag"))),
-      steps: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsList,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrations",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrations>;
+  DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrations as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrations>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseMigrations =
   | DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigration
@@ -10164,9 +9929,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseObservabilityIssues =
 export type DispatchNamespacesScriptsSettingsEditResponseObservabilityLogsDestinationsList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditResponseObservabilityLogsDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseObservabilityLogsDestinationsList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseObservabilityLogsDestinationsList>;
 
 export interface DispatchNamespacesScriptsSettingsEditResponseObservabilityLogs {
   /** Whether logs are enabled for the Worker. */
@@ -10181,26 +9944,12 @@ export interface DispatchNamespacesScriptsSettingsEditResponseObservabilityLogs 
   persist?: boolean | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseObservabilityLogs =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.Boolean,
-      invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
-      destinations: S.optional(
-        S.NullOr(DispatchNamespacesScriptsSettingsEditResponseObservabilityLogsDestinationsList),
-      ),
-      headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-      persist: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseObservabilityLogs",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseObservabilityLogs>;
+  DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseObservabilityLogs>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesDestinationsList =
   Array<string>;
 export const DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesDestinationsList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesDestinationsList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
@@ -10428,9 +10177,8 @@ export const DispatchNamespacesScriptsSettingsEditResponsePlacement = /*@__PURE_
 );
 
 export type DispatchNamespacesScriptsSettingsEditResponseTagsList = Array<string>;
-export const DispatchNamespacesScriptsSettingsEditResponseTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseTagsList>;
+export const DispatchNamespacesScriptsSettingsEditResponseTagsList =
+  DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseTagsList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseTailConsumersItem =
   DispatchNamespacesScriptsGetResponseScriptTailConsumersItem;
@@ -10439,9 +10187,8 @@ export const DispatchNamespacesScriptsSettingsEditResponseTailConsumersItem =
 
 export type DispatchNamespacesScriptsSettingsEditResponseTailConsumersList =
   Array<DispatchNamespacesScriptsGetResponseScriptTailConsumersItem>;
-export const DispatchNamespacesScriptsSettingsEditResponseTailConsumersList = /*@__PURE__*/ S.Array(
-  DispatchNamespacesScriptsGetResponseScriptTailConsumersItem,
-) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseTailConsumersList>;
+export const DispatchNamespacesScriptsSettingsEditResponseTailConsumersList =
+  DispatchNamespacesScriptsGetResponseScriptTailConsumersList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseTailConsumersList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseUsageModel =
   | "standard"
@@ -10552,9 +10299,8 @@ export type PutDispatchNamespaceScriptAssetsConfigNotFoundHandling =
 export const PutDispatchNamespaceScriptAssetsConfigNotFoundHandling = S.String;
 
 export type PutDispatchNamespaceScriptMetadataStringList = Array<string>;
-export const PutDispatchNamespaceScriptMetadataStringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutDispatchNamespaceScriptMetadataStringList>;
+export const PutDispatchNamespaceScriptMetadataStringList =
+  DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<PutDispatchNamespaceScriptMetadataStringList>;
 
 export type PutDispatchNamespaceScriptAssetsConfigRunWorkerFirst =
   | PutDispatchNamespaceScriptMetadataStringList
@@ -10749,20 +10495,12 @@ export interface PutDispatchNamespaceScriptBindingDispatchNamespaceOutboundParam
   name: string;
 }
 export const PutDispatchNamespaceScriptBindingDispatchNamespaceOutboundParam =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "PutDispatchNamespaceScriptBindingDispatchNamespaceOutboundParam",
-  }) as any as S.Schema<PutDispatchNamespaceScriptBindingDispatchNamespaceOutboundParam>;
+  DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsItem as any as S.Schema<PutDispatchNamespaceScriptBindingDispatchNamespaceOutboundParam>;
 
 export type PutDispatchNamespaceScriptBindingDispatchNamespaceOutboundParamsList =
   Array<PutDispatchNamespaceScriptBindingDispatchNamespaceOutboundParam>;
 export const PutDispatchNamespaceScriptBindingDispatchNamespaceOutboundParamsList =
-  /*@__PURE__*/ S.Array(
-    PutDispatchNamespaceScriptBindingDispatchNamespaceOutboundParam,
-  ) as any as S.Schema<PutDispatchNamespaceScriptBindingDispatchNamespaceOutboundParamsList>;
+  DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsList as any as S.Schema<PutDispatchNamespaceScriptBindingDispatchNamespaceOutboundParamsList>;
 
 export interface PutDispatchNamespaceScriptBindingDispatchNamespaceOutboundWorker {
   entrypoint?: string;
@@ -11581,10 +11319,8 @@ export const PutDispatchNamespaceScriptMetadataBindingsList = /*@__PURE__*/ S.Ar
 ) as any as S.Schema<PutDispatchNamespaceScriptMetadataBindingsList>;
 
 export type ContainerImageMap = { [key: string]: string | undefined };
-export const ContainerImageMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ContainerImageMap>;
+export const ContainerImageMap =
+  DispatchNamespacesScriptsTagsDeleteResultMap as any as S.Schema<ContainerImageMap>;
 
 export interface PutDispatchNamespaceScriptContainer {
   className: string;
@@ -12014,9 +11750,8 @@ export const PutDispatchNamespaceScriptMetadataCache = /*@__PURE__*/ S.suspend((
 
 export type PutDispatchNamespaceScriptMetadataStreamingTailConsumersList =
   Array<PutDispatchNamespaceScriptTailConsumer>;
-export const PutDispatchNamespaceScriptMetadataStreamingTailConsumersList = /*@__PURE__*/ S.Array(
-  PutDispatchNamespaceScriptTailConsumer,
-) as any as S.Schema<PutDispatchNamespaceScriptMetadataStreamingTailConsumersList>;
+export const PutDispatchNamespaceScriptMetadataStreamingTailConsumersList =
+  PutDispatchNamespaceScriptMetadataTailConsumersList as any as S.Schema<PutDispatchNamespaceScriptMetadataStreamingTailConsumersList>;
 
 export interface PutDispatchNamespaceScriptMetadata {
   annotations?: PutDispatchNamespaceScriptMetadataAnnotations;
@@ -12225,9 +11960,8 @@ export const DispatchNamespacesScriptsUpdateResponseCacheOptions =
   DispatchNamespacesScriptsGetResponseScriptCacheOptions;
 
 export type DispatchNamespacesScriptsUpdateResponseCompatibilityFlagsList = Array<string>;
-export const DispatchNamespacesScriptsUpdateResponseCompatibilityFlagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseCompatibilityFlagsList>;
+export const DispatchNamespacesScriptsUpdateResponseCompatibilityFlagsList =
+  DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsUpdateResponseCompatibilityFlagsList>;
 
 export type DispatchNamespacesScriptsUpdateResponseExportsValueWorkerType = "worker";
 export const DispatchNamespacesScriptsUpdateResponseExportsValueWorkerType = S.String;
@@ -12464,15 +12198,12 @@ export const DispatchNamespacesScriptsUpdateResponseExportsMap = /*@__PURE__*/ S
 ) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseExportsMap>;
 
 export type DispatchNamespacesScriptsUpdateResponseHandlersList = Array<string>;
-export const DispatchNamespacesScriptsUpdateResponseHandlersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseHandlersList>;
+export const DispatchNamespacesScriptsUpdateResponseHandlersList =
+  DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsUpdateResponseHandlersList>;
 
 export type DispatchNamespacesScriptsUpdateResponseNamedHandlersItemHandlersList = Array<string>;
 export const DispatchNamespacesScriptsUpdateResponseNamedHandlersItemHandlersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseNamedHandlersItemHandlersList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsUpdateResponseNamedHandlersItemHandlersList>;
 
 export interface DispatchNamespacesScriptsUpdateResponseNamedHandlersItem {
   /** The names of handlers exported as part of the named export. */
@@ -12480,23 +12211,13 @@ export interface DispatchNamespacesScriptsUpdateResponseNamedHandlersItem {
   /** The name of the export. */
   name?: string | null;
 }
-export const DispatchNamespacesScriptsUpdateResponseNamedHandlersItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      handlers: S.optional(
-        S.NullOr(DispatchNamespacesScriptsUpdateResponseNamedHandlersItemHandlersList),
-      ),
-      name: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsUpdateResponseNamedHandlersItem",
-}) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseNamedHandlersItem>;
+export const DispatchNamespacesScriptsUpdateResponseNamedHandlersItem =
+  DispatchNamespacesScriptsGetResponseScriptNamedHandlersItem as any as S.Schema<DispatchNamespacesScriptsUpdateResponseNamedHandlersItem>;
 
 export type DispatchNamespacesScriptsUpdateResponseNamedHandlersList =
   Array<DispatchNamespacesScriptsUpdateResponseNamedHandlersItem>;
-export const DispatchNamespacesScriptsUpdateResponseNamedHandlersList = /*@__PURE__*/ S.Array(
-  DispatchNamespacesScriptsUpdateResponseNamedHandlersItem,
-) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseNamedHandlersList>;
+export const DispatchNamespacesScriptsUpdateResponseNamedHandlersList =
+  DispatchNamespacesScriptsGetResponseScriptNamedHandlersList as any as S.Schema<DispatchNamespacesScriptsUpdateResponseNamedHandlersList>;
 
 export type DispatchNamespacesScriptsUpdateResponseObservabilityIssues =
   DispatchNamespacesScriptsGetResponseScriptObservabilityIssues;
@@ -12506,9 +12227,7 @@ export const DispatchNamespacesScriptsUpdateResponseObservabilityIssues =
 export type DispatchNamespacesScriptsUpdateResponseObservabilityLogsDestinationsList =
   Array<string>;
 export const DispatchNamespacesScriptsUpdateResponseObservabilityLogsDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseObservabilityLogsDestinationsList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsUpdateResponseObservabilityLogsDestinationsList>;
 
 export interface DispatchNamespacesScriptsUpdateResponseObservabilityLogs {
   /** Whether logs are enabled for the Worker. */
@@ -12522,27 +12241,13 @@ export interface DispatchNamespacesScriptsUpdateResponseObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
-export const DispatchNamespacesScriptsUpdateResponseObservabilityLogs = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enabled: S.Boolean,
-      invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
-      destinations: S.optional(
-        S.NullOr(DispatchNamespacesScriptsUpdateResponseObservabilityLogsDestinationsList),
-      ),
-      headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-      persist: S.optional(S.NullOr(S.Boolean)),
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsUpdateResponseObservabilityLogs",
-}) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseObservabilityLogs>;
+export const DispatchNamespacesScriptsUpdateResponseObservabilityLogs =
+  DispatchNamespacesScriptsGetResponseScriptObservabilityLogs as any as S.Schema<DispatchNamespacesScriptsUpdateResponseObservabilityLogs>;
 
 export type DispatchNamespacesScriptsUpdateResponseObservabilityTracesDestinationsList =
   Array<string>;
 export const DispatchNamespacesScriptsUpdateResponseObservabilityTracesDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseObservabilityTracesDestinationsList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsUpdateResponseObservabilityTracesDestinationsList>;
 
 export type DispatchNamespacesScriptsUpdateResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
@@ -12887,9 +12592,8 @@ export type DispatchNamespacesScriptsUpdateResponsePlacementStatus =
 export const DispatchNamespacesScriptsUpdateResponsePlacementStatus = S.String;
 
 export type DispatchNamespacesScriptsUpdateResponseTagsList = Array<string>;
-export const DispatchNamespacesScriptsUpdateResponseTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseTagsList>;
+export const DispatchNamespacesScriptsUpdateResponseTagsList =
+  DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsUpdateResponseTagsList>;
 
 export type DispatchNamespacesScriptsUpdateResponseTailConsumersItem =
   DispatchNamespacesScriptsGetResponseScriptTailConsumersItem;
@@ -12898,9 +12602,8 @@ export const DispatchNamespacesScriptsUpdateResponseTailConsumersItem =
 
 export type DispatchNamespacesScriptsUpdateResponseTailConsumersList =
   Array<DispatchNamespacesScriptsGetResponseScriptTailConsumersItem>;
-export const DispatchNamespacesScriptsUpdateResponseTailConsumersList = /*@__PURE__*/ S.Array(
-  DispatchNamespacesScriptsGetResponseScriptTailConsumersItem,
-) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseTailConsumersList>;
+export const DispatchNamespacesScriptsUpdateResponseTailConsumersList =
+  DispatchNamespacesScriptsGetResponseScriptTailConsumersList as any as S.Schema<DispatchNamespacesScriptsUpdateResponseTailConsumersList>;
 
 export type DispatchNamespacesScriptsUpdateResponseUsageModel = "standard" | "bundled" | "unbound";
 export const DispatchNamespacesScriptsUpdateResponseUsageModel = S.String;
@@ -13027,9 +12730,8 @@ export const DispatchNamespacesScriptsContentUpdateRequestMetadata = /*@__PURE__
 }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateRequestMetadata>;
 
 export type DispatchNamespacesScriptsContentUpdateRequestFilesList = Array<string>;
-export const DispatchNamespacesScriptsContentUpdateRequestFilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DispatchNamespacesScriptsContentUpdateRequestFilesList>;
+export const DispatchNamespacesScriptsContentUpdateRequestFilesList =
+  DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsContentUpdateRequestFilesList>;
 
 export interface PutDispatchNamespaceScriptContentRequest {
   /** Identifier. */
@@ -13074,9 +12776,7 @@ export const DispatchNamespacesScriptsContentUpdateResponseCacheOptions =
 
 export type DispatchNamespacesScriptsContentUpdateResponseCompatibilityFlagsList = Array<string>;
 export const DispatchNamespacesScriptsContentUpdateResponseCompatibilityFlagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseCompatibilityFlagsList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseCompatibilityFlagsList>;
 
 export type DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkerType = "worker";
 export const DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkerType = S.String;
@@ -13318,16 +13018,13 @@ export const DispatchNamespacesScriptsContentUpdateResponseExportsMap = /*@__PUR
 ) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseExportsMap>;
 
 export type DispatchNamespacesScriptsContentUpdateResponseHandlersList = Array<string>;
-export const DispatchNamespacesScriptsContentUpdateResponseHandlersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseHandlersList>;
+export const DispatchNamespacesScriptsContentUpdateResponseHandlersList =
+  DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseHandlersList>;
 
 export type DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItemHandlersList =
   Array<string>;
 export const DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItemHandlersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItemHandlersList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItemHandlersList>;
 
 export interface DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItem {
   /** The names of handlers exported as part of the named export. */
@@ -13362,9 +13059,7 @@ export const DispatchNamespacesScriptsContentUpdateResponseObservabilityIssues =
 export type DispatchNamespacesScriptsContentUpdateResponseObservabilityLogsDestinationsList =
   Array<string>;
 export const DispatchNamespacesScriptsContentUpdateResponseObservabilityLogsDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseObservabilityLogsDestinationsList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseObservabilityLogsDestinationsList>;
 
 export interface DispatchNamespacesScriptsContentUpdateResponseObservabilityLogs {
   /** Whether logs are enabled for the Worker. */
@@ -13379,26 +13074,12 @@ export interface DispatchNamespacesScriptsContentUpdateResponseObservabilityLogs
   persist?: boolean | null;
 }
 export const DispatchNamespacesScriptsContentUpdateResponseObservabilityLogs =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.Boolean,
-      invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
-      destinations: S.optional(
-        S.NullOr(DispatchNamespacesScriptsContentUpdateResponseObservabilityLogsDestinationsList),
-      ),
-      headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-      persist: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsContentUpdateResponseObservabilityLogs",
-  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseObservabilityLogs>;
+  DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseObservabilityLogs>;
 
 export type DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesDestinationsList =
   Array<string>;
 export const DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesDestinationsList>;
+  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesDestinationsList>;
 
 export type DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
@@ -13771,9 +13452,8 @@ export type DispatchNamespacesScriptsContentUpdateResponsePlacementStatus =
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementStatus = S.String;
 
 export type DispatchNamespacesScriptsContentUpdateResponseTagsList = Array<string>;
-export const DispatchNamespacesScriptsContentUpdateResponseTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseTagsList>;
+export const DispatchNamespacesScriptsContentUpdateResponseTagsList =
+  DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseTagsList>;
 
 export type DispatchNamespacesScriptsContentUpdateResponseTailConsumersItem =
   DispatchNamespacesScriptsGetResponseScriptTailConsumersItem;
@@ -14079,9 +13759,8 @@ export const PutDispatchNamespaceScriptSecretResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PutDispatchNamespaceScriptSecretResponse>;
 
 export type DispatchNamespacesScriptsTagsUpdateRequestBodyList = Array<string>;
-export const DispatchNamespacesScriptsTagsUpdateRequestBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DispatchNamespacesScriptsTagsUpdateRequestBodyList>;
+export const DispatchNamespacesScriptsTagsUpdateRequestBodyList =
+  DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsTagsUpdateRequestBodyList>;
 
 export interface PutDispatchNamespaceScriptTagRequest {
   /** Identifier. */
@@ -14113,9 +13792,8 @@ export const PutDispatchNamespaceScriptTagRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PutDispatchNamespaceScriptTagRequest>;
 
 export type DispatchNamespacesScriptsTagsUpdateResultList = Array<string>;
-export const DispatchNamespacesScriptsTagsUpdateResultList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DispatchNamespacesScriptsTagsUpdateResultList>;
+export const DispatchNamespacesScriptsTagsUpdateResultList =
+  DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsTagsUpdateResultList>;
 
 export interface PutDispatchNamespaceScriptTagResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -14123,14 +13801,8 @@ export interface PutDispatchNamespaceScriptTagResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const PutDispatchNamespaceScriptTagResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: DispatchNamespacesScriptsTagsUpdateResultList.pipe(T.EnvelopePayload()),
-    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptTagResponse",
-}) as any as S.Schema<PutDispatchNamespaceScriptTagResponse>;
+export const PutDispatchNamespaceScriptTagResponse =
+  ListDispatchNamespaceScriptTagsResponse as any as S.Schema<PutDispatchNamespaceScriptTagResponse>;
 
 export type BulkUpdateDispatchNamespaceScriptSecretsError = CloudflareOpError;
 /** Create, update, or delete multiple secrets on a Workers for Platforms script in a single operation using JSON Merge Patch (RFC 7396). This operation creates a single version with all changes included. Prefer this API instead of changing many secrets individually. Usage: - To create or update a secret, set its value to a secret object. - To delete a secret, set its value to `null`. - Secrets not included in the request are left unchanged. */

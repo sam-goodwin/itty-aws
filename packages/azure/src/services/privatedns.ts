@@ -77,9 +77,8 @@ export const DeleteRecordSetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRecordSetRequest" }) as any as S.Schema<DeleteRecordSetRequest>;
 
 export interface DeleteRecordSetResponse {}
-export const DeleteRecordSetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRecordSetResponse",
-}) as any as S.Schema<DeleteRecordSetResponse>;
+export const DeleteRecordSetResponse =
+  DeletePrivateZoneResponse as any as S.Schema<DeleteRecordSetResponse>;
 
 export interface DeleteVirtualNetworkLinkRequest {
   /** The ID of the target subscription. */
@@ -295,10 +294,8 @@ export const GetRecordSetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The metadata attached to the record set. */
 export type RecordSetPropertiesMetadataMap = { [key: string]: string | undefined };
-export const RecordSetPropertiesMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RecordSetPropertiesMetadataMap>;
+export const RecordSetPropertiesMetadataMap =
+  GetPrivateZoneResponseTagsMap as any as S.Schema<RecordSetPropertiesMetadataMap>;
 
 /** An A record. */
 export interface ARecord {
@@ -603,10 +600,8 @@ export const VirtualNetworkLinkProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetVirtualNetworkLinkResponseTagsMap = { [key: string]: string | undefined };
-export const GetVirtualNetworkLinkResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetVirtualNetworkLinkResponseTagsMap>;
+export const GetVirtualNetworkLinkResponseTagsMap =
+  GetPrivateZoneResponseTagsMap as any as S.Schema<GetVirtualNetworkLinkResponseTagsMap>;
 
 export interface GetVirtualNetworkLinkResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -668,10 +663,8 @@ export const ListPrivateZoneByResourceGroupRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type PrivateZoneTagsMap = { [key: string]: string | undefined };
-export const PrivateZoneTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PrivateZoneTagsMap>;
+export const PrivateZoneTagsMap =
+  GetPrivateZoneResponseTagsMap as any as S.Schema<PrivateZoneTagsMap>;
 
 /** Describes a Private DNS zone. */
 export interface PrivateZone {
@@ -692,18 +685,7 @@ export interface PrivateZone {
   /** The ETag of the zone. */
   etag?: string;
 }
-export const PrivateZone = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateZoneProperties),
-    tags: S.optional(PrivateZoneTagsMap),
-    location: S.optional(S.String),
-    etag: S.optional(S.String),
-  }),
-).annotate({ identifier: "PrivateZone" }) as any as S.Schema<PrivateZone>;
+export const PrivateZone = GetPrivateZoneResponse as any as S.Schema<PrivateZone>;
 
 /** The PrivateZone items on this page */
 export type PrivateZoneListResultValueList = Array<PrivateZone>;
@@ -805,16 +787,7 @@ export interface RecordSet {
   /** The ETag of the record set. */
   etag?: string;
 }
-export const RecordSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RecordSetProperties),
-    etag: S.optional(S.String),
-  }),
-).annotate({ identifier: "RecordSet" }) as any as S.Schema<RecordSet>;
+export const RecordSet = GetRecordSetResponse as any as S.Schema<RecordSet>;
 
 /** The RecordSet items on this page */
 export type RecordSetListResultValueList = Array<RecordSet>;
@@ -895,10 +868,8 @@ export const ListVirtualNetworkLinksRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type VirtualNetworkLinkTagsMap = { [key: string]: string | undefined };
-export const VirtualNetworkLinkTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VirtualNetworkLinkTagsMap>;
+export const VirtualNetworkLinkTagsMap =
+  GetPrivateZoneResponseTagsMap as any as S.Schema<VirtualNetworkLinkTagsMap>;
 
 /** Describes a link to virtual network for a Private DNS zone. */
 export interface VirtualNetworkLink {
@@ -956,16 +927,13 @@ export const VirtualNetworkLinkListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Represents the properties of the Private DNS zone. */
 export interface PrivateZonePropertiesInput {}
-export const PrivateZonePropertiesInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PrivateZonePropertiesInput",
-}) as any as S.Schema<PrivateZonePropertiesInput>;
+export const PrivateZonePropertiesInput =
+  DeletePrivateZoneResponse as any as S.Schema<PrivateZonePropertiesInput>;
 
 /** Resource tags. */
 export type PrivateZonesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const PrivateZonesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PrivateZonesCreateOrUpdateRequestTagsMap>;
+export const PrivateZonesCreateOrUpdateRequestTagsMap =
+  GetPrivateZoneResponseTagsMap as any as S.Schema<PrivateZonesCreateOrUpdateRequestTagsMap>;
 
 export interface PrivateZonesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -1006,10 +974,8 @@ export const PrivateZonesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PrivateZonesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const PrivateZonesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PrivateZonesCreateOrUpdateResponseTagsMap>;
+export const PrivateZonesCreateOrUpdateResponseTagsMap =
+  GetPrivateZoneResponseTagsMap as any as S.Schema<PrivateZonesCreateOrUpdateResponseTagsMap>;
 
 export interface PrivateZonesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1057,46 +1023,38 @@ export const RecordSetsCreateOrUpdateRequestRecordType = S.String;
 
 /** The metadata attached to the record set. */
 export type RecordSetPropertiesInputMetadataMap = { [key: string]: string | undefined };
-export const RecordSetPropertiesInputMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RecordSetPropertiesInputMetadataMap>;
+export const RecordSetPropertiesInputMetadataMap =
+  GetPrivateZoneResponseTagsMap as any as S.Schema<RecordSetPropertiesInputMetadataMap>;
 
 /** The list of A records in the record set. */
 export type RecordSetPropertiesInputARecordsList = Array<ARecord>;
-export const RecordSetPropertiesInputARecordsList = /*@__PURE__*/ S.Array(
-  ARecord,
-) as any as S.Schema<RecordSetPropertiesInputARecordsList>;
+export const RecordSetPropertiesInputARecordsList =
+  RecordSetPropertiesARecordsList as any as S.Schema<RecordSetPropertiesInputARecordsList>;
 
 /** The list of AAAA records in the record set. */
 export type RecordSetPropertiesInputAaaaRecordsList = Array<AaaaRecord>;
-export const RecordSetPropertiesInputAaaaRecordsList = /*@__PURE__*/ S.Array(
-  AaaaRecord,
-) as any as S.Schema<RecordSetPropertiesInputAaaaRecordsList>;
+export const RecordSetPropertiesInputAaaaRecordsList =
+  RecordSetPropertiesAaaaRecordsList as any as S.Schema<RecordSetPropertiesInputAaaaRecordsList>;
 
 /** The list of MX records in the record set. */
 export type RecordSetPropertiesInputMxRecordsList = Array<MxRecord>;
-export const RecordSetPropertiesInputMxRecordsList = /*@__PURE__*/ S.Array(
-  MxRecord,
-) as any as S.Schema<RecordSetPropertiesInputMxRecordsList>;
+export const RecordSetPropertiesInputMxRecordsList =
+  RecordSetPropertiesMxRecordsList as any as S.Schema<RecordSetPropertiesInputMxRecordsList>;
 
 /** The list of PTR records in the record set. */
 export type RecordSetPropertiesInputPtrRecordsList = Array<PtrRecord>;
-export const RecordSetPropertiesInputPtrRecordsList = /*@__PURE__*/ S.Array(
-  PtrRecord,
-) as any as S.Schema<RecordSetPropertiesInputPtrRecordsList>;
+export const RecordSetPropertiesInputPtrRecordsList =
+  RecordSetPropertiesPtrRecordsList as any as S.Schema<RecordSetPropertiesInputPtrRecordsList>;
 
 /** The list of SRV records in the record set. */
 export type RecordSetPropertiesInputSrvRecordsList = Array<SrvRecord>;
-export const RecordSetPropertiesInputSrvRecordsList = /*@__PURE__*/ S.Array(
-  SrvRecord,
-) as any as S.Schema<RecordSetPropertiesInputSrvRecordsList>;
+export const RecordSetPropertiesInputSrvRecordsList =
+  RecordSetPropertiesSrvRecordsList as any as S.Schema<RecordSetPropertiesInputSrvRecordsList>;
 
 /** The list of TXT records in the record set. */
 export type RecordSetPropertiesInputTxtRecordsList = Array<TxtRecord>;
-export const RecordSetPropertiesInputTxtRecordsList = /*@__PURE__*/ S.Array(
-  TxtRecord,
-) as any as S.Schema<RecordSetPropertiesInputTxtRecordsList>;
+export const RecordSetPropertiesInputTxtRecordsList =
+  RecordSetPropertiesTxtRecordsList as any as S.Schema<RecordSetPropertiesInputTxtRecordsList>;
 
 /** Represents the properties of the records in the record set. */
 export interface RecordSetPropertiesInput {
@@ -1202,10 +1160,8 @@ export const RecordSetsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdatePrivateZoneRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePrivateZoneRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePrivateZoneRequestTagsMap>;
+export const UpdatePrivateZoneRequestTagsMap =
+  GetPrivateZoneResponseTagsMap as any as S.Schema<UpdatePrivateZoneRequestTagsMap>;
 
 export interface UpdatePrivateZoneRequest {
   /** The ID of the target subscription. */
@@ -1244,10 +1200,8 @@ export const UpdatePrivateZoneRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdatePrivateZoneResponseTagsMap = { [key: string]: string | undefined };
-export const UpdatePrivateZoneResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePrivateZoneResponseTagsMap>;
+export const UpdatePrivateZoneResponseTagsMap =
+  GetPrivateZoneResponseTagsMap as any as S.Schema<UpdatePrivateZoneResponseTagsMap>;
 
 export interface UpdatePrivateZoneResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1267,20 +1221,8 @@ export interface UpdatePrivateZoneResponse {
   /** The ETag of the zone. */
   etag?: string;
 }
-export const UpdatePrivateZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateZoneProperties),
-    tags: S.optional(UpdatePrivateZoneResponseTagsMap),
-    location: S.optional(S.String),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdatePrivateZoneResponse",
-}) as any as S.Schema<UpdatePrivateZoneResponse>;
+export const UpdatePrivateZoneResponse =
+  PrivateZonesCreateOrUpdateResponse as any as S.Schema<UpdatePrivateZoneResponse>;
 
 export type UpdateRecordSetRequestRecordType =
   | "A"
@@ -1342,16 +1284,8 @@ export interface UpdateRecordSetResponse {
   /** The ETag of the record set. */
   etag?: string;
 }
-export const UpdateRecordSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RecordSetProperties),
-    etag: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateRecordSetResponse" }) as any as S.Schema<UpdateRecordSetResponse>;
+export const UpdateRecordSetResponse =
+  GetRecordSetResponse as any as S.Schema<UpdateRecordSetResponse>;
 
 /** Represents the properties of the Private DNS zone. */
 export interface VirtualNetworkLinkPropertiesInput {
@@ -1374,10 +1308,8 @@ export const VirtualNetworkLinkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateVirtualNetworkLinkRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateVirtualNetworkLinkRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateVirtualNetworkLinkRequestTagsMap>;
+export const UpdateVirtualNetworkLinkRequestTagsMap =
+  GetPrivateZoneResponseTagsMap as any as S.Schema<UpdateVirtualNetworkLinkRequestTagsMap>;
 
 export interface UpdateVirtualNetworkLinkRequest {
   /** The ID of the target subscription. */
@@ -1421,10 +1353,8 @@ export const UpdateVirtualNetworkLinkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateVirtualNetworkLinkResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateVirtualNetworkLinkResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateVirtualNetworkLinkResponseTagsMap>;
+export const UpdateVirtualNetworkLinkResponseTagsMap =
+  GetPrivateZoneResponseTagsMap as any as S.Schema<UpdateVirtualNetworkLinkResponseTagsMap>;
 
 export interface UpdateVirtualNetworkLinkResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1444,27 +1374,13 @@ export interface UpdateVirtualNetworkLinkResponse {
   /** The ETag of the virtual network link. */
   etag?: string;
 }
-export const UpdateVirtualNetworkLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VirtualNetworkLinkProperties),
-    tags: S.optional(UpdateVirtualNetworkLinkResponseTagsMap),
-    location: S.optional(S.String),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateVirtualNetworkLinkResponse",
-}) as any as S.Schema<UpdateVirtualNetworkLinkResponse>;
+export const UpdateVirtualNetworkLinkResponse =
+  GetVirtualNetworkLinkResponse as any as S.Schema<UpdateVirtualNetworkLinkResponse>;
 
 /** Resource tags. */
 export type VirtualNetworkLinksCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const VirtualNetworkLinksCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VirtualNetworkLinksCreateOrUpdateRequestTagsMap>;
+export const VirtualNetworkLinksCreateOrUpdateRequestTagsMap =
+  GetPrivateZoneResponseTagsMap as any as S.Schema<VirtualNetworkLinksCreateOrUpdateRequestTagsMap>;
 
 export interface VirtualNetworkLinksCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -1510,10 +1426,8 @@ export const VirtualNetworkLinksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 export type VirtualNetworkLinksCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const VirtualNetworkLinksCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VirtualNetworkLinksCreateOrUpdateResponseTagsMap>;
+export const VirtualNetworkLinksCreateOrUpdateResponseTagsMap =
+  GetPrivateZoneResponseTagsMap as any as S.Schema<VirtualNetworkLinksCreateOrUpdateResponseTagsMap>;
 
 export interface VirtualNetworkLinksCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1533,20 +1447,8 @@ export interface VirtualNetworkLinksCreateOrUpdateResponse {
   /** The ETag of the virtual network link. */
   etag?: string;
 }
-export const VirtualNetworkLinksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VirtualNetworkLinkProperties),
-    tags: S.optional(VirtualNetworkLinksCreateOrUpdateResponseTagsMap),
-    location: S.optional(S.String),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VirtualNetworkLinksCreateOrUpdateResponse",
-}) as any as S.Schema<VirtualNetworkLinksCreateOrUpdateResponse>;
+export const VirtualNetworkLinksCreateOrUpdateResponse =
+  GetVirtualNetworkLinkResponse as any as S.Schema<VirtualNetworkLinksCreateOrUpdateResponse>;
 
 export type DeletePrivateZoneError = AzureOpError;
 /** Deletes a Private DNS zone. WARNING: All DNS records in the zone will also be deleted. This operation cannot be undone. Private DNS zone cannot be deleted unless all virtual network links to it are removed. */

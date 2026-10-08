@@ -127,9 +127,8 @@ export type WidgetsCreateResponseClearanceLevel =
 export const WidgetsCreateResponseClearanceLevel = S.String;
 
 export type WidgetsCreateResponseDomainsList = Array<string>;
-export const WidgetsCreateResponseDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WidgetsCreateResponseDomainsList>;
+export const WidgetsCreateResponseDomainsList =
+  WidgetsCreateRequestDomainsList as any as S.Schema<WidgetsCreateResponseDomainsList>;
 
 export type WidgetsCreateResponseMode = "non-interactive" | "invisible" | "managed";
 export const WidgetsCreateResponseMode = S.String;
@@ -235,9 +234,8 @@ export type WidgetsDeleteResponseClearanceLevel =
 export const WidgetsDeleteResponseClearanceLevel = S.String;
 
 export type WidgetsDeleteResponseDomainsList = Array<string>;
-export const WidgetsDeleteResponseDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WidgetsDeleteResponseDomainsList>;
+export const WidgetsDeleteResponseDomainsList =
+  WidgetsCreateRequestDomainsList as any as S.Schema<WidgetsDeleteResponseDomainsList>;
 
 export type WidgetsDeleteResponseMode = "non-interactive" | "invisible" | "managed";
 export const WidgetsDeleteResponseMode = S.String;
@@ -343,9 +341,8 @@ export type WidgetsGetResponseClearanceLevel =
 export const WidgetsGetResponseClearanceLevel = S.String;
 
 export type WidgetsGetResponseDomainsList = Array<string>;
-export const WidgetsGetResponseDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WidgetsGetResponseDomainsList>;
+export const WidgetsGetResponseDomainsList =
+  WidgetsCreateRequestDomainsList as any as S.Schema<WidgetsGetResponseDomainsList>;
 
 export type WidgetsGetResponseMode = "non-interactive" | "invisible" | "managed";
 export const WidgetsGetResponseMode = S.String;
@@ -456,9 +453,8 @@ export type WidgetsListResultItemClearanceLevel =
 export const WidgetsListResultItemClearanceLevel = S.String;
 
 export type WidgetsListResultItemDomainsList = Array<string>;
-export const WidgetsListResultItemDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WidgetsListResultItemDomainsList>;
+export const WidgetsListResultItemDomainsList =
+  WidgetsCreateRequestDomainsList as any as S.Schema<WidgetsListResultItemDomainsList>;
 
 export type WidgetsListResultItemMode = "non-interactive" | "invisible" | "managed";
 export const WidgetsListResultItemMode = S.String;
@@ -583,9 +579,8 @@ export type WidgetsRotateSecretResponseClearanceLevel =
 export const WidgetsRotateSecretResponseClearanceLevel = S.String;
 
 export type WidgetsRotateSecretResponseDomainsList = Array<string>;
-export const WidgetsRotateSecretResponseDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WidgetsRotateSecretResponseDomainsList>;
+export const WidgetsRotateSecretResponseDomainsList =
+  WidgetsCreateRequestDomainsList as any as S.Schema<WidgetsRotateSecretResponseDomainsList>;
 
 export type WidgetsRotateSecretResponseMode = "non-interactive" | "invisible" | "managed";
 export const WidgetsRotateSecretResponseMode = S.String;
@@ -665,9 +660,8 @@ export const RotateSecretWidgetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RotateSecretWidgetResponse>;
 
 export type WidgetsUpdateRequestDomainsList = Array<string>;
-export const WidgetsUpdateRequestDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WidgetsUpdateRequestDomainsList>;
+export const WidgetsUpdateRequestDomainsList =
+  WidgetsCreateRequestDomainsList as any as S.Schema<WidgetsUpdateRequestDomainsList>;
 
 export type WidgetsUpdateRequestMode = "non-interactive" | "invisible" | "managed";
 export const WidgetsUpdateRequestMode = S.String;
@@ -734,9 +728,8 @@ export type WidgetsUpdateResponseClearanceLevel =
 export const WidgetsUpdateResponseClearanceLevel = S.String;
 
 export type WidgetsUpdateResponseDomainsList = Array<string>;
-export const WidgetsUpdateResponseDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WidgetsUpdateResponseDomainsList>;
+export const WidgetsUpdateResponseDomainsList =
+  WidgetsCreateRequestDomainsList as any as S.Schema<WidgetsUpdateResponseDomainsList>;
 
 export type WidgetsUpdateResponseMode = "non-interactive" | "invisible" | "managed";
 export const WidgetsUpdateResponseMode = S.String;

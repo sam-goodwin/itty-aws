@@ -90,9 +90,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export type LifecycleStateStateEnum =
   | "STATE_UNSPECIFIED"
@@ -1040,18 +1038,12 @@ export interface ConfigManagementConfigSyncError {
   /** A string representing the user facing error message */
   errorMessage?: string;
 }
-export const ConfigManagementConfigSyncError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errorMessage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConfigManagementConfigSyncError",
-}) as any as S.Schema<ConfigManagementConfigSyncError>;
+export const ConfigManagementConfigSyncError =
+  ConfigManagementInstallError as any as S.Schema<ConfigManagementConfigSyncError>;
 
 export type ConfigManagementConfigSyncErrorList = Array<ConfigManagementConfigSyncError>;
-export const ConfigManagementConfigSyncErrorList = /*@__PURE__*/ S.Array(
-  ConfigManagementConfigSyncError,
-) as any as S.Schema<ConfigManagementConfigSyncErrorList>;
+export const ConfigManagementConfigSyncErrorList =
+  ConfigManagementInstallErrorList as any as S.Schema<ConfigManagementConfigSyncErrorList>;
 
 export type ConfigManagementConfigSyncStateClusterLevelStopSyncingStateEnum =
   | "STOP_SYNCING_STATE_UNSPECIFIED"

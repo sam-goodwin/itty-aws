@@ -249,9 +249,8 @@ export const CancelMailboxExportJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CancelMailboxExportJobRequest",
 }) as any as S.Schema<CancelMailboxExportJobRequest>;
 export interface CancelMailboxExportJobResponse {}
-export const CancelMailboxExportJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CancelMailboxExportJobResponse",
-}) as any as S.Schema<CancelMailboxExportJobResponse>;
+export const CancelMailboxExportJobResponse =
+  AssociateMemberToGroupResponse as any as S.Schema<CancelMailboxExportJobResponse>;
 export type WorkMailIdentifier = string;
 export type EmailAddress = string;
 export interface CreateAliasRequest {
@@ -265,9 +264,8 @@ export const CreateAliasRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CreateAliasRequest" }) as any as S.Schema<CreateAliasRequest>;
 export interface CreateAliasResponse {}
-export const CreateAliasResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateAliasResponse",
-}) as any as S.Schema<CreateAliasResponse>;
+export const CreateAliasResponse =
+  AssociateMemberToGroupResponse as any as S.Schema<CreateAliasResponse>;
 export type DomainName = string;
 export type Url = string;
 export type ExternalUserName = string;
@@ -308,11 +306,8 @@ export const CreateAvailabilityConfigurationRequest = /*@__PURE__*/ S.suspend(()
   identifier: "CreateAvailabilityConfigurationRequest",
 }) as any as S.Schema<CreateAvailabilityConfigurationRequest>;
 export interface CreateAvailabilityConfigurationResponse {}
-export const CreateAvailabilityConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateAvailabilityConfigurationResponse",
-}) as any as S.Schema<CreateAvailabilityConfigurationResponse>;
+export const CreateAvailabilityConfigurationResponse =
+  AssociateDelegateToResourceResponse as any as S.Schema<CreateAvailabilityConfigurationResponse>;
 export type GroupName = string;
 export interface CreateGroupRequest {
   OrganizationId: string;
@@ -425,16 +420,16 @@ export const MobileDeviceAccessRuleEffect = S.String;
 
 export type DeviceType = string;
 export type DeviceTypeList = string[];
-export const DeviceTypeList = /*@__PURE__*/ S.Array(S.String);
+export const DeviceTypeList = TargetUsers as any as S.Schema<DeviceTypeList>;
 export type DeviceModel = string;
 export type DeviceModelList = string[];
-export const DeviceModelList = /*@__PURE__*/ S.Array(S.String);
+export const DeviceModelList = TargetUsers as any as S.Schema<DeviceModelList>;
 export type DeviceOperatingSystem = string;
 export type DeviceOperatingSystemList = string[];
-export const DeviceOperatingSystemList = /*@__PURE__*/ S.Array(S.String);
+export const DeviceOperatingSystemList = TargetUsers as any as S.Schema<DeviceOperatingSystemList>;
 export type DeviceUserAgent = string;
 export type DeviceUserAgentList = string[];
-export const DeviceUserAgentList = /*@__PURE__*/ S.Array(S.String);
+export const DeviceUserAgentList = TargetUsers as any as S.Schema<DeviceUserAgentList>;
 export interface CreateMobileDeviceAccessRuleRequest {
   OrganizationId: string;
   ClientToken?: string;
@@ -610,9 +605,8 @@ export const DeleteAliasRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteAliasRequest" }) as any as S.Schema<DeleteAliasRequest>;
 export interface DeleteAliasResponse {}
-export const DeleteAliasResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAliasResponse",
-}) as any as S.Schema<DeleteAliasResponse>;
+export const DeleteAliasResponse =
+  AssociateMemberToGroupResponse as any as S.Schema<DeleteAliasResponse>;
 export interface DeleteAvailabilityConfigurationRequest {
   OrganizationId: string;
   DomainName: string;
@@ -625,11 +619,8 @@ export const DeleteAvailabilityConfigurationRequest = /*@__PURE__*/ S.suspend(()
   identifier: "DeleteAvailabilityConfigurationRequest",
 }) as any as S.Schema<DeleteAvailabilityConfigurationRequest>;
 export interface DeleteAvailabilityConfigurationResponse {}
-export const DeleteAvailabilityConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAvailabilityConfigurationResponse",
-}) as any as S.Schema<DeleteAvailabilityConfigurationResponse>;
+export const DeleteAvailabilityConfigurationResponse =
+  AssociateDelegateToResourceResponse as any as S.Schema<DeleteAvailabilityConfigurationResponse>;
 export interface DeleteEmailMonitoringConfigurationRequest {
   OrganizationId: string;
 }
@@ -641,11 +632,8 @@ export const DeleteEmailMonitoringConfigurationRequest = /*@__PURE__*/ S.suspend
   identifier: "DeleteEmailMonitoringConfigurationRequest",
 }) as any as S.Schema<DeleteEmailMonitoringConfigurationRequest>;
 export interface DeleteEmailMonitoringConfigurationResponse {}
-export const DeleteEmailMonitoringConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteEmailMonitoringConfigurationResponse",
-}) as any as S.Schema<DeleteEmailMonitoringConfigurationResponse>;
+export const DeleteEmailMonitoringConfigurationResponse =
+  AssociateDelegateToResourceResponse as any as S.Schema<DeleteEmailMonitoringConfigurationResponse>;
 export interface DeleteGroupRequest {
   OrganizationId: string;
   GroupId: string;
@@ -656,9 +644,8 @@ export const DeleteGroupRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteGroupRequest" }) as any as S.Schema<DeleteGroupRequest>;
 export interface DeleteGroupResponse {}
-export const DeleteGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGroupResponse",
-}) as any as S.Schema<DeleteGroupResponse>;
+export const DeleteGroupResponse =
+  AssociateMemberToGroupResponse as any as S.Schema<DeleteGroupResponse>;
 export interface DeleteIdentityCenterApplicationRequest {
   ApplicationArn: string;
 }
@@ -670,11 +657,8 @@ export const DeleteIdentityCenterApplicationRequest = /*@__PURE__*/ S.suspend(()
   identifier: "DeleteIdentityCenterApplicationRequest",
 }) as any as S.Schema<DeleteIdentityCenterApplicationRequest>;
 export interface DeleteIdentityCenterApplicationResponse {}
-export const DeleteIdentityCenterApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIdentityCenterApplicationResponse",
-}) as any as S.Schema<DeleteIdentityCenterApplicationResponse>;
+export const DeleteIdentityCenterApplicationResponse =
+  AssociateDelegateToResourceResponse as any as S.Schema<DeleteIdentityCenterApplicationResponse>;
 export interface DeleteIdentityProviderConfigurationRequest {
   OrganizationId: string;
 }
@@ -686,11 +670,8 @@ export const DeleteIdentityProviderConfigurationRequest = /*@__PURE__*/ S.suspen
   identifier: "DeleteIdentityProviderConfigurationRequest",
 }) as any as S.Schema<DeleteIdentityProviderConfigurationRequest>;
 export interface DeleteIdentityProviderConfigurationResponse {}
-export const DeleteIdentityProviderConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIdentityProviderConfigurationResponse",
-}) as any as S.Schema<DeleteIdentityProviderConfigurationResponse>;
+export const DeleteIdentityProviderConfigurationResponse =
+  AssociateDelegateToResourceResponse as any as S.Schema<DeleteIdentityProviderConfigurationResponse>;
 export interface DeleteImpersonationRoleRequest {
   OrganizationId: string;
   ImpersonationRoleId: string;
@@ -703,9 +684,8 @@ export const DeleteImpersonationRoleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteImpersonationRoleRequest",
 }) as any as S.Schema<DeleteImpersonationRoleRequest>;
 export interface DeleteImpersonationRoleResponse {}
-export const DeleteImpersonationRoleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteImpersonationRoleResponse" },
-) as any as S.Schema<DeleteImpersonationRoleResponse>;
+export const DeleteImpersonationRoleResponse =
+  DeleteAccessControlRuleResponse as any as S.Schema<DeleteImpersonationRoleResponse>;
 export interface DeleteMailboxPermissionsRequest {
   OrganizationId: string;
   EntityId: string;
@@ -719,11 +699,8 @@ export const DeleteMailboxPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteMailboxPermissionsRequest",
 }) as any as S.Schema<DeleteMailboxPermissionsRequest>;
 export interface DeleteMailboxPermissionsResponse {}
-export const DeleteMailboxPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMailboxPermissionsResponse",
-}) as any as S.Schema<DeleteMailboxPermissionsResponse>;
+export const DeleteMailboxPermissionsResponse =
+  AssociateDelegateToResourceResponse as any as S.Schema<DeleteMailboxPermissionsResponse>;
 export type DeviceId = string;
 export interface DeleteMobileDeviceAccessOverrideRequest {
   OrganizationId: string;
@@ -738,11 +715,8 @@ export const DeleteMobileDeviceAccessOverrideRequest = /*@__PURE__*/ S.suspend((
   identifier: "DeleteMobileDeviceAccessOverrideRequest",
 }) as any as S.Schema<DeleteMobileDeviceAccessOverrideRequest>;
 export interface DeleteMobileDeviceAccessOverrideResponse {}
-export const DeleteMobileDeviceAccessOverrideResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMobileDeviceAccessOverrideResponse",
-}) as any as S.Schema<DeleteMobileDeviceAccessOverrideResponse>;
+export const DeleteMobileDeviceAccessOverrideResponse =
+  AssociateDelegateToResourceResponse as any as S.Schema<DeleteMobileDeviceAccessOverrideResponse>;
 export interface DeleteMobileDeviceAccessRuleRequest {
   OrganizationId: string;
   MobileDeviceAccessRuleId: string;
@@ -755,11 +729,8 @@ export const DeleteMobileDeviceAccessRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteMobileDeviceAccessRuleRequest",
 }) as any as S.Schema<DeleteMobileDeviceAccessRuleRequest>;
 export interface DeleteMobileDeviceAccessRuleResponse {}
-export const DeleteMobileDeviceAccessRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMobileDeviceAccessRuleResponse",
-}) as any as S.Schema<DeleteMobileDeviceAccessRuleResponse>;
+export const DeleteMobileDeviceAccessRuleResponse =
+  AssociateDelegateToResourceResponse as any as S.Schema<DeleteMobileDeviceAccessRuleResponse>;
 export interface DeleteOrganizationRequest {
   ClientToken?: string;
   OrganizationId: string;
@@ -800,11 +771,8 @@ export const DeletePersonalAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeletePersonalAccessTokenRequest",
 }) as any as S.Schema<DeletePersonalAccessTokenRequest>;
 export interface DeletePersonalAccessTokenResponse {}
-export const DeletePersonalAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePersonalAccessTokenResponse",
-}) as any as S.Schema<DeletePersonalAccessTokenResponse>;
+export const DeletePersonalAccessTokenResponse =
+  AssociateDelegateToResourceResponse as any as S.Schema<DeletePersonalAccessTokenResponse>;
 export interface DeleteResourceRequest {
   OrganizationId: string;
   ResourceId: string;
@@ -815,9 +783,8 @@ export const DeleteResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteResourceRequest" }) as any as S.Schema<DeleteResourceRequest>;
 export interface DeleteResourceResponse {}
-export const DeleteResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteResourceResponse",
-}) as any as S.Schema<DeleteResourceResponse>;
+export const DeleteResourceResponse =
+  AssociateMemberToGroupResponse as any as S.Schema<DeleteResourceResponse>;
 export type ShortString = string;
 export interface DeleteRetentionPolicyRequest {
   OrganizationId: string;
@@ -831,9 +798,8 @@ export const DeleteRetentionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRetentionPolicyRequest",
 }) as any as S.Schema<DeleteRetentionPolicyRequest>;
 export interface DeleteRetentionPolicyResponse {}
-export const DeleteRetentionPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRetentionPolicyResponse",
-}) as any as S.Schema<DeleteRetentionPolicyResponse>;
+export const DeleteRetentionPolicyResponse =
+  AssociateMemberToGroupResponse as any as S.Schema<DeleteRetentionPolicyResponse>;
 export interface DeleteUserRequest {
   OrganizationId: string;
   UserId: string;
@@ -844,9 +810,8 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteUserRequest" }) as any as S.Schema<DeleteUserRequest>;
 export interface DeleteUserResponse {}
-export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserResponse",
-}) as any as S.Schema<DeleteUserResponse>;
+export const DeleteUserResponse =
+  AssociateMemberToGroupResponse as any as S.Schema<DeleteUserResponse>;
 export interface DeregisterFromWorkMailRequest {
   OrganizationId: string;
   EntityId: string;
@@ -859,9 +824,8 @@ export const DeregisterFromWorkMailRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeregisterFromWorkMailRequest",
 }) as any as S.Schema<DeregisterFromWorkMailRequest>;
 export interface DeregisterFromWorkMailResponse {}
-export const DeregisterFromWorkMailResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeregisterFromWorkMailResponse",
-}) as any as S.Schema<DeregisterFromWorkMailResponse>;
+export const DeregisterFromWorkMailResponse =
+  AssociateMemberToGroupResponse as any as S.Schema<DeregisterFromWorkMailResponse>;
 export type WorkMailDomainName = string;
 export interface DeregisterMailDomainRequest {
   OrganizationId: string;
@@ -875,9 +839,8 @@ export const DeregisterMailDomainRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeregisterMailDomainRequest",
 }) as any as S.Schema<DeregisterMailDomainRequest>;
 export interface DeregisterMailDomainResponse {}
-export const DeregisterMailDomainResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeregisterMailDomainResponse",
-}) as any as S.Schema<DeregisterMailDomainResponse>;
+export const DeregisterMailDomainResponse =
+  AssociateMemberToGroupResponse as any as S.Schema<DeregisterMailDomainResponse>;
 export interface DescribeEmailMonitoringConfigurationRequest {
   OrganizationId: string;
 }
@@ -1251,11 +1214,8 @@ export const DisassociateDelegateFromResourceRequest = /*@__PURE__*/ S.suspend((
   identifier: "DisassociateDelegateFromResourceRequest",
 }) as any as S.Schema<DisassociateDelegateFromResourceRequest>;
 export interface DisassociateDelegateFromResourceResponse {}
-export const DisassociateDelegateFromResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateDelegateFromResourceResponse",
-}) as any as S.Schema<DisassociateDelegateFromResourceResponse>;
+export const DisassociateDelegateFromResourceResponse =
+  AssociateDelegateToResourceResponse as any as S.Schema<DisassociateDelegateFromResourceResponse>;
 export interface DisassociateMemberFromGroupRequest {
   OrganizationId: string;
   GroupId: string;
@@ -1269,11 +1229,8 @@ export const DisassociateMemberFromGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisassociateMemberFromGroupRequest",
 }) as any as S.Schema<DisassociateMemberFromGroupRequest>;
 export interface DisassociateMemberFromGroupResponse {}
-export const DisassociateMemberFromGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateMemberFromGroupResponse",
-}) as any as S.Schema<DisassociateMemberFromGroupResponse>;
+export const DisassociateMemberFromGroupResponse =
+  AssociateDelegateToResourceResponse as any as S.Schema<DisassociateMemberFromGroupResponse>;
 export type IpAddress = string;
 export type AccessControlRuleAction = string;
 export interface GetAccessControlEffectRequest {
@@ -1298,7 +1255,7 @@ export type AccessControlRuleEffect = "ALLOW" | "DENY" | (string & {});
 export const AccessControlRuleEffect = S.String;
 
 export type AccessControlRuleNameList = string[];
-export const AccessControlRuleNameList = /*@__PURE__*/ S.Array(S.String);
+export const AccessControlRuleNameList = TargetUsers as any as S.Schema<AccessControlRuleNameList>;
 export interface GetAccessControlEffectResponse {
   Effect?: AccessControlRuleEffect;
   MatchedRules?: string[];
@@ -1579,7 +1536,8 @@ export const GetPersonalAccessTokenMetadataRequest = /*@__PURE__*/ S.suspend(() 
 export type PersonalAccessTokenName = string;
 export type PersonalAccessTokenScope = string;
 export type PersonalAccessTokenScopeList = string[];
-export const PersonalAccessTokenScopeList = /*@__PURE__*/ S.Array(S.String);
+export const PersonalAccessTokenScopeList =
+  TargetUsers as any as S.Schema<PersonalAccessTokenScopeList>;
 export interface GetPersonalAccessTokenMetadataResponse {
   PersonalAccessTokenId?: string;
   UserId?: string;
@@ -1615,13 +1573,13 @@ export const ListAccessControlRulesRequest = /*@__PURE__*/ S.suspend(() =>
 export type AccessControlRuleDescription = string;
 export type IpRange = string;
 export type IpRangeList = string[];
-export const IpRangeList = /*@__PURE__*/ S.Array(S.String);
+export const IpRangeList = TargetUsers as any as S.Schema<IpRangeList>;
 export type ActionsList = string[];
-export const ActionsList = /*@__PURE__*/ S.Array(S.String);
+export const ActionsList = TargetUsers as any as S.Schema<ActionsList>;
 export type UserIdList = string[];
-export const UserIdList = /*@__PURE__*/ S.Array(S.String);
+export const UserIdList = TargetUsers as any as S.Schema<UserIdList>;
 export type ImpersonationRoleIdList = string[];
-export const ImpersonationRoleIdList = /*@__PURE__*/ S.Array(S.String);
+export const ImpersonationRoleIdList = TargetUsers as any as S.Schema<ImpersonationRoleIdList>;
 export interface AccessControlRule {
   Name?: string;
   Effect?: AccessControlRuleEffect;
@@ -1681,7 +1639,7 @@ export const ListAliasesRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListAliasesRequest" }) as any as S.Schema<ListAliasesRequest>;
 export type Aliases = string[];
-export const Aliases = /*@__PURE__*/ S.Array(S.String);
+export const Aliases = TargetUsers as any as S.Schema<Aliases>;
 export interface ListAliasesResponse {
   Aliases?: string[];
   NextToken?: string;
@@ -2074,18 +2032,8 @@ export interface MobileDeviceAccessOverride {
   DateCreated?: Date;
   DateModified?: Date;
 }
-export const MobileDeviceAccessOverride = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    UserId: S.optional(S.String),
-    DeviceId: S.optional(S.String),
-    Effect: S.optional(MobileDeviceAccessRuleEffect),
-    Description: S.optional(S.String),
-    DateCreated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    DateModified: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "MobileDeviceAccessOverride",
-}) as any as S.Schema<MobileDeviceAccessOverride>;
+export const MobileDeviceAccessOverride =
+  GetMobileDeviceAccessOverrideResponse as any as S.Schema<MobileDeviceAccessOverride>;
 export type MobileDeviceAccessOverridesList = MobileDeviceAccessOverride[];
 export const MobileDeviceAccessOverridesList = /*@__PURE__*/ S.Array(MobileDeviceAccessOverride);
 export interface ListMobileDeviceAccessOverridesResponse {
@@ -2218,19 +2166,8 @@ export interface PersonalAccessTokenSummary {
   ExpiresTime?: Date;
   Scopes?: string[];
 }
-export const PersonalAccessTokenSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PersonalAccessTokenId: S.optional(S.String),
-    UserId: S.optional(S.String),
-    Name: S.optional(S.String),
-    DateCreated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    DateLastUsed: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ExpiresTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Scopes: S.optional(PersonalAccessTokenScopeList),
-  }),
-).annotate({
-  identifier: "PersonalAccessTokenSummary",
-}) as any as S.Schema<PersonalAccessTokenSummary>;
+export const PersonalAccessTokenSummary =
+  GetPersonalAccessTokenMetadataResponse as any as S.Schema<PersonalAccessTokenSummary>;
 export type PersonalAccessTokenSummaryList = PersonalAccessTokenSummary[];
 export const PersonalAccessTokenSummaryList = /*@__PURE__*/ S.Array(PersonalAccessTokenSummary);
 export interface ListPersonalAccessTokensResponse {
@@ -2284,13 +2221,7 @@ export interface ListResourcesFilters {
   PrimaryEmailPrefix?: string;
   State?: EntityState;
 }
-export const ListResourcesFilters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NamePrefix: S.optional(S.String),
-    PrimaryEmailPrefix: S.optional(S.String),
-    State: S.optional(EntityState),
-  }),
-).annotate({ identifier: "ListResourcesFilters" }) as any as S.Schema<ListResourcesFilters>;
+export const ListResourcesFilters = ListGroupsFilters as any as S.Schema<ListResourcesFilters>;
 export interface ListResourcesRequest {
   OrganizationId: string;
   NextToken?: string;
@@ -2464,9 +2395,8 @@ export const PutAccessControlRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutAccessControlRuleRequest",
 }) as any as S.Schema<PutAccessControlRuleRequest>;
 export interface PutAccessControlRuleResponse {}
-export const PutAccessControlRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutAccessControlRuleResponse",
-}) as any as S.Schema<PutAccessControlRuleResponse>;
+export const PutAccessControlRuleResponse =
+  AssociateMemberToGroupResponse as any as S.Schema<PutAccessControlRuleResponse>;
 export interface PutEmailMonitoringConfigurationRequest {
   OrganizationId: string;
   RoleArn?: string;
@@ -2480,11 +2410,8 @@ export const PutEmailMonitoringConfigurationRequest = /*@__PURE__*/ S.suspend(()
   identifier: "PutEmailMonitoringConfigurationRequest",
 }) as any as S.Schema<PutEmailMonitoringConfigurationRequest>;
 export interface PutEmailMonitoringConfigurationResponse {}
-export const PutEmailMonitoringConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutEmailMonitoringConfigurationResponse",
-}) as any as S.Schema<PutEmailMonitoringConfigurationResponse>;
+export const PutEmailMonitoringConfigurationResponse =
+  AssociateDelegateToResourceResponse as any as S.Schema<PutEmailMonitoringConfigurationResponse>;
 export interface PutIdentityProviderConfigurationRequest {
   OrganizationId: string;
   AuthenticationMode: IdentityProviderAuthenticationMode;
@@ -2502,11 +2429,8 @@ export const PutIdentityProviderConfigurationRequest = /*@__PURE__*/ S.suspend((
   identifier: "PutIdentityProviderConfigurationRequest",
 }) as any as S.Schema<PutIdentityProviderConfigurationRequest>;
 export interface PutIdentityProviderConfigurationResponse {}
-export const PutIdentityProviderConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutIdentityProviderConfigurationResponse",
-}) as any as S.Schema<PutIdentityProviderConfigurationResponse>;
+export const PutIdentityProviderConfigurationResponse =
+  AssociateDelegateToResourceResponse as any as S.Schema<PutIdentityProviderConfigurationResponse>;
 export interface PutInboundDmarcSettingsRequest {
   OrganizationId: string;
   Enforced: boolean;
@@ -2519,9 +2443,8 @@ export const PutInboundDmarcSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutInboundDmarcSettingsRequest",
 }) as any as S.Schema<PutInboundDmarcSettingsRequest>;
 export interface PutInboundDmarcSettingsResponse {}
-export const PutInboundDmarcSettingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "PutInboundDmarcSettingsResponse" },
-) as any as S.Schema<PutInboundDmarcSettingsResponse>;
+export const PutInboundDmarcSettingsResponse =
+  DeleteAccessControlRuleResponse as any as S.Schema<PutInboundDmarcSettingsResponse>;
 export interface PutMailboxPermissionsRequest {
   OrganizationId: string;
   EntityId: string;
@@ -2539,9 +2462,8 @@ export const PutMailboxPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutMailboxPermissionsRequest",
 }) as any as S.Schema<PutMailboxPermissionsRequest>;
 export interface PutMailboxPermissionsResponse {}
-export const PutMailboxPermissionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutMailboxPermissionsResponse",
-}) as any as S.Schema<PutMailboxPermissionsResponse>;
+export const PutMailboxPermissionsResponse =
+  AssociateMemberToGroupResponse as any as S.Schema<PutMailboxPermissionsResponse>;
 export interface PutMobileDeviceAccessOverrideRequest {
   OrganizationId: string;
   UserId: string;
@@ -2561,11 +2483,8 @@ export const PutMobileDeviceAccessOverrideRequest = /*@__PURE__*/ S.suspend(() =
   identifier: "PutMobileDeviceAccessOverrideRequest",
 }) as any as S.Schema<PutMobileDeviceAccessOverrideRequest>;
 export interface PutMobileDeviceAccessOverrideResponse {}
-export const PutMobileDeviceAccessOverrideResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutMobileDeviceAccessOverrideResponse",
-}) as any as S.Schema<PutMobileDeviceAccessOverrideResponse>;
+export const PutMobileDeviceAccessOverrideResponse =
+  AssociateDelegateToResourceResponse as any as S.Schema<PutMobileDeviceAccessOverrideResponse>;
 export type PolicyDescription = string | redacted.Redacted<string>;
 export interface PutRetentionPolicyRequest {
   OrganizationId: string;
@@ -2586,9 +2505,8 @@ export const PutRetentionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutRetentionPolicyRequest",
 }) as any as S.Schema<PutRetentionPolicyRequest>;
 export interface PutRetentionPolicyResponse {}
-export const PutRetentionPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutRetentionPolicyResponse",
-}) as any as S.Schema<PutRetentionPolicyResponse>;
+export const PutRetentionPolicyResponse =
+  AssociateMemberToGroupResponse as any as S.Schema<PutRetentionPolicyResponse>;
 export interface RegisterMailDomainRequest {
   ClientToken?: string;
   OrganizationId: string;
@@ -2604,9 +2522,8 @@ export const RegisterMailDomainRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegisterMailDomainRequest",
 }) as any as S.Schema<RegisterMailDomainRequest>;
 export interface RegisterMailDomainResponse {}
-export const RegisterMailDomainResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RegisterMailDomainResponse",
-}) as any as S.Schema<RegisterMailDomainResponse>;
+export const RegisterMailDomainResponse =
+  AssociateMemberToGroupResponse as any as S.Schema<RegisterMailDomainResponse>;
 export interface RegisterToWorkMailRequest {
   OrganizationId: string;
   EntityId: string;
@@ -2620,9 +2537,8 @@ export const RegisterToWorkMailRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegisterToWorkMailRequest",
 }) as any as S.Schema<RegisterToWorkMailRequest>;
 export interface RegisterToWorkMailResponse {}
-export const RegisterToWorkMailResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RegisterToWorkMailResponse",
-}) as any as S.Schema<RegisterToWorkMailResponse>;
+export const RegisterToWorkMailResponse =
+  AssociateMemberToGroupResponse as any as S.Schema<RegisterToWorkMailResponse>;
 export interface ResetPasswordRequest {
   OrganizationId: string;
   UserId: string;
@@ -2634,9 +2550,8 @@ export const ResetPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ResetPasswordRequest" }) as any as S.Schema<ResetPasswordRequest>;
 export interface ResetPasswordResponse {}
-export const ResetPasswordResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResetPasswordResponse",
-}) as any as S.Schema<ResetPasswordResponse>;
+export const ResetPasswordResponse =
+  AssociateMemberToGroupResponse as any as S.Schema<ResetPasswordResponse>;
 export interface StartMailboxExportJobRequest {
   ClientToken: string;
   OrganizationId: string;
@@ -2679,9 +2594,8 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  AssociateMemberToGroupResponse as any as S.Schema<TagResourceResponse>;
 export interface TestAvailabilityConfigurationRequest {
   OrganizationId: string;
   DomainName?: string;
@@ -2708,7 +2622,7 @@ export const TestAvailabilityConfigurationResponse = /*@__PURE__*/ S.suspend(() 
   identifier: "TestAvailabilityConfigurationResponse",
 }) as any as S.Schema<TestAvailabilityConfigurationResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = TargetUsers as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
@@ -2719,9 +2633,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  AssociateMemberToGroupResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAvailabilityConfigurationRequest {
   OrganizationId: string;
   DomainName: string;
@@ -2739,11 +2652,8 @@ export const UpdateAvailabilityConfigurationRequest = /*@__PURE__*/ S.suspend(()
   identifier: "UpdateAvailabilityConfigurationRequest",
 }) as any as S.Schema<UpdateAvailabilityConfigurationRequest>;
 export interface UpdateAvailabilityConfigurationResponse {}
-export const UpdateAvailabilityConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateAvailabilityConfigurationResponse",
-}) as any as S.Schema<UpdateAvailabilityConfigurationResponse>;
+export const UpdateAvailabilityConfigurationResponse =
+  AssociateDelegateToResourceResponse as any as S.Schema<UpdateAvailabilityConfigurationResponse>;
 export interface UpdateDefaultMailDomainRequest {
   OrganizationId: string;
   DomainName: string;
@@ -2756,9 +2666,8 @@ export const UpdateDefaultMailDomainRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateDefaultMailDomainRequest",
 }) as any as S.Schema<UpdateDefaultMailDomainRequest>;
 export interface UpdateDefaultMailDomainResponse {}
-export const UpdateDefaultMailDomainResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "UpdateDefaultMailDomainResponse" },
-) as any as S.Schema<UpdateDefaultMailDomainResponse>;
+export const UpdateDefaultMailDomainResponse =
+  DeleteAccessControlRuleResponse as any as S.Schema<UpdateDefaultMailDomainResponse>;
 export interface UpdateGroupRequest {
   OrganizationId: string;
   GroupId: string;
@@ -2772,9 +2681,8 @@ export const UpdateGroupRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateGroupRequest" }) as any as S.Schema<UpdateGroupRequest>;
 export interface UpdateGroupResponse {}
-export const UpdateGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateGroupResponse",
-}) as any as S.Schema<UpdateGroupResponse>;
+export const UpdateGroupResponse =
+  AssociateMemberToGroupResponse as any as S.Schema<UpdateGroupResponse>;
 export interface UpdateImpersonationRoleRequest {
   OrganizationId: string;
   ImpersonationRoleId: string;
@@ -2796,9 +2704,8 @@ export const UpdateImpersonationRoleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateImpersonationRoleRequest",
 }) as any as S.Schema<UpdateImpersonationRoleRequest>;
 export interface UpdateImpersonationRoleResponse {}
-export const UpdateImpersonationRoleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "UpdateImpersonationRoleResponse" },
-) as any as S.Schema<UpdateImpersonationRoleResponse>;
+export const UpdateImpersonationRoleResponse =
+  DeleteAccessControlRuleResponse as any as S.Schema<UpdateImpersonationRoleResponse>;
 export interface UpdateMailboxQuotaRequest {
   OrganizationId: string;
   UserId: string;
@@ -2812,9 +2719,8 @@ export const UpdateMailboxQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateMailboxQuotaRequest",
 }) as any as S.Schema<UpdateMailboxQuotaRequest>;
 export interface UpdateMailboxQuotaResponse {}
-export const UpdateMailboxQuotaResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateMailboxQuotaResponse",
-}) as any as S.Schema<UpdateMailboxQuotaResponse>;
+export const UpdateMailboxQuotaResponse =
+  AssociateMemberToGroupResponse as any as S.Schema<UpdateMailboxQuotaResponse>;
 export interface UpdateMobileDeviceAccessRuleRequest {
   OrganizationId: string;
   MobileDeviceAccessRuleId: string;
@@ -2850,11 +2756,8 @@ export const UpdateMobileDeviceAccessRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateMobileDeviceAccessRuleRequest",
 }) as any as S.Schema<UpdateMobileDeviceAccessRuleRequest>;
 export interface UpdateMobileDeviceAccessRuleResponse {}
-export const UpdateMobileDeviceAccessRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateMobileDeviceAccessRuleResponse",
-}) as any as S.Schema<UpdateMobileDeviceAccessRuleResponse>;
+export const UpdateMobileDeviceAccessRuleResponse =
+  AssociateDelegateToResourceResponse as any as S.Schema<UpdateMobileDeviceAccessRuleResponse>;
 export interface UpdatePrimaryEmailAddressRequest {
   OrganizationId: string;
   EntityId: string;
@@ -2868,11 +2771,8 @@ export const UpdatePrimaryEmailAddressRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdatePrimaryEmailAddressRequest",
 }) as any as S.Schema<UpdatePrimaryEmailAddressRequest>;
 export interface UpdatePrimaryEmailAddressResponse {}
-export const UpdatePrimaryEmailAddressResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdatePrimaryEmailAddressResponse",
-}) as any as S.Schema<UpdatePrimaryEmailAddressResponse>;
+export const UpdatePrimaryEmailAddressResponse =
+  AssociateDelegateToResourceResponse as any as S.Schema<UpdatePrimaryEmailAddressResponse>;
 export type NewResourceDescription = string | redacted.Redacted<string>;
 export interface UpdateResourceRequest {
   OrganizationId: string;
@@ -2895,9 +2795,8 @@ export const UpdateResourceRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateResourceRequest" }) as any as S.Schema<UpdateResourceRequest>;
 export interface UpdateResourceResponse {}
-export const UpdateResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateResourceResponse",
-}) as any as S.Schema<UpdateResourceResponse>;
+export const UpdateResourceResponse =
+  AssociateMemberToGroupResponse as any as S.Schema<UpdateResourceResponse>;
 export type IdentityProviderUserIdForUpdate = string;
 export interface UpdateUserRequest {
   OrganizationId: string;
@@ -2942,9 +2841,8 @@ export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateUserRequest" }) as any as S.Schema<UpdateUserRequest>;
 export interface UpdateUserResponse {}
-export const UpdateUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateUserResponse",
-}) as any as S.Schema<UpdateUserResponse>;
+export const UpdateUserResponse =
+  AssociateMemberToGroupResponse as any as S.Schema<UpdateUserResponse>;
 export type AssociateDelegateToResourceError =
   | EntityNotFoundException
   | EntityStateException

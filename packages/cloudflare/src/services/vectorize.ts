@@ -349,18 +349,12 @@ export interface DeleteIndexMetadataIndexResponse {
   /** The unique identifier for the async mutation operation containing the changeset. */
   mutationId?: string | null;
 }
-export const DeleteIndexMetadataIndexResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mutationId: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteIndexMetadataIndexResponse",
-}) as any as S.Schema<DeleteIndexMetadataIndexResponse>;
+export const DeleteIndexMetadataIndexResponse =
+  CreateIndexMetadataIndexResponse as any as S.Schema<DeleteIndexMetadataIndexResponse>;
 
 export type IndexesGetByIdsRequestIdsList = Array<string>;
-export const IndexesGetByIdsRequestIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IndexesGetByIdsRequestIdsList>;
+export const IndexesGetByIdsRequestIdsList =
+  IndexesDeleteByIdsRequestIdsList as any as S.Schema<IndexesGetByIdsRequestIdsList>;
 
 export interface GetByIdsIndexRequest {
   /** Identifier */
@@ -386,9 +380,7 @@ export const GetByIdsIndexRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetByIdsIndexRequest" }) as any as S.Schema<GetByIdsIndexRequest>;
 
 export type GetByIdsIndexResponse = unknown;
-export const GetByIdsIndexResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetByIdsIndexResponse" }) as any as S.Schema<GetByIdsIndexResponse>;
+export const GetByIdsIndexResponse = DeleteIndexResponse as any as S.Schema<GetByIdsIndexResponse>;
 
 export interface GetIndexRequest {
   /** Identifier */
@@ -535,11 +527,7 @@ export interface InsertIndexResponse {
   /** The unique identifier for the async mutation operation containing the changeset. */
   mutationId?: string | null;
 }
-export const InsertIndexResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mutationId: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "InsertIndexResponse" }) as any as S.Schema<InsertIndexResponse>;
+export const InsertIndexResponse = DeleteByIdsIndexResponse as any as S.Schema<InsertIndexResponse>;
 
 export interface ListIndexesRequest {
   /** Identifier */
@@ -795,9 +783,8 @@ export const QueryIndexRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueryIndexRequest" }) as any as S.Schema<QueryIndexRequest>;
 
 export type IndexesQueryResponseMatchesItemValuesList = Array<number>;
-export const IndexesQueryResponseMatchesItemValuesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<IndexesQueryResponseMatchesItemValuesList>;
+export const IndexesQueryResponseMatchesItemValuesList =
+  IndexesQueryRequestVectorList as any as S.Schema<IndexesQueryResponseMatchesItemValuesList>;
 
 export interface IndexesQueryResponseMatchesItem {
   /** Identifier for a Vector */
@@ -876,11 +863,7 @@ export interface UpsertIndexResponse {
   /** The unique identifier for the async mutation operation containing the changeset. */
   mutationId?: string | null;
 }
-export const UpsertIndexResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mutationId: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UpsertIndexResponse" }) as any as S.Schema<UpsertIndexResponse>;
+export const UpsertIndexResponse = DeleteByIdsIndexResponse as any as S.Schema<UpsertIndexResponse>;
 
 export type CreateIndexError =
   | IndexAlreadyExists

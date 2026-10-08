@@ -60,11 +60,8 @@ export const DeleteRegistrationDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRegistrationDefinitionRequest>;
 
 export interface DeleteRegistrationDefinitionResponse {}
-export const DeleteRegistrationDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteRegistrationDefinitionResponse",
-}) as any as S.Schema<DeleteRegistrationDefinitionResponse>;
+export const DeleteRegistrationDefinitionResponse =
+  DeleteRegistrationAssignmentResponse as any as S.Schema<DeleteRegistrationDefinitionResponse>;
 
 export interface GetMarketplaceRegistrationDefinitionRequest {
   /** The scope of the resource. */
@@ -338,9 +335,7 @@ export const RegistrationAssignmentPropertiesRegistrationDefinitionPropertiesAut
 export type RegistrationAssignmentPropertiesRegistrationDefinitionPropertiesEligibleAuthorizationsList =
   Array<EligibleAuthorization>;
 export const RegistrationAssignmentPropertiesRegistrationDefinitionPropertiesEligibleAuthorizationsList =
-  /*@__PURE__*/ S.Array(
-    EligibleAuthorization,
-  ) as any as S.Schema<RegistrationAssignmentPropertiesRegistrationDefinitionPropertiesEligibleAuthorizationsList>;
+  MarketplaceRegistrationDefinitionPropertiesEligibleAuthorizationsList as any as S.Schema<RegistrationAssignmentPropertiesRegistrationDefinitionPropertiesEligibleAuthorizationsList>;
 
 /** The current provisioning state of the registration definition. */
 export type RegistrationAssignmentPropertiesRegistrationDefinitionPropertiesProvisioningState =
@@ -592,9 +587,8 @@ export const GetRegistrationDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant. */
 export type RegistrationDefinitionPropertiesAuthorizationsList = Array<Authorization>;
-export const RegistrationDefinitionPropertiesAuthorizationsList = /*@__PURE__*/ S.Array(
-  Authorization,
-) as any as S.Schema<RegistrationDefinitionPropertiesAuthorizationsList>;
+export const RegistrationDefinitionPropertiesAuthorizationsList =
+  MarketplaceRegistrationDefinitionPropertiesAuthorizationsList as any as S.Schema<RegistrationDefinitionPropertiesAuthorizationsList>;
 
 /** The collection of eligible authorization objects describing the just-in-time access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant. */
 export type RegistrationDefinitionPropertiesEligibleAuthorizationsList =
@@ -1006,17 +1000,14 @@ export const RegistrationAssignmentsCreateOrUpdateRequest = /*@__PURE__*/ S.susp
 
 /** The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant. */
 export type RegistrationDefinitionPropertiesInputAuthorizationsList = Array<Authorization>;
-export const RegistrationDefinitionPropertiesInputAuthorizationsList = /*@__PURE__*/ S.Array(
-  Authorization,
-) as any as S.Schema<RegistrationDefinitionPropertiesInputAuthorizationsList>;
+export const RegistrationDefinitionPropertiesInputAuthorizationsList =
+  MarketplaceRegistrationDefinitionPropertiesAuthorizationsList as any as S.Schema<RegistrationDefinitionPropertiesInputAuthorizationsList>;
 
 /** The collection of eligible authorization objects describing the just-in-time access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant. */
 export type RegistrationDefinitionPropertiesInputEligibleAuthorizationsList =
   Array<EligibleAuthorization>;
 export const RegistrationDefinitionPropertiesInputEligibleAuthorizationsList =
-  /*@__PURE__*/ S.Array(
-    EligibleAuthorization,
-  ) as any as S.Schema<RegistrationDefinitionPropertiesInputEligibleAuthorizationsList>;
+  MarketplaceRegistrationDefinitionPropertiesEligibleAuthorizationsList as any as S.Schema<RegistrationDefinitionPropertiesInputEligibleAuthorizationsList>;
 
 /** The properties of a registration definition. */
 export interface RegistrationDefinitionPropertiesInput {

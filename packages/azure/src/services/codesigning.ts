@@ -382,10 +382,8 @@ export const CreateCodeSigningAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateCodeSigningAccountResponseTagsMap = { [key: string]: string | undefined };
-export const CreateCodeSigningAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateCodeSigningAccountResponseTagsMap>;
+export const CreateCodeSigningAccountResponseTagsMap =
+  CreateCodeSigningAccountRequestTagsMap as any as S.Schema<CreateCodeSigningAccountResponseTagsMap>;
 
 /** Properties of the artifact signing account. */
 export interface CodeSigningAccountProperties {
@@ -497,11 +495,8 @@ export const DeleteCodeSigningAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCodeSigningAccountRequest>;
 
 export interface DeleteCodeSigningAccountResponse {}
-export const DeleteCodeSigningAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCodeSigningAccountResponse",
-}) as any as S.Schema<DeleteCodeSigningAccountResponse>;
+export const DeleteCodeSigningAccountResponse =
+  DeleteCertificateProfileResponse as any as S.Schema<DeleteCodeSigningAccountResponse>;
 
 export interface GetCertificateProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -543,17 +538,8 @@ export interface GetCertificateProfileResponse {
   /** The resource-specific properties for this resource. */
   properties?: CertificateProfileProperties;
 }
-export const GetCertificateProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CertificateProfileProperties),
-  }),
-).annotate({
-  identifier: "GetCertificateProfileResponse",
-}) as any as S.Schema<GetCertificateProfileResponse>;
+export const GetCertificateProfileResponse =
+  CreateCertificateProfileResponse as any as S.Schema<GetCertificateProfileResponse>;
 
 export interface GetCodeSigningAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -582,10 +568,8 @@ export const GetCodeSigningAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetCodeSigningAccountResponseTagsMap = { [key: string]: string | undefined };
-export const GetCodeSigningAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetCodeSigningAccountResponseTagsMap>;
+export const GetCodeSigningAccountResponseTagsMap =
+  CreateCodeSigningAccountRequestTagsMap as any as S.Schema<GetCodeSigningAccountResponseTagsMap>;
 
 export interface GetCodeSigningAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -603,19 +587,8 @@ export interface GetCodeSigningAccountResponse {
   /** The resource-specific properties for this resource. */
   properties?: CodeSigningAccountProperties;
 }
-export const GetCodeSigningAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetCodeSigningAccountResponseTagsMap),
-    location: S.String,
-    properties: S.optional(CodeSigningAccountProperties),
-  }),
-).annotate({
-  identifier: "GetCodeSigningAccountResponse",
-}) as any as S.Schema<GetCodeSigningAccountResponse>;
+export const GetCodeSigningAccountResponse =
+  CreateCodeSigningAccountResponse as any as S.Schema<GetCodeSigningAccountResponse>;
 
 export interface ListCertificateProfileByCodeSigningAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -711,10 +684,8 @@ export const ListCodeSigningAccountByResourceGroupRequest = /*@__PURE__*/ S.susp
 
 /** Resource tags. */
 export type CodeSigningAccountTagsMap = { [key: string]: string | undefined };
-export const CodeSigningAccountTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CodeSigningAccountTagsMap>;
+export const CodeSigningAccountTagsMap =
+  CreateCodeSigningAccountRequestTagsMap as any as S.Schema<CodeSigningAccountTagsMap>;
 
 /** Artifact signing account resource. */
 export interface CodeSigningAccount {
@@ -912,18 +883,13 @@ export const RevokeCertificateProfileCertificateRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<RevokeCertificateProfileCertificateRequest>;
 
 export interface RevokeCertificateProfileCertificateResponse {}
-export const RevokeCertificateProfileCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RevokeCertificateProfileCertificateResponse",
-}) as any as S.Schema<RevokeCertificateProfileCertificateResponse>;
+export const RevokeCertificateProfileCertificateResponse =
+  DeleteCertificateProfileResponse as any as S.Schema<RevokeCertificateProfileCertificateResponse>;
 
 /** Resource tags. */
 export type UpdateCodeSigningAccountRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateCodeSigningAccountRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCodeSigningAccountRequestTagsMap>;
+export const UpdateCodeSigningAccountRequestTagsMap =
+  CreateCodeSigningAccountRequestTagsMap as any as S.Schema<UpdateCodeSigningAccountRequestTagsMap>;
 
 /** SKU of the artifact signing account. */
 export interface AccountSkuPatch {
@@ -982,10 +948,8 @@ export const UpdateCodeSigningAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateCodeSigningAccountResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateCodeSigningAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCodeSigningAccountResponseTagsMap>;
+export const UpdateCodeSigningAccountResponseTagsMap =
+  CreateCodeSigningAccountRequestTagsMap as any as S.Schema<UpdateCodeSigningAccountResponseTagsMap>;
 
 export interface UpdateCodeSigningAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1003,19 +967,8 @@ export interface UpdateCodeSigningAccountResponse {
   /** The resource-specific properties for this resource. */
   properties?: CodeSigningAccountProperties;
 }
-export const UpdateCodeSigningAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateCodeSigningAccountResponseTagsMap),
-    location: S.String,
-    properties: S.optional(CodeSigningAccountProperties),
-  }),
-).annotate({
-  identifier: "UpdateCodeSigningAccountResponse",
-}) as any as S.Schema<UpdateCodeSigningAccountResponse>;
+export const UpdateCodeSigningAccountResponse =
+  CreateCodeSigningAccountResponse as any as S.Schema<UpdateCodeSigningAccountResponse>;
 
 export type CheckCodeSigningAccountNameAvailabilityError = AzureOpError;
 /** Checks if the artifact signing account name is valid and is not already in use. */

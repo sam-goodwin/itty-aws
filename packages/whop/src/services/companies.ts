@@ -54,9 +54,8 @@ export const CreateApiKeyCompanyRequestPermissionsItemActionsList = /*@__PURE__*
 
 /** Resource identifiers. Can look like 'biz_xxxx' or 'biz_xxx|pass_*|exp_xxx' or 'biz_xxx|app_xxx' or 'biz_xxx|pass_xxx|exp_xxx' or 'biz_xxx|pass_xxx' or 'biz_xxx|pass_*' */
 export type CreateApiKeyCompanyRequestPermissionsItemResourcesList = Array<string>;
-export const CreateApiKeyCompanyRequestPermissionsItemResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateApiKeyCompanyRequestPermissionsItemResourcesList>;
+export const CreateApiKeyCompanyRequestPermissionsItemResourcesList =
+  CreateApiKeyCompanyRequestPermissionsItemActionsList as any as S.Schema<CreateApiKeyCompanyRequestPermissionsItemResourcesList>;
 
 /** Input for a single permissions statement */
 export interface CreateApiKeyCompanyRequestPermissionsItem {
@@ -459,10 +458,8 @@ export const CompanyLogo = /*@__PURE__*/ S.suspend(() =>
 
 /** A key-value JSON object of custom metadata for this company, managed by the platform that created the account. */
 export type CompanyMetadataMap = { [key: string]: unknown | undefined };
-export const CompanyMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CompanyMetadataMap>;
+export const CompanyMetadataMap =
+  CreateCompanyRequestMetadataMap as any as S.Schema<CompanyMetadataMap>;
 
 /** The user who owns and has full administrative control over this company. */
 export interface CompanyOwnerUser {
@@ -619,10 +616,8 @@ export const CompanyListItemLogo = CompanyLogo;
 
 /** A key-value JSON object of custom metadata for this company, managed by the platform that created the account. */
 export type CompanyListItemMetadataMap = { [key: string]: unknown | undefined };
-export const CompanyListItemMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CompanyListItemMetadataMap>;
+export const CompanyListItemMetadataMap =
+  CreateCompanyRequestMetadataMap as any as S.Schema<CompanyListItemMetadataMap>;
 
 /** The user who owns and has full administrative control over this company. */
 export type CompanyListItemOwnerUser = CompanyOwnerUser;

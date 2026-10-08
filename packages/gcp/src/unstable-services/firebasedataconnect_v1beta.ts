@@ -90,9 +90,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export type PostgreSqlSchemaValidationEnum =
   | "SQL_SCHEMA_VALIDATION_UNSPECIFIED"
@@ -937,13 +935,7 @@ export interface ExecuteMutationResponse {
   /** Additional response information. */
   extensions?: GraphqlResponseExtensions;
 }
-export const ExecuteMutationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(DocumentMap),
-    errors: S.optional(GraphqlErrorList),
-    extensions: S.optional(GraphqlResponseExtensions),
-  }),
-).annotate({ identifier: "ExecuteMutationResponse" }) as any as S.Schema<ExecuteMutationResponse>;
+export const ExecuteMutationResponse = GraphqlResponse as any as S.Schema<ExecuteMutationResponse>;
 
 /** The ExecuteQuery request to Firebase SQL Connect. */
 export type ExecuteQueryRequest = ExecuteMutationRequest;
@@ -979,13 +971,7 @@ export interface ExecuteQueryResponse {
   /** Additional response information. */
   extensions?: GraphqlResponseExtensions;
 }
-export const ExecuteQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(DocumentMap),
-    errors: S.optional(GraphqlErrorList),
-    extensions: S.optional(GraphqlResponseExtensions),
-  }),
-).annotate({ identifier: "ExecuteQueryResponse" }) as any as S.Schema<ExecuteQueryResponse>;
+export const ExecuteQueryResponse = GraphqlResponse as any as S.Schema<ExecuteQueryResponse>;
 
 /** Request message for GenerateQuery. */
 export interface GenerateQueryRequest {

@@ -169,17 +169,7 @@ export interface FeeMarkupListItem {
   /** The datetime the fee markup was last updated. */
   updated_at: string;
 }
-export const FeeMarkupListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created_at: S.String,
-    fee_type: FeeMarkupTypes,
-    fixed_fee_usd: S.NullOr(S.Number),
-    id: S.String,
-    notes: S.NullOr(S.String),
-    percentage_fee: S.NullOr(S.Number),
-    updated_at: S.String,
-  }),
-).annotate({ identifier: "FeeMarkupListItem" }) as any as S.Schema<FeeMarkupListItem>;
+export const FeeMarkupListItem = FeeMarkup as any as S.Schema<FeeMarkupListItem>;
 
 /** A list of nodes. */
 export type ListFeeMarkupResponseDataList = Array<FeeMarkupListItem>;

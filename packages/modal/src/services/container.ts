@@ -56,9 +56,8 @@ export const ContainerExecPutInputRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainerExecPutInputRequest>;
 
 export interface ContainerExecPutInputResponse {}
-export const ContainerExecPutInputResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ContainerExecPutInputResponse",
-}) as any as S.Schema<ContainerExecPutInputResponse>;
+export const ContainerExecPutInputResponse =
+  ContainerCheckpointResponse as any as S.Schema<ContainerExecPutInputResponse>;
 
 export interface ContainerExecWaitRequest {
   execId?: string;
@@ -137,9 +136,8 @@ export const ContainerHelloRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ContainerHelloRequest" }) as any as S.Schema<ContainerHelloRequest>;
 
 export interface ContainerHelloResponse {}
-export const ContainerHelloResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ContainerHelloResponse",
-}) as any as S.Schema<ContainerHelloResponse>;
+export const ContainerHelloResponse =
+  ContainerCheckpointResponse as any as S.Schema<ContainerHelloResponse>;
 
 export type TaskState =
   | "TASK_STATE_UNSPECIFIED"
@@ -221,9 +219,8 @@ export const ContainerLogRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ContainerLogRequest" }) as any as S.Schema<ContainerLogRequest>;
 
 export interface ContainerLogResponse {}
-export const ContainerLogResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ContainerLogResponse",
-}) as any as S.Schema<ContainerLogResponse>;
+export const ContainerLogResponse =
+  ContainerCheckpointResponse as any as S.Schema<ContainerLogResponse>;
 
 export interface ContainerReloadVolumesRequest {
   taskId?: string;
@@ -239,9 +236,8 @@ export const ContainerReloadVolumesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainerReloadVolumesRequest>;
 
 export interface ContainerReloadVolumesResponse {}
-export const ContainerReloadVolumesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ContainerReloadVolumesResponse",
-}) as any as S.Schema<ContainerReloadVolumesResponse>;
+export const ContainerReloadVolumesResponse =
+  ContainerCheckpointResponse as any as S.Schema<ContainerReloadVolumesResponse>;
 
 export interface ContainerServerLifecycleReadyRequest {}
 export const ContainerServerLifecycleReadyRequest = /*@__PURE__*/ S.suspend(() =>
@@ -553,9 +549,8 @@ export const StopContainerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopContainerRequest" }) as any as S.Schema<StopContainerRequest>;
 
 export interface StopContainerResponse {}
-export const StopContainerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopContainerResponse",
-}) as any as S.Schema<StopContainerResponse>;
+export const StopContainerResponse =
+  ContainerCheckpointResponse as any as S.Schema<StopContainerResponse>;
 
 export type ContainerCheckpointError = ModalOpError;
 /** Container */

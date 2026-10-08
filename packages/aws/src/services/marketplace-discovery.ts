@@ -1187,7 +1187,8 @@ export const AmazonMachineImageOperatingSystemList = /*@__PURE__*/ S.Array(
   AmazonMachineImageOperatingSystem,
 );
 export type AmazonMachineImageCidrIpAddressList = string[];
-export const AmazonMachineImageCidrIpAddressList = /*@__PURE__*/ S.Array(S.String);
+export const AmazonMachineImageCidrIpAddressList =
+  HighlightList as any as S.Schema<AmazonMachineImageCidrIpAddressList>;
 export interface AmazonMachineImageSecurityGroup {
   protocol: string;
   fromPort: number;
@@ -1221,7 +1222,8 @@ export const AmazonMachineImageRecommendation = /*@__PURE__*/ S.suspend(() =>
   identifier: "AmazonMachineImageRecommendation",
 }) as any as S.Schema<AmazonMachineImageRecommendation>;
 export type AmazonMachineImageEbsVolumeTypeList = string[];
-export const AmazonMachineImageEbsVolumeTypeList = /*@__PURE__*/ S.Array(S.String);
+export const AmazonMachineImageEbsVolumeTypeList =
+  HighlightList as any as S.Schema<AmazonMachineImageEbsVolumeTypeList>;
 export interface AmazonMachineImageEbsVolume {
   volumeTypes: string[];
   iops?: number;
@@ -1362,11 +1364,10 @@ export interface HelmOperatingSystem {
   operatingSystemFamilyName: string;
   operatingSystemName: string;
 }
-export const HelmOperatingSystem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operatingSystemFamilyName: S.String, operatingSystemName: S.String }),
-).annotate({ identifier: "HelmOperatingSystem" }) as any as S.Schema<HelmOperatingSystem>;
+export const HelmOperatingSystem = ContainerOperatingSystem as any as S.Schema<HelmOperatingSystem>;
 export type HelmOperatingSystemList = HelmOperatingSystem[];
-export const HelmOperatingSystemList = /*@__PURE__*/ S.Array(HelmOperatingSystem);
+export const HelmOperatingSystemList =
+  ContainerOperatingSystemList as any as S.Schema<HelmOperatingSystemList>;
 export interface HelmFulfillmentOption {
   fulfillmentOptionId: string;
   fulfillmentOptionName: string;
@@ -1395,11 +1396,11 @@ export interface EksAddOnOperatingSystem {
   operatingSystemFamilyName: string;
   operatingSystemName: string;
 }
-export const EksAddOnOperatingSystem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ operatingSystemFamilyName: S.String, operatingSystemName: S.String }),
-).annotate({ identifier: "EksAddOnOperatingSystem" }) as any as S.Schema<EksAddOnOperatingSystem>;
+export const EksAddOnOperatingSystem =
+  ContainerOperatingSystem as any as S.Schema<EksAddOnOperatingSystem>;
 export type EksAddOnOperatingSystemList = EksAddOnOperatingSystem[];
-export const EksAddOnOperatingSystemList = /*@__PURE__*/ S.Array(EksAddOnOperatingSystem);
+export const EksAddOnOperatingSystemList =
+  ContainerOperatingSystemList as any as S.Schema<EksAddOnOperatingSystemList>;
 export interface EksAddOnFulfillmentOption {
   fulfillmentOptionId: string;
   fulfillmentOptionName: string;
@@ -1437,21 +1438,8 @@ export interface Ec2ImageBuilderComponentFulfillmentOption {
   releaseNotes?: string;
   usageInstructions?: string;
 }
-export const Ec2ImageBuilderComponentFulfillmentOption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fulfillmentOptionId: S.String,
-    fulfillmentOptionName: S.String,
-    fulfillmentOptionType: FulfillmentOptionType,
-    fulfillmentOptionDisplayName: S.String,
-    fulfillmentOptionVersion: S.optional(S.String),
-    operatingSystems: S.optional(ContainerOperatingSystemList),
-    awsSupportedServices: S.optional(AwsSupportedServiceList),
-    releaseNotes: S.optional(S.String),
-    usageInstructions: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "Ec2ImageBuilderComponentFulfillmentOption",
-}) as any as S.Schema<Ec2ImageBuilderComponentFulfillmentOption>;
+export const Ec2ImageBuilderComponentFulfillmentOption =
+  ContainerFulfillmentOption as any as S.Schema<Ec2ImageBuilderComponentFulfillmentOption>;
 export interface DataArtifact {
   description?: string;
   resourceArn?: string;
@@ -1572,9 +1560,11 @@ export const SageMakerModelRecommendation = /*@__PURE__*/ S.suspend(() =>
   identifier: "SageMakerModelRecommendation",
 }) as any as S.Schema<SageMakerModelRecommendation>;
 export type SageMakerModelContentTypeList = string[];
-export const SageMakerModelContentTypeList = /*@__PURE__*/ S.Array(S.String);
+export const SageMakerModelContentTypeList =
+  HighlightList as any as S.Schema<SageMakerModelContentTypeList>;
 export type SageMakerModelResponseMimeTypeList = string[];
-export const SageMakerModelResponseMimeTypeList = /*@__PURE__*/ S.Array(S.String);
+export const SageMakerModelResponseMimeTypeList =
+  HighlightList as any as S.Schema<SageMakerModelResponseMimeTypeList>;
 export interface SageMakerModelFulfillmentOption {
   fulfillmentOptionId: string;
   fulfillmentOptionType: FulfillmentOptionType;
@@ -1819,7 +1809,8 @@ export const PurchaseOptionFilterType = S.String;
 
 export type PurchaseOptionFilterValue = string;
 export type PurchaseOptionFilterValueList = string[];
-export const PurchaseOptionFilterValueList = /*@__PURE__*/ S.Array(S.String);
+export const PurchaseOptionFilterValueList =
+  HighlightList as any as S.Schema<PurchaseOptionFilterValueList>;
 export interface PurchaseOptionFilter {
   filterType: PurchaseOptionFilterType;
   filterValues: string[];
@@ -1928,7 +1919,7 @@ export const SearchFilterType = S.String;
 
 export type SearchFilterValue = string;
 export type SearchFilterValueList = string[];
-export const SearchFilterValueList = /*@__PURE__*/ S.Array(S.String);
+export const SearchFilterValueList = HighlightList as any as S.Schema<SearchFilterValueList>;
 export interface SearchFilter {
   filterType: SearchFilterType;
   filterValues: string[];

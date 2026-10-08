@@ -99,9 +99,8 @@ export type AudienceEngagementLeadFormRuleObject = "lead_form";
 export const AudienceEngagementLeadFormRuleObject = S.String;
 
 export type AudienceEngagementLeadFormRulePlatformFormIdsList = Array<string>;
-export const AudienceEngagementLeadFormRulePlatformFormIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AudienceEngagementLeadFormRulePlatformFormIdsList>;
+export const AudienceEngagementLeadFormRulePlatformFormIdsList =
+  AudienceEngagementVideoRulePlatformVideoIdsList as any as S.Schema<AudienceEngagementLeadFormRulePlatformFormIdsList>;
 
 export interface AudienceEngagementLeadFormRule {
   /** Interaction that qualifies a person for this rule. */
@@ -223,9 +222,8 @@ export const AudienceEngagementExcludeList = /*@__PURE__*/ S.Array(
 
 /** Match any inclusion rule. Supply 1-10 rules. Video rules must share a retention window and cannot be combined with other sources. */
 export type AudienceEngagementIncludeList = Array<AudienceEngagementRule>;
-export const AudienceEngagementIncludeList = /*@__PURE__*/ S.Array(
-  AudienceEngagementRule,
-) as any as S.Schema<AudienceEngagementIncludeList>;
+export const AudienceEngagementIncludeList =
+  AudienceEngagementExcludeList as any as S.Schema<AudienceEngagementIncludeList>;
 
 /** Ad platform that maintains membership. */
 export type AudienceEngagementPlatform = "meta";
@@ -280,9 +278,8 @@ export const AudienceMatchRatesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AudienceMatchRatesList>;
 
 export type AudiencePlatformAudienceIdsList = Array<string>;
-export const AudiencePlatformAudienceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AudiencePlatformAudienceIdsList>;
+export const AudiencePlatformAudienceIdsList =
+  AudienceEngagementVideoRulePlatformVideoIdsList as any as S.Schema<AudiencePlatformAudienceIdsList>;
 
 /** Membership source: an uploaded CSV, Whop People filters, or social engagement. */
 export type AudienceSourceType = "csv_upload" | "people_filter" | "engagement";
@@ -394,15 +391,13 @@ export const CreateAudienceRequestColumnMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** Exclude anyone matching any exclusion rule. Defaults to an empty array. Video audiences do not support exclusions; use a separate audience in ad-group exclusions. */
 export type CreateAudienceRequestEngagementExcludeList = Array<AudienceEngagementRule>;
-export const CreateAudienceRequestEngagementExcludeList = /*@__PURE__*/ S.Array(
-  AudienceEngagementRule,
-) as any as S.Schema<CreateAudienceRequestEngagementExcludeList>;
+export const CreateAudienceRequestEngagementExcludeList =
+  AudienceEngagementExcludeList as any as S.Schema<CreateAudienceRequestEngagementExcludeList>;
 
 /** Match any inclusion rule. Video rules must share a retention window and cannot be combined with other sources. */
 export type CreateAudienceRequestEngagementIncludeList = Array<AudienceEngagementRule>;
-export const CreateAudienceRequestEngagementIncludeList = /*@__PURE__*/ S.Array(
-  AudienceEngagementRule,
-) as any as S.Schema<CreateAudienceRequestEngagementIncludeList>;
+export const CreateAudienceRequestEngagementIncludeList =
+  AudienceEngagementExcludeList as any as S.Schema<CreateAudienceRequestEngagementIncludeList>;
 
 /** Ad platform that maintains membership. */
 export type CreateAudienceRequestEngagementPlatform = "meta";
@@ -552,9 +547,8 @@ export const ListAudiencesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAudiencesRequest" }) as any as S.Schema<ListAudiencesRequest>;
 
 export type ListAudiencesResponseDataList = Array<Audience>;
-export const ListAudiencesResponseDataList = /*@__PURE__*/ S.Array(
-  Audience,
-) as any as S.Schema<ListAudiencesResponseDataList>;
+export const ListAudiencesResponseDataList =
+  CreateAudienceResponseBodyCase1DataList as any as S.Schema<ListAudiencesResponseDataList>;
 
 export interface ListAudiencesResponsePageInfo {
   end_cursor: string | null;

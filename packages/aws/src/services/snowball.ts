@@ -146,9 +146,7 @@ export const CancelJobRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CancelJobRequest" }) as any as S.Schema<CancelJobRequest>;
 export interface CancelJobResult {}
-export const CancelJobResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CancelJobResult",
-}) as any as S.Schema<CancelJobResult>;
+export const CancelJobResult = CancelClusterResult as any as S.Schema<CancelJobResult>;
 export type AddressId = string;
 export type AddressType = "CUST_PICKUP" | "AWS_SHIP" | (string & {});
 export const AddressType = S.String;
@@ -305,11 +303,8 @@ export interface TGWOnDeviceServiceConfiguration {
   StorageLimit?: number;
   StorageUnit?: StorageUnit;
 }
-export const TGWOnDeviceServiceConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ StorageLimit: S.optional(S.Number), StorageUnit: S.optional(StorageUnit) }),
-).annotate({
-  identifier: "TGWOnDeviceServiceConfiguration",
-}) as any as S.Schema<TGWOnDeviceServiceConfiguration>;
+export const TGWOnDeviceServiceConfiguration =
+  NFSOnDeviceServiceConfiguration as any as S.Schema<TGWOnDeviceServiceConfiguration>;
 export interface EKSOnDeviceServiceConfiguration {
   KubernetesVersion?: string;
   EKSAnywhereVersion?: string;
@@ -1049,9 +1044,7 @@ export interface ListJobsResult {
   JobListEntries?: JobListEntry[];
   NextToken?: string;
 }
-export const ListJobsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ JobListEntries: S.optional(JobListEntryList), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListJobsResult" }) as any as S.Schema<ListJobsResult>;
+export const ListJobsResult = ListClusterJobsResult as any as S.Schema<ListJobsResult>;
 export interface ListLongTermPricingRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -1064,7 +1057,8 @@ export const ListLongTermPricingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLongTermPricingRequest",
 }) as any as S.Schema<ListLongTermPricingRequest>;
 export type LongTermPricingAssociatedJobIdList = string[];
-export const LongTermPricingAssociatedJobIdList = /*@__PURE__*/ S.Array(S.String);
+export const LongTermPricingAssociatedJobIdList =
+  LongTermPricingIdList as any as S.Schema<LongTermPricingAssociatedJobIdList>;
 export interface LongTermPricingListEntry {
   LongTermPricingId?: string;
   LongTermPricingEndDate?: Date;
@@ -1202,9 +1196,7 @@ export const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateClusterRequest" }) as any as S.Schema<UpdateClusterRequest>;
 export interface UpdateClusterResult {}
-export const UpdateClusterResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateClusterResult",
-}) as any as S.Schema<UpdateClusterResult>;
+export const UpdateClusterResult = CancelClusterResult as any as S.Schema<UpdateClusterResult>;
 export interface UpdateJobRequest {
   JobId: string;
   RoleARN?: string;
@@ -1234,9 +1226,7 @@ export const UpdateJobRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateJobRequest" }) as any as S.Schema<UpdateJobRequest>;
 export interface UpdateJobResult {}
-export const UpdateJobResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateJobResult",
-}) as any as S.Schema<UpdateJobResult>;
+export const UpdateJobResult = CancelClusterResult as any as S.Schema<UpdateJobResult>;
 export type ShipmentState = "RECEIVED" | "RETURNED" | (string & {});
 export const ShipmentState = S.String;
 
@@ -1252,9 +1242,8 @@ export const UpdateJobShipmentStateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateJobShipmentStateRequest",
 }) as any as S.Schema<UpdateJobShipmentStateRequest>;
 export interface UpdateJobShipmentStateResult {}
-export const UpdateJobShipmentStateResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateJobShipmentStateResult",
-}) as any as S.Schema<UpdateJobShipmentStateResult>;
+export const UpdateJobShipmentStateResult =
+  CancelClusterResult as any as S.Schema<UpdateJobShipmentStateResult>;
 export interface UpdateLongTermPricingRequest {
   LongTermPricingId: string;
   ReplacementJob?: string;
@@ -1270,9 +1259,8 @@ export const UpdateLongTermPricingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateLongTermPricingRequest",
 }) as any as S.Schema<UpdateLongTermPricingRequest>;
 export interface UpdateLongTermPricingResult {}
-export const UpdateLongTermPricingResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateLongTermPricingResult",
-}) as any as S.Schema<UpdateLongTermPricingResult>;
+export const UpdateLongTermPricingResult =
+  CancelClusterResult as any as S.Schema<UpdateLongTermPricingResult>;
 export type CancelClusterError =
   | InvalidJobStateException
   | InvalidResourceException

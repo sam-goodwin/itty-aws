@@ -544,11 +544,8 @@ export const DeleteGuestConfigurationHCRPAssignmentRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteGuestConfigurationHCRPAssignmentRequest>;
 
 export interface DeleteGuestConfigurationHCRPAssignmentResponse {}
-export const DeleteGuestConfigurationHCRPAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGuestConfigurationHCRPAssignmentResponse",
-}) as any as S.Schema<DeleteGuestConfigurationHCRPAssignmentResponse>;
+export const DeleteGuestConfigurationHCRPAssignmentResponse =
+  DeleteGuestConfigurationAssignmentResponse as any as S.Schema<DeleteGuestConfigurationHCRPAssignmentResponse>;
 
 export interface GetGuestConfigurationAssignmentRequest {
   /** The ID of the target subscription. */
@@ -684,9 +681,8 @@ export const GetGuestConfigurationAssignmentReportRequest = /*@__PURE__*/ S.susp
 
 /** The list of resources for which guest configuration assignment compliance is checked. */
 export type AssignmentReportDetailsResourcesList = Array<AssignmentReportResource>;
-export const AssignmentReportDetailsResourcesList = /*@__PURE__*/ S.Array(
-  AssignmentReportResource,
-) as any as S.Schema<AssignmentReportDetailsResourcesList>;
+export const AssignmentReportDetailsResourcesList =
+  AssignmentReportResourcesList as any as S.Schema<AssignmentReportDetailsResourcesList>;
 
 /** Details of the guest configuration assignment report. */
 export interface AssignmentReportDetails {
@@ -1195,17 +1191,14 @@ export const GetGuestConfigurationHCRPAssignmentReportRequest = /*@__PURE__*/ S.
 /** The configuration parameters for the guest configuration. */
 export type GuestConfigurationNavigationInputConfigurationParameterList =
   Array<ConfigurationParameter>;
-export const GuestConfigurationNavigationInputConfigurationParameterList = /*@__PURE__*/ S.Array(
-  ConfigurationParameter,
-) as any as S.Schema<GuestConfigurationNavigationInputConfigurationParameterList>;
+export const GuestConfigurationNavigationInputConfigurationParameterList =
+  GuestConfigurationNavigationConfigurationParameterList as any as S.Schema<GuestConfigurationNavigationInputConfigurationParameterList>;
 
 /** The protected configuration parameters for the guest configuration. */
 export type GuestConfigurationNavigationInputConfigurationProtectedParameterList =
   Array<ConfigurationParameter>;
 export const GuestConfigurationNavigationInputConfigurationProtectedParameterList =
-  /*@__PURE__*/ S.Array(
-    ConfigurationParameter,
-  ) as any as S.Schema<GuestConfigurationNavigationInputConfigurationProtectedParameterList>;
+  GuestConfigurationNavigationConfigurationProtectedParameterList as any as S.Schema<GuestConfigurationNavigationInputConfigurationProtectedParameterList>;
 
 /** Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules. */
 export interface GuestConfigurationNavigationInput {
@@ -1319,9 +1312,8 @@ export const VMSSVMInfoInput = ConfigurationInfoInput;
 /** The list of VM Compliance data for VMSS */
 export type GuestConfigurationAssignmentPropertiesInputVmssVMListList =
   Array<ConfigurationInfoInput>;
-export const GuestConfigurationAssignmentPropertiesInputVmssVMListList = /*@__PURE__*/ S.Array(
-  ConfigurationInfoInput,
-) as any as S.Schema<GuestConfigurationAssignmentPropertiesInputVmssVMListList>;
+export const GuestConfigurationAssignmentPropertiesInputVmssVMListList =
+  AssignmentReportResourceInputReasonsList as any as S.Schema<GuestConfigurationAssignmentPropertiesInputVmssVMListList>;
 
 /** Guest configuration assignment properties. */
 export interface GuestConfigurationAssignmentPropertiesInput {

@@ -215,17 +215,8 @@ export interface CreateConfigurationInSubscriptionResponse {
   /** The Advisor configuration data structure. */
   properties?: ConfigDataProperties;
 }
-export const CreateConfigurationInSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ConfigDataProperties),
-  }),
-).annotate({
-  identifier: "CreateConfigurationInSubscriptionResponse",
-}) as any as S.Schema<CreateConfigurationInSubscriptionResponse>;
+export const CreateConfigurationInSubscriptionResponse =
+  CreateConfigurationInResourceGroupResponse as any as S.Schema<CreateConfigurationInSubscriptionResponse>;
 
 /** The properties of the suppression. */
 export interface SuppressionPropertiesInput {
@@ -358,9 +349,8 @@ export const GenerateRecommendationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GenerateRecommendationRequest>;
 
 export interface GenerateRecommendationResponse {}
-export const GenerateRecommendationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GenerateRecommendationResponse",
-}) as any as S.Schema<GenerateRecommendationResponse>;
+export const GenerateRecommendationResponse =
+  DeleteSuppressionResponse as any as S.Schema<GenerateRecommendationResponse>;
 
 export interface GetAdvisorScoreRequest {
   /** The Azure subscription ID. */
@@ -562,10 +552,8 @@ export const RecommendationPropertiesExtendedPropertiesMap = /*@__PURE__*/ S.Rec
 
 /** The action to view resource. */
 export type ResourceMetadataActionMap = { [key: string]: unknown | undefined };
-export const ResourceMetadataActionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ResourceMetadataActionMap>;
+export const ResourceMetadataActionMap =
+  RecommendationPropertiesMetadataMap as any as S.Schema<ResourceMetadataActionMap>;
 
 /** Recommendation resource metadata */
 export interface ResourceMetadata {
@@ -591,10 +579,8 @@ export const ResourceMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceMetadata" }) as any as S.Schema<ResourceMetadata>;
 
 export type RecommendationPropertiesActionsItemMap = { [key: string]: unknown | undefined };
-export const RecommendationPropertiesActionsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<RecommendationPropertiesActionsItemMap>;
+export const RecommendationPropertiesActionsItemMap =
+  RecommendationPropertiesMetadataMap as any as S.Schema<RecommendationPropertiesActionsItemMap>;
 
 /** The list of recommended actions to implement recommendation. */
 export type RecommendationPropertiesActionsList = Array<RecommendationPropertiesActionsItemMap>;
@@ -604,19 +590,15 @@ export const RecommendationPropertiesActionsList = /*@__PURE__*/ S.Array(
 
 /** The automated way to apply recommendation. */
 export type RecommendationPropertiesRemediationMap = { [key: string]: unknown | undefined };
-export const RecommendationPropertiesRemediationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<RecommendationPropertiesRemediationMap>;
+export const RecommendationPropertiesRemediationMap =
+  RecommendationPropertiesMetadataMap as any as S.Schema<RecommendationPropertiesRemediationMap>;
 
 /** The recommendation metadata properties exposed to customer to provide additional information. */
 export type RecommendationPropertiesExposedMetadataPropertiesMap = {
   [key: string]: unknown | undefined;
 };
-export const RecommendationPropertiesExposedMetadataPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<RecommendationPropertiesExposedMetadataPropertiesMap>;
+export const RecommendationPropertiesExposedMetadataPropertiesMap =
+  RecommendationPropertiesMetadataMap as any as S.Schema<RecommendationPropertiesExposedMetadataPropertiesMap>;
 
 /** The properties of the recommendation. */
 export interface RecommendationProperties {
@@ -731,9 +713,8 @@ export const GetRecommendationMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of keys on which this entity depends on. */
 export type MetadataEntityPropertiesDependsOnList = Array<string>;
-export const MetadataEntityPropertiesDependsOnList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetadataEntityPropertiesDependsOnList>;
+export const MetadataEntityPropertiesDependsOnList =
+  RecommendationPropertiesSuppressionIdsList as any as S.Schema<MetadataEntityPropertiesDependsOnList>;
 
 export type MetadataEntityPropertiesApplicableScenariosItem = "Alerts";
 export const MetadataEntityPropertiesApplicableScenariosItem = S.String;
@@ -886,15 +867,7 @@ export interface AdvisorScoreEntity {
   /** The Advisor score data. */
   properties?: GetAdvisorScoreResponseProperties;
 }
-export const AdvisorScoreEntity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(GetAdvisorScoreResponseProperties),
-  }),
-).annotate({ identifier: "AdvisorScoreEntity" }) as any as S.Schema<AdvisorScoreEntity>;
+export const AdvisorScoreEntity = GetAdvisorScoreResponse as any as S.Schema<AdvisorScoreEntity>;
 
 /** The list of operations. */
 export type AdvisorScoreResponseValueList = Array<AdvisorScoreEntity>;
@@ -1144,17 +1117,8 @@ export interface ResourceRecommendationBase {
   /** The properties of the recommendation. */
   properties?: RecommendationProperties;
 }
-export const ResourceRecommendationBase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RecommendationProperties),
-  }),
-).annotate({
-  identifier: "ResourceRecommendationBase",
-}) as any as S.Schema<ResourceRecommendationBase>;
+export const ResourceRecommendationBase =
+  GetRecommendationResponse as any as S.Schema<ResourceRecommendationBase>;
 
 /** The list of recommendations. */
 export type ResourceRecommendationBaseListResultValueList = Array<ResourceRecommendationBase>;
@@ -1214,15 +1178,7 @@ export interface SuppressionContract {
   /** The properties of the suppression. */
   properties?: SuppressionProperties;
 }
-export const SuppressionContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SuppressionProperties),
-  }),
-).annotate({ identifier: "SuppressionContract" }) as any as S.Schema<SuppressionContract>;
+export const SuppressionContract = GetSuppressionResponse as any as S.Schema<SuppressionContract>;
 
 /** The list of suppressions. */
 export type SuppressionContractListResultValueList = Array<SuppressionContract>;

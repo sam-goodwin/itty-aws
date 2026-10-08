@@ -29,10 +29,7 @@ export const SandboxEnvMap = /*@__PURE__*/ S.Record(
 
 /** Labels for the sandbox */
 export type SandboxLabelsMap = { [key: string]: string | undefined };
-export const SandboxLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SandboxLabelsMap>;
+export const SandboxLabelsMap = SandboxEnvMap as any as S.Schema<SandboxLabelsMap>;
 
 export type GpuType =
   | "H100"
@@ -284,17 +281,13 @@ export const Sandbox2 = /*@__PURE__*/ S.suspend(() =>
 
 /** Environment variables for the sandbox */
 export type CreateSandboxRequestEnvMap = { [key: string]: string | undefined };
-export const CreateSandboxRequestEnvMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateSandboxRequestEnvMap>;
+export const CreateSandboxRequestEnvMap =
+  SandboxEnvMap as any as S.Schema<CreateSandboxRequestEnvMap>;
 
 /** Labels for the sandbox */
 export type CreateSandboxRequestLabelsMap = { [key: string]: string | undefined };
-export const CreateSandboxRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateSandboxRequestLabelsMap>;
+export const CreateSandboxRequestLabelsMap =
+  SandboxEnvMap as any as S.Schema<CreateSandboxRequestLabelsMap>;
 
 /** Preferred GPU type for the sandbox. Accepts a single value or an ordered preference list -- the scheduler tries each in order and pins the sandbox to the first that has capacity. */
 export type CreateSandboxRequestGpuTypeList = Array<GpuType | (string & {})>;
@@ -304,15 +297,13 @@ export const CreateSandboxRequestGpuTypeList = /*@__PURE__*/ S.Array(
 
 /** Array of volumes to attach to the sandbox */
 export type CreateSandboxRequestVolumesList = Array<SandboxVolume>;
-export const CreateSandboxRequestVolumesList = /*@__PURE__*/ S.Array(
-  SandboxVolume,
-) as any as S.Schema<CreateSandboxRequestVolumesList>;
+export const CreateSandboxRequestVolumesList =
+  SandboxVolumesList as any as S.Schema<CreateSandboxRequestVolumesList>;
 
 /** The context hashes used for the build */
 export type CreateBuildInfoContextHashesList = Array<string>;
-export const CreateBuildInfoContextHashesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateBuildInfoContextHashesList>;
+export const CreateBuildInfoContextHashesList =
+  BuildInfoContextHashesList as any as S.Schema<CreateBuildInfoContextHashesList>;
 
 export interface CreateBuildInfo {
   /** The Dockerfile content used for the build */
@@ -328,10 +319,8 @@ export const CreateBuildInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateBuildInfo" }) as any as S.Schema<CreateBuildInfo>;
 
 export type CreateSandboxRequestSecretsItemMap = { [key: string]: string | undefined };
-export const CreateSandboxRequestSecretsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateSandboxRequestSecretsItemMap>;
+export const CreateSandboxRequestSecretsItemMap =
+  SandboxEnvMap as any as S.Schema<CreateSandboxRequestSecretsItemMap>;
 
 /** Secrets to mount in this sandbox. Each entry maps an env var name to a vault secret name. */
 export type CreateSandboxRequestSecretsList = Array<CreateSandboxRequestSecretsItemMap>;
@@ -606,10 +595,7 @@ export const DirectorySyncStatus = S.String;
 
 /** Headers */
 export type OtelConfigHeadersMap = { [key: string]: string | undefined };
-export const OtelConfigHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OtelConfigHeadersMap>;
+export const OtelConfigHeadersMap = SandboxEnvMap as any as S.Schema<OtelConfigHeadersMap>;
 
 export interface OtelConfig {
   /** Endpoint */
@@ -796,9 +782,8 @@ export type SandboxClass = "linux-vm" | "container" | "windows";
 export const SandboxClass = S.String;
 
 export type RegionQuotaAllowedGpuTypesList = Array<GpuType>;
-export const RegionQuotaAllowedGpuTypesList = /*@__PURE__*/ S.Array(
-  GpuType,
-) as any as S.Schema<RegionQuotaAllowedGpuTypesList>;
+export const RegionQuotaAllowedGpuTypesList =
+  CreateSandboxRequestGpuTypeList as any as S.Schema<RegionQuotaAllowedGpuTypesList>;
 
 export interface RegionQuota {
   organizationId: string;
@@ -904,16 +889,12 @@ export const GetSandboxesForRunnerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSandboxesForRunnerRequest>;
 
 export type GetSandboxesForRunnerResponseBodyList = Array<Sandbox2>;
-export const GetSandboxesForRunnerResponseBodyList = /*@__PURE__*/ S.Array(
-  Sandbox2,
-) as any as S.Schema<GetSandboxesForRunnerResponseBodyList>;
+export const GetSandboxesForRunnerResponseBodyList =
+  GetSandboxAncestorsResponseBodyList as any as S.Schema<GetSandboxesForRunnerResponseBodyList>;
 
 export type GetSandboxesForRunnerResponse = GetSandboxesForRunnerResponseBodyList;
-export const GetSandboxesForRunnerResponse = /*@__PURE__*/ S.suspend(() =>
-  GetSandboxesForRunnerResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetSandboxesForRunnerResponse",
-}) as any as S.Schema<GetSandboxesForRunnerResponse>;
+export const GetSandboxesForRunnerResponse =
+  GetSandboxAncestorsResponse as any as S.Schema<GetSandboxesForRunnerResponse>;
 
 export interface GetSandboxForksRequest {
   sandboxIdOrName: string;
@@ -930,9 +911,8 @@ export const GetSandboxForksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSandboxForksRequest" }) as any as S.Schema<GetSandboxForksRequest>;
 
 export type GetSandboxForksResponseBodyList = Array<Sandbox2>;
-export const GetSandboxForksResponseBodyList = /*@__PURE__*/ S.Array(
-  Sandbox2,
-) as any as S.Schema<GetSandboxForksResponseBodyList>;
+export const GetSandboxForksResponseBodyList =
+  GetSandboxAncestorsResponseBodyList as any as S.Schema<GetSandboxForksResponseBodyList>;
 
 export type GetSandboxForksResponse = GetSandboxForksResponseBodyList;
 export const GetSandboxForksResponse = /*@__PURE__*/ S.suspend(() =>
@@ -940,9 +920,8 @@ export const GetSandboxForksResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSandboxForksResponse" }) as any as S.Schema<GetSandboxForksResponse>;
 
 export type GetSandboxLogsRequestSeveritiesList = Array<string>;
-export const GetSandboxLogsRequestSeveritiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSandboxLogsRequestSeveritiesList>;
+export const GetSandboxLogsRequestSeveritiesList =
+  BuildInfoContextHashesList as any as S.Schema<GetSandboxLogsRequestSeveritiesList>;
 
 export interface GetSandboxLogsRequest {
   /** ID of the sandbox */
@@ -977,17 +956,12 @@ export const GetSandboxLogsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource attributes from OTEL */
 export type LogEntryResourceAttributesMap = { [key: string]: string | undefined };
-export const LogEntryResourceAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LogEntryResourceAttributesMap>;
+export const LogEntryResourceAttributesMap =
+  SandboxEnvMap as any as S.Schema<LogEntryResourceAttributesMap>;
 
 /** Log-specific attributes */
 export type LogEntryLogAttributesMap = { [key: string]: string | undefined };
-export const LogEntryLogAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LogEntryLogAttributesMap>;
+export const LogEntryLogAttributesMap = SandboxEnvMap as any as S.Schema<LogEntryLogAttributesMap>;
 
 export interface LogEntry {
   /** Timestamp of the log entry */
@@ -1049,9 +1023,8 @@ export const PaginatedLogs = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PaginatedLogs" }) as any as S.Schema<PaginatedLogs>;
 
 export type GetSandboxMetricsRequestMetricNamesList = Array<string>;
-export const GetSandboxMetricsRequestMetricNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSandboxMetricsRequestMetricNamesList>;
+export const GetSandboxMetricsRequestMetricNamesList =
+  BuildInfoContextHashesList as any as S.Schema<GetSandboxMetricsRequestMetricNamesList>;
 
 export interface GetSandboxMetricsRequest {
   /** ID of the sandbox */
@@ -1257,10 +1230,8 @@ export const GetSandboxTraceSpansRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Span attributes */
 export type TraceSpanSpanAttributesMap = { [key: string]: string | undefined };
-export const TraceSpanSpanAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TraceSpanSpanAttributesMap>;
+export const TraceSpanSpanAttributesMap =
+  SandboxEnvMap as any as S.Schema<TraceSpanSpanAttributesMap>;
 
 export interface TraceSpan {
   /** Trace identifier */
@@ -1373,11 +1344,7 @@ export interface ToolboxProxyUrl {
   /** The toolbox proxy URL for the sandbox */
   url: string;
 }
-export const ToolboxProxyUrl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-  }),
-).annotate({ identifier: "ToolboxProxyUrl" }) as any as S.Schema<ToolboxProxyUrl>;
+export const ToolboxProxyUrl = Url as any as S.Schema<ToolboxProxyUrl>;
 
 export type ListSandboxesRequestStatesList = Array<SandboxState | (string & {})>;
 export const ListSandboxesRequestStatesList = /*@__PURE__*/ S.Array(
@@ -1385,14 +1352,12 @@ export const ListSandboxesRequestStatesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListSandboxesRequestStatesList>;
 
 export type ListSandboxesRequestSnapshotsList = Array<string>;
-export const ListSandboxesRequestSnapshotsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListSandboxesRequestSnapshotsList>;
+export const ListSandboxesRequestSnapshotsList =
+  BuildInfoContextHashesList as any as S.Schema<ListSandboxesRequestSnapshotsList>;
 
 export type ListSandboxesRequestRegionIdsList = Array<string>;
-export const ListSandboxesRequestRegionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListSandboxesRequestRegionIdsList>;
+export const ListSandboxesRequestRegionIdsList =
+  BuildInfoContextHashesList as any as S.Schema<ListSandboxesRequestRegionIdsList>;
 
 export type ListSandboxesRequestSandboxClassesList = Array<SandboxClass | (string & {})>;
 export const ListSandboxesRequestSandboxClassesList = /*@__PURE__*/ S.Array(
@@ -1510,10 +1475,7 @@ export const ListSandboxesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels for the sandbox */
 export type SandboxListItemLabelsMap = { [key: string]: string | undefined };
-export const SandboxListItemLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SandboxListItemLabelsMap>;
+export const SandboxListItemLabelsMap = SandboxEnvMap as any as S.Schema<SandboxListItemLabelsMap>;
 
 /** The state of the backup */
 export type SandboxListItemBackupState = "None" | "Pending" | "InProgress" | "Completed" | "Error";
@@ -1690,10 +1652,8 @@ export const RecoverSandboxRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Key-value pairs of labels */
 export type ReplaceLabelsRequestLabelsMap = { [key: string]: string | undefined };
-export const ReplaceLabelsRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ReplaceLabelsRequestLabelsMap>;
+export const ReplaceLabelsRequestLabelsMap =
+  SandboxEnvMap as any as S.Schema<ReplaceLabelsRequestLabelsMap>;
 
 export interface ReplaceLabelsRequest {
   /** ID or name of the sandbox */
@@ -1713,10 +1673,7 @@ export const ReplaceLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Key-value pairs of labels */
 export type SandboxLabelsLabelsMap = { [key: string]: string | undefined };
-export const SandboxLabelsLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SandboxLabelsLabelsMap>;
+export const SandboxLabelsLabelsMap = SandboxEnvMap as any as S.Schema<SandboxLabelsLabelsMap>;
 
 export interface SandboxLabels {
   /** Key-value pairs of labels */
@@ -1766,9 +1723,8 @@ export const ResolveSandboxSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResolveSandboxSecretsRequest>;
 
 export type ResolveSandboxSecrets200ResponseInnerHostsList = Array<string>;
-export const ResolveSandboxSecrets200ResponseInnerHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResolveSandboxSecrets200ResponseInnerHostsList>;
+export const ResolveSandboxSecrets200ResponseInnerHostsList =
+  BuildInfoContextHashesList as any as S.Schema<ResolveSandboxSecrets200ResponseInnerHostsList>;
 
 export interface ResolveSandboxSecrets200ResponseInner {
   env?: string;
@@ -2030,17 +1986,14 @@ export const UpdatePublicStatusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdatePublicStatusRequest>;
 
 export type UpdateSandboxSecretsRequestSecretsItemMap = { [key: string]: string | undefined };
-export const UpdateSandboxSecretsRequestSecretsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSandboxSecretsRequestSecretsItemMap>;
+export const UpdateSandboxSecretsRequestSecretsItemMap =
+  SandboxEnvMap as any as S.Schema<UpdateSandboxSecretsRequestSecretsItemMap>;
 
 /** Secrets to mount in this sandbox, replacing the previously mounted set. Each entry maps an env var name to a vault secret name. Pass an empty array to detach all secrets. */
 export type UpdateSandboxSecretsRequestSecretsList =
   Array<UpdateSandboxSecretsRequestSecretsItemMap>;
-export const UpdateSandboxSecretsRequestSecretsList = /*@__PURE__*/ S.Array(
-  UpdateSandboxSecretsRequestSecretsItemMap,
-) as any as S.Schema<UpdateSandboxSecretsRequestSecretsList>;
+export const UpdateSandboxSecretsRequestSecretsList =
+  CreateSandboxRequestSecretsList as any as S.Schema<UpdateSandboxSecretsRequestSecretsList>;
 
 export interface UpdateSandboxSecretsRequest {
   /** ID or name of the sandbox */
@@ -2111,9 +2064,8 @@ export const UpdateSandboxStateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateSandboxStateRequest>;
 
 export interface UpdateSandboxStateResponse {}
-export const UpdateSandboxStateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateSandboxStateResponse",
-}) as any as S.Schema<UpdateSandboxStateResponse>;
+export const UpdateSandboxStateResponse =
+  UpdateLastActivityResponse as any as S.Schema<UpdateSandboxStateResponse>;
 
 export interface ValidateSshAccessRequest {
   /** SSH access token to validate */

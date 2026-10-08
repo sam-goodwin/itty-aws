@@ -59,14 +59,8 @@ export interface V1ControlCommentDeletedRequestControl {
   /** The unique identifier of the audit the control belongs to. */
   auditId: string;
 }
-export const V1ControlCommentDeletedRequestControl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    auditId: S.String,
-  }),
-).annotate({
-  identifier: "V1ControlCommentDeletedRequestControl",
-}) as any as S.Schema<V1ControlCommentDeletedRequestControl>;
+export const V1ControlCommentDeletedRequestControl =
+  V1ControlCommentCreatedRequestControl as any as S.Schema<V1ControlCommentDeletedRequestControl>;
 
 export type V1ControlCommentDeletedRequestComment = V1ControlCommentCreatedRequestComment;
 export const V1ControlCommentDeletedRequestComment = V1ControlCommentCreatedRequestComment;
@@ -85,9 +79,8 @@ export const V1ControlCommentDeletedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1ControlCommentDeletedRequest>;
 
 export interface V1ControlCommentDeletedResponse {}
-export const V1ControlCommentDeletedResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "V1ControlCommentDeletedResponse" },
-) as any as S.Schema<V1ControlCommentDeletedResponse>;
+export const V1ControlCommentDeletedResponse =
+  V1ControlCommentCreatedResponse as any as S.Schema<V1ControlCommentDeletedResponse>;
 
 export interface V1ControlCommentUpdatedRequestControl {
   /** The unique identifier of the control the comment belongs to. */
@@ -95,14 +88,8 @@ export interface V1ControlCommentUpdatedRequestControl {
   /** The unique identifier of the audit the control belongs to. */
   auditId: string;
 }
-export const V1ControlCommentUpdatedRequestControl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    auditId: S.String,
-  }),
-).annotate({
-  identifier: "V1ControlCommentUpdatedRequestControl",
-}) as any as S.Schema<V1ControlCommentUpdatedRequestControl>;
+export const V1ControlCommentUpdatedRequestControl =
+  V1ControlCommentCreatedRequestControl as any as S.Schema<V1ControlCommentUpdatedRequestControl>;
 
 export type V1ControlCommentUpdatedRequestComment = V1ControlCommentCreatedRequestComment;
 export const V1ControlCommentUpdatedRequestComment = V1ControlCommentCreatedRequestComment;
@@ -121,9 +108,8 @@ export const V1ControlCommentUpdatedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1ControlCommentUpdatedRequest>;
 
 export interface V1ControlCommentUpdatedResponse {}
-export const V1ControlCommentUpdatedResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "V1ControlCommentUpdatedResponse" },
-) as any as S.Schema<V1ControlCommentUpdatedResponse>;
+export const V1ControlCommentUpdatedResponse =
+  V1ControlCommentCreatedResponse as any as S.Schema<V1ControlCommentUpdatedResponse>;
 
 export interface V1EvidenceCommentCreatedRequestEvidence {
   /** The unique identifier of the evidence. */
@@ -131,14 +117,8 @@ export interface V1EvidenceCommentCreatedRequestEvidence {
   /** The unique identifier of the audit the evidence belongs to. */
   auditId: string;
 }
-export const V1EvidenceCommentCreatedRequestEvidence = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    auditId: S.String,
-  }),
-).annotate({
-  identifier: "V1EvidenceCommentCreatedRequestEvidence",
-}) as any as S.Schema<V1EvidenceCommentCreatedRequestEvidence>;
+export const V1EvidenceCommentCreatedRequestEvidence =
+  V1ControlCommentCreatedRequestControl as any as S.Schema<V1EvidenceCommentCreatedRequestEvidence>;
 
 export type V1EvidenceCommentCreatedRequestComment = V1ControlCommentCreatedRequestComment;
 export const V1EvidenceCommentCreatedRequestComment = V1ControlCommentCreatedRequestComment;
@@ -183,11 +163,8 @@ export const V1EvidenceCommentDeletedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1EvidenceCommentDeletedRequest>;
 
 export interface V1EvidenceCommentDeletedResponse {}
-export const V1EvidenceCommentDeletedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "V1EvidenceCommentDeletedResponse",
-}) as any as S.Schema<V1EvidenceCommentDeletedResponse>;
+export const V1EvidenceCommentDeletedResponse =
+  V1EvidenceCommentCreatedResponse as any as S.Schema<V1EvidenceCommentDeletedResponse>;
 
 export type V1EvidenceCommentUpdatedRequestEvidence = V1EvidenceCommentCreatedRequestEvidence;
 export const V1EvidenceCommentUpdatedRequestEvidence = V1EvidenceCommentCreatedRequestEvidence;
@@ -209,11 +186,8 @@ export const V1EvidenceCommentUpdatedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1EvidenceCommentUpdatedRequest>;
 
 export interface V1EvidenceCommentUpdatedResponse {}
-export const V1EvidenceCommentUpdatedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "V1EvidenceCommentUpdatedResponse",
-}) as any as S.Schema<V1EvidenceCommentUpdatedResponse>;
+export const V1EvidenceCommentUpdatedResponse =
+  V1EvidenceCommentCreatedResponse as any as S.Schema<V1EvidenceCommentUpdatedResponse>;
 
 /** The evidence item that came into scope for the audit. */
 export type V1EvidenceCreatedRequestEvidence = V1EvidenceCommentCreatedRequestEvidence;
@@ -249,9 +223,8 @@ export const V1EvidenceDeletedRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V1EvidenceDeletedRequest" }) as any as S.Schema<V1EvidenceDeletedRequest>;
 
 export interface V1EvidenceDeletedResponse {}
-export const V1EvidenceDeletedResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1EvidenceDeletedResponse",
-}) as any as S.Schema<V1EvidenceDeletedResponse>;
+export const V1EvidenceDeletedResponse =
+  V1EvidenceCreatedResponse as any as S.Schema<V1EvidenceDeletedResponse>;
 
 /** The status the evidence item was in before the change. `INITIALIZED` is an internal status and is never delivered. */
 export type V1EvidenceStatusChangedRequestEvidenceOldStatus =
@@ -306,9 +279,8 @@ export const V1EvidenceStatusChangedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1EvidenceStatusChangedRequest>;
 
 export interface V1EvidenceStatusChangedResponse {}
-export const V1EvidenceStatusChangedResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "V1EvidenceStatusChangedResponse" },
-) as any as S.Schema<V1EvidenceStatusChangedResponse>;
+export const V1EvidenceStatusChangedResponse =
+  V1ControlCommentCreatedResponse as any as S.Schema<V1EvidenceStatusChangedResponse>;
 
 export interface V1InformationRequestCommentCreatedRequestInformationRequest {
   /** The unique identifier of the information request. */
@@ -345,11 +317,8 @@ export const V1InformationRequestCommentCreatedRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<V1InformationRequestCommentCreatedRequest>;
 
 export interface V1InformationRequestCommentCreatedResponse {}
-export const V1InformationRequestCommentCreatedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "V1InformationRequestCommentCreatedResponse",
-}) as any as S.Schema<V1InformationRequestCommentCreatedResponse>;
+export const V1InformationRequestCommentCreatedResponse =
+  V1EvidenceCommentCreatedResponse as any as S.Schema<V1InformationRequestCommentCreatedResponse>;
 
 export type V1InformationRequestCommentDeletedRequestInformationRequest =
   V1InformationRequestCommentCreatedRequestInformationRequest;
@@ -375,11 +344,8 @@ export const V1InformationRequestCommentDeletedRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<V1InformationRequestCommentDeletedRequest>;
 
 export interface V1InformationRequestCommentDeletedResponse {}
-export const V1InformationRequestCommentDeletedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "V1InformationRequestCommentDeletedResponse",
-}) as any as S.Schema<V1InformationRequestCommentDeletedResponse>;
+export const V1InformationRequestCommentDeletedResponse =
+  V1EvidenceCommentCreatedResponse as any as S.Schema<V1InformationRequestCommentDeletedResponse>;
 
 export type V1InformationRequestCommentUpdatedRequestInformationRequest =
   V1InformationRequestCommentCreatedRequestInformationRequest;
@@ -405,11 +371,8 @@ export const V1InformationRequestCommentUpdatedRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<V1InformationRequestCommentUpdatedRequest>;
 
 export interface V1InformationRequestCommentUpdatedResponse {}
-export const V1InformationRequestCommentUpdatedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "V1InformationRequestCommentUpdatedResponse",
-}) as any as S.Schema<V1InformationRequestCommentUpdatedResponse>;
+export const V1InformationRequestCommentUpdatedResponse =
+  V1EvidenceCommentCreatedResponse as any as S.Schema<V1InformationRequestCommentUpdatedResponse>;
 
 export type V1InformationRequestEvidenceCreatedRequestInformationRequest =
   V1InformationRequestCommentCreatedRequestInformationRequest;
@@ -420,13 +383,8 @@ export interface V1InformationRequestEvidenceCreatedRequestEvidence {
   /** The unique identifier of the evidence. */
   id: string;
 }
-export const V1InformationRequestEvidenceCreatedRequestEvidence = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "V1InformationRequestEvidenceCreatedRequestEvidence",
-}) as any as S.Schema<V1InformationRequestEvidenceCreatedRequestEvidence>;
+export const V1InformationRequestEvidenceCreatedRequestEvidence =
+  V1ControlCommentCreatedRequestComment as any as S.Schema<V1InformationRequestEvidenceCreatedRequestEvidence>;
 
 export interface V1InformationRequestEvidenceCreatedRequest {
   informationRequest: V1InformationRequestCommentCreatedRequestInformationRequest;
@@ -442,11 +400,8 @@ export const V1InformationRequestEvidenceCreatedRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<V1InformationRequestEvidenceCreatedRequest>;
 
 export interface V1InformationRequestEvidenceCreatedResponse {}
-export const V1InformationRequestEvidenceCreatedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "V1InformationRequestEvidenceCreatedResponse",
-}) as any as S.Schema<V1InformationRequestEvidenceCreatedResponse>;
+export const V1InformationRequestEvidenceCreatedResponse =
+  V1EvidenceCommentCreatedResponse as any as S.Schema<V1InformationRequestEvidenceCreatedResponse>;
 
 export type V1InformationRequestEvidenceDeletedRequestInformationRequest =
   V1InformationRequestCommentCreatedRequestInformationRequest;
@@ -472,11 +427,8 @@ export const V1InformationRequestEvidenceDeletedRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<V1InformationRequestEvidenceDeletedRequest>;
 
 export interface V1InformationRequestEvidenceDeletedResponse {}
-export const V1InformationRequestEvidenceDeletedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "V1InformationRequestEvidenceDeletedResponse",
-}) as any as S.Schema<V1InformationRequestEvidenceDeletedResponse>;
+export const V1InformationRequestEvidenceDeletedResponse =
+  V1EvidenceCommentCreatedResponse as any as S.Schema<V1InformationRequestEvidenceDeletedResponse>;
 
 /** The status the information request was in before the change. */
 export type V1InformationRequestStatusChangedRequestInformationRequestOldStatus =
@@ -528,23 +480,15 @@ export const V1InformationRequestStatusChangedRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<V1InformationRequestStatusChangedRequest>;
 
 export interface V1InformationRequestStatusChangedResponse {}
-export const V1InformationRequestStatusChangedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "V1InformationRequestStatusChangedResponse",
-}) as any as S.Schema<V1InformationRequestStatusChangedResponse>;
+export const V1InformationRequestStatusChangedResponse =
+  V1EvidenceCommentCreatedResponse as any as S.Schema<V1InformationRequestStatusChangedResponse>;
 
 export interface V1QuestionnaireCreatedRequestQuestionnaire {
   /** The questionnaire ID. */
   id: string;
 }
-export const V1QuestionnaireCreatedRequestQuestionnaire = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "V1QuestionnaireCreatedRequestQuestionnaire",
-}) as any as S.Schema<V1QuestionnaireCreatedRequestQuestionnaire>;
+export const V1QuestionnaireCreatedRequestQuestionnaire =
+  V1ControlCommentCreatedRequestComment as any as S.Schema<V1QuestionnaireCreatedRequestQuestionnaire>;
 
 export interface V1QuestionnaireCreatedRequest {
   questionnaire: V1QuestionnaireCreatedRequestQuestionnaire;
@@ -558,9 +502,8 @@ export const V1QuestionnaireCreatedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1QuestionnaireCreatedRequest>;
 
 export interface V1QuestionnaireCreatedResponse {}
-export const V1QuestionnaireCreatedResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1QuestionnaireCreatedResponse",
-}) as any as S.Schema<V1QuestionnaireCreatedResponse>;
+export const V1QuestionnaireCreatedResponse =
+  V1EvidenceCreatedResponse as any as S.Schema<V1QuestionnaireCreatedResponse>;
 
 export type V1QuestionnaireDeletedRequestQuestionnaire = V1QuestionnaireCreatedRequestQuestionnaire;
 export const V1QuestionnaireDeletedRequestQuestionnaire =
@@ -578,21 +521,15 @@ export const V1QuestionnaireDeletedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1QuestionnaireDeletedRequest>;
 
 export interface V1QuestionnaireDeletedResponse {}
-export const V1QuestionnaireDeletedResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1QuestionnaireDeletedResponse",
-}) as any as S.Schema<V1QuestionnaireDeletedResponse>;
+export const V1QuestionnaireDeletedResponse =
+  V1EvidenceCreatedResponse as any as S.Schema<V1QuestionnaireDeletedResponse>;
 
 export interface V1QuestionnaireExportCompletedRequestQuestionnaire {
   /** The unique identifier of the questionnaire. */
   id: string;
 }
-export const V1QuestionnaireExportCompletedRequestQuestionnaire = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "V1QuestionnaireExportCompletedRequestQuestionnaire",
-}) as any as S.Schema<V1QuestionnaireExportCompletedRequestQuestionnaire>;
+export const V1QuestionnaireExportCompletedRequestQuestionnaire =
+  V1ControlCommentCreatedRequestComment as any as S.Schema<V1QuestionnaireExportCompletedRequestQuestionnaire>;
 
 /** The export format. */
 export type V1QuestionnaireExportCompletedRequestExportFormat = "original" | "csv";
@@ -633,11 +570,8 @@ export const V1QuestionnaireExportCompletedRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<V1QuestionnaireExportCompletedRequest>;
 
 export interface V1QuestionnaireExportCompletedResponse {}
-export const V1QuestionnaireExportCompletedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "V1QuestionnaireExportCompletedResponse",
-}) as any as S.Schema<V1QuestionnaireExportCompletedResponse>;
+export const V1QuestionnaireExportCompletedResponse =
+  V1EvidenceCommentCreatedResponse as any as S.Schema<V1QuestionnaireExportCompletedResponse>;
 
 export type V1QuestionnaireExportFailedRequestQuestionnaire =
   V1QuestionnaireExportCompletedRequestQuestionnaire;
@@ -686,11 +620,8 @@ export const V1QuestionnaireExportFailedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1QuestionnaireExportFailedRequest>;
 
 export interface V1QuestionnaireExportFailedResponse {}
-export const V1QuestionnaireExportFailedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "V1QuestionnaireExportFailedResponse",
-}) as any as S.Schema<V1QuestionnaireExportFailedResponse>;
+export const V1QuestionnaireExportFailedResponse =
+  V1EvidenceCommentCreatedResponse as any as S.Schema<V1QuestionnaireExportFailedResponse>;
 
 /** The new questionnaire status. */
 export type V1QuestionnaireStatusChangedRequestQuestionnaireStatus =
@@ -740,11 +671,8 @@ export const V1QuestionnaireStatusChangedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1QuestionnaireStatusChangedRequest>;
 
 export interface V1QuestionnaireStatusChangedResponse {}
-export const V1QuestionnaireStatusChangedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "V1QuestionnaireStatusChangedResponse",
-}) as any as S.Schema<V1QuestionnaireStatusChangedResponse>;
+export const V1QuestionnaireStatusChangedResponse =
+  V1EvidenceCommentCreatedResponse as any as S.Schema<V1QuestionnaireStatusChangedResponse>;
 
 export interface V1TrustCenterAccessRequestApprovedRequestTrustCenter {
   /** The Trust Center slug ID. */
@@ -762,25 +690,15 @@ export interface V1TrustCenterAccessRequestApprovedRequestAccessRequest {
   /** The access request ID. */
   id: string;
 }
-export const V1TrustCenterAccessRequestApprovedRequestAccessRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "V1TrustCenterAccessRequestApprovedRequestAccessRequest",
-}) as any as S.Schema<V1TrustCenterAccessRequestApprovedRequestAccessRequest>;
+export const V1TrustCenterAccessRequestApprovedRequestAccessRequest =
+  V1ControlCommentCreatedRequestComment as any as S.Schema<V1TrustCenterAccessRequestApprovedRequestAccessRequest>;
 
 export interface V1TrustCenterAccessRequestApprovedRequestViewer {
   /** The viewer ID granted access. */
   id: string;
 }
-export const V1TrustCenterAccessRequestApprovedRequestViewer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "V1TrustCenterAccessRequestApprovedRequestViewer",
-}) as any as S.Schema<V1TrustCenterAccessRequestApprovedRequestViewer>;
+export const V1TrustCenterAccessRequestApprovedRequestViewer =
+  V1ControlCommentCreatedRequestComment as any as S.Schema<V1TrustCenterAccessRequestApprovedRequestViewer>;
 
 export interface V1TrustCenterAccessRequestApprovedRequest {
   trustCenter: V1TrustCenterAccessRequestApprovedRequestTrustCenter;
@@ -798,11 +716,8 @@ export const V1TrustCenterAccessRequestApprovedRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<V1TrustCenterAccessRequestApprovedRequest>;
 
 export interface V1TrustCenterAccessRequestApprovedResponse {}
-export const V1TrustCenterAccessRequestApprovedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "V1TrustCenterAccessRequestApprovedResponse",
-}) as any as S.Schema<V1TrustCenterAccessRequestApprovedResponse>;
+export const V1TrustCenterAccessRequestApprovedResponse =
+  V1EvidenceCommentCreatedResponse as any as S.Schema<V1TrustCenterAccessRequestApprovedResponse>;
 
 export type V1TrustCenterAccessRequestDeniedRequestTrustCenter =
   V1TrustCenterAccessRequestApprovedRequestTrustCenter;
@@ -828,11 +743,8 @@ export const V1TrustCenterAccessRequestDeniedRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<V1TrustCenterAccessRequestDeniedRequest>;
 
 export interface V1TrustCenterAccessRequestDeniedResponse {}
-export const V1TrustCenterAccessRequestDeniedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "V1TrustCenterAccessRequestDeniedResponse",
-}) as any as S.Schema<V1TrustCenterAccessRequestDeniedResponse>;
+export const V1TrustCenterAccessRequestDeniedResponse =
+  V1EvidenceCommentCreatedResponse as any as S.Schema<V1TrustCenterAccessRequestDeniedResponse>;
 
 export type V1TrustCenterAccessRequestReceivedRequestTrustCenter =
   V1TrustCenterAccessRequestApprovedRequestTrustCenter;
@@ -858,11 +770,8 @@ export const V1TrustCenterAccessRequestReceivedRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<V1TrustCenterAccessRequestReceivedRequest>;
 
 export interface V1TrustCenterAccessRequestReceivedResponse {}
-export const V1TrustCenterAccessRequestReceivedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "V1TrustCenterAccessRequestReceivedResponse",
-}) as any as S.Schema<V1TrustCenterAccessRequestReceivedResponse>;
+export const V1TrustCenterAccessRequestReceivedResponse =
+  V1EvidenceCommentCreatedResponse as any as S.Schema<V1TrustCenterAccessRequestReceivedResponse>;
 
 /** The vendor decision status. */
 export type V1VendorDecisionCreatedRequestVendorDecisionStatus =
@@ -915,9 +824,8 @@ export const V1VendorDecisionCreatedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1VendorDecisionCreatedRequest>;
 
 export interface V1VendorDecisionCreatedResponse {}
-export const V1VendorDecisionCreatedResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "V1VendorDecisionCreatedResponse" },
-) as any as S.Schema<V1VendorDecisionCreatedResponse>;
+export const V1VendorDecisionCreatedResponse =
+  V1ControlCommentCreatedResponse as any as S.Schema<V1VendorDecisionCreatedResponse>;
 
 export type V1ControlCommentCreatedError = VantaOpError;
 /** Control comment created An external comment was created on an audit control. Fires once per comment. This event is delivered only to [Audit Partner](/reference/audits/overview) accounts and is gated by the early-access `audit_control_comment_webhook` feature -- reach out to your Vanta contact to enable it. The payload contains only identifiers. Fetch the comment body from `GET /v1/audits/{auditId}/controls/{controlId}/comments`. */

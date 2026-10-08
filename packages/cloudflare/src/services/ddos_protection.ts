@@ -238,11 +238,8 @@ export const BulkDeleteAdvancedTcpProtectionPrefixesRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<BulkDeleteAdvancedTcpProtectionPrefixesRequest>;
 
 export interface BulkDeleteAdvancedTcpProtectionPrefixesResponse {}
-export const BulkDeleteAdvancedTcpProtectionPrefixesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "BulkDeleteAdvancedTcpProtectionPrefixesResponse",
-}) as any as S.Schema<BulkDeleteAdvancedTcpProtectionPrefixesResponse>;
+export const BulkDeleteAdvancedTcpProtectionPrefixesResponse =
+  BulkDeleteAdvancedTcpProtectionAllowlistsResponse as any as S.Schema<BulkDeleteAdvancedTcpProtectionPrefixesResponse>;
 
 export interface BulkDeleteAdvancedTcpProtectionSynProtectionFiltersRequest {
   /** Identifier. */
@@ -294,11 +291,8 @@ export const BulkDeleteAdvancedTcpProtectionSynProtectionRulesRequest = /*@__PUR
 }) as any as S.Schema<BulkDeleteAdvancedTcpProtectionSynProtectionRulesRequest>;
 
 export interface BulkDeleteAdvancedTcpProtectionSynProtectionRulesResponse {}
-export const BulkDeleteAdvancedTcpProtectionSynProtectionRulesResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "BulkDeleteAdvancedTcpProtectionSynProtectionRulesResponse",
-}) as any as S.Schema<BulkDeleteAdvancedTcpProtectionSynProtectionRulesResponse>;
+export const BulkDeleteAdvancedTcpProtectionSynProtectionRulesResponse =
+  BulkDeleteAdvancedTcpProtectionSynProtectionFiltersResponse as any as S.Schema<BulkDeleteAdvancedTcpProtectionSynProtectionRulesResponse>;
 
 export interface BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersRequest {
   /** Identifier. */
@@ -350,9 +344,7 @@ export const BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesRequest = /*@_
 
 export interface BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesResponse {}
 export const BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
-    identifier: "BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesResponse",
-  }) as any as S.Schema<BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesResponse>;
+  BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersResponse as any as S.Schema<BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesResponse>;
 
 export interface CreateAdvancedTcpProtectionAllowlistRequest {
   /** Identifier. */
@@ -741,11 +733,8 @@ export const DeleteAdvancedTcpProtectionAllowlistItemRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<DeleteAdvancedTcpProtectionAllowlistItemRequest>;
 
 export interface DeleteAdvancedTcpProtectionAllowlistItemResponse {}
-export const DeleteAdvancedTcpProtectionAllowlistItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteAdvancedTcpProtectionAllowlistItemResponse",
-}) as any as S.Schema<DeleteAdvancedTcpProtectionAllowlistItemResponse>;
+export const DeleteAdvancedTcpProtectionAllowlistItemResponse =
+  BulkDeleteAdvancedTcpProtectionAllowlistsResponse as any as S.Schema<DeleteAdvancedTcpProtectionAllowlistItemResponse>;
 
 export interface DeleteAdvancedTcpProtectionPrefixItemRequest {
   /** Identifier. */
@@ -771,11 +760,8 @@ export const DeleteAdvancedTcpProtectionPrefixItemRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DeleteAdvancedTcpProtectionPrefixItemRequest>;
 
 export interface DeleteAdvancedTcpProtectionPrefixItemResponse {}
-export const DeleteAdvancedTcpProtectionPrefixItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteAdvancedTcpProtectionPrefixItemResponse",
-}) as any as S.Schema<DeleteAdvancedTcpProtectionPrefixItemResponse>;
+export const DeleteAdvancedTcpProtectionPrefixItemResponse =
+  BulkDeleteAdvancedTcpProtectionAllowlistsResponse as any as S.Schema<DeleteAdvancedTcpProtectionPrefixItemResponse>;
 
 export interface DeleteAdvancedTcpProtectionSynProtectionFilterItemRequest {
   /** Identifier. */
@@ -802,11 +788,8 @@ export const DeleteAdvancedTcpProtectionSynProtectionFilterItemRequest = /*@__PU
 }) as any as S.Schema<DeleteAdvancedTcpProtectionSynProtectionFilterItemRequest>;
 
 export interface DeleteAdvancedTcpProtectionSynProtectionFilterItemResponse {}
-export const DeleteAdvancedTcpProtectionSynProtectionFilterItemResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteAdvancedTcpProtectionSynProtectionFilterItemResponse",
-}) as any as S.Schema<DeleteAdvancedTcpProtectionSynProtectionFilterItemResponse>;
+export const DeleteAdvancedTcpProtectionSynProtectionFilterItemResponse =
+  BulkDeleteAdvancedTcpProtectionSynProtectionFiltersResponse as any as S.Schema<DeleteAdvancedTcpProtectionSynProtectionFilterItemResponse>;
 
 export interface DeleteAdvancedTcpProtectionSynProtectionRuleItemRequest {
   /** Identifier. */
@@ -832,11 +815,8 @@ export const DeleteAdvancedTcpProtectionSynProtectionRuleItemRequest = /*@__PURE
 }) as any as S.Schema<DeleteAdvancedTcpProtectionSynProtectionRuleItemRequest>;
 
 export interface DeleteAdvancedTcpProtectionSynProtectionRuleItemResponse {}
-export const DeleteAdvancedTcpProtectionSynProtectionRuleItemResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteAdvancedTcpProtectionSynProtectionRuleItemResponse",
-}) as any as S.Schema<DeleteAdvancedTcpProtectionSynProtectionRuleItemResponse>;
+export const DeleteAdvancedTcpProtectionSynProtectionRuleItemResponse =
+  BulkDeleteAdvancedTcpProtectionSynProtectionFiltersResponse as any as S.Schema<DeleteAdvancedTcpProtectionSynProtectionRuleItemResponse>;
 
 export interface DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest {
   /** Identifier. */
@@ -864,9 +844,7 @@ export const DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest =
 
 export interface DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse {}
 export const DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
-    identifier: "DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse",
-  }) as any as S.Schema<DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse>;
+  BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersResponse as any as S.Schema<DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse>;
 
 export interface DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest {
   /** Identifier. */
@@ -893,11 +871,8 @@ export const DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest = /*@__
 }) as any as S.Schema<DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest>;
 
 export interface DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse {}
-export const DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse",
-}) as any as S.Schema<DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse>;
+export const DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse =
+  BulkDeleteAdvancedTcpProtectionSynProtectionFiltersResponse as any as S.Schema<DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse>;
 
 export interface GetAdvancedTcpProtectionAllowlistItemRequest {
   /** Identifier. */
@@ -937,18 +912,8 @@ export interface GetAdvancedTcpProtectionAllowlistItemResponse {
   /** The allowlist prefix in CIDR format. */
   prefix: string;
 }
-export const GetAdvancedTcpProtectionAllowlistItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    comment: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    enabled: S.Boolean,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    prefix: S.String,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetAdvancedTcpProtectionAllowlistItemResponse",
-}) as any as S.Schema<GetAdvancedTcpProtectionAllowlistItemResponse>;
+export const GetAdvancedTcpProtectionAllowlistItemResponse =
+  CreateAdvancedTcpProtectionAllowlistResponse as any as S.Schema<GetAdvancedTcpProtectionAllowlistItemResponse>;
 
 export interface GetAdvancedTcpProtectionPrefixItemRequest {
   /** Identifier. */
@@ -988,18 +953,8 @@ export interface GetAdvancedTcpProtectionPrefixItemResponse {
   /** The prefix in CIDR format. */
   prefix: string;
 }
-export const GetAdvancedTcpProtectionPrefixItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    comment: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    excluded: S.Boolean,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    prefix: S.String,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetAdvancedTcpProtectionPrefixItemResponse",
-}) as any as S.Schema<GetAdvancedTcpProtectionPrefixItemResponse>;
+export const GetAdvancedTcpProtectionPrefixItemResponse =
+  CreateAdvancedTcpProtectionPrefixResponse as any as S.Schema<GetAdvancedTcpProtectionPrefixItemResponse>;
 
 export interface GetAdvancedTcpProtectionStatusRequest {
   /** Identifier. */
@@ -1069,17 +1024,8 @@ export interface GetAdvancedTcpProtectionSynProtectionFilterItemResponse {
   /** The last modification timestamp of the expression filter. */
   modifiedOn: string;
 }
-export const GetAdvancedTcpProtectionSynProtectionFilterItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    expression: S.String,
-    mode: S.String,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetAdvancedTcpProtectionSynProtectionFilterItemResponse",
-}) as any as S.Schema<GetAdvancedTcpProtectionSynProtectionFilterItemResponse>;
+export const GetAdvancedTcpProtectionSynProtectionFilterItemResponse =
+  CreateAdvancedTcpProtectionSynProtectionFilterResponse as any as S.Schema<GetAdvancedTcpProtectionSynProtectionFilterItemResponse>;
 
 export interface GetAdvancedTcpProtectionSynProtectionRuleItemRequest {
   /** Identifier. */
@@ -1125,21 +1071,8 @@ export interface GetAdvancedTcpProtectionSynProtectionRuleItemResponse {
   /** The scope for the SYN Protection rule. Must be one of 'global', 'region', or 'datacenter'. */
   scope: string;
 }
-export const GetAdvancedTcpProtectionSynProtectionRuleItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    burstSensitivity: S.String.pipe(T.Body("burst_sensitivity")),
-    createdOn: S.String.pipe(T.Body("created_on")),
-    mitigationType: S.String.pipe(T.Body("mitigation_type")),
-    mode: S.String,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    name: S.String,
-    rateSensitivity: S.String.pipe(T.Body("rate_sensitivity")),
-    scope: S.String,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetAdvancedTcpProtectionSynProtectionRuleItemResponse",
-}) as any as S.Schema<GetAdvancedTcpProtectionSynProtectionRuleItemResponse>;
+export const GetAdvancedTcpProtectionSynProtectionRuleItemResponse =
+  CreateAdvancedTcpProtectionSynProtectionRuleResponse as any as S.Schema<GetAdvancedTcpProtectionSynProtectionRuleItemResponse>;
 
 export interface GetAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest {
   /** Identifier. */
@@ -1178,18 +1111,8 @@ export interface GetAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse {
   /** The last modification timestamp of the expression filter. */
   modifiedOn: string;
 }
-export const GetAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      createdOn: S.String.pipe(T.Body("created_on")),
-      expression: S.String,
-      mode: S.String,
-      modifiedOn: S.String.pipe(T.Body("modified_on")),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse",
-}) as any as S.Schema<GetAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse>;
+export const GetAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse =
+  CreateAdvancedTcpProtectionTcpFlowProtectionFilterResponse as any as S.Schema<GetAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse>;
 
 export interface GetAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest {
   /** Identifier. */
@@ -1234,21 +1157,8 @@ export interface GetAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse {
   /** The scope for the TCP Flow Protection rule. Must be one of 'global', 'region', or 'datacenter'. */
   scope: string;
 }
-export const GetAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      burstSensitivity: S.String.pipe(T.Body("burst_sensitivity")),
-      createdOn: S.String.pipe(T.Body("created_on")),
-      mode: S.String,
-      modifiedOn: S.String.pipe(T.Body("modified_on")),
-      name: S.String,
-      rateSensitivity: S.String.pipe(T.Body("rate_sensitivity")),
-      scope: S.String,
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse",
-}) as any as S.Schema<GetAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse>;
+export const GetAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse =
+  CreateAdvancedTcpProtectionTcpFlowProtectionRuleResponse as any as S.Schema<GetAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse>;
 
 export interface ListAdvancedTcpProtectionAllowlistsRequest {
   /** Identifier. */
@@ -1369,9 +1279,8 @@ export const AdvancedTcpProtectionPrefixesListResultItem =
 
 export type AdvancedTcpProtectionPrefixesListResultList =
   Array<AdvancedTcpProtectionPrefixesBulkCreateResultItem>;
-export const AdvancedTcpProtectionPrefixesListResultList = /*@__PURE__*/ S.Array(
-  AdvancedTcpProtectionPrefixesBulkCreateResultItem,
-) as any as S.Schema<AdvancedTcpProtectionPrefixesListResultList>;
+export const AdvancedTcpProtectionPrefixesListResultList =
+  AdvancedTcpProtectionPrefixesBulkCreateResultList as any as S.Schema<AdvancedTcpProtectionPrefixesListResultList>;
 
 export interface ListAdvancedTcpProtectionPrefixesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -1379,14 +1288,8 @@ export interface ListAdvancedTcpProtectionPrefixesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListAdvancedTcpProtectionPrefixesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: AdvancedTcpProtectionPrefixesListResultList.pipe(T.EnvelopePayload()),
-    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "ListAdvancedTcpProtectionPrefixesResponse",
-}) as any as S.Schema<ListAdvancedTcpProtectionPrefixesResponse>;
+export const ListAdvancedTcpProtectionPrefixesResponse =
+  BulkCreateAdvancedTcpProtectionPrefixesResponse as any as S.Schema<ListAdvancedTcpProtectionPrefixesResponse>;
 
 export interface ListAdvancedTcpProtectionSynProtectionFiltersRequest {
   /** Identifier. */
@@ -1600,9 +1503,8 @@ export const AdvancedTcpProtectionTcpFlowProtectionFiltersListResultItem =
 
 export type AdvancedTcpProtectionTcpFlowProtectionFiltersListResultList =
   Array<AdvancedTcpProtectionSynProtectionFiltersListResultItem>;
-export const AdvancedTcpProtectionTcpFlowProtectionFiltersListResultList = /*@__PURE__*/ S.Array(
-  AdvancedTcpProtectionSynProtectionFiltersListResultItem,
-) as any as S.Schema<AdvancedTcpProtectionTcpFlowProtectionFiltersListResultList>;
+export const AdvancedTcpProtectionTcpFlowProtectionFiltersListResultList =
+  AdvancedTcpProtectionSynProtectionFiltersListResultList as any as S.Schema<AdvancedTcpProtectionTcpFlowProtectionFiltersListResultList>;
 
 export interface ListAdvancedTcpProtectionTcpFlowProtectionFiltersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -1751,18 +1653,8 @@ export interface PatchAdvancedTcpProtectionAllowlistItemResponse {
   /** The allowlist prefix in CIDR format. */
   prefix: string;
 }
-export const PatchAdvancedTcpProtectionAllowlistItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    comment: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    enabled: S.Boolean,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    prefix: S.String,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PatchAdvancedTcpProtectionAllowlistItemResponse",
-}) as any as S.Schema<PatchAdvancedTcpProtectionAllowlistItemResponse>;
+export const PatchAdvancedTcpProtectionAllowlistItemResponse =
+  CreateAdvancedTcpProtectionAllowlistResponse as any as S.Schema<PatchAdvancedTcpProtectionAllowlistItemResponse>;
 
 export interface PatchAdvancedTcpProtectionPrefixItemRequest {
   /** Identifier. */
@@ -1808,18 +1700,8 @@ export interface PatchAdvancedTcpProtectionPrefixItemResponse {
   /** The prefix in CIDR format. */
   prefix: string;
 }
-export const PatchAdvancedTcpProtectionPrefixItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    comment: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    excluded: S.Boolean,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    prefix: S.String,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PatchAdvancedTcpProtectionPrefixItemResponse",
-}) as any as S.Schema<PatchAdvancedTcpProtectionPrefixItemResponse>;
+export const PatchAdvancedTcpProtectionPrefixItemResponse =
+  CreateAdvancedTcpProtectionPrefixResponse as any as S.Schema<PatchAdvancedTcpProtectionPrefixItemResponse>;
 
 export interface PatchAdvancedTcpProtectionStatusRequest {
   /** Identifier. */
@@ -1848,13 +1730,8 @@ export const PatchAdvancedTcpProtectionStatusRequest = /*@__PURE__*/ S.suspend((
 export interface PatchAdvancedTcpProtectionStatusResponse {
   enabled: boolean;
 }
-export const PatchAdvancedTcpProtectionStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PatchAdvancedTcpProtectionStatusResponse",
-}) as any as S.Schema<PatchAdvancedTcpProtectionStatusResponse>;
+export const PatchAdvancedTcpProtectionStatusResponse =
+  GetAdvancedTcpProtectionStatusResponse as any as S.Schema<PatchAdvancedTcpProtectionStatusResponse>;
 
 export interface PatchAdvancedTcpProtectionSynProtectionFilterItemRequest {
   /** Identifier. */
@@ -1899,18 +1776,8 @@ export interface PatchAdvancedTcpProtectionSynProtectionFilterItemResponse {
   /** The last modification timestamp of the expression filter. */
   modifiedOn: string;
 }
-export const PatchAdvancedTcpProtectionSynProtectionFilterItemResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      createdOn: S.String.pipe(T.Body("created_on")),
-      expression: S.String,
-      mode: S.String,
-      modifiedOn: S.String.pipe(T.Body("modified_on")),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PatchAdvancedTcpProtectionSynProtectionFilterItemResponse",
-}) as any as S.Schema<PatchAdvancedTcpProtectionSynProtectionFilterItemResponse>;
+export const PatchAdvancedTcpProtectionSynProtectionFilterItemResponse =
+  CreateAdvancedTcpProtectionTcpFlowProtectionFilterResponse as any as S.Schema<PatchAdvancedTcpProtectionSynProtectionFilterItemResponse>;
 
 export interface PatchAdvancedTcpProtectionSynProtectionRuleItemRequest {
   /** Identifier. */
@@ -1968,21 +1835,8 @@ export interface PatchAdvancedTcpProtectionSynProtectionRuleItemResponse {
   /** The scope for the SYN Protection rule. Must be one of 'global', 'region', or 'datacenter'. */
   scope: string;
 }
-export const PatchAdvancedTcpProtectionSynProtectionRuleItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    burstSensitivity: S.String.pipe(T.Body("burst_sensitivity")),
-    createdOn: S.String.pipe(T.Body("created_on")),
-    mitigationType: S.String.pipe(T.Body("mitigation_type")),
-    mode: S.String,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    name: S.String,
-    rateSensitivity: S.String.pipe(T.Body("rate_sensitivity")),
-    scope: S.String,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PatchAdvancedTcpProtectionSynProtectionRuleItemResponse",
-}) as any as S.Schema<PatchAdvancedTcpProtectionSynProtectionRuleItemResponse>;
+export const PatchAdvancedTcpProtectionSynProtectionRuleItemResponse =
+  CreateAdvancedTcpProtectionSynProtectionRuleResponse as any as S.Schema<PatchAdvancedTcpProtectionSynProtectionRuleItemResponse>;
 
 export interface PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest {
   /** Identifier. */
@@ -2092,21 +1946,8 @@ export interface PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse {
   /** The scope for the TCP Flow Protection rule. Must be one of 'global', 'region', or 'datacenter'. */
   scope: string;
 }
-export const PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      burstSensitivity: S.String.pipe(T.Body("burst_sensitivity")),
-      createdOn: S.String.pipe(T.Body("created_on")),
-      mode: S.String,
-      modifiedOn: S.String.pipe(T.Body("modified_on")),
-      name: S.String,
-      rateSensitivity: S.String.pipe(T.Body("rate_sensitivity")),
-      scope: S.String,
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse",
-}) as any as S.Schema<PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse>;
+export const PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse =
+  CreateAdvancedTcpProtectionTcpFlowProtectionRuleResponse as any as S.Schema<PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse>;
 
 export type BulkCreateAdvancedTcpProtectionPrefixesError = CloudflareOpError;
 /** Create multiple prefixes for an account. */

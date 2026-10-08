@@ -59,10 +59,8 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE_
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
+export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
 
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
 export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
@@ -508,9 +506,8 @@ export const IoK8sApiNetworkingV1IngressSpecRulesList = /*@__PURE__*/ S.Array(
 
 /** hosts is a list of hosts included in the TLS certificate. The values in this list must match the name/s used in the tlsSecret. Defaults to the wildcard host setting for the loadbalancer controller fulfilling this Ingress, if left unspecified. */
 export type IoK8sApiNetworkingV1IngressTLSHostsList = Array<string>;
-export const IoK8sApiNetworkingV1IngressTLSHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiNetworkingV1IngressTLSHostsList>;
+export const IoK8sApiNetworkingV1IngressTLSHostsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiNetworkingV1IngressTLSHostsList>;
 
 /** IngressTLS describes the transport layer security associated with an ingress. */
 export interface IoK8sApiNetworkingV1IngressTLS {
@@ -732,9 +729,8 @@ export const IoK8sApiNetworkingV1NetworkPolicyEgressRulePortsList = /*@__PURE__*
 
 /** except is a slice of CIDRs that should not be included within an IPBlock Valid examples are "192.168.1.0/24" or "2001:db8::/64" Except values will be rejected if they are outside the cidr range */
 export type IoK8sApiNetworkingV1IPBlockExceptList = Array<string>;
-export const IoK8sApiNetworkingV1IPBlockExceptList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiNetworkingV1IPBlockExceptList>;
+export const IoK8sApiNetworkingV1IPBlockExceptList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiNetworkingV1IPBlockExceptList>;
 
 /** IPBlock describes a particular CIDR (Ex. "192.168.1.0/24","2001:db8::/64") that is allowed to the pods matched by a NetworkPolicySpec's podSelector. The except entry describes CIDRs that should not be included within this rule. */
 export interface IoK8sApiNetworkingV1IPBlock {
@@ -790,10 +786,8 @@ export const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList =
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap>;
+export const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap>;
 
 /** A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects. */
 export interface IoK8sApimachineryPkgApisMetaV1LabelSelector {
@@ -863,16 +857,14 @@ export const IoK8sApiNetworkingV1NetworkPolicySpecEgressList = /*@__PURE__*/ S.A
 /** from is a list of sources which should be able to access the pods selected for this rule. Items in this list are combined using a logical OR operation. If this field is empty or missing, this rule matches all sources (traffic not restricted by source). If this field is present and contains at least one item, this rule allows traffic only if the traffic matches at least one item in the from list. */
 export type IoK8sApiNetworkingV1NetworkPolicyIngressRuleFromList =
   Array<IoK8sApiNetworkingV1NetworkPolicyPeer>;
-export const IoK8sApiNetworkingV1NetworkPolicyIngressRuleFromList = /*@__PURE__*/ S.Array(
-  IoK8sApiNetworkingV1NetworkPolicyPeer,
-) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicyIngressRuleFromList>;
+export const IoK8sApiNetworkingV1NetworkPolicyIngressRuleFromList =
+  IoK8sApiNetworkingV1NetworkPolicyEgressRuleToList as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicyIngressRuleFromList>;
 
 /** ports is a list of ports which should be made accessible on the pods selected for this rule. Each item in this list is combined using a logical OR. If this field is empty or missing, this rule matches all ports (traffic not restricted by port). If this field is present and contains at least one item, then this rule allows traffic only if the traffic matches at least one port in the list. */
 export type IoK8sApiNetworkingV1NetworkPolicyIngressRulePortsList =
   Array<IoK8sApiNetworkingV1NetworkPolicyPort>;
-export const IoK8sApiNetworkingV1NetworkPolicyIngressRulePortsList = /*@__PURE__*/ S.Array(
-  IoK8sApiNetworkingV1NetworkPolicyPort,
-) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicyIngressRulePortsList>;
+export const IoK8sApiNetworkingV1NetworkPolicyIngressRulePortsList =
+  IoK8sApiNetworkingV1NetworkPolicyEgressRulePortsList as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicyIngressRulePortsList>;
 
 /** NetworkPolicyIngressRule describes a particular set of traffic that is allowed to the pods matched by a NetworkPolicySpec's podSelector. The traffic must match both ports and from. */
 export interface IoK8sApiNetworkingV1NetworkPolicyIngressRule {
@@ -899,9 +891,8 @@ export const IoK8sApiNetworkingV1NetworkPolicySpecIngressList = /*@__PURE__*/ S.
 
 /** policyTypes is a list of rule types that the NetworkPolicy relates to. Valid options are ["Ingress"], ["Egress"], or ["Ingress", "Egress"]. If this field is not specified, it will default based on the existence of ingress or egress rules; policies that contain an egress section are assumed to affect egress, and all policies (whether or not they contain an ingress section) are assumed to affect ingress. If you want to write an egress-only policy, you must explicitly specify policyTypes [ "Egress" ]. Likewise, if you want to write a policy that specifies that no egress is allowed, you must specify a policyTypes value that include "Egress" (since such a policy would not include an egress section and would otherwise default to just [ "Ingress" ]). This field is beta-level in 1.8 */
 export type IoK8sApiNetworkingV1NetworkPolicySpecPolicyTypesList = Array<string>;
-export const IoK8sApiNetworkingV1NetworkPolicySpecPolicyTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicySpecPolicyTypesList>;
+export const IoK8sApiNetworkingV1NetworkPolicySpecPolicyTypesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicySpecPolicyTypesList>;
 
 /** NetworkPolicySpec provides the specification of a NetworkPolicy */
 export interface IoK8sApiNetworkingV1NetworkPolicySpec {
@@ -991,9 +982,8 @@ export const IoK8sApiNetworkingV1NetworkPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** cidrs defines the IP blocks in CIDR notation (e.g. "192.168.0.0/24" or "2001:db8::/64") from which to assign service cluster IPs. Max of two CIDRs is allowed, one of each IP family. This field is immutable. */
 export type IoK8sApiNetworkingV1ServiceCIDRSpecCidrsList = Array<string>;
-export const IoK8sApiNetworkingV1ServiceCIDRSpecCidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDRSpecCidrsList>;
+export const IoK8sApiNetworkingV1ServiceCIDRSpecCidrsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDRSpecCidrsList>;
 
 /** ServiceCIDRSpec define the CIDRs the user wants to use for allocating ClusterIPs for Services. */
 export interface IoK8sApiNetworkingV1ServiceCIDRSpec {
@@ -1911,21 +1901,18 @@ export const GetNetworkingV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
 
 /** APIResource specifies the name of a resource and whether it is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResource {

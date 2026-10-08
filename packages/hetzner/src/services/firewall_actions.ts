@@ -196,9 +196,8 @@ export const GetFirewallsActionResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type GetFirewallsActionResponseActionResourcesList =
   Array<ApplyFirewallToResourcesResponseActionsItemResourcesItem>;
-export const GetFirewallsActionResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  ApplyFirewallToResourcesResponseActionsItemResourcesItem,
-) as any as S.Schema<GetFirewallsActionResponseActionResourcesList>;
+export const GetFirewallsActionResponseActionResourcesList =
+  ApplyFirewallToResourcesResponseActionsItemResourcesList as any as S.Schema<GetFirewallsActionResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type GetFirewallsActionResponseActionError =
@@ -322,9 +321,8 @@ export const ListFirewallActionsResponseActionsItemResourcesItem =
 /** Resources the Action relates to. */
 export type ListFirewallActionsResponseActionsItemResourcesList =
   Array<ApplyFirewallToResourcesResponseActionsItemResourcesItem>;
-export const ListFirewallActionsResponseActionsItemResourcesList = /*@__PURE__*/ S.Array(
-  ApplyFirewallToResourcesResponseActionsItemResourcesItem,
-) as any as S.Schema<ListFirewallActionsResponseActionsItemResourcesList>;
+export const ListFirewallActionsResponseActionsItemResourcesList =
+  ApplyFirewallToResourcesResponseActionsItemResourcesList as any as S.Schema<ListFirewallActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListFirewallActionsResponseActionsItemError =
@@ -500,9 +498,8 @@ export const ListFirewallsActionsResponseActionsItemResourcesItem =
 /** Resources the Action relates to. */
 export type ListFirewallsActionsResponseActionsItemResourcesList =
   Array<ApplyFirewallToResourcesResponseActionsItemResourcesItem>;
-export const ListFirewallsActionsResponseActionsItemResourcesList = /*@__PURE__*/ S.Array(
-  ApplyFirewallToResourcesResponseActionsItemResourcesItem,
-) as any as S.Schema<ListFirewallsActionsResponseActionsItemResourcesList>;
+export const ListFirewallsActionsResponseActionsItemResourcesList =
+  ApplyFirewallToResourcesResponseActionsItemResourcesList as any as S.Schema<ListFirewallsActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListFirewallsActionsResponseActionsItemError =
@@ -639,9 +636,8 @@ export const RemoveFirewallFromResourcesResponseActionsItemResourcesItem =
 /** Resources the Action relates to. */
 export type RemoveFirewallFromResourcesResponseActionsItemResourcesList =
   Array<ApplyFirewallToResourcesResponseActionsItemResourcesItem>;
-export const RemoveFirewallFromResourcesResponseActionsItemResourcesList = /*@__PURE__*/ S.Array(
-  ApplyFirewallToResourcesResponseActionsItemResourcesItem,
-) as any as S.Schema<RemoveFirewallFromResourcesResponseActionsItemResourcesList>;
+export const RemoveFirewallFromResourcesResponseActionsItemResourcesList =
+  ApplyFirewallToResourcesResponseActionsItemResourcesList as any as S.Schema<RemoveFirewallFromResourcesResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type RemoveFirewallFromResourcesResponseActionsItemError =
@@ -711,9 +707,8 @@ export const SetFirewallRulesRequestRulesItemSourceIpsList = /*@__PURE__*/ S.Arr
 
 /** List of permitted IPv4/IPv6 addresses for outgoing traffic. The `direction` must be set to `out`. IPs must be in [CIDR block notation](https://wikipedia.org/wiki/CIDR). You can specify 100 CIDR blocks at most. The CIDR blocks may refer to networks (with empty host bits) or single hosts. For example, a network could be defined with `10.0.1.0/24` or `2001:db8:ff00:42::/64`, and a single host with `10.0.1.1/32` or `2001:db8:ff00:42::8329/128`. Use `0.0.0.0/0` to allow any IPv4 addresses and `::/0` to allow any IPv6 addresses. IPv6 CIDRs will be transformed to their canonical form according to [RFC5952](https://datatracker.ietf.org/doc/html/rfc5952#section-4). */
 export type SetFirewallRulesRequestRulesItemDestinationIpsList = Array<string>;
-export const SetFirewallRulesRequestRulesItemDestinationIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetFirewallRulesRequestRulesItemDestinationIpsList>;
+export const SetFirewallRulesRequestRulesItemDestinationIpsList =
+  SetFirewallRulesRequestRulesItemSourceIpsList as any as S.Schema<SetFirewallRulesRequestRulesItemDestinationIpsList>;
 
 /** Network protocol to apply the rule for. */
 export type SetFirewallRulesRequestRulesItemProtocol = "tcp" | "udp" | "icmp" | "esp" | "gre";
@@ -777,9 +772,8 @@ export const SetFirewallRulesResponseActionsItemResourcesItem =
 /** Resources the Action relates to. */
 export type SetFirewallRulesResponseActionsItemResourcesList =
   Array<ApplyFirewallToResourcesResponseActionsItemResourcesItem>;
-export const SetFirewallRulesResponseActionsItemResourcesList = /*@__PURE__*/ S.Array(
-  ApplyFirewallToResourcesResponseActionsItemResourcesItem,
-) as any as S.Schema<SetFirewallRulesResponseActionsItemResourcesList>;
+export const SetFirewallRulesResponseActionsItemResourcesList =
+  ApplyFirewallToResourcesResponseActionsItemResourcesList as any as S.Schema<SetFirewallRulesResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type SetFirewallRulesResponseActionsItemError =

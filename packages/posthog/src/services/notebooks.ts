@@ -130,10 +130,8 @@ export const WidgetStatusInputBindingsValue = AttachNotebooksWidgetRequestInputB
 export type WidgetStatusInputBindingsMap = {
   [key: string]: AttachNotebooksWidgetRequestInputBindingsValue | undefined;
 };
-export const WidgetStatusInputBindingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  AttachNotebooksWidgetRequestInputBindingsValue,
-) as any as S.Schema<WidgetStatusInputBindingsMap>;
+export const WidgetStatusInputBindingsMap =
+  AttachNotebooksWidgetRequestInputBindingsMap as any as S.Schema<WidgetStatusInputBindingsMap>;
 
 export interface WidgetInputContractColumn {
   /** Column name expected by the reusable widget. */
@@ -482,9 +480,8 @@ export const NotebookOutputParentResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
 export type NotebookOutputVariablesList = Array<NotebookVariable>;
-export const NotebookOutputVariablesList = /*@__PURE__*/ S.Array(
-  NotebookVariable,
-) as any as S.Schema<NotebookOutputVariablesList>;
+export const NotebookOutputVariablesList =
+  CreateNotebookRequestVariablesList as any as S.Schema<NotebookOutputVariablesList>;
 
 export interface NotebookOutput {
   /** UUID of the notebook. */
@@ -625,11 +622,8 @@ export const CreateNotebooksCollabPresenceRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreateNotebooksCollabPresenceRequest>;
 
 export interface CreateNotebooksCollabPresenceResponse {}
-export const CreateNotebooksCollabPresenceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateNotebooksCollabPresenceResponse",
-}) as any as S.Schema<CreateNotebooksCollabPresenceResponse>;
+export const CreateNotebooksCollabPresenceResponse =
+  CreateNotebooksCollabMarkdownSaveResponse as any as S.Schema<CreateNotebooksCollabPresenceResponse>;
 
 /** List of ProseMirror step JSON objects to apply. */
 export type CreateNotebooksCollabSaveRequestStepsList = Array<unknown>;
@@ -679,11 +673,8 @@ export const CreateNotebooksCollabSaveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateNotebooksCollabSaveRequest>;
 
 export interface CreateNotebooksCollabSaveResponse {}
-export const CreateNotebooksCollabSaveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateNotebooksCollabSaveResponse",
-}) as any as S.Schema<CreateNotebooksCollabSaveResponse>;
+export const CreateNotebooksCollabSaveResponse =
+  CreateNotebooksCollabMarkdownSaveResponse as any as S.Schema<CreateNotebooksCollabSaveResponse>;
 
 export interface CreateNotebooksKernelCompleteRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -853,9 +844,8 @@ export const NotebookKernelInspectResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Replace the notebook's variables with this list before the run starts, so the results match what the document declares. Omit it to run with the variables already saved. */
 export type CreateNotebooksRunRequestVariablesList = Array<NotebookVariable>;
-export const CreateNotebooksRunRequestVariablesList = /*@__PURE__*/ S.Array(
-  NotebookVariable,
-) as any as S.Schema<CreateNotebooksRunRequestVariablesList>;
+export const CreateNotebooksRunRequestVariablesList =
+  CreateNotebookRequestVariablesList as any as S.Schema<CreateNotebooksRunRequestVariablesList>;
 
 export interface CreateNotebooksRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1041,9 +1031,8 @@ export const CreateNotebooksSqlV2RunRequestRefsMap = /*@__PURE__*/ S.Record(
 
 /** Notebook-level variables in scope for this run. A SQL node has each `{name}` bound to its value before dispatch; a Python node gets them as globals in the kernel namespace. A SQL node reading a `{name}` that is absent here fails the dispatch. */
 export type CreateNotebooksSqlV2RunRequestVariablesList = Array<NotebookVariable>;
-export const CreateNotebooksSqlV2RunRequestVariablesList = /*@__PURE__*/ S.Array(
-  NotebookVariable,
-) as any as S.Schema<CreateNotebooksSqlV2RunRequestVariablesList>;
+export const CreateNotebooksSqlV2RunRequestVariablesList =
+  CreateNotebookRequestVariablesList as any as S.Schema<CreateNotebooksSqlV2RunRequestVariablesList>;
 
 export interface CreateNotebooksSqlV2RunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1180,9 +1169,8 @@ export const CreateNotebooksWidgetSnapshotRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Allowed dataframe slots. */
 export type WidgetSnapshotFrameNamesList = Array<string>;
-export const WidgetSnapshotFrameNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WidgetSnapshotFrameNamesList>;
+export const WidgetSnapshotFrameNamesList =
+  WidgetStatusFrameNamesList as any as S.Schema<WidgetSnapshotFrameNamesList>;
 
 export type WidgetSnapshotInputBindingsValue = AttachNotebooksWidgetRequestInputBindingsValue;
 export const WidgetSnapshotInputBindingsValue = AttachNotebooksWidgetRequestInputBindingsValue;
@@ -1191,16 +1179,13 @@ export const WidgetSnapshotInputBindingsValue = AttachNotebooksWidgetRequestInpu
 export type WidgetSnapshotInputBindingsMap = {
   [key: string]: AttachNotebooksWidgetRequestInputBindingsValue | undefined;
 };
-export const WidgetSnapshotInputBindingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  AttachNotebooksWidgetRequestInputBindingsValue,
-) as any as S.Schema<WidgetSnapshotInputBindingsMap>;
+export const WidgetSnapshotInputBindingsMap =
+  AttachNotebooksWidgetRequestInputBindingsMap as any as S.Schema<WidgetSnapshotInputBindingsMap>;
 
 /** Pinned widget input schemas. */
 export type WidgetSnapshotInputContractList = Array<WidgetInputContractItem>;
-export const WidgetSnapshotInputContractList = /*@__PURE__*/ S.Array(
-  WidgetInputContractItem,
-) as any as S.Schema<WidgetSnapshotInputContractList>;
+export const WidgetSnapshotInputContractList =
+  WidgetStatusInputContractList as any as S.Schema<WidgetSnapshotInputContractList>;
 
 export interface WidgetSnapshot {
   /** Immutable snapshot containing the widget's saved dataframe results. */
@@ -1355,9 +1340,8 @@ export const GetNotebooksActivityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetNotebooksActivityRequest>;
 
 export interface GetNotebooksActivityResponse {}
-export const GetNotebooksActivityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetNotebooksActivityResponse",
-}) as any as S.Schema<GetNotebooksActivityResponse>;
+export const GetNotebooksActivityResponse =
+  CancelNotebooksWidgetResponse as any as S.Schema<GetNotebooksActivityResponse>;
 
 export interface GetNotebooksAllActivityRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1374,9 +1358,8 @@ export const GetNotebooksAllActivityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetNotebooksAllActivityRequest>;
 
 export interface GetNotebooksAllActivityResponse {}
-export const GetNotebooksAllActivityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "GetNotebooksAllActivityResponse" },
-) as any as S.Schema<GetNotebooksAllActivityResponse>;
+export const GetNotebooksAllActivityResponse =
+  GenerateNotebooksWidgetResponse as any as S.Schema<GetNotebooksAllActivityResponse>;
 
 export interface GetNotebooksCollabStreamRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1399,11 +1382,8 @@ export const GetNotebooksCollabStreamRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetNotebooksCollabStreamRequest>;
 
 export interface GetNotebooksCollabStreamResponse {}
-export const GetNotebooksCollabStreamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetNotebooksCollabStreamResponse",
-}) as any as S.Schema<GetNotebooksCollabStreamResponse>;
+export const GetNotebooksCollabStreamResponse =
+  CreateNotebooksCollabMarkdownSaveResponse as any as S.Schema<GetNotebooksCollabStreamResponse>;
 
 export interface GetNotebooksKernelComputeOptionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1462,15 +1442,13 @@ export const NotebookComputeOptionsResponseAllowedCpuCoresList = /*@__PURE__*/ S
 
 /** Memory sizes in GB the kernel config endpoint accepts. */
 export type NotebookComputeOptionsResponseAllowedMemoryGbList = Array<number>;
-export const NotebookComputeOptionsResponseAllowedMemoryGbList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<NotebookComputeOptionsResponseAllowedMemoryGbList>;
+export const NotebookComputeOptionsResponseAllowedMemoryGbList =
+  NotebookComputeOptionsResponseAllowedCpuCoresList as any as S.Schema<NotebookComputeOptionsResponseAllowedMemoryGbList>;
 
 /** Maximum sandbox lifetimes in seconds that the kernel config endpoint accepts. */
 export type NotebookComputeOptionsResponseAllowedIdleTimeoutSecondsList = Array<number>;
-export const NotebookComputeOptionsResponseAllowedIdleTimeoutSecondsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<NotebookComputeOptionsResponseAllowedIdleTimeoutSecondsList>;
+export const NotebookComputeOptionsResponseAllowedIdleTimeoutSecondsList =
+  NotebookComputeOptionsResponseAllowedCpuCoresList as any as S.Schema<NotebookComputeOptionsResponseAllowedIdleTimeoutSecondsList>;
 
 export interface NotebookComputeOptionsResponse {
   /** Currency of every price in this response. Always 'USD'. */
@@ -1527,9 +1505,8 @@ export const GetNotebooksKernelStatusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A [column name, DuckDB type] pair. */
 export type NotebookSQLV2FrameColumnsItemList = Array<string>;
-export const NotebookSQLV2FrameColumnsItemList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotebookSQLV2FrameColumnsItemList>;
+export const NotebookSQLV2FrameColumnsItemList =
+  WidgetStatusFrameNamesList as any as S.Schema<NotebookSQLV2FrameColumnsItemList>;
 
 /** DuckDB type per column, as [name, type] pairs. */
 export type NotebookSQLV2FrameColumnsList = Array<NotebookSQLV2FrameColumnsItemList>;
@@ -1638,11 +1615,8 @@ export const GetNotebooksRecordingCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetNotebooksRecordingCommentRequest>;
 
 export interface GetNotebooksRecordingCommentResponse {}
-export const GetNotebooksRecordingCommentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetNotebooksRecordingCommentResponse",
-}) as any as S.Schema<GetNotebooksRecordingCommentResponse>;
+export const GetNotebooksRecordingCommentResponse =
+  CreateNotebooksCollabMarkdownSaveResponse as any as S.Schema<GetNotebooksRecordingCommentResponse>;
 
 export interface GetNotebooksRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1667,9 +1641,8 @@ export const GetNotebooksRunRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The variable values this run bound, snapshotted when it started. */
 export type NotebookRunStatusResponseVariablesList = Array<NotebookVariable>;
-export const NotebookRunStatusResponseVariablesList = /*@__PURE__*/ S.Array(
-  NotebookVariable,
-) as any as S.Schema<NotebookRunStatusResponseVariablesList>;
+export const NotebookRunStatusResponseVariablesList =
+  CreateNotebookRequestVariablesList as any as S.Schema<NotebookRunStatusResponseVariablesList>;
 
 export interface NotebookRunCell {
   /** Durable cell identity, the same id the cell run endpoints take. */
@@ -1772,9 +1745,8 @@ export const GetNotebooksSqlV2RunRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** DuckDB objects a SQL node can SELECT from as of this run, for the schema browser. Only kernel runs (python/duckdb) report these; a hogql run never enters the kernel. */
 export type NotebookSQLV2EnvelopeFramesList = Array<NotebookSQLV2Frame>;
-export const NotebookSQLV2EnvelopeFramesList = /*@__PURE__*/ S.Array(
-  NotebookSQLV2Frame,
-) as any as S.Schema<NotebookSQLV2EnvelopeFramesList>;
+export const NotebookSQLV2EnvelopeFramesList =
+  NotebookKernelStatusResponseFramesList as any as S.Schema<NotebookSQLV2EnvelopeFramesList>;
 
 export interface NotebookSQLV2Media {
   /** MIME type of the media, e.g. 'image/png' for a matplotlib figure. */
@@ -1797,27 +1769,23 @@ export const NotebookSQLV2EnvelopeMediaList = /*@__PURE__*/ S.Array(
 
 /** Result column names. */
 export type NotebookSQLV2EnvelopeColumnsList = Array<string>;
-export const NotebookSQLV2EnvelopeColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotebookSQLV2EnvelopeColumnsList>;
+export const NotebookSQLV2EnvelopeColumnsList =
+  WidgetStatusFrameNamesList as any as S.Schema<NotebookSQLV2EnvelopeColumnsList>;
 
 /** A [column name, ClickHouse type] pair. */
 export type NotebookSQLV2EnvelopeTypesItemList = Array<string>;
-export const NotebookSQLV2EnvelopeTypesItemList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotebookSQLV2EnvelopeTypesItemList>;
+export const NotebookSQLV2EnvelopeTypesItemList =
+  WidgetStatusFrameNamesList as any as S.Schema<NotebookSQLV2EnvelopeTypesItemList>;
 
 /** ClickHouse type per column, as [name, type] pairs; used by the visualization tab. */
 export type NotebookSQLV2EnvelopeTypesList = Array<NotebookSQLV2EnvelopeTypesItemList>;
-export const NotebookSQLV2EnvelopeTypesList = /*@__PURE__*/ S.Array(
-  NotebookSQLV2EnvelopeTypesItemList,
-) as any as S.Schema<NotebookSQLV2EnvelopeTypesList>;
+export const NotebookSQLV2EnvelopeTypesList =
+  NotebookSQLV2FrameColumnsList as any as S.Schema<NotebookSQLV2EnvelopeTypesList>;
 
 /** A single result row as a list of cell values. */
 export type NotebookSQLV2EnvelopeFirstPageItemList = Array<unknown>;
-export const NotebookSQLV2EnvelopeFirstPageItemList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<NotebookSQLV2EnvelopeFirstPageItemList>;
+export const NotebookSQLV2EnvelopeFirstPageItemList =
+  CreateNotebooksCollabSaveRequestStepsList as any as S.Schema<NotebookSQLV2EnvelopeFirstPageItemList>;
 
 /** First page of result rows for display; each row is a list of cell values. */
 export type NotebookSQLV2EnvelopeFirstPageList = Array<NotebookSQLV2EnvelopeFirstPageItemList>;
@@ -1883,16 +1851,14 @@ export const NotebookSQLV2Envelope = /*@__PURE__*/ S.suspend(() =>
 
 /** A single result row as a list of cell values. */
 export type NotebookSQLV2RunStatusResponseRowsItemList = Array<unknown>;
-export const NotebookSQLV2RunStatusResponseRowsItemList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<NotebookSQLV2RunStatusResponseRowsItemList>;
+export const NotebookSQLV2RunStatusResponseRowsItemList =
+  CreateNotebooksCollabSaveRequestStepsList as any as S.Schema<NotebookSQLV2RunStatusResponseRowsItemList>;
 
 /** SQL (hogql) runs only: the full capped row set for client-side paging, present while the query manager's transient result is alive (~20 minutes). Absent afterwards and for kernel (python/duckdb) runs, which keep only the envelope's first_page preview. */
 export type NotebookSQLV2RunStatusResponseRowsList =
   Array<NotebookSQLV2RunStatusResponseRowsItemList>;
-export const NotebookSQLV2RunStatusResponseRowsList = /*@__PURE__*/ S.Array(
-  NotebookSQLV2RunStatusResponseRowsItemList,
-) as any as S.Schema<NotebookSQLV2RunStatusResponseRowsList>;
+export const NotebookSQLV2RunStatusResponseRowsList =
+  NotebookSQLV2EnvelopeFirstPageList as any as S.Schema<NotebookSQLV2RunStatusResponseRowsList>;
 
 export interface NotebookSQLV2RunStatusResponse {
   /** Run state: 'running' (keep polling), or terminal -- 'done', 'failed', or 'interrupted'. */
@@ -1956,27 +1922,23 @@ export const NotebookKernelState = /*@__PURE__*/ S.suspend(() =>
 
 /** The notebook's declared variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global; a cell that reads an undeclared name fails to run. */
 export type NotebookSQLV2StateResponseVariablesList = Array<NotebookVariable>;
-export const NotebookSQLV2StateResponseVariablesList = /*@__PURE__*/ S.Array(
-  NotebookVariable,
-) as any as S.Schema<NotebookSQLV2StateResponseVariablesList>;
+export const NotebookSQLV2StateResponseVariablesList =
+  CreateNotebookRequestVariablesList as any as S.Schema<NotebookSQLV2StateResponseVariablesList>;
 
 /** node_ids of cells whose dataframes this cell's code references. */
 export type NotebookCellStateDependsOnList = Array<string>;
-export const NotebookCellStateDependsOnList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotebookCellStateDependsOnList>;
+export const NotebookCellStateDependsOnList =
+  WidgetStatusFrameNamesList as any as S.Schema<NotebookCellStateDependsOnList>;
 
 /** node_ids of cells that reference this cell's dataframe. */
 export type NotebookCellStateDependentsList = Array<string>;
-export const NotebookCellStateDependentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotebookCellStateDependentsList>;
+export const NotebookCellStateDependentsList =
+  WidgetStatusFrameNamesList as any as S.Schema<NotebookCellStateDependentsList>;
 
 /** Result column names. */
 export type NotebookCellLastRunColumnsList = Array<string>;
-export const NotebookCellLastRunColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotebookCellLastRunColumnsList>;
+export const NotebookCellLastRunColumnsList =
+  WidgetStatusFrameNamesList as any as S.Schema<NotebookCellLastRunColumnsList>;
 
 export interface NotebookCellLastRun {
   /** Identifier of the cell's most recent run. */
@@ -2235,15 +2197,13 @@ export const NotebooksDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NotebooksDestroyRequest" }) as any as S.Schema<NotebooksDestroyRequest>;
 
 export interface NotebooksDestroyResponse {}
-export const NotebooksDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "NotebooksDestroyResponse",
-}) as any as S.Schema<NotebooksDestroyResponse>;
+export const NotebooksDestroyResponse =
+  CancelNotebooksWidgetResponse as any as S.Schema<NotebooksDestroyResponse>;
 
 /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
 export type NotebooksKernelExecuteCreateRequestVariablesList = Array<NotebookVariable>;
-export const NotebooksKernelExecuteCreateRequestVariablesList = /*@__PURE__*/ S.Array(
-  NotebookVariable,
-) as any as S.Schema<NotebooksKernelExecuteCreateRequestVariablesList>;
+export const NotebooksKernelExecuteCreateRequestVariablesList =
+  CreateNotebookRequestVariablesList as any as S.Schema<NotebooksKernelExecuteCreateRequestVariablesList>;
 
 export interface NotebooksKernelExecuteCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2286,17 +2246,13 @@ export const NotebooksKernelExecuteCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotebooksKernelExecuteCreateRequest>;
 
 export interface NotebooksKernelExecuteCreateResponse {}
-export const NotebooksKernelExecuteCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "NotebooksKernelExecuteCreateResponse",
-}) as any as S.Schema<NotebooksKernelExecuteCreateResponse>;
+export const NotebooksKernelExecuteCreateResponse =
+  CreateNotebooksCollabMarkdownSaveResponse as any as S.Schema<NotebooksKernelExecuteCreateResponse>;
 
 /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
 export type NotebooksKernelRestartCreateRequestVariablesList = Array<NotebookVariable>;
-export const NotebooksKernelRestartCreateRequestVariablesList = /*@__PURE__*/ S.Array(
-  NotebookVariable,
-) as any as S.Schema<NotebooksKernelRestartCreateRequestVariablesList>;
+export const NotebooksKernelRestartCreateRequestVariablesList =
+  CreateNotebookRequestVariablesList as any as S.Schema<NotebooksKernelRestartCreateRequestVariablesList>;
 
 export interface NotebooksKernelRestartCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2339,17 +2295,13 @@ export const NotebooksKernelRestartCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotebooksKernelRestartCreateRequest>;
 
 export interface NotebooksKernelRestartCreateResponse {}
-export const NotebooksKernelRestartCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "NotebooksKernelRestartCreateResponse",
-}) as any as S.Schema<NotebooksKernelRestartCreateResponse>;
+export const NotebooksKernelRestartCreateResponse =
+  CreateNotebooksCollabMarkdownSaveResponse as any as S.Schema<NotebooksKernelRestartCreateResponse>;
 
 /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
 export type NotebooksKernelStartCreateRequestVariablesList = Array<NotebookVariable>;
-export const NotebooksKernelStartCreateRequestVariablesList = /*@__PURE__*/ S.Array(
-  NotebookVariable,
-) as any as S.Schema<NotebooksKernelStartCreateRequestVariablesList>;
+export const NotebooksKernelStartCreateRequestVariablesList =
+  CreateNotebookRequestVariablesList as any as S.Schema<NotebooksKernelStartCreateRequestVariablesList>;
 
 export interface NotebooksKernelStartCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2392,17 +2344,13 @@ export const NotebooksKernelStartCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotebooksKernelStartCreateRequest>;
 
 export interface NotebooksKernelStartCreateResponse {}
-export const NotebooksKernelStartCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "NotebooksKernelStartCreateResponse",
-}) as any as S.Schema<NotebooksKernelStartCreateResponse>;
+export const NotebooksKernelStartCreateResponse =
+  CreateNotebooksCollabMarkdownSaveResponse as any as S.Schema<NotebooksKernelStartCreateResponse>;
 
 /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
 export type NotebooksKernelStopCreateRequestVariablesList = Array<NotebookVariable>;
-export const NotebooksKernelStopCreateRequestVariablesList = /*@__PURE__*/ S.Array(
-  NotebookVariable,
-) as any as S.Schema<NotebooksKernelStopCreateRequestVariablesList>;
+export const NotebooksKernelStopCreateRequestVariablesList =
+  CreateNotebookRequestVariablesList as any as S.Schema<NotebooksKernelStopCreateRequestVariablesList>;
 
 export interface NotebooksKernelStopCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2445,11 +2393,8 @@ export const NotebooksKernelStopCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotebooksKernelStopCreateRequest>;
 
 export interface NotebooksKernelStopCreateResponse {}
-export const NotebooksKernelStopCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "NotebooksKernelStopCreateResponse",
-}) as any as S.Schema<NotebooksKernelStopCreateResponse>;
+export const NotebooksKernelStopCreateResponse =
+  CreateNotebooksCollabMarkdownSaveResponse as any as S.Schema<NotebooksKernelStopCreateResponse>;
 
 export interface NotebooksSharingPasswordsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2474,11 +2419,8 @@ export const NotebooksSharingPasswordsDestroyRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<NotebooksSharingPasswordsDestroyRequest>;
 
 export interface NotebooksSharingPasswordsDestroyResponse {}
-export const NotebooksSharingPasswordsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "NotebooksSharingPasswordsDestroyResponse",
-}) as any as S.Schema<NotebooksSharingPasswordsDestroyResponse>;
+export const NotebooksSharingPasswordsDestroyResponse =
+  CreateNotebooksCollabMarkdownSaveResponse as any as S.Schema<NotebooksSharingPasswordsDestroyResponse>;
 
 export interface NotebooksSharingRefreshCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2560,15 +2502,13 @@ export const WidgetFrameColumnsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<WidgetFrameColumnsList>;
 
 export type WidgetFrameRowsItemList = Array<unknown>;
-export const WidgetFrameRowsItemList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<WidgetFrameRowsItemList>;
+export const WidgetFrameRowsItemList =
+  CreateNotebooksCollabSaveRequestStepsList as any as S.Schema<WidgetFrameRowsItemList>;
 
 /** Requested page of dataframe rows. */
 export type WidgetFrameRowsList = Array<WidgetFrameRowsItemList>;
-export const WidgetFrameRowsList = /*@__PURE__*/ S.Array(
-  WidgetFrameRowsItemList,
-) as any as S.Schema<WidgetFrameRowsList>;
+export const WidgetFrameRowsList =
+  NotebookSQLV2EnvelopeFirstPageList as any as S.Schema<WidgetFrameRowsList>;
 
 export interface WidgetFrame {
   /** Logical dataframe name. */
@@ -2765,9 +2705,8 @@ export const BuildStatusEnum = S.String;
 
 /** Logical dataframe slots available to this version. */
 export type WidgetVersionFrameNamesList = Array<string>;
-export const WidgetVersionFrameNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WidgetVersionFrameNamesList>;
+export const WidgetVersionFrameNamesList =
+  WidgetStatusFrameNamesList as any as S.Schema<WidgetVersionFrameNamesList>;
 
 export interface WidgetVersion {
   /** Estimated generation charge in USD, including retries, security review, and the AI credit markup. Null when unavailable. */
@@ -2871,9 +2810,8 @@ export const PinNotebooksWidgetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Searchable labels attached to the reusable widget. */
 export type PublishNotebooksWidgetRequestTagsList = Array<string>;
-export const PublishNotebooksWidgetRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PublishNotebooksWidgetRequestTagsList>;
+export const PublishNotebooksWidgetRequestTagsList =
+  WidgetStatusFrameNamesList as any as S.Schema<PublishNotebooksWidgetRequestTagsList>;
 
 export interface PublishNotebooksWidgetRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2909,9 +2847,8 @@ export const PublishNotebooksWidgetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Searchable widget labels. */
 export type ReusableWidgetDetailTagsList = Array<string>;
-export const ReusableWidgetDetailTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReusableWidgetDetailTagsList>;
+export const ReusableWidgetDetailTagsList =
+  WidgetStatusFrameNamesList as any as S.Schema<ReusableWidgetDetailTagsList>;
 
 /** * `published` - published * `deprecated` - deprecated */
 export type PublicationStatusEnum = "published" | "deprecated";
@@ -2919,15 +2856,13 @@ export const PublicationStatusEnum = S.String;
 
 /** Logical dataframe slots accepted by this widget version. */
 export type ReusableWidgetVersionDetailFrameNamesList = Array<string>;
-export const ReusableWidgetVersionDetailFrameNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReusableWidgetVersionDetailFrameNamesList>;
+export const ReusableWidgetVersionDetailFrameNamesList =
+  WidgetStatusFrameNamesList as any as S.Schema<ReusableWidgetVersionDetailFrameNamesList>;
 
 /** Dataframe slots and schemas expected by this widget version. */
 export type ReusableWidgetVersionDetailInputContractList = Array<WidgetInputContractItem>;
-export const ReusableWidgetVersionDetailInputContractList = /*@__PURE__*/ S.Array(
-  WidgetInputContractItem,
-) as any as S.Schema<ReusableWidgetVersionDetailInputContractList>;
+export const ReusableWidgetVersionDetailInputContractList =
+  WidgetStatusInputContractList as any as S.Schema<ReusableWidgetVersionDetailInputContractList>;
 
 export interface ReusableWidgetVersionDetail {
   /** Estimated generation charge in USD, including retries, security review, and the AI credit markup. Null when unavailable. */
@@ -3066,9 +3001,8 @@ export const PublishNotebooksWidgetSnapshotRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
 export type UpdateNotebookRequestVariablesList = Array<NotebookVariable>;
-export const UpdateNotebookRequestVariablesList = /*@__PURE__*/ S.Array(
-  NotebookVariable,
-) as any as S.Schema<UpdateNotebookRequestVariablesList>;
+export const UpdateNotebookRequestVariablesList =
+  CreateNotebookRequestVariablesList as any as S.Schema<UpdateNotebookRequestVariablesList>;
 
 export interface UpdateNotebookRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -3106,9 +3040,8 @@ export const UpdateNotebookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
 export type UpdateNotebooksPartialRequestVariablesList = Array<NotebookVariable>;
-export const UpdateNotebooksPartialRequestVariablesList = /*@__PURE__*/ S.Array(
-  NotebookVariable,
-) as any as S.Schema<UpdateNotebooksPartialRequestVariablesList>;
+export const UpdateNotebooksPartialRequestVariablesList =
+  CreateNotebookRequestVariablesList as any as S.Schema<UpdateNotebooksPartialRequestVariablesList>;
 
 export interface UpdateNotebooksPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

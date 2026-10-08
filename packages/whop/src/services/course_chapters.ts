@@ -158,19 +158,13 @@ export interface CourseChapterListItem {
   /** The display name of the chapter shown to students. Maximum 150 characters. */
   title: string;
 }
-export const CourseChapterListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    order: S.Number,
-    title: S.String,
-  }),
-).annotate({ identifier: "CourseChapterListItem" }) as any as S.Schema<CourseChapterListItem>;
+export const CourseChapterListItem =
+  CourseChapterLessonsItem as any as S.Schema<CourseChapterListItem>;
 
 /** A list of nodes. */
 export type ListCourseChapterResponseDataList = Array<CourseChapterListItem>;
-export const ListCourseChapterResponseDataList = /*@__PURE__*/ S.Array(
-  CourseChapterListItem,
-) as any as S.Schema<ListCourseChapterResponseDataList>;
+export const ListCourseChapterResponseDataList =
+  CourseChapterLessonsList as any as S.Schema<ListCourseChapterResponseDataList>;
 
 /** Information about pagination in a connection. */
 export interface PageInfo {

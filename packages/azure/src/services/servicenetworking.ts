@@ -123,10 +123,8 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 export type AssociationsInterfaceCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const AssociationsInterfaceCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AssociationsInterfaceCreateOrUpdateResponseTagsMap>;
+export const AssociationsInterfaceCreateOrUpdateResponseTagsMap =
+  AssociationsInterfaceCreateOrUpdateRequestTagsMap as any as S.Schema<AssociationsInterfaceCreateOrUpdateResponseTagsMap>;
 
 /** Resource Provisioning State Enum */
 export type ProvisioningState =
@@ -250,11 +248,8 @@ export const DeleteFrontendsInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFrontendsInterfaceRequest>;
 
 export interface DeleteFrontendsInterfaceResponse {}
-export const DeleteFrontendsInterfaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteFrontendsInterfaceResponse",
-}) as any as S.Schema<DeleteFrontendsInterfaceResponse>;
+export const DeleteFrontendsInterfaceResponse =
+  DeleteAssociationsInterfaceResponse as any as S.Schema<DeleteFrontendsInterfaceResponse>;
 
 export interface DeletePrivateEndpointConnectionsInterfaceRequest {
   /** The ID of the target subscription. */
@@ -285,11 +280,8 @@ export const DeletePrivateEndpointConnectionsInterfaceRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DeletePrivateEndpointConnectionsInterfaceRequest>;
 
 export interface DeletePrivateEndpointConnectionsInterfaceResponse {}
-export const DeletePrivateEndpointConnectionsInterfaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePrivateEndpointConnectionsInterfaceResponse",
-}) as any as S.Schema<DeletePrivateEndpointConnectionsInterfaceResponse>;
+export const DeletePrivateEndpointConnectionsInterfaceResponse =
+  DeleteAssociationsInterfaceResponse as any as S.Schema<DeletePrivateEndpointConnectionsInterfaceResponse>;
 
 export interface DeleteSecurityPoliciesInterfaceRequest {
   /** The ID of the target subscription. */
@@ -320,11 +312,8 @@ export const DeleteSecurityPoliciesInterfaceRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteSecurityPoliciesInterfaceRequest>;
 
 export interface DeleteSecurityPoliciesInterfaceResponse {}
-export const DeleteSecurityPoliciesInterfaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSecurityPoliciesInterfaceResponse",
-}) as any as S.Schema<DeleteSecurityPoliciesInterfaceResponse>;
+export const DeleteSecurityPoliciesInterfaceResponse =
+  DeleteAssociationsInterfaceResponse as any as S.Schema<DeleteSecurityPoliciesInterfaceResponse>;
 
 export interface DeleteTrafficControllerInterfaceRequest {
   /** The ID of the target subscription. */
@@ -352,18 +341,13 @@ export const DeleteTrafficControllerInterfaceRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteTrafficControllerInterfaceRequest>;
 
 export interface DeleteTrafficControllerInterfaceResponse {}
-export const DeleteTrafficControllerInterfaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteTrafficControllerInterfaceResponse",
-}) as any as S.Schema<DeleteTrafficControllerInterfaceResponse>;
+export const DeleteTrafficControllerInterfaceResponse =
+  DeleteAssociationsInterfaceResponse as any as S.Schema<DeleteTrafficControllerInterfaceResponse>;
 
 /** Resource tags. */
 export type FrontendsInterfaceCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const FrontendsInterfaceCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FrontendsInterfaceCreateOrUpdateRequestTagsMap>;
+export const FrontendsInterfaceCreateOrUpdateRequestTagsMap =
+  AssociationsInterfaceCreateOrUpdateRequestTagsMap as any as S.Schema<FrontendsInterfaceCreateOrUpdateRequestTagsMap>;
 
 /** Whether public network access is allowed for the frontend. */
 export type PublicNetworkAccess = "Enabled" | "Disabled";
@@ -374,22 +358,14 @@ export interface FrontendAssociation {
   /** Resource ID of the Association. */
   id: string;
 }
-export const FrontendAssociation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({ identifier: "FrontendAssociation" }) as any as S.Schema<FrontendAssociation>;
+export const FrontendAssociation = AssociationSubnet as any as S.Schema<FrontendAssociation>;
 
 /** Web Application Firewall Security Policy */
 export interface WafSecurityPolicy {
   /** Resource ID of the Waf Security Policy */
   id: string;
 }
-export const WafSecurityPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({ identifier: "WafSecurityPolicy" }) as any as S.Schema<WafSecurityPolicy>;
+export const WafSecurityPolicy = AssociationSubnet as any as S.Schema<WafSecurityPolicy>;
 
 /** IpAccessRules Security Policy */
 export interface IpAccessRulesSecurityPolicy {
@@ -476,10 +452,8 @@ export const FrontendsInterfaceCreateOrUpdateRequest = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type FrontendsInterfaceCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const FrontendsInterfaceCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FrontendsInterfaceCreateOrUpdateResponseTagsMap>;
+export const FrontendsInterfaceCreateOrUpdateResponseTagsMap =
+  AssociationsInterfaceCreateOrUpdateRequestTagsMap as any as S.Schema<FrontendsInterfaceCreateOrUpdateResponseTagsMap>;
 
 /** Frontend Properties. */
 export interface FrontendProperties {
@@ -564,10 +538,8 @@ export const GetAssociationsInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAssociationsInterfaceResponseTagsMap = { [key: string]: string | undefined };
-export const GetAssociationsInterfaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAssociationsInterfaceResponseTagsMap>;
+export const GetAssociationsInterfaceResponseTagsMap =
+  AssociationsInterfaceCreateOrUpdateRequestTagsMap as any as S.Schema<GetAssociationsInterfaceResponseTagsMap>;
 
 export interface GetAssociationsInterfaceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -585,19 +557,8 @@ export interface GetAssociationsInterfaceResponse {
   /** The resource-specific properties for this resource. */
   properties?: AssociationProperties;
 }
-export const GetAssociationsInterfaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetAssociationsInterfaceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(AssociationProperties),
-  }),
-).annotate({
-  identifier: "GetAssociationsInterfaceResponse",
-}) as any as S.Schema<GetAssociationsInterfaceResponse>;
+export const GetAssociationsInterfaceResponse =
+  AssociationsInterfaceCreateOrUpdateResponse as any as S.Schema<GetAssociationsInterfaceResponse>;
 
 export interface GetFrontendsInterfaceRequest {
   /** The ID of the target subscription. */
@@ -629,10 +590,8 @@ export const GetFrontendsInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetFrontendsInterfaceResponseTagsMap = { [key: string]: string | undefined };
-export const GetFrontendsInterfaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetFrontendsInterfaceResponseTagsMap>;
+export const GetFrontendsInterfaceResponseTagsMap =
+  AssociationsInterfaceCreateOrUpdateRequestTagsMap as any as S.Schema<GetFrontendsInterfaceResponseTagsMap>;
 
 export interface GetFrontendsInterfaceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -650,19 +609,8 @@ export interface GetFrontendsInterfaceResponse {
   /** The resource-specific properties for this resource. */
   properties?: FrontendProperties;
 }
-export const GetFrontendsInterfaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetFrontendsInterfaceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(FrontendProperties),
-  }),
-).annotate({
-  identifier: "GetFrontendsInterfaceResponse",
-}) as any as S.Schema<GetFrontendsInterfaceResponse>;
+export const GetFrontendsInterfaceResponse =
+  FrontendsInterfaceCreateOrUpdateResponse as any as S.Schema<GetFrontendsInterfaceResponse>;
 
 export interface GetPrivateEndpointConnectionsInterfaceRequest {
   /** The ID of the target subscription. */
@@ -809,9 +757,8 @@ export const PrivateLinkResourcePropertiesRequiredMembersList = /*@__PURE__*/ S.
 
 /** The private link resource private DNS zone names. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  PrivateLinkResourcePropertiesRequiredMembersList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
@@ -889,10 +836,8 @@ export const GetSecurityPoliciesInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetSecurityPoliciesInterfaceResponseTagsMap = { [key: string]: string | undefined };
-export const GetSecurityPoliciesInterfaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetSecurityPoliciesInterfaceResponseTagsMap>;
+export const GetSecurityPoliciesInterfaceResponseTagsMap =
+  AssociationsInterfaceCreateOrUpdateRequestTagsMap as any as S.Schema<GetSecurityPoliciesInterfaceResponseTagsMap>;
 
 /** Policy Type of the Security Policy */
 export type PolicyType = "waf" | "ipAccessRules";
@@ -903,17 +848,12 @@ export interface WafPolicy {
   /** Resource ID of the WAF */
   id: string;
 }
-export const WafPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({ identifier: "WafPolicy" }) as any as S.Schema<WafPolicy>;
+export const WafPolicy = AssociationSubnet as any as S.Schema<WafPolicy>;
 
 /** Source Address Prefixed Applied by the Rule. Asterisk '*' can also be used to match all source IPs. */
 export type IpAccessRuleSourceAddressPrefixesList = Array<string>;
-export const IpAccessRuleSourceAddressPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpAccessRuleSourceAddressPrefixesList>;
+export const IpAccessRuleSourceAddressPrefixesList =
+  PrivateLinkResourcePropertiesRequiredMembersList as any as S.Schema<IpAccessRuleSourceAddressPrefixesList>;
 
 /** Action of Ip Access Rule */
 export type IpAccessRuleAction = "allow" | "deny";
@@ -1033,27 +973,20 @@ export const GetTrafficControllerInterfaceRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type GetTrafficControllerInterfaceResponseTagsMap = { [key: string]: string | undefined };
-export const GetTrafficControllerInterfaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetTrafficControllerInterfaceResponseTagsMap>;
+export const GetTrafficControllerInterfaceResponseTagsMap =
+  AssociationsInterfaceCreateOrUpdateRequestTagsMap as any as S.Schema<GetTrafficControllerInterfaceResponseTagsMap>;
 
 /** Configuration Endpoints. */
 export type TrafficControllerPropertiesConfigurationEndpointsList = Array<string>;
-export const TrafficControllerPropertiesConfigurationEndpointsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TrafficControllerPropertiesConfigurationEndpointsList>;
+export const TrafficControllerPropertiesConfigurationEndpointsList =
+  PrivateLinkResourcePropertiesRequiredMembersList as any as S.Schema<TrafficControllerPropertiesConfigurationEndpointsList>;
 
 /** Resource ID definition used by parent to reference child resources. */
 export interface ResourceId {
   /** Resource ID of child resource. */
   id: string;
 }
-export const ResourceId = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({ identifier: "ResourceId" }) as any as S.Schema<ResourceId>;
+export const ResourceId = AssociationSubnet as any as S.Schema<ResourceId>;
 
 /** Frontends References List */
 export type TrafficControllerPropertiesFrontendsList = Array<ResourceId>;
@@ -1063,21 +996,18 @@ export const TrafficControllerPropertiesFrontendsList = /*@__PURE__*/ S.Array(
 
 /** Associations References List */
 export type TrafficControllerPropertiesAssociationsList = Array<ResourceId>;
-export const TrafficControllerPropertiesAssociationsList = /*@__PURE__*/ S.Array(
-  ResourceId,
-) as any as S.Schema<TrafficControllerPropertiesAssociationsList>;
+export const TrafficControllerPropertiesAssociationsList =
+  TrafficControllerPropertiesFrontendsList as any as S.Schema<TrafficControllerPropertiesAssociationsList>;
 
 /** Security Policies References List */
 export type TrafficControllerPropertiesSecurityPoliciesList = Array<ResourceId>;
-export const TrafficControllerPropertiesSecurityPoliciesList = /*@__PURE__*/ S.Array(
-  ResourceId,
-) as any as S.Schema<TrafficControllerPropertiesSecurityPoliciesList>;
+export const TrafficControllerPropertiesSecurityPoliciesList =
+  TrafficControllerPropertiesFrontendsList as any as S.Schema<TrafficControllerPropertiesSecurityPoliciesList>;
 
 /** Private Endpoint Connections List */
 export type TrafficControllerPropertiesPrivateEndpointConnectionsList = Array<ResourceId>;
-export const TrafficControllerPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
-  ResourceId,
-) as any as S.Schema<TrafficControllerPropertiesPrivateEndpointConnectionsList>;
+export const TrafficControllerPropertiesPrivateEndpointConnectionsList =
+  TrafficControllerPropertiesFrontendsList as any as S.Schema<TrafficControllerPropertiesPrivateEndpointConnectionsList>;
 
 /** Traffic Controller Properties. */
 export interface TrafficControllerProperties {
@@ -1169,10 +1099,8 @@ export const ListAssociationsInterfaceByTrafficControllerRequest = /*@__PURE__*/
 
 /** Resource tags. */
 export type AssociationTagsMap = { [key: string]: string | undefined };
-export const AssociationTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AssociationTagsMap>;
+export const AssociationTagsMap =
+  AssociationsInterfaceCreateOrUpdateRequestTagsMap as any as S.Schema<AssociationTagsMap>;
 
 /** Association Subresource of Traffic Controller */
 export interface Association {
@@ -1250,10 +1178,8 @@ export const ListFrontendsInterfaceByTrafficControllerRequest = /*@__PURE__*/ S.
 
 /** Resource tags. */
 export type FrontendTagsMap = { [key: string]: string | undefined };
-export const FrontendTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FrontendTagsMap>;
+export const FrontendTagsMap =
+  AssociationsInterfaceCreateOrUpdateRequestTagsMap as any as S.Schema<FrontendTagsMap>;
 
 /** Frontend Sub Resource of Traffic Controller. */
 export interface Frontend {
@@ -1425,17 +1351,8 @@ export interface PrivateEndpointConnection {
   /** The resource-specific properties for this resource. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnection",
-}) as any as S.Schema<PrivateEndpointConnection>;
+export const PrivateEndpointConnection =
+  GetPrivateEndpointConnectionsInterfaceResponse as any as S.Schema<PrivateEndpointConnection>;
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
@@ -1557,10 +1474,8 @@ export const ListSecurityPoliciesInterfaceByTrafficControllerRequest = /*@__PURE
 
 /** Resource tags. */
 export type SecurityPolicyTagsMap = { [key: string]: string | undefined };
-export const SecurityPolicyTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SecurityPolicyTagsMap>;
+export const SecurityPolicyTagsMap =
+  AssociationsInterfaceCreateOrUpdateRequestTagsMap as any as S.Schema<SecurityPolicyTagsMap>;
 
 /** SecurityPolicy Subresource of Traffic Controller. */
 export interface SecurityPolicy {
@@ -1635,10 +1550,8 @@ export const ListTrafficControllerInterfaceByResourceGroupRequest = /*@__PURE__*
 
 /** Resource tags. */
 export type TrafficControllerTagsMap = { [key: string]: string | undefined };
-export const TrafficControllerTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TrafficControllerTagsMap>;
+export const TrafficControllerTagsMap =
+  AssociationsInterfaceCreateOrUpdateRequestTagsMap as any as S.Schema<TrafficControllerTagsMap>;
 
 /** Concrete tracked resource types can be created by aliasing this type using a specific property type. */
 export interface TrafficController {
@@ -1714,10 +1627,8 @@ export const ListTrafficControllerInterfaceBySubscriptionRequest = /*@__PURE__*/
 export type SecurityPoliciesInterfaceCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const SecurityPoliciesInterfaceCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SecurityPoliciesInterfaceCreateOrUpdateRequestTagsMap>;
+export const SecurityPoliciesInterfaceCreateOrUpdateRequestTagsMap =
+  AssociationsInterfaceCreateOrUpdateRequestTagsMap as any as S.Schema<SecurityPoliciesInterfaceCreateOrUpdateRequestTagsMap>;
 
 /** SecurityPolicy Properties. */
 export interface SecurityPolicyPropertiesInput {
@@ -1776,10 +1687,8 @@ export const SecurityPoliciesInterfaceCreateOrUpdateRequest = /*@__PURE__*/ S.su
 export type SecurityPoliciesInterfaceCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const SecurityPoliciesInterfaceCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SecurityPoliciesInterfaceCreateOrUpdateResponseTagsMap>;
+export const SecurityPoliciesInterfaceCreateOrUpdateResponseTagsMap =
+  AssociationsInterfaceCreateOrUpdateRequestTagsMap as any as S.Schema<SecurityPoliciesInterfaceCreateOrUpdateResponseTagsMap>;
 
 export interface SecurityPoliciesInterfaceCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1797,28 +1706,15 @@ export interface SecurityPoliciesInterfaceCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: SecurityPolicyProperties;
 }
-export const SecurityPoliciesInterfaceCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SecurityPoliciesInterfaceCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(SecurityPolicyProperties),
-  }),
-).annotate({
-  identifier: "SecurityPoliciesInterfaceCreateOrUpdateResponse",
-}) as any as S.Schema<SecurityPoliciesInterfaceCreateOrUpdateResponse>;
+export const SecurityPoliciesInterfaceCreateOrUpdateResponse =
+  GetSecurityPoliciesInterfaceResponse as any as S.Schema<SecurityPoliciesInterfaceCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type TrafficControllerInterfaceCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const TrafficControllerInterfaceCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TrafficControllerInterfaceCreateOrUpdateRequestTagsMap>;
+export const TrafficControllerInterfaceCreateOrUpdateRequestTagsMap =
+  AssociationsInterfaceCreateOrUpdateRequestTagsMap as any as S.Schema<TrafficControllerInterfaceCreateOrUpdateRequestTagsMap>;
 
 /** Traffic Controller Properties. */
 export interface TrafficControllerPropertiesInput {
@@ -1871,10 +1767,8 @@ export const TrafficControllerInterfaceCreateOrUpdateRequest = /*@__PURE__*/ S.s
 export type TrafficControllerInterfaceCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const TrafficControllerInterfaceCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TrafficControllerInterfaceCreateOrUpdateResponseTagsMap>;
+export const TrafficControllerInterfaceCreateOrUpdateResponseTagsMap =
+  AssociationsInterfaceCreateOrUpdateRequestTagsMap as any as S.Schema<TrafficControllerInterfaceCreateOrUpdateResponseTagsMap>;
 
 export interface TrafficControllerInterfaceCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1892,37 +1786,21 @@ export interface TrafficControllerInterfaceCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: TrafficControllerProperties;
 }
-export const TrafficControllerInterfaceCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(TrafficControllerInterfaceCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(TrafficControllerProperties),
-  }),
-).annotate({
-  identifier: "TrafficControllerInterfaceCreateOrUpdateResponse",
-}) as any as S.Schema<TrafficControllerInterfaceCreateOrUpdateResponse>;
+export const TrafficControllerInterfaceCreateOrUpdateResponse =
+  GetTrafficControllerInterfaceResponse as any as S.Schema<TrafficControllerInterfaceCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type UpdateAssociationsInterfaceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAssociationsInterfaceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAssociationsInterfaceRequestTagsMap>;
+export const UpdateAssociationsInterfaceRequestTagsMap =
+  AssociationsInterfaceCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAssociationsInterfaceRequestTagsMap>;
 
 /** Association Subnet. */
 export interface AssociationSubnetUpdate {
   /** Association ID. */
   id?: string;
 }
-export const AssociationSubnetUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "AssociationSubnetUpdate" }) as any as S.Schema<AssociationSubnetUpdate>;
+export const AssociationSubnetUpdate =
+  PrivateEndpointReference as any as S.Schema<AssociationSubnetUpdate>;
 
 /** The updatable properties of the Association. */
 export interface AssociationUpdateProperties {
@@ -1976,10 +1854,8 @@ export const UpdateAssociationsInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAssociationsInterfaceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAssociationsInterfaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAssociationsInterfaceResponseTagsMap>;
+export const UpdateAssociationsInterfaceResponseTagsMap =
+  AssociationsInterfaceCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAssociationsInterfaceResponseTagsMap>;
 
 export interface UpdateAssociationsInterfaceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1997,26 +1873,13 @@ export interface UpdateAssociationsInterfaceResponse {
   /** The resource-specific properties for this resource. */
   properties?: AssociationProperties;
 }
-export const UpdateAssociationsInterfaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateAssociationsInterfaceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(AssociationProperties),
-  }),
-).annotate({
-  identifier: "UpdateAssociationsInterfaceResponse",
-}) as any as S.Schema<UpdateAssociationsInterfaceResponse>;
+export const UpdateAssociationsInterfaceResponse =
+  AssociationsInterfaceCreateOrUpdateResponse as any as S.Schema<UpdateAssociationsInterfaceResponse>;
 
 /** Resource tags. */
 export type UpdateFrontendsInterfaceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateFrontendsInterfaceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateFrontendsInterfaceRequestTagsMap>;
+export const UpdateFrontendsInterfaceRequestTagsMap =
+  AssociationsInterfaceCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateFrontendsInterfaceRequestTagsMap>;
 
 /** Reference to an Association resource. */
 export interface FrontendAssociationUpdate {
@@ -2036,24 +1899,16 @@ export interface WafSecurityPolicyUpdate {
   /** Resource ID of the Waf Security Policy */
   id?: string;
 }
-export const WafSecurityPolicyUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "WafSecurityPolicyUpdate" }) as any as S.Schema<WafSecurityPolicyUpdate>;
+export const WafSecurityPolicyUpdate =
+  PrivateEndpointReference as any as S.Schema<WafSecurityPolicyUpdate>;
 
 /** IpAccessRules Security Policy */
 export interface IpAccessRulesSecurityPolicyUpdate {
   /** Resource ID of the Ip Access Rules Security Policy */
   id?: string;
 }
-export const IpAccessRulesSecurityPolicyUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IpAccessRulesSecurityPolicyUpdate",
-}) as any as S.Schema<IpAccessRulesSecurityPolicyUpdate>;
+export const IpAccessRulesSecurityPolicyUpdate =
+  FrontendAssociationUpdate as any as S.Schema<IpAccessRulesSecurityPolicyUpdate>;
 
 /** SecurityPolicyConfigurations Subresource of Traffic Controller. */
 export interface SecurityPolicyConfigurationsUpdate {
@@ -2124,10 +1979,8 @@ export const UpdateFrontendsInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateFrontendsInterfaceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateFrontendsInterfaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateFrontendsInterfaceResponseTagsMap>;
+export const UpdateFrontendsInterfaceResponseTagsMap =
+  AssociationsInterfaceCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateFrontendsInterfaceResponseTagsMap>;
 
 export interface UpdateFrontendsInterfaceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2145,19 +1998,8 @@ export interface UpdateFrontendsInterfaceResponse {
   /** The resource-specific properties for this resource. */
   properties?: FrontendProperties;
 }
-export const UpdateFrontendsInterfaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateFrontendsInterfaceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(FrontendProperties),
-  }),
-).annotate({
-  identifier: "UpdateFrontendsInterfaceResponse",
-}) as any as S.Schema<UpdateFrontendsInterfaceResponse>;
+export const UpdateFrontendsInterfaceResponse =
+  FrontendsInterfaceCreateOrUpdateResponse as any as S.Schema<UpdateFrontendsInterfaceResponse>;
 
 /** Properties of a Private Endpoint Connection. */
 export interface PrivateEndpointConnectionPropertiesInput {
@@ -2215,35 +2057,20 @@ export interface UpdatePrivateEndpointConnectionsInterfaceResponse {
   /** The resource-specific properties for this resource. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const UpdatePrivateEndpointConnectionsInterfaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "UpdatePrivateEndpointConnectionsInterfaceResponse",
-}) as any as S.Schema<UpdatePrivateEndpointConnectionsInterfaceResponse>;
+export const UpdatePrivateEndpointConnectionsInterfaceResponse =
+  GetPrivateEndpointConnectionsInterfaceResponse as any as S.Schema<UpdatePrivateEndpointConnectionsInterfaceResponse>;
 
 /** Resource tags. */
 export type UpdateSecurityPoliciesInterfaceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateSecurityPoliciesInterfaceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSecurityPoliciesInterfaceRequestTagsMap>;
+export const UpdateSecurityPoliciesInterfaceRequestTagsMap =
+  AssociationsInterfaceCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateSecurityPoliciesInterfaceRequestTagsMap>;
 
 /** Web Application Firewall Policy */
 export interface WafPolicyUpdate {
   /** Resource ID of the WAF */
   id?: string;
 }
-export const WafPolicyUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "WafPolicyUpdate" }) as any as S.Schema<WafPolicyUpdate>;
+export const WafPolicyUpdate = PrivateEndpointReference as any as S.Schema<WafPolicyUpdate>;
 
 /** The updatable properties of the SecurityPolicy. */
 export interface SecurityPolicyUpdateProperties {
@@ -2297,10 +2124,8 @@ export const UpdateSecurityPoliciesInterfaceRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type UpdateSecurityPoliciesInterfaceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateSecurityPoliciesInterfaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSecurityPoliciesInterfaceResponseTagsMap>;
+export const UpdateSecurityPoliciesInterfaceResponseTagsMap =
+  AssociationsInterfaceCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateSecurityPoliciesInterfaceResponseTagsMap>;
 
 export interface UpdateSecurityPoliciesInterfaceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2318,26 +2143,13 @@ export interface UpdateSecurityPoliciesInterfaceResponse {
   /** The resource-specific properties for this resource. */
   properties?: SecurityPolicyProperties;
 }
-export const UpdateSecurityPoliciesInterfaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateSecurityPoliciesInterfaceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(SecurityPolicyProperties),
-  }),
-).annotate({
-  identifier: "UpdateSecurityPoliciesInterfaceResponse",
-}) as any as S.Schema<UpdateSecurityPoliciesInterfaceResponse>;
+export const UpdateSecurityPoliciesInterfaceResponse =
+  GetSecurityPoliciesInterfaceResponse as any as S.Schema<UpdateSecurityPoliciesInterfaceResponse>;
 
 /** Resource tags. */
 export type UpdateTrafficControllerInterfaceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateTrafficControllerInterfaceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateTrafficControllerInterfaceRequestTagsMap>;
+export const UpdateTrafficControllerInterfaceRequestTagsMap =
+  AssociationsInterfaceCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateTrafficControllerInterfaceRequestTagsMap>;
 
 /** The updatable properties of the TrafficController. */
 export interface TrafficControllerUpdateProperties {
@@ -2385,10 +2197,8 @@ export const UpdateTrafficControllerInterfaceRequest = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type UpdateTrafficControllerInterfaceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateTrafficControllerInterfaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateTrafficControllerInterfaceResponseTagsMap>;
+export const UpdateTrafficControllerInterfaceResponseTagsMap =
+  AssociationsInterfaceCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateTrafficControllerInterfaceResponseTagsMap>;
 
 export interface UpdateTrafficControllerInterfaceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2406,19 +2216,8 @@ export interface UpdateTrafficControllerInterfaceResponse {
   /** The resource-specific properties for this resource. */
   properties?: TrafficControllerProperties;
 }
-export const UpdateTrafficControllerInterfaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateTrafficControllerInterfaceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(TrafficControllerProperties),
-  }),
-).annotate({
-  identifier: "UpdateTrafficControllerInterfaceResponse",
-}) as any as S.Schema<UpdateTrafficControllerInterfaceResponse>;
+export const UpdateTrafficControllerInterfaceResponse =
+  GetTrafficControllerInterfaceResponse as any as S.Schema<UpdateTrafficControllerInterfaceResponse>;
 
 export type AssociationsInterfaceCreateOrUpdateError = AzureOpError;
 /** Create a Association */

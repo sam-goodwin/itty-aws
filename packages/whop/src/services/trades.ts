@@ -358,10 +358,8 @@ export const CreateTradeRequestInstrumentType = S.String;
 
 /** Free-form string-to-string annotations stored on the trade. */
 export type CreateTradeRequestMetadataMap = { [key: string]: string | undefined };
-export const CreateTradeRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateTradeRequestMetadataMap>;
+export const CreateTradeRequestMetadataMap =
+  CancelTradeRequestMetadataMap as any as S.Schema<CreateTradeRequestMetadataMap>;
 
 export type CreateTradeRequestOrdersItemOrderType =
   | "limit"
@@ -574,10 +572,8 @@ export const UpdateTradeLeverageRequestMarginMode = S.String;
 
 /** Free-form string-to-string annotations stored on the trade. */
 export type UpdateTradeLeverageRequestMetadataMap = { [key: string]: string | undefined };
-export const UpdateTradeLeverageRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateTradeLeverageRequestMetadataMap>;
+export const UpdateTradeLeverageRequestMetadataMap =
+  CancelTradeRequestMetadataMap as any as S.Schema<UpdateTradeLeverageRequestMetadataMap>;
 
 export type UpdateTradeLeverageRequestProvider = "hyperliquid";
 export const UpdateTradeLeverageRequestProvider = S.String;

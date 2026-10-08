@@ -201,7 +201,7 @@ export const AuthorizerType = S.String;
 
 export type ProviderARN = string;
 export type ListOfARNs = string[];
-export const ListOfARNs = /*@__PURE__*/ S.Array(S.String);
+export const ListOfARNs = ListOfString as any as S.Schema<ListOfARNs>;
 export interface CreateAuthorizerRequest {
   restApiId: string;
   name: string;
@@ -1375,9 +1375,8 @@ export const DeleteAuthorizerRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteAuthorizerRequest" }) as any as S.Schema<DeleteAuthorizerRequest>;
 export interface DeleteAuthorizerResponse {}
-export const DeleteAuthorizerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAuthorizerResponse",
-}) as any as S.Schema<DeleteAuthorizerResponse>;
+export const DeleteAuthorizerResponse =
+  DeleteApiKeyResponse as any as S.Schema<DeleteAuthorizerResponse>;
 export interface DeleteBasePathMappingRequest {
   domainName: string;
   domainNameId?: string;
@@ -1402,9 +1401,8 @@ export const DeleteBasePathMappingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteBasePathMappingRequest",
 }) as any as S.Schema<DeleteBasePathMappingRequest>;
 export interface DeleteBasePathMappingResponse {}
-export const DeleteBasePathMappingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBasePathMappingResponse",
-}) as any as S.Schema<DeleteBasePathMappingResponse>;
+export const DeleteBasePathMappingResponse =
+  DeleteApiKeyResponse as any as S.Schema<DeleteBasePathMappingResponse>;
 export interface DeleteClientCertificateRequest {
   clientCertificateId: string;
 }
@@ -1446,9 +1444,8 @@ export const DeleteDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteDeploymentRequest" }) as any as S.Schema<DeleteDeploymentRequest>;
 export interface DeleteDeploymentResponse {}
-export const DeleteDeploymentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDeploymentResponse",
-}) as any as S.Schema<DeleteDeploymentResponse>;
+export const DeleteDeploymentResponse =
+  DeleteApiKeyResponse as any as S.Schema<DeleteDeploymentResponse>;
 export interface DeleteDocumentationPartRequest {
   restApiId: string;
   documentationPartId: string;
@@ -1474,9 +1471,8 @@ export const DeleteDocumentationPartRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDocumentationPartRequest",
 }) as any as S.Schema<DeleteDocumentationPartRequest>;
 export interface DeleteDocumentationPartResponse {}
-export const DeleteDocumentationPartResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteDocumentationPartResponse" },
-) as any as S.Schema<DeleteDocumentationPartResponse>;
+export const DeleteDocumentationPartResponse =
+  DeleteClientCertificateResponse as any as S.Schema<DeleteDocumentationPartResponse>;
 export interface DeleteDocumentationVersionRequest {
   restApiId: string;
   documentationVersion: string;
@@ -1527,9 +1523,8 @@ export const DeleteDomainNameRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteDomainNameRequest" }) as any as S.Schema<DeleteDomainNameRequest>;
 export interface DeleteDomainNameResponse {}
-export const DeleteDomainNameResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDomainNameResponse",
-}) as any as S.Schema<DeleteDomainNameResponse>;
+export const DeleteDomainNameResponse =
+  DeleteApiKeyResponse as any as S.Schema<DeleteDomainNameResponse>;
 export interface DeleteDomainNameAccessAssociationRequest {
   domainNameAccessAssociationArn: string;
 }
@@ -1553,11 +1548,8 @@ export const DeleteDomainNameAccessAssociationRequest = /*@__PURE__*/ S.suspend(
   identifier: "DeleteDomainNameAccessAssociationRequest",
 }) as any as S.Schema<DeleteDomainNameAccessAssociationRequest>;
 export interface DeleteDomainNameAccessAssociationResponse {}
-export const DeleteDomainNameAccessAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDomainNameAccessAssociationResponse",
-}) as any as S.Schema<DeleteDomainNameAccessAssociationResponse>;
+export const DeleteDomainNameAccessAssociationResponse =
+  DeleteDocumentationVersionResponse as any as S.Schema<DeleteDomainNameAccessAssociationResponse>;
 export type GatewayResponseType =
   | "DEFAULT_4XX"
   | "DEFAULT_5XX"
@@ -1605,9 +1597,8 @@ export const DeleteGatewayResponseRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteGatewayResponseRequest",
 }) as any as S.Schema<DeleteGatewayResponseRequest>;
 export interface DeleteGatewayResponseResponse {}
-export const DeleteGatewayResponseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGatewayResponseResponse",
-}) as any as S.Schema<DeleteGatewayResponseResponse>;
+export const DeleteGatewayResponseResponse =
+  DeleteApiKeyResponse as any as S.Schema<DeleteGatewayResponseResponse>;
 export interface DeleteIntegrationRequest {
   restApiId: string;
   resourceId: string;
@@ -1633,9 +1624,8 @@ export const DeleteIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteIntegrationRequest" }) as any as S.Schema<DeleteIntegrationRequest>;
 export interface DeleteIntegrationResponse {}
-export const DeleteIntegrationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteIntegrationResponse",
-}) as any as S.Schema<DeleteIntegrationResponse>;
+export const DeleteIntegrationResponse =
+  DeleteApiKeyResponse as any as S.Schema<DeleteIntegrationResponse>;
 export interface DeleteIntegrationResponseRequest {
   restApiId: string;
   resourceId: string;
@@ -1665,11 +1655,8 @@ export const DeleteIntegrationResponseRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteIntegrationResponseRequest",
 }) as any as S.Schema<DeleteIntegrationResponseRequest>;
 export interface DeleteIntegrationResponseResponse {}
-export const DeleteIntegrationResponseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIntegrationResponseResponse",
-}) as any as S.Schema<DeleteIntegrationResponseResponse>;
+export const DeleteIntegrationResponseResponse =
+  DeleteDocumentationVersionResponse as any as S.Schema<DeleteIntegrationResponseResponse>;
 export interface DeleteMethodRequest {
   restApiId: string;
   resourceId: string;
@@ -1695,9 +1682,7 @@ export const DeleteMethodRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteMethodRequest" }) as any as S.Schema<DeleteMethodRequest>;
 export interface DeleteMethodResponse {}
-export const DeleteMethodResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMethodResponse",
-}) as any as S.Schema<DeleteMethodResponse>;
+export const DeleteMethodResponse = DeleteApiKeyResponse as any as S.Schema<DeleteMethodResponse>;
 export interface DeleteMethodResponseRequest {
   restApiId: string;
   resourceId: string;
@@ -1727,9 +1712,8 @@ export const DeleteMethodResponseRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteMethodResponseRequest",
 }) as any as S.Schema<DeleteMethodResponseRequest>;
 export interface DeleteMethodResponseResponse {}
-export const DeleteMethodResponseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMethodResponseResponse",
-}) as any as S.Schema<DeleteMethodResponseResponse>;
+export const DeleteMethodResponseResponse =
+  DeleteApiKeyResponse as any as S.Schema<DeleteMethodResponseResponse>;
 export interface DeleteModelRequest {
   restApiId: string;
   modelName: string;
@@ -1750,9 +1734,7 @@ export const DeleteModelRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteModelRequest" }) as any as S.Schema<DeleteModelRequest>;
 export interface DeleteModelResponse {}
-export const DeleteModelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteModelResponse",
-}) as any as S.Schema<DeleteModelResponse>;
+export const DeleteModelResponse = DeleteApiKeyResponse as any as S.Schema<DeleteModelResponse>;
 export interface DeleteRequestValidatorRequest {
   restApiId: string;
   requestValidatorId: string;
@@ -1778,9 +1760,8 @@ export const DeleteRequestValidatorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRequestValidatorRequest",
 }) as any as S.Schema<DeleteRequestValidatorRequest>;
 export interface DeleteRequestValidatorResponse {}
-export const DeleteRequestValidatorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRequestValidatorResponse",
-}) as any as S.Schema<DeleteRequestValidatorResponse>;
+export const DeleteRequestValidatorResponse =
+  DeleteApiKeyResponse as any as S.Schema<DeleteRequestValidatorResponse>;
 export interface DeleteResourceRequest {
   restApiId: string;
   resourceId: string;
@@ -1801,9 +1782,8 @@ export const DeleteResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteResourceRequest" }) as any as S.Schema<DeleteResourceRequest>;
 export interface DeleteResourceResponse {}
-export const DeleteResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteResourceResponse",
-}) as any as S.Schema<DeleteResourceResponse>;
+export const DeleteResourceResponse =
+  DeleteApiKeyResponse as any as S.Schema<DeleteResourceResponse>;
 export interface DeleteRestApiRequest {
   restApiId: string;
 }
@@ -1813,9 +1793,7 @@ export const DeleteRestApiRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteRestApiRequest" }) as any as S.Schema<DeleteRestApiRequest>;
 export interface DeleteRestApiResponse {}
-export const DeleteRestApiResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRestApiResponse",
-}) as any as S.Schema<DeleteRestApiResponse>;
+export const DeleteRestApiResponse = DeleteApiKeyResponse as any as S.Schema<DeleteRestApiResponse>;
 export interface DeleteStageRequest {
   restApiId: string;
   stageName: string;
@@ -1836,9 +1814,7 @@ export const DeleteStageRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteStageRequest" }) as any as S.Schema<DeleteStageRequest>;
 export interface DeleteStageResponse {}
-export const DeleteStageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteStageResponse",
-}) as any as S.Schema<DeleteStageResponse>;
+export const DeleteStageResponse = DeleteApiKeyResponse as any as S.Schema<DeleteStageResponse>;
 export interface DeleteUsagePlanRequest {
   usagePlanId: string;
 }
@@ -1855,9 +1831,8 @@ export const DeleteUsagePlanRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteUsagePlanRequest" }) as any as S.Schema<DeleteUsagePlanRequest>;
 export interface DeleteUsagePlanResponse {}
-export const DeleteUsagePlanResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUsagePlanResponse",
-}) as any as S.Schema<DeleteUsagePlanResponse>;
+export const DeleteUsagePlanResponse =
+  DeleteApiKeyResponse as any as S.Schema<DeleteUsagePlanResponse>;
 export interface DeleteUsagePlanKeyRequest {
   usagePlanId: string;
   keyId: string;
@@ -1880,9 +1855,8 @@ export const DeleteUsagePlanKeyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteUsagePlanKeyRequest",
 }) as any as S.Schema<DeleteUsagePlanKeyRequest>;
 export interface DeleteUsagePlanKeyResponse {}
-export const DeleteUsagePlanKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUsagePlanKeyResponse",
-}) as any as S.Schema<DeleteUsagePlanKeyResponse>;
+export const DeleteUsagePlanKeyResponse =
+  DeleteApiKeyResponse as any as S.Schema<DeleteUsagePlanKeyResponse>;
 export interface DeleteVpcLinkRequest {
   vpcLinkId: string;
 }
@@ -1892,9 +1866,7 @@ export const DeleteVpcLinkRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteVpcLinkRequest" }) as any as S.Schema<DeleteVpcLinkRequest>;
 export interface DeleteVpcLinkResponse {}
-export const DeleteVpcLinkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVpcLinkResponse",
-}) as any as S.Schema<DeleteVpcLinkResponse>;
+export const DeleteVpcLinkResponse = DeleteApiKeyResponse as any as S.Schema<DeleteVpcLinkResponse>;
 export interface FlushStageAuthorizersCacheRequest {
   restApiId: string;
   stageName: string;
@@ -1920,11 +1892,8 @@ export const FlushStageAuthorizersCacheRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "FlushStageAuthorizersCacheRequest",
 }) as any as S.Schema<FlushStageAuthorizersCacheRequest>;
 export interface FlushStageAuthorizersCacheResponse {}
-export const FlushStageAuthorizersCacheResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "FlushStageAuthorizersCacheResponse",
-}) as any as S.Schema<FlushStageAuthorizersCacheResponse>;
+export const FlushStageAuthorizersCacheResponse =
+  DeleteDocumentationVersionResponse as any as S.Schema<FlushStageAuthorizersCacheResponse>;
 export interface FlushStageCacheRequest {
   restApiId: string;
   stageName: string;
@@ -1945,9 +1914,8 @@ export const FlushStageCacheRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "FlushStageCacheRequest" }) as any as S.Schema<FlushStageCacheRequest>;
 export interface FlushStageCacheResponse {}
-export const FlushStageCacheResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "FlushStageCacheResponse",
-}) as any as S.Schema<FlushStageCacheResponse>;
+export const FlushStageCacheResponse =
+  DeleteApiKeyResponse as any as S.Schema<FlushStageCacheResponse>;
 export interface GenerateClientCertificateRequest {
   description?: string;
   tags?: { [key: string]: string | undefined };
@@ -2924,13 +2892,7 @@ export interface SdkResponse {
   contentDisposition?: string;
   body?: T.StreamingOutputBody;
 }
-export const SdkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-    contentDisposition: S.optional(S.String).pipe(T.HttpHeader("Content-Disposition")),
-    body: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
-  }),
-).annotate({ identifier: "SdkResponse" }) as any as S.Schema<SdkResponse>;
+export const SdkResponse = ExportResponse as any as S.Schema<SdkResponse>;
 export interface GetSdkTypeRequest {
   id: string;
 }
@@ -3286,9 +3248,7 @@ export interface DocumentationPartIds {
   ids?: string[];
   warnings?: string[];
 }
-export const DocumentationPartIds = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ids: S.optional(ListOfString), warnings: S.optional(ListOfString) }),
-).annotate({ identifier: "DocumentationPartIds" }) as any as S.Schema<DocumentationPartIds>;
+export const DocumentationPartIds = ApiKeyIds as any as S.Schema<DocumentationPartIds>;
 export interface ImportRestApiRequest {
   failOnWarnings?: boolean;
   parameters?: { [key: string]: string | undefined };
@@ -3534,11 +3494,8 @@ export const RejectDomainNameAccessAssociationRequest = /*@__PURE__*/ S.suspend(
   identifier: "RejectDomainNameAccessAssociationRequest",
 }) as any as S.Schema<RejectDomainNameAccessAssociationRequest>;
 export interface RejectDomainNameAccessAssociationResponse {}
-export const RejectDomainNameAccessAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RejectDomainNameAccessAssociationResponse",
-}) as any as S.Schema<RejectDomainNameAccessAssociationResponse>;
+export const RejectDomainNameAccessAssociationResponse =
+  DeleteDocumentationVersionResponse as any as S.Schema<RejectDomainNameAccessAssociationResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
@@ -3552,9 +3509,7 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteApiKeyResponse as any as S.Schema<TagResourceResponse>;
 export type MapOfStringToList = { [key: string]: string[] | undefined };
 export const MapOfStringToList = /*@__PURE__*/ S.Record(
   S.String,
@@ -3682,9 +3637,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = DeleteApiKeyResponse as any as S.Schema<UntagResourceResponse>;
 export type Op = "add" | "remove" | "replace" | "move" | "copy" | "test" | (string & {});
 export const Op = S.String;
 

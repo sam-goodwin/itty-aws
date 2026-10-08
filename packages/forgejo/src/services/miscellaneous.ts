@@ -581,19 +581,15 @@ export const GetNodeInfoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetNodeInfoRequest" }) as any as S.Schema<GetNodeInfoRequest>;
 
 export type NodeInfoProtocolsList = Array<string>;
-export const NodeInfoProtocolsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NodeInfoProtocolsList>;
+export const NodeInfoProtocolsList = RepositoryTopicsList as any as S.Schema<NodeInfoProtocolsList>;
 
 export type NodeInfoServicesInboundList = Array<string>;
-export const NodeInfoServicesInboundList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NodeInfoServicesInboundList>;
+export const NodeInfoServicesInboundList =
+  RepositoryTopicsList as any as S.Schema<NodeInfoServicesInboundList>;
 
 export type NodeInfoServicesOutboundList = Array<string>;
-export const NodeInfoServicesOutboundList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NodeInfoServicesOutboundList>;
+export const NodeInfoServicesOutboundList =
+  RepositoryTopicsList as any as S.Schema<NodeInfoServicesOutboundList>;
 
 /** NodeInfoServices contains the third party sites this server can connect to via their application API */
 export interface NodeInfoServices {
@@ -689,9 +685,8 @@ export const GetSSHSigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSSHSigningKeyRequest" }) as any as S.Schema<GetSSHSigningKeyRequest>;
 
 export type GetSSHSigningKeyResponse = string;
-export const GetSSHSigningKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetSSHSigningKeyResponse" }) as any as S.Schema<GetSSHSigningKeyResponse>;
+export const GetSSHSigningKeyResponse =
+  GetSigningKeyResponse as any as S.Schema<GetSSHSigningKeyResponse>;
 
 export interface GetVersionRequest {}
 export const GetVersionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -716,9 +711,8 @@ export const ListGitignoresTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListGitignoresTemplatesRequest>;
 
 export type ListGitignoresTemplatesResponseBodyList = Array<string>;
-export const ListGitignoresTemplatesResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListGitignoresTemplatesResponseBodyList>;
+export const ListGitignoresTemplatesResponseBodyList =
+  RepositoryTopicsList as any as S.Schema<ListGitignoresTemplatesResponseBodyList>;
 
 export type ListGitignoresTemplatesResponse = ListGitignoresTemplatesResponseBodyList;
 export const ListGitignoresTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
@@ -735,16 +729,12 @@ export const ListLabelTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLabelTemplatesRequest>;
 
 export type ListLabelTemplatesResponseBodyList = Array<string>;
-export const ListLabelTemplatesResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLabelTemplatesResponseBodyList>;
+export const ListLabelTemplatesResponseBodyList =
+  RepositoryTopicsList as any as S.Schema<ListLabelTemplatesResponseBodyList>;
 
 export type ListLabelTemplatesResponse = ListLabelTemplatesResponseBodyList;
-export const ListLabelTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
-  ListLabelTemplatesResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListLabelTemplatesResponse",
-}) as any as S.Schema<ListLabelTemplatesResponse>;
+export const ListLabelTemplatesResponse =
+  ListGitignoresTemplatesResponse as any as S.Schema<ListLabelTemplatesResponse>;
 
 export interface ListLicenseTemplatesRequest {}
 export const ListLicenseTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -801,9 +791,8 @@ export const RenderMarkdownRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RenderMarkdownRequest" }) as any as S.Schema<RenderMarkdownRequest>;
 
 export type RenderMarkdownResponse = string;
-export const RenderMarkdownResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "RenderMarkdownResponse" }) as any as S.Schema<RenderMarkdownResponse>;
+export const RenderMarkdownResponse =
+  GetSigningKeyResponse as any as S.Schema<RenderMarkdownResponse>;
 
 export interface RenderMarkdownRawRequest {
   body: string;
@@ -847,9 +836,7 @@ export const RenderMarkupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RenderMarkupRequest" }) as any as S.Schema<RenderMarkupRequest>;
 
 export type RenderMarkupResponse = string;
-export const RenderMarkupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "RenderMarkupResponse" }) as any as S.Schema<RenderMarkupResponse>;
+export const RenderMarkupResponse = GetSigningKeyResponse as any as S.Schema<RenderMarkupResponse>;
 
 export type GetActionsRunError = ForgejoOpError;
 /** Get a workflow run associated with a token The automatic actions token must be used as the authentication mechanism (<code>Authorization: Bearer $&#x7b;&#x7b; forgejo.token &#x7d;&#x7d;</code>); other types of tokens cannot be used. The token is associated with the job, which must be still running for the request to this endpoint to succeed. */

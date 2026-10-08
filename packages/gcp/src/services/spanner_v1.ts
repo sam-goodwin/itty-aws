@@ -623,9 +623,7 @@ export const TransactionOptionsIsolationLevelEnum = S.String;
 
 /** Message type to initiate a Partitioned DML transaction. */
 export interface PartitionedDml {}
-export const PartitionedDml = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PartitionedDml",
-}) as any as S.Schema<PartitionedDml>;
+export const PartitionedDml = AddSplitPointsResponse as any as S.Schema<PartitionedDml>;
 
 /** Message type to initiate a read-only transaction. */
 export interface ReadOnly {
@@ -785,9 +783,7 @@ export const CancelProjectsInstanceConfigsOperationsRequest = /*@__PURE__*/ S.su
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = AddSplitPointsResponse as any as S.Schema<Empty>;
 
 export interface CancelProjectsInstanceConfigsSsdCachesOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -3414,7 +3410,7 @@ export type MetricAggregationEnum = "AGGREGATION_UNSPECIFIED" | "MAX" | "SUM";
 export const MetricAggregationEnum = S.String;
 
 export type DoubleList = Array<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
+export const DoubleList = IntegerList as any as S.Schema<DoubleList>;
 
 /** A message representing a row of a matrix of floats. */
 export interface MetricMatrixRow {
@@ -3985,14 +3981,8 @@ export interface ListDatabaseOperationsResponse {
   /** The list of matching database long-running operations. Each operation's name will be prefixed by the database's name. The operation's metadata field type `metadata.type_url` describes the type of the metadata. */
   operations?: OperationList;
 }
-export const ListDatabaseOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    operations: S.optional(OperationList),
-  }),
-).annotate({
-  identifier: "ListDatabaseOperationsResponse",
-}) as any as S.Schema<ListDatabaseOperationsResponse>;
+export const ListDatabaseOperationsResponse =
+  ListBackupOperationsResponse as any as S.Schema<ListDatabaseOperationsResponse>;
 
 export interface ListProjectsInstancesDatabasesRequest {
   /** Required. The instance whose databases should be listed. Values are of the form `projects//instances/`. */
@@ -4109,11 +4099,7 @@ export interface DatabaseRole {
   /** Required. The name of the database role. Values are of the form `projects//instances//databases//databaseRoles/` where `` is as specified in the `CREATE ROLE` DDL statement. */
   name?: string;
 }
-export const DatabaseRole = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "DatabaseRole" }) as any as S.Schema<DatabaseRole>;
+export const DatabaseRole = AdapterSession as any as S.Schema<DatabaseRole>;
 
 export type DatabaseRoleList = Array<DatabaseRole>;
 export const DatabaseRoleList = /*@__PURE__*/ S.Array(
@@ -5085,13 +5071,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsInstancesBackupsRequest {
   /** REQUIRED: The Cloud Spanner resource for which permissions are being tested. The format is `projects//instances/` for instance resources and `projects//instances//databases/` for database resources. */

@@ -337,19 +337,13 @@ export interface LoggingConfigurationStatus {
   statusCode: string;
   statusReason?: string;
 }
-export const LoggingConfigurationStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ statusCode: S.String, statusReason: S.optional(S.String) }),
-).annotate({
-  identifier: "LoggingConfigurationStatus",
-}) as any as S.Schema<LoggingConfigurationStatus>;
+export const LoggingConfigurationStatus =
+  AlertManagerDefinitionStatus as any as S.Schema<LoggingConfigurationStatus>;
 export interface CreateLoggingConfigurationResponse {
   status: LoggingConfigurationStatus;
 }
-export const CreateLoggingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: LoggingConfigurationStatus }),
-).annotate({
-  identifier: "CreateLoggingConfigurationResponse",
-}) as any as S.Schema<CreateLoggingConfigurationResponse>;
+export const CreateLoggingConfigurationResponse =
+  CreateAlertManagerDefinitionResponse as any as S.Schema<CreateLoggingConfigurationResponse>;
 export interface CloudWatchLogDestination {
   logGroupArn: string;
 }
@@ -399,19 +393,13 @@ export interface QueryLoggingConfigurationStatus {
   statusCode: string;
   statusReason?: string;
 }
-export const QueryLoggingConfigurationStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ statusCode: S.String, statusReason: S.optional(S.String) }),
-).annotate({
-  identifier: "QueryLoggingConfigurationStatus",
-}) as any as S.Schema<QueryLoggingConfigurationStatus>;
+export const QueryLoggingConfigurationStatus =
+  AlertManagerDefinitionStatus as any as S.Schema<QueryLoggingConfigurationStatus>;
 export interface CreateQueryLoggingConfigurationResponse {
   status: QueryLoggingConfigurationStatus;
 }
-export const CreateQueryLoggingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: QueryLoggingConfigurationStatus }),
-).annotate({
-  identifier: "CreateQueryLoggingConfigurationResponse",
-}) as any as S.Schema<CreateQueryLoggingConfigurationResponse>;
+export const CreateQueryLoggingConfigurationResponse =
+  CreateAlertManagerDefinitionResponse as any as S.Schema<CreateQueryLoggingConfigurationResponse>;
 export type RuleGroupsNamespaceName = string;
 export type RuleGroupsNamespaceData = Uint8Array;
 export interface CreateRuleGroupsNamespaceRequest {
@@ -447,11 +435,8 @@ export interface RuleGroupsNamespaceStatus {
   statusCode: string;
   statusReason?: string;
 }
-export const RuleGroupsNamespaceStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ statusCode: S.String, statusReason: S.optional(S.String) }),
-).annotate({
-  identifier: "RuleGroupsNamespaceStatus",
-}) as any as S.Schema<RuleGroupsNamespaceStatus>;
+export const RuleGroupsNamespaceStatus =
+  AlertManagerDefinitionStatus as any as S.Schema<RuleGroupsNamespaceStatus>;
 export interface CreateRuleGroupsNamespaceResponse {
   name: string;
   arn: string;
@@ -479,7 +464,7 @@ export type SecurityGroupIds = string[];
 export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
 export type SubnetId = string;
 export type SubnetIds = string[];
-export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
+export const SubnetIds = SecurityGroupIds as any as S.Schema<SubnetIds>;
 export interface EksConfiguration {
   clusterArn: string;
   securityGroupIds?: string[];
@@ -610,9 +595,7 @@ export type WorkspaceStatusCode = string;
 export interface WorkspaceStatus {
   statusCode: string;
 }
-export const WorkspaceStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ statusCode: S.String }),
-).annotate({ identifier: "WorkspaceStatus" }) as any as S.Schema<WorkspaceStatus>;
+export const WorkspaceStatus = ScraperStatus as any as S.Schema<WorkspaceStatus>;
 export interface CreateWorkspaceResponse {
   workspaceId: string;
   arn: string;
@@ -708,11 +691,8 @@ export const DeleteLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteLoggingConfigurationRequest",
 }) as any as S.Schema<DeleteLoggingConfigurationRequest>;
 export interface DeleteLoggingConfigurationResponse {}
-export const DeleteLoggingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteLoggingConfigurationResponse",
-}) as any as S.Schema<DeleteLoggingConfigurationResponse>;
+export const DeleteLoggingConfigurationResponse =
+  DeleteAlertManagerDefinitionResponse as any as S.Schema<DeleteLoggingConfigurationResponse>;
 export interface DeleteQueryLoggingConfigurationRequest {
   workspaceId: string;
   clientToken?: string;
@@ -735,11 +715,8 @@ export const DeleteQueryLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(()
   identifier: "DeleteQueryLoggingConfigurationRequest",
 }) as any as S.Schema<DeleteQueryLoggingConfigurationRequest>;
 export interface DeleteQueryLoggingConfigurationResponse {}
-export const DeleteQueryLoggingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteQueryLoggingConfigurationResponse",
-}) as any as S.Schema<DeleteQueryLoggingConfigurationResponse>;
+export const DeleteQueryLoggingConfigurationResponse =
+  DeleteAlertManagerDefinitionResponse as any as S.Schema<DeleteQueryLoggingConfigurationResponse>;
 export interface DeleteResourcePolicyRequest {
   workspaceId: string;
   clientToken?: string;
@@ -764,9 +741,8 @@ export const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourcePolicyRequest",
 }) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {}
-export const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteResourcePolicyResponse",
-}) as any as S.Schema<DeleteResourcePolicyResponse>;
+export const DeleteResourcePolicyResponse =
+  DeleteAnomalyDetectorResponse as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface DeleteRuleGroupsNamespaceRequest {
   workspaceId: string;
   name: string;
@@ -791,11 +767,8 @@ export const DeleteRuleGroupsNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRuleGroupsNamespaceRequest",
 }) as any as S.Schema<DeleteRuleGroupsNamespaceRequest>;
 export interface DeleteRuleGroupsNamespaceResponse {}
-export const DeleteRuleGroupsNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteRuleGroupsNamespaceResponse",
-}) as any as S.Schema<DeleteRuleGroupsNamespaceResponse>;
+export const DeleteRuleGroupsNamespaceResponse =
+  DeleteAlertManagerDefinitionResponse as any as S.Schema<DeleteRuleGroupsNamespaceResponse>;
 export interface DeleteScraperRequest {
   scraperId: string;
   clientToken?: string;
@@ -837,11 +810,8 @@ export const DeleteScraperLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(
   identifier: "DeleteScraperLoggingConfigurationRequest",
 }) as any as S.Schema<DeleteScraperLoggingConfigurationRequest>;
 export interface DeleteScraperLoggingConfigurationResponse {}
-export const DeleteScraperLoggingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteScraperLoggingConfigurationResponse",
-}) as any as S.Schema<DeleteScraperLoggingConfigurationResponse>;
+export const DeleteScraperLoggingConfigurationResponse =
+  DeleteAlertManagerDefinitionResponse as any as S.Schema<DeleteScraperLoggingConfigurationResponse>;
 export interface DeleteWorkspaceRequest {
   workspaceId: string;
   clientToken?: string;
@@ -862,9 +832,8 @@ export const DeleteWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteWorkspaceRequest" }) as any as S.Schema<DeleteWorkspaceRequest>;
 export interface DeleteWorkspaceResponse {}
-export const DeleteWorkspaceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkspaceResponse",
-}) as any as S.Schema<DeleteWorkspaceResponse>;
+export const DeleteWorkspaceResponse =
+  DeleteAnomalyDetectorResponse as any as S.Schema<DeleteWorkspaceResponse>;
 export interface DescribeAlertManagerDefinitionRequest {
   workspaceId: string;
 }
@@ -1204,18 +1173,15 @@ export interface ScraperLoggingConfigurationStatus {
   statusCode: string;
   statusReason?: string;
 }
-export const ScraperLoggingConfigurationStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ statusCode: S.String, statusReason: S.optional(S.String) }),
-).annotate({
-  identifier: "ScraperLoggingConfigurationStatus",
-}) as any as S.Schema<ScraperLoggingConfigurationStatus>;
+export const ScraperLoggingConfigurationStatus =
+  AlertManagerDefinitionStatus as any as S.Schema<ScraperLoggingConfigurationStatus>;
 export type ScraperLoggingDestination = { cloudWatchLogs: CloudWatchLogDestination };
 export const ScraperLoggingDestination = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ cloudWatchLogs: CloudWatchLogDestination }),
 ]);
 export type ScraperComponentType = string;
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const StringMap = TagMap as any as S.Schema<StringMap>;
 export interface ComponentConfig {
   options?: { [key: string]: string | undefined };
 }
@@ -1317,11 +1283,8 @@ export interface WorkspaceConfigurationStatus {
   statusCode: string;
   statusReason?: string;
 }
-export const WorkspaceConfigurationStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ statusCode: S.String, statusReason: S.optional(S.String) }),
-).annotate({
-  identifier: "WorkspaceConfigurationStatus",
-}) as any as S.Schema<WorkspaceConfigurationStatus>;
+export const WorkspaceConfigurationStatus =
+  AlertManagerDefinitionStatus as any as S.Schema<WorkspaceConfigurationStatus>;
 export interface LimitsPerLabelSetEntry {
   maxSeries?: number;
 }
@@ -1331,7 +1294,7 @@ export const LimitsPerLabelSetEntry = /*@__PURE__*/ S.suspend(() =>
 export type LabelName = string;
 export type LabelValue = string;
 export type LabelSet = { [key: string]: string | undefined };
-export const LabelSet = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const LabelSet = TagMap as any as S.Schema<LabelSet>;
 export interface LimitsPerLabelSet {
   limits: LimitsPerLabelSetEntry;
   labelSet: { [key: string]: string | undefined };
@@ -1502,7 +1465,7 @@ export const ListRuleGroupsNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
 export type FilterKey = string;
 export type FilterValue = string;
 export type FilterValues = string[];
-export const FilterValues = /*@__PURE__*/ S.Array(S.String);
+export const FilterValues = SecurityGroupIds as any as S.Schema<FilterValues>;
 export type ScraperFilters = { [key: string]: string[] | undefined };
 export const ScraperFilters = /*@__PURE__*/ S.Record(
   S.String,
@@ -1646,11 +1609,8 @@ export const PutAlertManagerDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutAlertManagerDefinitionResponse {
   status: AlertManagerDefinitionStatus;
 }
-export const PutAlertManagerDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: AlertManagerDefinitionStatus }),
-).annotate({
-  identifier: "PutAlertManagerDefinitionResponse",
-}) as any as S.Schema<PutAlertManagerDefinitionResponse>;
+export const PutAlertManagerDefinitionResponse =
+  CreateAlertManagerDefinitionResponse as any as S.Schema<PutAlertManagerDefinitionResponse>;
 export interface PutAnomalyDetectorRequest {
   workspaceId: string;
   anomalyDetectorId: string;
@@ -1691,16 +1651,8 @@ export interface PutAnomalyDetectorResponse {
   status: AnomalyDetectorStatus;
   tags?: { [key: string]: string | undefined };
 }
-export const PutAnomalyDetectorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    anomalyDetectorId: S.String,
-    arn: S.String,
-    status: AnomalyDetectorStatus,
-    tags: S.optional(TagMap),
-  }),
-).annotate({
-  identifier: "PutAnomalyDetectorResponse",
-}) as any as S.Schema<PutAnomalyDetectorResponse>;
+export const PutAnomalyDetectorResponse =
+  CreateAnomalyDetectorResponse as any as S.Schema<PutAnomalyDetectorResponse>;
 export interface PutResourcePolicyRequest {
   workspaceId: string;
   policyDocument: string;
@@ -1764,16 +1716,8 @@ export interface PutRuleGroupsNamespaceResponse {
   status: RuleGroupsNamespaceStatus;
   tags?: { [key: string]: string | undefined };
 }
-export const PutRuleGroupsNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    arn: S.String,
-    status: RuleGroupsNamespaceStatus,
-    tags: S.optional(TagMap),
-  }),
-).annotate({
-  identifier: "PutRuleGroupsNamespaceResponse",
-}) as any as S.Schema<PutRuleGroupsNamespaceResponse>;
+export const PutRuleGroupsNamespaceResponse =
+  CreateRuleGroupsNamespaceResponse as any as S.Schema<PutRuleGroupsNamespaceResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
@@ -1784,11 +1728,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteAnomalyDetectorResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = SecurityGroupIds as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -1802,9 +1745,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteAnomalyDetectorResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateLoggingConfigurationRequest {
   workspaceId: string;
   logGroupArn: string;
@@ -1831,11 +1773,8 @@ export const UpdateLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateLoggingConfigurationResponse {
   status: LoggingConfigurationStatus;
 }
-export const UpdateLoggingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: LoggingConfigurationStatus }),
-).annotate({
-  identifier: "UpdateLoggingConfigurationResponse",
-}) as any as S.Schema<UpdateLoggingConfigurationResponse>;
+export const UpdateLoggingConfigurationResponse =
+  CreateAlertManagerDefinitionResponse as any as S.Schema<UpdateLoggingConfigurationResponse>;
 export interface UpdateQueryLoggingConfigurationRequest {
   workspaceId: string;
   destinations: LoggingDestination[];
@@ -1862,11 +1801,8 @@ export const UpdateQueryLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(()
 export interface UpdateQueryLoggingConfigurationResponse {
   status: QueryLoggingConfigurationStatus;
 }
-export const UpdateQueryLoggingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: QueryLoggingConfigurationStatus }),
-).annotate({
-  identifier: "UpdateQueryLoggingConfigurationResponse",
-}) as any as S.Schema<UpdateQueryLoggingConfigurationResponse>;
+export const UpdateQueryLoggingConfigurationResponse =
+  CreateAlertManagerDefinitionResponse as any as S.Schema<UpdateQueryLoggingConfigurationResponse>;
 export interface UpdateScraperRequest {
   scraperId: string;
   alias?: string;
@@ -1895,9 +1831,8 @@ export interface UpdateScraperResponse {
   status: ScraperStatus;
   tags?: { [key: string]: string | undefined };
 }
-export const UpdateScraperResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ scraperId: S.String, arn: S.String, status: ScraperStatus, tags: S.optional(TagMap) }),
-).annotate({ identifier: "UpdateScraperResponse" }) as any as S.Schema<UpdateScraperResponse>;
+export const UpdateScraperResponse =
+  CreateScraperResponse as any as S.Schema<UpdateScraperResponse>;
 export interface UpdateScraperLoggingConfigurationRequest {
   scraperId: string;
   loggingDestination: ScraperLoggingDestination;
@@ -1924,11 +1859,8 @@ export const UpdateScraperLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(
 export interface UpdateScraperLoggingConfigurationResponse {
   status: ScraperLoggingConfigurationStatus;
 }
-export const UpdateScraperLoggingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: ScraperLoggingConfigurationStatus }),
-).annotate({
-  identifier: "UpdateScraperLoggingConfigurationResponse",
-}) as any as S.Schema<UpdateScraperLoggingConfigurationResponse>;
+export const UpdateScraperLoggingConfigurationResponse =
+  CreateAlertManagerDefinitionResponse as any as S.Schema<UpdateScraperLoggingConfigurationResponse>;
 export interface UpdateWorkspaceAliasRequest {
   workspaceId: string;
   alias?: string;
@@ -1953,9 +1885,8 @@ export const UpdateWorkspaceAliasRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateWorkspaceAliasRequest",
 }) as any as S.Schema<UpdateWorkspaceAliasRequest>;
 export interface UpdateWorkspaceAliasResponse {}
-export const UpdateWorkspaceAliasResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateWorkspaceAliasResponse",
-}) as any as S.Schema<UpdateWorkspaceAliasResponse>;
+export const UpdateWorkspaceAliasResponse =
+  DeleteAnomalyDetectorResponse as any as S.Schema<UpdateWorkspaceAliasResponse>;
 export interface UpdateWorkspaceConfigurationRequest {
   workspaceId: string;
   clientToken?: string;
@@ -1988,11 +1919,8 @@ export const UpdateWorkspaceConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateWorkspaceConfigurationResponse {
   status: WorkspaceConfigurationStatus;
 }
-export const UpdateWorkspaceConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: WorkspaceConfigurationStatus }),
-).annotate({
-  identifier: "UpdateWorkspaceConfigurationResponse",
-}) as any as S.Schema<UpdateWorkspaceConfigurationResponse>;
+export const UpdateWorkspaceConfigurationResponse =
+  CreateAlertManagerDefinitionResponse as any as S.Schema<UpdateWorkspaceConfigurationResponse>;
 export type ValidationExceptionReason = string;
 export interface ValidationExceptionField {
   name: string;

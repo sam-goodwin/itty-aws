@@ -87,9 +87,8 @@ export const AddCopilotSeatsForTeamsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The usernames of the organization members to be granted access to GitHub Copilot. */
 export type AddCopilotSeatsForUsersRequestSelectedUsernamesList = Array<string>;
-export const AddCopilotSeatsForUsersRequestSelectedUsernamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddCopilotSeatsForUsersRequestSelectedUsernamesList>;
+export const AddCopilotSeatsForUsersRequestSelectedUsernamesList =
+  AddCopilotSeatsForTeamsRequestSelectedTeamsList as any as S.Schema<AddCopilotSeatsForUsersRequestSelectedUsernamesList>;
 
 export interface AddCopilotSeatsForUsersRequest {
   /** The organization name. The name is not case sensitive. */
@@ -109,13 +108,8 @@ export const AddCopilotSeatsForUsersRequest = /*@__PURE__*/ S.suspend(() =>
 export interface AddCopilotSeatsForUsersResponse {
   seats_created: number;
 }
-export const AddCopilotSeatsForUsersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    seats_created: S.Number,
-  }),
-).annotate({
-  identifier: "AddCopilotSeatsForUsersResponse",
-}) as any as S.Schema<AddCopilotSeatsForUsersResponse>;
+export const AddCopilotSeatsForUsersResponse =
+  AddCopilotSeatsForTeamsResponse as any as S.Schema<AddCopilotSeatsForUsersResponse>;
 
 /** List of organization logins within the enterprise to enable Copilot cloud agent for. */
 export type AddOrganizationsToEnterpriseCodingAgentPolicyRequestOrganizationsList = Array<string>;
@@ -128,9 +122,7 @@ export const AddOrganizationsToEnterpriseCodingAgentPolicyRequestOrganizationsLi
 export type AddOrganizationsToEnterpriseCodingAgentPolicyRequestCustomPropertiesItemValuesList =
   Array<string>;
 export const AddOrganizationsToEnterpriseCodingAgentPolicyRequestCustomPropertiesItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AddOrganizationsToEnterpriseCodingAgentPolicyRequestCustomPropertiesItemValuesList>;
+  AddOrganizationsToEnterpriseCodingAgentPolicyRequestOrganizationsList as any as S.Schema<AddOrganizationsToEnterpriseCodingAgentPolicyRequestCustomPropertiesItemValuesList>;
 
 export interface AddOrganizationsToEnterpriseCodingAgentPolicyRequestCustomPropertiesItem {
   /** The name of the custom property to filter by. */
@@ -193,9 +185,8 @@ export const AddOrganizationsToEnterpriseCodingAgentPolicyResponse = /*@__PURE__
 
 /** The names of teams from which to revoke access to GitHub Copilot. */
 export type CancelCopilotSeatAssignmentForTeamsRequestSelectedTeamsList = Array<string>;
-export const CancelCopilotSeatAssignmentForTeamsRequestSelectedTeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CancelCopilotSeatAssignmentForTeamsRequestSelectedTeamsList>;
+export const CancelCopilotSeatAssignmentForTeamsRequestSelectedTeamsList =
+  AddCopilotSeatsForTeamsRequestSelectedTeamsList as any as S.Schema<CancelCopilotSeatAssignmentForTeamsRequestSelectedTeamsList>;
 
 export interface CancelCopilotSeatAssignmentForTeamsRequest {
   /** The organization name. The name is not case sensitive. */
@@ -228,9 +219,7 @@ export const CancelCopilotSeatAssignmentForTeamsResponse = /*@__PURE__*/ S.suspe
 /** The usernames of the organization members for which to revoke access to GitHub Copilot. */
 export type CancelCopilotSeatAssignmentForUsersRequestSelectedUsernamesList = Array<string>;
 export const CancelCopilotSeatAssignmentForUsersRequestSelectedUsernamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelCopilotSeatAssignmentForUsersRequestSelectedUsernamesList>;
+  AddOrganizationsToEnterpriseCodingAgentPolicyRequestOrganizationsList as any as S.Schema<CancelCopilotSeatAssignmentForUsersRequestSelectedUsernamesList>;
 
 export interface CancelCopilotSeatAssignmentForUsersRequest {
   /** The organization name. The name is not case sensitive. */
@@ -252,13 +241,8 @@ export const CancelCopilotSeatAssignmentForUsersRequest = /*@__PURE__*/ S.suspen
 export interface CancelCopilotSeatAssignmentForUsersResponse {
   seats_cancelled: number;
 }
-export const CancelCopilotSeatAssignmentForUsersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    seats_cancelled: S.Number,
-  }),
-).annotate({
-  identifier: "CancelCopilotSeatAssignmentForUsersResponse",
-}) as any as S.Schema<CancelCopilotSeatAssignmentForUsersResponse>;
+export const CancelCopilotSeatAssignmentForUsersResponse =
+  CancelCopilotSeatAssignmentForTeamsResponse as any as S.Schema<CancelCopilotSeatAssignmentForUsersResponse>;
 
 export interface CopilotContentExclusionForOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
@@ -273,9 +257,8 @@ export const CopilotContentExclusionForOrganizationRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<CopilotContentExclusionForOrganizationRequest>;
 
 export type CopilotOrganizationContentExclusionDetailsValueList = Array<string>;
-export const CopilotOrganizationContentExclusionDetailsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CopilotOrganizationContentExclusionDetailsValueList>;
+export const CopilotOrganizationContentExclusionDetailsValueList =
+  AddCopilotSeatsForTeamsRequestSelectedTeamsList as any as S.Schema<CopilotOrganizationContentExclusionDetailsValueList>;
 
 /** List all Copilot Content Exclusion rules for an organization. */
 export type CopilotOrganizationContentExclusionDetails = {
@@ -317,9 +300,8 @@ export const CopilotEnterpriseOneDayUsageMetricsRequest = /*@__PURE__*/ S.suspen
 
 /** The URLs to download the Copilot usage metrics report for the enterprise/organization for the specified day. */
 export type CopilotUsageMetrics1DayReportDownloadLinksList = Array<string>;
-export const CopilotUsageMetrics1DayReportDownloadLinksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CopilotUsageMetrics1DayReportDownloadLinksList>;
+export const CopilotUsageMetrics1DayReportDownloadLinksList =
+  AddCopilotSeatsForTeamsRequestSelectedTeamsList as any as S.Schema<CopilotUsageMetrics1DayReportDownloadLinksList>;
 
 /** Links to download the Copilot usage metrics report for an enterprise/organization for a specific day. */
 export interface CopilotUsageMetrics1DayReport {
@@ -378,9 +360,8 @@ export const CopilotEnterpriseUsageMetricsRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The URLs to download the latest Copilot usage metrics report for the enterprise/organization. */
 export type CopilotUsageMetrics28DayReportDownloadLinksList = Array<string>;
-export const CopilotUsageMetrics28DayReportDownloadLinksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CopilotUsageMetrics28DayReportDownloadLinksList>;
+export const CopilotUsageMetrics28DayReportDownloadLinksList =
+  AddCopilotSeatsForTeamsRequestSelectedTeamsList as any as S.Schema<CopilotUsageMetrics28DayReportDownloadLinksList>;
 
 /** Links to download the latest Copilot usage metrics report for an enterprise/organization. */
 export interface CopilotUsageMetrics28DayReport {
@@ -625,11 +606,8 @@ export const EnableCopilotCodingAgentForRepositoryInOrganizationRequest = /*@__P
 }) as any as S.Schema<EnableCopilotCodingAgentForRepositoryInOrganizationRequest>;
 
 export interface EnableCopilotCodingAgentForRepositoryInOrganizationResponse {}
-export const EnableCopilotCodingAgentForRepositoryInOrganizationResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "EnableCopilotCodingAgentForRepositoryInOrganizationResponse",
-}) as any as S.Schema<EnableCopilotCodingAgentForRepositoryInOrganizationResponse>;
+export const EnableCopilotCodingAgentForRepositoryInOrganizationResponse =
+  DisableCopilotCodingAgentForRepositoryInOrganizationResponse as any as S.Schema<EnableCopilotCodingAgentForRepositoryInOrganizationResponse>;
 
 export interface GetCopilotCloudAgentConfigurationRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -685,9 +663,8 @@ export const GetCopilotCloudAgentConfigurationResponseEnabledTools = /*@__PURE__
 
 /** A list of custom allowlist entries, as hosts or URLs, that the firewall will allow the Copilot cloud agent to access. */
 export type GetCopilotCloudAgentConfigurationResponseCustomAllowlistList = Array<string>;
-export const GetCopilotCloudAgentConfigurationResponseCustomAllowlistList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCopilotCloudAgentConfigurationResponseCustomAllowlistList>;
+export const GetCopilotCloudAgentConfigurationResponseCustomAllowlistList =
+  AddCopilotSeatsForTeamsRequestSelectedTeamsList as any as S.Schema<GetCopilotCloudAgentConfigurationResponseCustomAllowlistList>;
 
 export interface GetCopilotCloudAgentConfigurationResponse {
   /** The user-supplied MCP server configuration for the repository, as a free-form JSON object. This will be set to `null` if no configuration has been set. The shape of a valid MCP configuration may evolve over time, so this property is intentionally not strictly typed. Clients should not assume a fixed schema. */
@@ -1203,9 +1180,8 @@ export type SimpleUser = NullableSimpleUser;
 export const SimpleUser = NullableSimpleUser;
 
 export type MinimalRepositoryTopicsList = Array<string>;
-export const MinimalRepositoryTopicsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MinimalRepositoryTopicsList>;
+export const MinimalRepositoryTopicsList =
+  AddCopilotSeatsForTeamsRequestSelectedTeamsList as any as S.Schema<MinimalRepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type MinimalRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
@@ -1486,10 +1462,8 @@ export const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
 
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type MinimalRepositoryCustomPropertiesMap = { [key: string]: unknown | undefined };
-export const MinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MinimalRepositoryCustomPropertiesMap>;
+export const MinimalRepositoryCustomPropertiesMap =
+  GetCopilotCloudAgentConfigurationResponseMcpConfigurationMap as any as S.Schema<MinimalRepositoryCustomPropertiesMap>;
 
 /** Minimal Repository */
 export interface MinimalRepository {
@@ -1741,17 +1715,13 @@ export const ListCopilotSeatsResponse = /*@__PURE__*/ S.suspend(() =>
 export type RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestOrganizationsList =
   Array<string>;
 export const RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestOrganizationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestOrganizationsList>;
+  AddOrganizationsToEnterpriseCodingAgentPolicyRequestOrganizationsList as any as S.Schema<RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestOrganizationsList>;
 
 /** The values of the custom property to match. */
 export type RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestCustomPropertiesItemValuesList =
   Array<string>;
 export const RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestCustomPropertiesItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestCustomPropertiesItemValuesList>;
+  AddOrganizationsToEnterpriseCodingAgentPolicyRequestOrganizationsList as any as S.Schema<RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestCustomPropertiesItemValuesList>;
 
 export interface RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestCustomPropertiesItem {
   /** The name of the custom property to filter by. */
@@ -1808,11 +1778,8 @@ export const RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequest = /*@__PU
 }) as any as S.Schema<RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequest>;
 
 export interface RemoveOrganizationsFromEnterpriseCodingAgentPolicyResponse {}
-export const RemoveOrganizationsFromEnterpriseCodingAgentPolicyResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "RemoveOrganizationsFromEnterpriseCodingAgentPolicyResponse",
-}) as any as S.Schema<RemoveOrganizationsFromEnterpriseCodingAgentPolicyResponse>;
+export const RemoveOrganizationsFromEnterpriseCodingAgentPolicyResponse =
+  DisableCopilotCodingAgentForRepositoryInOrganizationResponse as any as S.Schema<RemoveOrganizationsFromEnterpriseCodingAgentPolicyResponse>;
 
 /** The policy for which repositories can use Copilot cloud agent. Can be one of `all`, `selected`, or `none`. */
 export type SetCopilotCodingAgentPermissionsOrganizationRequestEnabledRepositories =
@@ -1841,11 +1808,8 @@ export const SetCopilotCodingAgentPermissionsOrganizationRequest = /*@__PURE__*/
 }) as any as S.Schema<SetCopilotCodingAgentPermissionsOrganizationRequest>;
 
 export interface SetCopilotCodingAgentPermissionsOrganizationResponse {}
-export const SetCopilotCodingAgentPermissionsOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SetCopilotCodingAgentPermissionsOrganizationResponse",
-}) as any as S.Schema<SetCopilotCodingAgentPermissionsOrganizationResponse>;
+export const SetCopilotCodingAgentPermissionsOrganizationResponse =
+  AddOrganizationsToEnterpriseCodingAgentPolicyResponse as any as S.Schema<SetCopilotCodingAgentPermissionsOrganizationResponse>;
 
 /** List of repository IDs to enable for Copilot cloud agent. */
 export type SetCopilotCodingAgentSelectedRepositoriesForOrganizationRequestSelectedRepositoryIdsList =
@@ -1887,9 +1851,7 @@ export const SetCopilotCodingAgentSelectedRepositoriesForOrganizationResponse =
 export type SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase1IfAnyMatchList =
   Array<string>;
 export const SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase1IfAnyMatchList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase1IfAnyMatchList>;
+  AddOrganizationsToEnterpriseCodingAgentPolicyRequestOrganizationsList as any as S.Schema<SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase1IfAnyMatchList>;
 
 export interface SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase1 {
   ifAnyMatch: SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase1IfAnyMatchList;
@@ -1906,9 +1868,7 @@ export const SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase1 
 export type SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase2IfNoneMatchList =
   Array<string>;
 export const SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase2IfNoneMatchList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase2IfNoneMatchList>;
+  AddOrganizationsToEnterpriseCodingAgentPolicyRequestOrganizationsList as any as S.Schema<SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase2IfNoneMatchList>;
 
 export interface SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase2 {
   ifNoneMatch: SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase2IfNoneMatchList;
@@ -1999,11 +1959,8 @@ export const SetEnterpriseCodingAgentPolicyRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<SetEnterpriseCodingAgentPolicyRequest>;
 
 export interface SetEnterpriseCodingAgentPolicyResponse {}
-export const SetEnterpriseCodingAgentPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SetEnterpriseCodingAgentPolicyResponse",
-}) as any as S.Schema<SetEnterpriseCodingAgentPolicyResponse>;
+export const SetEnterpriseCodingAgentPolicyResponse =
+  AddOrganizationsToEnterpriseCodingAgentPolicyResponse as any as S.Schema<SetEnterpriseCodingAgentPolicyResponse>;
 
 export type AddCopilotSeatsForTeamsError =
   | Forbidden

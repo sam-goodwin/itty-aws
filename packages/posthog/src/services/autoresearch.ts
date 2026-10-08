@@ -565,10 +565,8 @@ export const ZendeskImportJobStatusEnum = S.String;
 
 /** Run metrics: score distribution summary, validation AUC, etc. An inference run records 'rows_eligible', the users in the inference population. When it is larger than rows_scored, the run scored a rolling part of the population: users never scored first, then users whose last score was oldest. */
 export type AutoresearchRunMetricsMap = { [key: string]: unknown | undefined };
-export const AutoresearchRunMetricsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AutoresearchRunMetricsMap>;
+export const AutoresearchRunMetricsMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<AutoresearchRunMetricsMap>;
 
 export interface AutoresearchRun {
   /** Unique UUID of this run. */
@@ -887,9 +885,8 @@ export const AutoresearchSuggestionSourceEnum = S.String;
 
 /** UUIDs of iterations spawned from this suggestion. */
 export type AutoresearchSuggestionLinkedIterationIdsList = Array<string>;
-export const AutoresearchSuggestionLinkedIterationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AutoresearchSuggestionLinkedIterationIdsList>;
+export const AutoresearchSuggestionLinkedIterationIdsList =
+  ResolvedTemplateActivityEventAlternativesList as any as S.Schema<AutoresearchSuggestionLinkedIterationIdsList>;
 
 export interface AutoresearchSuggestion {
   /** Unique UUID of this suggestion. */
@@ -1016,9 +1013,8 @@ export const TrainingRunSummaryKeptLadderList = /*@__PURE__*/ S.Array(
 
 /** Discarded or crashed iterations -- approaches already tried that did not help; avoid repeating. */
 export type TrainingRunSummaryDeadEndsList = Array<TrainingRunSummaryLadderItem>;
-export const TrainingRunSummaryDeadEndsList = /*@__PURE__*/ S.Array(
-  TrainingRunSummaryLadderItem,
-) as any as S.Schema<TrainingRunSummaryDeadEndsList>;
+export const TrainingRunSummaryDeadEndsList =
+  TrainingRunSummaryKeptLadderList as any as S.Schema<TrainingRunSummaryDeadEndsList>;
 
 /** Tier-1 distilled summary of a completed run -- the orientation memory a new run reads first. */
 export interface TrainingRunSummary {
@@ -1064,10 +1060,8 @@ export const AutoresearchIterationStatusEnum = S.String;
 
 /** Keyword arguments for the estimator's constructor; null or absent means the defaults. */
 export type IterationTrailModelSpecModelParamsMap = { [key: string]: unknown | undefined };
-export const IterationTrailModelSpecModelParamsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<IterationTrailModelSpecModelParamsMap>;
+export const IterationTrailModelSpecModelParamsMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<IterationTrailModelSpecModelParamsMap>;
 
 /** Model class and hyperparameters tried in this iteration. */
 export interface IterationTrailModelSpec {
@@ -1362,10 +1356,8 @@ export const AutoresearchIterationRecipeSnapshot = /*@__PURE__*/ S.suspend(() =>
 
 /** Keyword arguments for the estimator's constructor; null or absent means the defaults. */
 export type AutoresearchIterationModelSpecModelParamsMap = { [key: string]: unknown | undefined };
-export const AutoresearchIterationModelSpecModelParamsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AutoresearchIterationModelSpecModelParamsMap>;
+export const AutoresearchIterationModelSpecModelParamsMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<AutoresearchIterationModelSpecModelParamsMap>;
 
 /** Model class and hyperparameters tried in this iteration. */
 export interface AutoresearchIterationModelSpec {
@@ -1450,15 +1442,13 @@ export const CreateAutoresearchTrainingRunsMaterializeFeatureRequest = /*@__PURE
 
 /** The numeric feature column names (excludes distinct_id, __label, __fold). */
 export type MaterializeFeaturesResponseFeatureColsList = Array<string>;
-export const MaterializeFeaturesResponseFeatureColsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MaterializeFeaturesResponseFeatureColsList>;
+export const MaterializeFeaturesResponseFeatureColsList =
+  ResolvedTemplateActivityEventAlternativesList as any as S.Schema<MaterializeFeaturesResponseFeatureColsList>;
 
 /** Advice on the cost of features_sql. A hint does not block the materialization or the upload, but a champion whose features.sql cannot score today's population in time is not promoted. */
 export type MaterializeFeaturesResponseHintsList = Array<string>;
-export const MaterializeFeaturesResponseHintsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MaterializeFeaturesResponseHintsList>;
+export const MaterializeFeaturesResponseHintsList =
+  ResolvedTemplateActivityEventAlternativesList as any as S.Schema<MaterializeFeaturesResponseHintsList>;
 
 /** The local sandbox paths and shape of the materialized training matrix. */
 export interface MaterializeFeaturesResponse {
@@ -1547,10 +1537,8 @@ export const AutoresearchModelRoleEnum = S.String;
 
 /** Extended metrics bundle: Brier score, precision/recall at thresholds, lift@k, base rate, row counts. */
 export type AutoresearchModelMetricsMap = { [key: string]: unknown | undefined };
-export const AutoresearchModelMetricsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AutoresearchModelMetricsMap>;
+export const AutoresearchModelMetricsMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<AutoresearchModelMetricsMap>;
 
 export interface AutoresearchModel {
   /** Unique UUID of this model version. */
@@ -1843,9 +1831,8 @@ export const GetAutoresearchTrainingRunsArtifactRequest = /*@__PURE__*/ S.suspen
 
 /** Relative paths of every file stored under this training run's bundle prefix. */
 export type ArtifactListPathsList = Array<string>;
-export const ArtifactListPathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ArtifactListPathsList>;
+export const ArtifactListPathsList =
+  ResolvedTemplateActivityEventAlternativesList as any as S.Schema<ArtifactListPathsList>;
 
 /** The relative paths present in a training run's bundle. */
 export interface ArtifactList {
@@ -1888,10 +1875,8 @@ export const GetAutoresearchTrainingRunsHistoryRequest = /*@__PURE__*/ S.suspend
 export type IterationTrailWithRecipeModelSpecModelParamsMap = {
   [key: string]: unknown | undefined;
 };
-export const IterationTrailWithRecipeModelSpecModelParamsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<IterationTrailWithRecipeModelSpecModelParamsMap>;
+export const IterationTrailWithRecipeModelSpecModelParamsMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<IterationTrailWithRecipeModelSpecModelParamsMap>;
 
 /** Model class and hyperparameters tried in this iteration. */
 export interface IterationTrailWithRecipeModelSpec {
@@ -1900,20 +1885,13 @@ export interface IterationTrailWithRecipeModelSpec {
   /** Keyword arguments for the estimator's constructor; null or absent means the defaults. */
   model_params?: IterationTrailWithRecipeModelSpecModelParamsMap | null;
 }
-export const IterationTrailWithRecipeModelSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    model_class: S.String,
-    model_params: S.optional(S.NullOr(IterationTrailWithRecipeModelSpecModelParamsMap)),
-  }),
-).annotate({
-  identifier: "IterationTrailWithRecipeModelSpec",
-}) as any as S.Schema<IterationTrailWithRecipeModelSpec>;
+export const IterationTrailWithRecipeModelSpec =
+  AutoresearchIterationModelSpec as any as S.Schema<IterationTrailWithRecipeModelSpec>;
 
 /** Transforms the bundle applies to the feature columns; null or absent means none, and the in-process path accepts none. */
 export type IterationTrailWithRecipeRecipeSnapshotFeatureTransformsList = Array<unknown>;
-export const IterationTrailWithRecipeRecipeSnapshotFeatureTransformsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<IterationTrailWithRecipeRecipeSnapshotFeatureTransformsList>;
+export const IterationTrailWithRecipeRecipeSnapshotFeatureTransformsList =
+  AutoresearchIterationRecipeSnapshotFeatureTransformsList as any as S.Schema<IterationTrailWithRecipeRecipeSnapshotFeatureTransformsList>;
 
 /** The recipe this iteration tried: its feature_sql and transforms, so a later run can reuse them. */
 export interface IterationTrailWithRecipeRecipeSnapshot {
@@ -1922,16 +1900,8 @@ export interface IterationTrailWithRecipeRecipeSnapshot {
   /** Transforms the bundle applies to the feature columns; null or absent means none, and the in-process path accepts none. */
   feature_transforms?: IterationTrailWithRecipeRecipeSnapshotFeatureTransformsList | null;
 }
-export const IterationTrailWithRecipeRecipeSnapshot = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    feature_sql: S.String,
-    feature_transforms: S.optional(
-      S.NullOr(IterationTrailWithRecipeRecipeSnapshotFeatureTransformsList),
-    ),
-  }),
-).annotate({
-  identifier: "IterationTrailWithRecipeRecipeSnapshot",
-}) as any as S.Schema<IterationTrailWithRecipeRecipeSnapshot>;
+export const IterationTrailWithRecipeRecipeSnapshot =
+  AutoresearchIterationRecipeSnapshot as any as S.Schema<IterationTrailWithRecipeRecipeSnapshot>;
 
 /** The trail with each iteration's recipe, for history only: a run list page would otherwise carry every recipe of every run. */
 export interface IterationTrailWithRecipe {
@@ -2136,9 +2106,8 @@ export const ListAutoresearchRunsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAutoresearchRunsRequest>;
 
 export type PaginatedAutoresearchRunListResultsList = Array<AutoresearchRun>;
-export const PaginatedAutoresearchRunListResultsList = /*@__PURE__*/ S.Array(
-  AutoresearchRun,
-) as any as S.Schema<PaginatedAutoresearchRunListResultsList>;
+export const PaginatedAutoresearchRunListResultsList =
+  AutoresearchValidateOnlineCreateResponseBodyList as any as S.Schema<PaginatedAutoresearchRunListResultsList>;
 
 export interface PaginatedAutoresearchRunList {
   count: number;

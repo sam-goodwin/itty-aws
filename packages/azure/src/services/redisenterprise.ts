@@ -748,10 +748,8 @@ export const CreateRedisEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateRedisEnterpriseResponseTagsMap = { [key: string]: string | undefined };
-export const CreateRedisEnterpriseResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateRedisEnterpriseResponseTagsMap>;
+export const CreateRedisEnterpriseResponseTagsMap =
+  CreateRedisEnterpriseRequestTagsMap as any as S.Schema<CreateRedisEnterpriseResponseTagsMap>;
 
 /** Distinguishes the kind of cluster. Read-only. */
 export type Kind = "v1" | "v2";
@@ -759,9 +757,8 @@ export const Kind = S.String;
 
 /** The Availability Zones where this cluster will be deployed. */
 export type CreateRedisEnterpriseResponseZonesList = Array<string>;
-export const CreateRedisEnterpriseResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateRedisEnterpriseResponseZonesList>;
+export const CreateRedisEnterpriseResponseZonesList =
+  CreateRedisEnterpriseRequestZonesList as any as S.Schema<CreateRedisEnterpriseResponseZonesList>;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
@@ -882,11 +879,7 @@ export interface PrivateEndpoint {
   /** The ARM identifier for Private Endpoint */
   id?: string;
 }
-export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "PrivateEndpoint" }) as any as S.Schema<PrivateEndpoint>;
+export const PrivateEndpoint = LinkedDatabaseInput as any as S.Schema<PrivateEndpoint>;
 
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus = "Pending" | "Approved" | "Rejected";
@@ -1141,11 +1134,8 @@ export const DatabasesUpgradeDBRedisVersionRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DatabasesUpgradeDBRedisVersionRequest>;
 
 export interface DatabasesUpgradeDBRedisVersionResponse {}
-export const DatabasesUpgradeDBRedisVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DatabasesUpgradeDBRedisVersionResponse",
-}) as any as S.Schema<DatabasesUpgradeDBRedisVersionResponse>;
+export const DatabasesUpgradeDBRedisVersionResponse =
+  DatabasesForceLinkToReplicationGroupResponse as any as S.Schema<DatabasesUpgradeDBRedisVersionResponse>;
 
 export interface DeleteAccessPolicyAssignmentRequest {
   /** The ID of the target subscription. */
@@ -1179,11 +1169,8 @@ export const DeleteAccessPolicyAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAccessPolicyAssignmentRequest>;
 
 export interface DeleteAccessPolicyAssignmentResponse {}
-export const DeleteAccessPolicyAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAccessPolicyAssignmentResponse",
-}) as any as S.Schema<DeleteAccessPolicyAssignmentResponse>;
+export const DeleteAccessPolicyAssignmentResponse =
+  DatabasesForceLinkToReplicationGroupResponse as any as S.Schema<DeleteAccessPolicyAssignmentResponse>;
 
 export interface DeleteDatabaseRequest {
   /** The ID of the target subscription. */
@@ -1212,9 +1199,8 @@ export const DeleteDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDatabaseRequest" }) as any as S.Schema<DeleteDatabaseRequest>;
 
 export interface DeleteDatabaseResponse {}
-export const DeleteDatabaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDatabaseResponse",
-}) as any as S.Schema<DeleteDatabaseResponse>;
+export const DeleteDatabaseResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteDatabaseResponse>;
 
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. */
@@ -1245,11 +1231,8 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePrivateEndpointConnectionResponse",
-}) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
+export const DeletePrivateEndpointConnectionResponse =
+  DatabasesForceLinkToReplicationGroupResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
 
 export interface DeleteRedisEnterpriseRequest {
   /** The ID of the target subscription. */
@@ -1277,9 +1260,8 @@ export const DeleteRedisEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRedisEnterpriseRequest>;
 
 export interface DeleteRedisEnterpriseResponse {}
-export const DeleteRedisEnterpriseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRedisEnterpriseResponse",
-}) as any as S.Schema<DeleteRedisEnterpriseResponse>;
+export const DeleteRedisEnterpriseResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteRedisEnterpriseResponse>;
 
 export interface ExportDatabaseRequest {
   /** The ID of the target subscription. */
@@ -1311,15 +1293,13 @@ export const ExportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExportDatabaseRequest" }) as any as S.Schema<ExportDatabaseRequest>;
 
 export interface ExportDatabaseResponse {}
-export const ExportDatabaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ExportDatabaseResponse",
-}) as any as S.Schema<ExportDatabaseResponse>;
+export const ExportDatabaseResponse =
+  UserAssignedIdentityInput as any as S.Schema<ExportDatabaseResponse>;
 
 /** The identifiers of all the other database resources in the georeplication group to be flushed. */
 export type FlushDatabaseRequestIdsList = Array<string>;
-export const FlushDatabaseRequestIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlushDatabaseRequestIdsList>;
+export const FlushDatabaseRequestIdsList =
+  CreateRedisEnterpriseRequestZonesList as any as S.Schema<FlushDatabaseRequestIdsList>;
 
 export interface FlushDatabaseRequest {
   /** The ID of the target subscription. */
@@ -1351,9 +1331,8 @@ export const FlushDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlushDatabaseRequest" }) as any as S.Schema<FlushDatabaseRequest>;
 
 export interface FlushDatabaseResponse {}
-export const FlushDatabaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "FlushDatabaseResponse",
-}) as any as S.Schema<FlushDatabaseResponse>;
+export const FlushDatabaseResponse =
+  UserAssignedIdentityInput as any as S.Schema<FlushDatabaseResponse>;
 
 export interface GetAccessPolicyAssignmentRequest {
   /** The ID of the target subscription. */
@@ -1396,16 +1375,8 @@ export interface GetAccessPolicyAssignmentResponse {
   /** Properties of the access policy assignment. */
   properties?: AccessPolicyAssignmentProperties;
 }
-export const GetAccessPolicyAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(AccessPolicyAssignmentProperties),
-  }),
-).annotate({
-  identifier: "GetAccessPolicyAssignmentResponse",
-}) as any as S.Schema<GetAccessPolicyAssignmentResponse>;
+export const GetAccessPolicyAssignmentResponse =
+  AccessPolicyAssignmentCreateUpdateResponse as any as S.Schema<GetAccessPolicyAssignmentResponse>;
 
 export interface GetDatabaseRequest {
   /** The ID of the target subscription. */
@@ -1443,14 +1414,7 @@ export interface GetDatabaseResponse {
   /** Other properties of the database. */
   properties?: DatabaseCreateProperties;
 }
-export const GetDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(DatabaseCreateProperties),
-  }),
-).annotate({ identifier: "GetDatabaseResponse" }) as any as S.Schema<GetDatabaseResponse>;
+export const GetDatabaseResponse = CreateDatabaseResponse as any as S.Schema<GetDatabaseResponse>;
 
 export interface GetOperationsStatusRequest {
   /** The ID of the target subscription. */
@@ -1601,16 +1565,8 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "GetPrivateEndpointConnectionResponse",
-}) as any as S.Schema<GetPrivateEndpointConnectionResponse>;
+export const GetPrivateEndpointConnectionResponse =
+  ClusterCreatePropertiesPrivateEndpointConnectionsItem as any as S.Schema<GetPrivateEndpointConnectionResponse>;
 
 export interface GetRedisEnterpriseRequest {
   /** The ID of the target subscription. */
@@ -1639,16 +1595,13 @@ export const GetRedisEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetRedisEnterpriseResponseTagsMap = { [key: string]: string | undefined };
-export const GetRedisEnterpriseResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetRedisEnterpriseResponseTagsMap>;
+export const GetRedisEnterpriseResponseTagsMap =
+  CreateRedisEnterpriseRequestTagsMap as any as S.Schema<GetRedisEnterpriseResponseTagsMap>;
 
 /** The Availability Zones where this cluster will be deployed. */
 export type GetRedisEnterpriseResponseZonesList = Array<string>;
-export const GetRedisEnterpriseResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetRedisEnterpriseResponseZonesList>;
+export const GetRedisEnterpriseResponseZonesList =
+  CreateRedisEnterpriseRequestZonesList as any as S.Schema<GetRedisEnterpriseResponseZonesList>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetRedisEnterpriseResponseIdentity = CreateRedisEnterpriseResponseIdentity;
@@ -1675,28 +1628,13 @@ export interface GetRedisEnterpriseResponse {
   /** Other properties of the cluster. */
   properties?: ClusterCreateProperties;
 }
-export const GetRedisEnterpriseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(GetRedisEnterpriseResponseTagsMap),
-    location: S.String,
-    kind: S.optional(Kind),
-    sku: Sku,
-    zones: S.optional(GetRedisEnterpriseResponseZonesList),
-    identity: S.optional(CreateRedisEnterpriseResponseIdentity),
-    properties: S.optional(ClusterCreateProperties),
-  }),
-).annotate({
-  identifier: "GetRedisEnterpriseResponse",
-}) as any as S.Schema<GetRedisEnterpriseResponse>;
+export const GetRedisEnterpriseResponse =
+  CreateRedisEnterpriseResponse as any as S.Schema<GetRedisEnterpriseResponse>;
 
 /** SAS URIs for the target blobs to import from */
 export type ImportDatabaseRequestSasUrisList = Array<string>;
-export const ImportDatabaseRequestSasUrisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImportDatabaseRequestSasUrisList>;
+export const ImportDatabaseRequestSasUrisList =
+  CreateRedisEnterpriseRequestZonesList as any as S.Schema<ImportDatabaseRequestSasUrisList>;
 
 export interface ImportDatabaseRequest {
   /** The ID of the target subscription. */
@@ -1728,9 +1666,8 @@ export const ImportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImportDatabaseRequest" }) as any as S.Schema<ImportDatabaseRequest>;
 
 export interface ImportDatabaseResponse {}
-export const ImportDatabaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ImportDatabaseResponse",
-}) as any as S.Schema<ImportDatabaseResponse>;
+export const ImportDatabaseResponse =
+  UserAssignedIdentityInput as any as S.Schema<ImportDatabaseResponse>;
 
 export interface ListAccessPolicyAssignmentRequest {
   /** The ID of the target subscription. */
@@ -1838,14 +1775,7 @@ export interface Database {
   /** Other properties of the database. */
   properties?: DatabaseCreateProperties;
 }
-export const Database = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(DatabaseCreateProperties),
-  }),
-).annotate({ identifier: "Database" }) as any as S.Schema<Database>;
+export const Database = CreateDatabaseResponse as any as S.Schema<Database>;
 
 /** List of databases */
 export type DatabaseListValueList = Array<Database>;
@@ -2021,9 +1951,8 @@ export const PrivateEndpointConnection = ClusterCreatePropertiesPrivateEndpointC
 /** Array of private endpoint connections */
 export type ListPrivateEndpointConnectionsResponseValueList =
   Array<ClusterCreatePropertiesPrivateEndpointConnectionsItem>;
-export const ListPrivateEndpointConnectionsResponseValueList = /*@__PURE__*/ S.Array(
-  ClusterCreatePropertiesPrivateEndpointConnectionsItem,
-) as any as S.Schema<ListPrivateEndpointConnectionsResponseValueList>;
+export const ListPrivateEndpointConnectionsResponseValueList =
+  ClusterCreatePropertiesPrivateEndpointConnectionsList as any as S.Schema<ListPrivateEndpointConnectionsResponseValueList>;
 
 export interface ListPrivateEndpointConnectionsResponse {
   /** Array of private endpoint connections */
@@ -2064,15 +1993,13 @@ export const ListPrivateLinkResourceByClusterRequest = /*@__PURE__*/ S.suspend((
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+export const PrivateLinkResourcePropertiesRequiredMembersList =
+  CreateRedisEnterpriseRequestZonesList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  CreateRedisEnterpriseRequestZonesList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
@@ -2152,16 +2079,13 @@ export const ListRedisEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ClusterTagsMap = { [key: string]: string | undefined };
-export const ClusterTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ClusterTagsMap>;
+export const ClusterTagsMap =
+  CreateRedisEnterpriseRequestTagsMap as any as S.Schema<ClusterTagsMap>;
 
 /** The Availability Zones where this cluster will be deployed. */
 export type ClusterZonesList = Array<string>;
-export const ClusterZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClusterZonesList>;
+export const ClusterZonesList =
+  CreateRedisEnterpriseRequestZonesList as any as S.Schema<ClusterZonesList>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ClusterIdentity = CreateRedisEnterpriseResponseIdentity;
@@ -2363,16 +2287,8 @@ export interface PutPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const PutPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "PutPrivateEndpointConnectionResponse",
-}) as any as S.Schema<PutPrivateEndpointConnectionResponse>;
+export const PutPrivateEndpointConnectionResponse =
+  ClusterCreatePropertiesPrivateEndpointConnectionsItem as any as S.Schema<PutPrivateEndpointConnectionResponse>;
 
 /** Which access key to regenerate. */
 export type RegenerateDatabaseKeyRequestKeyType = "Primary" | "Secondary";
@@ -2411,9 +2327,8 @@ export const RegenerateDatabaseKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource IDs of the database resources to be unlinked. */
 export type UnlinkDatabasesForceRequestIdsList = Array<string>;
-export const UnlinkDatabasesForceRequestIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UnlinkDatabasesForceRequestIdsList>;
+export const UnlinkDatabasesForceRequestIdsList =
+  CreateRedisEnterpriseRequestZonesList as any as S.Schema<UnlinkDatabasesForceRequestIdsList>;
 
 export interface UnlinkDatabasesForceRequest {
   /** The ID of the target subscription. */
@@ -2447,9 +2362,8 @@ export const UnlinkDatabasesForceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnlinkDatabasesForceRequest>;
 
 export interface UnlinkDatabasesForceResponse {}
-export const UnlinkDatabasesForceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UnlinkDatabasesForceResponse",
-}) as any as S.Schema<UnlinkDatabasesForceResponse>;
+export const UnlinkDatabasesForceResponse =
+  UserAssignedIdentityInput as any as S.Schema<UnlinkDatabasesForceResponse>;
 
 /** Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols. Default is TLS-encrypted. */
 export type DatabaseUpdatePropertiesInputClientProtocol = "Encrypted" | "Plaintext";
@@ -2476,16 +2390,14 @@ export const DatabaseUpdatePropertiesInputEvictionPolicy = S.String;
 
 /** Optional set of redis modules to enable in this database - modules can only be added at creation time. */
 export type DatabaseUpdatePropertiesInputModulesList = Array<ModuleInput>;
-export const DatabaseUpdatePropertiesInputModulesList = /*@__PURE__*/ S.Array(
-  ModuleInput,
-) as any as S.Schema<DatabaseUpdatePropertiesInputModulesList>;
+export const DatabaseUpdatePropertiesInputModulesList =
+  DatabaseCreatePropertiesInputModulesList as any as S.Schema<DatabaseUpdatePropertiesInputModulesList>;
 
 /** List of database resources to link with this database */
 export type DatabaseUpdatePropertiesInputGeoReplicationLinkedDatabasesList =
   Array<LinkedDatabaseInput>;
-export const DatabaseUpdatePropertiesInputGeoReplicationLinkedDatabasesList = /*@__PURE__*/ S.Array(
-  LinkedDatabaseInput,
-) as any as S.Schema<DatabaseUpdatePropertiesInputGeoReplicationLinkedDatabasesList>;
+export const DatabaseUpdatePropertiesInputGeoReplicationLinkedDatabasesList =
+  DatabaseCreatePropertiesInputGeoReplicationLinkedDatabasesList as any as S.Schema<DatabaseUpdatePropertiesInputGeoReplicationLinkedDatabasesList>;
 
 /** Optional set of properties to configure geo replication for this database. */
 export interface DatabaseUpdatePropertiesInputGeoReplication {
@@ -2494,14 +2406,8 @@ export interface DatabaseUpdatePropertiesInputGeoReplication {
   /** List of database resources to link with this database */
   linkedDatabases?: DatabaseUpdatePropertiesInputGeoReplicationLinkedDatabasesList;
 }
-export const DatabaseUpdatePropertiesInputGeoReplication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupNickname: S.optional(S.String),
-    linkedDatabases: S.optional(DatabaseUpdatePropertiesInputGeoReplicationLinkedDatabasesList),
-  }),
-).annotate({
-  identifier: "DatabaseUpdatePropertiesInputGeoReplication",
-}) as any as S.Schema<DatabaseUpdatePropertiesInputGeoReplication>;
+export const DatabaseUpdatePropertiesInputGeoReplication =
+  DatabaseCreatePropertiesInputGeoReplication as any as S.Schema<DatabaseUpdatePropertiesInputGeoReplication>;
 
 /** Option to defer upgrade when newest version is released - default is NotDeferred. Learn more: https://aka.ms/redisversionupgrade */
 export type DatabaseUpdatePropertiesInputDeferUpgrade = "Deferred" | "NotDeferred";
@@ -2587,14 +2493,8 @@ export interface UpdateDatabaseResponse {
   /** Other properties of the database. */
   properties?: DatabaseCreateProperties;
 }
-export const UpdateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(DatabaseCreateProperties),
-  }),
-).annotate({ identifier: "UpdateDatabaseResponse" }) as any as S.Schema<UpdateDatabaseResponse>;
+export const UpdateDatabaseResponse =
+  CreateDatabaseResponse as any as S.Schema<UpdateDatabaseResponse>;
 
 /** Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA, and increases the risk of data loss. */
 export type ClusterUpdatePropertiesInputHighAvailability = "Enabled" | "Disabled";
@@ -2699,10 +2599,8 @@ export const UpdateRedisEnterpriseRequestIdentity = CreateRedisEnterpriseRequest
 
 /** Resource tags. */
 export type UpdateRedisEnterpriseRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateRedisEnterpriseRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateRedisEnterpriseRequestTagsMap>;
+export const UpdateRedisEnterpriseRequestTagsMap =
+  CreateRedisEnterpriseRequestTagsMap as any as S.Schema<UpdateRedisEnterpriseRequestTagsMap>;
 
 export interface UpdateRedisEnterpriseRequest {
   /** The ID of the target subscription. */
@@ -2743,16 +2641,13 @@ export const UpdateRedisEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateRedisEnterpriseResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateRedisEnterpriseResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateRedisEnterpriseResponseTagsMap>;
+export const UpdateRedisEnterpriseResponseTagsMap =
+  CreateRedisEnterpriseRequestTagsMap as any as S.Schema<UpdateRedisEnterpriseResponseTagsMap>;
 
 /** The Availability Zones where this cluster will be deployed. */
 export type UpdateRedisEnterpriseResponseZonesList = Array<string>;
-export const UpdateRedisEnterpriseResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRedisEnterpriseResponseZonesList>;
+export const UpdateRedisEnterpriseResponseZonesList =
+  CreateRedisEnterpriseRequestZonesList as any as S.Schema<UpdateRedisEnterpriseResponseZonesList>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateRedisEnterpriseResponseIdentity = CreateRedisEnterpriseResponseIdentity;
@@ -2779,22 +2674,8 @@ export interface UpdateRedisEnterpriseResponse {
   /** Other properties of the cluster. */
   properties?: ClusterCreateProperties;
 }
-export const UpdateRedisEnterpriseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(UpdateRedisEnterpriseResponseTagsMap),
-    location: S.String,
-    kind: S.optional(Kind),
-    sku: Sku,
-    zones: S.optional(UpdateRedisEnterpriseResponseZonesList),
-    identity: S.optional(CreateRedisEnterpriseResponseIdentity),
-    properties: S.optional(ClusterCreateProperties),
-  }),
-).annotate({
-  identifier: "UpdateRedisEnterpriseResponse",
-}) as any as S.Schema<UpdateRedisEnterpriseResponse>;
+export const UpdateRedisEnterpriseResponse =
+  CreateRedisEnterpriseResponse as any as S.Schema<UpdateRedisEnterpriseResponse>;
 
 export type AccessPolicyAssignmentCreateUpdateError = AzureOpError;
 /** Creates/Updates a particular access policy assignment for a database */

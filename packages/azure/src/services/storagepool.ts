@@ -63,9 +63,8 @@ export const DeleteIscsiTargetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteIscsiTargetRequest" }) as any as S.Schema<DeleteIscsiTargetRequest>;
 
 export interface DeleteIscsiTargetResponse {}
-export const DeleteIscsiTargetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteIscsiTargetResponse",
-}) as any as S.Schema<DeleteIscsiTargetResponse>;
+export const DeleteIscsiTargetResponse =
+  DeleteDiskPoolResponse as any as S.Schema<DeleteIscsiTargetResponse>;
 
 /** Sku for ARM resource */
 export interface Sku {
@@ -106,9 +105,8 @@ export const DiskPoolCreatePropertiesDisksList = /*@__PURE__*/ S.Array(
 
 /** List of additional capabilities for a Disk Pool. */
 export type DiskPoolCreatePropertiesAdditionalCapabilitiesList = Array<string>;
-export const DiskPoolCreatePropertiesAdditionalCapabilitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DiskPoolCreatePropertiesAdditionalCapabilitiesList>;
+export const DiskPoolCreatePropertiesAdditionalCapabilitiesList =
+  DiskPoolCreatePropertiesAvailabilityZonesList as any as S.Schema<DiskPoolCreatePropertiesAdditionalCapabilitiesList>;
 
 /** Properties for Disk Pool create or update request. */
 export interface DiskPoolCreateProperties {
@@ -139,9 +137,8 @@ export const DiskPoolsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 
 /** List of Azure resource ids that manage this resource. */
 export type ManagedByExtended = Array<string>;
-export const ManagedByExtended = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ManagedByExtended>;
+export const ManagedByExtended =
+  DiskPoolCreatePropertiesAvailabilityZonesList as any as S.Schema<ManagedByExtended>;
 
 export interface DiskPoolsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -188,10 +185,8 @@ export const DiskPoolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DiskPoolsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const DiskPoolsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DiskPoolsCreateOrUpdateResponseTagsMap>;
+export const DiskPoolsCreateOrUpdateResponseTagsMap =
+  DiskPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<DiskPoolsCreateOrUpdateResponseTagsMap>;
 
 /** Provisioning state of the iSCSI Target. */
 export type ProvisioningState =
@@ -207,9 +202,8 @@ export const ProvisioningState = S.String;
 
 /** Logical zone for Disk Pool resource; example: ["1"]. */
 export type DiskPoolPropertiesAvailabilityZonesList = Array<string>;
-export const DiskPoolPropertiesAvailabilityZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DiskPoolPropertiesAvailabilityZonesList>;
+export const DiskPoolPropertiesAvailabilityZonesList =
+  DiskPoolCreatePropertiesAvailabilityZonesList as any as S.Schema<DiskPoolPropertiesAvailabilityZonesList>;
 
 /** Operational status of the resource. */
 export type OperationalStatus =
@@ -225,15 +219,13 @@ export const OperationalStatus = S.String;
 
 /** List of Azure Managed Disks to attach to a Disk Pool. */
 export type DiskPoolPropertiesDisksList = Array<Disk>;
-export const DiskPoolPropertiesDisksList = /*@__PURE__*/ S.Array(
-  Disk,
-) as any as S.Schema<DiskPoolPropertiesDisksList>;
+export const DiskPoolPropertiesDisksList =
+  DiskPoolCreatePropertiesDisksList as any as S.Schema<DiskPoolPropertiesDisksList>;
 
 /** List of additional capabilities for Disk Pool. */
 export type DiskPoolPropertiesAdditionalCapabilitiesList = Array<string>;
-export const DiskPoolPropertiesAdditionalCapabilitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DiskPoolPropertiesAdditionalCapabilitiesList>;
+export const DiskPoolPropertiesAdditionalCapabilitiesList =
+  DiskPoolCreatePropertiesAvailabilityZonesList as any as S.Schema<DiskPoolPropertiesAdditionalCapabilitiesList>;
 
 /** Disk Pool response properties. */
 export interface DiskPoolProperties {
@@ -360,9 +352,8 @@ export const DiskPoolsDeallocateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiskPoolsDeallocateRequest>;
 
 export interface DiskPoolsDeallocateResponse {}
-export const DiskPoolsDeallocateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DiskPoolsDeallocateResponse",
-}) as any as S.Schema<DiskPoolsDeallocateResponse>;
+export const DiskPoolsDeallocateResponse =
+  DeleteDiskPoolResponse as any as S.Schema<DiskPoolsDeallocateResponse>;
 
 export interface DiskPoolsUpgradeRequest {
   /** The ID of the target subscription. */
@@ -388,9 +379,8 @@ export const DiskPoolsUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DiskPoolsUpgradeRequest" }) as any as S.Schema<DiskPoolsUpgradeRequest>;
 
 export interface DiskPoolsUpgradeResponse {}
-export const DiskPoolsUpgradeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DiskPoolsUpgradeResponse",
-}) as any as S.Schema<DiskPoolsUpgradeResponse>;
+export const DiskPoolsUpgradeResponse =
+  DeleteDiskPoolResponse as any as S.Schema<DiskPoolsUpgradeResponse>;
 
 export interface GetDiskPoolRequest {
   /** The ID of the target subscription. */
@@ -417,10 +407,8 @@ export const GetDiskPoolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetDiskPoolResponseTagsMap = { [key: string]: string | undefined };
-export const GetDiskPoolResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDiskPoolResponseTagsMap>;
+export const GetDiskPoolResponseTagsMap =
+  DiskPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<GetDiskPoolResponseTagsMap>;
 
 export interface GetDiskPoolResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -491,9 +479,8 @@ export const AclMode = S.String;
 
 /** List of LUN names mapped to the ACL. */
 export type AclMappedLunsList = Array<string>;
-export const AclMappedLunsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AclMappedLunsList>;
+export const AclMappedLunsList =
+  DiskPoolCreatePropertiesAvailabilityZonesList as any as S.Schema<AclMappedLunsList>;
 
 /** Access Control List (ACL) for an iSCSI Target; defines LUN masking policy */
 export interface Acl {
@@ -540,15 +527,13 @@ export const IscsiTargetPropertiesLunsList = /*@__PURE__*/ S.Array(
 
 /** List of private IPv4 addresses to connect to the iSCSI Target. */
 export type IscsiTargetPropertiesEndpointsList = Array<string>;
-export const IscsiTargetPropertiesEndpointsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IscsiTargetPropertiesEndpointsList>;
+export const IscsiTargetPropertiesEndpointsList =
+  DiskPoolCreatePropertiesAvailabilityZonesList as any as S.Schema<IscsiTargetPropertiesEndpointsList>;
 
 /** List of identifiers for active sessions on the iSCSI target */
 export type IscsiTargetPropertiesSessionsList = Array<string>;
-export const IscsiTargetPropertiesSessionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IscsiTargetPropertiesSessionsList>;
+export const IscsiTargetPropertiesSessionsList =
+  DiskPoolCreatePropertiesAvailabilityZonesList as any as S.Schema<IscsiTargetPropertiesSessionsList>;
 
 /** Response properties for iSCSI Target operations. */
 export interface IscsiTargetProperties {
@@ -615,9 +600,8 @@ export const GetIscsiTargetResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Access Control List (ACL) for an iSCSI Target; defines LUN masking policy */
 export type IscsiTargetCreatePropertiesInputStaticAclsList = Array<Acl>;
-export const IscsiTargetCreatePropertiesInputStaticAclsList = /*@__PURE__*/ S.Array(
-  Acl,
-) as any as S.Schema<IscsiTargetCreatePropertiesInputStaticAclsList>;
+export const IscsiTargetCreatePropertiesInputStaticAclsList =
+  IscsiTargetPropertiesStaticAclsList as any as S.Schema<IscsiTargetCreatePropertiesInputStaticAclsList>;
 
 /** LUN to expose the Azure Managed Disk. */
 export interface IscsiLunInput {
@@ -752,10 +736,8 @@ export const ListDiskPoolByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DiskPoolTagsMap = { [key: string]: string | undefined };
-export const DiskPoolTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DiskPoolTagsMap>;
+export const DiskPoolTagsMap =
+  DiskPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<DiskPoolTagsMap>;
 
 /** Response for Disk Pool request. */
 export interface DiskPool {
@@ -780,20 +762,7 @@ export interface DiskPool {
   /** Resource metadata required by ARM RPC */
   systemData?: SystemMetadata;
 }
-export const DiskPool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(DiskPoolTagsMap),
-    location: S.String,
-    sku: S.optional(Sku),
-    properties: DiskPoolProperties,
-    managedBy: S.optional(S.String),
-    managedByExtended: S.optional(ManagedByExtended),
-    systemData: S.optional(SystemMetadata),
-  }),
-).annotate({ identifier: "DiskPool" }) as any as S.Schema<DiskPool>;
+export const DiskPool = GetDiskPoolResponse as any as S.Schema<DiskPool>;
 
 /** An array of Disk pool objects. */
 export type DiskPoolListResultValueList = Array<DiskPool>;
@@ -965,15 +934,13 @@ export const ListDiskPoolZonesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Logical zone for Disk Pool resource; example: ["1"]. */
 export type DiskPoolZoneInfoAvailabilityZonesList = Array<string>;
-export const DiskPoolZoneInfoAvailabilityZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DiskPoolZoneInfoAvailabilityZonesList>;
+export const DiskPoolZoneInfoAvailabilityZonesList =
+  DiskPoolCreatePropertiesAvailabilityZonesList as any as S.Schema<DiskPoolZoneInfoAvailabilityZonesList>;
 
 /** List of additional capabilities for Disk Pool. */
 export type DiskPoolZoneInfoAdditionalCapabilitiesList = Array<string>;
-export const DiskPoolZoneInfoAdditionalCapabilitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DiskPoolZoneInfoAdditionalCapabilitiesList>;
+export const DiskPoolZoneInfoAdditionalCapabilitiesList =
+  DiskPoolCreatePropertiesAvailabilityZonesList as any as S.Schema<DiskPoolZoneInfoAdditionalCapabilitiesList>;
 
 /** Disk Pool SKU Details */
 export interface DiskPoolZoneInfo {
@@ -1054,17 +1021,7 @@ export interface IscsiTarget {
   /** List of Azure resource ids that manage this resource. */
   managedByExtended?: ManagedByExtended;
 }
-export const IscsiTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: IscsiTargetProperties,
-    systemData: S.optional(SystemMetadata),
-    managedBy: S.optional(S.String),
-    managedByExtended: S.optional(ManagedByExtended),
-  }),
-).annotate({ identifier: "IscsiTarget" }) as any as S.Schema<IscsiTarget>;
+export const IscsiTarget = GetIscsiTargetResponse as any as S.Schema<IscsiTarget>;
 
 /** An array of iSCSI Targets in a Disk Pool. */
 export type IscsiTargetListValueList = Array<IscsiTarget>;
@@ -1207,21 +1164,18 @@ export const ResourceSkuInfoCapabilitiesList = /*@__PURE__*/ S.Array(
 
 /** List of availability zones where the SKU is supported. */
 export type ResourceSkuLocationInfoZonesList = Array<string>;
-export const ResourceSkuLocationInfoZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceSkuLocationInfoZonesList>;
+export const ResourceSkuLocationInfoZonesList =
+  DiskPoolCreatePropertiesAvailabilityZonesList as any as S.Schema<ResourceSkuLocationInfoZonesList>;
 
 /** The set of zones that the SKU is available in with the specified capabilities. */
 export type ResourceSkuZoneDetailsNameList = Array<string>;
-export const ResourceSkuZoneDetailsNameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceSkuZoneDetailsNameList>;
+export const ResourceSkuZoneDetailsNameList =
+  DiskPoolCreatePropertiesAvailabilityZonesList as any as S.Schema<ResourceSkuZoneDetailsNameList>;
 
 /** A list of capabilities that are available for the SKU in the specified list of zones. */
 export type ResourceSkuZoneDetailsCapabilitiesList = Array<ResourceSkuCapability>;
-export const ResourceSkuZoneDetailsCapabilitiesList = /*@__PURE__*/ S.Array(
-  ResourceSkuCapability,
-) as any as S.Schema<ResourceSkuZoneDetailsCapabilitiesList>;
+export const ResourceSkuZoneDetailsCapabilitiesList =
+  ResourceSkuInfoCapabilitiesList as any as S.Schema<ResourceSkuZoneDetailsCapabilitiesList>;
 
 /** Describes The zonal capabilities of a SKU. */
 export interface ResourceSkuZoneDetails {
@@ -1266,21 +1220,18 @@ export const ResourceSkuRestrictionsType = S.String;
 
 /** The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
 export type ResourceSkuRestrictionsValuesList = Array<string>;
-export const ResourceSkuRestrictionsValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceSkuRestrictionsValuesList>;
+export const ResourceSkuRestrictionsValuesList =
+  DiskPoolCreatePropertiesAvailabilityZonesList as any as S.Schema<ResourceSkuRestrictionsValuesList>;
 
 /** Locations where the SKU is restricted */
 export type ResourceSkuRestrictionInfoLocationsList = Array<string>;
-export const ResourceSkuRestrictionInfoLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceSkuRestrictionInfoLocationsList>;
+export const ResourceSkuRestrictionInfoLocationsList =
+  DiskPoolCreatePropertiesAvailabilityZonesList as any as S.Schema<ResourceSkuRestrictionInfoLocationsList>;
 
 /** List of availability zones where the SKU is restricted. */
 export type ResourceSkuRestrictionInfoZonesList = Array<string>;
-export const ResourceSkuRestrictionInfoZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceSkuRestrictionInfoZonesList>;
+export const ResourceSkuRestrictionInfoZonesList =
+  DiskPoolCreatePropertiesAvailabilityZonesList as any as S.Schema<ResourceSkuRestrictionInfoZonesList>;
 
 /** Describes an available Compute SKU Restriction Information. */
 export interface ResourceSkuRestrictionInfo {
@@ -1401,15 +1352,13 @@ export const StartDiskPoolRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartDiskPoolRequest" }) as any as S.Schema<StartDiskPoolRequest>;
 
 export interface StartDiskPoolResponse {}
-export const StartDiskPoolResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartDiskPoolResponse",
-}) as any as S.Schema<StartDiskPoolResponse>;
+export const StartDiskPoolResponse =
+  DeleteDiskPoolResponse as any as S.Schema<StartDiskPoolResponse>;
 
 /** List of Azure Managed Disks to attach to a Disk Pool. */
 export type DiskPoolUpdatePropertiesDisksList = Array<Disk>;
-export const DiskPoolUpdatePropertiesDisksList = /*@__PURE__*/ S.Array(
-  Disk,
-) as any as S.Schema<DiskPoolUpdatePropertiesDisksList>;
+export const DiskPoolUpdatePropertiesDisksList =
+  DiskPoolCreatePropertiesDisksList as any as S.Schema<DiskPoolUpdatePropertiesDisksList>;
 
 /** Properties for Disk Pool update request. */
 export interface DiskPoolUpdateProperties {
@@ -1424,10 +1373,8 @@ export const DiskPoolUpdateProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateDiskPoolRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateDiskPoolRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDiskPoolRequestTagsMap>;
+export const UpdateDiskPoolRequestTagsMap =
+  DiskPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDiskPoolRequestTagsMap>;
 
 export interface UpdateDiskPoolRequest {
   /** The ID of the target subscription. */
@@ -1469,10 +1416,8 @@ export const UpdateDiskPoolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateDiskPoolResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateDiskPoolResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDiskPoolResponseTagsMap>;
+export const UpdateDiskPoolResponseTagsMap =
+  DiskPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDiskPoolResponseTagsMap>;
 
 export interface UpdateDiskPoolResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1496,32 +1441,18 @@ export interface UpdateDiskPoolResponse {
   /** Resource metadata required by ARM RPC */
   systemData?: SystemMetadata;
 }
-export const UpdateDiskPoolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(UpdateDiskPoolResponseTagsMap),
-    location: S.String,
-    sku: S.optional(Sku),
-    properties: DiskPoolProperties,
-    managedBy: S.optional(S.String),
-    managedByExtended: S.optional(ManagedByExtended),
-    systemData: S.optional(SystemMetadata),
-  }),
-).annotate({ identifier: "UpdateDiskPoolResponse" }) as any as S.Schema<UpdateDiskPoolResponse>;
+export const UpdateDiskPoolResponse =
+  GetDiskPoolResponse as any as S.Schema<UpdateDiskPoolResponse>;
 
 /** Access Control List (ACL) for an iSCSI Target; defines LUN masking policy */
 export type IscsiTargetUpdatePropertiesInputStaticAclsList = Array<Acl>;
-export const IscsiTargetUpdatePropertiesInputStaticAclsList = /*@__PURE__*/ S.Array(
-  Acl,
-) as any as S.Schema<IscsiTargetUpdatePropertiesInputStaticAclsList>;
+export const IscsiTargetUpdatePropertiesInputStaticAclsList =
+  IscsiTargetPropertiesStaticAclsList as any as S.Schema<IscsiTargetUpdatePropertiesInputStaticAclsList>;
 
 /** List of LUNs to be exposed through iSCSI Target. */
 export type IscsiTargetUpdatePropertiesInputLunsList = Array<IscsiLunInput>;
-export const IscsiTargetUpdatePropertiesInputLunsList = /*@__PURE__*/ S.Array(
-  IscsiLunInput,
-) as any as S.Schema<IscsiTargetUpdatePropertiesInputLunsList>;
+export const IscsiTargetUpdatePropertiesInputLunsList =
+  IscsiTargetCreatePropertiesInputLunsList as any as S.Schema<IscsiTargetUpdatePropertiesInputLunsList>;
 
 /** Properties for iSCSI Target update request. */
 export interface IscsiTargetUpdatePropertiesInput {
@@ -1590,19 +1521,8 @@ export interface UpdateIscsiTargetResponse {
   /** List of Azure resource ids that manage this resource. */
   managedByExtended?: ManagedByExtended;
 }
-export const UpdateIscsiTargetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: IscsiTargetProperties,
-    systemData: S.optional(SystemMetadata),
-    managedBy: S.optional(S.String),
-    managedByExtended: S.optional(ManagedByExtended),
-  }),
-).annotate({
-  identifier: "UpdateIscsiTargetResponse",
-}) as any as S.Schema<UpdateIscsiTargetResponse>;
+export const UpdateIscsiTargetResponse =
+  IscsiTargetsCreateOrUpdateResponse as any as S.Schema<UpdateIscsiTargetResponse>;
 
 export type DeleteDiskPoolError = AzureOpError;
 /** Delete a Disk pool; attached disks are not affected. This delete operation can take 10 minutes to complete. This is expected service behavior. */

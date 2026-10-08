@@ -226,9 +226,8 @@ export const DisableRegionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DisableRegionRequest" }) as any as S.Schema<DisableRegionRequest>;
 export interface DisableRegionResponse {}
-export const DisableRegionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisableRegionResponse",
-}) as any as S.Schema<DisableRegionResponse>;
+export const DisableRegionResponse =
+  DeleteAlternateContactResponse as any as S.Schema<DisableRegionResponse>;
 export interface EnableRegionRequest {
   AccountId?: string;
   RegionName: string;
@@ -239,9 +238,8 @@ export const EnableRegionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "EnableRegionRequest" }) as any as S.Schema<EnableRegionRequest>;
 export interface EnableRegionResponse {}
-export const EnableRegionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "EnableRegionResponse",
-}) as any as S.Schema<EnableRegionResponse>;
+export const EnableRegionResponse =
+  DeleteAlternateContactResponse as any as S.Schema<EnableRegionResponse>;
 export interface GetAccountInformationRequest {
   AccountId?: string;
 }
@@ -506,9 +504,8 @@ export const PutAccountNameRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutAccountNameRequest" }) as any as S.Schema<PutAccountNameRequest>;
 export interface PutAccountNameResponse {}
-export const PutAccountNameResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutAccountNameResponse",
-}) as any as S.Schema<PutAccountNameResponse>;
+export const PutAccountNameResponse =
+  DeleteAlternateContactResponse as any as S.Schema<PutAccountNameResponse>;
 export interface PutAlternateContactRequest {
   Name: string | redacted.Redacted<string>;
   Title: string | redacted.Redacted<string>;
@@ -532,9 +529,8 @@ export const PutAlternateContactRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutAlternateContactRequest",
 }) as any as S.Schema<PutAlternateContactRequest>;
 export interface PutAlternateContactResponse {}
-export const PutAlternateContactResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutAlternateContactResponse",
-}) as any as S.Schema<PutAlternateContactResponse>;
+export const PutAlternateContactResponse =
+  DeleteAlternateContactResponse as any as S.Schema<PutAlternateContactResponse>;
 export interface PutContactInformationRequest {
   ContactInformation: ContactInformation;
   AccountId?: string;
@@ -547,9 +543,8 @@ export const PutContactInformationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutContactInformationRequest",
 }) as any as S.Schema<PutContactInformationRequest>;
 export interface PutContactInformationResponse {}
-export const PutContactInformationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutContactInformationResponse",
-}) as any as S.Schema<PutContactInformationResponse>;
+export const PutContactInformationResponse =
+  DeleteAlternateContactResponse as any as S.Schema<PutContactInformationResponse>;
 export interface SendPhoneNumberVerificationRequest {
   AccountId?: string;
 }
@@ -570,11 +565,8 @@ export const SendPhoneNumberVerificationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SendPhoneNumberVerificationResponse {
   Status?: string;
 }
-export const SendPhoneNumberVerificationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Status: S.optional(S.String) }),
-).annotate({
-  identifier: "SendPhoneNumberVerificationResponse",
-}) as any as S.Schema<SendPhoneNumberVerificationResponse>;
+export const SendPhoneNumberVerificationResponse =
+  AcceptPrimaryEmailUpdateResponse as any as S.Schema<SendPhoneNumberVerificationResponse>;
 export interface StartPrimaryEmailUpdateRequest {
   AccountId: string;
   PrimaryEmail: string | redacted.Redacted<string>;
@@ -596,11 +588,8 @@ export const StartPrimaryEmailUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartPrimaryEmailUpdateResponse {
   Status?: string;
 }
-export const StartPrimaryEmailUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Status: S.optional(S.String) }),
-).annotate({
-  identifier: "StartPrimaryEmailUpdateResponse",
-}) as any as S.Schema<StartPrimaryEmailUpdateResponse>;
+export const StartPrimaryEmailUpdateResponse =
+  AcceptPrimaryEmailUpdateResponse as any as S.Schema<StartPrimaryEmailUpdateResponse>;
 export interface VerifyPhoneNumberRequest {
   AccountId?: string;
   Otp: string | redacted.Redacted<string>;
@@ -613,11 +602,8 @@ export const VerifyPhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
 export interface VerifyPhoneNumberResponse {
   Status?: string;
 }
-export const VerifyPhoneNumberResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Status: S.optional(S.String) }),
-).annotate({
-  identifier: "VerifyPhoneNumberResponse",
-}) as any as S.Schema<VerifyPhoneNumberResponse>;
+export const VerifyPhoneNumberResponse =
+  AcceptPrimaryEmailUpdateResponse as any as S.Schema<VerifyPhoneNumberResponse>;
 export type SensitiveString = string | redacted.Redacted<string>;
 export type ValidationExceptionReason = string;
 export interface ValidationExceptionField {

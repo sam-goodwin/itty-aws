@@ -218,9 +218,8 @@ export const ApprovalPropertiesMandatoryApproversList = /*@__PURE__*/ S.Array(
 
 /** Array of Entra IDs of approvers who have approved the approval request */
 export type ApprovalPropertiesApprovedByEntraIdsList = Array<string>;
-export const ApprovalPropertiesApprovedByEntraIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApprovalPropertiesApprovedByEntraIdsList>;
+export const ApprovalPropertiesApprovedByEntraIdsList =
+  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<ApprovalPropertiesApprovedByEntraIdsList>;
 
 /** Approval Base model. */
 export interface ApprovalProperties {
@@ -395,9 +394,8 @@ export const CommunityCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 
 /** DNS Servers. */
 export type CommunityPropertiesInputDnsServersList = Array<string>;
-export const CommunityPropertiesInputDnsServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CommunityPropertiesInputDnsServersList>;
+export const CommunityPropertiesInputDnsServersList =
+  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<CommunityPropertiesInputDnsServersList>;
 
 /** Identifier for governed services. */
 export type ServiceIdentifier =
@@ -517,9 +515,8 @@ export const ApprovalPolicy = S.String;
 
 /** List of mandatory approvers for this approval setting. */
 export type ApprovalSettingConfigurationMandatoryApproversList = Array<MandatoryApprover>;
-export const ApprovalSettingConfigurationMandatoryApproversList = /*@__PURE__*/ S.Array(
-  MandatoryApprover,
-) as any as S.Schema<ApprovalSettingConfigurationMandatoryApproversList>;
+export const ApprovalSettingConfigurationMandatoryApproversList =
+  ApprovalPropertiesMandatoryApproversList as any as S.Schema<ApprovalSettingConfigurationMandatoryApproversList>;
 
 /** Granular approval setting configuration with policy, minimum approvers, and mandatory approvers. */
 export interface ApprovalSettingConfiguration {
@@ -580,9 +577,8 @@ export const MaintenanceModeConfigurationModelMode = S.String;
 
 /** The user, group or service principal object affected by Maintenance Mode */
 export type MaintenanceModeConfigurationModelPrincipalsList = Array<Principal>;
-export const MaintenanceModeConfigurationModelPrincipalsList = /*@__PURE__*/ S.Array(
-  Principal,
-) as any as S.Schema<MaintenanceModeConfigurationModelPrincipalsList>;
+export const MaintenanceModeConfigurationModelPrincipalsList =
+  RoleAssignmentItemPrincipalsList as any as S.Schema<MaintenanceModeConfigurationModelPrincipalsList>;
 
 /** Justification for entering or exiting Maintenance Mode */
 export type MaintenanceModeConfigurationModelJustification = "Networking" | "Governance" | "Off";
@@ -653,9 +649,8 @@ export const MonitoringSettingsModel = /*@__PURE__*/ S.suspend(() =>
 
 /** Address spaces list */
 export type CommunityPropertiesInputAddressSpacesList = Array<string>;
-export const CommunityPropertiesInputAddressSpacesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CommunityPropertiesInputAddressSpacesList>;
+export const CommunityPropertiesInputAddressSpacesList =
+  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<CommunityPropertiesInputAddressSpacesList>;
 
 /** Community Resource Properties */
 export interface CommunityPropertiesInput {
@@ -771,22 +766,18 @@ export const CommunityCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CommunityCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const CommunityCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CommunityCreateOrUpdateResponseTagsMap>;
+export const CommunityCreateOrUpdateResponseTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<CommunityCreateOrUpdateResponseTagsMap>;
 
 /** DNS Servers. */
 export type CommunityPropertiesDnsServersList = Array<string>;
-export const CommunityPropertiesDnsServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CommunityPropertiesDnsServersList>;
+export const CommunityPropertiesDnsServersList =
+  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<CommunityPropertiesDnsServersList>;
 
 /** List of resource ids created by communities. */
 export type CommunityPropertiesResourceCollectionList = Array<string>;
-export const CommunityPropertiesResourceCollectionList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CommunityPropertiesResourceCollectionList>;
+export const CommunityPropertiesResourceCollectionList =
+  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<CommunityPropertiesResourceCollectionList>;
 
 /** Managed-On-Behalf-Of broker resource. This resource is created by the Resource Provider to manage some resources on behalf of the user. */
 export interface MoboBrokerResource {
@@ -836,9 +827,8 @@ export const GovernedServiceItemPolicyAction = S.String;
 
 /** Initiatives associated with this service. */
 export type GovernedServiceItemInitiativesList = Array<string>;
-export const GovernedServiceItemInitiativesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GovernedServiceItemInitiativesList>;
+export const GovernedServiceItemInitiativesList =
+  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<GovernedServiceItemInitiativesList>;
 
 /** GovernedServiceItem Properties */
 export interface GovernedServiceItem {
@@ -878,9 +868,8 @@ export const CommunityPropertiesPolicyOverride = S.String;
 
 /** Community role assignments */
 export type CommunityPropertiesCommunityRoleAssignmentsList = Array<RoleAssignmentItem>;
-export const CommunityPropertiesCommunityRoleAssignmentsList = /*@__PURE__*/ S.Array(
-  RoleAssignmentItem,
-) as any as S.Schema<CommunityPropertiesCommunityRoleAssignmentsList>;
+export const CommunityPropertiesCommunityRoleAssignmentsList =
+  CommunityPropertiesInputCommunityRoleAssignmentsList as any as S.Schema<CommunityPropertiesCommunityRoleAssignmentsList>;
 
 /** SKU of the community's Azure Firewall (Basic, Standard, Premium). Standard is the default */
 export type CommunityPropertiesFirewallSku = "Basic" | "Standard" | "Premium";
@@ -888,10 +877,8 @@ export const CommunityPropertiesFirewallSku = S.String;
 
 /** Resource tags. */
 export type DedicatedHubResourceTagsMap = { [key: string]: string | undefined };
-export const DedicatedHubResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DedicatedHubResourceTagsMap>;
+export const DedicatedHubResourceTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<DedicatedHubResourceTagsMap>;
 
 /** Specifies the designation of the dedicated hub. */
 export type Designation = "Pooled" | "Reserved";
@@ -957,9 +944,8 @@ export const CommunityPropertiesDedicatedHubListList = /*@__PURE__*/ S.Array(
 
 /** Address spaces list */
 export type CommunityPropertiesAddressSpacesList = Array<string>;
-export const CommunityPropertiesAddressSpacesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CommunityPropertiesAddressSpacesList>;
+export const CommunityPropertiesAddressSpacesList =
+  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<CommunityPropertiesAddressSpacesList>;
 
 /** Community Resource Properties */
 export interface CommunityProperties {
@@ -1090,10 +1076,8 @@ export const CommunityCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CommunityEndpointsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const CommunityEndpointsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CommunityEndpointsCreateOrUpdateRequestTagsMap>;
+export const CommunityEndpointsCreateOrUpdateRequestTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<CommunityEndpointsCreateOrUpdateRequestTagsMap>;
 
 /** Destination Type Enum */
 export type DestinationType = "FQDN" | "FQDNTag" | "IPAddress" | "PrivateNetwork" | "ServiceTag";
@@ -1213,22 +1197,18 @@ export const CommunityEndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type CommunityEndpointsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const CommunityEndpointsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CommunityEndpointsCreateOrUpdateResponseTagsMap>;
+export const CommunityEndpointsCreateOrUpdateResponseTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<CommunityEndpointsCreateOrUpdateResponseTagsMap>;
 
 /** Community Endpoint Rule Collection. */
 export type CommunityEndpointPropertiesRuleCollectionList = Array<CommunityEndpointDestinationRule>;
-export const CommunityEndpointPropertiesRuleCollectionList = /*@__PURE__*/ S.Array(
-  CommunityEndpointDestinationRule,
-) as any as S.Schema<CommunityEndpointPropertiesRuleCollectionList>;
+export const CommunityEndpointPropertiesRuleCollectionList =
+  CommunityEndpointPropertiesInputRuleCollectionList as any as S.Schema<CommunityEndpointPropertiesRuleCollectionList>;
 
 /** List of resource ids created by community endpoint. */
 export type CommunityEndpointPropertiesResourceCollectionList = Array<string>;
-export const CommunityEndpointPropertiesResourceCollectionList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CommunityEndpointPropertiesResourceCollectionList>;
+export const CommunityEndpointPropertiesResourceCollectionList =
+  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<CommunityEndpointPropertiesResourceCollectionList>;
 
 /** Community Endpoint Resource properties */
 export interface CommunityEndpointProperties {
@@ -1386,10 +1366,8 @@ export const CommunityEndpointsHandleApprovalDeletionRequest = /*@__PURE__*/ S.s
 
 /** Resource tags. */
 export type DedicatedHubCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const DedicatedHubCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DedicatedHubCreateOrUpdateRequestTagsMap>;
+export const DedicatedHubCreateOrUpdateRequestTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<DedicatedHubCreateOrUpdateRequestTagsMap>;
 
 /** Describes the properties of a Dedicated Hub. */
 export interface DedicatedHubPropertiesInput {
@@ -1443,10 +1421,8 @@ export const DedicatedHubCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DedicatedHubCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const DedicatedHubCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DedicatedHubCreateOrUpdateResponseTagsMap>;
+export const DedicatedHubCreateOrUpdateResponseTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<DedicatedHubCreateOrUpdateResponseTagsMap>;
 
 export interface DedicatedHubCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1499,9 +1475,8 @@ export const DeleteApprovalRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteApprovalRequest" }) as any as S.Schema<DeleteApprovalRequest>;
 
 export interface DeleteApprovalResponse {}
-export const DeleteApprovalResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteApprovalResponse",
-}) as any as S.Schema<DeleteApprovalResponse>;
+export const DeleteApprovalResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteApprovalResponse>;
 
 export interface DeleteCommunityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1527,9 +1502,8 @@ export const DeleteCommunityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCommunityRequest" }) as any as S.Schema<DeleteCommunityRequest>;
 
 export interface DeleteCommunityResponse {}
-export const DeleteCommunityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCommunityResponse",
-}) as any as S.Schema<DeleteCommunityResponse>;
+export const DeleteCommunityResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteCommunityResponse>;
 
 export interface DeleteCommunityEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1593,9 +1567,8 @@ export const DeleteDedicatedHubRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDedicatedHubRequest>;
 
 export interface DeleteDedicatedHubResponse {}
-export const DeleteDedicatedHubResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDedicatedHubResponse",
-}) as any as S.Schema<DeleteDedicatedHubResponse>;
+export const DeleteDedicatedHubResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteDedicatedHubResponse>;
 
 export interface DeleteEnclaveConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1623,9 +1596,8 @@ export const DeleteEnclaveConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEnclaveConnectionRequest>;
 
 export interface DeleteEnclaveConnectionResponse {}
-export const DeleteEnclaveConnectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteEnclaveConnectionResponse" },
-) as any as S.Schema<DeleteEnclaveConnectionResponse>;
+export const DeleteEnclaveConnectionResponse =
+  DeleteCommunityEndpointResponse as any as S.Schema<DeleteEnclaveConnectionResponse>;
 
 export interface DeleteEnclaveEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1656,9 +1628,8 @@ export const DeleteEnclaveEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEnclaveEndpointRequest>;
 
 export interface DeleteEnclaveEndpointResponse {}
-export const DeleteEnclaveEndpointResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEnclaveEndpointResponse",
-}) as any as S.Schema<DeleteEnclaveEndpointResponse>;
+export const DeleteEnclaveEndpointResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteEnclaveEndpointResponse>;
 
 export interface DeleteTransitHubRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1687,9 +1658,8 @@ export const DeleteTransitHubRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTransitHubRequest" }) as any as S.Schema<DeleteTransitHubRequest>;
 
 export interface DeleteTransitHubResponse {}
-export const DeleteTransitHubResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTransitHubResponse",
-}) as any as S.Schema<DeleteTransitHubResponse>;
+export const DeleteTransitHubResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteTransitHubResponse>;
 
 export interface DeleteVirtualEnclaveRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1717,9 +1687,8 @@ export const DeleteVirtualEnclaveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVirtualEnclaveRequest>;
 
 export interface DeleteVirtualEnclaveResponse {}
-export const DeleteVirtualEnclaveResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVirtualEnclaveResponse",
-}) as any as S.Schema<DeleteVirtualEnclaveResponse>;
+export const DeleteVirtualEnclaveResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteVirtualEnclaveResponse>;
 
 export interface DeleteWorkloadRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1748,16 +1717,13 @@ export const DeleteWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWorkloadRequest" }) as any as S.Schema<DeleteWorkloadRequest>;
 
 export interface DeleteWorkloadResponse {}
-export const DeleteWorkloadResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkloadResponse",
-}) as any as S.Schema<DeleteWorkloadResponse>;
+export const DeleteWorkloadResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteWorkloadResponse>;
 
 /** Resource tags. */
 export type EnclaveConnectionCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const EnclaveConnectionCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EnclaveConnectionCreateOrUpdateRequestTagsMap>;
+export const EnclaveConnectionCreateOrUpdateRequestTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<EnclaveConnectionCreateOrUpdateRequestTagsMap>;
 
 /** Enclave Connection Resource properties */
 export interface EnclaveConnectionPropertiesInput {
@@ -1817,10 +1783,8 @@ export const EnclaveConnectionCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type EnclaveConnectionCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const EnclaveConnectionCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EnclaveConnectionCreateOrUpdateResponseTagsMap>;
+export const EnclaveConnectionCreateOrUpdateResponseTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<EnclaveConnectionCreateOrUpdateResponseTagsMap>;
 
 /** Specifies the state of the enclave connection. */
 export type EnclaveConnectionState =
@@ -1835,9 +1799,8 @@ export const EnclaveConnectionState = S.String;
 
 /** List of resource ids modified by enclave Connections. */
 export type EnclaveConnectionPropertiesResourceCollectionList = Array<string>;
-export const EnclaveConnectionPropertiesResourceCollectionList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnclaveConnectionPropertiesResourceCollectionList>;
+export const EnclaveConnectionPropertiesResourceCollectionList =
+  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<EnclaveConnectionPropertiesResourceCollectionList>;
 
 /** Enclave Connection Resource properties */
 export interface EnclaveConnectionProperties {
@@ -1990,10 +1953,8 @@ export const EnclaveConnectionHandleApprovalDeletionRequest = /*@__PURE__*/ S.su
 
 /** Resource tags. */
 export type EnclaveEndpointsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const EnclaveEndpointsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EnclaveEndpointsCreateOrUpdateRequestTagsMap>;
+export const EnclaveEndpointsCreateOrUpdateRequestTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<EnclaveEndpointsCreateOrUpdateRequestTagsMap>;
 
 /** Enclave Endpoint Protocol Enum */
 export type EnclaveEndpointProtocol = "ANY" | "TCP" | "UDP" | "ICMP" | "ESP" | "AH";
@@ -2091,22 +2052,18 @@ export const EnclaveEndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type EnclaveEndpointsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const EnclaveEndpointsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EnclaveEndpointsCreateOrUpdateResponseTagsMap>;
+export const EnclaveEndpointsCreateOrUpdateResponseTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<EnclaveEndpointsCreateOrUpdateResponseTagsMap>;
 
 /** Enclave Endpoint Rule Collection. */
 export type EnclaveEndpointPropertiesRuleCollectionList = Array<EnclaveEndpointDestinationRule>;
-export const EnclaveEndpointPropertiesRuleCollectionList = /*@__PURE__*/ S.Array(
-  EnclaveEndpointDestinationRule,
-) as any as S.Schema<EnclaveEndpointPropertiesRuleCollectionList>;
+export const EnclaveEndpointPropertiesRuleCollectionList =
+  EnclaveEndpointPropertiesInputRuleCollectionList as any as S.Schema<EnclaveEndpointPropertiesRuleCollectionList>;
 
 /** List of resource ids created by community endpoint. */
 export type EnclaveEndpointPropertiesResourceCollectionList = Array<string>;
-export const EnclaveEndpointPropertiesResourceCollectionList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnclaveEndpointPropertiesResourceCollectionList>;
+export const EnclaveEndpointPropertiesResourceCollectionList =
+  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<EnclaveEndpointPropertiesResourceCollectionList>;
 
 /** Enclave Endpoint Resource properties */
 export interface EnclaveEndpointProperties {
@@ -2318,10 +2275,8 @@ export const GetCommunityRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetCommunityResponseTagsMap = { [key: string]: string | undefined };
-export const GetCommunityResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetCommunityResponseTagsMap>;
+export const GetCommunityResponseTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<GetCommunityResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetCommunityResponseIdentity = CommunityCreateOrUpdateResponseIdentity;
@@ -2388,10 +2343,8 @@ export const GetCommunityEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetCommunityEndpointResponseTagsMap = { [key: string]: string | undefined };
-export const GetCommunityEndpointResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetCommunityEndpointResponseTagsMap>;
+export const GetCommunityEndpointResponseTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<GetCommunityEndpointResponseTagsMap>;
 
 export interface GetCommunityEndpointResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2409,19 +2362,8 @@ export interface GetCommunityEndpointResponse {
   /** The resource-specific properties for this resource. */
   properties?: CommunityEndpointProperties;
 }
-export const GetCommunityEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetCommunityEndpointResponseTagsMap),
-    location: S.String,
-    properties: S.optional(CommunityEndpointProperties),
-  }),
-).annotate({
-  identifier: "GetCommunityEndpointResponse",
-}) as any as S.Schema<GetCommunityEndpointResponse>;
+export const GetCommunityEndpointResponse =
+  CommunityEndpointsCreateOrUpdateResponse as any as S.Schema<GetCommunityEndpointResponse>;
 
 export interface GetDedicatedHubRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2451,10 +2393,8 @@ export const GetDedicatedHubRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetDedicatedHubResponseTagsMap = { [key: string]: string | undefined };
-export const GetDedicatedHubResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDedicatedHubResponseTagsMap>;
+export const GetDedicatedHubResponseTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<GetDedicatedHubResponseTagsMap>;
 
 export interface GetDedicatedHubResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2472,17 +2412,8 @@ export interface GetDedicatedHubResponse {
   /** The resource-specific properties for this resource. */
   properties?: DedicatedHubProperties;
 }
-export const GetDedicatedHubResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetDedicatedHubResponseTagsMap),
-    location: S.String,
-    properties: S.optional(DedicatedHubProperties),
-  }),
-).annotate({ identifier: "GetDedicatedHubResponse" }) as any as S.Schema<GetDedicatedHubResponse>;
+export const GetDedicatedHubResponse =
+  DedicatedHubResource as any as S.Schema<GetDedicatedHubResponse>;
 
 export interface GetEnclaveConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2511,10 +2442,8 @@ export const GetEnclaveConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetEnclaveConnectionResponseTagsMap = { [key: string]: string | undefined };
-export const GetEnclaveConnectionResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetEnclaveConnectionResponseTagsMap>;
+export const GetEnclaveConnectionResponseTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<GetEnclaveConnectionResponseTagsMap>;
 
 export interface GetEnclaveConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2532,19 +2461,8 @@ export interface GetEnclaveConnectionResponse {
   /** The resource-specific properties for this resource. */
   properties?: EnclaveConnectionProperties;
 }
-export const GetEnclaveConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetEnclaveConnectionResponseTagsMap),
-    location: S.String,
-    properties: S.optional(EnclaveConnectionProperties),
-  }),
-).annotate({
-  identifier: "GetEnclaveConnectionResponse",
-}) as any as S.Schema<GetEnclaveConnectionResponse>;
+export const GetEnclaveConnectionResponse =
+  EnclaveConnectionCreateOrUpdateResponse as any as S.Schema<GetEnclaveConnectionResponse>;
 
 export interface GetEnclaveEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2576,10 +2494,8 @@ export const GetEnclaveEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetEnclaveEndpointResponseTagsMap = { [key: string]: string | undefined };
-export const GetEnclaveEndpointResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetEnclaveEndpointResponseTagsMap>;
+export const GetEnclaveEndpointResponseTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<GetEnclaveEndpointResponseTagsMap>;
 
 export interface GetEnclaveEndpointResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2597,19 +2513,8 @@ export interface GetEnclaveEndpointResponse {
   /** The resource-specific properties for this resource. */
   properties?: EnclaveEndpointProperties;
 }
-export const GetEnclaveEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetEnclaveEndpointResponseTagsMap),
-    location: S.String,
-    properties: S.optional(EnclaveEndpointProperties),
-  }),
-).annotate({
-  identifier: "GetEnclaveEndpointResponse",
-}) as any as S.Schema<GetEnclaveEndpointResponse>;
+export const GetEnclaveEndpointResponse =
+  EnclaveEndpointsCreateOrUpdateResponse as any as S.Schema<GetEnclaveEndpointResponse>;
 
 export interface GetTransitHubRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2639,10 +2544,8 @@ export const GetTransitHubRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetTransitHubResponseTagsMap = { [key: string]: string | undefined };
-export const GetTransitHubResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetTransitHubResponseTagsMap>;
+export const GetTransitHubResponseTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<GetTransitHubResponseTagsMap>;
 
 /** Specifies the state of the transitHub. */
 export type TransitHubState =
@@ -2687,9 +2590,8 @@ export const TransitOption = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resource ids modified by transitHubs. */
 export type TransitHubPropertiesResourceCollectionList = Array<string>;
-export const TransitHubPropertiesResourceCollectionList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TransitHubPropertiesResourceCollectionList>;
+export const TransitHubPropertiesResourceCollectionList =
+  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<TransitHubPropertiesResourceCollectionList>;
 
 /** Specifies the security provider for the transit hub. */
 export type SecurityProvider = "None" | "AzureFirewall";
@@ -2771,10 +2673,8 @@ export const GetVirtualEnclaveRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetVirtualEnclaveResponseTagsMap = { [key: string]: string | undefined };
-export const GetVirtualEnclaveResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetVirtualEnclaveResponseTagsMap>;
+export const GetVirtualEnclaveResponseTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<GetVirtualEnclaveResponseTagsMap>;
 
 /** Subnet Configuration */
 export interface SubnetConfiguration {
@@ -2851,32 +2751,22 @@ export const EnclaveAddressSpacesModel = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resource ids created by Virtual Enclave. */
 export type VirtualEnclavePropertiesResourceCollectionList = Array<string>;
-export const VirtualEnclavePropertiesResourceCollectionList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VirtualEnclavePropertiesResourceCollectionList>;
+export const VirtualEnclavePropertiesResourceCollectionList =
+  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<VirtualEnclavePropertiesResourceCollectionList>;
 
 /** Managed-On-Behalf-Of broker resources */
 export type VirtualEnclavePropertiesManagedOnBehalfOfConfigurationMoboBrokerResourcesList =
   Array<MoboBrokerResource>;
 export const VirtualEnclavePropertiesManagedOnBehalfOfConfigurationMoboBrokerResourcesList =
-  /*@__PURE__*/ S.Array(
-    MoboBrokerResource,
-  ) as any as S.Schema<VirtualEnclavePropertiesManagedOnBehalfOfConfigurationMoboBrokerResourcesList>;
+  CommunityPropertiesManagedOnBehalfOfConfigurationMoboBrokerResourcesList as any as S.Schema<VirtualEnclavePropertiesManagedOnBehalfOfConfigurationMoboBrokerResourcesList>;
 
 /** Managed-On-Behalf-Of configuration properties. This configuration exists for the resources where a resource provider manages those resources on behalf of the resource owner. */
 export interface VirtualEnclavePropertiesManagedOnBehalfOfConfiguration {
   /** Managed-On-Behalf-Of broker resources */
   moboBrokerResources?: VirtualEnclavePropertiesManagedOnBehalfOfConfigurationMoboBrokerResourcesList;
 }
-export const VirtualEnclavePropertiesManagedOnBehalfOfConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    moboBrokerResources: S.optional(
-      VirtualEnclavePropertiesManagedOnBehalfOfConfigurationMoboBrokerResourcesList,
-    ),
-  }),
-).annotate({
-  identifier: "VirtualEnclavePropertiesManagedOnBehalfOfConfiguration",
-}) as any as S.Schema<VirtualEnclavePropertiesManagedOnBehalfOfConfiguration>;
+export const VirtualEnclavePropertiesManagedOnBehalfOfConfiguration =
+  CommunityPropertiesManagedOnBehalfOfConfiguration as any as S.Schema<VirtualEnclavePropertiesManagedOnBehalfOfConfiguration>;
 
 /** Specifies whether resources in the workload resource group(s) are visible through standard RBAC */
 export type VirtualEnclavePropertiesWorkloadResourceVisibility = "Enabled" | "Disabled";
@@ -2888,21 +2778,18 @@ export const VirtualEnclavePropertiesRbacInheritance = S.String;
 
 /** Enclave role assignments */
 export type VirtualEnclavePropertiesEnclaveRoleAssignmentsList = Array<RoleAssignmentItem>;
-export const VirtualEnclavePropertiesEnclaveRoleAssignmentsList = /*@__PURE__*/ S.Array(
-  RoleAssignmentItem,
-) as any as S.Schema<VirtualEnclavePropertiesEnclaveRoleAssignmentsList>;
+export const VirtualEnclavePropertiesEnclaveRoleAssignmentsList =
+  CommunityPropertiesInputCommunityRoleAssignmentsList as any as S.Schema<VirtualEnclavePropertiesEnclaveRoleAssignmentsList>;
 
 /** Workload role assignments */
 export type VirtualEnclavePropertiesWorkloadRoleAssignmentsList = Array<RoleAssignmentItem>;
-export const VirtualEnclavePropertiesWorkloadRoleAssignmentsList = /*@__PURE__*/ S.Array(
-  RoleAssignmentItem,
-) as any as S.Schema<VirtualEnclavePropertiesWorkloadRoleAssignmentsList>;
+export const VirtualEnclavePropertiesWorkloadRoleAssignmentsList =
+  CommunityPropertiesInputCommunityRoleAssignmentsList as any as S.Schema<VirtualEnclavePropertiesWorkloadRoleAssignmentsList>;
 
 /** Enclave specific policies */
 export type VirtualEnclavePropertiesGovernedServiceListList = Array<GovernedServiceItem>;
-export const VirtualEnclavePropertiesGovernedServiceListList = /*@__PURE__*/ S.Array(
-  GovernedServiceItem,
-) as any as S.Schema<VirtualEnclavePropertiesGovernedServiceListList>;
+export const VirtualEnclavePropertiesGovernedServiceListList =
+  CommunityPropertiesGovernedServiceListList as any as S.Schema<VirtualEnclavePropertiesGovernedServiceListList>;
 
 /** Log Analytics Resource Ids. */
 export type EnclaveDefaultSettingsModelLogAnalyticsResourceIdCollectionList = Array<string>;
@@ -3093,39 +2980,27 @@ export const GetWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetWorkloadResponseTagsMap = { [key: string]: string | undefined };
-export const GetWorkloadResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetWorkloadResponseTagsMap>;
+export const GetWorkloadResponseTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<GetWorkloadResponseTagsMap>;
 
 /** List of resource group ids. */
 export type WorkloadPropertiesResourceGroupCollectionList = Array<string>;
-export const WorkloadPropertiesResourceGroupCollectionList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WorkloadPropertiesResourceGroupCollectionList>;
+export const WorkloadPropertiesResourceGroupCollectionList =
+  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<WorkloadPropertiesResourceGroupCollectionList>;
 
 /** Managed-On-Behalf-Of broker resources */
 export type WorkloadPropertiesManagedOnBehalfOfConfigurationMoboBrokerResourcesList =
   Array<MoboBrokerResource>;
 export const WorkloadPropertiesManagedOnBehalfOfConfigurationMoboBrokerResourcesList =
-  /*@__PURE__*/ S.Array(
-    MoboBrokerResource,
-  ) as any as S.Schema<WorkloadPropertiesManagedOnBehalfOfConfigurationMoboBrokerResourcesList>;
+  CommunityPropertiesManagedOnBehalfOfConfigurationMoboBrokerResourcesList as any as S.Schema<WorkloadPropertiesManagedOnBehalfOfConfigurationMoboBrokerResourcesList>;
 
 /** Managed-On-Behalf-Of configuration properties. This configuration exists for the resources where a resource provider manages those resources on behalf of the resource owner. */
 export interface WorkloadPropertiesManagedOnBehalfOfConfiguration {
   /** Managed-On-Behalf-Of broker resources */
   moboBrokerResources?: WorkloadPropertiesManagedOnBehalfOfConfigurationMoboBrokerResourcesList;
 }
-export const WorkloadPropertiesManagedOnBehalfOfConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    moboBrokerResources: S.optional(
-      WorkloadPropertiesManagedOnBehalfOfConfigurationMoboBrokerResourcesList,
-    ),
-  }),
-).annotate({
-  identifier: "WorkloadPropertiesManagedOnBehalfOfConfiguration",
-}) as any as S.Schema<WorkloadPropertiesManagedOnBehalfOfConfiguration>;
+export const WorkloadPropertiesManagedOnBehalfOfConfiguration =
+  CommunityPropertiesManagedOnBehalfOfConfiguration as any as S.Schema<WorkloadPropertiesManagedOnBehalfOfConfiguration>;
 
 /** Workload Resource properties */
 export interface WorkloadProperties {
@@ -3204,15 +3079,7 @@ export interface ApprovalResource {
   /** The resource-specific properties for this resource. */
   properties?: ApprovalProperties;
 }
-export const ApprovalResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ApprovalProperties),
-  }),
-).annotate({ identifier: "ApprovalResource" }) as any as S.Schema<ApprovalResource>;
+export const ApprovalResource = GetApprovalResponse as any as S.Schema<ApprovalResource>;
 
 /** The ApprovalResource items on this page */
 export type ApprovalResourceListResultValueList = Array<ApprovalResource>;
@@ -3260,10 +3127,8 @@ export const ListCommunityByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CommunityResourceTagsMap = { [key: string]: string | undefined };
-export const CommunityResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CommunityResourceTagsMap>;
+export const CommunityResourceTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<CommunityResourceTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type CommunityResourceIdentity = CommunityCreateOrUpdateResponseIdentity;
@@ -3288,18 +3153,7 @@ export interface CommunityResource {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CommunityCreateOrUpdateResponseIdentity;
 }
-export const CommunityResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(CommunityResourceTagsMap),
-    location: S.String,
-    properties: S.optional(CommunityProperties),
-    identity: S.optional(CommunityCreateOrUpdateResponseIdentity),
-  }),
-).annotate({ identifier: "CommunityResource" }) as any as S.Schema<CommunityResource>;
+export const CommunityResource = GetCommunityResponse as any as S.Schema<CommunityResource>;
 
 /** The CommunityResource items on this page */
 export type CommunityResourceListResultValueList = Array<CommunityResource>;
@@ -3369,10 +3223,8 @@ export const ListCommunityEndpointByCommunityResourceRequest = /*@__PURE__*/ S.s
 
 /** Resource tags. */
 export type CommunityEndpointResourceTagsMap = { [key: string]: string | undefined };
-export const CommunityEndpointResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CommunityEndpointResourceTagsMap>;
+export const CommunityEndpointResourceTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<CommunityEndpointResourceTagsMap>;
 
 /** CommunityEndpoint Model Resource */
 export interface CommunityEndpointResource {
@@ -3391,19 +3243,8 @@ export interface CommunityEndpointResource {
   /** The resource-specific properties for this resource. */
   properties?: CommunityEndpointProperties;
 }
-export const CommunityEndpointResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(CommunityEndpointResourceTagsMap),
-    location: S.String,
-    properties: S.optional(CommunityEndpointProperties),
-  }),
-).annotate({
-  identifier: "CommunityEndpointResource",
-}) as any as S.Schema<CommunityEndpointResource>;
+export const CommunityEndpointResource =
+  CommunityEndpointsCreateOrUpdateResponse as any as S.Schema<CommunityEndpointResource>;
 
 /** The CommunityEndpointResource items on this page */
 export type CommunityEndpointResourceListResultValueList = Array<CommunityEndpointResource>;
@@ -3476,9 +3317,8 @@ export const ListDedicatedHubByCommunityResourceRequest = /*@__PURE__*/ S.suspen
 
 /** The DedicatedHubResource items on this page */
 export type DedicatedHubResourceListResultValueList = Array<DedicatedHubResource>;
-export const DedicatedHubResourceListResultValueList = /*@__PURE__*/ S.Array(
-  DedicatedHubResource,
-) as any as S.Schema<DedicatedHubResourceListResultValueList>;
+export const DedicatedHubResourceListResultValueList =
+  CommunityPropertiesDedicatedHubListList as any as S.Schema<DedicatedHubResourceListResultValueList>;
 
 /** The response of a DedicatedHubResource list operation. */
 export interface DedicatedHubResourceListResult {
@@ -3542,10 +3382,8 @@ export const ListEnclaveConnectionByResourceGroupRequest = /*@__PURE__*/ S.suspe
 
 /** Resource tags. */
 export type EnclaveConnectionResourceTagsMap = { [key: string]: string | undefined };
-export const EnclaveConnectionResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EnclaveConnectionResourceTagsMap>;
+export const EnclaveConnectionResourceTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<EnclaveConnectionResourceTagsMap>;
 
 /** EnclaveConnection Model Resource */
 export interface EnclaveConnectionResource {
@@ -3564,19 +3402,8 @@ export interface EnclaveConnectionResource {
   /** The resource-specific properties for this resource. */
   properties?: EnclaveConnectionProperties;
 }
-export const EnclaveConnectionResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(EnclaveConnectionResourceTagsMap),
-    location: S.String,
-    properties: S.optional(EnclaveConnectionProperties),
-  }),
-).annotate({
-  identifier: "EnclaveConnectionResource",
-}) as any as S.Schema<EnclaveConnectionResource>;
+export const EnclaveConnectionResource =
+  EnclaveConnectionCreateOrUpdateResponse as any as S.Schema<EnclaveConnectionResource>;
 
 /** The EnclaveConnectionResource items on this page */
 export type EnclaveConnectionResourceListResultValueList = Array<EnclaveConnectionResource>;
@@ -3646,10 +3473,8 @@ export const ListEnclaveEndpointByEnclaveResourceRequest = /*@__PURE__*/ S.suspe
 
 /** Resource tags. */
 export type EnclaveEndpointResourceTagsMap = { [key: string]: string | undefined };
-export const EnclaveEndpointResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EnclaveEndpointResourceTagsMap>;
+export const EnclaveEndpointResourceTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<EnclaveEndpointResourceTagsMap>;
 
 /** EnclaveEndpoint Model Resource */
 export interface EnclaveEndpointResource {
@@ -3833,10 +3658,8 @@ export const ListTransitHubByCommunityResourceRequest = /*@__PURE__*/ S.suspend(
 
 /** Resource tags. */
 export type TransitHubResourceTagsMap = { [key: string]: string | undefined };
-export const TransitHubResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TransitHubResourceTagsMap>;
+export const TransitHubResourceTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<TransitHubResourceTagsMap>;
 
 /** TransitHub Model Resource */
 export interface TransitHubResource {
@@ -3855,17 +3678,7 @@ export interface TransitHubResource {
   /** The resource-specific properties for this resource. */
   properties?: TransitHubProperties;
 }
-export const TransitHubResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(TransitHubResourceTagsMap),
-    location: S.String,
-    properties: S.optional(TransitHubProperties),
-  }),
-).annotate({ identifier: "TransitHubResource" }) as any as S.Schema<TransitHubResource>;
+export const TransitHubResource = GetTransitHubResponse as any as S.Schema<TransitHubResource>;
 
 /** The TransitHubResource items on this page */
 export type TransitHubResourceListResultValueList = Array<TransitHubResource>;
@@ -3935,10 +3748,8 @@ export const ListVirtualEnclaveByResourceGroupRequest = /*@__PURE__*/ S.suspend(
 
 /** Resource tags. */
 export type EnclaveResourceTagsMap = { [key: string]: string | undefined };
-export const EnclaveResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EnclaveResourceTagsMap>;
+export const EnclaveResourceTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<EnclaveResourceTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type EnclaveResourceIdentity = CommunityCreateOrUpdateResponseIdentity;
@@ -4044,10 +3855,8 @@ export const ListWorkloadByEnclaveResourceRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type WorkloadResourceTagsMap = { [key: string]: string | undefined };
-export const WorkloadResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WorkloadResourceTagsMap>;
+export const WorkloadResourceTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<WorkloadResourceTagsMap>;
 
 /** Workload Model Resource */
 export interface WorkloadResource {
@@ -4066,17 +3875,7 @@ export interface WorkloadResource {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadProperties;
 }
-export const WorkloadResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(WorkloadResourceTagsMap),
-    location: S.String,
-    properties: S.optional(WorkloadProperties),
-  }),
-).annotate({ identifier: "WorkloadResource" }) as any as S.Schema<WorkloadResource>;
+export const WorkloadResource = GetWorkloadResponse as any as S.Schema<WorkloadResource>;
 
 /** The WorkloadResource items on this page */
 export type WorkloadResourceListResultValueList = Array<WorkloadResource>;
@@ -4153,10 +3952,8 @@ export const NotifyApprovalInitiatorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type TransitHubCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const TransitHubCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TransitHubCreateOrUpdateRequestTagsMap>;
+export const TransitHubCreateOrUpdateRequestTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<TransitHubCreateOrUpdateRequestTagsMap>;
 
 /** Describes the properties of an Transit Hub. */
 export interface TransitHubPropertiesInput {
@@ -4216,10 +4013,8 @@ export const TransitHubCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type TransitHubCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const TransitHubCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TransitHubCreateOrUpdateResponseTagsMap>;
+export const TransitHubCreateOrUpdateResponseTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<TransitHubCreateOrUpdateResponseTagsMap>;
 
 export interface TransitHubCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4253,9 +4048,8 @@ export const TransitHubCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of approvers for the approval request */
 export type ApprovalPatchPropertiesInputApproversList = Array<ApproverInput>;
-export const ApprovalPatchPropertiesInputApproversList = /*@__PURE__*/ S.Array(
-  ApproverInput,
-) as any as S.Schema<ApprovalPatchPropertiesInputApproversList>;
+export const ApprovalPatchPropertiesInputApproversList =
+  ApprovalPropertiesInputApproversList as any as S.Schema<ApprovalPatchPropertiesInputApproversList>;
 
 /** Approval Status. It can be Approved, Rejected, Pending, Deleted or Expired. */
 export type ApprovalStatus = "Approved" | "Rejected" | "Pending" | "Deleted" | "Expired";
@@ -4349,27 +4143,18 @@ export interface UpdateApprovalResponse {
   /** The resource-specific properties for this resource. */
   properties?: ApprovalProperties;
 }
-export const UpdateApprovalResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ApprovalProperties),
-  }),
-).annotate({ identifier: "UpdateApprovalResponse" }) as any as S.Schema<UpdateApprovalResponse>;
+export const UpdateApprovalResponse =
+  GetApprovalResponse as any as S.Schema<UpdateApprovalResponse>;
 
 /** DNS Servers. */
 export type CommunityPatchPropertiesInputDnsServersList = Array<string>;
-export const CommunityPatchPropertiesInputDnsServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CommunityPatchPropertiesInputDnsServersList>;
+export const CommunityPatchPropertiesInputDnsServersList =
+  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<CommunityPatchPropertiesInputDnsServersList>;
 
 /** List of services governed by a community. */
 export type CommunityPatchPropertiesInputGovernedServiceListList = Array<GovernedServiceItemInput>;
-export const CommunityPatchPropertiesInputGovernedServiceListList = /*@__PURE__*/ S.Array(
-  GovernedServiceItemInput,
-) as any as S.Schema<CommunityPatchPropertiesInputGovernedServiceListList>;
+export const CommunityPatchPropertiesInputGovernedServiceListList =
+  CommunityPropertiesInputGovernedServiceListList as any as S.Schema<CommunityPatchPropertiesInputGovernedServiceListList>;
 
 /** Policy override setting for the community. Specifies whether to apply enclave-specific policies or disable policy enforcement. */
 export type CommunityPatchPropertiesInputPolicyOverride = "Enclave" | "None";
@@ -4377,9 +4162,8 @@ export const CommunityPatchPropertiesInputPolicyOverride = S.String;
 
 /** Community role assignments */
 export type CommunityPatchPropertiesInputCommunityRoleAssignmentsList = Array<RoleAssignmentItem>;
-export const CommunityPatchPropertiesInputCommunityRoleAssignmentsList = /*@__PURE__*/ S.Array(
-  RoleAssignmentItem,
-) as any as S.Schema<CommunityPatchPropertiesInputCommunityRoleAssignmentsList>;
+export const CommunityPatchPropertiesInputCommunityRoleAssignmentsList =
+  CommunityPropertiesInputCommunityRoleAssignmentsList as any as S.Schema<CommunityPatchPropertiesInputCommunityRoleAssignmentsList>;
 
 /** Azure Firewall SKU */
 export type FirewallSKU = "Basic" | "Standard" | "Premium";
@@ -4400,9 +4184,8 @@ export const MaintenanceModeConfigurationPatchModelMode = S.String;
 
 /** The user, group or service principal object affected by Maintenance Mode */
 export type MaintenanceModeConfigurationPatchModelPrincipalsList = Array<Principal>;
-export const MaintenanceModeConfigurationPatchModelPrincipalsList = /*@__PURE__*/ S.Array(
-  Principal,
-) as any as S.Schema<MaintenanceModeConfigurationPatchModelPrincipalsList>;
+export const MaintenanceModeConfigurationPatchModelPrincipalsList =
+  RoleAssignmentItemPrincipalsList as any as S.Schema<MaintenanceModeConfigurationPatchModelPrincipalsList>;
 
 /** Justification for entering or exiting Maintenance Mode */
 export type MaintenanceModeConfigurationPatchModelJustification =
@@ -4500,9 +4283,8 @@ export const MonitoringSettingsPatchModel = /*@__PURE__*/ S.suspend(() =>
 
 /** Address spaces list */
 export type CommunityPatchPropertiesInputAddressSpacesList = Array<string>;
-export const CommunityPatchPropertiesInputAddressSpacesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CommunityPatchPropertiesInputAddressSpacesList>;
+export const CommunityPatchPropertiesInputAddressSpacesList =
+  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<CommunityPatchPropertiesInputAddressSpacesList>;
 
 /** Community Resource Properties without default values */
 export interface CommunityPatchPropertiesInput {
@@ -4543,10 +4325,8 @@ export const CommunityPatchPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateCommunityRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateCommunityRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCommunityRequestTagsMap>;
+export const UpdateCommunityRequestTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCommunityRequestTagsMap>;
 
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputType =
@@ -4624,10 +4404,8 @@ export const UpdateCommunityRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateCommunityResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateCommunityResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCommunityResponseTagsMap>;
+export const UpdateCommunityResponseTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCommunityResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateCommunityResponseIdentity = CommunityCreateOrUpdateResponseIdentity;
@@ -4651,25 +4429,14 @@ export interface UpdateCommunityResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CommunityCreateOrUpdateResponseIdentity;
 }
-export const UpdateCommunityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateCommunityResponseTagsMap),
-    location: S.String,
-    properties: S.optional(CommunityProperties),
-    identity: S.optional(CommunityCreateOrUpdateResponseIdentity),
-  }),
-).annotate({ identifier: "UpdateCommunityResponse" }) as any as S.Schema<UpdateCommunityResponse>;
+export const UpdateCommunityResponse =
+  GetCommunityResponse as any as S.Schema<UpdateCommunityResponse>;
 
 /** Community Endpoint Rule Collection. */
 export type CommunityEndpointPatchPropertiesRuleCollectionList =
   Array<CommunityEndpointDestinationRule>;
-export const CommunityEndpointPatchPropertiesRuleCollectionList = /*@__PURE__*/ S.Array(
-  CommunityEndpointDestinationRule,
-) as any as S.Schema<CommunityEndpointPatchPropertiesRuleCollectionList>;
+export const CommunityEndpointPatchPropertiesRuleCollectionList =
+  CommunityEndpointPropertiesInputRuleCollectionList as any as S.Schema<CommunityEndpointPatchPropertiesRuleCollectionList>;
 
 /** Community Endpoint patchable Properties */
 export interface CommunityEndpointPatchProperties {
@@ -4689,10 +4456,8 @@ export const CommunityEndpointPatchProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateCommunityEndpointRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateCommunityEndpointRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCommunityEndpointRequestTagsMap>;
+export const UpdateCommunityEndpointRequestTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCommunityEndpointRequestTagsMap>;
 
 export interface UpdateCommunityEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4730,10 +4495,8 @@ export const UpdateCommunityEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateCommunityEndpointResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateCommunityEndpointResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCommunityEndpointResponseTagsMap>;
+export const UpdateCommunityEndpointResponseTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCommunityEndpointResponseTagsMap>;
 
 export interface UpdateCommunityEndpointResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4751,19 +4514,8 @@ export interface UpdateCommunityEndpointResponse {
   /** The resource-specific properties for this resource. */
   properties?: CommunityEndpointProperties;
 }
-export const UpdateCommunityEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateCommunityEndpointResponseTagsMap),
-    location: S.String,
-    properties: S.optional(CommunityEndpointProperties),
-  }),
-).annotate({
-  identifier: "UpdateCommunityEndpointResponse",
-}) as any as S.Schema<UpdateCommunityEndpointResponse>;
+export const UpdateCommunityEndpointResponse =
+  CommunityEndpointsCreateOrUpdateResponse as any as S.Schema<UpdateCommunityEndpointResponse>;
 
 /** Dedicated Hub patchable Properties */
 export type DedicatedHubPatchProperties = DedicatedHubPropertiesInput;
@@ -4771,10 +4523,8 @@ export const DedicatedHubPatchProperties = DedicatedHubPropertiesInput;
 
 /** Resource tags. */
 export type UpdateDedicatedHubRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateDedicatedHubRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDedicatedHubRequestTagsMap>;
+export const UpdateDedicatedHubRequestTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDedicatedHubRequestTagsMap>;
 
 export interface UpdateDedicatedHubRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4812,10 +4562,8 @@ export const UpdateDedicatedHubRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateDedicatedHubResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateDedicatedHubResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDedicatedHubResponseTagsMap>;
+export const UpdateDedicatedHubResponseTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDedicatedHubResponseTagsMap>;
 
 export interface UpdateDedicatedHubResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4833,19 +4581,8 @@ export interface UpdateDedicatedHubResponse {
   /** The resource-specific properties for this resource. */
   properties?: DedicatedHubProperties;
 }
-export const UpdateDedicatedHubResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateDedicatedHubResponseTagsMap),
-    location: S.String,
-    properties: S.optional(DedicatedHubProperties),
-  }),
-).annotate({
-  identifier: "UpdateDedicatedHubResponse",
-}) as any as S.Schema<UpdateDedicatedHubResponse>;
+export const UpdateDedicatedHubResponse =
+  DedicatedHubCreateOrUpdateResponse as any as S.Schema<UpdateDedicatedHubResponse>;
 
 /** Enclave Connection patchable Properties */
 export interface EnclaveConnectionPatchProperties {
@@ -4862,10 +4599,8 @@ export const EnclaveConnectionPatchProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateEnclaveConnectionRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateEnclaveConnectionRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateEnclaveConnectionRequestTagsMap>;
+export const UpdateEnclaveConnectionRequestTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateEnclaveConnectionRequestTagsMap>;
 
 export interface UpdateEnclaveConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4900,10 +4635,8 @@ export const UpdateEnclaveConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateEnclaveConnectionResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateEnclaveConnectionResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateEnclaveConnectionResponseTagsMap>;
+export const UpdateEnclaveConnectionResponseTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateEnclaveConnectionResponseTagsMap>;
 
 export interface UpdateEnclaveConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4921,26 +4654,14 @@ export interface UpdateEnclaveConnectionResponse {
   /** The resource-specific properties for this resource. */
   properties?: EnclaveConnectionProperties;
 }
-export const UpdateEnclaveConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateEnclaveConnectionResponseTagsMap),
-    location: S.String,
-    properties: S.optional(EnclaveConnectionProperties),
-  }),
-).annotate({
-  identifier: "UpdateEnclaveConnectionResponse",
-}) as any as S.Schema<UpdateEnclaveConnectionResponse>;
+export const UpdateEnclaveConnectionResponse =
+  EnclaveConnectionCreateOrUpdateResponse as any as S.Schema<UpdateEnclaveConnectionResponse>;
 
 /** Enclave Endpoint Rule Collection. */
 export type EnclaveEndpointPatchPropertiesRuleCollectionList =
   Array<EnclaveEndpointDestinationRule>;
-export const EnclaveEndpointPatchPropertiesRuleCollectionList = /*@__PURE__*/ S.Array(
-  EnclaveEndpointDestinationRule,
-) as any as S.Schema<EnclaveEndpointPatchPropertiesRuleCollectionList>;
+export const EnclaveEndpointPatchPropertiesRuleCollectionList =
+  EnclaveEndpointPropertiesInputRuleCollectionList as any as S.Schema<EnclaveEndpointPatchPropertiesRuleCollectionList>;
 
 /** Enclave Endpoint patchable Properties */
 export interface EnclaveEndpointPatchProperties {
@@ -4960,10 +4681,8 @@ export const EnclaveEndpointPatchProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateEnclaveEndpointRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateEnclaveEndpointRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateEnclaveEndpointRequestTagsMap>;
+export const UpdateEnclaveEndpointRequestTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateEnclaveEndpointRequestTagsMap>;
 
 export interface UpdateEnclaveEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5001,10 +4720,8 @@ export const UpdateEnclaveEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateEnclaveEndpointResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateEnclaveEndpointResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateEnclaveEndpointResponseTagsMap>;
+export const UpdateEnclaveEndpointResponseTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateEnclaveEndpointResponseTagsMap>;
 
 export interface UpdateEnclaveEndpointResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5022,19 +4739,8 @@ export interface UpdateEnclaveEndpointResponse {
   /** The resource-specific properties for this resource. */
   properties?: EnclaveEndpointProperties;
 }
-export const UpdateEnclaveEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateEnclaveEndpointResponseTagsMap),
-    location: S.String,
-    properties: S.optional(EnclaveEndpointProperties),
-  }),
-).annotate({
-  identifier: "UpdateEnclaveEndpointResponse",
-}) as any as S.Schema<UpdateEnclaveEndpointResponse>;
+export const UpdateEnclaveEndpointResponse =
+  EnclaveEndpointsCreateOrUpdateResponse as any as S.Schema<UpdateEnclaveEndpointResponse>;
 
 /** Transit Hub patchable Properties */
 export type TransitHubPatchProperties = TransitHubPropertiesInput;
@@ -5042,10 +4748,8 @@ export const TransitHubPatchProperties = TransitHubPropertiesInput;
 
 /** Resource tags. */
 export type UpdateTransitHubRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateTransitHubRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateTransitHubRequestTagsMap>;
+export const UpdateTransitHubRequestTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateTransitHubRequestTagsMap>;
 
 export interface UpdateTransitHubRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5081,10 +4785,8 @@ export const UpdateTransitHubRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateTransitHubResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateTransitHubResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateTransitHubResponseTagsMap>;
+export const UpdateTransitHubResponseTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateTransitHubResponseTagsMap>;
 
 export interface UpdateTransitHubResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5102,17 +4804,8 @@ export interface UpdateTransitHubResponse {
   /** The resource-specific properties for this resource. */
   properties?: TransitHubProperties;
 }
-export const UpdateTransitHubResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateTransitHubResponseTagsMap),
-    location: S.String,
-    properties: S.optional(TransitHubProperties),
-  }),
-).annotate({ identifier: "UpdateTransitHubResponse" }) as any as S.Schema<UpdateTransitHubResponse>;
+export const UpdateTransitHubResponse =
+  GetTransitHubResponse as any as S.Schema<UpdateTransitHubResponse>;
 
 /** Resource Visibility Mode */
 export type ResourceVisibilityMode = "Enabled" | "Disabled";
@@ -5125,23 +4818,20 @@ export const RbacInheritanceMode = S.String;
 /** Enclave role assignments */
 export type VirtualEnclavePatchPropertiesInputEnclaveRoleAssignmentsList =
   Array<RoleAssignmentItem>;
-export const VirtualEnclavePatchPropertiesInputEnclaveRoleAssignmentsList = /*@__PURE__*/ S.Array(
-  RoleAssignmentItem,
-) as any as S.Schema<VirtualEnclavePatchPropertiesInputEnclaveRoleAssignmentsList>;
+export const VirtualEnclavePatchPropertiesInputEnclaveRoleAssignmentsList =
+  CommunityPropertiesInputCommunityRoleAssignmentsList as any as S.Schema<VirtualEnclavePatchPropertiesInputEnclaveRoleAssignmentsList>;
 
 /** Workload role assignments */
 export type VirtualEnclavePatchPropertiesInputWorkloadRoleAssignmentsList =
   Array<RoleAssignmentItem>;
-export const VirtualEnclavePatchPropertiesInputWorkloadRoleAssignmentsList = /*@__PURE__*/ S.Array(
-  RoleAssignmentItem,
-) as any as S.Schema<VirtualEnclavePatchPropertiesInputWorkloadRoleAssignmentsList>;
+export const VirtualEnclavePatchPropertiesInputWorkloadRoleAssignmentsList =
+  CommunityPropertiesInputCommunityRoleAssignmentsList as any as S.Schema<VirtualEnclavePatchPropertiesInputWorkloadRoleAssignmentsList>;
 
 /** Enclave specific policies */
 export type VirtualEnclavePatchPropertiesInputGovernedServiceListList =
   Array<GovernedServiceItemInput>;
-export const VirtualEnclavePatchPropertiesInputGovernedServiceListList = /*@__PURE__*/ S.Array(
-  GovernedServiceItemInput,
-) as any as S.Schema<VirtualEnclavePatchPropertiesInputGovernedServiceListList>;
+export const VirtualEnclavePatchPropertiesInputGovernedServiceListList =
+  CommunityPropertiesInputGovernedServiceListList as any as S.Schema<VirtualEnclavePatchPropertiesInputGovernedServiceListList>;
 
 /** Specifies the destination of where to store diagnostic logs. */
 export type DiagnosticDestination = "CommunityOnly" | "EnclaveOnly" | "Both";
@@ -5216,10 +4906,8 @@ export const VirtualEnclavePatchPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateVirtualEnclaveRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateVirtualEnclaveRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateVirtualEnclaveRequestTagsMap>;
+export const UpdateVirtualEnclaveRequestTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVirtualEnclaveRequestTagsMap>;
 
 export interface UpdateVirtualEnclaveRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5257,10 +4945,8 @@ export const UpdateVirtualEnclaveRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateVirtualEnclaveResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateVirtualEnclaveResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateVirtualEnclaveResponseTagsMap>;
+export const UpdateVirtualEnclaveResponseTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVirtualEnclaveResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateVirtualEnclaveResponseIdentity = CommunityCreateOrUpdateResponseIdentity;
@@ -5284,26 +4970,13 @@ export interface UpdateVirtualEnclaveResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CommunityCreateOrUpdateResponseIdentity;
 }
-export const UpdateVirtualEnclaveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateVirtualEnclaveResponseTagsMap),
-    location: S.String,
-    properties: S.optional(VirtualEnclaveProperties),
-    identity: S.optional(CommunityCreateOrUpdateResponseIdentity),
-  }),
-).annotate({
-  identifier: "UpdateVirtualEnclaveResponse",
-}) as any as S.Schema<UpdateVirtualEnclaveResponse>;
+export const UpdateVirtualEnclaveResponse =
+  GetVirtualEnclaveResponse as any as S.Schema<UpdateVirtualEnclaveResponse>;
 
 /** List of resource group ids. */
 export type WorkloadPatchPropertiesResourceGroupCollectionList = Array<string>;
-export const WorkloadPatchPropertiesResourceGroupCollectionList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WorkloadPatchPropertiesResourceGroupCollectionList>;
+export const WorkloadPatchPropertiesResourceGroupCollectionList =
+  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<WorkloadPatchPropertiesResourceGroupCollectionList>;
 
 /** Workload patchable Properties */
 export interface WorkloadPatchProperties {
@@ -5318,10 +4991,8 @@ export const WorkloadPatchProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateWorkloadRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateWorkloadRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWorkloadRequestTagsMap>;
+export const UpdateWorkloadRequestTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateWorkloadRequestTagsMap>;
 
 export interface UpdateWorkloadRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5357,10 +5028,8 @@ export const UpdateWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateWorkloadResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateWorkloadResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWorkloadResponseTagsMap>;
+export const UpdateWorkloadResponseTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateWorkloadResponseTagsMap>;
 
 export interface UpdateWorkloadResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5378,24 +5047,13 @@ export interface UpdateWorkloadResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadProperties;
 }
-export const UpdateWorkloadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateWorkloadResponseTagsMap),
-    location: S.String,
-    properties: S.optional(WorkloadProperties),
-  }),
-).annotate({ identifier: "UpdateWorkloadResponse" }) as any as S.Schema<UpdateWorkloadResponse>;
+export const UpdateWorkloadResponse =
+  GetWorkloadResponse as any as S.Schema<UpdateWorkloadResponse>;
 
 /** Resource tags. */
 export type VirtualEnclaveCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const VirtualEnclaveCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VirtualEnclaveCreateOrUpdateRequestTagsMap>;
+export const VirtualEnclaveCreateOrUpdateRequestTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<VirtualEnclaveCreateOrUpdateRequestTagsMap>;
 
 /** Specifies whether resources in the workload resource group(s) are visible through standard RBAC */
 export type VirtualEnclavePropertiesInputWorkloadResourceVisibility = "Enabled" | "Disabled";
@@ -5407,21 +5065,18 @@ export const VirtualEnclavePropertiesInputRbacInheritance = S.String;
 
 /** Enclave role assignments */
 export type VirtualEnclavePropertiesInputEnclaveRoleAssignmentsList = Array<RoleAssignmentItem>;
-export const VirtualEnclavePropertiesInputEnclaveRoleAssignmentsList = /*@__PURE__*/ S.Array(
-  RoleAssignmentItem,
-) as any as S.Schema<VirtualEnclavePropertiesInputEnclaveRoleAssignmentsList>;
+export const VirtualEnclavePropertiesInputEnclaveRoleAssignmentsList =
+  CommunityPropertiesInputCommunityRoleAssignmentsList as any as S.Schema<VirtualEnclavePropertiesInputEnclaveRoleAssignmentsList>;
 
 /** Workload role assignments */
 export type VirtualEnclavePropertiesInputWorkloadRoleAssignmentsList = Array<RoleAssignmentItem>;
-export const VirtualEnclavePropertiesInputWorkloadRoleAssignmentsList = /*@__PURE__*/ S.Array(
-  RoleAssignmentItem,
-) as any as S.Schema<VirtualEnclavePropertiesInputWorkloadRoleAssignmentsList>;
+export const VirtualEnclavePropertiesInputWorkloadRoleAssignmentsList =
+  CommunityPropertiesInputCommunityRoleAssignmentsList as any as S.Schema<VirtualEnclavePropertiesInputWorkloadRoleAssignmentsList>;
 
 /** Enclave specific policies */
 export type VirtualEnclavePropertiesInputGovernedServiceListList = Array<GovernedServiceItemInput>;
-export const VirtualEnclavePropertiesInputGovernedServiceListList = /*@__PURE__*/ S.Array(
-  GovernedServiceItemInput,
-) as any as S.Schema<VirtualEnclavePropertiesInputGovernedServiceListList>;
+export const VirtualEnclavePropertiesInputGovernedServiceListList =
+  CommunityPropertiesInputGovernedServiceListList as any as S.Schema<VirtualEnclavePropertiesInputGovernedServiceListList>;
 
 /** Diagnostic Destination. */
 export type EnclaveDefaultSettingsModelInputDiagnosticDestination =
@@ -5537,10 +5192,8 @@ export const VirtualEnclaveCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type VirtualEnclaveCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const VirtualEnclaveCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VirtualEnclaveCreateOrUpdateResponseTagsMap>;
+export const VirtualEnclaveCreateOrUpdateResponseTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<VirtualEnclaveCreateOrUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type VirtualEnclaveCreateOrUpdateResponseIdentity = CommunityCreateOrUpdateResponseIdentity;
@@ -5564,20 +5217,8 @@ export interface VirtualEnclaveCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CommunityCreateOrUpdateResponseIdentity;
 }
-export const VirtualEnclaveCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(VirtualEnclaveCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(VirtualEnclaveProperties),
-    identity: S.optional(CommunityCreateOrUpdateResponseIdentity),
-  }),
-).annotate({
-  identifier: "VirtualEnclaveCreateOrUpdateResponse",
-}) as any as S.Schema<VirtualEnclaveCreateOrUpdateResponse>;
+export const VirtualEnclaveCreateOrUpdateResponse =
+  GetVirtualEnclaveResponse as any as S.Schema<VirtualEnclaveCreateOrUpdateResponse>;
 
 /** Resource request action indicating action which needed to be performed upon calling approval-callback post action */
 export type VirtualEnclaveHandleApprovalCreationRequestResourceRequestAction =
@@ -5666,27 +5307,21 @@ export const VirtualEnclaveHandleApprovalDeletionRequest = /*@__PURE__*/ S.suspe
 
 /** Resource tags. */
 export type WorkloadCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const WorkloadCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WorkloadCreateOrUpdateRequestTagsMap>;
+export const WorkloadCreateOrUpdateRequestTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<WorkloadCreateOrUpdateRequestTagsMap>;
 
 /** List of resource group ids. */
 export type WorkloadPropertiesInputResourceGroupCollectionList = Array<string>;
-export const WorkloadPropertiesInputResourceGroupCollectionList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WorkloadPropertiesInputResourceGroupCollectionList>;
+export const WorkloadPropertiesInputResourceGroupCollectionList =
+  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<WorkloadPropertiesInputResourceGroupCollectionList>;
 
 /** Workload Resource properties */
 export interface WorkloadPropertiesInput {
   /** List of resource group ids. */
   resourceGroupCollection?: WorkloadPropertiesInputResourceGroupCollectionList;
 }
-export const WorkloadPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceGroupCollection: S.optional(WorkloadPropertiesInputResourceGroupCollectionList),
-  }),
-).annotate({ identifier: "WorkloadPropertiesInput" }) as any as S.Schema<WorkloadPropertiesInput>;
+export const WorkloadPropertiesInput =
+  WorkloadPatchProperties as any as S.Schema<WorkloadPropertiesInput>;
 
 export interface WorkloadCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5727,10 +5362,8 @@ export const WorkloadCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WorkloadCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const WorkloadCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WorkloadCreateOrUpdateResponseTagsMap>;
+export const WorkloadCreateOrUpdateResponseTagsMap =
+  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<WorkloadCreateOrUpdateResponseTagsMap>;
 
 export interface WorkloadCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */

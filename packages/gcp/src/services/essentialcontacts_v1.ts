@@ -493,14 +493,8 @@ export interface GoogleCloudEssentialcontactsV1ListContactsResponse {
   /** If there are more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token` and the rest of the parameters the same as the original request. */
   nextPageToken?: string;
 }
-export const GoogleCloudEssentialcontactsV1ListContactsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contacts: S.optional(GoogleCloudEssentialcontactsV1ContactList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudEssentialcontactsV1ListContactsResponse",
-}) as any as S.Schema<GoogleCloudEssentialcontactsV1ListContactsResponse>;
+export const GoogleCloudEssentialcontactsV1ListContactsResponse =
+  GoogleCloudEssentialcontactsV1ComputeContactsResponse as any as S.Schema<GoogleCloudEssentialcontactsV1ListContactsResponse>;
 
 export interface ListOrganizationsContactsRequest {
   /** Required. The parent resource name. Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project number) */

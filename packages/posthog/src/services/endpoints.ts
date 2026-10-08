@@ -50,9 +50,8 @@ export const CreateEndpointRequestTagsList = /*@__PURE__*/ S.Array(
 
 /** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] -- every breakdown variable is required. */
 export type CreateEndpointRequestOptionalBreakdownPropertiesList = Array<string>;
-export const CreateEndpointRequestOptionalBreakdownPropertiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateEndpointRequestOptionalBreakdownPropertiesList>;
+export const CreateEndpointRequestOptionalBreakdownPropertiesList =
+  CreateEndpointRequestTagsList as any as S.Schema<CreateEndpointRequestOptionalBreakdownPropertiesList>;
 
 export interface CreateEndpointRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -103,10 +102,8 @@ export const CreateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateEndpointRequest" }) as any as S.Schema<CreateEndpointRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
+export const UserBasicHedgehogConfigMap =
+  CreateEndpointRequestBucketOverridesMap as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
@@ -190,10 +187,8 @@ export const EndpointMaterialization = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-column bucket overrides for range variable materialization. */
 export type EndpointResponseBucketOverridesMap = { [key: string]: unknown | undefined };
-export const EndpointResponseBucketOverridesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EndpointResponseBucketOverridesMap>;
+export const EndpointResponseBucketOverridesMap =
+  CreateEndpointRequestBucketOverridesMap as any as S.Schema<EndpointResponseBucketOverridesMap>;
 
 /** A column in the endpoint's query result. */
 export interface EndpointColumn {
@@ -217,15 +212,13 @@ export const EndpointResponseColumnsList = /*@__PURE__*/ S.Array(
 
 /** Tag names associated with this endpoint. */
 export type EndpointResponseTagsList = Array<string>;
-export const EndpointResponseTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EndpointResponseTagsList>;
+export const EndpointResponseTagsList =
+  CreateEndpointRequestTagsList as any as S.Schema<EndpointResponseTagsList>;
 
 /** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. */
 export type EndpointResponseOptionalBreakdownPropertiesList = Array<string>;
-export const EndpointResponseOptionalBreakdownPropertiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EndpointResponseOptionalBreakdownPropertiesList>;
+export const EndpointResponseOptionalBreakdownPropertiesList =
+  CreateEndpointRequestTagsList as any as S.Schema<EndpointResponseOptionalBreakdownPropertiesList>;
 
 /** Full endpoint representation returned by list/retrieve/create/update. */
 export interface EndpointResponse {
@@ -305,9 +298,8 @@ export const EndpointResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EndpointResponse" }) as any as S.Schema<EndpointResponse>;
 
 export type CreateEndpointsLastExecutionTimeRequestNamesList = Array<string>;
-export const CreateEndpointsLastExecutionTimeRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateEndpointsLastExecutionTimeRequestNamesList>;
+export const CreateEndpointsLastExecutionTimeRequestNamesList =
+  CreateEndpointRequestTagsList as any as S.Schema<CreateEndpointsLastExecutionTimeRequestNamesList>;
 
 export interface CreateEndpointsLastExecutionTimeRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -330,9 +322,8 @@ export const CreateEndpointsLastExecutionTimeRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CreateEndpointsLastExecutionTimeRequest>;
 
 export type QueryStatusLabelsList = Array<string>;
-export const QueryStatusLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<QueryStatusLabelsList>;
+export const QueryStatusLabelsList =
+  CreateEndpointRequestTagsList as any as S.Schema<QueryStatusLabelsList>;
 
 export interface ClickhouseQueryProgress {
   active_cpu_time?: number;
@@ -545,9 +536,8 @@ export const CreateEndpointsMaterializationPreviewRequest = /*@__PURE__*/ S.susp
 
 /** Query variables that filter on this column. */
 export type MaterializationPreviewRangePairVariablesList = Array<string>;
-export const MaterializationPreviewRangePairVariablesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MaterializationPreviewRangePairVariablesList>;
+export const MaterializationPreviewRangePairVariablesList =
+  CreateEndpointRequestTagsList as any as S.Schema<MaterializationPreviewRangePairVariablesList>;
 
 export interface MaterializationPreviewRangePair {
   /** Column the query buckets on. */
@@ -1708,10 +1698,8 @@ export type EndpointRefreshMode = "cache" | "force" | "direct";
 export const EndpointRefreshMode = S.String;
 
 export type CreateEndpointsRunRequestVariablesMap = { [key: string]: unknown | undefined };
-export const CreateEndpointsRunRequestVariablesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateEndpointsRunRequestVariablesMap>;
+export const CreateEndpointsRunRequestVariablesMap =
+  CreateEndpointRequestBucketOverridesMap as any as S.Schema<CreateEndpointsRunRequestVariablesMap>;
 
 export interface CreateEndpointsRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1759,9 +1747,8 @@ export const EndpointRunResponseResultsList = /*@__PURE__*/ S.Array(
 
 /** Column names from the query SELECT clause. */
 export type EndpointRunResponseColumnsList = Array<string>;
-export const EndpointRunResponseColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EndpointRunResponseColumnsList>;
+export const EndpointRunResponseColumnsList =
+  CreateEndpointRequestTagsList as any as S.Schema<EndpointRunResponseColumnsList>;
 
 /** Response from executing an endpoint query. */
 export interface EndpointRunResponse {
@@ -1827,28 +1814,23 @@ export const GetEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-column bucket overrides for range variable materialization. */
 export type EndpointVersionResponseBucketOverridesMap = { [key: string]: unknown | undefined };
-export const EndpointVersionResponseBucketOverridesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EndpointVersionResponseBucketOverridesMap>;
+export const EndpointVersionResponseBucketOverridesMap =
+  CreateEndpointRequestBucketOverridesMap as any as S.Schema<EndpointVersionResponseBucketOverridesMap>;
 
 /** Column names and types from the query's SELECT clause. */
 export type EndpointVersionResponseColumnsList = Array<EndpointColumn>;
-export const EndpointVersionResponseColumnsList = /*@__PURE__*/ S.Array(
-  EndpointColumn,
-) as any as S.Schema<EndpointVersionResponseColumnsList>;
+export const EndpointVersionResponseColumnsList =
+  EndpointResponseColumnsList as any as S.Schema<EndpointVersionResponseColumnsList>;
 
 /** Tag names associated with this endpoint. */
 export type EndpointVersionResponseTagsList = Array<string>;
-export const EndpointVersionResponseTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EndpointVersionResponseTagsList>;
+export const EndpointVersionResponseTagsList =
+  CreateEndpointRequestTagsList as any as S.Schema<EndpointVersionResponseTagsList>;
 
 /** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. */
 export type EndpointVersionResponseOptionalBreakdownPropertiesList = Array<string>;
-export const EndpointVersionResponseOptionalBreakdownPropertiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EndpointVersionResponseOptionalBreakdownPropertiesList>;
+export const EndpointVersionResponseOptionalBreakdownPropertiesList =
+  CreateEndpointRequestTagsList as any as S.Schema<EndpointVersionResponseOptionalBreakdownPropertiesList>;
 
 /** Extended endpoint representation when viewing a specific version. */
 export interface EndpointVersionResponse {
@@ -1980,9 +1962,8 @@ export const GetEndpointsLogRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEndpointsLogRequest" }) as any as S.Schema<GetEndpointsLogRequest>;
 
 export interface GetEndpointsLogResponse {}
-export const GetEndpointsLogResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEndpointsLogResponse",
-}) as any as S.Schema<GetEndpointsLogResponse>;
+export const GetEndpointsLogResponse =
+  EndpointsDestroyResponse as any as S.Schema<GetEndpointsLogResponse>;
 
 export interface GetEndpointsMaterializationConditionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2179,22 +2160,18 @@ export const PaginatedEndpointVersionResponseList = /*@__PURE__*/ S.suspend(() =
 
 /** Per-column bucket overrides for range variable materialization. Keys are column names, values are bucket keys. */
 export type UpdateEndpointRequestBucketOverridesMap = { [key: string]: unknown | undefined };
-export const UpdateEndpointRequestBucketOverridesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateEndpointRequestBucketOverridesMap>;
+export const UpdateEndpointRequestBucketOverridesMap =
+  CreateEndpointRequestBucketOverridesMap as any as S.Schema<UpdateEndpointRequestBucketOverridesMap>;
 
 /** List of tag names to associate with this endpoint. Replaces any existing tags. */
 export type UpdateEndpointRequestTagsList = Array<string>;
-export const UpdateEndpointRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateEndpointRequestTagsList>;
+export const UpdateEndpointRequestTagsList =
+  CreateEndpointRequestTagsList as any as S.Schema<UpdateEndpointRequestTagsList>;
 
 /** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] -- every breakdown variable is required. */
 export type UpdateEndpointRequestOptionalBreakdownPropertiesList = Array<string>;
-export const UpdateEndpointRequestOptionalBreakdownPropertiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateEndpointRequestOptionalBreakdownPropertiesList>;
+export const UpdateEndpointRequestOptionalBreakdownPropertiesList =
+  CreateEndpointRequestTagsList as any as S.Schema<UpdateEndpointRequestOptionalBreakdownPropertiesList>;
 
 export interface UpdateEndpointRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2249,22 +2226,18 @@ export const UpdateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdateEndpointsPartialRequestBucketOverridesMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateEndpointsPartialRequestBucketOverridesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateEndpointsPartialRequestBucketOverridesMap>;
+export const UpdateEndpointsPartialRequestBucketOverridesMap =
+  CreateEndpointRequestBucketOverridesMap as any as S.Schema<UpdateEndpointsPartialRequestBucketOverridesMap>;
 
 /** List of tag names to associate with this endpoint. Replaces any existing tags. */
 export type UpdateEndpointsPartialRequestTagsList = Array<string>;
-export const UpdateEndpointsPartialRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateEndpointsPartialRequestTagsList>;
+export const UpdateEndpointsPartialRequestTagsList =
+  CreateEndpointRequestTagsList as any as S.Schema<UpdateEndpointsPartialRequestTagsList>;
 
 /** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] -- every breakdown variable is required. */
 export type UpdateEndpointsPartialRequestOptionalBreakdownPropertiesList = Array<string>;
-export const UpdateEndpointsPartialRequestOptionalBreakdownPropertiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateEndpointsPartialRequestOptionalBreakdownPropertiesList>;
+export const UpdateEndpointsPartialRequestOptionalBreakdownPropertiesList =
+  CreateEndpointRequestTagsList as any as S.Schema<UpdateEndpointsPartialRequestOptionalBreakdownPropertiesList>;
 
 export interface UpdateEndpointsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

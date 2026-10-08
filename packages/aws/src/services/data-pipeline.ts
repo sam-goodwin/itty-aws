@@ -188,9 +188,8 @@ export const DeletePipelineInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeletePipelineInput" }) as any as S.Schema<DeletePipelineInput>;
 export interface DeletePipelineResponse {}
-export const DeletePipelineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate(
-  { identifier: "DeletePipelineResponse" },
-) as any as S.Schema<DeletePipelineResponse>;
+export const DeletePipelineResponse =
+  ActivatePipelineOutput as any as S.Schema<DeletePipelineResponse>;
 export type IdList = string[];
 export const IdList = /*@__PURE__*/ S.Array(S.String);
 export interface DescribeObjectsInput {
@@ -425,7 +424,7 @@ export const PutPipelineDefinitionInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutPipelineDefinitionInput>;
 export type ValidationMessage = string;
 export type ValidationMessages = string[];
-export const ValidationMessages = /*@__PURE__*/ S.Array(S.String);
+export const ValidationMessages = IdList as any as S.Schema<ValidationMessages>;
 export interface ValidationError {
   id?: string;
   errors?: string[];
@@ -462,7 +461,7 @@ export type OperatorType = "EQ" | "REF_EQ" | "LE" | "GE" | "BETWEEN" | (string &
 export const OperatorType = S.String;
 
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = IdList as any as S.Schema<StringList>;
 export interface Operator {
   type?: OperatorType;
   values?: string[];
@@ -524,9 +523,7 @@ export const RemoveTagsInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RemoveTagsInput" }) as any as S.Schema<RemoveTagsInput>;
 export interface RemoveTagsOutput {}
-export const RemoveTagsOutput = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "RemoveTagsOutput",
-}) as any as S.Schema<RemoveTagsOutput>;
+export const RemoveTagsOutput = AddTagsOutput as any as S.Schema<RemoveTagsOutput>;
 export interface ReportTaskProgressInput {
   taskId: string;
   fields?: Field[];
@@ -575,9 +572,7 @@ export const SetStatusInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "SetStatusInput" }) as any as S.Schema<SetStatusInput>;
 export interface SetStatusResponse {}
-export const SetStatusResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "SetStatusResponse",
-}) as any as S.Schema<SetStatusResponse>;
+export const SetStatusResponse = AddTagsOutput as any as S.Schema<SetStatusResponse>;
 export type TaskStatus = "FINISHED" | "FAILED" | "FALSE" | (string & {});
 export const TaskStatus = S.String;
 
@@ -599,9 +594,7 @@ export const SetTaskStatusInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "SetTaskStatusInput" }) as any as S.Schema<SetTaskStatusInput>;
 export interface SetTaskStatusOutput {}
-export const SetTaskStatusOutput = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "SetTaskStatusOutput",
-}) as any as S.Schema<SetTaskStatusOutput>;
+export const SetTaskStatusOutput = AddTagsOutput as any as S.Schema<SetTaskStatusOutput>;
 export interface ValidatePipelineDefinitionInput {
   pipelineId: string;
   pipelineObjects: PipelineObject[];
@@ -623,15 +616,8 @@ export interface ValidatePipelineDefinitionOutput {
   validationWarnings?: ValidationWarning[];
   errored: boolean;
 }
-export const ValidatePipelineDefinitionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    validationErrors: S.optional(ValidationErrors),
-    validationWarnings: S.optional(ValidationWarnings),
-    errored: S.Boolean,
-  }).pipe(ns),
-).annotate({
-  identifier: "ValidatePipelineDefinitionOutput",
-}) as any as S.Schema<ValidatePipelineDefinitionOutput>;
+export const ValidatePipelineDefinitionOutput =
+  PutPipelineDefinitionOutput as any as S.Schema<ValidatePipelineDefinitionOutput>;
 export type ActivatePipelineError =
   | InternalServiceError
   | InvalidRequestException

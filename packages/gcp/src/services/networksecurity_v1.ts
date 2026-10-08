@@ -216,9 +216,7 @@ export const CancelOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.sus
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -3005,19 +3003,13 @@ export interface MirroringDeploymentGroupConnectedEndpointGroup {
   /** Output only. The connected endpoint group's resource name, for example: `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`. See https://google.aip.dev/124. */
   name?: string;
 }
-export const MirroringDeploymentGroupConnectedEndpointGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MirroringDeploymentGroupConnectedEndpointGroup",
-}) as any as S.Schema<MirroringDeploymentGroupConnectedEndpointGroup>;
+export const MirroringDeploymentGroupConnectedEndpointGroup =
+  InterceptDeploymentGroupConnectedEndpointGroup as any as S.Schema<MirroringDeploymentGroupConnectedEndpointGroup>;
 
 export type MirroringDeploymentGroupConnectedEndpointGroupList =
   Array<MirroringDeploymentGroupConnectedEndpointGroup>;
-export const MirroringDeploymentGroupConnectedEndpointGroupList = /*@__PURE__*/ S.Array(
-  MirroringDeploymentGroupConnectedEndpointGroup,
-) as any as S.Schema<MirroringDeploymentGroupConnectedEndpointGroupList>;
+export const MirroringDeploymentGroupConnectedEndpointGroupList =
+  InterceptDeploymentGroupConnectedEndpointGroupList as any as S.Schema<MirroringDeploymentGroupConnectedEndpointGroupList>;
 
 export type MirroringDeploymentGroupStateEnum =
   | "STATE_UNSPECIFIED"
@@ -7707,14 +7699,8 @@ export interface RemoveAddressGroupItemsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const RemoveAddressGroupItemsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: S.optional(StringList),
-    requestId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RemoveAddressGroupItemsRequest",
-}) as any as S.Schema<RemoveAddressGroupItemsRequest>;
+export const RemoveAddressGroupItemsRequest =
+  AddAddressGroupItemsRequest as any as S.Schema<RemoveAddressGroupItemsRequest>;
 
 export interface RemoveItemsOrganizationsLocationsAddressGroupsRequest {
   /** Required. A name of the AddressGroup to remove items from. Must be in the format `projects|organization/*\/locations/{location}/addressGroups/*`. */
@@ -7920,13 +7906,8 @@ export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const GoogleIamV1TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GoogleIamV1TestIamPermissionsResponse",
-}) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>;
+export const GoogleIamV1TestIamPermissionsResponse =
+  GoogleIamV1TestIamPermissionsRequest as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsAddressGroupsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */

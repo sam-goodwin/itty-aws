@@ -41,14 +41,12 @@ export const LicensePermissionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<LicensePermissionsList>;
 
 export type LicenseConditionsList = Array<string>;
-export const LicenseConditionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LicenseConditionsList>;
+export const LicenseConditionsList =
+  LicensePermissionsList as any as S.Schema<LicenseConditionsList>;
 
 export type LicenseLimitationsList = Array<string>;
-export const LicenseLimitationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LicenseLimitationsList>;
+export const LicenseLimitationsList =
+  LicensePermissionsList as any as S.Schema<LicenseLimitationsList>;
 
 /** License */
 export interface License {

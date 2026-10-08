@@ -241,16 +241,7 @@ export interface DataScanner {
   /** Managed service identity (either system assigned, or none) */
   identity?: DataScannersCreateOrUpdateResponseIdentity;
 }
-export const DataScanner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(S.Unknown),
-    identity: S.optional(DataScannersCreateOrUpdateResponseIdentity),
-  }),
-).annotate({ identifier: "DataScanner" }) as any as S.Schema<DataScanner>;
+export const DataScanner = GetDataScannerResponse as any as S.Schema<DataScanner>;
 
 /** The list of data scanner resources. */
 export type DataScannerListValueList = Array<DataScanner>;

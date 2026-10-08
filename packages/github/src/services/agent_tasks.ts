@@ -111,13 +111,8 @@ export interface CreateTaskInRepoResponseRepository {
   /** The unique identifier of the repository */
   id?: number;
 }
-export const CreateTaskInRepoResponseRepository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CreateTaskInRepoResponseRepository",
-}) as any as S.Schema<CreateTaskInRepoResponseRepository>;
+export const CreateTaskInRepoResponseRepository =
+  CreateTaskInRepoResponseCreator as any as S.Schema<CreateTaskInRepoResponseRepository>;
 
 /** Current state of the task, derived from its most recent session */
 export type CreateTaskInRepoResponseState =
@@ -295,9 +290,8 @@ export const GetTaskByIdResponseUserCollaboratorsItem = CreateTaskInRepoResponse
 
 /** User objects of collaborators on this task */
 export type GetTaskByIdResponseUserCollaboratorsList = Array<CreateTaskInRepoResponseCreator>;
-export const GetTaskByIdResponseUserCollaboratorsList = /*@__PURE__*/ S.Array(
-  CreateTaskInRepoResponseCreator,
-) as any as S.Schema<GetTaskByIdResponseUserCollaboratorsList>;
+export const GetTaskByIdResponseUserCollaboratorsList =
+  CreateTaskInRepoResponseUserCollaboratorsList as any as S.Schema<GetTaskByIdResponseUserCollaboratorsList>;
 
 /** The owner of the repository */
 export type GetTaskByIdResponseOwner = CreateTaskInRepoResponseCreator;
@@ -589,9 +583,8 @@ export const GetTaskByRepoAndIdResponseUserCollaboratorsItem = CreateTaskInRepoR
 /** User objects of collaborators on this task */
 export type GetTaskByRepoAndIdResponseUserCollaboratorsList =
   Array<CreateTaskInRepoResponseCreator>;
-export const GetTaskByRepoAndIdResponseUserCollaboratorsList = /*@__PURE__*/ S.Array(
-  CreateTaskInRepoResponseCreator,
-) as any as S.Schema<GetTaskByRepoAndIdResponseUserCollaboratorsList>;
+export const GetTaskByRepoAndIdResponseUserCollaboratorsList =
+  CreateTaskInRepoResponseUserCollaboratorsList as any as S.Schema<GetTaskByRepoAndIdResponseUserCollaboratorsList>;
 
 /** The owner of the repository */
 export type GetTaskByRepoAndIdResponseOwner = CreateTaskInRepoResponseCreator;
@@ -891,9 +884,8 @@ export const ListTasksResponseTasksItemUserCollaboratorsItem = CreateTaskInRepoR
 /** User objects of collaborators on this task */
 export type ListTasksResponseTasksItemUserCollaboratorsList =
   Array<CreateTaskInRepoResponseCreator>;
-export const ListTasksResponseTasksItemUserCollaboratorsList = /*@__PURE__*/ S.Array(
-  CreateTaskInRepoResponseCreator,
-) as any as S.Schema<ListTasksResponseTasksItemUserCollaboratorsList>;
+export const ListTasksResponseTasksItemUserCollaboratorsList =
+  CreateTaskInRepoResponseUserCollaboratorsList as any as S.Schema<ListTasksResponseTasksItemUserCollaboratorsList>;
 
 /** The owner of the repository */
 export type ListTasksResponseTasksItemOwner = CreateTaskInRepoResponseCreator;
@@ -1116,9 +1108,8 @@ export const ListTasksForRepoResponseTasksItemUserCollaboratorsItem =
 /** User objects of collaborators on this task */
 export type ListTasksForRepoResponseTasksItemUserCollaboratorsList =
   Array<CreateTaskInRepoResponseCreator>;
-export const ListTasksForRepoResponseTasksItemUserCollaboratorsList = /*@__PURE__*/ S.Array(
-  CreateTaskInRepoResponseCreator,
-) as any as S.Schema<ListTasksForRepoResponseTasksItemUserCollaboratorsList>;
+export const ListTasksForRepoResponseTasksItemUserCollaboratorsList =
+  CreateTaskInRepoResponseUserCollaboratorsList as any as S.Schema<ListTasksForRepoResponseTasksItemUserCollaboratorsList>;
 
 /** The owner of the repository */
 export type ListTasksForRepoResponseTasksItemOwner = CreateTaskInRepoResponseCreator;

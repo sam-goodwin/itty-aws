@@ -464,7 +464,7 @@ export type QuickResponseDescription = string;
 export type ShortCutKey = string;
 export type Channel = string | redacted.Redacted<string>;
 export type Channels = (string | redacted.Redacted<string>)[];
-export const Channels = /*@__PURE__*/ S.Array(SensitiveString);
+export const Channels = GroupingValues as any as S.Schema<Channels>;
 export type LanguageCode = string;
 export interface CreateQuickResponseRequest {
   knowledgeBaseId: string;
@@ -509,9 +509,8 @@ export const CreateQuickResponseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateQuickResponseRequest>;
 export type QuickResponseStatus = string;
 export type QuickResponseContentProvider = { content: string | redacted.Redacted<string> };
-export const QuickResponseContentProvider = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ content: SensitiveString }),
-]);
+export const QuickResponseContentProvider =
+  QuickResponseDataProvider as any as S.Schema<QuickResponseContentProvider>;
 export interface QuickResponseContents {
   plainText?: QuickResponseContentProvider;
   markdown?: QuickResponseContentProvider;
@@ -600,11 +599,8 @@ export const CreateSessionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SessionIntegrationConfiguration {
   topicIntegrationArn?: string;
 }
-export const SessionIntegrationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ topicIntegrationArn: S.optional(S.String) }),
-).annotate({
-  identifier: "SessionIntegrationConfiguration",
-}) as any as S.Schema<SessionIntegrationConfiguration>;
+export const SessionIntegrationConfiguration =
+  AssistantIntegrationConfiguration as any as S.Schema<SessionIntegrationConfiguration>;
 export interface SessionData {
   sessionArn: string;
   sessionId: string;
@@ -698,9 +694,8 @@ export const DeleteContentRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteContentRequest" }) as any as S.Schema<DeleteContentRequest>;
 export interface DeleteContentResponse {}
-export const DeleteContentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteContentResponse",
-}) as any as S.Schema<DeleteContentResponse>;
+export const DeleteContentResponse =
+  DeleteAssistantResponse as any as S.Schema<DeleteContentResponse>;
 export interface DeleteImportJobRequest {
   knowledgeBaseId: string;
   importJobId: string;
@@ -724,9 +719,8 @@ export const DeleteImportJobRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteImportJobRequest" }) as any as S.Schema<DeleteImportJobRequest>;
 export interface DeleteImportJobResponse {}
-export const DeleteImportJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteImportJobResponse",
-}) as any as S.Schema<DeleteImportJobResponse>;
+export const DeleteImportJobResponse =
+  DeleteAssistantResponse as any as S.Schema<DeleteImportJobResponse>;
 export interface DeleteKnowledgeBaseRequest {
   knowledgeBaseId: string;
 }
@@ -745,9 +739,8 @@ export const DeleteKnowledgeBaseRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteKnowledgeBaseRequest",
 }) as any as S.Schema<DeleteKnowledgeBaseRequest>;
 export interface DeleteKnowledgeBaseResponse {}
-export const DeleteKnowledgeBaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteKnowledgeBaseResponse",
-}) as any as S.Schema<DeleteKnowledgeBaseResponse>;
+export const DeleteKnowledgeBaseResponse =
+  DeleteAssistantResponse as any as S.Schema<DeleteKnowledgeBaseResponse>;
 export interface DeleteQuickResponseRequest {
   knowledgeBaseId: string;
   quickResponseId: string;
@@ -773,9 +766,8 @@ export const DeleteQuickResponseRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteQuickResponseRequest",
 }) as any as S.Schema<DeleteQuickResponseRequest>;
 export interface DeleteQuickResponseResponse {}
-export const DeleteQuickResponseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteQuickResponseResponse",
-}) as any as S.Schema<DeleteQuickResponseResponse>;
+export const DeleteQuickResponseResponse =
+  DeleteAssistantResponse as any as S.Schema<DeleteQuickResponseResponse>;
 export interface GetAssistantRequest {
   assistantId: string;
 }
@@ -794,9 +786,8 @@ export const GetAssistantRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetAssistantResponse {
   assistant?: AssistantData;
 }
-export const GetAssistantResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ assistant: S.optional(AssistantData) }),
-).annotate({ identifier: "GetAssistantResponse" }) as any as S.Schema<GetAssistantResponse>;
+export const GetAssistantResponse =
+  CreateAssistantResponse as any as S.Schema<GetAssistantResponse>;
 export interface GetAssistantAssociationRequest {
   assistantAssociationId: string;
   assistantId: string;
@@ -824,11 +815,8 @@ export const GetAssistantAssociationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetAssistantAssociationResponse {
   assistantAssociation?: AssistantAssociationData;
 }
-export const GetAssistantAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ assistantAssociation: S.optional(AssistantAssociationData) }),
-).annotate({
-  identifier: "GetAssistantAssociationResponse",
-}) as any as S.Schema<GetAssistantAssociationResponse>;
+export const GetAssistantAssociationResponse =
+  CreateAssistantAssociationResponse as any as S.Schema<GetAssistantAssociationResponse>;
 export interface GetContentRequest {
   contentId: string;
   knowledgeBaseId: string;
@@ -851,9 +839,7 @@ export const GetContentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetContentResponse {
   content?: ContentData;
 }
-export const GetContentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ content: S.optional(ContentData) }),
-).annotate({ identifier: "GetContentResponse" }) as any as S.Schema<GetContentResponse>;
+export const GetContentResponse = CreateContentResponse as any as S.Schema<GetContentResponse>;
 export interface GetContentSummaryRequest {
   contentId: string;
   knowledgeBaseId: string;
@@ -1154,7 +1140,7 @@ export const RecommendationTriggerData = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ query: QueryRecommendationTriggerData }),
 ]);
 export type RecommendationIdList = string[];
-export const RecommendationIdList = /*@__PURE__*/ S.Array(S.String);
+export const RecommendationIdList = ObjectFieldsList as any as S.Schema<RecommendationIdList>;
 export interface RecommendationTrigger {
   id: string;
   type: string;
@@ -1207,9 +1193,7 @@ export const GetSessionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetSessionResponse {
   session?: SessionData;
 }
-export const GetSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ session: S.optional(SessionData) }),
-).annotate({ identifier: "GetSessionResponse" }) as any as S.Schema<GetSessionResponse>;
+export const GetSessionResponse = CreateSessionResponse as any as S.Schema<GetSessionResponse>;
 export type NextToken = string;
 export interface ListAssistantAssociationsRequest {
   nextToken?: string;
@@ -1291,19 +1275,7 @@ export interface AssistantSummary {
   serverSideEncryptionConfiguration?: ServerSideEncryptionConfiguration;
   integrationConfiguration?: AssistantIntegrationConfiguration;
 }
-export const AssistantSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    assistantId: S.String,
-    assistantArn: S.String,
-    name: S.String,
-    type: S.String,
-    status: S.String,
-    description: S.optional(S.String),
-    tags: S.optional(Tags),
-    serverSideEncryptionConfiguration: S.optional(ServerSideEncryptionConfiguration),
-    integrationConfiguration: S.optional(AssistantIntegrationConfiguration),
-  }),
-).annotate({ identifier: "AssistantSummary" }) as any as S.Schema<AssistantSummary>;
+export const AssistantSummary = AssistantData as any as S.Schema<AssistantSummary>;
 export type AssistantList = AssistantSummary[];
 export const AssistantList = /*@__PURE__*/ S.Array(AssistantSummary);
 export interface ListAssistantsResponse {
@@ -1644,11 +1616,8 @@ export const RemoveKnowledgeBaseTemplateUriRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "RemoveKnowledgeBaseTemplateUriRequest",
 }) as any as S.Schema<RemoveKnowledgeBaseTemplateUriRequest>;
 export interface RemoveKnowledgeBaseTemplateUriResponse {}
-export const RemoveKnowledgeBaseTemplateUriResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveKnowledgeBaseTemplateUriResponse",
-}) as any as S.Schema<RemoveKnowledgeBaseTemplateUriResponse>;
+export const RemoveKnowledgeBaseTemplateUriResponse =
+  DeleteAssistantAssociationResponse as any as S.Schema<RemoveKnowledgeBaseTemplateUriResponse>;
 export type FilterField = string;
 export type FilterOperator = string;
 export interface Filter {
@@ -1694,12 +1663,11 @@ export interface SearchContentResponse {
   contentSummaries: ContentSummary[];
   nextToken?: string;
 }
-export const SearchContentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ contentSummaries: ContentSummaryList, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "SearchContentResponse" }) as any as S.Schema<SearchContentResponse>;
+export const SearchContentResponse = ListContentsResponse as any as S.Schema<SearchContentResponse>;
 export type QuickResponseQueryValue = string;
 export type QuickResponseQueryValueList = string[];
-export const QuickResponseQueryValueList = /*@__PURE__*/ S.Array(S.String);
+export const QuickResponseQueryValueList =
+  ObjectFieldsList as any as S.Schema<QuickResponseQueryValueList>;
 export type QuickResponseQueryOperator = string;
 export type Priority = string;
 export interface QuickResponseQueryField {
@@ -1722,7 +1690,8 @@ export type QuickResponseQueryFieldList = QuickResponseQueryField[];
 export const QuickResponseQueryFieldList = /*@__PURE__*/ S.Array(QuickResponseQueryField);
 export type QuickResponseFilterValue = string;
 export type QuickResponseFilterValueList = string[];
-export const QuickResponseFilterValueList = /*@__PURE__*/ S.Array(S.String);
+export const QuickResponseFilterValueList =
+  ObjectFieldsList as any as S.Schema<QuickResponseFilterValueList>;
 export type QuickResponseFilterOperator = string;
 export interface QuickResponseFilterField {
   name: string;
@@ -1765,10 +1734,7 @@ export const QuickResponseSearchExpression = /*@__PURE__*/ S.suspend(() =>
 export type ContactAttributeKey = string;
 export type ContactAttributeValue = string;
 export type ContactAttributes = { [key: string]: string | undefined };
-export const ContactAttributes = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ContactAttributes = ContentMetadata as any as S.Schema<ContactAttributes>;
 export interface SearchQuickResponsesRequest {
   knowledgeBaseId: string;
   searchExpression: QuickResponseSearchExpression;
@@ -1797,7 +1763,7 @@ export const SearchQuickResponsesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchQuickResponsesRequest",
 }) as any as S.Schema<SearchQuickResponsesRequest>;
 export type ContactAttributeKeys = string[];
-export const ContactAttributeKeys = /*@__PURE__*/ S.Array(S.String);
+export const ContactAttributeKeys = ObjectFieldsList as any as S.Schema<ContactAttributeKeys>;
 export interface QuickResponseSearchResultData {
   quickResponseArn: string;
   quickResponseId: string;
@@ -1928,7 +1894,7 @@ export const StartContentUploadRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartContentUploadRequest",
 }) as any as S.Schema<StartContentUploadRequest>;
 export type Headers = { [key: string]: string | undefined };
-export const Headers = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const Headers = Tags as any as S.Schema<Headers>;
 export interface StartContentUploadResponse {
   uploadId: string;
   url: string | redacted.Redacted<string>;
@@ -1975,9 +1941,8 @@ export const StartImportJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartImportJobResponse {
   importJob?: ImportJobData;
 }
-export const StartImportJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ importJob: S.optional(ImportJobData) }),
-).annotate({ identifier: "StartImportJobResponse" }) as any as S.Schema<StartImportJobResponse>;
+export const StartImportJobResponse =
+  GetImportJobResponse as any as S.Schema<StartImportJobResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
@@ -1988,11 +1953,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteAssistantResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = ObjectFieldsList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -2006,9 +1969,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteAssistantResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateContentRequest {
   knowledgeBaseId: string;
   contentId: string;
@@ -2043,9 +2005,8 @@ export const UpdateContentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateContentResponse {
   content?: ContentData;
 }
-export const UpdateContentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ content: S.optional(ContentData) }),
-).annotate({ identifier: "UpdateContentResponse" }) as any as S.Schema<UpdateContentResponse>;
+export const UpdateContentResponse =
+  CreateContentResponse as any as S.Schema<UpdateContentResponse>;
 export interface UpdateKnowledgeBaseTemplateUriRequest {
   knowledgeBaseId: string;
   templateUri: string;
@@ -2070,11 +2031,8 @@ export const UpdateKnowledgeBaseTemplateUriRequest = /*@__PURE__*/ S.suspend(() 
 export interface UpdateKnowledgeBaseTemplateUriResponse {
   knowledgeBase?: KnowledgeBaseData;
 }
-export const UpdateKnowledgeBaseTemplateUriResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ knowledgeBase: S.optional(KnowledgeBaseData) }),
-).annotate({
-  identifier: "UpdateKnowledgeBaseTemplateUriResponse",
-}) as any as S.Schema<UpdateKnowledgeBaseTemplateUriResponse>;
+export const UpdateKnowledgeBaseTemplateUriResponse =
+  CreateKnowledgeBaseResponse as any as S.Schema<UpdateKnowledgeBaseTemplateUriResponse>;
 export interface UpdateQuickResponseRequest {
   knowledgeBaseId: string;
   quickResponseId: string;
@@ -2126,11 +2084,8 @@ export const UpdateQuickResponseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateQuickResponseResponse {
   quickResponse?: QuickResponseData;
 }
-export const UpdateQuickResponseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ quickResponse: S.optional(QuickResponseData) }),
-).annotate({
-  identifier: "UpdateQuickResponseResponse",
-}) as any as S.Schema<UpdateQuickResponseResponse>;
+export const UpdateQuickResponseResponse =
+  CreateQuickResponseResponse as any as S.Schema<UpdateQuickResponseResponse>;
 export type CreateAssistantError =
   | AccessDeniedException
   | ConflictException

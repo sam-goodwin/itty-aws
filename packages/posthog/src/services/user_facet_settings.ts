@@ -62,9 +62,8 @@ export const UpdateUserFacetSettingsPartialRequestProduct = S.String;
 
 /** Ordered list of custom facets the user has pinned for this product, within the current team. Send the full list to replace the existing set. */
 export type UpdateUserFacetSettingsPartialRequestCustomFacetsList = Array<UserFacetSettingsEntry>;
-export const UpdateUserFacetSettingsPartialRequestCustomFacetsList = /*@__PURE__*/ S.Array(
-  UserFacetSettingsEntry,
-) as any as S.Schema<UpdateUserFacetSettingsPartialRequestCustomFacetsList>;
+export const UpdateUserFacetSettingsPartialRequestCustomFacetsList =
+  UserFacetSettingsCustomFacetsList as any as S.Schema<UpdateUserFacetSettingsPartialRequestCustomFacetsList>;
 
 export interface UpdateUserFacetSettingsPartialRequest {
   uuid: string;

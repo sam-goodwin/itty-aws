@@ -408,15 +408,13 @@ export const OidcIdPConfigResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Email domains used for IdP discovery on the login form. May be empty when `allowAnyDomain` is true. */
 export type IdentityProviderEmailDomainsList = Array<string>;
-export const IdentityProviderEmailDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IdentityProviderEmailDomainsList>;
+export const IdentityProviderEmailDomainsList =
+  CreateOrganizationIdentityProviderRequestEmailDomainsList as any as S.Schema<IdentityProviderEmailDomainsList>;
 
 /** Organization role IDs assigned to users who join via SSO through this identity provider */
 export type IdentityProviderDefaultAssignedRoleIdsList = Array<string>;
-export const IdentityProviderDefaultAssignedRoleIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IdentityProviderDefaultAssignedRoleIdsList>;
+export const IdentityProviderDefaultAssignedRoleIdsList =
+  CreateOrganizationIdentityProviderRequestEmailDomainsList as any as S.Schema<IdentityProviderDefaultAssignedRoleIdsList>;
 
 export interface IdentityProvider {
   /** Unique identifier */
@@ -464,9 +462,8 @@ export const CreateOrganizationInvitationRequestRole = S.String;
 
 /** Array of assigned role IDs for the invitee */
 export type CreateOrganizationInvitationRequestAssignedRoleIdsList = Array<string>;
-export const CreateOrganizationInvitationRequestAssignedRoleIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationInvitationRequestAssignedRoleIdsList>;
+export const CreateOrganizationInvitationRequestAssignedRoleIdsList =
+  CreateOrganizationIdentityProviderRequestEmailDomainsList as any as S.Schema<CreateOrganizationInvitationRequestAssignedRoleIdsList>;
 
 export interface CreateOrganizationInvitationRequest {
   /** Organization ID */
@@ -609,11 +606,8 @@ export const DeclineOrganizationInvitationRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeclineOrganizationInvitationRequest>;
 
 export interface DeclineOrganizationInvitationResponse {}
-export const DeclineOrganizationInvitationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeclineOrganizationInvitationResponse",
-}) as any as S.Schema<DeclineOrganizationInvitationResponse>;
+export const DeclineOrganizationInvitationResponse =
+  CancelOrganizationInvitationResponse as any as S.Schema<DeclineOrganizationInvitationResponse>;
 
 export interface DeleteOrganizationRequest {
   /** Organization ID */
@@ -654,11 +648,8 @@ export const DeleteOrganizationIdentityProviderRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteOrganizationIdentityProviderRequest>;
 
 export interface DeleteOrganizationIdentityProviderResponse {}
-export const DeleteOrganizationIdentityProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationIdentityProviderResponse",
-}) as any as S.Schema<DeleteOrganizationIdentityProviderResponse>;
+export const DeleteOrganizationIdentityProviderResponse =
+  CancelOrganizationInvitationResponse as any as S.Schema<DeleteOrganizationIdentityProviderResponse>;
 
 export interface DeleteOrganizationMemberRequest {
   /** Organization ID */
@@ -678,11 +669,8 @@ export const DeleteOrganizationMemberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationMemberRequest>;
 
 export interface DeleteOrganizationMemberResponse {}
-export const DeleteOrganizationMemberResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationMemberResponse",
-}) as any as S.Schema<DeleteOrganizationMemberResponse>;
+export const DeleteOrganizationMemberResponse =
+  CancelOrganizationInvitationResponse as any as S.Schema<DeleteOrganizationMemberResponse>;
 
 export interface DeleteOrganizationOtelConfigRequest {
   /** Organization ID */
@@ -699,11 +687,8 @@ export const DeleteOrganizationOtelConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationOtelConfigRequest>;
 
 export interface DeleteOrganizationOtelConfigResponse {}
-export const DeleteOrganizationOtelConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationOtelConfigResponse",
-}) as any as S.Schema<DeleteOrganizationOtelConfigResponse>;
+export const DeleteOrganizationOtelConfigResponse =
+  CancelOrganizationInvitationResponse as any as S.Schema<DeleteOrganizationOtelConfigResponse>;
 
 export interface DeleteOrganizationRoleRequest {
   /** Organization ID */
@@ -723,9 +708,8 @@ export const DeleteOrganizationRoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationRoleRequest>;
 
 export interface DeleteOrganizationRoleResponse {}
-export const DeleteOrganizationRoleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOrganizationRoleResponse",
-}) as any as S.Schema<DeleteOrganizationRoleResponse>;
+export const DeleteOrganizationRoleResponse =
+  DeleteOrganizationResponse as any as S.Schema<DeleteOrganizationRoleResponse>;
 
 export interface DeleteRegionRequest {
   /** Region ID */
@@ -741,9 +725,8 @@ export const DeleteRegionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRegionRequest" }) as any as S.Schema<DeleteRegionRequest>;
 
 export interface DeleteRegionResponse {}
-export const DeleteRegionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRegionResponse",
-}) as any as S.Schema<DeleteRegionResponse>;
+export const DeleteRegionResponse =
+  DeleteOrganizationResponse as any as S.Schema<DeleteRegionResponse>;
 
 /** Which setup flow to open: sso for a single sign-on connection, dsync for SCIM directory sync */
 export type WorkosAdminPortalIntent = "sso" | "dsync";
@@ -1098,9 +1081,8 @@ export const LeaveOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LeaveOrganizationRequest" }) as any as S.Schema<LeaveOrganizationRequest>;
 
 export interface LeaveOrganizationResponse {}
-export const LeaveOrganizationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "LeaveOrganizationResponse",
-}) as any as S.Schema<LeaveOrganizationResponse>;
+export const LeaveOrganizationResponse =
+  DeleteOrganizationResponse as any as S.Schema<LeaveOrganizationResponse>;
 
 export interface ListAvailableRegionsRequest {
   /** Use with JWT to specify the organization ID */
@@ -1145,9 +1127,8 @@ export const ListAvailableSandboxClassesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAvailableSandboxClassesRequest>;
 
 export type AvailableSandboxClassAllowedGpuTypesList = Array<GpuType>;
-export const AvailableSandboxClassAllowedGpuTypesList = /*@__PURE__*/ S.Array(
-  GpuType,
-) as any as S.Schema<AvailableSandboxClassAllowedGpuTypesList>;
+export const AvailableSandboxClassAllowedGpuTypesList =
+  RegionUsageOverviewAllowedGpuTypesList as any as S.Schema<AvailableSandboxClassAllowedGpuTypesList>;
 
 export interface AvailableSandboxClass {
   regionId: string;
@@ -1267,9 +1248,8 @@ export const OrganizationUserRole = S.String;
 
 /** Roles assigned to the user */
 export type OrganizationUserAssignedRolesList = Array<OrganizationRole>;
-export const OrganizationUserAssignedRolesList = /*@__PURE__*/ S.Array(
-  OrganizationRole,
-) as any as S.Schema<OrganizationUserAssignedRolesList>;
+export const OrganizationUserAssignedRolesList =
+  OrganizationInvitationAssignedRolesList as any as S.Schema<OrganizationUserAssignedRolesList>;
 
 export interface OrganizationUser {
   /** User ID */
@@ -1327,9 +1307,8 @@ export const ListOrganizationRolesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationRolesRequest>;
 
 export type ListOrganizationRolesResponseBodyList = Array<OrganizationRole>;
-export const ListOrganizationRolesResponseBodyList = /*@__PURE__*/ S.Array(
-  OrganizationRole,
-) as any as S.Schema<ListOrganizationRolesResponseBodyList>;
+export const ListOrganizationRolesResponseBodyList =
+  OrganizationInvitationAssignedRolesList as any as S.Schema<ListOrganizationRolesResponseBodyList>;
 
 export type ListOrganizationRolesResponse = ListOrganizationRolesResponseBodyList;
 export const ListOrganizationRolesResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1375,9 +1354,8 @@ export const ListWorkosSsoConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Email domains routed to this connection */
 export type WorkosSsoConnectionDomainsList = Array<string>;
-export const WorkosSsoConnectionDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WorkosSsoConnectionDomainsList>;
+export const WorkosSsoConnectionDomainsList =
+  CreateOrganizationIdentityProviderRequestEmailDomainsList as any as S.Schema<WorkosSsoConnectionDomainsList>;
 
 export interface WorkosSsoConnection {
   /** WorkOS connection ID */
@@ -1515,11 +1493,8 @@ export const SetOrganizationDefaultRegionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetOrganizationDefaultRegionRequest>;
 
 export interface SetOrganizationDefaultRegionResponse {}
-export const SetOrganizationDefaultRegionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SetOrganizationDefaultRegionResponse",
-}) as any as S.Schema<SetOrganizationDefaultRegionResponse>;
+export const SetOrganizationDefaultRegionResponse =
+  CancelOrganizationInvitationResponse as any as S.Schema<SetOrganizationDefaultRegionResponse>;
 
 export interface TestOrganizationIdentityProviderConnectionRequest {
   /** Organization ID */
@@ -1566,9 +1541,8 @@ export const UpdateAccessForOrganizationMemberRequestRole = S.String;
 
 /** Array of assigned role IDs */
 export type UpdateAccessForOrganizationMemberRequestAssignedRoleIdsList = Array<string>;
-export const UpdateAccessForOrganizationMemberRequestAssignedRoleIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAccessForOrganizationMemberRequestAssignedRoleIdsList>;
+export const UpdateAccessForOrganizationMemberRequestAssignedRoleIdsList =
+  CreateOrganizationIdentityProviderRequestEmailDomainsList as any as S.Schema<UpdateAccessForOrganizationMemberRequestAssignedRoleIdsList>;
 
 export interface UpdateAccessForOrganizationMemberRequest {
   /** Organization ID */
@@ -1624,11 +1598,8 @@ export const UpdateExperimentalConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateExperimentalConfigRequest>;
 
 export interface UpdateExperimentalConfigResponse {}
-export const UpdateExperimentalConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateExperimentalConfigResponse",
-}) as any as S.Schema<UpdateExperimentalConfigResponse>;
+export const UpdateExperimentalConfigResponse =
+  CancelOrganizationInvitationResponse as any as S.Schema<UpdateExperimentalConfigResponse>;
 
 export interface UpdateOrganizationDefaultQueueTimeoutRequest {
   /** Organization ID */
@@ -1652,11 +1623,8 @@ export const UpdateOrganizationDefaultQueueTimeoutRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<UpdateOrganizationDefaultQueueTimeoutRequest>;
 
 export interface UpdateOrganizationDefaultQueueTimeoutResponse {}
-export const UpdateOrganizationDefaultQueueTimeoutResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateOrganizationDefaultQueueTimeoutResponse",
-}) as any as S.Schema<UpdateOrganizationDefaultQueueTimeoutResponse>;
+export const UpdateOrganizationDefaultQueueTimeoutResponse =
+  CancelOrganizationInvitationResponse as any as S.Schema<UpdateOrganizationDefaultQueueTimeoutResponse>;
 
 export interface UpdateOidcIdPConfig {
   /** OIDC Issuer URL */
@@ -1679,16 +1647,13 @@ export const UpdateOidcIdPConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Email domains used for IdP discovery on the login form and to validate the user identity returned by the IdP. If provided and `allowAnyDomain` is not being set to true, must contain at least one domain. To clear domains in the same request, set `allowAnyDomain: true` and `emailDomains: []`. */
 export type UpdateOrganizationIdentityProviderRequestEmailDomainsList = Array<string>;
-export const UpdateOrganizationIdentityProviderRequestEmailDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationIdentityProviderRequestEmailDomainsList>;
+export const UpdateOrganizationIdentityProviderRequestEmailDomainsList =
+  CreateOrganizationIdentityProviderRequestEmailDomainsList as any as S.Schema<UpdateOrganizationIdentityProviderRequestEmailDomainsList>;
 
 /** Organization role IDs assigned to users who join the organization via SSO through this identity provider. Roles must be global or belong to this organization. Empty grants the lowest access: membership with no resource permissions. */
 export type UpdateOrganizationIdentityProviderRequestDefaultAssignedRoleIdsList = Array<string>;
 export const UpdateOrganizationIdentityProviderRequestDefaultAssignedRoleIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationIdentityProviderRequestDefaultAssignedRoleIdsList>;
+  CreateOrganizationIdentityProviderRequestDefaultAssignedRoleIdsList as any as S.Schema<UpdateOrganizationIdentityProviderRequestDefaultAssignedRoleIdsList>;
 
 export interface UpdateOrganizationIdentityProviderRequest {
   /** Organization ID */
@@ -1740,9 +1705,8 @@ export const UpdateOrganizationInvitationRequestRole = S.String;
 
 /** Array of role IDs */
 export type UpdateOrganizationInvitationRequestAssignedRoleIdsList = Array<string>;
-export const UpdateOrganizationInvitationRequestAssignedRoleIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationInvitationRequestAssignedRoleIdsList>;
+export const UpdateOrganizationInvitationRequestAssignedRoleIdsList =
+  CreateOrganizationIdentityProviderRequestEmailDomainsList as any as S.Schema<UpdateOrganizationInvitationRequestAssignedRoleIdsList>;
 
 export interface UpdateOrganizationInvitationRequest {
   /** Organization ID */
@@ -1776,10 +1740,8 @@ export const UpdateOrganizationInvitationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Headers */
 export type UpdateOrganizationOtelConfigRequestHeadersMap = { [key: string]: string | undefined };
-export const UpdateOrganizationOtelConfigRequestHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateOrganizationOtelConfigRequestHeadersMap>;
+export const UpdateOrganizationOtelConfigRequestHeadersMap =
+  OtelConfigHeadersMap as any as S.Schema<UpdateOrganizationOtelConfigRequestHeadersMap>;
 
 export interface UpdateOrganizationOtelConfigRequest {
   /** Organization ID */
@@ -1800,11 +1762,8 @@ export const UpdateOrganizationOtelConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateOrganizationOtelConfigRequest>;
 
 export interface UpdateOrganizationOtelConfigResponse {}
-export const UpdateOrganizationOtelConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateOrganizationOtelConfigResponse",
-}) as any as S.Schema<UpdateOrganizationOtelConfigResponse>;
+export const UpdateOrganizationOtelConfigResponse =
+  CancelOrganizationInvitationResponse as any as S.Schema<UpdateOrganizationOtelConfigResponse>;
 
 export type UpdateOrganizationRoleRequestPermissionsItem =
   | "write:registries"
@@ -1890,9 +1849,8 @@ export const UpdateRegionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateRegionRequest" }) as any as S.Schema<UpdateRegionRequest>;
 
 export interface UpdateRegionResponse {}
-export const UpdateRegionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateRegionResponse",
-}) as any as S.Schema<UpdateRegionResponse>;
+export const UpdateRegionResponse =
+  DeleteOrganizationResponse as any as S.Schema<UpdateRegionResponse>;
 
 export type AcceptOrganizationInvitationError = DaytonaOpError;
 /** Accept organization invitation */

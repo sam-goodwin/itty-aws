@@ -216,10 +216,8 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type FabricCapacitiesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const FabricCapacitiesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FabricCapacitiesCreateOrUpdateResponseTagsMap>;
+export const FabricCapacitiesCreateOrUpdateResponseTagsMap =
+  FabricCapacitiesCreateOrUpdateRequestTagsMap as any as S.Schema<FabricCapacitiesCreateOrUpdateResponseTagsMap>;
 
 /** The provisioning state of the Fabric capacity resource. */
 export type ProvisioningState =
@@ -322,10 +320,8 @@ export const GetFabricCapacityRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetFabricCapacityResponseTagsMap = { [key: string]: string | undefined };
-export const GetFabricCapacityResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetFabricCapacityResponseTagsMap>;
+export const GetFabricCapacityResponseTagsMap =
+  FabricCapacitiesCreateOrUpdateRequestTagsMap as any as S.Schema<GetFabricCapacityResponseTagsMap>;
 
 export interface GetFabricCapacityResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -345,20 +341,8 @@ export interface GetFabricCapacityResponse {
   /** The SKU details */
   sku: RpSku;
 }
-export const GetFabricCapacityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetFabricCapacityResponseTagsMap),
-    location: S.String,
-    properties: FabricCapacityProperties,
-    sku: RpSku,
-  }),
-).annotate({
-  identifier: "GetFabricCapacityResponse",
-}) as any as S.Schema<GetFabricCapacityResponse>;
+export const GetFabricCapacityResponse =
+  FabricCapacitiesCreateOrUpdateResponse as any as S.Schema<GetFabricCapacityResponse>;
 
 export interface ListFabricCapacityByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -384,10 +368,8 @@ export const ListFabricCapacityByResourceGroupRequest = /*@__PURE__*/ S.suspend(
 
 /** Resource tags. */
 export type FabricCapacityTagsMap = { [key: string]: string | undefined };
-export const FabricCapacityTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FabricCapacityTagsMap>;
+export const FabricCapacityTagsMap =
+  FabricCapacitiesCreateOrUpdateRequestTagsMap as any as S.Schema<FabricCapacityTagsMap>;
 
 /** Fabric Capacity resource */
 export interface FabricCapacity {
@@ -481,9 +463,8 @@ export const ListFabricCapacitySkusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of available locations for the SKU */
 export type RpSkuDetailsForNewResourceLocationsList = Array<string>;
-export const RpSkuDetailsForNewResourceLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RpSkuDetailsForNewResourceLocationsList>;
+export const RpSkuDetailsForNewResourceLocationsList =
+  CapacityAdministrationMembersList as any as S.Schema<RpSkuDetailsForNewResourceLocationsList>;
 
 /** The SKU details */
 export interface RpSkuDetailsForNewResource {
@@ -698,9 +679,8 @@ export const ResumeFabricCapacityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResumeFabricCapacityRequest>;
 
 export interface ResumeFabricCapacityResponse {}
-export const ResumeFabricCapacityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResumeFabricCapacityResponse",
-}) as any as S.Schema<ResumeFabricCapacityResponse>;
+export const ResumeFabricCapacityResponse =
+  DeleteFabricCapacityResponse as any as S.Schema<ResumeFabricCapacityResponse>;
 
 export interface SuspendFabricCapacityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -728,16 +708,13 @@ export const SuspendFabricCapacityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SuspendFabricCapacityRequest>;
 
 export interface SuspendFabricCapacityResponse {}
-export const SuspendFabricCapacityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SuspendFabricCapacityResponse",
-}) as any as S.Schema<SuspendFabricCapacityResponse>;
+export const SuspendFabricCapacityResponse =
+  DeleteFabricCapacityResponse as any as S.Schema<SuspendFabricCapacityResponse>;
 
 /** Resource tags. */
 export type UpdateFabricCapacityRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateFabricCapacityRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateFabricCapacityRequestTagsMap>;
+export const UpdateFabricCapacityRequestTagsMap =
+  FabricCapacitiesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateFabricCapacityRequestTagsMap>;
 
 /** The updatable properties of the FabricCapacity. */
 export interface FabricCapacityUpdateProperties {
@@ -788,10 +765,8 @@ export const UpdateFabricCapacityRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateFabricCapacityResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateFabricCapacityResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateFabricCapacityResponseTagsMap>;
+export const UpdateFabricCapacityResponseTagsMap =
+  FabricCapacitiesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateFabricCapacityResponseTagsMap>;
 
 export interface UpdateFabricCapacityResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -811,20 +786,8 @@ export interface UpdateFabricCapacityResponse {
   /** The SKU details */
   sku: RpSku;
 }
-export const UpdateFabricCapacityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateFabricCapacityResponseTagsMap),
-    location: S.String,
-    properties: FabricCapacityProperties,
-    sku: RpSku,
-  }),
-).annotate({
-  identifier: "UpdateFabricCapacityResponse",
-}) as any as S.Schema<UpdateFabricCapacityResponse>;
+export const UpdateFabricCapacityResponse =
+  FabricCapacitiesCreateOrUpdateResponse as any as S.Schema<UpdateFabricCapacityResponse>;
 
 export type CheckFabricCapacityNameAvailabilityError = AzureOpError;
 /** Implements local CheckNameAvailability operations */

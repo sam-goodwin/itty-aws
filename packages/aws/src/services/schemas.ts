@@ -332,9 +332,8 @@ export const DeleteRegistryRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteRegistryRequest" }) as any as S.Schema<DeleteRegistryRequest>;
 export interface DeleteRegistryResponse {}
-export const DeleteRegistryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRegistryResponse",
-}) as any as S.Schema<DeleteRegistryResponse>;
+export const DeleteRegistryResponse =
+  DeleteDiscovererResponse as any as S.Schema<DeleteRegistryResponse>;
 export interface DeleteResourcePolicyRequest {
   RegistryName?: string;
 }
@@ -346,9 +345,8 @@ export const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourcePolicyRequest",
 }) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {}
-export const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteResourcePolicyResponse",
-}) as any as S.Schema<DeleteResourcePolicyResponse>;
+export const DeleteResourcePolicyResponse =
+  DeleteDiscovererResponse as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface DeleteSchemaRequest {
   RegistryName: string;
   SchemaName: string;
@@ -372,9 +370,8 @@ export const DeleteSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteSchemaRequest" }) as any as S.Schema<DeleteSchemaRequest>;
 export interface DeleteSchemaResponse {}
-export const DeleteSchemaResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSchemaResponse",
-}) as any as S.Schema<DeleteSchemaResponse>;
+export const DeleteSchemaResponse =
+  DeleteDiscovererResponse as any as S.Schema<DeleteSchemaResponse>;
 export interface DeleteSchemaVersionRequest {
   RegistryName: string;
   SchemaName: string;
@@ -402,9 +399,8 @@ export const DeleteSchemaVersionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSchemaVersionRequest",
 }) as any as S.Schema<DeleteSchemaVersionRequest>;
 export interface DeleteSchemaVersionResponse {}
-export const DeleteSchemaVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSchemaVersionResponse",
-}) as any as S.Schema<DeleteSchemaVersionResponse>;
+export const DeleteSchemaVersionResponse =
+  DeleteDiscovererResponse as any as S.Schema<DeleteSchemaVersionResponse>;
 export interface DescribeCodeBindingRequest {
   Language: string;
   RegistryName: string;
@@ -516,14 +512,8 @@ export interface DescribeRegistryResponse {
   RegistryName?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const DescribeRegistryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Description: S.optional(S.String),
-    RegistryArn: S.optional(S.String),
-    RegistryName: S.optional(S.String),
-    Tags: S.optional(Tags),
-  }).pipe(S.encodeKeys({ Tags: "tags" })),
-).annotate({ identifier: "DescribeRegistryResponse" }) as any as S.Schema<DescribeRegistryResponse>;
+export const DescribeRegistryResponse =
+  CreateRegistryResponse as any as S.Schema<DescribeRegistryResponse>;
 export interface DescribeSchemaRequest {
   RegistryName: string;
   SchemaName: string;
@@ -945,11 +935,8 @@ export interface PutResourcePolicyResponse {
   Policy?: string;
   RevisionId?: string;
 }
-export const PutResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Policy: S.optional(S.String), RevisionId: S.optional(S.String) }),
-).annotate({
-  identifier: "PutResourcePolicyResponse",
-}) as any as S.Schema<PutResourcePolicyResponse>;
+export const PutResourcePolicyResponse =
+  GetResourcePolicyResponse as any as S.Schema<PutResourcePolicyResponse>;
 export interface SearchSchemasRequest {
   Keywords?: string;
   Limit?: number;
@@ -1053,9 +1040,8 @@ export interface StopDiscovererResponse {
   DiscovererId?: string;
   State?: DiscovererState;
 }
-export const StopDiscovererResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DiscovererId: S.optional(S.String), State: S.optional(DiscovererState) }),
-).annotate({ identifier: "StopDiscovererResponse" }) as any as S.Schema<StopDiscovererResponse>;
+export const StopDiscovererResponse =
+  StartDiscovererResponse as any as S.Schema<StopDiscovererResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags?: { [key: string]: string | undefined };
@@ -1068,11 +1054,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
     ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteDiscovererResponse as any as S.Schema<TagResourceResponse>;
 export type __listOf__string = string[];
-export const __listOf__string = /*@__PURE__*/ S.Array(S.String);
+export const __listOf__string =
+  __listOfGetDiscoveredSchemaVersionItemInput as any as S.Schema<__listOf__string>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys?: string[];
@@ -1086,9 +1071,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteDiscovererResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDiscovererRequest {
   Description?: string;
   DiscovererId: string;
@@ -1119,17 +1103,8 @@ export interface UpdateDiscovererResponse {
   CrossAccount?: boolean;
   Tags?: { [key: string]: string | undefined };
 }
-export const UpdateDiscovererResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Description: S.optional(S.String),
-    DiscovererArn: S.optional(S.String),
-    DiscovererId: S.optional(S.String),
-    SourceArn: S.optional(S.String),
-    State: S.optional(DiscovererState),
-    CrossAccount: S.optional(S.Boolean),
-    Tags: S.optional(Tags),
-  }).pipe(S.encodeKeys({ Tags: "tags" })),
-).annotate({ identifier: "UpdateDiscovererResponse" }) as any as S.Schema<UpdateDiscovererResponse>;
+export const UpdateDiscovererResponse =
+  CreateDiscovererResponse as any as S.Schema<UpdateDiscovererResponse>;
 export interface UpdateRegistryRequest {
   Description?: string;
   RegistryName: string;
@@ -1155,14 +1130,8 @@ export interface UpdateRegistryResponse {
   RegistryName?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const UpdateRegistryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Description: S.optional(S.String),
-    RegistryArn: S.optional(S.String),
-    RegistryName: S.optional(S.String),
-    Tags: S.optional(Tags),
-  }).pipe(S.encodeKeys({ Tags: "tags" })),
-).annotate({ identifier: "UpdateRegistryResponse" }) as any as S.Schema<UpdateRegistryResponse>;
+export const UpdateRegistryResponse =
+  CreateRegistryResponse as any as S.Schema<UpdateRegistryResponse>;
 export type __stringMin0Max36 = string;
 export interface UpdateSchemaRequest {
   ClientTokenId?: string;
@@ -1204,18 +1173,7 @@ export interface UpdateSchemaResponse {
   Type?: string;
   VersionCreatedDate?: Date;
 }
-export const UpdateSchemaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Description: S.optional(S.String),
-    LastModified: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    SchemaArn: S.optional(S.String),
-    SchemaName: S.optional(S.String),
-    SchemaVersion: S.optional(S.String),
-    Tags: S.optional(Tags),
-    Type: S.optional(S.String),
-    VersionCreatedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }).pipe(S.encodeKeys({ Tags: "tags" })),
-).annotate({ identifier: "UpdateSchemaResponse" }) as any as S.Schema<UpdateSchemaResponse>;
+export const UpdateSchemaResponse = CreateSchemaResponse as any as S.Schema<UpdateSchemaResponse>;
 export type CreateDiscovererError =
   | BadRequestException
   | ConflictException

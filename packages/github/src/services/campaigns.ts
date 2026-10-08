@@ -43,9 +43,8 @@ export const CreateCampaignRequestManagersList = /*@__PURE__*/ S.Array(
 
 /** The slugs of the teams to set as the campaign managers. */
 export type CreateCampaignRequestTeamManagersList = Array<string>;
-export const CreateCampaignRequestTeamManagersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCampaignRequestTeamManagersList>;
+export const CreateCampaignRequestTeamManagersList =
+  CreateCampaignRequestManagersList as any as S.Schema<CreateCampaignRequestTeamManagersList>;
 
 /** The alert numbers */
 export type CreateCampaignRequestCodeScanningAlertsItemAlertNumbersList = Array<number>;
@@ -444,15 +443,13 @@ export const ListOrgCampaignsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The logins of the users to set as the campaign managers. At this time, only a single manager can be supplied. */
 export type UpdateCampaignRequestManagersList = Array<string>;
-export const UpdateCampaignRequestManagersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCampaignRequestManagersList>;
+export const UpdateCampaignRequestManagersList =
+  CreateCampaignRequestManagersList as any as S.Schema<UpdateCampaignRequestManagersList>;
 
 /** The slugs of the teams to set as the campaign managers. */
 export type UpdateCampaignRequestTeamManagersList = Array<string>;
-export const UpdateCampaignRequestTeamManagersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCampaignRequestTeamManagersList>;
+export const UpdateCampaignRequestTeamManagersList =
+  CreateCampaignRequestManagersList as any as S.Schema<UpdateCampaignRequestTeamManagersList>;
 
 export interface UpdateCampaignRequest {
   /** The organization name. The name is not case sensitive. */

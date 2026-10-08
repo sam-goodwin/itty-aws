@@ -69,9 +69,8 @@ export const CreateElementRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateElementRequest" }) as any as S.Schema<CreateElementRequest>;
 
 export type ElementAttrClassList = Array<string>;
-export const ElementAttrClassList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ElementAttrClassList>;
+export const ElementAttrClassList =
+  CreateElementRequestAttrClassList as any as S.Schema<ElementAttrClassList>;
 
 export interface Element {
   text?: string | null;
@@ -132,9 +131,8 @@ export const GetElementRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetElementRequest" }) as any as S.Schema<GetElementRequest>;
 
 export type GetElementsStatRequestIncludeList = Array<string>;
-export const GetElementsStatRequestIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetElementsStatRequestIncludeList>;
+export const GetElementsStatRequestIncludeList =
+  CreateElementRequestAttrClassList as any as S.Schema<GetElementsStatRequestIncludeList>;
 
 export interface GetElementsStatRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -237,9 +235,8 @@ export const ListElementsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListElementsRequest" }) as any as S.Schema<ListElementsRequest>;
 
 export type PaginatedElementListResultsList = Array<Element>;
-export const PaginatedElementListResultsList = /*@__PURE__*/ S.Array(
-  Element,
-) as any as S.Schema<PaginatedElementListResultsList>;
+export const PaginatedElementListResultsList =
+  ElementStatsElementsList as any as S.Schema<PaginatedElementListResultsList>;
 
 export interface PaginatedElementList {
   count?: number;
@@ -297,9 +294,8 @@ export const ListElementsValuesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListElementsValuesResponse>;
 
 export type UpdateElementRequestAttrClassList = Array<string>;
-export const UpdateElementRequestAttrClassList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateElementRequestAttrClassList>;
+export const UpdateElementRequestAttrClassList =
+  CreateElementRequestAttrClassList as any as S.Schema<UpdateElementRequestAttrClassList>;
 
 export interface UpdateElementRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -333,9 +329,8 @@ export const UpdateElementRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateElementRequest" }) as any as S.Schema<UpdateElementRequest>;
 
 export type UpdateElementsPartialRequestAttrClassList = Array<string>;
-export const UpdateElementsPartialRequestAttrClassList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateElementsPartialRequestAttrClassList>;
+export const UpdateElementsPartialRequestAttrClassList =
+  CreateElementRequestAttrClassList as any as S.Schema<UpdateElementsPartialRequestAttrClassList>;
 
 export interface UpdateElementsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

@@ -4088,9 +4088,8 @@ export const GoogleCloudDialogflowV2beta1SuggestionArticle =
 
 export type GoogleCloudDialogflowV2beta1SuggestionArticleList =
   Array<GoogleCloudDialogflowV2beta1ArticleAnswer>;
-export const GoogleCloudDialogflowV2beta1SuggestionArticleList = /*@__PURE__*/ S.Array(
-  GoogleCloudDialogflowV2beta1ArticleAnswer,
-) as any as S.Schema<GoogleCloudDialogflowV2beta1SuggestionArticleList>;
+export const GoogleCloudDialogflowV2beta1SuggestionArticleList =
+  GoogleCloudDialogflowV2beta1ArticleAnswerList as any as S.Schema<GoogleCloudDialogflowV2beta1SuggestionArticleList>;
 
 export interface GoogleCloudDialogflowV2beta1Suggestion {
   createTime?: string;
@@ -12980,9 +12979,7 @@ export const GoogleCloudDialogflowV2beta1SuggestConversationSummaryResponseSumma
 export type GoogleCloudDialogflowV2beta1SuggestConversationSummaryResponseSummarySummarySectionList =
   Array<GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection>;
 export const GoogleCloudDialogflowV2beta1SuggestConversationSummaryResponseSummarySummarySectionList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection,
-  ) as any as S.Schema<GoogleCloudDialogflowV2beta1SuggestConversationSummaryResponseSummarySummarySectionList>;
+  GoogleCloudDialogflowV2beta1SummarySuggestionSummarySectionList as any as S.Schema<GoogleCloudDialogflowV2beta1SuggestConversationSummaryResponseSummarySummarySectionList>;
 
 export interface GoogleCloudDialogflowV2beta1SuggestConversationSummaryResponseSummary {
   text?: string;

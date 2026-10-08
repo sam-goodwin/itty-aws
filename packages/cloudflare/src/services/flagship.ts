@@ -163,17 +163,12 @@ export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase0Va
   [key: string]: unknown | undefined;
 };
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase0Value =
   | string
@@ -222,17 +217,12 @@ export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1C
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -284,17 +274,12 @@ export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1C
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -346,17 +331,12 @@ export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1C
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -408,17 +388,12 @@ export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1C
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -453,17 +428,12 @@ export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1C
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map>;
 
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
   Array<unknown>;
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List>;
 
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1Clauses =
   | string
@@ -843,16 +813,11 @@ export type AppsFlagsCreateResponseRulesItemConditionsItemCase0ValueCase3Map = {
   [key: string]: unknown | undefined;
 };
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase0ValueCase3Map>;
 
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase0ValueCase4List = Array<unknown>;
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase0ValueCase4List>;
 
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase0Value =
   | string
@@ -898,17 +863,12 @@ export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase0V
   [key: string]: unknown | undefined;
 };
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase0Value =
   | string
@@ -955,17 +915,12 @@ export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -1015,17 +970,12 @@ export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -1075,17 +1025,12 @@ export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -1135,17 +1080,12 @@ export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -1178,17 +1118,12 @@ export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map>;
 
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
   Array<unknown>;
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List>;
 
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1Clauses =
   | string
@@ -1608,15 +1543,7 @@ export interface GetAppResponse {
   /** Email of the actor who last modified the app, or `unknown` when unavailable. */
   updatedBy: string;
 }
-export const GetAppResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    name: S.String,
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    updatedBy: S.String.pipe(T.Body("updated_by")),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetAppResponse" }) as any as S.Schema<GetAppResponse>;
+export const GetAppResponse = CreateAppResponse as any as S.Schema<GetAppResponse>;
 
 export interface GetAppEvaluateRequest {
   /** Cloudflare account ID that owns the Flagship app. */
@@ -1654,10 +1581,8 @@ export type AppsEvaluateGetResponseReason =
 export const AppsEvaluateGetResponseReason = S.String;
 
 export type AppsEvaluateGetResponseValueCase3Map = { [key: string]: unknown | undefined };
-export const AppsEvaluateGetResponseValueCase3Map = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AppsEvaluateGetResponseValueCase3Map>;
+export const AppsEvaluateGetResponseValueCase3Map =
+  UntypedVariationsMap as any as S.Schema<AppsEvaluateGetResponseValueCase3Map>;
 
 export type AppsEvaluateGetResponseValueCase4List = Array<unknown>;
 export const AppsEvaluateGetResponseValueCase4List = /*@__PURE__*/ S.Array(
@@ -1736,15 +1661,12 @@ export const AppsFlagsGetResponseRulesItemConditionsItemCase0Operator = S.String
 export type AppsFlagsGetResponseRulesItemConditionsItemCase0ValueCase3Map = {
   [key: string]: unknown | undefined;
 };
-export const AppsFlagsGetResponseRulesItemConditionsItemCase0ValueCase3Map = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase0ValueCase3Map>;
+export const AppsFlagsGetResponseRulesItemConditionsItemCase0ValueCase3Map =
+  UntypedVariationsMap as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase0ValueCase3Map>;
 
 export type AppsFlagsGetResponseRulesItemConditionsItemCase0ValueCase4List = Array<unknown>;
-export const AppsFlagsGetResponseRulesItemConditionsItemCase0ValueCase4List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase0ValueCase4List>;
+export const AppsFlagsGetResponseRulesItemConditionsItemCase0ValueCase4List =
+  AppsEvaluateGetResponseValueCase4List as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase0ValueCase4List>;
 
 export type AppsFlagsGetResponseRulesItemConditionsItemCase0Value =
   | string
@@ -1791,17 +1713,12 @@ export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase0Valu
   [key: string]: unknown | undefined;
 };
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase0Value =
   | string
@@ -1848,17 +1765,12 @@ export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1Cla
 export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -1906,17 +1818,12 @@ export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1Cla
 export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -1966,17 +1873,12 @@ export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1Cla
 export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -2026,17 +1928,12 @@ export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1Cla
 export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -2069,17 +1966,12 @@ export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1Cla
 export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map>;
 
 export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
   Array<unknown>;
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List>;
 
 export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1Clauses =
   | string
@@ -2452,17 +2344,12 @@ export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCas
   [key: string]: unknown | undefined;
 };
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase0ValueCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase0ValueCase4List>;
 
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase0Value =
   | string
@@ -2509,17 +2396,12 @@ export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCa
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase0Value =
   | string
@@ -2569,17 +2451,12 @@ export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCa
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -2629,17 +2506,12 @@ export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCa
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -2689,17 +2561,12 @@ export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCa
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -2749,17 +2616,12 @@ export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCa
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -2792,17 +2654,12 @@ export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCa
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
   Array<unknown>;
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List>;
 
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1Clauses =
   | string
@@ -3180,17 +3037,12 @@ export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCas
   [key: string]: unknown | undefined;
 };
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase0ValueCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase0ValueCase4List>;
 
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase0Value =
   | string
@@ -3237,17 +3089,12 @@ export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCa
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase0Value =
   | string
@@ -3297,17 +3144,12 @@ export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCa
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -3357,17 +3199,12 @@ export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCa
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -3417,17 +3254,12 @@ export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCa
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -3477,17 +3309,12 @@ export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCa
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -3520,17 +3347,12 @@ export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCa
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
   Array<unknown>;
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List>;
 
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1Clauses =
   | string
@@ -3908,17 +3730,12 @@ export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCas
   [key: string]: unknown | undefined;
 };
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase0ValueCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase0ValueCase4List>;
 
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase0Value =
   | string
@@ -3965,17 +3782,12 @@ export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCa
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase0Value =
   | string
@@ -4025,17 +3837,12 @@ export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCa
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -4085,17 +3892,12 @@ export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCa
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -4145,17 +3947,12 @@ export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCa
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -4205,17 +4002,12 @@ export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCa
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -4248,17 +4040,12 @@ export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCa
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
   Array<unknown>;
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List>;
 
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1Clauses =
   | string
@@ -4600,15 +4387,12 @@ export const AppsFlagsChangelogListResultItemCase2After = /*@__PURE__*/ S.suspen
 export type AppsFlagsChangelogListResultItemCase2DiffValueFromCase3Map = {
   [key: string]: unknown | undefined;
 };
-export const AppsFlagsChangelogListResultItemCase2DiffValueFromCase3Map = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AppsFlagsChangelogListResultItemCase2DiffValueFromCase3Map>;
+export const AppsFlagsChangelogListResultItemCase2DiffValueFromCase3Map =
+  UntypedVariationsMap as any as S.Schema<AppsFlagsChangelogListResultItemCase2DiffValueFromCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase2DiffValueFromCase4List = Array<unknown>;
-export const AppsFlagsChangelogListResultItemCase2DiffValueFromCase4List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<AppsFlagsChangelogListResultItemCase2DiffValueFromCase4List>;
+export const AppsFlagsChangelogListResultItemCase2DiffValueFromCase4List =
+  AppsEvaluateGetResponseValueCase4List as any as S.Schema<AppsFlagsChangelogListResultItemCase2DiffValueFromCase4List>;
 
 export type AppsFlagsChangelogListResultItemCase2DiffValueFrom =
   | string
@@ -4623,15 +4407,12 @@ export const AppsFlagsChangelogListResultItemCase2DiffValueFrom = /*@__PURE__*/ 
 export type AppsFlagsChangelogListResultItemCase2DiffValueToCase3Map = {
   [key: string]: unknown | undefined;
 };
-export const AppsFlagsChangelogListResultItemCase2DiffValueToCase3Map = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AppsFlagsChangelogListResultItemCase2DiffValueToCase3Map>;
+export const AppsFlagsChangelogListResultItemCase2DiffValueToCase3Map =
+  UntypedVariationsMap as any as S.Schema<AppsFlagsChangelogListResultItemCase2DiffValueToCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase2DiffValueToCase4List = Array<unknown>;
-export const AppsFlagsChangelogListResultItemCase2DiffValueToCase4List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<AppsFlagsChangelogListResultItemCase2DiffValueToCase4List>;
+export const AppsFlagsChangelogListResultItemCase2DiffValueToCase4List =
+  AppsEvaluateGetResponseValueCase4List as any as S.Schema<AppsFlagsChangelogListResultItemCase2DiffValueToCase4List>;
 
 export type AppsFlagsChangelogListResultItemCase2DiffValueTo =
   | string
@@ -4766,16 +4547,11 @@ export type AppsFlagsListResultItemRulesItemConditionsItemCase0ValueCase3Map = {
   [key: string]: unknown | undefined;
 };
 export const AppsFlagsListResultItemRulesItemConditionsItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase0ValueCase3Map>;
 
 export type AppsFlagsListResultItemRulesItemConditionsItemCase0ValueCase4List = Array<unknown>;
 export const AppsFlagsListResultItemRulesItemConditionsItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase0ValueCase4List>;
 
 export type AppsFlagsListResultItemRulesItemConditionsItemCase0Value =
   | string
@@ -4821,17 +4597,12 @@ export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase0V
   [key: string]: unknown | undefined;
 };
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase0Value =
   | string
@@ -4878,17 +4649,12 @@ export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1
 export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -4938,17 +4704,12 @@ export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1
 export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -4998,17 +4759,12 @@ export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1
 export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -5058,17 +4814,12 @@ export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1
 export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -5101,17 +4852,12 @@ export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1
 export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map>;
 
 export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
   Array<unknown>;
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List>;
 
 export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1Clauses =
   | string
@@ -5526,15 +5272,7 @@ export interface UpdateAppResponse {
   /** Email of the actor who last modified the app, or `unknown` when unavailable. */
   updatedBy: string;
 }
-export const UpdateAppResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    name: S.String,
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    updatedBy: S.String.pipe(T.Body("updated_by")),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UpdateAppResponse" }) as any as S.Schema<UpdateAppResponse>;
+export const UpdateAppResponse = CreateAppResponse as any as S.Schema<UpdateAppResponse>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase0Operator =
   | "equals"
@@ -5556,16 +5294,11 @@ export type AppsFlagsUpdateRequestRulesItemConditionsItemCase0ValueCase3Map = {
   [key: string]: unknown | undefined;
 };
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase0ValueCase3Map>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase0ValueCase4List = Array<unknown>;
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase0ValueCase4List>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase0Value =
   | string
@@ -5612,17 +5345,12 @@ export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase0Va
   [key: string]: unknown | undefined;
 };
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase0Value =
   | string
@@ -5671,17 +5399,12 @@ export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1C
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -5733,17 +5456,12 @@ export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1C
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -5795,17 +5513,12 @@ export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1C
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -5857,17 +5570,12 @@ export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1C
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -5902,17 +5610,12 @@ export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1C
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
   Array<unknown>;
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1Clauses =
   | string
@@ -6277,16 +5980,11 @@ export type AppsFlagsUpdateResponseRulesItemConditionsItemCase0ValueCase3Map = {
   [key: string]: unknown | undefined;
 };
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase0ValueCase3Map>;
 
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase0ValueCase4List = Array<unknown>;
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase0ValueCase4List>;
 
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase0Value =
   | string
@@ -6332,17 +6030,12 @@ export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase0V
   [key: string]: unknown | undefined;
 };
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase0Value =
   | string
@@ -6389,17 +6082,12 @@ export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -6449,17 +6137,12 @@ export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -6509,17 +6192,12 @@ export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -6569,17 +6247,12 @@ export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map>;
 
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
   Array<unknown>;
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List>;
 
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
   | string
@@ -6612,17 +6285,12 @@ export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map =
   { [key: string]: unknown | undefined };
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map>;
 
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
   Array<unknown>;
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List>;
+  AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List>;
 
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1Clauses =
   | string

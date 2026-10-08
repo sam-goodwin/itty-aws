@@ -359,9 +359,8 @@ export const AdLeadFormIntro = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdLeadFormIntro" }) as any as S.Schema<AdLeadFormIntro>;
 
 export type SocialAccountLeadFormQuestionLabelsList = Array<string>;
-export const SocialAccountLeadFormQuestionLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SocialAccountLeadFormQuestionLabelsList>;
+export const SocialAccountLeadFormQuestionLabelsList =
+  SocialAccountScopesList as any as S.Schema<SocialAccountLeadFormQuestionLabelsList>;
 
 /** What happens when the choice is selected. */
 export type AdLeadFormOptionLogicAction = "go_to_question" | "submit_form" | "close_form";

@@ -217,12 +217,7 @@ export interface UnitPricingMeasure {
   /** The unit of the measure. */
   unit?: string;
 }
-export const UnitPricingMeasure = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.Number),
-    unit: S.optional(S.String),
-  }),
-).annotate({ identifier: "UnitPricingMeasure" }) as any as S.Schema<UnitPricingMeasure>;
+export const UnitPricingMeasure = ShippingWeight as any as S.Schema<UnitPricingMeasure>;
 
 export type SubscriptionCostPeriodEnum =
   | "SUBSCRIPTION_PERIOD_UNSPECIFIED"
@@ -427,12 +422,7 @@ export interface ProductWeight {
   /** Required. The weight represented as a number. The weight can have a maximum precision of four decimal places. */
   value?: number;
 }
-export const ProductWeight = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unit: S.optional(S.String),
-    value: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ProductWeight" }) as any as S.Schema<ProductWeight>;
+export const ProductWeight = ProductDimension as any as S.Schema<ProductWeight>;
 
 /** A message that represents loyalty program. For more information on loyalty programs, see [Overview of loyalty programs](/merchant/api/guides/loyalty/loyalty-programs). */
 export interface LoyaltyProgram {
@@ -492,12 +482,7 @@ export interface ShippingDimension {
   /** The dimension of the product used to calculate the shipping cost of the item. */
   value?: number;
 }
-export const ShippingDimension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unit: S.optional(S.String),
-    value: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ShippingDimension" }) as any as S.Schema<ShippingDimension>;
+export const ShippingDimension = ProductDimension as any as S.Schema<ShippingDimension>;
 
 /** Product [certification](https://support.google.com/merchants/answer/13528839), initially introduced for EU energy efficiency labeling compliance using the EU EPREL database. */
 export interface Certification {

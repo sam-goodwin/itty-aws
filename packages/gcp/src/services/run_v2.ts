@@ -2362,9 +2362,8 @@ export const ExportStatusProjectsLocationsJobsExecutionsRequest = /*@__PURE__*/ 
 
 /** This is proto2's version of MessageSet. DEPRECATED: DO NOT USE FOR NEW FIELDS. If you are using editions or proto2, please make your own extendable messages for your use case. If you are using proto3, please use `Any` instead. MessageSet was the implementation of extensions for proto1. When proto2 was introduced, extensions were implemented as a first-class feature. This schema for MessageSet was meant to be a "bridge" solution to migrate MessageSet-bearing messages from proto1 to proto2. This schema has been open-sourced only to facilitate the migration of Google products with MessageSet-bearing messages to open-source environments. */
 export interface Proto2BridgeMessageSet {}
-export const Proto2BridgeMessageSet = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Proto2BridgeMessageSet",
-}) as any as S.Schema<Proto2BridgeMessageSet>;
+export const Proto2BridgeMessageSet =
+  GoogleProtobufEmpty as any as S.Schema<Proto2BridgeMessageSet>;
 
 /** Wire-format for a Status object */
 export interface UtilStatusProto {
@@ -3867,14 +3866,8 @@ export interface GoogleCloudRunV2StartInstanceRequest {
   /** Optional. Indicates that the request should be validated without actually stopping any resources. */
   validateOnly?: boolean;
 }
-export const GoogleCloudRunV2StartInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    etag: S.optional(S.String),
-    validateOnly: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GoogleCloudRunV2StartInstanceRequest",
-}) as any as S.Schema<GoogleCloudRunV2StartInstanceRequest>;
+export const GoogleCloudRunV2StartInstanceRequest =
+  GoogleCloudRunV2CancelExecutionRequest as any as S.Schema<GoogleCloudRunV2StartInstanceRequest>;
 
 export interface StartProjectsLocationsInstancesRequest {
   /** Required. The name of the Instance to start. */
@@ -4098,13 +4091,8 @@ export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const GoogleIamV1TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GoogleIamV1TestIamPermissionsResponse",
-}) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>;
+export const GoogleIamV1TestIamPermissionsResponse =
+  GoogleIamV1TestIamPermissionsRequest as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsJobsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */

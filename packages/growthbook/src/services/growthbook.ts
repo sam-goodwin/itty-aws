@@ -55,9 +55,8 @@ export const AddContextualBanditLinkedFeatureRequestEnvironmentsList = /*@__PURE
 ) as any as S.Schema<AddContextualBanditLinkedFeatureRequestEnvironmentsList>;
 
 export type AddContextualBanditLinkedFeatureRequestProjectsList = Array<string>;
-export const AddContextualBanditLinkedFeatureRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddContextualBanditLinkedFeatureRequestProjectsList>;
+export const AddContextualBanditLinkedFeatureRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<AddContextualBanditLinkedFeatureRequestProjectsList>;
 
 export interface AddContextualBanditLinkedFeatureRequest {
   /** The Contextual Bandit id */
@@ -180,9 +179,8 @@ export type RampScheduleStartActionsItemPatchSavedGroupsItemMatch = "all" | "non
 export const RampScheduleStartActionsItemPatchSavedGroupsItemMatch = S.String;
 
 export type RampScheduleStartActionsItemPatchSavedGroupsItemIdsList = Array<string>;
-export const RampScheduleStartActionsItemPatchSavedGroupsItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RampScheduleStartActionsItemPatchSavedGroupsItemIdsList>;
+export const RampScheduleStartActionsItemPatchSavedGroupsItemIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<RampScheduleStartActionsItemPatchSavedGroupsItemIdsList>;
 
 export interface RampScheduleStartActionsItemPatchSavedGroupsItem {
   match: RampScheduleStartActionsItemPatchSavedGroupsItemMatch;
@@ -223,9 +221,8 @@ export const RampScheduleStartActionsItemPatchPrerequisitesList = /*@__PURE__*/ 
 ) as any as S.Schema<RampScheduleStartActionsItemPatchPrerequisitesList>;
 
 export type RampScheduleStartActionsItemPatchEnvironmentsList = Array<string>;
-export const RampScheduleStartActionsItemPatchEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RampScheduleStartActionsItemPatchEnvironmentsList>;
+export const RampScheduleStartActionsItemPatchEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<RampScheduleStartActionsItemPatchEnvironmentsList>;
 
 export interface RampScheduleStartActionsItemPatch {
   ruleId: string;
@@ -303,9 +300,8 @@ export type RampScheduleStepsItemActionsItemPatchSavedGroupsItemMatch = "all" | 
 export const RampScheduleStepsItemActionsItemPatchSavedGroupsItemMatch = S.String;
 
 export type RampScheduleStepsItemActionsItemPatchSavedGroupsItemIdsList = Array<string>;
-export const RampScheduleStepsItemActionsItemPatchSavedGroupsItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RampScheduleStepsItemActionsItemPatchSavedGroupsItemIdsList>;
+export const RampScheduleStepsItemActionsItemPatchSavedGroupsItemIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<RampScheduleStepsItemActionsItemPatchSavedGroupsItemIdsList>;
 
 export interface RampScheduleStepsItemActionsItemPatchSavedGroupsItem {
   match: RampScheduleStepsItemActionsItemPatchSavedGroupsItemMatch;
@@ -333,14 +329,12 @@ export const RampScheduleStepsItemActionsItemPatchPrerequisitesItem =
 
 export type RampScheduleStepsItemActionsItemPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
-export const RampScheduleStepsItemActionsItemPatchPrerequisitesList = /*@__PURE__*/ S.Array(
-  RampScheduleStartActionsItemPatchPrerequisitesItem,
-) as any as S.Schema<RampScheduleStepsItemActionsItemPatchPrerequisitesList>;
+export const RampScheduleStepsItemActionsItemPatchPrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<RampScheduleStepsItemActionsItemPatchPrerequisitesList>;
 
 export type RampScheduleStepsItemActionsItemPatchEnvironmentsList = Array<string>;
-export const RampScheduleStepsItemActionsItemPatchEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RampScheduleStepsItemActionsItemPatchEnvironmentsList>;
+export const RampScheduleStepsItemActionsItemPatchEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<RampScheduleStepsItemActionsItemPatchEnvironmentsList>;
 
 export interface RampScheduleStepsItemActionsItemPatch {
   ruleId: string;
@@ -420,9 +414,8 @@ export type RampScheduleEndActionsItemPatchSavedGroupsItemMatch = "all" | "none"
 export const RampScheduleEndActionsItemPatchSavedGroupsItemMatch = S.String;
 
 export type RampScheduleEndActionsItemPatchSavedGroupsItemIdsList = Array<string>;
-export const RampScheduleEndActionsItemPatchSavedGroupsItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RampScheduleEndActionsItemPatchSavedGroupsItemIdsList>;
+export const RampScheduleEndActionsItemPatchSavedGroupsItemIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<RampScheduleEndActionsItemPatchSavedGroupsItemIdsList>;
 
 export interface RampScheduleEndActionsItemPatchSavedGroupsItem {
   match: RampScheduleEndActionsItemPatchSavedGroupsItemMatch;
@@ -450,14 +443,12 @@ export const RampScheduleEndActionsItemPatchPrerequisitesItem =
 
 export type RampScheduleEndActionsItemPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
-export const RampScheduleEndActionsItemPatchPrerequisitesList = /*@__PURE__*/ S.Array(
-  RampScheduleStartActionsItemPatchPrerequisitesItem,
-) as any as S.Schema<RampScheduleEndActionsItemPatchPrerequisitesList>;
+export const RampScheduleEndActionsItemPatchPrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<RampScheduleEndActionsItemPatchPrerequisitesList>;
 
 export type RampScheduleEndActionsItemPatchEnvironmentsList = Array<string>;
-export const RampScheduleEndActionsItemPatchEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RampScheduleEndActionsItemPatchEnvironmentsList>;
+export const RampScheduleEndActionsItemPatchEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<RampScheduleEndActionsItemPatchEnvironmentsList>;
 
 export interface RampScheduleEndActionsItemPatch {
   ruleId: string;
@@ -533,14 +524,12 @@ export const RampScheduleLockdownConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RampScheduleLockdownConfig>;
 
 export type RampScheduleMonitoringConfigGuardrailMetricIdsList = Array<string>;
-export const RampScheduleMonitoringConfigGuardrailMetricIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RampScheduleMonitoringConfigGuardrailMetricIdsList>;
+export const RampScheduleMonitoringConfigGuardrailMetricIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<RampScheduleMonitoringConfigGuardrailMetricIdsList>;
 
 export type RampScheduleMonitoringConfigSignalMetricIdsList = Array<string>;
-export const RampScheduleMonitoringConfigSignalMetricIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RampScheduleMonitoringConfigSignalMetricIdsList>;
+export const RampScheduleMonitoringConfigSignalMetricIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<RampScheduleMonitoringConfigSignalMetricIdsList>;
 
 export type RampScheduleMonitoringConfigMonitoringMode = "auto" | "manual";
 export const RampScheduleMonitoringConfigMonitoringMode = S.String;
@@ -765,9 +754,8 @@ export const AddTargetRampScheduleResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddTargetRampScheduleResponse>;
 
 export type AddTeamMembersRequestMembersList = Array<string>;
-export const AddTeamMembersRequestMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddTeamMembersRequestMembersList>;
+export const AddTeamMembersRequestMembersList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<AddTeamMembersRequestMembersList>;
 
 export interface AddTeamMembersRequest {
   id: string;
@@ -809,13 +797,8 @@ export const ApiAdvanceRampScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiAdvanceRampScheduleResponse {
   rampSchedule: RampSchedule;
 }
-export const ApiAdvanceRampScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rampSchedule: RampSchedule,
-  }),
-).annotate({
-  identifier: "ApiAdvanceRampScheduleResponse",
-}) as any as S.Schema<ApiAdvanceRampScheduleResponse>;
+export const ApiAdvanceRampScheduleResponse =
+  AddTargetRampScheduleResponse as any as S.Schema<ApiAdvanceRampScheduleResponse>;
 
 export type AppendAutoRunArtifactRequestKind =
   | "sdk-connection"
@@ -972,13 +955,8 @@ export const ApproveStepRampScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApproveStepRampScheduleResponse {
   rampSchedule: RampSchedule;
 }
-export const ApproveStepRampScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rampSchedule: RampSchedule,
-  }),
-).annotate({
-  identifier: "ApproveStepRampScheduleResponse",
-}) as any as S.Schema<ApproveStepRampScheduleResponse>;
+export const ApproveStepRampScheduleResponse =
+  AddTargetRampScheduleResponse as any as S.Schema<ApproveStepRampScheduleResponse>;
 
 /** Deprecated -- pass `ignoreWarnings` in the request body instead. */
 export type ArchiveConfigRequestIgnoreWarnings = string | boolean;
@@ -1006,9 +984,8 @@ export const ArchiveConfigRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional composition bases (config `key`s) layered on top of `parent`, in precedence order (later overrides earlier; all override `parent`; this config's own keys win last). Like `parent`, set via this field -- never via a `@config:` entry in `value`. */
 export type ConfigExtendsList = Array<string>;
-export const ConfigExtendsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigExtendsList>;
+export const ConfigExtendsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ConfigExtendsList>;
 
 /** This config's own base value as a JSON object (its declared fields only -- inherited fields are layered in at resolution time, not stored here). Per-environment/project variants are expressed via `scopedOverrides`, not here. */
 export type ConfigValueMap = { [key: string]: unknown | undefined };
@@ -1019,15 +996,13 @@ export const ConfigValueMap = /*@__PURE__*/ S.Record(
 
 /** Environment ids this entry applies to. Empty/omitted = any environment. */
 export type ConfigScopedOverridesItemEnvironmentsList = Array<string>;
-export const ConfigScopedOverridesItemEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigScopedOverridesItemEnvironmentsList>;
+export const ConfigScopedOverridesItemEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ConfigScopedOverridesItemEnvironmentsList>;
 
 /** Project ids this entry applies to. Empty/omitted = any project. */
 export type ConfigScopedOverridesItemProjectsList = Array<string>;
-export const ConfigScopedOverridesItemProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigScopedOverridesItemProjectsList>;
+export const ConfigScopedOverridesItemProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ConfigScopedOverridesItemProjectsList>;
 
 export interface ConfigScopedOverridesItem {
   /** The `key` of the flavor config (a child config) whose value patches this config when the scope matches. */
@@ -1055,15 +1030,13 @@ export const ConfigScopedOverridesList = /*@__PURE__*/ S.Array(
 
 /** Environments this override applies to (empty/absent = every environment). */
 export type ConfigScopedConfigEnvironmentsList = Array<string>;
-export const ConfigScopedConfigEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigScopedConfigEnvironmentsList>;
+export const ConfigScopedConfigEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ConfigScopedConfigEnvironmentsList>;
 
 /** Projects this override applies to (empty/absent = every project). */
 export type ConfigScopedConfigProjectsList = Array<string>;
-export const ConfigScopedConfigProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigScopedConfigProjectsList>;
+export const ConfigScopedConfigProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ConfigScopedConfigProjectsList>;
 
 /** Present ONLY when this config is an environment/project-scoped override (a "flavor") of another config. Its value is a patch that applies solely within the listed environments/projects, layered onto `parent` at resolution -- it is NOT a standalone config. A plain config (including an ordinary child that just inherits from a `parent`) omits this field entirely. Read-only: create/change the relationship via the parent config's `scopedOverrides`, never by setting this directly. */
 export interface ConfigScopedConfig {
@@ -1084,10 +1057,7 @@ export const ConfigScopedConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** A JSON Schema document (an object). */
 export type ConfigSchemaValueMap = { [key: string]: unknown | undefined };
-export const ConfigSchemaValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ConfigSchemaValueMap>;
+export const ConfigSchemaValueMap = ConfigValueMap as any as S.Schema<ConfigSchemaValueMap>;
 
 /** This config's own field definitions as a JSON Schema document (its contribution to the family's effective schema). Inherited fields are owned by ancestors and are not repeated here. */
 export interface ConfigSchema {
@@ -1104,10 +1074,8 @@ export const ConfigSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** A mongo condition (mongrule) boolean expression over the config's fields. */
 export type ConfigInvariantsItemRuleMap = { [key: string]: unknown | undefined };
-export const ConfigInvariantsItemRuleMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ConfigInvariantsItemRuleMap>;
+export const ConfigInvariantsItemRuleMap =
+  ConfigValueMap as any as S.Schema<ConfigInvariantsItemRuleMap>;
 
 export interface ConfigInvariantsItem {
   /** Unique name for the rule. */
@@ -1326,9 +1294,8 @@ export const Constant = /*@__PURE__*/ S.suspend(() =>
 
 /** Gates that would have blocked this publish but were bypassed by the caller's authority. Present only when at least one gate was bypassed. */
 export type ArchiveConstantResponseBypassedGatesList = Array<BypassedGates>;
-export const ArchiveConstantResponseBypassedGatesList = /*@__PURE__*/ S.Array(
-  BypassedGates,
-) as any as S.Schema<ArchiveConstantResponseBypassedGatesList>;
+export const ArchiveConstantResponseBypassedGatesList =
+  ArchiveConfigResponseBypassedGatesList as any as S.Schema<ArchiveConstantResponseBypassedGatesList>;
 
 export interface ArchiveConstantResponse {
   constant: Constant;
@@ -1360,14 +1327,12 @@ export const SavedGroupType = S.String;
 
 /** When type = 'list', this is the list of values for the attribute key */
 export type SavedGroupValuesList = Array<string>;
-export const SavedGroupValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SavedGroupValuesList>;
+export const SavedGroupValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<SavedGroupValuesList>;
 
 export type SavedGroupProjectsList = Array<string>;
-export const SavedGroupProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SavedGroupProjectsList>;
+export const SavedGroupProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<SavedGroupProjectsList>;
 
 export interface SavedGroup {
   id: string;
@@ -1411,9 +1376,8 @@ export const SavedGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** Gates that would have blocked this publish but were bypassed by the caller's authority. Present only when at least one gate was bypassed. */
 export type ArchiveSavedGroupResponseBypassedGatesList = Array<BypassedGates>;
-export const ArchiveSavedGroupResponseBypassedGatesList = /*@__PURE__*/ S.Array(
-  BypassedGates,
-) as any as S.Schema<ArchiveSavedGroupResponseBypassedGatesList>;
+export const ArchiveSavedGroupResponseBypassedGatesList =
+  ArchiveConfigResponseBypassedGatesList as any as S.Schema<ArchiveSavedGroupResponseBypassedGatesList>;
 
 export interface ArchiveSavedGroupResponse {
   savedGroup: SavedGroup;
@@ -1447,9 +1411,8 @@ export type BulkImportExperimentTemplatesRequestTemplatesItemDataType = "standar
 export const BulkImportExperimentTemplatesRequestTemplatesItemDataType = S.String;
 
 export type BulkImportExperimentTemplatesRequestTemplatesItemDataTagsList = Array<string>;
-export const BulkImportExperimentTemplatesRequestTemplatesItemDataTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkImportExperimentTemplatesRequestTemplatesItemDataTagsList>;
+export const BulkImportExperimentTemplatesRequestTemplatesItemDataTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<BulkImportExperimentTemplatesRequestTemplatesItemDataTagsList>;
 
 export type BulkImportExperimentTemplatesRequestTemplatesItemDataCustomFieldsMap = {
   [key: string]: string | undefined;
@@ -1486,16 +1449,12 @@ export const BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsLis
 export type BulkImportExperimentTemplatesRequestTemplatesItemDataSecondaryMetricsList =
   Array<string>;
 export const BulkImportExperimentTemplatesRequestTemplatesItemDataSecondaryMetricsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BulkImportExperimentTemplatesRequestTemplatesItemDataSecondaryMetricsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<BulkImportExperimentTemplatesRequestTemplatesItemDataSecondaryMetricsList>;
 
 export type BulkImportExperimentTemplatesRequestTemplatesItemDataGuardrailMetricsList =
   Array<string>;
 export const BulkImportExperimentTemplatesRequestTemplatesItemDataGuardrailMetricsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BulkImportExperimentTemplatesRequestTemplatesItemDataGuardrailMetricsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<BulkImportExperimentTemplatesRequestTemplatesItemDataGuardrailMetricsList>;
 
 export type BulkImportExperimentTemplatesRequestTemplatesItemDataStatsEngine =
   | "bayesian"
@@ -1512,9 +1471,7 @@ export const BulkImportExperimentTemplatesRequestTemplatesItemDataTargetingSaved
 export type BulkImportExperimentTemplatesRequestTemplatesItemDataTargetingSavedGroupsItemIdsList =
   Array<string>;
 export const BulkImportExperimentTemplatesRequestTemplatesItemDataTargetingSavedGroupsItemIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BulkImportExperimentTemplatesRequestTemplatesItemDataTargetingSavedGroupsItemIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<BulkImportExperimentTemplatesRequestTemplatesItemDataTargetingSavedGroupsItemIdsList>;
 
 export interface BulkImportExperimentTemplatesRequestTemplatesItemDataTargetingSavedGroupsItem {
   match:
@@ -1576,9 +1533,7 @@ export const BulkImportExperimentTemplatesRequestTemplatesItemDataTargeting =
 export type BulkImportExperimentTemplatesRequestTemplatesItemDataCustomMetricSlicesItemSlicesItemLevelsList =
   Array<string>;
 export const BulkImportExperimentTemplatesRequestTemplatesItemDataCustomMetricSlicesItemSlicesItemLevelsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BulkImportExperimentTemplatesRequestTemplatesItemDataCustomMetricSlicesItemSlicesItemLevelsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<BulkImportExperimentTemplatesRequestTemplatesItemDataCustomMetricSlicesItemSlicesItemLevelsList>;
 
 export interface BulkImportExperimentTemplatesRequestTemplatesItemDataCustomMetricSlicesItemSlicesItem {
   column: string;
@@ -1765,31 +1720,22 @@ export const CompleteRampScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CompleteRampScheduleResponse {
   rampSchedule: RampSchedule;
 }
-export const CompleteRampScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rampSchedule: RampSchedule,
-  }),
-).annotate({
-  identifier: "CompleteRampScheduleResponse",
-}) as any as S.Schema<CompleteRampScheduleResponse>;
+export const CompleteRampScheduleResponse =
+  AddTargetRampScheduleResponse as any as S.Schema<CompleteRampScheduleResponse>;
 
 /** The attributes to set when using this Archetype */
 export type CreateArchetypeRequestAttributesMap = { [key: string]: unknown | undefined };
-export const CreateArchetypeRequestAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateArchetypeRequestAttributesMap>;
+export const CreateArchetypeRequestAttributesMap =
+  ConfigValueMap as any as S.Schema<CreateArchetypeRequestAttributesMap>;
 
 export type CreateArchetypeRequestProjectsList = Array<string>;
-export const CreateArchetypeRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateArchetypeRequestProjectsList>;
+export const CreateArchetypeRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateArchetypeRequestProjectsList>;
 
 /** Limit this Archetype to specific environments. Omit or leave empty to apply to all environments. */
 export type CreateArchetypeRequestEnvironmentsList = Array<string>;
-export const CreateArchetypeRequestEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateArchetypeRequestEnvironmentsList>;
+export const CreateArchetypeRequestEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateArchetypeRequestEnvironmentsList>;
 
 export interface CreateArchetypeRequest {
   name: string;
@@ -1815,21 +1761,16 @@ export const CreateArchetypeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The attributes to set when using this Archetype */
 export type ArchetypeAttributesMap = { [key: string]: unknown | undefined };
-export const ArchetypeAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ArchetypeAttributesMap>;
+export const ArchetypeAttributesMap = ConfigValueMap as any as S.Schema<ArchetypeAttributesMap>;
 
 export type ArchetypeProjectsList = Array<string>;
-export const ArchetypeProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ArchetypeProjectsList>;
+export const ArchetypeProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ArchetypeProjectsList>;
 
 /** Limit this Archetype to specific environments. Omit or leave empty to apply to all environments. */
 export type ArchetypeEnvironmentsList = Array<string>;
-export const ArchetypeEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ArchetypeEnvironmentsList>;
+export const ArchetypeEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ArchetypeEnvironmentsList>;
 
 export interface Archetype {
   id: string;
@@ -1890,21 +1831,17 @@ export type CreateAttributeRequestFormat = "" | "version" | "date" | "isoCountry
 export const CreateAttributeRequestFormat = S.String;
 
 export type CreateAttributeRequestProjectsList = Array<string>;
-export const CreateAttributeRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateAttributeRequestProjectsList>;
+export const CreateAttributeRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateAttributeRequestProjectsList>;
 
 export type CreateAttributeRequestTagsList = Array<string>;
-export const CreateAttributeRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateAttributeRequestTagsList>;
+export const CreateAttributeRequestTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateAttributeRequestTagsList>;
 
 /** Values for the organization's attribute custom fields, keyed by field id */
 export type CreateAttributeRequestCustomFieldsMap = { [key: string]: string | undefined };
-export const CreateAttributeRequestCustomFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateAttributeRequestCustomFieldsMap>;
+export const CreateAttributeRequestCustomFieldsMap =
+  ConstantEnvironmentValuesMap as any as S.Schema<CreateAttributeRequestCustomFieldsMap>;
 
 export interface CreateAttributeRequest {
   /** The attribute property */
@@ -1956,20 +1893,16 @@ export type AttributeFormat = "" | "version" | "date" | "isoCountryCode";
 export const AttributeFormat = S.String;
 
 export type AttributeProjectsList = Array<string>;
-export const AttributeProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AttributeProjectsList>;
+export const AttributeProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<AttributeProjectsList>;
 
 export type AttributeTagsList = Array<string>;
-export const AttributeTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AttributeTagsList>;
+export const AttributeTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<AttributeTagsList>;
 
 export type AttributeCustomFieldsMap = { [key: string]: string | undefined };
-export const AttributeCustomFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AttributeCustomFieldsMap>;
+export const AttributeCustomFieldsMap =
+  ConstantEnvironmentValuesMap as any as S.Schema<AttributeCustomFieldsMap>;
 
 export interface Attribute {
   property: string;
@@ -2089,9 +2022,8 @@ export type AutoRunChecksItem = Checks;
 export const AutoRunChecksItem = Checks;
 
 export type AutoRunChecksList = Array<Checks>;
-export const AutoRunChecksList = /*@__PURE__*/ S.Array(
-  Checks,
-) as any as S.Schema<AutoRunChecksList>;
+export const AutoRunChecksList =
+  AppendAutoRunArtifactResponseChecksList as any as S.Schema<AutoRunChecksList>;
 
 export type AutoRunOutcome = "completed" | "partial" | "failed";
 export const AutoRunOutcome = S.String;
@@ -2147,37 +2079,30 @@ export const CreateBulkImportFactRequestDefaultManagedBy = S.String;
 
 /** List of associated project ids */
 export type CreateBulkImportFactRequestFactTablesItemDataProjectsList = Array<string>;
-export const CreateBulkImportFactRequestFactTablesItemDataProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateBulkImportFactRequestFactTablesItemDataProjectsList>;
+export const CreateBulkImportFactRequestFactTablesItemDataProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateBulkImportFactRequestFactTablesItemDataProjectsList>;
 
 /** List of associated tags */
 export type CreateBulkImportFactRequestFactTablesItemDataTagsList = Array<string>;
-export const CreateBulkImportFactRequestFactTablesItemDataTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateBulkImportFactRequestFactTablesItemDataTagsList>;
+export const CreateBulkImportFactRequestFactTablesItemDataTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateBulkImportFactRequestFactTablesItemDataTagsList>;
 
 /** List of identifier columns in this table. For example, "id" or "anonymous_id" */
 export type CreateBulkImportFactRequestFactTablesItemDataUserIdTypesList = Array<string>;
-export const CreateBulkImportFactRequestFactTablesItemDataUserIdTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateBulkImportFactRequestFactTablesItemDataUserIdTypesList>;
+export const CreateBulkImportFactRequestFactTablesItemDataUserIdTypesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateBulkImportFactRequestFactTablesItemDataUserIdTypesList>;
 
 /** Maps an identifier type to the column holding it, for SQL that does not alias its columns to the identifier type names, e.g. `{"user_id": "userId"}`. May also be a single-level field path into a JSON column (`properties.userId`). Unmapped types use the identifier type name as the column name. */
 export type CreateBulkImportFactRequestFactTablesItemDataUserIdColumnsMap = {
   [key: string]: string | undefined;
 };
-export const CreateBulkImportFactRequestFactTablesItemDataUserIdColumnsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateBulkImportFactRequestFactTablesItemDataUserIdColumnsMap>;
+export const CreateBulkImportFactRequestFactTablesItemDataUserIdColumnsMap =
+  ConstantEnvironmentValuesMap as any as S.Schema<CreateBulkImportFactRequestFactTablesItemDataUserIdColumnsMap>;
 
 export type CreateBulkImportFactRequestFactTablesItemDataAggregatedFactTableSettingsIdTypesList =
   Array<string>;
 export const CreateBulkImportFactRequestFactTablesItemDataAggregatedFactTableSettingsIdTypesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateBulkImportFactRequestFactTablesItemDataAggregatedFactTableSettingsIdTypesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateBulkImportFactRequestFactTablesItemDataAggregatedFactTableSettingsIdTypesList>;
 
 export interface CreateBulkImportFactRequestFactTablesItemDataAggregatedFactTableSettingsUpdateTime {
   time: string;
@@ -2268,22 +2193,18 @@ export const FactTableColumnInputJsonFieldsMap = /*@__PURE__*/ S.Record(
 
 /** Value -> additional column to prompt for when a metric filters this column to that value, e.g. {"Page View": "path", "Modal Open": "properties.modalType"}. Requires alwaysInlineFilter. */
 export type FactTableColumnInputConditionalInlineFiltersMap = { [key: string]: string | undefined };
-export const FactTableColumnInputConditionalInlineFiltersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FactTableColumnInputConditionalInlineFiltersMap>;
+export const FactTableColumnInputConditionalInlineFiltersMap =
+  ConstantEnvironmentValuesMap as any as S.Schema<FactTableColumnInputConditionalInlineFiltersMap>;
 
 /** Specific slices to automatically analyze for this column. */
 export type FactTableColumnInputAutoSlicesList = Array<string>;
-export const FactTableColumnInputAutoSlicesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FactTableColumnInputAutoSlicesList>;
+export const FactTableColumnInputAutoSlicesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<FactTableColumnInputAutoSlicesList>;
 
 /** Locked slices that are protected from automatic updates. These will always be included in the slice levels even if they're not in the top values query results. */
 export type FactTableColumnInputLockedAutoSlicesList = Array<string>;
-export const FactTableColumnInputLockedAutoSlicesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FactTableColumnInputLockedAutoSlicesList>;
+export const FactTableColumnInputLockedAutoSlicesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<FactTableColumnInputLockedAutoSlicesList>;
 
 export interface FactTableColumnInput {
   /** The actual column name in the database/SQL query */
@@ -2458,14 +2379,12 @@ export const CreateBulkImportFactRequestFactTableFiltersList = /*@__PURE__*/ S.A
 ) as any as S.Schema<CreateBulkImportFactRequestFactTableFiltersList>;
 
 export type CreateBulkImportFactRequestFactMetricsItemDataProjectsList = Array<string>;
-export const CreateBulkImportFactRequestFactMetricsItemDataProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateBulkImportFactRequestFactMetricsItemDataProjectsList>;
+export const CreateBulkImportFactRequestFactMetricsItemDataProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateBulkImportFactRequestFactMetricsItemDataProjectsList>;
 
 export type CreateBulkImportFactRequestFactMetricsItemDataTagsList = Array<string>;
-export const CreateBulkImportFactRequestFactMetricsItemDataTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateBulkImportFactRequestFactMetricsItemDataTagsList>;
+export const CreateBulkImportFactRequestFactMetricsItemDataTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateBulkImportFactRequestFactMetricsItemDataTagsList>;
 
 export type CreateBulkImportFactRequestFactMetricsItemDataMetricType =
   | "proportion"
@@ -2489,16 +2408,12 @@ export const CreateBulkImportFactRequestFactMetricsItemDataNumeratorAggregation 
 /** Array of Fact Table Filter Ids. Deprecated, use rowFilters instead. */
 export type CreateBulkImportFactRequestFactMetricsItemDataNumeratorFiltersList = Array<string>;
 export const CreateBulkImportFactRequestFactMetricsItemDataNumeratorFiltersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateBulkImportFactRequestFactMetricsItemDataNumeratorFiltersList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateBulkImportFactRequestFactMetricsItemDataNumeratorFiltersList>;
 
 export type CreateBulkImportFactRequestFactMetricsItemDataNumeratorInlineFiltersValueList =
   Array<string>;
 export const CreateBulkImportFactRequestFactMetricsItemDataNumeratorInlineFiltersValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateBulkImportFactRequestFactMetricsItemDataNumeratorInlineFiltersValueList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateBulkImportFactRequestFactMetricsItemDataNumeratorInlineFiltersValueList>;
 
 /** Inline filters to apply to the fact table. Keys are column names, values are arrays of values to filter by. Deprecated, use rowFilters instead. */
 export type CreateBulkImportFactRequestFactMetricsItemDataNumeratorInlineFiltersMap = {
@@ -2542,9 +2457,7 @@ export const CreateBulkImportFactRequestFactMetricsItemDataNumeratorRowFiltersIt
 export type CreateBulkImportFactRequestFactMetricsItemDataNumeratorRowFiltersItemValuesList =
   Array<string>;
 export const CreateBulkImportFactRequestFactMetricsItemDataNumeratorRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateBulkImportFactRequestFactMetricsItemDataNumeratorRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateBulkImportFactRequestFactMetricsItemDataNumeratorRowFiltersItemValuesList>;
 
 export interface CreateBulkImportFactRequestFactMetricsItemDataNumeratorRowFiltersItem {
   operator:
@@ -2622,16 +2535,12 @@ export const CreateBulkImportFactRequestFactMetricsItemDataDenominatorAggregatio
 /** Array of Fact Table Filter Ids. Deprecated, use rowFilters instead. */
 export type CreateBulkImportFactRequestFactMetricsItemDataDenominatorFiltersList = Array<string>;
 export const CreateBulkImportFactRequestFactMetricsItemDataDenominatorFiltersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateBulkImportFactRequestFactMetricsItemDataDenominatorFiltersList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateBulkImportFactRequestFactMetricsItemDataDenominatorFiltersList>;
 
 export type CreateBulkImportFactRequestFactMetricsItemDataDenominatorInlineFiltersValueList =
   Array<string>;
 export const CreateBulkImportFactRequestFactMetricsItemDataDenominatorInlineFiltersValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateBulkImportFactRequestFactMetricsItemDataDenominatorInlineFiltersValueList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateBulkImportFactRequestFactMetricsItemDataDenominatorInlineFiltersValueList>;
 
 /** Inline filters to apply to the fact table. Keys are column names, values are arrays of values to filter by. Deprecated, use rowFilters instead. */
 export type CreateBulkImportFactRequestFactMetricsItemDataDenominatorInlineFiltersMap = {
@@ -2640,10 +2549,7 @@ export type CreateBulkImportFactRequestFactMetricsItemDataDenominatorInlineFilte
     | undefined;
 };
 export const CreateBulkImportFactRequestFactMetricsItemDataDenominatorInlineFiltersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    CreateBulkImportFactRequestFactMetricsItemDataDenominatorInlineFiltersValueList,
-  ) as any as S.Schema<CreateBulkImportFactRequestFactMetricsItemDataDenominatorInlineFiltersMap>;
+  CreateBulkImportFactRequestFactMetricsItemDataNumeratorInlineFiltersMap as any as S.Schema<CreateBulkImportFactRequestFactMetricsItemDataDenominatorInlineFiltersMap>;
 
 export type CreateBulkImportFactRequestFactMetricsItemDataDenominatorRowFiltersItemOperator =
   | "="
@@ -2675,9 +2581,7 @@ export const CreateBulkImportFactRequestFactMetricsItemDataDenominatorRowFilters
 export type CreateBulkImportFactRequestFactMetricsItemDataDenominatorRowFiltersItemValuesList =
   Array<string>;
 export const CreateBulkImportFactRequestFactMetricsItemDataDenominatorRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateBulkImportFactRequestFactMetricsItemDataDenominatorRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateBulkImportFactRequestFactMetricsItemDataDenominatorRowFiltersItemValuesList>;
 
 export interface CreateBulkImportFactRequestFactMetricsItemDataDenominatorRowFiltersItem {
   operator:
@@ -2800,9 +2704,7 @@ export const CreateBulkImportFactRequestFactMetricsItemDataFunnelSettingsStepsIt
 export type CreateBulkImportFactRequestFactMetricsItemDataFunnelSettingsStepsItemRowFiltersItemValuesList =
   Array<string>;
 export const CreateBulkImportFactRequestFactMetricsItemDataFunnelSettingsStepsItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateBulkImportFactRequestFactMetricsItemDataFunnelSettingsStepsItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateBulkImportFactRequestFactMetricsItemDataFunnelSettingsStepsItemRowFiltersItemValuesList>;
 
 export interface CreateBulkImportFactRequestFactMetricsItemDataFunnelSettingsStepsItemRowFiltersItem {
   operator:
@@ -3076,15 +2978,12 @@ export const CreateBulkImportFactRequestFactMetricsItemDataManagedBy = S.String;
 /** Array of slice column names that will be automatically included in metric analysis. This is an enterprise feature. */
 export type CreateBulkImportFactRequestFactMetricsItemDataMetricAutoSlicesList = Array<string>;
 export const CreateBulkImportFactRequestFactMetricsItemDataMetricAutoSlicesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateBulkImportFactRequestFactMetricsItemDataMetricAutoSlicesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateBulkImportFactRequestFactMetricsItemDataMetricAutoSlicesList>;
 
 /** Ids of older metrics (legacy or fact) that this metric supersedes, for example the legacy metric it was migrated from. Cannot include this metric's own id. Informational only - GrowthBook uses it to link the old and new definitions in the UI and to keep showing results from a snapshot that was created before an experiment switched to this metric. This field can only be set through the API. */
 export type CreateBulkImportFactRequestFactMetricsItemDataReplacesList = Array<string>;
-export const CreateBulkImportFactRequestFactMetricsItemDataReplacesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateBulkImportFactRequestFactMetricsItemDataReplacesList>;
+export const CreateBulkImportFactRequestFactMetricsItemDataReplacesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateBulkImportFactRequestFactMetricsItemDataReplacesList>;
 
 export interface CreateBulkImportFactRequestFactMetricsItemData {
   name: string;
@@ -3304,9 +3203,8 @@ export const CreateCodeRefRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateCodeRefRequest" }) as any as S.Schema<CreateCodeRefRequest>;
 
 export type CreateCodeRefResponseFeaturesUpdatedList = Array<string>;
-export const CreateCodeRefResponseFeaturesUpdatedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCodeRefResponseFeaturesUpdatedList>;
+export const CreateCodeRefResponseFeaturesUpdatedList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateCodeRefResponseFeaturesUpdatedList>;
 
 export interface CreateCodeRefResponse {
   featuresUpdated?: CreateCodeRefResponseFeaturesUpdatedList;
@@ -3329,28 +3227,23 @@ export const CreateConfigRequestIgnoreWarnings =
 
 /** Additional composition bases (config `key`s) layered on top of `parent`, in precedence order (later overrides earlier; all override `parent`; own keys win last). Set inheritance here, never via a `@config:` entry in `value`. */
 export type CreateConfigRequestExtendsList = Array<string>;
-export const CreateConfigRequestExtendsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateConfigRequestExtendsList>;
+export const CreateConfigRequestExtendsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateConfigRequestExtendsList>;
 
 /** This config's base value as a JSON object. Per-environment/project variants are expressed via `scopedOverrides`. */
 export type CreateConfigRequestValueMap = { [key: string]: unknown | undefined };
-export const CreateConfigRequestValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateConfigRequestValueMap>;
+export const CreateConfigRequestValueMap =
+  ConfigValueMap as any as S.Schema<CreateConfigRequestValueMap>;
 
 /** Environment ids this entry applies to. Empty/omitted = any environment. */
 export type CreateConfigRequestScopedOverridesItemEnvironmentsList = Array<string>;
-export const CreateConfigRequestScopedOverridesItemEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateConfigRequestScopedOverridesItemEnvironmentsList>;
+export const CreateConfigRequestScopedOverridesItemEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateConfigRequestScopedOverridesItemEnvironmentsList>;
 
 /** Project ids this entry applies to. Empty/omitted = any project. */
 export type CreateConfigRequestScopedOverridesItemProjectsList = Array<string>;
-export const CreateConfigRequestScopedOverridesItemProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateConfigRequestScopedOverridesItemProjectsList>;
+export const CreateConfigRequestScopedOverridesItemProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateConfigRequestScopedOverridesItemProjectsList>;
 
 export interface CreateConfigRequestScopedOverridesItem {
   /** The `key` of the flavor config (a child config) whose value patches this config when the scope matches. */
@@ -3360,40 +3253,25 @@ export interface CreateConfigRequestScopedOverridesItem {
   /** Project ids this entry applies to. Empty/omitted = any project. */
   projects?: CreateConfigRequestScopedOverridesItemProjectsList;
 }
-export const CreateConfigRequestScopedOverridesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    config: S.String,
-    environments: S.optional(CreateConfigRequestScopedOverridesItemEnvironmentsList),
-    projects: S.optional(CreateConfigRequestScopedOverridesItemProjectsList),
-  }),
-).annotate({
-  identifier: "CreateConfigRequestScopedOverridesItem",
-}) as any as S.Schema<CreateConfigRequestScopedOverridesItem>;
+export const CreateConfigRequestScopedOverridesItem =
+  ConfigScopedOverridesItem as any as S.Schema<CreateConfigRequestScopedOverridesItem>;
 
 /** Ordered, first-match-wins environment/project-scoped variant selection. Each entry points at a flavor config (a child config, by `key`) whose value is deep-merged onto this config's resolved value when the (environment, project) scope matches -- resolved at build time, per layer. This is how you create an environment-scoped override (as opposed to a plain child config): make a child config for the override value, then add it here with its scope. Send the complete list to replace it; an empty array clears all overrides. Entries must reference existing configs, may not reference this config itself, and may not be unreachable (fully subsumed by an earlier entry). */
 export type CreateConfigRequestScopedOverridesList = Array<CreateConfigRequestScopedOverridesItem>;
-export const CreateConfigRequestScopedOverridesList = /*@__PURE__*/ S.Array(
-  CreateConfigRequestScopedOverridesItem,
-) as any as S.Schema<CreateConfigRequestScopedOverridesList>;
+export const CreateConfigRequestScopedOverridesList =
+  ConfigScopedOverridesList as any as S.Schema<CreateConfigRequestScopedOverridesList>;
 
 /** A JSON Schema document (an object). */
 export type ConfigSchemaSourceCase0ValueMap = { [key: string]: unknown | undefined };
-export const ConfigSchemaSourceCase0ValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ConfigSchemaSourceCase0ValueMap>;
+export const ConfigSchemaSourceCase0ValueMap =
+  ConfigValueMap as any as S.Schema<ConfigSchemaSourceCase0ValueMap>;
 
 export interface ConfigSchemaSourceCase0 {
   type: string;
   /** A JSON Schema document (an object). */
   value: ConfigSchemaSourceCase0ValueMap;
 }
-export const ConfigSchemaSourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    value: ConfigSchemaSourceCase0ValueMap,
-  }),
-).annotate({ identifier: "ConfigSchemaSourceCase0" }) as any as S.Schema<ConfigSchemaSourceCase0>;
+export const ConfigSchemaSourceCase0 = ConfigSchema as any as S.Schema<ConfigSchemaSourceCase0>;
 
 export interface ConfigSchemaSourceCase1 {
   type: string;
@@ -3412,48 +3290,32 @@ export interface ConfigSchemaSourceCase2 {
   /** Protobuf (proto3) source -- a `message` definition. */
   value: string;
 }
-export const ConfigSchemaSourceCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    value: S.String,
-  }),
-).annotate({ identifier: "ConfigSchemaSourceCase2" }) as any as S.Schema<ConfigSchemaSourceCase2>;
+export const ConfigSchemaSourceCase2 =
+  ConfigSchemaSourceCase1 as any as S.Schema<ConfigSchemaSourceCase2>;
 
 export interface ConfigSchemaSourceCase3 {
   type: string;
   /** Python source -- a Pydantic `BaseModel` class. */
   value: string;
 }
-export const ConfigSchemaSourceCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    value: S.String,
-  }),
-).annotate({ identifier: "ConfigSchemaSourceCase3" }) as any as S.Schema<ConfigSchemaSourceCase3>;
+export const ConfigSchemaSourceCase3 =
+  ConfigSchemaSourceCase1 as any as S.Schema<ConfigSchemaSourceCase3>;
 
 export interface ConfigSchemaSourceCase4 {
   type: string;
   /** Go source -- a `struct` definition. */
   value: string;
 }
-export const ConfigSchemaSourceCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    value: S.String,
-  }),
-).annotate({ identifier: "ConfigSchemaSourceCase4" }) as any as S.Schema<ConfigSchemaSourceCase4>;
+export const ConfigSchemaSourceCase4 =
+  ConfigSchemaSourceCase1 as any as S.Schema<ConfigSchemaSourceCase4>;
 
 export interface ConfigSchemaSourceCase5 {
   type: string;
   /** Rust source -- a serde `struct` definition. */
   value: string;
 }
-export const ConfigSchemaSourceCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    value: S.String,
-  }),
-).annotate({ identifier: "ConfigSchemaSourceCase5" }) as any as S.Schema<ConfigSchemaSourceCase5>;
+export const ConfigSchemaSourceCase5 =
+  ConfigSchemaSourceCase1 as any as S.Schema<ConfigSchemaSourceCase5>;
 
 export type ConfigSchemaSource =
   | ConfigSchemaSourceCase0
@@ -3466,10 +3328,8 @@ export const ConfigSchemaSource = S.Unknown as any as S.Schema<ConfigSchemaSourc
 
 /** The rule expression, as a mongo condition (mongrule) -- the same condition syntax as feature targeting, extended with `{ "$ref": "otherField" }` to compare against another field, e.g. `{ "min_replicas": { "$lte": { "$ref": "max_replicas" } } }`. */
 export type CreateConfigRequestInvariantsItemRuleMap = { [key: string]: unknown | undefined };
-export const CreateConfigRequestInvariantsItemRuleMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateConfigRequestInvariantsItemRuleMap>;
+export const CreateConfigRequestInvariantsItemRuleMap =
+  ConfigValueMap as any as S.Schema<CreateConfigRequestInvariantsItemRuleMap>;
 
 export interface CreateConfigRequestInvariantsItem {
   name: string;
@@ -3578,9 +3438,8 @@ export const CreateConfigResponseWarningsList = /*@__PURE__*/ S.Array(
 
 /** Steps that failed AFTER the value publish committed (e.g. an experiment-guard toggle in the same request). The publish stands; retry only the named step. */
 export type CreateConfigResponsePostPublishWarningsList = Array<string>;
-export const CreateConfigResponsePostPublishWarningsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateConfigResponsePostPublishWarningsList>;
+export const CreateConfigResponsePostPublishWarningsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateConfigResponsePostPublishWarningsList>;
 
 export interface CreateConfigResponse {
   config: Config;
@@ -3623,9 +3482,8 @@ export type ConfigRevisionStatus =
 export const ConfigRevisionStatus = S.String;
 
 export type ConfigRevisionContributorsList = Array<string>;
-export const ConfigRevisionContributorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigRevisionContributorsList>;
+export const ConfigRevisionContributorsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ConfigRevisionContributorsList>;
 
 export type ConfigRevisionReviewDecision = "approve" | "request-changes" | "comment";
 export const ConfigRevisionReviewDecision = S.String;
@@ -3958,9 +3816,8 @@ export const CreateConfigRevisionPublishRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gates that would have blocked this publish but were bypassed by the caller's authority. Present only when at least one gate was bypassed. */
 export type CreateConfigRevisionPublishResponseBypassedGatesList = Array<BypassedGates>;
-export const CreateConfigRevisionPublishResponseBypassedGatesList = /*@__PURE__*/ S.Array(
-  BypassedGates,
-) as any as S.Schema<CreateConfigRevisionPublishResponseBypassedGatesList>;
+export const CreateConfigRevisionPublishResponseBypassedGatesList =
+  ArchiveConfigResponseBypassedGatesList as any as S.Schema<CreateConfigRevisionPublishResponseBypassedGatesList>;
 
 export interface CreateConfigRevisionPublishResponse {
   revision: ConfigRevision;
@@ -4030,13 +3887,8 @@ export const CreateConfigRevisionRebaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateConfigRevisionRebaseResponse {
   revision: ConfigRevision;
 }
-export const CreateConfigRevisionRebaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: ConfigRevision,
-  }),
-).annotate({
-  identifier: "CreateConfigRevisionRebaseResponse",
-}) as any as S.Schema<CreateConfigRevisionRebaseResponse>;
+export const CreateConfigRevisionRebaseResponse =
+  CreateConfigRevisionDiscardResponse as any as S.Schema<CreateConfigRevisionRebaseResponse>;
 
 export interface CreateConfigRevisionRecallReviewRequest {
   key: string;
@@ -4060,13 +3912,8 @@ export const CreateConfigRevisionRecallReviewRequest = /*@__PURE__*/ S.suspend((
 export interface CreateConfigRevisionRecallReviewResponse {
   revision: ConfigRevision;
 }
-export const CreateConfigRevisionRecallReviewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: ConfigRevision,
-  }),
-).annotate({
-  identifier: "CreateConfigRevisionRecallReviewResponse",
-}) as any as S.Schema<CreateConfigRevisionRecallReviewResponse>;
+export const CreateConfigRevisionRecallReviewResponse =
+  CreateConfigRevisionDiscardResponse as any as S.Schema<CreateConfigRevisionRecallReviewResponse>;
 
 export interface CreateConfigRevisionReopenRequest {
   key: string;
@@ -4086,13 +3933,8 @@ export const CreateConfigRevisionReopenRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateConfigRevisionReopenResponse {
   revision: ConfigRevision;
 }
-export const CreateConfigRevisionReopenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: ConfigRevision,
-  }),
-).annotate({
-  identifier: "CreateConfigRevisionReopenResponse",
-}) as any as S.Schema<CreateConfigRevisionReopenResponse>;
+export const CreateConfigRevisionReopenResponse =
+  CreateConfigRevisionDiscardResponse as any as S.Schema<CreateConfigRevisionReopenResponse>;
 
 export interface CreateConfigRevisionRequestReviewRequest {
   key: string;
@@ -4127,13 +3969,8 @@ export const CreateConfigRevisionRequestReviewRequest = /*@__PURE__*/ S.suspend(
 export interface CreateConfigRevisionRequestReviewResponse {
   revision: ConfigRevision;
 }
-export const CreateConfigRevisionRequestReviewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: ConfigRevision,
-  }),
-).annotate({
-  identifier: "CreateConfigRevisionRequestReviewResponse",
-}) as any as S.Schema<CreateConfigRevisionRequestReviewResponse>;
+export const CreateConfigRevisionRequestReviewResponse =
+  CreateConfigRevisionDiscardResponse as any as S.Schema<CreateConfigRevisionRequestReviewResponse>;
 
 /** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
 export type CreateConfigRevisionRevertRequestSkipSchemaValidation = string | boolean;
@@ -4184,23 +4021,16 @@ export const CreateConfigRevisionRevertRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gates that would have blocked this publish but were bypassed by the caller's authority. Present only when at least one gate was bypassed. */
 export type CreateConfigRevisionRevertResponseBypassedGatesList = Array<BypassedGates>;
-export const CreateConfigRevisionRevertResponseBypassedGatesList = /*@__PURE__*/ S.Array(
-  BypassedGates,
-) as any as S.Schema<CreateConfigRevisionRevertResponseBypassedGatesList>;
+export const CreateConfigRevisionRevertResponseBypassedGatesList =
+  ArchiveConfigResponseBypassedGatesList as any as S.Schema<CreateConfigRevisionRevertResponseBypassedGatesList>;
 
 export interface CreateConfigRevisionRevertResponse {
   revision: ConfigRevision;
   /** Gates that would have blocked this publish but were bypassed by the caller's authority. Present only when at least one gate was bypassed. */
   bypassedGates?: CreateConfigRevisionRevertResponseBypassedGatesList;
 }
-export const CreateConfigRevisionRevertResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: ConfigRevision,
-    bypassedGates: S.optional(CreateConfigRevisionRevertResponseBypassedGatesList),
-  }),
-).annotate({
-  identifier: "CreateConfigRevisionRevertResponse",
-}) as any as S.Schema<CreateConfigRevisionRevertResponse>;
+export const CreateConfigRevisionRevertResponse =
+  CreateConfigRevisionPublishResponse as any as S.Schema<CreateConfigRevisionRevertResponse>;
 
 export interface CreateConfigRevisionSchedulePublishRequest {
   key: string;
@@ -4242,13 +4072,8 @@ export const CreateConfigRevisionSchedulePublishRequest = /*@__PURE__*/ S.suspen
 export interface CreateConfigRevisionSchedulePublishResponse {
   revision: ConfigRevision;
 }
-export const CreateConfigRevisionSchedulePublishResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: ConfigRevision,
-  }),
-).annotate({
-  identifier: "CreateConfigRevisionSchedulePublishResponse",
-}) as any as S.Schema<CreateConfigRevisionSchedulePublishResponse>;
+export const CreateConfigRevisionSchedulePublishResponse =
+  CreateConfigRevisionDiscardResponse as any as S.Schema<CreateConfigRevisionSchedulePublishResponse>;
 
 export type CreateConfigRevisionSubmitReviewRequestDecision =
   | "approve"
@@ -4312,23 +4137,16 @@ export const CreateConfigRevisionUndoReviewRequest = /*@__PURE__*/ S.suspend(() 
 export interface CreateConfigRevisionUndoReviewResponse {
   revision: ConfigRevision;
 }
-export const CreateConfigRevisionUndoReviewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: ConfigRevision,
-  }),
-).annotate({
-  identifier: "CreateConfigRevisionUndoReviewResponse",
-}) as any as S.Schema<CreateConfigRevisionUndoReviewResponse>;
+export const CreateConfigRevisionUndoReviewResponse =
+  CreateConfigRevisionDiscardResponse as any as S.Schema<CreateConfigRevisionUndoReviewResponse>;
 
 /** `string` (interpolated as `{{ @const:key }}`) or `json` (substituted as a whole value) */
 export type CreateConstantRequestType = "string" | "json";
 export const CreateConstantRequestType = S.String;
 
 export type CreateConstantRequestEnvironmentValuesMap = { [key: string]: string | undefined };
-export const CreateConstantRequestEnvironmentValuesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateConstantRequestEnvironmentValuesMap>;
+export const CreateConstantRequestEnvironmentValuesMap =
+  ConstantEnvironmentValuesMap as any as S.Schema<CreateConstantRequestEnvironmentValuesMap>;
 
 export interface CreateConstantRequest {
   /** Stable reference handle (lowercase slug, unique per org), referenced as `@const:key` */
@@ -4393,9 +4211,8 @@ export type ConstantRevisionStatus =
 export const ConstantRevisionStatus = S.String;
 
 export type ConstantRevisionContributorsList = Array<string>;
-export const ConstantRevisionContributorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConstantRevisionContributorsList>;
+export const ConstantRevisionContributorsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ConstantRevisionContributorsList>;
 
 export type ConstantRevisionReviewDecision = "approve" | "request-changes" | "comment";
 export const ConstantRevisionReviewDecision = S.String;
@@ -4689,9 +4506,8 @@ export const CreateConstantRevisionPublishRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Gates that would have blocked this publish but were bypassed by the caller's authority. Present only when at least one gate was bypassed. */
 export type CreateConstantRevisionPublishResponseBypassedGatesList = Array<BypassedGates>;
-export const CreateConstantRevisionPublishResponseBypassedGatesList = /*@__PURE__*/ S.Array(
-  BypassedGates,
-) as any as S.Schema<CreateConstantRevisionPublishResponseBypassedGatesList>;
+export const CreateConstantRevisionPublishResponseBypassedGatesList =
+  ArchiveConfigResponseBypassedGatesList as any as S.Schema<CreateConstantRevisionPublishResponseBypassedGatesList>;
 
 export interface CreateConstantRevisionPublishResponse {
   revision: ConstantRevision;
@@ -4741,13 +4557,8 @@ export const CreateConstantRevisionRebaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateConstantRevisionRebaseResponse {
   revision: ConstantRevision;
 }
-export const CreateConstantRevisionRebaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: ConstantRevision,
-  }),
-).annotate({
-  identifier: "CreateConstantRevisionRebaseResponse",
-}) as any as S.Schema<CreateConstantRevisionRebaseResponse>;
+export const CreateConstantRevisionRebaseResponse =
+  CreateConstantRevisionDiscardResponse as any as S.Schema<CreateConstantRevisionRebaseResponse>;
 
 export interface CreateConstantRevisionRecallReviewRequest {
   key: string;
@@ -4771,13 +4582,8 @@ export const CreateConstantRevisionRecallReviewRequest = /*@__PURE__*/ S.suspend
 export interface CreateConstantRevisionRecallReviewResponse {
   revision: ConstantRevision;
 }
-export const CreateConstantRevisionRecallReviewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: ConstantRevision,
-  }),
-).annotate({
-  identifier: "CreateConstantRevisionRecallReviewResponse",
-}) as any as S.Schema<CreateConstantRevisionRecallReviewResponse>;
+export const CreateConstantRevisionRecallReviewResponse =
+  CreateConstantRevisionDiscardResponse as any as S.Schema<CreateConstantRevisionRecallReviewResponse>;
 
 export interface CreateConstantRevisionReopenRequest {
   key: string;
@@ -4797,13 +4603,8 @@ export const CreateConstantRevisionReopenRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateConstantRevisionReopenResponse {
   revision: ConstantRevision;
 }
-export const CreateConstantRevisionReopenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: ConstantRevision,
-  }),
-).annotate({
-  identifier: "CreateConstantRevisionReopenResponse",
-}) as any as S.Schema<CreateConstantRevisionReopenResponse>;
+export const CreateConstantRevisionReopenResponse =
+  CreateConstantRevisionDiscardResponse as any as S.Schema<CreateConstantRevisionReopenResponse>;
 
 export interface CreateConstantRevisionRequestReviewRequest {
   key: string;
@@ -4838,13 +4639,8 @@ export const CreateConstantRevisionRequestReviewRequest = /*@__PURE__*/ S.suspen
 export interface CreateConstantRevisionRequestReviewResponse {
   revision: ConstantRevision;
 }
-export const CreateConstantRevisionRequestReviewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: ConstantRevision,
-  }),
-).annotate({
-  identifier: "CreateConstantRevisionRequestReviewResponse",
-}) as any as S.Schema<CreateConstantRevisionRequestReviewResponse>;
+export const CreateConstantRevisionRequestReviewResponse =
+  CreateConstantRevisionDiscardResponse as any as S.Schema<CreateConstantRevisionRequestReviewResponse>;
 
 /** Whether to stage the revert as a draft or publish it immediately. Defaults to `draft`, or to `publish` when the org enables 'reverts bypass approval'. */
 export type CreateConstantRevisionRevertRequestStrategy = "draft" | "publish";
@@ -4883,23 +4679,16 @@ export const CreateConstantRevisionRevertRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gates that would have blocked this publish but were bypassed by the caller's authority. Present only when at least one gate was bypassed. */
 export type CreateConstantRevisionRevertResponseBypassedGatesList = Array<BypassedGates>;
-export const CreateConstantRevisionRevertResponseBypassedGatesList = /*@__PURE__*/ S.Array(
-  BypassedGates,
-) as any as S.Schema<CreateConstantRevisionRevertResponseBypassedGatesList>;
+export const CreateConstantRevisionRevertResponseBypassedGatesList =
+  ArchiveConfigResponseBypassedGatesList as any as S.Schema<CreateConstantRevisionRevertResponseBypassedGatesList>;
 
 export interface CreateConstantRevisionRevertResponse {
   revision: ConstantRevision;
   /** Gates that would have blocked this publish but were bypassed by the caller's authority. Present only when at least one gate was bypassed. */
   bypassedGates?: CreateConstantRevisionRevertResponseBypassedGatesList;
 }
-export const CreateConstantRevisionRevertResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: ConstantRevision,
-    bypassedGates: S.optional(CreateConstantRevisionRevertResponseBypassedGatesList),
-  }),
-).annotate({
-  identifier: "CreateConstantRevisionRevertResponse",
-}) as any as S.Schema<CreateConstantRevisionRevertResponse>;
+export const CreateConstantRevisionRevertResponse =
+  CreateConstantRevisionPublishResponse as any as S.Schema<CreateConstantRevisionRevertResponse>;
 
 export interface CreateConstantRevisionSchedulePublishRequest {
   key: string;
@@ -4941,13 +4730,8 @@ export const CreateConstantRevisionSchedulePublishRequest = /*@__PURE__*/ S.susp
 export interface CreateConstantRevisionSchedulePublishResponse {
   revision: ConstantRevision;
 }
-export const CreateConstantRevisionSchedulePublishResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: ConstantRevision,
-  }),
-).annotate({
-  identifier: "CreateConstantRevisionSchedulePublishResponse",
-}) as any as S.Schema<CreateConstantRevisionSchedulePublishResponse>;
+export const CreateConstantRevisionSchedulePublishResponse =
+  CreateConstantRevisionDiscardResponse as any as S.Schema<CreateConstantRevisionSchedulePublishResponse>;
 
 export type CreateConstantRevisionSubmitReviewRequestDecision =
   | "approve"
@@ -5015,18 +4799,12 @@ export const CreateConstantRevisionUndoReviewRequest = /*@__PURE__*/ S.suspend((
 export interface CreateConstantRevisionUndoReviewResponse {
   revision: ConstantRevision;
 }
-export const CreateConstantRevisionUndoReviewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: ConstantRevision,
-  }),
-).annotate({
-  identifier: "CreateConstantRevisionUndoReviewResponse",
-}) as any as S.Schema<CreateConstantRevisionUndoReviewResponse>;
+export const CreateConstantRevisionUndoReviewResponse =
+  CreateConstantRevisionDiscardResponse as any as S.Schema<CreateConstantRevisionUndoReviewResponse>;
 
 export type CreateContextualBanditRequestTagsList = Array<string>;
-export const CreateContextualBanditRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateContextualBanditRequestTagsList>;
+export const CreateContextualBanditRequestTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateContextualBanditRequestTagsList>;
 
 export interface CreateContextualBanditRequestVariationsItem {
   key: string;
@@ -5050,9 +4828,8 @@ export const CreateContextualBanditRequestVariationsList = /*@__PURE__*/ S.Array
 ) as any as S.Schema<CreateContextualBanditRequestVariationsList>;
 
 export type CreateContextualBanditRequestContextualAttributesList = Array<string>;
-export const CreateContextualBanditRequestContextualAttributesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateContextualBanditRequestContextualAttributesList>;
+export const CreateContextualBanditRequestContextualAttributesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateContextualBanditRequestContextualAttributesList>;
 
 export type CreateContextualBanditRequestScheduleUnit = "days" | "hours";
 export const CreateContextualBanditRequestScheduleUnit = S.String;
@@ -5114,9 +4891,8 @@ export const CreateContextualBanditRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateContextualBanditRequest>;
 
 export type ContextualBanditTagsList = Array<string>;
-export const ContextualBanditTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContextualBanditTagsList>;
+export const ContextualBanditTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ContextualBanditTagsList>;
 
 export type ContextualBanditStatus = "draft" | "running" | "stopped";
 export const ContextualBanditStatus = S.String;
@@ -5152,9 +4928,8 @@ export type ContextualBanditSavedGroupsItemMatch = "all" | "none" | "any";
 export const ContextualBanditSavedGroupsItemMatch = S.String;
 
 export type ContextualBanditSavedGroupsItemIdsList = Array<string>;
-export const ContextualBanditSavedGroupsItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContextualBanditSavedGroupsItemIdsList>;
+export const ContextualBanditSavedGroupsItemIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ContextualBanditSavedGroupsItemIdsList>;
 
 export interface ContextualBanditSavedGroupsItem {
   match: ContextualBanditSavedGroupsItemMatch;
@@ -5179,9 +4954,8 @@ export const ContextualBanditPrerequisitesItem = RampScheduleStartActionsItemPat
 
 export type ContextualBanditPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
-export const ContextualBanditPrerequisitesList = /*@__PURE__*/ S.Array(
-  RampScheduleStartActionsItemPatchPrerequisitesItem,
-) as any as S.Schema<ContextualBanditPrerequisitesList>;
+export const ContextualBanditPrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<ContextualBanditPrerequisitesList>;
 
 export interface ContextualBanditVariationWeightsItem {
   variationId: string;
@@ -5204,10 +4978,8 @@ export const ContextualBanditVariationWeightsList = /*@__PURE__*/ S.Array(
 export type ContextualBanditCurrentLeafWeightsItemConditionMap = {
   [key: string]: unknown | undefined;
 };
-export const ContextualBanditCurrentLeafWeightsItemConditionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ContextualBanditCurrentLeafWeightsItemConditionMap>;
+export const ContextualBanditCurrentLeafWeightsItemConditionMap =
+  ConfigValueMap as any as S.Schema<ContextualBanditCurrentLeafWeightsItemConditionMap>;
 
 export type ContextualBanditCurrentLeafWeightsItemWeightsItem =
   ContextualBanditVariationWeightsItem;
@@ -5216,9 +4988,8 @@ export const ContextualBanditCurrentLeafWeightsItemWeightsItem =
 
 export type ContextualBanditCurrentLeafWeightsItemWeightsList =
   Array<ContextualBanditVariationWeightsItem>;
-export const ContextualBanditCurrentLeafWeightsItemWeightsList = /*@__PURE__*/ S.Array(
-  ContextualBanditVariationWeightsItem,
-) as any as S.Schema<ContextualBanditCurrentLeafWeightsItemWeightsList>;
+export const ContextualBanditCurrentLeafWeightsItemWeightsList =
+  ContextualBanditVariationWeightsList as any as S.Schema<ContextualBanditCurrentLeafWeightsItemWeightsList>;
 
 export interface ContextualBanditCurrentLeafWeightsItem {
   leafId: number;
@@ -5241,9 +5012,8 @@ export const ContextualBanditCurrentLeafWeightsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ContextualBanditCurrentLeafWeightsList>;
 
 export type ContextualBanditContextualAttributesList = Array<string>;
-export const ContextualBanditContextualAttributesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContextualBanditContextualAttributesList>;
+export const ContextualBanditContextualAttributesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ContextualBanditContextualAttributesList>;
 
 export type ContextualBanditScheduleUnit = "days" | "hours";
 export const ContextualBanditScheduleUnit = S.String;
@@ -5363,9 +5133,7 @@ export const CreateContextualBanditResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateContextualBanditQueryRequestTargetingAttributeColumnsList = Array<string>;
 export const CreateContextualBanditQueryRequestTargetingAttributeColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateContextualBanditQueryRequestTargetingAttributeColumnsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateContextualBanditQueryRequestTargetingAttributeColumnsList>;
 
 export interface CreateContextualBanditQueryRequest {
   /** The userId or email address of the owner. If an email address is provided, it will be used to look up the userId of the matching organization member. If an ID is provided, it will be validated as existing in the organization. When omitted, it defaults to the user associated with the request's Personal Access Token (PAT), if one is being used. */
@@ -5392,9 +5160,8 @@ export const CreateContextualBanditQueryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateContextualBanditQueryRequest>;
 
 export type ContextualBanditQueryTargetingAttributeColumnsList = Array<string>;
-export const ContextualBanditQueryTargetingAttributeColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContextualBanditQueryTargetingAttributeColumnsList>;
+export const ContextualBanditQueryTargetingAttributeColumnsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ContextualBanditQueryTargetingAttributeColumnsList>;
 
 export interface ContextualBanditQuery {
   id: string;
@@ -5439,9 +5206,8 @@ export const CreateContextualBanditQueryResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateContextualBanditQueryResponse>;
 
 export type CreateCustomFieldRequestDefaultValueCase5List = Array<string>;
-export const CreateCustomFieldRequestDefaultValueCase5List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCustomFieldRequestDefaultValueCase5List>;
+export const CreateCustomFieldRequestDefaultValueCase5List =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateCustomFieldRequestDefaultValueCase5List>;
 
 export type CreateCustomFieldRequestDefaultValueCase6List = Array<number>;
 export const CreateCustomFieldRequestDefaultValueCase6List = /*@__PURE__*/ S.Array(
@@ -5454,14 +5220,12 @@ export const CreateCustomFieldRequestDefaultValueCase7List = /*@__PURE__*/ S.Arr
 ) as any as S.Schema<CreateCustomFieldRequestDefaultValueCase7List>;
 
 export type CreateCustomFieldRequestDefaultValueCase8List = Array<string>;
-export const CreateCustomFieldRequestDefaultValueCase8List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCustomFieldRequestDefaultValueCase8List>;
+export const CreateCustomFieldRequestDefaultValueCase8List =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateCustomFieldRequestDefaultValueCase8List>;
 
 export type CreateCustomFieldRequestDefaultValueCase9List = Array<string>;
-export const CreateCustomFieldRequestDefaultValueCase9List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCustomFieldRequestDefaultValueCase9List>;
+export const CreateCustomFieldRequestDefaultValueCase9List =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateCustomFieldRequestDefaultValueCase9List>;
 
 export type CreateCustomFieldRequestDefaultValue =
   | string
@@ -5490,9 +5254,8 @@ export type CreateCustomFieldRequestType =
 export const CreateCustomFieldRequestType = S.String;
 
 export type CreateCustomFieldRequestProjectsList = Array<string>;
-export const CreateCustomFieldRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCustomFieldRequestProjectsList>;
+export const CreateCustomFieldRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateCustomFieldRequestProjectsList>;
 
 export type CreateCustomFieldRequestSectionsItem = "feature" | "experiment" | "attribute";
 export const CreateCustomFieldRequestSectionsItem = S.String;
@@ -5540,29 +5303,24 @@ export const CreateCustomFieldRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateCustomFieldRequest" }) as any as S.Schema<CreateCustomFieldRequest>;
 
 export type CustomFieldDefaultValueCase5List = Array<string>;
-export const CustomFieldDefaultValueCase5List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomFieldDefaultValueCase5List>;
+export const CustomFieldDefaultValueCase5List =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CustomFieldDefaultValueCase5List>;
 
 export type CustomFieldDefaultValueCase6List = Array<number>;
-export const CustomFieldDefaultValueCase6List = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CustomFieldDefaultValueCase6List>;
+export const CustomFieldDefaultValueCase6List =
+  CreateCustomFieldRequestDefaultValueCase6List as any as S.Schema<CustomFieldDefaultValueCase6List>;
 
 export type CustomFieldDefaultValueCase7List = Array<boolean>;
-export const CustomFieldDefaultValueCase7List = /*@__PURE__*/ S.Array(
-  S.Boolean,
-) as any as S.Schema<CustomFieldDefaultValueCase7List>;
+export const CustomFieldDefaultValueCase7List =
+  CreateCustomFieldRequestDefaultValueCase7List as any as S.Schema<CustomFieldDefaultValueCase7List>;
 
 export type CustomFieldDefaultValueCase8List = Array<string>;
-export const CustomFieldDefaultValueCase8List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomFieldDefaultValueCase8List>;
+export const CustomFieldDefaultValueCase8List =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CustomFieldDefaultValueCase8List>;
 
 export type CustomFieldDefaultValueCase9List = Array<string>;
-export const CustomFieldDefaultValueCase9List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomFieldDefaultValueCase9List>;
+export const CustomFieldDefaultValueCase9List =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CustomFieldDefaultValueCase9List>;
 
 export type CustomFieldDefaultValue =
   | string
@@ -5589,9 +5347,8 @@ export type CustomFieldType =
 export const CustomFieldType = S.String;
 
 export type CustomFieldProjectsList = Array<string>;
-export const CustomFieldProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomFieldProjectsList>;
+export const CustomFieldProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CustomFieldProjectsList>;
 
 export type CustomFieldSectionsItem = "feature" | "experiment" | "attribute";
 export const CustomFieldSectionsItem = S.String;
@@ -5659,9 +5416,8 @@ export const CreateCustomHookRequestHook = S.String;
 
 /** Project ids the hook applies to (empty/omitted = all) */
 export type CreateCustomHookRequestProjectsList = Array<string>;
-export const CreateCustomHookRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCustomHookRequestProjectsList>;
+export const CreateCustomHookRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateCustomHookRequestProjectsList>;
 
 export type CreateCustomHookRequestEntityType = "feature" | "config" | "experiment";
 export const CreateCustomHookRequestEntityType = S.String;
@@ -5702,9 +5458,8 @@ export const CustomHookHook = S.String;
 
 /** Project ids the hook applies to (empty = all projects). Always empty for entity-scoped hooks. */
 export type CustomHookProjectsList = Array<string>;
-export const CustomHookProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomHookProjectsList>;
+export const CustomHookProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CustomHookProjectsList>;
 
 /** Set (with entityId) to scope the hook to a single resource. */
 export type CustomHookEntityType = "feature" | "config" | "experiment";
@@ -5801,9 +5556,8 @@ export const CreateDashboardV2RequestUpdateSchedule =
 
 /** General Dashboards only, Experiment Dashboards use the experiment's projects */
 export type CreateDashboardV2RequestProjectsList = Array<string>;
-export const CreateDashboardV2RequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDashboardV2RequestProjectsList>;
+export const CreateDashboardV2RequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateDashboardV2RequestProjectsList>;
 
 export type CreateDashboardV2RequestGlobalControlsDateRangePredefined =
   | "today"
@@ -5853,9 +5607,8 @@ export type CreateDashboardV2RequestGlobalControlsDateGranularity =
 export const CreateDashboardV2RequestGlobalControlsDateGranularity = S.String;
 
 export type CreateDashboardV2RequestGlobalControlsProjectsList = Array<string>;
-export const CreateDashboardV2RequestGlobalControlsProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDashboardV2RequestGlobalControlsProjectsList>;
+export const CreateDashboardV2RequestGlobalControlsProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateDashboardV2RequestGlobalControlsProjectsList>;
 
 export interface CreateDashboardV2RequestGlobalControls {
   dateRange?: CreateDashboardV2RequestGlobalControlsDateRange;
@@ -5987,9 +5740,8 @@ export const CreateDashboardV2RequestBlocksItemCase1Layout =
   CreateDashboardV2RequestBlocksItemCase0Layout;
 
 export type CreateDashboardV2RequestBlocksItemCase1VariationIdsList = Array<string>;
-export const CreateDashboardV2RequestBlocksItemCase1VariationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase1VariationIdsList>;
+export const CreateDashboardV2RequestBlocksItemCase1VariationIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase1VariationIdsList>;
 
 export interface CreateDashboardV2RequestBlocksItemCase1 {
   type: string;
@@ -6026,14 +5778,12 @@ export const CreateDashboardV2RequestBlocksItemCase2Layout =
   CreateDashboardV2RequestBlocksItemCase0Layout;
 
 export type CreateDashboardV2RequestBlocksItemCase2MetricIdsList = Array<string>;
-export const CreateDashboardV2RequestBlocksItemCase2MetricIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase2MetricIdsList>;
+export const CreateDashboardV2RequestBlocksItemCase2MetricIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase2MetricIdsList>;
 
 export type CreateDashboardV2RequestBlocksItemCase2VariationIdsList = Array<string>;
-export const CreateDashboardV2RequestBlocksItemCase2VariationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase2VariationIdsList>;
+export const CreateDashboardV2RequestBlocksItemCase2VariationIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase2VariationIdsList>;
 
 export type CreateDashboardV2RequestBlocksItemCase2DifferenceType =
   | "absolute"
@@ -6058,14 +5808,12 @@ export const CreateDashboardV2RequestBlocksItemCase2ColumnsFilterList = /*@__PUR
 ) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase2ColumnsFilterList>;
 
 export type CreateDashboardV2RequestBlocksItemCase2SliceTagsFilterList = Array<string>;
-export const CreateDashboardV2RequestBlocksItemCase2SliceTagsFilterList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase2SliceTagsFilterList>;
+export const CreateDashboardV2RequestBlocksItemCase2SliceTagsFilterList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase2SliceTagsFilterList>;
 
 export type CreateDashboardV2RequestBlocksItemCase2MetricTagFilterList = Array<string>;
-export const CreateDashboardV2RequestBlocksItemCase2MetricTagFilterList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase2MetricTagFilterList>;
+export const CreateDashboardV2RequestBlocksItemCase2MetricTagFilterList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase2MetricTagFilterList>;
 
 export type CreateDashboardV2RequestBlocksItemCase2SortBy =
   | "metrics"
@@ -6122,9 +5870,8 @@ export const CreateDashboardV2RequestBlocksItemCase3Layout =
   CreateDashboardV2RequestBlocksItemCase0Layout;
 
 export type CreateDashboardV2RequestBlocksItemCase3ProjectsList = Array<string>;
-export const CreateDashboardV2RequestBlocksItemCase3ProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase3ProjectsList>;
+export const CreateDashboardV2RequestBlocksItemCase3ProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase3ProjectsList>;
 
 export type CreateDashboardV2RequestBlocksItemCase3DifferenceType =
   | "absolute"
@@ -6339,9 +6086,8 @@ export const CreateDashboardV2RequestBlocksItemCase4DateRange = /*@__PURE__*/ S.
 }) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase4DateRange>;
 
 export type CreateDashboardV2RequestBlocksItemCase4ProjectsList = Array<string>;
-export const CreateDashboardV2RequestBlocksItemCase4ProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase4ProjectsList>;
+export const CreateDashboardV2RequestBlocksItemCase4ProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase4ProjectsList>;
 
 export type CreateDashboardV2RequestBlocksItemCase4ComparisonMode =
   | "previousPeriod"
@@ -6501,9 +6247,8 @@ export const CreateDashboardV2RequestBlocksItemCase5DateRange = /*@__PURE__*/ S.
 }) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase5DateRange>;
 
 export type CreateDashboardV2RequestBlocksItemCase5ProjectsList = Array<string>;
-export const CreateDashboardV2RequestBlocksItemCase5ProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase5ProjectsList>;
+export const CreateDashboardV2RequestBlocksItemCase5ProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase5ProjectsList>;
 
 export type CreateDashboardV2RequestBlocksItemCase5ComparisonMode =
   | "previousPeriod"
@@ -6663,9 +6408,8 @@ export const CreateDashboardV2RequestBlocksItemCase6DateRange = /*@__PURE__*/ S.
 }) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase6DateRange>;
 
 export type CreateDashboardV2RequestBlocksItemCase6ProjectsList = Array<string>;
-export const CreateDashboardV2RequestBlocksItemCase6ProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase6ProjectsList>;
+export const CreateDashboardV2RequestBlocksItemCase6ProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase6ProjectsList>;
 
 export type CreateDashboardV2RequestBlocksItemCase6ComparisonMode =
   | "previousPeriod"
@@ -6791,19 +6535,16 @@ export const CreateDashboardV2RequestBlocksItemCase7Layout =
   CreateDashboardV2RequestBlocksItemCase0Layout;
 
 export type CreateDashboardV2RequestBlocksItemCase7DimensionValuesList = Array<string>;
-export const CreateDashboardV2RequestBlocksItemCase7DimensionValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase7DimensionValuesList>;
+export const CreateDashboardV2RequestBlocksItemCase7DimensionValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase7DimensionValuesList>;
 
 export type CreateDashboardV2RequestBlocksItemCase7MetricIdsList = Array<string>;
-export const CreateDashboardV2RequestBlocksItemCase7MetricIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase7MetricIdsList>;
+export const CreateDashboardV2RequestBlocksItemCase7MetricIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase7MetricIdsList>;
 
 export type CreateDashboardV2RequestBlocksItemCase7VariationIdsList = Array<string>;
-export const CreateDashboardV2RequestBlocksItemCase7VariationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase7VariationIdsList>;
+export const CreateDashboardV2RequestBlocksItemCase7VariationIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase7VariationIdsList>;
 
 export type CreateDashboardV2RequestBlocksItemCase7DifferenceType =
   | "absolute"
@@ -6828,9 +6569,8 @@ export const CreateDashboardV2RequestBlocksItemCase7ColumnsFilterList = /*@__PUR
 ) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase7ColumnsFilterList>;
 
 export type CreateDashboardV2RequestBlocksItemCase7MetricTagFilterList = Array<string>;
-export const CreateDashboardV2RequestBlocksItemCase7MetricTagFilterList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase7MetricTagFilterList>;
+export const CreateDashboardV2RequestBlocksItemCase7MetricTagFilterList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase7MetricTagFilterList>;
 
 export type CreateDashboardV2RequestBlocksItemCase7SortBy =
   | "metrics"
@@ -6889,14 +6629,12 @@ export const CreateDashboardV2RequestBlocksItemCase8Layout =
   CreateDashboardV2RequestBlocksItemCase0Layout;
 
 export type CreateDashboardV2RequestBlocksItemCase8MetricIdsList = Array<string>;
-export const CreateDashboardV2RequestBlocksItemCase8MetricIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase8MetricIdsList>;
+export const CreateDashboardV2RequestBlocksItemCase8MetricIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase8MetricIdsList>;
 
 export type CreateDashboardV2RequestBlocksItemCase8VariationIdsList = Array<string>;
-export const CreateDashboardV2RequestBlocksItemCase8VariationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase8VariationIdsList>;
+export const CreateDashboardV2RequestBlocksItemCase8VariationIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase8VariationIdsList>;
 
 export type CreateDashboardV2RequestBlocksItemCase8DifferenceType =
   | "absolute"
@@ -6905,14 +6643,12 @@ export type CreateDashboardV2RequestBlocksItemCase8DifferenceType =
 export const CreateDashboardV2RequestBlocksItemCase8DifferenceType = S.String;
 
 export type CreateDashboardV2RequestBlocksItemCase8SliceTagsFilterList = Array<string>;
-export const CreateDashboardV2RequestBlocksItemCase8SliceTagsFilterList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase8SliceTagsFilterList>;
+export const CreateDashboardV2RequestBlocksItemCase8SliceTagsFilterList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase8SliceTagsFilterList>;
 
 export type CreateDashboardV2RequestBlocksItemCase8MetricTagFilterList = Array<string>;
-export const CreateDashboardV2RequestBlocksItemCase8MetricTagFilterList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase8MetricTagFilterList>;
+export const CreateDashboardV2RequestBlocksItemCase8MetricTagFilterList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase8MetricTagFilterList>;
 
 export type CreateDashboardV2RequestBlocksItemCase8SortBy =
   | "metrics"
@@ -6997,9 +6733,8 @@ export const CreateDashboardV2RequestBlocksItemCase10Layout =
   CreateDashboardV2RequestBlocksItemCase0Layout;
 
 export type CreateDashboardV2RequestBlocksItemCase10BlockConfigList = Array<string>;
-export const CreateDashboardV2RequestBlocksItemCase10BlockConfigList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase10BlockConfigList>;
+export const CreateDashboardV2RequestBlocksItemCase10BlockConfigList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase10BlockConfigList>;
 
 export interface CreateDashboardV2RequestBlocksItemCase10 {
   type: string;
@@ -7124,16 +6859,12 @@ export const CreateDashboardV2RequestBlocksItemCase11AnalysisSettingsPopulationT
 export type CreateDashboardV2RequestBlocksItemCase11AnalysisSettingsAdditionalNumeratorFiltersList =
   Array<string>;
 export const CreateDashboardV2RequestBlocksItemCase11AnalysisSettingsAdditionalNumeratorFiltersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase11AnalysisSettingsAdditionalNumeratorFiltersList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase11AnalysisSettingsAdditionalNumeratorFiltersList>;
 
 export type CreateDashboardV2RequestBlocksItemCase11AnalysisSettingsAdditionalDenominatorFiltersList =
   Array<string>;
 export const CreateDashboardV2RequestBlocksItemCase11AnalysisSettingsAdditionalDenominatorFiltersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase11AnalysisSettingsAdditionalDenominatorFiltersList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase11AnalysisSettingsAdditionalDenominatorFiltersList>;
 
 export interface CreateDashboardV2RequestBlocksItemCase11AnalysisSettings {
   userIdType: string;
@@ -7338,9 +7069,7 @@ export const CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1 =
 export type CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase2ValuesList =
   Array<string>;
 export const CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase2ValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase2ValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase2ValuesList>;
 
 export interface CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase2 {
   dimensionType: string;
@@ -7387,9 +7116,7 @@ export const CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase3Sl
 export type CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase3SlicesItemFiltersItem {
   operator:
@@ -7572,9 +7299,7 @@ export const CreateDashboardV2RequestBlocksItemCase12ConfigDatasetValuesItemRowF
 export type CreateDashboardV2RequestBlocksItemCase12ConfigDatasetValuesItemRowFiltersItemValuesList =
   Array<string>;
 export const CreateDashboardV2RequestBlocksItemCase12ConfigDatasetValuesItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase12ConfigDatasetValuesItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase12ConfigDatasetValuesItemRowFiltersItemValuesList>;
 
 export interface CreateDashboardV2RequestBlocksItemCase12ConfigDatasetValuesItemRowFiltersItem {
   operator:
@@ -7824,9 +7549,7 @@ export const CreateDashboardV2RequestBlocksItemCase13ConfigDimensionsItemCase1 =
 export type CreateDashboardV2RequestBlocksItemCase13ConfigDimensionsItemCase2ValuesList =
   Array<string>;
 export const CreateDashboardV2RequestBlocksItemCase13ConfigDimensionsItemCase2ValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase13ConfigDimensionsItemCase2ValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase13ConfigDimensionsItemCase2ValuesList>;
 
 export interface CreateDashboardV2RequestBlocksItemCase13ConfigDimensionsItemCase2 {
   dimensionType: string;
@@ -7834,15 +7557,7 @@ export interface CreateDashboardV2RequestBlocksItemCase13ConfigDimensionsItemCas
   values: CreateDashboardV2RequestBlocksItemCase13ConfigDimensionsItemCase2ValuesList;
 }
 export const CreateDashboardV2RequestBlocksItemCase13ConfigDimensionsItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.String,
-      values: CreateDashboardV2RequestBlocksItemCase13ConfigDimensionsItemCase2ValuesList,
-    }),
-  ).annotate({
-    identifier: "CreateDashboardV2RequestBlocksItemCase13ConfigDimensionsItemCase2",
-  }) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase13ConfigDimensionsItemCase2>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<CreateDashboardV2RequestBlocksItemCase13ConfigDimensionsItemCase2>;
 
 export type CreateDashboardV2RequestBlocksItemCase13ConfigDimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -7873,9 +7588,7 @@ export const CreateDashboardV2RequestBlocksItemCase13ConfigDimensionsItemCase3Sl
 export type CreateDashboardV2RequestBlocksItemCase13ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const CreateDashboardV2RequestBlocksItemCase13ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase13ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase13ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface CreateDashboardV2RequestBlocksItemCase13ConfigDimensionsItemCase3SlicesItemFiltersItem {
   operator:
@@ -8049,9 +7762,7 @@ export const CreateDashboardV2RequestBlocksItemCase13ConfigDatasetValuesItemRowF
 export type CreateDashboardV2RequestBlocksItemCase13ConfigDatasetValuesItemRowFiltersItemValuesList =
   Array<string>;
 export const CreateDashboardV2RequestBlocksItemCase13ConfigDatasetValuesItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase13ConfigDatasetValuesItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase13ConfigDatasetValuesItemRowFiltersItemValuesList>;
 
 export interface CreateDashboardV2RequestBlocksItemCase13ConfigDatasetValuesItemRowFiltersItem {
   operator:
@@ -8311,9 +8022,7 @@ export const CreateDashboardV2RequestBlocksItemCase14ConfigDimensionsItemCase1 =
 export type CreateDashboardV2RequestBlocksItemCase14ConfigDimensionsItemCase2ValuesList =
   Array<string>;
 export const CreateDashboardV2RequestBlocksItemCase14ConfigDimensionsItemCase2ValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase14ConfigDimensionsItemCase2ValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase14ConfigDimensionsItemCase2ValuesList>;
 
 export interface CreateDashboardV2RequestBlocksItemCase14ConfigDimensionsItemCase2 {
   dimensionType: string;
@@ -8321,15 +8030,7 @@ export interface CreateDashboardV2RequestBlocksItemCase14ConfigDimensionsItemCas
   values: CreateDashboardV2RequestBlocksItemCase14ConfigDimensionsItemCase2ValuesList;
 }
 export const CreateDashboardV2RequestBlocksItemCase14ConfigDimensionsItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.String,
-      values: CreateDashboardV2RequestBlocksItemCase14ConfigDimensionsItemCase2ValuesList,
-    }),
-  ).annotate({
-    identifier: "CreateDashboardV2RequestBlocksItemCase14ConfigDimensionsItemCase2",
-  }) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase14ConfigDimensionsItemCase2>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<CreateDashboardV2RequestBlocksItemCase14ConfigDimensionsItemCase2>;
 
 export type CreateDashboardV2RequestBlocksItemCase14ConfigDimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -8360,9 +8061,7 @@ export const CreateDashboardV2RequestBlocksItemCase14ConfigDimensionsItemCase3Sl
 export type CreateDashboardV2RequestBlocksItemCase14ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const CreateDashboardV2RequestBlocksItemCase14ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase14ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase14ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface CreateDashboardV2RequestBlocksItemCase14ConfigDimensionsItemCase3SlicesItemFiltersItem {
   operator:
@@ -8556,9 +8255,7 @@ export const CreateDashboardV2RequestBlocksItemCase14ConfigDatasetValuesItemRowF
 export type CreateDashboardV2RequestBlocksItemCase14ConfigDatasetValuesItemRowFiltersItemValuesList =
   Array<string>;
 export const CreateDashboardV2RequestBlocksItemCase14ConfigDatasetValuesItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase14ConfigDatasetValuesItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase14ConfigDatasetValuesItemRowFiltersItemValuesList>;
 
 export interface CreateDashboardV2RequestBlocksItemCase14ConfigDatasetValuesItemRowFiltersItem {
   operator:
@@ -8824,9 +8521,7 @@ export const CreateDashboardV2RequestBlocksItemCase15ConfigDimensionsItemCase1 =
 export type CreateDashboardV2RequestBlocksItemCase15ConfigDimensionsItemCase2ValuesList =
   Array<string>;
 export const CreateDashboardV2RequestBlocksItemCase15ConfigDimensionsItemCase2ValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase15ConfigDimensionsItemCase2ValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase15ConfigDimensionsItemCase2ValuesList>;
 
 export interface CreateDashboardV2RequestBlocksItemCase15ConfigDimensionsItemCase2 {
   dimensionType: string;
@@ -8834,15 +8529,7 @@ export interface CreateDashboardV2RequestBlocksItemCase15ConfigDimensionsItemCas
   values: CreateDashboardV2RequestBlocksItemCase15ConfigDimensionsItemCase2ValuesList;
 }
 export const CreateDashboardV2RequestBlocksItemCase15ConfigDimensionsItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.String,
-      values: CreateDashboardV2RequestBlocksItemCase15ConfigDimensionsItemCase2ValuesList,
-    }),
-  ).annotate({
-    identifier: "CreateDashboardV2RequestBlocksItemCase15ConfigDimensionsItemCase2",
-  }) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase15ConfigDimensionsItemCase2>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<CreateDashboardV2RequestBlocksItemCase15ConfigDimensionsItemCase2>;
 
 export type CreateDashboardV2RequestBlocksItemCase15ConfigDimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -8873,9 +8560,7 @@ export const CreateDashboardV2RequestBlocksItemCase15ConfigDimensionsItemCase3Sl
 export type CreateDashboardV2RequestBlocksItemCase15ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const CreateDashboardV2RequestBlocksItemCase15ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase15ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase15ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface CreateDashboardV2RequestBlocksItemCase15ConfigDimensionsItemCase3SlicesItemFiltersItem {
   operator:
@@ -9049,9 +8734,7 @@ export const CreateDashboardV2RequestBlocksItemCase15ConfigDatasetStepsItemRowFi
 export type CreateDashboardV2RequestBlocksItemCase15ConfigDatasetStepsItemRowFiltersItemValuesList =
   Array<string>;
 export const CreateDashboardV2RequestBlocksItemCase15ConfigDatasetStepsItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase15ConfigDatasetStepsItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase15ConfigDatasetStepsItemRowFiltersItemValuesList>;
 
 export interface CreateDashboardV2RequestBlocksItemCase15ConfigDatasetStepsItemRowFiltersItem {
   operator:
@@ -9335,9 +9018,7 @@ export const CreateDashboardV2RequestBlocksItemCase16ConfigDimensionsItemCase1 =
 export type CreateDashboardV2RequestBlocksItemCase16ConfigDimensionsItemCase2ValuesList =
   Array<string>;
 export const CreateDashboardV2RequestBlocksItemCase16ConfigDimensionsItemCase2ValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase16ConfigDimensionsItemCase2ValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase16ConfigDimensionsItemCase2ValuesList>;
 
 export interface CreateDashboardV2RequestBlocksItemCase16ConfigDimensionsItemCase2 {
   dimensionType: string;
@@ -9345,15 +9026,7 @@ export interface CreateDashboardV2RequestBlocksItemCase16ConfigDimensionsItemCas
   values: CreateDashboardV2RequestBlocksItemCase16ConfigDimensionsItemCase2ValuesList;
 }
 export const CreateDashboardV2RequestBlocksItemCase16ConfigDimensionsItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.String,
-      values: CreateDashboardV2RequestBlocksItemCase16ConfigDimensionsItemCase2ValuesList,
-    }),
-  ).annotate({
-    identifier: "CreateDashboardV2RequestBlocksItemCase16ConfigDimensionsItemCase2",
-  }) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase16ConfigDimensionsItemCase2>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<CreateDashboardV2RequestBlocksItemCase16ConfigDimensionsItemCase2>;
 
 export type CreateDashboardV2RequestBlocksItemCase16ConfigDimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -9384,9 +9057,7 @@ export const CreateDashboardV2RequestBlocksItemCase16ConfigDimensionsItemCase3Sl
 export type CreateDashboardV2RequestBlocksItemCase16ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const CreateDashboardV2RequestBlocksItemCase16ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase16ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase16ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface CreateDashboardV2RequestBlocksItemCase16ConfigDimensionsItemCase3SlicesItemFiltersItem {
   operator:
@@ -9580,9 +9251,7 @@ export const CreateDashboardV2RequestBlocksItemCase16ConfigDatasetValuesItemRowF
 export type CreateDashboardV2RequestBlocksItemCase16ConfigDatasetValuesItemRowFiltersItemValuesList =
   Array<string>;
 export const CreateDashboardV2RequestBlocksItemCase16ConfigDatasetValuesItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase16ConfigDatasetValuesItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase16ConfigDatasetValuesItemRowFiltersItemValuesList>;
 
 export interface CreateDashboardV2RequestBlocksItemCase16ConfigDatasetValuesItemRowFiltersItem {
   operator:
@@ -9651,9 +9320,7 @@ export const CreateDashboardV2RequestBlocksItemCase16ConfigDatasetValuesList =
 
 export type CreateDashboardV2RequestBlocksItemCase16ConfigDatasetHiddenColumnsList = Array<string>;
 export const CreateDashboardV2RequestBlocksItemCase16ConfigDatasetHiddenColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase16ConfigDatasetHiddenColumnsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase16ConfigDatasetHiddenColumnsList>;
 
 export interface CreateDashboardV2RequestBlocksItemCase16ConfigDataset {
   type: string;
@@ -9861,9 +9528,8 @@ export type DashboardGlobalControlsDateGranularity =
 export const DashboardGlobalControlsDateGranularity = S.String;
 
 export type DashboardGlobalControlsProjectsList = Array<string>;
-export const DashboardGlobalControlsProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardGlobalControlsProjectsList>;
+export const DashboardGlobalControlsProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DashboardGlobalControlsProjectsList>;
 
 export interface DashboardGlobalControls {
   dateRange?: DashboardGlobalControlsDateRange;
@@ -9947,9 +9613,8 @@ export const DashboardGrid = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DashboardGrid" }) as any as S.Schema<DashboardGrid>;
 
 export type DashboardProjectsList = Array<string>;
-export const DashboardProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardProjectsList>;
+export const DashboardProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DashboardProjectsList>;
 
 export type DashboardBlocksItemCase0Layout = CreateDashboardV2RequestBlocksItemCase0Layout;
 export const DashboardBlocksItemCase0Layout = CreateDashboardV2RequestBlocksItemCase0Layout;
@@ -10033,16 +9698,12 @@ export const DashboardBlocksItemCase0AnalysisSettingsPopulationType = S.String;
 
 export type DashboardBlocksItemCase0AnalysisSettingsAdditionalNumeratorFiltersList = Array<string>;
 export const DashboardBlocksItemCase0AnalysisSettingsAdditionalNumeratorFiltersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DashboardBlocksItemCase0AnalysisSettingsAdditionalNumeratorFiltersList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<DashboardBlocksItemCase0AnalysisSettingsAdditionalNumeratorFiltersList>;
 
 export type DashboardBlocksItemCase0AnalysisSettingsAdditionalDenominatorFiltersList =
   Array<string>;
 export const DashboardBlocksItemCase0AnalysisSettingsAdditionalDenominatorFiltersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DashboardBlocksItemCase0AnalysisSettingsAdditionalDenominatorFiltersList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<DashboardBlocksItemCase0AnalysisSettingsAdditionalDenominatorFiltersList>;
 
 export interface DashboardBlocksItemCase0AnalysisSettings {
   userIdType: string;
@@ -10142,9 +9803,8 @@ export type DashboardBlocksItemCase2Layout = CreateDashboardV2RequestBlocksItemC
 export const DashboardBlocksItemCase2Layout = CreateDashboardV2RequestBlocksItemCase0Layout;
 
 export type DashboardBlocksItemCase2VariationIdsList = Array<string>;
-export const DashboardBlocksItemCase2VariationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardBlocksItemCase2VariationIdsList>;
+export const DashboardBlocksItemCase2VariationIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DashboardBlocksItemCase2VariationIdsList>;
 
 export interface DashboardBlocksItemCase2 {
   organization: string;
@@ -10183,14 +9843,12 @@ export type DashboardBlocksItemCase3Layout = CreateDashboardV2RequestBlocksItemC
 export const DashboardBlocksItemCase3Layout = CreateDashboardV2RequestBlocksItemCase0Layout;
 
 export type DashboardBlocksItemCase3MetricIdsList = Array<string>;
-export const DashboardBlocksItemCase3MetricIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardBlocksItemCase3MetricIdsList>;
+export const DashboardBlocksItemCase3MetricIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DashboardBlocksItemCase3MetricIdsList>;
 
 export type DashboardBlocksItemCase3VariationIdsList = Array<string>;
-export const DashboardBlocksItemCase3VariationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardBlocksItemCase3VariationIdsList>;
+export const DashboardBlocksItemCase3VariationIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DashboardBlocksItemCase3VariationIdsList>;
 
 export type DashboardBlocksItemCase3DifferenceType = "absolute" | "relative" | "scaled";
 export const DashboardBlocksItemCase3DifferenceType = S.String;
@@ -10211,14 +9869,12 @@ export const DashboardBlocksItemCase3ColumnsFilterList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DashboardBlocksItemCase3ColumnsFilterList>;
 
 export type DashboardBlocksItemCase3SliceTagsFilterList = Array<string>;
-export const DashboardBlocksItemCase3SliceTagsFilterList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardBlocksItemCase3SliceTagsFilterList>;
+export const DashboardBlocksItemCase3SliceTagsFilterList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DashboardBlocksItemCase3SliceTagsFilterList>;
 
 export type DashboardBlocksItemCase3MetricTagFilterList = Array<string>;
-export const DashboardBlocksItemCase3MetricTagFilterList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardBlocksItemCase3MetricTagFilterList>;
+export const DashboardBlocksItemCase3MetricTagFilterList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DashboardBlocksItemCase3MetricTagFilterList>;
 
 export type DashboardBlocksItemCase3SortBy = "metrics" | "metricTags" | "significance" | "change";
 export const DashboardBlocksItemCase3SortBy = S.String;
@@ -10273,9 +9929,8 @@ export type DashboardBlocksItemCase4Layout = CreateDashboardV2RequestBlocksItemC
 export const DashboardBlocksItemCase4Layout = CreateDashboardV2RequestBlocksItemCase0Layout;
 
 export type DashboardBlocksItemCase4ProjectsList = Array<string>;
-export const DashboardBlocksItemCase4ProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardBlocksItemCase4ProjectsList>;
+export const DashboardBlocksItemCase4ProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DashboardBlocksItemCase4ProjectsList>;
 
 export type DashboardBlocksItemCase4DifferenceType = "absolute" | "relative" | "scaled";
 export const DashboardBlocksItemCase4DifferenceType = S.String;
@@ -10355,9 +10010,8 @@ export const DashboardBlocksItemCase4ColumnsItem =
 
 export type DashboardBlocksItemCase4ColumnsList =
   Array<CreateDashboardV2RequestBlocksItemCase3ColumnsItem>;
-export const DashboardBlocksItemCase4ColumnsList = /*@__PURE__*/ S.Array(
-  CreateDashboardV2RequestBlocksItemCase3ColumnsItem,
-) as any as S.Schema<DashboardBlocksItemCase4ColumnsList>;
+export const DashboardBlocksItemCase4ColumnsList =
+  CreateDashboardV2RequestBlocksItemCase3ColumnsList as any as S.Schema<DashboardBlocksItemCase4ColumnsList>;
 
 export type DashboardBlocksItemCase4GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase3GlobalControlSettings;
@@ -10443,9 +10097,8 @@ export const DashboardBlocksItemCase5DateRange = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DashboardBlocksItemCase5DateRange>;
 
 export type DashboardBlocksItemCase5ProjectsList = Array<string>;
-export const DashboardBlocksItemCase5ProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardBlocksItemCase5ProjectsList>;
+export const DashboardBlocksItemCase5ProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DashboardBlocksItemCase5ProjectsList>;
 
 export type DashboardBlocksItemCase5ComparisonMode =
   | "previousPeriod"
@@ -10588,9 +10241,8 @@ export const DashboardBlocksItemCase6DateRange = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DashboardBlocksItemCase6DateRange>;
 
 export type DashboardBlocksItemCase6ProjectsList = Array<string>;
-export const DashboardBlocksItemCase6ProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardBlocksItemCase6ProjectsList>;
+export const DashboardBlocksItemCase6ProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DashboardBlocksItemCase6ProjectsList>;
 
 export type DashboardBlocksItemCase6ComparisonMode =
   | "previousPeriod"
@@ -10733,9 +10385,8 @@ export const DashboardBlocksItemCase7DateRange = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DashboardBlocksItemCase7DateRange>;
 
 export type DashboardBlocksItemCase7ProjectsList = Array<string>;
-export const DashboardBlocksItemCase7ProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardBlocksItemCase7ProjectsList>;
+export const DashboardBlocksItemCase7ProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DashboardBlocksItemCase7ProjectsList>;
 
 export type DashboardBlocksItemCase7ComparisonMode =
   | "previousPeriod"
@@ -10853,19 +10504,16 @@ export type DashboardBlocksItemCase8Layout = CreateDashboardV2RequestBlocksItemC
 export const DashboardBlocksItemCase8Layout = CreateDashboardV2RequestBlocksItemCase0Layout;
 
 export type DashboardBlocksItemCase8DimensionValuesList = Array<string>;
-export const DashboardBlocksItemCase8DimensionValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardBlocksItemCase8DimensionValuesList>;
+export const DashboardBlocksItemCase8DimensionValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DashboardBlocksItemCase8DimensionValuesList>;
 
 export type DashboardBlocksItemCase8MetricIdsList = Array<string>;
-export const DashboardBlocksItemCase8MetricIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardBlocksItemCase8MetricIdsList>;
+export const DashboardBlocksItemCase8MetricIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DashboardBlocksItemCase8MetricIdsList>;
 
 export type DashboardBlocksItemCase8VariationIdsList = Array<string>;
-export const DashboardBlocksItemCase8VariationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardBlocksItemCase8VariationIdsList>;
+export const DashboardBlocksItemCase8VariationIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DashboardBlocksItemCase8VariationIdsList>;
 
 export type DashboardBlocksItemCase8DifferenceType = "absolute" | "relative" | "scaled";
 export const DashboardBlocksItemCase8DifferenceType = S.String;
@@ -10886,9 +10534,8 @@ export const DashboardBlocksItemCase8ColumnsFilterList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DashboardBlocksItemCase8ColumnsFilterList>;
 
 export type DashboardBlocksItemCase8MetricTagFilterList = Array<string>;
-export const DashboardBlocksItemCase8MetricTagFilterList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardBlocksItemCase8MetricTagFilterList>;
+export const DashboardBlocksItemCase8MetricTagFilterList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DashboardBlocksItemCase8MetricTagFilterList>;
 
 export type DashboardBlocksItemCase8SortBy = "metrics" | "metricTags" | "significance" | "change";
 export const DashboardBlocksItemCase8SortBy = S.String;
@@ -10945,27 +10592,23 @@ export type DashboardBlocksItemCase9Layout = CreateDashboardV2RequestBlocksItemC
 export const DashboardBlocksItemCase9Layout = CreateDashboardV2RequestBlocksItemCase0Layout;
 
 export type DashboardBlocksItemCase9MetricIdsList = Array<string>;
-export const DashboardBlocksItemCase9MetricIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardBlocksItemCase9MetricIdsList>;
+export const DashboardBlocksItemCase9MetricIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DashboardBlocksItemCase9MetricIdsList>;
 
 export type DashboardBlocksItemCase9VariationIdsList = Array<string>;
-export const DashboardBlocksItemCase9VariationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardBlocksItemCase9VariationIdsList>;
+export const DashboardBlocksItemCase9VariationIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DashboardBlocksItemCase9VariationIdsList>;
 
 export type DashboardBlocksItemCase9DifferenceType = "absolute" | "relative" | "scaled";
 export const DashboardBlocksItemCase9DifferenceType = S.String;
 
 export type DashboardBlocksItemCase9SliceTagsFilterList = Array<string>;
-export const DashboardBlocksItemCase9SliceTagsFilterList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardBlocksItemCase9SliceTagsFilterList>;
+export const DashboardBlocksItemCase9SliceTagsFilterList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DashboardBlocksItemCase9SliceTagsFilterList>;
 
 export type DashboardBlocksItemCase9MetricTagFilterList = Array<string>;
-export const DashboardBlocksItemCase9MetricTagFilterList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardBlocksItemCase9MetricTagFilterList>;
+export const DashboardBlocksItemCase9MetricTagFilterList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DashboardBlocksItemCase9MetricTagFilterList>;
 
 export type DashboardBlocksItemCase9SortBy = "metrics" | "metricTags" | "significance" | "change";
 export const DashboardBlocksItemCase9SortBy = S.String;
@@ -11052,9 +10695,8 @@ export type DashboardBlocksItemCase11Layout = CreateDashboardV2RequestBlocksItem
 export const DashboardBlocksItemCase11Layout = CreateDashboardV2RequestBlocksItemCase0Layout;
 
 export type DashboardBlocksItemCase11BlockConfigList = Array<string>;
-export const DashboardBlocksItemCase11BlockConfigList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardBlocksItemCase11BlockConfigList>;
+export const DashboardBlocksItemCase11BlockConfigList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DashboardBlocksItemCase11BlockConfigList>;
 
 export interface DashboardBlocksItemCase11 {
   organization: string;
@@ -11188,9 +10830,8 @@ export const DashboardBlocksItemCase12ConfigDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
 
 export type DashboardBlocksItemCase12ConfigDimensionsItemCase2ValuesList = Array<string>;
-export const DashboardBlocksItemCase12ConfigDimensionsItemCase2ValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardBlocksItemCase12ConfigDimensionsItemCase2ValuesList>;
+export const DashboardBlocksItemCase12ConfigDimensionsItemCase2ValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DashboardBlocksItemCase12ConfigDimensionsItemCase2ValuesList>;
 
 export interface DashboardBlocksItemCase12ConfigDimensionsItemCase2 {
   dimensionType: string;
@@ -11236,9 +10877,7 @@ export const DashboardBlocksItemCase12ConfigDimensionsItemCase3SlicesItemFilters
 export type DashboardBlocksItemCase12ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const DashboardBlocksItemCase12ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DashboardBlocksItemCase12ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<DashboardBlocksItemCase12ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface DashboardBlocksItemCase12ConfigDimensionsItemCase3SlicesItemFiltersItem {
   operator: DashboardBlocksItemCase12ConfigDimensionsItemCase3SlicesItemFiltersItemOperator;
@@ -11399,9 +11038,7 @@ export const DashboardBlocksItemCase12ConfigDatasetValuesItemRowFiltersItemOpera
 export type DashboardBlocksItemCase12ConfigDatasetValuesItemRowFiltersItemValuesList =
   Array<string>;
 export const DashboardBlocksItemCase12ConfigDatasetValuesItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DashboardBlocksItemCase12ConfigDatasetValuesItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<DashboardBlocksItemCase12ConfigDatasetValuesItemRowFiltersItemValuesList>;
 
 export interface DashboardBlocksItemCase12ConfigDatasetValuesItemRowFiltersItem {
   operator: DashboardBlocksItemCase12ConfigDatasetValuesItemRowFiltersItemOperator;
@@ -11629,24 +11266,16 @@ export const DashboardBlocksItemCase13ConfigDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
 
 export type DashboardBlocksItemCase13ConfigDimensionsItemCase2ValuesList = Array<string>;
-export const DashboardBlocksItemCase13ConfigDimensionsItemCase2ValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardBlocksItemCase13ConfigDimensionsItemCase2ValuesList>;
+export const DashboardBlocksItemCase13ConfigDimensionsItemCase2ValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DashboardBlocksItemCase13ConfigDimensionsItemCase2ValuesList>;
 
 export interface DashboardBlocksItemCase13ConfigDimensionsItemCase2 {
   dimensionType: string;
   column: string;
   values: DashboardBlocksItemCase13ConfigDimensionsItemCase2ValuesList;
 }
-export const DashboardBlocksItemCase13ConfigDimensionsItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.String,
-    values: DashboardBlocksItemCase13ConfigDimensionsItemCase2ValuesList,
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase13ConfigDimensionsItemCase2",
-}) as any as S.Schema<DashboardBlocksItemCase13ConfigDimensionsItemCase2>;
+export const DashboardBlocksItemCase13ConfigDimensionsItemCase2 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<DashboardBlocksItemCase13ConfigDimensionsItemCase2>;
 
 export type DashboardBlocksItemCase13ConfigDimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -11677,9 +11306,7 @@ export const DashboardBlocksItemCase13ConfigDimensionsItemCase3SlicesItemFilters
 export type DashboardBlocksItemCase13ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const DashboardBlocksItemCase13ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DashboardBlocksItemCase13ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<DashboardBlocksItemCase13ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface DashboardBlocksItemCase13ConfigDimensionsItemCase3SlicesItemFiltersItem {
   operator: DashboardBlocksItemCase13ConfigDimensionsItemCase3SlicesItemFiltersItemOperator;
@@ -11840,9 +11467,7 @@ export const DashboardBlocksItemCase13ConfigDatasetValuesItemRowFiltersItemOpera
 export type DashboardBlocksItemCase13ConfigDatasetValuesItemRowFiltersItemValuesList =
   Array<string>;
 export const DashboardBlocksItemCase13ConfigDatasetValuesItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DashboardBlocksItemCase13ConfigDatasetValuesItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<DashboardBlocksItemCase13ConfigDatasetValuesItemRowFiltersItemValuesList>;
 
 export interface DashboardBlocksItemCase13ConfigDatasetValuesItemRowFiltersItem {
   operator: DashboardBlocksItemCase13ConfigDatasetValuesItemRowFiltersItemOperator;
@@ -12078,24 +11703,16 @@ export const DashboardBlocksItemCase14ConfigDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
 
 export type DashboardBlocksItemCase14ConfigDimensionsItemCase2ValuesList = Array<string>;
-export const DashboardBlocksItemCase14ConfigDimensionsItemCase2ValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardBlocksItemCase14ConfigDimensionsItemCase2ValuesList>;
+export const DashboardBlocksItemCase14ConfigDimensionsItemCase2ValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DashboardBlocksItemCase14ConfigDimensionsItemCase2ValuesList>;
 
 export interface DashboardBlocksItemCase14ConfigDimensionsItemCase2 {
   dimensionType: string;
   column: string;
   values: DashboardBlocksItemCase14ConfigDimensionsItemCase2ValuesList;
 }
-export const DashboardBlocksItemCase14ConfigDimensionsItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.String,
-    values: DashboardBlocksItemCase14ConfigDimensionsItemCase2ValuesList,
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase14ConfigDimensionsItemCase2",
-}) as any as S.Schema<DashboardBlocksItemCase14ConfigDimensionsItemCase2>;
+export const DashboardBlocksItemCase14ConfigDimensionsItemCase2 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<DashboardBlocksItemCase14ConfigDimensionsItemCase2>;
 
 export type DashboardBlocksItemCase14ConfigDimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -12126,9 +11743,7 @@ export const DashboardBlocksItemCase14ConfigDimensionsItemCase3SlicesItemFilters
 export type DashboardBlocksItemCase14ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const DashboardBlocksItemCase14ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DashboardBlocksItemCase14ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<DashboardBlocksItemCase14ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface DashboardBlocksItemCase14ConfigDimensionsItemCase3SlicesItemFiltersItem {
   operator: DashboardBlocksItemCase14ConfigDimensionsItemCase3SlicesItemFiltersItemOperator;
@@ -12305,9 +11920,7 @@ export const DashboardBlocksItemCase14ConfigDatasetValuesItemRowFiltersItemOpera
 export type DashboardBlocksItemCase14ConfigDatasetValuesItemRowFiltersItemValuesList =
   Array<string>;
 export const DashboardBlocksItemCase14ConfigDatasetValuesItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DashboardBlocksItemCase14ConfigDatasetValuesItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<DashboardBlocksItemCase14ConfigDatasetValuesItemRowFiltersItemValuesList>;
 
 export interface DashboardBlocksItemCase14ConfigDatasetValuesItemRowFiltersItem {
   operator: DashboardBlocksItemCase14ConfigDatasetValuesItemRowFiltersItemOperator;
@@ -12549,24 +12162,16 @@ export const DashboardBlocksItemCase15ConfigDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
 
 export type DashboardBlocksItemCase15ConfigDimensionsItemCase2ValuesList = Array<string>;
-export const DashboardBlocksItemCase15ConfigDimensionsItemCase2ValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardBlocksItemCase15ConfigDimensionsItemCase2ValuesList>;
+export const DashboardBlocksItemCase15ConfigDimensionsItemCase2ValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DashboardBlocksItemCase15ConfigDimensionsItemCase2ValuesList>;
 
 export interface DashboardBlocksItemCase15ConfigDimensionsItemCase2 {
   dimensionType: string;
   column: string;
   values: DashboardBlocksItemCase15ConfigDimensionsItemCase2ValuesList;
 }
-export const DashboardBlocksItemCase15ConfigDimensionsItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.String,
-    values: DashboardBlocksItemCase15ConfigDimensionsItemCase2ValuesList,
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase15ConfigDimensionsItemCase2",
-}) as any as S.Schema<DashboardBlocksItemCase15ConfigDimensionsItemCase2>;
+export const DashboardBlocksItemCase15ConfigDimensionsItemCase2 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<DashboardBlocksItemCase15ConfigDimensionsItemCase2>;
 
 export type DashboardBlocksItemCase15ConfigDimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -12597,9 +12202,7 @@ export const DashboardBlocksItemCase15ConfigDimensionsItemCase3SlicesItemFilters
 export type DashboardBlocksItemCase15ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const DashboardBlocksItemCase15ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DashboardBlocksItemCase15ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<DashboardBlocksItemCase15ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface DashboardBlocksItemCase15ConfigDimensionsItemCase3SlicesItemFiltersItem {
   operator: DashboardBlocksItemCase15ConfigDimensionsItemCase3SlicesItemFiltersItemOperator;
@@ -12776,9 +12379,7 @@ export const DashboardBlocksItemCase15ConfigDatasetValuesItemRowFiltersItemOpera
 export type DashboardBlocksItemCase15ConfigDatasetValuesItemRowFiltersItemValuesList =
   Array<string>;
 export const DashboardBlocksItemCase15ConfigDatasetValuesItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DashboardBlocksItemCase15ConfigDatasetValuesItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<DashboardBlocksItemCase15ConfigDatasetValuesItemRowFiltersItemValuesList>;
 
 export interface DashboardBlocksItemCase15ConfigDatasetValuesItemRowFiltersItem {
   operator: DashboardBlocksItemCase15ConfigDatasetValuesItemRowFiltersItemOperator;
@@ -12836,9 +12437,8 @@ export const DashboardBlocksItemCase15ConfigDatasetValuesList = /*@__PURE__*/ S.
 ) as any as S.Schema<DashboardBlocksItemCase15ConfigDatasetValuesList>;
 
 export type DashboardBlocksItemCase15ConfigDatasetHiddenColumnsList = Array<string>;
-export const DashboardBlocksItemCase15ConfigDatasetHiddenColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardBlocksItemCase15ConfigDatasetHiddenColumnsList>;
+export const DashboardBlocksItemCase15ConfigDatasetHiddenColumnsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DashboardBlocksItemCase15ConfigDatasetHiddenColumnsList>;
 
 export interface DashboardBlocksItemCase15ConfigDataset {
   type: string;
@@ -13025,24 +12625,16 @@ export const DashboardBlocksItemCase16ConfigDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
 
 export type DashboardBlocksItemCase16ConfigDimensionsItemCase2ValuesList = Array<string>;
-export const DashboardBlocksItemCase16ConfigDimensionsItemCase2ValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardBlocksItemCase16ConfigDimensionsItemCase2ValuesList>;
+export const DashboardBlocksItemCase16ConfigDimensionsItemCase2ValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DashboardBlocksItemCase16ConfigDimensionsItemCase2ValuesList>;
 
 export interface DashboardBlocksItemCase16ConfigDimensionsItemCase2 {
   dimensionType: string;
   column: string;
   values: DashboardBlocksItemCase16ConfigDimensionsItemCase2ValuesList;
 }
-export const DashboardBlocksItemCase16ConfigDimensionsItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.String,
-    values: DashboardBlocksItemCase16ConfigDimensionsItemCase2ValuesList,
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase16ConfigDimensionsItemCase2",
-}) as any as S.Schema<DashboardBlocksItemCase16ConfigDimensionsItemCase2>;
+export const DashboardBlocksItemCase16ConfigDimensionsItemCase2 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<DashboardBlocksItemCase16ConfigDimensionsItemCase2>;
 
 export type DashboardBlocksItemCase16ConfigDimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -13073,9 +12665,7 @@ export const DashboardBlocksItemCase16ConfigDimensionsItemCase3SlicesItemFilters
 export type DashboardBlocksItemCase16ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const DashboardBlocksItemCase16ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DashboardBlocksItemCase16ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<DashboardBlocksItemCase16ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface DashboardBlocksItemCase16ConfigDimensionsItemCase3SlicesItemFiltersItem {
   operator: DashboardBlocksItemCase16ConfigDimensionsItemCase3SlicesItemFiltersItemOperator;
@@ -13235,9 +12825,7 @@ export const DashboardBlocksItemCase16ConfigDatasetStepsItemRowFiltersItemOperat
 
 export type DashboardBlocksItemCase16ConfigDatasetStepsItemRowFiltersItemValuesList = Array<string>;
 export const DashboardBlocksItemCase16ConfigDatasetStepsItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DashboardBlocksItemCase16ConfigDatasetStepsItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<DashboardBlocksItemCase16ConfigDatasetStepsItemRowFiltersItemValuesList>;
 
 export interface DashboardBlocksItemCase16ConfigDatasetStepsItemRowFiltersItem {
   operator: DashboardBlocksItemCase16ConfigDatasetStepsItemRowFiltersItemOperator;
@@ -13565,9 +13153,8 @@ export const CreateDimensionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDimensionResponse" }) as any as S.Schema<CreateDimensionResponse>;
 
 export type CreateEnvironmentRequestProjectsList = Array<string>;
-export const CreateEnvironmentRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateEnvironmentRequestProjectsList>;
+export const CreateEnvironmentRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateEnvironmentRequestProjectsList>;
 
 export interface CreateEnvironmentRequest {
   /** The ID of the new environment */
@@ -13594,9 +13181,8 @@ export const CreateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateEnvironmentRequest" }) as any as S.Schema<CreateEnvironmentRequest>;
 
 export type EnvironmentProjectsList = Array<string>;
-export const EnvironmentProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnvironmentProjectsList>;
+export const EnvironmentProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<EnvironmentProjectsList>;
 
 export interface Environment {
   id: string;
@@ -13638,24 +13224,20 @@ export type CreateExperimentRequestType = "standard" | "multi-armed-bandit";
 export const CreateExperimentRequestType = S.String;
 
 export type CreateExperimentRequestTagsList = Array<string>;
-export const CreateExperimentRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateExperimentRequestTagsList>;
+export const CreateExperimentRequestTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateExperimentRequestTagsList>;
 
 export type CreateExperimentRequestMetricsList = Array<string>;
-export const CreateExperimentRequestMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateExperimentRequestMetricsList>;
+export const CreateExperimentRequestMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateExperimentRequestMetricsList>;
 
 export type CreateExperimentRequestSecondaryMetricsList = Array<string>;
-export const CreateExperimentRequestSecondaryMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateExperimentRequestSecondaryMetricsList>;
+export const CreateExperimentRequestSecondaryMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateExperimentRequestSecondaryMetricsList>;
 
 export type CreateExperimentRequestGuardrailMetricsList = Array<string>;
-export const CreateExperimentRequestGuardrailMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateExperimentRequestGuardrailMetricsList>;
+export const CreateExperimentRequestGuardrailMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateExperimentRequestGuardrailMetricsList>;
 
 export type CreateExperimentRequestStatus = "draft" | "running" | "stopped";
 export const CreateExperimentRequestStatus = S.String;
@@ -13759,14 +13341,12 @@ export const CreateExperimentRequestVariationsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreateExperimentRequestVariationsList>;
 
 export type CreateExperimentRequestPhasesItemNamespaceRangeList = Array<number>;
-export const CreateExperimentRequestPhasesItemNamespaceRangeList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateExperimentRequestPhasesItemNamespaceRangeList>;
+export const CreateExperimentRequestPhasesItemNamespaceRangeList =
+  CreateCustomFieldRequestDefaultValueCase6List as any as S.Schema<CreateExperimentRequestPhasesItemNamespaceRangeList>;
 
 export type CreateExperimentRequestPhasesItemNamespaceRangesItemList = Array<unknown>;
-export const CreateExperimentRequestPhasesItemNamespaceRangesItemList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateExperimentRequestPhasesItemNamespaceRangesItemList>;
+export const CreateExperimentRequestPhasesItemNamespaceRangesItemList =
+  CreateConfigRevisionRebaseRequestCustomValuesValueList as any as S.Schema<CreateExperimentRequestPhasesItemNamespaceRangesItemList>;
 
 export type CreateExperimentRequestPhasesItemNamespaceRangesList =
   Array<CreateExperimentRequestPhasesItemNamespaceRangesItemList>;
@@ -13796,28 +13376,20 @@ export interface CreateExperimentRequestPhasesItemPrerequisitesItem {
   id: string;
   condition: string;
 }
-export const CreateExperimentRequestPhasesItemPrerequisitesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    condition: S.String,
-  }),
-).annotate({
-  identifier: "CreateExperimentRequestPhasesItemPrerequisitesItem",
-}) as any as S.Schema<CreateExperimentRequestPhasesItemPrerequisitesItem>;
+export const CreateExperimentRequestPhasesItemPrerequisitesItem =
+  RampScheduleStartActionsItemPatchPrerequisitesItem as any as S.Schema<CreateExperimentRequestPhasesItemPrerequisitesItem>;
 
 export type CreateExperimentRequestPhasesItemPrerequisitesList =
   Array<CreateExperimentRequestPhasesItemPrerequisitesItem>;
-export const CreateExperimentRequestPhasesItemPrerequisitesList = /*@__PURE__*/ S.Array(
-  CreateExperimentRequestPhasesItemPrerequisitesItem,
-) as any as S.Schema<CreateExperimentRequestPhasesItemPrerequisitesList>;
+export const CreateExperimentRequestPhasesItemPrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<CreateExperimentRequestPhasesItemPrerequisitesList>;
 
 export type CreateExperimentRequestPhasesItemSavedGroupsItemMatch = "all" | "none" | "any";
 export const CreateExperimentRequestPhasesItemSavedGroupsItemMatch = S.String;
 
 export type CreateExperimentRequestPhasesItemSavedGroupsItemIdsList = Array<string>;
-export const CreateExperimentRequestPhasesItemSavedGroupsItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateExperimentRequestPhasesItemSavedGroupsItemIdsList>;
+export const CreateExperimentRequestPhasesItemSavedGroupsItemIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateExperimentRequestPhasesItemSavedGroupsItemIdsList>;
 
 export interface CreateExperimentRequestPhasesItemSavedGroupsItem {
   match: CreateExperimentRequestPhasesItemSavedGroupsItemMatch | (string & {});
@@ -13846,9 +13418,7 @@ export const CreateExperimentRequestPhasesItemSavedGroupTargetingItemMatchType =
 
 export type CreateExperimentRequestPhasesItemSavedGroupTargetingItemSavedGroupsList = Array<string>;
 export const CreateExperimentRequestPhasesItemSavedGroupTargetingItemSavedGroupsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateExperimentRequestPhasesItemSavedGroupTargetingItemSavedGroupsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateExperimentRequestPhasesItemSavedGroupTargetingItemSavedGroupsList>;
 
 export interface CreateExperimentRequestPhasesItemSavedGroupTargetingItem {
   matchType: CreateExperimentRequestPhasesItemSavedGroupTargetingItemMatchType | (string & {});
@@ -13873,9 +13443,8 @@ export const CreateExperimentRequestPhasesItemSavedGroupTargetingList = /*@__PUR
 
 /** Deprecated: use `trafficSplit`. Takes precedence if set. */
 export type CreateExperimentRequestPhasesItemVariationWeightsList = Array<number>;
-export const CreateExperimentRequestPhasesItemVariationWeightsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateExperimentRequestPhasesItemVariationWeightsList>;
+export const CreateExperimentRequestPhasesItemVariationWeightsList =
+  CreateCustomFieldRequestDefaultValueCase6List as any as S.Schema<CreateExperimentRequestPhasesItemVariationWeightsList>;
 
 export type CreateExperimentRequestPhasesItemTrafficSplitItem =
   ContextualBanditVariationWeightsItem;
@@ -13885,9 +13454,8 @@ export const CreateExperimentRequestPhasesItemTrafficSplitItem =
 /** Per-variation weights. Mirrors the GET response. */
 export type CreateExperimentRequestPhasesItemTrafficSplitList =
   Array<ContextualBanditVariationWeightsItem>;
-export const CreateExperimentRequestPhasesItemTrafficSplitList = /*@__PURE__*/ S.Array(
-  ContextualBanditVariationWeightsItem,
-) as any as S.Schema<CreateExperimentRequestPhasesItemTrafficSplitList>;
+export const CreateExperimentRequestPhasesItemTrafficSplitList =
+  ContextualBanditVariationWeightsList as any as S.Schema<CreateExperimentRequestPhasesItemTrafficSplitList>;
 
 export interface CreateExperimentRequestPhasesItem {
   name: string;
@@ -14037,16 +13605,12 @@ export const CreateExperimentRequestMetricOverridesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreateExperimentRequestMetricOverridesList>;
 
 export type CreateExperimentRequestCustomFieldsMap = { [key: string]: string | undefined };
-export const CreateExperimentRequestCustomFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateExperimentRequestCustomFieldsMap>;
+export const CreateExperimentRequestCustomFieldsMap =
+  ConstantEnvironmentValuesMap as any as S.Schema<CreateExperimentRequestCustomFieldsMap>;
 
 export type CreateExperimentRequestCustomMetricSlicesItemSlicesItemLevelsList = Array<string>;
 export const CreateExperimentRequestCustomMetricSlicesItemSlicesItemLevelsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateExperimentRequestCustomMetricSlicesItemSlicesItemLevelsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateExperimentRequestCustomMetricSlicesItemSlicesItemLevelsList>;
 
 export interface CreateExperimentRequestCustomMetricSlicesItemSlicesItem {
   column: string;
@@ -14086,9 +13650,8 @@ export const CreateExperimentRequestCustomMetricSlicesList = /*@__PURE__*/ S.Arr
 ) as any as S.Schema<CreateExperimentRequestCustomMetricSlicesList>;
 
 export type CreateExperimentRequestPrecomputedUnitDimensionIdsList = Array<string>;
-export const CreateExperimentRequestPrecomputedUnitDimensionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateExperimentRequestPrecomputedUnitDimensionIdsList>;
+export const CreateExperimentRequestPrecomputedUnitDimensionIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateExperimentRequestPrecomputedUnitDimensionIdsList>;
 
 export type CreateExperimentRequestStatusUpdateScheduleStopAfterUnit = "hours" | "days";
 export const CreateExperimentRequestStatusUpdateScheduleStopAfterUnit = S.String;
@@ -14300,14 +13863,12 @@ export type ExperimentType = "standard" | "multi-armed-bandit" | "holdout";
 export const ExperimentType = S.String;
 
 export type ExperimentTagsList = Array<string>;
-export const ExperimentTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentTagsList>;
+export const ExperimentTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ExperimentTagsList>;
 
 export type ExperimentVariationsItemScreenshotsList = Array<string>;
-export const ExperimentVariationsItemScreenshotsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentVariationsItemScreenshotsList>;
+export const ExperimentVariationsItemScreenshotsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ExperimentVariationsItemScreenshotsList>;
 
 export interface ExperimentVariationsItem {
   variationId: string;
@@ -14335,25 +13896,21 @@ export type ExperimentPhasesItemTrafficSplitItem = ContextualBanditVariationWeig
 export const ExperimentPhasesItemTrafficSplitItem = ContextualBanditVariationWeightsItem;
 
 export type ExperimentPhasesItemTrafficSplitList = Array<ContextualBanditVariationWeightsItem>;
-export const ExperimentPhasesItemTrafficSplitList = /*@__PURE__*/ S.Array(
-  ContextualBanditVariationWeightsItem,
-) as any as S.Schema<ExperimentPhasesItemTrafficSplitList>;
+export const ExperimentPhasesItemTrafficSplitList =
+  ContextualBanditVariationWeightsList as any as S.Schema<ExperimentPhasesItemTrafficSplitList>;
 
 export type ExperimentPhasesItemNamespaceRangeList = Array<number>;
-export const ExperimentPhasesItemNamespaceRangeList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ExperimentPhasesItemNamespaceRangeList>;
+export const ExperimentPhasesItemNamespaceRangeList =
+  CreateCustomFieldRequestDefaultValueCase6List as any as S.Schema<ExperimentPhasesItemNamespaceRangeList>;
 
 export type ExperimentPhasesItemNamespaceRangesItemList = Array<unknown>;
-export const ExperimentPhasesItemNamespaceRangesItemList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ExperimentPhasesItemNamespaceRangesItemList>;
+export const ExperimentPhasesItemNamespaceRangesItemList =
+  CreateConfigRevisionRebaseRequestCustomValuesValueList as any as S.Schema<ExperimentPhasesItemNamespaceRangesItemList>;
 
 export type ExperimentPhasesItemNamespaceRangesList =
   Array<ExperimentPhasesItemNamespaceRangesItemList>;
-export const ExperimentPhasesItemNamespaceRangesList = /*@__PURE__*/ S.Array(
-  ExperimentPhasesItemNamespaceRangesItemList,
-) as any as S.Schema<ExperimentPhasesItemNamespaceRangesList>;
+export const ExperimentPhasesItemNamespaceRangesList =
+  CreateExperimentRequestPhasesItemNamespaceRangesList as any as S.Schema<ExperimentPhasesItemNamespaceRangesList>;
 
 export interface ExperimentPhasesItemNamespace {
   namespaceId: string;
@@ -14361,16 +13918,8 @@ export interface ExperimentPhasesItemNamespace {
   range?: ExperimentPhasesItemNamespaceRangeList;
   ranges?: ExperimentPhasesItemNamespaceRangesList;
 }
-export const ExperimentPhasesItemNamespace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namespaceId: S.String,
-    enabled: S.optional(S.Boolean),
-    range: S.optional(ExperimentPhasesItemNamespaceRangeList),
-    ranges: S.optional(ExperimentPhasesItemNamespaceRangesList),
-  }),
-).annotate({
-  identifier: "ExperimentPhasesItemNamespace",
-}) as any as S.Schema<ExperimentPhasesItemNamespace>;
+export const ExperimentPhasesItemNamespace =
+  CreateExperimentRequestPhasesItemNamespace as any as S.Schema<ExperimentPhasesItemNamespace>;
 
 export type ExperimentPhasesItemPrerequisitesItem =
   RampScheduleStartActionsItemPatchPrerequisitesItem;
@@ -14379,17 +13928,15 @@ export const ExperimentPhasesItemPrerequisitesItem =
 
 export type ExperimentPhasesItemPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
-export const ExperimentPhasesItemPrerequisitesList = /*@__PURE__*/ S.Array(
-  RampScheduleStartActionsItemPatchPrerequisitesItem,
-) as any as S.Schema<ExperimentPhasesItemPrerequisitesList>;
+export const ExperimentPhasesItemPrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<ExperimentPhasesItemPrerequisitesList>;
 
 export type ExperimentPhasesItemSavedGroupTargetingItemMatchType = "all" | "any" | "none";
 export const ExperimentPhasesItemSavedGroupTargetingItemMatchType = S.String;
 
 export type ExperimentPhasesItemSavedGroupTargetingItemSavedGroupsList = Array<string>;
-export const ExperimentPhasesItemSavedGroupTargetingItemSavedGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentPhasesItemSavedGroupTargetingItemSavedGroupsList>;
+export const ExperimentPhasesItemSavedGroupTargetingItemSavedGroupsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ExperimentPhasesItemSavedGroupTargetingItemSavedGroupsList>;
 
 export interface ExperimentPhasesItemSavedGroupTargetingItem {
   matchType: ExperimentPhasesItemSavedGroupTargetingItemMatchType;
@@ -14496,25 +14043,15 @@ export const ExperimentDecisionFrameworkSettingsDecisionFrameworkMetricOverrides
 export type ExperimentDecisionFrameworkSettingsDecisionFrameworkMetricOverridesList =
   Array<CreateExperimentRequestDecisionFrameworkSettingsDecisionFrameworkMetricOverridesItem>;
 export const ExperimentDecisionFrameworkSettingsDecisionFrameworkMetricOverridesList =
-  /*@__PURE__*/ S.Array(
-    CreateExperimentRequestDecisionFrameworkSettingsDecisionFrameworkMetricOverridesItem,
-  ) as any as S.Schema<ExperimentDecisionFrameworkSettingsDecisionFrameworkMetricOverridesList>;
+  CreateExperimentRequestDecisionFrameworkSettingsDecisionFrameworkMetricOverridesList as any as S.Schema<ExperimentDecisionFrameworkSettingsDecisionFrameworkMetricOverridesList>;
 
 /** Controls the decision framework and metric overrides for the experiment. Replaces the entire stored object on update (does not patch individual fields). */
 export interface ExperimentDecisionFrameworkSettings {
   decisionCriteriaId?: string;
   decisionFrameworkMetricOverrides?: ExperimentDecisionFrameworkSettingsDecisionFrameworkMetricOverridesList;
 }
-export const ExperimentDecisionFrameworkSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    decisionCriteriaId: S.optional(S.String),
-    decisionFrameworkMetricOverrides: S.optional(
-      ExperimentDecisionFrameworkSettingsDecisionFrameworkMetricOverridesList,
-    ),
-  }),
-).annotate({
-  identifier: "ExperimentDecisionFrameworkSettings",
-}) as any as S.Schema<ExperimentDecisionFrameworkSettings>;
+export const ExperimentDecisionFrameworkSettings =
+  CreateExperimentRequestDecisionFrameworkSettings as any as S.Schema<ExperimentDecisionFrameworkSettings>;
 
 export type ExperimentMetricOverrideEntryWindowType = "conversion" | "lookback" | "";
 export const ExperimentMetricOverrideEntryWindowType = S.String;
@@ -14613,14 +14150,12 @@ export const ExperimentAnalysisSettingsGoalsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ExperimentAnalysisSettingsGoalsList>;
 
 export type ExperimentAnalysisSettingsSecondaryMetricsList = Array<ExperimentMetric>;
-export const ExperimentAnalysisSettingsSecondaryMetricsList = /*@__PURE__*/ S.Array(
-  ExperimentMetric,
-) as any as S.Schema<ExperimentAnalysisSettingsSecondaryMetricsList>;
+export const ExperimentAnalysisSettingsSecondaryMetricsList =
+  ExperimentAnalysisSettingsGoalsList as any as S.Schema<ExperimentAnalysisSettingsSecondaryMetricsList>;
 
 export type ExperimentAnalysisSettingsGuardrailsList = Array<ExperimentMetric>;
-export const ExperimentAnalysisSettingsGuardrailsList = /*@__PURE__*/ S.Array(
-  ExperimentMetric,
-) as any as S.Schema<ExperimentAnalysisSettingsGuardrailsList>;
+export const ExperimentAnalysisSettingsGuardrailsList =
+  ExperimentAnalysisSettingsGoalsList as any as S.Schema<ExperimentAnalysisSettingsGuardrailsList>;
 
 export interface ExperimentAnalysisSettings {
   datasourceId: string;
@@ -14707,20 +14242,16 @@ export type ExperimentBanditConversionWindowUnit = "days" | "hours";
 export const ExperimentBanditConversionWindowUnit = S.String;
 
 export type ExperimentLinkedFeaturesList = Array<string>;
-export const ExperimentLinkedFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentLinkedFeaturesList>;
+export const ExperimentLinkedFeaturesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ExperimentLinkedFeaturesList>;
 
 export type ExperimentCustomFieldsMap = { [key: string]: unknown | undefined };
-export const ExperimentCustomFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ExperimentCustomFieldsMap>;
+export const ExperimentCustomFieldsMap =
+  ConfigValueMap as any as S.Schema<ExperimentCustomFieldsMap>;
 
 export type ExperimentCustomMetricSlicesItemSlicesItemLevelsList = Array<string>;
-export const ExperimentCustomMetricSlicesItemSlicesItemLevelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentCustomMetricSlicesItemSlicesItemLevelsList>;
+export const ExperimentCustomMetricSlicesItemSlicesItemLevelsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ExperimentCustomMetricSlicesItemSlicesItemLevelsList>;
 
 export interface ExperimentCustomMetricSlicesItemSlicesItem {
   column: string;
@@ -14759,9 +14290,8 @@ export const ExperimentCustomMetricSlicesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ExperimentCustomMetricSlicesList>;
 
 export type ExperimentPrecomputedUnitDimensionIdsList = Array<string>;
-export const ExperimentPrecomputedUnitDimensionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentPrecomputedUnitDimensionIdsList>;
+export const ExperimentPrecomputedUnitDimensionIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ExperimentPrecomputedUnitDimensionIdsList>;
 
 export type ExperimentStatusUpdateScheduleStopAfterUnit = "hours" | "days";
 export const ExperimentStatusUpdateScheduleStopAfterUnit = S.String;
@@ -14943,13 +14473,8 @@ export const CreateExperimentCommentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateExperimentCommentResponse {
   status: number;
 }
-export const CreateExperimentCommentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.Number,
-  }),
-).annotate({
-  identifier: "CreateExperimentCommentResponse",
-}) as any as S.Schema<CreateExperimentCommentResponse>;
+export const CreateExperimentCommentResponse =
+  CancelContextualBanditResponse as any as S.Schema<CreateExperimentCommentResponse>;
 
 export interface CreateExperimentModifyTemporaryRolloutRequest {
   /** The id of the requested resource */
@@ -14978,14 +14503,12 @@ export type ExperimentWithEnhancedStatusType = "standard" | "multi-armed-bandit"
 export const ExperimentWithEnhancedStatusType = S.String;
 
 export type ExperimentWithEnhancedStatusTagsList = Array<string>;
-export const ExperimentWithEnhancedStatusTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentWithEnhancedStatusTagsList>;
+export const ExperimentWithEnhancedStatusTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ExperimentWithEnhancedStatusTagsList>;
 
 export type ExperimentWithEnhancedStatusVariationsItemScreenshotsList = Array<string>;
-export const ExperimentWithEnhancedStatusVariationsItemScreenshotsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentWithEnhancedStatusVariationsItemScreenshotsList>;
+export const ExperimentWithEnhancedStatusVariationsItemScreenshotsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ExperimentWithEnhancedStatusVariationsItemScreenshotsList>;
 
 export interface ExperimentWithEnhancedStatusVariationsItem {
   variationId: string;
@@ -15019,25 +14542,21 @@ export const ExperimentWithEnhancedStatusPhasesItemTrafficSplitItem =
 
 export type ExperimentWithEnhancedStatusPhasesItemTrafficSplitList =
   Array<ContextualBanditVariationWeightsItem>;
-export const ExperimentWithEnhancedStatusPhasesItemTrafficSplitList = /*@__PURE__*/ S.Array(
-  ContextualBanditVariationWeightsItem,
-) as any as S.Schema<ExperimentWithEnhancedStatusPhasesItemTrafficSplitList>;
+export const ExperimentWithEnhancedStatusPhasesItemTrafficSplitList =
+  ContextualBanditVariationWeightsList as any as S.Schema<ExperimentWithEnhancedStatusPhasesItemTrafficSplitList>;
 
 export type ExperimentWithEnhancedStatusPhasesItemNamespaceRangeList = Array<number>;
-export const ExperimentWithEnhancedStatusPhasesItemNamespaceRangeList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ExperimentWithEnhancedStatusPhasesItemNamespaceRangeList>;
+export const ExperimentWithEnhancedStatusPhasesItemNamespaceRangeList =
+  CreateCustomFieldRequestDefaultValueCase6List as any as S.Schema<ExperimentWithEnhancedStatusPhasesItemNamespaceRangeList>;
 
 export type ExperimentWithEnhancedStatusPhasesItemNamespaceRangesItemList = Array<unknown>;
-export const ExperimentWithEnhancedStatusPhasesItemNamespaceRangesItemList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ExperimentWithEnhancedStatusPhasesItemNamespaceRangesItemList>;
+export const ExperimentWithEnhancedStatusPhasesItemNamespaceRangesItemList =
+  CreateConfigRevisionRebaseRequestCustomValuesValueList as any as S.Schema<ExperimentWithEnhancedStatusPhasesItemNamespaceRangesItemList>;
 
 export type ExperimentWithEnhancedStatusPhasesItemNamespaceRangesList =
   Array<ExperimentWithEnhancedStatusPhasesItemNamespaceRangesItemList>;
-export const ExperimentWithEnhancedStatusPhasesItemNamespaceRangesList = /*@__PURE__*/ S.Array(
-  ExperimentWithEnhancedStatusPhasesItemNamespaceRangesItemList,
-) as any as S.Schema<ExperimentWithEnhancedStatusPhasesItemNamespaceRangesList>;
+export const ExperimentWithEnhancedStatusPhasesItemNamespaceRangesList =
+  CreateExperimentRequestPhasesItemNamespaceRangesList as any as S.Schema<ExperimentWithEnhancedStatusPhasesItemNamespaceRangesList>;
 
 export interface ExperimentWithEnhancedStatusPhasesItemNamespace {
   namespaceId: string;
@@ -15045,16 +14564,8 @@ export interface ExperimentWithEnhancedStatusPhasesItemNamespace {
   range?: ExperimentWithEnhancedStatusPhasesItemNamespaceRangeList;
   ranges?: ExperimentWithEnhancedStatusPhasesItemNamespaceRangesList;
 }
-export const ExperimentWithEnhancedStatusPhasesItemNamespace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namespaceId: S.String,
-    enabled: S.optional(S.Boolean),
-    range: S.optional(ExperimentWithEnhancedStatusPhasesItemNamespaceRangeList),
-    ranges: S.optional(ExperimentWithEnhancedStatusPhasesItemNamespaceRangesList),
-  }),
-).annotate({
-  identifier: "ExperimentWithEnhancedStatusPhasesItemNamespace",
-}) as any as S.Schema<ExperimentWithEnhancedStatusPhasesItemNamespace>;
+export const ExperimentWithEnhancedStatusPhasesItemNamespace =
+  CreateExperimentRequestPhasesItemNamespace as any as S.Schema<ExperimentWithEnhancedStatusPhasesItemNamespace>;
 
 export type ExperimentWithEnhancedStatusPhasesItemPrerequisitesItem =
   RampScheduleStartActionsItemPatchPrerequisitesItem;
@@ -15063,9 +14574,8 @@ export const ExperimentWithEnhancedStatusPhasesItemPrerequisitesItem =
 
 export type ExperimentWithEnhancedStatusPhasesItemPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
-export const ExperimentWithEnhancedStatusPhasesItemPrerequisitesList = /*@__PURE__*/ S.Array(
-  RampScheduleStartActionsItemPatchPrerequisitesItem,
-) as any as S.Schema<ExperimentWithEnhancedStatusPhasesItemPrerequisitesList>;
+export const ExperimentWithEnhancedStatusPhasesItemPrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<ExperimentWithEnhancedStatusPhasesItemPrerequisitesList>;
 
 export type ExperimentWithEnhancedStatusPhasesItemSavedGroupTargetingItemMatchType =
   | "all"
@@ -15076,9 +14586,7 @@ export const ExperimentWithEnhancedStatusPhasesItemSavedGroupTargetingItemMatchT
 export type ExperimentWithEnhancedStatusPhasesItemSavedGroupTargetingItemSavedGroupsList =
   Array<string>;
 export const ExperimentWithEnhancedStatusPhasesItemSavedGroupTargetingItemSavedGroupsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExperimentWithEnhancedStatusPhasesItemSavedGroupTargetingItemSavedGroupsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<ExperimentWithEnhancedStatusPhasesItemSavedGroupTargetingItemSavedGroupsList>;
 
 export interface ExperimentWithEnhancedStatusPhasesItemSavedGroupTargetingItem {
   matchType: ExperimentWithEnhancedStatusPhasesItemSavedGroupTargetingItemMatchType;
@@ -15152,21 +14660,16 @@ export type ExperimentWithEnhancedStatusBanditConversionWindowUnit = "days" | "h
 export const ExperimentWithEnhancedStatusBanditConversionWindowUnit = S.String;
 
 export type ExperimentWithEnhancedStatusLinkedFeaturesList = Array<string>;
-export const ExperimentWithEnhancedStatusLinkedFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentWithEnhancedStatusLinkedFeaturesList>;
+export const ExperimentWithEnhancedStatusLinkedFeaturesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ExperimentWithEnhancedStatusLinkedFeaturesList>;
 
 export type ExperimentWithEnhancedStatusCustomFieldsMap = { [key: string]: unknown | undefined };
-export const ExperimentWithEnhancedStatusCustomFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ExperimentWithEnhancedStatusCustomFieldsMap>;
+export const ExperimentWithEnhancedStatusCustomFieldsMap =
+  ConfigValueMap as any as S.Schema<ExperimentWithEnhancedStatusCustomFieldsMap>;
 
 export type ExperimentWithEnhancedStatusCustomMetricSlicesItemSlicesItemLevelsList = Array<string>;
 export const ExperimentWithEnhancedStatusCustomMetricSlicesItemSlicesItemLevelsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExperimentWithEnhancedStatusCustomMetricSlicesItemSlicesItemLevelsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<ExperimentWithEnhancedStatusCustomMetricSlicesItemSlicesItemLevelsList>;
 
 export interface ExperimentWithEnhancedStatusCustomMetricSlicesItemSlicesItem {
   column: string;
@@ -15207,9 +14710,8 @@ export const ExperimentWithEnhancedStatusCustomMetricSlicesList = /*@__PURE__*/ 
 ) as any as S.Schema<ExperimentWithEnhancedStatusCustomMetricSlicesList>;
 
 export type ExperimentWithEnhancedStatusPrecomputedUnitDimensionIdsList = Array<string>;
-export const ExperimentWithEnhancedStatusPrecomputedUnitDimensionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentWithEnhancedStatusPrecomputedUnitDimensionIdsList>;
+export const ExperimentWithEnhancedStatusPrecomputedUnitDimensionIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ExperimentWithEnhancedStatusPrecomputedUnitDimensionIdsList>;
 
 export type ExperimentWithEnhancedStatusStatusUpdateScheduleStopAfterUnit = "hours" | "days";
 export const ExperimentWithEnhancedStatusStatusUpdateScheduleStopAfterUnit = S.String;
@@ -15489,9 +14991,8 @@ export const CreateExperimentStartResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Manual pre-launch checklist item keys to mark as complete (auto-computed items cannot be updated via this endpoint). */
 export type CreateExperimentStartChecklistManualCompleteRequestKeysList = Array<string>;
-export const CreateExperimentStartChecklistManualCompleteRequestKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateExperimentStartChecklistManualCompleteRequestKeysList>;
+export const CreateExperimentStartChecklistManualCompleteRequestKeysList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateExperimentStartChecklistManualCompleteRequestKeysList>;
 
 export interface CreateExperimentStartChecklistManualCompleteRequest {
   /** The id of the requested resource */
@@ -15603,13 +15104,8 @@ export const CreateExperimentStopRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateExperimentStopResponse {
   experiment: ExperimentWithEnhancedStatus;
 }
-export const CreateExperimentStopResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    experiment: ExperimentWithEnhancedStatus,
-  }),
-).annotate({
-  identifier: "CreateExperimentStopResponse",
-}) as any as S.Schema<CreateExperimentStopResponse>;
+export const CreateExperimentStopResponse =
+  CreateExperimentModifyTemporaryRolloutResponse as any as S.Schema<CreateExperimentStopResponse>;
 
 export type CreateExperimentTemplateRequestTemplateMetadata =
   BulkImportExperimentTemplatesRequestTemplatesItemDataTemplateMetadata;
@@ -15620,15 +15116,12 @@ export type CreateExperimentTemplateRequestType = "standard";
 export const CreateExperimentTemplateRequestType = S.String;
 
 export type CreateExperimentTemplateRequestTagsList = Array<string>;
-export const CreateExperimentTemplateRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateExperimentTemplateRequestTagsList>;
+export const CreateExperimentTemplateRequestTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateExperimentTemplateRequestTagsList>;
 
 export type CreateExperimentTemplateRequestCustomFieldsMap = { [key: string]: string | undefined };
-export const CreateExperimentTemplateRequestCustomFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateExperimentTemplateRequestCustomFieldsMap>;
+export const CreateExperimentTemplateRequestCustomFieldsMap =
+  ConstantEnvironmentValuesMap as any as S.Schema<CreateExperimentTemplateRequestCustomFieldsMap>;
 
 /** The assignment query, grouping its ID with the identifier type analyzed on. Mutually exclusive with the deprecated `exposureQueryId`. */
 export type CreateExperimentTemplateRequestExposureQuery =
@@ -15637,19 +15130,16 @@ export const CreateExperimentTemplateRequestExposureQuery =
   BulkImportExperimentTemplatesRequestTemplatesItemDataExposureQuery;
 
 export type CreateExperimentTemplateRequestGoalMetricsList = Array<string>;
-export const CreateExperimentTemplateRequestGoalMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateExperimentTemplateRequestGoalMetricsList>;
+export const CreateExperimentTemplateRequestGoalMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateExperimentTemplateRequestGoalMetricsList>;
 
 export type CreateExperimentTemplateRequestSecondaryMetricsList = Array<string>;
-export const CreateExperimentTemplateRequestSecondaryMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateExperimentTemplateRequestSecondaryMetricsList>;
+export const CreateExperimentTemplateRequestSecondaryMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateExperimentTemplateRequestSecondaryMetricsList>;
 
 export type CreateExperimentTemplateRequestGuardrailMetricsList = Array<string>;
-export const CreateExperimentTemplateRequestGuardrailMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateExperimentTemplateRequestGuardrailMetricsList>;
+export const CreateExperimentTemplateRequestGuardrailMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateExperimentTemplateRequestGuardrailMetricsList>;
 
 export type CreateExperimentTemplateRequestStatsEngine = "bayesian" | "frequentist";
 export const CreateExperimentTemplateRequestStatsEngine = S.String;
@@ -15658,9 +15148,8 @@ export type CreateExperimentTemplateRequestTargetingSavedGroupsItemMatch = "all"
 export const CreateExperimentTemplateRequestTargetingSavedGroupsItemMatch = S.String;
 
 export type CreateExperimentTemplateRequestTargetingSavedGroupsItemIdsList = Array<string>;
-export const CreateExperimentTemplateRequestTargetingSavedGroupsItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateExperimentTemplateRequestTargetingSavedGroupsItemIdsList>;
+export const CreateExperimentTemplateRequestTargetingSavedGroupsItemIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateExperimentTemplateRequestTargetingSavedGroupsItemIdsList>;
 
 export interface CreateExperimentTemplateRequestTargetingSavedGroupsItem {
   match: CreateExperimentTemplateRequestTargetingSavedGroupsItemMatch | (string & {});
@@ -15688,9 +15177,8 @@ export const CreateExperimentTemplateRequestTargetingPrerequisitesItem =
 
 export type CreateExperimentTemplateRequestTargetingPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
-export const CreateExperimentTemplateRequestTargetingPrerequisitesList = /*@__PURE__*/ S.Array(
-  RampScheduleStartActionsItemPatchPrerequisitesItem,
-) as any as S.Schema<CreateExperimentTemplateRequestTargetingPrerequisitesList>;
+export const CreateExperimentTemplateRequestTargetingPrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<CreateExperimentTemplateRequestTargetingPrerequisitesList>;
 
 export interface CreateExperimentTemplateRequestTargeting {
   coverage: number;
@@ -15712,9 +15200,7 @@ export const CreateExperimentTemplateRequestTargeting = /*@__PURE__*/ S.suspend(
 export type CreateExperimentTemplateRequestCustomMetricSlicesItemSlicesItemLevelsList =
   Array<string>;
 export const CreateExperimentTemplateRequestCustomMetricSlicesItemSlicesItemLevelsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateExperimentTemplateRequestCustomMetricSlicesItemSlicesItemLevelsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateExperimentTemplateRequestCustomMetricSlicesItemSlicesItemLevelsList>;
 
 export interface CreateExperimentTemplateRequestCustomMetricSlicesItemSlicesItem {
   column: string;
@@ -15818,34 +15304,28 @@ export type ExperimentTemplateType = "standard";
 export const ExperimentTemplateType = S.String;
 
 export type ExperimentTemplateTagsList = Array<string>;
-export const ExperimentTemplateTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentTemplateTagsList>;
+export const ExperimentTemplateTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ExperimentTemplateTagsList>;
 
 export type ExperimentTemplateCustomFieldsMap = { [key: string]: string | undefined };
-export const ExperimentTemplateCustomFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ExperimentTemplateCustomFieldsMap>;
+export const ExperimentTemplateCustomFieldsMap =
+  ConstantEnvironmentValuesMap as any as S.Schema<ExperimentTemplateCustomFieldsMap>;
 
 /** The assignment query, grouping its ID with the identifier type analyzed on. */
 export type ExperimentTemplateExposureQuery = RampScheduleMonitoringConfigExposureQuery;
 export const ExperimentTemplateExposureQuery = RampScheduleMonitoringConfigExposureQuery;
 
 export type ExperimentTemplateGoalMetricsList = Array<string>;
-export const ExperimentTemplateGoalMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentTemplateGoalMetricsList>;
+export const ExperimentTemplateGoalMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ExperimentTemplateGoalMetricsList>;
 
 export type ExperimentTemplateSecondaryMetricsList = Array<string>;
-export const ExperimentTemplateSecondaryMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentTemplateSecondaryMetricsList>;
+export const ExperimentTemplateSecondaryMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ExperimentTemplateSecondaryMetricsList>;
 
 export type ExperimentTemplateGuardrailMetricsList = Array<string>;
-export const ExperimentTemplateGuardrailMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentTemplateGuardrailMetricsList>;
+export const ExperimentTemplateGuardrailMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ExperimentTemplateGuardrailMetricsList>;
 
 export type ExperimentTemplateStatsEngine = "bayesian" | "frequentist";
 export const ExperimentTemplateStatsEngine = S.String;
@@ -15854,9 +15334,8 @@ export type ExperimentTemplateTargetingSavedGroupsItemMatch = "all" | "none" | "
 export const ExperimentTemplateTargetingSavedGroupsItemMatch = S.String;
 
 export type ExperimentTemplateTargetingSavedGroupsItemIdsList = Array<string>;
-export const ExperimentTemplateTargetingSavedGroupsItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentTemplateTargetingSavedGroupsItemIdsList>;
+export const ExperimentTemplateTargetingSavedGroupsItemIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ExperimentTemplateTargetingSavedGroupsItemIdsList>;
 
 export interface ExperimentTemplateTargetingSavedGroupsItem {
   match: ExperimentTemplateTargetingSavedGroupsItemMatch;
@@ -15884,9 +15363,8 @@ export const ExperimentTemplateTargetingPrerequisitesItem =
 
 export type ExperimentTemplateTargetingPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
-export const ExperimentTemplateTargetingPrerequisitesList = /*@__PURE__*/ S.Array(
-  RampScheduleStartActionsItemPatchPrerequisitesItem,
-) as any as S.Schema<ExperimentTemplateTargetingPrerequisitesList>;
+export const ExperimentTemplateTargetingPrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<ExperimentTemplateTargetingPrerequisitesList>;
 
 export interface ExperimentTemplateTargeting {
   coverage: number;
@@ -15906,45 +15384,31 @@ export const ExperimentTemplateTargeting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentTemplateTargeting>;
 
 export type ExperimentTemplateCustomMetricSlicesItemSlicesItemLevelsList = Array<string>;
-export const ExperimentTemplateCustomMetricSlicesItemSlicesItemLevelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentTemplateCustomMetricSlicesItemSlicesItemLevelsList>;
+export const ExperimentTemplateCustomMetricSlicesItemSlicesItemLevelsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ExperimentTemplateCustomMetricSlicesItemSlicesItemLevelsList>;
 
 export interface ExperimentTemplateCustomMetricSlicesItemSlicesItem {
   column: string;
   levels: ExperimentTemplateCustomMetricSlicesItemSlicesItemLevelsList;
 }
-export const ExperimentTemplateCustomMetricSlicesItemSlicesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    column: S.String,
-    levels: ExperimentTemplateCustomMetricSlicesItemSlicesItemLevelsList,
-  }),
-).annotate({
-  identifier: "ExperimentTemplateCustomMetricSlicesItemSlicesItem",
-}) as any as S.Schema<ExperimentTemplateCustomMetricSlicesItemSlicesItem>;
+export const ExperimentTemplateCustomMetricSlicesItemSlicesItem =
+  ExperimentCustomMetricSlicesItemSlicesItem as any as S.Schema<ExperimentTemplateCustomMetricSlicesItemSlicesItem>;
 
 export type ExperimentTemplateCustomMetricSlicesItemSlicesList =
   Array<ExperimentTemplateCustomMetricSlicesItemSlicesItem>;
-export const ExperimentTemplateCustomMetricSlicesItemSlicesList = /*@__PURE__*/ S.Array(
-  ExperimentTemplateCustomMetricSlicesItemSlicesItem,
-) as any as S.Schema<ExperimentTemplateCustomMetricSlicesItemSlicesList>;
+export const ExperimentTemplateCustomMetricSlicesItemSlicesList =
+  ExperimentCustomMetricSlicesItemSlicesList as any as S.Schema<ExperimentTemplateCustomMetricSlicesItemSlicesList>;
 
 export interface ExperimentTemplateCustomMetricSlicesItem {
   slices: ExperimentTemplateCustomMetricSlicesItemSlicesList;
 }
-export const ExperimentTemplateCustomMetricSlicesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    slices: ExperimentTemplateCustomMetricSlicesItemSlicesList,
-  }),
-).annotate({
-  identifier: "ExperimentTemplateCustomMetricSlicesItem",
-}) as any as S.Schema<ExperimentTemplateCustomMetricSlicesItem>;
+export const ExperimentTemplateCustomMetricSlicesItem =
+  ExperimentCustomMetricSlicesItem as any as S.Schema<ExperimentTemplateCustomMetricSlicesItem>;
 
 export type ExperimentTemplateCustomMetricSlicesList =
   Array<ExperimentTemplateCustomMetricSlicesItem>;
-export const ExperimentTemplateCustomMetricSlicesList = /*@__PURE__*/ S.Array(
-  ExperimentTemplateCustomMetricSlicesItem,
-) as any as S.Schema<ExperimentTemplateCustomMetricSlicesList>;
+export const ExperimentTemplateCustomMetricSlicesList =
+  ExperimentCustomMetricSlicesList as any as S.Schema<ExperimentTemplateCustomMetricSlicesList>;
 
 export interface ExperimentTemplate {
   id: string;
@@ -16024,33 +15488,27 @@ export const CreateExperimentTemplateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of associated project ids */
 export type CreateFactTableRequestProjectsList = Array<string>;
-export const CreateFactTableRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateFactTableRequestProjectsList>;
+export const CreateFactTableRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateFactTableRequestProjectsList>;
 
 /** List of associated tags */
 export type CreateFactTableRequestTagsList = Array<string>;
-export const CreateFactTableRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateFactTableRequestTagsList>;
+export const CreateFactTableRequestTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateFactTableRequestTagsList>;
 
 /** List of identifier columns in this table. For example, "id" or "anonymous_id" */
 export type CreateFactTableRequestUserIdTypesList = Array<string>;
-export const CreateFactTableRequestUserIdTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateFactTableRequestUserIdTypesList>;
+export const CreateFactTableRequestUserIdTypesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateFactTableRequestUserIdTypesList>;
 
 /** Maps an identifier type to the column holding it, for SQL that does not alias its columns to the identifier type names, e.g. `{"user_id": "userId"}`. May also be a single-level field path into a JSON column (`properties.userId`). Unmapped types use the identifier type name as the column name. */
 export type CreateFactTableRequestUserIdColumnsMap = { [key: string]: string | undefined };
-export const CreateFactTableRequestUserIdColumnsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateFactTableRequestUserIdColumnsMap>;
+export const CreateFactTableRequestUserIdColumnsMap =
+  ConstantEnvironmentValuesMap as any as S.Schema<CreateFactTableRequestUserIdColumnsMap>;
 
 export type CreateFactTableRequestAggregatedFactTableSettingsIdTypesList = Array<string>;
-export const CreateFactTableRequestAggregatedFactTableSettingsIdTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateFactTableRequestAggregatedFactTableSettingsIdTypesList>;
+export const CreateFactTableRequestAggregatedFactTableSettingsIdTypesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateFactTableRequestAggregatedFactTableSettingsIdTypesList>;
 
 export type CreateFactTableRequestAggregatedFactTableSettingsUpdateTime =
   CreateBulkImportFactRequestFactTablesItemDataAggregatedFactTableSettingsUpdateTime;
@@ -16077,9 +15535,8 @@ export const CreateFactTableRequestAggregatedFactTableSettings = /*@__PURE__*/ S
 
 /** Optional array of column definitions to store for this fact table. Supplied columns are stored as-is. Omit `datatype` (or send "") on a column to have it auto-detected from the SQL. */
 export type CreateFactTableRequestColumnsList = Array<FactTableColumnInput>;
-export const CreateFactTableRequestColumnsList = /*@__PURE__*/ S.Array(
-  FactTableColumnInput,
-) as any as S.Schema<CreateFactTableRequestColumnsList>;
+export const CreateFactTableRequestColumnsList =
+  CreateBulkImportFactRequestFactTablesItemDataColumnsList as any as S.Schema<CreateFactTableRequestColumnsList>;
 
 /** Set this to "api" to disable editing in the GrowthBook UI */
 export type CreateFactTableRequestManagedBy = "" | "api" | "admin";
@@ -16134,31 +15591,25 @@ export const CreateFactTableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateFactTableRequest" }) as any as S.Schema<CreateFactTableRequest>;
 
 export type FactTableProjectsList = Array<string>;
-export const FactTableProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FactTableProjectsList>;
+export const FactTableProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<FactTableProjectsList>;
 
 export type FactTableTagsList = Array<string>;
-export const FactTableTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FactTableTagsList>;
+export const FactTableTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<FactTableTagsList>;
 
 export type FactTableUserIdTypesList = Array<string>;
-export const FactTableUserIdTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FactTableUserIdTypesList>;
+export const FactTableUserIdTypesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<FactTableUserIdTypesList>;
 
 /** Maps an identifier type to the column holding it, for SQL that does not alias its columns to the identifier type names, e.g. `{"user_id": "userId"}`. May also be a single-level field path into a JSON column (`properties.userId`). Unmapped types use the identifier type name as the column name. */
 export type FactTableUserIdColumnsMap = { [key: string]: string | undefined };
-export const FactTableUserIdColumnsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FactTableUserIdColumnsMap>;
+export const FactTableUserIdColumnsMap =
+  ConstantEnvironmentValuesMap as any as S.Schema<FactTableUserIdColumnsMap>;
 
 export type FactTableAggregatedFactTableSettingsIdTypesList = Array<string>;
-export const FactTableAggregatedFactTableSettingsIdTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FactTableAggregatedFactTableSettingsIdTypesList>;
+export const FactTableAggregatedFactTableSettingsIdTypesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<FactTableAggregatedFactTableSettingsIdTypesList>;
 
 export type FactTableAggregatedFactTableSettingsUpdateTime =
   CreateBulkImportFactRequestFactTablesItemDataAggregatedFactTableSettingsUpdateTime;
@@ -16172,16 +15623,8 @@ export interface FactTableAggregatedFactTableSettings {
   lookbackWindow: number;
   restateChunkDays?: number;
 }
-export const FactTableAggregatedFactTableSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    idTypes: FactTableAggregatedFactTableSettingsIdTypesList,
-    updateTime: CreateBulkImportFactRequestFactTablesItemDataAggregatedFactTableSettingsUpdateTime,
-    lookbackWindow: S.Number,
-    restateChunkDays: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "FactTableAggregatedFactTableSettings",
-}) as any as S.Schema<FactTableAggregatedFactTableSettings>;
+export const FactTableAggregatedFactTableSettings =
+  CreateFactTableRequestAggregatedFactTableSettings as any as S.Schema<FactTableAggregatedFactTableSettings>;
 
 /** The column's data type (can be an override of the warehouse-reported datatype, for JSON string columns for example). */
 export type FactTableColumnDatatype =
@@ -16249,28 +15692,23 @@ export const FactTableColumnJsonFieldsMap = /*@__PURE__*/ S.Record(
 
 /** Value -> additional column to prompt for when a metric filters this column to that value, e.g. {"Page View": "path", "Modal Open": "properties.modalType"}. Requires alwaysInlineFilter. */
 export type FactTableColumnConditionalInlineFiltersMap = { [key: string]: string | undefined };
-export const FactTableColumnConditionalInlineFiltersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FactTableColumnConditionalInlineFiltersMap>;
+export const FactTableColumnConditionalInlineFiltersMap =
+  ConstantEnvironmentValuesMap as any as S.Schema<FactTableColumnConditionalInlineFiltersMap>;
 
 /** Specific slices to automatically analyze for this column. */
 export type FactTableColumnAutoSlicesList = Array<string>;
-export const FactTableColumnAutoSlicesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FactTableColumnAutoSlicesList>;
+export const FactTableColumnAutoSlicesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<FactTableColumnAutoSlicesList>;
 
 /** Locked slices that are protected from automatic updates. These will always be included in the slice levels even if they're not in the top values query results. */
 export type FactTableColumnLockedAutoSlicesList = Array<string>;
-export const FactTableColumnLockedAutoSlicesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FactTableColumnLockedAutoSlicesList>;
+export const FactTableColumnLockedAutoSlicesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<FactTableColumnLockedAutoSlicesList>;
 
 /** The most common values for this column, sampled from the warehouse to populate filter pickers and auto slices. Read-only. */
 export type FactTableColumnTopValuesList = Array<string>;
-export const FactTableColumnTopValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FactTableColumnTopValuesList>;
+export const FactTableColumnTopValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<FactTableColumnTopValuesList>;
 
 export interface FactTableColumn {
   /** The actual column name in the database/SQL query */
@@ -16539,22 +15977,19 @@ export const CreateFactTableVirtualColumnResponse = /*@__PURE__*/ S.suspend(() =
 
 /** Project IDs this Holdout applies to. Omit or send an empty array for All Projects. */
 export type CreateHoldoutRequestProjectsList = Array<string>;
-export const CreateHoldoutRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateHoldoutRequestProjectsList>;
+export const CreateHoldoutRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateHoldoutRequestProjectsList>;
 
 export type CreateHoldoutRequestTagsList = Array<string>;
-export const CreateHoldoutRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateHoldoutRequestTagsList>;
+export const CreateHoldoutRequestTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateHoldoutRequestTagsList>;
 
 export type CreateHoldoutRequestSavedGroupTargetingItemMatch = "all" | "none" | "any";
 export const CreateHoldoutRequestSavedGroupTargetingItemMatch = S.String;
 
 export type CreateHoldoutRequestSavedGroupTargetingItemIdsList = Array<string>;
-export const CreateHoldoutRequestSavedGroupTargetingItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateHoldoutRequestSavedGroupTargetingItemIdsList>;
+export const CreateHoldoutRequestSavedGroupTargetingItemIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateHoldoutRequestSavedGroupTargetingItemIdsList>;
 
 export interface CreateHoldoutRequestSavedGroupTargetingItem {
   match: CreateHoldoutRequestSavedGroupTargetingItemMatch | (string & {});
@@ -16582,14 +16017,12 @@ export const CreateHoldoutRequestAssignmentQuery =
   BulkImportExperimentTemplatesRequestTemplatesItemDataExposureQuery;
 
 export type CreateHoldoutRequestGoalMetricsList = Array<string>;
-export const CreateHoldoutRequestGoalMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateHoldoutRequestGoalMetricsList>;
+export const CreateHoldoutRequestGoalMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateHoldoutRequestGoalMetricsList>;
 
 export type CreateHoldoutRequestSecondaryMetricsList = Array<string>;
-export const CreateHoldoutRequestSecondaryMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateHoldoutRequestSecondaryMetricsList>;
+export const CreateHoldoutRequestSecondaryMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateHoldoutRequestSecondaryMetricsList>;
 
 /** Statistics engine used to analyze this Holdout. */
 export type CreateHoldoutRequestStatsEngine = "bayesian" | "frequentist";
@@ -16690,9 +16123,8 @@ export const CreateHoldoutRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Project IDs this Holdout applies to. An empty array means All Projects. */
 export type HoldoutProjectsList = Array<string>;
-export const HoldoutProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HoldoutProjectsList>;
+export const HoldoutProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<HoldoutProjectsList>;
 
 export type HoldoutTagsList = Array<string>;
 export const HoldoutTagsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<HoldoutTagsList>;
@@ -16705,9 +16137,8 @@ export type HoldoutSavedGroupTargetingItemMatch = "all" | "none" | "any";
 export const HoldoutSavedGroupTargetingItemMatch = S.String;
 
 export type HoldoutSavedGroupTargetingItemIdsList = Array<string>;
-export const HoldoutSavedGroupTargetingItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HoldoutSavedGroupTargetingItemIdsList>;
+export const HoldoutSavedGroupTargetingItemIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<HoldoutSavedGroupTargetingItemIdsList>;
 
 export interface HoldoutSavedGroupTargetingItem {
   match: HoldoutSavedGroupTargetingItemMatch;
@@ -16732,14 +16163,12 @@ export type HoldoutAssignmentQuery = RampScheduleMonitoringConfigExposureQuery;
 export const HoldoutAssignmentQuery = RampScheduleMonitoringConfigExposureQuery;
 
 export type HoldoutGoalMetricsList = Array<string>;
-export const HoldoutGoalMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HoldoutGoalMetricsList>;
+export const HoldoutGoalMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<HoldoutGoalMetricsList>;
 
 export type HoldoutSecondaryMetricsList = Array<string>;
-export const HoldoutSecondaryMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HoldoutSecondaryMetricsList>;
+export const HoldoutSecondaryMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<HoldoutSecondaryMetricsList>;
 
 /** Statistics engine used to analyze this Holdout. */
 export type HoldoutStatsEngine = "bayesian" | "frequentist";
@@ -16772,10 +16201,8 @@ export const HoldoutEnvironmentsValue = CreateHoldoutRequestEnvironmentsValue;
 export type HoldoutEnvironmentsMap = {
   [key: string]: CreateHoldoutRequestEnvironmentsValue | undefined;
 };
-export const HoldoutEnvironmentsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CreateHoldoutRequestEnvironmentsValue,
-) as any as S.Schema<HoldoutEnvironmentsMap>;
+export const HoldoutEnvironmentsMap =
+  CreateHoldoutRequestEnvironmentsMap as any as S.Schema<HoldoutEnvironmentsMap>;
 
 export interface HoldoutLinkedFeaturesItem {
   id: string;
@@ -16801,9 +16228,8 @@ export const HoldoutLinkedExperimentsItem = HoldoutLinkedFeaturesItem;
 
 /** Experiments held out by this Holdout. Manage these through the experiment endpoints. */
 export type HoldoutLinkedExperimentsList = Array<HoldoutLinkedFeaturesItem>;
-export const HoldoutLinkedExperimentsList = /*@__PURE__*/ S.Array(
-  HoldoutLinkedFeaturesItem,
-) as any as S.Schema<HoldoutLinkedExperimentsList>;
+export const HoldoutLinkedExperimentsList =
+  HoldoutLinkedFeaturesList as any as S.Schema<HoldoutLinkedExperimentsList>;
 
 /** Automatic stage transitions for the Holdout. Dates must be consecutive: `startAt` before `startAnalysisPeriodAt` before `stopAt`. Send `null` to delete the schedule. */
 export type HoldoutStatusUpdateSchedule = CreateHoldoutRequestStatusUpdateSchedule;
@@ -16925,24 +16351,20 @@ export const CreateHoldoutResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateHoldoutResponse" }) as any as S.Schema<CreateHoldoutResponse>;
 
 export type CreateLearningRequestTagsList = Array<string>;
-export const CreateLearningRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateLearningRequestTagsList>;
+export const CreateLearningRequestTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateLearningRequestTagsList>;
 
 export type CreateLearningRequestSupportingExperimentIdsList = Array<string>;
-export const CreateLearningRequestSupportingExperimentIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateLearningRequestSupportingExperimentIdsList>;
+export const CreateLearningRequestSupportingExperimentIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateLearningRequestSupportingExperimentIdsList>;
 
 export type CreateLearningRequestContradictingExperimentIdsList = Array<string>;
-export const CreateLearningRequestContradictingExperimentIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateLearningRequestContradictingExperimentIdsList>;
+export const CreateLearningRequestContradictingExperimentIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateLearningRequestContradictingExperimentIdsList>;
 
 export type CreateLearningRequestProjectsList = Array<string>;
-export const CreateLearningRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateLearningRequestProjectsList>;
+export const CreateLearningRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateLearningRequestProjectsList>;
 
 export interface CreateLearningRequest {
   title: string;
@@ -16970,29 +16392,24 @@ export const CreateLearningRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateLearningRequest" }) as any as S.Schema<CreateLearningRequest>;
 
 export type LearningAuthorsList = Array<string>;
-export const LearningAuthorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LearningAuthorsList>;
+export const LearningAuthorsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<LearningAuthorsList>;
 
 export type LearningTagsList = Array<string>;
-export const LearningTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LearningTagsList>;
+export const LearningTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<LearningTagsList>;
 
 export type LearningSupportingExperimentIdsList = Array<string>;
-export const LearningSupportingExperimentIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LearningSupportingExperimentIdsList>;
+export const LearningSupportingExperimentIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<LearningSupportingExperimentIdsList>;
 
 export type LearningContradictingExperimentIdsList = Array<string>;
-export const LearningContradictingExperimentIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LearningContradictingExperimentIdsList>;
+export const LearningContradictingExperimentIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<LearningContradictingExperimentIdsList>;
 
 export type LearningProjectsList = Array<string>;
-export const LearningProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LearningProjectsList>;
+export const LearningProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<LearningProjectsList>;
 
 export type LearningSource = "ai" | "manual" | "api";
 export const LearningSource = S.String;
@@ -17044,19 +16461,16 @@ export const CreateLearningResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateLearningResponse" }) as any as S.Schema<CreateLearningResponse>;
 
 export type CreateMetricGroupRequestTagsList = Array<string>;
-export const CreateMetricGroupRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateMetricGroupRequestTagsList>;
+export const CreateMetricGroupRequestTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateMetricGroupRequestTagsList>;
 
 export type CreateMetricGroupRequestProjectsList = Array<string>;
-export const CreateMetricGroupRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateMetricGroupRequestProjectsList>;
+export const CreateMetricGroupRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateMetricGroupRequestProjectsList>;
 
 export type CreateMetricGroupRequestMetricsList = Array<string>;
-export const CreateMetricGroupRequestMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateMetricGroupRequestMetricsList>;
+export const CreateMetricGroupRequestMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateMetricGroupRequestMetricsList>;
 
 export interface CreateMetricGroupRequest {
   name: string;
@@ -17083,19 +16497,16 @@ export const CreateMetricGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateMetricGroupRequest" }) as any as S.Schema<CreateMetricGroupRequest>;
 
 export type MetricGroupTagsList = Array<string>;
-export const MetricGroupTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricGroupTagsList>;
+export const MetricGroupTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<MetricGroupTagsList>;
 
 export type MetricGroupProjectsList = Array<string>;
-export const MetricGroupProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricGroupProjectsList>;
+export const MetricGroupProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<MetricGroupProjectsList>;
 
 export type MetricGroupMetricsList = Array<string>;
-export const MetricGroupMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricGroupMetricsList>;
+export const MetricGroupMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<MetricGroupMetricsList>;
 
 export interface MetricGroup {
   id: string;
@@ -17394,9 +16805,7 @@ export const CreateRampScheduleRequestStepsItemActionsItemPatchSavedGroupsItemMa
 export type CreateRampScheduleRequestStepsItemActionsItemPatchSavedGroupsItemIdsList =
   Array<string>;
 export const CreateRampScheduleRequestStepsItemActionsItemPatchSavedGroupsItemIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateRampScheduleRequestStepsItemActionsItemPatchSavedGroupsItemIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateRampScheduleRequestStepsItemActionsItemPatchSavedGroupsItemIdsList>;
 
 export interface CreateRampScheduleRequestStepsItemActionsItemPatchSavedGroupsItem {
   match: CreateRampScheduleRequestStepsItemActionsItemPatchSavedGroupsItemMatch | (string & {});
@@ -17427,15 +16836,11 @@ export const CreateRampScheduleRequestStepsItemActionsItemPatchPrerequisitesItem
 export type CreateRampScheduleRequestStepsItemActionsItemPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
 export const CreateRampScheduleRequestStepsItemActionsItemPatchPrerequisitesList =
-  /*@__PURE__*/ S.Array(
-    RampScheduleStartActionsItemPatchPrerequisitesItem,
-  ) as any as S.Schema<CreateRampScheduleRequestStepsItemActionsItemPatchPrerequisitesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataTargetingPrerequisitesList as any as S.Schema<CreateRampScheduleRequestStepsItemActionsItemPatchPrerequisitesList>;
 
 export type CreateRampScheduleRequestStepsItemActionsItemPatchEnvironmentsList = Array<string>;
 export const CreateRampScheduleRequestStepsItemActionsItemPatchEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateRampScheduleRequestStepsItemActionsItemPatchEnvironmentsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateRampScheduleRequestStepsItemActionsItemPatchEnvironmentsList>;
 
 export interface CreateRampScheduleRequestStepsItemActionsItemPatch {
   ruleId?: string;
@@ -17528,9 +16933,7 @@ export const CreateRampScheduleRequestStartActionsItemPatchSavedGroupsItemMatch 
 
 export type CreateRampScheduleRequestStartActionsItemPatchSavedGroupsItemIdsList = Array<string>;
 export const CreateRampScheduleRequestStartActionsItemPatchSavedGroupsItemIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateRampScheduleRequestStartActionsItemPatchSavedGroupsItemIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateRampScheduleRequestStartActionsItemPatchSavedGroupsItemIdsList>;
 
 export interface CreateRampScheduleRequestStartActionsItemPatchSavedGroupsItem {
   match: CreateRampScheduleRequestStartActionsItemPatchSavedGroupsItemMatch | (string & {});
@@ -17560,14 +16963,11 @@ export const CreateRampScheduleRequestStartActionsItemPatchPrerequisitesItem =
 export type CreateRampScheduleRequestStartActionsItemPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
 export const CreateRampScheduleRequestStartActionsItemPatchPrerequisitesList =
-  /*@__PURE__*/ S.Array(
-    RampScheduleStartActionsItemPatchPrerequisitesItem,
-  ) as any as S.Schema<CreateRampScheduleRequestStartActionsItemPatchPrerequisitesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataTargetingPrerequisitesList as any as S.Schema<CreateRampScheduleRequestStartActionsItemPatchPrerequisitesList>;
 
 export type CreateRampScheduleRequestStartActionsItemPatchEnvironmentsList = Array<string>;
-export const CreateRampScheduleRequestStartActionsItemPatchEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateRampScheduleRequestStartActionsItemPatchEnvironmentsList>;
+export const CreateRampScheduleRequestStartActionsItemPatchEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateRampScheduleRequestStartActionsItemPatchEnvironmentsList>;
 
 export interface CreateRampScheduleRequestStartActionsItemPatch {
   ruleId?: string;
@@ -17642,9 +17042,7 @@ export const CreateRampScheduleRequestEndActionsItemPatchSavedGroupsItemMatch = 
 
 export type CreateRampScheduleRequestEndActionsItemPatchSavedGroupsItemIdsList = Array<string>;
 export const CreateRampScheduleRequestEndActionsItemPatchSavedGroupsItemIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateRampScheduleRequestEndActionsItemPatchSavedGroupsItemIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateRampScheduleRequestEndActionsItemPatchSavedGroupsItemIdsList>;
 
 export interface CreateRampScheduleRequestEndActionsItemPatchSavedGroupsItem {
   match: CreateRampScheduleRequestEndActionsItemPatchSavedGroupsItemMatch | (string & {});
@@ -17673,14 +17071,12 @@ export const CreateRampScheduleRequestEndActionsItemPatchPrerequisitesItem =
 
 export type CreateRampScheduleRequestEndActionsItemPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
-export const CreateRampScheduleRequestEndActionsItemPatchPrerequisitesList = /*@__PURE__*/ S.Array(
-  RampScheduleStartActionsItemPatchPrerequisitesItem,
-) as any as S.Schema<CreateRampScheduleRequestEndActionsItemPatchPrerequisitesList>;
+export const CreateRampScheduleRequestEndActionsItemPatchPrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<CreateRampScheduleRequestEndActionsItemPatchPrerequisitesList>;
 
 export type CreateRampScheduleRequestEndActionsItemPatchEnvironmentsList = Array<string>;
-export const CreateRampScheduleRequestEndActionsItemPatchEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateRampScheduleRequestEndActionsItemPatchEnvironmentsList>;
+export const CreateRampScheduleRequestEndActionsItemPatchEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateRampScheduleRequestEndActionsItemPatchEnvironmentsList>;
 
 export interface CreateRampScheduleRequestEndActionsItemPatch {
   ruleId?: string;
@@ -17744,14 +17140,11 @@ export const CreateRampScheduleRequestMonitoringConfigExposureQuery =
 
 export type CreateRampScheduleRequestMonitoringConfigGuardrailMetricIdsList = Array<string>;
 export const CreateRampScheduleRequestMonitoringConfigGuardrailMetricIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateRampScheduleRequestMonitoringConfigGuardrailMetricIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateRampScheduleRequestMonitoringConfigGuardrailMetricIdsList>;
 
 export type CreateRampScheduleRequestMonitoringConfigSignalMetricIdsList = Array<string>;
-export const CreateRampScheduleRequestMonitoringConfigSignalMetricIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateRampScheduleRequestMonitoringConfigSignalMetricIdsList>;
+export const CreateRampScheduleRequestMonitoringConfigSignalMetricIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateRampScheduleRequestMonitoringConfigSignalMetricIdsList>;
 
 export type CreateRampScheduleRequestMonitoringConfigMonitoringMode = "auto" | "manual";
 export const CreateRampScheduleRequestMonitoringConfigMonitoringMode = S.String;
@@ -17865,13 +17258,8 @@ export const CreateRampScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateRampScheduleResponse {
   rampSchedule: RampSchedule;
 }
-export const CreateRampScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rampSchedule: RampSchedule,
-  }),
-).annotate({
-  identifier: "CreateRampScheduleResponse",
-}) as any as S.Schema<CreateRampScheduleResponse>;
+export const CreateRampScheduleResponse =
+  AddTargetRampScheduleResponse as any as S.Schema<CreateRampScheduleResponse>;
 
 export type CreateRampScheduleTemplateRequestStepsItemHoldConditions =
   RampScheduleStepsItemHoldConditions;
@@ -17888,9 +17276,7 @@ export const CreateRampScheduleTemplateRequestStepsItemActionsItemPatchSavedGrou
 export type CreateRampScheduleTemplateRequestStepsItemActionsItemPatchSavedGroupsItemIdsList =
   Array<string>;
 export const CreateRampScheduleTemplateRequestStepsItemActionsItemPatchSavedGroupsItemIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateRampScheduleTemplateRequestStepsItemActionsItemPatchSavedGroupsItemIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateRampScheduleTemplateRequestStepsItemActionsItemPatchSavedGroupsItemIdsList>;
 
 export interface CreateRampScheduleTemplateRequestStepsItemActionsItemPatchSavedGroupsItem {
   match:
@@ -17923,16 +17309,12 @@ export const CreateRampScheduleTemplateRequestStepsItemActionsItemPatchPrerequis
 export type CreateRampScheduleTemplateRequestStepsItemActionsItemPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
 export const CreateRampScheduleTemplateRequestStepsItemActionsItemPatchPrerequisitesList =
-  /*@__PURE__*/ S.Array(
-    RampScheduleStartActionsItemPatchPrerequisitesItem,
-  ) as any as S.Schema<CreateRampScheduleTemplateRequestStepsItemActionsItemPatchPrerequisitesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataTargetingPrerequisitesList as any as S.Schema<CreateRampScheduleTemplateRequestStepsItemActionsItemPatchPrerequisitesList>;
 
 export type CreateRampScheduleTemplateRequestStepsItemActionsItemPatchEnvironmentsList =
   Array<string>;
 export const CreateRampScheduleTemplateRequestStepsItemActionsItemPatchEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateRampScheduleTemplateRequestStepsItemActionsItemPatchEnvironmentsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateRampScheduleTemplateRequestStepsItemActionsItemPatchEnvironmentsList>;
 
 export interface CreateRampScheduleTemplateRequestStepsItemActionsItemPatch {
   ruleId: string;
@@ -18023,9 +17405,7 @@ export const CreateRampScheduleTemplateRequestEndPatchSavedGroupsItemMatch = S.S
 
 export type CreateRampScheduleTemplateRequestEndPatchSavedGroupsItemIdsList = Array<string>;
 export const CreateRampScheduleTemplateRequestEndPatchSavedGroupsItemIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateRampScheduleTemplateRequestEndPatchSavedGroupsItemIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateRampScheduleTemplateRequestEndPatchSavedGroupsItemIdsList>;
 
 export interface CreateRampScheduleTemplateRequestEndPatchSavedGroupsItem {
   match: CreateRampScheduleTemplateRequestEndPatchSavedGroupsItemMatch | (string & {});
@@ -18054,14 +17434,12 @@ export const CreateRampScheduleTemplateRequestEndPatchPrerequisitesItem =
 
 export type CreateRampScheduleTemplateRequestEndPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
-export const CreateRampScheduleTemplateRequestEndPatchPrerequisitesList = /*@__PURE__*/ S.Array(
-  RampScheduleStartActionsItemPatchPrerequisitesItem,
-) as any as S.Schema<CreateRampScheduleTemplateRequestEndPatchPrerequisitesList>;
+export const CreateRampScheduleTemplateRequestEndPatchPrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<CreateRampScheduleTemplateRequestEndPatchPrerequisitesList>;
 
 export type CreateRampScheduleTemplateRequestEndPatchEnvironmentsList = Array<string>;
-export const CreateRampScheduleTemplateRequestEndPatchEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateRampScheduleTemplateRequestEndPatchEnvironmentsList>;
+export const CreateRampScheduleTemplateRequestEndPatchEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateRampScheduleTemplateRequestEndPatchEnvironmentsList>;
 
 export interface CreateRampScheduleTemplateRequestEndPatch {
   coverage?: number;
@@ -18086,15 +17464,11 @@ export const CreateRampScheduleTemplateRequestEndPatch = /*@__PURE__*/ S.suspend
 
 export type CreateRampScheduleTemplateRequestMonitoringConfigGuardrailMetricIdsList = Array<string>;
 export const CreateRampScheduleTemplateRequestMonitoringConfigGuardrailMetricIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateRampScheduleTemplateRequestMonitoringConfigGuardrailMetricIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateRampScheduleTemplateRequestMonitoringConfigGuardrailMetricIdsList>;
 
 export type CreateRampScheduleTemplateRequestMonitoringConfigSignalMetricIdsList = Array<string>;
 export const CreateRampScheduleTemplateRequestMonitoringConfigSignalMetricIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateRampScheduleTemplateRequestMonitoringConfigSignalMetricIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateRampScheduleTemplateRequestMonitoringConfigSignalMetricIdsList>;
 
 export type CreateRampScheduleTemplateRequestMonitoringConfigMonitoringMode = "auto" | "manual";
 export const CreateRampScheduleTemplateRequestMonitoringConfigMonitoringMode = S.String;
@@ -18216,9 +17590,7 @@ export const RampScheduleTemplateStepsItemActionsItemPatchSavedGroupsItemMatch =
 
 export type RampScheduleTemplateStepsItemActionsItemPatchSavedGroupsItemIdsList = Array<string>;
 export const RampScheduleTemplateStepsItemActionsItemPatchSavedGroupsItemIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RampScheduleTemplateStepsItemActionsItemPatchSavedGroupsItemIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<RampScheduleTemplateStepsItemActionsItemPatchSavedGroupsItemIdsList>;
 
 export interface RampScheduleTemplateStepsItemActionsItemPatchSavedGroupsItem {
   match: RampScheduleTemplateStepsItemActionsItemPatchSavedGroupsItemMatch;
@@ -18247,14 +17619,12 @@ export const RampScheduleTemplateStepsItemActionsItemPatchPrerequisitesItem =
 
 export type RampScheduleTemplateStepsItemActionsItemPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
-export const RampScheduleTemplateStepsItemActionsItemPatchPrerequisitesList = /*@__PURE__*/ S.Array(
-  RampScheduleStartActionsItemPatchPrerequisitesItem,
-) as any as S.Schema<RampScheduleTemplateStepsItemActionsItemPatchPrerequisitesList>;
+export const RampScheduleTemplateStepsItemActionsItemPatchPrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<RampScheduleTemplateStepsItemActionsItemPatchPrerequisitesList>;
 
 export type RampScheduleTemplateStepsItemActionsItemPatchEnvironmentsList = Array<string>;
-export const RampScheduleTemplateStepsItemActionsItemPatchEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RampScheduleTemplateStepsItemActionsItemPatchEnvironmentsList>;
+export const RampScheduleTemplateStepsItemActionsItemPatchEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<RampScheduleTemplateStepsItemActionsItemPatchEnvironmentsList>;
 
 export interface RampScheduleTemplateStepsItemActionsItemPatch {
   ruleId: string;
@@ -18340,9 +17710,8 @@ export type RampScheduleTemplateEndPatchSavedGroupsItemMatch = "all" | "none" | 
 export const RampScheduleTemplateEndPatchSavedGroupsItemMatch = S.String;
 
 export type RampScheduleTemplateEndPatchSavedGroupsItemIdsList = Array<string>;
-export const RampScheduleTemplateEndPatchSavedGroupsItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RampScheduleTemplateEndPatchSavedGroupsItemIdsList>;
+export const RampScheduleTemplateEndPatchSavedGroupsItemIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<RampScheduleTemplateEndPatchSavedGroupsItemIdsList>;
 
 export interface RampScheduleTemplateEndPatchSavedGroupsItem {
   match: RampScheduleTemplateEndPatchSavedGroupsItemMatch;
@@ -18370,14 +17739,12 @@ export const RampScheduleTemplateEndPatchPrerequisitesItem =
 
 export type RampScheduleTemplateEndPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
-export const RampScheduleTemplateEndPatchPrerequisitesList = /*@__PURE__*/ S.Array(
-  RampScheduleStartActionsItemPatchPrerequisitesItem,
-) as any as S.Schema<RampScheduleTemplateEndPatchPrerequisitesList>;
+export const RampScheduleTemplateEndPatchPrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<RampScheduleTemplateEndPatchPrerequisitesList>;
 
 export type RampScheduleTemplateEndPatchEnvironmentsList = Array<string>;
-export const RampScheduleTemplateEndPatchEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RampScheduleTemplateEndPatchEnvironmentsList>;
+export const RampScheduleTemplateEndPatchEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<RampScheduleTemplateEndPatchEnvironmentsList>;
 
 export interface RampScheduleTemplateEndPatch {
   coverage?: number;
@@ -18401,14 +17768,12 @@ export const RampScheduleTemplateEndPatch = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RampScheduleTemplateEndPatch>;
 
 export type RampScheduleTemplateMonitoringConfigGuardrailMetricIdsList = Array<string>;
-export const RampScheduleTemplateMonitoringConfigGuardrailMetricIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RampScheduleTemplateMonitoringConfigGuardrailMetricIdsList>;
+export const RampScheduleTemplateMonitoringConfigGuardrailMetricIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<RampScheduleTemplateMonitoringConfigGuardrailMetricIdsList>;
 
 export type RampScheduleTemplateMonitoringConfigSignalMetricIdsList = Array<string>;
-export const RampScheduleTemplateMonitoringConfigSignalMetricIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RampScheduleTemplateMonitoringConfigSignalMetricIdsList>;
+export const RampScheduleTemplateMonitoringConfigSignalMetricIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<RampScheduleTemplateMonitoringConfigSignalMetricIdsList>;
 
 export type RampScheduleTemplateMonitoringConfigMonitoringMode = "auto" | "manual";
 export const RampScheduleTemplateMonitoringConfigMonitoringMode = S.String;
@@ -18542,13 +17907,7 @@ export interface SavedGroupRevisionRef {
   /** Revision version to publish. */
   version: number;
 }
-export const SavedGroupRevisionRef = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entityType: S.String,
-    id: S.String,
-    version: S.Number,
-  }),
-).annotate({ identifier: "SavedGroupRevisionRef" }) as any as S.Schema<SavedGroupRevisionRef>;
+export const SavedGroupRevisionRef = FeatureRevisionRef as any as S.Schema<SavedGroupRevisionRef>;
 
 export interface ConfigRevisionRef {
   entityType: string;
@@ -18572,13 +17931,7 @@ export interface ConstantRevisionRef {
   /** Revision version to publish. */
   version: number;
 }
-export const ConstantRevisionRef = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entityType: S.String,
-    key: S.String,
-    version: S.Number,
-  }),
-).annotate({ identifier: "ConstantRevisionRef" }) as any as S.Schema<ConstantRevisionRef>;
+export const ConstantRevisionRef = ConfigRevisionRef as any as S.Schema<ConstantRevisionRef>;
 
 export type RevisionIdRefEntityType = "feature" | "saved-group" | "config" | "constant";
 export const RevisionIdRefEntityType = S.String;
@@ -18675,9 +18028,8 @@ export type GatesSeverity = "blocker" | "warning";
 export const GatesSeverity = S.String;
 
 export type GatesMessagesList = Array<string>;
-export const GatesMessagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GatesMessagesList>;
+export const GatesMessagesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<GatesMessagesList>;
 
 export interface GatesResolution {
   action: string;
@@ -18762,9 +18114,8 @@ export const CreateReleasePublishRevisionResponseBypassedGatesList = /*@__PURE__
 ) as any as S.Schema<CreateReleasePublishRevisionResponseBypassedGatesList>;
 
 export type CreateReleasePublishRevisionResponseWarningsList = Array<string>;
-export const CreateReleasePublishRevisionResponseWarningsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateReleasePublishRevisionResponseWarningsList>;
+export const CreateReleasePublishRevisionResponseWarningsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateReleasePublishRevisionResponseWarningsList>;
 
 export interface CreateReleasePublishRevisionResponse {
   dryRun: boolean;
@@ -18796,21 +18147,18 @@ export const CreateReportRequestStatsEngine = S.String;
 
 /** Goal metric IDs (defaults to experiment's goal metrics) */
 export type CreateReportRequestGoalMetricsList = Array<string>;
-export const CreateReportRequestGoalMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateReportRequestGoalMetricsList>;
+export const CreateReportRequestGoalMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateReportRequestGoalMetricsList>;
 
 /** Secondary metric IDs (defaults to experiment's secondary metrics) */
 export type CreateReportRequestSecondaryMetricsList = Array<string>;
-export const CreateReportRequestSecondaryMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateReportRequestSecondaryMetricsList>;
+export const CreateReportRequestSecondaryMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateReportRequestSecondaryMetricsList>;
 
 /** Guardrail metric IDs (defaults to experiment's guardrail metrics) */
 export type CreateReportRequestGuardrailMetricsList = Array<string>;
-export const CreateReportRequestGuardrailMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateReportRequestGuardrailMetricsList>;
+export const CreateReportRequestGuardrailMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateReportRequestGuardrailMetricsList>;
 
 /** How lifts are expressed in results. Defaults to experiment setting. */
 export type CreateReportRequestDifferenceType = "relative" | "absolute" | "scaled";
@@ -18910,46 +18258,32 @@ export const CreateReportRequestMetricOverridesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreateReportRequestMetricOverridesList>;
 
 export type CreateReportRequestCustomMetricSlicesItemSlicesItemLevelsList = Array<string>;
-export const CreateReportRequestCustomMetricSlicesItemSlicesItemLevelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateReportRequestCustomMetricSlicesItemSlicesItemLevelsList>;
+export const CreateReportRequestCustomMetricSlicesItemSlicesItemLevelsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateReportRequestCustomMetricSlicesItemSlicesItemLevelsList>;
 
 export interface CreateReportRequestCustomMetricSlicesItemSlicesItem {
   column: string;
   levels: CreateReportRequestCustomMetricSlicesItemSlicesItemLevelsList;
 }
-export const CreateReportRequestCustomMetricSlicesItemSlicesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    column: S.String,
-    levels: CreateReportRequestCustomMetricSlicesItemSlicesItemLevelsList,
-  }),
-).annotate({
-  identifier: "CreateReportRequestCustomMetricSlicesItemSlicesItem",
-}) as any as S.Schema<CreateReportRequestCustomMetricSlicesItemSlicesItem>;
+export const CreateReportRequestCustomMetricSlicesItemSlicesItem =
+  ExperimentCustomMetricSlicesItemSlicesItem as any as S.Schema<CreateReportRequestCustomMetricSlicesItemSlicesItem>;
 
 export type CreateReportRequestCustomMetricSlicesItemSlicesList =
   Array<CreateReportRequestCustomMetricSlicesItemSlicesItem>;
-export const CreateReportRequestCustomMetricSlicesItemSlicesList = /*@__PURE__*/ S.Array(
-  CreateReportRequestCustomMetricSlicesItemSlicesItem,
-) as any as S.Schema<CreateReportRequestCustomMetricSlicesItemSlicesList>;
+export const CreateReportRequestCustomMetricSlicesItemSlicesList =
+  ExperimentCustomMetricSlicesItemSlicesList as any as S.Schema<CreateReportRequestCustomMetricSlicesItemSlicesList>;
 
 export interface CreateReportRequestCustomMetricSlicesItem {
   slices: CreateReportRequestCustomMetricSlicesItemSlicesList;
 }
-export const CreateReportRequestCustomMetricSlicesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    slices: CreateReportRequestCustomMetricSlicesItemSlicesList,
-  }),
-).annotate({
-  identifier: "CreateReportRequestCustomMetricSlicesItem",
-}) as any as S.Schema<CreateReportRequestCustomMetricSlicesItem>;
+export const CreateReportRequestCustomMetricSlicesItem =
+  ExperimentCustomMetricSlicesItem as any as S.Schema<CreateReportRequestCustomMetricSlicesItem>;
 
 /** Custom metric slice definitions */
 export type CreateReportRequestCustomMetricSlicesList =
   Array<CreateReportRequestCustomMetricSlicesItem>;
-export const CreateReportRequestCustomMetricSlicesList = /*@__PURE__*/ S.Array(
-  CreateReportRequestCustomMetricSlicesItem,
-) as any as S.Schema<CreateReportRequestCustomMetricSlicesList>;
+export const CreateReportRequestCustomMetricSlicesList =
+  ExperimentCustomMetricSlicesList as any as S.Schema<CreateReportRequestCustomMetricSlicesList>;
 
 /** Visibility of the created report. Defaults to `private`. Set to `public` to receive a shareable `shareUrl` in the response. */
 export type CreateReportRequestShareLevel = "public" | "organization" | "private";
@@ -19054,19 +18388,16 @@ export type ReportAnalysisSettingsStatsEngine = "bayesian" | "frequentist";
 export const ReportAnalysisSettingsStatsEngine = S.String;
 
 export type ReportAnalysisSettingsGoalMetricsList = Array<string>;
-export const ReportAnalysisSettingsGoalMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReportAnalysisSettingsGoalMetricsList>;
+export const ReportAnalysisSettingsGoalMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ReportAnalysisSettingsGoalMetricsList>;
 
 export type ReportAnalysisSettingsSecondaryMetricsList = Array<string>;
-export const ReportAnalysisSettingsSecondaryMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReportAnalysisSettingsSecondaryMetricsList>;
+export const ReportAnalysisSettingsSecondaryMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ReportAnalysisSettingsSecondaryMetricsList>;
 
 export type ReportAnalysisSettingsGuardrailMetricsList = Array<string>;
-export const ReportAnalysisSettingsGuardrailMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReportAnalysisSettingsGuardrailMetricsList>;
+export const ReportAnalysisSettingsGuardrailMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ReportAnalysisSettingsGuardrailMetricsList>;
 
 export type ReportAnalysisSettingsMetricOverridesItemWindowType = "conversion" | "lookback" | "";
 export const ReportAnalysisSettingsMetricOverridesItemWindowType = S.String;
@@ -19115,46 +18446,31 @@ export const ReportAnalysisSettingsMetricOverridesList = /*@__PURE__*/ S.Array(
 
 export type ReportAnalysisSettingsCustomMetricSlicesItemSlicesItemLevelsList = Array<string>;
 export const ReportAnalysisSettingsCustomMetricSlicesItemSlicesItemLevelsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ReportAnalysisSettingsCustomMetricSlicesItemSlicesItemLevelsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<ReportAnalysisSettingsCustomMetricSlicesItemSlicesItemLevelsList>;
 
 export interface ReportAnalysisSettingsCustomMetricSlicesItemSlicesItem {
   column: string;
   levels: ReportAnalysisSettingsCustomMetricSlicesItemSlicesItemLevelsList;
 }
-export const ReportAnalysisSettingsCustomMetricSlicesItemSlicesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    column: S.String,
-    levels: ReportAnalysisSettingsCustomMetricSlicesItemSlicesItemLevelsList,
-  }),
-).annotate({
-  identifier: "ReportAnalysisSettingsCustomMetricSlicesItemSlicesItem",
-}) as any as S.Schema<ReportAnalysisSettingsCustomMetricSlicesItemSlicesItem>;
+export const ReportAnalysisSettingsCustomMetricSlicesItemSlicesItem =
+  CreateExperimentRequestCustomMetricSlicesItemSlicesItem as any as S.Schema<ReportAnalysisSettingsCustomMetricSlicesItemSlicesItem>;
 
 export type ReportAnalysisSettingsCustomMetricSlicesItemSlicesList =
   Array<ReportAnalysisSettingsCustomMetricSlicesItemSlicesItem>;
-export const ReportAnalysisSettingsCustomMetricSlicesItemSlicesList = /*@__PURE__*/ S.Array(
-  ReportAnalysisSettingsCustomMetricSlicesItemSlicesItem,
-) as any as S.Schema<ReportAnalysisSettingsCustomMetricSlicesItemSlicesList>;
+export const ReportAnalysisSettingsCustomMetricSlicesItemSlicesList =
+  CreateExperimentRequestCustomMetricSlicesItemSlicesList as any as S.Schema<ReportAnalysisSettingsCustomMetricSlicesItemSlicesList>;
 
 export interface ReportAnalysisSettingsCustomMetricSlicesItem {
   slices: ReportAnalysisSettingsCustomMetricSlicesItemSlicesList;
 }
-export const ReportAnalysisSettingsCustomMetricSlicesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    slices: ReportAnalysisSettingsCustomMetricSlicesItemSlicesList,
-  }),
-).annotate({
-  identifier: "ReportAnalysisSettingsCustomMetricSlicesItem",
-}) as any as S.Schema<ReportAnalysisSettingsCustomMetricSlicesItem>;
+export const ReportAnalysisSettingsCustomMetricSlicesItem =
+  CreateExperimentRequestCustomMetricSlicesItem as any as S.Schema<ReportAnalysisSettingsCustomMetricSlicesItem>;
 
 /** Custom metric slice definitions */
 export type ReportAnalysisSettingsCustomMetricSlicesList =
   Array<ReportAnalysisSettingsCustomMetricSlicesItem>;
-export const ReportAnalysisSettingsCustomMetricSlicesList = /*@__PURE__*/ S.Array(
-  ReportAnalysisSettingsCustomMetricSlicesItem,
-) as any as S.Schema<ReportAnalysisSettingsCustomMetricSlicesList>;
+export const ReportAnalysisSettingsCustomMetricSlicesList =
+  CreateExperimentRequestCustomMetricSlicesList as any as S.Schema<ReportAnalysisSettingsCustomMetricSlicesList>;
 
 /** How lifts are expressed in results: `relative` (% change), `absolute` (raw difference), or `scaled` (scaled impact) */
 export type ReportAnalysisSettingsDifferenceType = "relative" | "absolute" | "scaled";
@@ -19369,9 +18685,8 @@ export const ExperimentResultsDimension = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentResultsDimension>;
 
 export type ExperimentResultsQueryIdsList = Array<string>;
-export const ExperimentResultsQueryIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentResultsQueryIdsList>;
+export const ExperimentResultsQueryIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ExperimentResultsQueryIdsList>;
 
 export interface ExperimentResultsResultsItemChecks {
   srm: number;
@@ -19616,14 +18931,12 @@ export const CreateSavedGroupRequestType = S.String;
 
 /** When type = 'list', this is the list of values for the attribute key */
 export type CreateSavedGroupRequestValuesList = Array<string>;
-export const CreateSavedGroupRequestValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSavedGroupRequestValuesList>;
+export const CreateSavedGroupRequestValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateSavedGroupRequestValuesList>;
 
 export type CreateSavedGroupRequestProjectsList = Array<string>;
-export const CreateSavedGroupRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSavedGroupRequestProjectsList>;
+export const CreateSavedGroupRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateSavedGroupRequestProjectsList>;
 
 export interface CreateSavedGroupRequest {
   /** The display name of the Saved Group */
@@ -19695,9 +19008,8 @@ export type SavedGroupRevisionStatus =
 export const SavedGroupRevisionStatus = S.String;
 
 export type SavedGroupRevisionContributorsList = Array<string>;
-export const SavedGroupRevisionContributorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SavedGroupRevisionContributorsList>;
+export const SavedGroupRevisionContributorsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<SavedGroupRevisionContributorsList>;
 
 export type SavedGroupRevisionReviewDecision = "approve" | "request-changes" | "comment";
 export const SavedGroupRevisionReviewDecision = S.String;
@@ -19963,9 +19275,8 @@ export const CreateSavedGroupRevisionDiscardResponse = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CreateSavedGroupRevisionDiscardResponse>;
 
 export type CreateSavedGroupRevisionItemsAddRequestItemsList = Array<string>;
-export const CreateSavedGroupRevisionItemsAddRequestItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSavedGroupRevisionItemsAddRequestItemsList>;
+export const CreateSavedGroupRevisionItemsAddRequestItemsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateSavedGroupRevisionItemsAddRequestItemsList>;
 
 export interface CreateSavedGroupRevisionItemsAddRequest {
   savedGroupId: string;
@@ -19995,18 +19306,12 @@ export const CreateSavedGroupRevisionItemsAddRequest = /*@__PURE__*/ S.suspend((
 export interface CreateSavedGroupRevisionItemsAddResponse {
   revision: SavedGroupRevision;
 }
-export const CreateSavedGroupRevisionItemsAddResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: SavedGroupRevision,
-  }),
-).annotate({
-  identifier: "CreateSavedGroupRevisionItemsAddResponse",
-}) as any as S.Schema<CreateSavedGroupRevisionItemsAddResponse>;
+export const CreateSavedGroupRevisionItemsAddResponse =
+  CreateSavedGroupRevisionDiscardResponse as any as S.Schema<CreateSavedGroupRevisionItemsAddResponse>;
 
 export type CreateSavedGroupRevisionItemsRemoveRequestItemsList = Array<string>;
-export const CreateSavedGroupRevisionItemsRemoveRequestItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSavedGroupRevisionItemsRemoveRequestItemsList>;
+export const CreateSavedGroupRevisionItemsRemoveRequestItemsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateSavedGroupRevisionItemsRemoveRequestItemsList>;
 
 export interface CreateSavedGroupRevisionItemsRemoveRequest {
   savedGroupId: string;
@@ -20036,13 +19341,8 @@ export const CreateSavedGroupRevisionItemsRemoveRequest = /*@__PURE__*/ S.suspen
 export interface CreateSavedGroupRevisionItemsRemoveResponse {
   revision: SavedGroupRevision;
 }
-export const CreateSavedGroupRevisionItemsRemoveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: SavedGroupRevision,
-  }),
-).annotate({
-  identifier: "CreateSavedGroupRevisionItemsRemoveResponse",
-}) as any as S.Schema<CreateSavedGroupRevisionItemsRemoveResponse>;
+export const CreateSavedGroupRevisionItemsRemoveResponse =
+  CreateSavedGroupRevisionDiscardResponse as any as S.Schema<CreateSavedGroupRevisionItemsRemoveResponse>;
 
 export interface CreateSavedGroupRevisionPublishRequest {
   savedGroupId: string;
@@ -20071,9 +19371,8 @@ export const CreateSavedGroupRevisionPublishRequest = /*@__PURE__*/ S.suspend(()
 
 /** Gates that would have blocked this publish but were bypassed by the caller's authority. Present only when at least one gate was bypassed. */
 export type CreateSavedGroupRevisionPublishResponseBypassedGatesList = Array<BypassedGates>;
-export const CreateSavedGroupRevisionPublishResponseBypassedGatesList = /*@__PURE__*/ S.Array(
-  BypassedGates,
-) as any as S.Schema<CreateSavedGroupRevisionPublishResponseBypassedGatesList>;
+export const CreateSavedGroupRevisionPublishResponseBypassedGatesList =
+  ArchiveConfigResponseBypassedGatesList as any as S.Schema<CreateSavedGroupRevisionPublishResponseBypassedGatesList>;
 
 export interface CreateSavedGroupRevisionPublishResponse {
   revision: SavedGroupRevision;
@@ -20107,18 +19406,15 @@ export const CreateSavedGroupRevisionRebaseRequestConflictResolutionsMap = /*@__
 ) as any as S.Schema<CreateSavedGroupRevisionRebaseRequestConflictResolutionsMap>;
 
 export type CreateSavedGroupRevisionRebaseRequestCustomValuesValueList = Array<unknown>;
-export const CreateSavedGroupRevisionRebaseRequestCustomValuesValueList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateSavedGroupRevisionRebaseRequestCustomValuesValueList>;
+export const CreateSavedGroupRevisionRebaseRequestCustomValuesValueList =
+  CreateConfigRevisionRebaseRequestCustomValuesValueList as any as S.Schema<CreateSavedGroupRevisionRebaseRequestCustomValuesValueList>;
 
 /** Custom values to use for `union` strategy fields. Keyed by field name. */
 export type CreateSavedGroupRevisionRebaseRequestCustomValuesMap = {
   [key: string]: CreateSavedGroupRevisionRebaseRequestCustomValuesValueList | undefined;
 };
-export const CreateSavedGroupRevisionRebaseRequestCustomValuesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CreateSavedGroupRevisionRebaseRequestCustomValuesValueList,
-) as any as S.Schema<CreateSavedGroupRevisionRebaseRequestCustomValuesMap>;
+export const CreateSavedGroupRevisionRebaseRequestCustomValuesMap =
+  CreateConfigRevisionRebaseRequestCustomValuesMap as any as S.Schema<CreateSavedGroupRevisionRebaseRequestCustomValuesMap>;
 
 export interface CreateSavedGroupRevisionRebaseRequest {
   savedGroupId: string;
@@ -20147,13 +19443,8 @@ export const CreateSavedGroupRevisionRebaseRequest = /*@__PURE__*/ S.suspend(() 
 export interface CreateSavedGroupRevisionRebaseResponse {
   revision: SavedGroupRevision;
 }
-export const CreateSavedGroupRevisionRebaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: SavedGroupRevision,
-  }),
-).annotate({
-  identifier: "CreateSavedGroupRevisionRebaseResponse",
-}) as any as S.Schema<CreateSavedGroupRevisionRebaseResponse>;
+export const CreateSavedGroupRevisionRebaseResponse =
+  CreateSavedGroupRevisionDiscardResponse as any as S.Schema<CreateSavedGroupRevisionRebaseResponse>;
 
 export interface CreateSavedGroupRevisionRecallReviewRequest {
   savedGroupId: string;
@@ -20177,13 +19468,8 @@ export const CreateSavedGroupRevisionRecallReviewRequest = /*@__PURE__*/ S.suspe
 export interface CreateSavedGroupRevisionRecallReviewResponse {
   revision: SavedGroupRevision;
 }
-export const CreateSavedGroupRevisionRecallReviewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: SavedGroupRevision,
-  }),
-).annotate({
-  identifier: "CreateSavedGroupRevisionRecallReviewResponse",
-}) as any as S.Schema<CreateSavedGroupRevisionRecallReviewResponse>;
+export const CreateSavedGroupRevisionRecallReviewResponse =
+  CreateSavedGroupRevisionDiscardResponse as any as S.Schema<CreateSavedGroupRevisionRecallReviewResponse>;
 
 export interface CreateSavedGroupRevisionReopenRequest {
   savedGroupId: string;
@@ -20207,13 +19493,8 @@ export const CreateSavedGroupRevisionReopenRequest = /*@__PURE__*/ S.suspend(() 
 export interface CreateSavedGroupRevisionReopenResponse {
   revision: SavedGroupRevision;
 }
-export const CreateSavedGroupRevisionReopenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: SavedGroupRevision,
-  }),
-).annotate({
-  identifier: "CreateSavedGroupRevisionReopenResponse",
-}) as any as S.Schema<CreateSavedGroupRevisionReopenResponse>;
+export const CreateSavedGroupRevisionReopenResponse =
+  CreateSavedGroupRevisionDiscardResponse as any as S.Schema<CreateSavedGroupRevisionReopenResponse>;
 
 export interface CreateSavedGroupRevisionRequestReviewRequest {
   savedGroupId: string;
@@ -20242,13 +19523,8 @@ export const CreateSavedGroupRevisionRequestReviewRequest = /*@__PURE__*/ S.susp
 export interface CreateSavedGroupRevisionRequestReviewResponse {
   revision: SavedGroupRevision;
 }
-export const CreateSavedGroupRevisionRequestReviewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: SavedGroupRevision,
-  }),
-).annotate({
-  identifier: "CreateSavedGroupRevisionRequestReviewResponse",
-}) as any as S.Schema<CreateSavedGroupRevisionRequestReviewResponse>;
+export const CreateSavedGroupRevisionRequestReviewResponse =
+  CreateSavedGroupRevisionDiscardResponse as any as S.Schema<CreateSavedGroupRevisionRequestReviewResponse>;
 
 /** Whether to stage the revert as a draft or publish it immediately. Defaults to `draft`, or to `publish` when the org enables 'reverts bypass approval'. */
 export type CreateSavedGroupRevisionRevertRequestStrategy = "draft" | "publish";
@@ -20285,23 +19561,16 @@ export const CreateSavedGroupRevisionRevertRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Gates that would have blocked this publish but were bypassed by the caller's authority. Present only when at least one gate was bypassed. */
 export type CreateSavedGroupRevisionRevertResponseBypassedGatesList = Array<BypassedGates>;
-export const CreateSavedGroupRevisionRevertResponseBypassedGatesList = /*@__PURE__*/ S.Array(
-  BypassedGates,
-) as any as S.Schema<CreateSavedGroupRevisionRevertResponseBypassedGatesList>;
+export const CreateSavedGroupRevisionRevertResponseBypassedGatesList =
+  ArchiveConfigResponseBypassedGatesList as any as S.Schema<CreateSavedGroupRevisionRevertResponseBypassedGatesList>;
 
 export interface CreateSavedGroupRevisionRevertResponse {
   revision: SavedGroupRevision;
   /** Gates that would have blocked this publish but were bypassed by the caller's authority. Present only when at least one gate was bypassed. */
   bypassedGates?: CreateSavedGroupRevisionRevertResponseBypassedGatesList;
 }
-export const CreateSavedGroupRevisionRevertResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: SavedGroupRevision,
-    bypassedGates: S.optional(CreateSavedGroupRevisionRevertResponseBypassedGatesList),
-  }),
-).annotate({
-  identifier: "CreateSavedGroupRevisionRevertResponse",
-}) as any as S.Schema<CreateSavedGroupRevisionRevertResponse>;
+export const CreateSavedGroupRevisionRevertResponse =
+  CreateSavedGroupRevisionPublishResponse as any as S.Schema<CreateSavedGroupRevisionRevertResponse>;
 
 export interface CreateSavedGroupRevisionSchedulePublishRequest {
   savedGroupId: string;
@@ -20337,13 +19606,8 @@ export const CreateSavedGroupRevisionSchedulePublishRequest = /*@__PURE__*/ S.su
 export interface CreateSavedGroupRevisionSchedulePublishResponse {
   revision: SavedGroupRevision;
 }
-export const CreateSavedGroupRevisionSchedulePublishResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: SavedGroupRevision,
-  }),
-).annotate({
-  identifier: "CreateSavedGroupRevisionSchedulePublishResponse",
-}) as any as S.Schema<CreateSavedGroupRevisionSchedulePublishResponse>;
+export const CreateSavedGroupRevisionSchedulePublishResponse =
+  CreateSavedGroupRevisionDiscardResponse as any as S.Schema<CreateSavedGroupRevisionSchedulePublishResponse>;
 
 export type CreateSavedGroupRevisionSubmitReviewRequestDecision =
   | "approve"
@@ -20411,23 +19675,16 @@ export const CreateSavedGroupRevisionUndoReviewRequest = /*@__PURE__*/ S.suspend
 export interface CreateSavedGroupRevisionUndoReviewResponse {
   revision: SavedGroupRevision;
 }
-export const CreateSavedGroupRevisionUndoReviewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: SavedGroupRevision,
-  }),
-).annotate({
-  identifier: "CreateSavedGroupRevisionUndoReviewResponse",
-}) as any as S.Schema<CreateSavedGroupRevisionUndoReviewResponse>;
+export const CreateSavedGroupRevisionUndoReviewResponse =
+  CreateSavedGroupRevisionDiscardResponse as any as S.Schema<CreateSavedGroupRevisionUndoReviewResponse>;
 
 export type CreateSdkConnectionRequestProjectsList = Array<string>;
-export const CreateSdkConnectionRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSdkConnectionRequestProjectsList>;
+export const CreateSdkConnectionRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateSdkConnectionRequestProjectsList>;
 
 export type CreateSdkConnectionRequestAllowedCustomFieldsInMetadataList = Array<string>;
-export const CreateSdkConnectionRequestAllowedCustomFieldsInMetadataList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSdkConnectionRequestAllowedCustomFieldsInMetadataList>;
+export const CreateSdkConnectionRequestAllowedCustomFieldsInMetadataList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateSdkConnectionRequestAllowedCustomFieldsInMetadataList>;
 
 export type CreateSdkConnectionRequestSavedGroupFormat = "inline" | "referencesV1" | "referencesV2";
 export const CreateSdkConnectionRequestSavedGroupFormat = S.String;
@@ -20495,19 +19752,16 @@ export const CreateSdkConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSdkConnectionRequest>;
 
 export type SdkConnectionLanguagesList = Array<string>;
-export const SdkConnectionLanguagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SdkConnectionLanguagesList>;
+export const SdkConnectionLanguagesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<SdkConnectionLanguagesList>;
 
 export type SdkConnectionProjectsList = Array<string>;
-export const SdkConnectionProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SdkConnectionProjectsList>;
+export const SdkConnectionProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<SdkConnectionProjectsList>;
 
 export type SdkConnectionAllowedCustomFieldsInMetadataList = Array<string>;
-export const SdkConnectionAllowedCustomFieldsInMetadataList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SdkConnectionAllowedCustomFieldsInMetadataList>;
+export const SdkConnectionAllowedCustomFieldsInMetadataList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<SdkConnectionAllowedCustomFieldsInMetadataList>;
 
 /** How Saved Groups are written into this connection's payload. `referencesV2` needs an SDK version that supports it; the payload steps down to `referencesV1` if not. */
 export type SdkConnectionSavedGroupFormat = "inline" | "referencesV1" | "referencesV2";
@@ -20603,9 +19857,8 @@ export const CreateSdkConnectionResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of project IDs for projects that can access this segment */
 export type CreateSegmentRequestProjectsList = Array<string>;
-export const CreateSegmentRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSegmentRequestProjectsList>;
+export const CreateSegmentRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateSegmentRequestProjectsList>;
 
 /** Where this Segment must be managed from. If not set (empty string), it can be managed from anywhere. */
 export type CreateSegmentRequestManagedBy = "" | "api";
@@ -20617,9 +19870,8 @@ export const CreateSegmentRequestType = S.String;
 
 /** Optional array of fact table filter ids that can further define the Fact Table based Segment. */
 export type CreateSegmentRequestFiltersList = Array<string>;
-export const CreateSegmentRequestFiltersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSegmentRequestFiltersList>;
+export const CreateSegmentRequestFiltersList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateSegmentRequestFiltersList>;
 
 export interface CreateSegmentRequest {
   /** Name of the segment */
@@ -20669,14 +19921,12 @@ export type SegmentType = "SQL" | "FACT";
 export const SegmentType = S.String;
 
 export type SegmentFiltersList = Array<string>;
-export const SegmentFiltersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SegmentFiltersList>;
+export const SegmentFiltersList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<SegmentFiltersList>;
 
 export type SegmentProjectsList = Array<string>;
-export const SegmentProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SegmentProjectsList>;
+export const SegmentProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<SegmentProjectsList>;
 
 export interface Segment {
   id: string;
@@ -20729,25 +19979,20 @@ export const CreateSegmentResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An empty array means 'all environments' */
 export type CreateTeamRequestEnvironmentsList = Array<string>;
-export const CreateTeamRequestEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateTeamRequestEnvironmentsList>;
+export const CreateTeamRequestEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateTeamRequestEnvironmentsList>;
 
 export type CreateTeamRequestProjectRolesItemEnvironmentsList = Array<string>;
-export const CreateTeamRequestProjectRolesItemEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateTeamRequestProjectRolesItemEnvironmentsList>;
+export const CreateTeamRequestProjectRolesItemEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateTeamRequestProjectRolesItemEnvironmentsList>;
 
 export type CreateTeamRequestProjectRolesItemTeamsList = Array<string>;
-export const CreateTeamRequestProjectRolesItemTeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateTeamRequestProjectRolesItemTeamsList>;
+export const CreateTeamRequestProjectRolesItemTeamsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<CreateTeamRequestProjectRolesItemTeamsList>;
 
 export type CreateTeamRequestProjectRolesItemAdditionalRolesItemEnvironmentsList = Array<string>;
 export const CreateTeamRequestProjectRolesItemAdditionalRolesItemEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateTeamRequestProjectRolesItemAdditionalRolesItemEnvironmentsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<CreateTeamRequestProjectRolesItemAdditionalRolesItemEnvironmentsList>;
 
 export interface CreateTeamRequestProjectRolesItemAdditionalRolesItem {
   role: string;
@@ -20837,24 +20082,20 @@ export const CreateTeamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateTeamRequest" }) as any as S.Schema<CreateTeamRequest>;
 
 export type TeamEnvironmentsList = Array<string>;
-export const TeamEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TeamEnvironmentsList>;
+export const TeamEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<TeamEnvironmentsList>;
 
 export type TeamProjectRolesItemEnvironmentsList = Array<string>;
-export const TeamProjectRolesItemEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TeamProjectRolesItemEnvironmentsList>;
+export const TeamProjectRolesItemEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<TeamProjectRolesItemEnvironmentsList>;
 
 export type TeamProjectRolesItemTeamsList = Array<string>;
-export const TeamProjectRolesItemTeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TeamProjectRolesItemTeamsList>;
+export const TeamProjectRolesItemTeamsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<TeamProjectRolesItemTeamsList>;
 
 export type TeamProjectRolesItemAdditionalRolesItemEnvironmentsList = Array<string>;
-export const TeamProjectRolesItemAdditionalRolesItemEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TeamProjectRolesItemAdditionalRolesItemEnvironmentsList>;
+export const TeamProjectRolesItemAdditionalRolesItemEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<TeamProjectRolesItemAdditionalRolesItemEnvironmentsList>;
 
 export interface TeamProjectRolesItemAdditionalRolesItem {
   role: string;
@@ -20902,7 +20143,7 @@ export const TeamProjectRolesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<TeamProjectRolesList>;
 
 export type TeamMembersList = Array<string>;
-export const TeamMembersList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<TeamMembersList>;
+export const TeamMembersList = HoldoutTagsList as any as S.Schema<TeamMembersList>;
 
 export type TeamManagedBy = CreateTeamRequestManagedBy;
 export const TeamManagedBy = CreateTeamRequestManagedBy;
@@ -21002,11 +20243,8 @@ export const DeleteConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteConfigResponse {
   deletedId: string;
 }
-export const DeleteConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deletedId: S.String,
-  }),
-).annotate({ identifier: "DeleteConfigResponse" }) as any as S.Schema<DeleteConfigResponse>;
+export const DeleteConfigResponse =
+  DeleteArchetypeResponse as any as S.Schema<DeleteConfigResponse>;
 
 export interface DeleteConfigRevisionProjectionRequest {
   key: string;
@@ -21033,13 +20271,8 @@ export const DeleteConfigRevisionProjectionRequest = /*@__PURE__*/ S.suspend(() 
 export interface DeleteConfigRevisionProjectionResponse {
   revision: ConfigRevision;
 }
-export const DeleteConfigRevisionProjectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: ConfigRevision,
-  }),
-).annotate({
-  identifier: "DeleteConfigRevisionProjectionResponse",
-}) as any as S.Schema<DeleteConfigRevisionProjectionResponse>;
+export const DeleteConfigRevisionProjectionResponse =
+  CreateConfigRevisionDiscardResponse as any as S.Schema<DeleteConfigRevisionProjectionResponse>;
 
 /** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
 export type DeleteConfigRevisionPropertyRequestSkipSchemaValidation = string | boolean;
@@ -21080,13 +20313,8 @@ export const DeleteConfigRevisionPropertyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteConfigRevisionPropertyResponse {
   revision: ConfigRevision;
 }
-export const DeleteConfigRevisionPropertyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: ConfigRevision,
-  }),
-).annotate({
-  identifier: "DeleteConfigRevisionPropertyResponse",
-}) as any as S.Schema<DeleteConfigRevisionPropertyResponse>;
+export const DeleteConfigRevisionPropertyResponse =
+  CreateConfigRevisionDiscardResponse as any as S.Schema<DeleteConfigRevisionPropertyResponse>;
 
 export interface DeleteConstantRequest {
   /** The key of the constant */
@@ -21101,11 +20329,8 @@ export const DeleteConstantRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteConstantResponse {
   deletedId: string;
 }
-export const DeleteConstantResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deletedId: S.String,
-  }),
-).annotate({ identifier: "DeleteConstantResponse" }) as any as S.Schema<DeleteConstantResponse>;
+export const DeleteConstantResponse =
+  DeleteArchetypeResponse as any as S.Schema<DeleteConstantResponse>;
 
 /** Publish the resulting revision immediately instead of leaving it as a draft. */
 export type DeleteContextualBanditLinkedFeatureRequestAutoPublish = string | boolean;
@@ -21140,9 +20365,8 @@ export const DeleteContextualBanditLinkedFeatureRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteContextualBanditLinkedFeatureRequest>;
 
 export type DeleteContextualBanditLinkedFeatureResponseRemovedRuleIdsList = Array<string>;
-export const DeleteContextualBanditLinkedFeatureResponseRemovedRuleIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteContextualBanditLinkedFeatureResponseRemovedRuleIdsList>;
+export const DeleteContextualBanditLinkedFeatureResponseRemovedRuleIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DeleteContextualBanditLinkedFeatureResponseRemovedRuleIdsList>;
 
 export interface DeleteContextualBanditLinkedFeatureResponse {
   featureId: string;
@@ -21197,13 +20421,8 @@ export const DeleteCustomFieldRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteCustomFieldResponse {
   deletedId: string;
 }
-export const DeleteCustomFieldResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deletedId: S.String,
-  }),
-).annotate({
-  identifier: "DeleteCustomFieldResponse",
-}) as any as S.Schema<DeleteCustomFieldResponse>;
+export const DeleteCustomFieldResponse =
+  DeleteContextualBanditQueryResponse as any as S.Schema<DeleteCustomFieldResponse>;
 
 export interface DeleteCustomHookRequest {
   /** The id of the custom hook */
@@ -21218,11 +20437,8 @@ export const DeleteCustomHookRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteCustomHookResponse {
   deletedId: string;
 }
-export const DeleteCustomHookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deletedId: S.String,
-  }),
-).annotate({ identifier: "DeleteCustomHookResponse" }) as any as S.Schema<DeleteCustomHookResponse>;
+export const DeleteCustomHookResponse =
+  DeleteArchetypeResponse as any as S.Schema<DeleteCustomHookResponse>;
 
 export interface DeleteDashboardRequest {
   id: string;
@@ -21236,11 +20452,8 @@ export const DeleteDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDashboardResponse {
   deletedId: string;
 }
-export const DeleteDashboardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deletedId: S.String,
-  }),
-).annotate({ identifier: "DeleteDashboardResponse" }) as any as S.Schema<DeleteDashboardResponse>;
+export const DeleteDashboardResponse =
+  DeleteArchetypeResponse as any as S.Schema<DeleteDashboardResponse>;
 
 export interface DeleteDimensionRequest {
   /** The id of the requested resource */
@@ -21256,11 +20469,8 @@ export interface DeleteDimensionResponse {
   /** The ID of the deleted dimension */
   deletedId: string;
 }
-export const DeleteDimensionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deletedId: S.String,
-  }),
-).annotate({ identifier: "DeleteDimensionResponse" }) as any as S.Schema<DeleteDimensionResponse>;
+export const DeleteDimensionResponse =
+  DeleteArchetypeResponse as any as S.Schema<DeleteDimensionResponse>;
 
 export interface DeleteEnvironmentRequest {
   /** The id of the requested resource */
@@ -21275,13 +20485,8 @@ export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteEnvironmentResponse {
   deletedId: string;
 }
-export const DeleteEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deletedId: S.String,
-  }),
-).annotate({
-  identifier: "DeleteEnvironmentResponse",
-}) as any as S.Schema<DeleteEnvironmentResponse>;
+export const DeleteEnvironmentResponse =
+  DeleteContextualBanditQueryResponse as any as S.Schema<DeleteEnvironmentResponse>;
 
 export interface DeleteExperimentTemplateRequest {
   id: string;
@@ -21297,13 +20502,8 @@ export const DeleteExperimentTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteExperimentTemplateResponse {
   deletedId: string;
 }
-export const DeleteExperimentTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deletedId: S.String,
-  }),
-).annotate({
-  identifier: "DeleteExperimentTemplateResponse",
-}) as any as S.Schema<DeleteExperimentTemplateResponse>;
+export const DeleteExperimentTemplateResponse =
+  DeleteContextualBanditQueryResponse as any as S.Schema<DeleteExperimentTemplateResponse>;
 
 export interface DeleteFactMetricRequest {
   /** The id of the requested resource */
@@ -21319,11 +20519,8 @@ export interface DeleteFactMetricResponse {
   /** The ID of the deleted fact metric */
   deletedId: string;
 }
-export const DeleteFactMetricResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deletedId: S.String,
-  }),
-).annotate({ identifier: "DeleteFactMetricResponse" }) as any as S.Schema<DeleteFactMetricResponse>;
+export const DeleteFactMetricResponse =
+  DeleteArchetypeResponse as any as S.Schema<DeleteFactMetricResponse>;
 
 export interface DeleteFactTableRequest {
   /** The id of the requested resource */
@@ -21339,11 +20536,8 @@ export interface DeleteFactTableResponse {
   /** The ID of the deleted fact table */
   deletedId: string;
 }
-export const DeleteFactTableResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deletedId: S.String,
-  }),
-).annotate({ identifier: "DeleteFactTableResponse" }) as any as S.Schema<DeleteFactTableResponse>;
+export const DeleteFactTableResponse =
+  DeleteArchetypeResponse as any as S.Schema<DeleteFactTableResponse>;
 
 export interface DeleteFactTableFilterRequest {
   /** Specify a specific fact table */
@@ -21366,13 +20560,8 @@ export interface DeleteFactTableFilterResponse {
   /** The ID of the deleted fact filter */
   deletedId: string;
 }
-export const DeleteFactTableFilterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deletedId: S.String,
-  }),
-).annotate({
-  identifier: "DeleteFactTableFilterResponse",
-}) as any as S.Schema<DeleteFactTableFilterResponse>;
+export const DeleteFactTableFilterResponse =
+  DeleteContextualBanditQueryResponse as any as S.Schema<DeleteFactTableFilterResponse>;
 
 export interface DeleteFactTableVirtualColumnRequest {
   /** Specify a specific fact table */
@@ -21399,13 +20588,8 @@ export interface DeleteFactTableVirtualColumnResponse {
   /** The id of the deleted virtual column */
   deletedId: string;
 }
-export const DeleteFactTableVirtualColumnResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deletedId: S.String,
-  }),
-).annotate({
-  identifier: "DeleteFactTableVirtualColumnResponse",
-}) as any as S.Schema<DeleteFactTableVirtualColumnResponse>;
+export const DeleteFactTableVirtualColumnResponse =
+  DeleteContextualBanditQueryResponse as any as S.Schema<DeleteFactTableVirtualColumnResponse>;
 
 export interface DeleteFeatureRevisionLogEntryV2Request {
   id: string;
@@ -21431,13 +20615,8 @@ export const DeleteFeatureRevisionLogEntryV2Request = /*@__PURE__*/ S.suspend(()
 export interface DeleteFeatureRevisionLogEntryV2Response {
   status: number;
 }
-export const DeleteFeatureRevisionLogEntryV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.Number,
-  }),
-).annotate({
-  identifier: "DeleteFeatureRevisionLogEntryV2Response",
-}) as any as S.Schema<DeleteFeatureRevisionLogEntryV2Response>;
+export const DeleteFeatureRevisionLogEntryV2Response =
+  CancelContextualBanditResponse as any as S.Schema<DeleteFeatureRevisionLogEntryV2Response>;
 
 export interface DeleteFeatureRevisionRuleRampScheduleV2Request {
   id: string;
@@ -21515,9 +20694,8 @@ export type FeatureRuleV2SavedGroupTargetingItemMatchType = "all" | "any" | "non
 export const FeatureRuleV2SavedGroupTargetingItemMatchType = S.String;
 
 export type FeatureRuleV2SavedGroupTargetingItemSavedGroupsList = Array<string>;
-export const FeatureRuleV2SavedGroupTargetingItemSavedGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FeatureRuleV2SavedGroupTargetingItemSavedGroupsList>;
+export const FeatureRuleV2SavedGroupTargetingItemSavedGroupsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<FeatureRuleV2SavedGroupTargetingItemSavedGroupsList>;
 
 export interface FeatureRuleV2SavedGroupTargetingItem {
   matchType: FeatureRuleV2SavedGroupTargetingItemMatchType;
@@ -21542,30 +20720,21 @@ export interface FeatureRuleV2PrerequisitesItem {
   id: string;
   condition: string;
 }
-export const FeatureRuleV2PrerequisitesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    condition: S.String,
-  }),
-).annotate({
-  identifier: "FeatureRuleV2PrerequisitesItem",
-}) as any as S.Schema<FeatureRuleV2PrerequisitesItem>;
+export const FeatureRuleV2PrerequisitesItem =
+  RampScheduleStartActionsItemPatchPrerequisitesItem as any as S.Schema<FeatureRuleV2PrerequisitesItem>;
 
 export type FeatureRuleV2PrerequisitesList = Array<FeatureRuleV2PrerequisitesItem>;
-export const FeatureRuleV2PrerequisitesList = /*@__PURE__*/ S.Array(
-  FeatureRuleV2PrerequisitesItem,
-) as any as S.Schema<FeatureRuleV2PrerequisitesList>;
+export const FeatureRuleV2PrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<FeatureRuleV2PrerequisitesList>;
 
 /** Project IDs this rule is scoped to when `allProjects` is false. An empty array scopes the rule to no project. */
 export type FeatureRuleV2ProjectsList = Array<string>;
-export const FeatureRuleV2ProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FeatureRuleV2ProjectsList>;
+export const FeatureRuleV2ProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<FeatureRuleV2ProjectsList>;
 
 export type FeatureRuleV2NamespaceRangeList = Array<number>;
-export const FeatureRuleV2NamespaceRangeList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<FeatureRuleV2NamespaceRangeList>;
+export const FeatureRuleV2NamespaceRangeList =
+  CreateCustomFieldRequestDefaultValueCase6List as any as S.Schema<FeatureRuleV2NamespaceRangeList>;
 
 export interface FeatureRuleV2Namespace {
   enabled: boolean;
@@ -21606,9 +20775,8 @@ export const FeatureRuleV2Status = S.String;
 
 /** The environment IDs this rule is active in. Populated when `allEnvironments` is false. */
 export type FeatureRuleV2EnvironmentsList = Array<string>;
-export const FeatureRuleV2EnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FeatureRuleV2EnvironmentsList>;
+export const FeatureRuleV2EnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<FeatureRuleV2EnvironmentsList>;
 
 /** Present on draft revisions only. "create" means a ramp schedule will be created for this rule on publish. "detach" means an existing live ramp schedule will be removed on publish. Use PUT/DELETE .../rules/{ruleId}/ramp-schedule to modify. */
 export type FeatureRuleV2PendingRamp = "create" | "detach";
@@ -21710,10 +20878,8 @@ export const FeatureRevisionV2RulesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<FeatureRevisionV2RulesList>;
 
 export type FeatureRevisionV2DefinitionsMap = { [key: string]: string | undefined };
-export const FeatureRevisionV2DefinitionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FeatureRevisionV2DefinitionsMap>;
+export const FeatureRevisionV2DefinitionsMap =
+  ConstantEnvironmentValuesMap as any as S.Schema<FeatureRevisionV2DefinitionsMap>;
 
 /** Per-environment enabled state captured in this revision (only present when kill-switch gating is enabled) */
 export type FeatureRevisionV2EnvironmentsEnabledMap = { [key: string]: boolean | undefined };
@@ -21754,23 +20920,19 @@ export const FeatureRevisionV2PrerequisitesItem = FeatureRevisionV2EnvPrerequisi
 
 /** Feature-level prerequisites captured in this revision. Each entry is a boolean flag ID that must evaluate to true for this flag to be active for a given user. */
 export type FeatureRevisionV2PrerequisitesList = Array<FeatureRevisionV2EnvPrerequisitesValueItem>;
-export const FeatureRevisionV2PrerequisitesList = /*@__PURE__*/ S.Array(
-  FeatureRevisionV2EnvPrerequisitesValueItem,
-) as any as S.Schema<FeatureRevisionV2PrerequisitesList>;
+export const FeatureRevisionV2PrerequisitesList =
+  FeatureRevisionV2EnvPrerequisitesValueList as any as S.Schema<FeatureRevisionV2PrerequisitesList>;
 
 export type FeatureRevisionV2MetadataTagsList = Array<string>;
-export const FeatureRevisionV2MetadataTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FeatureRevisionV2MetadataTagsList>;
+export const FeatureRevisionV2MetadataTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<FeatureRevisionV2MetadataTagsList>;
 
 export type FeatureRevisionV2MetadataJsonSchemaSchemaType = "schema" | "simple";
 export const FeatureRevisionV2MetadataJsonSchemaSchemaType = S.String;
 
 export type FeatureRevisionV2MetadataJsonSchemaSimpleMap = { [key: string]: unknown | undefined };
-export const FeatureRevisionV2MetadataJsonSchemaSimpleMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FeatureRevisionV2MetadataJsonSchemaSimpleMap>;
+export const FeatureRevisionV2MetadataJsonSchemaSimpleMap =
+  ConfigValueMap as any as S.Schema<FeatureRevisionV2MetadataJsonSchemaSimpleMap>;
 
 export interface FeatureRevisionV2MetadataJsonSchema {
   schemaType?: FeatureRevisionV2MetadataJsonSchemaSchemaType;
@@ -21792,10 +20954,8 @@ export const FeatureRevisionV2MetadataJsonSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FeatureRevisionV2MetadataJsonSchema>;
 
 export type FeatureRevisionV2MetadataCustomFieldsMap = { [key: string]: unknown | undefined };
-export const FeatureRevisionV2MetadataCustomFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FeatureRevisionV2MetadataCustomFieldsMap>;
+export const FeatureRevisionV2MetadataCustomFieldsMap =
+  ConfigValueMap as any as S.Schema<FeatureRevisionV2MetadataCustomFieldsMap>;
 
 /** Metadata fields captured in this revision (only present when metadata gating is enabled) */
 export interface FeatureRevisionV2Metadata {
@@ -21836,9 +20996,7 @@ export const FeatureRevisionV2RampActionsItemCase0StartActionsItemPatchSavedGrou
 export type FeatureRevisionV2RampActionsItemCase0StartActionsItemPatchSavedGroupsItemIdsList =
   Array<string>;
 export const FeatureRevisionV2RampActionsItemCase0StartActionsItemPatchSavedGroupsItemIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<FeatureRevisionV2RampActionsItemCase0StartActionsItemPatchSavedGroupsItemIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<FeatureRevisionV2RampActionsItemCase0StartActionsItemPatchSavedGroupsItemIdsList>;
 
 export interface FeatureRevisionV2RampActionsItemCase0StartActionsItemPatchSavedGroupsItem {
   match: FeatureRevisionV2RampActionsItemCase0StartActionsItemPatchSavedGroupsItemMatch;
@@ -21869,16 +21027,12 @@ export const FeatureRevisionV2RampActionsItemCase0StartActionsItemPatchPrerequis
 export type FeatureRevisionV2RampActionsItemCase0StartActionsItemPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
 export const FeatureRevisionV2RampActionsItemCase0StartActionsItemPatchPrerequisitesList =
-  /*@__PURE__*/ S.Array(
-    RampScheduleStartActionsItemPatchPrerequisitesItem,
-  ) as any as S.Schema<FeatureRevisionV2RampActionsItemCase0StartActionsItemPatchPrerequisitesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataTargetingPrerequisitesList as any as S.Schema<FeatureRevisionV2RampActionsItemCase0StartActionsItemPatchPrerequisitesList>;
 
 export type FeatureRevisionV2RampActionsItemCase0StartActionsItemPatchEnvironmentsList =
   Array<string>;
 export const FeatureRevisionV2RampActionsItemCase0StartActionsItemPatchEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<FeatureRevisionV2RampActionsItemCase0StartActionsItemPatchEnvironmentsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<FeatureRevisionV2RampActionsItemCase0StartActionsItemPatchEnvironmentsList>;
 
 export interface FeatureRevisionV2RampActionsItemCase0StartActionsItemPatch {
   ruleId?: string;
@@ -21956,9 +21110,7 @@ export const FeatureRevisionV2RampActionsItemCase0StepsItemActionsItemPatchSaved
 export type FeatureRevisionV2RampActionsItemCase0StepsItemActionsItemPatchSavedGroupsItemIdsList =
   Array<string>;
 export const FeatureRevisionV2RampActionsItemCase0StepsItemActionsItemPatchSavedGroupsItemIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<FeatureRevisionV2RampActionsItemCase0StepsItemActionsItemPatchSavedGroupsItemIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<FeatureRevisionV2RampActionsItemCase0StepsItemActionsItemPatchSavedGroupsItemIdsList>;
 
 export interface FeatureRevisionV2RampActionsItemCase0StepsItemActionsItemPatchSavedGroupsItem {
   match: FeatureRevisionV2RampActionsItemCase0StepsItemActionsItemPatchSavedGroupsItemMatch;
@@ -21989,16 +21141,12 @@ export const FeatureRevisionV2RampActionsItemCase0StepsItemActionsItemPatchPrere
 export type FeatureRevisionV2RampActionsItemCase0StepsItemActionsItemPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
 export const FeatureRevisionV2RampActionsItemCase0StepsItemActionsItemPatchPrerequisitesList =
-  /*@__PURE__*/ S.Array(
-    RampScheduleStartActionsItemPatchPrerequisitesItem,
-  ) as any as S.Schema<FeatureRevisionV2RampActionsItemCase0StepsItemActionsItemPatchPrerequisitesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataTargetingPrerequisitesList as any as S.Schema<FeatureRevisionV2RampActionsItemCase0StepsItemActionsItemPatchPrerequisitesList>;
 
 export type FeatureRevisionV2RampActionsItemCase0StepsItemActionsItemPatchEnvironmentsList =
   Array<string>;
 export const FeatureRevisionV2RampActionsItemCase0StepsItemActionsItemPatchEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<FeatureRevisionV2RampActionsItemCase0StepsItemActionsItemPatchEnvironmentsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<FeatureRevisionV2RampActionsItemCase0StepsItemActionsItemPatchEnvironmentsList>;
 
 export interface FeatureRevisionV2RampActionsItemCase0StepsItemActionsItemPatch {
   ruleId?: string;
@@ -22098,9 +21246,7 @@ export const FeatureRevisionV2RampActionsItemCase0EndActionsItemPatchSavedGroups
 export type FeatureRevisionV2RampActionsItemCase0EndActionsItemPatchSavedGroupsItemIdsList =
   Array<string>;
 export const FeatureRevisionV2RampActionsItemCase0EndActionsItemPatchSavedGroupsItemIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<FeatureRevisionV2RampActionsItemCase0EndActionsItemPatchSavedGroupsItemIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<FeatureRevisionV2RampActionsItemCase0EndActionsItemPatchSavedGroupsItemIdsList>;
 
 export interface FeatureRevisionV2RampActionsItemCase0EndActionsItemPatchSavedGroupsItem {
   match: FeatureRevisionV2RampActionsItemCase0EndActionsItemPatchSavedGroupsItemMatch;
@@ -22131,16 +21277,12 @@ export const FeatureRevisionV2RampActionsItemCase0EndActionsItemPatchPrerequisit
 export type FeatureRevisionV2RampActionsItemCase0EndActionsItemPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
 export const FeatureRevisionV2RampActionsItemCase0EndActionsItemPatchPrerequisitesList =
-  /*@__PURE__*/ S.Array(
-    RampScheduleStartActionsItemPatchPrerequisitesItem,
-  ) as any as S.Schema<FeatureRevisionV2RampActionsItemCase0EndActionsItemPatchPrerequisitesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataTargetingPrerequisitesList as any as S.Schema<FeatureRevisionV2RampActionsItemCase0EndActionsItemPatchPrerequisitesList>;
 
 export type FeatureRevisionV2RampActionsItemCase0EndActionsItemPatchEnvironmentsList =
   Array<string>;
 export const FeatureRevisionV2RampActionsItemCase0EndActionsItemPatchEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<FeatureRevisionV2RampActionsItemCase0EndActionsItemPatchEnvironmentsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<FeatureRevisionV2RampActionsItemCase0EndActionsItemPatchEnvironmentsList>;
 
 export interface FeatureRevisionV2RampActionsItemCase0EndActionsItemPatch {
   ruleId?: string;
@@ -22202,16 +21344,12 @@ export const FeatureRevisionV2RampActionsItemCase0EndActionsList = /*@__PURE__*/
 export type FeatureRevisionV2RampActionsItemCase0MonitoringConfigGuardrailMetricIdsList =
   Array<string>;
 export const FeatureRevisionV2RampActionsItemCase0MonitoringConfigGuardrailMetricIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<FeatureRevisionV2RampActionsItemCase0MonitoringConfigGuardrailMetricIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<FeatureRevisionV2RampActionsItemCase0MonitoringConfigGuardrailMetricIdsList>;
 
 export type FeatureRevisionV2RampActionsItemCase0MonitoringConfigSignalMetricIdsList =
   Array<string>;
 export const FeatureRevisionV2RampActionsItemCase0MonitoringConfigSignalMetricIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<FeatureRevisionV2RampActionsItemCase0MonitoringConfigSignalMetricIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<FeatureRevisionV2RampActionsItemCase0MonitoringConfigSignalMetricIdsList>;
 
 export type FeatureRevisionV2RampActionsItemCase0MonitoringConfigMonitoringMode = "auto" | "manual";
 export const FeatureRevisionV2RampActionsItemCase0MonitoringConfigMonitoringMode = S.String;
@@ -22343,9 +21481,7 @@ export const FeatureRevisionV2RampActionsItemCase1StartActionsItemPatchSavedGrou
 export type FeatureRevisionV2RampActionsItemCase1StartActionsItemPatchSavedGroupsItemIdsList =
   Array<string>;
 export const FeatureRevisionV2RampActionsItemCase1StartActionsItemPatchSavedGroupsItemIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<FeatureRevisionV2RampActionsItemCase1StartActionsItemPatchSavedGroupsItemIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<FeatureRevisionV2RampActionsItemCase1StartActionsItemPatchSavedGroupsItemIdsList>;
 
 export interface FeatureRevisionV2RampActionsItemCase1StartActionsItemPatchSavedGroupsItem {
   match: FeatureRevisionV2RampActionsItemCase1StartActionsItemPatchSavedGroupsItemMatch;
@@ -22376,16 +21512,12 @@ export const FeatureRevisionV2RampActionsItemCase1StartActionsItemPatchPrerequis
 export type FeatureRevisionV2RampActionsItemCase1StartActionsItemPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
 export const FeatureRevisionV2RampActionsItemCase1StartActionsItemPatchPrerequisitesList =
-  /*@__PURE__*/ S.Array(
-    RampScheduleStartActionsItemPatchPrerequisitesItem,
-  ) as any as S.Schema<FeatureRevisionV2RampActionsItemCase1StartActionsItemPatchPrerequisitesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataTargetingPrerequisitesList as any as S.Schema<FeatureRevisionV2RampActionsItemCase1StartActionsItemPatchPrerequisitesList>;
 
 export type FeatureRevisionV2RampActionsItemCase1StartActionsItemPatchEnvironmentsList =
   Array<string>;
 export const FeatureRevisionV2RampActionsItemCase1StartActionsItemPatchEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<FeatureRevisionV2RampActionsItemCase1StartActionsItemPatchEnvironmentsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<FeatureRevisionV2RampActionsItemCase1StartActionsItemPatchEnvironmentsList>;
 
 export interface FeatureRevisionV2RampActionsItemCase1StartActionsItemPatch {
   ruleId?: string;
@@ -22463,9 +21595,7 @@ export const FeatureRevisionV2RampActionsItemCase1StepsItemActionsItemPatchSaved
 export type FeatureRevisionV2RampActionsItemCase1StepsItemActionsItemPatchSavedGroupsItemIdsList =
   Array<string>;
 export const FeatureRevisionV2RampActionsItemCase1StepsItemActionsItemPatchSavedGroupsItemIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<FeatureRevisionV2RampActionsItemCase1StepsItemActionsItemPatchSavedGroupsItemIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<FeatureRevisionV2RampActionsItemCase1StepsItemActionsItemPatchSavedGroupsItemIdsList>;
 
 export interface FeatureRevisionV2RampActionsItemCase1StepsItemActionsItemPatchSavedGroupsItem {
   match: FeatureRevisionV2RampActionsItemCase1StepsItemActionsItemPatchSavedGroupsItemMatch;
@@ -22496,16 +21626,12 @@ export const FeatureRevisionV2RampActionsItemCase1StepsItemActionsItemPatchPrere
 export type FeatureRevisionV2RampActionsItemCase1StepsItemActionsItemPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
 export const FeatureRevisionV2RampActionsItemCase1StepsItemActionsItemPatchPrerequisitesList =
-  /*@__PURE__*/ S.Array(
-    RampScheduleStartActionsItemPatchPrerequisitesItem,
-  ) as any as S.Schema<FeatureRevisionV2RampActionsItemCase1StepsItemActionsItemPatchPrerequisitesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataTargetingPrerequisitesList as any as S.Schema<FeatureRevisionV2RampActionsItemCase1StepsItemActionsItemPatchPrerequisitesList>;
 
 export type FeatureRevisionV2RampActionsItemCase1StepsItemActionsItemPatchEnvironmentsList =
   Array<string>;
 export const FeatureRevisionV2RampActionsItemCase1StepsItemActionsItemPatchEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<FeatureRevisionV2RampActionsItemCase1StepsItemActionsItemPatchEnvironmentsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<FeatureRevisionV2RampActionsItemCase1StepsItemActionsItemPatchEnvironmentsList>;
 
 export interface FeatureRevisionV2RampActionsItemCase1StepsItemActionsItemPatch {
   ruleId?: string;
@@ -22605,9 +21731,7 @@ export const FeatureRevisionV2RampActionsItemCase1EndActionsItemPatchSavedGroups
 export type FeatureRevisionV2RampActionsItemCase1EndActionsItemPatchSavedGroupsItemIdsList =
   Array<string>;
 export const FeatureRevisionV2RampActionsItemCase1EndActionsItemPatchSavedGroupsItemIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<FeatureRevisionV2RampActionsItemCase1EndActionsItemPatchSavedGroupsItemIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<FeatureRevisionV2RampActionsItemCase1EndActionsItemPatchSavedGroupsItemIdsList>;
 
 export interface FeatureRevisionV2RampActionsItemCase1EndActionsItemPatchSavedGroupsItem {
   match: FeatureRevisionV2RampActionsItemCase1EndActionsItemPatchSavedGroupsItemMatch;
@@ -22638,16 +21762,12 @@ export const FeatureRevisionV2RampActionsItemCase1EndActionsItemPatchPrerequisit
 export type FeatureRevisionV2RampActionsItemCase1EndActionsItemPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
 export const FeatureRevisionV2RampActionsItemCase1EndActionsItemPatchPrerequisitesList =
-  /*@__PURE__*/ S.Array(
-    RampScheduleStartActionsItemPatchPrerequisitesItem,
-  ) as any as S.Schema<FeatureRevisionV2RampActionsItemCase1EndActionsItemPatchPrerequisitesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataTargetingPrerequisitesList as any as S.Schema<FeatureRevisionV2RampActionsItemCase1EndActionsItemPatchPrerequisitesList>;
 
 export type FeatureRevisionV2RampActionsItemCase1EndActionsItemPatchEnvironmentsList =
   Array<string>;
 export const FeatureRevisionV2RampActionsItemCase1EndActionsItemPatchEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<FeatureRevisionV2RampActionsItemCase1EndActionsItemPatchEnvironmentsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<FeatureRevisionV2RampActionsItemCase1EndActionsItemPatchEnvironmentsList>;
 
 export interface FeatureRevisionV2RampActionsItemCase1EndActionsItemPatch {
   ruleId?: string;
@@ -22709,16 +21829,12 @@ export const FeatureRevisionV2RampActionsItemCase1EndActionsList = /*@__PURE__*/
 export type FeatureRevisionV2RampActionsItemCase1MonitoringConfigGuardrailMetricIdsList =
   Array<string>;
 export const FeatureRevisionV2RampActionsItemCase1MonitoringConfigGuardrailMetricIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<FeatureRevisionV2RampActionsItemCase1MonitoringConfigGuardrailMetricIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<FeatureRevisionV2RampActionsItemCase1MonitoringConfigGuardrailMetricIdsList>;
 
 export type FeatureRevisionV2RampActionsItemCase1MonitoringConfigSignalMetricIdsList =
   Array<string>;
 export const FeatureRevisionV2RampActionsItemCase1MonitoringConfigSignalMetricIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<FeatureRevisionV2RampActionsItemCase1MonitoringConfigSignalMetricIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<FeatureRevisionV2RampActionsItemCase1MonitoringConfigSignalMetricIdsList>;
 
 export type FeatureRevisionV2RampActionsItemCase1MonitoringConfigMonitoringMode = "auto" | "manual";
 export const FeatureRevisionV2RampActionsItemCase1MonitoringConfigMonitoringMode = S.String;
@@ -23030,13 +22146,8 @@ export const DeleteFeatureRevisionRuleV2Request = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteFeatureRevisionRuleV2Response {
   revision: FeatureRevisionV2;
 }
-export const DeleteFeatureRevisionRuleV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: FeatureRevisionV2,
-  }),
-).annotate({
-  identifier: "DeleteFeatureRevisionRuleV2Response",
-}) as any as S.Schema<DeleteFeatureRevisionRuleV2Response>;
+export const DeleteFeatureRevisionRuleV2Response =
+  DeleteFeatureRevisionRuleRampScheduleV2Response as any as S.Schema<DeleteFeatureRevisionRuleV2Response>;
 
 export interface DeleteFeatureV2Request {
   /** The id of the requested resource */
@@ -23052,11 +22163,8 @@ export interface DeleteFeatureV2Response {
   /** The ID of the deleted feature */
   deletedId: string;
 }
-export const DeleteFeatureV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deletedId: S.String,
-  }),
-).annotate({ identifier: "DeleteFeatureV2Response" }) as any as S.Schema<DeleteFeatureV2Response>;
+export const DeleteFeatureV2Response =
+  DeleteArchetypeResponse as any as S.Schema<DeleteFeatureV2Response>;
 
 export interface DeleteLearningRequest {
   id: string;
@@ -23070,11 +22178,8 @@ export const DeleteLearningRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteLearningResponse {
   deletedId: string;
 }
-export const DeleteLearningResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deletedId: S.String,
-  }),
-).annotate({ identifier: "DeleteLearningResponse" }) as any as S.Schema<DeleteLearningResponse>;
+export const DeleteLearningResponse =
+  DeleteArchetypeResponse as any as S.Schema<DeleteLearningResponse>;
 
 export interface DeleteMemberRequest {
   /** The id of the requested resource */
@@ -23089,11 +22194,8 @@ export const DeleteMemberRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteMemberResponse {
   deletedId: string;
 }
-export const DeleteMemberResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deletedId: S.String,
-  }),
-).annotate({ identifier: "DeleteMemberResponse" }) as any as S.Schema<DeleteMemberResponse>;
+export const DeleteMemberResponse =
+  DeleteArchetypeResponse as any as S.Schema<DeleteMemberResponse>;
 
 export interface DeleteMetricRequest {
   /** The id of the requested resource */
@@ -23108,11 +22210,8 @@ export const DeleteMetricRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteMetricResponse {
   deletedId: string;
 }
-export const DeleteMetricResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deletedId: S.String,
-  }),
-).annotate({ identifier: "DeleteMetricResponse" }) as any as S.Schema<DeleteMetricResponse>;
+export const DeleteMetricResponse =
+  DeleteArchetypeResponse as any as S.Schema<DeleteMetricResponse>;
 
 export interface DeleteMetricGroupRequest {
   id: string;
@@ -23126,13 +22225,8 @@ export const DeleteMetricGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteMetricGroupResponse {
   deletedId: string;
 }
-export const DeleteMetricGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deletedId: S.String,
-  }),
-).annotate({
-  identifier: "DeleteMetricGroupResponse",
-}) as any as S.Schema<DeleteMetricGroupResponse>;
+export const DeleteMetricGroupResponse =
+  DeleteContextualBanditQueryResponse as any as S.Schema<DeleteMetricGroupResponse>;
 
 export interface DeleteNamespaceRequest {
   /** The unique id of the namespace */
@@ -23148,11 +22242,8 @@ export interface DeleteNamespaceResponse {
   /** The ID of the deleted namespace. */
   deletedId: string;
 }
-export const DeleteNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deletedId: S.String,
-  }),
-).annotate({ identifier: "DeleteNamespaceResponse" }) as any as S.Schema<DeleteNamespaceResponse>;
+export const DeleteNamespaceResponse =
+  DeleteArchetypeResponse as any as S.Schema<DeleteNamespaceResponse>;
 
 export interface DeleteProjectRequest {
   /** The id of the requested resource */
@@ -23168,11 +22259,8 @@ export interface DeleteProjectResponse {
   /** The ID of the deleted project */
   deletedId: string;
 }
-export const DeleteProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deletedId: S.String,
-  }),
-).annotate({ identifier: "DeleteProjectResponse" }) as any as S.Schema<DeleteProjectResponse>;
+export const DeleteProjectResponse =
+  DeleteArchetypeResponse as any as S.Schema<DeleteProjectResponse>;
 
 export interface DeleteRampScheduleRequest {
   id: string;
@@ -23188,13 +22276,8 @@ export const DeleteRampScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteRampScheduleResponse {
   deletedId: string;
 }
-export const DeleteRampScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deletedId: S.String,
-  }),
-).annotate({
-  identifier: "DeleteRampScheduleResponse",
-}) as any as S.Schema<DeleteRampScheduleResponse>;
+export const DeleteRampScheduleResponse =
+  DeleteContextualBanditQueryResponse as any as S.Schema<DeleteRampScheduleResponse>;
 
 export interface DeleteRampScheduleTemplateRequest {
   id: string;
@@ -23210,13 +22293,8 @@ export const DeleteRampScheduleTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteRampScheduleTemplateResponse {
   deletedId: string;
 }
-export const DeleteRampScheduleTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deletedId: S.String,
-  }),
-).annotate({
-  identifier: "DeleteRampScheduleTemplateResponse",
-}) as any as S.Schema<DeleteRampScheduleTemplateResponse>;
+export const DeleteRampScheduleTemplateResponse =
+  DeleteContextualBanditQueryResponse as any as S.Schema<DeleteRampScheduleTemplateResponse>;
 
 export interface DeleteSavedGroupRequest {
   /** The id of the requested resource */
@@ -23231,11 +22309,8 @@ export const DeleteSavedGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSavedGroupResponse {
   deletedId: string;
 }
-export const DeleteSavedGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deletedId: S.String,
-  }),
-).annotate({ identifier: "DeleteSavedGroupResponse" }) as any as S.Schema<DeleteSavedGroupResponse>;
+export const DeleteSavedGroupResponse =
+  DeleteArchetypeResponse as any as S.Schema<DeleteSavedGroupResponse>;
 
 export interface DeleteSdkConnectionRequest {
   /** The id of the requested resource */
@@ -23252,13 +22327,8 @@ export const DeleteSdkConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSdkConnectionResponse {
   deletedId: string;
 }
-export const DeleteSdkConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deletedId: S.String,
-  }),
-).annotate({
-  identifier: "DeleteSdkConnectionResponse",
-}) as any as S.Schema<DeleteSdkConnectionResponse>;
+export const DeleteSdkConnectionResponse =
+  DeleteContextualBanditQueryResponse as any as S.Schema<DeleteSdkConnectionResponse>;
 
 export interface DeleteSegmentRequest {
   /** The id of the requested resource */
@@ -23274,11 +22344,8 @@ export interface DeleteSegmentResponse {
   /** The ID of the deleted segment */
   deletedId: string;
 }
-export const DeleteSegmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deletedId: S.String,
-  }),
-).annotate({ identifier: "DeleteSegmentResponse" }) as any as S.Schema<DeleteSegmentResponse>;
+export const DeleteSegmentResponse =
+  DeleteArchetypeResponse as any as S.Schema<DeleteSegmentResponse>;
 
 export interface DeleteTeamRequest {
   id: string;
@@ -23295,11 +22362,7 @@ export const DeleteTeamRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteTeamResponse {
   deletedId: string;
 }
-export const DeleteTeamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deletedId: S.String,
-  }),
-).annotate({ identifier: "DeleteTeamResponse" }) as any as S.Schema<DeleteTeamResponse>;
+export const DeleteTeamResponse = DeleteArchetypeResponse as any as S.Schema<DeleteTeamResponse>;
 
 export interface DeleteVariationScreenshotRequest {
   id: string;
@@ -23355,13 +22418,8 @@ export const EjectTargetRampScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface EjectTargetRampScheduleResponseBodyCase0 {
   rampSchedule: RampSchedule;
 }
-export const EjectTargetRampScheduleResponseBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rampSchedule: RampSchedule,
-  }),
-).annotate({
-  identifier: "EjectTargetRampScheduleResponseBodyCase0",
-}) as any as S.Schema<EjectTargetRampScheduleResponseBodyCase0>;
+export const EjectTargetRampScheduleResponseBodyCase0 =
+  AddTargetRampScheduleResponse as any as S.Schema<EjectTargetRampScheduleResponseBodyCase0>;
 
 export interface EjectTargetRampScheduleResponseBodyCase1 {
   deleted: boolean;
@@ -23500,9 +22558,8 @@ export const AggregatedTableRunStatus = S.String;
 
 /** Warehouse query ids for this run; poll each via GET /queries/{id} for per-query status */
 export type AggregatedTableRunQueryIdsList = Array<string>;
-export const AggregatedTableRunQueryIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AggregatedTableRunQueryIdsList>;
+export const AggregatedTableRunQueryIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<AggregatedTableRunQueryIdsList>;
 
 export interface AggregatedTableRunResult {
   lastMaxTimestamp: string | null;
@@ -23582,11 +22639,8 @@ export const GetArchetypeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetArchetypeResponse {
   archetype: Archetype;
 }
-export const GetArchetypeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    archetype: Archetype,
-  }),
-).annotate({ identifier: "GetArchetypeResponse" }) as any as S.Schema<GetArchetypeResponse>;
+export const GetArchetypeResponse =
+  CreateArchetypeResponse as any as S.Schema<GetArchetypeResponse>;
 
 export interface GetAutoRunRequest {
   id: string;
@@ -23600,11 +22654,7 @@ export const GetAutoRunRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetAutoRunResponse {
   autoRun: AutoRun;
 }
-export const GetAutoRunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoRun: AutoRun,
-  }),
-).annotate({ identifier: "GetAutoRunResponse" }) as any as S.Schema<GetAutoRunResponse>;
+export const GetAutoRunResponse = CreateAutoRunResponse as any as S.Schema<GetAutoRunResponse>;
 
 export interface GetCodeRefsRequest {
   /** The id of the requested resource */
@@ -23715,9 +22765,8 @@ export const GetConfigKeyUsageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetConfigKeyUsageRequest" }) as any as S.Schema<GetConfigKeyUsageRequest>;
 
 export type GetConfigKeyUsageResponseFamilyKeysList = Array<string>;
-export const GetConfigKeyUsageResponseFamilyKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetConfigKeyUsageResponseFamilyKeysList>;
+export const GetConfigKeyUsageResponseFamilyKeysList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<GetConfigKeyUsageResponseFamilyKeysList>;
 
 export type ImplementationsLocation = "defaultValue" | "rule";
 export const ImplementationsLocation = S.String;
@@ -23726,9 +22775,8 @@ export type ImplementationsRelation = "self" | "ancestor" | "descendant" | "othe
 export const ImplementationsRelation = S.String;
 
 export type ImplementationsKeysList = Array<string>;
-export const ImplementationsKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImplementationsKeysList>;
+export const ImplementationsKeysList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ImplementationsKeysList>;
 
 export type ImplementationsState = "live" | "draft";
 export const ImplementationsState = S.String;
@@ -23798,33 +22846,28 @@ export const GetConfigLineageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The target's ancestor keys, root-first, ending at its immediate parent. */
 export type GetConfigLineageResponseAncestorsList = Array<string>;
-export const GetConfigLineageResponseAncestorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetConfigLineageResponseAncestorsList>;
+export const GetConfigLineageResponseAncestorsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<GetConfigLineageResponseAncestorsList>;
 
 /** Keys of every config that descends from the target. */
 export type GetConfigLineageResponseDescendantsList = Array<string>;
-export const GetConfigLineageResponseDescendantsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetConfigLineageResponseDescendantsList>;
+export const GetConfigLineageResponseDescendantsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<GetConfigLineageResponseDescendantsList>;
 
 /** Additional composition bases (mixin config keys) layered on top of `parent`. The tree shape follows `parent`/`depth`; these express composition beyond the parent/child spine. */
 export type NodesExtendsList = Array<string>;
-export const NodesExtendsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NodesExtendsList>;
+export const NodesExtendsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<NodesExtendsList>;
 
 /** Own value keys whose value no longer conforms to the effective (inherited) field type and must be fixed. Empty when all conform. */
 export type NodesIncompatibleFieldsList = Array<string>;
-export const NodesIncompatibleFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NodesIncompatibleFieldsList>;
+export const NodesIncompatibleFieldsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<NodesIncompatibleFieldsList>;
 
 /** Own value keys the effective schema no longer declares (e.g. an ancestor removed the field). They still resolve and are served, but nothing validates them and validation rules read them as null; a non-extensible family rejects them on the next changing publish. */
 export type NodesOrphanedFieldsList = Array<string>;
-export const NodesOrphanedFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NodesOrphanedFieldsList>;
+export const NodesOrphanedFieldsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<NodesOrphanedFieldsList>;
 
 export interface Nodes {
   key: string;
@@ -23972,13 +23015,8 @@ export const GetConfigRevisionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetConfigRevisionResponse {
   revision: ConfigRevision;
 }
-export const GetConfigRevisionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: ConfigRevision,
-  }),
-).annotate({
-  identifier: "GetConfigRevisionResponse",
-}) as any as S.Schema<GetConfigRevisionResponse>;
+export const GetConfigRevisionResponse =
+  CreateConfigRevisionDiscardResponse as any as S.Schema<GetConfigRevisionResponse>;
 
 /** If true, return only the most recent active draft authored by the calling user. Requires a user-scoped API key. */
 export type GetConfigRevisionLatestRequestMine = string | boolean;
@@ -24002,13 +23040,8 @@ export const GetConfigRevisionLatestRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetConfigRevisionLatestResponse {
   revision: ConfigRevision;
 }
-export const GetConfigRevisionLatestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: ConfigRevision,
-  }),
-).annotate({
-  identifier: "GetConfigRevisionLatestResponse",
-}) as any as S.Schema<GetConfigRevisionLatestResponse>;
+export const GetConfigRevisionLatestResponse =
+  CreateConfigRevisionDiscardResponse as any as S.Schema<GetConfigRevisionLatestResponse>;
 
 export interface GetConfigRevisionMergeStatusRequest {
   key: string;
@@ -24194,11 +23227,7 @@ export const GetConstantRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetConstantResponse {
   constant: Constant;
 }
-export const GetConstantResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    constant: Constant,
-  }),
-).annotate({ identifier: "GetConstantResponse" }) as any as S.Schema<GetConstantResponse>;
+export const GetConstantResponse = CreateConstantResponse as any as S.Schema<GetConstantResponse>;
 
 export interface GetConstantReferencesRequest {
   /** The key of the constant */
@@ -24217,9 +23246,8 @@ export const GetConstantReferencesResponseFeaturesItem = GetConfigReferencesResp
 
 export type GetConstantReferencesResponseFeaturesList =
   Array<GetConfigReferencesResponseFeaturesItem>;
-export const GetConstantReferencesResponseFeaturesList = /*@__PURE__*/ S.Array(
-  GetConfigReferencesResponseFeaturesItem,
-) as any as S.Schema<GetConstantReferencesResponseFeaturesList>;
+export const GetConstantReferencesResponseFeaturesList =
+  GetConfigReferencesResponseFeaturesList as any as S.Schema<GetConstantReferencesResponseFeaturesList>;
 
 export interface Constants {
   id: string;
@@ -24270,13 +23298,8 @@ export const GetConstantRevisionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetConstantRevisionResponse {
   revision: ConstantRevision;
 }
-export const GetConstantRevisionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: ConstantRevision,
-  }),
-).annotate({
-  identifier: "GetConstantRevisionResponse",
-}) as any as S.Schema<GetConstantRevisionResponse>;
+export const GetConstantRevisionResponse =
+  CreateConstantRevisionDiscardResponse as any as S.Schema<GetConstantRevisionResponse>;
 
 /** If true, return only the most recent active draft authored by the calling user. Requires a user-scoped API key. */
 export type GetConstantRevisionLatestRequestMine = string | boolean;
@@ -24300,13 +23323,8 @@ export const GetConstantRevisionLatestRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetConstantRevisionLatestResponse {
   revision: ConstantRevision;
 }
-export const GetConstantRevisionLatestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: ConstantRevision,
-  }),
-).annotate({
-  identifier: "GetConstantRevisionLatestResponse",
-}) as any as S.Schema<GetConstantRevisionLatestResponse>;
+export const GetConstantRevisionLatestResponse =
+  CreateConstantRevisionDiscardResponse as any as S.Schema<GetConstantRevisionLatestResponse>;
 
 export interface GetConstantRevisionMergeStatusRequest {
   key: string;
@@ -24334,9 +23352,8 @@ export const GetConstantRevisionMergeStatusResponseConflictsItem =
 
 export type GetConstantRevisionMergeStatusResponseConflictsList =
   Array<GetConfigRevisionMergeStatusResponseConflictsItem>;
-export const GetConstantRevisionMergeStatusResponseConflictsList = /*@__PURE__*/ S.Array(
-  GetConfigRevisionMergeStatusResponseConflictsItem,
-) as any as S.Schema<GetConstantRevisionMergeStatusResponseConflictsList>;
+export const GetConstantRevisionMergeStatusResponseConflictsList =
+  GetConfigRevisionMergeStatusResponseConflictsList as any as S.Schema<GetConstantRevisionMergeStatusResponseConflictsList>;
 
 export interface GetConstantRevisionMergeStatusResponse {
   success: boolean;
@@ -24344,16 +23361,8 @@ export interface GetConstantRevisionMergeStatusResponse {
   conflicts: GetConstantRevisionMergeStatusResponseConflictsList;
   canAutoMerge: boolean;
 }
-export const GetConstantRevisionMergeStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    success: S.Boolean,
-    hasConflicts: S.Boolean,
-    conflicts: GetConstantRevisionMergeStatusResponseConflictsList,
-    canAutoMerge: S.Boolean,
-  }),
-).annotate({
-  identifier: "GetConstantRevisionMergeStatusResponse",
-}) as any as S.Schema<GetConstantRevisionMergeStatusResponse>;
+export const GetConstantRevisionMergeStatusResponse =
+  GetConfigRevisionMergeStatusResponse as any as S.Schema<GetConstantRevisionMergeStatusResponse>;
 
 /** If true, return all matching items and ignore limit/offset. Self-hosted only. Has no effect unless API_ALLOW_SKIP_PAGINATION is set to true or 1. */
 export type GetConstantRevisionsRequestSkipPagination = string | boolean;
@@ -24435,13 +23444,8 @@ export const GetContextualBanditRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetContextualBanditResponse {
   contextualBandit: ContextualBandit;
 }
-export const GetContextualBanditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contextualBandit: ContextualBandit,
-  }),
-).annotate({
-  identifier: "GetContextualBanditResponse",
-}) as any as S.Schema<GetContextualBanditResponse>;
+export const GetContextualBanditResponse =
+  CreateContextualBanditResponse as any as S.Schema<GetContextualBanditResponse>;
 
 export interface GetContextualBanditCurrentWeightsRequest {
   /** The Contextual Bandit id */
@@ -24456,18 +23460,15 @@ export const GetContextualBanditCurrentWeightsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetContextualBanditCurrentWeightsRequest>;
 
 export type CurrentLeafWeightsConditionMap = { [key: string]: unknown | undefined };
-export const CurrentLeafWeightsConditionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CurrentLeafWeightsConditionMap>;
+export const CurrentLeafWeightsConditionMap =
+  ConfigValueMap as any as S.Schema<CurrentLeafWeightsConditionMap>;
 
 export type CurrentLeafWeightsWeightsItem = ContextualBanditVariationWeightsItem;
 export const CurrentLeafWeightsWeightsItem = ContextualBanditVariationWeightsItem;
 
 export type CurrentLeafWeightsWeightsList = Array<ContextualBanditVariationWeightsItem>;
-export const CurrentLeafWeightsWeightsList = /*@__PURE__*/ S.Array(
-  ContextualBanditVariationWeightsItem,
-) as any as S.Schema<CurrentLeafWeightsWeightsList>;
+export const CurrentLeafWeightsWeightsList =
+  ContextualBanditVariationWeightsList as any as S.Schema<CurrentLeafWeightsWeightsList>;
 
 export interface CurrentLeafWeights {
   leafId: number;
@@ -24567,14 +23568,12 @@ export const GetContextualBanditLinkedFeaturesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetContextualBanditLinkedFeaturesRequest>;
 
 export type GetContextualBanditLinkedFeaturesResponseLinkedFeaturesList = Array<unknown>;
-export const GetContextualBanditLinkedFeaturesResponseLinkedFeaturesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetContextualBanditLinkedFeaturesResponseLinkedFeaturesList>;
+export const GetContextualBanditLinkedFeaturesResponseLinkedFeaturesList =
+  CreateConfigRevisionRebaseRequestCustomValuesValueList as any as S.Schema<GetContextualBanditLinkedFeaturesResponseLinkedFeaturesList>;
 
 export type GetContextualBanditLinkedFeaturesResponseEnvironmentsList = Array<string>;
-export const GetContextualBanditLinkedFeaturesResponseEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetContextualBanditLinkedFeaturesResponseEnvironmentsList>;
+export const GetContextualBanditLinkedFeaturesResponseEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<GetContextualBanditLinkedFeaturesResponseEnvironmentsList>;
 
 export interface GetContextualBanditLinkedFeaturesResponse {
   linkedFeatures: GetContextualBanditLinkedFeaturesResponseLinkedFeaturesList;
@@ -24603,13 +23602,8 @@ export const GetContextualBanditQueryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetContextualBanditQueryResponse {
   contextualBanditQuery: ContextualBanditQuery;
 }
-export const GetContextualBanditQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contextualBanditQuery: ContextualBanditQuery,
-  }),
-).annotate({
-  identifier: "GetContextualBanditQueryResponse",
-}) as any as S.Schema<GetContextualBanditQueryResponse>;
+export const GetContextualBanditQueryResponse =
+  CreateContextualBanditQueryResponse as any as S.Schema<GetContextualBanditQueryResponse>;
 
 export interface GetContextualBanditResultsRequest {
   /** The Contextual Bandit id */
@@ -24626,9 +23620,7 @@ export const GetContextualBanditResultsRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetContextualBanditResultsResponseContextualBanditSnapshotAttributesList =
   Array<string>;
 export const GetContextualBanditResultsResponseContextualBanditSnapshotAttributesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetContextualBanditResultsResponseContextualBanditSnapshotAttributesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<GetContextualBanditResultsResponseContextualBanditSnapshotAttributesList>;
 
 export type GetContextualBanditResultsResponseContextualBanditSnapshotResponsesList =
   Array<unknown>;
@@ -24639,30 +23631,22 @@ export const GetContextualBanditResultsResponseContextualBanditSnapshotResponses
 
 export type GetContextualBanditResultsResponseContextualBanditSnapshotLeafMapList = Array<unknown>;
 export const GetContextualBanditResultsResponseContextualBanditSnapshotLeafMapList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetContextualBanditResultsResponseContextualBanditSnapshotLeafMapList>;
+  GetContextualBanditResultsResponseContextualBanditSnapshotResponsesList as any as S.Schema<GetContextualBanditResultsResponseContextualBanditSnapshotLeafMapList>;
 
 export type GetContextualBanditResultsResponseContextualBanditSnapshotLeafStatsList =
   Array<unknown>;
 export const GetContextualBanditResultsResponseContextualBanditSnapshotLeafStatsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetContextualBanditResultsResponseContextualBanditSnapshotLeafStatsList>;
+  GetContextualBanditResultsResponseContextualBanditSnapshotResponsesList as any as S.Schema<GetContextualBanditResultsResponseContextualBanditSnapshotLeafStatsList>;
 
 export type GetContextualBanditResultsResponseContextualBanditSnapshotSseTrajectoryList =
   Array<unknown>;
 export const GetContextualBanditResultsResponseContextualBanditSnapshotSseTrajectoryList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetContextualBanditResultsResponseContextualBanditSnapshotSseTrajectoryList>;
+  GetContextualBanditResultsResponseContextualBanditSnapshotResponsesList as any as S.Schema<GetContextualBanditResultsResponseContextualBanditSnapshotSseTrajectoryList>;
 
 export type GetContextualBanditResultsResponseContextualBanditSnapshotBicTrajectoryList =
   Array<unknown>;
 export const GetContextualBanditResultsResponseContextualBanditSnapshotBicTrajectoryList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetContextualBanditResultsResponseContextualBanditSnapshotBicTrajectoryList>;
+  GetContextualBanditResultsResponseContextualBanditSnapshotResponsesList as any as S.Schema<GetContextualBanditResultsResponseContextualBanditSnapshotBicTrajectoryList>;
 
 export interface GetContextualBanditResultsResponseContextualBanditSnapshot {
   attributes: GetContextualBanditResultsResponseContextualBanditSnapshotAttributesList;
@@ -24712,16 +23696,13 @@ export const GetContextualBanditResultsResponseOverallWeightsList = /*@__PURE__*
 ) as any as S.Schema<GetContextualBanditResultsResponseOverallWeightsList>;
 
 export type GetContextualBanditResultsResponseResultsAttributesList = Array<string>;
-export const GetContextualBanditResultsResponseResultsAttributesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetContextualBanditResultsResponseResultsAttributesList>;
+export const GetContextualBanditResultsResponseResultsAttributesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<GetContextualBanditResultsResponseResultsAttributesList>;
 
 export type GetContextualBanditResultsResponseResultsSseTrajectoryItemSplitLeafClausesItemLevelsList =
   Array<string>;
 export const GetContextualBanditResultsResponseResultsSseTrajectoryItemSplitLeafClausesItemLevelsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetContextualBanditResultsResponseResultsSseTrajectoryItemSplitLeafClausesItemLevelsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<GetContextualBanditResultsResponseResultsSseTrajectoryItemSplitLeafClausesItemLevelsList>;
 
 export type GetContextualBanditResultsResponseResultsSseTrajectoryItemSplitLeafClausesItemOperator =
   | "in"
@@ -24757,16 +23738,12 @@ export const GetContextualBanditResultsResponseResultsSseTrajectoryItemSplitLeaf
 export type GetContextualBanditResultsResponseResultsSseTrajectoryItemSplitLeftLevelsList =
   Array<string>;
 export const GetContextualBanditResultsResponseResultsSseTrajectoryItemSplitLeftLevelsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetContextualBanditResultsResponseResultsSseTrajectoryItemSplitLeftLevelsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<GetContextualBanditResultsResponseResultsSseTrajectoryItemSplitLeftLevelsList>;
 
 export type GetContextualBanditResultsResponseResultsSseTrajectoryItemSplitRightLevelsList =
   Array<string>;
 export const GetContextualBanditResultsResponseResultsSseTrajectoryItemSplitRightLevelsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetContextualBanditResultsResponseResultsSseTrajectoryItemSplitRightLevelsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<GetContextualBanditResultsResponseResultsSseTrajectoryItemSplitRightLevelsList>;
 
 export interface GetContextualBanditResultsResponseResultsSseTrajectoryItemSplit {
   leafClauses: GetContextualBanditResultsResponseResultsSseTrajectoryItemSplitLeafClausesList;
@@ -24848,9 +23825,7 @@ export const GetContextualBanditResultsResponseResultsOverall = /*@__PURE__*/ S.
 export type GetContextualBanditResultsResponseResultsLeavesItemClausesItemLevelsList =
   Array<string>;
 export const GetContextualBanditResultsResponseResultsLeavesItemClausesItemLevelsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetContextualBanditResultsResponseResultsLeavesItemClausesItemLevelsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<GetContextualBanditResultsResponseResultsLeavesItemClausesItemLevelsList>;
 
 export type GetContextualBanditResultsResponseResultsLeavesItemClausesItemOperator =
   | "in"
@@ -24914,10 +23889,7 @@ export type GetContextualBanditResultsResponseResultsLeavesItemContextsItemAttri
   [key: string]: string | undefined;
 };
 export const GetContextualBanditResultsResponseResultsLeavesItemContextsItemAttributesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<GetContextualBanditResultsResponseResultsLeavesItemContextsItemAttributesMap>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataCustomFieldsMap as any as S.Schema<GetContextualBanditResultsResponseResultsLeavesItemContextsItemAttributesMap>;
 
 export interface GetContextualBanditResultsResponseResultsLeavesItemContextsItemVariationsItem {
   variationId: string;
@@ -25187,11 +24159,8 @@ export const GetCustomHookRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetCustomHookResponse {
   customHook: CustomHook;
 }
-export const GetCustomHookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customHook: CustomHook,
-  }),
-).annotate({ identifier: "GetCustomHookResponse" }) as any as S.Schema<GetCustomHookResponse>;
+export const GetCustomHookResponse =
+  CreateCustomHookResponse as any as S.Schema<GetCustomHookResponse>;
 
 export interface GetDashboardRequest {
   id: string;
@@ -25249,9 +24218,8 @@ export const GetDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDataSourceRequest" }) as any as S.Schema<GetDataSourceRequest>;
 
 export type DataSourceProjectIdsList = Array<string>;
-export const DataSourceProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataSourceProjectIdsList>;
+export const DataSourceProjectIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DataSourceProjectIdsList>;
 
 export interface DataSourceIdentifierTypesItem {
   id: string;
@@ -25272,14 +24240,12 @@ export const DataSourceIdentifierTypesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DataSourceIdentifierTypesList>;
 
 export type DataSourceAssignmentQueriesItemIdentifierTypesList = Array<string>;
-export const DataSourceAssignmentQueriesItemIdentifierTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataSourceAssignmentQueriesItemIdentifierTypesList>;
+export const DataSourceAssignmentQueriesItemIdentifierTypesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DataSourceAssignmentQueriesItemIdentifierTypesList>;
 
 export type DataSourceAssignmentQueriesItemDimensionColumnsList = Array<string>;
-export const DataSourceAssignmentQueriesItemDimensionColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataSourceAssignmentQueriesItemDimensionColumnsList>;
+export const DataSourceAssignmentQueriesItemDimensionColumnsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DataSourceAssignmentQueriesItemDimensionColumnsList>;
 
 export interface DataSourceAssignmentQueriesItem {
   id: string;
@@ -25312,9 +24278,8 @@ export const DataSourceAssignmentQueriesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DataSourceAssignmentQueriesList>;
 
 export type DataSourceIdentifierJoinQueriesItemIdentifierTypesList = Array<string>;
-export const DataSourceIdentifierJoinQueriesItemIdentifierTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataSourceIdentifierJoinQueriesItemIdentifierTypesList>;
+export const DataSourceIdentifierJoinQueriesItemIdentifierTypesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<DataSourceIdentifierJoinQueriesItemIdentifierTypesList>;
 
 export interface DataSourceIdentifierJoinQueriesItem {
   identifierTypes: DataSourceIdentifierJoinQueriesItemIdentifierTypesList;
@@ -25404,11 +24369,8 @@ export const GetDimensionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDimensionResponse {
   dimension: Dimension;
 }
-export const GetDimensionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimension: Dimension,
-  }),
-).annotate({ identifier: "GetDimensionResponse" }) as any as S.Schema<GetDimensionResponse>;
+export const GetDimensionResponse =
+  CreateDimensionResponse as any as S.Schema<GetDimensionResponse>;
 
 export interface GetExperimentRequest {
   /** The id of the requested resource */
@@ -25512,13 +24474,8 @@ export const GetExperimentSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetExperimentSnapshotResponse {
   snapshot: Snapshot;
 }
-export const GetExperimentSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    snapshot: Snapshot,
-  }),
-).annotate({
-  identifier: "GetExperimentSnapshotResponse",
-}) as any as S.Schema<GetExperimentSnapshotResponse>;
+export const GetExperimentSnapshotResponse =
+  CreateExperimentSnapshotResponse as any as S.Schema<GetExperimentSnapshotResponse>;
 
 export interface GetExperimentStartChecklistRequest {
   /** The id of the requested resource */
@@ -25567,13 +24524,8 @@ export const GetExperimentTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetExperimentTemplateResponse {
   experimentTemplate: ExperimentTemplate;
 }
-export const GetExperimentTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    experimentTemplate: ExperimentTemplate,
-  }),
-).annotate({
-  identifier: "GetExperimentTemplateResponse",
-}) as any as S.Schema<GetExperimentTemplateResponse>;
+export const GetExperimentTemplateResponse =
+  CreateExperimentTemplateResponse as any as S.Schema<GetExperimentTemplateResponse>;
 
 export interface GetFactMetricRequest {
   /** The id of the requested resource */
@@ -25586,14 +24538,12 @@ export const GetFactMetricRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetFactMetricRequest" }) as any as S.Schema<GetFactMetricRequest>;
 
 export type FactMetricProjectsList = Array<string>;
-export const FactMetricProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FactMetricProjectsList>;
+export const FactMetricProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<FactMetricProjectsList>;
 
 export type FactMetricTagsList = Array<string>;
-export const FactMetricTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FactMetricTagsList>;
+export const FactMetricTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<FactMetricTagsList>;
 
 export type FactMetricMetricType =
   | "proportion"
@@ -25615,14 +24565,12 @@ export const FactMetricNumeratorAggregation = S.String;
 
 /** Array of Fact Table Filter Ids. Deprecated, use rowFilters instead. */
 export type FactMetricNumeratorFiltersList = Array<string>;
-export const FactMetricNumeratorFiltersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FactMetricNumeratorFiltersList>;
+export const FactMetricNumeratorFiltersList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<FactMetricNumeratorFiltersList>;
 
 export type FactMetricNumeratorInlineFiltersValueList = Array<string>;
-export const FactMetricNumeratorInlineFiltersValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FactMetricNumeratorInlineFiltersValueList>;
+export const FactMetricNumeratorInlineFiltersValueList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<FactMetricNumeratorInlineFiltersValueList>;
 
 /** Inline filters to apply to the fact table. Keys are column names, values are arrays of values to filter by. Deprecated, use rowFilters instead. */
 export type FactMetricNumeratorInlineFiltersMap = {
@@ -25660,9 +24608,8 @@ export const FactMetricNumeratorRowFiltersItemOperator = S.String;
 
 /** Not required for is_null, not_null, is_true, is_false operators. The between and not_between operators take at most two values, a lower and an upper bound in that order; leave a bound as an empty string for an open-ended range. */
 export type FactMetricNumeratorRowFiltersItemValuesList = Array<string>;
-export const FactMetricNumeratorRowFiltersItemValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FactMetricNumeratorRowFiltersItemValuesList>;
+export const FactMetricNumeratorRowFiltersItemValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<FactMetricNumeratorRowFiltersItemValuesList>;
 
 export interface FactMetricNumeratorRowFiltersItem {
   operator: FactMetricNumeratorRowFiltersItemOperator;
@@ -25717,23 +24664,19 @@ export const FactMetricNumerator = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of Fact Table Filter Ids. Deprecated, use rowFilters instead. */
 export type FactMetricDenominatorFiltersList = Array<string>;
-export const FactMetricDenominatorFiltersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FactMetricDenominatorFiltersList>;
+export const FactMetricDenominatorFiltersList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<FactMetricDenominatorFiltersList>;
 
 export type FactMetricDenominatorInlineFiltersValueList = Array<string>;
-export const FactMetricDenominatorInlineFiltersValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FactMetricDenominatorInlineFiltersValueList>;
+export const FactMetricDenominatorInlineFiltersValueList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<FactMetricDenominatorInlineFiltersValueList>;
 
 /** Inline filters to apply to the fact table. Keys are column names, values are arrays of values to filter by. Deprecated, use rowFilters instead. */
 export type FactMetricDenominatorInlineFiltersMap = {
   [key: string]: FactMetricDenominatorInlineFiltersValueList | undefined;
 };
-export const FactMetricDenominatorInlineFiltersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  FactMetricDenominatorInlineFiltersValueList,
-) as any as S.Schema<FactMetricDenominatorInlineFiltersMap>;
+export const FactMetricDenominatorInlineFiltersMap =
+  FactMetricNumeratorInlineFiltersMap as any as S.Schema<FactMetricDenominatorInlineFiltersMap>;
 
 export type FactMetricDenominatorRowFiltersItemOperator =
   | "="
@@ -25762,9 +24705,8 @@ export const FactMetricDenominatorRowFiltersItemOperator = S.String;
 
 /** Not required for is_null, not_null, is_true, is_false operators. The between and not_between operators take at most two values, a lower and an upper bound in that order; leave a bound as an empty string for an open-ended range. */
 export type FactMetricDenominatorRowFiltersItemValuesList = Array<string>;
-export const FactMetricDenominatorRowFiltersItemValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FactMetricDenominatorRowFiltersItemValuesList>;
+export const FactMetricDenominatorRowFiltersItemValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<FactMetricDenominatorRowFiltersItemValuesList>;
 
 export interface FactMetricDenominatorRowFiltersItem {
   operator: FactMetricDenominatorRowFiltersItemOperator;
@@ -25862,9 +24804,8 @@ export const FactMetricFunnelSettingsStepsItemRowFiltersItemOperator = S.String;
 
 /** Not required for is_null, not_null, is_true, is_false operators. The between and not_between operators take at most two values, a lower and an upper bound in that order; leave a bound as an empty string for an open-ended range. */
 export type FactMetricFunnelSettingsStepsItemRowFiltersItemValuesList = Array<string>;
-export const FactMetricFunnelSettingsStepsItemRowFiltersItemValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FactMetricFunnelSettingsStepsItemRowFiltersItemValuesList>;
+export const FactMetricFunnelSettingsStepsItemRowFiltersItemValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<FactMetricFunnelSettingsStepsItemRowFiltersItemValuesList>;
 
 export interface FactMetricFunnelSettingsStepsItemRowFiltersItem {
   operator: FactMetricFunnelSettingsStepsItemRowFiltersItemOperator;
@@ -26047,15 +24988,13 @@ export const FactMetricManagedBy = S.String;
 
 /** Array of slice column names that will be automatically included in metric analysis. This is an enterprise feature. */
 export type FactMetricMetricAutoSlicesList = Array<string>;
-export const FactMetricMetricAutoSlicesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FactMetricMetricAutoSlicesList>;
+export const FactMetricMetricAutoSlicesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<FactMetricMetricAutoSlicesList>;
 
 /** Ids of older metrics (legacy or fact) that this metric supersedes, for example the legacy metric it was migrated from. Informational only - GrowthBook uses it to link the old and new definitions in the UI and to keep showing results from a snapshot that was created before an experiment switched to this metric. */
 export type FactMetricReplacesList = Array<string>;
-export const FactMetricReplacesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FactMetricReplacesList>;
+export const FactMetricReplacesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<FactMetricReplacesList>;
 
 export interface FactMetric {
   id: string;
@@ -26164,11 +25103,8 @@ export const GetFactTableRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetFactTableResponse {
   factTable: FactTable;
 }
-export const GetFactTableResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    factTable: FactTable,
-  }),
-).annotate({ identifier: "GetFactTableResponse" }) as any as S.Schema<GetFactTableResponse>;
+export const GetFactTableResponse =
+  CreateFactTableResponse as any as S.Schema<GetFactTableResponse>;
 
 export interface GetFactTableFilterRequest {
   /** Specify a specific fact table */
@@ -26188,13 +25124,8 @@ export const GetFactTableFilterRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetFactTableFilterResponse {
   factTableFilter: FactTableFilter;
 }
-export const GetFactTableFilterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    factTableFilter: FactTableFilter,
-  }),
-).annotate({
-  identifier: "GetFactTableFilterResponse",
-}) as any as S.Schema<GetFactTableFilterResponse>;
+export const GetFactTableFilterResponse =
+  CreateFactTableFilterResponse as any as S.Schema<GetFactTableFilterResponse>;
 
 export interface GetFeatureKeysV2Request {
   /** Filter by project id */
@@ -26207,9 +25138,8 @@ export const GetFeatureKeysV2Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetFeatureKeysV2Request" }) as any as S.Schema<GetFeatureKeysV2Request>;
 
 export type GetFeatureKeysV2ResponseBodyList = Array<string>;
-export const GetFeatureKeysV2ResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetFeatureKeysV2ResponseBodyList>;
+export const GetFeatureKeysV2ResponseBodyList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<GetFeatureKeysV2ResponseBodyList>;
 
 export type GetFeatureKeysV2Response = GetFeatureKeysV2ResponseBodyList;
 export const GetFeatureKeysV2Response = /*@__PURE__*/ S.suspend(() =>
@@ -26336,18 +25266,14 @@ export const GetFeatureRevisionDiffV2ResponseBodyCase0 = /*@__PURE__*/ S.suspend
 export type GetFeatureRevisionDiffV2ResponseBodyCase1DiffBeforeMap = {
   [key: string]: unknown | undefined;
 };
-export const GetFeatureRevisionDiffV2ResponseBodyCase1DiffBeforeMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetFeatureRevisionDiffV2ResponseBodyCase1DiffBeforeMap>;
+export const GetFeatureRevisionDiffV2ResponseBodyCase1DiffBeforeMap =
+  ConfigValueMap as any as S.Schema<GetFeatureRevisionDiffV2ResponseBodyCase1DiffBeforeMap>;
 
 export type GetFeatureRevisionDiffV2ResponseBodyCase1DiffAfterMap = {
   [key: string]: unknown | undefined;
 };
-export const GetFeatureRevisionDiffV2ResponseBodyCase1DiffAfterMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetFeatureRevisionDiffV2ResponseBodyCase1DiffAfterMap>;
+export const GetFeatureRevisionDiffV2ResponseBodyCase1DiffAfterMap =
+  ConfigValueMap as any as S.Schema<GetFeatureRevisionDiffV2ResponseBodyCase1DiffAfterMap>;
 
 export interface GetFeatureRevisionDiffV2ResponseBodyCase1DiffSupplementalItem {
   name: string;
@@ -26429,9 +25355,8 @@ export const GetFeatureRevisionLatestV2RequestMine =
   S.Unknown as any as S.Schema<GetFeatureRevisionLatestV2RequestMine>;
 
 export type GetFeatureRevisionLatestV2RequestStatusCase1List = Array<string>;
-export const GetFeatureRevisionLatestV2RequestStatusCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetFeatureRevisionLatestV2RequestStatusCase1List>;
+export const GetFeatureRevisionLatestV2RequestStatusCase1List =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<GetFeatureRevisionLatestV2RequestStatusCase1List>;
 
 /** Filter by revision status. Single value, comma-separated list, repeated params (?status=draft&status=approved), or `all-drafts` shorthand for all active-draft statuses (draft, pending-review, approved, changes-requested). */
 export type GetFeatureRevisionLatestV2RequestStatus =
@@ -26463,13 +25388,8 @@ export const GetFeatureRevisionLatestV2Request = /*@__PURE__*/ S.suspend(() =>
 export interface GetFeatureRevisionLatestV2Response {
   revision: FeatureRevisionV2;
 }
-export const GetFeatureRevisionLatestV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: FeatureRevisionV2,
-  }),
-).annotate({
-  identifier: "GetFeatureRevisionLatestV2Response",
-}) as any as S.Schema<GetFeatureRevisionLatestV2Response>;
+export const GetFeatureRevisionLatestV2Response =
+  DeleteFeatureRevisionRuleRampScheduleV2Response as any as S.Schema<GetFeatureRevisionLatestV2Response>;
 
 export interface GetFeatureRevisionLogV2Request {
   id: string;
@@ -26580,9 +25500,8 @@ export const GetFeatureRevisionMergeStatusV2ResponseConflictsList = /*@__PURE__*
 ) as any as S.Schema<GetFeatureRevisionMergeStatusV2ResponseConflictsList>;
 
 export type GetFeatureRevisionMergeStatusV2ResponseResultRulesList = Array<unknown>;
-export const GetFeatureRevisionMergeStatusV2ResponseResultRulesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetFeatureRevisionMergeStatusV2ResponseResultRulesList>;
+export const GetFeatureRevisionMergeStatusV2ResponseResultRulesList =
+  CreateConfigRevisionRebaseRequestCustomValuesValueList as any as S.Schema<GetFeatureRevisionMergeStatusV2ResponseResultRulesList>;
 
 export type GetFeatureRevisionMergeStatusV2ResponseResultEnvironmentsEnabledMap = {
   [key: string]: boolean | undefined;
@@ -26600,9 +25519,8 @@ export const GetFeatureRevisionMergeStatusV2ResponseResultPrerequisitesItem =
 
 export type GetFeatureRevisionMergeStatusV2ResponseResultPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
-export const GetFeatureRevisionMergeStatusV2ResponseResultPrerequisitesList = /*@__PURE__*/ S.Array(
-  RampScheduleStartActionsItemPatchPrerequisitesItem,
-) as any as S.Schema<GetFeatureRevisionMergeStatusV2ResponseResultPrerequisitesList>;
+export const GetFeatureRevisionMergeStatusV2ResponseResultPrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<GetFeatureRevisionMergeStatusV2ResponseResultPrerequisitesList>;
 
 export interface GetFeatureRevisionMergeStatusV2ResponseResultMetadata {
   releaseType?: string;
@@ -26685,9 +25603,8 @@ export const GetFeatureRevisionsV2RequestSkipPagination =
   S.Unknown as any as S.Schema<GetFeatureRevisionsV2RequestSkipPagination>;
 
 export type GetFeatureRevisionsV2RequestStatusCase1List = Array<string>;
-export const GetFeatureRevisionsV2RequestStatusCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetFeatureRevisionsV2RequestStatusCase1List>;
+export const GetFeatureRevisionsV2RequestStatusCase1List =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<GetFeatureRevisionsV2RequestStatusCase1List>;
 
 /** Filter by revision status. Single value, comma-separated list, repeated params (?status=draft&status=approved), or `all-drafts` shorthand for all active-draft statuses (draft, pending-review, approved, changes-requested). */
 export type GetFeatureRevisionsV2RequestStatus =
@@ -26774,13 +25691,8 @@ export const GetFeatureRevisionV2Request = /*@__PURE__*/ S.suspend(() =>
 export interface GetFeatureRevisionV2Response {
   revision: FeatureRevisionV2;
 }
-export const GetFeatureRevisionV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: FeatureRevisionV2,
-  }),
-).annotate({
-  identifier: "GetFeatureRevisionV2Response",
-}) as any as S.Schema<GetFeatureRevisionV2Response>;
+export const GetFeatureRevisionV2Response =
+  DeleteFeatureRevisionRuleRampScheduleV2Response as any as S.Schema<GetFeatureRevisionV2Response>;
 
 export interface GetFeatureStaleV2Request {
   /** Comma-separated list of feature IDs (URL-encoded if needed). Example: `my_feature,another_feature` */
@@ -26909,23 +25821,20 @@ export const GetFeatureV2Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetFeatureV2Request" }) as any as S.Schema<GetFeatureV2Request>;
 
 export type FeatureWithRevisionsV2TargetingProjectsList = Array<string>;
-export const FeatureWithRevisionsV2TargetingProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FeatureWithRevisionsV2TargetingProjectsList>;
+export const FeatureWithRevisionsV2TargetingProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<FeatureWithRevisionsV2TargetingProjectsList>;
 
 export type FeatureWithRevisionsV2ValueType = "boolean" | "string" | "number" | "json";
 export const FeatureWithRevisionsV2ValueType = S.String;
 
 export type FeatureWithRevisionsV2TagsList = Array<string>;
-export const FeatureWithRevisionsV2TagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FeatureWithRevisionsV2TagsList>;
+export const FeatureWithRevisionsV2TagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<FeatureWithRevisionsV2TagsList>;
 
 /** Unified rules array. Each rule carries its own environment scope via `allEnvironments` / `environments`. */
 export type FeatureWithRevisionsV2RulesList = Array<FeatureRuleV2>;
-export const FeatureWithRevisionsV2RulesList = /*@__PURE__*/ S.Array(
-  FeatureRuleV2,
-) as any as S.Schema<FeatureWithRevisionsV2RulesList>;
+export const FeatureWithRevisionsV2RulesList =
+  FeatureRevisionV2RulesList as any as S.Schema<FeatureWithRevisionsV2RulesList>;
 
 export interface FeatureEnvironmentV2 {
   enabled: boolean;
@@ -26952,9 +25861,8 @@ export const FeatureWithRevisionsV2EnvironmentsMap = /*@__PURE__*/ S.Record(
 
 /** Feature IDs. Each feature must evaluate to `true` */
 export type FeatureWithRevisionsV2PrerequisitesList = Array<string>;
-export const FeatureWithRevisionsV2PrerequisitesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FeatureWithRevisionsV2PrerequisitesList>;
+export const FeatureWithRevisionsV2PrerequisitesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<FeatureWithRevisionsV2PrerequisitesList>;
 
 export interface FeatureRevisionSummary {
   /** Stable id of the feature's live revision. */
@@ -26977,10 +25885,8 @@ export const FeatureRevisionSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FeatureRevisionSummary" }) as any as S.Schema<FeatureRevisionSummary>;
 
 export type FeatureWithRevisionsV2CustomFieldsMap = { [key: string]: unknown | undefined };
-export const FeatureWithRevisionsV2CustomFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FeatureWithRevisionsV2CustomFieldsMap>;
+export const FeatureWithRevisionsV2CustomFieldsMap =
+  ConfigValueMap as any as S.Schema<FeatureWithRevisionsV2CustomFieldsMap>;
 
 export interface FeatureWithRevisionsV2Holdout {
   /** Holdout ID */
@@ -26988,19 +25894,12 @@ export interface FeatureWithRevisionsV2Holdout {
   /** The feature value assigned to users in the holdout treatment group */
   value: string;
 }
-export const FeatureWithRevisionsV2Holdout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "FeatureWithRevisionsV2Holdout",
-}) as any as S.Schema<FeatureWithRevisionsV2Holdout>;
+export const FeatureWithRevisionsV2Holdout =
+  GetFeatureRevisionMergeStatusV2ResponseResultHoldout as any as S.Schema<FeatureWithRevisionsV2Holdout>;
 
 export type FeatureWithRevisionsV2RevisionsList = Array<FeatureRevisionV2>;
-export const FeatureWithRevisionsV2RevisionsList = /*@__PURE__*/ S.Array(
-  FeatureRevisionV2,
-) as any as S.Schema<FeatureWithRevisionsV2RevisionsList>;
+export const FeatureWithRevisionsV2RevisionsList =
+  GetFeatureRevisionsV2ResponseRevisionsList as any as S.Schema<FeatureWithRevisionsV2RevisionsList>;
 
 export interface FeatureWithRevisionsV2 {
   id: string;
@@ -27078,11 +25977,7 @@ export const GetHoldoutRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetHoldoutResponse {
   holdout: Holdout;
 }
-export const GetHoldoutResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    holdout: Holdout,
-  }),
-).annotate({ identifier: "GetHoldoutResponse" }) as any as S.Schema<GetHoldoutResponse>;
+export const GetHoldoutResponse = CreateHoldoutResponse as any as S.Schema<GetHoldoutResponse>;
 
 export interface GetInformationSchemaRequest {
   /** The id of the data source */
@@ -27303,11 +26198,7 @@ export const GetLearningRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetLearningResponse {
   learning: Learning;
 }
-export const GetLearningResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    learning: Learning,
-  }),
-).annotate({ identifier: "GetLearningResponse" }) as any as S.Schema<GetLearningResponse>;
+export const GetLearningResponse = CreateLearningResponse as any as S.Schema<GetLearningResponse>;
 
 export interface GetMetricRequest {
   /** The id of the requested resource */
@@ -27327,12 +26218,11 @@ export type MetricType = "binomial" | "count" | "duration" | "revenue";
 export const MetricType = S.String;
 
 export type MetricTagsList = Array<string>;
-export const MetricTagsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<MetricTagsList>;
+export const MetricTagsList = HoldoutTagsList as any as S.Schema<MetricTagsList>;
 
 export type MetricProjectsList = Array<string>;
-export const MetricProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricProjectsList>;
+export const MetricProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<MetricProjectsList>;
 
 export type MetricBehaviorGoal = "increase" | "decrease";
 export const MetricBehaviorGoal = S.String;
@@ -27438,9 +26328,8 @@ export const MetricBehavior = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricBehavior" }) as any as S.Schema<MetricBehavior>;
 
 export type MetricSqlIdentifierTypesList = Array<string>;
-export const MetricSqlIdentifierTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricSqlIdentifierTypesList>;
+export const MetricSqlIdentifierTypesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<MetricSqlIdentifierTypesList>;
 
 export interface MetricSql {
   identifierTypes: MetricSqlIdentifierTypesList;
@@ -27703,11 +26592,8 @@ export const GetNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetNamespaceResponse {
   namespace: Namespace;
 }
-export const GetNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namespace: Namespace,
-  }),
-).annotate({ identifier: "GetNamespaceResponse" }) as any as S.Schema<GetNamespaceResponse>;
+export const GetNamespaceResponse =
+  CreateNamespaceResponse as any as S.Schema<GetNamespaceResponse>;
 
 export interface GetNamespaceMembershipsRequest {
   /** The unique id of the namespace */
@@ -27732,15 +26618,13 @@ export type NamespaceExperimentMemberStatus = "draft" | "running" | "stopped";
 export const NamespaceExperimentMemberStatus = S.String;
 
 export type NamespaceExperimentMemberRangesItemList = Array<unknown>;
-export const NamespaceExperimentMemberRangesItemList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<NamespaceExperimentMemberRangesItemList>;
+export const NamespaceExperimentMemberRangesItemList =
+  CreateConfigRevisionRebaseRequestCustomValuesValueList as any as S.Schema<NamespaceExperimentMemberRangesItemList>;
 
 /** The ranges claimed within this namespace, as [start, end] pairs between 0 and 1. */
 export type NamespaceExperimentMemberRangesList = Array<NamespaceExperimentMemberRangesItemList>;
-export const NamespaceExperimentMemberRangesList = /*@__PURE__*/ S.Array(
-  NamespaceExperimentMemberRangesItemList,
-) as any as S.Schema<NamespaceExperimentMemberRangesList>;
+export const NamespaceExperimentMemberRangesList =
+  CreateExperimentRequestPhasesItemNamespaceRangesList as any as S.Schema<NamespaceExperimentMemberRangesList>;
 
 export interface NamespaceExperimentMember {
   /** The internal experiment ID. */
@@ -27798,9 +26682,8 @@ export type GetProductAnalyticsColumnsRequestSource = "fact_table" | "metric";
 export const GetProductAnalyticsColumnsRequestSource = S.String;
 
 export type GetProductAnalyticsColumnsRequestMetricIdsList = Array<string>;
-export const GetProductAnalyticsColumnsRequestMetricIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProductAnalyticsColumnsRequestMetricIdsList>;
+export const GetProductAnalyticsColumnsRequestMetricIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<GetProductAnalyticsColumnsRequestMetricIdsList>;
 
 export interface GetProductAnalyticsColumnsRequest {
   source: GetProductAnalyticsColumnsRequestSource | (string & {});
@@ -27836,9 +26719,8 @@ export const GetProductAnalyticsColumnsResponseColumnsList = /*@__PURE__*/ S.Arr
 ) as any as S.Schema<GetProductAnalyticsColumnsResponseColumnsList>;
 
 export type GetProductAnalyticsColumnsResponseUserIdTypesList = Array<string>;
-export const GetProductAnalyticsColumnsResponseUserIdTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProductAnalyticsColumnsResponseUserIdTypesList>;
+export const GetProductAnalyticsColumnsResponseUserIdTypesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<GetProductAnalyticsColumnsResponseUserIdTypesList>;
 
 export interface Metrics {
   metricId: string;
@@ -27879,14 +26761,12 @@ export type GetProductAnalyticsColumnValuesRequestSource = "fact_table" | "metri
 export const GetProductAnalyticsColumnValuesRequestSource = S.String;
 
 export type GetProductAnalyticsColumnValuesRequestMetricIdsList = Array<string>;
-export const GetProductAnalyticsColumnValuesRequestMetricIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProductAnalyticsColumnValuesRequestMetricIdsList>;
+export const GetProductAnalyticsColumnValuesRequestMetricIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<GetProductAnalyticsColumnValuesRequestMetricIdsList>;
 
 export type GetProductAnalyticsColumnValuesRequestColumnsList = Array<string>;
-export const GetProductAnalyticsColumnValuesRequestColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProductAnalyticsColumnValuesRequestColumnsList>;
+export const GetProductAnalyticsColumnValuesRequestColumnsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<GetProductAnalyticsColumnValuesRequestColumnsList>;
 
 export interface GetProductAnalyticsColumnValuesRequest {
   source: GetProductAnalyticsColumnValuesRequestSource | (string & {});
@@ -27910,15 +26790,14 @@ export const GetProductAnalyticsColumnValuesRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetProductAnalyticsColumnValuesRequest>;
 
 export type ValuesValueList = Array<string>;
-export const ValuesValueList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<ValuesValueList>;
+export const ValuesValueList = HoldoutTagsList as any as S.Schema<ValuesValueList>;
 
 export type Values = { [key: string]: ValuesValueList | undefined };
 export const Values = /*@__PURE__*/ S.Record(S.String, ValuesValueList) as any as S.Schema<Values>;
 
 export type GetProductAnalyticsColumnValuesResponseWarningsList = Array<string>;
-export const GetProductAnalyticsColumnValuesResponseWarningsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProductAnalyticsColumnValuesResponseWarningsList>;
+export const GetProductAnalyticsColumnValuesResponseWarningsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<GetProductAnalyticsColumnValuesResponseWarningsList>;
 
 export interface GetProductAnalyticsColumnValuesResponse {
   values: Values;
@@ -27998,9 +26877,8 @@ export type AnalyticsExplorationResultRowsItemJourneyCase0Direction = "forward" 
 export const AnalyticsExplorationResultRowsItemJourneyCase0Direction = S.String;
 
 export type AnalyticsExplorationResultRowsItemJourneyCase0LevelsList = Array<string>;
-export const AnalyticsExplorationResultRowsItemJourneyCase0LevelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsExplorationResultRowsItemJourneyCase0LevelsList>;
+export const AnalyticsExplorationResultRowsItemJourneyCase0LevelsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<AnalyticsExplorationResultRowsItemJourneyCase0LevelsList>;
 
 export interface AnalyticsExplorationResultRowsItemJourneyCase0 {
   kind: string;
@@ -28070,10 +26948,8 @@ export const AnalyticsExplorationResultRowsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AnalyticsExplorationResultRowsList>;
 
 export type AnalyticsExplorationResultRawRowsItemMap = { [key: string]: unknown | undefined };
-export const AnalyticsExplorationResultRawRowsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AnalyticsExplorationResultRawRowsItemMap>;
+export const AnalyticsExplorationResultRawRowsItemMap =
+  ConfigValueMap as any as S.Schema<AnalyticsExplorationResultRawRowsItemMap>;
 
 export type AnalyticsExplorationResultRawRowsList = Array<AnalyticsExplorationResultRawRowsItemMap>;
 export const AnalyticsExplorationResultRawRowsList = /*@__PURE__*/ S.Array(
@@ -28125,24 +27001,16 @@ export const AnalyticsExplorationConfigCase0DimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
 
 export type AnalyticsExplorationConfigCase0DimensionsItemCase2ValuesList = Array<string>;
-export const AnalyticsExplorationConfigCase0DimensionsItemCase2ValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsExplorationConfigCase0DimensionsItemCase2ValuesList>;
+export const AnalyticsExplorationConfigCase0DimensionsItemCase2ValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<AnalyticsExplorationConfigCase0DimensionsItemCase2ValuesList>;
 
 export interface AnalyticsExplorationConfigCase0DimensionsItemCase2 {
   dimensionType: string;
   column: string;
   values: AnalyticsExplorationConfigCase0DimensionsItemCase2ValuesList;
 }
-export const AnalyticsExplorationConfigCase0DimensionsItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.String,
-    values: AnalyticsExplorationConfigCase0DimensionsItemCase2ValuesList,
-  }),
-).annotate({
-  identifier: "AnalyticsExplorationConfigCase0DimensionsItemCase2",
-}) as any as S.Schema<AnalyticsExplorationConfigCase0DimensionsItemCase2>;
+export const AnalyticsExplorationConfigCase0DimensionsItemCase2 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<AnalyticsExplorationConfigCase0DimensionsItemCase2>;
 
 export type AnalyticsExplorationConfigCase0DimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -28173,9 +27041,7 @@ export const AnalyticsExplorationConfigCase0DimensionsItemCase3SlicesItemFilters
 export type AnalyticsExplorationConfigCase0DimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const AnalyticsExplorationConfigCase0DimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AnalyticsExplorationConfigCase0DimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<AnalyticsExplorationConfigCase0DimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface AnalyticsExplorationConfigCase0DimensionsItemCase3SlicesItemFiltersItem {
   operator: AnalyticsExplorationConfigCase0DimensionsItemCase3SlicesItemFiltersItemOperator;
@@ -28336,9 +27202,7 @@ export const AnalyticsExplorationConfigCase0DatasetValuesItemRowFiltersItemOpera
 export type AnalyticsExplorationConfigCase0DatasetValuesItemRowFiltersItemValuesList =
   Array<string>;
 export const AnalyticsExplorationConfigCase0DatasetValuesItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AnalyticsExplorationConfigCase0DatasetValuesItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<AnalyticsExplorationConfigCase0DatasetValuesItemRowFiltersItemValuesList>;
 
 export interface AnalyticsExplorationConfigCase0DatasetValuesItemRowFiltersItem {
   operator: AnalyticsExplorationConfigCase0DatasetValuesItemRowFiltersItemOperator;
@@ -28458,24 +27322,16 @@ export const AnalyticsExplorationConfigCase1DimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
 
 export type AnalyticsExplorationConfigCase1DimensionsItemCase2ValuesList = Array<string>;
-export const AnalyticsExplorationConfigCase1DimensionsItemCase2ValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsExplorationConfigCase1DimensionsItemCase2ValuesList>;
+export const AnalyticsExplorationConfigCase1DimensionsItemCase2ValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<AnalyticsExplorationConfigCase1DimensionsItemCase2ValuesList>;
 
 export interface AnalyticsExplorationConfigCase1DimensionsItemCase2 {
   dimensionType: string;
   column: string;
   values: AnalyticsExplorationConfigCase1DimensionsItemCase2ValuesList;
 }
-export const AnalyticsExplorationConfigCase1DimensionsItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.String,
-    values: AnalyticsExplorationConfigCase1DimensionsItemCase2ValuesList,
-  }),
-).annotate({
-  identifier: "AnalyticsExplorationConfigCase1DimensionsItemCase2",
-}) as any as S.Schema<AnalyticsExplorationConfigCase1DimensionsItemCase2>;
+export const AnalyticsExplorationConfigCase1DimensionsItemCase2 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<AnalyticsExplorationConfigCase1DimensionsItemCase2>;
 
 export type AnalyticsExplorationConfigCase1DimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -28506,9 +27362,7 @@ export const AnalyticsExplorationConfigCase1DimensionsItemCase3SlicesItemFilters
 export type AnalyticsExplorationConfigCase1DimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const AnalyticsExplorationConfigCase1DimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AnalyticsExplorationConfigCase1DimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<AnalyticsExplorationConfigCase1DimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface AnalyticsExplorationConfigCase1DimensionsItemCase3SlicesItemFiltersItem {
   operator: AnalyticsExplorationConfigCase1DimensionsItemCase3SlicesItemFiltersItemOperator;
@@ -28669,9 +27523,7 @@ export const AnalyticsExplorationConfigCase1DatasetValuesItemRowFiltersItemOpera
 export type AnalyticsExplorationConfigCase1DatasetValuesItemRowFiltersItemValuesList =
   Array<string>;
 export const AnalyticsExplorationConfigCase1DatasetValuesItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AnalyticsExplorationConfigCase1DatasetValuesItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<AnalyticsExplorationConfigCase1DatasetValuesItemRowFiltersItemValuesList>;
 
 export interface AnalyticsExplorationConfigCase1DatasetValuesItemRowFiltersItem {
   operator: AnalyticsExplorationConfigCase1DatasetValuesItemRowFiltersItemOperator;
@@ -28799,24 +27651,16 @@ export const AnalyticsExplorationConfigCase2DimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
 
 export type AnalyticsExplorationConfigCase2DimensionsItemCase2ValuesList = Array<string>;
-export const AnalyticsExplorationConfigCase2DimensionsItemCase2ValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsExplorationConfigCase2DimensionsItemCase2ValuesList>;
+export const AnalyticsExplorationConfigCase2DimensionsItemCase2ValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<AnalyticsExplorationConfigCase2DimensionsItemCase2ValuesList>;
 
 export interface AnalyticsExplorationConfigCase2DimensionsItemCase2 {
   dimensionType: string;
   column: string;
   values: AnalyticsExplorationConfigCase2DimensionsItemCase2ValuesList;
 }
-export const AnalyticsExplorationConfigCase2DimensionsItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.String,
-    values: AnalyticsExplorationConfigCase2DimensionsItemCase2ValuesList,
-  }),
-).annotate({
-  identifier: "AnalyticsExplorationConfigCase2DimensionsItemCase2",
-}) as any as S.Schema<AnalyticsExplorationConfigCase2DimensionsItemCase2>;
+export const AnalyticsExplorationConfigCase2DimensionsItemCase2 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<AnalyticsExplorationConfigCase2DimensionsItemCase2>;
 
 export type AnalyticsExplorationConfigCase2DimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -28847,9 +27691,7 @@ export const AnalyticsExplorationConfigCase2DimensionsItemCase3SlicesItemFilters
 export type AnalyticsExplorationConfigCase2DimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const AnalyticsExplorationConfigCase2DimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AnalyticsExplorationConfigCase2DimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<AnalyticsExplorationConfigCase2DimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface AnalyticsExplorationConfigCase2DimensionsItemCase3SlicesItemFiltersItem {
   operator: AnalyticsExplorationConfigCase2DimensionsItemCase3SlicesItemFiltersItemOperator;
@@ -29026,9 +27868,7 @@ export const AnalyticsExplorationConfigCase2DatasetValuesItemRowFiltersItemOpera
 export type AnalyticsExplorationConfigCase2DatasetValuesItemRowFiltersItemValuesList =
   Array<string>;
 export const AnalyticsExplorationConfigCase2DatasetValuesItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AnalyticsExplorationConfigCase2DatasetValuesItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<AnalyticsExplorationConfigCase2DatasetValuesItemRowFiltersItemValuesList>;
 
 export interface AnalyticsExplorationConfigCase2DatasetValuesItemRowFiltersItem {
   operator: AnalyticsExplorationConfigCase2DatasetValuesItemRowFiltersItemOperator;
@@ -29162,24 +28002,16 @@ export const AnalyticsExplorationConfigCase3DimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
 
 export type AnalyticsExplorationConfigCase3DimensionsItemCase2ValuesList = Array<string>;
-export const AnalyticsExplorationConfigCase3DimensionsItemCase2ValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsExplorationConfigCase3DimensionsItemCase2ValuesList>;
+export const AnalyticsExplorationConfigCase3DimensionsItemCase2ValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<AnalyticsExplorationConfigCase3DimensionsItemCase2ValuesList>;
 
 export interface AnalyticsExplorationConfigCase3DimensionsItemCase2 {
   dimensionType: string;
   column: string;
   values: AnalyticsExplorationConfigCase3DimensionsItemCase2ValuesList;
 }
-export const AnalyticsExplorationConfigCase3DimensionsItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.String,
-    values: AnalyticsExplorationConfigCase3DimensionsItemCase2ValuesList,
-  }),
-).annotate({
-  identifier: "AnalyticsExplorationConfigCase3DimensionsItemCase2",
-}) as any as S.Schema<AnalyticsExplorationConfigCase3DimensionsItemCase2>;
+export const AnalyticsExplorationConfigCase3DimensionsItemCase2 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<AnalyticsExplorationConfigCase3DimensionsItemCase2>;
 
 export type AnalyticsExplorationConfigCase3DimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -29210,9 +28042,7 @@ export const AnalyticsExplorationConfigCase3DimensionsItemCase3SlicesItemFilters
 export type AnalyticsExplorationConfigCase3DimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const AnalyticsExplorationConfigCase3DimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AnalyticsExplorationConfigCase3DimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<AnalyticsExplorationConfigCase3DimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface AnalyticsExplorationConfigCase3DimensionsItemCase3SlicesItemFiltersItem {
   operator: AnalyticsExplorationConfigCase3DimensionsItemCase3SlicesItemFiltersItemOperator;
@@ -29389,9 +28219,7 @@ export const AnalyticsExplorationConfigCase3DatasetValuesItemRowFiltersItemOpera
 export type AnalyticsExplorationConfigCase3DatasetValuesItemRowFiltersItemValuesList =
   Array<string>;
 export const AnalyticsExplorationConfigCase3DatasetValuesItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AnalyticsExplorationConfigCase3DatasetValuesItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<AnalyticsExplorationConfigCase3DatasetValuesItemRowFiltersItemValuesList>;
 
 export interface AnalyticsExplorationConfigCase3DatasetValuesItemRowFiltersItem {
   operator: AnalyticsExplorationConfigCase3DatasetValuesItemRowFiltersItemOperator;
@@ -29449,9 +28277,8 @@ export const AnalyticsExplorationConfigCase3DatasetValuesList = /*@__PURE__*/ S.
 ) as any as S.Schema<AnalyticsExplorationConfigCase3DatasetValuesList>;
 
 export type AnalyticsExplorationConfigCase3DatasetHiddenColumnsList = Array<string>;
-export const AnalyticsExplorationConfigCase3DatasetHiddenColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsExplorationConfigCase3DatasetHiddenColumnsList>;
+export const AnalyticsExplorationConfigCase3DatasetHiddenColumnsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<AnalyticsExplorationConfigCase3DatasetHiddenColumnsList>;
 
 export interface AnalyticsExplorationConfigCase3Dataset {
   type: string;
@@ -29530,24 +28357,16 @@ export const AnalyticsExplorationConfigCase4DimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
 
 export type AnalyticsExplorationConfigCase4DimensionsItemCase2ValuesList = Array<string>;
-export const AnalyticsExplorationConfigCase4DimensionsItemCase2ValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsExplorationConfigCase4DimensionsItemCase2ValuesList>;
+export const AnalyticsExplorationConfigCase4DimensionsItemCase2ValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<AnalyticsExplorationConfigCase4DimensionsItemCase2ValuesList>;
 
 export interface AnalyticsExplorationConfigCase4DimensionsItemCase2 {
   dimensionType: string;
   column: string;
   values: AnalyticsExplorationConfigCase4DimensionsItemCase2ValuesList;
 }
-export const AnalyticsExplorationConfigCase4DimensionsItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.String,
-    values: AnalyticsExplorationConfigCase4DimensionsItemCase2ValuesList,
-  }),
-).annotate({
-  identifier: "AnalyticsExplorationConfigCase4DimensionsItemCase2",
-}) as any as S.Schema<AnalyticsExplorationConfigCase4DimensionsItemCase2>;
+export const AnalyticsExplorationConfigCase4DimensionsItemCase2 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<AnalyticsExplorationConfigCase4DimensionsItemCase2>;
 
 export type AnalyticsExplorationConfigCase4DimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -29578,9 +28397,7 @@ export const AnalyticsExplorationConfigCase4DimensionsItemCase3SlicesItemFilters
 export type AnalyticsExplorationConfigCase4DimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const AnalyticsExplorationConfigCase4DimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AnalyticsExplorationConfigCase4DimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<AnalyticsExplorationConfigCase4DimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface AnalyticsExplorationConfigCase4DimensionsItemCase3SlicesItemFiltersItem {
   operator: AnalyticsExplorationConfigCase4DimensionsItemCase3SlicesItemFiltersItemOperator;
@@ -29740,9 +28557,7 @@ export const AnalyticsExplorationConfigCase4DatasetStepsItemRowFiltersItemOperat
 
 export type AnalyticsExplorationConfigCase4DatasetStepsItemRowFiltersItemValuesList = Array<string>;
 export const AnalyticsExplorationConfigCase4DatasetStepsItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AnalyticsExplorationConfigCase4DatasetStepsItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<AnalyticsExplorationConfigCase4DatasetStepsItemRowFiltersItemValuesList>;
 
 export interface AnalyticsExplorationConfigCase4DatasetStepsItemRowFiltersItem {
   operator: AnalyticsExplorationConfigCase4DatasetStepsItemRowFiltersItemOperator;
@@ -29892,24 +28707,16 @@ export const AnalyticsExplorationConfigCase5DimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
 
 export type AnalyticsExplorationConfigCase5DimensionsItemCase2ValuesList = Array<string>;
-export const AnalyticsExplorationConfigCase5DimensionsItemCase2ValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsExplorationConfigCase5DimensionsItemCase2ValuesList>;
+export const AnalyticsExplorationConfigCase5DimensionsItemCase2ValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<AnalyticsExplorationConfigCase5DimensionsItemCase2ValuesList>;
 
 export interface AnalyticsExplorationConfigCase5DimensionsItemCase2 {
   dimensionType: string;
   column: string;
   values: AnalyticsExplorationConfigCase5DimensionsItemCase2ValuesList;
 }
-export const AnalyticsExplorationConfigCase5DimensionsItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.String,
-    values: AnalyticsExplorationConfigCase5DimensionsItemCase2ValuesList,
-  }),
-).annotate({
-  identifier: "AnalyticsExplorationConfigCase5DimensionsItemCase2",
-}) as any as S.Schema<AnalyticsExplorationConfigCase5DimensionsItemCase2>;
+export const AnalyticsExplorationConfigCase5DimensionsItemCase2 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<AnalyticsExplorationConfigCase5DimensionsItemCase2>;
 
 export type AnalyticsExplorationConfigCase5DimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -29940,9 +28747,7 @@ export const AnalyticsExplorationConfigCase5DimensionsItemCase3SlicesItemFilters
 export type AnalyticsExplorationConfigCase5DimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const AnalyticsExplorationConfigCase5DimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AnalyticsExplorationConfigCase5DimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<AnalyticsExplorationConfigCase5DimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface AnalyticsExplorationConfigCase5DimensionsItemCase3SlicesItemFiltersItem {
   operator: AnalyticsExplorationConfigCase5DimensionsItemCase3SlicesItemFiltersItemOperator;
@@ -30076,9 +28881,8 @@ export const AnalyticsExplorationConfigCase5ChartSettings =
   CreateDashboardV2RequestBlocksItemCase12ConfigChartSettings;
 
 export type AnalyticsExplorationConfigCase5DatasetStepColumnsList = Array<string>;
-export const AnalyticsExplorationConfigCase5DatasetStepColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsExplorationConfigCase5DatasetStepColumnsList>;
+export const AnalyticsExplorationConfigCase5DatasetStepColumnsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<AnalyticsExplorationConfigCase5DatasetStepColumnsList>;
 
 export interface AnalyticsExplorationConfigCase5DatasetStepGroupsItem {
   column: string;
@@ -30100,9 +28904,8 @@ export const AnalyticsExplorationConfigCase5DatasetStepGroupsList = /*@__PURE__*
 ) as any as S.Schema<AnalyticsExplorationConfigCase5DatasetStepGroupsList>;
 
 export type AnalyticsExplorationConfigCase5DatasetAnchorStepValuesList = Array<string>;
-export const AnalyticsExplorationConfigCase5DatasetAnchorStepValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsExplorationConfigCase5DatasetAnchorStepValuesList>;
+export const AnalyticsExplorationConfigCase5DatasetAnchorStepValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<AnalyticsExplorationConfigCase5DatasetAnchorStepValuesList>;
 
 export type AnalyticsExplorationConfigCase5DatasetDirection = "forward" | "backward";
 export const AnalyticsExplorationConfigCase5DatasetDirection = S.String;
@@ -30133,9 +28936,8 @@ export type AnalyticsExplorationConfigCase5DatasetRowFiltersItemOperator =
 export const AnalyticsExplorationConfigCase5DatasetRowFiltersItemOperator = S.String;
 
 export type AnalyticsExplorationConfigCase5DatasetRowFiltersItemValuesList = Array<string>;
-export const AnalyticsExplorationConfigCase5DatasetRowFiltersItemValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsExplorationConfigCase5DatasetRowFiltersItemValuesList>;
+export const AnalyticsExplorationConfigCase5DatasetRowFiltersItemValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<AnalyticsExplorationConfigCase5DatasetRowFiltersItemValuesList>;
 
 export interface AnalyticsExplorationConfigCase5DatasetRowFiltersItem {
   operator: AnalyticsExplorationConfigCase5DatasetRowFiltersItemOperator;
@@ -30176,9 +28978,8 @@ export const AnalyticsExplorationConfigCase5DatasetPathList = /*@__PURE__*/ S.Ar
 ) as any as S.Schema<AnalyticsExplorationConfigCase5DatasetPathList>;
 
 export type AnalyticsExplorationConfigCase5DatasetOptionsPerStepList = Array<number>;
-export const AnalyticsExplorationConfigCase5DatasetOptionsPerStepList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<AnalyticsExplorationConfigCase5DatasetOptionsPerStepList>;
+export const AnalyticsExplorationConfigCase5DatasetOptionsPerStepList =
+  CreateCustomFieldRequestDefaultValueCase6List as any as S.Schema<AnalyticsExplorationConfigCase5DatasetOptionsPerStepList>;
 
 export type AnalyticsExplorationConfigCase5DatasetHeightScale = "relative" | "absolute";
 export const AnalyticsExplorationConfigCase5DatasetHeightScale = S.String;
@@ -30282,9 +29083,8 @@ export type QueryStatus = "running" | "queued" | "failed" | "partially-succeeded
 export const QueryStatus = S.String;
 
 export type QueryDependenciesList = Array<string>;
-export const QueryDependenciesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<QueryDependenciesList>;
+export const QueryDependenciesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<QueryDependenciesList>;
 
 export interface Query {
   id: string;
@@ -30345,11 +29145,7 @@ export const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetProjectResponse {
   project: Project;
 }
-export const GetProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project: Project,
-  }),
-).annotate({ identifier: "GetProjectResponse" }) as any as S.Schema<GetProjectResponse>;
+export const GetProjectResponse = CreateProjectResponse as any as S.Schema<GetProjectResponse>;
 
 export interface GetQueryRequest {
   /** The id of the requested resource */
@@ -30449,9 +29245,8 @@ export const HealthSummarySignalsList = /*@__PURE__*/ S.Array(
 
 /** Per-variation user counts. Index 0 = baseline arm (users continuing to see the existing behavior -- either the configured control value on a v1 safe rollout, or users passed through to subsequent rules / feature default on a v2 monitored ramp). Index 1 = treatment arm (users exposed to the new rollout value). */
 export type HealthSummaryTrafficVariationUnitsList = Array<number>;
-export const HealthSummaryTrafficVariationUnitsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<HealthSummaryTrafficVariationUnitsList>;
+export const HealthSummaryTrafficVariationUnitsList =
+  CreateCustomFieldRequestDefaultValueCase6List as any as S.Schema<HealthSummaryTrafficVariationUnitsList>;
 
 /** `failing` when p-value is below the org SRM threshold, indicating a traffic imbalance. */
 export type HealthSummaryTrafficSrmStatus = "ok" | "failing";
@@ -30628,13 +29423,8 @@ export const GetRampScheduleTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetRampScheduleTemplateResponse {
   rampScheduleTemplate: RampScheduleTemplate;
 }
-export const GetRampScheduleTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rampScheduleTemplate: RampScheduleTemplate,
-  }),
-).annotate({
-  identifier: "GetRampScheduleTemplateResponse",
-}) as any as S.Schema<GetRampScheduleTemplateResponse>;
+export const GetRampScheduleTemplateResponse =
+  CreateRampScheduleTemplateResponse as any as S.Schema<GetRampScheduleTemplateResponse>;
 
 export interface GetReportRequest {
   /** The id of the requested resource */
@@ -30649,11 +29439,7 @@ export const GetReportRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetReportResponse {
   report: Report;
 }
-export const GetReportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    report: Report,
-  }),
-).annotate({ identifier: "GetReportResponse" }) as any as S.Schema<GetReportResponse>;
+export const GetReportResponse = CreateReportResponse as any as S.Schema<GetReportResponse>;
 
 export interface GetSavedGroupRequest {
   /** The id of the requested resource */
@@ -30668,11 +29454,8 @@ export const GetSavedGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetSavedGroupResponse {
   savedGroup: SavedGroup;
 }
-export const GetSavedGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    savedGroup: SavedGroup,
-  }),
-).annotate({ identifier: "GetSavedGroupResponse" }) as any as S.Schema<GetSavedGroupResponse>;
+export const GetSavedGroupResponse =
+  CreateSavedGroupResponse as any as S.Schema<GetSavedGroupResponse>;
 
 export interface GetSavedGroupReferencesRequest {
   /** The id of the requested resource */
@@ -30691,14 +29474,12 @@ export const SavedGroupReferenceResource = GetConfigReferencesResponseFeaturesIt
 
 export type GetSavedGroupReferencesResponseFeaturesList =
   Array<GetConfigReferencesResponseFeaturesItem>;
-export const GetSavedGroupReferencesResponseFeaturesList = /*@__PURE__*/ S.Array(
-  GetConfigReferencesResponseFeaturesItem,
-) as any as S.Schema<GetSavedGroupReferencesResponseFeaturesList>;
+export const GetSavedGroupReferencesResponseFeaturesList =
+  GetConfigReferencesResponseFeaturesList as any as S.Schema<GetSavedGroupReferencesResponseFeaturesList>;
 
 export type GetSavedGroupReferencesResponseExperimentsItemProjectsList = Array<string>;
-export const GetSavedGroupReferencesResponseExperimentsItemProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSavedGroupReferencesResponseExperimentsItemProjectsList>;
+export const GetSavedGroupReferencesResponseExperimentsItemProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<GetSavedGroupReferencesResponseExperimentsItemProjectsList>;
 
 export interface GetSavedGroupReferencesResponseExperimentsItem {
   id: string;
@@ -30725,14 +29506,12 @@ export const GetSavedGroupReferencesResponseExperimentsList = /*@__PURE__*/ S.Ar
 
 export type GetSavedGroupReferencesResponseContextualBanditsList =
   Array<GetConfigReferencesResponseFeaturesItem>;
-export const GetSavedGroupReferencesResponseContextualBanditsList = /*@__PURE__*/ S.Array(
-  GetConfigReferencesResponseFeaturesItem,
-) as any as S.Schema<GetSavedGroupReferencesResponseContextualBanditsList>;
+export const GetSavedGroupReferencesResponseContextualBanditsList =
+  GetConfigReferencesResponseFeaturesList as any as S.Schema<GetSavedGroupReferencesResponseContextualBanditsList>;
 
 export type SavedGroupsProjectsList = Array<string>;
-export const SavedGroupsProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SavedGroupsProjectsList>;
+export const SavedGroupsProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<SavedGroupsProjectsList>;
 
 export interface SavedGroups {
   id: string;
@@ -30791,13 +29570,8 @@ export const GetSavedGroupRevisionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetSavedGroupRevisionResponse {
   revision: SavedGroupRevision;
 }
-export const GetSavedGroupRevisionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: SavedGroupRevision,
-  }),
-).annotate({
-  identifier: "GetSavedGroupRevisionResponse",
-}) as any as S.Schema<GetSavedGroupRevisionResponse>;
+export const GetSavedGroupRevisionResponse =
+  CreateSavedGroupRevisionDiscardResponse as any as S.Schema<GetSavedGroupRevisionResponse>;
 
 /** If true, return only the most recent active draft authored by the calling user. Requires a user-scoped API key. */
 export type GetSavedGroupRevisionLatestRequestMine = string | boolean;
@@ -30823,13 +29597,8 @@ export const GetSavedGroupRevisionLatestRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetSavedGroupRevisionLatestResponse {
   revision: SavedGroupRevision;
 }
-export const GetSavedGroupRevisionLatestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: SavedGroupRevision,
-  }),
-).annotate({
-  identifier: "GetSavedGroupRevisionLatestResponse",
-}) as any as S.Schema<GetSavedGroupRevisionLatestResponse>;
+export const GetSavedGroupRevisionLatestResponse =
+  CreateSavedGroupRevisionDiscardResponse as any as S.Schema<GetSavedGroupRevisionLatestResponse>;
 
 export interface GetSavedGroupRevisionMergeStatusRequest {
   savedGroupId: string;
@@ -30857,9 +29626,8 @@ export const GetSavedGroupRevisionMergeStatusResponseConflictsItem =
 
 export type GetSavedGroupRevisionMergeStatusResponseConflictsList =
   Array<GetConfigRevisionMergeStatusResponseConflictsItem>;
-export const GetSavedGroupRevisionMergeStatusResponseConflictsList = /*@__PURE__*/ S.Array(
-  GetConfigRevisionMergeStatusResponseConflictsItem,
-) as any as S.Schema<GetSavedGroupRevisionMergeStatusResponseConflictsList>;
+export const GetSavedGroupRevisionMergeStatusResponseConflictsList =
+  GetConfigRevisionMergeStatusResponseConflictsList as any as S.Schema<GetSavedGroupRevisionMergeStatusResponseConflictsList>;
 
 export interface GetSavedGroupRevisionMergeStatusResponse {
   success: boolean;
@@ -30867,16 +29635,8 @@ export interface GetSavedGroupRevisionMergeStatusResponse {
   conflicts: GetSavedGroupRevisionMergeStatusResponseConflictsList;
   canAutoMerge: boolean;
 }
-export const GetSavedGroupRevisionMergeStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    success: S.Boolean,
-    hasConflicts: S.Boolean,
-    conflicts: GetSavedGroupRevisionMergeStatusResponseConflictsList,
-    canAutoMerge: S.Boolean,
-  }),
-).annotate({
-  identifier: "GetSavedGroupRevisionMergeStatusResponse",
-}) as any as S.Schema<GetSavedGroupRevisionMergeStatusResponse>;
+export const GetSavedGroupRevisionMergeStatusResponse =
+  GetConfigRevisionMergeStatusResponse as any as S.Schema<GetSavedGroupRevisionMergeStatusResponse>;
 
 /** If true, return all matching items and ignore limit/offset. Self-hosted only. Has no effect unless API_ALLOW_SKIP_PAGINATION is set to true or 1. */
 export type GetSavedGroupRevisionsRequestSkipPagination = string | boolean;
@@ -30990,11 +29750,7 @@ export const GetSegmentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetSegmentResponse {
   segment: Segment;
 }
-export const GetSegmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    segment: Segment,
-  }),
-).annotate({ identifier: "GetSegmentResponse" }) as any as S.Schema<GetSegmentResponse>;
+export const GetSegmentResponse = CreateSegmentResponse as any as S.Schema<GetSegmentResponse>;
 
 export interface GetSettingsRequest {}
 export const GetSettingsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -31002,9 +29758,8 @@ export const GetSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSettingsRequest" }) as any as S.Schema<GetSettingsRequest>;
 
 export type SettingsNorthStarMetricIdsList = Array<string>;
-export const SettingsNorthStarMetricIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SettingsNorthStarMetricIdsList>;
+export const SettingsNorthStarMetricIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<SettingsNorthStarMetricIdsList>;
 
 export interface SettingsNorthStar {
   title?: string;
@@ -31068,9 +29823,8 @@ export const SettingsUpdateSchedule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SettingsUpdateSchedule" }) as any as S.Schema<SettingsUpdateSchedule>;
 
 export type SettingsDefaultRoleEnvironmentsList = Array<string>;
-export const SettingsDefaultRoleEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SettingsDefaultRoleEnvironmentsList>;
+export const SettingsDefaultRoleEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<SettingsDefaultRoleEnvironmentsList>;
 
 export interface SettingsDefaultRole {
   role?: string;
@@ -31092,19 +29846,16 @@ export type SettingsFeatureKillSwitchBehavior = "off" | "warn";
 export const SettingsFeatureKillSwitchBehavior = S.String;
 
 export type RequireReviewRuleProjectsList = Array<string>;
-export const RequireReviewRuleProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RequireReviewRuleProjectsList>;
+export const RequireReviewRuleProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<RequireReviewRuleProjectsList>;
 
 export type RequireReviewRuleEnvironmentsList = Array<string>;
-export const RequireReviewRuleEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RequireReviewRuleEnvironmentsList>;
+export const RequireReviewRuleEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<RequireReviewRuleEnvironmentsList>;
 
 export type RequireReviewRuleRequiredApproverTeamsList = Array<string>;
-export const RequireReviewRuleRequiredApproverTeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RequireReviewRuleRequiredApproverTeamsList>;
+export const RequireReviewRuleRequiredApproverTeamsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<RequireReviewRuleRequiredApproverTeamsList>;
 
 export interface RequireReviewRule {
   requireReviewOn?: boolean;
@@ -31137,14 +29888,12 @@ export const SettingsRequireReviewsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SettingsRequireReviewsList>;
 
 export type SavedGroupApprovalRuleProjectsList = Array<string>;
-export const SavedGroupApprovalRuleProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SavedGroupApprovalRuleProjectsList>;
+export const SavedGroupApprovalRuleProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<SavedGroupApprovalRuleProjectsList>;
 
 export type SavedGroupApprovalRuleRequiredApproverTeamsList = Array<string>;
-export const SavedGroupApprovalRuleRequiredApproverTeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SavedGroupApprovalRuleRequiredApproverTeamsList>;
+export const SavedGroupApprovalRuleRequiredApproverTeamsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<SavedGroupApprovalRuleRequiredApproverTeamsList>;
 
 export interface SavedGroupApprovalRule {
   required: boolean;
@@ -31183,9 +29932,8 @@ export const SettingsApprovalFlows = /*@__PURE__*/ S.suspend(() =>
 
 /** Targeting Project IDs this rule applies to. An empty list is the organization-wide default. */
 export type TargetingReviewRuleProjectsList = Array<string>;
-export const TargetingReviewRuleProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TargetingReviewRuleProjectsList>;
+export const TargetingReviewRuleProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<TargetingReviewRuleProjectsList>;
 
 /** `strict`: a Feature Flag delivered into these Targeting Projects must also satisfy their approval requirements, and a Targeting Project with a rule of its own must be approved by one of its reviewers. `loose`: only the flag's primary project governs approvals. */
 export type TargetingReviewRuleMode = "strict" | "loose";
@@ -31334,11 +30082,7 @@ export const GetTeamRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetTeamResponse {
   team: Team;
 }
-export const GetTeamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    team: Team,
-  }),
-).annotate({ identifier: "GetTeamResponse" }) as any as S.Schema<GetTeamResponse>;
+export const GetTeamResponse = CreateTeamResponse as any as S.Schema<GetTeamResponse>;
 
 export interface GetVersionRequest {}
 export const GetVersionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -31585,11 +30329,8 @@ export const JumpRampScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface JumpRampScheduleResponse {
   rampSchedule: RampSchedule;
 }
-export const JumpRampScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rampSchedule: RampSchedule,
-  }),
-).annotate({ identifier: "JumpRampScheduleResponse" }) as any as S.Schema<JumpRampScheduleResponse>;
+export const JumpRampScheduleResponse =
+  GetRampScheduleResponse as any as S.Schema<JumpRampScheduleResponse>;
 
 export interface ListAggregatedTableRunsRequest {
   /** The id of the requested resource */
@@ -31627,9 +30368,8 @@ export const AggregatedTableRunSummaryStatus = S.String;
 
 /** Warehouse query ids for this run; poll each via GET /queries/{id} for per-query status */
 export type AggregatedTableRunSummaryQueryIdsList = Array<string>;
-export const AggregatedTableRunSummaryQueryIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AggregatedTableRunSummaryQueryIdsList>;
+export const AggregatedTableRunSummaryQueryIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<AggregatedTableRunSummaryQueryIdsList>;
 
 export interface AggregatedTableRunSummary {
   /** The run id (e.g. aftr_...) */
@@ -31773,9 +30513,8 @@ export const ListCodeRefsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCodeRefsRequest" }) as any as S.Schema<ListCodeRefsRequest>;
 
 export type ListCodeRefsResponseCodeRefsList = Array<CodeRef>;
-export const ListCodeRefsResponseCodeRefsList = /*@__PURE__*/ S.Array(
-  CodeRef,
-) as any as S.Schema<ListCodeRefsResponseCodeRefsList>;
+export const ListCodeRefsResponseCodeRefsList =
+  GetCodeRefsResponseCodeRefsList as any as S.Schema<ListCodeRefsResponseCodeRefsList>;
 
 export interface ListCodeRefsResponse {
   codeRefs: ListCodeRefsResponseCodeRefsList;
@@ -31838,9 +30577,8 @@ export const ListConfigRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListConfigRevisionsRequest>;
 
 export type ListConfigRevisionsResponseRevisionsList = Array<ConfigRevision>;
-export const ListConfigRevisionsResponseRevisionsList = /*@__PURE__*/ S.Array(
-  ConfigRevision,
-) as any as S.Schema<ListConfigRevisionsResponseRevisionsList>;
+export const ListConfigRevisionsResponseRevisionsList =
+  GetConfigRevisionsResponseRevisionsList as any as S.Schema<ListConfigRevisionsResponseRevisionsList>;
 
 export interface ListConfigRevisionsResponse {
   revisions: ListConfigRevisionsResponseRevisionsList;
@@ -31851,19 +30589,8 @@ export interface ListConfigRevisionsResponse {
   hasMore: boolean;
   nextOffset: number | null;
 }
-export const ListConfigRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revisions: ListConfigRevisionsResponseRevisionsList,
-    limit: S.Number,
-    offset: S.Number,
-    count: S.Number,
-    total: S.Number,
-    hasMore: S.Boolean,
-    nextOffset: S.NullOr(S.Number),
-  }),
-).annotate({
-  identifier: "ListConfigRevisionsResponse",
-}) as any as S.Schema<ListConfigRevisionsResponse>;
+export const ListConfigRevisionsResponse =
+  GetConfigRevisionsResponse as any as S.Schema<ListConfigRevisionsResponse>;
 
 export interface ListConfigsRequest {
   /** The number of items to return */
@@ -31944,9 +30671,8 @@ export const ListConstantRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListConstantRevisionsRequest>;
 
 export type ListConstantRevisionsResponseRevisionsList = Array<ConstantRevision>;
-export const ListConstantRevisionsResponseRevisionsList = /*@__PURE__*/ S.Array(
-  ConstantRevision,
-) as any as S.Schema<ListConstantRevisionsResponseRevisionsList>;
+export const ListConstantRevisionsResponseRevisionsList =
+  GetConstantRevisionsResponseRevisionsList as any as S.Schema<ListConstantRevisionsResponseRevisionsList>;
 
 export interface ListConstantRevisionsResponse {
   revisions: ListConstantRevisionsResponseRevisionsList;
@@ -31957,19 +30683,8 @@ export interface ListConstantRevisionsResponse {
   hasMore: boolean;
   nextOffset: number | null;
 }
-export const ListConstantRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revisions: ListConstantRevisionsResponseRevisionsList,
-    limit: S.Number,
-    offset: S.Number,
-    count: S.Number,
-    total: S.Number,
-    hasMore: S.Boolean,
-    nextOffset: S.NullOr(S.Number),
-  }),
-).annotate({
-  identifier: "ListConstantRevisionsResponse",
-}) as any as S.Schema<ListConstantRevisionsResponse>;
+export const ListConstantRevisionsResponse =
+  GetConstantRevisionsResponse as any as S.Schema<ListConstantRevisionsResponse>;
 
 export interface ListConstantsRequest {
   /** The number of items to return */
@@ -32262,9 +30977,8 @@ export const ListDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDashboardsRequest" }) as any as S.Schema<ListDashboardsRequest>;
 
 export type ListDashboardsResponseDashboardsList = Array<Dashboard>;
-export const ListDashboardsResponseDashboardsList = /*@__PURE__*/ S.Array(
-  Dashboard,
-) as any as S.Schema<ListDashboardsResponseDashboardsList>;
+export const ListDashboardsResponseDashboardsList =
+  GetDashboardsForExperimentResponseDashboardsList as any as S.Schema<ListDashboardsResponseDashboardsList>;
 
 export interface ListDashboardsResponse {
   dashboards: ListDashboardsResponseDashboardsList;
@@ -32758,42 +31472,32 @@ export const ListFeaturesV2Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListFeaturesV2Request" }) as any as S.Schema<ListFeaturesV2Request>;
 
 export type FeatureV2TargetingProjectsList = Array<string>;
-export const FeatureV2TargetingProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FeatureV2TargetingProjectsList>;
+export const FeatureV2TargetingProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<FeatureV2TargetingProjectsList>;
 
 export type FeatureV2ValueType = "boolean" | "string" | "number" | "json";
 export const FeatureV2ValueType = S.String;
 
 export type FeatureV2TagsList = Array<string>;
-export const FeatureV2TagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FeatureV2TagsList>;
+export const FeatureV2TagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<FeatureV2TagsList>;
 
 /** Unified rules array. Each rule carries its own environment scope via `allEnvironments` / `environments`. */
 export type FeatureV2RulesList = Array<FeatureRuleV2>;
-export const FeatureV2RulesList = /*@__PURE__*/ S.Array(
-  FeatureRuleV2,
-) as any as S.Schema<FeatureV2RulesList>;
+export const FeatureV2RulesList = FeatureRevisionV2RulesList as any as S.Schema<FeatureV2RulesList>;
 
 /** Per-environment enabled state and SDK payload. Rules are on the top-level `rules` field. */
 export type FeatureV2EnvironmentsMap = { [key: string]: FeatureEnvironmentV2 | undefined };
-export const FeatureV2EnvironmentsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  FeatureEnvironmentV2,
-) as any as S.Schema<FeatureV2EnvironmentsMap>;
+export const FeatureV2EnvironmentsMap =
+  FeatureWithRevisionsV2EnvironmentsMap as any as S.Schema<FeatureV2EnvironmentsMap>;
 
 /** Feature IDs. Each feature must evaluate to `true` */
 export type FeatureV2PrerequisitesList = Array<string>;
-export const FeatureV2PrerequisitesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FeatureV2PrerequisitesList>;
+export const FeatureV2PrerequisitesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<FeatureV2PrerequisitesList>;
 
 export type FeatureV2CustomFieldsMap = { [key: string]: unknown | undefined };
-export const FeatureV2CustomFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FeatureV2CustomFieldsMap>;
+export const FeatureV2CustomFieldsMap = ConfigValueMap as any as S.Schema<FeatureV2CustomFieldsMap>;
 
 export type FeatureV2Holdout = FeatureWithRevisionsV2Holdout;
 export const FeatureV2Holdout = FeatureWithRevisionsV2Holdout;
@@ -32968,14 +31672,12 @@ export const ListMembersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMembersRequest" }) as any as S.Schema<ListMembersRequest>;
 
 export type MemberEnvironmentsList = Array<string>;
-export const MemberEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MemberEnvironmentsList>;
+export const MemberEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<MemberEnvironmentsList>;
 
 export type MemberAdditionalRolesItemEnvironmentsList = Array<string>;
-export const MemberAdditionalRolesItemEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MemberAdditionalRolesItemEnvironmentsList>;
+export const MemberAdditionalRolesItemEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<MemberAdditionalRolesItemEnvironmentsList>;
 
 export interface MemberAdditionalRolesItem {
   role: string;
@@ -32999,39 +31701,29 @@ export const MemberAdditionalRolesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<MemberAdditionalRolesList>;
 
 export type MemberTeamsList = Array<string>;
-export const MemberTeamsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<MemberTeamsList>;
+export const MemberTeamsList = HoldoutTagsList as any as S.Schema<MemberTeamsList>;
 
 export type MemberProjectRolesItemEnvironmentsList = Array<string>;
-export const MemberProjectRolesItemEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MemberProjectRolesItemEnvironmentsList>;
+export const MemberProjectRolesItemEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<MemberProjectRolesItemEnvironmentsList>;
 
 export type MemberProjectRolesItemAdditionalRolesItemEnvironmentsList = Array<string>;
-export const MemberProjectRolesItemAdditionalRolesItemEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MemberProjectRolesItemAdditionalRolesItemEnvironmentsList>;
+export const MemberProjectRolesItemAdditionalRolesItemEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<MemberProjectRolesItemAdditionalRolesItemEnvironmentsList>;
 
 export interface MemberProjectRolesItemAdditionalRolesItem {
   role: string;
   environments: MemberProjectRolesItemAdditionalRolesItemEnvironmentsList;
   limitAccessByEnvironment?: boolean;
 }
-export const MemberProjectRolesItemAdditionalRolesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role: S.String,
-    environments: MemberProjectRolesItemAdditionalRolesItemEnvironmentsList,
-    limitAccessByEnvironment: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "MemberProjectRolesItemAdditionalRolesItem",
-}) as any as S.Schema<MemberProjectRolesItemAdditionalRolesItem>;
+export const MemberProjectRolesItemAdditionalRolesItem =
+  MemberAdditionalRolesItem as any as S.Schema<MemberProjectRolesItemAdditionalRolesItem>;
 
 /** Additional roles granted alongside this one, in the same scope. Each is granted independently and environment access is the union across them. */
 export type MemberProjectRolesItemAdditionalRolesList =
   Array<MemberProjectRolesItemAdditionalRolesItem>;
-export const MemberProjectRolesItemAdditionalRolesList = /*@__PURE__*/ S.Array(
-  MemberProjectRolesItemAdditionalRolesItem,
-) as any as S.Schema<MemberProjectRolesItemAdditionalRolesList>;
+export const MemberProjectRolesItemAdditionalRolesList =
+  MemberAdditionalRolesList as any as S.Schema<MemberProjectRolesItemAdditionalRolesList>;
 
 export interface MemberProjectRolesItem {
   project: string;
@@ -33166,9 +31858,8 @@ export const ListMetricExperimentsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Confidence interval [lower, upper] */
 export type ExperimentResultsVariationsItemCiList = Array<unknown>;
-export const ExperimentResultsVariationsItemCiList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ExperimentResultsVariationsItemCiList>;
+export const ExperimentResultsVariationsItemCiList =
+  CreateConfigRevisionRebaseRequestCustomValuesValueList as any as S.Schema<ExperimentResultsVariationsItemCiList>;
 
 export interface ExperimentResultsVariationsItem {
   variationId: string;
@@ -33579,9 +32270,8 @@ export const ListRevisionsV2RequestSkipPagination =
   S.Unknown as any as S.Schema<ListRevisionsV2RequestSkipPagination>;
 
 export type ListRevisionsV2RequestStatusCase1List = Array<string>;
-export const ListRevisionsV2RequestStatusCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListRevisionsV2RequestStatusCase1List>;
+export const ListRevisionsV2RequestStatusCase1List =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ListRevisionsV2RequestStatusCase1List>;
 
 /** Filter by revision status. Single value, comma-separated list, repeated params (?status=draft&status=approved), or `all-drafts` shorthand for all active-draft statuses (draft, pending-review, approved, changes-requested). */
 export type ListRevisionsV2RequestStatus = string | ListRevisionsV2RequestStatusCase1List;
@@ -33627,9 +32317,8 @@ export const ListRevisionsV2Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRevisionsV2Request" }) as any as S.Schema<ListRevisionsV2Request>;
 
 export type ListRevisionsV2ResponseRevisionsList = Array<FeatureRevisionV2>;
-export const ListRevisionsV2ResponseRevisionsList = /*@__PURE__*/ S.Array(
-  FeatureRevisionV2,
-) as any as S.Schema<ListRevisionsV2ResponseRevisionsList>;
+export const ListRevisionsV2ResponseRevisionsList =
+  GetFeatureRevisionsV2ResponseRevisionsList as any as S.Schema<ListRevisionsV2ResponseRevisionsList>;
 
 export interface ListRevisionsV2Response {
   revisions: ListRevisionsV2ResponseRevisionsList;
@@ -33692,9 +32381,8 @@ export const ListSavedGroupRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSavedGroupRevisionsRequest>;
 
 export type ListSavedGroupRevisionsResponseRevisionsList = Array<SavedGroupRevision>;
-export const ListSavedGroupRevisionsResponseRevisionsList = /*@__PURE__*/ S.Array(
-  SavedGroupRevision,
-) as any as S.Schema<ListSavedGroupRevisionsResponseRevisionsList>;
+export const ListSavedGroupRevisionsResponseRevisionsList =
+  GetSavedGroupRevisionsResponseRevisionsList as any as S.Schema<ListSavedGroupRevisionsResponseRevisionsList>;
 
 export interface ListSavedGroupRevisionsResponse {
   revisions: ListSavedGroupRevisionsResponseRevisionsList;
@@ -33705,19 +32393,8 @@ export interface ListSavedGroupRevisionsResponse {
   hasMore: boolean;
   nextOffset: number | null;
 }
-export const ListSavedGroupRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revisions: ListSavedGroupRevisionsResponseRevisionsList,
-    limit: S.Number,
-    offset: S.Number,
-    count: S.Number,
-    total: S.Number,
-    hasMore: S.Boolean,
-    nextOffset: S.NullOr(S.Number),
-  }),
-).annotate({
-  identifier: "ListSavedGroupRevisionsResponse",
-}) as any as S.Schema<ListSavedGroupRevisionsResponse>;
+export const ListSavedGroupRevisionsResponse =
+  GetSavedGroupRevisionsResponse as any as S.Schema<ListSavedGroupRevisionsResponse>;
 
 export interface ListSavedGroupsRequest {
   /** The number of items to return */
@@ -33913,11 +32590,7 @@ export const LockConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface LockConfigResponse {
   config: Config;
 }
-export const LockConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    config: Config,
-  }),
-).annotate({ identifier: "LockConfigResponse" }) as any as S.Schema<LockConfigResponse>;
+export const LockConfigResponse = GetConfigResponse as any as S.Schema<LockConfigResponse>;
 
 export interface LookupSdkConnectionByKeyRequest {
   /** The key of the requested sdkConnection */
@@ -33934,13 +32607,8 @@ export const LookupSdkConnectionByKeyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface LookupSdkConnectionByKeyResponse {
   sdkConnection: SdkConnection;
 }
-export const LookupSdkConnectionByKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sdkConnection: SdkConnection,
-  }),
-).annotate({
-  identifier: "LookupSdkConnectionByKeyResponse",
-}) as any as S.Schema<LookupSdkConnectionByKeyResponse>;
+export const LookupSdkConnectionByKeyResponse =
+  CreateSdkConnectionResponse as any as S.Schema<LookupSdkConnectionByKeyResponse>;
 
 export interface PauseRampScheduleRequest {
   id: string;
@@ -33954,13 +32622,8 @@ export const PauseRampScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PauseRampScheduleResponse {
   rampSchedule: RampSchedule;
 }
-export const PauseRampScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rampSchedule: RampSchedule,
-  }),
-).annotate({
-  identifier: "PauseRampScheduleResponse",
-}) as any as S.Schema<PauseRampScheduleResponse>;
+export const PauseRampScheduleResponse =
+  AddTargetRampScheduleResponse as any as S.Schema<PauseRampScheduleResponse>;
 
 export type PostCopyTransformRequestMode = "energetic" | "concise" | "humorous";
 export const PostCopyTransformRequestMode = S.String;
@@ -33979,11 +32642,8 @@ export const PostCopyTransformRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostCopyTransformRequest" }) as any as S.Schema<PostCopyTransformRequest>;
 
 export type PostCopyTransformResponse = unknown;
-export const PostCopyTransformResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "PostCopyTransformResponse",
-}) as any as S.Schema<PostCopyTransformResponse>;
+export const PostCopyTransformResponse =
+  DeleteVariationScreenshotResponse as any as S.Schema<PostCopyTransformResponse>;
 
 /** Controls cache behavior for this exploration: `preferred` (default) returns a cached result if one exists, otherwise runs a new query; `never` always runs a new query, ignoring any cached results; `required` only returns a cached result, if none exists returns exploration: null with a message */
 export type PostDataSourceExplorationRequestCache = "preferred" | "required" | "never";
@@ -34021,24 +32681,16 @@ export const PostDataSourceExplorationRequestDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
 
 export type PostDataSourceExplorationRequestDimensionsItemCase2ValuesList = Array<string>;
-export const PostDataSourceExplorationRequestDimensionsItemCase2ValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostDataSourceExplorationRequestDimensionsItemCase2ValuesList>;
+export const PostDataSourceExplorationRequestDimensionsItemCase2ValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostDataSourceExplorationRequestDimensionsItemCase2ValuesList>;
 
 export interface PostDataSourceExplorationRequestDimensionsItemCase2 {
   dimensionType: string;
   column: string;
   values: PostDataSourceExplorationRequestDimensionsItemCase2ValuesList;
 }
-export const PostDataSourceExplorationRequestDimensionsItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.String,
-    values: PostDataSourceExplorationRequestDimensionsItemCase2ValuesList,
-  }),
-).annotate({
-  identifier: "PostDataSourceExplorationRequestDimensionsItemCase2",
-}) as any as S.Schema<PostDataSourceExplorationRequestDimensionsItemCase2>;
+export const PostDataSourceExplorationRequestDimensionsItemCase2 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<PostDataSourceExplorationRequestDimensionsItemCase2>;
 
 export type PostDataSourceExplorationRequestDimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -34069,9 +32721,7 @@ export const PostDataSourceExplorationRequestDimensionsItemCase3SlicesItemFilter
 export type PostDataSourceExplorationRequestDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const PostDataSourceExplorationRequestDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostDataSourceExplorationRequestDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostDataSourceExplorationRequestDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface PostDataSourceExplorationRequestDimensionsItemCase3SlicesItemFiltersItem {
   operator:
@@ -34253,9 +32903,7 @@ export const PostDataSourceExplorationRequestDatasetValuesItemRowFiltersItemOper
 export type PostDataSourceExplorationRequestDatasetValuesItemRowFiltersItemValuesList =
   Array<string>;
 export const PostDataSourceExplorationRequestDatasetValuesItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostDataSourceExplorationRequestDatasetValuesItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostDataSourceExplorationRequestDatasetValuesItemRowFiltersItemValuesList>;
 
 export interface PostDataSourceExplorationRequestDatasetValuesItemRowFiltersItem {
   operator: PostDataSourceExplorationRequestDatasetValuesItemRowFiltersItemOperator | (string & {});
@@ -34409,9 +33057,7 @@ export const PostDataSourceExplorationResponseExplorationResultRowsItemJourneyCa
 export type PostDataSourceExplorationResponseExplorationResultRowsItemJourneyCase0LevelsList =
   Array<string>;
 export const PostDataSourceExplorationResponseExplorationResultRowsItemJourneyCase0LevelsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostDataSourceExplorationResponseExplorationResultRowsItemJourneyCase0LevelsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostDataSourceExplorationResponseExplorationResultRowsItemJourneyCase0LevelsList>;
 
 export interface PostDataSourceExplorationResponseExplorationResultRowsItemJourneyCase0 {
   kind: string;
@@ -34552,9 +33198,7 @@ export const PostDataSourceExplorationResponseExplorationConfigDimensionsItemCas
 export type PostDataSourceExplorationResponseExplorationConfigDimensionsItemCase2ValuesList =
   Array<string>;
 export const PostDataSourceExplorationResponseExplorationConfigDimensionsItemCase2ValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostDataSourceExplorationResponseExplorationConfigDimensionsItemCase2ValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostDataSourceExplorationResponseExplorationConfigDimensionsItemCase2ValuesList>;
 
 export interface PostDataSourceExplorationResponseExplorationConfigDimensionsItemCase2 {
   dimensionType: string;
@@ -34562,15 +33206,7 @@ export interface PostDataSourceExplorationResponseExplorationConfigDimensionsIte
   values: PostDataSourceExplorationResponseExplorationConfigDimensionsItemCase2ValuesList;
 }
 export const PostDataSourceExplorationResponseExplorationConfigDimensionsItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.String,
-      values: PostDataSourceExplorationResponseExplorationConfigDimensionsItemCase2ValuesList,
-    }),
-  ).annotate({
-    identifier: "PostDataSourceExplorationResponseExplorationConfigDimensionsItemCase2",
-  }) as any as S.Schema<PostDataSourceExplorationResponseExplorationConfigDimensionsItemCase2>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<PostDataSourceExplorationResponseExplorationConfigDimensionsItemCase2>;
 
 export type PostDataSourceExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -34601,9 +33237,7 @@ export const PostDataSourceExplorationResponseExplorationConfigDimensionsItemCas
 export type PostDataSourceExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const PostDataSourceExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostDataSourceExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostDataSourceExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface PostDataSourceExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItem {
   operator: PostDataSourceExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemOperator;
@@ -34793,9 +33427,7 @@ export const PostDataSourceExplorationResponseExplorationConfigDatasetValuesItem
 export type PostDataSourceExplorationResponseExplorationConfigDatasetValuesItemRowFiltersItemValuesList =
   Array<string>;
 export const PostDataSourceExplorationResponseExplorationConfigDatasetValuesItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostDataSourceExplorationResponseExplorationConfigDatasetValuesItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostDataSourceExplorationResponseExplorationConfigDatasetValuesItemRowFiltersItemValuesList>;
 
 export interface PostDataSourceExplorationResponseExplorationConfigDatasetValuesItemRowFiltersItem {
   operator: PostDataSourceExplorationResponseExplorationConfigDatasetValuesItemRowFiltersItemOperator;
@@ -34956,14 +33588,12 @@ export const PostDataSourceExplorationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostDataSourceExplorationResponse>;
 
 export type PostFactMetricRequestProjectsList = Array<string>;
-export const PostFactMetricRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFactMetricRequestProjectsList>;
+export const PostFactMetricRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostFactMetricRequestProjectsList>;
 
 export type PostFactMetricRequestTagsList = Array<string>;
-export const PostFactMetricRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFactMetricRequestTagsList>;
+export const PostFactMetricRequestTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostFactMetricRequestTagsList>;
 
 export type PostFactMetricRequestMetricType =
   | "proportion"
@@ -34986,23 +33616,19 @@ export const PostFactMetricRequestNumeratorAggregation = S.String;
 
 /** Array of Fact Table Filter Ids. Deprecated, use rowFilters instead. */
 export type PostFactMetricRequestNumeratorFiltersList = Array<string>;
-export const PostFactMetricRequestNumeratorFiltersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFactMetricRequestNumeratorFiltersList>;
+export const PostFactMetricRequestNumeratorFiltersList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostFactMetricRequestNumeratorFiltersList>;
 
 export type PostFactMetricRequestNumeratorInlineFiltersValueList = Array<string>;
-export const PostFactMetricRequestNumeratorInlineFiltersValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFactMetricRequestNumeratorInlineFiltersValueList>;
+export const PostFactMetricRequestNumeratorInlineFiltersValueList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostFactMetricRequestNumeratorInlineFiltersValueList>;
 
 /** Inline filters to apply to the fact table. Keys are column names, values are arrays of values to filter by. Deprecated, use rowFilters instead. */
 export type PostFactMetricRequestNumeratorInlineFiltersMap = {
   [key: string]: PostFactMetricRequestNumeratorInlineFiltersValueList | undefined;
 };
-export const PostFactMetricRequestNumeratorInlineFiltersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  PostFactMetricRequestNumeratorInlineFiltersValueList,
-) as any as S.Schema<PostFactMetricRequestNumeratorInlineFiltersMap>;
+export const PostFactMetricRequestNumeratorInlineFiltersMap =
+  FactMetricNumeratorInlineFiltersMap as any as S.Schema<PostFactMetricRequestNumeratorInlineFiltersMap>;
 
 export type PostFactMetricRequestNumeratorRowFiltersItemOperator =
   | "="
@@ -35031,9 +33657,8 @@ export const PostFactMetricRequestNumeratorRowFiltersItemOperator = S.String;
 
 /** Not required for is_null, not_null, is_true, is_false operators. The between and not_between operators take at most two values, a lower and an upper bound in that order; leave a bound as an empty string for an open-ended range. */
 export type PostFactMetricRequestNumeratorRowFiltersItemValuesList = Array<string>;
-export const PostFactMetricRequestNumeratorRowFiltersItemValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFactMetricRequestNumeratorRowFiltersItemValuesList>;
+export const PostFactMetricRequestNumeratorRowFiltersItemValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostFactMetricRequestNumeratorRowFiltersItemValuesList>;
 
 export interface PostFactMetricRequestNumeratorRowFiltersItem {
   operator: PostFactMetricRequestNumeratorRowFiltersItemOperator | (string & {});
@@ -35102,23 +33727,19 @@ export const PostFactMetricRequestDenominatorAggregation = S.String;
 
 /** Array of Fact Table Filter Ids. Deprecated, use rowFilters instead. */
 export type PostFactMetricRequestDenominatorFiltersList = Array<string>;
-export const PostFactMetricRequestDenominatorFiltersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFactMetricRequestDenominatorFiltersList>;
+export const PostFactMetricRequestDenominatorFiltersList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostFactMetricRequestDenominatorFiltersList>;
 
 export type PostFactMetricRequestDenominatorInlineFiltersValueList = Array<string>;
-export const PostFactMetricRequestDenominatorInlineFiltersValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFactMetricRequestDenominatorInlineFiltersValueList>;
+export const PostFactMetricRequestDenominatorInlineFiltersValueList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostFactMetricRequestDenominatorInlineFiltersValueList>;
 
 /** Inline filters to apply to the fact table. Keys are column names, values are arrays of values to filter by. Deprecated, use rowFilters instead. */
 export type PostFactMetricRequestDenominatorInlineFiltersMap = {
   [key: string]: PostFactMetricRequestDenominatorInlineFiltersValueList | undefined;
 };
-export const PostFactMetricRequestDenominatorInlineFiltersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  PostFactMetricRequestDenominatorInlineFiltersValueList,
-) as any as S.Schema<PostFactMetricRequestDenominatorInlineFiltersMap>;
+export const PostFactMetricRequestDenominatorInlineFiltersMap =
+  FactMetricNumeratorInlineFiltersMap as any as S.Schema<PostFactMetricRequestDenominatorInlineFiltersMap>;
 
 export type PostFactMetricRequestDenominatorRowFiltersItemOperator =
   | "="
@@ -35147,9 +33768,8 @@ export const PostFactMetricRequestDenominatorRowFiltersItemOperator = S.String;
 
 /** Not required for is_null, not_null, is_true, is_false operators. The between and not_between operators take at most two values, a lower and an upper bound in that order; leave a bound as an empty string for an open-ended range. */
 export type PostFactMetricRequestDenominatorRowFiltersItemValuesList = Array<string>;
-export const PostFactMetricRequestDenominatorRowFiltersItemValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFactMetricRequestDenominatorRowFiltersItemValuesList>;
+export const PostFactMetricRequestDenominatorRowFiltersItemValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostFactMetricRequestDenominatorRowFiltersItemValuesList>;
 
 export interface PostFactMetricRequestDenominatorRowFiltersItem {
   operator: PostFactMetricRequestDenominatorRowFiltersItemOperator | (string & {});
@@ -35256,9 +33876,7 @@ export const PostFactMetricRequestFunnelSettingsStepsItemRowFiltersItemOperator 
 /** Not required for is_null, not_null, is_true, is_false operators. The between and not_between operators take at most two values, a lower and an upper bound in that order; leave a bound as an empty string for an open-ended range. */
 export type PostFactMetricRequestFunnelSettingsStepsItemRowFiltersItemValuesList = Array<string>;
 export const PostFactMetricRequestFunnelSettingsStepsItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostFactMetricRequestFunnelSettingsStepsItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostFactMetricRequestFunnelSettingsStepsItemRowFiltersItemValuesList>;
 
 export interface PostFactMetricRequestFunnelSettingsStepsItemRowFiltersItem {
   operator: PostFactMetricRequestFunnelSettingsStepsItemRowFiltersItemOperator | (string & {});
@@ -35459,15 +34077,13 @@ export const PostFactMetricRequestManagedBy = S.String;
 
 /** Array of slice column names that will be automatically included in metric analysis. This is an enterprise feature. */
 export type PostFactMetricRequestMetricAutoSlicesList = Array<string>;
-export const PostFactMetricRequestMetricAutoSlicesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFactMetricRequestMetricAutoSlicesList>;
+export const PostFactMetricRequestMetricAutoSlicesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostFactMetricRequestMetricAutoSlicesList>;
 
 /** Ids of older metrics (legacy or fact) that this metric supersedes, for example the legacy metric it was migrated from. Cannot include this metric's own id. Informational only - GrowthBook uses it to link the old and new definitions in the UI and to keep showing results from a snapshot that was created before an experiment switched to this metric. This field can only be set through the API. */
 export type PostFactMetricRequestReplacesList = Array<string>;
-export const PostFactMetricRequestReplacesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFactMetricRequestReplacesList>;
+export const PostFactMetricRequestReplacesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostFactMetricRequestReplacesList>;
 
 export interface PostFactMetricRequest {
   name: string;
@@ -35552,11 +34168,8 @@ export const PostFactMetricRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PostFactMetricResponse {
   factMetric: FactMetric;
 }
-export const PostFactMetricResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    factMetric: FactMetric,
-  }),
-).annotate({ identifier: "PostFactMetricResponse" }) as any as S.Schema<PostFactMetricResponse>;
+export const PostFactMetricResponse =
+  GetFactMetricResponse as any as S.Schema<PostFactMetricResponse>;
 
 /** The type of population to analyze. Defaults to 'factTable', meaning the analysis will return the metric value for all units found in the fact table. */
 export type PostFactMetricAnalysisRequestPopulationType = "factTable" | "segment";
@@ -35564,15 +34177,13 @@ export const PostFactMetricAnalysisRequestPopulationType = S.String;
 
 /** We support passing in adhoc filters for an analysis that don't live on the metric itself. These are in addition to the metric's filters. To use this, you can pass in an array of Fact Table Filter Ids. */
 export type PostFactMetricAnalysisRequestAdditionalNumeratorFiltersList = Array<string>;
-export const PostFactMetricAnalysisRequestAdditionalNumeratorFiltersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFactMetricAnalysisRequestAdditionalNumeratorFiltersList>;
+export const PostFactMetricAnalysisRequestAdditionalNumeratorFiltersList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostFactMetricAnalysisRequestAdditionalNumeratorFiltersList>;
 
 /** We support passing in adhoc filters for an analysis that don't live on the metric itself. These are in addition to the metric's filters. To use this, you can pass in an array of Fact Table Filter Ids. */
 export type PostFactMetricAnalysisRequestAdditionalDenominatorFiltersList = Array<string>;
-export const PostFactMetricAnalysisRequestAdditionalDenominatorFiltersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFactMetricAnalysisRequestAdditionalDenominatorFiltersList>;
+export const PostFactMetricAnalysisRequestAdditionalDenominatorFiltersList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostFactMetricAnalysisRequestAdditionalDenominatorFiltersList>;
 
 export interface PostFactMetricAnalysisRequest {
   /** The fact metric id to analyze */
@@ -35612,10 +34223,8 @@ export const PostFactMetricAnalysisRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostFactMetricAnalysisRequest>;
 
 export type MetricAnalysisSettingsMap = { [key: string]: unknown | undefined };
-export const MetricAnalysisSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MetricAnalysisSettingsMap>;
+export const MetricAnalysisSettingsMap =
+  ConfigValueMap as any as S.Schema<MetricAnalysisSettingsMap>;
 
 export interface MetricAnalysis {
   /** The ID of the created metric analysis */
@@ -35679,24 +34288,16 @@ export const PostFactTableExplorationRequestDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
 
 export type PostFactTableExplorationRequestDimensionsItemCase2ValuesList = Array<string>;
-export const PostFactTableExplorationRequestDimensionsItemCase2ValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFactTableExplorationRequestDimensionsItemCase2ValuesList>;
+export const PostFactTableExplorationRequestDimensionsItemCase2ValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostFactTableExplorationRequestDimensionsItemCase2ValuesList>;
 
 export interface PostFactTableExplorationRequestDimensionsItemCase2 {
   dimensionType: string;
   column: string;
   values: PostFactTableExplorationRequestDimensionsItemCase2ValuesList;
 }
-export const PostFactTableExplorationRequestDimensionsItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.String,
-    values: PostFactTableExplorationRequestDimensionsItemCase2ValuesList,
-  }),
-).annotate({
-  identifier: "PostFactTableExplorationRequestDimensionsItemCase2",
-}) as any as S.Schema<PostFactTableExplorationRequestDimensionsItemCase2>;
+export const PostFactTableExplorationRequestDimensionsItemCase2 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<PostFactTableExplorationRequestDimensionsItemCase2>;
 
 export type PostFactTableExplorationRequestDimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -35727,9 +34328,7 @@ export const PostFactTableExplorationRequestDimensionsItemCase3SlicesItemFilters
 export type PostFactTableExplorationRequestDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const PostFactTableExplorationRequestDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostFactTableExplorationRequestDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostFactTableExplorationRequestDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface PostFactTableExplorationRequestDimensionsItemCase3SlicesItemFiltersItem {
   operator:
@@ -35892,9 +34491,7 @@ export const PostFactTableExplorationRequestDatasetValuesItemRowFiltersItemOpera
 export type PostFactTableExplorationRequestDatasetValuesItemRowFiltersItemValuesList =
   Array<string>;
 export const PostFactTableExplorationRequestDatasetValuesItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostFactTableExplorationRequestDatasetValuesItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostFactTableExplorationRequestDatasetValuesItemRowFiltersItemValuesList>;
 
 export interface PostFactTableExplorationRequestDatasetValuesItemRowFiltersItem {
   operator: PostFactTableExplorationRequestDatasetValuesItemRowFiltersItemOperator | (string & {});
@@ -36004,9 +34601,7 @@ export type PostFactTableExplorationResponseExplorationResultRowsItemDimensionsL
   string | null
 >;
 export const PostFactTableExplorationResponseExplorationResultRowsItemDimensionsList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<PostFactTableExplorationResponseExplorationResultRowsItemDimensionsList>;
+  PostDataSourceExplorationResponseExplorationResultRowsItemDimensionsList as any as S.Schema<PostFactTableExplorationResponseExplorationResultRowsItemDimensionsList>;
 
 export type PostFactTableExplorationResponseExplorationResultRowsItemValuesItem =
   AnalyticsExplorationResultRowsItemValuesItem;
@@ -36016,9 +34611,7 @@ export const PostFactTableExplorationResponseExplorationResultRowsItemValuesItem
 export type PostFactTableExplorationResponseExplorationResultRowsItemValuesList =
   Array<AnalyticsExplorationResultRowsItemValuesItem>;
 export const PostFactTableExplorationResponseExplorationResultRowsItemValuesList =
-  /*@__PURE__*/ S.Array(
-    AnalyticsExplorationResultRowsItemValuesItem,
-  ) as any as S.Schema<PostFactTableExplorationResponseExplorationResultRowsItemValuesList>;
+  PostDataSourceExplorationResponseExplorationResultRowsItemValuesList as any as S.Schema<PostFactTableExplorationResponseExplorationResultRowsItemValuesList>;
 
 export type PostFactTableExplorationResponseExplorationResultRowsItemStepsItem =
   AnalyticsExplorationResultRowsItemStepsItem;
@@ -36028,9 +34621,7 @@ export const PostFactTableExplorationResponseExplorationResultRowsItemStepsItem 
 export type PostFactTableExplorationResponseExplorationResultRowsItemStepsList =
   Array<AnalyticsExplorationResultRowsItemStepsItem>;
 export const PostFactTableExplorationResponseExplorationResultRowsItemStepsList =
-  /*@__PURE__*/ S.Array(
-    AnalyticsExplorationResultRowsItemStepsItem,
-  ) as any as S.Schema<PostFactTableExplorationResponseExplorationResultRowsItemStepsList>;
+  PostDataSourceExplorationResponseExplorationResultRowsItemStepsList as any as S.Schema<PostFactTableExplorationResponseExplorationResultRowsItemStepsList>;
 
 export type PostFactTableExplorationResponseExplorationResultRowsItemJourneyCase0Direction =
   | "forward"
@@ -36041,9 +34632,7 @@ export const PostFactTableExplorationResponseExplorationResultRowsItemJourneyCas
 export type PostFactTableExplorationResponseExplorationResultRowsItemJourneyCase0LevelsList =
   Array<string>;
 export const PostFactTableExplorationResponseExplorationResultRowsItemJourneyCase0LevelsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostFactTableExplorationResponseExplorationResultRowsItemJourneyCase0LevelsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostFactTableExplorationResponseExplorationResultRowsItemJourneyCase0LevelsList>;
 
 export interface PostFactTableExplorationResponseExplorationResultRowsItemJourneyCase0 {
   kind: string;
@@ -36123,16 +34712,12 @@ export type PostFactTableExplorationResponseExplorationResultRawRowsItemMap = {
   [key: string]: unknown | undefined;
 };
 export const PostFactTableExplorationResponseExplorationResultRawRowsItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<PostFactTableExplorationResponseExplorationResultRawRowsItemMap>;
+  PostDataSourceExplorationResponseExplorationResultRawRowsItemMap as any as S.Schema<PostFactTableExplorationResponseExplorationResultRawRowsItemMap>;
 
 export type PostFactTableExplorationResponseExplorationResultRawRowsList =
   Array<PostFactTableExplorationResponseExplorationResultRawRowsItemMap>;
-export const PostFactTableExplorationResponseExplorationResultRawRowsList = /*@__PURE__*/ S.Array(
-  PostFactTableExplorationResponseExplorationResultRawRowsItemMap,
-) as any as S.Schema<PostFactTableExplorationResponseExplorationResultRawRowsList>;
+export const PostFactTableExplorationResponseExplorationResultRawRowsList =
+  PostDataSourceExplorationResponseExplorationResultRawRowsList as any as S.Schema<PostFactTableExplorationResponseExplorationResultRawRowsList>;
 
 export interface PostFactTableExplorationResponseExplorationResult {
   rows: PostFactTableExplorationResponseExplorationResultRowsList;
@@ -36184,9 +34769,7 @@ export const PostFactTableExplorationResponseExplorationConfigDimensionsItemCase
 export type PostFactTableExplorationResponseExplorationConfigDimensionsItemCase2ValuesList =
   Array<string>;
 export const PostFactTableExplorationResponseExplorationConfigDimensionsItemCase2ValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostFactTableExplorationResponseExplorationConfigDimensionsItemCase2ValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostFactTableExplorationResponseExplorationConfigDimensionsItemCase2ValuesList>;
 
 export interface PostFactTableExplorationResponseExplorationConfigDimensionsItemCase2 {
   dimensionType: string;
@@ -36194,15 +34777,7 @@ export interface PostFactTableExplorationResponseExplorationConfigDimensionsItem
   values: PostFactTableExplorationResponseExplorationConfigDimensionsItemCase2ValuesList;
 }
 export const PostFactTableExplorationResponseExplorationConfigDimensionsItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.String,
-      values: PostFactTableExplorationResponseExplorationConfigDimensionsItemCase2ValuesList,
-    }),
-  ).annotate({
-    identifier: "PostFactTableExplorationResponseExplorationConfigDimensionsItemCase2",
-  }) as any as S.Schema<PostFactTableExplorationResponseExplorationConfigDimensionsItemCase2>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<PostFactTableExplorationResponseExplorationConfigDimensionsItemCase2>;
 
 export type PostFactTableExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -36233,9 +34808,7 @@ export const PostFactTableExplorationResponseExplorationConfigDimensionsItemCase
 export type PostFactTableExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const PostFactTableExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostFactTableExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostFactTableExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface PostFactTableExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItem {
   operator: PostFactTableExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemOperator;
@@ -36406,9 +34979,7 @@ export const PostFactTableExplorationResponseExplorationConfigDatasetValuesItemR
 export type PostFactTableExplorationResponseExplorationConfigDatasetValuesItemRowFiltersItemValuesList =
   Array<string>;
 export const PostFactTableExplorationResponseExplorationConfigDatasetValuesItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostFactTableExplorationResponseExplorationConfigDatasetValuesItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostFactTableExplorationResponseExplorationConfigDatasetValuesItemRowFiltersItemValuesList>;
 
 export interface PostFactTableExplorationResponseExplorationConfigDatasetValuesItemRowFiltersItem {
   operator: PostFactTableExplorationResponseExplorationConfigDatasetValuesItemRowFiltersItemOperator;
@@ -36579,13 +35150,8 @@ export const PostFeatureRevisionDiscardV2Request = /*@__PURE__*/ S.suspend(() =>
 export interface PostFeatureRevisionDiscardV2Response {
   revision: FeatureRevisionV2;
 }
-export const PostFeatureRevisionDiscardV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: FeatureRevisionV2,
-  }),
-).annotate({
-  identifier: "PostFeatureRevisionDiscardV2Response",
-}) as any as S.Schema<PostFeatureRevisionDiscardV2Response>;
+export const PostFeatureRevisionDiscardV2Response =
+  DeleteFeatureRevisionRuleRampScheduleV2Response as any as S.Schema<PostFeatureRevisionDiscardV2Response>;
 
 /** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
 export type PostFeatureRevisionPublishV2RequestSkipSchemaValidation = string | boolean;
@@ -36630,9 +35196,8 @@ export const PostFeatureRevisionPublishV2Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Gates that would have blocked this publish but were bypassed by the caller's authority. Present only when at least one gate was bypassed. */
 export type PostFeatureRevisionPublishV2ResponseBypassedGatesList = Array<BypassedGates>;
-export const PostFeatureRevisionPublishV2ResponseBypassedGatesList = /*@__PURE__*/ S.Array(
-  BypassedGates,
-) as any as S.Schema<PostFeatureRevisionPublishV2ResponseBypassedGatesList>;
+export const PostFeatureRevisionPublishV2ResponseBypassedGatesList =
+  ArchiveConfigResponseBypassedGatesList as any as S.Schema<PostFeatureRevisionPublishV2ResponseBypassedGatesList>;
 
 export interface PostFeatureRevisionPublishV2Response {
   revision: FeatureRevisionV2;
@@ -36700,23 +35265,18 @@ export const PostFeatureRevisionRebasePreviewV2Request = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<PostFeatureRevisionRebasePreviewV2Request>;
 
 export type PostFeatureRevisionRebasePreviewV2ResponseConflictsList = Array<Conflicts>;
-export const PostFeatureRevisionRebasePreviewV2ResponseConflictsList = /*@__PURE__*/ S.Array(
-  Conflicts,
-) as any as S.Schema<PostFeatureRevisionRebasePreviewV2ResponseConflictsList>;
+export const PostFeatureRevisionRebasePreviewV2ResponseConflictsList =
+  GetFeatureRevisionMergeStatusV2ResponseConflictsList as any as S.Schema<PostFeatureRevisionRebasePreviewV2ResponseConflictsList>;
 
 export type PostFeatureRevisionRebasePreviewV2ResponseResultRulesList = Array<unknown>;
-export const PostFeatureRevisionRebasePreviewV2ResponseResultRulesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<PostFeatureRevisionRebasePreviewV2ResponseResultRulesList>;
+export const PostFeatureRevisionRebasePreviewV2ResponseResultRulesList =
+  CreateConfigRevisionRebaseRequestCustomValuesValueList as any as S.Schema<PostFeatureRevisionRebasePreviewV2ResponseResultRulesList>;
 
 export type PostFeatureRevisionRebasePreviewV2ResponseResultEnvironmentsEnabledMap = {
   [key: string]: boolean | undefined;
 };
 export const PostFeatureRevisionRebasePreviewV2ResponseResultEnvironmentsEnabledMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Boolean,
-  ) as any as S.Schema<PostFeatureRevisionRebasePreviewV2ResponseResultEnvironmentsEnabledMap>;
+  GetFeatureRevisionMergeStatusV2ResponseResultEnvironmentsEnabledMap as any as S.Schema<PostFeatureRevisionRebasePreviewV2ResponseResultEnvironmentsEnabledMap>;
 
 export type PostFeatureRevisionRebasePreviewV2ResponseResultPrerequisitesItem =
   RampScheduleStartActionsItemPatchPrerequisitesItem;
@@ -36726,9 +35286,7 @@ export const PostFeatureRevisionRebasePreviewV2ResponseResultPrerequisitesItem =
 export type PostFeatureRevisionRebasePreviewV2ResponseResultPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
 export const PostFeatureRevisionRebasePreviewV2ResponseResultPrerequisitesList =
-  /*@__PURE__*/ S.Array(
-    RampScheduleStartActionsItemPatchPrerequisitesItem,
-  ) as any as S.Schema<PostFeatureRevisionRebasePreviewV2ResponseResultPrerequisitesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataTargetingPrerequisitesList as any as S.Schema<PostFeatureRevisionRebasePreviewV2ResponseResultPrerequisitesList>;
 
 export type PostFeatureRevisionRebasePreviewV2ResponseResultMetadata =
   GetFeatureRevisionMergeStatusV2ResponseResultMetadata;
@@ -36831,13 +35389,8 @@ export const PostFeatureRevisionRebaseV2Request = /*@__PURE__*/ S.suspend(() =>
 export interface PostFeatureRevisionRebaseV2Response {
   revision: FeatureRevisionV2;
 }
-export const PostFeatureRevisionRebaseV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: FeatureRevisionV2,
-  }),
-).annotate({
-  identifier: "PostFeatureRevisionRebaseV2Response",
-}) as any as S.Schema<PostFeatureRevisionRebaseV2Response>;
+export const PostFeatureRevisionRebaseV2Response =
+  DeleteFeatureRevisionRuleRampScheduleV2Response as any as S.Schema<PostFeatureRevisionRebaseV2Response>;
 
 export interface PostFeatureRevisionRecallReviewV2Request {
   id: string;
@@ -36861,13 +35414,8 @@ export const PostFeatureRevisionRecallReviewV2Request = /*@__PURE__*/ S.suspend(
 export interface PostFeatureRevisionRecallReviewV2Response {
   revision: FeatureRevisionV2;
 }
-export const PostFeatureRevisionRecallReviewV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: FeatureRevisionV2,
-  }),
-).annotate({
-  identifier: "PostFeatureRevisionRecallReviewV2Response",
-}) as any as S.Schema<PostFeatureRevisionRecallReviewV2Response>;
+export const PostFeatureRevisionRecallReviewV2Response =
+  DeleteFeatureRevisionRuleRampScheduleV2Response as any as S.Schema<PostFeatureRevisionRecallReviewV2Response>;
 
 export interface PostFeatureRevisionReopenV2Request {
   id: string;
@@ -36887,13 +35435,8 @@ export const PostFeatureRevisionReopenV2Request = /*@__PURE__*/ S.suspend(() =>
 export interface PostFeatureRevisionReopenV2Response {
   revision: FeatureRevisionV2;
 }
-export const PostFeatureRevisionReopenV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: FeatureRevisionV2,
-  }),
-).annotate({
-  identifier: "PostFeatureRevisionReopenV2Response",
-}) as any as S.Schema<PostFeatureRevisionReopenV2Response>;
+export const PostFeatureRevisionReopenV2Response =
+  DeleteFeatureRevisionRuleRampScheduleV2Response as any as S.Schema<PostFeatureRevisionReopenV2Response>;
 
 export interface PostFeatureRevisionRequestReviewV2Request {
   id: string;
@@ -36927,13 +35470,8 @@ export const PostFeatureRevisionRequestReviewV2Request = /*@__PURE__*/ S.suspend
 export interface PostFeatureRevisionRequestReviewV2Response {
   revision: FeatureRevisionV2;
 }
-export const PostFeatureRevisionRequestReviewV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: FeatureRevisionV2,
-  }),
-).annotate({
-  identifier: "PostFeatureRevisionRequestReviewV2Response",
-}) as any as S.Schema<PostFeatureRevisionRequestReviewV2Response>;
+export const PostFeatureRevisionRequestReviewV2Response =
+  DeleteFeatureRevisionRuleRampScheduleV2Response as any as S.Schema<PostFeatureRevisionRequestReviewV2Response>;
 
 export type PostFeatureRevisionRevertV2RequestStrategy = "draft" | "publish";
 export const PostFeatureRevisionRevertV2RequestStrategy = S.String;
@@ -36970,23 +35508,16 @@ export const PostFeatureRevisionRevertV2Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Gates that would have blocked this publish but were bypassed by the caller's authority. Present only when at least one gate was bypassed. */
 export type PostFeatureRevisionRevertV2ResponseBypassedGatesList = Array<BypassedGates>;
-export const PostFeatureRevisionRevertV2ResponseBypassedGatesList = /*@__PURE__*/ S.Array(
-  BypassedGates,
-) as any as S.Schema<PostFeatureRevisionRevertV2ResponseBypassedGatesList>;
+export const PostFeatureRevisionRevertV2ResponseBypassedGatesList =
+  ArchiveConfigResponseBypassedGatesList as any as S.Schema<PostFeatureRevisionRevertV2ResponseBypassedGatesList>;
 
 export interface PostFeatureRevisionRevertV2Response {
   revision: FeatureRevisionV2;
   /** Gates that would have blocked this publish but were bypassed by the caller's authority. Present only when at least one gate was bypassed. */
   bypassedGates?: PostFeatureRevisionRevertV2ResponseBypassedGatesList;
 }
-export const PostFeatureRevisionRevertV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: FeatureRevisionV2,
-    bypassedGates: S.optional(PostFeatureRevisionRevertV2ResponseBypassedGatesList),
-  }),
-).annotate({
-  identifier: "PostFeatureRevisionRevertV2Response",
-}) as any as S.Schema<PostFeatureRevisionRevertV2Response>;
+export const PostFeatureRevisionRevertV2Response =
+  PostFeatureRevisionPublishV2Response as any as S.Schema<PostFeatureRevisionRevertV2Response>;
 
 /** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
 export type PostFeatureRevisionRuleAddV2RequestSkipSchemaValidation = string | boolean;
@@ -37002,9 +35533,8 @@ export type TargetingRuleSavedGroupsItemMatch = "all" | "none" | "any";
 export const TargetingRuleSavedGroupsItemMatch = S.String;
 
 export type TargetingRuleSavedGroupsItemIdsList = Array<string>;
-export const TargetingRuleSavedGroupsItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TargetingRuleSavedGroupsItemIdsList>;
+export const TargetingRuleSavedGroupsItemIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<TargetingRuleSavedGroupsItemIdsList>;
 
 export interface TargetingRuleSavedGroupsItem {
   match: TargetingRuleSavedGroupsItemMatch | (string & {});
@@ -37029,15 +35559,13 @@ export const TargetingRulePrerequisitesItem = RampScheduleStartActionsItemPatchP
 
 export type TargetingRulePrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
-export const TargetingRulePrerequisitesList = /*@__PURE__*/ S.Array(
-  RampScheduleStartActionsItemPatchPrerequisitesItem,
-) as any as S.Schema<TargetingRulePrerequisitesList>;
+export const TargetingRulePrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<TargetingRulePrerequisitesList>;
 
 /** Environment IDs the rule applies to. Ignored when allEnvironments is true; with allEnvironments false, an omitted or empty list scopes the rule to no environment. */
 export type TargetingRuleEnvironmentsList = Array<string>;
-export const TargetingRuleEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TargetingRuleEnvironmentsList>;
+export const TargetingRuleEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<TargetingRuleEnvironmentsList>;
 
 /** Use "force" for a standard targeting rule, or "rollout" for a percentage rollout (coverage < 1). Defaults to "force". Both are functionally equivalent; a force rule with coverage < 1 behaves as a rollout. */
 export type TargetingRuleType = "force" | "rollout";
@@ -37094,9 +35622,8 @@ export type ExperimentRuleSavedGroupsItemMatch = "all" | "none" | "any";
 export const ExperimentRuleSavedGroupsItemMatch = S.String;
 
 export type ExperimentRuleSavedGroupsItemIdsList = Array<string>;
-export const ExperimentRuleSavedGroupsItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentRuleSavedGroupsItemIdsList>;
+export const ExperimentRuleSavedGroupsItemIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ExperimentRuleSavedGroupsItemIdsList>;
 
 export interface ExperimentRuleSavedGroupsItem {
   match: ExperimentRuleSavedGroupsItemMatch | (string & {});
@@ -37121,15 +35648,13 @@ export const ExperimentRulePrerequisitesItem = RampScheduleStartActionsItemPatch
 
 export type ExperimentRulePrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
-export const ExperimentRulePrerequisitesList = /*@__PURE__*/ S.Array(
-  RampScheduleStartActionsItemPatchPrerequisitesItem,
-) as any as S.Schema<ExperimentRulePrerequisitesList>;
+export const ExperimentRulePrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<ExperimentRulePrerequisitesList>;
 
 /** Environment IDs the rule applies to. Ignored when allEnvironments is true; with allEnvironments false, an omitted or empty list scopes the rule to no environment. */
 export type ExperimentRuleEnvironmentsList = Array<string>;
-export const ExperimentRuleEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentRuleEnvironmentsList>;
+export const ExperimentRuleEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<ExperimentRuleEnvironmentsList>;
 
 export interface ExperimentRuleVariationsItem {
   variationId?: string;
@@ -37191,9 +35716,8 @@ export type SafeRolloutRuleSavedGroupsItemMatch = "all" | "none" | "any";
 export const SafeRolloutRuleSavedGroupsItemMatch = S.String;
 
 export type SafeRolloutRuleSavedGroupsItemIdsList = Array<string>;
-export const SafeRolloutRuleSavedGroupsItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SafeRolloutRuleSavedGroupsItemIdsList>;
+export const SafeRolloutRuleSavedGroupsItemIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<SafeRolloutRuleSavedGroupsItemIdsList>;
 
 export interface SafeRolloutRuleSavedGroupsItem {
   match: SafeRolloutRuleSavedGroupsItemMatch | (string & {});
@@ -37218,15 +35742,13 @@ export const SafeRolloutRulePrerequisitesItem = RampScheduleStartActionsItemPatc
 
 export type SafeRolloutRulePrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
-export const SafeRolloutRulePrerequisitesList = /*@__PURE__*/ S.Array(
-  RampScheduleStartActionsItemPatchPrerequisitesItem,
-) as any as S.Schema<SafeRolloutRulePrerequisitesList>;
+export const SafeRolloutRulePrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<SafeRolloutRulePrerequisitesList>;
 
 /** Environment IDs the rule applies to. Ignored when allEnvironments is true; with allEnvironments false, an omitted or empty list scopes the rule to no environment. */
 export type SafeRolloutRuleEnvironmentsList = Array<string>;
-export const SafeRolloutRuleEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SafeRolloutRuleEnvironmentsList>;
+export const SafeRolloutRuleEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<SafeRolloutRuleEnvironmentsList>;
 
 /** The assignment query, grouping its ID with the identifier type analyzed on. Mutually exclusive with the deprecated `exposureQueryId`. */
 export type SafeRolloutRuleSafeRolloutFieldsExposureQuery =
@@ -37235,9 +35757,8 @@ export const SafeRolloutRuleSafeRolloutFieldsExposureQuery =
   BulkImportExperimentTemplatesRequestTemplatesItemDataExposureQuery;
 
 export type SafeRolloutRuleSafeRolloutFieldsGuardrailMetricIdsList = Array<string>;
-export const SafeRolloutRuleSafeRolloutFieldsGuardrailMetricIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SafeRolloutRuleSafeRolloutFieldsGuardrailMetricIdsList>;
+export const SafeRolloutRuleSafeRolloutFieldsGuardrailMetricIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<SafeRolloutRuleSafeRolloutFieldsGuardrailMetricIdsList>;
 
 export type SafeRolloutRuleSafeRolloutFieldsMaxDurationUnit =
   | "weeks"
@@ -37370,9 +35891,7 @@ export const PostFeatureRevisionRuleAddV2RequestRampScheduleStartActionsItemPatc
 export type PostFeatureRevisionRuleAddV2RequestRampScheduleStartActionsItemPatchSavedGroupsItemIdsList =
   Array<string>;
 export const PostFeatureRevisionRuleAddV2RequestRampScheduleStartActionsItemPatchSavedGroupsItemIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostFeatureRevisionRuleAddV2RequestRampScheduleStartActionsItemPatchSavedGroupsItemIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostFeatureRevisionRuleAddV2RequestRampScheduleStartActionsItemPatchSavedGroupsItemIdsList>;
 
 export interface PostFeatureRevisionRuleAddV2RequestRampScheduleStartActionsItemPatchSavedGroupsItem {
   match:
@@ -37407,16 +35926,12 @@ export const PostFeatureRevisionRuleAddV2RequestRampScheduleStartActionsItemPatc
 export type PostFeatureRevisionRuleAddV2RequestRampScheduleStartActionsItemPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
 export const PostFeatureRevisionRuleAddV2RequestRampScheduleStartActionsItemPatchPrerequisitesList =
-  /*@__PURE__*/ S.Array(
-    RampScheduleStartActionsItemPatchPrerequisitesItem,
-  ) as any as S.Schema<PostFeatureRevisionRuleAddV2RequestRampScheduleStartActionsItemPatchPrerequisitesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataTargetingPrerequisitesList as any as S.Schema<PostFeatureRevisionRuleAddV2RequestRampScheduleStartActionsItemPatchPrerequisitesList>;
 
 export type PostFeatureRevisionRuleAddV2RequestRampScheduleStartActionsItemPatchEnvironmentsList =
   Array<string>;
 export const PostFeatureRevisionRuleAddV2RequestRampScheduleStartActionsItemPatchEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostFeatureRevisionRuleAddV2RequestRampScheduleStartActionsItemPatchEnvironmentsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostFeatureRevisionRuleAddV2RequestRampScheduleStartActionsItemPatchEnvironmentsList>;
 
 export interface PostFeatureRevisionRuleAddV2RequestRampScheduleStartActionsItemPatch {
   ruleId?: string;
@@ -37502,9 +36017,7 @@ export const PostFeatureRevisionRuleAddV2RequestRampScheduleStepsItemActionsItem
 export type PostFeatureRevisionRuleAddV2RequestRampScheduleStepsItemActionsItemPatchSavedGroupsItemIdsList =
   Array<string>;
 export const PostFeatureRevisionRuleAddV2RequestRampScheduleStepsItemActionsItemPatchSavedGroupsItemIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostFeatureRevisionRuleAddV2RequestRampScheduleStepsItemActionsItemPatchSavedGroupsItemIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostFeatureRevisionRuleAddV2RequestRampScheduleStepsItemActionsItemPatchSavedGroupsItemIdsList>;
 
 export interface PostFeatureRevisionRuleAddV2RequestRampScheduleStepsItemActionsItemPatchSavedGroupsItem {
   match:
@@ -37539,16 +36052,12 @@ export const PostFeatureRevisionRuleAddV2RequestRampScheduleStepsItemActionsItem
 export type PostFeatureRevisionRuleAddV2RequestRampScheduleStepsItemActionsItemPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
 export const PostFeatureRevisionRuleAddV2RequestRampScheduleStepsItemActionsItemPatchPrerequisitesList =
-  /*@__PURE__*/ S.Array(
-    RampScheduleStartActionsItemPatchPrerequisitesItem,
-  ) as any as S.Schema<PostFeatureRevisionRuleAddV2RequestRampScheduleStepsItemActionsItemPatchPrerequisitesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataTargetingPrerequisitesList as any as S.Schema<PostFeatureRevisionRuleAddV2RequestRampScheduleStepsItemActionsItemPatchPrerequisitesList>;
 
 export type PostFeatureRevisionRuleAddV2RequestRampScheduleStepsItemActionsItemPatchEnvironmentsList =
   Array<string>;
 export const PostFeatureRevisionRuleAddV2RequestRampScheduleStepsItemActionsItemPatchEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostFeatureRevisionRuleAddV2RequestRampScheduleStepsItemActionsItemPatchEnvironmentsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostFeatureRevisionRuleAddV2RequestRampScheduleStepsItemActionsItemPatchEnvironmentsList>;
 
 export interface PostFeatureRevisionRuleAddV2RequestRampScheduleStepsItemActionsItemPatch {
   ruleId?: string;
@@ -37656,9 +36165,7 @@ export const PostFeatureRevisionRuleAddV2RequestRampScheduleEndActionsItemPatchS
 export type PostFeatureRevisionRuleAddV2RequestRampScheduleEndActionsItemPatchSavedGroupsItemIdsList =
   Array<string>;
 export const PostFeatureRevisionRuleAddV2RequestRampScheduleEndActionsItemPatchSavedGroupsItemIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostFeatureRevisionRuleAddV2RequestRampScheduleEndActionsItemPatchSavedGroupsItemIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostFeatureRevisionRuleAddV2RequestRampScheduleEndActionsItemPatchSavedGroupsItemIdsList>;
 
 export interface PostFeatureRevisionRuleAddV2RequestRampScheduleEndActionsItemPatchSavedGroupsItem {
   match:
@@ -37691,16 +36198,12 @@ export const PostFeatureRevisionRuleAddV2RequestRampScheduleEndActionsItemPatchP
 export type PostFeatureRevisionRuleAddV2RequestRampScheduleEndActionsItemPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
 export const PostFeatureRevisionRuleAddV2RequestRampScheduleEndActionsItemPatchPrerequisitesList =
-  /*@__PURE__*/ S.Array(
-    RampScheduleStartActionsItemPatchPrerequisitesItem,
-  ) as any as S.Schema<PostFeatureRevisionRuleAddV2RequestRampScheduleEndActionsItemPatchPrerequisitesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataTargetingPrerequisitesList as any as S.Schema<PostFeatureRevisionRuleAddV2RequestRampScheduleEndActionsItemPatchPrerequisitesList>;
 
 export type PostFeatureRevisionRuleAddV2RequestRampScheduleEndActionsItemPatchEnvironmentsList =
   Array<string>;
 export const PostFeatureRevisionRuleAddV2RequestRampScheduleEndActionsItemPatchEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostFeatureRevisionRuleAddV2RequestRampScheduleEndActionsItemPatchEnvironmentsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostFeatureRevisionRuleAddV2RequestRampScheduleEndActionsItemPatchEnvironmentsList>;
 
 export interface PostFeatureRevisionRuleAddV2RequestRampScheduleEndActionsItemPatch {
   ruleId?: string;
@@ -37767,16 +36270,12 @@ export const PostFeatureRevisionRuleAddV2RequestRampScheduleEndActionsList = /*@
 export type PostFeatureRevisionRuleAddV2RequestRampScheduleMonitoringConfigGuardrailMetricIdsList =
   Array<string>;
 export const PostFeatureRevisionRuleAddV2RequestRampScheduleMonitoringConfigGuardrailMetricIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostFeatureRevisionRuleAddV2RequestRampScheduleMonitoringConfigGuardrailMetricIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostFeatureRevisionRuleAddV2RequestRampScheduleMonitoringConfigGuardrailMetricIdsList>;
 
 export type PostFeatureRevisionRuleAddV2RequestRampScheduleMonitoringConfigSignalMetricIdsList =
   Array<string>;
 export const PostFeatureRevisionRuleAddV2RequestRampScheduleMonitoringConfigSignalMetricIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostFeatureRevisionRuleAddV2RequestRampScheduleMonitoringConfigSignalMetricIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostFeatureRevisionRuleAddV2RequestRampScheduleMonitoringConfigSignalMetricIdsList>;
 
 export type PostFeatureRevisionRuleAddV2RequestRampScheduleMonitoringConfigMonitoringMode =
   | "auto"
@@ -37972,18 +36471,12 @@ export const PostFeatureRevisionRuleAddV2Request = /*@__PURE__*/ S.suspend(() =>
 export interface PostFeatureRevisionRuleAddV2Response {
   revision: FeatureRevisionV2;
 }
-export const PostFeatureRevisionRuleAddV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: FeatureRevisionV2,
-  }),
-).annotate({
-  identifier: "PostFeatureRevisionRuleAddV2Response",
-}) as any as S.Schema<PostFeatureRevisionRuleAddV2Response>;
+export const PostFeatureRevisionRuleAddV2Response =
+  DeleteFeatureRevisionRuleRampScheduleV2Response as any as S.Schema<PostFeatureRevisionRuleAddV2Response>;
 
 export type PostFeatureRevisionRulesReorderV2RequestRuleIdsList = Array<string>;
-export const PostFeatureRevisionRulesReorderV2RequestRuleIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFeatureRevisionRulesReorderV2RequestRuleIdsList>;
+export const PostFeatureRevisionRulesReorderV2RequestRuleIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostFeatureRevisionRulesReorderV2RequestRuleIdsList>;
 
 export interface PostFeatureRevisionRulesReorderV2Request {
   id: string;
@@ -38018,13 +36511,8 @@ export const PostFeatureRevisionRulesReorderV2Request = /*@__PURE__*/ S.suspend(
 export interface PostFeatureRevisionRulesReorderV2Response {
   revision: FeatureRevisionV2;
 }
-export const PostFeatureRevisionRulesReorderV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: FeatureRevisionV2,
-  }),
-).annotate({
-  identifier: "PostFeatureRevisionRulesReorderV2Response",
-}) as any as S.Schema<PostFeatureRevisionRulesReorderV2Response>;
+export const PostFeatureRevisionRulesReorderV2Response =
+  DeleteFeatureRevisionRuleRampScheduleV2Response as any as S.Schema<PostFeatureRevisionRulesReorderV2Response>;
 
 export interface PostFeatureRevisionSchedulePublishV2Request {
   id: string;
@@ -38066,13 +36554,8 @@ export const PostFeatureRevisionSchedulePublishV2Request = /*@__PURE__*/ S.suspe
 export interface PostFeatureRevisionSchedulePublishV2Response {
   revision: FeatureRevisionV2;
 }
-export const PostFeatureRevisionSchedulePublishV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: FeatureRevisionV2,
-  }),
-).annotate({
-  identifier: "PostFeatureRevisionSchedulePublishV2Response",
-}) as any as S.Schema<PostFeatureRevisionSchedulePublishV2Response>;
+export const PostFeatureRevisionSchedulePublishV2Response =
+  DeleteFeatureRevisionRuleRampScheduleV2Response as any as S.Schema<PostFeatureRevisionSchedulePublishV2Response>;
 
 export type PostFeatureRevisionSubmitReviewV2RequestAction =
   | "approve"
@@ -38149,13 +36632,8 @@ export const PostFeatureRevisionToggleV2Request = /*@__PURE__*/ S.suspend(() =>
 export interface PostFeatureRevisionToggleV2Response {
   revision: FeatureRevisionV2;
 }
-export const PostFeatureRevisionToggleV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: FeatureRevisionV2,
-  }),
-).annotate({
-  identifier: "PostFeatureRevisionToggleV2Response",
-}) as any as S.Schema<PostFeatureRevisionToggleV2Response>;
+export const PostFeatureRevisionToggleV2Response =
+  DeleteFeatureRevisionRuleRampScheduleV2Response as any as S.Schema<PostFeatureRevisionToggleV2Response>;
 
 export interface PostFeatureRevisionUndoReviewV2Request {
   id: string;
@@ -38175,13 +36653,8 @@ export const PostFeatureRevisionUndoReviewV2Request = /*@__PURE__*/ S.suspend(()
 export interface PostFeatureRevisionUndoReviewV2Response {
   revision: FeatureRevisionV2;
 }
-export const PostFeatureRevisionUndoReviewV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: FeatureRevisionV2,
-  }),
-).annotate({
-  identifier: "PostFeatureRevisionUndoReviewV2Response",
-}) as any as S.Schema<PostFeatureRevisionUndoReviewV2Response>;
+export const PostFeatureRevisionUndoReviewV2Response =
+  DeleteFeatureRevisionRuleRampScheduleV2Response as any as S.Schema<PostFeatureRevisionUndoReviewV2Response>;
 
 /** If the organization caps concurrent drafts per feature (`maxConcurrentDrafts` setting), requests at or over the cap are rejected with a 409. Pass `true` to create the draft anyway. */
 export type PostFeatureRevisionV2RequestOverrideDraftLimit = string | boolean;
@@ -38212,13 +36685,8 @@ export const PostFeatureRevisionV2Request = /*@__PURE__*/ S.suspend(() =>
 export interface PostFeatureRevisionV2Response {
   revision: FeatureRevisionV2;
 }
-export const PostFeatureRevisionV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: FeatureRevisionV2,
-  }),
-).annotate({
-  identifier: "PostFeatureRevisionV2Response",
-}) as any as S.Schema<PostFeatureRevisionV2Response>;
+export const PostFeatureRevisionV2Response =
+  DeleteFeatureRevisionRuleRampScheduleV2Response as any as S.Schema<PostFeatureRevisionV2Response>;
 
 /** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
 export type PostFeatureV2RequestSkipSchemaValidation = string | boolean;
@@ -38232,9 +36700,8 @@ export const PostFeatureV2RequestIgnoreWarnings =
 
 /** Secondary project IDs this feature is targeted in and served to, beyond its primary `project`. Adding a project requires the `targetFeatures` permission (FlagsTarget policy) in that project. Governance stays with `project`. */
 export type PostFeatureV2RequestTargetingProjectsList = Array<string>;
-export const PostFeatureV2RequestTargetingProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFeatureV2RequestTargetingProjectsList>;
+export const PostFeatureV2RequestTargetingProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostFeatureV2RequestTargetingProjectsList>;
 
 /** The data type of the feature payload. Boolean by default. */
 export type PostFeatureV2RequestValueType = "boolean" | "string" | "number" | "json";
@@ -38242,17 +36709,15 @@ export const PostFeatureV2RequestValueType = S.String;
 
 /** List of associated tags */
 export type PostFeatureV2RequestTagsList = Array<string>;
-export const PostFeatureV2RequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFeatureV2RequestTagsList>;
+export const PostFeatureV2RequestTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostFeatureV2RequestTagsList>;
 
 export type PostFeatureV2RequestRulesItemCase0SavedGroupsItemMatch = "all" | "none" | "any";
 export const PostFeatureV2RequestRulesItemCase0SavedGroupsItemMatch = S.String;
 
 export type PostFeatureV2RequestRulesItemCase0SavedGroupsItemIdsList = Array<string>;
-export const PostFeatureV2RequestRulesItemCase0SavedGroupsItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFeatureV2RequestRulesItemCase0SavedGroupsItemIdsList>;
+export const PostFeatureV2RequestRulesItemCase0SavedGroupsItemIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostFeatureV2RequestRulesItemCase0SavedGroupsItemIdsList>;
 
 export interface PostFeatureV2RequestRulesItemCase0SavedGroupsItem {
   match: PostFeatureV2RequestRulesItemCase0SavedGroupsItemMatch | (string & {});
@@ -38282,9 +36747,7 @@ export const PostFeatureV2RequestRulesItemCase0SavedGroupTargetingItemMatchType 
 export type PostFeatureV2RequestRulesItemCase0SavedGroupTargetingItemSavedGroupsList =
   Array<string>;
 export const PostFeatureV2RequestRulesItemCase0SavedGroupTargetingItemSavedGroupsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostFeatureV2RequestRulesItemCase0SavedGroupTargetingItemSavedGroupsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostFeatureV2RequestRulesItemCase0SavedGroupTargetingItemSavedGroupsList>;
 
 export interface PostFeatureV2RequestRulesItemCase0SavedGroupTargetingItem {
   matchType: PostFeatureV2RequestRulesItemCase0SavedGroupTargetingItemMatchType | (string & {});
@@ -38314,9 +36777,8 @@ export const PostFeatureV2RequestRulesItemCase0PrerequisitesItem =
 
 export type PostFeatureV2RequestRulesItemCase0PrerequisitesList =
   Array<CreateExperimentRequestPhasesItemPrerequisitesItem>;
-export const PostFeatureV2RequestRulesItemCase0PrerequisitesList = /*@__PURE__*/ S.Array(
-  CreateExperimentRequestPhasesItemPrerequisitesItem,
-) as any as S.Schema<PostFeatureV2RequestRulesItemCase0PrerequisitesList>;
+export const PostFeatureV2RequestRulesItemCase0PrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<PostFeatureV2RequestRulesItemCase0PrerequisitesList>;
 
 export interface PostFeatureV2RequestRulesItemCase0ScheduleRulesItem {
   /** ISO 8601 date-time, e.g. "2025-06-01T00:00:00Z". */
@@ -38340,15 +36802,13 @@ export const PostFeatureV2RequestRulesItemCase0ScheduleRulesList = /*@__PURE__*/
 
 /** Environment IDs the rule applies to. Ignored when allEnvironments is true; with allEnvironments false, an omitted or empty list scopes the rule to no environment. */
 export type PostFeatureV2RequestRulesItemCase0EnvironmentsList = Array<string>;
-export const PostFeatureV2RequestRulesItemCase0EnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFeatureV2RequestRulesItemCase0EnvironmentsList>;
+export const PostFeatureV2RequestRulesItemCase0EnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostFeatureV2RequestRulesItemCase0EnvironmentsList>;
 
 /** Specific project IDs this rule applies to. Used when allProjects is false. An empty array scopes the rule to no project. When the organization requires registered attributes with project scoping, the rule's attributes are validated against these projects rather than the whole feature's. */
 export type PostFeatureV2RequestRulesItemCase0ProjectsList = Array<string>;
-export const PostFeatureV2RequestRulesItemCase0ProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFeatureV2RequestRulesItemCase0ProjectsList>;
+export const PostFeatureV2RequestRulesItemCase0ProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostFeatureV2RequestRulesItemCase0ProjectsList>;
 
 export interface PostFeatureV2RequestRulesItemCase0 {
   description?: string;
@@ -38411,9 +36871,8 @@ export type PostFeatureV2RequestRulesItemCase1SavedGroupsItemMatch = "all" | "no
 export const PostFeatureV2RequestRulesItemCase1SavedGroupsItemMatch = S.String;
 
 export type PostFeatureV2RequestRulesItemCase1SavedGroupsItemIdsList = Array<string>;
-export const PostFeatureV2RequestRulesItemCase1SavedGroupsItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFeatureV2RequestRulesItemCase1SavedGroupsItemIdsList>;
+export const PostFeatureV2RequestRulesItemCase1SavedGroupsItemIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostFeatureV2RequestRulesItemCase1SavedGroupsItemIdsList>;
 
 export interface PostFeatureV2RequestRulesItemCase1SavedGroupsItem {
   match: PostFeatureV2RequestRulesItemCase1SavedGroupsItemMatch | (string & {});
@@ -38443,9 +36902,7 @@ export const PostFeatureV2RequestRulesItemCase1SavedGroupTargetingItemMatchType 
 export type PostFeatureV2RequestRulesItemCase1SavedGroupTargetingItemSavedGroupsList =
   Array<string>;
 export const PostFeatureV2RequestRulesItemCase1SavedGroupTargetingItemSavedGroupsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostFeatureV2RequestRulesItemCase1SavedGroupTargetingItemSavedGroupsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostFeatureV2RequestRulesItemCase1SavedGroupTargetingItemSavedGroupsList>;
 
 export interface PostFeatureV2RequestRulesItemCase1SavedGroupTargetingItem {
   matchType: PostFeatureV2RequestRulesItemCase1SavedGroupTargetingItemMatchType | (string & {});
@@ -38475,9 +36932,8 @@ export const PostFeatureV2RequestRulesItemCase1PrerequisitesItem =
 
 export type PostFeatureV2RequestRulesItemCase1PrerequisitesList =
   Array<CreateExperimentRequestPhasesItemPrerequisitesItem>;
-export const PostFeatureV2RequestRulesItemCase1PrerequisitesList = /*@__PURE__*/ S.Array(
-  CreateExperimentRequestPhasesItemPrerequisitesItem,
-) as any as S.Schema<PostFeatureV2RequestRulesItemCase1PrerequisitesList>;
+export const PostFeatureV2RequestRulesItemCase1PrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<PostFeatureV2RequestRulesItemCase1PrerequisitesList>;
 
 export type PostFeatureV2RequestRulesItemCase1ScheduleRulesItem =
   PostFeatureV2RequestRulesItemCase0ScheduleRulesItem;
@@ -38486,21 +36942,18 @@ export const PostFeatureV2RequestRulesItemCase1ScheduleRulesItem =
 
 export type PostFeatureV2RequestRulesItemCase1ScheduleRulesList =
   Array<PostFeatureV2RequestRulesItemCase0ScheduleRulesItem>;
-export const PostFeatureV2RequestRulesItemCase1ScheduleRulesList = /*@__PURE__*/ S.Array(
-  PostFeatureV2RequestRulesItemCase0ScheduleRulesItem,
-) as any as S.Schema<PostFeatureV2RequestRulesItemCase1ScheduleRulesList>;
+export const PostFeatureV2RequestRulesItemCase1ScheduleRulesList =
+  PostFeatureV2RequestRulesItemCase0ScheduleRulesList as any as S.Schema<PostFeatureV2RequestRulesItemCase1ScheduleRulesList>;
 
 /** Environment IDs the rule applies to. Ignored when allEnvironments is true; with allEnvironments false, an omitted or empty list scopes the rule to no environment. */
 export type PostFeatureV2RequestRulesItemCase1EnvironmentsList = Array<string>;
-export const PostFeatureV2RequestRulesItemCase1EnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFeatureV2RequestRulesItemCase1EnvironmentsList>;
+export const PostFeatureV2RequestRulesItemCase1EnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostFeatureV2RequestRulesItemCase1EnvironmentsList>;
 
 /** Specific project IDs this rule applies to. Used when allProjects is false. An empty array scopes the rule to no project. When the organization requires registered attributes with project scoping, the rule's attributes are validated against these projects rather than the whole feature's. */
 export type PostFeatureV2RequestRulesItemCase1ProjectsList = Array<string>;
-export const PostFeatureV2RequestRulesItemCase1ProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFeatureV2RequestRulesItemCase1ProjectsList>;
+export const PostFeatureV2RequestRulesItemCase1ProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostFeatureV2RequestRulesItemCase1ProjectsList>;
 
 export interface PostFeatureV2RequestRulesItemCase1 {
   description?: string;
@@ -38572,9 +37025,8 @@ export type PostFeatureV2RequestRulesItemCase2SavedGroupsItemMatch = "all" | "no
 export const PostFeatureV2RequestRulesItemCase2SavedGroupsItemMatch = S.String;
 
 export type PostFeatureV2RequestRulesItemCase2SavedGroupsItemIdsList = Array<string>;
-export const PostFeatureV2RequestRulesItemCase2SavedGroupsItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFeatureV2RequestRulesItemCase2SavedGroupsItemIdsList>;
+export const PostFeatureV2RequestRulesItemCase2SavedGroupsItemIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostFeatureV2RequestRulesItemCase2SavedGroupsItemIdsList>;
 
 export interface PostFeatureV2RequestRulesItemCase2SavedGroupsItem {
   match: PostFeatureV2RequestRulesItemCase2SavedGroupsItemMatch | (string & {});
@@ -38604,9 +37056,7 @@ export const PostFeatureV2RequestRulesItemCase2SavedGroupTargetingItemMatchType 
 export type PostFeatureV2RequestRulesItemCase2SavedGroupTargetingItemSavedGroupsList =
   Array<string>;
 export const PostFeatureV2RequestRulesItemCase2SavedGroupTargetingItemSavedGroupsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostFeatureV2RequestRulesItemCase2SavedGroupTargetingItemSavedGroupsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostFeatureV2RequestRulesItemCase2SavedGroupTargetingItemSavedGroupsList>;
 
 export interface PostFeatureV2RequestRulesItemCase2SavedGroupTargetingItem {
   matchType: PostFeatureV2RequestRulesItemCase2SavedGroupTargetingItemMatchType | (string & {});
@@ -38636,9 +37086,8 @@ export const PostFeatureV2RequestRulesItemCase2PrerequisitesItem =
 
 export type PostFeatureV2RequestRulesItemCase2PrerequisitesList =
   Array<CreateExperimentRequestPhasesItemPrerequisitesItem>;
-export const PostFeatureV2RequestRulesItemCase2PrerequisitesList = /*@__PURE__*/ S.Array(
-  CreateExperimentRequestPhasesItemPrerequisitesItem,
-) as any as S.Schema<PostFeatureV2RequestRulesItemCase2PrerequisitesList>;
+export const PostFeatureV2RequestRulesItemCase2PrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<PostFeatureV2RequestRulesItemCase2PrerequisitesList>;
 
 export type PostFeatureV2RequestRulesItemCase2ScheduleRulesItem =
   PostFeatureV2RequestRulesItemCase0ScheduleRulesItem;
@@ -38647,9 +37096,8 @@ export const PostFeatureV2RequestRulesItemCase2ScheduleRulesItem =
 
 export type PostFeatureV2RequestRulesItemCase2ScheduleRulesList =
   Array<PostFeatureV2RequestRulesItemCase0ScheduleRulesItem>;
-export const PostFeatureV2RequestRulesItemCase2ScheduleRulesList = /*@__PURE__*/ S.Array(
-  PostFeatureV2RequestRulesItemCase0ScheduleRulesItem,
-) as any as S.Schema<PostFeatureV2RequestRulesItemCase2ScheduleRulesList>;
+export const PostFeatureV2RequestRulesItemCase2ScheduleRulesList =
+  PostFeatureV2RequestRulesItemCase0ScheduleRulesList as any as S.Schema<PostFeatureV2RequestRulesItemCase2ScheduleRulesList>;
 
 export interface PostFeatureV2RequestRulesItemCase2VariationsItem {
   value: string;
@@ -38657,33 +37105,23 @@ export interface PostFeatureV2RequestRulesItemCase2VariationsItem {
   /** Key of a config to back this value. When set, `value` is a JSON override patch merged on top of the config; omit or null for a plain value. */
   config?: string | null;
 }
-export const PostFeatureV2RequestRulesItemCase2VariationsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    variationId: S.String,
-    config: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PostFeatureV2RequestRulesItemCase2VariationsItem",
-}) as any as S.Schema<PostFeatureV2RequestRulesItemCase2VariationsItem>;
+export const PostFeatureV2RequestRulesItemCase2VariationsItem =
+  FeatureRuleV2VariationsItem as any as S.Schema<PostFeatureV2RequestRulesItemCase2VariationsItem>;
 
 export type PostFeatureV2RequestRulesItemCase2VariationsList =
   Array<PostFeatureV2RequestRulesItemCase2VariationsItem>;
-export const PostFeatureV2RequestRulesItemCase2VariationsList = /*@__PURE__*/ S.Array(
-  PostFeatureV2RequestRulesItemCase2VariationsItem,
-) as any as S.Schema<PostFeatureV2RequestRulesItemCase2VariationsList>;
+export const PostFeatureV2RequestRulesItemCase2VariationsList =
+  FeatureRuleV2VariationsList as any as S.Schema<PostFeatureV2RequestRulesItemCase2VariationsList>;
 
 /** Environment IDs the rule applies to. Ignored when allEnvironments is true; with allEnvironments false, an omitted or empty list scopes the rule to no environment. */
 export type PostFeatureV2RequestRulesItemCase2EnvironmentsList = Array<string>;
-export const PostFeatureV2RequestRulesItemCase2EnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFeatureV2RequestRulesItemCase2EnvironmentsList>;
+export const PostFeatureV2RequestRulesItemCase2EnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostFeatureV2RequestRulesItemCase2EnvironmentsList>;
 
 /** Specific project IDs this rule applies to. Used when allProjects is false. An empty array scopes the rule to no project. When the organization requires registered attributes with project scoping, the rule's attributes are validated against these projects rather than the whole feature's. */
 export type PostFeatureV2RequestRulesItemCase2ProjectsList = Array<string>;
-export const PostFeatureV2RequestRulesItemCase2ProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFeatureV2RequestRulesItemCase2ProjectsList>;
+export const PostFeatureV2RequestRulesItemCase2ProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostFeatureV2RequestRulesItemCase2ProjectsList>;
 
 export interface PostFeatureV2RequestRulesItemCase2 {
   description?: string;
@@ -38745,9 +37183,8 @@ export type PostFeatureV2RequestRulesItemCase3SavedGroupsItemMatch = "all" | "no
 export const PostFeatureV2RequestRulesItemCase3SavedGroupsItemMatch = S.String;
 
 export type PostFeatureV2RequestRulesItemCase3SavedGroupsItemIdsList = Array<string>;
-export const PostFeatureV2RequestRulesItemCase3SavedGroupsItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFeatureV2RequestRulesItemCase3SavedGroupsItemIdsList>;
+export const PostFeatureV2RequestRulesItemCase3SavedGroupsItemIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostFeatureV2RequestRulesItemCase3SavedGroupsItemIdsList>;
 
 export interface PostFeatureV2RequestRulesItemCase3SavedGroupsItem {
   match: PostFeatureV2RequestRulesItemCase3SavedGroupsItemMatch | (string & {});
@@ -38777,9 +37214,7 @@ export const PostFeatureV2RequestRulesItemCase3SavedGroupTargetingItemMatchType 
 export type PostFeatureV2RequestRulesItemCase3SavedGroupTargetingItemSavedGroupsList =
   Array<string>;
 export const PostFeatureV2RequestRulesItemCase3SavedGroupTargetingItemSavedGroupsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostFeatureV2RequestRulesItemCase3SavedGroupTargetingItemSavedGroupsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostFeatureV2RequestRulesItemCase3SavedGroupTargetingItemSavedGroupsList>;
 
 export interface PostFeatureV2RequestRulesItemCase3SavedGroupTargetingItem {
   matchType: PostFeatureV2RequestRulesItemCase3SavedGroupTargetingItemMatchType | (string & {});
@@ -38809,9 +37244,8 @@ export const PostFeatureV2RequestRulesItemCase3PrerequisitesItem =
 
 export type PostFeatureV2RequestRulesItemCase3PrerequisitesList =
   Array<CreateExperimentRequestPhasesItemPrerequisitesItem>;
-export const PostFeatureV2RequestRulesItemCase3PrerequisitesList = /*@__PURE__*/ S.Array(
-  CreateExperimentRequestPhasesItemPrerequisitesItem,
-) as any as S.Schema<PostFeatureV2RequestRulesItemCase3PrerequisitesList>;
+export const PostFeatureV2RequestRulesItemCase3PrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<PostFeatureV2RequestRulesItemCase3PrerequisitesList>;
 
 export type PostFeatureV2RequestRulesItemCase3ScheduleRulesItem =
   PostFeatureV2RequestRulesItemCase0ScheduleRulesItem;
@@ -38820,9 +37254,8 @@ export const PostFeatureV2RequestRulesItemCase3ScheduleRulesItem =
 
 export type PostFeatureV2RequestRulesItemCase3ScheduleRulesList =
   Array<PostFeatureV2RequestRulesItemCase0ScheduleRulesItem>;
-export const PostFeatureV2RequestRulesItemCase3ScheduleRulesList = /*@__PURE__*/ S.Array(
-  PostFeatureV2RequestRulesItemCase0ScheduleRulesItem,
-) as any as S.Schema<PostFeatureV2RequestRulesItemCase3ScheduleRulesList>;
+export const PostFeatureV2RequestRulesItemCase3ScheduleRulesList =
+  PostFeatureV2RequestRulesItemCase0ScheduleRulesList as any as S.Schema<PostFeatureV2RequestRulesItemCase3ScheduleRulesList>;
 
 export type PostFeatureV2RequestRulesItemCase3Status =
   | "running"
@@ -38833,15 +37266,13 @@ export const PostFeatureV2RequestRulesItemCase3Status = S.String;
 
 /** Environment IDs the rule applies to. Ignored when allEnvironments is true; with allEnvironments false, an omitted or empty list scopes the rule to no environment. */
 export type PostFeatureV2RequestRulesItemCase3EnvironmentsList = Array<string>;
-export const PostFeatureV2RequestRulesItemCase3EnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFeatureV2RequestRulesItemCase3EnvironmentsList>;
+export const PostFeatureV2RequestRulesItemCase3EnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostFeatureV2RequestRulesItemCase3EnvironmentsList>;
 
 /** Specific project IDs this rule applies to. Used when allProjects is false. An empty array scopes the rule to no project. When the organization requires registered attributes with project scoping, the rule's attributes are validated against these projects rather than the whole feature's. */
 export type PostFeatureV2RequestRulesItemCase3ProjectsList = Array<string>;
-export const PostFeatureV2RequestRulesItemCase3ProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFeatureV2RequestRulesItemCase3ProjectsList>;
+export const PostFeatureV2RequestRulesItemCase3ProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostFeatureV2RequestRulesItemCase3ProjectsList>;
 
 export interface PostFeatureV2RequestRulesItemCase3 {
   description?: string;
@@ -38943,15 +37374,12 @@ export const PostFeatureV2RequestEnvironmentsMap = /*@__PURE__*/ S.Record(
 
 /** Feature IDs. Each feature must evaluate to `true` */
 export type PostFeatureV2RequestPrerequisitesList = Array<string>;
-export const PostFeatureV2RequestPrerequisitesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFeatureV2RequestPrerequisitesList>;
+export const PostFeatureV2RequestPrerequisitesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostFeatureV2RequestPrerequisitesList>;
 
 export type PostFeatureV2RequestCustomFieldsMap = { [key: string]: string | undefined };
-export const PostFeatureV2RequestCustomFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PostFeatureV2RequestCustomFieldsMap>;
+export const PostFeatureV2RequestCustomFieldsMap =
+  ConstantEnvironmentValuesMap as any as S.Schema<PostFeatureV2RequestCustomFieldsMap>;
 
 export interface PostFeatureV2Request {
   /** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
@@ -39064,24 +37492,16 @@ export const PostFunnelExplorationRequestDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
 
 export type PostFunnelExplorationRequestDimensionsItemCase2ValuesList = Array<string>;
-export const PostFunnelExplorationRequestDimensionsItemCase2ValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostFunnelExplorationRequestDimensionsItemCase2ValuesList>;
+export const PostFunnelExplorationRequestDimensionsItemCase2ValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostFunnelExplorationRequestDimensionsItemCase2ValuesList>;
 
 export interface PostFunnelExplorationRequestDimensionsItemCase2 {
   dimensionType: string;
   column: string;
   values: PostFunnelExplorationRequestDimensionsItemCase2ValuesList;
 }
-export const PostFunnelExplorationRequestDimensionsItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.String,
-    values: PostFunnelExplorationRequestDimensionsItemCase2ValuesList,
-  }),
-).annotate({
-  identifier: "PostFunnelExplorationRequestDimensionsItemCase2",
-}) as any as S.Schema<PostFunnelExplorationRequestDimensionsItemCase2>;
+export const PostFunnelExplorationRequestDimensionsItemCase2 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<PostFunnelExplorationRequestDimensionsItemCase2>;
 
 export type PostFunnelExplorationRequestDimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -39112,9 +37532,7 @@ export const PostFunnelExplorationRequestDimensionsItemCase3SlicesItemFiltersIte
 export type PostFunnelExplorationRequestDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const PostFunnelExplorationRequestDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostFunnelExplorationRequestDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostFunnelExplorationRequestDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface PostFunnelExplorationRequestDimensionsItemCase3SlicesItemFiltersItem {
   operator:
@@ -39272,9 +37690,7 @@ export const PostFunnelExplorationRequestDatasetStepsItemRowFiltersItemOperator 
 
 export type PostFunnelExplorationRequestDatasetStepsItemRowFiltersItemValuesList = Array<string>;
 export const PostFunnelExplorationRequestDatasetStepsItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostFunnelExplorationRequestDatasetStepsItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostFunnelExplorationRequestDatasetStepsItemRowFiltersItemValuesList>;
 
 export interface PostFunnelExplorationRequestDatasetStepsItemRowFiltersItem {
   operator: PostFunnelExplorationRequestDatasetStepsItemRowFiltersItemOperator | (string & {});
@@ -39404,9 +37820,7 @@ export type PostFunnelExplorationResponseExplorationResultRowsItemDimensionsList
   string | null
 >;
 export const PostFunnelExplorationResponseExplorationResultRowsItemDimensionsList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<PostFunnelExplorationResponseExplorationResultRowsItemDimensionsList>;
+  PostDataSourceExplorationResponseExplorationResultRowsItemDimensionsList as any as S.Schema<PostFunnelExplorationResponseExplorationResultRowsItemDimensionsList>;
 
 export type PostFunnelExplorationResponseExplorationResultRowsItemValuesItem =
   AnalyticsExplorationResultRowsItemValuesItem;
@@ -39416,9 +37830,7 @@ export const PostFunnelExplorationResponseExplorationResultRowsItemValuesItem =
 export type PostFunnelExplorationResponseExplorationResultRowsItemValuesList =
   Array<AnalyticsExplorationResultRowsItemValuesItem>;
 export const PostFunnelExplorationResponseExplorationResultRowsItemValuesList =
-  /*@__PURE__*/ S.Array(
-    AnalyticsExplorationResultRowsItemValuesItem,
-  ) as any as S.Schema<PostFunnelExplorationResponseExplorationResultRowsItemValuesList>;
+  PostDataSourceExplorationResponseExplorationResultRowsItemValuesList as any as S.Schema<PostFunnelExplorationResponseExplorationResultRowsItemValuesList>;
 
 export type PostFunnelExplorationResponseExplorationResultRowsItemStepsItem =
   AnalyticsExplorationResultRowsItemStepsItem;
@@ -39428,9 +37840,7 @@ export const PostFunnelExplorationResponseExplorationResultRowsItemStepsItem =
 export type PostFunnelExplorationResponseExplorationResultRowsItemStepsList =
   Array<AnalyticsExplorationResultRowsItemStepsItem>;
 export const PostFunnelExplorationResponseExplorationResultRowsItemStepsList =
-  /*@__PURE__*/ S.Array(
-    AnalyticsExplorationResultRowsItemStepsItem,
-  ) as any as S.Schema<PostFunnelExplorationResponseExplorationResultRowsItemStepsList>;
+  PostDataSourceExplorationResponseExplorationResultRowsItemStepsList as any as S.Schema<PostFunnelExplorationResponseExplorationResultRowsItemStepsList>;
 
 export type PostFunnelExplorationResponseExplorationResultRowsItemJourneyCase0Direction =
   | "forward"
@@ -39440,9 +37850,7 @@ export const PostFunnelExplorationResponseExplorationResultRowsItemJourneyCase0D
 export type PostFunnelExplorationResponseExplorationResultRowsItemJourneyCase0LevelsList =
   Array<string>;
 export const PostFunnelExplorationResponseExplorationResultRowsItemJourneyCase0LevelsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostFunnelExplorationResponseExplorationResultRowsItemJourneyCase0LevelsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostFunnelExplorationResponseExplorationResultRowsItemJourneyCase0LevelsList>;
 
 export interface PostFunnelExplorationResponseExplorationResultRowsItemJourneyCase0 {
   kind: string;
@@ -39519,16 +37927,13 @@ export const PostFunnelExplorationResponseExplorationResultRowsList = /*@__PURE_
 export type PostFunnelExplorationResponseExplorationResultRawRowsItemMap = {
   [key: string]: unknown | undefined;
 };
-export const PostFunnelExplorationResponseExplorationResultRawRowsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PostFunnelExplorationResponseExplorationResultRawRowsItemMap>;
+export const PostFunnelExplorationResponseExplorationResultRawRowsItemMap =
+  ConfigValueMap as any as S.Schema<PostFunnelExplorationResponseExplorationResultRawRowsItemMap>;
 
 export type PostFunnelExplorationResponseExplorationResultRawRowsList =
   Array<PostFunnelExplorationResponseExplorationResultRawRowsItemMap>;
-export const PostFunnelExplorationResponseExplorationResultRawRowsList = /*@__PURE__*/ S.Array(
-  PostFunnelExplorationResponseExplorationResultRawRowsItemMap,
-) as any as S.Schema<PostFunnelExplorationResponseExplorationResultRawRowsList>;
+export const PostFunnelExplorationResponseExplorationResultRawRowsList =
+  AnalyticsExplorationResultRawRowsList as any as S.Schema<PostFunnelExplorationResponseExplorationResultRawRowsList>;
 
 export interface PostFunnelExplorationResponseExplorationResult {
   rows: PostFunnelExplorationResponseExplorationResultRowsList;
@@ -39580,9 +37985,7 @@ export const PostFunnelExplorationResponseExplorationConfigDimensionsItemCase1 =
 export type PostFunnelExplorationResponseExplorationConfigDimensionsItemCase2ValuesList =
   Array<string>;
 export const PostFunnelExplorationResponseExplorationConfigDimensionsItemCase2ValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostFunnelExplorationResponseExplorationConfigDimensionsItemCase2ValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostFunnelExplorationResponseExplorationConfigDimensionsItemCase2ValuesList>;
 
 export interface PostFunnelExplorationResponseExplorationConfigDimensionsItemCase2 {
   dimensionType: string;
@@ -39590,15 +37993,7 @@ export interface PostFunnelExplorationResponseExplorationConfigDimensionsItemCas
   values: PostFunnelExplorationResponseExplorationConfigDimensionsItemCase2ValuesList;
 }
 export const PostFunnelExplorationResponseExplorationConfigDimensionsItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.String,
-      values: PostFunnelExplorationResponseExplorationConfigDimensionsItemCase2ValuesList,
-    }),
-  ).annotate({
-    identifier: "PostFunnelExplorationResponseExplorationConfigDimensionsItemCase2",
-  }) as any as S.Schema<PostFunnelExplorationResponseExplorationConfigDimensionsItemCase2>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<PostFunnelExplorationResponseExplorationConfigDimensionsItemCase2>;
 
 export type PostFunnelExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -39629,9 +38024,7 @@ export const PostFunnelExplorationResponseExplorationConfigDimensionsItemCase3Sl
 export type PostFunnelExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const PostFunnelExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostFunnelExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostFunnelExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface PostFunnelExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItem {
   operator: PostFunnelExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemOperator;
@@ -39800,9 +38193,7 @@ export const PostFunnelExplorationResponseExplorationConfigDatasetStepsItemRowFi
 export type PostFunnelExplorationResponseExplorationConfigDatasetStepsItemRowFiltersItemValuesList =
   Array<string>;
 export const PostFunnelExplorationResponseExplorationConfigDatasetStepsItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostFunnelExplorationResponseExplorationConfigDatasetStepsItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostFunnelExplorationResponseExplorationConfigDatasetStepsItemRowFiltersItemValuesList>;
 
 export interface PostFunnelExplorationResponseExplorationConfigDatasetStepsItemRowFiltersItem {
   operator: PostFunnelExplorationResponseExplorationConfigDatasetStepsItemRowFiltersItemOperator;
@@ -40010,24 +38401,16 @@ export const PostJourneyExplorationRequestDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
 
 export type PostJourneyExplorationRequestDimensionsItemCase2ValuesList = Array<string>;
-export const PostJourneyExplorationRequestDimensionsItemCase2ValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostJourneyExplorationRequestDimensionsItemCase2ValuesList>;
+export const PostJourneyExplorationRequestDimensionsItemCase2ValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostJourneyExplorationRequestDimensionsItemCase2ValuesList>;
 
 export interface PostJourneyExplorationRequestDimensionsItemCase2 {
   dimensionType: string;
   column: string;
   values: PostJourneyExplorationRequestDimensionsItemCase2ValuesList;
 }
-export const PostJourneyExplorationRequestDimensionsItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.String,
-    values: PostJourneyExplorationRequestDimensionsItemCase2ValuesList,
-  }),
-).annotate({
-  identifier: "PostJourneyExplorationRequestDimensionsItemCase2",
-}) as any as S.Schema<PostJourneyExplorationRequestDimensionsItemCase2>;
+export const PostJourneyExplorationRequestDimensionsItemCase2 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<PostJourneyExplorationRequestDimensionsItemCase2>;
 
 export type PostJourneyExplorationRequestDimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -40058,9 +38441,7 @@ export const PostJourneyExplorationRequestDimensionsItemCase3SlicesItemFiltersIt
 export type PostJourneyExplorationRequestDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const PostJourneyExplorationRequestDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostJourneyExplorationRequestDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostJourneyExplorationRequestDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface PostJourneyExplorationRequestDimensionsItemCase3SlicesItemFiltersItem {
   operator:
@@ -40192,9 +38573,8 @@ export const PostJourneyExplorationRequestChartSettings =
   CreateDashboardV2RequestBlocksItemCase12ConfigChartSettings;
 
 export type PostJourneyExplorationRequestDatasetStepColumnsList = Array<string>;
-export const PostJourneyExplorationRequestDatasetStepColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostJourneyExplorationRequestDatasetStepColumnsList>;
+export const PostJourneyExplorationRequestDatasetStepColumnsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostJourneyExplorationRequestDatasetStepColumnsList>;
 
 export type PostJourneyExplorationRequestDatasetStepGroupsItem =
   AnalyticsExplorationConfigCase5DatasetStepGroupsItem;
@@ -40203,14 +38583,12 @@ export const PostJourneyExplorationRequestDatasetStepGroupsItem =
 
 export type PostJourneyExplorationRequestDatasetStepGroupsList =
   Array<AnalyticsExplorationConfigCase5DatasetStepGroupsItem>;
-export const PostJourneyExplorationRequestDatasetStepGroupsList = /*@__PURE__*/ S.Array(
-  AnalyticsExplorationConfigCase5DatasetStepGroupsItem,
-) as any as S.Schema<PostJourneyExplorationRequestDatasetStepGroupsList>;
+export const PostJourneyExplorationRequestDatasetStepGroupsList =
+  AnalyticsExplorationConfigCase5DatasetStepGroupsList as any as S.Schema<PostJourneyExplorationRequestDatasetStepGroupsList>;
 
 export type PostJourneyExplorationRequestDatasetAnchorStepValuesList = Array<string>;
-export const PostJourneyExplorationRequestDatasetAnchorStepValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostJourneyExplorationRequestDatasetAnchorStepValuesList>;
+export const PostJourneyExplorationRequestDatasetAnchorStepValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostJourneyExplorationRequestDatasetAnchorStepValuesList>;
 
 export type PostJourneyExplorationRequestDatasetDirection = "forward" | "backward";
 export const PostJourneyExplorationRequestDatasetDirection = S.String;
@@ -40241,9 +38619,8 @@ export type PostJourneyExplorationRequestDatasetRowFiltersItemOperator =
 export const PostJourneyExplorationRequestDatasetRowFiltersItemOperator = S.String;
 
 export type PostJourneyExplorationRequestDatasetRowFiltersItemValuesList = Array<string>;
-export const PostJourneyExplorationRequestDatasetRowFiltersItemValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostJourneyExplorationRequestDatasetRowFiltersItemValuesList>;
+export const PostJourneyExplorationRequestDatasetRowFiltersItemValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostJourneyExplorationRequestDatasetRowFiltersItemValuesList>;
 
 export interface PostJourneyExplorationRequestDatasetRowFiltersItem {
   operator: PostJourneyExplorationRequestDatasetRowFiltersItemOperator | (string & {});
@@ -40273,14 +38650,12 @@ export const PostJourneyExplorationRequestDatasetPathItem =
 
 export type PostJourneyExplorationRequestDatasetPathList =
   Array<AnalyticsExplorationConfigCase5DatasetPathItem>;
-export const PostJourneyExplorationRequestDatasetPathList = /*@__PURE__*/ S.Array(
-  AnalyticsExplorationConfigCase5DatasetPathItem,
-) as any as S.Schema<PostJourneyExplorationRequestDatasetPathList>;
+export const PostJourneyExplorationRequestDatasetPathList =
+  AnalyticsExplorationConfigCase5DatasetPathList as any as S.Schema<PostJourneyExplorationRequestDatasetPathList>;
 
 export type PostJourneyExplorationRequestDatasetOptionsPerStepList = Array<number>;
-export const PostJourneyExplorationRequestDatasetOptionsPerStepList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<PostJourneyExplorationRequestDatasetOptionsPerStepList>;
+export const PostJourneyExplorationRequestDatasetOptionsPerStepList =
+  CreateCustomFieldRequestDefaultValueCase6List as any as S.Schema<PostJourneyExplorationRequestDatasetOptionsPerStepList>;
 
 export type PostJourneyExplorationRequestDatasetHeightScale = "relative" | "absolute";
 export const PostJourneyExplorationRequestDatasetHeightScale = S.String;
@@ -40354,9 +38729,7 @@ export type PostJourneyExplorationResponseExplorationResultRowsItemDimensionsLis
   string | null
 >;
 export const PostJourneyExplorationResponseExplorationResultRowsItemDimensionsList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<PostJourneyExplorationResponseExplorationResultRowsItemDimensionsList>;
+  PostDataSourceExplorationResponseExplorationResultRowsItemDimensionsList as any as S.Schema<PostJourneyExplorationResponseExplorationResultRowsItemDimensionsList>;
 
 export type PostJourneyExplorationResponseExplorationResultRowsItemValuesItem =
   AnalyticsExplorationResultRowsItemValuesItem;
@@ -40366,9 +38739,7 @@ export const PostJourneyExplorationResponseExplorationResultRowsItemValuesItem =
 export type PostJourneyExplorationResponseExplorationResultRowsItemValuesList =
   Array<AnalyticsExplorationResultRowsItemValuesItem>;
 export const PostJourneyExplorationResponseExplorationResultRowsItemValuesList =
-  /*@__PURE__*/ S.Array(
-    AnalyticsExplorationResultRowsItemValuesItem,
-  ) as any as S.Schema<PostJourneyExplorationResponseExplorationResultRowsItemValuesList>;
+  PostDataSourceExplorationResponseExplorationResultRowsItemValuesList as any as S.Schema<PostJourneyExplorationResponseExplorationResultRowsItemValuesList>;
 
 export type PostJourneyExplorationResponseExplorationResultRowsItemStepsItem =
   AnalyticsExplorationResultRowsItemStepsItem;
@@ -40378,9 +38749,7 @@ export const PostJourneyExplorationResponseExplorationResultRowsItemStepsItem =
 export type PostJourneyExplorationResponseExplorationResultRowsItemStepsList =
   Array<AnalyticsExplorationResultRowsItemStepsItem>;
 export const PostJourneyExplorationResponseExplorationResultRowsItemStepsList =
-  /*@__PURE__*/ S.Array(
-    AnalyticsExplorationResultRowsItemStepsItem,
-  ) as any as S.Schema<PostJourneyExplorationResponseExplorationResultRowsItemStepsList>;
+  PostDataSourceExplorationResponseExplorationResultRowsItemStepsList as any as S.Schema<PostJourneyExplorationResponseExplorationResultRowsItemStepsList>;
 
 export type PostJourneyExplorationResponseExplorationResultRowsItemJourneyCase0Direction =
   | "forward"
@@ -40391,9 +38760,7 @@ export const PostJourneyExplorationResponseExplorationResultRowsItemJourneyCase0
 export type PostJourneyExplorationResponseExplorationResultRowsItemJourneyCase0LevelsList =
   Array<string>;
 export const PostJourneyExplorationResponseExplorationResultRowsItemJourneyCase0LevelsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostJourneyExplorationResponseExplorationResultRowsItemJourneyCase0LevelsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostJourneyExplorationResponseExplorationResultRowsItemJourneyCase0LevelsList>;
 
 export interface PostJourneyExplorationResponseExplorationResultRowsItemJourneyCase0 {
   kind: string;
@@ -40471,16 +38838,13 @@ export const PostJourneyExplorationResponseExplorationResultRowsList = /*@__PURE
 export type PostJourneyExplorationResponseExplorationResultRawRowsItemMap = {
   [key: string]: unknown | undefined;
 };
-export const PostJourneyExplorationResponseExplorationResultRawRowsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PostJourneyExplorationResponseExplorationResultRawRowsItemMap>;
+export const PostJourneyExplorationResponseExplorationResultRawRowsItemMap =
+  ConfigValueMap as any as S.Schema<PostJourneyExplorationResponseExplorationResultRawRowsItemMap>;
 
 export type PostJourneyExplorationResponseExplorationResultRawRowsList =
   Array<PostJourneyExplorationResponseExplorationResultRawRowsItemMap>;
-export const PostJourneyExplorationResponseExplorationResultRawRowsList = /*@__PURE__*/ S.Array(
-  PostJourneyExplorationResponseExplorationResultRawRowsItemMap,
-) as any as S.Schema<PostJourneyExplorationResponseExplorationResultRawRowsList>;
+export const PostJourneyExplorationResponseExplorationResultRawRowsList =
+  AnalyticsExplorationResultRawRowsList as any as S.Schema<PostJourneyExplorationResponseExplorationResultRawRowsList>;
 
 export interface PostJourneyExplorationResponseExplorationResult {
   rows: PostJourneyExplorationResponseExplorationResultRowsList;
@@ -40532,9 +38896,7 @@ export const PostJourneyExplorationResponseExplorationConfigDimensionsItemCase1 
 export type PostJourneyExplorationResponseExplorationConfigDimensionsItemCase2ValuesList =
   Array<string>;
 export const PostJourneyExplorationResponseExplorationConfigDimensionsItemCase2ValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostJourneyExplorationResponseExplorationConfigDimensionsItemCase2ValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostJourneyExplorationResponseExplorationConfigDimensionsItemCase2ValuesList>;
 
 export interface PostJourneyExplorationResponseExplorationConfigDimensionsItemCase2 {
   dimensionType: string;
@@ -40542,15 +38904,7 @@ export interface PostJourneyExplorationResponseExplorationConfigDimensionsItemCa
   values: PostJourneyExplorationResponseExplorationConfigDimensionsItemCase2ValuesList;
 }
 export const PostJourneyExplorationResponseExplorationConfigDimensionsItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.String,
-      values: PostJourneyExplorationResponseExplorationConfigDimensionsItemCase2ValuesList,
-    }),
-  ).annotate({
-    identifier: "PostJourneyExplorationResponseExplorationConfigDimensionsItemCase2",
-  }) as any as S.Schema<PostJourneyExplorationResponseExplorationConfigDimensionsItemCase2>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<PostJourneyExplorationResponseExplorationConfigDimensionsItemCase2>;
 
 export type PostJourneyExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -40581,9 +38935,7 @@ export const PostJourneyExplorationResponseExplorationConfigDimensionsItemCase3S
 export type PostJourneyExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const PostJourneyExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostJourneyExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostJourneyExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface PostJourneyExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItem {
   operator: PostJourneyExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemOperator;
@@ -40726,9 +39078,7 @@ export const PostJourneyExplorationResponseExplorationConfigChartSettings =
 
 export type PostJourneyExplorationResponseExplorationConfigDatasetStepColumnsList = Array<string>;
 export const PostJourneyExplorationResponseExplorationConfigDatasetStepColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostJourneyExplorationResponseExplorationConfigDatasetStepColumnsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostJourneyExplorationResponseExplorationConfigDatasetStepColumnsList>;
 
 export type PostJourneyExplorationResponseExplorationConfigDatasetStepGroupsItem =
   AnalyticsExplorationConfigCase5DatasetStepGroupsItem;
@@ -40745,9 +39095,7 @@ export const PostJourneyExplorationResponseExplorationConfigDatasetStepGroupsLis
 export type PostJourneyExplorationResponseExplorationConfigDatasetAnchorStepValuesList =
   Array<string>;
 export const PostJourneyExplorationResponseExplorationConfigDatasetAnchorStepValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostJourneyExplorationResponseExplorationConfigDatasetAnchorStepValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostJourneyExplorationResponseExplorationConfigDatasetAnchorStepValuesList>;
 
 export type PostJourneyExplorationResponseExplorationConfigDatasetDirection =
   | "forward"
@@ -40783,9 +39131,7 @@ export const PostJourneyExplorationResponseExplorationConfigDatasetRowFiltersIte
 export type PostJourneyExplorationResponseExplorationConfigDatasetRowFiltersItemValuesList =
   Array<string>;
 export const PostJourneyExplorationResponseExplorationConfigDatasetRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostJourneyExplorationResponseExplorationConfigDatasetRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostJourneyExplorationResponseExplorationConfigDatasetRowFiltersItemValuesList>;
 
 export interface PostJourneyExplorationResponseExplorationConfigDatasetRowFiltersItem {
   operator: PostJourneyExplorationResponseExplorationConfigDatasetRowFiltersItemOperator;
@@ -40819,9 +39165,8 @@ export const PostJourneyExplorationResponseExplorationConfigDatasetPathItem =
 
 export type PostJourneyExplorationResponseExplorationConfigDatasetPathList =
   Array<AnalyticsExplorationConfigCase5DatasetPathItem>;
-export const PostJourneyExplorationResponseExplorationConfigDatasetPathList = /*@__PURE__*/ S.Array(
-  AnalyticsExplorationConfigCase5DatasetPathItem,
-) as any as S.Schema<PostJourneyExplorationResponseExplorationConfigDatasetPathList>;
+export const PostJourneyExplorationResponseExplorationConfigDatasetPathList =
+  AnalyticsExplorationConfigCase5DatasetPathList as any as S.Schema<PostJourneyExplorationResponseExplorationConfigDatasetPathList>;
 
 export type PostJourneyExplorationResponseExplorationConfigDatasetOptionsPerStepList =
   Array<number>;
@@ -40954,15 +39299,13 @@ export const PostMetricRequestType = S.String;
 
 /** List of tags */
 export type PostMetricRequestTagsList = Array<string>;
-export const PostMetricRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostMetricRequestTagsList>;
+export const PostMetricRequestTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostMetricRequestTagsList>;
 
 /** List of project IDs for projects that can access this metric */
 export type PostMetricRequestProjectsList = Array<string>;
-export const PostMetricRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostMetricRequestProjectsList>;
+export const PostMetricRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostMetricRequestProjectsList>;
 
 export type PostMetricRequestBehaviorGoal = "increase" | "decrease";
 export const PostMetricRequestBehaviorGoal = S.String;
@@ -41093,9 +39436,8 @@ export const PostMetricRequestBehavior = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostMetricRequestBehavior>;
 
 export type PostMetricRequestSqlIdentifierTypesList = Array<string>;
-export const PostMetricRequestSqlIdentifierTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostMetricRequestSqlIdentifierTypesList>;
+export const PostMetricRequestSqlIdentifierTypesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostMetricRequestSqlIdentifierTypesList>;
 
 /** Preferred way to define SQL. Only one of `sql`, `sqlBuilder` or `mixpanel` allowed, and at least one must be specified. */
 export interface PostMetricRequestSql {
@@ -41122,17 +39464,15 @@ export const PostMetricRequestSqlBuilderIdentifierTypeColumnsItem =
 
 export type PostMetricRequestSqlBuilderIdentifierTypeColumnsList =
   Array<MetricSqlBuilderIdentifierTypeColumnsItem>;
-export const PostMetricRequestSqlBuilderIdentifierTypeColumnsList = /*@__PURE__*/ S.Array(
-  MetricSqlBuilderIdentifierTypeColumnsItem,
-) as any as S.Schema<PostMetricRequestSqlBuilderIdentifierTypeColumnsList>;
+export const PostMetricRequestSqlBuilderIdentifierTypeColumnsList =
+  MetricSqlBuilderIdentifierTypeColumnsList as any as S.Schema<PostMetricRequestSqlBuilderIdentifierTypeColumnsList>;
 
 export type PostMetricRequestSqlBuilderConditionsItem = MetricSqlBuilderConditionsItem;
 export const PostMetricRequestSqlBuilderConditionsItem = MetricSqlBuilderConditionsItem;
 
 export type PostMetricRequestSqlBuilderConditionsList = Array<MetricSqlBuilderConditionsItem>;
-export const PostMetricRequestSqlBuilderConditionsList = /*@__PURE__*/ S.Array(
-  MetricSqlBuilderConditionsItem,
-) as any as S.Schema<PostMetricRequestSqlBuilderConditionsList>;
+export const PostMetricRequestSqlBuilderConditionsList =
+  MetricSqlBuilderConditionsList as any as S.Schema<PostMetricRequestSqlBuilderConditionsList>;
 
 /** An alternative way to specify a SQL metric, rather than a full query. Using `sql` is preferred to `sqlBuilder`. Only one of `sql`, `sqlBuilder` or `mixpanel` allowed, and at least one must be specified. */
 export interface PostMetricRequestSqlBuilder {
@@ -41158,9 +39498,8 @@ export type PostMetricRequestMixpanelConditionsItem = MetricMixpanelConditionsIt
 export const PostMetricRequestMixpanelConditionsItem = MetricMixpanelConditionsItem;
 
 export type PostMetricRequestMixpanelConditionsList = Array<MetricMixpanelConditionsItem>;
-export const PostMetricRequestMixpanelConditionsList = /*@__PURE__*/ S.Array(
-  MetricMixpanelConditionsItem,
-) as any as S.Schema<PostMetricRequestMixpanelConditionsList>;
+export const PostMetricRequestMixpanelConditionsList =
+  MetricMixpanelConditionsList as any as S.Schema<PostMetricRequestMixpanelConditionsList>;
 
 /** Only use for MixPanel (non-SQL) Data Sources. Only one of `sql`, `sqlBuilder` or `mixpanel` allowed, and at least one must be specified. */
 export interface PostMetricRequestMixpanel {
@@ -41227,11 +39566,7 @@ export const PostMetricRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PostMetricResponse {
   metric: Metric;
 }
-export const PostMetricResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metric: Metric,
-  }),
-).annotate({ identifier: "PostMetricResponse" }) as any as S.Schema<PostMetricResponse>;
+export const PostMetricResponse = GetMetricResponse as any as S.Schema<PostMetricResponse>;
 
 /** Controls cache behavior for this exploration: `preferred` (default) returns a cached result if one exists, otherwise runs a new query; `never` always runs a new query, ignoring any cached results; `required` only returns a cached result, if none exists returns exploration: null with a message */
 export type PostMetricExplorationRequestCache = "preferred" | "required" | "never";
@@ -41267,24 +39602,16 @@ export const PostMetricExplorationRequestDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
 
 export type PostMetricExplorationRequestDimensionsItemCase2ValuesList = Array<string>;
-export const PostMetricExplorationRequestDimensionsItemCase2ValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostMetricExplorationRequestDimensionsItemCase2ValuesList>;
+export const PostMetricExplorationRequestDimensionsItemCase2ValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostMetricExplorationRequestDimensionsItemCase2ValuesList>;
 
 export interface PostMetricExplorationRequestDimensionsItemCase2 {
   dimensionType: string;
   column: string;
   values: PostMetricExplorationRequestDimensionsItemCase2ValuesList;
 }
-export const PostMetricExplorationRequestDimensionsItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.String,
-    values: PostMetricExplorationRequestDimensionsItemCase2ValuesList,
-  }),
-).annotate({
-  identifier: "PostMetricExplorationRequestDimensionsItemCase2",
-}) as any as S.Schema<PostMetricExplorationRequestDimensionsItemCase2>;
+export const PostMetricExplorationRequestDimensionsItemCase2 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<PostMetricExplorationRequestDimensionsItemCase2>;
 
 export type PostMetricExplorationRequestDimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -41315,9 +39642,7 @@ export const PostMetricExplorationRequestDimensionsItemCase3SlicesItemFiltersIte
 export type PostMetricExplorationRequestDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const PostMetricExplorationRequestDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostMetricExplorationRequestDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostMetricExplorationRequestDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface PostMetricExplorationRequestDimensionsItemCase3SlicesItemFiltersItem {
   operator:
@@ -41475,9 +39800,7 @@ export const PostMetricExplorationRequestDatasetValuesItemRowFiltersItemOperator
 
 export type PostMetricExplorationRequestDatasetValuesItemRowFiltersItemValuesList = Array<string>;
 export const PostMetricExplorationRequestDatasetValuesItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostMetricExplorationRequestDatasetValuesItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostMetricExplorationRequestDatasetValuesItemRowFiltersItemValuesList>;
 
 export interface PostMetricExplorationRequestDatasetValuesItemRowFiltersItem {
   operator: PostMetricExplorationRequestDatasetValuesItemRowFiltersItemOperator | (string & {});
@@ -41577,9 +39900,7 @@ export type PostMetricExplorationResponseExplorationResultRowsItemDimensionsList
   string | null
 >;
 export const PostMetricExplorationResponseExplorationResultRowsItemDimensionsList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<PostMetricExplorationResponseExplorationResultRowsItemDimensionsList>;
+  PostDataSourceExplorationResponseExplorationResultRowsItemDimensionsList as any as S.Schema<PostMetricExplorationResponseExplorationResultRowsItemDimensionsList>;
 
 export type PostMetricExplorationResponseExplorationResultRowsItemValuesItem =
   AnalyticsExplorationResultRowsItemValuesItem;
@@ -41589,9 +39910,7 @@ export const PostMetricExplorationResponseExplorationResultRowsItemValuesItem =
 export type PostMetricExplorationResponseExplorationResultRowsItemValuesList =
   Array<AnalyticsExplorationResultRowsItemValuesItem>;
 export const PostMetricExplorationResponseExplorationResultRowsItemValuesList =
-  /*@__PURE__*/ S.Array(
-    AnalyticsExplorationResultRowsItemValuesItem,
-  ) as any as S.Schema<PostMetricExplorationResponseExplorationResultRowsItemValuesList>;
+  PostDataSourceExplorationResponseExplorationResultRowsItemValuesList as any as S.Schema<PostMetricExplorationResponseExplorationResultRowsItemValuesList>;
 
 export type PostMetricExplorationResponseExplorationResultRowsItemStepsItem =
   AnalyticsExplorationResultRowsItemStepsItem;
@@ -41601,9 +39920,7 @@ export const PostMetricExplorationResponseExplorationResultRowsItemStepsItem =
 export type PostMetricExplorationResponseExplorationResultRowsItemStepsList =
   Array<AnalyticsExplorationResultRowsItemStepsItem>;
 export const PostMetricExplorationResponseExplorationResultRowsItemStepsList =
-  /*@__PURE__*/ S.Array(
-    AnalyticsExplorationResultRowsItemStepsItem,
-  ) as any as S.Schema<PostMetricExplorationResponseExplorationResultRowsItemStepsList>;
+  PostDataSourceExplorationResponseExplorationResultRowsItemStepsList as any as S.Schema<PostMetricExplorationResponseExplorationResultRowsItemStepsList>;
 
 export type PostMetricExplorationResponseExplorationResultRowsItemJourneyCase0Direction =
   | "forward"
@@ -41613,9 +39930,7 @@ export const PostMetricExplorationResponseExplorationResultRowsItemJourneyCase0D
 export type PostMetricExplorationResponseExplorationResultRowsItemJourneyCase0LevelsList =
   Array<string>;
 export const PostMetricExplorationResponseExplorationResultRowsItemJourneyCase0LevelsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostMetricExplorationResponseExplorationResultRowsItemJourneyCase0LevelsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostMetricExplorationResponseExplorationResultRowsItemJourneyCase0LevelsList>;
 
 export interface PostMetricExplorationResponseExplorationResultRowsItemJourneyCase0 {
   kind: string;
@@ -41692,16 +40007,13 @@ export const PostMetricExplorationResponseExplorationResultRowsList = /*@__PURE_
 export type PostMetricExplorationResponseExplorationResultRawRowsItemMap = {
   [key: string]: unknown | undefined;
 };
-export const PostMetricExplorationResponseExplorationResultRawRowsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PostMetricExplorationResponseExplorationResultRawRowsItemMap>;
+export const PostMetricExplorationResponseExplorationResultRawRowsItemMap =
+  ConfigValueMap as any as S.Schema<PostMetricExplorationResponseExplorationResultRawRowsItemMap>;
 
 export type PostMetricExplorationResponseExplorationResultRawRowsList =
   Array<PostMetricExplorationResponseExplorationResultRawRowsItemMap>;
-export const PostMetricExplorationResponseExplorationResultRawRowsList = /*@__PURE__*/ S.Array(
-  PostMetricExplorationResponseExplorationResultRawRowsItemMap,
-) as any as S.Schema<PostMetricExplorationResponseExplorationResultRawRowsList>;
+export const PostMetricExplorationResponseExplorationResultRawRowsList =
+  AnalyticsExplorationResultRawRowsList as any as S.Schema<PostMetricExplorationResponseExplorationResultRawRowsList>;
 
 export interface PostMetricExplorationResponseExplorationResult {
   rows: PostMetricExplorationResponseExplorationResultRowsList;
@@ -41753,9 +40065,7 @@ export const PostMetricExplorationResponseExplorationConfigDimensionsItemCase1 =
 export type PostMetricExplorationResponseExplorationConfigDimensionsItemCase2ValuesList =
   Array<string>;
 export const PostMetricExplorationResponseExplorationConfigDimensionsItemCase2ValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostMetricExplorationResponseExplorationConfigDimensionsItemCase2ValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostMetricExplorationResponseExplorationConfigDimensionsItemCase2ValuesList>;
 
 export interface PostMetricExplorationResponseExplorationConfigDimensionsItemCase2 {
   dimensionType: string;
@@ -41763,15 +40073,7 @@ export interface PostMetricExplorationResponseExplorationConfigDimensionsItemCas
   values: PostMetricExplorationResponseExplorationConfigDimensionsItemCase2ValuesList;
 }
 export const PostMetricExplorationResponseExplorationConfigDimensionsItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.String,
-      values: PostMetricExplorationResponseExplorationConfigDimensionsItemCase2ValuesList,
-    }),
-  ).annotate({
-    identifier: "PostMetricExplorationResponseExplorationConfigDimensionsItemCase2",
-  }) as any as S.Schema<PostMetricExplorationResponseExplorationConfigDimensionsItemCase2>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<PostMetricExplorationResponseExplorationConfigDimensionsItemCase2>;
 
 export type PostMetricExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -41802,9 +40104,7 @@ export const PostMetricExplorationResponseExplorationConfigDimensionsItemCase3Sl
 export type PostMetricExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const PostMetricExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostMetricExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostMetricExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface PostMetricExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItem {
   operator: PostMetricExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemOperator;
@@ -41973,9 +40273,7 @@ export const PostMetricExplorationResponseExplorationConfigDatasetValuesItemRowF
 export type PostMetricExplorationResponseExplorationConfigDatasetValuesItemRowFiltersItemValuesList =
   Array<string>;
 export const PostMetricExplorationResponseExplorationConfigDatasetValuesItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostMetricExplorationResponseExplorationConfigDatasetValuesItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostMetricExplorationResponseExplorationConfigDatasetValuesItemRowFiltersItemValuesList>;
 
 export interface PostMetricExplorationResponseExplorationConfigDatasetValuesItemRowFiltersItem {
   operator: PostMetricExplorationResponseExplorationConfigDatasetValuesItemRowFiltersItemOperator;
@@ -42153,24 +40451,16 @@ export const PostSqlExplorationRequestDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
 
 export type PostSqlExplorationRequestDimensionsItemCase2ValuesList = Array<string>;
-export const PostSqlExplorationRequestDimensionsItemCase2ValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostSqlExplorationRequestDimensionsItemCase2ValuesList>;
+export const PostSqlExplorationRequestDimensionsItemCase2ValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostSqlExplorationRequestDimensionsItemCase2ValuesList>;
 
 export interface PostSqlExplorationRequestDimensionsItemCase2 {
   dimensionType: string;
   column: string;
   values: PostSqlExplorationRequestDimensionsItemCase2ValuesList;
 }
-export const PostSqlExplorationRequestDimensionsItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.String,
-    values: PostSqlExplorationRequestDimensionsItemCase2ValuesList,
-  }),
-).annotate({
-  identifier: "PostSqlExplorationRequestDimensionsItemCase2",
-}) as any as S.Schema<PostSqlExplorationRequestDimensionsItemCase2>;
+export const PostSqlExplorationRequestDimensionsItemCase2 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<PostSqlExplorationRequestDimensionsItemCase2>;
 
 export type PostSqlExplorationRequestDimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -42200,9 +40490,7 @@ export const PostSqlExplorationRequestDimensionsItemCase3SlicesItemFiltersItemOp
 export type PostSqlExplorationRequestDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const PostSqlExplorationRequestDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostSqlExplorationRequestDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostSqlExplorationRequestDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface PostSqlExplorationRequestDimensionsItemCase3SlicesItemFiltersItem {
   operator:
@@ -42375,9 +40663,7 @@ export const PostSqlExplorationRequestDatasetValuesItemRowFiltersItemOperator = 
 
 export type PostSqlExplorationRequestDatasetValuesItemRowFiltersItemValuesList = Array<string>;
 export const PostSqlExplorationRequestDatasetValuesItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostSqlExplorationRequestDatasetValuesItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostSqlExplorationRequestDatasetValuesItemRowFiltersItemValuesList>;
 
 export interface PostSqlExplorationRequestDatasetValuesItemRowFiltersItem {
   operator: PostSqlExplorationRequestDatasetValuesItemRowFiltersItemOperator | (string & {});
@@ -42432,9 +40718,8 @@ export const PostSqlExplorationRequestDatasetValuesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PostSqlExplorationRequestDatasetValuesList>;
 
 export type PostSqlExplorationRequestDatasetHiddenColumnsList = Array<string>;
-export const PostSqlExplorationRequestDatasetHiddenColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostSqlExplorationRequestDatasetHiddenColumnsList>;
+export const PostSqlExplorationRequestDatasetHiddenColumnsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PostSqlExplorationRequestDatasetHiddenColumnsList>;
 
 export interface PostSqlExplorationRequestDataset {
   type: string;
@@ -42493,9 +40778,7 @@ export type PostSqlExplorationResponseExplorationResultRowsItemDimensionsList = 
   string | null
 >;
 export const PostSqlExplorationResponseExplorationResultRowsItemDimensionsList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(S.String),
-  ) as any as S.Schema<PostSqlExplorationResponseExplorationResultRowsItemDimensionsList>;
+  PostDataSourceExplorationResponseExplorationResultRowsItemDimensionsList as any as S.Schema<PostSqlExplorationResponseExplorationResultRowsItemDimensionsList>;
 
 export type PostSqlExplorationResponseExplorationResultRowsItemValuesItem =
   AnalyticsExplorationResultRowsItemValuesItem;
@@ -42504,9 +40787,8 @@ export const PostSqlExplorationResponseExplorationResultRowsItemValuesItem =
 
 export type PostSqlExplorationResponseExplorationResultRowsItemValuesList =
   Array<AnalyticsExplorationResultRowsItemValuesItem>;
-export const PostSqlExplorationResponseExplorationResultRowsItemValuesList = /*@__PURE__*/ S.Array(
-  AnalyticsExplorationResultRowsItemValuesItem,
-) as any as S.Schema<PostSqlExplorationResponseExplorationResultRowsItemValuesList>;
+export const PostSqlExplorationResponseExplorationResultRowsItemValuesList =
+  AnalyticsExplorationResultRowsItemValuesList as any as S.Schema<PostSqlExplorationResponseExplorationResultRowsItemValuesList>;
 
 export type PostSqlExplorationResponseExplorationResultRowsItemStepsItem =
   AnalyticsExplorationResultRowsItemStepsItem;
@@ -42515,9 +40797,8 @@ export const PostSqlExplorationResponseExplorationResultRowsItemStepsItem =
 
 export type PostSqlExplorationResponseExplorationResultRowsItemStepsList =
   Array<AnalyticsExplorationResultRowsItemStepsItem>;
-export const PostSqlExplorationResponseExplorationResultRowsItemStepsList = /*@__PURE__*/ S.Array(
-  AnalyticsExplorationResultRowsItemStepsItem,
-) as any as S.Schema<PostSqlExplorationResponseExplorationResultRowsItemStepsList>;
+export const PostSqlExplorationResponseExplorationResultRowsItemStepsList =
+  AnalyticsExplorationResultRowsItemStepsList as any as S.Schema<PostSqlExplorationResponseExplorationResultRowsItemStepsList>;
 
 export type PostSqlExplorationResponseExplorationResultRowsItemJourneyCase0Direction =
   | "forward"
@@ -42527,9 +40808,7 @@ export const PostSqlExplorationResponseExplorationResultRowsItemJourneyCase0Dire
 export type PostSqlExplorationResponseExplorationResultRowsItemJourneyCase0LevelsList =
   Array<string>;
 export const PostSqlExplorationResponseExplorationResultRowsItemJourneyCase0LevelsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostSqlExplorationResponseExplorationResultRowsItemJourneyCase0LevelsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostSqlExplorationResponseExplorationResultRowsItemJourneyCase0LevelsList>;
 
 export interface PostSqlExplorationResponseExplorationResultRowsItemJourneyCase0 {
   kind: string;
@@ -42606,16 +40885,13 @@ export const PostSqlExplorationResponseExplorationResultRowsList = /*@__PURE__*/
 export type PostSqlExplorationResponseExplorationResultRawRowsItemMap = {
   [key: string]: unknown | undefined;
 };
-export const PostSqlExplorationResponseExplorationResultRawRowsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PostSqlExplorationResponseExplorationResultRawRowsItemMap>;
+export const PostSqlExplorationResponseExplorationResultRawRowsItemMap =
+  ConfigValueMap as any as S.Schema<PostSqlExplorationResponseExplorationResultRawRowsItemMap>;
 
 export type PostSqlExplorationResponseExplorationResultRawRowsList =
   Array<PostSqlExplorationResponseExplorationResultRawRowsItemMap>;
-export const PostSqlExplorationResponseExplorationResultRawRowsList = /*@__PURE__*/ S.Array(
-  PostSqlExplorationResponseExplorationResultRawRowsItemMap,
-) as any as S.Schema<PostSqlExplorationResponseExplorationResultRawRowsList>;
+export const PostSqlExplorationResponseExplorationResultRawRowsList =
+  AnalyticsExplorationResultRawRowsList as any as S.Schema<PostSqlExplorationResponseExplorationResultRawRowsList>;
 
 export interface PostSqlExplorationResponseExplorationResult {
   rows: PostSqlExplorationResponseExplorationResultRowsList;
@@ -42667,9 +40943,7 @@ export const PostSqlExplorationResponseExplorationConfigDimensionsItemCase1 =
 export type PostSqlExplorationResponseExplorationConfigDimensionsItemCase2ValuesList =
   Array<string>;
 export const PostSqlExplorationResponseExplorationConfigDimensionsItemCase2ValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostSqlExplorationResponseExplorationConfigDimensionsItemCase2ValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostSqlExplorationResponseExplorationConfigDimensionsItemCase2ValuesList>;
 
 export interface PostSqlExplorationResponseExplorationConfigDimensionsItemCase2 {
   dimensionType: string;
@@ -42677,15 +40951,7 @@ export interface PostSqlExplorationResponseExplorationConfigDimensionsItemCase2 
   values: PostSqlExplorationResponseExplorationConfigDimensionsItemCase2ValuesList;
 }
 export const PostSqlExplorationResponseExplorationConfigDimensionsItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.String,
-      values: PostSqlExplorationResponseExplorationConfigDimensionsItemCase2ValuesList,
-    }),
-  ).annotate({
-    identifier: "PostSqlExplorationResponseExplorationConfigDimensionsItemCase2",
-  }) as any as S.Schema<PostSqlExplorationResponseExplorationConfigDimensionsItemCase2>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<PostSqlExplorationResponseExplorationConfigDimensionsItemCase2>;
 
 export type PostSqlExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -42716,9 +40982,7 @@ export const PostSqlExplorationResponseExplorationConfigDimensionsItemCase3Slice
 export type PostSqlExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const PostSqlExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostSqlExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostSqlExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface PostSqlExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItem {
   operator: PostSqlExplorationResponseExplorationConfigDimensionsItemCase3SlicesItemFiltersItemOperator;
@@ -42903,9 +41167,7 @@ export const PostSqlExplorationResponseExplorationConfigDatasetValuesItemRowFilt
 export type PostSqlExplorationResponseExplorationConfigDatasetValuesItemRowFiltersItemValuesList =
   Array<string>;
 export const PostSqlExplorationResponseExplorationConfigDatasetValuesItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostSqlExplorationResponseExplorationConfigDatasetValuesItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostSqlExplorationResponseExplorationConfigDatasetValuesItemRowFiltersItemValuesList>;
 
 export interface PostSqlExplorationResponseExplorationConfigDatasetValuesItemRowFiltersItem {
   operator: PostSqlExplorationResponseExplorationConfigDatasetValuesItemRowFiltersItemOperator;
@@ -42968,9 +41230,7 @@ export const PostSqlExplorationResponseExplorationConfigDatasetValuesList = /*@_
 
 export type PostSqlExplorationResponseExplorationConfigDatasetHiddenColumnsList = Array<string>;
 export const PostSqlExplorationResponseExplorationConfigDatasetHiddenColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostSqlExplorationResponseExplorationConfigDatasetHiddenColumnsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PostSqlExplorationResponseExplorationConfigDatasetHiddenColumnsList>;
 
 export interface PostSqlExplorationResponseExplorationConfigDataset {
   type: string;
@@ -43242,9 +41502,8 @@ export const PostVisualChangesetsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostVisualChangesetsResponse>;
 
 export type PreviewWarehouseColumnValuesRequestColumnsList = Array<string>;
-export const PreviewWarehouseColumnValuesRequestColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PreviewWarehouseColumnValuesRequestColumnsList>;
+export const PreviewWarehouseColumnValuesRequestColumnsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PreviewWarehouseColumnValuesRequestColumnsList>;
 
 export interface PreviewWarehouseColumnValuesRequest {
   /** The id of the data source */
@@ -43273,23 +41532,19 @@ export const PreviewWarehouseColumnValuesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PreviewWarehouseColumnValuesRequest>;
 
 export type PreviewWarehouseColumnValuesResponseBodyCase0ColumnsList = Array<string>;
-export const PreviewWarehouseColumnValuesResponseBodyCase0ColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PreviewWarehouseColumnValuesResponseBodyCase0ColumnsList>;
+export const PreviewWarehouseColumnValuesResponseBodyCase0ColumnsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PreviewWarehouseColumnValuesResponseBodyCase0ColumnsList>;
 
 export type PreviewWarehouseColumnValuesResponseBodyCase0RowsItemMap = {
   [key: string]: unknown | undefined;
 };
-export const PreviewWarehouseColumnValuesResponseBodyCase0RowsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PreviewWarehouseColumnValuesResponseBodyCase0RowsItemMap>;
+export const PreviewWarehouseColumnValuesResponseBodyCase0RowsItemMap =
+  ConfigValueMap as any as S.Schema<PreviewWarehouseColumnValuesResponseBodyCase0RowsItemMap>;
 
 export type PreviewWarehouseColumnValuesResponseBodyCase0RowsList =
   Array<PreviewWarehouseColumnValuesResponseBodyCase0RowsItemMap>;
-export const PreviewWarehouseColumnValuesResponseBodyCase0RowsList = /*@__PURE__*/ S.Array(
-  PreviewWarehouseColumnValuesResponseBodyCase0RowsItemMap,
-) as any as S.Schema<PreviewWarehouseColumnValuesResponseBodyCase0RowsList>;
+export const PreviewWarehouseColumnValuesResponseBodyCase0RowsList =
+  AnalyticsExplorationResultRawRowsList as any as S.Schema<PreviewWarehouseColumnValuesResponseBodyCase0RowsList>;
 
 export interface PreviewWarehouseColumnValuesResponseBodyCase0 {
   status: string;
@@ -43339,19 +41594,16 @@ export const PreviewWarehouseColumnValuesResponse = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PreviewWarehouseColumnValuesResponse>;
 
 export type RequireReviewRuleInputProjectsList = Array<string>;
-export const RequireReviewRuleInputProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RequireReviewRuleInputProjectsList>;
+export const RequireReviewRuleInputProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<RequireReviewRuleInputProjectsList>;
 
 export type RequireReviewRuleInputEnvironmentsList = Array<string>;
-export const RequireReviewRuleInputEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RequireReviewRuleInputEnvironmentsList>;
+export const RequireReviewRuleInputEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<RequireReviewRuleInputEnvironmentsList>;
 
 export type RequireReviewRuleInputRequiredApproverTeamsList = Array<string>;
-export const RequireReviewRuleInputRequiredApproverTeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RequireReviewRuleInputRequiredApproverTeamsList>;
+export const RequireReviewRuleInputRequiredApproverTeamsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<RequireReviewRuleInputRequiredApproverTeamsList>;
 
 export interface RequireReviewRuleInput {
   requireReviewOn: boolean;
@@ -43384,9 +41636,8 @@ export const PutApprovalSettingsRequestRequireReviewsList = /*@__PURE__*/ S.Arra
 ) as any as S.Schema<PutApprovalSettingsRequestRequireReviewsList>;
 
 export type PutApprovalSettingsRequestApprovalFlowsSavedGroupsList = Array<SavedGroupApprovalRule>;
-export const PutApprovalSettingsRequestApprovalFlowsSavedGroupsList = /*@__PURE__*/ S.Array(
-  SavedGroupApprovalRule,
-) as any as S.Schema<PutApprovalSettingsRequestApprovalFlowsSavedGroupsList>;
+export const PutApprovalSettingsRequestApprovalFlowsSavedGroupsList =
+  SettingsApprovalFlowsSavedGroupsList as any as S.Schema<PutApprovalSettingsRequestApprovalFlowsSavedGroupsList>;
 
 export interface PutApprovalSettingsRequestApprovalFlows {
   savedGroups: PutApprovalSettingsRequestApprovalFlowsSavedGroupsList;
@@ -43400,9 +41651,8 @@ export const PutApprovalSettingsRequestApprovalFlows = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<PutApprovalSettingsRequestApprovalFlows>;
 
 export type PutApprovalSettingsRequestTargetingReviewModeList = Array<TargetingReviewRule>;
-export const PutApprovalSettingsRequestTargetingReviewModeList = /*@__PURE__*/ S.Array(
-  TargetingReviewRule,
-) as any as S.Schema<PutApprovalSettingsRequestTargetingReviewModeList>;
+export const PutApprovalSettingsRequestTargetingReviewModeList =
+  SettingsTargetingReviewModeList as any as S.Schema<PutApprovalSettingsRequestTargetingReviewModeList>;
 
 export interface PutApprovalSettingsRequest {
   requireReviews?: PutApprovalSettingsRequestRequireReviewsList;
@@ -43420,28 +41670,21 @@ export const PutApprovalSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutApprovalSettingsRequest>;
 
 export type PutApprovalSettingsResponseRequireReviewsList = Array<RequireReviewRule>;
-export const PutApprovalSettingsResponseRequireReviewsList = /*@__PURE__*/ S.Array(
-  RequireReviewRule,
-) as any as S.Schema<PutApprovalSettingsResponseRequireReviewsList>;
+export const PutApprovalSettingsResponseRequireReviewsList =
+  SettingsRequireReviewsList as any as S.Schema<PutApprovalSettingsResponseRequireReviewsList>;
 
 export type ApprovalFlowsSavedGroupsList = Array<SavedGroupApprovalRule>;
-export const ApprovalFlowsSavedGroupsList = /*@__PURE__*/ S.Array(
-  SavedGroupApprovalRule,
-) as any as S.Schema<ApprovalFlowsSavedGroupsList>;
+export const ApprovalFlowsSavedGroupsList =
+  SettingsApprovalFlowsSavedGroupsList as any as S.Schema<ApprovalFlowsSavedGroupsList>;
 
 export interface ApprovalFlows {
   savedGroups: ApprovalFlowsSavedGroupsList;
 }
-export const ApprovalFlows = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    savedGroups: ApprovalFlowsSavedGroupsList,
-  }),
-).annotate({ identifier: "ApprovalFlows" }) as any as S.Schema<ApprovalFlows>;
+export const ApprovalFlows = SettingsApprovalFlows as any as S.Schema<ApprovalFlows>;
 
 export type PutApprovalSettingsResponseTargetingReviewModeList = Array<TargetingReviewRule>;
-export const PutApprovalSettingsResponseTargetingReviewModeList = /*@__PURE__*/ S.Array(
-  TargetingReviewRule,
-) as any as S.Schema<PutApprovalSettingsResponseTargetingReviewModeList>;
+export const PutApprovalSettingsResponseTargetingReviewModeList =
+  SettingsTargetingReviewModeList as any as S.Schema<PutApprovalSettingsResponseTargetingReviewModeList>;
 
 export interface PutApprovalSettingsResponse {
   requireReviews: PutApprovalSettingsResponseRequireReviewsList;
@@ -43460,21 +41703,17 @@ export const PutApprovalSettingsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The attributes to set when using this Archetype */
 export type PutArchetypeRequestAttributesMap = { [key: string]: unknown | undefined };
-export const PutArchetypeRequestAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PutArchetypeRequestAttributesMap>;
+export const PutArchetypeRequestAttributesMap =
+  ConfigValueMap as any as S.Schema<PutArchetypeRequestAttributesMap>;
 
 export type PutArchetypeRequestProjectsList = Array<string>;
-export const PutArchetypeRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutArchetypeRequestProjectsList>;
+export const PutArchetypeRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PutArchetypeRequestProjectsList>;
 
 /** Limit this Archetype to specific environments. Omit or leave empty to apply to all environments. */
 export type PutArchetypeRequestEnvironmentsList = Array<string>;
-export const PutArchetypeRequestEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutArchetypeRequestEnvironmentsList>;
+export const PutArchetypeRequestEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PutArchetypeRequestEnvironmentsList>;
 
 export interface PutArchetypeRequest {
   /** The id of the requested resource */
@@ -43504,11 +41743,8 @@ export const PutArchetypeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutArchetypeResponse {
   archetype: Archetype;
 }
-export const PutArchetypeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    archetype: Archetype,
-  }),
-).annotate({ identifier: "PutArchetypeResponse" }) as any as S.Schema<PutArchetypeResponse>;
+export const PutArchetypeResponse =
+  CreateArchetypeResponse as any as S.Schema<PutArchetypeResponse>;
 
 /** The attribute datatype */
 export type PutAttributeRequestDatatype =
@@ -43527,21 +41763,17 @@ export type PutAttributeRequestFormat = "" | "version" | "date" | "isoCountryCod
 export const PutAttributeRequestFormat = S.String;
 
 export type PutAttributeRequestProjectsList = Array<string>;
-export const PutAttributeRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutAttributeRequestProjectsList>;
+export const PutAttributeRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PutAttributeRequestProjectsList>;
 
 export type PutAttributeRequestTagsList = Array<string>;
-export const PutAttributeRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutAttributeRequestTagsList>;
+export const PutAttributeRequestTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PutAttributeRequestTagsList>;
 
 /** Values for the organization's attribute custom fields, keyed by field id */
 export type PutAttributeRequestCustomFieldsMap = { [key: string]: string | undefined };
-export const PutAttributeRequestCustomFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PutAttributeRequestCustomFieldsMap>;
+export const PutAttributeRequestCustomFieldsMap =
+  ConstantEnvironmentValuesMap as any as S.Schema<PutAttributeRequestCustomFieldsMap>;
 
 export interface PutAttributeRequest {
   /** The attribute property */
@@ -43581,11 +41813,8 @@ export const PutAttributeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutAttributeResponse {
   attribute: Attribute;
 }
-export const PutAttributeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: Attribute,
-  }),
-).annotate({ identifier: "PutAttributeResponse" }) as any as S.Schema<PutAttributeResponse>;
+export const PutAttributeResponse =
+  CreateAttributeResponse as any as S.Schema<PutAttributeResponse>;
 
 export interface PutConfigRevisionArchiveRequest {
   key: string;
@@ -43620,13 +41849,8 @@ export const PutConfigRevisionArchiveRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutConfigRevisionArchiveResponse {
   revision: ConfigRevision;
 }
-export const PutConfigRevisionArchiveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: ConfigRevision,
-  }),
-).annotate({
-  identifier: "PutConfigRevisionArchiveResponse",
-}) as any as S.Schema<PutConfigRevisionArchiveResponse>;
+export const PutConfigRevisionArchiveResponse =
+  CreateConfigRevisionDiscardResponse as any as S.Schema<PutConfigRevisionArchiveResponse>;
 
 /** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
 export type PutConfigRevisionMetadataRequestSkipSchemaValidation = string | boolean;
@@ -43640,9 +41864,8 @@ export const PutConfigRevisionMetadataRequestIgnoreWarnings =
 
 /** Replace the composition mixins layered on top of `parent`, in precedence order (later overrides earlier; all override `parent`; own keys win last). Send the complete set; an empty array clears all mixins. */
 export type PutConfigRevisionMetadataRequestExtendsList = Array<string>;
-export const PutConfigRevisionMetadataRequestExtendsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutConfigRevisionMetadataRequestExtendsList>;
+export const PutConfigRevisionMetadataRequestExtendsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PutConfigRevisionMetadataRequestExtendsList>;
 
 export interface PutConfigRevisionMetadataRequest {
   key: string;
@@ -43692,9 +41915,8 @@ export const PutConfigRevisionMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutConfigRevisionMetadataRequest>;
 
 export type PutConfigRevisionMetadataResponseWarningsList = Array<ConfigSchemaWarning>;
-export const PutConfigRevisionMetadataResponseWarningsList = /*@__PURE__*/ S.Array(
-  ConfigSchemaWarning,
-) as any as S.Schema<PutConfigRevisionMetadataResponseWarningsList>;
+export const PutConfigRevisionMetadataResponseWarningsList =
+  CreateConfigResponseWarningsList as any as S.Schema<PutConfigRevisionMetadataResponseWarningsList>;
 
 export interface PutConfigRevisionMetadataResponse {
   revision: ConfigRevision;
@@ -43759,22 +41981,15 @@ export const PutConfigRevisionProjectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutConfigRevisionProjectionRequest>;
 
 export type PutConfigRevisionProjectionResponseWarningsList = Array<ConfigSchemaWarning>;
-export const PutConfigRevisionProjectionResponseWarningsList = /*@__PURE__*/ S.Array(
-  ConfigSchemaWarning,
-) as any as S.Schema<PutConfigRevisionProjectionResponseWarningsList>;
+export const PutConfigRevisionProjectionResponseWarningsList =
+  CreateConfigResponseWarningsList as any as S.Schema<PutConfigRevisionProjectionResponseWarningsList>;
 
 export interface PutConfigRevisionProjectionResponse {
   revision: ConfigRevision;
   warnings?: PutConfigRevisionProjectionResponseWarningsList;
 }
-export const PutConfigRevisionProjectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: ConfigRevision,
-    warnings: S.optional(PutConfigRevisionProjectionResponseWarningsList),
-  }),
-).annotate({
-  identifier: "PutConfigRevisionProjectionResponse",
-}) as any as S.Schema<PutConfigRevisionProjectionResponse>;
+export const PutConfigRevisionProjectionResponse =
+  PutConfigRevisionMetadataResponse as any as S.Schema<PutConfigRevisionProjectionResponse>;
 
 /** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
 export type PutConfigRevisionPropertyRequestSkipSchemaValidation = string | boolean;
@@ -43823,22 +42038,15 @@ export const PutConfigRevisionPropertyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutConfigRevisionPropertyRequest>;
 
 export type PutConfigRevisionPropertyResponseWarningsList = Array<ConfigSchemaWarning>;
-export const PutConfigRevisionPropertyResponseWarningsList = /*@__PURE__*/ S.Array(
-  ConfigSchemaWarning,
-) as any as S.Schema<PutConfigRevisionPropertyResponseWarningsList>;
+export const PutConfigRevisionPropertyResponseWarningsList =
+  CreateConfigResponseWarningsList as any as S.Schema<PutConfigRevisionPropertyResponseWarningsList>;
 
 export interface PutConfigRevisionPropertyResponse {
   revision: ConfigRevision;
   warnings?: PutConfigRevisionPropertyResponseWarningsList;
 }
-export const PutConfigRevisionPropertyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: ConfigRevision,
-    warnings: S.optional(PutConfigRevisionPropertyResponseWarningsList),
-  }),
-).annotate({
-  identifier: "PutConfigRevisionPropertyResponse",
-}) as any as S.Schema<PutConfigRevisionPropertyResponse>;
+export const PutConfigRevisionPropertyResponse =
+  PutConfigRevisionMetadataResponse as any as S.Schema<PutConfigRevisionPropertyResponse>;
 
 /** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
 export type PutConfigRevisionSchemaRequestSkipSchemaValidation = string | boolean;
@@ -43889,22 +42097,15 @@ export const PutConfigRevisionSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutConfigRevisionSchemaRequest>;
 
 export type PutConfigRevisionSchemaResponseWarningsList = Array<ConfigSchemaWarning>;
-export const PutConfigRevisionSchemaResponseWarningsList = /*@__PURE__*/ S.Array(
-  ConfigSchemaWarning,
-) as any as S.Schema<PutConfigRevisionSchemaResponseWarningsList>;
+export const PutConfigRevisionSchemaResponseWarningsList =
+  CreateConfigResponseWarningsList as any as S.Schema<PutConfigRevisionSchemaResponseWarningsList>;
 
 export interface PutConfigRevisionSchemaResponse {
   revision: ConfigRevision;
   warnings?: PutConfigRevisionSchemaResponseWarningsList;
 }
-export const PutConfigRevisionSchemaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: ConfigRevision,
-    warnings: S.optional(PutConfigRevisionSchemaResponseWarningsList),
-  }),
-).annotate({
-  identifier: "PutConfigRevisionSchemaResponse",
-}) as any as S.Schema<PutConfigRevisionSchemaResponse>;
+export const PutConfigRevisionSchemaResponse =
+  PutConfigRevisionMetadataResponse as any as S.Schema<PutConfigRevisionSchemaResponse>;
 
 /** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
 export type PutConfigRevisionValueRequestSkipSchemaValidation = string | boolean;
@@ -43918,10 +42119,8 @@ export const PutConfigRevisionValueRequestIgnoreWarnings =
 
 /** This config's own value as a JSON object -- a targeted patch deep-merged onto the resolved parent value. */
 export type PutConfigRevisionValueRequestValueMap = { [key: string]: unknown | undefined };
-export const PutConfigRevisionValueRequestValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PutConfigRevisionValueRequestValueMap>;
+export const PutConfigRevisionValueRequestValueMap =
+  ConfigValueMap as any as S.Schema<PutConfigRevisionValueRequestValueMap>;
 
 export interface PutConfigRevisionValueRequest {
   key: string;
@@ -43958,22 +42157,15 @@ export const PutConfigRevisionValueRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutConfigRevisionValueRequest>;
 
 export type PutConfigRevisionValueResponseWarningsList = Array<ConfigSchemaWarning>;
-export const PutConfigRevisionValueResponseWarningsList = /*@__PURE__*/ S.Array(
-  ConfigSchemaWarning,
-) as any as S.Schema<PutConfigRevisionValueResponseWarningsList>;
+export const PutConfigRevisionValueResponseWarningsList =
+  CreateConfigResponseWarningsList as any as S.Schema<PutConfigRevisionValueResponseWarningsList>;
 
 export interface PutConfigRevisionValueResponse {
   revision: ConfigRevision;
   warnings?: PutConfigRevisionValueResponseWarningsList;
 }
-export const PutConfigRevisionValueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: ConfigRevision,
-    warnings: S.optional(PutConfigRevisionValueResponseWarningsList),
-  }),
-).annotate({
-  identifier: "PutConfigRevisionValueResponse",
-}) as any as S.Schema<PutConfigRevisionValueResponse>;
+export const PutConfigRevisionValueResponse =
+  PutConfigRevisionMetadataResponse as any as S.Schema<PutConfigRevisionValueResponse>;
 
 export interface PutConstantRevisionArchiveRequest {
   key: string;
@@ -44008,13 +42200,8 @@ export const PutConstantRevisionArchiveRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutConstantRevisionArchiveResponse {
   revision: ConstantRevision;
 }
-export const PutConstantRevisionArchiveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: ConstantRevision,
-  }),
-).annotate({
-  identifier: "PutConstantRevisionArchiveResponse",
-}) as any as S.Schema<PutConstantRevisionArchiveResponse>;
+export const PutConstantRevisionArchiveResponse =
+  CreateConstantRevisionDiscardResponse as any as S.Schema<PutConstantRevisionArchiveResponse>;
 
 export interface PutConstantRevisionMetadataRequest {
   key: string;
@@ -44047,22 +42234,15 @@ export const PutConstantRevisionMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutConstantRevisionMetadataResponse {
   revision: ConstantRevision;
 }
-export const PutConstantRevisionMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: ConstantRevision,
-  }),
-).annotate({
-  identifier: "PutConstantRevisionMetadataResponse",
-}) as any as S.Schema<PutConstantRevisionMetadataResponse>;
+export const PutConstantRevisionMetadataResponse =
+  CreateConstantRevisionDiscardResponse as any as S.Schema<PutConstantRevisionMetadataResponse>;
 
 /** Per-environment value overrides (environment id -> value) */
 export type PutConstantRevisionValueRequestEnvironmentValuesMap = {
   [key: string]: string | undefined;
 };
-export const PutConstantRevisionValueRequestEnvironmentValuesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PutConstantRevisionValueRequestEnvironmentValuesMap>;
+export const PutConstantRevisionValueRequestEnvironmentValuesMap =
+  ConstantEnvironmentValuesMap as any as S.Schema<PutConstantRevisionValueRequestEnvironmentValuesMap>;
 
 export interface PutConstantRevisionValueRequest {
   key: string;
@@ -44092,18 +42272,12 @@ export const PutConstantRevisionValueRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutConstantRevisionValueResponse {
   revision: ConstantRevision;
 }
-export const PutConstantRevisionValueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: ConstantRevision,
-  }),
-).annotate({
-  identifier: "PutConstantRevisionValueResponse",
-}) as any as S.Schema<PutConstantRevisionValueResponse>;
+export const PutConstantRevisionValueResponse =
+  CreateConstantRevisionDiscardResponse as any as S.Schema<PutConstantRevisionValueResponse>;
 
 export type PutEnvironmentRequestProjectsList = Array<string>;
-export const PutEnvironmentRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutEnvironmentRequestProjectsList>;
+export const PutEnvironmentRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PutEnvironmentRequestProjectsList>;
 
 export interface PutEnvironmentRequest {
   /** The id of the requested resource */
@@ -44177,9 +42351,8 @@ export const PutExperimentScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutExperimentScheduleRequest>;
 
 export type PutExperimentScheduleResponseWarningsList = Array<string>;
-export const PutExperimentScheduleResponseWarningsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutExperimentScheduleResponseWarningsList>;
+export const PutExperimentScheduleResponseWarningsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PutExperimentScheduleResponseWarningsList>;
 
 export interface PutExperimentScheduleResponse {
   experiment: ExperimentWithEnhancedStatus;
@@ -44223,13 +42396,8 @@ export const PutFeatureRevisionArchiveV2Request = /*@__PURE__*/ S.suspend(() =>
 export interface PutFeatureRevisionArchiveV2Response {
   revision: FeatureRevisionV2;
 }
-export const PutFeatureRevisionArchiveV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: FeatureRevisionV2,
-  }),
-).annotate({
-  identifier: "PutFeatureRevisionArchiveV2Response",
-}) as any as S.Schema<PutFeatureRevisionArchiveV2Response>;
+export const PutFeatureRevisionArchiveV2Response =
+  DeleteFeatureRevisionRuleRampScheduleV2Response as any as S.Schema<PutFeatureRevisionArchiveV2Response>;
 
 /** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
 export type PutFeatureRevisionDefaultValueV2RequestSkipSchemaValidation = string | boolean;
@@ -44288,13 +42456,8 @@ export const PutFeatureRevisionDefaultValueV2Request = /*@__PURE__*/ S.suspend((
 export interface PutFeatureRevisionDefaultValueV2Response {
   revision: FeatureRevisionV2;
 }
-export const PutFeatureRevisionDefaultValueV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: FeatureRevisionV2,
-  }),
-).annotate({
-  identifier: "PutFeatureRevisionDefaultValueV2Response",
-}) as any as S.Schema<PutFeatureRevisionDefaultValueV2Response>;
+export const PutFeatureRevisionDefaultValueV2Response =
+  DeleteFeatureRevisionRuleRampScheduleV2Response as any as S.Schema<PutFeatureRevisionDefaultValueV2Response>;
 
 export type PutFeatureRevisionHoldoutV2RequestHoldout =
   GetFeatureRevisionMergeStatusV2ResponseResultHoldout;
@@ -44330,13 +42493,8 @@ export const PutFeatureRevisionHoldoutV2Request = /*@__PURE__*/ S.suspend(() =>
 export interface PutFeatureRevisionHoldoutV2Response {
   revision: FeatureRevisionV2;
 }
-export const PutFeatureRevisionHoldoutV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: FeatureRevisionV2,
-  }),
-).annotate({
-  identifier: "PutFeatureRevisionHoldoutV2Response",
-}) as any as S.Schema<PutFeatureRevisionHoldoutV2Response>;
+export const PutFeatureRevisionHoldoutV2Response =
+  DeleteFeatureRevisionRuleRampScheduleV2Response as any as S.Schema<PutFeatureRevisionHoldoutV2Response>;
 
 export interface PutFeatureRevisionLogCommentV2Request {
   id: string;
@@ -44361,32 +42519,23 @@ export const PutFeatureRevisionLogCommentV2Request = /*@__PURE__*/ S.suspend(() 
 export interface PutFeatureRevisionLogCommentV2Response {
   status: number;
 }
-export const PutFeatureRevisionLogCommentV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.Number,
-  }),
-).annotate({
-  identifier: "PutFeatureRevisionLogCommentV2Response",
-}) as any as S.Schema<PutFeatureRevisionLogCommentV2Response>;
+export const PutFeatureRevisionLogCommentV2Response =
+  CancelContextualBanditResponse as any as S.Schema<PutFeatureRevisionLogCommentV2Response>;
 
 /** Stage the secondary project IDs this feature is delivered to. Adding a project requires the `targetFeatures` permission (FlagsTarget policy) in that project. */
 export type PutFeatureRevisionMetadataV2RequestTargetingProjectsList = Array<string>;
-export const PutFeatureRevisionMetadataV2RequestTargetingProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutFeatureRevisionMetadataV2RequestTargetingProjectsList>;
+export const PutFeatureRevisionMetadataV2RequestTargetingProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PutFeatureRevisionMetadataV2RequestTargetingProjectsList>;
 
 export type PutFeatureRevisionMetadataV2RequestTagsList = Array<string>;
-export const PutFeatureRevisionMetadataV2RequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutFeatureRevisionMetadataV2RequestTagsList>;
+export const PutFeatureRevisionMetadataV2RequestTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PutFeatureRevisionMetadataV2RequestTagsList>;
 
 export type PutFeatureRevisionMetadataV2RequestCustomFieldsMap = {
   [key: string]: unknown | undefined;
 };
-export const PutFeatureRevisionMetadataV2RequestCustomFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PutFeatureRevisionMetadataV2RequestCustomFieldsMap>;
+export const PutFeatureRevisionMetadataV2RequestCustomFieldsMap =
+  ConfigValueMap as any as S.Schema<PutFeatureRevisionMetadataV2RequestCustomFieldsMap>;
 
 export type PutFeatureRevisionMetadataV2RequestJsonSchemaSchemaType = "schema" | "simple";
 export const PutFeatureRevisionMetadataV2RequestJsonSchemaSchemaType = S.String;
@@ -44407,9 +42556,7 @@ export const PutFeatureRevisionMetadataV2RequestJsonSchemaSimpleFieldsItemType =
 
 export type PutFeatureRevisionMetadataV2RequestJsonSchemaSimpleFieldsItemEnumList = Array<string>;
 export const PutFeatureRevisionMetadataV2RequestJsonSchemaSimpleFieldsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PutFeatureRevisionMetadataV2RequestJsonSchemaSimpleFieldsItemEnumList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PutFeatureRevisionMetadataV2RequestJsonSchemaSimpleFieldsItemEnumList>;
 
 export interface PutFeatureRevisionMetadataV2RequestJsonSchemaSimpleFieldsItem {
   key: string;
@@ -44552,13 +42699,8 @@ export const PutFeatureRevisionMetadataV2Request = /*@__PURE__*/ S.suspend(() =>
 export interface PutFeatureRevisionMetadataV2Response {
   revision: FeatureRevisionV2;
 }
-export const PutFeatureRevisionMetadataV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: FeatureRevisionV2,
-  }),
-).annotate({
-  identifier: "PutFeatureRevisionMetadataV2Response",
-}) as any as S.Schema<PutFeatureRevisionMetadataV2Response>;
+export const PutFeatureRevisionMetadataV2Response =
+  DeleteFeatureRevisionRuleRampScheduleV2Response as any as S.Schema<PutFeatureRevisionMetadataV2Response>;
 
 export interface PutFeatureRevisionPrerequisitesV2RequestPrerequisitesItem {
   /** ID of a boolean feature flag */
@@ -44614,13 +42756,8 @@ export const PutFeatureRevisionPrerequisitesV2Request = /*@__PURE__*/ S.suspend(
 export interface PutFeatureRevisionPrerequisitesV2Response {
   revision: FeatureRevisionV2;
 }
-export const PutFeatureRevisionPrerequisitesV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: FeatureRevisionV2,
-  }),
-).annotate({
-  identifier: "PutFeatureRevisionPrerequisitesV2Response",
-}) as any as S.Schema<PutFeatureRevisionPrerequisitesV2Response>;
+export const PutFeatureRevisionPrerequisitesV2Response =
+  DeleteFeatureRevisionRuleRampScheduleV2Response as any as S.Schema<PutFeatureRevisionPrerequisitesV2Response>;
 
 export type PutFeatureRevisionRuleRampScheduleV2RequestStartActionsItemPatchSavedGroupsItemMatch =
   | "all"
@@ -44632,9 +42769,7 @@ export const PutFeatureRevisionRuleRampScheduleV2RequestStartActionsItemPatchSav
 export type PutFeatureRevisionRuleRampScheduleV2RequestStartActionsItemPatchSavedGroupsItemIdsList =
   Array<string>;
 export const PutFeatureRevisionRuleRampScheduleV2RequestStartActionsItemPatchSavedGroupsItemIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2RequestStartActionsItemPatchSavedGroupsItemIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2RequestStartActionsItemPatchSavedGroupsItemIdsList>;
 
 export interface PutFeatureRevisionRuleRampScheduleV2RequestStartActionsItemPatchSavedGroupsItem {
   match:
@@ -44667,16 +42802,12 @@ export const PutFeatureRevisionRuleRampScheduleV2RequestStartActionsItemPatchPre
 export type PutFeatureRevisionRuleRampScheduleV2RequestStartActionsItemPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
 export const PutFeatureRevisionRuleRampScheduleV2RequestStartActionsItemPatchPrerequisitesList =
-  /*@__PURE__*/ S.Array(
-    RampScheduleStartActionsItemPatchPrerequisitesItem,
-  ) as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2RequestStartActionsItemPatchPrerequisitesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataTargetingPrerequisitesList as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2RequestStartActionsItemPatchPrerequisitesList>;
 
 export type PutFeatureRevisionRuleRampScheduleV2RequestStartActionsItemPatchEnvironmentsList =
   Array<string>;
 export const PutFeatureRevisionRuleRampScheduleV2RequestStartActionsItemPatchEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2RequestStartActionsItemPatchEnvironmentsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2RequestStartActionsItemPatchEnvironmentsList>;
 
 export interface PutFeatureRevisionRuleRampScheduleV2RequestStartActionsItemPatch {
   ruleId?: string;
@@ -44755,9 +42886,7 @@ export const PutFeatureRevisionRuleRampScheduleV2RequestStepsItemActionsItemPatc
 export type PutFeatureRevisionRuleRampScheduleV2RequestStepsItemActionsItemPatchSavedGroupsItemIdsList =
   Array<string>;
 export const PutFeatureRevisionRuleRampScheduleV2RequestStepsItemActionsItemPatchSavedGroupsItemIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2RequestStepsItemActionsItemPatchSavedGroupsItemIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2RequestStepsItemActionsItemPatchSavedGroupsItemIdsList>;
 
 export interface PutFeatureRevisionRuleRampScheduleV2RequestStepsItemActionsItemPatchSavedGroupsItem {
   match:
@@ -44792,16 +42921,12 @@ export const PutFeatureRevisionRuleRampScheduleV2RequestStepsItemActionsItemPatc
 export type PutFeatureRevisionRuleRampScheduleV2RequestStepsItemActionsItemPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
 export const PutFeatureRevisionRuleRampScheduleV2RequestStepsItemActionsItemPatchPrerequisitesList =
-  /*@__PURE__*/ S.Array(
-    RampScheduleStartActionsItemPatchPrerequisitesItem,
-  ) as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2RequestStepsItemActionsItemPatchPrerequisitesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataTargetingPrerequisitesList as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2RequestStepsItemActionsItemPatchPrerequisitesList>;
 
 export type PutFeatureRevisionRuleRampScheduleV2RequestStepsItemActionsItemPatchEnvironmentsList =
   Array<string>;
 export const PutFeatureRevisionRuleRampScheduleV2RequestStepsItemActionsItemPatchEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2RequestStepsItemActionsItemPatchEnvironmentsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2RequestStepsItemActionsItemPatchEnvironmentsList>;
 
 export interface PutFeatureRevisionRuleRampScheduleV2RequestStepsItemActionsItemPatch {
   ruleId?: string;
@@ -44908,9 +43033,7 @@ export const PutFeatureRevisionRuleRampScheduleV2RequestEndActionsItemPatchSaved
 export type PutFeatureRevisionRuleRampScheduleV2RequestEndActionsItemPatchSavedGroupsItemIdsList =
   Array<string>;
 export const PutFeatureRevisionRuleRampScheduleV2RequestEndActionsItemPatchSavedGroupsItemIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2RequestEndActionsItemPatchSavedGroupsItemIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2RequestEndActionsItemPatchSavedGroupsItemIdsList>;
 
 export interface PutFeatureRevisionRuleRampScheduleV2RequestEndActionsItemPatchSavedGroupsItem {
   match:
@@ -44943,16 +43066,12 @@ export const PutFeatureRevisionRuleRampScheduleV2RequestEndActionsItemPatchPrere
 export type PutFeatureRevisionRuleRampScheduleV2RequestEndActionsItemPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
 export const PutFeatureRevisionRuleRampScheduleV2RequestEndActionsItemPatchPrerequisitesList =
-  /*@__PURE__*/ S.Array(
-    RampScheduleStartActionsItemPatchPrerequisitesItem,
-  ) as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2RequestEndActionsItemPatchPrerequisitesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataTargetingPrerequisitesList as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2RequestEndActionsItemPatchPrerequisitesList>;
 
 export type PutFeatureRevisionRuleRampScheduleV2RequestEndActionsItemPatchEnvironmentsList =
   Array<string>;
 export const PutFeatureRevisionRuleRampScheduleV2RequestEndActionsItemPatchEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2RequestEndActionsItemPatchEnvironmentsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2RequestEndActionsItemPatchEnvironmentsList>;
 
 export interface PutFeatureRevisionRuleRampScheduleV2RequestEndActionsItemPatch {
   ruleId?: string;
@@ -45015,16 +43134,12 @@ export const PutFeatureRevisionRuleRampScheduleV2RequestEndActionsList = /*@__PU
 export type PutFeatureRevisionRuleRampScheduleV2RequestMonitoringConfigGuardrailMetricIdsList =
   Array<string>;
 export const PutFeatureRevisionRuleRampScheduleV2RequestMonitoringConfigGuardrailMetricIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2RequestMonitoringConfigGuardrailMetricIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2RequestMonitoringConfigGuardrailMetricIdsList>;
 
 export type PutFeatureRevisionRuleRampScheduleV2RequestMonitoringConfigSignalMetricIdsList =
   Array<string>;
 export const PutFeatureRevisionRuleRampScheduleV2RequestMonitoringConfigSignalMetricIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2RequestMonitoringConfigSignalMetricIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2RequestMonitoringConfigSignalMetricIdsList>;
 
 export type PutFeatureRevisionRuleRampScheduleV2RequestMonitoringConfigMonitoringMode =
   | "auto"
@@ -45132,9 +43247,7 @@ export const PutFeatureRevisionRuleRampScheduleV2RequestStartStateSavedGroupsIte
 export type PutFeatureRevisionRuleRampScheduleV2RequestStartStateSavedGroupsItemIdsList =
   Array<string>;
 export const PutFeatureRevisionRuleRampScheduleV2RequestStartStateSavedGroupsItemIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2RequestStartStateSavedGroupsItemIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2RequestStartStateSavedGroupsItemIdsList>;
 
 export interface PutFeatureRevisionRuleRampScheduleV2RequestStartStateSavedGroupsItem {
   match: PutFeatureRevisionRuleRampScheduleV2RequestStartStateSavedGroupsItemMatch | (string & {});
@@ -45165,15 +43278,11 @@ export const PutFeatureRevisionRuleRampScheduleV2RequestStartStatePrerequisitesI
 export type PutFeatureRevisionRuleRampScheduleV2RequestStartStatePrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
 export const PutFeatureRevisionRuleRampScheduleV2RequestStartStatePrerequisitesList =
-  /*@__PURE__*/ S.Array(
-    RampScheduleStartActionsItemPatchPrerequisitesItem,
-  ) as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2RequestStartStatePrerequisitesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataTargetingPrerequisitesList as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2RequestStartStatePrerequisitesList>;
 
 export type PutFeatureRevisionRuleRampScheduleV2RequestStartStateEnvironmentsList = Array<string>;
 export const PutFeatureRevisionRuleRampScheduleV2RequestStartStateEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2RequestStartStateEnvironmentsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2RequestStartStateEnvironmentsList>;
 
 /** The rule state to roll back to (the rollback/jump-to-start anchor). Merged onto the rule's current state, so `{ "coverage": 0 }` keeps existing targeting but rolls back to 0%. Steps accumulate on it, and it is the only place a plan sets `hashAttribute` (plus optional `seed` and `hashVersion`), which a partial-coverage step on a force rule requires unless the rule has one. On create, omitting it infers the anchor from the rule's current coverage (and returns a warning if that isn't 0%); on update of a live schedule, omitting it leaves the existing anchor unchanged. */
 export interface PutFeatureRevisionRuleRampScheduleV2RequestStartState {
@@ -45277,9 +43386,8 @@ export const PutFeatureRevisionRuleRampScheduleV2Request = /*@__PURE__*/ S.suspe
 
 /** Non-fatal advisories about how the request was interpreted. */
 export type PutFeatureRevisionRuleRampScheduleV2ResponseWarningsList = Array<string>;
-export const PutFeatureRevisionRuleRampScheduleV2ResponseWarningsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2ResponseWarningsList>;
+export const PutFeatureRevisionRuleRampScheduleV2ResponseWarningsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2ResponseWarningsList>;
 
 export interface PutFeatureRevisionRuleRampScheduleV2Response {
   revision: FeatureRevisionV2;
@@ -45309,9 +43417,8 @@ export type PutFeatureRevisionRuleV2RequestRuleSavedGroupsItemMatch = "all" | "n
 export const PutFeatureRevisionRuleV2RequestRuleSavedGroupsItemMatch = S.String;
 
 export type PutFeatureRevisionRuleV2RequestRuleSavedGroupsItemIdsList = Array<string>;
-export const PutFeatureRevisionRuleV2RequestRuleSavedGroupsItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutFeatureRevisionRuleV2RequestRuleSavedGroupsItemIdsList>;
+export const PutFeatureRevisionRuleV2RequestRuleSavedGroupsItemIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PutFeatureRevisionRuleV2RequestRuleSavedGroupsItemIdsList>;
 
 export interface PutFeatureRevisionRuleV2RequestRuleSavedGroupsItem {
   match: PutFeatureRevisionRuleV2RequestRuleSavedGroupsItemMatch | (string & {});
@@ -45339,9 +43446,8 @@ export const PutFeatureRevisionRuleV2RequestRulePrerequisitesItem =
 
 export type PutFeatureRevisionRuleV2RequestRulePrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
-export const PutFeatureRevisionRuleV2RequestRulePrerequisitesList = /*@__PURE__*/ S.Array(
-  RampScheduleStartActionsItemPatchPrerequisitesItem,
-) as any as S.Schema<PutFeatureRevisionRuleV2RequestRulePrerequisitesList>;
+export const PutFeatureRevisionRuleV2RequestRulePrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<PutFeatureRevisionRuleV2RequestRulePrerequisitesList>;
 
 export type PutFeatureRevisionRuleV2RequestRuleType =
   | "force"
@@ -45356,27 +43462,18 @@ export interface PutFeatureRevisionRuleV2RequestRuleVariationsItem {
   /** Key of a config to back this variation value (or null to detach). When set, `value` is a JSON override patch merged on top of the config. */
   config?: string | null;
 }
-export const PutFeatureRevisionRuleV2RequestRuleVariationsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    variationId: S.String,
-    value: S.String,
-    config: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PutFeatureRevisionRuleV2RequestRuleVariationsItem",
-}) as any as S.Schema<PutFeatureRevisionRuleV2RequestRuleVariationsItem>;
+export const PutFeatureRevisionRuleV2RequestRuleVariationsItem =
+  AddContextualBanditLinkedFeatureRequestVariationsItem as any as S.Schema<PutFeatureRevisionRuleV2RequestRuleVariationsItem>;
 
 export type PutFeatureRevisionRuleV2RequestRuleVariationsList =
   Array<PutFeatureRevisionRuleV2RequestRuleVariationsItem>;
-export const PutFeatureRevisionRuleV2RequestRuleVariationsList = /*@__PURE__*/ S.Array(
-  PutFeatureRevisionRuleV2RequestRuleVariationsItem,
-) as any as S.Schema<PutFeatureRevisionRuleV2RequestRuleVariationsList>;
+export const PutFeatureRevisionRuleV2RequestRuleVariationsList =
+  AddContextualBanditLinkedFeatureRequestVariationsList as any as S.Schema<PutFeatureRevisionRuleV2RequestRuleVariationsList>;
 
 /** Environment IDs the rule applies to. Ignored when allEnvironments is true. */
 export type PutFeatureRevisionRuleV2RequestRuleEnvironmentsList = Array<string>;
-export const PutFeatureRevisionRuleV2RequestRuleEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutFeatureRevisionRuleV2RequestRuleEnvironmentsList>;
+export const PutFeatureRevisionRuleV2RequestRuleEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PutFeatureRevisionRuleV2RequestRuleEnvironmentsList>;
 
 export interface PutFeatureRevisionRuleV2RequestRule {
   description?: string;
@@ -45438,9 +43535,7 @@ export const PutFeatureRevisionRuleV2RequestRampScheduleStartActionsItemPatchSav
 export type PutFeatureRevisionRuleV2RequestRampScheduleStartActionsItemPatchSavedGroupsItemIdsList =
   Array<string>;
 export const PutFeatureRevisionRuleV2RequestRampScheduleStartActionsItemPatchSavedGroupsItemIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PutFeatureRevisionRuleV2RequestRampScheduleStartActionsItemPatchSavedGroupsItemIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PutFeatureRevisionRuleV2RequestRampScheduleStartActionsItemPatchSavedGroupsItemIdsList>;
 
 export interface PutFeatureRevisionRuleV2RequestRampScheduleStartActionsItemPatchSavedGroupsItem {
   match:
@@ -45473,16 +43568,12 @@ export const PutFeatureRevisionRuleV2RequestRampScheduleStartActionsItemPatchPre
 export type PutFeatureRevisionRuleV2RequestRampScheduleStartActionsItemPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
 export const PutFeatureRevisionRuleV2RequestRampScheduleStartActionsItemPatchPrerequisitesList =
-  /*@__PURE__*/ S.Array(
-    RampScheduleStartActionsItemPatchPrerequisitesItem,
-  ) as any as S.Schema<PutFeatureRevisionRuleV2RequestRampScheduleStartActionsItemPatchPrerequisitesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataTargetingPrerequisitesList as any as S.Schema<PutFeatureRevisionRuleV2RequestRampScheduleStartActionsItemPatchPrerequisitesList>;
 
 export type PutFeatureRevisionRuleV2RequestRampScheduleStartActionsItemPatchEnvironmentsList =
   Array<string>;
 export const PutFeatureRevisionRuleV2RequestRampScheduleStartActionsItemPatchEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PutFeatureRevisionRuleV2RequestRampScheduleStartActionsItemPatchEnvironmentsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PutFeatureRevisionRuleV2RequestRampScheduleStartActionsItemPatchEnvironmentsList>;
 
 export interface PutFeatureRevisionRuleV2RequestRampScheduleStartActionsItemPatch {
   ruleId?: string;
@@ -45561,9 +43652,7 @@ export const PutFeatureRevisionRuleV2RequestRampScheduleStepsItemActionsItemPatc
 export type PutFeatureRevisionRuleV2RequestRampScheduleStepsItemActionsItemPatchSavedGroupsItemIdsList =
   Array<string>;
 export const PutFeatureRevisionRuleV2RequestRampScheduleStepsItemActionsItemPatchSavedGroupsItemIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PutFeatureRevisionRuleV2RequestRampScheduleStepsItemActionsItemPatchSavedGroupsItemIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PutFeatureRevisionRuleV2RequestRampScheduleStepsItemActionsItemPatchSavedGroupsItemIdsList>;
 
 export interface PutFeatureRevisionRuleV2RequestRampScheduleStepsItemActionsItemPatchSavedGroupsItem {
   match:
@@ -45598,16 +43687,12 @@ export const PutFeatureRevisionRuleV2RequestRampScheduleStepsItemActionsItemPatc
 export type PutFeatureRevisionRuleV2RequestRampScheduleStepsItemActionsItemPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
 export const PutFeatureRevisionRuleV2RequestRampScheduleStepsItemActionsItemPatchPrerequisitesList =
-  /*@__PURE__*/ S.Array(
-    RampScheduleStartActionsItemPatchPrerequisitesItem,
-  ) as any as S.Schema<PutFeatureRevisionRuleV2RequestRampScheduleStepsItemActionsItemPatchPrerequisitesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataTargetingPrerequisitesList as any as S.Schema<PutFeatureRevisionRuleV2RequestRampScheduleStepsItemActionsItemPatchPrerequisitesList>;
 
 export type PutFeatureRevisionRuleV2RequestRampScheduleStepsItemActionsItemPatchEnvironmentsList =
   Array<string>;
 export const PutFeatureRevisionRuleV2RequestRampScheduleStepsItemActionsItemPatchEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PutFeatureRevisionRuleV2RequestRampScheduleStepsItemActionsItemPatchEnvironmentsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PutFeatureRevisionRuleV2RequestRampScheduleStepsItemActionsItemPatchEnvironmentsList>;
 
 export interface PutFeatureRevisionRuleV2RequestRampScheduleStepsItemActionsItemPatch {
   ruleId?: string;
@@ -45714,9 +43799,7 @@ export const PutFeatureRevisionRuleV2RequestRampScheduleEndActionsItemPatchSaved
 export type PutFeatureRevisionRuleV2RequestRampScheduleEndActionsItemPatchSavedGroupsItemIdsList =
   Array<string>;
 export const PutFeatureRevisionRuleV2RequestRampScheduleEndActionsItemPatchSavedGroupsItemIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PutFeatureRevisionRuleV2RequestRampScheduleEndActionsItemPatchSavedGroupsItemIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PutFeatureRevisionRuleV2RequestRampScheduleEndActionsItemPatchSavedGroupsItemIdsList>;
 
 export interface PutFeatureRevisionRuleV2RequestRampScheduleEndActionsItemPatchSavedGroupsItem {
   match:
@@ -45749,16 +43832,12 @@ export const PutFeatureRevisionRuleV2RequestRampScheduleEndActionsItemPatchPrere
 export type PutFeatureRevisionRuleV2RequestRampScheduleEndActionsItemPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
 export const PutFeatureRevisionRuleV2RequestRampScheduleEndActionsItemPatchPrerequisitesList =
-  /*@__PURE__*/ S.Array(
-    RampScheduleStartActionsItemPatchPrerequisitesItem,
-  ) as any as S.Schema<PutFeatureRevisionRuleV2RequestRampScheduleEndActionsItemPatchPrerequisitesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataTargetingPrerequisitesList as any as S.Schema<PutFeatureRevisionRuleV2RequestRampScheduleEndActionsItemPatchPrerequisitesList>;
 
 export type PutFeatureRevisionRuleV2RequestRampScheduleEndActionsItemPatchEnvironmentsList =
   Array<string>;
 export const PutFeatureRevisionRuleV2RequestRampScheduleEndActionsItemPatchEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PutFeatureRevisionRuleV2RequestRampScheduleEndActionsItemPatchEnvironmentsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PutFeatureRevisionRuleV2RequestRampScheduleEndActionsItemPatchEnvironmentsList>;
 
 export interface PutFeatureRevisionRuleV2RequestRampScheduleEndActionsItemPatch {
   ruleId?: string;
@@ -45821,16 +43900,12 @@ export const PutFeatureRevisionRuleV2RequestRampScheduleEndActionsList = /*@__PU
 export type PutFeatureRevisionRuleV2RequestRampScheduleMonitoringConfigGuardrailMetricIdsList =
   Array<string>;
 export const PutFeatureRevisionRuleV2RequestRampScheduleMonitoringConfigGuardrailMetricIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PutFeatureRevisionRuleV2RequestRampScheduleMonitoringConfigGuardrailMetricIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PutFeatureRevisionRuleV2RequestRampScheduleMonitoringConfigGuardrailMetricIdsList>;
 
 export type PutFeatureRevisionRuleV2RequestRampScheduleMonitoringConfigSignalMetricIdsList =
   Array<string>;
 export const PutFeatureRevisionRuleV2RequestRampScheduleMonitoringConfigSignalMetricIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PutFeatureRevisionRuleV2RequestRampScheduleMonitoringConfigSignalMetricIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PutFeatureRevisionRuleV2RequestRampScheduleMonitoringConfigSignalMetricIdsList>;
 
 export type PutFeatureRevisionRuleV2RequestRampScheduleMonitoringConfigMonitoringMode =
   | "auto"
@@ -46014,13 +44089,8 @@ export const PutFeatureRevisionRuleV2Request = /*@__PURE__*/ S.suspend(() =>
 export interface PutFeatureRevisionRuleV2Response {
   revision: FeatureRevisionV2;
 }
-export const PutFeatureRevisionRuleV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: FeatureRevisionV2,
-  }),
-).annotate({
-  identifier: "PutFeatureRevisionRuleV2Response",
-}) as any as S.Schema<PutFeatureRevisionRuleV2Response>;
+export const PutFeatureRevisionRuleV2Response =
+  DeleteFeatureRevisionRuleRampScheduleV2Response as any as S.Schema<PutFeatureRevisionRuleV2Response>;
 
 /** Where this metric must be managed from. If not set (empty string), it can be managed from anywhere. If set to "api", it can be managed via the API only. Please note that we have deprecated support for setting the managedBy property to "admin". Your existing Legacy Metrics with this value will continue to work, but we suggest migrating to Fact Metrics instead. */
 export type PutMetricRequestManagedBy = "" | "api" | "admin";
@@ -46032,15 +44102,13 @@ export const PutMetricRequestType = S.String;
 
 /** List of tags */
 export type PutMetricRequestTagsList = Array<string>;
-export const PutMetricRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutMetricRequestTagsList>;
+export const PutMetricRequestTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PutMetricRequestTagsList>;
 
 /** List of project IDs for projects that can access this metric */
 export type PutMetricRequestProjectsList = Array<string>;
-export const PutMetricRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutMetricRequestProjectsList>;
+export const PutMetricRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PutMetricRequestProjectsList>;
 
 export type PutMetricRequestBehaviorGoal = "increase" | "decrease";
 export const PutMetricRequestBehaviorGoal = S.String;
@@ -46169,9 +44237,8 @@ export const PutMetricRequestBehavior = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutMetricRequestBehavior" }) as any as S.Schema<PutMetricRequestBehavior>;
 
 export type PutMetricRequestSqlIdentifierTypesList = Array<string>;
-export const PutMetricRequestSqlIdentifierTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutMetricRequestSqlIdentifierTypesList>;
+export const PutMetricRequestSqlIdentifierTypesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PutMetricRequestSqlIdentifierTypesList>;
 
 /** Preferred way to define SQL. Only one of `sql`, `sqlBuilder` or `mixpanel` allowed. */
 export interface PutMetricRequestSql {
@@ -46198,17 +44265,15 @@ export const PutMetricRequestSqlBuilderIdentifierTypeColumnsItem =
 
 export type PutMetricRequestSqlBuilderIdentifierTypeColumnsList =
   Array<MetricSqlBuilderIdentifierTypeColumnsItem>;
-export const PutMetricRequestSqlBuilderIdentifierTypeColumnsList = /*@__PURE__*/ S.Array(
-  MetricSqlBuilderIdentifierTypeColumnsItem,
-) as any as S.Schema<PutMetricRequestSqlBuilderIdentifierTypeColumnsList>;
+export const PutMetricRequestSqlBuilderIdentifierTypeColumnsList =
+  MetricSqlBuilderIdentifierTypeColumnsList as any as S.Schema<PutMetricRequestSqlBuilderIdentifierTypeColumnsList>;
 
 export type PutMetricRequestSqlBuilderConditionsItem = MetricSqlBuilderConditionsItem;
 export const PutMetricRequestSqlBuilderConditionsItem = MetricSqlBuilderConditionsItem;
 
 export type PutMetricRequestSqlBuilderConditionsList = Array<MetricSqlBuilderConditionsItem>;
-export const PutMetricRequestSqlBuilderConditionsList = /*@__PURE__*/ S.Array(
-  MetricSqlBuilderConditionsItem,
-) as any as S.Schema<PutMetricRequestSqlBuilderConditionsList>;
+export const PutMetricRequestSqlBuilderConditionsList =
+  MetricSqlBuilderConditionsList as any as S.Schema<PutMetricRequestSqlBuilderConditionsList>;
 
 /** An alternative way to specify a SQL metric, rather than a full query. Using `sql` is preferred to `sqlBuilder`. Only one of `sql`, `sqlBuilder` or `mixpanel` allowed */
 export interface PutMetricRequestSqlBuilder {
@@ -46234,9 +44299,8 @@ export type PutMetricRequestMixpanelConditionsItem = MetricMixpanelConditionsIte
 export const PutMetricRequestMixpanelConditionsItem = MetricMixpanelConditionsItem;
 
 export type PutMetricRequestMixpanelConditionsList = Array<MetricMixpanelConditionsItem>;
-export const PutMetricRequestMixpanelConditionsList = /*@__PURE__*/ S.Array(
-  MetricMixpanelConditionsItem,
-) as any as S.Schema<PutMetricRequestMixpanelConditionsList>;
+export const PutMetricRequestMixpanelConditionsList =
+  MetricMixpanelConditionsList as any as S.Schema<PutMetricRequestMixpanelConditionsList>;
 
 /** Only use for MixPanel (non-SQL) Data Sources. Only one of `sql`, `sqlBuilder` or `mixpanel` allowed. */
 export interface PutMetricRequestMixpanel {
@@ -46336,11 +44400,8 @@ export const PutNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutNamespaceResponse {
   namespace: Namespace;
 }
-export const PutNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namespace: Namespace,
-  }),
-).annotate({ identifier: "PutNamespaceResponse" }) as any as S.Schema<PutNamespaceResponse>;
+export const PutNamespaceResponse =
+  CreateNamespaceResponse as any as S.Schema<PutNamespaceResponse>;
 
 export interface PutOrganizationRequest {
   /** The id of the requested resource */
@@ -46405,11 +44466,7 @@ export const PutProjectRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutProjectResponse {
   project: Project;
 }
-export const PutProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project: Project,
-  }),
-).annotate({ identifier: "PutProjectResponse" }) as any as S.Schema<PutProjectResponse>;
+export const PutProjectResponse = CreateProjectResponse as any as S.Schema<PutProjectResponse>;
 
 /** UI lifecycle marker for the report */
 export type PutReportMetadataRequestStatus = "published" | "private";
@@ -46451,13 +44508,8 @@ export const PutReportMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutReportMetadataResponse {
   report: Report;
 }
-export const PutReportMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    report: Report,
-  }),
-).annotate({
-  identifier: "PutReportMetadataResponse",
-}) as any as S.Schema<PutReportMetadataResponse>;
+export const PutReportMetadataResponse =
+  CreateReportRefreshResponse as any as S.Schema<PutReportMetadataResponse>;
 
 /** Stats engine override */
 export type PutReportSettingsRequestStatsEngine = "bayesian" | "frequentist";
@@ -46465,21 +44517,18 @@ export const PutReportSettingsRequestStatsEngine = S.String;
 
 /** Goal metric IDs */
 export type PutReportSettingsRequestGoalMetricsList = Array<string>;
-export const PutReportSettingsRequestGoalMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutReportSettingsRequestGoalMetricsList>;
+export const PutReportSettingsRequestGoalMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PutReportSettingsRequestGoalMetricsList>;
 
 /** Secondary metric IDs */
 export type PutReportSettingsRequestSecondaryMetricsList = Array<string>;
-export const PutReportSettingsRequestSecondaryMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutReportSettingsRequestSecondaryMetricsList>;
+export const PutReportSettingsRequestSecondaryMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PutReportSettingsRequestSecondaryMetricsList>;
 
 /** Guardrail metric IDs */
 export type PutReportSettingsRequestGuardrailMetricsList = Array<string>;
-export const PutReportSettingsRequestGuardrailMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutReportSettingsRequestGuardrailMetricsList>;
+export const PutReportSettingsRequestGuardrailMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PutReportSettingsRequestGuardrailMetricsList>;
 
 export type PutReportSettingsRequestMetricOverridesItemWindowType = "conversion" | "lookback" | "";
 export const PutReportSettingsRequestMetricOverridesItemWindowType = S.String;
@@ -46528,47 +44577,31 @@ export const PutReportSettingsRequestMetricOverridesList = /*@__PURE__*/ S.Array
 
 export type PutReportSettingsRequestCustomMetricSlicesItemSlicesItemLevelsList = Array<string>;
 export const PutReportSettingsRequestCustomMetricSlicesItemSlicesItemLevelsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PutReportSettingsRequestCustomMetricSlicesItemSlicesItemLevelsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<PutReportSettingsRequestCustomMetricSlicesItemSlicesItemLevelsList>;
 
 export interface PutReportSettingsRequestCustomMetricSlicesItemSlicesItem {
   column: string;
   levels: PutReportSettingsRequestCustomMetricSlicesItemSlicesItemLevelsList;
 }
-export const PutReportSettingsRequestCustomMetricSlicesItemSlicesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      column: S.String,
-      levels: PutReportSettingsRequestCustomMetricSlicesItemSlicesItemLevelsList,
-    }),
-).annotate({
-  identifier: "PutReportSettingsRequestCustomMetricSlicesItemSlicesItem",
-}) as any as S.Schema<PutReportSettingsRequestCustomMetricSlicesItemSlicesItem>;
+export const PutReportSettingsRequestCustomMetricSlicesItemSlicesItem =
+  ExperimentWithEnhancedStatusCustomMetricSlicesItemSlicesItem as any as S.Schema<PutReportSettingsRequestCustomMetricSlicesItemSlicesItem>;
 
 export type PutReportSettingsRequestCustomMetricSlicesItemSlicesList =
   Array<PutReportSettingsRequestCustomMetricSlicesItemSlicesItem>;
-export const PutReportSettingsRequestCustomMetricSlicesItemSlicesList = /*@__PURE__*/ S.Array(
-  PutReportSettingsRequestCustomMetricSlicesItemSlicesItem,
-) as any as S.Schema<PutReportSettingsRequestCustomMetricSlicesItemSlicesList>;
+export const PutReportSettingsRequestCustomMetricSlicesItemSlicesList =
+  ExperimentWithEnhancedStatusCustomMetricSlicesItemSlicesList as any as S.Schema<PutReportSettingsRequestCustomMetricSlicesItemSlicesList>;
 
 export interface PutReportSettingsRequestCustomMetricSlicesItem {
   slices: PutReportSettingsRequestCustomMetricSlicesItemSlicesList;
 }
-export const PutReportSettingsRequestCustomMetricSlicesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    slices: PutReportSettingsRequestCustomMetricSlicesItemSlicesList,
-  }),
-).annotate({
-  identifier: "PutReportSettingsRequestCustomMetricSlicesItem",
-}) as any as S.Schema<PutReportSettingsRequestCustomMetricSlicesItem>;
+export const PutReportSettingsRequestCustomMetricSlicesItem =
+  ExperimentWithEnhancedStatusCustomMetricSlicesItem as any as S.Schema<PutReportSettingsRequestCustomMetricSlicesItem>;
 
 /** Custom metric slice definitions */
 export type PutReportSettingsRequestCustomMetricSlicesList =
   Array<PutReportSettingsRequestCustomMetricSlicesItem>;
-export const PutReportSettingsRequestCustomMetricSlicesList = /*@__PURE__*/ S.Array(
-  PutReportSettingsRequestCustomMetricSlicesItem,
-) as any as S.Schema<PutReportSettingsRequestCustomMetricSlicesList>;
+export const PutReportSettingsRequestCustomMetricSlicesList =
+  ExperimentWithEnhancedStatusCustomMetricSlicesList as any as S.Schema<PutReportSettingsRequestCustomMetricSlicesList>;
 
 /** How lifts are expressed in results */
 export type PutReportSettingsRequestDifferenceType = "relative" | "absolute" | "scaled";
@@ -46715,13 +44748,8 @@ export const PutReportSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutReportSettingsResponse {
   report: Report;
 }
-export const PutReportSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    report: Report,
-  }),
-).annotate({
-  identifier: "PutReportSettingsResponse",
-}) as any as S.Schema<PutReportSettingsResponse>;
+export const PutReportSettingsResponse =
+  CreateReportRefreshResponse as any as S.Schema<PutReportSettingsResponse>;
 
 export interface PutSavedGroupRevisionArchiveRequest {
   savedGroupId: string;
@@ -46754,13 +44782,8 @@ export const PutSavedGroupRevisionArchiveRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutSavedGroupRevisionArchiveResponse {
   revision: SavedGroupRevision;
 }
-export const PutSavedGroupRevisionArchiveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: SavedGroupRevision,
-  }),
-).annotate({
-  identifier: "PutSavedGroupRevisionArchiveResponse",
-}) as any as S.Schema<PutSavedGroupRevisionArchiveResponse>;
+export const PutSavedGroupRevisionArchiveResponse =
+  CreateSavedGroupRevisionDiscardResponse as any as S.Schema<PutSavedGroupRevisionArchiveResponse>;
 
 export interface PutSavedGroupRevisionConditionRequest {
   savedGroupId: string;
@@ -46791,18 +44814,12 @@ export const PutSavedGroupRevisionConditionRequest = /*@__PURE__*/ S.suspend(() 
 export interface PutSavedGroupRevisionConditionResponse {
   revision: SavedGroupRevision;
 }
-export const PutSavedGroupRevisionConditionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: SavedGroupRevision,
-  }),
-).annotate({
-  identifier: "PutSavedGroupRevisionConditionResponse",
-}) as any as S.Schema<PutSavedGroupRevisionConditionResponse>;
+export const PutSavedGroupRevisionConditionResponse =
+  CreateSavedGroupRevisionDiscardResponse as any as S.Schema<PutSavedGroupRevisionConditionResponse>;
 
 export type PutSavedGroupRevisionMetadataRequestProjectsList = Array<string>;
-export const PutSavedGroupRevisionMetadataRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutSavedGroupRevisionMetadataRequestProjectsList>;
+export const PutSavedGroupRevisionMetadataRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PutSavedGroupRevisionMetadataRequestProjectsList>;
 
 export interface PutSavedGroupRevisionMetadataRequest {
   savedGroupId: string;
@@ -46839,18 +44856,12 @@ export const PutSavedGroupRevisionMetadataRequest = /*@__PURE__*/ S.suspend(() =
 export interface PutSavedGroupRevisionMetadataResponse {
   revision: SavedGroupRevision;
 }
-export const PutSavedGroupRevisionMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: SavedGroupRevision,
-  }),
-).annotate({
-  identifier: "PutSavedGroupRevisionMetadataResponse",
-}) as any as S.Schema<PutSavedGroupRevisionMetadataResponse>;
+export const PutSavedGroupRevisionMetadataResponse =
+  CreateSavedGroupRevisionDiscardResponse as any as S.Schema<PutSavedGroupRevisionMetadataResponse>;
 
 export type PutSavedGroupRevisionValuesRequestValuesList = Array<string>;
-export const PutSavedGroupRevisionValuesRequestValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutSavedGroupRevisionValuesRequestValuesList>;
+export const PutSavedGroupRevisionValuesRequestValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PutSavedGroupRevisionValuesRequestValuesList>;
 
 export interface PutSavedGroupRevisionValuesRequest {
   savedGroupId: string;
@@ -46880,23 +44891,16 @@ export const PutSavedGroupRevisionValuesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutSavedGroupRevisionValuesResponse {
   revision: SavedGroupRevision;
 }
-export const PutSavedGroupRevisionValuesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: SavedGroupRevision,
-  }),
-).annotate({
-  identifier: "PutSavedGroupRevisionValuesResponse",
-}) as any as S.Schema<PutSavedGroupRevisionValuesResponse>;
+export const PutSavedGroupRevisionValuesResponse =
+  CreateSavedGroupRevisionDiscardResponse as any as S.Schema<PutSavedGroupRevisionValuesResponse>;
 
 export type PutSdkConnectionRequestProjectsList = Array<string>;
-export const PutSdkConnectionRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutSdkConnectionRequestProjectsList>;
+export const PutSdkConnectionRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PutSdkConnectionRequestProjectsList>;
 
 export type PutSdkConnectionRequestAllowedCustomFieldsInMetadataList = Array<string>;
-export const PutSdkConnectionRequestAllowedCustomFieldsInMetadataList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutSdkConnectionRequestAllowedCustomFieldsInMetadataList>;
+export const PutSdkConnectionRequestAllowedCustomFieldsInMetadataList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<PutSdkConnectionRequestAllowedCustomFieldsInMetadataList>;
 
 export type PutSdkConnectionRequestSavedGroupFormat = "inline" | "referencesV1" | "referencesV2";
 export const PutSdkConnectionRequestSavedGroupFormat = S.String;
@@ -46967,11 +44971,8 @@ export const PutSdkConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutSdkConnectionResponse {
   sdkConnection: SdkConnection;
 }
-export const PutSdkConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sdkConnection: SdkConnection,
-  }),
-).annotate({ identifier: "PutSdkConnectionResponse" }) as any as S.Schema<PutSdkConnectionResponse>;
+export const PutSdkConnectionResponse =
+  GetSdkConnectionResponse as any as S.Schema<PutSdkConnectionResponse>;
 
 export type PutVisualChangeRequestDomMutationsItemAction = "append" | "set" | "remove";
 export const PutVisualChangeRequestDomMutationsItemAction = S.String;
@@ -47284,18 +45285,12 @@ export const RefreshMonitoringRampScheduleRequest = /*@__PURE__*/ S.suspend(() =
 export interface RefreshMonitoringRampScheduleResponse {
   rampSchedule: RampSchedule;
 }
-export const RefreshMonitoringRampScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rampSchedule: RampSchedule,
-  }),
-).annotate({
-  identifier: "RefreshMonitoringRampScheduleResponse",
-}) as any as S.Schema<RefreshMonitoringRampScheduleResponse>;
+export const RefreshMonitoringRampScheduleResponse =
+  AddTargetRampScheduleResponse as any as S.Schema<RefreshMonitoringRampScheduleResponse>;
 
 export type RemoveTeamMemberRequestMembersList = Array<string>;
-export const RemoveTeamMemberRequestMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveTeamMemberRequestMembersList>;
+export const RemoveTeamMemberRequestMembersList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<RemoveTeamMemberRequestMembersList>;
 
 export interface RemoveTeamMemberRequest {
   id: string;
@@ -47311,11 +45306,8 @@ export const RemoveTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RemoveTeamMemberResponse {
   status: number;
 }
-export const RemoveTeamMemberResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.Number,
-  }),
-).annotate({ identifier: "RemoveTeamMemberResponse" }) as any as S.Schema<RemoveTeamMemberResponse>;
+export const RemoveTeamMemberResponse =
+  AddTeamMembersResponse as any as S.Schema<RemoveTeamMemberResponse>;
 
 export interface RestartRampScheduleRequest {
   id: string;
@@ -47331,13 +45323,8 @@ export const RestartRampScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RestartRampScheduleResponse {
   rampSchedule: RampSchedule;
 }
-export const RestartRampScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rampSchedule: RampSchedule,
-  }),
-).annotate({
-  identifier: "RestartRampScheduleResponse",
-}) as any as S.Schema<RestartRampScheduleResponse>;
+export const RestartRampScheduleResponse =
+  AddTargetRampScheduleResponse as any as S.Schema<RestartRampScheduleResponse>;
 
 export interface ResumeRampScheduleRequest {
   id: string;
@@ -47353,13 +45340,8 @@ export const ResumeRampScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ResumeRampScheduleResponse {
   rampSchedule: RampSchedule;
 }
-export const ResumeRampScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rampSchedule: RampSchedule,
-  }),
-).annotate({
-  identifier: "ResumeRampScheduleResponse",
-}) as any as S.Schema<ResumeRampScheduleResponse>;
+export const ResumeRampScheduleResponse =
+  AddTargetRampScheduleResponse as any as S.Schema<ResumeRampScheduleResponse>;
 
 export interface RevertCustomHookRequest {
   /** The id of the custom hook */
@@ -47377,11 +45359,8 @@ export const RevertCustomHookRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RevertCustomHookResponse {
   customHook: CustomHook;
 }
-export const RevertCustomHookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customHook: CustomHook,
-  }),
-).annotate({ identifier: "RevertCustomHookResponse" }) as any as S.Schema<RevertCustomHookResponse>;
+export const RevertCustomHookResponse =
+  CreateCustomHookResponse as any as S.Schema<RevertCustomHookResponse>;
 
 export interface RevertFeatureV2Request {
   /** The id of the requested resource */
@@ -47408,9 +45387,8 @@ export const RevertFeatureV2Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Gates that would have blocked this publish but were bypassed by the caller's authority. Present only when at least one gate was bypassed. */
 export type RevertFeatureV2ResponseBypassedGatesList = Array<BypassedGates>;
-export const RevertFeatureV2ResponseBypassedGatesList = /*@__PURE__*/ S.Array(
-  BypassedGates,
-) as any as S.Schema<RevertFeatureV2ResponseBypassedGatesList>;
+export const RevertFeatureV2ResponseBypassedGatesList =
+  ArchiveConfigResponseBypassedGatesList as any as S.Schema<RevertFeatureV2ResponseBypassedGatesList>;
 
 export interface RevertFeatureV2Response {
   feature: FeatureV2;
@@ -47440,13 +45418,8 @@ export const RollbackRampScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RollbackRampScheduleResponse {
   rampSchedule: RampSchedule;
 }
-export const RollbackRampScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rampSchedule: RampSchedule,
-  }),
-).annotate({
-  identifier: "RollbackRampScheduleResponse",
-}) as any as S.Schema<RollbackRampScheduleResponse>;
+export const RollbackRampScheduleResponse =
+  AddTargetRampScheduleResponse as any as S.Schema<RollbackRampScheduleResponse>;
 
 export type RunSqlQueryRequestTableMetadataColumnTypesValue =
   | "string"
@@ -47607,29 +45580,24 @@ export const SearchLearningsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchLearningsRequest" }) as any as S.Schema<SearchLearningsRequest>;
 
 export type LearningsAuthorsList = Array<string>;
-export const LearningsAuthorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LearningsAuthorsList>;
+export const LearningsAuthorsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<LearningsAuthorsList>;
 
 export type LearningsTagsList = Array<string>;
-export const LearningsTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LearningsTagsList>;
+export const LearningsTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<LearningsTagsList>;
 
 export type LearningsSupportingExperimentIdsList = Array<string>;
-export const LearningsSupportingExperimentIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LearningsSupportingExperimentIdsList>;
+export const LearningsSupportingExperimentIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<LearningsSupportingExperimentIdsList>;
 
 export type LearningsContradictingExperimentIdsList = Array<string>;
-export const LearningsContradictingExperimentIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LearningsContradictingExperimentIdsList>;
+export const LearningsContradictingExperimentIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<LearningsContradictingExperimentIdsList>;
 
 export type LearningsProjectsList = Array<string>;
-export const LearningsProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LearningsProjectsList>;
+export const LearningsProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<LearningsProjectsList>;
 
 export type LearningsSource = "ai" | "manual" | "api";
 export const LearningsSource = S.String;
@@ -47707,9 +45675,7 @@ export const SearchProductAnalyticsResourcesRequest = /*@__PURE__*/ S.suspend(()
 
 export type SearchProductAnalyticsResourcesResponseMatchesItemCase0TagsList = Array<string>;
 export const SearchProductAnalyticsResourcesResponseMatchesItemCase0TagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SearchProductAnalyticsResourcesResponseMatchesItemCase0TagsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<SearchProductAnalyticsResourcesResponseMatchesItemCase0TagsList>;
 
 export interface SearchProductAnalyticsResourcesResponseMatchesItemCase0 {
   kind: string;
@@ -47835,9 +45801,8 @@ export const SearchWarehouseTablesResponseTablesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SearchWarehouseTablesResponseTablesList>;
 
 export type SearchWarehouseTablesResponseSchemasList = Array<string>;
-export const SearchWarehouseTablesResponseSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchWarehouseTablesResponseSchemasList>;
+export const SearchWarehouseTablesResponseSchemasList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<SearchWarehouseTablesResponseSchemasList>;
 
 export interface SearchWarehouseTablesResponse {
   tables: SearchWarehouseTablesResponseTablesList;
@@ -47914,9 +45879,8 @@ export type StartActionsPatchSavedGroupsItemMatch = "all" | "none" | "any";
 export const StartActionsPatchSavedGroupsItemMatch = S.String;
 
 export type StartActionsPatchSavedGroupsItemIdsList = Array<string>;
-export const StartActionsPatchSavedGroupsItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StartActionsPatchSavedGroupsItemIdsList>;
+export const StartActionsPatchSavedGroupsItemIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<StartActionsPatchSavedGroupsItemIdsList>;
 
 export interface StartActionsPatchSavedGroupsItem {
   match: StartActionsPatchSavedGroupsItemMatch;
@@ -47942,14 +45906,12 @@ export const StartActionsPatchPrerequisitesItem =
 
 export type StartActionsPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
-export const StartActionsPatchPrerequisitesList = /*@__PURE__*/ S.Array(
-  RampScheduleStartActionsItemPatchPrerequisitesItem,
-) as any as S.Schema<StartActionsPatchPrerequisitesList>;
+export const StartActionsPatchPrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<StartActionsPatchPrerequisitesList>;
 
 export type StartActionsPatchEnvironmentsList = Array<string>;
-export const StartActionsPatchEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StartActionsPatchEnvironmentsList>;
+export const StartActionsPatchEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<StartActionsPatchEnvironmentsList>;
 
 export interface StartActionsPatch {
   ruleId: string;
@@ -48013,9 +45975,8 @@ export type StepsActionsItemPatchSavedGroupsItemMatch = "all" | "none" | "any";
 export const StepsActionsItemPatchSavedGroupsItemMatch = S.String;
 
 export type StepsActionsItemPatchSavedGroupsItemIdsList = Array<string>;
-export const StepsActionsItemPatchSavedGroupsItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StepsActionsItemPatchSavedGroupsItemIdsList>;
+export const StepsActionsItemPatchSavedGroupsItemIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<StepsActionsItemPatchSavedGroupsItemIdsList>;
 
 export interface StepsActionsItemPatchSavedGroupsItem {
   match: StepsActionsItemPatchSavedGroupsItemMatch;
@@ -48042,14 +46003,12 @@ export const StepsActionsItemPatchPrerequisitesItem =
 
 export type StepsActionsItemPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
-export const StepsActionsItemPatchPrerequisitesList = /*@__PURE__*/ S.Array(
-  RampScheduleStartActionsItemPatchPrerequisitesItem,
-) as any as S.Schema<StepsActionsItemPatchPrerequisitesList>;
+export const StepsActionsItemPatchPrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<StepsActionsItemPatchPrerequisitesList>;
 
 export type StepsActionsItemPatchEnvironmentsList = Array<string>;
-export const StepsActionsItemPatchEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StepsActionsItemPatchEnvironmentsList>;
+export const StepsActionsItemPatchEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<StepsActionsItemPatchEnvironmentsList>;
 
 export interface StepsActionsItemPatch {
   ruleId: string;
@@ -48125,9 +46084,8 @@ export type EndActionsPatchSavedGroupsItemMatch = "all" | "none" | "any";
 export const EndActionsPatchSavedGroupsItemMatch = S.String;
 
 export type EndActionsPatchSavedGroupsItemIdsList = Array<string>;
-export const EndActionsPatchSavedGroupsItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EndActionsPatchSavedGroupsItemIdsList>;
+export const EndActionsPatchSavedGroupsItemIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<EndActionsPatchSavedGroupsItemIdsList>;
 
 export interface EndActionsPatchSavedGroupsItem {
   match: EndActionsPatchSavedGroupsItemMatch;
@@ -48152,14 +46110,12 @@ export const EndActionsPatchPrerequisitesItem = RampScheduleStartActionsItemPatc
 
 export type EndActionsPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
-export const EndActionsPatchPrerequisitesList = /*@__PURE__*/ S.Array(
-  RampScheduleStartActionsItemPatchPrerequisitesItem,
-) as any as S.Schema<EndActionsPatchPrerequisitesList>;
+export const EndActionsPatchPrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<EndActionsPatchPrerequisitesList>;
 
 export type EndActionsPatchEnvironmentsList = Array<string>;
-export const EndActionsPatchEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EndActionsPatchEnvironmentsList>;
+export const EndActionsPatchEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<EndActionsPatchEnvironmentsList>;
 
 export interface EndActionsPatch {
   ruleId: string;
@@ -48230,15 +46186,11 @@ export const LockdownConfig = /*@__PURE__*/ S.suspend(() =>
 
 export type SetAutoUpdateRampScheduleResponseMonitoringConfigGuardrailMetricIdsList = Array<string>;
 export const SetAutoUpdateRampScheduleResponseMonitoringConfigGuardrailMetricIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SetAutoUpdateRampScheduleResponseMonitoringConfigGuardrailMetricIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<SetAutoUpdateRampScheduleResponseMonitoringConfigGuardrailMetricIdsList>;
 
 export type SetAutoUpdateRampScheduleResponseMonitoringConfigSignalMetricIdsList = Array<string>;
 export const SetAutoUpdateRampScheduleResponseMonitoringConfigSignalMetricIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SetAutoUpdateRampScheduleResponseMonitoringConfigSignalMetricIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<SetAutoUpdateRampScheduleResponseMonitoringConfigSignalMetricIdsList>;
 
 export type SetAutoUpdateRampScheduleResponseMonitoringConfigMonitoringMode = "auto" | "manual";
 export const SetAutoUpdateRampScheduleResponseMonitoringConfigMonitoringMode = S.String;
@@ -48487,27 +46439,23 @@ export const SetMonitoringModeRampScheduleResponseEntityType = S.String;
 
 /** Controlled entity references */
 export type SetMonitoringModeRampScheduleResponseTargetsList = Array<Targets>;
-export const SetMonitoringModeRampScheduleResponseTargetsList = /*@__PURE__*/ S.Array(
-  Targets,
-) as any as S.Schema<SetMonitoringModeRampScheduleResponseTargetsList>;
+export const SetMonitoringModeRampScheduleResponseTargetsList =
+  SetAutoUpdateRampScheduleResponseTargetsList as any as S.Schema<SetMonitoringModeRampScheduleResponseTargetsList>;
 
 /** Actions that restore controlled rules to their pre-ramp state. Applied when rolling back or jumping to start, and the base every step accumulates on; the only place a plan can set hashAttribute, seed or hashVersion. */
 export type SetMonitoringModeRampScheduleResponseStartActionsList = Array<StartActions>;
-export const SetMonitoringModeRampScheduleResponseStartActionsList = /*@__PURE__*/ S.Array(
-  StartActions,
-) as any as S.Schema<SetMonitoringModeRampScheduleResponseStartActionsList>;
+export const SetMonitoringModeRampScheduleResponseStartActionsList =
+  SetAutoUpdateRampScheduleResponseStartActionsList as any as S.Schema<SetMonitoringModeRampScheduleResponseStartActionsList>;
 
 /** Ordered ramp steps */
 export type SetMonitoringModeRampScheduleResponseStepsList = Array<Steps>;
-export const SetMonitoringModeRampScheduleResponseStepsList = /*@__PURE__*/ S.Array(
-  Steps,
-) as any as S.Schema<SetMonitoringModeRampScheduleResponseStepsList>;
+export const SetMonitoringModeRampScheduleResponseStepsList =
+  SetAutoUpdateRampScheduleResponseStepsList as any as S.Schema<SetMonitoringModeRampScheduleResponseStepsList>;
 
 /** Actions applied on top of all step patches when the ramp completes. Represents the final desired rule state. */
 export type SetMonitoringModeRampScheduleResponseEndActionsList = Array<EndActions>;
-export const SetMonitoringModeRampScheduleResponseEndActionsList = /*@__PURE__*/ S.Array(
-  EndActions,
-) as any as S.Schema<SetMonitoringModeRampScheduleResponseEndActionsList>;
+export const SetMonitoringModeRampScheduleResponseEndActionsList =
+  SetAutoUpdateRampScheduleResponseEndActionsList as any as S.Schema<SetMonitoringModeRampScheduleResponseEndActionsList>;
 
 export type SetMonitoringModeRampScheduleResponseStatus =
   | "pending"
@@ -48521,16 +46469,12 @@ export const SetMonitoringModeRampScheduleResponseStatus = S.String;
 export type SetMonitoringModeRampScheduleResponseMonitoringConfigGuardrailMetricIdsList =
   Array<string>;
 export const SetMonitoringModeRampScheduleResponseMonitoringConfigGuardrailMetricIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SetMonitoringModeRampScheduleResponseMonitoringConfigGuardrailMetricIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<SetMonitoringModeRampScheduleResponseMonitoringConfigGuardrailMetricIdsList>;
 
 export type SetMonitoringModeRampScheduleResponseMonitoringConfigSignalMetricIdsList =
   Array<string>;
 export const SetMonitoringModeRampScheduleResponseMonitoringConfigSignalMetricIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SetMonitoringModeRampScheduleResponseMonitoringConfigSignalMetricIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<SetMonitoringModeRampScheduleResponseMonitoringConfigSignalMetricIdsList>;
 
 export type SetMonitoringModeRampScheduleResponseMonitoringConfigMonitoringMode = "auto" | "manual";
 export const SetMonitoringModeRampScheduleResponseMonitoringConfigMonitoringMode = S.String;
@@ -48770,13 +46714,8 @@ export const StartContextualBanditRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartContextualBanditResponse {
   contextualBandit: ContextualBandit;
 }
-export const StartContextualBanditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contextualBandit: ContextualBandit,
-  }),
-).annotate({
-  identifier: "StartContextualBanditResponse",
-}) as any as S.Schema<StartContextualBanditResponse>;
+export const StartContextualBanditResponse =
+  CreateContextualBanditResponse as any as S.Schema<StartContextualBanditResponse>;
 
 export interface StartHoldoutRequest {
   id: string;
@@ -48790,11 +46729,7 @@ export const StartHoldoutRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartHoldoutResponse {
   holdout: Holdout;
 }
-export const StartHoldoutResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    holdout: Holdout,
-  }),
-).annotate({ identifier: "StartHoldoutResponse" }) as any as S.Schema<StartHoldoutResponse>;
+export const StartHoldoutResponse = CreateHoldoutResponse as any as S.Schema<StartHoldoutResponse>;
 
 export interface StartHoldoutAnalysisRequest {
   id: string;
@@ -48830,13 +46765,8 @@ export const StartRampScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartRampScheduleResponse {
   rampSchedule: RampSchedule;
 }
-export const StartRampScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rampSchedule: RampSchedule,
-  }),
-).annotate({
-  identifier: "StartRampScheduleResponse",
-}) as any as S.Schema<StartRampScheduleResponse>;
+export const StartRampScheduleResponse =
+  AddTargetRampScheduleResponse as any as S.Schema<StartRampScheduleResponse>;
 
 export interface StopContextualBanditRequest {
   /** The Contextual Bandit id */
@@ -48853,13 +46783,8 @@ export const StopContextualBanditRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopContextualBanditResponse {
   contextualBandit: ContextualBandit;
 }
-export const StopContextualBanditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contextualBandit: ContextualBandit,
-  }),
-).annotate({
-  identifier: "StopContextualBanditResponse",
-}) as any as S.Schema<StopContextualBanditResponse>;
+export const StopContextualBanditResponse =
+  CreateContextualBanditResponse as any as S.Schema<StopContextualBanditResponse>;
 
 export interface StopHoldoutRequest {
   id: string;
@@ -48873,25 +46798,17 @@ export const StopHoldoutRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopHoldoutResponse {
   holdout: Holdout;
 }
-export const StopHoldoutResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    holdout: Holdout,
-  }),
-).annotate({ identifier: "StopHoldoutResponse" }) as any as S.Schema<StopHoldoutResponse>;
+export const StopHoldoutResponse = CreateHoldoutResponse as any as S.Schema<StopHoldoutResponse>;
 
 /** Arguments exposed to the function as named globals (e.g. `feature`, `config`, `revision`) */
 export type TestCustomHookRequestFunctionArgsMap = { [key: string]: unknown | undefined };
-export const TestCustomHookRequestFunctionArgsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TestCustomHookRequestFunctionArgsMap>;
+export const TestCustomHookRequestFunctionArgsMap =
+  ConfigValueMap as any as S.Schema<TestCustomHookRequestFunctionArgsMap>;
 
 /** State before the change. When supplied, the hook also runs against it and Incremental Changes Only suppression is applied to the result. */
 export type TestCustomHookRequestOriginalFunctionArgsMap = { [key: string]: unknown | undefined };
-export const TestCustomHookRequestOriginalFunctionArgsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TestCustomHookRequestOriginalFunctionArgsMap>;
+export const TestCustomHookRequestOriginalFunctionArgsMap =
+  ConfigValueMap as any as S.Schema<TestCustomHookRequestOriginalFunctionArgsMap>;
 
 export type TestCustomHookRequestEntityType = "feature" | "config" | "experiment";
 export const TestCustomHookRequestEntityType = S.String;
@@ -48917,14 +46834,12 @@ export const TestCustomHookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TestCustomHookRequest" }) as any as S.Schema<TestCustomHookRequest>;
 
 export type TestCustomHookResponseWarningsList = Array<string>;
-export const TestCustomHookResponseWarningsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TestCustomHookResponseWarningsList>;
+export const TestCustomHookResponseWarningsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<TestCustomHookResponseWarningsList>;
 
 export type SuppressedWarningsList = Array<string>;
-export const SuppressedWarningsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SuppressedWarningsList>;
+export const SuppressedWarningsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<SuppressedWarningsList>;
 
 /** Outcomes the previous state produced too, which Incremental Changes Only would hide on a real save */
 export interface Suppressed {
@@ -48990,21 +46905,16 @@ export const ToggleFeatureV2Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Gates that would have blocked this publish but were bypassed by the caller's authority. Present only when at least one gate was bypassed. */
 export type ToggleFeatureV2ResponseBypassedGatesList = Array<BypassedGates>;
-export const ToggleFeatureV2ResponseBypassedGatesList = /*@__PURE__*/ S.Array(
-  BypassedGates,
-) as any as S.Schema<ToggleFeatureV2ResponseBypassedGatesList>;
+export const ToggleFeatureV2ResponseBypassedGatesList =
+  ArchiveConfigResponseBypassedGatesList as any as S.Schema<ToggleFeatureV2ResponseBypassedGatesList>;
 
 export interface ToggleFeatureV2Response {
   feature: FeatureV2;
   /** Gates that would have blocked this publish but were bypassed by the caller's authority. Present only when at least one gate was bypassed. */
   bypassedGates?: ToggleFeatureV2ResponseBypassedGatesList;
 }
-export const ToggleFeatureV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    feature: FeatureV2,
-    bypassedGates: S.optional(ToggleFeatureV2ResponseBypassedGatesList),
-  }),
-).annotate({ identifier: "ToggleFeatureV2Response" }) as any as S.Schema<ToggleFeatureV2Response>;
+export const ToggleFeatureV2Response =
+  RevertFeatureV2Response as any as S.Schema<ToggleFeatureV2Response>;
 
 export interface UnarchiveConfigRequest {
   /** The key of the config */
@@ -49027,21 +46937,16 @@ export const UnarchiveConfigRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gates that would have blocked this publish but were bypassed by the caller's authority. Present only when at least one gate was bypassed. */
 export type UnarchiveConfigResponseBypassedGatesList = Array<BypassedGates>;
-export const UnarchiveConfigResponseBypassedGatesList = /*@__PURE__*/ S.Array(
-  BypassedGates,
-) as any as S.Schema<UnarchiveConfigResponseBypassedGatesList>;
+export const UnarchiveConfigResponseBypassedGatesList =
+  ArchiveConfigResponseBypassedGatesList as any as S.Schema<UnarchiveConfigResponseBypassedGatesList>;
 
 export interface UnarchiveConfigResponse {
   config: Config;
   /** Gates that would have blocked this publish but were bypassed by the caller's authority. Present only when at least one gate was bypassed. */
   bypassedGates?: UnarchiveConfigResponseBypassedGatesList;
 }
-export const UnarchiveConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    config: Config,
-    bypassedGates: S.optional(UnarchiveConfigResponseBypassedGatesList),
-  }),
-).annotate({ identifier: "UnarchiveConfigResponse" }) as any as S.Schema<UnarchiveConfigResponse>;
+export const UnarchiveConfigResponse =
+  ArchiveConfigResponse as any as S.Schema<UnarchiveConfigResponse>;
 
 export interface UnarchiveConstantRequest {
   /** The key of the constant */
@@ -49064,9 +46969,8 @@ export const UnarchiveConstantRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gates that would have blocked this publish but were bypassed by the caller's authority. Present only when at least one gate was bypassed. */
 export type UnarchiveConstantResponseBypassedGatesList = Array<BypassedGates>;
-export const UnarchiveConstantResponseBypassedGatesList = /*@__PURE__*/ S.Array(
-  BypassedGates,
-) as any as S.Schema<UnarchiveConstantResponseBypassedGatesList>;
+export const UnarchiveConstantResponseBypassedGatesList =
+  ArchiveConfigResponseBypassedGatesList as any as S.Schema<UnarchiveConstantResponseBypassedGatesList>;
 
 export interface UnarchiveConstantResponse {
   constant: Constant;
@@ -49096,23 +47000,16 @@ export const UnarchiveSavedGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gates that would have blocked this publish but were bypassed by the caller's authority. Present only when at least one gate was bypassed. */
 export type UnarchiveSavedGroupResponseBypassedGatesList = Array<BypassedGates>;
-export const UnarchiveSavedGroupResponseBypassedGatesList = /*@__PURE__*/ S.Array(
-  BypassedGates,
-) as any as S.Schema<UnarchiveSavedGroupResponseBypassedGatesList>;
+export const UnarchiveSavedGroupResponseBypassedGatesList =
+  ArchiveConfigResponseBypassedGatesList as any as S.Schema<UnarchiveSavedGroupResponseBypassedGatesList>;
 
 export interface UnarchiveSavedGroupResponse {
   savedGroup: SavedGroup;
   /** Gates that would have blocked this publish but were bypassed by the caller's authority. Present only when at least one gate was bypassed. */
   bypassedGates?: UnarchiveSavedGroupResponseBypassedGatesList;
 }
-export const UnarchiveSavedGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    savedGroup: SavedGroup,
-    bypassedGates: S.optional(UnarchiveSavedGroupResponseBypassedGatesList),
-  }),
-).annotate({
-  identifier: "UnarchiveSavedGroupResponse",
-}) as any as S.Schema<UnarchiveSavedGroupResponse>;
+export const UnarchiveSavedGroupResponse =
+  ArchiveSavedGroupResponse as any as S.Schema<UnarchiveSavedGroupResponse>;
 
 export interface UnlockConfigRequest {
   /** The key of the config */
@@ -49127,11 +47024,7 @@ export const UnlockConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UnlockConfigResponse {
   config: Config;
 }
-export const UnlockConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    config: Config,
-  }),
-).annotate({ identifier: "UnlockConfigResponse" }) as any as S.Schema<UnlockConfigResponse>;
+export const UnlockConfigResponse = GetConfigResponse as any as S.Schema<UnlockConfigResponse>;
 
 export type UpdateAutoRunRequestMetadataValue = string | number | boolean;
 export const UpdateAutoRunRequestMetadataValue =
@@ -49149,9 +47042,8 @@ export type UpdateAutoRunRequestChecksItem = Checks;
 export const UpdateAutoRunRequestChecksItem = Checks;
 
 export type UpdateAutoRunRequestChecksList = Array<Checks>;
-export const UpdateAutoRunRequestChecksList = /*@__PURE__*/ S.Array(
-  Checks,
-) as any as S.Schema<UpdateAutoRunRequestChecksList>;
+export const UpdateAutoRunRequestChecksList =
+  AppendAutoRunArtifactResponseChecksList as any as S.Schema<UpdateAutoRunRequestChecksList>;
 
 export type UpdateAutoRunRequestOutcome = "completed" | "partial" | "failed";
 export const UpdateAutoRunRequestOutcome = S.String;
@@ -49176,11 +47068,8 @@ export const UpdateAutoRunRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAutoRunResponse {
   autoRun: AutoRun;
 }
-export const UpdateAutoRunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoRun: AutoRun,
-  }),
-).annotate({ identifier: "UpdateAutoRunResponse" }) as any as S.Schema<UpdateAutoRunResponse>;
+export const UpdateAutoRunResponse =
+  CreateAutoRunResponse as any as S.Schema<UpdateAutoRunResponse>;
 
 /** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
 export type UpdateConfigRequestSkipSchemaValidation = string | boolean;
@@ -49194,28 +47083,23 @@ export const UpdateConfigRequestIgnoreWarnings =
 
 /** Replace the composition bases (mixins) layered on top of `parent`, in precedence order (later overrides earlier; all override `parent`; own keys win last). Send the complete set; an empty array clears all mixins. Set inheritance here, never via a `@config:` entry in `value`. */
 export type UpdateConfigRequestExtendsList = Array<string>;
-export const UpdateConfigRequestExtendsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateConfigRequestExtendsList>;
+export const UpdateConfigRequestExtendsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateConfigRequestExtendsList>;
 
 /** This config's base value as a JSON object. Per-environment/project variants are expressed via `scopedOverrides`. */
 export type UpdateConfigRequestValueMap = { [key: string]: unknown | undefined };
-export const UpdateConfigRequestValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateConfigRequestValueMap>;
+export const UpdateConfigRequestValueMap =
+  ConfigValueMap as any as S.Schema<UpdateConfigRequestValueMap>;
 
 /** Environment ids this entry applies to. Empty/omitted = any environment. */
 export type UpdateConfigRequestScopedOverridesItemEnvironmentsList = Array<string>;
-export const UpdateConfigRequestScopedOverridesItemEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateConfigRequestScopedOverridesItemEnvironmentsList>;
+export const UpdateConfigRequestScopedOverridesItemEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateConfigRequestScopedOverridesItemEnvironmentsList>;
 
 /** Project ids this entry applies to. Empty/omitted = any project. */
 export type UpdateConfigRequestScopedOverridesItemProjectsList = Array<string>;
-export const UpdateConfigRequestScopedOverridesItemProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateConfigRequestScopedOverridesItemProjectsList>;
+export const UpdateConfigRequestScopedOverridesItemProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateConfigRequestScopedOverridesItemProjectsList>;
 
 export interface UpdateConfigRequestScopedOverridesItem {
   /** The `key` of the flavor config (a child config) whose value patches this config when the scope matches. */
@@ -49225,28 +47109,18 @@ export interface UpdateConfigRequestScopedOverridesItem {
   /** Project ids this entry applies to. Empty/omitted = any project. */
   projects?: UpdateConfigRequestScopedOverridesItemProjectsList;
 }
-export const UpdateConfigRequestScopedOverridesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    config: S.String,
-    environments: S.optional(UpdateConfigRequestScopedOverridesItemEnvironmentsList),
-    projects: S.optional(UpdateConfigRequestScopedOverridesItemProjectsList),
-  }),
-).annotate({
-  identifier: "UpdateConfigRequestScopedOverridesItem",
-}) as any as S.Schema<UpdateConfigRequestScopedOverridesItem>;
+export const UpdateConfigRequestScopedOverridesItem =
+  ConfigScopedOverridesItem as any as S.Schema<UpdateConfigRequestScopedOverridesItem>;
 
 /** Replace the ordered, first-match-wins environment/project-scoped variant selection. Each entry points at a flavor config (a child config, by `key`) whose value is deep-merged onto this config's resolved value when the (environment, project) scope matches. Send the complete list; an empty array clears all overrides; omit to leave unchanged. Entries must reference existing configs, may not reference this config itself, and may not be unreachable. */
 export type UpdateConfigRequestScopedOverridesList = Array<UpdateConfigRequestScopedOverridesItem>;
-export const UpdateConfigRequestScopedOverridesList = /*@__PURE__*/ S.Array(
-  UpdateConfigRequestScopedOverridesItem,
-) as any as S.Schema<UpdateConfigRequestScopedOverridesList>;
+export const UpdateConfigRequestScopedOverridesList =
+  ConfigScopedOverridesList as any as S.Schema<UpdateConfigRequestScopedOverridesList>;
 
 /** The rule expression, as a mongo condition (mongrule) -- the same condition syntax as feature targeting, extended with `{ "$ref": "otherField" }` to compare against another field, e.g. `{ "min_replicas": { "$lte": { "$ref": "max_replicas" } } }`. */
 export type UpdateConfigRequestInvariantsItemRuleMap = { [key: string]: unknown | undefined };
-export const UpdateConfigRequestInvariantsItemRuleMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateConfigRequestInvariantsItemRuleMap>;
+export const UpdateConfigRequestInvariantsItemRuleMap =
+  ConfigValueMap as any as S.Schema<UpdateConfigRequestInvariantsItemRuleMap>;
 
 export interface UpdateConfigRequestInvariantsItem {
   name: string;
@@ -49255,21 +47129,13 @@ export interface UpdateConfigRequestInvariantsItem {
   /** Shown to editors when the rule is violated. Optional -- defaults to a generic message naming the rule. */
   message?: string;
 }
-export const UpdateConfigRequestInvariantsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    rule: UpdateConfigRequestInvariantsItemRuleMap,
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateConfigRequestInvariantsItem",
-}) as any as S.Schema<UpdateConfigRequestInvariantsItem>;
+export const UpdateConfigRequestInvariantsItem =
+  CreateConfigRequestInvariantsItem as any as S.Schema<UpdateConfigRequestInvariantsItem>;
 
 /** Replace the config's cross-field validation rules. Each rule's expression is a mongo condition (mongrule). Send the complete set; an empty array clears all rules. Omit to leave them unchanged. */
 export type UpdateConfigRequestInvariantsList = Array<UpdateConfigRequestInvariantsItem>;
-export const UpdateConfigRequestInvariantsList = /*@__PURE__*/ S.Array(
-  UpdateConfigRequestInvariantsItem,
-) as any as S.Schema<UpdateConfigRequestInvariantsList>;
+export const UpdateConfigRequestInvariantsList =
+  CreateConfigRequestInvariantsList as any as S.Schema<UpdateConfigRequestInvariantsList>;
 
 export interface UpdateConfigRequest {
   /** The key of the config */
@@ -49329,21 +47195,18 @@ export const UpdateConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateConfigRequest" }) as any as S.Schema<UpdateConfigRequest>;
 
 export type UpdateConfigResponseWarningsList = Array<ConfigSchemaWarning>;
-export const UpdateConfigResponseWarningsList = /*@__PURE__*/ S.Array(
-  ConfigSchemaWarning,
-) as any as S.Schema<UpdateConfigResponseWarningsList>;
+export const UpdateConfigResponseWarningsList =
+  CreateConfigResponseWarningsList as any as S.Schema<UpdateConfigResponseWarningsList>;
 
 /** Steps that failed AFTER the value publish committed (e.g. an experiment-guard toggle in the same request). The publish stands; retry only the named step. */
 export type UpdateConfigResponsePostPublishWarningsList = Array<string>;
-export const UpdateConfigResponsePostPublishWarningsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateConfigResponsePostPublishWarningsList>;
+export const UpdateConfigResponsePostPublishWarningsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateConfigResponsePostPublishWarningsList>;
 
 /** Gates that would have blocked this publish but were bypassed by the caller's authority. Present only when at least one gate was bypassed. */
 export type UpdateConfigResponseBypassedGatesList = Array<BypassedGates>;
-export const UpdateConfigResponseBypassedGatesList = /*@__PURE__*/ S.Array(
-  BypassedGates,
-) as any as S.Schema<UpdateConfigResponseBypassedGatesList>;
+export const UpdateConfigResponseBypassedGatesList =
+  ArchiveConfigResponseBypassedGatesList as any as S.Schema<UpdateConfigResponseBypassedGatesList>;
 
 export interface UpdateConfigResponse {
   config: Config;
@@ -49380,20 +47243,13 @@ export const UpdateConfigRevisionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateConfigRevisionResponse {
   revision: ConfigRevision;
 }
-export const UpdateConfigRevisionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: ConfigRevision,
-  }),
-).annotate({
-  identifier: "UpdateConfigRevisionResponse",
-}) as any as S.Schema<UpdateConfigRevisionResponse>;
+export const UpdateConfigRevisionResponse =
+  CreateConfigRevisionDiscardResponse as any as S.Schema<UpdateConfigRevisionResponse>;
 
 /** Per-environment value overrides (environment id -> value). When provided, this REPLACES the entire override map -- send the complete set, not just the environments you want to change (omit the field to leave overrides unchanged). */
 export type UpdateConstantRequestEnvironmentValuesMap = { [key: string]: string | undefined };
-export const UpdateConstantRequestEnvironmentValuesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateConstantRequestEnvironmentValuesMap>;
+export const UpdateConstantRequestEnvironmentValuesMap =
+  ConstantEnvironmentValuesMap as any as S.Schema<UpdateConstantRequestEnvironmentValuesMap>;
 
 export interface UpdateConstantRequest {
   /** The key of the constant */
@@ -49433,21 +47289,16 @@ export const UpdateConstantRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gates that would have blocked this publish but were bypassed by the caller's authority. Present only when at least one gate was bypassed. */
 export type UpdateConstantResponseBypassedGatesList = Array<BypassedGates>;
-export const UpdateConstantResponseBypassedGatesList = /*@__PURE__*/ S.Array(
-  BypassedGates,
-) as any as S.Schema<UpdateConstantResponseBypassedGatesList>;
+export const UpdateConstantResponseBypassedGatesList =
+  ArchiveConfigResponseBypassedGatesList as any as S.Schema<UpdateConstantResponseBypassedGatesList>;
 
 export interface UpdateConstantResponse {
   constant: Constant;
   /** Gates that would have blocked this publish but were bypassed by the caller's authority. Present only when at least one gate was bypassed. */
   bypassedGates?: UpdateConstantResponseBypassedGatesList;
 }
-export const UpdateConstantResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    constant: Constant,
-    bypassedGates: S.optional(UpdateConstantResponseBypassedGatesList),
-  }),
-).annotate({ identifier: "UpdateConstantResponse" }) as any as S.Schema<UpdateConstantResponse>;
+export const UpdateConstantResponse =
+  ArchiveConstantResponse as any as S.Schema<UpdateConstantResponse>;
 
 export interface UpdateConstantRevisionRequest {
   key: string;
@@ -49467,23 +47318,16 @@ export const UpdateConstantRevisionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateConstantRevisionResponse {
   revision: ConstantRevision;
 }
-export const UpdateConstantRevisionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: ConstantRevision,
-  }),
-).annotate({
-  identifier: "UpdateConstantRevisionResponse",
-}) as any as S.Schema<UpdateConstantRevisionResponse>;
+export const UpdateConstantRevisionResponse =
+  CreateConstantRevisionDiscardResponse as any as S.Schema<UpdateConstantRevisionResponse>;
 
 export type UpdateContextualBanditRequestTagsList = Array<string>;
-export const UpdateContextualBanditRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateContextualBanditRequestTagsList>;
+export const UpdateContextualBanditRequestTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateContextualBanditRequestTagsList>;
 
 export type UpdateContextualBanditRequestContextualAttributesList = Array<string>;
-export const UpdateContextualBanditRequestContextualAttributesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateContextualBanditRequestContextualAttributesList>;
+export const UpdateContextualBanditRequestContextualAttributesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateContextualBanditRequestContextualAttributesList>;
 
 export type UpdateContextualBanditRequestScheduleUnit = "days" | "hours";
 export const UpdateContextualBanditRequestScheduleUnit = S.String;
@@ -49501,9 +47345,8 @@ export type UpdateContextualBanditRequestSavedGroupsItemMatch = "all" | "none" |
 export const UpdateContextualBanditRequestSavedGroupsItemMatch = S.String;
 
 export type UpdateContextualBanditRequestSavedGroupsItemIdsList = Array<string>;
-export const UpdateContextualBanditRequestSavedGroupsItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateContextualBanditRequestSavedGroupsItemIdsList>;
+export const UpdateContextualBanditRequestSavedGroupsItemIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateContextualBanditRequestSavedGroupsItemIdsList>;
 
 export interface UpdateContextualBanditRequestSavedGroupsItem {
   match: UpdateContextualBanditRequestSavedGroupsItemMatch | (string & {});
@@ -49531,9 +47374,8 @@ export const UpdateContextualBanditRequestPrerequisitesItem =
 
 export type UpdateContextualBanditRequestPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
-export const UpdateContextualBanditRequestPrerequisitesList = /*@__PURE__*/ S.Array(
-  RampScheduleStartActionsItemPatchPrerequisitesItem,
-) as any as S.Schema<UpdateContextualBanditRequestPrerequisitesList>;
+export const UpdateContextualBanditRequestPrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<UpdateContextualBanditRequestPrerequisitesList>;
 
 export interface UpdateContextualBanditRequest {
   id: string;
@@ -49602,13 +47444,8 @@ export const UpdateContextualBanditRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateContextualBanditResponse {
   contextualBandit: ContextualBandit;
 }
-export const UpdateContextualBanditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contextualBandit: ContextualBandit,
-  }),
-).annotate({
-  identifier: "UpdateContextualBanditResponse",
-}) as any as S.Schema<UpdateContextualBanditResponse>;
+export const UpdateContextualBanditResponse =
+  CreateContextualBanditResponse as any as S.Schema<UpdateContextualBanditResponse>;
 
 export type UpdateContextualBanditLinkedFeatureRequestVariationsItem =
   AddContextualBanditLinkedFeatureRequestVariationsItem;
@@ -49618,20 +47455,17 @@ export const UpdateContextualBanditLinkedFeatureRequestVariationsItem =
 /** One entry per Contextual Bandit variation. Every variation must be covered exactly once. */
 export type UpdateContextualBanditLinkedFeatureRequestVariationsList =
   Array<AddContextualBanditLinkedFeatureRequestVariationsItem>;
-export const UpdateContextualBanditLinkedFeatureRequestVariationsList = /*@__PURE__*/ S.Array(
-  AddContextualBanditLinkedFeatureRequestVariationsItem,
-) as any as S.Schema<UpdateContextualBanditLinkedFeatureRequestVariationsList>;
+export const UpdateContextualBanditLinkedFeatureRequestVariationsList =
+  AddContextualBanditLinkedFeatureRequestVariationsList as any as S.Schema<UpdateContextualBanditLinkedFeatureRequestVariationsList>;
 
 /** Environments to apply the rule in when not all. */
 export type UpdateContextualBanditLinkedFeatureRequestEnvironmentsList = Array<string>;
-export const UpdateContextualBanditLinkedFeatureRequestEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateContextualBanditLinkedFeatureRequestEnvironmentsList>;
+export const UpdateContextualBanditLinkedFeatureRequestEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateContextualBanditLinkedFeatureRequestEnvironmentsList>;
 
 export type UpdateContextualBanditLinkedFeatureRequestProjectsList = Array<string>;
-export const UpdateContextualBanditLinkedFeatureRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateContextualBanditLinkedFeatureRequestProjectsList>;
+export const UpdateContextualBanditLinkedFeatureRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateContextualBanditLinkedFeatureRequestProjectsList>;
 
 export interface UpdateContextualBanditLinkedFeatureRequest {
   /** The Contextual Bandit id */
@@ -49678,9 +47512,8 @@ export const UpdateContextualBanditLinkedFeatureRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<UpdateContextualBanditLinkedFeatureRequest>;
 
 export type UpdateContextualBanditLinkedFeatureResponseRuleIdsList = Array<string>;
-export const UpdateContextualBanditLinkedFeatureResponseRuleIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateContextualBanditLinkedFeatureResponseRuleIdsList>;
+export const UpdateContextualBanditLinkedFeatureResponseRuleIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateContextualBanditLinkedFeatureResponseRuleIdsList>;
 
 export interface UpdateContextualBanditLinkedFeatureResponse {
   featureId: string;
@@ -49701,9 +47534,7 @@ export const UpdateContextualBanditLinkedFeatureResponse = /*@__PURE__*/ S.suspe
 
 export type UpdateContextualBanditQueryRequestTargetingAttributeColumnsList = Array<string>;
 export const UpdateContextualBanditQueryRequestTargetingAttributeColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateContextualBanditQueryRequestTargetingAttributeColumnsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateContextualBanditQueryRequestTargetingAttributeColumnsList>;
 
 export interface UpdateContextualBanditQueryRequest {
   id: string;
@@ -49734,13 +47565,8 @@ export const UpdateContextualBanditQueryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateContextualBanditQueryResponse {
   contextualBanditQuery: ContextualBanditQuery;
 }
-export const UpdateContextualBanditQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contextualBanditQuery: ContextualBanditQuery,
-  }),
-).annotate({
-  identifier: "UpdateContextualBanditQueryResponse",
-}) as any as S.Schema<UpdateContextualBanditQueryResponse>;
+export const UpdateContextualBanditQueryResponse =
+  CreateContextualBanditQueryResponse as any as S.Schema<UpdateContextualBanditQueryResponse>;
 
 export type UpdateContextualBanditVariationsRequestAddVariationsItemScreenshotsItem =
   CreateExperimentRequestVariationsItemScreenshotsItem;
@@ -49759,10 +47585,7 @@ export type UpdateContextualBanditVariationsRequestAddVariationsItemValuesMap = 
   [key: string]: string | undefined;
 };
 export const UpdateContextualBanditVariationsRequestAddVariationsItemValuesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<UpdateContextualBanditVariationsRequestAddVariationsItemValuesMap>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataCustomFieldsMap as any as S.Schema<UpdateContextualBanditVariationsRequestAddVariationsItemValuesMap>;
 
 export interface UpdateContextualBanditVariationsRequestAddVariationsItem {
   id?: string;
@@ -49798,9 +47621,8 @@ export const UpdateContextualBanditVariationsRequestAddVariationsList = /*@__PUR
 
 /** Ids of active arms to remove. Removed arms are tombstoned in place and their ids can never be re-added. */
 export type UpdateContextualBanditVariationsRequestRemoveVariationIdsList = Array<string>;
-export const UpdateContextualBanditVariationsRequestRemoveVariationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateContextualBanditVariationsRequestRemoveVariationIdsList>;
+export const UpdateContextualBanditVariationsRequestRemoveVariationIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateContextualBanditVariationsRequestRemoveVariationIdsList>;
 
 export interface UpdateContextualBanditVariationsRequestUpdateVariationsItem {
   id: string;
@@ -49886,29 +47708,24 @@ export const UpdateContextualBanditVariationsResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateContextualBanditVariationsResponse>;
 
 export type UpdateCustomFieldRequestDefaultValueCase5List = Array<string>;
-export const UpdateCustomFieldRequestDefaultValueCase5List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCustomFieldRequestDefaultValueCase5List>;
+export const UpdateCustomFieldRequestDefaultValueCase5List =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateCustomFieldRequestDefaultValueCase5List>;
 
 export type UpdateCustomFieldRequestDefaultValueCase6List = Array<number>;
-export const UpdateCustomFieldRequestDefaultValueCase6List = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateCustomFieldRequestDefaultValueCase6List>;
+export const UpdateCustomFieldRequestDefaultValueCase6List =
+  CreateCustomFieldRequestDefaultValueCase6List as any as S.Schema<UpdateCustomFieldRequestDefaultValueCase6List>;
 
 export type UpdateCustomFieldRequestDefaultValueCase7List = Array<boolean>;
-export const UpdateCustomFieldRequestDefaultValueCase7List = /*@__PURE__*/ S.Array(
-  S.Boolean,
-) as any as S.Schema<UpdateCustomFieldRequestDefaultValueCase7List>;
+export const UpdateCustomFieldRequestDefaultValueCase7List =
+  CreateCustomFieldRequestDefaultValueCase7List as any as S.Schema<UpdateCustomFieldRequestDefaultValueCase7List>;
 
 export type UpdateCustomFieldRequestDefaultValueCase8List = Array<string>;
-export const UpdateCustomFieldRequestDefaultValueCase8List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCustomFieldRequestDefaultValueCase8List>;
+export const UpdateCustomFieldRequestDefaultValueCase8List =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateCustomFieldRequestDefaultValueCase8List>;
 
 export type UpdateCustomFieldRequestDefaultValueCase9List = Array<string>;
-export const UpdateCustomFieldRequestDefaultValueCase9List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCustomFieldRequestDefaultValueCase9List>;
+export const UpdateCustomFieldRequestDefaultValueCase9List =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateCustomFieldRequestDefaultValueCase9List>;
 
 export type UpdateCustomFieldRequestDefaultValue =
   | string
@@ -49923,9 +47740,8 @@ export const UpdateCustomFieldRequestDefaultValue =
   S.Unknown as any as S.Schema<UpdateCustomFieldRequestDefaultValue>;
 
 export type UpdateCustomFieldRequestProjectsList = Array<string>;
-export const UpdateCustomFieldRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCustomFieldRequestProjectsList>;
+export const UpdateCustomFieldRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateCustomFieldRequestProjectsList>;
 
 export type UpdateCustomFieldRequestSectionsItem = "feature" | "experiment" | "attribute";
 export const UpdateCustomFieldRequestSectionsItem = S.String;
@@ -49973,13 +47789,8 @@ export const UpdateCustomFieldRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateCustomFieldResponse {
   customField: CustomField;
 }
-export const UpdateCustomFieldResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customField: CustomField,
-  }),
-).annotate({
-  identifier: "UpdateCustomFieldResponse",
-}) as any as S.Schema<UpdateCustomFieldResponse>;
+export const UpdateCustomFieldResponse =
+  CreateCustomFieldResponse as any as S.Schema<UpdateCustomFieldResponse>;
 
 export type UpdateCustomHookRequestHook =
   | "validateFeature"
@@ -49990,9 +47801,8 @@ export type UpdateCustomHookRequestHook =
 export const UpdateCustomHookRequestHook = S.String;
 
 export type UpdateCustomHookRequestProjectsList = Array<string>;
-export const UpdateCustomHookRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCustomHookRequestProjectsList>;
+export const UpdateCustomHookRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateCustomHookRequestProjectsList>;
 
 export type UpdateCustomHookRequestEntityType = "feature" | "config" | "experiment";
 export const UpdateCustomHookRequestEntityType = S.String;
@@ -50028,11 +47838,8 @@ export const UpdateCustomHookRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateCustomHookResponse {
   customHook: CustomHook;
 }
-export const UpdateCustomHookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customHook: CustomHook,
-  }),
-).annotate({ identifier: "UpdateCustomHookResponse" }) as any as S.Schema<UpdateCustomHookResponse>;
+export const UpdateCustomHookResponse =
+  CreateCustomHookResponse as any as S.Schema<UpdateCustomHookResponse>;
 
 /** Dashboards that are "published" are editable by organization members with appropriate permissions */
 export type UpdateDashboardRequestEditLevel = "published" | "private";
@@ -50059,9 +47866,8 @@ export const UpdateDashboardRequestUpdateSchedule =
 
 /** General Dashboards only, Experiment Dashboards use the experiment's projects */
 export type UpdateDashboardRequestProjectsList = Array<string>;
-export const UpdateDashboardRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestProjectsList>;
+export const UpdateDashboardRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestProjectsList>;
 
 export type UpdateDashboardRequestGlobalControlsDateRangePredefined =
   | "today"
@@ -50111,9 +47917,8 @@ export type UpdateDashboardRequestGlobalControlsDateGranularity =
 export const UpdateDashboardRequestGlobalControlsDateGranularity = S.String;
 
 export type UpdateDashboardRequestGlobalControlsProjectsList = Array<string>;
-export const UpdateDashboardRequestGlobalControlsProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestGlobalControlsProjectsList>;
+export const UpdateDashboardRequestGlobalControlsProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestGlobalControlsProjectsList>;
 
 export interface UpdateDashboardRequestGlobalControls {
   dateRange?: UpdateDashboardRequestGlobalControlsDateRange;
@@ -50202,13 +48007,8 @@ export const UpdateDashboardRequestComparison = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDashboardRequestBlocksItemCase0 {
   id: string;
 }
-export const UpdateDashboardRequestBlocksItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase0",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase0>;
+export const UpdateDashboardRequestBlocksItemCase0 =
+  FeatureRevisionV2EnvPrerequisitesValueItem as any as S.Schema<UpdateDashboardRequestBlocksItemCase0>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case0Layout =
   CreateDashboardV2RequestBlocksItemCase0Layout;
@@ -50248,9 +48048,8 @@ export const UpdateDashboardRequestBlocksItemCase1Case1Layout =
   CreateDashboardV2RequestBlocksItemCase0Layout;
 
 export type UpdateDashboardRequestBlocksItemCase1Case1VariationIdsList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase1Case1VariationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case1VariationIdsList>;
+export const UpdateDashboardRequestBlocksItemCase1Case1VariationIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case1VariationIdsList>;
 
 export interface UpdateDashboardRequestBlocksItemCase1Case1 {
   type: string;
@@ -50293,14 +48092,12 @@ export const UpdateDashboardRequestBlocksItemCase1Case2Layout =
   CreateDashboardV2RequestBlocksItemCase0Layout;
 
 export type UpdateDashboardRequestBlocksItemCase1Case2MetricIdsList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase1Case2MetricIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case2MetricIdsList>;
+export const UpdateDashboardRequestBlocksItemCase1Case2MetricIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case2MetricIdsList>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case2VariationIdsList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase1Case2VariationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case2VariationIdsList>;
+export const UpdateDashboardRequestBlocksItemCase1Case2VariationIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case2VariationIdsList>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case2DifferenceType =
   | "absolute"
@@ -50325,14 +48122,12 @@ export const UpdateDashboardRequestBlocksItemCase1Case2ColumnsFilterList = /*@__
 ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case2ColumnsFilterList>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case2SliceTagsFilterList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase1Case2SliceTagsFilterList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case2SliceTagsFilterList>;
+export const UpdateDashboardRequestBlocksItemCase1Case2SliceTagsFilterList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case2SliceTagsFilterList>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case2MetricTagFilterList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase1Case2MetricTagFilterList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case2MetricTagFilterList>;
+export const UpdateDashboardRequestBlocksItemCase1Case2MetricTagFilterList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case2MetricTagFilterList>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case2SortBy =
   | "metrics"
@@ -50395,9 +48190,8 @@ export const UpdateDashboardRequestBlocksItemCase1Case3Layout =
   CreateDashboardV2RequestBlocksItemCase0Layout;
 
 export type UpdateDashboardRequestBlocksItemCase1Case3ProjectsList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase1Case3ProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case3ProjectsList>;
+export const UpdateDashboardRequestBlocksItemCase1Case3ProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case3ProjectsList>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case3DifferenceType =
   | "absolute"
@@ -50499,9 +48293,8 @@ export const UpdateDashboardRequestBlocksItemCase1Case3ColumnsItem =
 
 export type UpdateDashboardRequestBlocksItemCase1Case3ColumnsList =
   Array<CreateDashboardV2RequestBlocksItemCase3ColumnsItem>;
-export const UpdateDashboardRequestBlocksItemCase1Case3ColumnsList = /*@__PURE__*/ S.Array(
-  CreateDashboardV2RequestBlocksItemCase3ColumnsItem,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case3ColumnsList>;
+export const UpdateDashboardRequestBlocksItemCase1Case3ColumnsList =
+  CreateDashboardV2RequestBlocksItemCase3ColumnsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case3ColumnsList>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case3GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase3GlobalControlSettings;
@@ -50600,9 +48393,8 @@ export const UpdateDashboardRequestBlocksItemCase1Case4DateRange = /*@__PURE__*/
 }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case4DateRange>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case4ProjectsList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase1Case4ProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case4ProjectsList>;
+export const UpdateDashboardRequestBlocksItemCase1Case4ProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case4ProjectsList>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case4ComparisonMode =
   | "previousPeriod"
@@ -50768,9 +48560,8 @@ export const UpdateDashboardRequestBlocksItemCase1Case5DateRange = /*@__PURE__*/
 }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case5DateRange>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case5ProjectsList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase1Case5ProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case5ProjectsList>;
+export const UpdateDashboardRequestBlocksItemCase1Case5ProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case5ProjectsList>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case5ComparisonMode =
   | "previousPeriod"
@@ -50936,9 +48727,8 @@ export const UpdateDashboardRequestBlocksItemCase1Case6DateRange = /*@__PURE__*/
 }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case6DateRange>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case6ProjectsList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase1Case6ProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case6ProjectsList>;
+export const UpdateDashboardRequestBlocksItemCase1Case6ProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case6ProjectsList>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case6ComparisonMode =
   | "previousPeriod"
@@ -51070,19 +48860,16 @@ export const UpdateDashboardRequestBlocksItemCase1Case7Layout =
   CreateDashboardV2RequestBlocksItemCase0Layout;
 
 export type UpdateDashboardRequestBlocksItemCase1Case7DimensionValuesList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase1Case7DimensionValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case7DimensionValuesList>;
+export const UpdateDashboardRequestBlocksItemCase1Case7DimensionValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case7DimensionValuesList>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case7MetricIdsList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase1Case7MetricIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case7MetricIdsList>;
+export const UpdateDashboardRequestBlocksItemCase1Case7MetricIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case7MetricIdsList>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case7VariationIdsList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase1Case7VariationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case7VariationIdsList>;
+export const UpdateDashboardRequestBlocksItemCase1Case7VariationIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case7VariationIdsList>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case7DifferenceType =
   | "absolute"
@@ -51107,9 +48894,8 @@ export const UpdateDashboardRequestBlocksItemCase1Case7ColumnsFilterList = /*@__
 ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case7ColumnsFilterList>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case7MetricTagFilterList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase1Case7MetricTagFilterList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case7MetricTagFilterList>;
+export const UpdateDashboardRequestBlocksItemCase1Case7MetricTagFilterList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case7MetricTagFilterList>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case7SortBy =
   | "metrics"
@@ -51174,14 +48960,12 @@ export const UpdateDashboardRequestBlocksItemCase1Case8Layout =
   CreateDashboardV2RequestBlocksItemCase0Layout;
 
 export type UpdateDashboardRequestBlocksItemCase1Case8MetricIdsList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase1Case8MetricIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case8MetricIdsList>;
+export const UpdateDashboardRequestBlocksItemCase1Case8MetricIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case8MetricIdsList>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case8VariationIdsList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase1Case8VariationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case8VariationIdsList>;
+export const UpdateDashboardRequestBlocksItemCase1Case8VariationIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case8VariationIdsList>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case8DifferenceType =
   | "absolute"
@@ -51190,14 +48974,12 @@ export type UpdateDashboardRequestBlocksItemCase1Case8DifferenceType =
 export const UpdateDashboardRequestBlocksItemCase1Case8DifferenceType = S.String;
 
 export type UpdateDashboardRequestBlocksItemCase1Case8SliceTagsFilterList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase1Case8SliceTagsFilterList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case8SliceTagsFilterList>;
+export const UpdateDashboardRequestBlocksItemCase1Case8SliceTagsFilterList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case8SliceTagsFilterList>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case8MetricTagFilterList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase1Case8MetricTagFilterList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case8MetricTagFilterList>;
+export const UpdateDashboardRequestBlocksItemCase1Case8MetricTagFilterList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case8MetricTagFilterList>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case8SortBy =
   | "metrics"
@@ -51294,9 +49076,8 @@ export const UpdateDashboardRequestBlocksItemCase1Case10Layout =
   CreateDashboardV2RequestBlocksItemCase0Layout;
 
 export type UpdateDashboardRequestBlocksItemCase1Case10BlockConfigList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase1Case10BlockConfigList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case10BlockConfigList>;
+export const UpdateDashboardRequestBlocksItemCase1Case10BlockConfigList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case10BlockConfigList>;
 
 export interface UpdateDashboardRequestBlocksItemCase1Case10 {
   type: string;
@@ -51429,16 +49210,12 @@ export const UpdateDashboardRequestBlocksItemCase1Case11AnalysisSettingsPopulati
 export type UpdateDashboardRequestBlocksItemCase1Case11AnalysisSettingsAdditionalNumeratorFiltersList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase1Case11AnalysisSettingsAdditionalNumeratorFiltersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case11AnalysisSettingsAdditionalNumeratorFiltersList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case11AnalysisSettingsAdditionalNumeratorFiltersList>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case11AnalysisSettingsAdditionalDenominatorFiltersList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase1Case11AnalysisSettingsAdditionalDenominatorFiltersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case11AnalysisSettingsAdditionalDenominatorFiltersList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case11AnalysisSettingsAdditionalDenominatorFiltersList>;
 
 export interface UpdateDashboardRequestBlocksItemCase1Case11AnalysisSettings {
   userIdType: string;
@@ -51633,9 +49410,7 @@ export const UpdateDashboardRequestBlocksItemCase1Case12ConfigDimensionsItemCase
 export type UpdateDashboardRequestBlocksItemCase1Case12ConfigDimensionsItemCase2ValuesList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase1Case12ConfigDimensionsItemCase2ValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case12ConfigDimensionsItemCase2ValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case12ConfigDimensionsItemCase2ValuesList>;
 
 export interface UpdateDashboardRequestBlocksItemCase1Case12ConfigDimensionsItemCase2 {
   dimensionType: string;
@@ -51643,15 +49418,7 @@ export interface UpdateDashboardRequestBlocksItemCase1Case12ConfigDimensionsItem
   values: UpdateDashboardRequestBlocksItemCase1Case12ConfigDimensionsItemCase2ValuesList;
 }
 export const UpdateDashboardRequestBlocksItemCase1Case12ConfigDimensionsItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.String,
-      values: UpdateDashboardRequestBlocksItemCase1Case12ConfigDimensionsItemCase2ValuesList,
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase1Case12ConfigDimensionsItemCase2",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case12ConfigDimensionsItemCase2>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case12ConfigDimensionsItemCase2>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case12ConfigDimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -51682,9 +49449,7 @@ export const UpdateDashboardRequestBlocksItemCase1Case12ConfigDimensionsItemCase
 export type UpdateDashboardRequestBlocksItemCase1Case12ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase1Case12ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case12ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case12ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface UpdateDashboardRequestBlocksItemCase1Case12ConfigDimensionsItemCase3SlicesItemFiltersItem {
   operator:
@@ -51860,9 +49625,7 @@ export const UpdateDashboardRequestBlocksItemCase1Case12ConfigDatasetValuesItemR
 export type UpdateDashboardRequestBlocksItemCase1Case12ConfigDatasetValuesItemRowFiltersItemValuesList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase1Case12ConfigDatasetValuesItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case12ConfigDatasetValuesItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case12ConfigDatasetValuesItemRowFiltersItemValuesList>;
 
 export interface UpdateDashboardRequestBlocksItemCase1Case12ConfigDatasetValuesItemRowFiltersItem {
   operator:
@@ -52121,9 +49884,7 @@ export const UpdateDashboardRequestBlocksItemCase1Case13ConfigDimensionsItemCase
 export type UpdateDashboardRequestBlocksItemCase1Case13ConfigDimensionsItemCase2ValuesList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase1Case13ConfigDimensionsItemCase2ValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case13ConfigDimensionsItemCase2ValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case13ConfigDimensionsItemCase2ValuesList>;
 
 export interface UpdateDashboardRequestBlocksItemCase1Case13ConfigDimensionsItemCase2 {
   dimensionType: string;
@@ -52131,15 +49892,7 @@ export interface UpdateDashboardRequestBlocksItemCase1Case13ConfigDimensionsItem
   values: UpdateDashboardRequestBlocksItemCase1Case13ConfigDimensionsItemCase2ValuesList;
 }
 export const UpdateDashboardRequestBlocksItemCase1Case13ConfigDimensionsItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.String,
-      values: UpdateDashboardRequestBlocksItemCase1Case13ConfigDimensionsItemCase2ValuesList,
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase1Case13ConfigDimensionsItemCase2",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case13ConfigDimensionsItemCase2>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case13ConfigDimensionsItemCase2>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case13ConfigDimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -52170,9 +49923,7 @@ export const UpdateDashboardRequestBlocksItemCase1Case13ConfigDimensionsItemCase
 export type UpdateDashboardRequestBlocksItemCase1Case13ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase1Case13ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case13ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case13ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface UpdateDashboardRequestBlocksItemCase1Case13ConfigDimensionsItemCase3SlicesItemFiltersItem {
   operator:
@@ -52348,9 +50099,7 @@ export const UpdateDashboardRequestBlocksItemCase1Case13ConfigDatasetValuesItemR
 export type UpdateDashboardRequestBlocksItemCase1Case13ConfigDatasetValuesItemRowFiltersItemValuesList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase1Case13ConfigDatasetValuesItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case13ConfigDatasetValuesItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case13ConfigDatasetValuesItemRowFiltersItemValuesList>;
 
 export interface UpdateDashboardRequestBlocksItemCase1Case13ConfigDatasetValuesItemRowFiltersItem {
   operator:
@@ -52619,9 +50368,7 @@ export const UpdateDashboardRequestBlocksItemCase1Case14ConfigDimensionsItemCase
 export type UpdateDashboardRequestBlocksItemCase1Case14ConfigDimensionsItemCase2ValuesList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase1Case14ConfigDimensionsItemCase2ValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case14ConfigDimensionsItemCase2ValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case14ConfigDimensionsItemCase2ValuesList>;
 
 export interface UpdateDashboardRequestBlocksItemCase1Case14ConfigDimensionsItemCase2 {
   dimensionType: string;
@@ -52629,15 +50376,7 @@ export interface UpdateDashboardRequestBlocksItemCase1Case14ConfigDimensionsItem
   values: UpdateDashboardRequestBlocksItemCase1Case14ConfigDimensionsItemCase2ValuesList;
 }
 export const UpdateDashboardRequestBlocksItemCase1Case14ConfigDimensionsItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.String,
-      values: UpdateDashboardRequestBlocksItemCase1Case14ConfigDimensionsItemCase2ValuesList,
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase1Case14ConfigDimensionsItemCase2",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case14ConfigDimensionsItemCase2>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case14ConfigDimensionsItemCase2>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case14ConfigDimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -52668,9 +50407,7 @@ export const UpdateDashboardRequestBlocksItemCase1Case14ConfigDimensionsItemCase
 export type UpdateDashboardRequestBlocksItemCase1Case14ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase1Case14ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case14ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case14ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface UpdateDashboardRequestBlocksItemCase1Case14ConfigDimensionsItemCase3SlicesItemFiltersItem {
   operator:
@@ -52866,9 +50603,7 @@ export const UpdateDashboardRequestBlocksItemCase1Case14ConfigDatasetValuesItemR
 export type UpdateDashboardRequestBlocksItemCase1Case14ConfigDatasetValuesItemRowFiltersItemValuesList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase1Case14ConfigDatasetValuesItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case14ConfigDatasetValuesItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case14ConfigDatasetValuesItemRowFiltersItemValuesList>;
 
 export interface UpdateDashboardRequestBlocksItemCase1Case14ConfigDatasetValuesItemRowFiltersItem {
   operator:
@@ -53143,9 +50878,7 @@ export const UpdateDashboardRequestBlocksItemCase1Case15ConfigDimensionsItemCase
 export type UpdateDashboardRequestBlocksItemCase1Case15ConfigDimensionsItemCase2ValuesList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase1Case15ConfigDimensionsItemCase2ValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case15ConfigDimensionsItemCase2ValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case15ConfigDimensionsItemCase2ValuesList>;
 
 export interface UpdateDashboardRequestBlocksItemCase1Case15ConfigDimensionsItemCase2 {
   dimensionType: string;
@@ -53153,15 +50886,7 @@ export interface UpdateDashboardRequestBlocksItemCase1Case15ConfigDimensionsItem
   values: UpdateDashboardRequestBlocksItemCase1Case15ConfigDimensionsItemCase2ValuesList;
 }
 export const UpdateDashboardRequestBlocksItemCase1Case15ConfigDimensionsItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.String,
-      values: UpdateDashboardRequestBlocksItemCase1Case15ConfigDimensionsItemCase2ValuesList,
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase1Case15ConfigDimensionsItemCase2",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case15ConfigDimensionsItemCase2>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case15ConfigDimensionsItemCase2>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case15ConfigDimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -53192,9 +50917,7 @@ export const UpdateDashboardRequestBlocksItemCase1Case15ConfigDimensionsItemCase
 export type UpdateDashboardRequestBlocksItemCase1Case15ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase1Case15ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case15ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case15ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface UpdateDashboardRequestBlocksItemCase1Case15ConfigDimensionsItemCase3SlicesItemFiltersItem {
   operator:
@@ -53370,9 +51093,7 @@ export const UpdateDashboardRequestBlocksItemCase1Case15ConfigDatasetStepsItemRo
 export type UpdateDashboardRequestBlocksItemCase1Case15ConfigDatasetStepsItemRowFiltersItemValuesList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase1Case15ConfigDatasetStepsItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case15ConfigDatasetStepsItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case15ConfigDatasetStepsItemRowFiltersItemValuesList>;
 
 export interface UpdateDashboardRequestBlocksItemCase1Case15ConfigDatasetStepsItemRowFiltersItem {
   operator:
@@ -53668,9 +51389,7 @@ export const UpdateDashboardRequestBlocksItemCase1Case16ConfigDimensionsItemCase
 export type UpdateDashboardRequestBlocksItemCase1Case16ConfigDimensionsItemCase2ValuesList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase1Case16ConfigDimensionsItemCase2ValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case16ConfigDimensionsItemCase2ValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case16ConfigDimensionsItemCase2ValuesList>;
 
 export interface UpdateDashboardRequestBlocksItemCase1Case16ConfigDimensionsItemCase2 {
   dimensionType: string;
@@ -53678,15 +51397,7 @@ export interface UpdateDashboardRequestBlocksItemCase1Case16ConfigDimensionsItem
   values: UpdateDashboardRequestBlocksItemCase1Case16ConfigDimensionsItemCase2ValuesList;
 }
 export const UpdateDashboardRequestBlocksItemCase1Case16ConfigDimensionsItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.String,
-      values: UpdateDashboardRequestBlocksItemCase1Case16ConfigDimensionsItemCase2ValuesList,
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase1Case16ConfigDimensionsItemCase2",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case16ConfigDimensionsItemCase2>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case16ConfigDimensionsItemCase2>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case16ConfigDimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -53717,9 +51428,7 @@ export const UpdateDashboardRequestBlocksItemCase1Case16ConfigDimensionsItemCase
 export type UpdateDashboardRequestBlocksItemCase1Case16ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase1Case16ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case16ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case16ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface UpdateDashboardRequestBlocksItemCase1Case16ConfigDimensionsItemCase3SlicesItemFiltersItem {
   operator:
@@ -53915,9 +51624,7 @@ export const UpdateDashboardRequestBlocksItemCase1Case16ConfigDatasetValuesItemR
 export type UpdateDashboardRequestBlocksItemCase1Case16ConfigDatasetValuesItemRowFiltersItemValuesList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase1Case16ConfigDatasetValuesItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case16ConfigDatasetValuesItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case16ConfigDatasetValuesItemRowFiltersItemValuesList>;
 
 export interface UpdateDashboardRequestBlocksItemCase1Case16ConfigDatasetValuesItemRowFiltersItem {
   operator:
@@ -53987,9 +51694,7 @@ export const UpdateDashboardRequestBlocksItemCase1Case16ConfigDatasetValuesList 
 export type UpdateDashboardRequestBlocksItemCase1Case16ConfigDatasetHiddenColumnsList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase1Case16ConfigDatasetHiddenColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case16ConfigDatasetHiddenColumnsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case16ConfigDatasetHiddenColumnsList>;
 
 export interface UpdateDashboardRequestBlocksItemCase1Case16ConfigDataset {
   type: string;
@@ -54114,9 +51819,8 @@ export const UpdateDashboardRequestBlocksItemCase2Case1Layout =
   CreateDashboardV2RequestBlocksItemCase0Layout;
 
 export type UpdateDashboardRequestBlocksItemCase2Case1VariationIdsList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase2Case1VariationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case1VariationIdsList>;
+export const UpdateDashboardRequestBlocksItemCase2Case1VariationIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case1VariationIdsList>;
 
 export interface UpdateDashboardRequestBlocksItemCase2Case1 {
   type: string;
@@ -54130,22 +51834,8 @@ export interface UpdateDashboardRequestBlocksItemCase2Case1 {
   showVariationImages: boolean;
   variationIds?: UpdateDashboardRequestBlocksItemCase2Case1VariationIdsList;
 }
-export const UpdateDashboardRequestBlocksItemCase2Case1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    title: S.String,
-    description: S.String,
-    snapshotId: S.optional(S.String),
-    layout: S.optional(CreateDashboardV2RequestBlocksItemCase0Layout),
-    experimentId: S.String,
-    showDescription: S.Boolean,
-    showHypothesis: S.Boolean,
-    showVariationImages: S.Boolean,
-    variationIds: S.optional(UpdateDashboardRequestBlocksItemCase2Case1VariationIdsList),
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase2Case1",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case1>;
+export const UpdateDashboardRequestBlocksItemCase2Case1 =
+  CreateDashboardV2RequestBlocksItemCase1 as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case1>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case2Layout =
   CreateDashboardV2RequestBlocksItemCase0Layout;
@@ -54153,14 +51843,12 @@ export const UpdateDashboardRequestBlocksItemCase2Case2Layout =
   CreateDashboardV2RequestBlocksItemCase0Layout;
 
 export type UpdateDashboardRequestBlocksItemCase2Case2MetricIdsList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase2Case2MetricIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case2MetricIdsList>;
+export const UpdateDashboardRequestBlocksItemCase2Case2MetricIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case2MetricIdsList>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case2VariationIdsList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase2Case2VariationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case2VariationIdsList>;
+export const UpdateDashboardRequestBlocksItemCase2Case2VariationIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case2VariationIdsList>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case2DifferenceType =
   | "absolute"
@@ -54185,14 +51873,12 @@ export const UpdateDashboardRequestBlocksItemCase2Case2ColumnsFilterList = /*@__
 ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case2ColumnsFilterList>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case2SliceTagsFilterList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase2Case2SliceTagsFilterList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case2SliceTagsFilterList>;
+export const UpdateDashboardRequestBlocksItemCase2Case2SliceTagsFilterList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case2SliceTagsFilterList>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case2MetricTagFilterList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase2Case2MetricTagFilterList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case2MetricTagFilterList>;
+export const UpdateDashboardRequestBlocksItemCase2Case2MetricTagFilterList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case2MetricTagFilterList>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case2SortBy =
   | "metrics"
@@ -54249,9 +51935,8 @@ export const UpdateDashboardRequestBlocksItemCase2Case3Layout =
   CreateDashboardV2RequestBlocksItemCase0Layout;
 
 export type UpdateDashboardRequestBlocksItemCase2Case3ProjectsList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase2Case3ProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case3ProjectsList>;
+export const UpdateDashboardRequestBlocksItemCase2Case3ProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case3ProjectsList>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case3DifferenceType =
   | "absolute"
@@ -54353,9 +52038,8 @@ export const UpdateDashboardRequestBlocksItemCase2Case3ColumnsItem =
 
 export type UpdateDashboardRequestBlocksItemCase2Case3ColumnsList =
   Array<CreateDashboardV2RequestBlocksItemCase3ColumnsItem>;
-export const UpdateDashboardRequestBlocksItemCase2Case3ColumnsList = /*@__PURE__*/ S.Array(
-  CreateDashboardV2RequestBlocksItemCase3ColumnsItem,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case3ColumnsList>;
+export const UpdateDashboardRequestBlocksItemCase2Case3ColumnsList =
+  CreateDashboardV2RequestBlocksItemCase3ColumnsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case3ColumnsList>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case3GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase3GlobalControlSettings;
@@ -54448,9 +52132,8 @@ export const UpdateDashboardRequestBlocksItemCase2Case4DateRange = /*@__PURE__*/
 }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case4DateRange>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case4ProjectsList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase2Case4ProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case4ProjectsList>;
+export const UpdateDashboardRequestBlocksItemCase2Case4ProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case4ProjectsList>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case4ComparisonMode =
   | "previousPeriod"
@@ -54610,9 +52293,8 @@ export const UpdateDashboardRequestBlocksItemCase2Case5DateRange = /*@__PURE__*/
 }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case5DateRange>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case5ProjectsList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase2Case5ProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case5ProjectsList>;
+export const UpdateDashboardRequestBlocksItemCase2Case5ProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case5ProjectsList>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case5ComparisonMode =
   | "previousPeriod"
@@ -54772,9 +52454,8 @@ export const UpdateDashboardRequestBlocksItemCase2Case6DateRange = /*@__PURE__*/
 }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case6DateRange>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case6ProjectsList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase2Case6ProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case6ProjectsList>;
+export const UpdateDashboardRequestBlocksItemCase2Case6ProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case6ProjectsList>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case6ComparisonMode =
   | "previousPeriod"
@@ -54900,19 +52581,16 @@ export const UpdateDashboardRequestBlocksItemCase2Case7Layout =
   CreateDashboardV2RequestBlocksItemCase0Layout;
 
 export type UpdateDashboardRequestBlocksItemCase2Case7DimensionValuesList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase2Case7DimensionValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case7DimensionValuesList>;
+export const UpdateDashboardRequestBlocksItemCase2Case7DimensionValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case7DimensionValuesList>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case7MetricIdsList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase2Case7MetricIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case7MetricIdsList>;
+export const UpdateDashboardRequestBlocksItemCase2Case7MetricIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case7MetricIdsList>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case7VariationIdsList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase2Case7VariationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case7VariationIdsList>;
+export const UpdateDashboardRequestBlocksItemCase2Case7VariationIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case7VariationIdsList>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case7DifferenceType =
   | "absolute"
@@ -54937,9 +52615,8 @@ export const UpdateDashboardRequestBlocksItemCase2Case7ColumnsFilterList = /*@__
 ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case7ColumnsFilterList>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case7MetricTagFilterList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase2Case7MetricTagFilterList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case7MetricTagFilterList>;
+export const UpdateDashboardRequestBlocksItemCase2Case7MetricTagFilterList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case7MetricTagFilterList>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case7SortBy =
   | "metrics"
@@ -54998,14 +52675,12 @@ export const UpdateDashboardRequestBlocksItemCase2Case8Layout =
   CreateDashboardV2RequestBlocksItemCase0Layout;
 
 export type UpdateDashboardRequestBlocksItemCase2Case8MetricIdsList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase2Case8MetricIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case8MetricIdsList>;
+export const UpdateDashboardRequestBlocksItemCase2Case8MetricIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case8MetricIdsList>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case8VariationIdsList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase2Case8VariationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case8VariationIdsList>;
+export const UpdateDashboardRequestBlocksItemCase2Case8VariationIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case8VariationIdsList>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case8DifferenceType =
   | "absolute"
@@ -55014,14 +52689,12 @@ export type UpdateDashboardRequestBlocksItemCase2Case8DifferenceType =
 export const UpdateDashboardRequestBlocksItemCase2Case8DifferenceType = S.String;
 
 export type UpdateDashboardRequestBlocksItemCase2Case8SliceTagsFilterList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase2Case8SliceTagsFilterList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case8SliceTagsFilterList>;
+export const UpdateDashboardRequestBlocksItemCase2Case8SliceTagsFilterList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case8SliceTagsFilterList>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case8MetricTagFilterList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase2Case8MetricTagFilterList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case8MetricTagFilterList>;
+export const UpdateDashboardRequestBlocksItemCase2Case8MetricTagFilterList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case8MetricTagFilterList>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case8SortBy =
   | "metrics"
@@ -55084,9 +52757,8 @@ export const UpdateDashboardRequestBlocksItemCase2Case10Layout =
   CreateDashboardV2RequestBlocksItemCase0Layout;
 
 export type UpdateDashboardRequestBlocksItemCase2Case10BlockConfigList = Array<string>;
-export const UpdateDashboardRequestBlocksItemCase2Case10BlockConfigList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case10BlockConfigList>;
+export const UpdateDashboardRequestBlocksItemCase2Case10BlockConfigList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case10BlockConfigList>;
 
 export interface UpdateDashboardRequestBlocksItemCase2Case10 {
   type: string;
@@ -55098,20 +52770,8 @@ export interface UpdateDashboardRequestBlocksItemCase2Case10 {
   dataVizConfigIndex?: number;
   blockConfig: UpdateDashboardRequestBlocksItemCase2Case10BlockConfigList;
 }
-export const UpdateDashboardRequestBlocksItemCase2Case10 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    title: S.String,
-    description: S.String,
-    snapshotId: S.optional(S.String),
-    layout: S.optional(CreateDashboardV2RequestBlocksItemCase0Layout),
-    savedQueryId: S.String,
-    dataVizConfigIndex: S.optional(S.Number),
-    blockConfig: UpdateDashboardRequestBlocksItemCase2Case10BlockConfigList,
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase2Case10",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case10>;
+export const UpdateDashboardRequestBlocksItemCase2Case10 =
+  CreateDashboardV2RequestBlocksItemCase10 as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case10>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case11Layout =
   CreateDashboardV2RequestBlocksItemCase0Layout;
@@ -55213,16 +52873,12 @@ export const UpdateDashboardRequestBlocksItemCase2Case11AnalysisSettingsPopulati
 export type UpdateDashboardRequestBlocksItemCase2Case11AnalysisSettingsAdditionalNumeratorFiltersList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase2Case11AnalysisSettingsAdditionalNumeratorFiltersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case11AnalysisSettingsAdditionalNumeratorFiltersList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case11AnalysisSettingsAdditionalNumeratorFiltersList>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case11AnalysisSettingsAdditionalDenominatorFiltersList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase2Case11AnalysisSettingsAdditionalDenominatorFiltersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case11AnalysisSettingsAdditionalDenominatorFiltersList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case11AnalysisSettingsAdditionalDenominatorFiltersList>;
 
 export interface UpdateDashboardRequestBlocksItemCase2Case11AnalysisSettings {
   userIdType: string;
@@ -55411,9 +53067,7 @@ export const UpdateDashboardRequestBlocksItemCase2Case12ConfigDimensionsItemCase
 export type UpdateDashboardRequestBlocksItemCase2Case12ConfigDimensionsItemCase2ValuesList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase2Case12ConfigDimensionsItemCase2ValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case12ConfigDimensionsItemCase2ValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case12ConfigDimensionsItemCase2ValuesList>;
 
 export interface UpdateDashboardRequestBlocksItemCase2Case12ConfigDimensionsItemCase2 {
   dimensionType: string;
@@ -55421,15 +53075,7 @@ export interface UpdateDashboardRequestBlocksItemCase2Case12ConfigDimensionsItem
   values: UpdateDashboardRequestBlocksItemCase2Case12ConfigDimensionsItemCase2ValuesList;
 }
 export const UpdateDashboardRequestBlocksItemCase2Case12ConfigDimensionsItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.String,
-      values: UpdateDashboardRequestBlocksItemCase2Case12ConfigDimensionsItemCase2ValuesList,
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase2Case12ConfigDimensionsItemCase2",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case12ConfigDimensionsItemCase2>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case12ConfigDimensionsItemCase2>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case12ConfigDimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -55460,9 +53106,7 @@ export const UpdateDashboardRequestBlocksItemCase2Case12ConfigDimensionsItemCase
 export type UpdateDashboardRequestBlocksItemCase2Case12ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase2Case12ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case12ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case12ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface UpdateDashboardRequestBlocksItemCase2Case12ConfigDimensionsItemCase3SlicesItemFiltersItem {
   operator:
@@ -55638,9 +53282,7 @@ export const UpdateDashboardRequestBlocksItemCase2Case12ConfigDatasetValuesItemR
 export type UpdateDashboardRequestBlocksItemCase2Case12ConfigDatasetValuesItemRowFiltersItemValuesList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase2Case12ConfigDatasetValuesItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case12ConfigDatasetValuesItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case12ConfigDatasetValuesItemRowFiltersItemValuesList>;
 
 export interface UpdateDashboardRequestBlocksItemCase2Case12ConfigDatasetValuesItemRowFiltersItem {
   operator:
@@ -55893,9 +53535,7 @@ export const UpdateDashboardRequestBlocksItemCase2Case13ConfigDimensionsItemCase
 export type UpdateDashboardRequestBlocksItemCase2Case13ConfigDimensionsItemCase2ValuesList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase2Case13ConfigDimensionsItemCase2ValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case13ConfigDimensionsItemCase2ValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case13ConfigDimensionsItemCase2ValuesList>;
 
 export interface UpdateDashboardRequestBlocksItemCase2Case13ConfigDimensionsItemCase2 {
   dimensionType: string;
@@ -55903,15 +53543,7 @@ export interface UpdateDashboardRequestBlocksItemCase2Case13ConfigDimensionsItem
   values: UpdateDashboardRequestBlocksItemCase2Case13ConfigDimensionsItemCase2ValuesList;
 }
 export const UpdateDashboardRequestBlocksItemCase2Case13ConfigDimensionsItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.String,
-      values: UpdateDashboardRequestBlocksItemCase2Case13ConfigDimensionsItemCase2ValuesList,
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase2Case13ConfigDimensionsItemCase2",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case13ConfigDimensionsItemCase2>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case13ConfigDimensionsItemCase2>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case13ConfigDimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -55942,9 +53574,7 @@ export const UpdateDashboardRequestBlocksItemCase2Case13ConfigDimensionsItemCase
 export type UpdateDashboardRequestBlocksItemCase2Case13ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase2Case13ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case13ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case13ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface UpdateDashboardRequestBlocksItemCase2Case13ConfigDimensionsItemCase3SlicesItemFiltersItem {
   operator:
@@ -56120,9 +53750,7 @@ export const UpdateDashboardRequestBlocksItemCase2Case13ConfigDatasetValuesItemR
 export type UpdateDashboardRequestBlocksItemCase2Case13ConfigDatasetValuesItemRowFiltersItemValuesList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase2Case13ConfigDatasetValuesItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case13ConfigDatasetValuesItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case13ConfigDatasetValuesItemRowFiltersItemValuesList>;
 
 export interface UpdateDashboardRequestBlocksItemCase2Case13ConfigDatasetValuesItemRowFiltersItem {
   operator:
@@ -56385,9 +54013,7 @@ export const UpdateDashboardRequestBlocksItemCase2Case14ConfigDimensionsItemCase
 export type UpdateDashboardRequestBlocksItemCase2Case14ConfigDimensionsItemCase2ValuesList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase2Case14ConfigDimensionsItemCase2ValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case14ConfigDimensionsItemCase2ValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case14ConfigDimensionsItemCase2ValuesList>;
 
 export interface UpdateDashboardRequestBlocksItemCase2Case14ConfigDimensionsItemCase2 {
   dimensionType: string;
@@ -56395,15 +54021,7 @@ export interface UpdateDashboardRequestBlocksItemCase2Case14ConfigDimensionsItem
   values: UpdateDashboardRequestBlocksItemCase2Case14ConfigDimensionsItemCase2ValuesList;
 }
 export const UpdateDashboardRequestBlocksItemCase2Case14ConfigDimensionsItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.String,
-      values: UpdateDashboardRequestBlocksItemCase2Case14ConfigDimensionsItemCase2ValuesList,
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase2Case14ConfigDimensionsItemCase2",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case14ConfigDimensionsItemCase2>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case14ConfigDimensionsItemCase2>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case14ConfigDimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -56434,9 +54052,7 @@ export const UpdateDashboardRequestBlocksItemCase2Case14ConfigDimensionsItemCase
 export type UpdateDashboardRequestBlocksItemCase2Case14ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase2Case14ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case14ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case14ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface UpdateDashboardRequestBlocksItemCase2Case14ConfigDimensionsItemCase3SlicesItemFiltersItem {
   operator:
@@ -56632,9 +54248,7 @@ export const UpdateDashboardRequestBlocksItemCase2Case14ConfigDatasetValuesItemR
 export type UpdateDashboardRequestBlocksItemCase2Case14ConfigDatasetValuesItemRowFiltersItemValuesList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase2Case14ConfigDatasetValuesItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case14ConfigDatasetValuesItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case14ConfigDatasetValuesItemRowFiltersItemValuesList>;
 
 export interface UpdateDashboardRequestBlocksItemCase2Case14ConfigDatasetValuesItemRowFiltersItem {
   operator:
@@ -56903,9 +54517,7 @@ export const UpdateDashboardRequestBlocksItemCase2Case15ConfigDimensionsItemCase
 export type UpdateDashboardRequestBlocksItemCase2Case15ConfigDimensionsItemCase2ValuesList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase2Case15ConfigDimensionsItemCase2ValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case15ConfigDimensionsItemCase2ValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case15ConfigDimensionsItemCase2ValuesList>;
 
 export interface UpdateDashboardRequestBlocksItemCase2Case15ConfigDimensionsItemCase2 {
   dimensionType: string;
@@ -56913,15 +54525,7 @@ export interface UpdateDashboardRequestBlocksItemCase2Case15ConfigDimensionsItem
   values: UpdateDashboardRequestBlocksItemCase2Case15ConfigDimensionsItemCase2ValuesList;
 }
 export const UpdateDashboardRequestBlocksItemCase2Case15ConfigDimensionsItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.String,
-      values: UpdateDashboardRequestBlocksItemCase2Case15ConfigDimensionsItemCase2ValuesList,
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase2Case15ConfigDimensionsItemCase2",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case15ConfigDimensionsItemCase2>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case15ConfigDimensionsItemCase2>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case15ConfigDimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -56952,9 +54556,7 @@ export const UpdateDashboardRequestBlocksItemCase2Case15ConfigDimensionsItemCase
 export type UpdateDashboardRequestBlocksItemCase2Case15ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase2Case15ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case15ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case15ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface UpdateDashboardRequestBlocksItemCase2Case15ConfigDimensionsItemCase3SlicesItemFiltersItem {
   operator:
@@ -57130,9 +54732,7 @@ export const UpdateDashboardRequestBlocksItemCase2Case15ConfigDatasetStepsItemRo
 export type UpdateDashboardRequestBlocksItemCase2Case15ConfigDatasetStepsItemRowFiltersItemValuesList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase2Case15ConfigDatasetStepsItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case15ConfigDatasetStepsItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case15ConfigDatasetStepsItemRowFiltersItemValuesList>;
 
 export interface UpdateDashboardRequestBlocksItemCase2Case15ConfigDatasetStepsItemRowFiltersItem {
   operator:
@@ -57422,9 +55022,7 @@ export const UpdateDashboardRequestBlocksItemCase2Case16ConfigDimensionsItemCase
 export type UpdateDashboardRequestBlocksItemCase2Case16ConfigDimensionsItemCase2ValuesList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase2Case16ConfigDimensionsItemCase2ValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case16ConfigDimensionsItemCase2ValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case16ConfigDimensionsItemCase2ValuesList>;
 
 export interface UpdateDashboardRequestBlocksItemCase2Case16ConfigDimensionsItemCase2 {
   dimensionType: string;
@@ -57432,15 +55030,7 @@ export interface UpdateDashboardRequestBlocksItemCase2Case16ConfigDimensionsItem
   values: UpdateDashboardRequestBlocksItemCase2Case16ConfigDimensionsItemCase2ValuesList;
 }
 export const UpdateDashboardRequestBlocksItemCase2Case16ConfigDimensionsItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.String,
-      values: UpdateDashboardRequestBlocksItemCase2Case16ConfigDimensionsItemCase2ValuesList,
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase2Case16ConfigDimensionsItemCase2",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case16ConfigDimensionsItemCase2>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase2 as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case16ConfigDimensionsItemCase2>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case16ConfigDimensionsItemCase3SlicesItemFiltersItemOperator =
   | "="
@@ -57471,9 +55061,7 @@ export const UpdateDashboardRequestBlocksItemCase2Case16ConfigDimensionsItemCase
 export type UpdateDashboardRequestBlocksItemCase2Case16ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase2Case16ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case16ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case16ConfigDimensionsItemCase3SlicesItemFiltersItemValuesList>;
 
 export interface UpdateDashboardRequestBlocksItemCase2Case16ConfigDimensionsItemCase3SlicesItemFiltersItem {
   operator:
@@ -57669,9 +55257,7 @@ export const UpdateDashboardRequestBlocksItemCase2Case16ConfigDatasetValuesItemR
 export type UpdateDashboardRequestBlocksItemCase2Case16ConfigDatasetValuesItemRowFiltersItemValuesList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase2Case16ConfigDatasetValuesItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case16ConfigDatasetValuesItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case16ConfigDatasetValuesItemRowFiltersItemValuesList>;
 
 export interface UpdateDashboardRequestBlocksItemCase2Case16ConfigDatasetValuesItemRowFiltersItem {
   operator:
@@ -57741,9 +55327,7 @@ export const UpdateDashboardRequestBlocksItemCase2Case16ConfigDatasetValuesList 
 export type UpdateDashboardRequestBlocksItemCase2Case16ConfigDatasetHiddenColumnsList =
   Array<string>;
 export const UpdateDashboardRequestBlocksItemCase2Case16ConfigDatasetHiddenColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case16ConfigDatasetHiddenColumnsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case16ConfigDatasetHiddenColumnsList>;
 
 export interface UpdateDashboardRequestBlocksItemCase2Case16ConfigDataset {
   type: string;
@@ -57900,11 +55484,8 @@ export const UpdateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDashboardResponse {
   dashboard: Dashboard;
 }
-export const UpdateDashboardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dashboard: Dashboard,
-  }),
-).annotate({ identifier: "UpdateDashboardResponse" }) as any as S.Schema<UpdateDashboardResponse>;
+export const UpdateDashboardResponse =
+  GetDashboardResponse as any as S.Schema<UpdateDashboardResponse>;
 
 /** Where this dimension must be managed from. If not set (empty string), it can be managed from anywhere. */
 export type UpdateDimensionRequestManagedBy = "" | "api";
@@ -57944,11 +55525,8 @@ export const UpdateDimensionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDimensionResponse {
   dimension: Dimension;
 }
-export const UpdateDimensionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimension: Dimension,
-  }),
-).annotate({ identifier: "UpdateDimensionResponse" }) as any as S.Schema<UpdateDimensionResponse>;
+export const UpdateDimensionResponse =
+  CreateDimensionResponse as any as S.Schema<UpdateDimensionResponse>;
 
 /** The assignment query, grouping its ID with the identifier type analyzed on. Mutually exclusive with the deprecated `assignmentQueryId`. */
 export type UpdateExperimentRequestAssignmentQuery =
@@ -57960,24 +55538,20 @@ export type UpdateExperimentRequestType = "standard" | "multi-armed-bandit";
 export const UpdateExperimentRequestType = S.String;
 
 export type UpdateExperimentRequestTagsList = Array<string>;
-export const UpdateExperimentRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateExperimentRequestTagsList>;
+export const UpdateExperimentRequestTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateExperimentRequestTagsList>;
 
 export type UpdateExperimentRequestMetricsList = Array<string>;
-export const UpdateExperimentRequestMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateExperimentRequestMetricsList>;
+export const UpdateExperimentRequestMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateExperimentRequestMetricsList>;
 
 export type UpdateExperimentRequestSecondaryMetricsList = Array<string>;
-export const UpdateExperimentRequestSecondaryMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateExperimentRequestSecondaryMetricsList>;
+export const UpdateExperimentRequestSecondaryMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateExperimentRequestSecondaryMetricsList>;
 
 export type UpdateExperimentRequestGuardrailMetricsList = Array<string>;
-export const UpdateExperimentRequestGuardrailMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateExperimentRequestGuardrailMetricsList>;
+export const UpdateExperimentRequestGuardrailMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateExperimentRequestGuardrailMetricsList>;
 
 export type UpdateExperimentRequestStatus = "draft" | "running" | "stopped";
 export const UpdateExperimentRequestStatus = S.String;
@@ -58040,9 +55614,8 @@ export const UpdateExperimentRequestVariationsItemScreenshotsItem =
 
 export type UpdateExperimentRequestVariationsItemScreenshotsList =
   Array<CreateExperimentRequestVariationsItemScreenshotsItem>;
-export const UpdateExperimentRequestVariationsItemScreenshotsList = /*@__PURE__*/ S.Array(
-  CreateExperimentRequestVariationsItemScreenshotsItem,
-) as any as S.Schema<UpdateExperimentRequestVariationsItemScreenshotsList>;
+export const UpdateExperimentRequestVariationsItemScreenshotsList =
+  CreateExperimentRequestVariationsItemScreenshotsList as any as S.Schema<UpdateExperimentRequestVariationsItemScreenshotsList>;
 
 export interface UpdateExperimentRequestVariationsItem {
   /** Stable variation id. On update, an omitted id is filled from the stored variation with the same key, or the same position, when the number of variations is unchanged. */
@@ -58054,28 +55627,16 @@ export interface UpdateExperimentRequestVariationsItem {
   description?: string;
   screenshots?: UpdateExperimentRequestVariationsItemScreenshotsList;
 }
-export const UpdateExperimentRequestVariationsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    variationId: S.optional(S.String),
-    key: S.String,
-    name: S.String,
-    description: S.optional(S.String),
-    screenshots: S.optional(UpdateExperimentRequestVariationsItemScreenshotsList),
-  }),
-).annotate({
-  identifier: "UpdateExperimentRequestVariationsItem",
-}) as any as S.Schema<UpdateExperimentRequestVariationsItem>;
+export const UpdateExperimentRequestVariationsItem =
+  CreateExperimentRequestVariationsItem as any as S.Schema<UpdateExperimentRequestVariationsItem>;
 
 export type UpdateExperimentRequestVariationsList = Array<UpdateExperimentRequestVariationsItem>;
-export const UpdateExperimentRequestVariationsList = /*@__PURE__*/ S.Array(
-  UpdateExperimentRequestVariationsItem,
-) as any as S.Schema<UpdateExperimentRequestVariationsList>;
+export const UpdateExperimentRequestVariationsList =
+  CreateExperimentRequestVariationsList as any as S.Schema<UpdateExperimentRequestVariationsList>;
 
 export type UpdateExperimentRequestPhasesItemNamespaceRangeList = Array<number>;
-export const UpdateExperimentRequestPhasesItemNamespaceRangeList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateExperimentRequestPhasesItemNamespaceRangeList>;
+export const UpdateExperimentRequestPhasesItemNamespaceRangeList =
+  CreateCustomFieldRequestDefaultValueCase6List as any as S.Schema<UpdateExperimentRequestPhasesItemNamespaceRangeList>;
 
 export interface UpdateExperimentRequestPhasesItemNamespace {
   namespaceId: string;
@@ -58099,17 +55660,15 @@ export const UpdateExperimentRequestPhasesItemPrerequisitesItem =
 
 export type UpdateExperimentRequestPhasesItemPrerequisitesList =
   Array<CreateExperimentRequestPhasesItemPrerequisitesItem>;
-export const UpdateExperimentRequestPhasesItemPrerequisitesList = /*@__PURE__*/ S.Array(
-  CreateExperimentRequestPhasesItemPrerequisitesItem,
-) as any as S.Schema<UpdateExperimentRequestPhasesItemPrerequisitesList>;
+export const UpdateExperimentRequestPhasesItemPrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<UpdateExperimentRequestPhasesItemPrerequisitesList>;
 
 export type UpdateExperimentRequestPhasesItemSavedGroupsItemMatch = "all" | "none" | "any";
 export const UpdateExperimentRequestPhasesItemSavedGroupsItemMatch = S.String;
 
 export type UpdateExperimentRequestPhasesItemSavedGroupsItemIdsList = Array<string>;
-export const UpdateExperimentRequestPhasesItemSavedGroupsItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateExperimentRequestPhasesItemSavedGroupsItemIdsList>;
+export const UpdateExperimentRequestPhasesItemSavedGroupsItemIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateExperimentRequestPhasesItemSavedGroupsItemIdsList>;
 
 export interface UpdateExperimentRequestPhasesItemSavedGroupsItem {
   match: UpdateExperimentRequestPhasesItemSavedGroupsItemMatch | (string & {});
@@ -58138,9 +55697,7 @@ export const UpdateExperimentRequestPhasesItemSavedGroupTargetingItemMatchType =
 
 export type UpdateExperimentRequestPhasesItemSavedGroupTargetingItemSavedGroupsList = Array<string>;
 export const UpdateExperimentRequestPhasesItemSavedGroupTargetingItemSavedGroupsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateExperimentRequestPhasesItemSavedGroupTargetingItemSavedGroupsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateExperimentRequestPhasesItemSavedGroupTargetingItemSavedGroupsList>;
 
 export interface UpdateExperimentRequestPhasesItemSavedGroupTargetingItem {
   matchType: UpdateExperimentRequestPhasesItemSavedGroupTargetingItemMatchType | (string & {});
@@ -58165,9 +55722,8 @@ export const UpdateExperimentRequestPhasesItemSavedGroupTargetingList = /*@__PUR
 
 /** Deprecated: use `trafficSplit`. Takes precedence if set. */
 export type UpdateExperimentRequestPhasesItemVariationWeightsList = Array<number>;
-export const UpdateExperimentRequestPhasesItemVariationWeightsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateExperimentRequestPhasesItemVariationWeightsList>;
+export const UpdateExperimentRequestPhasesItemVariationWeightsList =
+  CreateCustomFieldRequestDefaultValueCase6List as any as S.Schema<UpdateExperimentRequestPhasesItemVariationWeightsList>;
 
 export type UpdateExperimentRequestPhasesItemTrafficSplitItem =
   ContextualBanditVariationWeightsItem;
@@ -58177,9 +55733,8 @@ export const UpdateExperimentRequestPhasesItemTrafficSplitItem =
 /** Per-variation weights. Mirrors the GET response. */
 export type UpdateExperimentRequestPhasesItemTrafficSplitList =
   Array<ContextualBanditVariationWeightsItem>;
-export const UpdateExperimentRequestPhasesItemTrafficSplitList = /*@__PURE__*/ S.Array(
-  ContextualBanditVariationWeightsItem,
-) as any as S.Schema<UpdateExperimentRequestPhasesItemTrafficSplitList>;
+export const UpdateExperimentRequestPhasesItemTrafficSplitList =
+  ContextualBanditVariationWeightsList as any as S.Schema<UpdateExperimentRequestPhasesItemTrafficSplitList>;
 
 export interface UpdateExperimentRequestPhasesItem {
   name: string;
@@ -58251,25 +55806,15 @@ export const UpdateExperimentRequestDecisionFrameworkSettingsDecisionFrameworkMe
 export type UpdateExperimentRequestDecisionFrameworkSettingsDecisionFrameworkMetricOverridesList =
   Array<CreateExperimentRequestDecisionFrameworkSettingsDecisionFrameworkMetricOverridesItem>;
 export const UpdateExperimentRequestDecisionFrameworkSettingsDecisionFrameworkMetricOverridesList =
-  /*@__PURE__*/ S.Array(
-    CreateExperimentRequestDecisionFrameworkSettingsDecisionFrameworkMetricOverridesItem,
-  ) as any as S.Schema<UpdateExperimentRequestDecisionFrameworkSettingsDecisionFrameworkMetricOverridesList>;
+  CreateExperimentRequestDecisionFrameworkSettingsDecisionFrameworkMetricOverridesList as any as S.Schema<UpdateExperimentRequestDecisionFrameworkSettingsDecisionFrameworkMetricOverridesList>;
 
 /** Controls the decision framework and metric overrides for the experiment. Replaces the entire stored object on update (does not patch individual fields). */
 export interface UpdateExperimentRequestDecisionFrameworkSettings {
   decisionCriteriaId?: string;
   decisionFrameworkMetricOverrides?: UpdateExperimentRequestDecisionFrameworkSettingsDecisionFrameworkMetricOverridesList;
 }
-export const UpdateExperimentRequestDecisionFrameworkSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    decisionCriteriaId: S.optional(S.String),
-    decisionFrameworkMetricOverrides: S.optional(
-      UpdateExperimentRequestDecisionFrameworkSettingsDecisionFrameworkMetricOverridesList,
-    ),
-  }),
-).annotate({
-  identifier: "UpdateExperimentRequestDecisionFrameworkSettings",
-}) as any as S.Schema<UpdateExperimentRequestDecisionFrameworkSettings>;
+export const UpdateExperimentRequestDecisionFrameworkSettings =
+  CreateExperimentRequestDecisionFrameworkSettings as any as S.Schema<UpdateExperimentRequestDecisionFrameworkSettings>;
 
 export type UpdateExperimentRequestMetricOverridesItemWindowType = "conversion" | "lookback" | "";
 export const UpdateExperimentRequestMetricOverridesItemWindowType = S.String;
@@ -58317,53 +55862,36 @@ export const UpdateExperimentRequestMetricOverridesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UpdateExperimentRequestMetricOverridesList>;
 
 export type UpdateExperimentRequestCustomFieldsMap = { [key: string]: string | undefined };
-export const UpdateExperimentRequestCustomFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateExperimentRequestCustomFieldsMap>;
+export const UpdateExperimentRequestCustomFieldsMap =
+  ConstantEnvironmentValuesMap as any as S.Schema<UpdateExperimentRequestCustomFieldsMap>;
 
 export type UpdateExperimentRequestCustomMetricSlicesItemSlicesItemLevelsList = Array<string>;
 export const UpdateExperimentRequestCustomMetricSlicesItemSlicesItemLevelsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateExperimentRequestCustomMetricSlicesItemSlicesItemLevelsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateExperimentRequestCustomMetricSlicesItemSlicesItemLevelsList>;
 
 export interface UpdateExperimentRequestCustomMetricSlicesItemSlicesItem {
   column: string;
   levels: UpdateExperimentRequestCustomMetricSlicesItemSlicesItemLevelsList;
 }
-export const UpdateExperimentRequestCustomMetricSlicesItemSlicesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    column: S.String,
-    levels: UpdateExperimentRequestCustomMetricSlicesItemSlicesItemLevelsList,
-  }),
-).annotate({
-  identifier: "UpdateExperimentRequestCustomMetricSlicesItemSlicesItem",
-}) as any as S.Schema<UpdateExperimentRequestCustomMetricSlicesItemSlicesItem>;
+export const UpdateExperimentRequestCustomMetricSlicesItemSlicesItem =
+  CreateExperimentRequestCustomMetricSlicesItemSlicesItem as any as S.Schema<UpdateExperimentRequestCustomMetricSlicesItemSlicesItem>;
 
 export type UpdateExperimentRequestCustomMetricSlicesItemSlicesList =
   Array<UpdateExperimentRequestCustomMetricSlicesItemSlicesItem>;
-export const UpdateExperimentRequestCustomMetricSlicesItemSlicesList = /*@__PURE__*/ S.Array(
-  UpdateExperimentRequestCustomMetricSlicesItemSlicesItem,
-) as any as S.Schema<UpdateExperimentRequestCustomMetricSlicesItemSlicesList>;
+export const UpdateExperimentRequestCustomMetricSlicesItemSlicesList =
+  CreateExperimentRequestCustomMetricSlicesItemSlicesList as any as S.Schema<UpdateExperimentRequestCustomMetricSlicesItemSlicesList>;
 
 export interface UpdateExperimentRequestCustomMetricSlicesItem {
   slices: UpdateExperimentRequestCustomMetricSlicesItemSlicesList;
 }
-export const UpdateExperimentRequestCustomMetricSlicesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    slices: UpdateExperimentRequestCustomMetricSlicesItemSlicesList,
-  }),
-).annotate({
-  identifier: "UpdateExperimentRequestCustomMetricSlicesItem",
-}) as any as S.Schema<UpdateExperimentRequestCustomMetricSlicesItem>;
+export const UpdateExperimentRequestCustomMetricSlicesItem =
+  CreateExperimentRequestCustomMetricSlicesItem as any as S.Schema<UpdateExperimentRequestCustomMetricSlicesItem>;
 
 /** Custom slices that apply to ALL applicable metrics in the experiment */
 export type UpdateExperimentRequestCustomMetricSlicesList =
   Array<UpdateExperimentRequestCustomMetricSlicesItem>;
-export const UpdateExperimentRequestCustomMetricSlicesList = /*@__PURE__*/ S.Array(
-  UpdateExperimentRequestCustomMetricSlicesItem,
-) as any as S.Schema<UpdateExperimentRequestCustomMetricSlicesList>;
+export const UpdateExperimentRequestCustomMetricSlicesList =
+  CreateExperimentRequestCustomMetricSlicesList as any as S.Schema<UpdateExperimentRequestCustomMetricSlicesList>;
 
 export type UpdateExperimentRequestStatusUpdateScheduleStopAfterUnit = "hours" | "days";
 export const UpdateExperimentRequestStatusUpdateScheduleStopAfterUnit = S.String;
@@ -58405,9 +55933,8 @@ export const UpdateExperimentRequestStatusUpdateSchedule = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<UpdateExperimentRequestStatusUpdateSchedule>;
 
 export type UpdateExperimentRequestPrecomputedUnitDimensionIdsList = Array<string>;
-export const UpdateExperimentRequestPrecomputedUnitDimensionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateExperimentRequestPrecomputedUnitDimensionIdsList>;
+export const UpdateExperimentRequestPrecomputedUnitDimensionIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateExperimentRequestPrecomputedUnitDimensionIdsList>;
 
 export interface UpdateExperimentRequest {
   /** The id of the requested resource */
@@ -58566,11 +56093,8 @@ export const UpdateExperimentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateExperimentResponse {
   experiment: Experiment;
 }
-export const UpdateExperimentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    experiment: Experiment,
-  }),
-).annotate({ identifier: "UpdateExperimentResponse" }) as any as S.Schema<UpdateExperimentResponse>;
+export const UpdateExperimentResponse =
+  CreateExperimentResponse as any as S.Schema<UpdateExperimentResponse>;
 
 export type UpdateExperimentTemplateRequestTemplateMetadata =
   BulkImportExperimentTemplatesRequestTemplatesItemDataTemplateMetadata;
@@ -58581,15 +56105,12 @@ export type UpdateExperimentTemplateRequestType = "standard";
 export const UpdateExperimentTemplateRequestType = S.String;
 
 export type UpdateExperimentTemplateRequestTagsList = Array<string>;
-export const UpdateExperimentTemplateRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateExperimentTemplateRequestTagsList>;
+export const UpdateExperimentTemplateRequestTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateExperimentTemplateRequestTagsList>;
 
 export type UpdateExperimentTemplateRequestCustomFieldsMap = { [key: string]: string | undefined };
-export const UpdateExperimentTemplateRequestCustomFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateExperimentTemplateRequestCustomFieldsMap>;
+export const UpdateExperimentTemplateRequestCustomFieldsMap =
+  ConstantEnvironmentValuesMap as any as S.Schema<UpdateExperimentTemplateRequestCustomFieldsMap>;
 
 /** The assignment query, grouping its ID with the identifier type analyzed on. Mutually exclusive with the deprecated `exposureQueryId`. */
 export type UpdateExperimentTemplateRequestExposureQuery =
@@ -58598,19 +56119,16 @@ export const UpdateExperimentTemplateRequestExposureQuery =
   BulkImportExperimentTemplatesRequestTemplatesItemDataExposureQuery;
 
 export type UpdateExperimentTemplateRequestGoalMetricsList = Array<string>;
-export const UpdateExperimentTemplateRequestGoalMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateExperimentTemplateRequestGoalMetricsList>;
+export const UpdateExperimentTemplateRequestGoalMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateExperimentTemplateRequestGoalMetricsList>;
 
 export type UpdateExperimentTemplateRequestSecondaryMetricsList = Array<string>;
-export const UpdateExperimentTemplateRequestSecondaryMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateExperimentTemplateRequestSecondaryMetricsList>;
+export const UpdateExperimentTemplateRequestSecondaryMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateExperimentTemplateRequestSecondaryMetricsList>;
 
 export type UpdateExperimentTemplateRequestGuardrailMetricsList = Array<string>;
-export const UpdateExperimentTemplateRequestGuardrailMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateExperimentTemplateRequestGuardrailMetricsList>;
+export const UpdateExperimentTemplateRequestGuardrailMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateExperimentTemplateRequestGuardrailMetricsList>;
 
 export type UpdateExperimentTemplateRequestStatsEngine = "bayesian" | "frequentist";
 export const UpdateExperimentTemplateRequestStatsEngine = S.String;
@@ -58619,9 +56137,8 @@ export type UpdateExperimentTemplateRequestTargetingSavedGroupsItemMatch = "all"
 export const UpdateExperimentTemplateRequestTargetingSavedGroupsItemMatch = S.String;
 
 export type UpdateExperimentTemplateRequestTargetingSavedGroupsItemIdsList = Array<string>;
-export const UpdateExperimentTemplateRequestTargetingSavedGroupsItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateExperimentTemplateRequestTargetingSavedGroupsItemIdsList>;
+export const UpdateExperimentTemplateRequestTargetingSavedGroupsItemIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateExperimentTemplateRequestTargetingSavedGroupsItemIdsList>;
 
 export interface UpdateExperimentTemplateRequestTargetingSavedGroupsItem {
   match: UpdateExperimentTemplateRequestTargetingSavedGroupsItemMatch | (string & {});
@@ -58649,9 +56166,8 @@ export const UpdateExperimentTemplateRequestTargetingPrerequisitesItem =
 
 export type UpdateExperimentTemplateRequestTargetingPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
-export const UpdateExperimentTemplateRequestTargetingPrerequisitesList = /*@__PURE__*/ S.Array(
-  RampScheduleStartActionsItemPatchPrerequisitesItem,
-) as any as S.Schema<UpdateExperimentTemplateRequestTargetingPrerequisitesList>;
+export const UpdateExperimentTemplateRequestTargetingPrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<UpdateExperimentTemplateRequestTargetingPrerequisitesList>;
 
 export interface UpdateExperimentTemplateRequestTargeting {
   coverage: number;
@@ -58673,47 +56189,30 @@ export const UpdateExperimentTemplateRequestTargeting = /*@__PURE__*/ S.suspend(
 export type UpdateExperimentTemplateRequestCustomMetricSlicesItemSlicesItemLevelsList =
   Array<string>;
 export const UpdateExperimentTemplateRequestCustomMetricSlicesItemSlicesItemLevelsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateExperimentTemplateRequestCustomMetricSlicesItemSlicesItemLevelsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateExperimentTemplateRequestCustomMetricSlicesItemSlicesItemLevelsList>;
 
 export interface UpdateExperimentTemplateRequestCustomMetricSlicesItemSlicesItem {
   column: string;
   levels: UpdateExperimentTemplateRequestCustomMetricSlicesItemSlicesItemLevelsList;
 }
 export const UpdateExperimentTemplateRequestCustomMetricSlicesItemSlicesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      column: S.String,
-      levels: UpdateExperimentTemplateRequestCustomMetricSlicesItemSlicesItemLevelsList,
-    }),
-  ).annotate({
-    identifier: "UpdateExperimentTemplateRequestCustomMetricSlicesItemSlicesItem",
-  }) as any as S.Schema<UpdateExperimentTemplateRequestCustomMetricSlicesItemSlicesItem>;
+  CreateExperimentTemplateRequestCustomMetricSlicesItemSlicesItem as any as S.Schema<UpdateExperimentTemplateRequestCustomMetricSlicesItemSlicesItem>;
 
 export type UpdateExperimentTemplateRequestCustomMetricSlicesItemSlicesList =
   Array<UpdateExperimentTemplateRequestCustomMetricSlicesItemSlicesItem>;
 export const UpdateExperimentTemplateRequestCustomMetricSlicesItemSlicesList =
-  /*@__PURE__*/ S.Array(
-    UpdateExperimentTemplateRequestCustomMetricSlicesItemSlicesItem,
-  ) as any as S.Schema<UpdateExperimentTemplateRequestCustomMetricSlicesItemSlicesList>;
+  CreateExperimentTemplateRequestCustomMetricSlicesItemSlicesList as any as S.Schema<UpdateExperimentTemplateRequestCustomMetricSlicesItemSlicesList>;
 
 export interface UpdateExperimentTemplateRequestCustomMetricSlicesItem {
   slices: UpdateExperimentTemplateRequestCustomMetricSlicesItemSlicesList;
 }
-export const UpdateExperimentTemplateRequestCustomMetricSlicesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    slices: UpdateExperimentTemplateRequestCustomMetricSlicesItemSlicesList,
-  }),
-).annotate({
-  identifier: "UpdateExperimentTemplateRequestCustomMetricSlicesItem",
-}) as any as S.Schema<UpdateExperimentTemplateRequestCustomMetricSlicesItem>;
+export const UpdateExperimentTemplateRequestCustomMetricSlicesItem =
+  CreateExperimentTemplateRequestCustomMetricSlicesItem as any as S.Schema<UpdateExperimentTemplateRequestCustomMetricSlicesItem>;
 
 export type UpdateExperimentTemplateRequestCustomMetricSlicesList =
   Array<UpdateExperimentTemplateRequestCustomMetricSlicesItem>;
-export const UpdateExperimentTemplateRequestCustomMetricSlicesList = /*@__PURE__*/ S.Array(
-  UpdateExperimentTemplateRequestCustomMetricSlicesItem,
-) as any as S.Schema<UpdateExperimentTemplateRequestCustomMetricSlicesList>;
+export const UpdateExperimentTemplateRequestCustomMetricSlicesList =
+  CreateExperimentTemplateRequestCustomMetricSlicesList as any as S.Schema<UpdateExperimentTemplateRequestCustomMetricSlicesList>;
 
 export interface UpdateExperimentTemplateRequest {
   id: string;
@@ -58777,23 +56276,16 @@ export const UpdateExperimentTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateExperimentTemplateResponse {
   experimentTemplate: ExperimentTemplate;
 }
-export const UpdateExperimentTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    experimentTemplate: ExperimentTemplate,
-  }),
-).annotate({
-  identifier: "UpdateExperimentTemplateResponse",
-}) as any as S.Schema<UpdateExperimentTemplateResponse>;
+export const UpdateExperimentTemplateResponse =
+  CreateExperimentTemplateResponse as any as S.Schema<UpdateExperimentTemplateResponse>;
 
 export type UpdateFactMetricRequestProjectsList = Array<string>;
-export const UpdateFactMetricRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFactMetricRequestProjectsList>;
+export const UpdateFactMetricRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateFactMetricRequestProjectsList>;
 
 export type UpdateFactMetricRequestTagsList = Array<string>;
-export const UpdateFactMetricRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFactMetricRequestTagsList>;
+export const UpdateFactMetricRequestTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateFactMetricRequestTagsList>;
 
 export type UpdateFactMetricRequestMetricType =
   | "proportion"
@@ -58816,23 +56308,19 @@ export const UpdateFactMetricRequestNumeratorAggregation = S.String;
 
 /** Array of Fact Table Filter Ids. Deprecated, use rowFilters instead. */
 export type UpdateFactMetricRequestNumeratorFiltersList = Array<string>;
-export const UpdateFactMetricRequestNumeratorFiltersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFactMetricRequestNumeratorFiltersList>;
+export const UpdateFactMetricRequestNumeratorFiltersList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateFactMetricRequestNumeratorFiltersList>;
 
 export type UpdateFactMetricRequestNumeratorInlineFiltersValueList = Array<string>;
-export const UpdateFactMetricRequestNumeratorInlineFiltersValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFactMetricRequestNumeratorInlineFiltersValueList>;
+export const UpdateFactMetricRequestNumeratorInlineFiltersValueList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateFactMetricRequestNumeratorInlineFiltersValueList>;
 
 /** Inline filters to apply to the fact table. Keys are column names, values are arrays of values to filter by. Deprecated, use rowFilters instead. */
 export type UpdateFactMetricRequestNumeratorInlineFiltersMap = {
   [key: string]: UpdateFactMetricRequestNumeratorInlineFiltersValueList | undefined;
 };
-export const UpdateFactMetricRequestNumeratorInlineFiltersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateFactMetricRequestNumeratorInlineFiltersValueList,
-) as any as S.Schema<UpdateFactMetricRequestNumeratorInlineFiltersMap>;
+export const UpdateFactMetricRequestNumeratorInlineFiltersMap =
+  FactMetricNumeratorInlineFiltersMap as any as S.Schema<UpdateFactMetricRequestNumeratorInlineFiltersMap>;
 
 export type UpdateFactMetricRequestNumeratorRowFiltersItemOperator =
   | "="
@@ -58861,9 +56349,8 @@ export const UpdateFactMetricRequestNumeratorRowFiltersItemOperator = S.String;
 
 /** Not required for is_null, not_null, is_true, is_false operators. The between and not_between operators take at most two values, a lower and an upper bound in that order; leave a bound as an empty string for an open-ended range. */
 export type UpdateFactMetricRequestNumeratorRowFiltersItemValuesList = Array<string>;
-export const UpdateFactMetricRequestNumeratorRowFiltersItemValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFactMetricRequestNumeratorRowFiltersItemValuesList>;
+export const UpdateFactMetricRequestNumeratorRowFiltersItemValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateFactMetricRequestNumeratorRowFiltersItemValuesList>;
 
 export interface UpdateFactMetricRequestNumeratorRowFiltersItem {
   operator: UpdateFactMetricRequestNumeratorRowFiltersItemOperator | (string & {});
@@ -58932,23 +56419,19 @@ export const UpdateFactMetricRequestDenominatorAggregation = S.String;
 
 /** Array of Fact Table Filter Ids. Deprecated, use rowFilters instead. */
 export type UpdateFactMetricRequestDenominatorFiltersList = Array<string>;
-export const UpdateFactMetricRequestDenominatorFiltersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFactMetricRequestDenominatorFiltersList>;
+export const UpdateFactMetricRequestDenominatorFiltersList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateFactMetricRequestDenominatorFiltersList>;
 
 export type UpdateFactMetricRequestDenominatorInlineFiltersValueList = Array<string>;
-export const UpdateFactMetricRequestDenominatorInlineFiltersValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFactMetricRequestDenominatorInlineFiltersValueList>;
+export const UpdateFactMetricRequestDenominatorInlineFiltersValueList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateFactMetricRequestDenominatorInlineFiltersValueList>;
 
 /** Inline filters to apply to the fact table. Keys are column names, values are arrays of values to filter by. Deprecated, use rowFilters instead. */
 export type UpdateFactMetricRequestDenominatorInlineFiltersMap = {
   [key: string]: UpdateFactMetricRequestDenominatorInlineFiltersValueList | undefined;
 };
-export const UpdateFactMetricRequestDenominatorInlineFiltersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateFactMetricRequestDenominatorInlineFiltersValueList,
-) as any as S.Schema<UpdateFactMetricRequestDenominatorInlineFiltersMap>;
+export const UpdateFactMetricRequestDenominatorInlineFiltersMap =
+  FactMetricNumeratorInlineFiltersMap as any as S.Schema<UpdateFactMetricRequestDenominatorInlineFiltersMap>;
 
 export type UpdateFactMetricRequestDenominatorRowFiltersItemOperator =
   | "="
@@ -58977,9 +56460,8 @@ export const UpdateFactMetricRequestDenominatorRowFiltersItemOperator = S.String
 
 /** Not required for is_null, not_null, is_true, is_false operators. The between and not_between operators take at most two values, a lower and an upper bound in that order; leave a bound as an empty string for an open-ended range. */
 export type UpdateFactMetricRequestDenominatorRowFiltersItemValuesList = Array<string>;
-export const UpdateFactMetricRequestDenominatorRowFiltersItemValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFactMetricRequestDenominatorRowFiltersItemValuesList>;
+export const UpdateFactMetricRequestDenominatorRowFiltersItemValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateFactMetricRequestDenominatorRowFiltersItemValuesList>;
 
 export interface UpdateFactMetricRequestDenominatorRowFiltersItem {
   operator: UpdateFactMetricRequestDenominatorRowFiltersItemOperator | (string & {});
@@ -59086,9 +56568,7 @@ export const UpdateFactMetricRequestFunnelSettingsStepsItemRowFiltersItemOperato
 /** Not required for is_null, not_null, is_true, is_false operators. The between and not_between operators take at most two values, a lower and an upper bound in that order; leave a bound as an empty string for an open-ended range. */
 export type UpdateFactMetricRequestFunnelSettingsStepsItemRowFiltersItemValuesList = Array<string>;
 export const UpdateFactMetricRequestFunnelSettingsStepsItemRowFiltersItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateFactMetricRequestFunnelSettingsStepsItemRowFiltersItemValuesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateFactMetricRequestFunnelSettingsStepsItemRowFiltersItemValuesList>;
 
 export interface UpdateFactMetricRequestFunnelSettingsStepsItemRowFiltersItem {
   operator: UpdateFactMetricRequestFunnelSettingsStepsItemRowFiltersItemOperator | (string & {});
@@ -59293,15 +56773,13 @@ export const UpdateFactMetricRequestManagedBy = S.String;
 
 /** Array of slice column names that will be automatically included in metric analysis. This is an enterprise feature. */
 export type UpdateFactMetricRequestMetricAutoSlicesList = Array<string>;
-export const UpdateFactMetricRequestMetricAutoSlicesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFactMetricRequestMetricAutoSlicesList>;
+export const UpdateFactMetricRequestMetricAutoSlicesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateFactMetricRequestMetricAutoSlicesList>;
 
 /** Ids of older metrics (legacy or fact) that this metric supersedes, for example the legacy metric it was migrated from. Cannot include this metric's own id. Informational only - GrowthBook uses it to link the old and new definitions in the UI and to keep showing results from a snapshot that was created before an experiment switched to this metric. This field can only be set through the API. */
 export type UpdateFactMetricRequestReplacesList = Array<string>;
-export const UpdateFactMetricRequestReplacesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFactMetricRequestReplacesList>;
+export const UpdateFactMetricRequestReplacesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateFactMetricRequestReplacesList>;
 
 export interface UpdateFactMetricRequest {
   /** The id of the requested resource */
@@ -59392,41 +56870,32 @@ export const UpdateFactMetricRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateFactMetricResponse {
   factMetric: FactMetric;
 }
-export const UpdateFactMetricResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    factMetric: FactMetric,
-  }),
-).annotate({ identifier: "UpdateFactMetricResponse" }) as any as S.Schema<UpdateFactMetricResponse>;
+export const UpdateFactMetricResponse =
+  GetFactMetricResponse as any as S.Schema<UpdateFactMetricResponse>;
 
 /** List of associated project ids */
 export type UpdateFactTableRequestProjectsList = Array<string>;
-export const UpdateFactTableRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFactTableRequestProjectsList>;
+export const UpdateFactTableRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateFactTableRequestProjectsList>;
 
 /** List of associated tags */
 export type UpdateFactTableRequestTagsList = Array<string>;
-export const UpdateFactTableRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFactTableRequestTagsList>;
+export const UpdateFactTableRequestTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateFactTableRequestTagsList>;
 
 /** List of identifier columns in this table. For example, "id" or "anonymous_id" */
 export type UpdateFactTableRequestUserIdTypesList = Array<string>;
-export const UpdateFactTableRequestUserIdTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFactTableRequestUserIdTypesList>;
+export const UpdateFactTableRequestUserIdTypesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateFactTableRequestUserIdTypesList>;
 
 /** Maps an identifier type to the column holding it, for SQL that does not alias its columns to the identifier type names, e.g. `{"user_id": "userId"}`. May also be a single-level field path into a JSON column (`properties.userId`). Unmapped types use the identifier type name as the column name. */
 export type UpdateFactTableRequestUserIdColumnsMap = { [key: string]: string | undefined };
-export const UpdateFactTableRequestUserIdColumnsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateFactTableRequestUserIdColumnsMap>;
+export const UpdateFactTableRequestUserIdColumnsMap =
+  ConstantEnvironmentValuesMap as any as S.Schema<UpdateFactTableRequestUserIdColumnsMap>;
 
 export type UpdateFactTableRequestAggregatedFactTableSettingsIdTypesList = Array<string>;
-export const UpdateFactTableRequestAggregatedFactTableSettingsIdTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFactTableRequestAggregatedFactTableSettingsIdTypesList>;
+export const UpdateFactTableRequestAggregatedFactTableSettingsIdTypesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateFactTableRequestAggregatedFactTableSettingsIdTypesList>;
 
 export type UpdateFactTableRequestAggregatedFactTableSettingsUpdateTime =
   CreateBulkImportFactRequestFactTablesItemDataAggregatedFactTableSettingsUpdateTime;
@@ -59440,22 +56909,13 @@ export interface UpdateFactTableRequestAggregatedFactTableSettings {
   lookbackWindow: number;
   restateChunkDays?: number;
 }
-export const UpdateFactTableRequestAggregatedFactTableSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    idTypes: UpdateFactTableRequestAggregatedFactTableSettingsIdTypesList,
-    updateTime: CreateBulkImportFactRequestFactTablesItemDataAggregatedFactTableSettingsUpdateTime,
-    lookbackWindow: S.Number,
-    restateChunkDays: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UpdateFactTableRequestAggregatedFactTableSettings",
-}) as any as S.Schema<UpdateFactTableRequestAggregatedFactTableSettings>;
+export const UpdateFactTableRequestAggregatedFactTableSettings =
+  CreateFactTableRequestAggregatedFactTableSettings as any as S.Schema<UpdateFactTableRequestAggregatedFactTableSettings>;
 
 /** Optional array of columns to upsert by `column`: existing columns are patched, new columns are created, and columns not included are left unchanged. Omit `datatype` to leave an existing column's type untouched; send "" to reset it for auto-detection; new columns are auto-detected when `datatype` is omitted or "". Slice-related properties require an enterprise license. */
 export type UpdateFactTableRequestColumnsList = Array<FactTableColumnInput>;
-export const UpdateFactTableRequestColumnsList = /*@__PURE__*/ S.Array(
-  FactTableColumnInput,
-) as any as S.Schema<UpdateFactTableRequestColumnsList>;
+export const UpdateFactTableRequestColumnsList =
+  CreateBulkImportFactRequestFactTablesItemDataColumnsList as any as S.Schema<UpdateFactTableRequestColumnsList>;
 
 /** Set this to "api" to disable editing in the GrowthBook UI */
 export type UpdateFactTableRequestManagedBy = "" | "api" | "admin";
@@ -59514,11 +56974,8 @@ export const UpdateFactTableRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateFactTableResponse {
   factTable: FactTable;
 }
-export const UpdateFactTableResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    factTable: FactTable,
-  }),
-).annotate({ identifier: "UpdateFactTableResponse" }) as any as S.Schema<UpdateFactTableResponse>;
+export const UpdateFactTableResponse =
+  CreateFactTableResponse as any as S.Schema<UpdateFactTableResponse>;
 
 /** Set this to "api" to disable editing in the GrowthBook UI. Before you do this, the Fact Table itself must also be marked as "api" */
 export type UpdateFactTableFilterRequestManagedBy = "" | "api";
@@ -59553,13 +57010,8 @@ export const UpdateFactTableFilterRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateFactTableFilterResponse {
   factTableFilter: FactTableFilter;
 }
-export const UpdateFactTableFilterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    factTableFilter: FactTableFilter,
-  }),
-).annotate({
-  identifier: "UpdateFactTableFilterResponse",
-}) as any as S.Schema<UpdateFactTableFilterResponse>;
+export const UpdateFactTableFilterResponse =
+  CreateFactTableFilterResponse as any as S.Schema<UpdateFactTableFilterResponse>;
 
 export type UpdateFactTableVirtualColumnRequestNumberFormat =
   | ""
@@ -59618,13 +57070,8 @@ export const UpdateFactTableVirtualColumnRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateFactTableVirtualColumnResponse {
   factTableColumn: FactTableColumn;
 }
-export const UpdateFactTableVirtualColumnResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    factTableColumn: FactTableColumn,
-  }),
-).annotate({
-  identifier: "UpdateFactTableVirtualColumnResponse",
-}) as any as S.Schema<UpdateFactTableVirtualColumnResponse>;
+export const UpdateFactTableVirtualColumnResponse =
+  CreateFactTableVirtualColumnResponse as any as S.Schema<UpdateFactTableVirtualColumnResponse>;
 
 /** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
 export type UpdateFeatureV2RequestSkipSchemaValidation = string | boolean;
@@ -59638,23 +57085,20 @@ export const UpdateFeatureV2RequestIgnoreWarnings =
 
 /** Secondary project IDs this feature is targeted in and served to, beyond its primary `project`. Adding a project requires the `targetFeatures` permission (FlagsTarget policy) in that project. Governance stays with `project`. */
 export type UpdateFeatureV2RequestTargetingProjectsList = Array<string>;
-export const UpdateFeatureV2RequestTargetingProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFeatureV2RequestTargetingProjectsList>;
+export const UpdateFeatureV2RequestTargetingProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateFeatureV2RequestTargetingProjectsList>;
 
 /** List of associated tags. Will override tags completely with submitted list */
 export type UpdateFeatureV2RequestTagsList = Array<string>;
-export const UpdateFeatureV2RequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFeatureV2RequestTagsList>;
+export const UpdateFeatureV2RequestTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateFeatureV2RequestTagsList>;
 
 export type UpdateFeatureV2RequestRulesItemCase0SavedGroupsItemMatch = "all" | "none" | "any";
 export const UpdateFeatureV2RequestRulesItemCase0SavedGroupsItemMatch = S.String;
 
 export type UpdateFeatureV2RequestRulesItemCase0SavedGroupsItemIdsList = Array<string>;
-export const UpdateFeatureV2RequestRulesItemCase0SavedGroupsItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFeatureV2RequestRulesItemCase0SavedGroupsItemIdsList>;
+export const UpdateFeatureV2RequestRulesItemCase0SavedGroupsItemIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateFeatureV2RequestRulesItemCase0SavedGroupsItemIdsList>;
 
 export interface UpdateFeatureV2RequestRulesItemCase0SavedGroupsItem {
   match: UpdateFeatureV2RequestRulesItemCase0SavedGroupsItemMatch | (string & {});
@@ -59684,9 +57128,7 @@ export const UpdateFeatureV2RequestRulesItemCase0SavedGroupTargetingItemMatchTyp
 export type UpdateFeatureV2RequestRulesItemCase0SavedGroupTargetingItemSavedGroupsList =
   Array<string>;
 export const UpdateFeatureV2RequestRulesItemCase0SavedGroupTargetingItemSavedGroupsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateFeatureV2RequestRulesItemCase0SavedGroupTargetingItemSavedGroupsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateFeatureV2RequestRulesItemCase0SavedGroupTargetingItemSavedGroupsList>;
 
 export interface UpdateFeatureV2RequestRulesItemCase0SavedGroupTargetingItem {
   matchType: UpdateFeatureV2RequestRulesItemCase0SavedGroupTargetingItemMatchType | (string & {});
@@ -59716,9 +57158,8 @@ export const UpdateFeatureV2RequestRulesItemCase0PrerequisitesItem =
 
 export type UpdateFeatureV2RequestRulesItemCase0PrerequisitesList =
   Array<CreateExperimentRequestPhasesItemPrerequisitesItem>;
-export const UpdateFeatureV2RequestRulesItemCase0PrerequisitesList = /*@__PURE__*/ S.Array(
-  CreateExperimentRequestPhasesItemPrerequisitesItem,
-) as any as S.Schema<UpdateFeatureV2RequestRulesItemCase0PrerequisitesList>;
+export const UpdateFeatureV2RequestRulesItemCase0PrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<UpdateFeatureV2RequestRulesItemCase0PrerequisitesList>;
 
 export type UpdateFeatureV2RequestRulesItemCase0ScheduleRulesItem =
   PostFeatureV2RequestRulesItemCase0ScheduleRulesItem;
@@ -59727,21 +57168,18 @@ export const UpdateFeatureV2RequestRulesItemCase0ScheduleRulesItem =
 
 export type UpdateFeatureV2RequestRulesItemCase0ScheduleRulesList =
   Array<PostFeatureV2RequestRulesItemCase0ScheduleRulesItem>;
-export const UpdateFeatureV2RequestRulesItemCase0ScheduleRulesList = /*@__PURE__*/ S.Array(
-  PostFeatureV2RequestRulesItemCase0ScheduleRulesItem,
-) as any as S.Schema<UpdateFeatureV2RequestRulesItemCase0ScheduleRulesList>;
+export const UpdateFeatureV2RequestRulesItemCase0ScheduleRulesList =
+  PostFeatureV2RequestRulesItemCase0ScheduleRulesList as any as S.Schema<UpdateFeatureV2RequestRulesItemCase0ScheduleRulesList>;
 
 /** Environment IDs the rule applies to. Ignored when allEnvironments is true; with allEnvironments false, an omitted or empty list scopes the rule to no environment. */
 export type UpdateFeatureV2RequestRulesItemCase0EnvironmentsList = Array<string>;
-export const UpdateFeatureV2RequestRulesItemCase0EnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFeatureV2RequestRulesItemCase0EnvironmentsList>;
+export const UpdateFeatureV2RequestRulesItemCase0EnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateFeatureV2RequestRulesItemCase0EnvironmentsList>;
 
 /** Specific project IDs this rule applies to. Used when allProjects is false. An empty array scopes the rule to no project. When the organization requires registered attributes with project scoping, the rule's attributes are validated against these projects rather than the whole feature's. */
 export type UpdateFeatureV2RequestRulesItemCase0ProjectsList = Array<string>;
-export const UpdateFeatureV2RequestRulesItemCase0ProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFeatureV2RequestRulesItemCase0ProjectsList>;
+export const UpdateFeatureV2RequestRulesItemCase0ProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateFeatureV2RequestRulesItemCase0ProjectsList>;
 
 export interface UpdateFeatureV2RequestRulesItemCase0 {
   description?: string;
@@ -59804,9 +57242,8 @@ export type UpdateFeatureV2RequestRulesItemCase1SavedGroupsItemMatch = "all" | "
 export const UpdateFeatureV2RequestRulesItemCase1SavedGroupsItemMatch = S.String;
 
 export type UpdateFeatureV2RequestRulesItemCase1SavedGroupsItemIdsList = Array<string>;
-export const UpdateFeatureV2RequestRulesItemCase1SavedGroupsItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFeatureV2RequestRulesItemCase1SavedGroupsItemIdsList>;
+export const UpdateFeatureV2RequestRulesItemCase1SavedGroupsItemIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateFeatureV2RequestRulesItemCase1SavedGroupsItemIdsList>;
 
 export interface UpdateFeatureV2RequestRulesItemCase1SavedGroupsItem {
   match: UpdateFeatureV2RequestRulesItemCase1SavedGroupsItemMatch | (string & {});
@@ -59836,9 +57273,7 @@ export const UpdateFeatureV2RequestRulesItemCase1SavedGroupTargetingItemMatchTyp
 export type UpdateFeatureV2RequestRulesItemCase1SavedGroupTargetingItemSavedGroupsList =
   Array<string>;
 export const UpdateFeatureV2RequestRulesItemCase1SavedGroupTargetingItemSavedGroupsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateFeatureV2RequestRulesItemCase1SavedGroupTargetingItemSavedGroupsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateFeatureV2RequestRulesItemCase1SavedGroupTargetingItemSavedGroupsList>;
 
 export interface UpdateFeatureV2RequestRulesItemCase1SavedGroupTargetingItem {
   matchType: UpdateFeatureV2RequestRulesItemCase1SavedGroupTargetingItemMatchType | (string & {});
@@ -59868,9 +57303,8 @@ export const UpdateFeatureV2RequestRulesItemCase1PrerequisitesItem =
 
 export type UpdateFeatureV2RequestRulesItemCase1PrerequisitesList =
   Array<CreateExperimentRequestPhasesItemPrerequisitesItem>;
-export const UpdateFeatureV2RequestRulesItemCase1PrerequisitesList = /*@__PURE__*/ S.Array(
-  CreateExperimentRequestPhasesItemPrerequisitesItem,
-) as any as S.Schema<UpdateFeatureV2RequestRulesItemCase1PrerequisitesList>;
+export const UpdateFeatureV2RequestRulesItemCase1PrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<UpdateFeatureV2RequestRulesItemCase1PrerequisitesList>;
 
 export type UpdateFeatureV2RequestRulesItemCase1ScheduleRulesItem =
   PostFeatureV2RequestRulesItemCase0ScheduleRulesItem;
@@ -59879,21 +57313,18 @@ export const UpdateFeatureV2RequestRulesItemCase1ScheduleRulesItem =
 
 export type UpdateFeatureV2RequestRulesItemCase1ScheduleRulesList =
   Array<PostFeatureV2RequestRulesItemCase0ScheduleRulesItem>;
-export const UpdateFeatureV2RequestRulesItemCase1ScheduleRulesList = /*@__PURE__*/ S.Array(
-  PostFeatureV2RequestRulesItemCase0ScheduleRulesItem,
-) as any as S.Schema<UpdateFeatureV2RequestRulesItemCase1ScheduleRulesList>;
+export const UpdateFeatureV2RequestRulesItemCase1ScheduleRulesList =
+  PostFeatureV2RequestRulesItemCase0ScheduleRulesList as any as S.Schema<UpdateFeatureV2RequestRulesItemCase1ScheduleRulesList>;
 
 /** Environment IDs the rule applies to. Ignored when allEnvironments is true; with allEnvironments false, an omitted or empty list scopes the rule to no environment. */
 export type UpdateFeatureV2RequestRulesItemCase1EnvironmentsList = Array<string>;
-export const UpdateFeatureV2RequestRulesItemCase1EnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFeatureV2RequestRulesItemCase1EnvironmentsList>;
+export const UpdateFeatureV2RequestRulesItemCase1EnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateFeatureV2RequestRulesItemCase1EnvironmentsList>;
 
 /** Specific project IDs this rule applies to. Used when allProjects is false. An empty array scopes the rule to no project. When the organization requires registered attributes with project scoping, the rule's attributes are validated against these projects rather than the whole feature's. */
 export type UpdateFeatureV2RequestRulesItemCase1ProjectsList = Array<string>;
-export const UpdateFeatureV2RequestRulesItemCase1ProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFeatureV2RequestRulesItemCase1ProjectsList>;
+export const UpdateFeatureV2RequestRulesItemCase1ProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateFeatureV2RequestRulesItemCase1ProjectsList>;
 
 export interface UpdateFeatureV2RequestRulesItemCase1 {
   description?: string;
@@ -59965,9 +57396,8 @@ export type UpdateFeatureV2RequestRulesItemCase2SavedGroupsItemMatch = "all" | "
 export const UpdateFeatureV2RequestRulesItemCase2SavedGroupsItemMatch = S.String;
 
 export type UpdateFeatureV2RequestRulesItemCase2SavedGroupsItemIdsList = Array<string>;
-export const UpdateFeatureV2RequestRulesItemCase2SavedGroupsItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFeatureV2RequestRulesItemCase2SavedGroupsItemIdsList>;
+export const UpdateFeatureV2RequestRulesItemCase2SavedGroupsItemIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateFeatureV2RequestRulesItemCase2SavedGroupsItemIdsList>;
 
 export interface UpdateFeatureV2RequestRulesItemCase2SavedGroupsItem {
   match: UpdateFeatureV2RequestRulesItemCase2SavedGroupsItemMatch | (string & {});
@@ -59997,9 +57427,7 @@ export const UpdateFeatureV2RequestRulesItemCase2SavedGroupTargetingItemMatchTyp
 export type UpdateFeatureV2RequestRulesItemCase2SavedGroupTargetingItemSavedGroupsList =
   Array<string>;
 export const UpdateFeatureV2RequestRulesItemCase2SavedGroupTargetingItemSavedGroupsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateFeatureV2RequestRulesItemCase2SavedGroupTargetingItemSavedGroupsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateFeatureV2RequestRulesItemCase2SavedGroupTargetingItemSavedGroupsList>;
 
 export interface UpdateFeatureV2RequestRulesItemCase2SavedGroupTargetingItem {
   matchType: UpdateFeatureV2RequestRulesItemCase2SavedGroupTargetingItemMatchType | (string & {});
@@ -60029,9 +57457,8 @@ export const UpdateFeatureV2RequestRulesItemCase2PrerequisitesItem =
 
 export type UpdateFeatureV2RequestRulesItemCase2PrerequisitesList =
   Array<CreateExperimentRequestPhasesItemPrerequisitesItem>;
-export const UpdateFeatureV2RequestRulesItemCase2PrerequisitesList = /*@__PURE__*/ S.Array(
-  CreateExperimentRequestPhasesItemPrerequisitesItem,
-) as any as S.Schema<UpdateFeatureV2RequestRulesItemCase2PrerequisitesList>;
+export const UpdateFeatureV2RequestRulesItemCase2PrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<UpdateFeatureV2RequestRulesItemCase2PrerequisitesList>;
 
 export type UpdateFeatureV2RequestRulesItemCase2ScheduleRulesItem =
   PostFeatureV2RequestRulesItemCase0ScheduleRulesItem;
@@ -60040,9 +57467,8 @@ export const UpdateFeatureV2RequestRulesItemCase2ScheduleRulesItem =
 
 export type UpdateFeatureV2RequestRulesItemCase2ScheduleRulesList =
   Array<PostFeatureV2RequestRulesItemCase0ScheduleRulesItem>;
-export const UpdateFeatureV2RequestRulesItemCase2ScheduleRulesList = /*@__PURE__*/ S.Array(
-  PostFeatureV2RequestRulesItemCase0ScheduleRulesItem,
-) as any as S.Schema<UpdateFeatureV2RequestRulesItemCase2ScheduleRulesList>;
+export const UpdateFeatureV2RequestRulesItemCase2ScheduleRulesList =
+  PostFeatureV2RequestRulesItemCase0ScheduleRulesList as any as S.Schema<UpdateFeatureV2RequestRulesItemCase2ScheduleRulesList>;
 
 export type UpdateFeatureV2RequestRulesItemCase2VariationsItem =
   PostFeatureV2RequestRulesItemCase2VariationsItem;
@@ -60051,21 +57477,18 @@ export const UpdateFeatureV2RequestRulesItemCase2VariationsItem =
 
 export type UpdateFeatureV2RequestRulesItemCase2VariationsList =
   Array<PostFeatureV2RequestRulesItemCase2VariationsItem>;
-export const UpdateFeatureV2RequestRulesItemCase2VariationsList = /*@__PURE__*/ S.Array(
-  PostFeatureV2RequestRulesItemCase2VariationsItem,
-) as any as S.Schema<UpdateFeatureV2RequestRulesItemCase2VariationsList>;
+export const UpdateFeatureV2RequestRulesItemCase2VariationsList =
+  FeatureRuleV2VariationsList as any as S.Schema<UpdateFeatureV2RequestRulesItemCase2VariationsList>;
 
 /** Environment IDs the rule applies to. Ignored when allEnvironments is true; with allEnvironments false, an omitted or empty list scopes the rule to no environment. */
 export type UpdateFeatureV2RequestRulesItemCase2EnvironmentsList = Array<string>;
-export const UpdateFeatureV2RequestRulesItemCase2EnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFeatureV2RequestRulesItemCase2EnvironmentsList>;
+export const UpdateFeatureV2RequestRulesItemCase2EnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateFeatureV2RequestRulesItemCase2EnvironmentsList>;
 
 /** Specific project IDs this rule applies to. Used when allProjects is false. An empty array scopes the rule to no project. When the organization requires registered attributes with project scoping, the rule's attributes are validated against these projects rather than the whole feature's. */
 export type UpdateFeatureV2RequestRulesItemCase2ProjectsList = Array<string>;
-export const UpdateFeatureV2RequestRulesItemCase2ProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFeatureV2RequestRulesItemCase2ProjectsList>;
+export const UpdateFeatureV2RequestRulesItemCase2ProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateFeatureV2RequestRulesItemCase2ProjectsList>;
 
 export interface UpdateFeatureV2RequestRulesItemCase2 {
   description?: string;
@@ -60127,9 +57550,8 @@ export type UpdateFeatureV2RequestRulesItemCase3SavedGroupsItemMatch = "all" | "
 export const UpdateFeatureV2RequestRulesItemCase3SavedGroupsItemMatch = S.String;
 
 export type UpdateFeatureV2RequestRulesItemCase3SavedGroupsItemIdsList = Array<string>;
-export const UpdateFeatureV2RequestRulesItemCase3SavedGroupsItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFeatureV2RequestRulesItemCase3SavedGroupsItemIdsList>;
+export const UpdateFeatureV2RequestRulesItemCase3SavedGroupsItemIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateFeatureV2RequestRulesItemCase3SavedGroupsItemIdsList>;
 
 export interface UpdateFeatureV2RequestRulesItemCase3SavedGroupsItem {
   match: UpdateFeatureV2RequestRulesItemCase3SavedGroupsItemMatch | (string & {});
@@ -60159,9 +57581,7 @@ export const UpdateFeatureV2RequestRulesItemCase3SavedGroupTargetingItemMatchTyp
 export type UpdateFeatureV2RequestRulesItemCase3SavedGroupTargetingItemSavedGroupsList =
   Array<string>;
 export const UpdateFeatureV2RequestRulesItemCase3SavedGroupTargetingItemSavedGroupsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateFeatureV2RequestRulesItemCase3SavedGroupTargetingItemSavedGroupsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateFeatureV2RequestRulesItemCase3SavedGroupTargetingItemSavedGroupsList>;
 
 export interface UpdateFeatureV2RequestRulesItemCase3SavedGroupTargetingItem {
   matchType: UpdateFeatureV2RequestRulesItemCase3SavedGroupTargetingItemMatchType | (string & {});
@@ -60191,9 +57611,8 @@ export const UpdateFeatureV2RequestRulesItemCase3PrerequisitesItem =
 
 export type UpdateFeatureV2RequestRulesItemCase3PrerequisitesList =
   Array<CreateExperimentRequestPhasesItemPrerequisitesItem>;
-export const UpdateFeatureV2RequestRulesItemCase3PrerequisitesList = /*@__PURE__*/ S.Array(
-  CreateExperimentRequestPhasesItemPrerequisitesItem,
-) as any as S.Schema<UpdateFeatureV2RequestRulesItemCase3PrerequisitesList>;
+export const UpdateFeatureV2RequestRulesItemCase3PrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<UpdateFeatureV2RequestRulesItemCase3PrerequisitesList>;
 
 export type UpdateFeatureV2RequestRulesItemCase3ScheduleRulesItem =
   PostFeatureV2RequestRulesItemCase0ScheduleRulesItem;
@@ -60202,9 +57621,8 @@ export const UpdateFeatureV2RequestRulesItemCase3ScheduleRulesItem =
 
 export type UpdateFeatureV2RequestRulesItemCase3ScheduleRulesList =
   Array<PostFeatureV2RequestRulesItemCase0ScheduleRulesItem>;
-export const UpdateFeatureV2RequestRulesItemCase3ScheduleRulesList = /*@__PURE__*/ S.Array(
-  PostFeatureV2RequestRulesItemCase0ScheduleRulesItem,
-) as any as S.Schema<UpdateFeatureV2RequestRulesItemCase3ScheduleRulesList>;
+export const UpdateFeatureV2RequestRulesItemCase3ScheduleRulesList =
+  PostFeatureV2RequestRulesItemCase0ScheduleRulesList as any as S.Schema<UpdateFeatureV2RequestRulesItemCase3ScheduleRulesList>;
 
 export type UpdateFeatureV2RequestRulesItemCase3Status =
   | "running"
@@ -60215,15 +57633,13 @@ export const UpdateFeatureV2RequestRulesItemCase3Status = S.String;
 
 /** Environment IDs the rule applies to. Ignored when allEnvironments is true; with allEnvironments false, an omitted or empty list scopes the rule to no environment. */
 export type UpdateFeatureV2RequestRulesItemCase3EnvironmentsList = Array<string>;
-export const UpdateFeatureV2RequestRulesItemCase3EnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFeatureV2RequestRulesItemCase3EnvironmentsList>;
+export const UpdateFeatureV2RequestRulesItemCase3EnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateFeatureV2RequestRulesItemCase3EnvironmentsList>;
 
 /** Specific project IDs this rule applies to. Used when allProjects is false. An empty array scopes the rule to no project. When the organization requires registered attributes with project scoping, the rule's attributes are validated against these projects rather than the whole feature's. */
 export type UpdateFeatureV2RequestRulesItemCase3ProjectsList = Array<string>;
-export const UpdateFeatureV2RequestRulesItemCase3ProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFeatureV2RequestRulesItemCase3ProjectsList>;
+export const UpdateFeatureV2RequestRulesItemCase3ProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateFeatureV2RequestRulesItemCase3ProjectsList>;
 
 export interface UpdateFeatureV2RequestRulesItemCase3 {
   description?: string;
@@ -60310,22 +57726,17 @@ export const UpdateFeatureV2RequestEnvironmentsValue = PostFeatureV2RequestEnvir
 export type UpdateFeatureV2RequestEnvironmentsMap = {
   [key: string]: PostFeatureV2RequestEnvironmentsValue | undefined;
 };
-export const UpdateFeatureV2RequestEnvironmentsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  PostFeatureV2RequestEnvironmentsValue,
-) as any as S.Schema<UpdateFeatureV2RequestEnvironmentsMap>;
+export const UpdateFeatureV2RequestEnvironmentsMap =
+  PostFeatureV2RequestEnvironmentsMap as any as S.Schema<UpdateFeatureV2RequestEnvironmentsMap>;
 
 /** Feature IDs. Each feature must evaluate to `true` */
 export type UpdateFeatureV2RequestPrerequisitesList = Array<string>;
-export const UpdateFeatureV2RequestPrerequisitesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFeatureV2RequestPrerequisitesList>;
+export const UpdateFeatureV2RequestPrerequisitesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateFeatureV2RequestPrerequisitesList>;
 
 export type UpdateFeatureV2RequestCustomFieldsMap = { [key: string]: string | undefined };
-export const UpdateFeatureV2RequestCustomFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateFeatureV2RequestCustomFieldsMap>;
+export const UpdateFeatureV2RequestCustomFieldsMap =
+  ConstantEnvironmentValuesMap as any as S.Schema<UpdateFeatureV2RequestCustomFieldsMap>;
 
 export type UpdateFeatureV2RequestHoldout = FeatureWithRevisionsV2Holdout;
 export const UpdateFeatureV2RequestHoldout = FeatureWithRevisionsV2Holdout;
@@ -60399,39 +57810,31 @@ export const UpdateFeatureV2Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Gates that would have blocked this publish but were bypassed by the caller's authority. Present only when at least one gate was bypassed. */
 export type UpdateFeatureV2ResponseBypassedGatesList = Array<BypassedGates>;
-export const UpdateFeatureV2ResponseBypassedGatesList = /*@__PURE__*/ S.Array(
-  BypassedGates,
-) as any as S.Schema<UpdateFeatureV2ResponseBypassedGatesList>;
+export const UpdateFeatureV2ResponseBypassedGatesList =
+  ArchiveConfigResponseBypassedGatesList as any as S.Schema<UpdateFeatureV2ResponseBypassedGatesList>;
 
 export interface UpdateFeatureV2Response {
   feature: FeatureV2;
   /** Gates that would have blocked this publish but were bypassed by the caller's authority. Present only when at least one gate was bypassed. */
   bypassedGates?: UpdateFeatureV2ResponseBypassedGatesList;
 }
-export const UpdateFeatureV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    feature: FeatureV2,
-    bypassedGates: S.optional(UpdateFeatureV2ResponseBypassedGatesList),
-  }),
-).annotate({ identifier: "UpdateFeatureV2Response" }) as any as S.Schema<UpdateFeatureV2Response>;
+export const UpdateFeatureV2Response =
+  RevertFeatureV2Response as any as S.Schema<UpdateFeatureV2Response>;
 
 export type UpdateHoldoutRequestProjectsList = Array<string>;
-export const UpdateHoldoutRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateHoldoutRequestProjectsList>;
+export const UpdateHoldoutRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateHoldoutRequestProjectsList>;
 
 export type UpdateHoldoutRequestTagsList = Array<string>;
-export const UpdateHoldoutRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateHoldoutRequestTagsList>;
+export const UpdateHoldoutRequestTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateHoldoutRequestTagsList>;
 
 export type UpdateHoldoutRequestSavedGroupTargetingItemMatch = "all" | "none" | "any";
 export const UpdateHoldoutRequestSavedGroupTargetingItemMatch = S.String;
 
 export type UpdateHoldoutRequestSavedGroupTargetingItemIdsList = Array<string>;
-export const UpdateHoldoutRequestSavedGroupTargetingItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateHoldoutRequestSavedGroupTargetingItemIdsList>;
+export const UpdateHoldoutRequestSavedGroupTargetingItemIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateHoldoutRequestSavedGroupTargetingItemIdsList>;
 
 export interface UpdateHoldoutRequestSavedGroupTargetingItem {
   match: UpdateHoldoutRequestSavedGroupTargetingItemMatch | (string & {});
@@ -60459,14 +57862,12 @@ export const UpdateHoldoutRequestAssignmentQuery =
   BulkImportExperimentTemplatesRequestTemplatesItemDataExposureQuery;
 
 export type UpdateHoldoutRequestGoalMetricsList = Array<string>;
-export const UpdateHoldoutRequestGoalMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateHoldoutRequestGoalMetricsList>;
+export const UpdateHoldoutRequestGoalMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateHoldoutRequestGoalMetricsList>;
 
 export type UpdateHoldoutRequestSecondaryMetricsList = Array<string>;
-export const UpdateHoldoutRequestSecondaryMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateHoldoutRequestSecondaryMetricsList>;
+export const UpdateHoldoutRequestSecondaryMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateHoldoutRequestSecondaryMetricsList>;
 
 /** Statistics engine used to analyze this Holdout. */
 export type UpdateHoldoutRequestStatsEngine = "bayesian" | "frequentist";
@@ -60479,10 +57880,8 @@ export const UpdateHoldoutRequestEnvironmentsValue = CreateHoldoutRequestEnviron
 export type UpdateHoldoutRequestEnvironmentsMap = {
   [key: string]: CreateHoldoutRequestEnvironmentsValue | undefined;
 };
-export const UpdateHoldoutRequestEnvironmentsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CreateHoldoutRequestEnvironmentsValue,
-) as any as S.Schema<UpdateHoldoutRequestEnvironmentsMap>;
+export const UpdateHoldoutRequestEnvironmentsMap =
+  CreateHoldoutRequestEnvironmentsMap as any as S.Schema<UpdateHoldoutRequestEnvironmentsMap>;
 
 /** Automatic stage transitions for the Holdout. Dates must be consecutive: `startAt` before `startAnalysisPeriodAt` before `stopAt`. Send `null` to delete the schedule. */
 export type UpdateHoldoutRequestStatusUpdateSchedule = CreateHoldoutRequestStatusUpdateSchedule;
@@ -60545,31 +57944,24 @@ export const UpdateHoldoutRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateHoldoutResponse {
   holdout: Holdout;
 }
-export const UpdateHoldoutResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    holdout: Holdout,
-  }),
-).annotate({ identifier: "UpdateHoldoutResponse" }) as any as S.Schema<UpdateHoldoutResponse>;
+export const UpdateHoldoutResponse =
+  CreateHoldoutResponse as any as S.Schema<UpdateHoldoutResponse>;
 
 export type UpdateLearningRequestTagsList = Array<string>;
-export const UpdateLearningRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateLearningRequestTagsList>;
+export const UpdateLearningRequestTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateLearningRequestTagsList>;
 
 export type UpdateLearningRequestSupportingExperimentIdsList = Array<string>;
-export const UpdateLearningRequestSupportingExperimentIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateLearningRequestSupportingExperimentIdsList>;
+export const UpdateLearningRequestSupportingExperimentIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateLearningRequestSupportingExperimentIdsList>;
 
 export type UpdateLearningRequestContradictingExperimentIdsList = Array<string>;
-export const UpdateLearningRequestContradictingExperimentIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateLearningRequestContradictingExperimentIdsList>;
+export const UpdateLearningRequestContradictingExperimentIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateLearningRequestContradictingExperimentIdsList>;
 
 export type UpdateLearningRequestProjectsList = Array<string>;
-export const UpdateLearningRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateLearningRequestProjectsList>;
+export const UpdateLearningRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateLearningRequestProjectsList>;
 
 export interface UpdateLearningRequest {
   id: string;
@@ -60598,22 +57990,16 @@ export const UpdateLearningRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateLearningResponse {
   learning: Learning;
 }
-export const UpdateLearningResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    learning: Learning,
-  }),
-).annotate({ identifier: "UpdateLearningResponse" }) as any as S.Schema<UpdateLearningResponse>;
+export const UpdateLearningResponse =
+  CreateLearningResponse as any as S.Schema<UpdateLearningResponse>;
 
 export type UpdateMemberRoleRequestMemberEnvironmentsList = Array<string>;
-export const UpdateMemberRoleRequestMemberEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateMemberRoleRequestMemberEnvironmentsList>;
+export const UpdateMemberRoleRequestMemberEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateMemberRoleRequestMemberEnvironmentsList>;
 
 export type UpdateMemberRoleRequestMemberAdditionalRolesItemEnvironmentsList = Array<string>;
 export const UpdateMemberRoleRequestMemberAdditionalRolesItemEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateMemberRoleRequestMemberAdditionalRolesItemEnvironmentsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateMemberRoleRequestMemberAdditionalRolesItemEnvironmentsList>;
 
 export interface UpdateMemberRoleRequestMemberAdditionalRolesItem {
   role: string;
@@ -60638,16 +58024,13 @@ export const UpdateMemberRoleRequestMemberAdditionalRolesList = /*@__PURE__*/ S.
 ) as any as S.Schema<UpdateMemberRoleRequestMemberAdditionalRolesList>;
 
 export type UpdateMemberRoleRequestMemberProjectRolesItemEnvironmentsList = Array<string>;
-export const UpdateMemberRoleRequestMemberProjectRolesItemEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateMemberRoleRequestMemberProjectRolesItemEnvironmentsList>;
+export const UpdateMemberRoleRequestMemberProjectRolesItemEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateMemberRoleRequestMemberProjectRolesItemEnvironmentsList>;
 
 export type UpdateMemberRoleRequestMemberProjectRolesItemAdditionalRolesItemEnvironmentsList =
   Array<string>;
 export const UpdateMemberRoleRequestMemberProjectRolesItemAdditionalRolesItemEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateMemberRoleRequestMemberProjectRolesItemAdditionalRolesItemEnvironmentsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateMemberRoleRequestMemberProjectRolesItemAdditionalRolesItemEnvironmentsList>;
 
 export interface UpdateMemberRoleRequestMemberProjectRolesItemAdditionalRolesItem {
   role: string;
@@ -60731,68 +58114,47 @@ export const UpdateMemberRoleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateMemberRoleRequest" }) as any as S.Schema<UpdateMemberRoleRequest>;
 
 export type UpdatedMemberEnvironmentsList = Array<string>;
-export const UpdatedMemberEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdatedMemberEnvironmentsList>;
+export const UpdatedMemberEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdatedMemberEnvironmentsList>;
 
 export type UpdatedMemberAdditionalRolesItemEnvironmentsList = Array<string>;
-export const UpdatedMemberAdditionalRolesItemEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdatedMemberAdditionalRolesItemEnvironmentsList>;
+export const UpdatedMemberAdditionalRolesItemEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdatedMemberAdditionalRolesItemEnvironmentsList>;
 
 export interface UpdatedMemberAdditionalRolesItem {
   role: string;
   environments: UpdatedMemberAdditionalRolesItemEnvironmentsList;
   limitAccessByEnvironment?: boolean;
 }
-export const UpdatedMemberAdditionalRolesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role: S.String,
-    environments: UpdatedMemberAdditionalRolesItemEnvironmentsList,
-    limitAccessByEnvironment: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UpdatedMemberAdditionalRolesItem",
-}) as any as S.Schema<UpdatedMemberAdditionalRolesItem>;
+export const UpdatedMemberAdditionalRolesItem =
+  MemberAdditionalRolesItem as any as S.Schema<UpdatedMemberAdditionalRolesItem>;
 
 /** Additional roles granted alongside this one, in the same scope. Each is granted independently and environment access is the union across them. */
 export type UpdatedMemberAdditionalRolesList = Array<UpdatedMemberAdditionalRolesItem>;
-export const UpdatedMemberAdditionalRolesList = /*@__PURE__*/ S.Array(
-  UpdatedMemberAdditionalRolesItem,
-) as any as S.Schema<UpdatedMemberAdditionalRolesList>;
+export const UpdatedMemberAdditionalRolesList =
+  MemberAdditionalRolesList as any as S.Schema<UpdatedMemberAdditionalRolesList>;
 
 export type UpdatedMemberProjectRolesItemEnvironmentsList = Array<string>;
-export const UpdatedMemberProjectRolesItemEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdatedMemberProjectRolesItemEnvironmentsList>;
+export const UpdatedMemberProjectRolesItemEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdatedMemberProjectRolesItemEnvironmentsList>;
 
 export type UpdatedMemberProjectRolesItemAdditionalRolesItemEnvironmentsList = Array<string>;
 export const UpdatedMemberProjectRolesItemAdditionalRolesItemEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdatedMemberProjectRolesItemAdditionalRolesItemEnvironmentsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdatedMemberProjectRolesItemAdditionalRolesItemEnvironmentsList>;
 
 export interface UpdatedMemberProjectRolesItemAdditionalRolesItem {
   role: string;
   environments: UpdatedMemberProjectRolesItemAdditionalRolesItemEnvironmentsList;
   limitAccessByEnvironment?: boolean;
 }
-export const UpdatedMemberProjectRolesItemAdditionalRolesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role: S.String,
-    environments: UpdatedMemberProjectRolesItemAdditionalRolesItemEnvironmentsList,
-    limitAccessByEnvironment: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UpdatedMemberProjectRolesItemAdditionalRolesItem",
-}) as any as S.Schema<UpdatedMemberProjectRolesItemAdditionalRolesItem>;
+export const UpdatedMemberProjectRolesItemAdditionalRolesItem =
+  UpdateMemberRoleRequestMemberAdditionalRolesItem as any as S.Schema<UpdatedMemberProjectRolesItemAdditionalRolesItem>;
 
 /** Additional roles granted alongside this one, in the same scope. Each is granted independently and environment access is the union across them. */
 export type UpdatedMemberProjectRolesItemAdditionalRolesList =
   Array<UpdatedMemberProjectRolesItemAdditionalRolesItem>;
-export const UpdatedMemberProjectRolesItemAdditionalRolesList = /*@__PURE__*/ S.Array(
-  UpdatedMemberProjectRolesItemAdditionalRolesItem,
-) as any as S.Schema<UpdatedMemberProjectRolesItemAdditionalRolesList>;
+export const UpdatedMemberProjectRolesItemAdditionalRolesList =
+  UpdateMemberRoleRequestMemberAdditionalRolesList as any as S.Schema<UpdatedMemberProjectRolesItemAdditionalRolesList>;
 
 export interface UpdatedMemberProjectRolesItem {
   project: string;
@@ -60849,19 +58211,16 @@ export const UpdateMemberRoleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateMemberRoleResponse" }) as any as S.Schema<UpdateMemberRoleResponse>;
 
 export type UpdateMetricGroupRequestTagsList = Array<string>;
-export const UpdateMetricGroupRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateMetricGroupRequestTagsList>;
+export const UpdateMetricGroupRequestTagsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateMetricGroupRequestTagsList>;
 
 export type UpdateMetricGroupRequestProjectsList = Array<string>;
-export const UpdateMetricGroupRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateMetricGroupRequestProjectsList>;
+export const UpdateMetricGroupRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateMetricGroupRequestProjectsList>;
 
 export type UpdateMetricGroupRequestMetricsList = Array<string>;
-export const UpdateMetricGroupRequestMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateMetricGroupRequestMetricsList>;
+export const UpdateMetricGroupRequestMetricsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateMetricGroupRequestMetricsList>;
 
 export interface UpdateMetricGroupRequest {
   id: string;
@@ -60892,13 +58251,8 @@ export const UpdateMetricGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateMetricGroupResponse {
   metricGroup: MetricGroup;
 }
-export const UpdateMetricGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricGroup: MetricGroup,
-  }),
-).annotate({
-  identifier: "UpdateMetricGroupResponse",
-}) as any as S.Schema<UpdateMetricGroupResponse>;
+export const UpdateMetricGroupResponse =
+  CreateMetricGroupResponse as any as S.Schema<UpdateMetricGroupResponse>;
 
 export type UpdateRampScheduleRequestStepsItemActionsItemPatchSavedGroupsItemMatch =
   | "all"
@@ -60909,9 +58263,7 @@ export const UpdateRampScheduleRequestStepsItemActionsItemPatchSavedGroupsItemMa
 export type UpdateRampScheduleRequestStepsItemActionsItemPatchSavedGroupsItemIdsList =
   Array<string>;
 export const UpdateRampScheduleRequestStepsItemActionsItemPatchSavedGroupsItemIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateRampScheduleRequestStepsItemActionsItemPatchSavedGroupsItemIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateRampScheduleRequestStepsItemActionsItemPatchSavedGroupsItemIdsList>;
 
 export interface UpdateRampScheduleRequestStepsItemActionsItemPatchSavedGroupsItem {
   match: UpdateRampScheduleRequestStepsItemActionsItemPatchSavedGroupsItemMatch | (string & {});
@@ -60942,15 +58294,11 @@ export const UpdateRampScheduleRequestStepsItemActionsItemPatchPrerequisitesItem
 export type UpdateRampScheduleRequestStepsItemActionsItemPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
 export const UpdateRampScheduleRequestStepsItemActionsItemPatchPrerequisitesList =
-  /*@__PURE__*/ S.Array(
-    RampScheduleStartActionsItemPatchPrerequisitesItem,
-  ) as any as S.Schema<UpdateRampScheduleRequestStepsItemActionsItemPatchPrerequisitesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataTargetingPrerequisitesList as any as S.Schema<UpdateRampScheduleRequestStepsItemActionsItemPatchPrerequisitesList>;
 
 export type UpdateRampScheduleRequestStepsItemActionsItemPatchEnvironmentsList = Array<string>;
 export const UpdateRampScheduleRequestStepsItemActionsItemPatchEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateRampScheduleRequestStepsItemActionsItemPatchEnvironmentsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateRampScheduleRequestStepsItemActionsItemPatchEnvironmentsList>;
 
 export interface UpdateRampScheduleRequestStepsItemActionsItemPatch {
   ruleId: string;
@@ -61045,9 +58393,7 @@ export const UpdateRampScheduleRequestStartActionsItemPatchSavedGroupsItemMatch 
 
 export type UpdateRampScheduleRequestStartActionsItemPatchSavedGroupsItemIdsList = Array<string>;
 export const UpdateRampScheduleRequestStartActionsItemPatchSavedGroupsItemIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateRampScheduleRequestStartActionsItemPatchSavedGroupsItemIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateRampScheduleRequestStartActionsItemPatchSavedGroupsItemIdsList>;
 
 export interface UpdateRampScheduleRequestStartActionsItemPatchSavedGroupsItem {
   match: UpdateRampScheduleRequestStartActionsItemPatchSavedGroupsItemMatch | (string & {});
@@ -61077,14 +58423,11 @@ export const UpdateRampScheduleRequestStartActionsItemPatchPrerequisitesItem =
 export type UpdateRampScheduleRequestStartActionsItemPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
 export const UpdateRampScheduleRequestStartActionsItemPatchPrerequisitesList =
-  /*@__PURE__*/ S.Array(
-    RampScheduleStartActionsItemPatchPrerequisitesItem,
-  ) as any as S.Schema<UpdateRampScheduleRequestStartActionsItemPatchPrerequisitesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataTargetingPrerequisitesList as any as S.Schema<UpdateRampScheduleRequestStartActionsItemPatchPrerequisitesList>;
 
 export type UpdateRampScheduleRequestStartActionsItemPatchEnvironmentsList = Array<string>;
-export const UpdateRampScheduleRequestStartActionsItemPatchEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRampScheduleRequestStartActionsItemPatchEnvironmentsList>;
+export const UpdateRampScheduleRequestStartActionsItemPatchEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateRampScheduleRequestStartActionsItemPatchEnvironmentsList>;
 
 /** The rule's pre-ramp state, and the only place a plan sets hashAttribute, seed or hashVersion. */
 export interface UpdateRampScheduleRequestStartActionsItemPatch {
@@ -61161,9 +58504,7 @@ export const UpdateRampScheduleRequestEndActionsItemPatchSavedGroupsItemMatch = 
 
 export type UpdateRampScheduleRequestEndActionsItemPatchSavedGroupsItemIdsList = Array<string>;
 export const UpdateRampScheduleRequestEndActionsItemPatchSavedGroupsItemIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateRampScheduleRequestEndActionsItemPatchSavedGroupsItemIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateRampScheduleRequestEndActionsItemPatchSavedGroupsItemIdsList>;
 
 export interface UpdateRampScheduleRequestEndActionsItemPatchSavedGroupsItem {
   match: UpdateRampScheduleRequestEndActionsItemPatchSavedGroupsItemMatch | (string & {});
@@ -61192,14 +58533,12 @@ export const UpdateRampScheduleRequestEndActionsItemPatchPrerequisitesItem =
 
 export type UpdateRampScheduleRequestEndActionsItemPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
-export const UpdateRampScheduleRequestEndActionsItemPatchPrerequisitesList = /*@__PURE__*/ S.Array(
-  RampScheduleStartActionsItemPatchPrerequisitesItem,
-) as any as S.Schema<UpdateRampScheduleRequestEndActionsItemPatchPrerequisitesList>;
+export const UpdateRampScheduleRequestEndActionsItemPatchPrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<UpdateRampScheduleRequestEndActionsItemPatchPrerequisitesList>;
 
 export type UpdateRampScheduleRequestEndActionsItemPatchEnvironmentsList = Array<string>;
-export const UpdateRampScheduleRequestEndActionsItemPatchEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRampScheduleRequestEndActionsItemPatchEnvironmentsList>;
+export const UpdateRampScheduleRequestEndActionsItemPatchEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateRampScheduleRequestEndActionsItemPatchEnvironmentsList>;
 
 export interface UpdateRampScheduleRequestEndActionsItemPatch {
   ruleId: string;
@@ -61257,14 +58596,11 @@ export const UpdateRampScheduleRequestEndActionsList = /*@__PURE__*/ S.Array(
 
 export type UpdateRampScheduleRequestMonitoringConfigGuardrailMetricIdsList = Array<string>;
 export const UpdateRampScheduleRequestMonitoringConfigGuardrailMetricIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateRampScheduleRequestMonitoringConfigGuardrailMetricIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateRampScheduleRequestMonitoringConfigGuardrailMetricIdsList>;
 
 export type UpdateRampScheduleRequestMonitoringConfigSignalMetricIdsList = Array<string>;
-export const UpdateRampScheduleRequestMonitoringConfigSignalMetricIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRampScheduleRequestMonitoringConfigSignalMetricIdsList>;
+export const UpdateRampScheduleRequestMonitoringConfigSignalMetricIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateRampScheduleRequestMonitoringConfigSignalMetricIdsList>;
 
 export type UpdateRampScheduleRequestMonitoringConfigMonitoringMode = "auto" | "manual";
 export const UpdateRampScheduleRequestMonitoringConfigMonitoringMode = S.String;
@@ -61378,13 +58714,8 @@ export const UpdateRampScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateRampScheduleResponse {
   rampSchedule: RampSchedule;
 }
-export const UpdateRampScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rampSchedule: RampSchedule,
-  }),
-).annotate({
-  identifier: "UpdateRampScheduleResponse",
-}) as any as S.Schema<UpdateRampScheduleResponse>;
+export const UpdateRampScheduleResponse =
+  AddTargetRampScheduleResponse as any as S.Schema<UpdateRampScheduleResponse>;
 
 export type UpdateRampScheduleLockdownRequestMode = "none" | "locked";
 export const UpdateRampScheduleLockdownRequestMode = S.String;
@@ -61407,27 +58738,23 @@ export const UpdateRampScheduleLockdownResponseEntityType = S.String;
 
 /** Controlled entity references */
 export type UpdateRampScheduleLockdownResponseTargetsList = Array<Targets>;
-export const UpdateRampScheduleLockdownResponseTargetsList = /*@__PURE__*/ S.Array(
-  Targets,
-) as any as S.Schema<UpdateRampScheduleLockdownResponseTargetsList>;
+export const UpdateRampScheduleLockdownResponseTargetsList =
+  SetAutoUpdateRampScheduleResponseTargetsList as any as S.Schema<UpdateRampScheduleLockdownResponseTargetsList>;
 
 /** Actions that restore controlled rules to their pre-ramp state. Applied when rolling back or jumping to start, and the base every step accumulates on; the only place a plan can set hashAttribute, seed or hashVersion. */
 export type UpdateRampScheduleLockdownResponseStartActionsList = Array<StartActions>;
-export const UpdateRampScheduleLockdownResponseStartActionsList = /*@__PURE__*/ S.Array(
-  StartActions,
-) as any as S.Schema<UpdateRampScheduleLockdownResponseStartActionsList>;
+export const UpdateRampScheduleLockdownResponseStartActionsList =
+  SetAutoUpdateRampScheduleResponseStartActionsList as any as S.Schema<UpdateRampScheduleLockdownResponseStartActionsList>;
 
 /** Ordered ramp steps */
 export type UpdateRampScheduleLockdownResponseStepsList = Array<Steps>;
-export const UpdateRampScheduleLockdownResponseStepsList = /*@__PURE__*/ S.Array(
-  Steps,
-) as any as S.Schema<UpdateRampScheduleLockdownResponseStepsList>;
+export const UpdateRampScheduleLockdownResponseStepsList =
+  SetAutoUpdateRampScheduleResponseStepsList as any as S.Schema<UpdateRampScheduleLockdownResponseStepsList>;
 
 /** Actions applied on top of all step patches when the ramp completes. Represents the final desired rule state. */
 export type UpdateRampScheduleLockdownResponseEndActionsList = Array<EndActions>;
-export const UpdateRampScheduleLockdownResponseEndActionsList = /*@__PURE__*/ S.Array(
-  EndActions,
-) as any as S.Schema<UpdateRampScheduleLockdownResponseEndActionsList>;
+export const UpdateRampScheduleLockdownResponseEndActionsList =
+  SetAutoUpdateRampScheduleResponseEndActionsList as any as S.Schema<UpdateRampScheduleLockdownResponseEndActionsList>;
 
 export type UpdateRampScheduleLockdownResponseStatus =
   | "pending"
@@ -61441,15 +58768,11 @@ export const UpdateRampScheduleLockdownResponseStatus = S.String;
 export type UpdateRampScheduleLockdownResponseMonitoringConfigGuardrailMetricIdsList =
   Array<string>;
 export const UpdateRampScheduleLockdownResponseMonitoringConfigGuardrailMetricIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateRampScheduleLockdownResponseMonitoringConfigGuardrailMetricIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateRampScheduleLockdownResponseMonitoringConfigGuardrailMetricIdsList>;
 
 export type UpdateRampScheduleLockdownResponseMonitoringConfigSignalMetricIdsList = Array<string>;
 export const UpdateRampScheduleLockdownResponseMonitoringConfigSignalMetricIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateRampScheduleLockdownResponseMonitoringConfigSignalMetricIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateRampScheduleLockdownResponseMonitoringConfigSignalMetricIdsList>;
 
 export type UpdateRampScheduleLockdownResponseMonitoringConfigMonitoringMode = "auto" | "manual";
 export const UpdateRampScheduleLockdownResponseMonitoringConfigMonitoringMode = S.String;
@@ -61670,14 +58993,12 @@ export const UpdateRampScheduleLockdownResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRampScheduleLockdownResponse>;
 
 export type UpdateRampScheduleMonitoringRequestGuardrailMetricIdsList = Array<string>;
-export const UpdateRampScheduleMonitoringRequestGuardrailMetricIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRampScheduleMonitoringRequestGuardrailMetricIdsList>;
+export const UpdateRampScheduleMonitoringRequestGuardrailMetricIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateRampScheduleMonitoringRequestGuardrailMetricIdsList>;
 
 export type UpdateRampScheduleMonitoringRequestSignalMetricIdsList = Array<string>;
-export const UpdateRampScheduleMonitoringRequestSignalMetricIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRampScheduleMonitoringRequestSignalMetricIdsList>;
+export const UpdateRampScheduleMonitoringRequestSignalMetricIdsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateRampScheduleMonitoringRequestSignalMetricIdsList>;
 
 export type UpdateRampScheduleMonitoringRequestMonitoringMode = "auto" | "manual";
 export const UpdateRampScheduleMonitoringRequestMonitoringMode = S.String;
@@ -61745,27 +59066,23 @@ export const UpdateRampScheduleMonitoringResponseEntityType = S.String;
 
 /** Controlled entity references */
 export type UpdateRampScheduleMonitoringResponseTargetsList = Array<Targets>;
-export const UpdateRampScheduleMonitoringResponseTargetsList = /*@__PURE__*/ S.Array(
-  Targets,
-) as any as S.Schema<UpdateRampScheduleMonitoringResponseTargetsList>;
+export const UpdateRampScheduleMonitoringResponseTargetsList =
+  SetAutoUpdateRampScheduleResponseTargetsList as any as S.Schema<UpdateRampScheduleMonitoringResponseTargetsList>;
 
 /** Actions that restore controlled rules to their pre-ramp state. Applied when rolling back or jumping to start, and the base every step accumulates on; the only place a plan can set hashAttribute, seed or hashVersion. */
 export type UpdateRampScheduleMonitoringResponseStartActionsList = Array<StartActions>;
-export const UpdateRampScheduleMonitoringResponseStartActionsList = /*@__PURE__*/ S.Array(
-  StartActions,
-) as any as S.Schema<UpdateRampScheduleMonitoringResponseStartActionsList>;
+export const UpdateRampScheduleMonitoringResponseStartActionsList =
+  SetAutoUpdateRampScheduleResponseStartActionsList as any as S.Schema<UpdateRampScheduleMonitoringResponseStartActionsList>;
 
 /** Ordered ramp steps */
 export type UpdateRampScheduleMonitoringResponseStepsList = Array<Steps>;
-export const UpdateRampScheduleMonitoringResponseStepsList = /*@__PURE__*/ S.Array(
-  Steps,
-) as any as S.Schema<UpdateRampScheduleMonitoringResponseStepsList>;
+export const UpdateRampScheduleMonitoringResponseStepsList =
+  SetAutoUpdateRampScheduleResponseStepsList as any as S.Schema<UpdateRampScheduleMonitoringResponseStepsList>;
 
 /** Actions applied on top of all step patches when the ramp completes. Represents the final desired rule state. */
 export type UpdateRampScheduleMonitoringResponseEndActionsList = Array<EndActions>;
-export const UpdateRampScheduleMonitoringResponseEndActionsList = /*@__PURE__*/ S.Array(
-  EndActions,
-) as any as S.Schema<UpdateRampScheduleMonitoringResponseEndActionsList>;
+export const UpdateRampScheduleMonitoringResponseEndActionsList =
+  SetAutoUpdateRampScheduleResponseEndActionsList as any as S.Schema<UpdateRampScheduleMonitoringResponseEndActionsList>;
 
 export type UpdateRampScheduleMonitoringResponseStatus =
   | "pending"
@@ -61779,15 +59096,11 @@ export const UpdateRampScheduleMonitoringResponseStatus = S.String;
 export type UpdateRampScheduleMonitoringResponseMonitoringConfigGuardrailMetricIdsList =
   Array<string>;
 export const UpdateRampScheduleMonitoringResponseMonitoringConfigGuardrailMetricIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateRampScheduleMonitoringResponseMonitoringConfigGuardrailMetricIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateRampScheduleMonitoringResponseMonitoringConfigGuardrailMetricIdsList>;
 
 export type UpdateRampScheduleMonitoringResponseMonitoringConfigSignalMetricIdsList = Array<string>;
 export const UpdateRampScheduleMonitoringResponseMonitoringConfigSignalMetricIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateRampScheduleMonitoringResponseMonitoringConfigSignalMetricIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateRampScheduleMonitoringResponseMonitoringConfigSignalMetricIdsList>;
 
 export type UpdateRampScheduleMonitoringResponseMonitoringConfigMonitoringMode = "auto" | "manual";
 export const UpdateRampScheduleMonitoringResponseMonitoringConfigMonitoringMode = S.String;
@@ -62066,13 +59379,8 @@ export const UpdateRampScheduleStepsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateRampScheduleStepsResponse {
   rampSchedule: RampSchedule;
 }
-export const UpdateRampScheduleStepsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rampSchedule: RampSchedule,
-  }),
-).annotate({
-  identifier: "UpdateRampScheduleStepsResponse",
-}) as any as S.Schema<UpdateRampScheduleStepsResponse>;
+export const UpdateRampScheduleStepsResponse =
+  AddTargetRampScheduleResponse as any as S.Schema<UpdateRampScheduleStepsResponse>;
 
 export type UpdateRampScheduleTemplateRequestStepsItemHoldConditions =
   RampScheduleStepsItemHoldConditions;
@@ -62089,9 +59397,7 @@ export const UpdateRampScheduleTemplateRequestStepsItemActionsItemPatchSavedGrou
 export type UpdateRampScheduleTemplateRequestStepsItemActionsItemPatchSavedGroupsItemIdsList =
   Array<string>;
 export const UpdateRampScheduleTemplateRequestStepsItemActionsItemPatchSavedGroupsItemIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateRampScheduleTemplateRequestStepsItemActionsItemPatchSavedGroupsItemIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateRampScheduleTemplateRequestStepsItemActionsItemPatchSavedGroupsItemIdsList>;
 
 export interface UpdateRampScheduleTemplateRequestStepsItemActionsItemPatchSavedGroupsItem {
   match:
@@ -62124,16 +59430,12 @@ export const UpdateRampScheduleTemplateRequestStepsItemActionsItemPatchPrerequis
 export type UpdateRampScheduleTemplateRequestStepsItemActionsItemPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
 export const UpdateRampScheduleTemplateRequestStepsItemActionsItemPatchPrerequisitesList =
-  /*@__PURE__*/ S.Array(
-    RampScheduleStartActionsItemPatchPrerequisitesItem,
-  ) as any as S.Schema<UpdateRampScheduleTemplateRequestStepsItemActionsItemPatchPrerequisitesList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataTargetingPrerequisitesList as any as S.Schema<UpdateRampScheduleTemplateRequestStepsItemActionsItemPatchPrerequisitesList>;
 
 export type UpdateRampScheduleTemplateRequestStepsItemActionsItemPatchEnvironmentsList =
   Array<string>;
 export const UpdateRampScheduleTemplateRequestStepsItemActionsItemPatchEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateRampScheduleTemplateRequestStepsItemActionsItemPatchEnvironmentsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateRampScheduleTemplateRequestStepsItemActionsItemPatchEnvironmentsList>;
 
 export interface UpdateRampScheduleTemplateRequestStepsItemActionsItemPatch {
   ruleId: string;
@@ -62224,9 +59526,7 @@ export const UpdateRampScheduleTemplateRequestEndPatchSavedGroupsItemMatch = S.S
 
 export type UpdateRampScheduleTemplateRequestEndPatchSavedGroupsItemIdsList = Array<string>;
 export const UpdateRampScheduleTemplateRequestEndPatchSavedGroupsItemIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateRampScheduleTemplateRequestEndPatchSavedGroupsItemIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateRampScheduleTemplateRequestEndPatchSavedGroupsItemIdsList>;
 
 export interface UpdateRampScheduleTemplateRequestEndPatchSavedGroupsItem {
   match: UpdateRampScheduleTemplateRequestEndPatchSavedGroupsItemMatch | (string & {});
@@ -62255,14 +59555,12 @@ export const UpdateRampScheduleTemplateRequestEndPatchPrerequisitesItem =
 
 export type UpdateRampScheduleTemplateRequestEndPatchPrerequisitesList =
   Array<RampScheduleStartActionsItemPatchPrerequisitesItem>;
-export const UpdateRampScheduleTemplateRequestEndPatchPrerequisitesList = /*@__PURE__*/ S.Array(
-  RampScheduleStartActionsItemPatchPrerequisitesItem,
-) as any as S.Schema<UpdateRampScheduleTemplateRequestEndPatchPrerequisitesList>;
+export const UpdateRampScheduleTemplateRequestEndPatchPrerequisitesList =
+  RampScheduleStartActionsItemPatchPrerequisitesList as any as S.Schema<UpdateRampScheduleTemplateRequestEndPatchPrerequisitesList>;
 
 export type UpdateRampScheduleTemplateRequestEndPatchEnvironmentsList = Array<string>;
-export const UpdateRampScheduleTemplateRequestEndPatchEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRampScheduleTemplateRequestEndPatchEnvironmentsList>;
+export const UpdateRampScheduleTemplateRequestEndPatchEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateRampScheduleTemplateRequestEndPatchEnvironmentsList>;
 
 export interface UpdateRampScheduleTemplateRequestEndPatch {
   coverage?: number;
@@ -62287,15 +59585,11 @@ export const UpdateRampScheduleTemplateRequestEndPatch = /*@__PURE__*/ S.suspend
 
 export type UpdateRampScheduleTemplateRequestMonitoringConfigGuardrailMetricIdsList = Array<string>;
 export const UpdateRampScheduleTemplateRequestMonitoringConfigGuardrailMetricIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateRampScheduleTemplateRequestMonitoringConfigGuardrailMetricIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateRampScheduleTemplateRequestMonitoringConfigGuardrailMetricIdsList>;
 
 export type UpdateRampScheduleTemplateRequestMonitoringConfigSignalMetricIdsList = Array<string>;
 export const UpdateRampScheduleTemplateRequestMonitoringConfigSignalMetricIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateRampScheduleTemplateRequestMonitoringConfigSignalMetricIdsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateRampScheduleTemplateRequestMonitoringConfigSignalMetricIdsList>;
 
 export type UpdateRampScheduleTemplateRequestMonitoringConfigMonitoringMode = "auto" | "manual";
 export const UpdateRampScheduleTemplateRequestMonitoringConfigMonitoringMode = S.String;
@@ -62411,24 +59705,17 @@ export const UpdateRampScheduleTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateRampScheduleTemplateResponse {
   rampScheduleTemplate: RampScheduleTemplate;
 }
-export const UpdateRampScheduleTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rampScheduleTemplate: RampScheduleTemplate,
-  }),
-).annotate({
-  identifier: "UpdateRampScheduleTemplateResponse",
-}) as any as S.Schema<UpdateRampScheduleTemplateResponse>;
+export const UpdateRampScheduleTemplateResponse =
+  CreateRampScheduleTemplateResponse as any as S.Schema<UpdateRampScheduleTemplateResponse>;
 
 /** When type = 'list', this is the list of values for the attribute key */
 export type UpdateSavedGroupRequestValuesList = Array<string>;
-export const UpdateSavedGroupRequestValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSavedGroupRequestValuesList>;
+export const UpdateSavedGroupRequestValuesList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateSavedGroupRequestValuesList>;
 
 export type UpdateSavedGroupRequestProjectsList = Array<string>;
-export const UpdateSavedGroupRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSavedGroupRequestProjectsList>;
+export const UpdateSavedGroupRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateSavedGroupRequestProjectsList>;
 
 export interface UpdateSavedGroupRequest {
   /** The id of the requested resource */
@@ -62459,9 +59746,8 @@ export const UpdateSavedGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gates that would have blocked this publish but were bypassed by the caller's authority. Present only when at least one gate was bypassed. */
 export type UpdateSavedGroupResponseBypassedGatesList = Array<BypassedGates>;
-export const UpdateSavedGroupResponseBypassedGatesList = /*@__PURE__*/ S.Array(
-  BypassedGates,
-) as any as S.Schema<UpdateSavedGroupResponseBypassedGatesList>;
+export const UpdateSavedGroupResponseBypassedGatesList =
+  ArchiveConfigResponseBypassedGatesList as any as S.Schema<UpdateSavedGroupResponseBypassedGatesList>;
 
 export interface UpdateSavedGroupResponse {
   savedGroup: SavedGroup;
@@ -62493,19 +59779,13 @@ export const UpdateSavedGroupRevisionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSavedGroupRevisionResponse {
   revision: SavedGroupRevision;
 }
-export const UpdateSavedGroupRevisionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: SavedGroupRevision,
-  }),
-).annotate({
-  identifier: "UpdateSavedGroupRevisionResponse",
-}) as any as S.Schema<UpdateSavedGroupRevisionResponse>;
+export const UpdateSavedGroupRevisionResponse =
+  CreateSavedGroupRevisionDiscardResponse as any as S.Schema<UpdateSavedGroupRevisionResponse>;
 
 /** List of project IDs for projects that can access this segment */
 export type UpdateSegmentRequestProjectsList = Array<string>;
-export const UpdateSegmentRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSegmentRequestProjectsList>;
+export const UpdateSegmentRequestProjectsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateSegmentRequestProjectsList>;
 
 /** Where this Segment must be managed from. If not set (empty string), it can be managed from anywhere. */
 export type UpdateSegmentRequestManagedBy = "" | "api";
@@ -62517,9 +59797,8 @@ export const UpdateSegmentRequestType = S.String;
 
 /** Optional array of fact table filter ids that can further define the Fact Table based Segment. */
 export type UpdateSegmentRequestFiltersList = Array<string>;
-export const UpdateSegmentRequestFiltersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSegmentRequestFiltersList>;
+export const UpdateSegmentRequestFiltersList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateSegmentRequestFiltersList>;
 
 export interface UpdateSegmentRequest {
   /** The id of the requested resource */
@@ -62567,54 +59846,38 @@ export const UpdateSegmentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSegmentResponse {
   segment: Segment;
 }
-export const UpdateSegmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    segment: Segment,
-  }),
-).annotate({ identifier: "UpdateSegmentResponse" }) as any as S.Schema<UpdateSegmentResponse>;
+export const UpdateSegmentResponse =
+  CreateSegmentResponse as any as S.Schema<UpdateSegmentResponse>;
 
 /** An empty array means 'all environments' */
 export type UpdateTeamRequestEnvironmentsList = Array<string>;
-export const UpdateTeamRequestEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateTeamRequestEnvironmentsList>;
+export const UpdateTeamRequestEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateTeamRequestEnvironmentsList>;
 
 export type UpdateTeamRequestProjectRolesItemEnvironmentsList = Array<string>;
-export const UpdateTeamRequestProjectRolesItemEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateTeamRequestProjectRolesItemEnvironmentsList>;
+export const UpdateTeamRequestProjectRolesItemEnvironmentsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateTeamRequestProjectRolesItemEnvironmentsList>;
 
 export type UpdateTeamRequestProjectRolesItemTeamsList = Array<string>;
-export const UpdateTeamRequestProjectRolesItemTeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateTeamRequestProjectRolesItemTeamsList>;
+export const UpdateTeamRequestProjectRolesItemTeamsList =
+  AddContextualBanditLinkedFeatureRequestEnvironmentsList as any as S.Schema<UpdateTeamRequestProjectRolesItemTeamsList>;
 
 export type UpdateTeamRequestProjectRolesItemAdditionalRolesItemEnvironmentsList = Array<string>;
 export const UpdateTeamRequestProjectRolesItemAdditionalRolesItemEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateTeamRequestProjectRolesItemAdditionalRolesItemEnvironmentsList>;
+  BulkImportExperimentTemplatesRequestTemplatesItemDataGoalMetricsList as any as S.Schema<UpdateTeamRequestProjectRolesItemAdditionalRolesItemEnvironmentsList>;
 
 export interface UpdateTeamRequestProjectRolesItemAdditionalRolesItem {
   role: string;
   limitAccessByEnvironment: boolean;
   environments: UpdateTeamRequestProjectRolesItemAdditionalRolesItemEnvironmentsList;
 }
-export const UpdateTeamRequestProjectRolesItemAdditionalRolesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role: S.String,
-    limitAccessByEnvironment: S.Boolean,
-    environments: UpdateTeamRequestProjectRolesItemAdditionalRolesItemEnvironmentsList,
-  }),
-).annotate({
-  identifier: "UpdateTeamRequestProjectRolesItemAdditionalRolesItem",
-}) as any as S.Schema<UpdateTeamRequestProjectRolesItemAdditionalRolesItem>;
+export const UpdateTeamRequestProjectRolesItemAdditionalRolesItem =
+  CreateTeamRequestProjectRolesItemAdditionalRolesItem as any as S.Schema<UpdateTeamRequestProjectRolesItemAdditionalRolesItem>;
 
 export type UpdateTeamRequestProjectRolesItemAdditionalRolesList =
   Array<UpdateTeamRequestProjectRolesItemAdditionalRolesItem>;
-export const UpdateTeamRequestProjectRolesItemAdditionalRolesList = /*@__PURE__*/ S.Array(
-  UpdateTeamRequestProjectRolesItemAdditionalRolesItem,
-) as any as S.Schema<UpdateTeamRequestProjectRolesItemAdditionalRolesList>;
+export const UpdateTeamRequestProjectRolesItemAdditionalRolesList =
+  CreateTeamRequestProjectRolesItemAdditionalRolesList as any as S.Schema<UpdateTeamRequestProjectRolesItemAdditionalRolesList>;
 
 export interface UpdateTeamRequestProjectRolesItem {
   role: string;
@@ -62624,23 +59887,12 @@ export interface UpdateTeamRequestProjectRolesItem {
   additionalRoles?: UpdateTeamRequestProjectRolesItemAdditionalRolesList;
   project: string;
 }
-export const UpdateTeamRequestProjectRolesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role: S.String,
-    limitAccessByEnvironment: S.Boolean,
-    environments: UpdateTeamRequestProjectRolesItemEnvironmentsList,
-    teams: S.optional(UpdateTeamRequestProjectRolesItemTeamsList),
-    additionalRoles: S.optional(UpdateTeamRequestProjectRolesItemAdditionalRolesList),
-    project: S.String,
-  }),
-).annotate({
-  identifier: "UpdateTeamRequestProjectRolesItem",
-}) as any as S.Schema<UpdateTeamRequestProjectRolesItem>;
+export const UpdateTeamRequestProjectRolesItem =
+  CreateTeamRequestProjectRolesItem as any as S.Schema<UpdateTeamRequestProjectRolesItem>;
 
 export type UpdateTeamRequestProjectRolesList = Array<UpdateTeamRequestProjectRolesItem>;
-export const UpdateTeamRequestProjectRolesList = /*@__PURE__*/ S.Array(
-  UpdateTeamRequestProjectRolesItem,
-) as any as S.Schema<UpdateTeamRequestProjectRolesList>;
+export const UpdateTeamRequestProjectRolesList =
+  CreateTeamRequestProjectRolesList as any as S.Schema<UpdateTeamRequestProjectRolesList>;
 
 export type UpdateTeamRequestManagedBy = CreateTeamRequestManagedBy;
 export const UpdateTeamRequestManagedBy = CreateTeamRequestManagedBy;
@@ -62677,11 +59929,7 @@ export const UpdateTeamRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateTeamResponse {
   team: Team;
 }
-export const UpdateTeamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    team: Team,
-  }),
-).annotate({ identifier: "UpdateTeamResponse" }) as any as S.Schema<UpdateTeamResponse>;
+export const UpdateTeamResponse = CreateTeamResponse as any as S.Schema<UpdateTeamResponse>;
 
 export interface VerifyConfigSchemaRequest {
   /** The key of the config */
@@ -62772,9 +60020,8 @@ export const VerifyConfigSchemaResponseAncestorOwnedFieldsList = /*@__PURE__*/ S
 ) as any as S.Schema<VerifyConfigSchemaResponseAncestorOwnedFieldsList>;
 
 export type VerifyConfigSchemaResponseWarningsList = Array<ConfigSchemaWarning>;
-export const VerifyConfigSchemaResponseWarningsList = /*@__PURE__*/ S.Array(
-  ConfigSchemaWarning,
-) as any as S.Schema<VerifyConfigSchemaResponseWarningsList>;
+export const VerifyConfigSchemaResponseWarningsList =
+  CreateConfigResponseWarningsList as any as S.Schema<VerifyConfigSchemaResponseWarningsList>;
 
 export interface VerifyConfigSchemaResponse {
   /** True when the supplied schema is canonically identical to the config's stored schema. */

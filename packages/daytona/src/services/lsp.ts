@@ -116,9 +116,7 @@ export const DidOpenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DidOpenRequest" }) as any as S.Schema<DidOpenRequest>;
 
 export interface DidOpenResponse {}
-export const DidOpenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DidOpenResponse",
-}) as any as S.Schema<DidOpenResponse>;
+export const DidOpenResponse = DidCloseResponse as any as S.Schema<DidOpenResponse>;
 
 export interface DocumentSymbolsRequest {
   /** Language ID (e.g., python, typescript) */
@@ -193,9 +191,7 @@ export const StartRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartRequest" }) as any as S.Schema<StartRequest>;
 
 export interface StartResponse {}
-export const StartResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartResponse",
-}) as any as S.Schema<StartResponse>;
+export const StartResponse = DidCloseResponse as any as S.Schema<StartResponse>;
 
 export interface StopRequest {
   languageId: string;
@@ -209,9 +205,7 @@ export const StopRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopRequest" }) as any as S.Schema<StopRequest>;
 
 export interface StopResponse {}
-export const StopResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopResponse",
-}) as any as S.Schema<StopResponse>;
+export const StopResponse = DidCloseResponse as any as S.Schema<StopResponse>;
 
 export interface WorkspaceSymbolsRequest {
   /** Search query */
@@ -230,14 +224,12 @@ export const WorkspaceSymbolsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkspaceSymbolsRequest" }) as any as S.Schema<WorkspaceSymbolsRequest>;
 
 export type WorkspaceSymbolsResponseBodyList = Array<LspSymbol>;
-export const WorkspaceSymbolsResponseBodyList = /*@__PURE__*/ S.Array(
-  LspSymbol,
-) as any as S.Schema<WorkspaceSymbolsResponseBodyList>;
+export const WorkspaceSymbolsResponseBodyList =
+  DocumentSymbolsResponseBodyList as any as S.Schema<WorkspaceSymbolsResponseBodyList>;
 
 export type WorkspaceSymbolsResponse = WorkspaceSymbolsResponseBodyList;
-export const WorkspaceSymbolsResponse = /*@__PURE__*/ S.suspend(() =>
-  WorkspaceSymbolsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "WorkspaceSymbolsResponse" }) as any as S.Schema<WorkspaceSymbolsResponse>;
+export const WorkspaceSymbolsResponse =
+  DocumentSymbolsResponse as any as S.Schema<WorkspaceSymbolsResponse>;
 
 export type CompletionsError = DaytonaOpError;
 /** Get code completions Get code completion suggestions from the LSP server */

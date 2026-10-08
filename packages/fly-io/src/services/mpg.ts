@@ -188,9 +188,8 @@ export const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDatabaseRequest" }) as any as S.Schema<CreateDatabaseRequest>;
 
 export interface CreateDatabaseResponse {}
-export const CreateDatabaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateDatabaseResponse",
-}) as any as S.Schema<CreateDatabaseResponse>;
+export const CreateDatabaseResponse =
+  CreateBackupResponse as any as S.Schema<CreateDatabaseResponse>;
 
 export type CreateUserRequestRole = "schema_admin" | "writer" | "reader";
 export const CreateUserRequestRole = S.String;
@@ -275,9 +274,7 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUserRequest" }) as any as S.Schema<DeleteUserRequest>;
 
 export interface DeleteUserResponse {}
-export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserResponse",
-}) as any as S.Schema<DeleteUserResponse>;
+export const DeleteUserResponse = CreateBackupResponse as any as S.Schema<DeleteUserResponse>;
 
 export interface DestroyClusterRequest {
   org_slug: string;
@@ -297,9 +294,8 @@ export const DestroyClusterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DestroyClusterRequest" }) as any as S.Schema<DestroyClusterRequest>;
 
 export interface DestroyClusterResponse {}
-export const DestroyClusterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DestroyClusterResponse",
-}) as any as S.Schema<DestroyClusterResponse>;
+export const DestroyClusterResponse =
+  CreateBackupResponse as any as S.Schema<DestroyClusterResponse>;
 
 export interface DisableExtensionRequest {
   id: string;
@@ -323,9 +319,8 @@ export const DisableExtensionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DisableExtensionRequest" }) as any as S.Schema<DisableExtensionRequest>;
 
 export interface DisableExtensionResponse {}
-export const DisableExtensionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisableExtensionResponse",
-}) as any as S.Schema<DisableExtensionResponse>;
+export const DisableExtensionResponse =
+  CreateBackupResponse as any as S.Schema<DisableExtensionResponse>;
 
 export interface EnableExtensionRequest {
   id: string;
@@ -351,9 +346,8 @@ export const EnableExtensionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EnableExtensionRequest" }) as any as S.Schema<EnableExtensionRequest>;
 
 export interface EnableExtensionResponse {}
-export const EnableExtensionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "EnableExtensionResponse",
-}) as any as S.Schema<EnableExtensionResponse>;
+export const EnableExtensionResponse =
+  CreateBackupResponse as any as S.Schema<EnableExtensionResponse>;
 
 export interface GetClusterRequest {
   org_slug: string;
@@ -710,9 +704,8 @@ export const UpdateUserRoleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateUserRoleRequest" }) as any as S.Schema<UpdateUserRoleRequest>;
 
 export interface UpdateUserRoleResponse {}
-export const UpdateUserRoleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateUserRoleResponse",
-}) as any as S.Schema<UpdateUserRoleResponse>;
+export const UpdateUserRoleResponse =
+  CreateBackupResponse as any as S.Schema<UpdateUserRoleResponse>;
 
 export type CreateAttachmentError = NotFound | Conflict | FlyIoOpError;
 /** Attach a cluster to a Machines app */

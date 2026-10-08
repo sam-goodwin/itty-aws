@@ -759,26 +759,13 @@ export interface SageMakerSavingsPlansConfiguration {
   paymentOption?: string;
   hourlyCommitment?: string;
 }
-export const SageMakerSavingsPlansConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountScope: S.optional(S.String),
-    term: S.optional(S.String),
-    paymentOption: S.optional(S.String),
-    hourlyCommitment: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SageMakerSavingsPlansConfiguration",
-}) as any as S.Schema<SageMakerSavingsPlansConfiguration>;
+export const SageMakerSavingsPlansConfiguration =
+  ComputeSavingsPlansConfiguration as any as S.Schema<SageMakerSavingsPlansConfiguration>;
 export interface SageMakerSavingsPlans {
   configuration?: SageMakerSavingsPlansConfiguration;
   costCalculation?: SavingsPlansCostCalculation;
 }
-export const SageMakerSavingsPlans = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configuration: S.optional(SageMakerSavingsPlansConfiguration),
-    costCalculation: S.optional(SavingsPlansCostCalculation),
-  }),
-).annotate({ identifier: "SageMakerSavingsPlans" }) as any as S.Schema<SageMakerSavingsPlans>;
+export const SageMakerSavingsPlans = ComputeSavingsPlans as any as S.Schema<SageMakerSavingsPlans>;
 export interface DbInstanceConfiguration {
   dbInstanceClass?: string;
 }
@@ -960,33 +947,23 @@ export const DynamoDbTable = /*@__PURE__*/ S.suspend(() =>
 export interface ElastiCacheCluster {
   costCalculation?: ResourceCostCalculation;
 }
-export const ElastiCacheCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ costCalculation: S.optional(ResourceCostCalculation) }),
-).annotate({ identifier: "ElastiCacheCluster" }) as any as S.Schema<ElastiCacheCluster>;
+export const ElastiCacheCluster = DynamoDbTable as any as S.Schema<ElastiCacheCluster>;
 export interface MemoryDbCluster {
   costCalculation?: ResourceCostCalculation;
 }
-export const MemoryDbCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ costCalculation: S.optional(ResourceCostCalculation) }),
-).annotate({ identifier: "MemoryDbCluster" }) as any as S.Schema<MemoryDbCluster>;
+export const MemoryDbCluster = DynamoDbTable as any as S.Schema<MemoryDbCluster>;
 export interface DocumentDbCluster {
   costCalculation?: ResourceCostCalculation;
 }
-export const DocumentDbCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ costCalculation: S.optional(ResourceCostCalculation) }),
-).annotate({ identifier: "DocumentDbCluster" }) as any as S.Schema<DocumentDbCluster>;
+export const DocumentDbCluster = DynamoDbTable as any as S.Schema<DocumentDbCluster>;
 export interface WorkSpaces {
   costCalculation?: ResourceCostCalculation;
 }
-export const WorkSpaces = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ costCalculation: S.optional(ResourceCostCalculation) }),
-).annotate({ identifier: "WorkSpaces" }) as any as S.Schema<WorkSpaces>;
+export const WorkSpaces = DynamoDbTable as any as S.Schema<WorkSpaces>;
 export interface SageMakerEndpoint {
   costCalculation?: ResourceCostCalculation;
 }
-export const SageMakerEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ costCalculation: S.optional(ResourceCostCalculation) }),
-).annotate({ identifier: "SageMakerEndpoint" }) as any as S.Schema<SageMakerEndpoint>;
+export const SageMakerEndpoint = DynamoDbTable as any as S.Schema<SageMakerEndpoint>;
 export type ResourceDetails =
   | {
       lambdaFunction: LambdaFunction;
@@ -1891,17 +1868,17 @@ export const ImplementationEffortList = /*@__PURE__*/ S.Array(ImplementationEffo
 export type AccountIdList = string[];
 export const AccountIdList = /*@__PURE__*/ S.Array(S.String);
 export type RegionList = string[];
-export const RegionList = /*@__PURE__*/ S.Array(S.String);
+export const RegionList = AccountIdList as any as S.Schema<RegionList>;
 export type ResourceTypeList = ResourceType[];
 export const ResourceTypeList = /*@__PURE__*/ S.Array(ResourceType);
 export type ActionTypeList = ActionType[];
 export const ActionTypeList = /*@__PURE__*/ S.Array(ActionType);
 export type ResourceIdList = string[];
-export const ResourceIdList = /*@__PURE__*/ S.Array(S.String);
+export const ResourceIdList = AccountIdList as any as S.Schema<ResourceIdList>;
 export type ResourceArnList = string[];
-export const ResourceArnList = /*@__PURE__*/ S.Array(S.String);
+export const ResourceArnList = AccountIdList as any as S.Schema<ResourceArnList>;
 export type RecommendationIdList = string[];
-export const RecommendationIdList = /*@__PURE__*/ S.Array(S.String);
+export const RecommendationIdList = AccountIdList as any as S.Schema<RecommendationIdList>;
 export interface Filter {
   restartNeeded?: boolean;
   rollbackPossible?: boolean;

@@ -1182,9 +1182,8 @@ export type GetResponseAdditionalRoutesItem = CreateResponseAdditionalRoutesItem
 export const GetResponseAdditionalRoutesItem = CreateResponseAdditionalRoutesItem;
 
 export type GetResponseAdditionalRoutesList = Array<CreateResponseAdditionalRoutesItem>;
-export const GetResponseAdditionalRoutesList = /*@__PURE__*/ S.Array(
-  CreateResponseAdditionalRoutesItem,
-) as any as S.Schema<GetResponseAdditionalRoutesList>;
+export const GetResponseAdditionalRoutesList =
+  CreateResponseAdditionalRoutesList as any as S.Schema<GetResponseAdditionalRoutesList>;
 
 export type GetResponseCookieAttributesSamesite = "auto" | "lax" | "none" | "strict";
 export const GetResponseCookieAttributesSamesite = S.String;
@@ -1510,9 +1509,8 @@ export type ListResultItemAdditionalRoutesItem = CreateResponseAdditionalRoutesI
 export const ListResultItemAdditionalRoutesItem = CreateResponseAdditionalRoutesItem;
 
 export type ListResultItemAdditionalRoutesList = Array<CreateResponseAdditionalRoutesItem>;
-export const ListResultItemAdditionalRoutesList = /*@__PURE__*/ S.Array(
-  CreateResponseAdditionalRoutesItem,
-) as any as S.Schema<ListResultItemAdditionalRoutesList>;
+export const ListResultItemAdditionalRoutesList =
+  CreateResponseAdditionalRoutesList as any as S.Schema<ListResultItemAdditionalRoutesList>;
 
 export type ListResultItemCookieAttributesSamesite = "auto" | "lax" | "none" | "strict";
 export const ListResultItemCookieAttributesSamesite = S.String;
@@ -2041,19 +2039,14 @@ export interface PatchSettingResponse {
   /** Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Verified search engine crawlers will not be tracked or counted by the waiting room system, and will not appear in waiting room analytics. */
   searchEngineCrawlerBypass: boolean;
 }
-export const PatchSettingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    searchEngineCrawlerBypass: S.Boolean.pipe(T.Body("search_engine_crawler_bypass")),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PatchSettingResponse" }) as any as S.Schema<PatchSettingResponse>;
+export const PatchSettingResponse = GetSettingResponse as any as S.Schema<PatchSettingResponse>;
 
 export type EditRequestAdditionalRoutesItem = CreateRequestAdditionalRoutesItem;
 export const EditRequestAdditionalRoutesItem = CreateRequestAdditionalRoutesItem;
 
 export type EditRequestAdditionalRoutesList = Array<CreateRequestAdditionalRoutesItem>;
-export const EditRequestAdditionalRoutesList = /*@__PURE__*/ S.Array(
-  CreateRequestAdditionalRoutesItem,
-) as any as S.Schema<EditRequestAdditionalRoutesList>;
+export const EditRequestAdditionalRoutesList =
+  CreateRequestAdditionalRoutesList as any as S.Schema<EditRequestAdditionalRoutesList>;
 
 export type EditRequestCookieAttributesSamesite = "auto" | "lax" | "none" | "strict";
 export const EditRequestCookieAttributesSamesite = S.String;
@@ -2237,9 +2230,8 @@ export type EditResponseAdditionalRoutesItem = CreateResponseAdditionalRoutesIte
 export const EditResponseAdditionalRoutesItem = CreateResponseAdditionalRoutesItem;
 
 export type EditResponseAdditionalRoutesList = Array<CreateResponseAdditionalRoutesItem>;
-export const EditResponseAdditionalRoutesList = /*@__PURE__*/ S.Array(
-  CreateResponseAdditionalRoutesItem,
-) as any as S.Schema<EditResponseAdditionalRoutesList>;
+export const EditResponseAdditionalRoutesList =
+  CreateResponseAdditionalRoutesList as any as S.Schema<EditResponseAdditionalRoutesList>;
 
 export type EditResponseCookieAttributesSamesite = "auto" | "lax" | "none" | "strict";
 export const EditResponseCookieAttributesSamesite = S.String;
@@ -2473,11 +2465,7 @@ export interface PutSettingResponse {
   /** Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Verified search engine crawlers will not be tracked or counted by the waiting room system, and will not appear in waiting room analytics. */
   searchEngineCrawlerBypass: boolean;
 }
-export const PutSettingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    searchEngineCrawlerBypass: S.Boolean.pipe(T.Body("search_engine_crawler_bypass")),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PutSettingResponse" }) as any as S.Schema<PutSettingResponse>;
+export const PutSettingResponse = GetSettingResponse as any as S.Schema<PutSettingResponse>;
 
 export type EventsUpdateRequestTurnstileAction = "log" | "infinite_queue";
 export const EventsUpdateRequestTurnstileAction = S.String;
@@ -2734,9 +2722,8 @@ export type UpdateRequestAdditionalRoutesItem = CreateRequestAdditionalRoutesIte
 export const UpdateRequestAdditionalRoutesItem = CreateRequestAdditionalRoutesItem;
 
 export type UpdateRequestAdditionalRoutesList = Array<CreateRequestAdditionalRoutesItem>;
-export const UpdateRequestAdditionalRoutesList = /*@__PURE__*/ S.Array(
-  CreateRequestAdditionalRoutesItem,
-) as any as S.Schema<UpdateRequestAdditionalRoutesList>;
+export const UpdateRequestAdditionalRoutesList =
+  CreateRequestAdditionalRoutesList as any as S.Schema<UpdateRequestAdditionalRoutesList>;
 
 export type UpdateRequestCookieAttributesSamesite = "auto" | "lax" | "none" | "strict";
 export const UpdateRequestCookieAttributesSamesite = S.String;
@@ -2918,9 +2905,8 @@ export type UpdateResponseAdditionalRoutesItem = CreateResponseAdditionalRoutesI
 export const UpdateResponseAdditionalRoutesItem = CreateResponseAdditionalRoutesItem;
 
 export type UpdateResponseAdditionalRoutesList = Array<CreateResponseAdditionalRoutesItem>;
-export const UpdateResponseAdditionalRoutesList = /*@__PURE__*/ S.Array(
-  CreateResponseAdditionalRoutesItem,
-) as any as S.Schema<UpdateResponseAdditionalRoutesList>;
+export const UpdateResponseAdditionalRoutesList =
+  CreateResponseAdditionalRoutesList as any as S.Schema<UpdateResponseAdditionalRoutesList>;
 
 export type UpdateResponseCookieAttributesSamesite = "auto" | "lax" | "none" | "strict";
 export const UpdateResponseCookieAttributesSamesite = S.String;

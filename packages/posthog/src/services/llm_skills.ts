@@ -32,9 +32,8 @@ export const CreateLlmSkillRequestMetadataMap = /*@__PURE__*/ S.Record(
 
 /** User UUIDs to set as the skill's owners. Each must be a member of this project. Defaults to the creating user when omitted; pass an empty list to create with no owners. */
 export type CreateLlmSkillRequestOwnersList = Array<string>;
-export const CreateLlmSkillRequestOwnersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateLlmSkillRequestOwnersList>;
+export const CreateLlmSkillRequestOwnersList =
+  CreateLlmSkillRequestAllowedToolsList as any as S.Schema<CreateLlmSkillRequestOwnersList>;
 
 export interface LLMSkillFileInput {
   /** File path relative to skill root, e.g. 'scripts/setup.sh' or 'references/guide.md'. */
@@ -97,22 +96,17 @@ export const CreateLlmSkillRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tools the skill asks to use. Tool names cannot contain whitespace. A harness that reads the skill from a file (zip export, git marketplace, a content=full bundle) treats the list as pre-approved. A harness that loads the skill over MCP, including the default content=stub bundle, ignores the list until the user approves that grant. */
 export type LLMSkillAllowedToolsList = Array<string>;
-export const LLMSkillAllowedToolsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LLMSkillAllowedToolsList>;
+export const LLMSkillAllowedToolsList =
+  CreateLlmSkillRequestAllowedToolsList as any as S.Schema<LLMSkillAllowedToolsList>;
 
 /** Arbitrary key-value metadata. */
 export type LLMSkillMetadataMap = { [key: string]: unknown | undefined };
-export const LLMSkillMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LLMSkillMetadataMap>;
+export const LLMSkillMetadataMap =
+  CreateLlmSkillRequestMetadataMap as any as S.Schema<LLMSkillMetadataMap>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
+export const UserBasicHedgehogConfigMap =
+  CreateLlmSkillRequestMetadataMap as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
@@ -424,13 +418,7 @@ export interface LLMSkillFile {
   content?: string;
   content_type?: string;
 }
-export const LLMSkillFile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.optional(S.String),
-    content: S.optional(S.String),
-    content_type: S.optional(S.String),
-  }),
-).annotate({ identifier: "LLMSkillFile" }) as any as S.Schema<LLMSkillFile>;
+export const LLMSkillFile = LLMSkillFileInput as any as S.Schema<LLMSkillFile>;
 
 export interface GetLlmSkillsNameSkillMdRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -604,34 +592,27 @@ export const ListLlmSkillsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tools the skill asks to use. Tool names cannot contain whitespace. A harness that reads the skill from a file (zip export, git marketplace, a content=full bundle) treats the list as pre-approved. A harness that loads the skill over MCP, including the default content=stub bundle, ignores the list until the user approves that grant. */
 export type LLMSkillListAllowedToolsList = Array<string>;
-export const LLMSkillListAllowedToolsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LLMSkillListAllowedToolsList>;
+export const LLMSkillListAllowedToolsList =
+  CreateLlmSkillRequestAllowedToolsList as any as S.Schema<LLMSkillListAllowedToolsList>;
 
 /** Arbitrary key-value metadata. */
 export type LLMSkillListMetadataMap = { [key: string]: unknown | undefined };
-export const LLMSkillListMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LLMSkillListMetadataMap>;
+export const LLMSkillListMetadataMap =
+  CreateLlmSkillRequestMetadataMap as any as S.Schema<LLMSkillListMetadataMap>;
 
 /** Users who own this skill, seed-creator first. Ownership is keyed on the logical skill (not a version), so it's stable across edits. Prefer this over created_by to learn who to route reviews or questions to. Set via the owners field on create/update (a list of user UUIDs). Empty for scout sandbox fetches of skills that haven't opted into the report channel. */
 export type LLMSkillListOwnersList = Array<UserBasic>;
-export const LLMSkillListOwnersList = /*@__PURE__*/ S.Array(
-  UserBasic,
-) as any as S.Schema<LLMSkillListOwnersList>;
+export const LLMSkillListOwnersList = LLMSkillOwnersList as any as S.Schema<LLMSkillListOwnersList>;
 
 /** Flat list of markdown headings parsed from the skill body. Useful as a lightweight table of contents. */
 export type LLMSkillListOutlineList = Array<LLMSkillOutlineEntry>;
-export const LLMSkillListOutlineList = /*@__PURE__*/ S.Array(
-  LLMSkillOutlineEntry,
-) as any as S.Schema<LLMSkillListOutlineList>;
+export const LLMSkillListOutlineList =
+  LLMSkillOutlineList as any as S.Schema<LLMSkillListOutlineList>;
 
 /** Why this skill is left out of the skills bundle and the plugin marketplace, as stable codes with author-facing messages. Empty when the skill packages cleanly. */
 export type LLMSkillListSpecProblemsList = Array<LLMSkillSpecProblem>;
-export const LLMSkillListSpecProblemsList = /*@__PURE__*/ S.Array(
-  LLMSkillSpecProblem,
-) as any as S.Schema<LLMSkillListSpecProblemsList>;
+export const LLMSkillListSpecProblemsList =
+  LLMSkillSpecProblemsList as any as S.Schema<LLMSkillListSpecProblemsList>;
 
 /** List serializer that omits body and file manifest -- progressive disclosure (Level 1). */
 export interface LLMSkillList {
@@ -906,11 +887,8 @@ export const LlmSkillsNameExportRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LlmSkillsNameExportRetrieveRequest>;
 
 export interface LlmSkillsNameExportRetrieveResponse {}
-export const LlmSkillsNameExportRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "LlmSkillsNameExportRetrieveResponse",
-}) as any as S.Schema<LlmSkillsNameExportRetrieveResponse>;
+export const LlmSkillsNameExportRetrieveResponse =
+  LlmSkillsNameArchiveCreateResponse as any as S.Schema<LlmSkillsNameExportRetrieveResponse>;
 
 export interface LlmSkillsNameFilesDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -968,9 +946,8 @@ export const LlmSkillsNameFilesRenameCreateRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Tags used to group the scout in the fleet. */
 export type CommunitySkillScoutConfigTagsList = Array<string>;
-export const CommunitySkillScoutConfigTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CommunitySkillScoutConfigTagsList>;
+export const CommunitySkillScoutConfigTagsList =
+  CreateLlmSkillRequestAllowedToolsList as any as S.Schema<CommunitySkillScoutConfigTagsList>;
 
 /** The scout settings a published scout travels with. Every field is optional. An omitted field means the scout-create form's own default applies. */
 export interface CommunitySkillScoutConfig {
@@ -996,9 +973,8 @@ export const CommunitySkillScoutConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags used for filtering and discovery in the marketplace, e.g. ['web-analytics', 'triage']. */
 export type LlmSkillsNamePublishCommunityCreateRequestTagsList = Array<string>;
-export const LlmSkillsNamePublishCommunityCreateRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LlmSkillsNamePublishCommunityCreateRequestTagsList>;
+export const LlmSkillsNamePublishCommunityCreateRequestTagsList =
+  CreateLlmSkillRequestAllowedToolsList as any as S.Schema<LlmSkillsNamePublishCommunityCreateRequestTagsList>;
 
 export interface LlmSkillsNamePublishCommunityCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1187,28 +1163,23 @@ export const UpdateLlmSkillsNamePartialRequestEditsList = /*@__PURE__*/ S.Array(
 
 /** Tools the skill asks to use. Tool names cannot contain whitespace. A harness that reads the skill from a file (zip export, git marketplace, a content=full bundle) treats the list as pre-approved. A harness that loads the skill over MCP, including the default content=stub bundle, ignores the list until the user approves that grant. */
 export type UpdateLlmSkillsNamePartialRequestAllowedToolsList = Array<string>;
-export const UpdateLlmSkillsNamePartialRequestAllowedToolsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateLlmSkillsNamePartialRequestAllowedToolsList>;
+export const UpdateLlmSkillsNamePartialRequestAllowedToolsList =
+  CreateLlmSkillRequestAllowedToolsList as any as S.Schema<UpdateLlmSkillsNamePartialRequestAllowedToolsList>;
 
 /** Arbitrary key-value metadata. */
 export type UpdateLlmSkillsNamePartialRequestMetadataMap = { [key: string]: unknown | undefined };
-export const UpdateLlmSkillsNamePartialRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateLlmSkillsNamePartialRequestMetadataMap>;
+export const UpdateLlmSkillsNamePartialRequestMetadataMap =
+  CreateLlmSkillRequestMetadataMap as any as S.Schema<UpdateLlmSkillsNamePartialRequestMetadataMap>;
 
 /** Bundled files to include with this version. Replaces all files from the previous version. Mutually exclusive with file_edits. */
 export type UpdateLlmSkillsNamePartialRequestFilesList = Array<LLMSkillFileInput>;
-export const UpdateLlmSkillsNamePartialRequestFilesList = /*@__PURE__*/ S.Array(
-  LLMSkillFileInput,
-) as any as S.Schema<UpdateLlmSkillsNamePartialRequestFilesList>;
+export const UpdateLlmSkillsNamePartialRequestFilesList =
+  CreateLlmSkillRequestFilesList as any as S.Schema<UpdateLlmSkillsNamePartialRequestFilesList>;
 
 /** Sequential find/replace operations to apply to this file's content. */
 export type LLMSkillFileEditEditsList = Array<LLMSkillEditOperation>;
-export const LLMSkillFileEditEditsList = /*@__PURE__*/ S.Array(
-  LLMSkillEditOperation,
-) as any as S.Schema<LLMSkillFileEditEditsList>;
+export const LLMSkillFileEditEditsList =
+  UpdateLlmSkillsNamePartialRequestEditsList as any as S.Schema<LLMSkillFileEditEditsList>;
 
 export interface LLMSkillFileEdit {
   /** Path of the bundled file to edit. Must match an existing file on the current skill version. */
@@ -1231,9 +1202,8 @@ export const UpdateLlmSkillsNamePartialRequestFileEditsList = /*@__PURE__*/ S.Ar
 
 /** Replace the skill's owners with these user UUIDs (each a member of this project). Omit to leave owners unchanged; pass an empty list to clear them. Owners are keyed on the logical skill, so setting them is independent of the version being published -- a body edit alone never changes ownership. */
 export type UpdateLlmSkillsNamePartialRequestOwnersList = Array<string>;
-export const UpdateLlmSkillsNamePartialRequestOwnersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateLlmSkillsNamePartialRequestOwnersList>;
+export const UpdateLlmSkillsNamePartialRequestOwnersList =
+  CreateLlmSkillRequestAllowedToolsList as any as S.Schema<UpdateLlmSkillsNamePartialRequestOwnersList>;
 
 export interface UpdateLlmSkillsNamePartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

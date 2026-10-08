@@ -379,10 +379,8 @@ export const StreamlitAppsCreateVersionFromSourceCreateRequestFilesMap = /*@__PU
 export type StreamlitAppsCreateVersionFromSourceCreateRequestAssetsMap = {
   [key: string]: string | undefined;
 };
-export const StreamlitAppsCreateVersionFromSourceCreateRequestAssetsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StreamlitAppsCreateVersionFromSourceCreateRequestAssetsMap>;
+export const StreamlitAppsCreateVersionFromSourceCreateRequestAssetsMap =
+  StreamlitAppsCreateVersionFromSourceCreateRequestFilesMap as any as S.Schema<StreamlitAppsCreateVersionFromSourceCreateRequestAssetsMap>;
 
 export interface StreamlitAppsCreateVersionFromSourceCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

@@ -179,7 +179,7 @@ export const LockConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ UnlockDelay: UnlockDelay }),
 ).annotate({ identifier: "LockConfiguration" }) as any as S.Schema<LockConfiguration>;
 export type ExcludeResourceTags = ResourceTag[];
-export const ExcludeResourceTags = /*@__PURE__*/ S.Array(ResourceTag);
+export const ExcludeResourceTags = ResourceTags as any as S.Schema<ExcludeResourceTags>;
 export interface CreateRuleRequest {
   RetentionPeriod: RetentionPeriod;
   Description?: string;
@@ -402,9 +402,7 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteRuleResponse as any as S.Schema<TagResourceResponse>;
 export interface UnlockRuleRequest {
   Identifier: string;
 }
@@ -433,21 +431,7 @@ export interface UnlockRuleResponse {
   RuleArn?: string;
   ExcludeResourceTags?: ResourceTag[];
 }
-export const UnlockRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identifier: S.optional(S.String),
-    Description: S.optional(S.String),
-    ResourceType: S.optional(ResourceType),
-    RetentionPeriod: S.optional(RetentionPeriod),
-    ResourceTags: S.optional(ResourceTags),
-    Status: S.optional(RuleStatus),
-    LockConfiguration: S.optional(LockConfiguration),
-    LockState: S.optional(LockState),
-    LockEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    RuleArn: S.optional(S.String),
-    ExcludeResourceTags: S.optional(ExcludeResourceTags),
-  }),
-).annotate({ identifier: "UnlockRuleResponse" }) as any as S.Schema<UnlockRuleResponse>;
+export const UnlockRuleResponse = GetRuleResponse as any as S.Schema<UnlockRuleResponse>;
 export type TagKeyList = string[];
 export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
@@ -463,9 +447,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = DeleteRuleResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateRuleRequest {
   Identifier: string;
   RetentionPeriod?: RetentionPeriod;

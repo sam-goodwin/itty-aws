@@ -215,9 +215,8 @@ export const CreateLogsInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The access control list for the Logs instance. */
 export type LogsInstanceAclList = Array<string>;
-export const LogsInstanceAclList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsInstanceAclList>;
+export const LogsInstanceAclList =
+  CreateLogsInstanceRequestAclList as any as S.Schema<LogsInstanceAclList>;
 
 /** The current status of the Logs instance. */
 export type LogsInstanceStatus = "active" | "deleting" | "reconciling";
@@ -332,9 +331,8 @@ export const DeleteAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAccessTokenRequest" }) as any as S.Schema<DeleteAccessTokenRequest>;
 
 export interface DeleteAccessTokenResponse {}
-export const DeleteAccessTokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAccessTokenResponse",
-}) as any as S.Schema<DeleteAccessTokenResponse>;
+export const DeleteAccessTokenResponse =
+  DeleteAccessPolicyResponse as any as S.Schema<DeleteAccessTokenResponse>;
 
 export type DeleteAllAccessPoliciesRequestRegionId = "eu01" | "eu02";
 export const DeleteAllAccessPoliciesRequestRegionId = S.String;
@@ -477,9 +475,8 @@ export const DeleteLogsInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLogsInstanceRequest>;
 
 export interface DeleteLogsInstanceResponse {}
-export const DeleteLogsInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLogsInstanceResponse",
-}) as any as S.Schema<DeleteLogsInstanceResponse>;
+export const DeleteLogsInstanceResponse =
+  DeleteAccessPolicyResponse as any as S.Schema<DeleteLogsInstanceResponse>;
 
 export type GetAccessPolicyRequestRegionId = "eu01" | "eu02";
 export const GetAccessPolicyRequestRegionId = S.String;
@@ -728,18 +725,16 @@ export const UpdateAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateAccessTokenRequest" }) as any as S.Schema<UpdateAccessTokenRequest>;
 
 export interface UpdateAccessTokenResponse {}
-export const UpdateAccessTokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateAccessTokenResponse",
-}) as any as S.Schema<UpdateAccessTokenResponse>;
+export const UpdateAccessTokenResponse =
+  DeleteAccessPolicyResponse as any as S.Schema<UpdateAccessTokenResponse>;
 
 export type UpdateLogsInstanceRequestRegionId = "eu01" | "eu02";
 export const UpdateLogsInstanceRequestRegionId = S.String;
 
 /** The access control list for the Logs instance. */
 export type UpdateLogsInstanceRequestAclList = Array<string>;
-export const UpdateLogsInstanceRequestAclList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateLogsInstanceRequestAclList>;
+export const UpdateLogsInstanceRequestAclList =
+  CreateLogsInstanceRequestAclList as any as S.Schema<UpdateLogsInstanceRequestAclList>;
 
 export interface UpdateLogsInstanceRequest {
   /** The STACKIT portal project UUID the resource is located in. */

@@ -284,9 +284,8 @@ export const SessionRecordingViewersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SessionRecordingViewersList>;
 
 export type MinimalPersonDistinctIdsList = Array<string>;
-export const MinimalPersonDistinctIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MinimalPersonDistinctIdsList>;
+export const MinimalPersonDistinctIdsList =
+  SessionRecordingViewersList as any as S.Schema<MinimalPersonDistinctIdsList>;
 
 export interface MinimalPerson {
   /** Numeric person ID. */
@@ -316,10 +315,8 @@ export const MinimalPerson = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MinimalPerson" }) as any as S.Schema<MinimalPerson>;
 
 export type SessionRecordingExternalReferencesItemMap = { [key: string]: unknown | undefined };
-export const SessionRecordingExternalReferencesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SessionRecordingExternalReferencesItemMap>;
+export const SessionRecordingExternalReferencesItemMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<SessionRecordingExternalReferencesItemMap>;
 
 /** Load external references (linked issues) for this recording */
 export type SessionRecordingExternalReferencesList =
@@ -436,11 +433,8 @@ export const GetSessionRecordingPlaylistsRecordingRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<GetSessionRecordingPlaylistsRecordingRequest>;
 
 export interface GetSessionRecordingPlaylistsRecordingResponse {}
-export const GetSessionRecordingPlaylistsRecordingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetSessionRecordingPlaylistsRecordingResponse",
-}) as any as S.Schema<GetSessionRecordingPlaylistsRecordingResponse>;
+export const GetSessionRecordingPlaylistsRecordingResponse =
+  CreateSessionRecordingPlaylistsRecordingResponse as any as S.Schema<GetSessionRecordingPlaylistsRecordingResponse>;
 
 export interface ListSessionRecordingPlaylistsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -556,11 +550,8 @@ export const SessionRecordingPlaylistsDestroyRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<SessionRecordingPlaylistsDestroyRequest>;
 
 export interface SessionRecordingPlaylistsDestroyResponse {}
-export const SessionRecordingPlaylistsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SessionRecordingPlaylistsDestroyResponse",
-}) as any as S.Schema<SessionRecordingPlaylistsDestroyResponse>;
+export const SessionRecordingPlaylistsDestroyResponse =
+  CreateSessionRecordingPlaylistsRecordingResponse as any as S.Schema<SessionRecordingPlaylistsDestroyResponse>;
 
 export interface SessionRecordingPlaylistsRecordingsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -585,11 +576,8 @@ export const SessionRecordingPlaylistsRecordingsDestroyRequest = /*@__PURE__*/ S
 }) as any as S.Schema<SessionRecordingPlaylistsRecordingsDestroyRequest>;
 
 export interface SessionRecordingPlaylistsRecordingsDestroyResponse {}
-export const SessionRecordingPlaylistsRecordingsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SessionRecordingPlaylistsRecordingsDestroyResponse",
-}) as any as S.Schema<SessionRecordingPlaylistsRecordingsDestroyResponse>;
+export const SessionRecordingPlaylistsRecordingsDestroyResponse =
+  CreateSessionRecordingPlaylistsRecordingResponse as any as S.Schema<SessionRecordingPlaylistsRecordingsDestroyResponse>;
 
 /** Session IDs of the recordings to delete (max 100 per call). */
 export type SessionRecordingsBulkDeleteCreateRequestSessionRecordingIdsList = Array<string>;
@@ -624,9 +612,8 @@ export const SessionRecordingsBulkDeleteCreateRequest = /*@__PURE__*/ S.suspend(
 
 /** Session IDs that were found but could not be deleted. These can be retried. */
 export type SessionRecordingBulkDeleteResponseFailedIdsList = Array<string>;
-export const SessionRecordingBulkDeleteResponseFailedIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SessionRecordingBulkDeleteResponseFailedIdsList>;
+export const SessionRecordingBulkDeleteResponseFailedIdsList =
+  SessionRecordingViewersList as any as S.Schema<SessionRecordingBulkDeleteResponseFailedIdsList>;
 
 export interface SessionRecordingBulkDeleteResponse {
   /** True when no deletion attempt failed. IDs that were not found, or that the caller lacks edit access to, are skipped rather than failed -- compare deleted_count to total_requested to detect skips. */
@@ -671,11 +658,8 @@ export const SessionRecordingsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SessionRecordingsDestroyRequest>;
 
 export interface SessionRecordingsDestroyResponse {}
-export const SessionRecordingsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SessionRecordingsDestroyResponse",
-}) as any as S.Schema<SessionRecordingsDestroyResponse>;
+export const SessionRecordingsDestroyResponse =
+  CreateSessionRecordingPlaylistsRecordingResponse as any as S.Schema<SessionRecordingsDestroyResponse>;
 
 export interface MinimalPersonInput {
   /** Key-value map of person properties set via $set and $set_once operations. */

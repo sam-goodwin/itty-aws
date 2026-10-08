@@ -430,10 +430,8 @@ export const ConfigurationProfilesCreateOrUpdateRequest = /*@__PURE__*/ S.suspen
 export type ConfigurationProfilesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const ConfigurationProfilesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConfigurationProfilesCreateOrUpdateResponseTagsMap>;
+export const ConfigurationProfilesCreateOrUpdateResponseTagsMap =
+  ConfigurationProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<ConfigurationProfilesCreateOrUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type ConfigurationProfilesCreateOrUpdateResponseSystemDataCreatedByType =
@@ -515,10 +513,8 @@ export const ConfigurationProfilesCreateOrUpdateResponse = /*@__PURE__*/ S.suspe
 export type ConfigurationProfilesVersionsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const ConfigurationProfilesVersionsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConfigurationProfilesVersionsCreateOrUpdateRequestTagsMap>;
+export const ConfigurationProfilesVersionsCreateOrUpdateRequestTagsMap =
+  ConfigurationProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<ConfigurationProfilesVersionsCreateOrUpdateRequestTagsMap>;
 
 export interface ConfigurationProfilesVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -561,10 +557,8 @@ export const ConfigurationProfilesVersionsCreateOrUpdateRequest = /*@__PURE__*/ 
 export type ConfigurationProfilesVersionsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const ConfigurationProfilesVersionsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConfigurationProfilesVersionsCreateOrUpdateResponseTagsMap>;
+export const ConfigurationProfilesVersionsCreateOrUpdateResponseTagsMap =
+  ConfigurationProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<ConfigurationProfilesVersionsCreateOrUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type ConfigurationProfilesVersionsCreateOrUpdateResponseSystemDataCreatedByType =
@@ -707,11 +701,8 @@ export const DeleteConfigurationProfileAssignmentRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteConfigurationProfileAssignmentRequest>;
 
 export interface DeleteConfigurationProfileAssignmentResponse {}
-export const DeleteConfigurationProfileAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteConfigurationProfileAssignmentResponse",
-}) as any as S.Schema<DeleteConfigurationProfileAssignmentResponse>;
+export const DeleteConfigurationProfileAssignmentResponse =
+  DeleteConfigurationProfileResponse as any as S.Schema<DeleteConfigurationProfileAssignmentResponse>;
 
 export interface DeleteConfigurationProfileHCIAssignmentRequest {
   /** The ID of the target subscription. */
@@ -742,11 +733,8 @@ export const DeleteConfigurationProfileHCIAssignmentRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteConfigurationProfileHCIAssignmentRequest>;
 
 export interface DeleteConfigurationProfileHCIAssignmentResponse {}
-export const DeleteConfigurationProfileHCIAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteConfigurationProfileHCIAssignmentResponse",
-}) as any as S.Schema<DeleteConfigurationProfileHCIAssignmentResponse>;
+export const DeleteConfigurationProfileHCIAssignmentResponse =
+  DeleteConfigurationProfileResponse as any as S.Schema<DeleteConfigurationProfileHCIAssignmentResponse>;
 
 export interface DeleteConfigurationProfileHCRPAssignmentRequest {
   /** The ID of the target subscription. */
@@ -777,11 +765,8 @@ export const DeleteConfigurationProfileHCRPAssignmentRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<DeleteConfigurationProfileHCRPAssignmentRequest>;
 
 export interface DeleteConfigurationProfileHCRPAssignmentResponse {}
-export const DeleteConfigurationProfileHCRPAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteConfigurationProfileHCRPAssignmentResponse",
-}) as any as S.Schema<DeleteConfigurationProfileHCRPAssignmentResponse>;
+export const DeleteConfigurationProfileHCRPAssignmentResponse =
+  DeleteConfigurationProfileResponse as any as S.Schema<DeleteConfigurationProfileHCRPAssignmentResponse>;
 
 export interface DeleteConfigurationProfilesVersionRequest {
   /** The ID of the target subscription. */
@@ -812,11 +797,8 @@ export const DeleteConfigurationProfilesVersionRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteConfigurationProfilesVersionRequest>;
 
 export interface DeleteConfigurationProfilesVersionResponse {}
-export const DeleteConfigurationProfilesVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteConfigurationProfilesVersionResponse",
-}) as any as S.Schema<DeleteConfigurationProfilesVersionResponse>;
+export const DeleteConfigurationProfilesVersionResponse =
+  DeleteConfigurationProfileResponse as any as S.Schema<DeleteConfigurationProfilesVersionResponse>;
 
 export interface GetBestPracticeRequest {
   /** The Automanage best practice name. */
@@ -949,10 +931,8 @@ export const GetConfigurationProfileRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetConfigurationProfileResponseTagsMap = { [key: string]: string | undefined };
-export const GetConfigurationProfileResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetConfigurationProfileResponseTagsMap>;
+export const GetConfigurationProfileResponseTagsMap =
+  ConfigurationProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<GetConfigurationProfileResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type GetConfigurationProfileResponseSystemDataCreatedByType =
@@ -1361,10 +1341,8 @@ export const GetConfigurationProfilesVersionRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type GetConfigurationProfilesVersionResponseTagsMap = { [key: string]: string | undefined };
-export const GetConfigurationProfilesVersionResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetConfigurationProfilesVersionResponseTagsMap>;
+export const GetConfigurationProfilesVersionResponseTagsMap =
+  ConfigurationProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<GetConfigurationProfilesVersionResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type GetConfigurationProfilesVersionResponseSystemDataCreatedByType =
@@ -1528,9 +1506,8 @@ export const ReportResourceErrorDetailsList = /*@__PURE__*/ S.Array(
 
 /** The error additional info. */
 export type ReportResourceErrorAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const ReportResourceErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
-  ErrorAdditionalInfo,
-) as any as S.Schema<ReportResourceErrorAdditionalInfoList>;
+export const ReportResourceErrorAdditionalInfoList =
+  ErrorDetailAdditionalInfoList as any as S.Schema<ReportResourceErrorAdditionalInfoList>;
 
 /** The error detail. */
 export interface ReportResourceError {
@@ -1586,15 +1563,13 @@ export const AssignmentReportPropertiesResourcesList = /*@__PURE__*/ S.Array(
 
 /** The error details. */
 export type AssignmentReportPropertiesErrorDetailsList = Array<ErrorDetail>;
-export const AssignmentReportPropertiesErrorDetailsList = /*@__PURE__*/ S.Array(
-  ErrorDetail,
-) as any as S.Schema<AssignmentReportPropertiesErrorDetailsList>;
+export const AssignmentReportPropertiesErrorDetailsList =
+  ReportResourceErrorDetailsList as any as S.Schema<AssignmentReportPropertiesErrorDetailsList>;
 
 /** The error additional info. */
 export type AssignmentReportPropertiesErrorAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const AssignmentReportPropertiesErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
-  ErrorAdditionalInfo,
-) as any as S.Schema<AssignmentReportPropertiesErrorAdditionalInfoList>;
+export const AssignmentReportPropertiesErrorAdditionalInfoList =
+  ErrorDetailAdditionalInfoList as any as S.Schema<AssignmentReportPropertiesErrorAdditionalInfoList>;
 
 /** The error detail. */
 export interface AssignmentReportPropertiesError {
@@ -2302,10 +2277,8 @@ export const ListConfigurationProfileByResourceGroupRequest = /*@__PURE__*/ S.su
 
 /** Resource tags. */
 export type ConfigurationProfileTagsMap = { [key: string]: string | undefined };
-export const ConfigurationProfileTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConfigurationProfileTagsMap>;
+export const ConfigurationProfileTagsMap =
+  ConfigurationProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<ConfigurationProfileTagsMap>;
 
 /** The type of identity that created the resource. */
 export type ConfigurationProfileSystemDataCreatedByType =
@@ -2788,10 +2761,8 @@ export const ServicePrincipalListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type UpdateConfigurationProfileRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateConfigurationProfileRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateConfigurationProfileRequestTagsMap>;
+export const UpdateConfigurationProfileRequestTagsMap =
+  ConfigurationProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateConfigurationProfileRequestTagsMap>;
 
 export interface UpdateConfigurationProfileRequest {
   /** The ID of the target subscription. */
@@ -2826,10 +2797,8 @@ export const UpdateConfigurationProfileRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateConfigurationProfileResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateConfigurationProfileResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateConfigurationProfileResponseTagsMap>;
+export const UpdateConfigurationProfileResponseTagsMap =
+  ConfigurationProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateConfigurationProfileResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type UpdateConfigurationProfileResponseSystemDataCreatedByType =

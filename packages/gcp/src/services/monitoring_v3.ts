@@ -1422,12 +1422,7 @@ export interface Metric {
   /** The set of label values that uniquely identify this metric. All labels listed in the MetricDescriptor must be assigned values. */
   labels?: StringMap;
 }
-export const Metric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    labels: S.optional(StringMap),
-  }),
-).annotate({ identifier: "Metric" }) as any as S.Schema<Metric>;
+export const Metric = MonitoredResource as any as S.Schema<Metric>;
 
 /** Auxiliary metadata for a MonitoredResource object. MonitoredResource objects contain the minimum set of information to uniquely identify a monitored resource instance. There is some other useful auxiliary metadata. Monitoring and Logging use an ingestion pipeline to extract metadata for cloud resources of all types, and store the metadata in this message. */
 export interface MonitoredResourceMetadata {
@@ -2022,9 +2017,7 @@ export const BasicService = /*@__PURE__*/ S.suspend(() =>
 
 /** Use a custom service to designate a service that you want to monitor when none of the other service types (like App Engine, Cloud Run, or a GKE type) matches your intended service. */
 export interface Custom {}
-export const Custom = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Custom",
-}) as any as S.Schema<Custom>;
+export const Custom = Empty as any as S.Schema<Custom>;
 
 /** GKE Service. The "service" here represents a Kubernetes service object (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource labels on k8s_service monitored resources (https://cloud.google.com/monitoring/api/resources#tag_k8s_service). */
 export interface GkeService {

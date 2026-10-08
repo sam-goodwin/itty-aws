@@ -1146,7 +1146,7 @@ export type SelectorName = string;
 export type SelectorField = string;
 export type OperatorValue = string;
 export type Operator = string[];
-export const Operator = /*@__PURE__*/ S.Array(S.String);
+export const Operator = QueryParameters as any as S.Schema<Operator>;
 export interface AdvancedFieldSelector {
   Field: string;
   Equals?: string[];
@@ -1333,9 +1333,7 @@ export const DeleteChannelRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteChannelRequest" }) as any as S.Schema<DeleteChannelRequest>;
 export interface DeleteChannelResponse {}
-export const DeleteChannelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteChannelResponse",
-}) as any as S.Schema<DeleteChannelResponse>;
+export const DeleteChannelResponse = AddTagsResponse as any as S.Schema<DeleteChannelResponse>;
 export interface DeleteDashboardRequest {
   DashboardId: string;
 }
@@ -1376,11 +1374,8 @@ export const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourcePolicyRequest",
 }) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {}
-export const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteResourcePolicyResponse",
-}) as any as S.Schema<DeleteResourcePolicyResponse>;
+export const DeleteResourcePolicyResponse =
+  DeleteEventDataStoreResponse as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface DeleteTrailRequest {
   Name: string;
 }
@@ -1390,9 +1385,7 @@ export const DeleteTrailRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteTrailRequest" }) as any as S.Schema<DeleteTrailRequest>;
 export interface DeleteTrailResponse {}
-export const DeleteTrailResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteTrailResponse",
-}) as any as S.Schema<DeleteTrailResponse>;
+export const DeleteTrailResponse = AddTagsResponse as any as S.Schema<DeleteTrailResponse>;
 export interface DeregisterOrganizationDelegatedAdminRequest {
   DelegatedAdminAccountId: string;
 }
@@ -1404,11 +1397,8 @@ export const DeregisterOrganizationDelegatedAdminRequest = /*@__PURE__*/ S.suspe
   identifier: "DeregisterOrganizationDelegatedAdminRequest",
 }) as any as S.Schema<DeregisterOrganizationDelegatedAdminRequest>;
 export interface DeregisterOrganizationDelegatedAdminResponse {}
-export const DeregisterOrganizationDelegatedAdminResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeregisterOrganizationDelegatedAdminResponse",
-}) as any as S.Schema<DeregisterOrganizationDelegatedAdminResponse>;
+export const DeregisterOrganizationDelegatedAdminResponse =
+  DeleteEventDataStoreResponse as any as S.Schema<DeregisterOrganizationDelegatedAdminResponse>;
 export type RefreshId = string;
 export interface DescribeQueryRequest {
   EventDataStore?: string;
@@ -1485,7 +1475,7 @@ export const DescribeQueryResponse = /*@__PURE__*/ S.suspend(() =>
   }).pipe(ns),
 ).annotate({ identifier: "DescribeQueryResponse" }) as any as S.Schema<DescribeQueryResponse>;
 export type TrailNameList = string[];
-export const TrailNameList = /*@__PURE__*/ S.Array(S.String);
+export const TrailNameList = QueryParameters as any as S.Schema<TrailNameList>;
 export interface DescribeTrailsRequest {
   trailNameList?: string[];
   includeShadowTrails?: boolean;
@@ -1590,7 +1580,7 @@ export const EnableFederationResponse = /*@__PURE__*/ S.suspend(() =>
   }).pipe(ns),
 ).annotate({ identifier: "EnableFederationResponse" }) as any as S.Schema<EnableFederationResponse>;
 export type EventDataStoreList = string[];
-export const EventDataStoreList = /*@__PURE__*/ S.Array(S.String);
+export const EventDataStoreList = QueryParameters as any as S.Schema<EventDataStoreList>;
 export interface GenerateQueryRequest {
   EventDataStores: string[];
   Prompt: string;
@@ -1726,7 +1716,7 @@ export const Type = S.String;
 
 export type OperatorTargetListMember = string;
 export type OperatorTargetList = string[];
-export const OperatorTargetList = /*@__PURE__*/ S.Array(S.String);
+export const OperatorTargetList = QueryParameters as any as S.Schema<OperatorTargetList>;
 export interface ContextKeySelector {
   Type: Type;
   Equals: string[];
@@ -1840,7 +1830,7 @@ export type ReadWriteType = "ReadOnly" | "WriteOnly" | "All" | (string & {});
 export const ReadWriteType = S.String;
 
 export type DataResourceValues = string[];
-export const DataResourceValues = /*@__PURE__*/ S.Array(S.String);
+export const DataResourceValues = QueryParameters as any as S.Schema<DataResourceValues>;
 export interface DataResource {
   Type?: string;
   Values?: string[];
@@ -1851,7 +1841,8 @@ export const DataResource = /*@__PURE__*/ S.suspend(() =>
 export type DataResources = DataResource[];
 export const DataResources = /*@__PURE__*/ S.Array(DataResource);
 export type ExcludeManagementEventSources = string[];
-export const ExcludeManagementEventSources = /*@__PURE__*/ S.Array(S.String);
+export const ExcludeManagementEventSources =
+  QueryParameters as any as S.Schema<ExcludeManagementEventSources>;
 export interface EventSelector {
   ReadWriteType?: ReadWriteType;
   IncludeManagementEvents?: boolean;
@@ -1891,7 +1882,7 @@ export const GetImportRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetImportRequest" }) as any as S.Schema<GetImportRequest>;
 export type ImportDestinations = string[];
-export const ImportDestinations = /*@__PURE__*/ S.Array(S.String);
+export const ImportDestinations = QueryParameters as any as S.Schema<ImportDestinations>;
 export interface S3ImportSource {
   S3LocationUri: string;
   S3BucketRegion: string;
@@ -2035,10 +2026,7 @@ export const QueryStatistics = /*@__PURE__*/ S.suspend(() =>
 export type QueryResultKey = string;
 export type QueryResultValue = string;
 export type QueryResultColumn = { [key: string]: string | undefined };
-export const QueryResultColumn = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const QueryResultColumn = ViewPropertiesMap as any as S.Schema<QueryResultColumn>;
 export type QueryResultRow = { [key: string]: string | undefined }[];
 export const QueryResultRow = /*@__PURE__*/ S.Array(QueryResultColumn);
 export type QueryResultRows = { [key: string]: string | undefined }[][];
@@ -2558,7 +2546,7 @@ export const ListQueriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Queries: S.optional(Queries), NextToken: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "ListQueriesResponse" }) as any as S.Schema<ListQueriesResponse>;
 export type ResourceIdList = string[];
-export const ResourceIdList = /*@__PURE__*/ S.Array(S.String);
+export const ResourceIdList = QueryParameters as any as S.Schema<ResourceIdList>;
 export interface ListTagsRequest {
   ResourceIdList: string[];
   NextToken?: string;
@@ -2664,9 +2652,8 @@ export interface LookupEventsResponse {
   Events?: Event[];
   NextToken?: string;
 }
-export const LookupEventsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Events: S.optional(EventsList), NextToken: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "LookupEventsResponse" }) as any as S.Schema<LookupEventsResponse>;
+export const LookupEventsResponse =
+  ListInsightsDataResponse as any as S.Schema<LookupEventsResponse>;
 export interface PutEventConfigurationRequest {
   TrailName?: string;
   EventDataStore?: string;
@@ -2692,17 +2679,8 @@ export interface PutEventConfigurationResponse {
   ContextKeySelectors?: ContextKeySelector[];
   AggregationConfigurations?: AggregationConfiguration[];
 }
-export const PutEventConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TrailARN: S.optional(S.String),
-    EventDataStoreArn: S.optional(S.String),
-    MaxEventSize: S.optional(MaxEventSize),
-    ContextKeySelectors: S.optional(ContextKeySelectors),
-    AggregationConfigurations: S.optional(AggregationConfigurations),
-  }).pipe(ns),
-).annotate({
-  identifier: "PutEventConfigurationResponse",
-}) as any as S.Schema<PutEventConfigurationResponse>;
+export const PutEventConfigurationResponse =
+  GetEventConfigurationResponse as any as S.Schema<PutEventConfigurationResponse>;
 export interface PutEventSelectorsRequest {
   TrailName: string;
   EventSelectors?: EventSelector[];
@@ -2720,15 +2698,8 @@ export interface PutEventSelectorsResponse {
   EventSelectors?: EventSelector[];
   AdvancedEventSelectors?: AdvancedEventSelector[];
 }
-export const PutEventSelectorsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TrailARN: S.optional(S.String),
-    EventSelectors: S.optional(EventSelectors),
-    AdvancedEventSelectors: S.optional(AdvancedEventSelectors),
-  }).pipe(ns),
-).annotate({
-  identifier: "PutEventSelectorsResponse",
-}) as any as S.Schema<PutEventSelectorsResponse>;
+export const PutEventSelectorsResponse =
+  GetEventSelectorsResponse as any as S.Schema<PutEventSelectorsResponse>;
 export interface PutInsightSelectorsRequest {
   TrailName?: string;
   InsightSelectors: InsightSelector[];
@@ -2751,16 +2722,8 @@ export interface PutInsightSelectorsResponse {
   EventDataStoreArn?: string;
   InsightsDestination?: string;
 }
-export const PutInsightSelectorsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TrailARN: S.optional(S.String),
-    InsightSelectors: S.optional(InsightSelectors),
-    EventDataStoreArn: S.optional(S.String),
-    InsightsDestination: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "PutInsightSelectorsResponse",
-}) as any as S.Schema<PutInsightSelectorsResponse>;
+export const PutInsightSelectorsResponse =
+  GetInsightSelectorsResponse as any as S.Schema<PutInsightSelectorsResponse>;
 export interface PutResourcePolicyRequest {
   ResourceArn: string;
   ResourcePolicy: string;
@@ -2775,15 +2738,8 @@ export interface PutResourcePolicyResponse {
   ResourcePolicy?: string;
   DelegatedAdminResourcePolicy?: string;
 }
-export const PutResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceArn: S.optional(S.String),
-    ResourcePolicy: S.optional(S.String),
-    DelegatedAdminResourcePolicy: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "PutResourcePolicyResponse",
-}) as any as S.Schema<PutResourcePolicyResponse>;
+export const PutResourcePolicyResponse =
+  GetResourcePolicyResponse as any as S.Schema<PutResourcePolicyResponse>;
 export interface RegisterOrganizationDelegatedAdminRequest {
   MemberAccountId: string;
 }
@@ -2795,11 +2751,8 @@ export const RegisterOrganizationDelegatedAdminRequest = /*@__PURE__*/ S.suspend
   identifier: "RegisterOrganizationDelegatedAdminRequest",
 }) as any as S.Schema<RegisterOrganizationDelegatedAdminRequest>;
 export interface RegisterOrganizationDelegatedAdminResponse {}
-export const RegisterOrganizationDelegatedAdminResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "RegisterOrganizationDelegatedAdminResponse",
-}) as any as S.Schema<RegisterOrganizationDelegatedAdminResponse>;
+export const RegisterOrganizationDelegatedAdminResponse =
+  DeleteEventDataStoreResponse as any as S.Schema<RegisterOrganizationDelegatedAdminResponse>;
 export interface RemoveTagsRequest {
   ResourceId: string;
   TagsList: Tag[];
@@ -2810,9 +2763,7 @@ export const RemoveTagsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RemoveTagsRequest" }) as any as S.Schema<RemoveTagsRequest>;
 export interface RemoveTagsResponse {}
-export const RemoveTagsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "RemoveTagsResponse",
-}) as any as S.Schema<RemoveTagsResponse>;
+export const RemoveTagsResponse = AddTagsResponse as any as S.Schema<RemoveTagsResponse>;
 export interface RestoreEventDataStoreRequest {
   EventDataStore: string;
 }
@@ -2910,10 +2861,7 @@ export const SearchSampleQueriesResponse = /*@__PURE__*/ S.suspend(() =>
 export type QueryParameterKey = string;
 export type QueryParameterValue = string;
 export type QueryParameterValues = { [key: string]: string | undefined };
-export const QueryParameterValues = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const QueryParameterValues = ViewPropertiesMap as any as S.Schema<QueryParameterValues>;
 export interface StartDashboardRefreshRequest {
   DashboardId: string;
   QueryParameterValues?: { [key: string]: string | undefined };
@@ -2944,11 +2892,8 @@ export const StartEventDataStoreIngestionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartEventDataStoreIngestionRequest",
 }) as any as S.Schema<StartEventDataStoreIngestionRequest>;
 export interface StartEventDataStoreIngestionResponse {}
-export const StartEventDataStoreIngestionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "StartEventDataStoreIngestionResponse",
-}) as any as S.Schema<StartEventDataStoreIngestionResponse>;
+export const StartEventDataStoreIngestionResponse =
+  DeleteEventDataStoreResponse as any as S.Schema<StartEventDataStoreIngestionResponse>;
 export interface StartImportRequest {
   Destinations?: string[];
   ImportSource?: ImportSource;
@@ -2996,9 +2941,7 @@ export const StartLoggingRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StartLoggingRequest" }) as any as S.Schema<StartLoggingRequest>;
 export interface StartLoggingResponse {}
-export const StartLoggingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "StartLoggingResponse",
-}) as any as S.Schema<StartLoggingResponse>;
+export const StartLoggingResponse = AddTagsResponse as any as S.Schema<StartLoggingResponse>;
 export interface StartQueryRequest {
   QueryStatement?: string;
   DeliveryS3Uri?: string;
@@ -3036,11 +2979,8 @@ export const StopEventDataStoreIngestionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopEventDataStoreIngestionRequest",
 }) as any as S.Schema<StopEventDataStoreIngestionRequest>;
 export interface StopEventDataStoreIngestionResponse {}
-export const StopEventDataStoreIngestionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "StopEventDataStoreIngestionResponse",
-}) as any as S.Schema<StopEventDataStoreIngestionResponse>;
+export const StopEventDataStoreIngestionResponse =
+  DeleteEventDataStoreResponse as any as S.Schema<StopEventDataStoreIngestionResponse>;
 export interface StopImportRequest {
   ImportId: string;
 }
@@ -3082,9 +3022,7 @@ export const StopLoggingRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopLoggingRequest" }) as any as S.Schema<StopLoggingRequest>;
 export interface StopLoggingResponse {}
-export const StopLoggingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "StopLoggingResponse",
-}) as any as S.Schema<StopLoggingResponse>;
+export const StopLoggingResponse = AddTagsResponse as any as S.Schema<StopLoggingResponse>;
 export interface UpdateChannelRequest {
   Channel: string;
   Destinations?: Destination[];
@@ -3255,24 +3193,7 @@ export interface UpdateTrailResponse {
   IsOrganizationTrail?: boolean;
   RecursiveLogging?: boolean;
 }
-export const UpdateTrailResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    S3BucketName: S.optional(S.String),
-    S3KeyPrefix: S.optional(S.String),
-    SnsTopicName: S.optional(S.String),
-    SnsTopicARN: S.optional(S.String),
-    IncludeGlobalServiceEvents: S.optional(S.Boolean),
-    IsMultiRegionTrail: S.optional(S.Boolean),
-    TrailARN: S.optional(S.String),
-    LogFileValidationEnabled: S.optional(S.Boolean),
-    CloudWatchLogsLogGroupArn: S.optional(S.String),
-    CloudWatchLogsRoleArn: S.optional(S.String),
-    KmsKeyId: S.optional(S.String),
-    IsOrganizationTrail: S.optional(S.Boolean),
-    RecursiveLogging: S.optional(S.Boolean),
-  }).pipe(ns),
-).annotate({ identifier: "UpdateTrailResponse" }) as any as S.Schema<UpdateTrailResponse>;
+export const UpdateTrailResponse = CreateTrailResponse as any as S.Schema<UpdateTrailResponse>;
 export type AddTagsError =
   | ChannelARNInvalidException
   | ChannelNotFoundException

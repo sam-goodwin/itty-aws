@@ -945,22 +945,14 @@ export interface EnumValues {
   /** The maximum allowable length for string values is 32 characters. */
   values?: StringList;
 }
-export const EnumValues = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(StringList),
-  }),
-).annotate({ identifier: "EnumValues" }) as any as S.Schema<EnumValues>;
+export const EnumValues = IntegerValues as any as S.Schema<EnumValues>;
 
 /** List of text values. */
 export interface TextValues {
   /** The maximum allowable length for text values is 2048 characters. */
   values?: StringList;
 }
-export const TextValues = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(StringList),
-  }),
-).annotate({ identifier: "TextValues" }) as any as S.Schema<TextValues>;
+export const TextValues = IntegerValues as any as S.Schema<TextValues>;
 
 export type StructuredDataObjectList = Array<StructuredDataObject>;
 export const StructuredDataObjectList = /*@__PURE__*/ S.Array(
@@ -982,11 +974,7 @@ export interface HtmlValues {
   /** The maximum allowable length for html values is 2048 characters. */
   values?: StringList;
 }
-export const HtmlValues = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(StringList),
-  }),
-).annotate({ identifier: "HtmlValues" }) as any as S.Schema<HtmlValues>;
+export const HtmlValues = IntegerValues as any as S.Schema<HtmlValues>;
 
 /** List of timestamp values. */
 export type TimestampValues = IntegerValues;
@@ -1550,11 +1538,7 @@ export interface HtmlOperatorOptions {
   /** Indicates the operator name required in the query in order to isolate the html property. For example, if operatorName is *subject* and the property's name is *subjectLine*, then queries like *subject:<value>* show results only where the value of the property named *subjectLine* matches *<value>*. By contrast, a search that uses the same *<value>* without an operator return all items where *<value>* matches the value of any html properties or text within the content field for the item. The operator name can only contain lowercase letters (a-z). The maximum length is 32 characters. */
   operatorName?: string;
 }
-export const HtmlOperatorOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operatorName: S.optional(S.String),
-  }),
-).annotate({ identifier: "HtmlOperatorOptions" }) as any as S.Schema<HtmlOperatorOptions>;
+export const HtmlOperatorOptions = EnumOperatorOptions as any as S.Schema<HtmlOperatorOptions>;
 
 export type RetrievalImportanceImportanceEnum = "DEFAULT" | "HIGHEST" | "HIGH" | "LOW" | "NONE";
 export const RetrievalImportanceImportanceEnum = S.String;
@@ -1588,11 +1572,8 @@ export interface BooleanOperatorOptions {
   /** Indicates the operator name required in the query in order to isolate the boolean property. For example, if operatorName is *closed* and the property's name is *isClosed*, then queries like *closed:<value>* show results only where the value of the property named *isClosed* matches *<value>*. By contrast, a search that uses the same *<value>* without an operator returns all items where *<value>* matches the value of any String properties or text within the content field for the item. The operator name can only contain lowercase letters (a-z). The maximum length is 32 characters. */
   operatorName?: string;
 }
-export const BooleanOperatorOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operatorName: S.optional(S.String),
-  }),
-).annotate({ identifier: "BooleanOperatorOptions" }) as any as S.Schema<BooleanOperatorOptions>;
+export const BooleanOperatorOptions =
+  EnumOperatorOptions as any as S.Schema<BooleanOperatorOptions>;
 
 /** The options for boolean properties. */
 export interface BooleanPropertyOptions {
@@ -1649,22 +1630,15 @@ export interface DoubleOperatorOptions {
   /** Indicates the operator name required in the query in order to use the double property in sorting or as a facet. The operator name can only contain lowercase letters (a-z). The maximum length is 32 characters. */
   operatorName?: string;
 }
-export const DoubleOperatorOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operatorName: S.optional(S.String),
-  }),
-).annotate({ identifier: "DoubleOperatorOptions" }) as any as S.Schema<DoubleOperatorOptions>;
+export const DoubleOperatorOptions = EnumOperatorOptions as any as S.Schema<DoubleOperatorOptions>;
 
 /** The options for double properties. */
 export interface DoublePropertyOptions {
   /** If set, describes how the double should be used as a search operator. */
   operatorOptions?: DoubleOperatorOptions;
 }
-export const DoublePropertyOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operatorOptions: S.optional(DoubleOperatorOptions),
-  }),
-).annotate({ identifier: "DoublePropertyOptions" }) as any as S.Schema<DoublePropertyOptions>;
+export const DoublePropertyOptions =
+  BooleanPropertyOptions as any as S.Schema<DoublePropertyOptions>;
 
 /** Optional. Provides a search operator for date properties. Search operators let users restrict the query to specific fields relevant to the type of item being searched. */
 export interface DateOperatorOptions {
@@ -1675,24 +1649,14 @@ export interface DateOperatorOptions {
   /** Indicates the operator name required in the query in order to isolate the date property using the greater-than operator. For example, if greaterThanOperatorName is *closedafter* and the property's name is *closeDate*, then queries like *closedafter:<value>* show results only where the value of the property named *closeDate* is later than *<value>*. The operator name can only contain lowercase letters (a-z). The maximum length is 32 characters. */
   greaterThanOperatorName?: string;
 }
-export const DateOperatorOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lessThanOperatorName: S.optional(S.String),
-    operatorName: S.optional(S.String),
-    greaterThanOperatorName: S.optional(S.String),
-  }),
-).annotate({ identifier: "DateOperatorOptions" }) as any as S.Schema<DateOperatorOptions>;
+export const DateOperatorOptions = TimestampOperatorOptions as any as S.Schema<DateOperatorOptions>;
 
 /** The options for date properties. */
 export interface DatePropertyOptions {
   /** If set, describes how the date should be used as a search operator. */
   operatorOptions?: DateOperatorOptions;
 }
-export const DatePropertyOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operatorOptions: S.optional(DateOperatorOptions),
-  }),
-).annotate({ identifier: "DatePropertyOptions" }) as any as S.Schema<DatePropertyOptions>;
+export const DatePropertyOptions = TimestampPropertyOptions as any as S.Schema<DatePropertyOptions>;
 
 export type IntegerPropertyOptionsOrderedRankingEnum = "NO_ORDER" | "ASCENDING" | "DESCENDING";
 export const IntegerPropertyOptionsOrderedRankingEnum = S.String;
@@ -1706,13 +1670,8 @@ export interface IntegerOperatorOptions {
   /** Indicates the operator name required in the query in order to isolate the integer property using the greater-than operator. For example, if greaterThanOperatorName is *priorityabove* and the property's name is *priorityVal*, then queries like *priorityabove:<value>* show results only where the value of the property named *priorityVal* is greater than *<value>*. The operator name can only contain lowercase letters (a-z). The maximum length is 32 characters. */
   greaterThanOperatorName?: string;
 }
-export const IntegerOperatorOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lessThanOperatorName: S.optional(S.String),
-    operatorName: S.optional(S.String),
-    greaterThanOperatorName: S.optional(S.String),
-  }),
-).annotate({ identifier: "IntegerOperatorOptions" }) as any as S.Schema<IntegerOperatorOptions>;
+export const IntegerOperatorOptions =
+  TimestampOperatorOptions as any as S.Schema<IntegerOperatorOptions>;
 
 /** The options for integer properties. */
 export interface IntegerPropertyOptions {
@@ -3267,9 +3226,8 @@ export const RemoveActivityQueryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Remove Logged Activity Response. will return an empty response for now. Will be revisited in later phases. */
 export interface RemoveActivityResponse {}
-export const RemoveActivityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RemoveActivityResponse",
-}) as any as S.Schema<RemoveActivityResponse>;
+export const RemoveActivityResponse =
+  InitializeCustomerRequest as any as S.Schema<RemoveActivityResponse>;
 
 export interface ResetSearchApplicationRequest {
   /** Common debug options. */
@@ -3987,11 +3945,7 @@ export interface PeopleSuggestion {
   /** Suggested person. All fields of the person object might not be populated. */
   person?: Person;
 }
-export const PeopleSuggestion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    person: S.optional(Person),
-  }),
-).annotate({ identifier: "PeopleSuggestion" }) as any as S.Schema<PeopleSuggestion>;
+export const PeopleSuggestion = StructuredResult as any as S.Schema<PeopleSuggestion>;
 
 /** One suggestion result. */
 export interface SuggestResult {

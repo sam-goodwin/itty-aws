@@ -309,9 +309,8 @@ export const BudgetBudgetScope = S.String;
 
 /** Array of user login names who will receive alerts. Ignored for user-scope as alerting is disabled for them. */
 export type BudgetBudgetAlertingAlertRecipientsList = Array<string>;
-export const BudgetBudgetAlertingAlertRecipientsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BudgetBudgetAlertingAlertRecipientsList>;
+export const BudgetBudgetAlertingAlertRecipientsList =
+  CreateBudgetBudgetBudgetAlertingAlertRecipientsList as any as S.Schema<BudgetBudgetAlertingAlertRecipientsList>;
 
 export interface BudgetBudgetAlerting {
   /** Whether alerts are enabled for this budget. Ignored for user-scope as alerting is disabled for them. */
@@ -454,9 +453,8 @@ export const GetBudgetBudgetType = S.Unknown as any as S.Schema<GetBudgetBudgetT
 
 /** Array of user login names who will receive alerts. Present but not applicable for user-scope as alerting is always disabled for them. */
 export type GetBudgetBudgetAlertingAlertRecipientsList = Array<string>;
-export const GetBudgetBudgetAlertingAlertRecipientsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetBudgetBudgetAlertingAlertRecipientsList>;
+export const GetBudgetBudgetAlertingAlertRecipientsList =
+  CreateBudgetBudgetBudgetAlertingAlertRecipientsList as any as S.Schema<GetBudgetBudgetAlertingAlertRecipientsList>;
 
 export interface GetBudgetBudgetAlerting {
   /** Whether alerts are enabled for this budget. Present but not applicable for user-scope as alerting is always disabled for them. */
@@ -673,9 +671,8 @@ export const BillingAiCreditUsageReportUserUsageItemsItem =
 
 export type BillingAiCreditUsageReportUserUsageItemsList =
   Array<BillingAiCreditUsageReportOrgUsageItemsItem>;
-export const BillingAiCreditUsageReportUserUsageItemsList = /*@__PURE__*/ S.Array(
-  BillingAiCreditUsageReportOrgUsageItemsItem,
-) as any as S.Schema<BillingAiCreditUsageReportUserUsageItemsList>;
+export const BillingAiCreditUsageReportUserUsageItemsList =
+  BillingAiCreditUsageReportOrgUsageItemsList as any as S.Schema<BillingAiCreditUsageReportUserUsageItemsList>;
 
 export interface BillingAiCreditUsageReportUser {
   timePeriod: BillingAiCreditUsageReportOrgTimePeriod;
@@ -746,9 +743,8 @@ export const BillingPremiumRequestUsageReportOrgUsageItemsItem =
 
 export type BillingPremiumRequestUsageReportOrgUsageItemsList =
   Array<BillingAiCreditUsageReportOrgUsageItemsItem>;
-export const BillingPremiumRequestUsageReportOrgUsageItemsList = /*@__PURE__*/ S.Array(
-  BillingAiCreditUsageReportOrgUsageItemsItem,
-) as any as S.Schema<BillingPremiumRequestUsageReportOrgUsageItemsList>;
+export const BillingPremiumRequestUsageReportOrgUsageItemsList =
+  BillingAiCreditUsageReportOrgUsageItemsList as any as S.Schema<BillingPremiumRequestUsageReportOrgUsageItemsList>;
 
 export interface BillingPremiumRequestUsageReportOrg {
   timePeriod: BillingAiCreditUsageReportOrgTimePeriod;
@@ -762,18 +758,8 @@ export interface BillingPremiumRequestUsageReportOrg {
   model?: string;
   usageItems: BillingPremiumRequestUsageReportOrgUsageItemsList;
 }
-export const BillingPremiumRequestUsageReportOrg = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timePeriod: BillingAiCreditUsageReportOrgTimePeriod,
-    organization: S.String,
-    user: S.optional(S.String),
-    product: S.optional(S.String),
-    model: S.optional(S.String),
-    usageItems: BillingPremiumRequestUsageReportOrgUsageItemsList,
-  }),
-).annotate({
-  identifier: "BillingPremiumRequestUsageReportOrg",
-}) as any as S.Schema<BillingPremiumRequestUsageReportOrg>;
+export const BillingPremiumRequestUsageReportOrg =
+  BillingAiCreditUsageReportOrg as any as S.Schema<BillingPremiumRequestUsageReportOrg>;
 
 export interface GetGithubBillingPremiumRequestUsageReportUserRequest {
   /** The handle for the GitHub user account. */
@@ -820,9 +806,8 @@ export const BillingPremiumRequestUsageReportUserUsageItemsItem =
 
 export type BillingPremiumRequestUsageReportUserUsageItemsList =
   Array<BillingAiCreditUsageReportOrgUsageItemsItem>;
-export const BillingPremiumRequestUsageReportUserUsageItemsList = /*@__PURE__*/ S.Array(
-  BillingAiCreditUsageReportOrgUsageItemsItem,
-) as any as S.Schema<BillingPremiumRequestUsageReportUserUsageItemsList>;
+export const BillingPremiumRequestUsageReportUserUsageItemsList =
+  BillingAiCreditUsageReportOrgUsageItemsList as any as S.Schema<BillingPremiumRequestUsageReportUserUsageItemsList>;
 
 export interface BillingPremiumRequestUsageReportUser {
   timePeriod: BillingAiCreditUsageReportOrgTimePeriod;
@@ -834,17 +819,8 @@ export interface BillingPremiumRequestUsageReportUser {
   model?: string;
   usageItems: BillingPremiumRequestUsageReportUserUsageItemsList;
 }
-export const BillingPremiumRequestUsageReportUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timePeriod: BillingAiCreditUsageReportOrgTimePeriod,
-    user: S.String,
-    product: S.optional(S.String),
-    model: S.optional(S.String),
-    usageItems: BillingPremiumRequestUsageReportUserUsageItemsList,
-  }),
-).annotate({
-  identifier: "BillingPremiumRequestUsageReportUser",
-}) as any as S.Schema<BillingPremiumRequestUsageReportUser>;
+export const BillingPremiumRequestUsageReportUser =
+  BillingAiCreditUsageReportUser as any as S.Schema<BillingPremiumRequestUsageReportUser>;
 
 export interface GetGithubBillingUsageReportOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1148,9 +1124,8 @@ export const BillingUsageSummaryReportUserUsageItemsItem =
 
 export type BillingUsageSummaryReportUserUsageItemsList =
   Array<BillingUsageSummaryReportOrgUsageItemsItem>;
-export const BillingUsageSummaryReportUserUsageItemsList = /*@__PURE__*/ S.Array(
-  BillingUsageSummaryReportOrgUsageItemsItem,
-) as any as S.Schema<BillingUsageSummaryReportUserUsageItemsList>;
+export const BillingUsageSummaryReportUserUsageItemsList =
+  BillingUsageSummaryReportOrgUsageItemsList as any as S.Schema<BillingUsageSummaryReportUserUsageItemsList>;
 
 export interface BillingUsageSummaryReportUser {
   timePeriod: BillingAiCreditUsageReportOrgTimePeriod;
@@ -1179,9 +1154,8 @@ export const BillingUsageSummaryReportUser = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of user login names who will receive alerts. Ignored for user-scopes as alerting is always disabled for them. */
 export type UpdateBudgetOrgRequestBudgetAlertingAlertRecipientsList = Array<string>;
-export const UpdateBudgetOrgRequestBudgetAlertingAlertRecipientsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateBudgetOrgRequestBudgetAlertingAlertRecipientsList>;
+export const UpdateBudgetOrgRequestBudgetAlertingAlertRecipientsList =
+  CreateBudgetBudgetBudgetAlertingAlertRecipientsList as any as S.Schema<UpdateBudgetOrgRequestBudgetAlertingAlertRecipientsList>;
 
 export interface UpdateBudgetOrgRequestBudgetAlerting {
   /** Whether alerts are enabled for this budget. Ignored for user-scopes as alerting is always disabled for them. */
@@ -1189,14 +1163,8 @@ export interface UpdateBudgetOrgRequestBudgetAlerting {
   /** Array of user login names who will receive alerts. Ignored for user-scopes as alerting is always disabled for them. */
   alert_recipients?: UpdateBudgetOrgRequestBudgetAlertingAlertRecipientsList;
 }
-export const UpdateBudgetOrgRequestBudgetAlerting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    will_alert: S.optional(S.Boolean),
-    alert_recipients: S.optional(UpdateBudgetOrgRequestBudgetAlertingAlertRecipientsList),
-  }),
-).annotate({
-  identifier: "UpdateBudgetOrgRequestBudgetAlerting",
-}) as any as S.Schema<UpdateBudgetOrgRequestBudgetAlerting>;
+export const UpdateBudgetOrgRequestBudgetAlerting =
+  CreateBudgetBudgetBudgetAlerting as any as S.Schema<UpdateBudgetOrgRequestBudgetAlerting>;
 
 export type UpdateBudgetOrgRequestExpiresAtCase1 = 0;
 export const UpdateBudgetOrgRequestExpiresAtCase1 = S.Number;
@@ -1262,9 +1230,8 @@ export const UpdateBudgetBudgetBudgetType =
 
 /** Array of user login names who will receive alerts. Ignored for user-scope as alerting is always disabled for them. */
 export type UpdateBudgetBudgetBudgetAlertingAlertRecipientsList = Array<string>;
-export const UpdateBudgetBudgetBudgetAlertingAlertRecipientsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateBudgetBudgetBudgetAlertingAlertRecipientsList>;
+export const UpdateBudgetBudgetBudgetAlertingAlertRecipientsList =
+  CreateBudgetBudgetBudgetAlertingAlertRecipientsList as any as S.Schema<UpdateBudgetBudgetBudgetAlertingAlertRecipientsList>;
 
 export interface UpdateBudgetBudgetBudgetAlerting {
   /** Whether alerts are enabled for this budget. Ignored for user-scope as alerting is always disabled for them. */
@@ -1272,14 +1239,8 @@ export interface UpdateBudgetBudgetBudgetAlerting {
   /** Array of user login names who will receive alerts. Ignored for user-scope as alerting is always disabled for them. */
   alert_recipients?: UpdateBudgetBudgetBudgetAlertingAlertRecipientsList;
 }
-export const UpdateBudgetBudgetBudgetAlerting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    will_alert: S.optional(S.Boolean),
-    alert_recipients: S.optional(UpdateBudgetBudgetBudgetAlertingAlertRecipientsList),
-  }),
-).annotate({
-  identifier: "UpdateBudgetBudgetBudgetAlerting",
-}) as any as S.Schema<UpdateBudgetBudgetBudgetAlerting>;
+export const UpdateBudgetBudgetBudgetAlerting =
+  CreateBudgetBudgetBudgetAlerting as any as S.Schema<UpdateBudgetBudgetBudgetAlerting>;
 
 export interface UpdateBudgetBudget {
   /** ID of the budget. */

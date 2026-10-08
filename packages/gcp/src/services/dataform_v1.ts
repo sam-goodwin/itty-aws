@@ -90,9 +90,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 /** `CancelWorkflowInvocation` request message. */
 export type CancelWorkflowInvocationRequest = CancelOperationRequest;
@@ -289,9 +287,8 @@ export const CommitProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*
 
 /** `CommitWorkspaceChanges` response message. */
 export interface CommitWorkspaceChangesResponse {}
-export const CommitWorkspaceChangesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CommitWorkspaceChangesResponse",
-}) as any as S.Schema<CommitWorkspaceChangesResponse>;
+export const CommitWorkspaceChangesResponse =
+  CancelOperationRequest as any as S.Schema<CommitWorkspaceChangesResponse>;
 
 export interface ComputeAccessTokenStatusProjectsLocationsRepositoriesRequest {
   /** Required. The repository's name. */
@@ -2045,9 +2042,8 @@ export const InstallNpmPackagesProjectsLocationsRepositoriesWorkspacesRequest =
 
 /** `InstallNpmPackages` response message. */
 export interface InstallNpmPackagesResponse {}
-export const InstallNpmPackagesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "InstallNpmPackagesResponse",
-}) as any as S.Schema<InstallNpmPackagesResponse>;
+export const InstallNpmPackagesResponse =
+  CancelOperationRequest as any as S.Schema<InstallNpmPackagesResponse>;
 
 export interface ListProjectsLocationsRequest {
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
@@ -2487,9 +2483,8 @@ export const MakeDirectoryProjectsLocationsRepositoriesWorkspacesRequest = /*@__
 
 /** `MakeDirectory` response message. */
 export interface MakeDirectoryResponse {}
-export const MakeDirectoryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "MakeDirectoryResponse",
-}) as any as S.Schema<MakeDirectoryResponse>;
+export const MakeDirectoryResponse =
+  CancelOperationRequest as any as S.Schema<MakeDirectoryResponse>;
 
 /** `MoveDirectory` request message. */
 export interface MoveDirectoryRequest {
@@ -2529,9 +2524,8 @@ export const MoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest = /*@__
 
 /** `MoveDirectory` response message. */
 export interface MoveDirectoryResponse {}
-export const MoveDirectoryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "MoveDirectoryResponse",
-}) as any as S.Schema<MoveDirectoryResponse>;
+export const MoveDirectoryResponse =
+  CancelOperationRequest as any as S.Schema<MoveDirectoryResponse>;
 
 /** `MoveFile` request message. */
 export interface MoveFileRequest {
@@ -2540,12 +2534,7 @@ export interface MoveFileRequest {
   /** Required. The file's full path including filename, relative to the workspace root. */
   path?: string;
 }
-export const MoveFileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    newPath: S.optional(S.String),
-    path: S.optional(S.String),
-  }),
-).annotate({ identifier: "MoveFileRequest" }) as any as S.Schema<MoveFileRequest>;
+export const MoveFileRequest = MoveDirectoryRequest as any as S.Schema<MoveFileRequest>;
 
 export interface MoveFileProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
@@ -2570,9 +2559,7 @@ export const MoveFileProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE_
 
 /** `MoveFile` response message. */
 export interface MoveFileResponse {}
-export const MoveFileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "MoveFileResponse",
-}) as any as S.Schema<MoveFileResponse>;
+export const MoveFileResponse = CancelOperationRequest as any as S.Schema<MoveFileResponse>;
 
 /** `MoveFolder` request message. */
 export interface MoveFolderRequest {
@@ -2607,11 +2594,7 @@ export interface MoveRepositoryRequest {
   /** Optional. The name of the Folder, TeamFolder, or root location to move the repository to. Can be in the format of: "" to move into the root User folder, `projects/*\/locations/*\/folders/*`, `projects/*\/locations/*\/teamFolders/*` */
   destinationContainingFolder?: string;
 }
-export const MoveRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destinationContainingFolder: S.optional(S.String),
-  }),
-).annotate({ identifier: "MoveRepositoryRequest" }) as any as S.Schema<MoveRepositoryRequest>;
+export const MoveRepositoryRequest = MoveFolderRequest as any as S.Schema<MoveRepositoryRequest>;
 
 export interface MoveProjectsLocationsRepositoriesRequest {
   /** Required. The full resource name of the repository to move. */
@@ -2764,9 +2747,8 @@ export const PullProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ 
 
 /** `PullGitCommits` response message. */
 export interface PullGitCommitsResponse {}
-export const PullGitCommitsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PullGitCommitsResponse",
-}) as any as S.Schema<PullGitCommitsResponse>;
+export const PullGitCommitsResponse =
+  CancelOperationRequest as any as S.Schema<PullGitCommitsResponse>;
 
 /** `PushGitCommits` request message. */
 export interface PushGitCommitsRequest {
@@ -2798,9 +2780,8 @@ export const PushProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ 
 
 /** `PushGitCommits` response message. */
 export interface PushGitCommitsResponse {}
-export const PushGitCommitsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PushGitCommitsResponse",
-}) as any as S.Schema<PushGitCommitsResponse>;
+export const PushGitCommitsResponse =
+  CancelOperationRequest as any as S.Schema<PushGitCommitsResponse>;
 
 export interface QueryContentsProjectsLocationsTeamFoldersRequest {
   /** Optional. Page token received from a previous `QueryTeamFolderContents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `QueryTeamFolderContents`, with the exception of `page_size`, must match the call that provided the page token. */
@@ -2996,14 +2977,8 @@ export interface QueryDirectoryContentsResponse {
   /** List of entries in the directory. */
   directoryEntries?: DirectoryEntryList;
 }
-export const QueryDirectoryContentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    directoryEntries: S.optional(DirectoryEntryList),
-  }),
-).annotate({
-  identifier: "QueryDirectoryContentsResponse",
-}) as any as S.Schema<QueryDirectoryContentsResponse>;
+export const QueryDirectoryContentsResponse =
+  QueryRepositoryDirectoryContentsResponse as any as S.Schema<QueryDirectoryContentsResponse>;
 
 export interface QueryFolderContentsProjectsLocationsFoldersRequest {
   /** Optional. Optional filtering for the returned list. Filtering is currently only supported on the `display_name` field. Example: * `filter="display_name="MyFolder""` */
@@ -3040,9 +3015,8 @@ export type FolderContentsEntry = TeamFolderContentsEntry;
 export const FolderContentsEntry = TeamFolderContentsEntry;
 
 export type FolderContentsEntryList = Array<TeamFolderContentsEntry>;
-export const FolderContentsEntryList = /*@__PURE__*/ S.Array(
-  TeamFolderContentsEntry,
-) as any as S.Schema<FolderContentsEntryList>;
+export const FolderContentsEntryList =
+  TeamFolderContentsEntryList as any as S.Schema<FolderContentsEntryList>;
 
 /** `QueryFolderContents` response message. */
 export interface QueryFolderContentsResponse {
@@ -3754,9 +3728,8 @@ export type RootContentsEntry = TeamFolderContentsEntry;
 export const RootContentsEntry = TeamFolderContentsEntry;
 
 export type RootContentsEntryList = Array<TeamFolderContentsEntry>;
-export const RootContentsEntryList = /*@__PURE__*/ S.Array(
-  TeamFolderContentsEntry,
-) as any as S.Schema<RootContentsEntryList>;
+export const RootContentsEntryList =
+  TeamFolderContentsEntryList as any as S.Schema<RootContentsEntryList>;
 
 /** `QueryUserRootContents` response message. */
 export interface QueryUserRootContentsResponse {
@@ -3765,14 +3738,8 @@ export interface QueryUserRootContentsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const QueryUserRootContentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entries: S.optional(RootContentsEntryList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "QueryUserRootContentsResponse",
-}) as any as S.Schema<QueryUserRootContentsResponse>;
+export const QueryUserRootContentsResponse =
+  QueryTeamFolderContentsResponse as any as S.Schema<QueryUserRootContentsResponse>;
 
 export interface ReadFileProjectsLocationsRepositoriesRequest {
   /** Optional. The commit SHA for the commit to read from. If unset, the file will be read from HEAD. */
@@ -3874,20 +3841,15 @@ export const RemoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest =
 
 /** `RemoveDirectory` response message. */
 export interface RemoveDirectoryResponse {}
-export const RemoveDirectoryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RemoveDirectoryResponse",
-}) as any as S.Schema<RemoveDirectoryResponse>;
+export const RemoveDirectoryResponse =
+  CancelOperationRequest as any as S.Schema<RemoveDirectoryResponse>;
 
 /** `RemoveFile` request message. */
 export interface RemoveFileRequest {
   /** Required. The file's full path including filename, relative to the workspace root. */
   path?: string;
 }
-export const RemoveFileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.optional(S.String),
-  }),
-).annotate({ identifier: "RemoveFileRequest" }) as any as S.Schema<RemoveFileRequest>;
+export const RemoveFileRequest = MakeDirectoryRequest as any as S.Schema<RemoveFileRequest>;
 
 export interface RemoveFileProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
@@ -3913,9 +3875,7 @@ export const RemoveFileProjectsLocationsRepositoriesWorkspacesRequest = /*@__PUR
 
 /** `RemoveFile` response message. */
 export interface RemoveFileResponse {}
-export const RemoveFileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RemoveFileResponse",
-}) as any as S.Schema<RemoveFileResponse>;
+export const RemoveFileResponse = CancelOperationRequest as any as S.Schema<RemoveFileResponse>;
 
 /** `ResetWorkspaceChanges` request message. */
 export interface ResetWorkspaceChangesRequest {
@@ -3956,9 +3916,8 @@ export const ResetProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/
 
 /** `ResetWorkspaceChanges` response message. */
 export interface ResetWorkspaceChangesResponse {}
-export const ResetWorkspaceChangesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResetWorkspaceChangesResponse",
-}) as any as S.Schema<ResetWorkspaceChangesResponse>;
+export const ResetWorkspaceChangesResponse =
+  CancelOperationRequest as any as S.Schema<ResetWorkspaceChangesResponse>;
 
 export interface SearchFilesProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
@@ -3993,22 +3952,14 @@ export interface DirectorySearchResult {
   /** File system path relative to the workspace root. */
   path?: string;
 }
-export const DirectorySearchResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.optional(S.String),
-  }),
-).annotate({ identifier: "DirectorySearchResult" }) as any as S.Schema<DirectorySearchResult>;
+export const DirectorySearchResult = MakeDirectoryRequest as any as S.Schema<DirectorySearchResult>;
 
 /** Client-facing representation of a file entry in search results. */
 export interface FileSearchResult {
   /** File system path relative to the file tree root. */
   path?: string;
 }
-export const FileSearchResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.optional(S.String),
-  }),
-).annotate({ identifier: "FileSearchResult" }) as any as S.Schema<FileSearchResult>;
+export const FileSearchResult = MakeDirectoryRequest as any as S.Schema<FileSearchResult>;
 
 /** Client-facing representation of a search result entry. */
 export interface SearchResult {
@@ -4240,13 +4191,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsRepositoriesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -4369,9 +4315,7 @@ export const WriteFileProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE
 
 /** `WriteFile` response message. */
 export interface WriteFileResponse {}
-export const WriteFileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "WriteFileResponse",
-}) as any as S.Schema<WriteFileResponse>;
+export const WriteFileResponse = CancelOperationRequest as any as S.Schema<WriteFileResponse>;
 
 export type CancelProjectsLocationsOperationsError =
   | NotFound

@@ -59,9 +59,8 @@ export const AddCallResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of users to add as participants in the Call. [Read more on how to specify users here](/apis/web-api/using-the-calls-api#users). */
 export type AddParticipantRequestUsersList = Array<unknown>;
-export const AddParticipantRequestUsersList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<AddParticipantRequestUsersList>;
+export const AddParticipantRequestUsersList =
+  AddCallRequestUsersList as any as S.Schema<AddParticipantRequestUsersList>;
 
 export interface AddParticipantRequest {
   /** `id` returned by the [`calls.add`](/reference/methods/calls.add) method. */
@@ -81,12 +80,7 @@ export interface AddParticipantResponse {
   ok: boolean;
   call: unknown;
 }
-export const AddParticipantResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-    call: S.Unknown,
-  }),
-).annotate({ identifier: "AddParticipantResponse" }) as any as S.Schema<AddParticipantResponse>;
+export const AddParticipantResponse = AddCallResponse as any as S.Schema<AddParticipantResponse>;
 
 export interface CallsEndRequest {
   /** `id` returned when registering the call using the [`calls.add`](/reference/methods/calls.add) method. */
@@ -106,12 +100,7 @@ export interface CallsEndResponse {
   ok: boolean;
   call: unknown;
 }
-export const CallsEndResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-    call: S.Unknown,
-  }),
-).annotate({ identifier: "CallsEndResponse" }) as any as S.Schema<CallsEndResponse>;
+export const CallsEndResponse = AddCallResponse as any as S.Schema<CallsEndResponse>;
 
 export interface CallsInfoRequest {
   /** `id` of the Call returned by the [`calls.add`](/reference/methods/calls.add) method. */
@@ -128,18 +117,12 @@ export interface CallsInfoResponse {
   ok: boolean;
   call: unknown;
 }
-export const CallsInfoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-    call: S.Unknown,
-  }),
-).annotate({ identifier: "CallsInfoResponse" }) as any as S.Schema<CallsInfoResponse>;
+export const CallsInfoResponse = AddCallResponse as any as S.Schema<CallsInfoResponse>;
 
 /** The list of users to remove as participants in the Call. [Read more on how to specify users here](/apis/web-api/using-the-calls-api#users). */
 export type RemoveParticipantRequestUsersList = Array<unknown>;
-export const RemoveParticipantRequestUsersList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RemoveParticipantRequestUsersList>;
+export const RemoveParticipantRequestUsersList =
+  AddCallRequestUsersList as any as S.Schema<RemoveParticipantRequestUsersList>;
 
 export interface RemoveParticipantRequest {
   /** `id` returned by the [`calls.add`](/reference/methods/calls.add) method. */
@@ -192,12 +175,7 @@ export interface UpdateCallResponse {
   ok: boolean;
   call: unknown;
 }
-export const UpdateCallResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-    call: S.Unknown,
-  }),
-).annotate({ identifier: "UpdateCallResponse" }) as any as S.Schema<UpdateCallResponse>;
+export const UpdateCallResponse = AddCallResponse as any as S.Schema<UpdateCallResponse>;
 
 export type AddCallError = SlackOpError;
 /** Registers a new Call. Required scopes -- bot: `calls:write`; user: `calls:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `internal_error` -- An unexpected error has occurred while trying to register the Call. - `invalid_created_by` -- The `created_by` user ID is invalid. - `invalid_start_time` -- The start time is invalid. - `not_authorized` -- The specified user is not authorized to create a Call in this channel. - `not_implemented` -- This method is not available. - `user_not_found` -- A specified user wasn't found. See https://docs.slack.dev/reference/methods/calls.add */
