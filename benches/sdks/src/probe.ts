@@ -331,7 +331,7 @@ const main = async (req: ProbeRequest) => {
         );
         return { ok: true, response };
       } catch (e) {
-        lastError = errorText(e);
+        lastError = `${lastError}${lastError ? " | " : ""}${errorText(e).slice(0, 80)}`;
       }
     }
     return { ok: false, error: lastError, body: JSON.stringify(wire).slice(0, 200) };
